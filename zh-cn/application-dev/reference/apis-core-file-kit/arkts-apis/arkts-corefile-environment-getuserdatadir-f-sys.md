@@ -35,6 +35,8 @@ function getUserDataDir(): Promise<string>
 | 13900042 | Unknown error |
 
 
+<a id="getuserdatadir-1"></a>
+
 ## getUserDataDir
 
 ```TypeScript

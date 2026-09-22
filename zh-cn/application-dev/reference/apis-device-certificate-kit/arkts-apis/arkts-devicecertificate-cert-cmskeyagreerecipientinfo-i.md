@@ -1,5 +1,9 @@
 # CmsKeyAgreeRecipientInfo
 
+```TypeScript
+interface CmsKeyAgreeRecipientInfo
+```
+
 CMS封装数据的KeyAgree接收方信息。
 
 **起始版本：** 22

@@ -1,5 +1,9 @@
 # KeyStatus
 
+```TypeScript
+export enum KeyStatus
+```
+
 Enumerates the statuses of sensitive data keys under the lock screen.
 
 **Since:** 18

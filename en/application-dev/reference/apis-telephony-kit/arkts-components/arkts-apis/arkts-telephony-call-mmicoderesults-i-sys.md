@@ -1,5 +1,9 @@
 # MmiCodeResults (System API)
 
+```TypeScript
+export interface MmiCodeResults
+```
+
 Defines the MMI code result.
 
 **Since:** 9

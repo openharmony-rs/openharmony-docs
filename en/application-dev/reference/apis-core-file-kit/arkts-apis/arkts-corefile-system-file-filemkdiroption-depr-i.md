@@ -1,5 +1,9 @@
 # FileMkdirOption
 
+```TypeScript
+export interface FileMkdirOption
+```
+
 Defines the options used in mkdir().
 
 **Since:** 3

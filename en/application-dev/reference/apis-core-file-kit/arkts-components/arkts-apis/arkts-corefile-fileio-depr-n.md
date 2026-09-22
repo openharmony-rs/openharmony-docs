@@ -1,5 +1,9 @@
 # fileIO(File Management)
 
+```TypeScript
+declare namespace fileIO
+```
+
 fileio
 
 **Since:** 6

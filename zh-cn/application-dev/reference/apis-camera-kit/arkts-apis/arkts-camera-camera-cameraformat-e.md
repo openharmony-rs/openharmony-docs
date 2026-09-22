@@ -1,5 +1,9 @@
 # CameraFormat
 
+```TypeScript
+enum CameraFormat
+```
+
 枚举，输出格式。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # GeneratorNodeGraphOptions (System API)
 
+```TypeScript
+interface GeneratorNodeGraphOptions
+```
+
 Parameters used to open the NodeGraphComponent.
 
 @interface GeneratorNodeGraphOptions

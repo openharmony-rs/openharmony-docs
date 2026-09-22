@@ -1,5 +1,9 @@
 # RequestResult（系统接口）
 
+```TypeScript
+interface RequestResult
+```
+
 表示请求结果的信息。
 
 **起始版本：** 8

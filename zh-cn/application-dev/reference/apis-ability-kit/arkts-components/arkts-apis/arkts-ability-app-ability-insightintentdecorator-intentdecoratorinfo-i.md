@@ -1,5 +1,9 @@
 # IntentDecoratorInfo
 
+```TypeScript
+declare interface IntentDecoratorInfo
+```
+
 意图装饰器的通用属性，用于定义意图的基本信息（包括意图名称、意图版本号）。适用于本模块的所有装饰器。
 
 > **说明：** 

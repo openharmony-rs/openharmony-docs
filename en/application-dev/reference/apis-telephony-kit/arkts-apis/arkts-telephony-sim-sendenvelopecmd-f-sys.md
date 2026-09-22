@@ -54,17 +54,8 @@ sim.sendEnvelopeCmd(0, "ls", (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.sendEnvelopeCmd(0, "ls").then(() => {
-    console.info(`sendEnvelopeCmd success.`);
-}).catch((err: BusinessError) => {
-    console.error(`sendEnvelopeCmd failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="sendenvelopecmd-1"></a>
 
 ## sendEnvelopeCmd
 
@@ -110,4 +101,13 @@ Send envelope command to SIM card.
 
 **Examples**
 
-See [sendEnvelopeCmd](#sendenvelopecmd)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.sendEnvelopeCmd(0, "ls").then(() => {
+    console.info(`sendEnvelopeCmd success.`);
+}).catch((err: BusinessError) => {
+    console.error(`sendEnvelopeCmd failed, promise: err->${JSON.stringify(err)}`);
+});
+```

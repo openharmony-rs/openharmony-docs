@@ -1,5 +1,9 @@
 # Application
 
+```TypeScript
+export interface Application
+```
+
 Application
 
 @interface Application
@@ -14,7 +18,7 @@ Application
 $def: any
 ```
 
-Object that is exposed in the app.js file and obtained by this.&#36;app.&#36;def.
+Object that is exposed in the app.js file and obtained by this.$app.$def.
 
 **Type:** any
 

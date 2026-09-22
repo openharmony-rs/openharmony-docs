@@ -1,5 +1,9 @@
 # UpgradeInfo (System API)
 
+```TypeScript
+export interface UpgradeInfo
+```
+
 Represents update information.
 
 **Since:** 9

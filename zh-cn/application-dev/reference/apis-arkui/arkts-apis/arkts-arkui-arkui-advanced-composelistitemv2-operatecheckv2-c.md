@@ -1,5 +1,9 @@
 # OperateCheckV2
 
+```TypeScript
+export declare class OperateCheckV2
+```
+
 列表项右侧元素为Switch、CheckBox、Radio的类型。当列表项右侧元素需要使用Switch、CheckBox、Radio时，可通过该类型配置对应属性。
 
 **起始版本：** 26.0.0

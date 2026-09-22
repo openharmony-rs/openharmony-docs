@@ -1,5 +1,9 @@
 # LimitAction（系统接口）
 
+```TypeScript
+export enum LimitAction
+```
+
 限制动作。
 
 **起始版本：** 10

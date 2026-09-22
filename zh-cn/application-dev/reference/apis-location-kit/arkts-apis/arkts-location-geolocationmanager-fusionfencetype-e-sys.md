@@ -1,5 +1,9 @@
 # FusionFenceType（系统接口）
 
+```TypeScript
+export enum FusionFenceType
+```
+
 融合围栏类型采用二进制标记，该类型在使用时是将支持的围栏类型所在bit位置为1。例如支持GNSS和CELLULAR围栏，则值为0011（二进制），转换为十进制为3；全部四种围栏都支持，则值为1111（二进制），转换为十进制为15。
 
 **起始版本：** 26.0.0

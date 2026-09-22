@@ -1,5 +1,9 @@
 # UploadProgress（系统接口）
 
+```TypeScript
+interface UploadProgress
+```
+
 文件上传进度信息。
 
 **起始版本：** 26.0.0

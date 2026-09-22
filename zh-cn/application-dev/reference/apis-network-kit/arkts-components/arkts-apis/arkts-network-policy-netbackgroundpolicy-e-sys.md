@@ -1,5 +1,9 @@
 # NetBackgroundPolicy（系统接口）
 
+```TypeScript
+export enum NetBackgroundPolicy
+```
+
 后台网络策略。
 
 **起始版本：** 10

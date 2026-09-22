@@ -1,5 +1,9 @@
 # UserClassification
 
+```TypeScript
+export interface UserClassification
+```
+
 表示用户年龄群组分类检测结果。
 
 **起始版本：** 20

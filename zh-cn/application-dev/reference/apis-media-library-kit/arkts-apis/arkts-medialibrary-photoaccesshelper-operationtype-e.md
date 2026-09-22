@@ -1,5 +1,9 @@
 # OperationType
 
+```TypeScript
+export enum OperationType
+```
+
 表示各类谓词的枚举。
 
 **起始版本：** 22

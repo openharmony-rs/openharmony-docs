@@ -55,26 +55,3 @@ try {
     hilog.error(0x0000, 'testTag', 'queryAppKeyState failed: %{public}s', message);
 }
 ```
-
-```TypeScript
-// 查询锁屏下媒体类型数据的访问权限
-import { screenLockFileManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-    // 查询密钥状态
-    let keyStatus = screenLockFileManager.queryAppKeyState(screenLockFileManager.DataType.MEDIA_DATA);
-    // 判断密钥状态并处理不同情况
-    if (keyStatus === screenLockFileManager.KeyStatus.KEY_NOT_EXIST) {
-        hilog.info(0x0000, 'testTag', 'Key does not exist.');
-    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_RELEASED) {
-        hilog.info(0x0000, 'testTag', 'Key has been released.');
-    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_EXIST) {
-        hilog.info(0x0000, 'testTag', 'Key exists.');
-    }
-} catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'queryAppKeyState failed: %{public}s', message);
-}
-```

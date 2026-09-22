@@ -1,5 +1,9 @@
 # SkillUri
 
+```TypeScript
+export interface SkillUri
+```
+
 Want匹配的Uri集合。
 
 **起始版本：** 12

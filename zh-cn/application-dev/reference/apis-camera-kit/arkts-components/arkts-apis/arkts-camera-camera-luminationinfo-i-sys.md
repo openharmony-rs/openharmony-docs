@@ -1,5 +1,9 @@
 # LuminationInfo（系统接口）
 
+```TypeScript
+interface LuminationInfo
+```
+
 Describes the illumination information.
 
 **起始版本：** 12

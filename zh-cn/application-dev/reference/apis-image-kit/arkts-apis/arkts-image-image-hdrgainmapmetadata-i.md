@@ -1,5 +1,9 @@
 # HdrGainmapMetadata
 
+```TypeScript
+interface HdrGainmapMetadata
+```
+
 Gainmap使用的元数据值，[HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md)中HDR_GAINMAP_METADATA关键字对应的值，参考ISO 21496-1。
 
 **起始版本：** 12

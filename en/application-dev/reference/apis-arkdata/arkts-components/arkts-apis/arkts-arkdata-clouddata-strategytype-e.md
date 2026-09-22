@@ -1,5 +1,9 @@
 # StrategyType
 
+```TypeScript
+enum StrategyType
+```
+
 Enumerates the types of the cloud-device sync strategy.
 
 **Since:** 12

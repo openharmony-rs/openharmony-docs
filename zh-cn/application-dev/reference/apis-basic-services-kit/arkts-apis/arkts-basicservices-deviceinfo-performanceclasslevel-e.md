@@ -1,5 +1,9 @@
 # PerformanceClassLevel
 
+```TypeScript
+export enum PerformanceClassLevel
+```
+
 表示设备能力定级的枚举。
 
 **起始版本：** 19

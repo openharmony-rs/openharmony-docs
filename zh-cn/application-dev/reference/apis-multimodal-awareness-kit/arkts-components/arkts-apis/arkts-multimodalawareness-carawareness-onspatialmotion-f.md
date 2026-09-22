@@ -14,7 +14,7 @@ function onSpatialMotion(callback: Callback<SpatialMotionInfo>): void
 
 开启空间动作感知，订阅空间动作感知结果。如果能力不支持，则不会回调。支持的能力可以通过getAllCapacityList方法获取。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.vehicle.MMA_SPATIALACTION
 

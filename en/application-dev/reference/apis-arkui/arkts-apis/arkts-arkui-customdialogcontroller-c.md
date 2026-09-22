@@ -1,5 +1,9 @@
 # CustomDialogController
 
+```TypeScript
+declare class CustomDialogController
+```
+
 Defines the controller of the custom dialog box.
 
 ## Objects to Import
@@ -7,6 +11,8 @@ Defines the controller of the custom dialog box.
 ```ts
 dialogController : CustomDialogController | null = new CustomDialogController(CustomDialogControllerOptions)
 ```
+
+
 
 > **NOTE:** 
 > 
@@ -26,6 +32,8 @@ close()
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -41,8 +49,8 @@ Constructor for a custom dialog box.
 > **NOTE:** 
 > 
 > Custom dialog box parameters do not support dynamic updates. However, by setting **customStyle** to **true** and
-> configuring attributes such as background color,
-> background blur,
+> configuring attributes such as [background color](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor),
+> [background blur](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),
 > and width/height on the custom component, dynamic updates can be achieved through state variables
 > bound to these attributes.
 > 
@@ -54,6 +62,8 @@ Constructor for a custom dialog box.
 > custom dialog box directly.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -99,10 +109,12 @@ Opens the content of the custom dialog box. This API can be called multiple time
 > 
 > **CustomDialog** with subwindow display (**showInSubwindow** set to **true**) is not supported in input method
 > windows. For details, see the constraints in
-> [createPanel](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)
+> [createPanel](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)
 > of the input method framework documentation.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

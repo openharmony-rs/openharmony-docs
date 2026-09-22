@@ -1,5 +1,9 @@
 # PolicyType
 
+```TypeScript
+enum PolicyType
+```
+
 Enumerates the update policy types.
 
 **Since:** 12

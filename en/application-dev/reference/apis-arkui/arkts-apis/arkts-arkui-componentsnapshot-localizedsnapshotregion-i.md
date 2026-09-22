@@ -1,5 +1,9 @@
 # LocalizedSnapshotRegion
 
+```TypeScript
+interface LocalizedSnapshotRegion
+```
+
 Defines the rectangular region for capturing the component snapshot, with coordinates adjusted based on the layout direction (LTR or RTL).
 
 > **NOTE:** 

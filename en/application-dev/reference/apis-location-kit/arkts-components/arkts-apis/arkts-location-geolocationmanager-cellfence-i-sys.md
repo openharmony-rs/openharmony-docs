@@ -1,5 +1,9 @@
 # CellFence (System API)
 
+```TypeScript
+export interface CellFence
+```
+
 Indicates CELL fence information.
 
 **Since:** 26.0.0

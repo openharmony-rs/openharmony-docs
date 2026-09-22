@@ -1,5 +1,9 @@
 # FormDimension
 
+```TypeScript
+enum FormDimension
+```
+
 Defines the FormDimension enum.
 
 **Since:** 9

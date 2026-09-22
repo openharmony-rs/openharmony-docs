@@ -1,5 +1,9 @@
 # FontStyle
 
+```TypeScript
+enum FontStyle
+```
+
 字体样式枚举。
 
 **起始版本：** 12

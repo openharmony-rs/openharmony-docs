@@ -65,33 +65,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置鼠标悬停滚动状态
-            pointer.setHoverScrollState(true).then(() => {
-              console.info(`Succeeded in setting mouse hover scroll.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="sethoverscrollstate-1"></a>
 
 ## setHoverScrollState
 
@@ -128,4 +103,29 @@ function setHoverScrollState(state: boolean): Promise<void>
 
 **示例**
 
-参见 [setHoverScrollState](#sethoverscrollstate)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标悬停滚动状态
+            pointer.setHoverScrollState(true).then(() => {
+              console.info(`Succeeded in setting mouse hover scroll.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

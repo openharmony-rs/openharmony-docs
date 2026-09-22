@@ -1,5 +1,9 @@
 # ProgressButtonV2
 
+```TypeScript
+export declare struct ProgressButtonV2
+```
+
 Declare Component ProgressButtonV2
 
 **Since:** 18

@@ -1,0 +1,111 @@
+# UIListEvent
+
+```TypeScript
+declare interface UIListEvent extends UIScrollableCommonEvent
+```
+
+frameNode中[getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-1)方法的返回值，可用于给List节点设置滚动事件。
+
+UIListEvent继承于[UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md)。
+
+**继承/实现关系：** UIListEvent extends [UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md)
+
+**起始版本：** 19
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## setOnDidScroll
+
+```TypeScript
+setOnDidScroll(callback: OnScrollCallback | undefined): void
+```
+
+设置onDidScroll事件的回调。
+
+方法入参为undefined时，会重置事件回调。
+
+**起始版本：** 19
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnScrollCallback](arkts-arkui-common-comp-onscrollcallback-t.md) &#124; undefined | 是 | onDidScroll事件的回调函数。 |
+
+## setOnScrollIndex
+
+```TypeScript
+setOnScrollIndex(callback: OnListScrollIndexCallback | undefined): void
+```
+
+设置[onScrollIndex](arkts-arkui-list-comp-attribute.md#onscrollindex)事件的回调。
+
+方法入参为undefined时，会重置事件回调。
+
+**起始版本：** 19
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnListScrollIndexCallback](arkts-arkui-list-comp-onlistscrollindexcallback-t.md) &#124; undefined | 是 | onScrollIndex事件的回调函数。 |
+
+## setOnScrollVisibleContentChange
+
+```TypeScript
+setOnScrollVisibleContentChange(callback: OnScrollVisibleContentChangeCallback | undefined): void
+```
+
+设置[onScrollVisibleContentChange](arkts-arkui-list-comp-attribute.md#onscrollvisiblecontentchange)事件的回调。
+
+方法入参为undefined时，会重置事件回调。
+
+**起始版本：** 19
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnScrollVisibleContentChangeCallback](arkts-arkui-list-comp-onscrollvisiblecontentchangecallback-t.md) &#124; undefined | 是 | onScrollVisibleContentChange事件的回调函数。 |
+
+## setOnWillScroll
+
+```TypeScript
+setOnWillScroll(callback: OnWillScrollCallback | undefined): void
+```
+
+设置onWillScroll事件的回调。
+
+方法入参为undefined时，会重置事件回调。
+
+**起始版本：** 19
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnWillScrollCallback](arkts-arkui-common-comp-onwillscrollcallback-t.md) &#124; undefined | 是 | onWillScroll事件的回调函数。 |

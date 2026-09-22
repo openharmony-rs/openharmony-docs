@@ -1,5 +1,9 @@
 # CCallStateInfo
 
+```TypeScript
+export interface CCallStateInfo
+```
+
 通话状态相关信息。
 
 **起始版本：** 23

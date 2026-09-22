@@ -1,5 +1,9 @@
 # RequestOptions
 
+```TypeScript
+interface RequestOptions
+```
+
 请求策略。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # CaptureSession
 
+```TypeScript
+interface CaptureSession
+```
+
 拍照会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md)，并向相机设备申请完成相机功能(录像，拍照)。
 
 > **说明：** 
@@ -144,6 +148,8 @@ commitConfig(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+<a id="commitconfig-1"></a>
 
 ## commitConfig
 
@@ -858,6 +864,8 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -1258,6 +1266,8 @@ start(callback: AsyncCallback<void>): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<a id="start-1"></a>
+
 ## start
 
 ```TypeScript
@@ -1322,6 +1332,8 @@ stop(callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+<a id="stop-1"></a>
 
 ## stop
 

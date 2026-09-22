@@ -1,5 +1,9 @@
 # Placement
 
+```TypeScript
+declare enum Placement
+```
+
 Placement enumeration description
 
 @enum { number }
@@ -18,6 +22,8 @@ Left placement
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -31,6 +37,8 @@ Right
 Right placement
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -46,6 +54,8 @@ Top placement
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -59,6 +69,8 @@ Bottom
 Bottom placement
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -74,6 +86,8 @@ TopLeft placement
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -87,6 +101,8 @@ TopRight
 TopRight placement
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -102,6 +118,8 @@ BottomLeft placement
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -115,6 +133,8 @@ BottomRight
 BottomRight placement
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -130,6 +150,8 @@ LeftTop placement
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -143,6 +165,8 @@ LeftBottom
 LeftBottom placement
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -158,6 +182,8 @@ RightTop placement
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -171,6 +197,8 @@ RightBottom
 RightBottom placement
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

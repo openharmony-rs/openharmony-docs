@@ -46,38 +46,8 @@ continuationManager.register((err, data) => {
 });
 ```
 
-```TypeScript
-import { continuationManager } from '@kit.AbilityKit';
 
-let token: number = -1;
-continuationManager.register(
-  {
-    deviceType: ["00E"]
-  },
-  (err, data) => {
-    if (err.code != 0) {
-      console.error('register failed, cause: ' + JSON.stringify(err));
-      return;
-    }
-    console.info('register finished, ' + JSON.stringify(data));
-    token = data;
-});
-```
-
-```TypeScript
-import { continuationManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let token: number = -1;
-continuationManager.register(
-  { deviceType: ["00E"] }).then((data) => {
-    console.info('register finished, ' + JSON.stringify(data));
-    token = data;
-  }).catch((err: BusinessError) => {
-    console.error('register failed, cause: ' + JSON.stringify(err));
-});
-```
-
+<a id="register-1"></a>
 
 ## register
 
@@ -106,8 +76,26 @@ function register(options: ContinuationExtraParams, callback: AsyncCallback<numb
 
 **示例**
 
-参见 register
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
 
+let token: number = -1;
+continuationManager.register(
+  {
+    deviceType: ["00E"]
+  },
+  (err, data) => {
+    if (err.code != 0) {
+      console.error('register failed, cause: ' + JSON.stringify(err));
+      return;
+    }
+    console.info('register finished, ' + JSON.stringify(data));
+    token = data;
+});
+```
+
+
+<a id="register-2"></a>
 
 ## register
 
@@ -141,4 +129,16 @@ function register(options?: ContinuationExtraParams): Promise<number>
 
 **示例**
 
-参见 register
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let token: number = -1;
+continuationManager.register(
+  { deviceType: ["00E"] }).then((data) => {
+    console.info('register finished, ' + JSON.stringify(data));
+    token = data;
+  }).catch((err: BusinessError) => {
+    console.error('register failed, cause: ' + JSON.stringify(err));
+});
+```

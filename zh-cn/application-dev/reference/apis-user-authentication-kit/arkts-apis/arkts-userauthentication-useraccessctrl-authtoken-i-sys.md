@@ -1,5 +1,9 @@
 # AuthToken（系统接口）
 
+```TypeScript
+interface AuthToken
+```
+
 认证令牌数据。表示校验通过后返回解析后的AuthToken数据，包含认证的详细信息，如挑战值、认证信任等级、认证类型、用户ID等。
 
 **起始版本：** 18

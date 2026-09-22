@@ -1,5 +1,9 @@
 # RequestPhotoOptions (System API)
 
+```TypeScript
+interface RequestPhotoOptions
+```
+
 Defines the options for obtaining the thumbnail of an image or video.
 
 **Since:** 11

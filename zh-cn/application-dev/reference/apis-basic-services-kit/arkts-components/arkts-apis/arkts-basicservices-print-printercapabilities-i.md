@@ -1,5 +1,9 @@
 # PrinterCapabilities
 
+```TypeScript
+interface PrinterCapabilities
+```
+
 定义打印机能力的接口。
 
 **起始版本：** 14

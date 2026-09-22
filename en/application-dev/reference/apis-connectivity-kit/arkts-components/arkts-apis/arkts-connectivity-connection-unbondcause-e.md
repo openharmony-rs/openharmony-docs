@@ -1,5 +1,9 @@
 # UnbondCause
 
+```TypeScript
+enum UnbondCause
+```
+
 Enum for cause of unbond.
 
 **Since:** 12

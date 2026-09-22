@@ -1,5 +1,9 @@
 # NumberOptions
 
+```TypeScript
+export interface NumberOptions
+```
+
 Options for creating the **NumberFormat** object. Since API version 9, the **NumberOptions** attribute is changed from mandatory to optional.
 
 **Since:** 6

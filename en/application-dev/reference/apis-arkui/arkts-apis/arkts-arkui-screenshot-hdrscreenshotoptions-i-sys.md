@@ -1,5 +1,9 @@
 # HdrScreenshotOptions (System API)
 
+```TypeScript
+interface HdrScreenshotOptions
+```
+
 Describes the HDR screenshot options.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # QuickThumbnail (System API)
 
+```TypeScript
+interface QuickThumbnail
+```
+
 Quick thumbnail object
 
 **Since:** 19

@@ -43,6 +43,8 @@ declare function fdatasync(fd: number): Promise<void>
 | 13900042 | Unknown error |
 
 
+<a id="fdatasync-1"></a>
+
 ## fdatasync
 
 ```TypeScript

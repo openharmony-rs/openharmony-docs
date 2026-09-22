@@ -18,7 +18,7 @@ function getDisallowedPolicy(admin: Want | null, feature: string): boolean
 
 **废弃版本：** 26.0.0
 
-**替代接口：** getDisallowedPolicy(admin: Want | null, feature: FeatureForDevice)
+**替代接口：** [getDisallowedPolicy](#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
 
 **需要权限：** 
 - API版本20+：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS or ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -71,24 +71,8 @@ try {
 }
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  let result: boolean = restrictions.getDisallowedPolicy(wantTemp, restrictions.FeatureForDevice.WIFI_P2P);
-  console.info(`Succeeded in querying whether Wi-Fi P2P is disabled. Disabled status: ${result}`);
-} catch (err) {
-  console.error(`Failed to get Wi-Fi P2P disabled status. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getdisallowedpolicy-1"></a>
 
 ## getDisallowedPolicy
 
@@ -130,4 +114,20 @@ function getDisallowedPolicy(admin: Want | null, feature: FeatureForDevice): boo
 
 **示例**
 
-参见 getDisallowedPolicy
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: boolean = restrictions.getDisallowedPolicy(wantTemp, restrictions.FeatureForDevice.WIFI_P2P);
+  console.info(`Succeeded in querying whether Wi-Fi P2P is disabled. Disabled status: ${result}`);
+} catch (err) {
+  console.error(`Failed to get Wi-Fi P2P disabled status. Code is ${err.code}, message is ${err.message}`);
+}
+```

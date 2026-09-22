@@ -1,5 +1,9 @@
 # BundlePackInfo (System API)
 
+```TypeScript
+export interface BundlePackInfo
+```
+
 The bundle pack info class.
 
 **Since:** 9

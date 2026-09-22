@@ -55,18 +55,8 @@ securityLabel.getSecurityLabel(filePath).then((type: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-let filePath = pathDir + '/test.txt';
-securityLabel.getSecurityLabel(filePath, (err: BusinessError, type: string) => {
-  if (err) {
-    console.error("Failed to get security label. Code: " + err.code + ", message: " + err.message);
-  } else {
-    console.info("Succeeded in getting security label, Label: " + type);
-  }
-});
-```
 
+<a id="getsecuritylabel-1"></a>
 
 ## getSecurityLabel
 
@@ -102,4 +92,14 @@ function getSecurityLabel(path: string, callback: AsyncCallback<string>): void
 
 **示例**
 
-参见 getSecurityLabel
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let filePath = pathDir + '/test.txt';
+securityLabel.getSecurityLabel(filePath, (err: BusinessError, type: string) => {
+  if (err) {
+    console.error("Failed to get security label. Code: " + err.code + ", message: " + err.message);
+  } else {
+    console.info("Succeeded in getting security label, Label: " + type);
+  }
+});
+```

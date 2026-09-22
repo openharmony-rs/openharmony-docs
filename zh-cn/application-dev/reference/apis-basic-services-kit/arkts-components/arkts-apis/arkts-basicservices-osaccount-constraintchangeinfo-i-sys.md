@@ -1,5 +1,9 @@
 # ConstraintChangeInfo（系统接口）
 
+```TypeScript
+interface ConstraintChangeInfo
+```
+
 表示约束变更信息。
 
 **起始版本：** 23

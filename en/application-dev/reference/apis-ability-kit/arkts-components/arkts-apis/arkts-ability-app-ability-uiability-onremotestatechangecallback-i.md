@@ -1,5 +1,9 @@
 # OnRemoteStateChangeCallback
 
+```TypeScript
+export interface OnRemoteStateChangeCallback
+```
+
 Defines the callback that is invoked when the remote UIAbility state changes in the collaboration scenario.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # CaptureOption
 
+```TypeScript
+interface CaptureOption
+```
+
 Describes the capture options.
 
 **Since:** 14

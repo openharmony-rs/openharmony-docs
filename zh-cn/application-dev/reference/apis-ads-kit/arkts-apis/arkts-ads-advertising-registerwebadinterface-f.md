@@ -63,33 +63,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { common } from '@kit.AbilityKit';
-import { advertising } from '@kit.AdsKit';
-import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  private webViewController: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      // ...
-      Button('registerWebAdInterface')
-        .onClick(() => {
-          advertising.registerWebAdInterface(this.webViewController, this.context, true);
-        })
-
-      Web({ src: 'https://www.example.com', controller: this.webViewController })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
+<a id="registerwebadinterface-1"></a>
 
 ## registerWebAdInterface
 
@@ -123,4 +98,29 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 **示例**
 
-参见 registerWebAdInterface
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { advertising } from '@kit.AdsKit';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private webViewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      // ...
+      Button('registerWebAdInterface')
+        .onClick(() => {
+          advertising.registerWebAdInterface(this.webViewController, this.context, true);
+        })
+
+      Web({ src: 'https://www.example.com', controller: this.webViewController })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

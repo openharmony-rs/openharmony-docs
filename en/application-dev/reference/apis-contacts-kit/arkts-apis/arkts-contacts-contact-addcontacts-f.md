@@ -45,8 +45,25 @@ Adds contacts in batches. This API uses a promise to return the result.
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { contact } from '@kit.ContactsKit';
+
+const contactInfo1: contact.Contact = {
+  name: { fullName: 'xxx1'},
+  phoneNumbers: [{ phoneNumber: '138xxxxxx' }]
+};
+const contactInfo2: contact.Contact = {
+  name: { fullName: 'xxx2'},
+  phoneNumbers: [{ phoneNumber: '139xxxxxx' }]
+};
+// Obtain the context in the component.
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+contact.addContacts(context, [contactInfo1, contactInfo2]).then((data) => {
+  console.info(`Succeeded in addContacts.data->${JSON.stringify(data)}`);
+});
 ```

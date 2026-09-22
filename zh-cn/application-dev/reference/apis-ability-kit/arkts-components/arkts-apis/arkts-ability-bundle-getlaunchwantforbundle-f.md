@@ -33,20 +33,6 @@ function getLaunchWantForBundle(bundleName: string, callback: AsyncCallback<Want
 
 ```TypeScript
 import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let bundleName: string = "com.example.myapplication";
-
-bundle.getLaunchWantForBundle(bundleName)
-  .then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
 
 let bundleName: string = "com.example.myapplication";
 
@@ -59,6 +45,8 @@ bundle.getLaunchWantForBundle(bundleName, (err, data) => {
 })
 ```
 
+
+<a id="getlaunchwantforbundle-1"></a>
 
 ## getLaunchWantForBundle
 
@@ -90,4 +78,16 @@ function getLaunchWantForBundle(bundleName: string): Promise<Want>
 
 **示例**
 
-参见 [getLaunchWantForBundle](#getlaunchwantforbundle)
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleName: string = "com.example.myapplication";
+
+bundle.getLaunchWantForBundle(bundleName)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```

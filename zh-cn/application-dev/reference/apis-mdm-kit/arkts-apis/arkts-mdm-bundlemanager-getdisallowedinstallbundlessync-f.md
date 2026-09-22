@@ -65,19 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  // 参数需根据实际情况进行替换
-  let result: Array<string> = bundleManager.getDisallowedInstallBundlesSync(null, 100);
-  console.info(`Succeeded in getting disallowed install bundles, result : ${JSON.stringify(result)}`);
-} catch (err) {
-  console.error(`Failed to get disallowed install bundles. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getdisallowedinstallbundlessync-1"></a>
 
 ## getDisallowedInstallBundlesSync
 
@@ -119,4 +108,15 @@ function getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number)
 
 **示例**
 
-参见 getDisallowedInstallBundlesSync
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  // 参数需根据实际情况进行替换
+  let result: Array<string> = bundleManager.getDisallowedInstallBundlesSync(null, 100);
+  console.info(`Succeeded in getting disallowed install bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get disallowed install bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```

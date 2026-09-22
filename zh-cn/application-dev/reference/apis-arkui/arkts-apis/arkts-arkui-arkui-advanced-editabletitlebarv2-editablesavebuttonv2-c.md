@@ -1,5 +1,9 @@
 # EditableSaveButtonV2
 
+```TypeScript
+export declare class EditableSaveButtonV2
+```
+
 保存按钮配置类，使用@ObservedV2装饰器，支持状态观察。
 
 **起始版本：** 26.0.0

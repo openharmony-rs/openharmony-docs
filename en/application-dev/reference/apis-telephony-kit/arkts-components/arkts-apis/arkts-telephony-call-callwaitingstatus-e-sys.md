@@ -1,5 +1,9 @@
 # CallWaitingStatus (System API)
 
+```TypeScript
+export enum CallWaitingStatus
+```
+
 Enumerates call waiting states.
 
 **Since:** 7

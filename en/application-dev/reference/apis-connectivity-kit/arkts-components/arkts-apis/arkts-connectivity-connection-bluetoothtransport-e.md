@@ -1,5 +1,9 @@
 # BluetoothTransport
 
+```TypeScript
+enum BluetoothTransport
+```
+
 Enum for the transport of a remote device
 
 **Since:** 10

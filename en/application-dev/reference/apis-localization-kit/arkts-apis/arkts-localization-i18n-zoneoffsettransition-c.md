@@ -1,5 +1,9 @@
 # ZoneOffsetTransition
 
+```TypeScript
+export class ZoneOffsetTransition
+```
+
 Provides the API for obtaining a timezone transition information.
 
 **Since:** 20

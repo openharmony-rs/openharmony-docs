@@ -1,5 +1,9 @@
 # RecentPhotoInfo
 
+```TypeScript
+export declare class RecentPhotoInfo
+```
+
 Represents information about the recent image or video.
 
 **Since:** 13

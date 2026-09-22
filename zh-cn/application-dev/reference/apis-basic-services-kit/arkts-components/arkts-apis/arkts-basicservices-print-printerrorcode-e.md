@@ -1,5 +1,9 @@
 # PrintErrorCode
 
+```TypeScript
+enum PrintErrorCode
+```
+
 打印错误代码的枚举。
 
 **起始版本：** 14

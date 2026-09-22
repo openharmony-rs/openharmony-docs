@@ -22,8 +22,8 @@ import { deviceControl } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md) | 允许管理员对设备执行恢复出厂设置、重启、关机、锁屏等操作，例如在企业设备管理场景下，管理员可远程控制员工设备执行恢复出厂设置、重启、关机或锁屏等操作。 |
-| [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md) | 允许管理员操作设备，例如在企业设备管理场景下，管理员可远程控制员工设备执行磁盘擦除、恢复出厂设置、重启、关机、锁屏、锁定设备或解锁设备等操作。 |
+| [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice) | 允许管理员对设备执行恢复出厂设置、重启、关机、锁屏等操作，例如在企业设备管理场景下，管理员可远程控制员工设备执行恢复出厂设置、重启、关机或锁屏等操作。 |
+| [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1) | 允许管理员操作设备，例如在企业设备管理场景下，管理员可远程控制员工设备执行磁盘擦除、恢复出厂设置、重启、关机、锁屏、锁定设备或解锁设备等操作。 |
 
 <!--Del-->
 ### 函数（系统接口）
@@ -32,8 +32,8 @@ import { deviceControl } from '@kit.MDMKit';
 | --- | --- |
 | [lockScreen](arkts-mdm-devicecontrol-lockscreen-f-sys.md) | 使设备屏幕锁定。设置之后设备立即锁屏。 |
 | [reboot](arkts-mdm-devicecontrol-reboot-f-sys.md) | 使设备重启。 |
-| [resetFactory](arkts-mdm-devicecontrol-resetfactory-f-sys.md) | 使设备恢复出厂设置。使用callback异步回调。 |
-| [resetFactory](arkts-mdm-devicecontrol-resetfactory-f-sys.md) | 使设备恢复出厂设置。使用Promise异步回调。 |
+| [resetFactory](arkts-mdm-devicecontrol-resetfactory-f-sys.md#resetfactory) | 使设备恢复出厂设置。使用callback异步回调。 |
+| [resetFactory](arkts-mdm-devicecontrol-resetfactory-f-sys.md#resetfactory-1) | 使设备恢复出厂设置。使用Promise异步回调。 |
 | [shutdown](arkts-mdm-devicecontrol-shutdown-f-sys.md) | 使设备关机。 |
 <!--DelEnd-->
 

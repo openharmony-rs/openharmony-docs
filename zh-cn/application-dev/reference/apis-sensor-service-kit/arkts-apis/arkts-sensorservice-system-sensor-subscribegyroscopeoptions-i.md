@@ -1,5 +1,9 @@
 # SubscribeGyroscopeOptions
 
+```TypeScript
+export interface SubscribeGyroscopeOptions
+```
+
 用于设置陀螺仪传感器订阅的参数，包括回调频率和回调函数。
 
 **起始版本：** 6

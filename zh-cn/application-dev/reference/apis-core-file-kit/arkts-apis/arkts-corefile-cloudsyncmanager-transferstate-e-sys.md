@@ -1,5 +1,9 @@
 # TransferState（系统接口）
 
+```TypeScript
+enum TransferState
+```
+
 搬迁任务状态的枚举。
 
 **起始版本：** 26.0.0

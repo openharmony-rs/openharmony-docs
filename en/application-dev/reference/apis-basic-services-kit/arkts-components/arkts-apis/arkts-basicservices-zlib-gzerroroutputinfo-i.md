@@ -1,5 +1,9 @@
 # GzErrorOutputInfo
 
+```TypeScript
+interface GzErrorOutputInfo
+```
+
 GzError return value information.
 
 **Since:** 12

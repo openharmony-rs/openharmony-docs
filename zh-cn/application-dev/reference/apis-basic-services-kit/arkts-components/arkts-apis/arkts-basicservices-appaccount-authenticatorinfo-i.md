@@ -1,5 +1,9 @@
 # AuthenticatorInfo
 
+```TypeScript
+interface AuthenticatorInfo
+```
+
 表示OAuth认证器信息。
 
 **起始版本：** 8

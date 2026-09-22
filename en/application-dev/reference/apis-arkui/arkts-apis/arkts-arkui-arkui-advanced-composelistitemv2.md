@@ -49,20 +49,215 @@ import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, Ope
 
 ## Examples
 
-```TypeScript
 ### Example 1: Setting a Simple List Item
 
 Since API version 26.0.0, a simple list item with a primary title, secondary title, description, right button, and text can be implemented through the ComposeListItemV2 component API.
-```
 
 ```TypeScript
+// This example demonstrates the basic functionality of this component, including left and right elements.
+import { IconTypeV2, ComposeListItemV2, ContentItemV2, OperateItemV2, OperateIconV2 } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct ComposeListItemV2Example {
+  build(): void {
+    Column() {
+      List() {
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.media.ohos_app_icon'),
+              primaryText: 'Two-line list',
+              secondaryText: 'Secondary text',
+              description: 'Description text'
+            }),
+            operateItemV2: new OperateItemV2({
+              icon: new OperateIconV2({
+                value: $r('sys.media.ohos_app_icon'),
+                action: () => {
+                  this.getUIContext().getPromptAction().showToast({
+                    message: 'icon'
+                  });
+                }
+              }),
+              text: 'Right text'
+            })
+          })
+        }
+      }
+    }
+  }
+}
+```
+
 ### Example 2: Setting Custom Announcements for Different Right Elements of the List Item
 
 Since API version 26.0.0, custom screen reader announcement text can be implemented for the right icons, buttons, and radio buttons of a list item by setting the accessibilityText, accessibilityDescription, and accessibilityLevel attributes.
-```
 
 ```TypeScript
+import {
+  IconTypeV2,
+  ComposeListItemV2,
+  ContentItemV2,
+  OperateItemV2,
+  OperateCheckV2,
+  OperateButtonV2,
+  OperateIconV2
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct ComposeListItemV2Example {
+  build(): void {
+    Column() {
+      List() {
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.media.ohos_app_icon'),
+              primaryText: 'Two-line list',
+              secondaryText: 'Secondary text',
+              description: 'Description text'
+            }),
+            operateItemV2: new OperateItemV2({
+              radio: new OperateCheckV2({
+                accessibilityText: 'Radio button', // The screen reader announces 'radio button' for this radio button.
+                accessibilityDescription: 'Unselected', // The screen reader announces this radio button as 'unselected'.
+                accessibilityLevel: 'yes'  // This item can be focused by the accessibility screen reader.
+              })
+            })
+          })
+        }
+
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.media.ohos_app_icon'),
+              primaryText: 'Two-line list',
+              secondaryText: 'Secondary text',
+              description: 'Description text'
+            }),
+            operateItemV2: new OperateItemV2({
+              button: new OperateButtonV2({
+                text: 'OK',
+                accessibilityText: 'This is a button',
+                accessibilityDescription: 'Double-tap to activate',
+                accessibilityLevel: 'no'  // This button cannot be recognized by the screen reader service.
+              })
+            })
+          })
+        }
+
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.media.ohos_app_icon'),
+              primaryText: 'Two-line list',
+              secondaryText: 'Secondary text',
+              description: 'Description text'
+            }),
+            operateItemV2: new OperateItemV2({
+              icon: new OperateIconV2({
+                value: $r('sys.media.ohos_app_icon'),
+                action: () => {
+                  this.getUIContext().getPromptAction().showToast({
+                    message: 'icon'
+                  });
+                },
+                accessibilityText: 'This is an icon', // The screen reader announcement text for this icon is 'This is an icon.'
+                accessibilityDescription: 'Double tap to open more options', // The screen reader announcement description for this icon is 'Double tap to open more options.'
+                accessibilityLevel: 'yes'  // This item can be focused by the accessibility screen reader.
+              })
+            })
+          })
+        }
+      }
+    }
+  }
+}
+```
+
 ### Example 3: Setting Symbol Icons
 
 Since API version 26.0.0, you can set symbol icon parameters through the attribute API symbolStyle of ContentItemV2, OperateItemV2, and OperateIconV2.
+
+```TypeScript
+import {
+  IconTypeV2,
+  ComposeListItemV2,
+  ContentItemV2,
+  OperateItemV2,
+  OperateIconV2,
+  SymbolGlyphModifier
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct ComposeListItemV2Example {
+  build(): void {
+    Column() {
+      List() {
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.symbol.house'),
+              primaryText: 'Two-line list',
+              secondaryText: 'Secondary text',
+              description: 'Description text'
+            }),
+            operateItemV2: new OperateItemV2({
+              image: $r('sys.symbol.car'),
+            })
+          })
+        }
+
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.symbol.house'),
+              symbolStyle: new SymbolGlyphModifier($r('sys.symbol.bell')).fontColor([Color.Red]),
+              primaryText: 'Two-line list',
+              secondaryText: 'Secondary text',
+              description: 'Description text'
+            }),
+            operateItemV2: new OperateItemV2({
+              image: $r('sys.symbol.car'),
+              symbolStyle: new SymbolGlyphModifier($r('sys.symbol.heart')).fontColor([Color.Pink]),
+            })
+          })
+        }
+
+        ListItem() {
+          ComposeListItemV2({
+            contentItemV2: new ContentItemV2({
+              iconStyle: IconTypeV2.NORMAL_ICON,
+              icon: $r('sys.symbol.house'),
+              symbolStyle: new SymbolGlyphModifier($r('sys.symbol.bell')).fontColor([Color.Blue]),
+              primaryText: 'Two-line list',
+              secondaryText: 'Secondary text',
+              description: 'Description text.'
+            }),
+            operateItemV2: new OperateItemV2({
+              icon: new OperateIconV2({
+                value: $r('sys.symbol.car'),
+                symbolStyle: new SymbolGlyphModifier($r('sys.symbol.heart')).fontColor([Color.Orange]),
+                action: () => {
+                  this.getUIContext().getPromptAction().showToast({
+                    message: 'icon'
+                  });
+                }
+              })
+            })
+          })
+        }
+      }
+    }
+  }
+}
 ```

@@ -1,5 +1,9 @@
 # VideoProcessorAiHdrStatus
 
+```TypeScript
+interface VideoProcessorAiHdrStatus
+```
+
 提供AIHDR功能状态。
 
 **起始版本：** 26.0.0

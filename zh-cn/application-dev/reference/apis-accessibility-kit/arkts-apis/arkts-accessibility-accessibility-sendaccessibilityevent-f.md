@@ -48,23 +48,6 @@ let eventInfo: accessibility.EventInfo = ({
   triggerAction: 'click',
 });
 
-accessibility.sendAccessibilityEvent(eventInfo).then(() => {
-  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to send event. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let eventInfo: accessibility.EventInfo = ({
-  type: 'click',
-  bundleName: 'com.example.MyApplication',
-  triggerAction: 'click',
-});
-
 accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
   if (err) {
     console.error(`Failed to send event. Code:${err.code}, message:${err.message}`);
@@ -74,8 +57,20 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
 主动聚焦示例：
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Column() {
+      // 待聚焦组件添加id属性，id唯一性由使用者保证。
+      Button('待聚焦组件').id('click')
+    }
+  }
+}
 ```
 
 ```TypeScript
@@ -98,10 +93,30 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
 主动播报支持Resource示例18+：
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let eventInfo: accessibility.EventInfo = ({
+  type: 'announceForAccessibility',
+  bundleName: 'com.example.MyApplication',
+  triggerAction: 'common',
+  textResourceAnnouncedForAccessibility: $r('app.string.ResourceName'),
+});
+
+accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to send event. Code:${err.code}, message:${err.message}`);
+    return;
+  }
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
+});
 ```
 
+
+<a id="sendaccessibilityevent-1"></a>
 
 ## sendAccessibilityEvent
 
@@ -139,4 +154,19 @@ function sendAccessibilityEvent(event: EventInfo): Promise<void>
 
 **示例**
 
-参见 sendAccessibilityEvent
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let eventInfo: accessibility.EventInfo = ({
+  type: 'click',
+  bundleName: 'com.example.MyApplication',
+  triggerAction: 'click',
+});
+
+accessibility.sendAccessibilityEvent(eventInfo).then(() => {
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to send event. Code: ${err.code}, message: ${err.message}`);
+});
+```

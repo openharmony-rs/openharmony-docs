@@ -1,5 +1,9 @@
 # Animator properties/events
 
+```TypeScript
+declare class AnimatorAttribute extends CommonMethod<AnimatorAttribute>
+```
+
 Defines AnimatorAttribute.
 
 @extends CommonMethod&lt;AnimatorAttribute&gt;

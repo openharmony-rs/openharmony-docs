@@ -1,5 +1,9 @@
 # RegExpMatchArray
 
+```TypeScript
+interface RegExpMatchArray extends Array<string>
+```
+
 ## Modules to Import
 
 ```TypeScript

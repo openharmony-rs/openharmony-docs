@@ -55,6 +55,8 @@ Creates a symbolic link based on a file path. This API uses a promise to return 
 | 13900042 | Unknown error |
 
 
+<a id="symlink-1"></a>
+
 ## symlink
 
 ```TypeScript

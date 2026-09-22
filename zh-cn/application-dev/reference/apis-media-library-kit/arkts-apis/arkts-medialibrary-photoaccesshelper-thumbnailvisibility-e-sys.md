@@ -1,5 +1,9 @@
 # ThumbnailVisibility（系统接口）
 
+```TypeScript
+enum ThumbnailVisibility
+```
+
 枚举，缩略图是否可访问。
 
 **起始版本：** 14

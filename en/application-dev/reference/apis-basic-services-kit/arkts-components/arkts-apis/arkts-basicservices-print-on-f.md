@@ -46,33 +46,3 @@ let onPrinterChange =
     };
 print.on('printerChange', onPrinterChange);
 ```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-print.on('printerStateChange', (state: print.PrinterState, info: print.PrinterInfo) => {
-    if (state === null || info === null) {
-        console.error('printer state changed state is null or info is null');
-        return;
-    } else {
-        console.info('on printer state changed, state : ' + JSON.stringify(state));
-        console.info('on printer state changed, info : ' + JSON.stringify(info));
-    }
-});
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-print.on('jobStateChange', (state: print.PrintJobState, job: print.PrintJob) => {
-    console.info('onJobStateChange, state : ' + JSON.stringify(state) + ', job : ' + JSON.stringify(job));
-});
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-print.on('extInfoChange', (extensionId: string, info: string) => {
-    console.info('onExtInfoChange, extensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
-});
-```

@@ -1,5 +1,9 @@
 # ControlDeviceActionParams（系统接口）
 
+```TypeScript
+interface ControlDeviceActionParams
+```
+
 控制命令的配置参数。
 
 **起始版本：** 15

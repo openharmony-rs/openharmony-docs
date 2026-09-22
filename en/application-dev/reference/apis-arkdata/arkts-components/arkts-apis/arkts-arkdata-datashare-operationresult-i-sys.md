@@ -1,5 +1,9 @@
 # OperationResult (System API)
 
+```TypeScript
+interface OperationResult
+```
+
 Defines the result of the operation for subscribing to or unsubscribing from the data changes or published data.
 
 **Since:** 10

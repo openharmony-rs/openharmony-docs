@@ -1,5 +1,9 @@
 # Cipher
 
+```TypeScript
+export default class Cipher
+```
+
 Defines the cipher functions.
 
 **Since:** 3

@@ -1,5 +1,9 @@
 # Constants(分布式数据管理)
 
+```TypeScript
+namespace Constants
+```
+
 KVStore常量。
 
 **起始版本：** 7

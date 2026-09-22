@@ -65,18 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { usbManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: usbManager.UsbPolicy = usbManager.getUsbStorageDeviceAccessPolicy(null);
-  console.info(`Succeeded in getting USB storage device access policy. Result: ${JSON.stringify(result)}`);
-} catch (err) {
-  console.error(`Failed to get USB storage device access policy. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getusbstoragedeviceaccesspolicy-1"></a>
 
 ## getUsbStorageDeviceAccessPolicy
 
@@ -117,4 +107,14 @@ function getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 
 **示例**
 
-参见 getUsbStorageDeviceAccessPolicy
+```TypeScript
+import { usbManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: usbManager.UsbPolicy = usbManager.getUsbStorageDeviceAccessPolicy(null);
+  console.info(`Succeeded in getting USB storage device access policy. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get USB storage device access policy. Code: ${err.code}, message: ${err.message}`);
+}
+```

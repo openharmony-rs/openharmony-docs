@@ -1,5 +1,9 @@
 # PowerSaveMode
 
+```TypeScript
+export enum PowerSaveMode
+```
+
 Specifies the power saving mode.
 
 **Since:** 20

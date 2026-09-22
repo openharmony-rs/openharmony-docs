@@ -1,5 +1,9 @@
 # Rotation2D (System API)
 
+```TypeScript
+interface Rotation2D
+```
+
 Describes a rotation in 2D, which can be defined by rotation angle and rotation center.
 
 @typedef Rotation2D

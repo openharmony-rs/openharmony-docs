@@ -1,5 +1,9 @@
 # USBEndpoint
 
+```TypeScript
+interface USBEndpoint
+```
+
 Represents the USB endpoint from which data is sent or received. You can obtain the USB endpoint through [USBInterface](arkts-basicservices-usb-usbinterface-i.md).
 
 **Since:** 8

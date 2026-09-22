@@ -1,5 +1,9 @@
 # ArcButtonStyleMode
 
+```TypeScript
+export declare enum ArcButtonStyleMode
+```
+
 定义ArcButton可设置弧形按钮样式模式。
 
 **起始版本：** 18

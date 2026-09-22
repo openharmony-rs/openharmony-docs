@@ -1,5 +1,9 @@
 # AsyncLockOptions
 
+```TypeScript
+class AsyncLockOptions<T>
+```
+
 Lock operation's options
 
 **Since:** 12

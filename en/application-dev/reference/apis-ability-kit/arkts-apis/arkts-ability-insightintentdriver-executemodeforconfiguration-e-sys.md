@@ -1,5 +1,9 @@
 # ExecuteModeForConfiguration (System API)
 
+```TypeScript
+enum ExecuteModeForConfiguration
+```
+
 Enumerates the execution modes supported by an [intent developed using a configuration file](../../../application-models/insight-intent-config-development.md). For example, if **executeMode** in the [insight_intent.json configuration file] (../../../application-models/insight-intent-config-development.md#description-of-the-insight_intentjson-file) is set to **foreground**, the intent bound to the UIAbility can run in the foreground.
 
 **Since:** 23

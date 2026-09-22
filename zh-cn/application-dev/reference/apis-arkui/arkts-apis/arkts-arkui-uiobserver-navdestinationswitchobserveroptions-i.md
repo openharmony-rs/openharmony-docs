@@ -1,5 +1,9 @@
 # NavDestinationSwitchObserverOptions
 
+```TypeScript
+export interface NavDestinationSwitchObserverOptions
+```
+
 Navigation组件页面切换事件的监听选项。
 
 **起始版本：** 12

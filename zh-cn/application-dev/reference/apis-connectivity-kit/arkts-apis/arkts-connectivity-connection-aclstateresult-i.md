@@ -1,5 +1,9 @@
 # AclStateResult
 
+```TypeScript
+interface AclStateResult
+```
+
 描述ACL连接状态的参数结构。
 
 **起始版本：** 26.0.0

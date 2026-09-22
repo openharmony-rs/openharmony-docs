@@ -1,5 +1,9 @@
 # PermissionInfo（系统接口）
 
+```TypeScript
+interface PermissionInfo
+```
+
 权限信息。
 
 **起始版本：** 26.0.0
@@ -25,6 +29,8 @@ authStatusInfo?: AuthStatusInfo
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -41,6 +47,8 @@ permission: string
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -56,6 +64,8 @@ permissionStatus: abilityAccessCtrl.PermissionStatus
 **类型：** [abilityAccessCtrl.PermissionStatus](arkts-ability-abilityaccessctrl-permissionstatus-e.md)
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

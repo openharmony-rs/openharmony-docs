@@ -1,5 +1,9 @@
 # AppLinkState (System API)
 
+```TypeScript
+enum AppLinkState
+```
+
 Enumerates the states of a file memory link.
 
 **Since:** 24

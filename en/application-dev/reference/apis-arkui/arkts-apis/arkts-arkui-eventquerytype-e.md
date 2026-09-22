@@ -1,5 +1,9 @@
 # EventQueryType
 
+```TypeScript
+declare enum EventQueryType
+```
+
 Enumerates interaction event types that can be queried.
 
 **Since:** 19

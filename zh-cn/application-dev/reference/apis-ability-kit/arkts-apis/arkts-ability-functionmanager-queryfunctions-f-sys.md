@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { functionManager } from '@kit.AbilityKit';
+import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap } from '@kit.AbilityKit';
 ```
 
 ## queryFunctions

@@ -1,5 +1,9 @@
 # HiddenPhotosDisplayMode（系统接口）
 
+```TypeScript
+enum HiddenPhotosDisplayMode
+```
+
 枚举，系统中隐藏文件显示模式。
 
 **起始版本：** 11

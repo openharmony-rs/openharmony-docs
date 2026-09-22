@@ -84,6 +84,41 @@ wantAgent.getWantAgent({
 }, getWantAgentCallback);
 ```
 
+
+<a id="getuid-1"></a>
+
+## getUid
+
+```TypeScript
+function getUid(agent: WantAgent): Promise<number>
+```
+
+Obtains the UID of a WantAgent.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getUid](arkts-ability-wantagent-getuid-f.md)
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | whose UID to obtain. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;number&gt; | Returns the UID of the [WantAgent](arkts-ability-wantagent-depr-t.md#wantagent) if any; returns `-1` otherwise. |
+
+**Examples**
+
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 
@@ -125,38 +160,3 @@ wantAgent.getWantAgent({
     }
 });
 ```
-
-
-## getUid
-
-```TypeScript
-function getUid(agent: WantAgent): Promise<number>
-```
-
-Obtains the UID of a WantAgent.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getUid](arkts-ability-wantagent-getuid-f.md)
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | whose UID to obtain. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;number&gt; | Returns the UID of the [WantAgent](arkts-ability-wantagent-depr-t.md#wantagent) if any; returns `-1` otherwise. |
-
-**Examples**
-
-See [getUid](#getuid)

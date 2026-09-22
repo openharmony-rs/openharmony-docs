@@ -1,5 +1,9 @@
 # RRect（系统接口）
 
+```TypeScript
+export interface RRect
+```
+
 圆角矩形。
 
 **起始版本：** 9

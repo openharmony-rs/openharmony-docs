@@ -1,5 +1,9 @@
 # WindowProxy
 
+```TypeScript
+interface WindowProxy
+```
+
 The proxy of the UIExtension window.
 
 **Since:** 12
@@ -22,7 +26,7 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 
 > **NOTE:** 
 > 
-> - A non-secure window refers to any window that may obstruct the EmbeddedComponent or UIExtensionComponent, such as global floating windows , host subwindows, and dialog box windows created by the host application (excluding windows of these types created by system applications).
+> - A non-secure window refers to any window that may obstruct the [EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md#embedded_component) or [UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md#ui_extension_componentsystem-api), such as global floating windows , host subwindows, and dialog box windows created by the host application (excluding windows of these types created by system applications).
 > 
 > - When using the **EmbeddedComponent** or **UIExtensionComponent** to display sensitive information, call this API to hide non-secure windows and prevent information obstruction. Hidden non-secure windows will reappear when the **EmbeddedComponent** or **UIExtensionComponent** is hidden or destroyed.
 > 

@@ -67,27 +67,8 @@ adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo, (err) => {
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let enterpriseInfo: adminManager.EnterpriseInfo = {
-  // 需根据实际情况进行替换
-  name: 'enterprise name',
-  description: 'enterprise description'
-};
-
-adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo).catch((err: BusinessError) => {
-  console.error(`Failed to set enterprise info. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="setenterpriseinfo-1"></a>
 
 ## setEnterpriseInfo
 
@@ -131,4 +112,23 @@ function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo): Promise
 
 **示例**
 
-参见 [setEnterpriseInfo](#setenterpriseinfo)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // 需根据实际情况进行替换
+  name: 'enterprise name',
+  description: 'enterprise description'
+};
+
+adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo).catch((err: BusinessError) => {
+  console.error(`Failed to set enterprise info. Code: ${err.code}, message: ${err.message}`);
+});
+```

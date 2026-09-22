@@ -1,5 +1,9 @@
 # InterfaceConfiguration（系统接口）
 
+```TypeScript
+export interface InterfaceConfiguration
+```
+
 以太网连接配置网络信息。
 
 **起始版本：** 9

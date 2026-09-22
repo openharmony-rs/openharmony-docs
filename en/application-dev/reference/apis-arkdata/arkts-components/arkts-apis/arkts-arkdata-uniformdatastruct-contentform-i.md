@@ -1,5 +1,9 @@
 # ContentForm
 
+```TypeScript
+interface ContentForm
+```
+
 Represents data of the content widget type.
 
 **Since:** 14

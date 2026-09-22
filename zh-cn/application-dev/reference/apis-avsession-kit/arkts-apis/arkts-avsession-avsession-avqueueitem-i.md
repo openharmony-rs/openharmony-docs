@@ -1,5 +1,9 @@
 # AVQueueItem
 
+```TypeScript
+interface AVQueueItem
+```
+
 播放列表中单项的相关属性。
 
 **起始版本：** 10

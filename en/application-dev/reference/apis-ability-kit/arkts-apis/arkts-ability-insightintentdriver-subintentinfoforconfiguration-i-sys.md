@@ -1,5 +1,9 @@
 # SubIntentInfoForConfiguration (System API)
 
+```TypeScript
+interface SubIntentInfoForConfiguration
+```
+
 Describes the unique information of the [intent developed using a configuration file](../../../application-models/insight-intent-config-development.md).
 
 **Since:** 23

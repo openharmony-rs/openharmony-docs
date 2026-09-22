@@ -1,5 +1,9 @@
 # DisconnectedReason（系统接口）
 
+```TypeScript
+export enum DisconnectedReason
+```
+
 断开连接的详细信息。
 
 **起始版本：** 8

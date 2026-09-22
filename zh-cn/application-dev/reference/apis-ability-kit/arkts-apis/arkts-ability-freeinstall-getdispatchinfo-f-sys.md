@@ -37,6 +37,8 @@ function getDispatchInfo(callback: AsyncCallback<DispatchInfo>): void
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
 
+<a id="getdispatchinfo-1"></a>
+
 ## getDispatchInfo
 
 ```TypeScript

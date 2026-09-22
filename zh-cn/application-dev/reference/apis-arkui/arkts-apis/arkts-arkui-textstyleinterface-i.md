@@ -1,5 +1,9 @@
 # TextStyleInterface
 
+```TypeScript
+declare interface TextStyleInterface
+```
+
 文本字体样式。
 
 **起始版本：** 12

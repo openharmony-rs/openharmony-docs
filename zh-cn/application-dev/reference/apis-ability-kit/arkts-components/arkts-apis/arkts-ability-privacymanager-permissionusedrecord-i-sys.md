@@ -1,5 +1,9 @@
 # PermissionUsedRecord（系统接口）
 
+```TypeScript
+interface PermissionUsedRecord
+```
+
 某个权限的访问记录。
 
 **起始版本：** 9
@@ -26,6 +30,8 @@ accessCount: number
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -43,6 +49,8 @@ accessRecords: Array<UsedRecordDetail>
 **类型：** Array&lt;[UsedRecordDetail](arkts-ability-privacymanager-usedrecorddetail-i-sys.md)&gt;
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -78,6 +86,8 @@ lastAccessDuration: number
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -93,6 +103,8 @@ lastAccessTime: number
 **类型：** number
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -110,6 +122,8 @@ lastRejectTime: number
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -126,6 +140,8 @@ permissionName: Permissions
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -141,6 +157,8 @@ rejectCount: number
 **类型：** number
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -159,6 +177,8 @@ rejectRecords: Array<UsedRecordDetail>
 **类型：** Array&lt;[UsedRecordDetail](arkts-ability-privacymanager-usedrecorddetail-i-sys.md)&gt;
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 

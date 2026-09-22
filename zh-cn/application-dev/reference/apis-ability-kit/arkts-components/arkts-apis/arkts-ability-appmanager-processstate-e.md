@@ -1,5 +1,9 @@
 # ProcessState
 
+```TypeScript
+export enum ProcessState
+```
+
 表示进程状态的枚举。
 
 **起始版本：** 10

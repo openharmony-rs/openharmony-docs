@@ -34,6 +34,8 @@ Opens a directory. This API uses a promise to return the result.
 | Promise&lt;[Dir](arkts-corefile-fileio-dir-depr-i.md)&gt; | Promise that returns the **Dir** object opened. |
 
 
+<a id="opendir-1"></a>
+
 ## opendir
 
 ```TypeScript

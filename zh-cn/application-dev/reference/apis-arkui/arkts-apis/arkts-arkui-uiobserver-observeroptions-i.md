@@ -1,5 +1,9 @@
 # ObserverOptions
 
+```TypeScript
+export interface ObserverOptions
+```
+
 Observer选项。
 
 **起始版本：** 12

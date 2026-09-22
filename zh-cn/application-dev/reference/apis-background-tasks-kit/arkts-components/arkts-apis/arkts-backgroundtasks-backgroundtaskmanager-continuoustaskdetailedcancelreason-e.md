@@ -1,5 +1,9 @@
 # ContinuousTaskDetailedCancelReason
 
+```TypeScript
+export enum ContinuousTaskDetailedCancelReason
+```
+
 长时任务取消详细原因。
 
 **起始版本：** 26.0.0
@@ -170,7 +174,7 @@ SYSTEM_CANCEL_NOT_USE_NEARLINK = 15
 
 申请NEARLINK类型长时任务，但是未使用星闪相关业务。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

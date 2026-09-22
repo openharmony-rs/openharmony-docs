@@ -1,5 +1,9 @@
 # SpanStyle
 
+```TypeScript
+declare interface SpanStyle
+```
+
 属性字符串样式。
 
 **起始版本：** 12

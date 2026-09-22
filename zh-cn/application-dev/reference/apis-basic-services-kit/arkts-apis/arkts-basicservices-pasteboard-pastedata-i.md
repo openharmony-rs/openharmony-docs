@@ -1,5 +1,9 @@
 # PasteData
 
+```TypeScript
+interface PasteData
+```
+
 剪贴板内容对象。剪贴板内容包含一个或者多个内容条目（[PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)）以及属性描述对象（[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)）。在调用PasteData的接口前，需要先通过[createData()](arkts-basicservices-pasteboard-createdata-f.md)或[getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata)获取一个PasteData对象。
 
 **起始版本：** 6
@@ -75,12 +79,7 @@ pasteData.addRecord(textRecord);
 pasteData.addRecord(htmlRecord);
 ```
 
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, 'dataability:///com.example.myapplication1/user.txt');
-// 创建ArrayBuffer数据
-let dataXml = new ArrayBuffer(256);
-pasteData.addRecord('app/xml', dataXml);
-```
+<a id="addrecord-1"></a>
 
 ## addRecord
 
@@ -112,7 +111,12 @@ addRecord(mimeType: string, value: ValueType): void
 
 **示例**
 
-参见 [addRecord](#addrecord)
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, 'dataability:///com.example.myapplication1/user.txt');
+// 创建ArrayBuffer数据
+let dataXml = new ArrayBuffer(256);
+pasteData.addRecord('app/xml', dataXml);
+```
 
 ## addTextRecord
 
@@ -622,7 +626,7 @@ hasMimeType(mimeType: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mimeType | string | 是 | 待查询的数据类型。可以是常量中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型，也可以是自定义的MIME类型，长度不能超过1024字节。 |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](../../../reference/apis-basic-services-kit/js-apis-pasteboard.md#常量)中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型，也可以是自定义的MIME类型，长度不能超过1024字节。 |
 
 **返回值：**
 
@@ -661,7 +665,7 @@ hasType(mimeType: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mimeType | string | 是 | 待查询的数据类型。可以是常量中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型；也可以是自定义的MIME类型，数据类型的字符串长度不能超过1024字节。 |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](../../../reference/apis-basic-services-kit/js-apis-pasteboard.md#常量)中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型；也可以是自定义的MIME类型，数据类型的字符串长度不能超过1024字节。 |
 
 **返回值：**
 
@@ -939,6 +943,35 @@ prop.tag = 'TestTag';
 pasteData.setProperty(prop);
 ```
 
-```TypeScript
 [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)的localOnly与shareOption属性互斥，最终结果以shareOption为准，shareOption会影响localOnly的值。
+
+```TypeScript
+(async () => {
+    let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+    let prop: pasteboard.PasteDataProperty = pasteData.getProperty();
+    prop.shareOption = pasteboard.ShareOption.INAPP;
+    prop.localOnly = false;
+    pasteData.setProperty(prop);
+    const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+
+    await systemPasteboard.setData(pasteData).then(async () => {
+        console.info('Succeeded in setting PasteData.');
+        await systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
+            let prop: pasteboard.PasteDataProperty = pasteData.getProperty();
+            prop.localOnly; // true
+        });
+    });
+
+    prop.shareOption = pasteboard.ShareOption.LOCALDEVICE;
+    prop.localOnly = false;
+    pasteData.setProperty(prop);
+
+    await systemPasteboard.setData(pasteData).then(async () => {
+        console.info('Succeeded in setting PasteData.');
+        await systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
+            let prop: pasteboard.PasteDataProperty = pasteData.getProperty();
+            prop.localOnly; // true
+        });
+    });
+})
 ```

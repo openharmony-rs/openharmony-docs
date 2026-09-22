@@ -14,7 +14,7 @@ function shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: numb
 
 Transfers a mouse input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result.
 
-To transfer mouse input events, the source window must call this API within the callback of the onTouch event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
+To transfer mouse input events, the source window must call this API within the callback of the [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch) event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
 
 **Since:** 15
 

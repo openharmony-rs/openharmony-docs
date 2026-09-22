@@ -1,5 +1,9 @@
 # UsbDeviceType
 
+```TypeScript
+export interface UsbDeviceType
+```
+
 Represents the USB device type information.
 
 You can obtain the list of USB devices connected to the host device through the [getDevices](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-usbmanager-getdevices-f.md) API, and then find the type of the current device in the returned list.

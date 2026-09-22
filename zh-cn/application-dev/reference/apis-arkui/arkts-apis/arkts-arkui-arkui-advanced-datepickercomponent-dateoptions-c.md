@@ -1,5 +1,9 @@
 # DateOptions
 
+```TypeScript
+export declare class DateOptions extends CommonOptions
+```
+
 DateOptions定义日期选择器的选项。
 
 继承于[CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)。

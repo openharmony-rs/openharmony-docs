@@ -1,5 +1,9 @@
 # DataAbilityPredicates
 
+```TypeScript
+class DataAbilityPredicates
+```
+
 Provides APIs for creating diverse query conditions.
 
 **Since:** 7

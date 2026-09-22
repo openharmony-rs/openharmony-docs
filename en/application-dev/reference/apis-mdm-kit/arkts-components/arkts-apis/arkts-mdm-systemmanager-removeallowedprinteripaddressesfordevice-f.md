@@ -14,7 +14,7 @@ function removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array<string>): v
 
 Removes allowed printer IP addresses for device. The policy takes effect for all accounts.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 

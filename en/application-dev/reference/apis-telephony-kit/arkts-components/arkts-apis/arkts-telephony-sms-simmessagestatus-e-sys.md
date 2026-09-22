@@ -1,5 +1,9 @@
 # SimMessageStatus (System API)
 
+```TypeScript
+export enum SimMessageStatus
+```
+
 Defines the SIM message status.
 
 **Since:** 7

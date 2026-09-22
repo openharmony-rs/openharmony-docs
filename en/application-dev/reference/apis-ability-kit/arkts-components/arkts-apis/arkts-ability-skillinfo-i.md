@@ -1,5 +1,9 @@
 # SkillInfo
 
+```TypeScript
+export interface SkillInfo
+```
+
 Provides information about a skill. A skill is an independent functional unit that can be called by an agent application.
 
 @typedef SkillInfo

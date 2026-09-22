@@ -34,7 +34,6 @@ Creates an **HttpResponseCache** object that stores the response data of HTTP re
 
 **Examples**
 
-```TypeScript
 createHttpResponseCache(cacheSize?: number): HttpResponseCache
 
 Creates an HttpResponseCache object that stores the response data of HTTP requests. You can call flush and delete in the object.
@@ -46,9 +45,13 @@ System capability: SystemCapability.Communication.NetStack
 Parameters
 
 Return value
-```
 
 ```TypeScript
+import { http } from '@kit.NetworkKit';
+
+let httpResponseCache = http.createHttpResponseCache();
+```
+
 createHttpResponseCache(cacheSize?: number): HttpResponseCache
 
 Creates an HttpResponseCache object that stores the response data of HTTP requests. You can call flush and delete in the object.
@@ -98,4 +101,9 @@ is a common header, but it is usually used on the server. It allows you to defin
 : works in a way similar to , but applies only to shared caches.
 
 : works in a way similar to , but applies only to shared caches.
+
+```TypeScript
+import { http } from '@kit.NetworkKit';
+
+let httpResponseCache = http.createHttpResponseCache();
 ```

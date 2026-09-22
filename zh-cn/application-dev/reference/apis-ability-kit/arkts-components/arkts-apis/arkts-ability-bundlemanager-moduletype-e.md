@@ -1,5 +1,9 @@
 # ModuleType
 
+```TypeScript
+export enum ModuleType
+```
+
 标识模块类型。
 
 **起始版本：** 9

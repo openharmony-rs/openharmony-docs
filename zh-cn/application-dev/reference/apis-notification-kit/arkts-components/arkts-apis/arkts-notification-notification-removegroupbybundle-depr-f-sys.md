@@ -34,6 +34,8 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string, callback: 
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定应用指定组下通知的回调函数。 |
 
 
+<a id="removegroupbybundle-1"></a>
+
 ## removeGroupByBundle
 
 ```TypeScript

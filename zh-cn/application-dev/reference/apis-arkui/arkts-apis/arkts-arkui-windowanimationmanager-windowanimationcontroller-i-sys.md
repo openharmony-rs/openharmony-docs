@@ -1,5 +1,9 @@
 # WindowAnimationController（系统接口）
 
+```TypeScript
+export interface WindowAnimationController
+```
+
 窗口动画控制器。在创建一个WindowAnimationController对象时，需要实现其中的所有回调函数。
 
 **起始版本：** 9
@@ -41,9 +45,7 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 
 **示例**
 
-```TypeScript
 请参考windowAnimationManager.setController的示例代码。
-```
 
 ## onCloseWindow
 
@@ -70,9 +72,7 @@ onCloseWindow(closingWindowTarget: WindowAnimationTarget, finishCallback: Window
 
 **示例**
 
-```TypeScript
 请参考windowAnimationManager.setController的示例代码。
-```
 
 ## onMinimizeWindow
 
@@ -100,9 +100,7 @@ onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,
 
 **示例**
 
-```TypeScript
 请参考windowAnimationManager.setController的示例代码。
-```
 
 ## onScreenUnlock
 
@@ -128,9 +126,7 @@ onScreenUnlock(finishCallback: WindowAnimationFinishedCallback): void
 
 **示例**
 
-```TypeScript
 请参考windowAnimationManager.setController的示例代码。
-```
 
 ## onStartAppFromLauncher
 
@@ -158,9 +154,7 @@ onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,
 
 **示例**
 
-```TypeScript
 请参考windowAnimationManager.setController的示例代码。
-```
 
 ## onStartAppFromOther
 
@@ -188,9 +182,7 @@ onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,
 
 **示例**
 
-```TypeScript
 请参考windowAnimationManager.setController的示例代码。
-```
 
 ## onStartAppFromRecent
 
@@ -218,9 +210,7 @@ onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,
 
 **示例**
 
-```TypeScript
 请参考windowAnimationManager.setController的示例代码。
-```
 
 ## onWindowAnimationTargetsUpdate
 
@@ -248,6 +238,4 @@ onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget,
 
 **示例**
 
-```TypeScript
 请参考windowAnimationManager.setController的示例代码。
-```

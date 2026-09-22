@@ -1,5 +1,9 @@
 # SharedArrayBufferConstructor
 
+```TypeScript
+interface SharedArrayBufferConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

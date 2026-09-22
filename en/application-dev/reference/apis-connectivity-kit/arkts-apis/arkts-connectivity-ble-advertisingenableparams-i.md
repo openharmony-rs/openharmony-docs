@@ -1,5 +1,9 @@
 # AdvertisingEnableParams
 
+```TypeScript
+interface AdvertisingEnableParams
+```
+
 Parameter for dynamically enable advertising.
 
 **Since:** 11

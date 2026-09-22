@@ -1,5 +1,9 @@
 # ReverseGeocodingMockInfo（系统接口）
 
+```TypeScript
+export interface ReverseGeocodingMockInfo
+```
+
 逆地理编码模拟功能的配置信息，包含一个位置信息和一个地名信息。
 
 **起始版本：** 9

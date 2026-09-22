@@ -1,5 +1,9 @@
 # AdsBlockManager
 
+```TypeScript
+class AdsBlockManager
+```
+
 AdsBlockManager is a class in the ArkWeb framework used to manage the ad filtering feature of Web components. It provides capabilities such as setting ad filtering rules, managing domain AllowedList/DisallowedList, and controlling filtering policies. All Web components in each app share a single AdsBlockManager static class. Developers can use this class to inject ad filtering configuration files that conform to the universal EasyList syntax into Web components and flexibly control the ad filtering status for specific websites.
 
 The core mechanism of AdsBlockManager is based on a two-tier AllowedList/DisallowedList strategy using domain suffix matching: the DisallowedList is used to disable ad filtering for specific websites, while the AllowedList has a higher priority and can re-enable ad filtering for certain subdomains within the scope of the DisallowedList. After successful internal parsing, ad filtering rules are persistently stored and do not need to be set again after an app restart. However, they are not persistent and must be reconfigured after an app restart.
@@ -49,6 +53,61 @@ Adds an array of domain names to the AllowedList of this AdsBlockManager object.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+// This example demonstrates how to click a button to add an array of domain names to the disallowed list.
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("addAdsBlockAllowedList") }
+          .onClick(() => {
+            // Demonstrate the AllowedList priority: first disable all subdomains of example.com, then re-enable news.example.com.
+            let arrDisallowDomainSuffixes = new Array<string>();
+            arrDisallowDomainSuffixes.push('example.com');
+            webview.AdsBlockManager.addAdsBlockDisallowedList(arrDisallowDomainSuffixes);
+
+            let arrAllowedDomainSuffixes = new Array<string>();
+            arrAllowedDomainSuffixes.push('news.example.com');
+            webview.AdsBlockManager.addAdsBlockAllowedList(arrAllowedDomainSuffixes);
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
+
 ## addAdsBlockDisallowedList
 
 ```TypeScript
@@ -84,6 +143,57 @@ Adds an array of domain names to the disallowed list of this **AdsBlockManager**
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+// This example demonstrates how to click a button to add an array of domain names to the disallowed list.
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("addAdsBlockDisallowedList") }
+          .onClick(() => {
+            let arrDomainSuffixes = new Array<string>();
+            arrDomainSuffixes.push('example.com');
+            arrDomainSuffixes.push('abcdefg.cn');
+            webview.AdsBlockManager.addAdsBlockDisallowedList(arrDomainSuffixes);
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
+
 ## clearAdsBlockAllowedList
 
 ```TypeScript
@@ -110,6 +220,8 @@ Clears the allowed list of this **AdsBlockManager** object.
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 
+**Examples**
+
 ## clearAdsBlockDisallowedList
 
 ```TypeScript
@@ -135,6 +247,53 @@ Clears the disallowed list of this **AdsBlockManager** object.
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("clearAdsBlockDisallowedList") }
+          .onClick(() => {
+            webview.AdsBlockManager.clearAdsBlockDisallowedList();
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
 
 ## removeAdsBlockAllowedList
 
@@ -169,6 +328,57 @@ Removes an array of domain names from the allowed list of this **AdsBlockManager
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+// Demonstrate deleting a domain element from the AllowedList of AdsBlockManager via a button click.
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("removeAdsBlockAllowedList") }
+          .onClick(() => {
+            let arrDomainSuffixes = new Array<string>();
+            arrDomainSuffixes.push('example.com');
+            arrDomainSuffixes.push('abcdefg.cn');
+            webview.AdsBlockManager.removeAdsBlockAllowedList(arrDomainSuffixes);
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
+
 ## removeAdsBlockDisallowedList
 
 ```TypeScript
@@ -201,6 +411,57 @@ Removes an array of domain names from the disallowed list of this **AdsBlockMana
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+// This example demonstrates how to click a button to remove an array of domain names from the disallowed list.
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("removeAdsBlockDisallowedList") }
+          .onClick(() => {
+            let arrDomainSuffixes = new Array<string>();
+            arrDomainSuffixes.push('example.com');
+            arrDomainSuffixes.push('abcdefg.cn');
+            webview.AdsBlockManager.removeAdsBlockDisallowedList(arrDomainSuffixes);
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
 
 ## setAdsBlockRules
 
@@ -235,3 +496,43 @@ Sets a custom ad filtering configuration file that conforms to the universal Eas
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { picker, fileUri } from '@kit.CoreFileKit';
+
+// Demonstrate clicking a button to open an EasyList rule file through filepicker and set it to the Web component.
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Row() {
+      Flex() {
+        Button({ type: ButtonType.Capsule }) {
+          Text("setAdsBlockRules")
+        }
+        .onClick(() => {
+          try {
+            let documentSelectionOptions: ESObject = new picker.DocumentSelectOptions();
+            let documentPicker: ESObject = new picker.DocumentViewPicker();
+            documentPicker.select(documentSelectionOptions).then((documentSelectResult: ESObject) => {
+              if (documentSelectResult && documentSelectResult.length > 0) {
+                let fileRealPath = new fileUri.FileUri(documentSelectResult[0]);
+                console.info('DocumentViewPicker.select successfully, uri: ' + fileRealPath);
+                webview.AdsBlockManager.setAdsBlockRules(fileRealPath.path, true);
+              }
+            })
+          } catch (err) {
+            console.error(`DocumentViewPicker.select failed, Error code: ${err.code}, message: ${err.message}`);
+          }
+        })
+      }
+    }
+  }
+}
+```

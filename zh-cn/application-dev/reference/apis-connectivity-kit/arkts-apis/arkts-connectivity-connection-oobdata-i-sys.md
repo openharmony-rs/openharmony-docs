@@ -1,5 +1,9 @@
 # OobData（系统接口）
 
+```TypeScript
+interface OobData
+```
+
 用于OOB配对的数据对象。
 
 **起始版本：** 23

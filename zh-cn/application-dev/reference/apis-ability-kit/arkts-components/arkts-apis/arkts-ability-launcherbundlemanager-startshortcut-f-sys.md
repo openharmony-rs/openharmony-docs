@@ -12,7 +12,7 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise<void>
 ```
 
-拉起指定ShortcutInfo中的ability。使用Promise异步回调。
+拉起指定[ShortcutInfo](arkts-ability-shortcutinfo-i.md)中的ability。使用Promise异步回调。
 
 **起始版本：** 12
 

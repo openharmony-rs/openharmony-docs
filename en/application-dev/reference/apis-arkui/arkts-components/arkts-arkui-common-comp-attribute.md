@@ -1,5 +1,9 @@
 # Common properties/events
 
+```TypeScript
+declare class CommonAttribute extends CommonMethod<CommonAttribute>
+```
+
 CommonAttribute for ide.
 
 **Inheritance/Implementation:** CommonAttribute extends CommonMethod<CommonAttribute>

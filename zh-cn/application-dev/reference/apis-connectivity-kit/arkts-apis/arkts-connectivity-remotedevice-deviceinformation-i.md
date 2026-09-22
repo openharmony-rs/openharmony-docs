@@ -1,5 +1,9 @@
 # DeviceInformation
 
+```TypeScript
+interface DeviceInformation
+```
+
 描述远端设备信息。
 
 **起始版本：** 26.0.0

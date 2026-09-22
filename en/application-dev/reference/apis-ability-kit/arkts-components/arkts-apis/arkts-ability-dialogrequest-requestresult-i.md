@@ -1,5 +1,9 @@
 # RequestResult
 
+```TypeScript
+export interface RequestResult
+```
+
 Defines the result of the request for the modal dialog box. It contains **ResultCode** and **ResultWant**.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # PickerElement
 
+```TypeScript
+export interface PickerElement
+```
+
 The &lt;picker&gt; component supports common, date, time, and multi-column text.
 
 @interface PickerElement

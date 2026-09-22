@@ -1,5 +1,9 @@
 # TransactionOptions
 
+```TypeScript
+interface TransactionOptions
+```
+
 事务对象的配置信息。
 
 **起始版本：** 14

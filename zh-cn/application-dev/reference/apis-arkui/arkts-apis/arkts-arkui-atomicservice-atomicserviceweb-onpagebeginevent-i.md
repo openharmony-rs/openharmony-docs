@@ -1,5 +1,9 @@
 # OnPageBeginEvent
 
+```TypeScript
+export declare interface OnPageBeginEvent
+```
+
 定义网页加载开始时触发该回调。
 
 **起始版本：** 12

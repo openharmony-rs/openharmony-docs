@@ -1,5 +1,9 @@
 # ProxyConstructor
 
+```TypeScript
+interface ProxyConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

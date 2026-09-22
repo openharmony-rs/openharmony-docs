@@ -1,5 +1,9 @@
 # DateConstructor
 
+```TypeScript
+interface DateConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

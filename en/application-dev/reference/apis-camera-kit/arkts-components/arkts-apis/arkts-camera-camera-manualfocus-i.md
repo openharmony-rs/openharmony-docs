@@ -1,5 +1,9 @@
 # ManualFocus
 
+```TypeScript
+interface ManualFocus extends ManualFocusQuery
+```
+
 ManualFocus object.
 
 **Inheritance/Implementation:** ManualFocus extends [ManualFocusQuery](arkts-camera-camera-manualfocusquery-i.md)

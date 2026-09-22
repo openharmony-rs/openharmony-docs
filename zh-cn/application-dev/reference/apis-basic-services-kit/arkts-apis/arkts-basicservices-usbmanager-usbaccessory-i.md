@@ -1,5 +1,9 @@
 # USBAccessory
 
+```TypeScript
+interface USBAccessory
+```
+
 USB配件信息。
 
 **起始版本：** 14

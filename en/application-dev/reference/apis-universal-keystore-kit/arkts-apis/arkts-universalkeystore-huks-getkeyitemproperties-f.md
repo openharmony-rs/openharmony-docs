@@ -25,6 +25,8 @@ Obtains key properties. This API uses an asynchronous callback to return the res
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -78,21 +80,8 @@ huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
 });
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* Set options to emptyOptions. */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-
-huks.getKeyItemProperties(keyAlias, emptyOptions)
-  .then((data) => {
-    console.info(`promise: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
-  });
-```
-
+<a id="getkeyitemproperties-1"></a>
 
 ## getKeyItemProperties
 
@@ -147,4 +136,17 @@ Obtains key properties. This API uses a promise to return the result.
 
 **Examples**
 
-See [getKeyItemProperties](#getkeyitemproperties)
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* Set options to emptyOptions. */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+
+huks.getKeyItemProperties(keyAlias, emptyOptions)
+  .then((data) => {
+    console.info(`promise: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
+  });
+```

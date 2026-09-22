@@ -1,5 +1,9 @@
 # ModelResult（系统接口）
 
+```TypeScript
+interface ModelResult
+```
+
 安全模型结果。
 
 @typedef ModelResult

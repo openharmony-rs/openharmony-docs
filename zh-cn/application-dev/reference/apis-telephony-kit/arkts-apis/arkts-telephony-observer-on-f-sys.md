@@ -41,6 +41,22 @@ function on(type: 'cellInfoChange', callback: Callback<Array<CellInformation>>):
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+**示例**
+
+```TypeScript
+import { observer, radio } from '@kit.TelephonyKit';
+import { radio } from '@kit.TelephonyKit';
+
+// 订阅小区信息变化事件
+try {
+  observer.on('cellInfoChange', (data: Array<radio.CellInformation>) => {
+      console.info("on cellInfoChange, data:" + JSON.stringify(data));
+  });
+} catch (err) {
+  console.error(`observer.on failed, err: ${JSON.stringify(err)}`);
+}
+```
+
 
 ## on('cellInfoChange')
 
@@ -77,3 +93,23 @@ function on(type: 'cellInfoChange', options: ObserverOptions, callback: Callback
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { observer, radio } from '@kit.TelephonyKit';
+import { radio } from '@kit.TelephonyKit';
+
+// 设置订阅参数，指定卡槽位
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+// 订阅指定卡槽位的小区信息变化事件
+try {
+  observer.on('cellInfoChange', options, (data: Array<radio.CellInformation>) => {
+      console.info("on cellInfoChange, data:" + JSON.stringify(data));
+  });
+} catch (err) {
+  console.error(`observer.on failed, err: ${JSON.stringify(err)}`);
+}
+```

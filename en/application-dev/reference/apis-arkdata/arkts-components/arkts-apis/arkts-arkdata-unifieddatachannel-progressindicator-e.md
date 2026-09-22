@@ -1,5 +1,9 @@
 # ProgressIndicator
 
+```TypeScript
+enum ProgressIndicator
+```
+
 Enumerates the progress indicator options.
 
 **Since:** 15

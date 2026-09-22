@@ -1,5 +1,9 @@
 # PhotoSelectOptions
 
+```TypeScript
+class PhotoSelectOptions extends BaseSelectOptions
+```
+
 Defines additional options for selecting media assets from Gallery. It inherits from **BaseSelectOptions**. It is used to start the picker of the corresponding user ID space.
 
 **Inheritance/Implementation:** PhotoSelectOptions extends [BaseSelectOptions](arkts-medialibrary-photoaccesshelper-baseselectoptions-c.md)

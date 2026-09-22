@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="cancel-3"></a>
+
 ## cancel
 
 ```TypeScript
@@ -49,44 +51,6 @@ function cancel(representativeBundle: BundleOption, id: number): Promise<void>
 | [1600017](../errorcode-notification.md#1600017-没有对应的代理关系配置) | There is no corresponding agent relationship configuration. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// cancel回调
-let cancelCallback = (err: BusinessError): void => {
-  if (err) {
-    console.error(`Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`Succeeded in canceling notification.`);
-  } 
-}
-notificationManager.cancel(0, 'label', cancelCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.cancel(0).then(() => {
-  console.info(`Succeeded in canceling notification.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// cancel回调
-let cancelCallback = (err: BusinessError): void => {
-  if (err) {
-    console.error(`Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`Succeeded in canceling notification.`);
-  }
-}
-notificationManager.cancel(0, cancelCallback);
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

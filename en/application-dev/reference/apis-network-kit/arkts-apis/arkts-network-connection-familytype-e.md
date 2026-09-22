@@ -1,5 +1,9 @@
 # FamilyType
 
+```TypeScript
+export enum FamilyType
+```
+
 Indicates the type of the IP address to be queried.
 
 **Since:** 23

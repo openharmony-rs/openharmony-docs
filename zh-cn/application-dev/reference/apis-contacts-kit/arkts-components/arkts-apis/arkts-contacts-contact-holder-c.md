@@ -1,5 +1,9 @@
 # Holder
 
+```TypeScript
+class Holder
+```
+
 创建联系人的应用信息类。
 
 **起始版本：** 7

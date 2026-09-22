@@ -56,21 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceDescriptor = "networkId";
-try {
-  cooperate.getCooperateSwitchState(deviceDescriptor).then((data: boolean) => {
-    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
-  }, (error: BusinessError) => {
-    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-  });
-} catch (error) {
-  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
+<a id="getcooperateswitchstate-1"></a>
 
 ## getCooperateSwitchState
 
@@ -110,4 +97,17 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 **Examples**
 
-See [getCooperateSwitchState](#getcooperateswitchstate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let deviceDescriptor = "networkId";
+try {
+  cooperate.getCooperateSwitchState(deviceDescriptor).then((data: boolean) => {
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
+  }, (error: BusinessError) => {
+    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```

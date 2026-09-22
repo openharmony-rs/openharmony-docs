@@ -20,6 +20,8 @@ When **status** is **true**, the [addPermissionUsedRecord](arkts-ability-privacy
 
 **Required permissions:** ohos.permission.PERMISSION_RECORD_TOGGLE
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -43,7 +45,7 @@ When **status** is **true**, the [addPermissionUsedRecord](arkts-ability-privacy
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_RECORD_TOGGLE". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system app. Interface caller is not a system app. |
-| [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md).<br>**Applicable version:** 26.1.0 and later |
+| [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md).<br>**Applicable version:** 26.0.1 and later |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-internal-service-error) | Common inner error. Possible causes: 1. Database error. 2. Failed to query all applications under the user. |
 
@@ -61,18 +63,8 @@ privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
 });
 ```
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let subProfileId: number = 100001; // Replace with the valid ID of the current user's sub-profile.
-privacyManager.setPermissionUsedRecordToggleStatus(true, subProfileId).then(() => {
-  console.info('setPermissionUsedRecordToggleStatus success');
-}).catch((err: BusinessError): void => {
-  console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="setpermissionusedrecordtogglestatus-1"></a>
 
 ## setPermissionUsedRecordToggleStatus
 
@@ -84,7 +76,7 @@ Sets whether permission usage records are collected for a specified sub-profile.
 
 When **status** is **true**, the [addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md) API can add usage records normally; when **status** is **false**, the [addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md) API does not generate permission usage records, and deletes the historical records of the specified sub-profile.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.PERMISSION_RECORD_TOGGLE
 
@@ -121,4 +113,14 @@ When **status** is **true**, the [addPermissionUsedRecord](arkts-ability-privacy
 
 **Examples**
 
-See [setPermissionUsedRecordToggleStatus](#setpermissionusedrecordtogglestatus)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileId: number = 100001; // Replace with the valid ID of the current user's sub-profile.
+privacyManager.setPermissionUsedRecordToggleStatus(true, subProfileId).then(() => {
+  console.info('setPermissionUsedRecordToggleStatus success');
+}).catch((err: BusinessError): void => {
+  console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```

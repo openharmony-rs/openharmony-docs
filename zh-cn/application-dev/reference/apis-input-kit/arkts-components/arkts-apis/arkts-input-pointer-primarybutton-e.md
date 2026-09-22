@@ -1,5 +1,9 @@
 # PrimaryButton
 
+```TypeScript
+enum PrimaryButton
+```
+
 鼠标主键类型。
 
 **起始版本：** 10

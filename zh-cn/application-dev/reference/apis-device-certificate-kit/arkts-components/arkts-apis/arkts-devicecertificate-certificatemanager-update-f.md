@@ -61,29 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-/* cmHandle为业务调用init接口的返回值，此处仅为示例 */
-let cmHandle: Uint8Array = new Uint8Array([
-  0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
-]);
-let srcData: Uint8Array = new Uint8Array([
-  0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
-]);
-try {
-  certificateManager.update(cmHandle, srcData).then(() => {
-    console.info('Succeeded in updating.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to update. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="update-1"></a>
 
 ## update
 
@@ -122,4 +101,25 @@ function update(handle: Uint8Array, data: Uint8Array): Promise<void>
 
 **示例**
 
-参见 [update](#update)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* cmHandle为业务调用init接口的返回值，此处仅为示例 */
+let cmHandle: Uint8Array = new Uint8Array([
+  0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
+]);
+let srcData: Uint8Array = new Uint8Array([
+  0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
+]);
+try {
+  certificateManager.update(cmHandle, srcData).then(() => {
+    console.info('Succeeded in updating.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to update. Code: ${error.code}, message: ${error.message}`);
+}
+```

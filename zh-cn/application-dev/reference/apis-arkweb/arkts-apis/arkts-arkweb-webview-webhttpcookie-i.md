@@ -1,5 +1,9 @@
 # WebHttpCookie
 
+```TypeScript
+interface WebHttpCookie
+```
+
 cookie的相关字段。
 
 **起始版本：** 23

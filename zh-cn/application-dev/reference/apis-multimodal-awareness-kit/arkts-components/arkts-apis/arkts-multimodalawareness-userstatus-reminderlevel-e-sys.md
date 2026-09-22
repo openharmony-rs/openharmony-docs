@@ -1,5 +1,9 @@
 # ReminderLevel（系统接口）
 
+```TypeScript
+export enum ReminderLevel
+```
+
 表示提醒强度级别，触发提醒铃声时使用。
 
 **起始版本：** 26.0.0

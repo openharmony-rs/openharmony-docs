@@ -1,5 +1,9 @@
 # RaycastParameters
 
+```TypeScript
+export interface RaycastParameters
+```
+
 Describes the configuration parameters for raycasting, defining the behavior of raycasting.
 
 @interface RaycastParameters

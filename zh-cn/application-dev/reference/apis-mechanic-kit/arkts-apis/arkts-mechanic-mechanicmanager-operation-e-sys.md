@@ -1,5 +1,9 @@
 # Operation（系统接口）
 
+```TypeScript
+export enum Operation
+```
+
 用户操作
 
 @enum { int }

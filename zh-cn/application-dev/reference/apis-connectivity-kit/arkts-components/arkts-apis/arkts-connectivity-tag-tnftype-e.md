@@ -1,5 +1,9 @@
 # TnfType
 
+```TypeScript
+enum TnfType
+```
+
 NDEF Record的TNF(Type Name Field)类型值，参考NDEF标签技术规范《NFCForum-TS-NDEF_1.0》的定义细节。
 
 **起始版本：** 9

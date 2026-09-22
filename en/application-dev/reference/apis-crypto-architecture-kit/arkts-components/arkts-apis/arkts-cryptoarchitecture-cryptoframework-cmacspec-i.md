@@ -1,5 +1,9 @@
 # CmacSpec
 
+```TypeScript
+interface CmacSpec extends MacSpec
+```
+
 Represents the child class of [MacSpec](arkts-cryptoarchitecture-cryptoframework-macspec-i.md). It is used as an input parameter for CMAC computation.
 
 > **NOTE:** 

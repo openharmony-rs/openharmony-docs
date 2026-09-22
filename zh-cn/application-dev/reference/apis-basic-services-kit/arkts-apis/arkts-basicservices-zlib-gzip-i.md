@@ -1,5 +1,9 @@
 # GZip
 
+```TypeScript
+interface GZip
+```
+
 Gzip相关接口。
 
 **起始版本：** 12

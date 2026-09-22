@@ -1,5 +1,9 @@
 # HoldingHandStatus
 
+```TypeScript
+export enum HoldingHandStatus
+```
+
 握持手状态信息，表示握持手状态变化感知事件的结果。订阅事件后，返回当前握持手状态信息。
 
 **起始版本：** 20

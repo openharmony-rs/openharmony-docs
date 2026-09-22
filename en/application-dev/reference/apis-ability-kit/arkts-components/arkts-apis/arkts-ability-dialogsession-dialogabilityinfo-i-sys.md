@@ -1,5 +1,9 @@
 # DialogAbilityInfo (System API)
 
+```TypeScript
+export interface DialogAbilityInfo
+```
+
 Provides DialogAbility information, including the bundle name, module name, and ability name.
 
 **Since:** 11
@@ -74,7 +78,7 @@ Ability name.
 appIndex: number
 ```
 
-Index of the application clone.
+Indicates the clone index of the application. The value starts from 0. The value 0 indicates the main application instance, and 1 or above indicates a clone instance.
 
 **Type:** number
 

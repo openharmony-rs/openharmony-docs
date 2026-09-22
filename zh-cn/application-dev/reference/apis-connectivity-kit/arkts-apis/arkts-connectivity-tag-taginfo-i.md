@@ -1,5 +1,9 @@
 # TagInfo
 
+```TypeScript
+export interface TagInfo
+```
+
 在对相关Tag类型卡片进行读写之前，必须先获取[TagInfo](arkts-connectivity-tag-taginfo-i.md)相关属性值，以确认设备读取到的Tag卡片支持哪些技术类型。这样Tag应用程序才能调用正确的接口和所读取到的Tag卡片进行通信。
 
 **起始版本：** 7

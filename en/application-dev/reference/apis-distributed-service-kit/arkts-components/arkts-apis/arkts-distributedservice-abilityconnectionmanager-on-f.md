@@ -35,6 +35,18 @@ Enables listening for **connect** events. This API uses an asynchronous callback
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.on("connect", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
+});
+```
+
 
 ## on('disconnect')
 
@@ -64,6 +76,18 @@ Enables listening for **disconnect** events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
+});
+```
 
 
 ## on('receiveMessage')
@@ -95,6 +119,18 @@ Enables listening for **receiveMessage** events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.on("receiveMessage", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveMessage, sessionId is', callbackInfo.sessionId);
+});
+```
+
 
 ## on('receiveData')
 
@@ -124,3 +160,15 @@ Enables listening for **receiveData** events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.on("receiveData", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
+});
+```

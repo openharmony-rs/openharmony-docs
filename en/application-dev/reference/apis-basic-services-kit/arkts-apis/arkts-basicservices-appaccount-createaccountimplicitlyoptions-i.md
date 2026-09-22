@@ -1,5 +1,9 @@
 # CreateAccountImplicitlyOptions
 
+```TypeScript
+interface CreateAccountImplicitlyOptions
+```
+
 Defines the options for implicitly creating an application account.
 
 **Since:** 9

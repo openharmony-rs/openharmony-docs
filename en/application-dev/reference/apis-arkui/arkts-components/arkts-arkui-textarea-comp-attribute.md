@@ -1,5 +1,9 @@
 # TextArea properties/events
 
+```TypeScript
+declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>
+```
+
 In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 In addition to the [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md), the following events are supported.
@@ -122,7 +126,7 @@ Sets whether to enable leading punctuation compression.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression.<br>**true**: Leading punctuation compression is enabled. **false**: Leading punctuation compression is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression.<br>**true**: Leading punctuation compression is enabled. **false**: Leading punctuation compression is disabled. |
 
 ## contentType
 
@@ -144,7 +148,7 @@ Sets the content type for autofill.&lt;!--RP3--&gt;&lt;!--RP3End--&gt;
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| contentType | [ContentType](arkts-arkui-contenttype-e.md) | Yes | Content type for autofill. |
+| contentType | [ContentType](arkts-arkui-textinput-comp-contenttype-e.md) | Yes | Content type for autofill. |
 
 ## copyOption
 
@@ -184,15 +188,15 @@ The custom keyboard is presented by overlaying the original screen, which is not
 
 The custom keyboard cannot obtain the focus, but it blocks gesture events.
 
-By default, the custom keyboard is closed when the input component loses the focus. You can also use the [TextAreaController](arkts-arkui-textareacontroller-c.md).[stopEditing](arkts-arkui-textareacontroller-c.md#stopediting) API to close the keyboard.
+By default, the custom keyboard is closed when the input component loses the focus. You can also use the [TextAreaController](arkts-arkui-textarea-comp-textareacontroller-c.md).[stopEditing](arkts-arkui-textarea-comp-textareacontroller-c.md#stopediting) API to close the keyboard.
 
-When setting a custom keyboard, you can bind the [onKeyPrelme](arkts-arkui-commonmethod-c.md#onkeypreime) event to prevent input from the physical keyboard.
+When setting a custom keyboard, you can bind the [onKeyPrelme](arkts-arkui-common-comp-commonmethod-c.md#onkeypreime) event to prevent input from the physical keyboard.
 
 From API version 23, the [setCustomKeyboardContinueFeature](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23) API can be used to enable the continuation feature for custom keyboards. When switching between custom keyboards, the system changes the keyboard directly without triggering the close and open animations.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 10
 
@@ -206,8 +210,8 @@ From API version 23, the [setCustomKeyboardContinueFeature](../../../reference/a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-custombuilder-t.md) &#124; ComponentContent &#124; undefined | Yes | Custom keyboard. If the value is **undefined**, the custom keyboard is closed.<br>**Since:** 22 |
-| options | [KeyboardOptions](arkts-arkui-keyboardoptions-i.md) | No | Whether to support keyboard avoidance.<br>**Since:** 12 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | Yes | Custom keyboard. If the value is **undefined**, the custom keyboard is closed.<br>**Since:** 22 |
+| options | [KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md) | No | Whether to support keyboard avoidance.<br>**Since:** 12 |
 
 ## decoration
 
@@ -229,7 +233,7 @@ Sets the color, type, and style of the text decorative line.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextDecorationOptions](arkts-arkui-textdecorationoptions-i.md) | Yes | Text decorative line options.<br>Default value: {<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>} |
+| value | [TextDecorationOptions](arkts-arkui-common-comp-textdecorationoptions-i.md) | Yes | Text decorative line options.<br>Default value: {<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>} |
 
 ## editMenuOptions
 
@@ -241,7 +245,7 @@ Sets the extended options of the custom context menu on selection, including the
 
 When [disableMenuItems](../../../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or
 
-[disableSystemServiceMenuItems](../../../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the context menu on selection, the disabled menu options will be excluded from the parameter list in the onCreateMenu callback of **editMenuOptions**.
+[disableSystemServiceMenuItems](../../../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the context menu on selection, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](../arkts-apis/arkts-arkui-editmenuoptions-i.md#oncreatemenu) callback of **editMenuOptions**.
 
 **Since:** 12
 
@@ -279,7 +283,7 @@ Sets the ellipsis position. For the settings to work, [textOverflow](#textoverfl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | Yes | Ellipsis position.<br>Default value: **EllipsisMode.END** |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | Yes | Ellipsis position.<br>Default value: **EllipsisMode.END** |
 
 ## enableAutoFill
 
@@ -325,7 +329,7 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false** |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false** |
 
 ## enableHapticFeedback
 
@@ -435,7 +439,7 @@ Sets the type of the Enter key.
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -449,7 +453,7 @@ Sets the type of the Enter key.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [EnterKeyType](arkts-arkui-enterkeytype-e.md) | Yes | Type of the Enter key.<br>Default value: **EnterKeyType.NEW_LINE** |
+| value | [EnterKeyType](arkts-arkui-textinput-comp-enterkeytype-e.md) | Yes | Type of the Enter key.<br>Default value: **EnterKeyType.NEW_LINE** |
 
 ## fallbackLineSpacing
 
@@ -471,7 +475,7 @@ Adapts the line height to the actual text height for overlapped multi-line text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height is adapted to the actual text height.<br>**true**: Line height is adapted to the actual text height. **false**: Line height is not adapted to the actual text height. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height is adapted to the actual text height.<br>**true**: Line height is adapted to the actual text height. **false**: Line height is not adapted to the actual text height. |
 
 ## fontColor
 
@@ -623,7 +627,7 @@ Enables half leading for text, which splits the leading equally between the top 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| halfLeading | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.<br>**true**: Half leading is enabled. **false**: Half leading is not enabled.<br>Default value: **false** |
+| halfLeading | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.<br>**true**: Half leading is enabled. **false**: Half leading is not enabled.<br>Default value: **false** |
 
 ## heightAdaptivePolicy
 
@@ -682,7 +686,7 @@ Sets whether to enable horizontal scrolling when the text is wider than the view
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable horizontal scrolling.<br>**true**: Horizontal scrolling is enabled. **false**: Horizontal scrolling is disabled, and text is wrapped. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable horizontal scrolling.<br>**true**: Horizontal scrolling is enabled. **false**: Horizontal scrolling is disabled, and text is wrapped. |
 
 ## includeFontPadding
 
@@ -704,7 +708,7 @@ Sets whether to add spacing to the first and last lines to avoid text truncation
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| include | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation.<br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines. |
+| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation.<br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines. |
 
 ## inputFilter
 
@@ -751,7 +755,7 @@ Sets the keyboard appearance for the text box. This setting takes effect only af
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appearance | [Optional](arkts-arkui-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Appearance of the keyboard.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE** |
+| appearance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Appearance of the keyboard.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE** |
 
 ## letterSpacing
 
@@ -845,6 +849,8 @@ Sets the line spacing of the text. If the value specified is less than or equal 
 | --- | --- | --- | --- |
 | value | LengthMetrics | Yes | Line spacing. Default value: **0** |
 
+<a id="linespacing-1"></a>
+
 ## lineSpacing
 
 ```TypeScript
@@ -888,7 +894,7 @@ Sets the maximum font scale factor for text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE:** <br>Values less than 1 are treated as **1**. Abnormal values are ineffective by default.<br>Before use, the **configuration.json** file and **app.json5** file must be configured in the project. For details, see [Example 17: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#example-17-setting-the-minimum-and-maximum-font-scale-factors). |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE:** <br>Values less than 1 are treated as **1**. Abnormal values are ineffective by default.<br>Before use, the **configuration.json** file and **app.json5** file must be configured in the project. For details, see [Example 17: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#example-17-setting-the-minimum-and-maximum-font-scale-factors). |
 
 ## maxFontSize
 
@@ -962,6 +968,8 @@ Sets the maximum number of lines that can be displayed. When **textOverflow** is
 | --- | --- | --- | --- |
 | value | number | Yes | Maximum number of lines that can be displayed with the inline style in the editing state.<br>Default value: **3**. In non-inline style, the default value is **UINT32_MAX**.<br>Value range: (0, UINT32 _MAX] |
 
+<a id="maxlines-1"></a>
+
 ## maxLines
 
 ```TypeScript
@@ -1008,7 +1016,7 @@ Sets the minimum font scale factor for text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE:** <br>A value less than 0 is handled as **0**. A value greater than 1 is handled as **1**. Abnormal values are ineffective by default.<br>Before use, the **configuration.json** file and **app.json5** file must be configured in the project. For details, see [Example 17: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#example-17-setting-the-minimum-and-maximum-font-scale-factors). |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE:** <br>A value less than 0 is handled as **0**. A value greater than 1 is handled as **1**. Abnormal values are ineffective by default.<br>Before use, the **configuration.json** file and **app.json5** file must be configured in the project. For details, see [Example 17: Setting the Minimum and Maximum Font Scale Factors](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#example-17-setting-the-minimum-and-maximum-font-scale-factors). |
 
 ## minFontSize
 
@@ -1044,7 +1052,7 @@ If the value of **minFontSize** is less than or equal to 0, the adaptive font si
 minLines(lines: Optional<number>)
 ```
 
-Sets the minimum number of lines displayed for the component. When constraintSize is set, the component's final height respects the defined constraints.
+Sets the minimum number of lines displayed for the component. When [constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize) is set, the component's final height respects the defined constraints.
 
 **Since:** 20
 
@@ -1058,7 +1066,7 @@ Sets the minimum number of lines displayed for the component. When constraintSiz
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| lines | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | Yes | Minimum number of lines.<br>Default value: **1**<br>Value range: [1, INT32_MAX] <br>Values less than 1 are treated as the default value. |
+| lines | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Minimum number of lines.<br>Default value: **1**<br>Value range: [1, INT32_MAX] <br>Values less than 1 are treated as the default value. |
 
 ## onChange
 
@@ -1252,6 +1260,8 @@ Called when the Enter key on the soft keyboard is pressed.
 | --- | --- | --- | --- |
 | callback | (enterKey: EnterKeyType) =&gt; void | Yes | callback of the listened event. |
 
+<a id="onsubmit-1"></a>
+
 ## onSubmit
 
 ```TypeScript
@@ -1272,7 +1282,7 @@ Called when the Enter key on the soft keyboard is pressed, providing methods to 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [TextAreaSubmitCallback](arkts-arkui-textareasubmitcallback-t.md) | Yes | Called when the Enter key on the soft keyboard is pressed. |
+| callback | [TextAreaSubmitCallback](arkts-arkui-textarea-comp-textareasubmitcallback-t.md) | Yes | Called when the Enter key on the soft keyboard is pressed. |
 
 ## onTextSelectionChange
 
@@ -1460,7 +1470,7 @@ Orphan character optimization improves text layout by more efficiently handling 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan character optimization for the last line of a paragraph.<br>**true**: Orphan character optimization is enabled. **false**: Orphan character optimization is disabled.<br>If the value is **undefined** or **null**, orphan character optimization is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan character optimization for the last line of a paragraph.<br>**true**: Orphan character optimization is enabled. **false**: Orphan character optimization is disabled.<br>If the value is **undefined** or **null**, orphan character optimization is disabled. |
 
 ## placeholderColor
 
@@ -1526,7 +1536,7 @@ Whether to enable punctuation overflow at line ends.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the feature, the default value is false. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the feature, the default value is false. |
 
 ## scrollBarColor
 
@@ -1674,7 +1684,7 @@ It is visible when the number of characters entered is greater than the characte
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether to display the character counter.<br>**true**: Character counter is displayed. **false**: Character counter is not displayed. |
-| options | [InputCounterOptions](arkts-arkui-inputcounteroptions-i.md) | No | Configuration options for the character counter.<br>**Since:** 11 |
+| options | [InputCounterOptions](arkts-arkui-common-comp-inputcounteroptions-i.md) | No | Configuration options for the character counter.<br>**Since:** 11 |
 
 ## stopBackPress
 
@@ -1696,7 +1706,7 @@ Sets whether to prevent the back key event from being propagated.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isStopped | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether to prevent the back button press from being propagated to other components or applications.<br>**true**: Propagation is prevented. **false**: Propagation is allowed.<br> Default value: **true** The default value is used for abnormal values. |
+| isStopped | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to prevent the back button press from being propagated to other components or applications.<br>**true**: Propagation is prevented. **false**: Propagation is allowed.<br> Default value: **true** The default value is used for abnormal values. |
 
 ## strokeColor
 
@@ -1718,7 +1728,7 @@ Sets the text stroke color.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Stroke color. Default value: font color. Invalid values are treated as the default value. |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Stroke color. Default value: font color. Invalid values are treated as the default value. |
 
 ## strokeJoinStyle
 
@@ -1764,7 +1774,7 @@ Sets the text stroke width.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-optional-t.md)&lt;LengthMetrics&gt; | Yes | Text stroke width. When the unit of **LengthMetrics** is **px**:<br> Values &lt; 0: solid text. Values &gt; 0: outlined text.<br>Default value: **0** (no stroke) |
+| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Text stroke width. When the unit of **LengthMetrics** is **px**:<br> Values &lt; 0: solid text. Values &gt; 0: outlined text.<br>Default value: **0** (no stroke) |
 
 ## style
 
@@ -1798,7 +1808,7 @@ Sets the horizontal alignment of the text.
 
 Available options are **TextAlign.Start**, **TextAlign.Center**, and **TextAlign.End**. **TextAlign.JUSTIFY** is available since API version 11.
 
-The vertical position of the text paragraph can be controlled by the align attribute, but the horizontal position cannot be controlled by **align** in this component.
+The vertical position of the text paragraph can be controlled by the [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute, but the horizontal position cannot be controlled by **align** in this component.
 
 - **Alignment.TopStart**, **Alignment.Top**, **Alignment.TopEnd**: Content aligns to the top.  
 - **Alignment.Start**, **Alignment.Center**, **Alignment.End**: Content is centered vertically.  
@@ -1917,7 +1927,7 @@ Different **TextAreaType** values trigger corresponding keyboard types and enfor
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextAreaType](arkts-arkui-textareatype-e.md) | Yes | Text box type.<br>Default value: **TextAreaType.NORMAL**. |
+| value | [TextAreaType](arkts-arkui-textarea-comp-textareatype-e.md) | Yes | Text box type.<br>Default value: **TextAreaType.NORMAL**. |
 
 ## wordBreak
 

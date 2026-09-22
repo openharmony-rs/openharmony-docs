@@ -1,5 +1,9 @@
 # XMPTagType
 
+```TypeScript
+enum XMPTagType
+```
+
 表示XMP标签类型的枚举。
 
 **起始版本：** 26.0.0

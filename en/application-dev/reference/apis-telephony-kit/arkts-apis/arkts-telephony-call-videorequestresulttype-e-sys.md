@@ -1,5 +1,9 @@
 # VideoRequestResultType (System API)
 
+```TypeScript
+export enum VideoRequestResultType
+```
+
 Enumerates video call upgrade or downgrade request types.
 
 **Since:** 11

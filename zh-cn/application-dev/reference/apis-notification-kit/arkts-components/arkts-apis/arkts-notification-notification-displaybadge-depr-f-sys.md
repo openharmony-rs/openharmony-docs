@@ -34,6 +34,8 @@ function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设定角标使能回调函数。 |
 
 
+<a id="displaybadge-1"></a>
+
 ## displayBadge
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # Policy
 
+```TypeScript
+export enum Policy
+```
+
 允许或禁用名单的策略类型。
 
 **起始版本：** 20

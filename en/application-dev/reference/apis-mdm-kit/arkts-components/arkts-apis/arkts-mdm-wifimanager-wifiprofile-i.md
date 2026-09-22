@@ -1,5 +1,9 @@
 # WifiProfile
 
+```TypeScript
+interface WifiProfile
+```
+
 Represents the Wi-Fi configuration information.
 
 **Since:** 12

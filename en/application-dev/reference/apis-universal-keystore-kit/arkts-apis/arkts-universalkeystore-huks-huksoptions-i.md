@@ -1,5 +1,9 @@
 # HuksOptions
 
+```TypeScript
+export interface HuksOptions
+```
+
 Defines **options** used in the APIs.
 
 **Since:** 8
@@ -24,6 +28,8 @@ Tag.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -39,6 +45,8 @@ Tag.
 **Type:** Array&lt;[HuksParam](arkts-universalkeystore-huks-huksparam-i.md)&gt;
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

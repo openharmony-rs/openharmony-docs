@@ -1,5 +1,9 @@
 # SharedModuleInfo (System API)
 
+```TypeScript
+export interface SharedModuleInfo
+```
+
 Defines the shared module information.
 
 **Since:** 10

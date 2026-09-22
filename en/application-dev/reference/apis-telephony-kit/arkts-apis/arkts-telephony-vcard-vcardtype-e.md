@@ -1,5 +1,9 @@
 # VCardType
 
+```TypeScript
+export enum VCardType
+```
+
 Enumerates VCard versions.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # RawFileDescriptor
 
+```TypeScript
+export interface RawFileDescriptor
+```
+
 本模块提供rawfile文件所在HAP包的文件描述符信息，包括文件描述符、rawfile文件的起始偏移和文件长度。
 
 **起始版本：** 8

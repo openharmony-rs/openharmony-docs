@@ -1,5 +1,9 @@
 # FileType (System API)
 
+```TypeScript
+enum FileType
+```
+
 Enumerates media file types.
 
 **Since:** 9

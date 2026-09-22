@@ -1,5 +1,9 @@
 # StackLayoutAlgorithmOptions
 
+```TypeScript
+interface StackLayoutAlgorithmOptions
+```
+
 设置堆叠布局算法的对齐方式。
 
 **起始版本：** 24

@@ -1,5 +1,9 @@
 # SupportedImageFormat（系统接口）
 
+```TypeScript
+enum SupportedImageFormat
+```
+
 枚举，支持转换的图片格式。
 
 **起始版本：** 20

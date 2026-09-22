@@ -1,5 +1,9 @@
 # MmiCodeResult (System API)
 
+```TypeScript
+export enum MmiCodeResult
+```
+
 Defines the MMI code result.
 
 **Since:** 9

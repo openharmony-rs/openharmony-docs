@@ -1,5 +1,9 @@
 # Region
 
+```TypeScript
+interface Region
+```
+
 Describes the region information.
 
 **Since:** 8

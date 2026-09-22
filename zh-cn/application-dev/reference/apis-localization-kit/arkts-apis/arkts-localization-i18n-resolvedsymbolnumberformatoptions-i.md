@@ -1,5 +1,9 @@
 # ResolvedSymbolNumberFormatOptions
 
+```TypeScript
+export interface ResolvedSymbolNumberFormatOptions extends Intl.ResolvedNumberFormatOptions
+```
+
 自定义符号数字格式化对象配置项的解析结果。继承自Intl.ResolvedNumberFormatOptions，支持Intl.ResolvedNumberFormatOptions的所有配置项，并且功能与其一致。
 
 **继承/实现关系：** ResolvedSymbolNumberFormatOptions extends Intl.ResolvedNumberFormatOptions

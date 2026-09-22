@@ -1,5 +1,9 @@
 # MediaKeySystemInfo
 
+```TypeScript
+interface MediaKeySystemInfo
+```
+
 Defines the DRM information for encrypted content.
 
 **Since:** 11

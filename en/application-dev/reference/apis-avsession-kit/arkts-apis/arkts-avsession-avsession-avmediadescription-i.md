@@ -1,5 +1,9 @@
 # AVMediaDescription
 
+```TypeScript
+interface AVMediaDescription
+```
+
 The description of the media for an item in the playlist of the session
 
 **Since:** 10
@@ -195,6 +199,8 @@ Any additional attributes that can be represented as key-value pairs
 **Type:** {[key: string]: Object}
 
 **Since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 

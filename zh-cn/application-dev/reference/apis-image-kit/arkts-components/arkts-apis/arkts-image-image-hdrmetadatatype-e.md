@@ -1,5 +1,9 @@
 # HdrMetadataType
 
+```TypeScript
+enum HdrMetadataType
+```
+
 表示[HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md)中HDR_METADATA_TYPE关键字对应的值的枚举。
 
 **起始版本：** 12

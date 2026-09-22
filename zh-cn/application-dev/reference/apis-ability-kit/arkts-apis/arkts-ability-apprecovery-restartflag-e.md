@@ -1,5 +1,9 @@
 # RestartFlag
 
+```TypeScript
+enum RestartFlag
+```
+
 应用重启标志，[enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md)接口重启选项参数，该类型为枚举。
 
 **起始版本：** 9

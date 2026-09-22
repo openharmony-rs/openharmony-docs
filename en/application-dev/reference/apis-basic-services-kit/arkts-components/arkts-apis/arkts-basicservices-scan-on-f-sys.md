@@ -41,32 +41,8 @@ Registers a callback used to listen for the scanner addition event. This API use
 ```TypeScript
 import { scan } from '@kit.BasicServicesKit';
 
-scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
-    console.info('scan device found: ' + JSON.stringify(device));
-});
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
-    console.info('scan device sync: ' + JSON.stringify(device));
-});
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
 scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
     console.info('scan device add: ' + JSON.stringify(device));
-});
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
-    console.info('scan device delete: ' + JSON.stringify(device));
 });
 ```
 
@@ -103,4 +79,10 @@ Registers a callback used to listen for the scanner deletion event. This API use
 
 **Examples**
 
-See on
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+
+scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
+    console.info('scan device delete: ' + JSON.stringify(device));
+});
+```

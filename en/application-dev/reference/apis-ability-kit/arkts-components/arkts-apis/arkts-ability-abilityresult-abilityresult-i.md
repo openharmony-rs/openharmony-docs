@@ -1,5 +1,9 @@
 # AbilityResult
 
+```TypeScript
+export interface AbilityResult
+```
+
 The module defines the result code and data returned to the caller when a started UIAbility is terminated.
 
 **Since:** 7

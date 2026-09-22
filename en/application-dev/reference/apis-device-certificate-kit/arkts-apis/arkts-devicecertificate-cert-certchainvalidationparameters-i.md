@@ -1,5 +1,9 @@
 # CertChainValidationParameters
 
+```TypeScript
+interface CertChainValidationParameters
+```
+
 Represents the parameters for certificate chain validation.
 
 **Since:** 11

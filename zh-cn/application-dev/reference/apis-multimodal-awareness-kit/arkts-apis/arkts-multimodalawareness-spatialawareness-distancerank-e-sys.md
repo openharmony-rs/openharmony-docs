@@ -1,5 +1,9 @@
 # DistanceRank（系统接口）
 
+```TypeScript
+export enum DistanceRank
+```
+
 测距结果的距离挡位，不同的挡位对应不同的距离范围。
 
 @enum { string } 表示测距距离类型

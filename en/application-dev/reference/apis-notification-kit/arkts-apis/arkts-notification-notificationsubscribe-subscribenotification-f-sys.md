@@ -64,25 +64,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info(`Consume callback: ${JSON.stringify(data)}`);
-}
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onConsume: onConsumeCallback
-};
-let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1", "bundleName2"],
-}
-notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribeNotification success");
-}).catch((err: BusinessError) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="subscribenotification-1"></a>
 
 ## subscribeNotification
 
@@ -127,4 +110,21 @@ Subscribes to notifications. After the subscription, the new message is received
 
 **Examples**
 
-See [subscribeNotification](#subscribenotification)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
+  bundleNames: ["bundleName1", "bundleName2"],
+}
+notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```

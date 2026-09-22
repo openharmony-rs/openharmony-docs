@@ -1,5 +1,9 @@
 # CmsSignerConfig
 
+```TypeScript
+interface CmsSignerConfig
+```
+
 Represents the configuration of the CMS signer.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # PiPTemplateType
 
+```TypeScript
+enum PiPTemplateType
+```
+
 画中画模板类型枚举。
 
 **起始版本：** 11

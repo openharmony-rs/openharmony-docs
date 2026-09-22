@@ -1,5 +1,9 @@
 # ExceptionMessage
 
+```TypeScript
+interface ExceptionMessage
+```
+
 Represents an exception message about the SQL statement executed by the database.
 
 **Since:** 20

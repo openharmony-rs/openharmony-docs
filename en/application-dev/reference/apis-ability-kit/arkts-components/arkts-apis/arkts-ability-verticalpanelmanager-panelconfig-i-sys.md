@@ -1,5 +1,9 @@
 # PanelConfig (System API)
 
+```TypeScript
+interface PanelConfig
+```
+
 Indicates the panel config
 
 @interface PanelConfig

@@ -1,5 +1,9 @@
 # NdefMessage
 
+```TypeScript
+export interface NdefMessage
+```
+
 Provides methods for Message of NDEF.
 
 **Since:** 9

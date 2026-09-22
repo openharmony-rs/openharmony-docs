@@ -1,5 +1,9 @@
 # Result
 
+```TypeScript
+export enum Result
+```
+
 应用安装结果码。
 
 **起始版本：** 22

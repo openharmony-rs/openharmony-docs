@@ -36,6 +36,8 @@ declare function open(path: string, flags?: number, mode?: number): Promise<numb
 | Promise&lt;number&gt; | Promise对象。返回打开文件的文件描述符。 |
 
 
+<a id="open-1"></a>
+
 ## open
 
 ```TypeScript
@@ -59,6 +61,8 @@ declare function open(path: string, callback: AsyncCallback<number>): void
 | path | string | 是 | 待打开文件的应用沙箱路径。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步打开文件之后的回调，返回打开文件的文件描述符。 |
 
+
+<a id="open-2"></a>
 
 ## open
 
@@ -84,6 +88,8 @@ declare function open(path: string, flags: number, callback: AsyncCallback<numbe
 | flags | number | 是 | 打开文件的选项，必须指定如下选项中的一个，默认以只读方式打开：<br>- 0o0：只读打开。<br>- 0o1：只写打开。<br>- 0o2：读写打开。<br>同时，也可给定如下选项，以按位或的方式追加，默认不给定任何额外选项：<br>- 0o100：若文件不存在，则创建文件。使用该选项时必须指定第三个参数mode。<br>- 0o200：如果追加了0o100选项，且文件已经存在，则出错。<br>- 0o1000：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br>- 0o2000：以追加方式打开，后续写将追加到文件末尾。<br>- 0o4000：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续IO进行非阻塞操作。<br>- 0o200000：如果path不指向目录，则出错。<br>- 0o400000：如果path指向符号链接，则出错。<br>- 0o4010000：以同步IO的方式打开文件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步打开文件之后的回调，返回打开文件的文件描述符。 |
 
+
+<a id="open-3"></a>
 
 ## open
 

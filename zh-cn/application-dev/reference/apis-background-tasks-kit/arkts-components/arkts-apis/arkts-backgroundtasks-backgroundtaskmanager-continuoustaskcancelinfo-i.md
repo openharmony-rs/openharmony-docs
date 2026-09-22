@@ -1,5 +1,9 @@
 # ContinuousTaskCancelInfo
 
+```TypeScript
+interface ContinuousTaskCancelInfo
+```
+
 长时任务取消信息。
 
 **起始版本：** 15

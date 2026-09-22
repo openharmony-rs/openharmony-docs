@@ -34,18 +34,82 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **示例**
 
-```TypeScript
 FA模型示例：
-```
 
 ```TypeScript
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import featureAbility from '@ohos.ability.featureAbility';
+import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
+import { BusinessError } from '@ohos.base';
+
+const callback = (err: BusinessError, data: void) => {
+  if (err) {
+    console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
+  } else {
+    console.info('Operation startBackgroundRunning succeeded');
+  }
+}
+
+let wantAgentInfo : wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    }
+  ],
+  actionType: wantAgent.OperationType.START_ABILITY,
+  requestCode: 0,
+  wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+};
+
+wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
+  backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
+    backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj, callback);
+});
+```
+
 Stage模型示例：
-```
 
 ```TypeScript
-FA模型示例（需使用js代码开发）：
+import UIAbility from '@ohos.app.ability.UIAbility';
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { BusinessError } from '@ohos.base';
+
+const callback = (err: BusinessError, data: void) => {
+  if (err) {
+    console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
+  } else {
+    console.info('Operation startBackgroundRunning succeeded');
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let wantAgentInfo : wantAgent.WantAgentInfo = {
+      wants: [
+        {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
+        }
+      ],
+      actionType: wantAgent.OperationType.START_ABILITY,
+      requestCode: 0,
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
+      backgroundTaskManager.startBackgroundRunning(this.context,
+        backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj, callback);
+    });
+  }
+};
 ```
 
+
+<a id="startbackgroundrunning-1"></a>
 
 ## startBackgroundRunning
 
@@ -59,7 +123,7 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **废弃版本：** 9
 
-**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent)
+**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-1)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -81,4 +145,70 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **示例**
 
-参见 [startBackgroundRunning](#startbackgroundrunning)
+FA模型示例（需使用js代码开发）：
+
+```TypeScript
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import featureAbility from '@ohos.ability.featureAbility';
+import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
+import { BusinessError } from '@ohos.base';
+
+let wantAgentInfo : wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    }
+  ],
+  actionType: wantAgent.OperationType.START_ABILITY,
+  requestCode: 0,
+  wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+};
+
+wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+  backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
+    backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj).then(() => {
+    console.info('Operation startBackgroundRunning succeeded');
+  }).catch((err: BusinessError) => {
+    console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
+  });
+});
+```
+
+Stage模型示例：
+
+```TypeScript
+import UIAbility from '@ohos.app.ability.UIAbility';
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { BusinessError } from '@ohos.base';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let wantAgentInfo : wantAgent.WantAgentInfo = {
+      wants: [
+        {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
+        }
+      ],
+      // 点击通知后，动作类型
+      actionType: wantAgent.OperationType.START_ABILITY,
+      requestCode: 0,
+      // 点击通知后，动作执行属性
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
+      backgroundTaskManager.startBackgroundRunning(this.context,
+        backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj).then(() => {
+        console.info('Operation startBackgroundRunning succeeded');
+      }).catch((err: BusinessError) => {
+        console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
+      });
+    });
+  }
+};
+```

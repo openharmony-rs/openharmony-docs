@@ -38,4 +38,4 @@ Creates a page component for the Stepper container.
 
 | Name | Description |
 | --- | --- |
-| [ItemState](arkts-arkui-itemstate-e.md) | Display status of **nextLabel** in the stepper. |
+| [ItemState](arkts-arkui-stepperitem-comp-itemstate-e.md) | Display status of **nextLabel** in the stepper. |

@@ -1,5 +1,9 @@
 # UnlockPolicy (System API)
 
+```TypeScript
+enum UnlockPolicy
+```
+
 Indicates the screen lock authentication policy used to unlock the screen.
 
 **Since:** 26.0.0

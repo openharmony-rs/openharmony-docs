@@ -58,16 +58,8 @@ let removeAllSlotsCallback = (err: BusinessError): void => {
 notificationManager.removeAllSlots(removeAllSlotsCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.removeAllSlots().then(() => {
-  console.info(`Succeeded in removing all slots.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to remove all slots. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="removeallslots-1"></a>
 
 ## removeAllSlots
 
@@ -87,9 +79,9 @@ After deletion, all notification slots and their configurations of the current a
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) adds a notification slot of a specified type.
 
-[getSlot](arkts-notification-notificationmanager-getslot-f.md) obtains a notification slot of a specified type.
+[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-2) obtains a notification slot of a specified type.
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) removes a notification slot of a specified type for this application.
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) removes a notification slot of a specified type for this application.
 
 **Return value:**
 
@@ -107,4 +99,12 @@ After deletion, all notification slots and their configurations of the current a
 
 **Examples**
 
-See [removeAllSlots](#removeallslots)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.removeAllSlots().then(() => {
+  console.info(`Succeeded in removing all slots.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to remove all slots. Code is ${err.code}, message is ${err.message}`);
+});
+```

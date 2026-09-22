@@ -1,5 +1,9 @@
 # AuthType
 
+```TypeScript
+enum AuthType
+```
+
 Enumerates the types of user authentication supported by an asset.
 
 **Since:** 11

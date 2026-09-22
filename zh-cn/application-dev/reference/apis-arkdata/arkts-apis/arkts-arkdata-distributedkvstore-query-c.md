@@ -1,5 +1,9 @@
 # Query
 
+```TypeScript
+class Query
+```
+
 使用谓词表示数据库查询，提供创建Query实例、查询数据库中的数据和添加谓词的方法。Query对象的谓词方法均返回自身，支持链式调用。一个Query对象中谓词数量上限为256个。
 
 **起始版本：** 9
@@ -208,7 +212,7 @@ try {
 ## equalTo
 
 ```TypeScript
-equalTo(field: string, value: number | number | string | boolean): Query
+equalTo(field: string, value: number | string | boolean): Query
 ```
 
 构造一个Query对象来查询具有指定字段的条目，其值等于指定的值。
@@ -231,7 +235,7 @@ equalTo(field: string, value: number | number | string | boolean): Query
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value | number &#124; number &#124; string &#124; boolean | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
+| value | number &#124; string &#124; boolean | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
 
 **返回值：**
 
@@ -303,7 +307,7 @@ try {
 ## greaterThan
 
 ```TypeScript
-greaterThan(field: string, value: number | number | string | boolean): Query
+greaterThan(field: string, value: number | string | boolean): Query
 ```
 
 构造一个Query对象以查询具有大于指定值的指定字段的条目。
@@ -326,7 +330,7 @@ greaterThan(field: string, value: number | number | string | boolean): Query
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | Indicates the field, which cannot contain ^. |
-| value | number &#124; number &#124; string &#124; boolean | 是 | Indicates the value to be compared. |
+| value | number &#124; string &#124; boolean | 是 | Indicates the value to be compared. |
 
 **返回值：**
 
@@ -361,7 +365,7 @@ try {
 ## greaterThanOrEqualTo
 
 ```TypeScript
-greaterThanOrEqualTo(field: string, value: number | number | string): Query
+greaterThanOrEqualTo(field: string, value: number | string): Query
 ```
 
 构造一个Query对象以查询具有指定字段且值大于或等于指定值的条目。
@@ -384,7 +388,7 @@ greaterThanOrEqualTo(field: string, value: number | number | string): Query
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value | number &#124; number &#124; string | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
+| value | number &#124; string | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
 
 **返回值：**
 
@@ -649,7 +653,7 @@ try {
 ## lessThan
 
 ```TypeScript
-lessThan(field: string, value: number | number | string): Query
+lessThan(field: string, value: number | string): Query
 ```
 
 构造一个Query对象以查询具有小于指定值的指定字段的条目。
@@ -672,7 +676,7 @@ lessThan(field: string, value: number | number | string): Query
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value | number &#124; number &#124; string | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
+| value | number &#124; string | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
 
 **返回值：**
 
@@ -707,7 +711,7 @@ try {
 ## lessThanOrEqualTo
 
 ```TypeScript
-lessThanOrEqualTo(field: string, value: number | number | string): Query
+lessThanOrEqualTo(field: string, value: number | string): Query
 ```
 
 构造一个Query对象以查询具有指定字段且值小于或等于指定值的条目。
@@ -730,7 +734,7 @@ lessThanOrEqualTo(field: string, value: number | number | string): Query
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value | number &#124; number &#124; string | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
+| value | number &#124; string | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
 
 **返回值：**
 
@@ -877,7 +881,7 @@ try {
 ## notEqualTo
 
 ```TypeScript
-notEqualTo(field: string, value: number | number | string | boolean): Query
+notEqualTo(field: string, value: number | string | boolean): Query
 ```
 
 构造一个Query对象以查询具有指定字段且值不等于指定值的条目。
@@ -900,7 +904,7 @@ notEqualTo(field: string, value: number | number | string | boolean): Query
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value | number &#124; number &#124; string &#124; boolean | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
+| value | number &#124; string &#124; boolean | 是 | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。 |
 
 **返回值：**
 

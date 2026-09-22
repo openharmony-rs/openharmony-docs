@@ -1,5 +1,9 @@
 # GattService
 
+```TypeScript
+interface GattService
+```
+
 GATT服务结构定义，可包含多个特征值[BLECharacteristic](arkts-connectivity-ble-blecharacteristic-i.md)和依赖的其他服务。
 
 **起始版本：** 10

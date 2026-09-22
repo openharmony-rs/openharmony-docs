@@ -1,5 +1,9 @@
 # RelativeTimeFormatResolvedOptions
 
+```TypeScript
+export interface RelativeTimeFormatResolvedOptions
+```
+
 Represents the formatting options for the **RelativeTimeFormat** object.
 
 **Since:** 8

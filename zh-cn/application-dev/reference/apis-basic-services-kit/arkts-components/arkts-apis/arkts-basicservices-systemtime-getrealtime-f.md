@@ -54,38 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  systemTime.getRealTime((error: BusinessError, time: number) => {
-    if (error) {
-      console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
-      return;
-    }
-    console.info(`Succeeded in getting real time : ${time}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  systemTime.getRealTime().then((time: number) => {
-    console.info(`Succeeded in getting real time : ${time}`);
-  }).catch((error: BusinessError) => {
-    console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
-}
-```
-
+<a id="getrealtime-1"></a>
 
 ## getRealTime
 
@@ -117,8 +87,25 @@ function getRealTime(callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 [getRealTime](#getrealtime)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+  systemTime.getRealTime((error: BusinessError, time: number) => {
+    if (error) {
+      console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+      return;
+    }
+    console.info(`Succeeded in getting real time : ${time}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+}
+```
+
+
+<a id="getrealtime-2"></a>
 
 ## getRealTime
 
@@ -156,4 +143,17 @@ function getRealTime(isNano?: boolean): Promise<number>
 
 **示例**
 
-参见 [getRealTime](#getrealtime)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemTime.getRealTime().then((time: number) => {
+    console.info(`Succeeded in getting real time : ${time}`);
+  }).catch((error: BusinessError) => {
+    console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+}
+```

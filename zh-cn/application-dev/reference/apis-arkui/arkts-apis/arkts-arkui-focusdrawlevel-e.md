@@ -1,5 +1,9 @@
 # FocusDrawLevel
 
+```TypeScript
+declare enum FocusDrawLevel
+```
+
 Type of focus draw level.
 
 @enum {number}

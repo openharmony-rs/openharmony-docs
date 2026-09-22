@@ -58,27 +58,8 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 });
 ```
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = 'com.example.myapplication';
-
-try {
-  appManager.isApplicationRunning(bundleName, (err, data) => {
-    if (err) {
-      console.error(`err: ${JSON.stringify(err)}`);
-    } else {
-      console.info(`The application running is: ${JSON.stringify(data)}`);
-    }
-  });
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
-
+<a id="isapplicationrunning-1"></a>
 
 ## isApplicationRunning
 
@@ -114,4 +95,23 @@ function isApplicationRunning(bundleName: string, callback: AsyncCallback<boolea
 
 **示例**
 
-参见 [isApplicationRunning](#isapplicationrunning)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.example.myapplication';
+
+try {
+  appManager.isApplicationRunning(bundleName, (err, data) => {
+    if (err) {
+      console.error(`err: ${JSON.stringify(err)}`);
+    } else {
+      console.info(`The application running is: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```

@@ -64,33 +64,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 获取鼠标主键
-            pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
-              console.info(`Succeeded in getting mouse primary button, primary: ${JSON.stringify(primary)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="getmouseprimarybutton-1"></a>
 
 ## getMousePrimaryButton
 
@@ -121,4 +96,29 @@ function getMousePrimaryButton(): Promise<PrimaryButton>
 
 **示例**
 
-参见 [getMousePrimaryButton](#getmouseprimarybutton)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标主键
+            pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
+              console.info(`Succeeded in getting mouse primary button, primary: ${JSON.stringify(primary)}.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

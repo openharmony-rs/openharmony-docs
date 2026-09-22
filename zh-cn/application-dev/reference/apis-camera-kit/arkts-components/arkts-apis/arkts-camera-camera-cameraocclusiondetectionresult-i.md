@@ -1,5 +1,9 @@
 # CameraOcclusionDetectionResult
 
+```TypeScript
+interface CameraOcclusionDetectionResult
+```
+
 镜头遮挡或脏污检测回调返回的接口实例，表示镜头遮挡或脏污状态信息。
 
 **起始版本：** 23

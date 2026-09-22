@@ -1,5 +1,9 @@
 # UpgradeStatus（系统接口）
 
+```TypeScript
+export enum UpgradeStatus
+```
+
 升级状态。
 
 **起始版本：** 9

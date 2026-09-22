@@ -1,5 +1,9 @@
 # FileListOption
 
+```TypeScript
+export interface FileListOption
+```
+
 Defines the options used in list().
 
 **Since:** 3

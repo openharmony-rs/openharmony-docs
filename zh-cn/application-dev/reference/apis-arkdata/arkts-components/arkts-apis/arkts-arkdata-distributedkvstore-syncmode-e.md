@@ -1,5 +1,9 @@
 # SyncMode
 
+```TypeScript
+enum SyncMode
+```
+
 同步模式枚举。
 
 **起始版本：** 9

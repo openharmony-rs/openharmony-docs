@@ -13,7 +13,7 @@ function end(context: UIAbilityContext): void
 
 Ends an assessment session.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ASSESSMENT_CONFIGURATION
 

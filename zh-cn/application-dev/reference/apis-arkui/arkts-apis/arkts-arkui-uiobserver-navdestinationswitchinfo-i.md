@@ -1,5 +1,9 @@
 # NavDestinationSwitchInfo
 
+```TypeScript
+export interface NavDestinationSwitchInfo
+```
+
 Navigation组件页面切换的信息。
 
 **起始版本：** 12

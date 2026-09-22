@@ -25,8 +25,8 @@ import { advertising } from '@kit.AdsKit';
 | [deleteWebAdInterface](arkts-ads-advertising-deletewebadinterface-f.md) | Deletes the ad JavaScript object injected through **registerWebAdInterface** (this API is only open to some pre-installed system applications). |
 | [getAdRequestBody](arkts-ads-advertising-getadrequestbody-f.md) | Obtains the body of an ad request. This API uses a promise to return the result (this API is only open to some pre-installed system applications). |
 | [parseAdResponse](arkts-ads-advertising-parseadresponse-f.md) | Parses and processes the body of an ad response (this API is only open to some pre-installed system applications). |
-| [registerWebAdInterface](arkts-ads-advertising-registerwebadinterface-f.md) | Injects an ad JavaScript object to the **Web** component (this API is only open to some pre-installed system applications). |
-| [registerWebAdInterface](arkts-ads-advertising-registerwebadinterface-f.md) | Injects an ad JavaScript object to the **Web** component (this API is only open to some pre-installed system applications). |
+| [registerWebAdInterface](arkts-ads-advertising-registerwebadinterface-f.md#registerwebadinterface) | Injects an ad JavaScript object to the **Web** component (this API is only open to some pre-installed system applications). |
+| [registerWebAdInterface](arkts-ads-advertising-registerwebadinterface-f.md#registerwebadinterface-1) | Injects an ad JavaScript object to the **Web** component (this API is only open to some pre-installed system applications). |
 | [showAd](arkts-ads-advertising-showad-f.md) | Shows a full-screen ad. |
 
 ### Classes

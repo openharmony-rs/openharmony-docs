@@ -1,5 +1,9 @@
 # MmsAddress (System API)
 
+```TypeScript
+export interface MmsAddress
+```
+
 Defines an MMSC address.
 
 **Since:** 8

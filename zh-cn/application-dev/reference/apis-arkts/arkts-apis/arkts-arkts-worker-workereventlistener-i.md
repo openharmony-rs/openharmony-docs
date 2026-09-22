@@ -1,5 +1,9 @@
 # WorkerEventListener
 
+```TypeScript
+export interface WorkerEventListener
+```
+
 事件监听类。
 
 **起始版本：** 9
@@ -38,3 +42,19 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
+
+**示例**
+
+```TypeScript
+// Index.ets
+import { worker, Event } from "@kit.ArkTS"
+
+const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
+
+workerInstance.addEventListener("alert", (event: Event) => {
+  console.info("event type is: ", JSON.stringify(event.type));
+});
+
+const eventToDispatch : Event = { type: "alert", timeStamp: 0 }; // timeStamp暂未支持
+workerInstance.dispatchEvent(eventToDispatch);
+```

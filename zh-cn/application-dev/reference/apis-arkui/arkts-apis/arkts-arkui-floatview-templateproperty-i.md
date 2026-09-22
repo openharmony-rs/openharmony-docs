@@ -1,5 +1,9 @@
 # TemplateProperty
 
+```TypeScript
+interface TemplateProperty
+```
+
 切换悬浮窗模板并修改窗口尺寸时需要提供的参数配置。
 
 **起始版本：** 26.0.0

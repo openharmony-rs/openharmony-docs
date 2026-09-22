@@ -1,5 +1,9 @@
 # AlbumSubtype
 
+```TypeScript
+enum AlbumSubtype
+```
+
 枚举，相册子类型，表示具体的相册类型。
 
 **起始版本：** 10

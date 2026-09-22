@@ -1,5 +1,9 @@
 # XmlPullParser
 
+```TypeScript
+class XmlPullParser
+```
+
 XmlPullParser接口用于解析现有的XML文件，适用于对XML文本进行随机访问和灵活解析的场景。
 
 **起始版本：** 8

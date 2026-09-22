@@ -1,5 +1,9 @@
 # Run
 
+```TypeScript
+class Run
+```
+
 文本排版单元，表示一段具有相同样式属性的连续文本片段。Run由[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接口获取。
 
 下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接口获取Run对象实例，再通过此实例调用对应方法。
@@ -127,31 +131,7 @@ getGlyphs(): Array<number>
 let glyph = runs[0].getGlyphs();
 ```
 
-```TypeScript
-import { text } from '@kit.ArkGraphics2D'
-
-function textFunc() {
-  let glyphs = runs[0].getGlyphs(); // 获取渲染块全部字形序号
-  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // 获取渲染块从起始位置1开始，长度为2范围内的字形序号
-  glyphsRange = runs[0].getGlyphs({start:-1, end:2}); // -1是非法参数，将返回undefined
-  glyphsRange = runs[0].getGlyphs({start:0, end:-10}); // -10是非法参数，将返回undefined
-  let glyphsNull = runs[0].getGlyphs(null); // null是非法参数，将返回undefined
-  let glyphsUndefined = runs[0].getGlyphs(undefined); // undefined是非法参数，将返回undefined
-}
-
-@Entry
-@Component
-struct Index {
-  fun: Function = textFunc;
-  build() {
-    Column() {
-      Button().onClick(() => {
-        this.fun();
-      })
-    }
-  }
-}
-```
+<a id="getglyphs-1"></a>
 
 ## getGlyphs
 
@@ -181,7 +161,31 @@ getGlyphs(range: Range): Array<number>
 
 **示例**
 
-参见 [getGlyphs](#getglyphs)
+```TypeScript
+import { text } from '@kit.ArkGraphics2D'
+
+function textFunc() {
+  let glyphs = runs[0].getGlyphs(); // 获取渲染块全部字形序号
+  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // 获取渲染块从起始位置1开始，长度为2范围内的字形序号
+  glyphsRange = runs[0].getGlyphs({start:-1, end:2}); // -1是非法参数，将返回undefined
+  glyphsRange = runs[0].getGlyphs({start:0, end:-10}); // -10是非法参数，将返回undefined
+  let glyphsNull = runs[0].getGlyphs(null); // null是非法参数，将返回undefined
+  let glyphsUndefined = runs[0].getGlyphs(undefined); // undefined是非法参数，将返回undefined
+}
+
+@Entry
+@Component
+struct Index {
+  fun: Function = textFunc;
+  build() {
+    Column() {
+      Button().onClick(() => {
+        this.fun();
+      })
+    }
+  }
+}
+```
 
 ## getImageBounds
 
@@ -271,31 +275,7 @@ getPositions(): Array<common2D.Point>
 let positions = runs[0].getPositions();
 ```
 
-```TypeScript
-import { text } from '@kit.ArkGraphics2D'
-
-function textFunc() {
-  let positions = runs[0].getPositions(); // 获取渲染块全部字形位置
-  let positionsRange = runs[0].getPositions({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形位置
-  positionsRange = runs[0].getPositions({start:-1, end:2}); // -1是非法参数，将返回undefined
-  positionsRange = runs[0].getPositions({start:0, end:-10}); // -10是非法参数，将返回undefined
-  let positionsNull = runs[0].getPositions(null); // null是非法参数，将返回undefined
-  let positionsUndefined = runs[0].getPositions(undefined); // undefined是非法参数，将返回undefined
-}
-
-@Entry
-@Component
-struct Index {
-  fun: Function = textFunc;
-  build() {
-    Column() {
-      Button().onClick(() => {
-        this.fun();
-      })
-    }
-  }
-}
-```
+<a id="getpositions-1"></a>
 
 ## getPositions
 
@@ -325,7 +305,31 @@ getPositions(range: Range): Array<common2D.Point>
 
 **示例**
 
-参见 [getPositions](#getpositions)
+```TypeScript
+import { text } from '@kit.ArkGraphics2D'
+
+function textFunc() {
+  let positions = runs[0].getPositions(); // 获取渲染块全部字形位置
+  let positionsRange = runs[0].getPositions({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形位置
+  positionsRange = runs[0].getPositions({start:-1, end:2}); // -1是非法参数，将返回undefined
+  positionsRange = runs[0].getPositions({start:0, end:-10}); // -10是非法参数，将返回undefined
+  let positionsNull = runs[0].getPositions(null); // null是非法参数，将返回undefined
+  let positionsUndefined = runs[0].getPositions(undefined); // undefined是非法参数，将返回undefined
+}
+
+@Entry
+@Component
+struct Index {
+  fun: Function = textFunc;
+  build() {
+    Column() {
+      Button().onClick(() => {
+        this.fun();
+      })
+    }
+  }
+}
+```
 
 ## getStringIndices
 

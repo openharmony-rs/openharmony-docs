@@ -1,10 +1,14 @@
 # DialogCustomOptions
 
+```TypeScript
+declare interface DialogCustomOptions extends DialogBaseOptions
+```
+
 自定义样式对话框的选项。对话内容作为present()方法的第一个参数提供。不在此选项对象中。
 
 **继承/实现关系：** DialogCustomOptions extends [DialogBaseOptions](arkts-arkui-dialog-dialogbaseoptions-i.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,10 +30,10 @@ customStyle?: boolean
 
 **默认值：** false
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -1,5 +1,9 @@
 # FluidLightMode (System API)
 
+```TypeScript
+export enum FluidLightMode
+```
+
 Enumerates the fluid light modes of the input method.<br> <br>
 
 | Name | Value| Description |  

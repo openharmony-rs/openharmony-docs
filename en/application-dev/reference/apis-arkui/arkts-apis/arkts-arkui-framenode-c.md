@@ -1,6 +1,10 @@
 # FrameNode
 
-**FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](arkts-arkui-nodecontroller-c.md) to mount a BuilderNode (that holds the FrameNode) to a NodeContainer or mount a [RenderNode](arkts-arkui-rendernode-c.md) to another FrameNode.&lt;!--RP2--&gt;&lt;!--RP2End--&gt;
+```TypeScript
+export class FrameNode
+```
+
+**FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](arkts-arkui-nodecontroller-c.md) to mount a [BuilderNode](arkts-arkui-buildernode-c.md) (that holds the FrameNode) to a [NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) or mount a [RenderNode](arkts-arkui-rendernode-c.md) to another FrameNode.&lt;!--RP2--&gt;&lt;!--RP2End--&gt;
 
 > **NOTE:** 
 > 
@@ -12,7 +16,7 @@
 > 
 > - When the API of the [FrameNode](arkts-arkui-framenode-c.md) object is invoked in the scenario of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](arkts-arkui-arkui-uicontext-uicontext-c.md#runscopedtask) API of [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
 > 
-> - In the FrameNode APIs, only the mandatory parameters of the [Optional](../arkts-components/arkts-arkui-optional-t.md) type can be set to null or undefined.
+> - In the FrameNode APIs, only the mandatory parameters of the [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md) type can be set to null or undefined.
 
 **Since:** 11
 
@@ -72,9 +76,7 @@ Adds the polymorphic style states supported by the component.
 
 **Examples**
 
-```TypeScript
 See Example of Setting and Deleting a Polymorphic Style State.
-```
 
 ## adoptChild
 
@@ -85,6 +87,8 @@ adoptChild(child: FrameNode): void
 Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node.
 
 **Since:** 22
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
@@ -106,9 +110,7 @@ Adopts the target node as an affiliated node. The adopted node must not have an 
 
 **Examples**
 
-```TypeScript
 See Example of Adopting a Node as an Affiliate.
-```
 
 ## appendChild
 
@@ -141,9 +143,7 @@ Appends a child node to the end of this FrameNode. If this FrameNode is not modi
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## cancelAnimations
 
@@ -175,9 +175,7 @@ Cancels all animations for specified properties on the FrameNode. This API execu
 
 **Examples**
 
-```TypeScript
 See Example of Creating and Canceling an Animation.
-```
 
 ## clearChildren
 
@@ -203,9 +201,7 @@ Clears all child nodes of this FrameNode. If this FrameNode is not modifiable, a
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## constructor
 
@@ -372,9 +368,7 @@ Converts the coordinates of a point from the coordinate system of the window whe
 
 **Examples**
 
-```TypeScript
 See Example of Converting Between Local Coordinates and Window Coordinates.
-```
 
 ## convertPositionToWindow
 
@@ -413,9 +407,7 @@ Converts the coordinates of a point from the coordinate system of the current no
 
 **Examples**
 
-```TypeScript
 See Example of Converting Between Local Coordinates and Window Coordinates.
-```
 
 ## createAnimation
 
@@ -438,9 +430,9 @@ Creates a property animation for the FrameNode.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | property | [AnimationPropertyType](arkts-arkui-animationpropertytype-e.md) | Yes | Animation property type. |
-| startValue | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number[]&gt; | Yes | Animation start value. The value can be **undefined** or an array. If the value is **undefined**, the animation uses the last set value of the property on the node as the starting value. If the value is an array, the length must match the property type requirements:<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°). <br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px. <br>- **AnimationPropertyType.SCALE**: [scaleX, scaleY] (scale factors). <br>- **AnimationPropertyType.OPACITY**: [opacity] (value range: [0, 1]). <br>For the first animation of a property, **startValue** must be explicitly specified. For subsequent animations, it is recommended that you either omit **startValue** or set it to the previous animation's end value to avoid abrupt changes. |
+| startValue | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;number[]&gt; | Yes | Animation start value. The value can be **undefined** or an array. If the value is **undefined**, the animation uses the last set value of the property on the node as the starting value. If the value is an array, the length must match the property type requirements:<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°). <br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px. <br>- **AnimationPropertyType.SCALE**: [scaleX, scaleY] (scale factors). <br>- **AnimationPropertyType.OPACITY**: [opacity] (value range: [0, 1]). <br>For the first animation of a property, **startValue** must be explicitly specified. For subsequent animations, it is recommended that you either omit **startValue** or set it to the previous animation's end value to avoid abrupt changes. |
 | endValue | number[] | Yes | Animation end value. The value is an array. The array length must match the property type requirements:<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°). <br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px. <br>- **AnimationPropertyType.SCALE**: [scaleX, scaleY] (scale factors). <br>- **AnimationPropertyType.OPACITY**: [opacity] (value range: [0, 1]). |
-| param | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | Yes | Animation parameters, including the duration, animation curve, and end callback. |
+| param | [AnimateParam](../arkts-components/arkts-arkui-common-comp-animateparam-i.md) | Yes | Animation parameters, including the duration, animation curve, and end callback. |
 
 **Return value:**
 
@@ -450,9 +442,7 @@ Creates a property animation for the FrameNode.
 
 **Examples**
 
-```TypeScript
 See Example of Creating and Canceling an Animation.
-```
 
 ## createFrameNodes
 
@@ -854,13 +844,9 @@ Obtains the child node in the specified position of this node.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
-```TypeScript
-See Example of Node Operations in the LazyForEach Scenario.
-```
+<a id="getchild-1"></a>
 
 ## getChild
 
@@ -893,7 +879,7 @@ Obtains a child node at a specified index from this FrameNode, with optional sup
 
 **Examples**
 
-See [getChild](#getchild)
+See Example of Node Operations in the LazyForEach Scenario.
 
 ## getChildrenCount
 
@@ -919,9 +905,39 @@ Obtains the number of child nodes of this FrameNode.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
+
+<a id="getchildrencount-1"></a>
+
+## getChildrenCount
+
+```TypeScript
+getChildrenCount(countMode?: ChildrenCountMode): number
 ```
+
+Obtains the number of child nodes of this FrameNode based on the specified counting mode.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| countMode | [ChildrenCountMode](arkts-arkui-framenode-childrencountmode-e.md) | No | The children count mode. Default value is ChildrenCountMode.ALL_EXPAND. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| number | Returns the number of children of the current FrameNode based on the count mode. |
+
+**Examples**
 
 ```TypeScript
 import { NodeController, FrameNode, UIContext, BuilderNode, ChildrenCountMode, LengthUnit } from '@kit.ArkUI';
@@ -1146,38 +1162,6 @@ struct Index {
 }
 ```
 
-## getChildrenCount
-
-```TypeScript
-getChildrenCount(countMode?: ChildrenCountMode): number
-```
-
-Obtains the number of child nodes of this FrameNode based on the specified counting mode.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| countMode | [ChildrenCountMode](arkts-arkui-framenode-childrencountmode-e.md) | No | The children count mode. Default value is ChildrenCountMode.ALL_EXPAND. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| number | Returns the number of children of the current FrameNode based on the count mode. |
-
-**Examples**
-
-See [getChildrenCount](#getchildrencount)
-
 ## getCrossLanguageOptions
 
 ```TypeScript
@@ -1202,9 +1186,7 @@ Obtains the cross-language access options for this FrameNode. For example, for n
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getCustomProperty
 
@@ -1236,9 +1218,7 @@ Obtains the component's custom property by its name.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getFirstChild
 
@@ -1264,9 +1244,7 @@ Obtains the first child node of this FrameNode.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getFirstChildIndexWithoutExpand
 
@@ -1292,9 +1270,7 @@ Obtains the sequence number of the first child node of this node that is in the 
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations in the LazyForEach Scenario.
-```
 
 ## getFrameNodeById
 
@@ -1316,7 +1292,7 @@ Searches for all child nodes layer by layer from the current node (which is used
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | ID of the child node to be queried, which is the same as the component ID. |
+| id | string | Yes | ID of the child node to be queried, which is the same as the [component ID](../arkts-components/arkts-arkui-common-comp.md#common). |
 
 **Return value:**
 
@@ -1487,9 +1463,7 @@ Obtains the position offset of this FrameNode relative to the global display, in
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getId
 
@@ -1497,7 +1471,7 @@ See Example of Node Operations.
 getId(): string
 ```
 
-Obtains the node ID set by the user, which is the same as the value of the component ID.
+Obtains the node ID set by the user, which is the same as the value of the [component ID](../arkts-components/arkts-arkui-common-comp.md#common).
 
 **Since:** 12
 
@@ -1511,13 +1485,11 @@ Obtains the node ID set by the user, which is the same as the value of the compo
 
 | Type | Description |
 | --- | --- |
-| string | Node ID set by the user, which is the same as the value of the component ID. |
+| string | Node ID set by the user, which is the same as the value of the [component ID](../arkts-components/arkts-arkui-common-comp.md#common). |
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getInspectorInfo
 
@@ -1548,9 +1520,7 @@ Obtains the structure information of the node, which is consistent with what is 
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getInteractionEventBindingInfo
 
@@ -1582,9 +1552,7 @@ Obtains the event binding information for the target node. Returns **undefined**
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getLastChildIndexWithoutExpand
 
@@ -1610,9 +1578,7 @@ Obtains the sequence number of the last child node of this node that is in the m
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations in the LazyForEach Scenario.
-```
 
 ## getLayoutPosition
 
@@ -1638,9 +1604,7 @@ Obtains the position offset of this FrameNode relative to the parent component a
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getMeasuredSize
 
@@ -1666,9 +1630,7 @@ Obtains the measured size of this FrameNode, in px.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getNextSibling
 
@@ -1694,9 +1656,7 @@ Obtains the next sibling node of this FrameNode.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getNodePropertyValue
 
@@ -1728,9 +1688,7 @@ Obtains the property value of the FrameNode.
 
 **Examples**
 
-```TypeScript
 See Example of Creating and Canceling an Animation.
-```
 
 ## getNodeType
 
@@ -1738,7 +1696,7 @@ See Example of Creating and Canceling an Animation.
 getNodeType(): string
 ```
 
-Obtains the type of the node. For built-in components, the node type corresponds to the component name. For example, the node type of the Button component is **Button**. For custom components that implement rendering, the node type is **__Common__**.
+Obtains the type of the node. For built-in components, the node type corresponds to the component name. For example, the node type of the [Button](../arkts-components/arkts-arkui-button-comp.md#button) component is **Button**. For custom components that implement rendering, the node type is **__Common__**.
 
 **Since:** 12
 
@@ -1756,9 +1714,7 @@ Obtains the type of the node. For built-in components, the node type corresponds
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getOpacity
 
@@ -1784,9 +1740,7 @@ Obtains the opacity of the node. The minimum value is 0, and the maximum value i
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getParent
 
@@ -1812,9 +1766,7 @@ Obtains the parent node of this FrameNode.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations and Example of Obtaining the Root Node.
-```
 
 ## getPositionToParent
 
@@ -1908,7 +1860,7 @@ struct Index {
 getPositionToParentWithTransform(): Position
 ```
 
-Obtains the position offset of a FrameNode relative to its drawing-enabled parent component, in vp. Drawing attributes include transform and translate. This API returns the upper left corner coordinates after component layout.
+Obtains the position offset of a FrameNode relative to its drawing-enabled parent component, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the upper left corner coordinates after component layout.
 
 **Since:** 12
 
@@ -2080,7 +2032,7 @@ struct Index {
 getPositionToScreenWithTransform(): Position
 ```
 
-Obtains the position offset of a FrameNode relative to the drawing-enabled screen, in vp. Drawing attributes include transform and translate. This API returns the upper left corner coordinates after component layout.
+Obtains the position offset of a FrameNode relative to the drawing-enabled screen, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the upper left corner coordinates after component layout.
 
 **Since:** 12
 
@@ -2251,7 +2203,7 @@ struct Index {
 getPositionToWindowWithTransform(): Position
 ```
 
-Obtains the position offset of a FrameNode relative to the drawing-enabled window, in vp. Drawing attributes include transform and translate. This API returns the upper left corner coordinates after component layout.
+Obtains the position offset of a FrameNode relative to the drawing-enabled window, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the upper left corner coordinates after component layout.
 
 **Since:** 12
 
@@ -2354,9 +2306,7 @@ Obtains the previous sibling node of this FrameNode.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getRenderNode
 
@@ -2440,9 +2390,7 @@ Obtains the system-assigned unique ID of the node.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getUserConfigBorderWidth
 
@@ -2468,9 +2416,7 @@ Obtains the border width set by the user.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getUserConfigMargin
 
@@ -2496,9 +2442,7 @@ Obtains the margin set by the user.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getUserConfigPadding
 
@@ -2524,9 +2468,7 @@ Obtains the padding set by the user.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## getUserConfigSize
 
@@ -2552,9 +2494,7 @@ Obtains the width and height set by the user.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## insertChildAfter
 
@@ -2588,9 +2528,7 @@ Inserts a child node after the specified child node of this FrameNode. If this F
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## invalidate
 
@@ -2630,8 +2568,106 @@ This API ensures rendering synchronization by triggering immediate property upda
 
 **Examples**
 
-```TypeScript
 Starting from API version 21, when dynamically switching between nodes using if/else statements, you can call invalidateAttributes during node creation to trigger immediate attribute updates, preventing visual flickering during component switching.
+
+```TypeScript
+// index.ets
+import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
+
+// Implement a custom NodeAdapter controller by extending NodeController.
+class MyNodeAdapterController extends NodeController {
+  rootNode: FrameNode | null = null;
+  imageUrl: string = '';
+
+  constructor(imageUrl: string) {
+    super();
+    this.imageUrl = imageUrl;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let imageNode = typeNode.createNode(uiContext, 'Image');
+    imageNode.initialize($r(this.imageUrl))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    // Force immediate node updates within the current frame to prevent flickering.
+    imageNode.invalidateAttributes();
+    return imageNode;
+  }
+}
+
+// Custom component with custom mount event handling that pre-loads sample images before mounting
+@Component
+struct NodeComponent3 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createNode(uiContext, 'Image');
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+// Custom component with custom mount event handling that pre-loads sample images before mounting
+@Component
+struct NodeComponent4 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createNode(uiContext, 'Image');
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+@Entry
+@Component
+struct ListNodeTest {
+  @State flag: boolean = true;
+  adapterController: MyNodeAdapterController = new MyNodeAdapterController('app.media.startIcon');
+
+  build() {
+    Column() {
+      Text('ListNode Adapter');
+      if (this.flag) {
+        NodeComponent3()
+      } else {
+        NodeComponent4()
+      }
+      if (this.flag) {
+        NodeContainer(this.adapterController)
+          .width(300).height(300)
+          .borderWidth(1).borderColor(Color.Black)
+      } else {
+        NodeContainer(this.adapterController)
+          .width(300).height(300)
+          .borderWidth(1).borderColor(Color.Black)
+      }
+      if (this.flag) {
+        Image($r('app.media.startIcon')).width(100).height(100).syncLoad(true)
+      } else {
+        Image($r('app.media.startIcon')).width(100).height(100).syncLoad(true)
+      }
+      Button('change').onClick(() => {
+        this.flag = !this.flag;
+      })
+    }
+    .borderWidth(1)
+    .width('100%')
+  }
+}
 ```
 
 ## isAttached
@@ -2658,9 +2694,7 @@ Obtains whether the node is mounted to the main node tree.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## isClipToFrame
 
@@ -2686,9 +2720,7 @@ Checks whether the node is clipped to the component area. This API returns **tru
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## isDisposed
 
@@ -2714,9 +2746,7 @@ Checks whether this FrameNode object has released its reference to its backend e
 
 **Examples**
 
-```TypeScript
 See FrameNode Validity Check Example.
-```
 
 ## isInRenderState
 
@@ -2831,9 +2861,7 @@ Checks whether this FrameNode is modifiable.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## isOnMainTree
 
@@ -3434,9 +3462,7 @@ Obtains whether the node is visible.
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## layout
 
@@ -3462,9 +3488,7 @@ Lays out this FrameNode, specifying the layout positions for the FrameNode and i
 
 **Examples**
 
-```TypeScript
 See Example of Customizing a Node.
-```
 
 ## measure
 
@@ -3490,9 +3514,7 @@ Measures this FrameNode and calculates its size based on the layout constraints 
 
 **Examples**
 
-```TypeScript
 See Example of Customizing a Node.
-```
 
 ## moveTo
 
@@ -3509,8 +3531,8 @@ Moves this FrameNode to a specified position within the target FrameNode. If thi
 > other node types.
 > 
 > This API only supports [BuilderNode](arkts-arkui-buildernode-c.md) with root components of these types:
-> Stack, XComponent,
-> EmbeddedComponent. This API does not work for other
+> [Stack](../arkts-components/arkts-arkui-stack-comp.md#stack), [XComponent](../arkts-components/arkts-arkui-xcomponent-comp.md#xcomponent),
+> [EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md#embedded_component). This API does not work for other
 > component types.
 
 **Since:** 18
@@ -3537,9 +3559,7 @@ Moves this FrameNode to a specified position within the target FrameNode. If thi
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## onDraw
 
@@ -3567,9 +3587,7 @@ Note: The Canvas provided in the [DrawContext](arkts-arkui-graphics-drawcontext-
 
 **Examples**
 
-```TypeScript
 See Example of Customizing a Node.
-```
 
 ## onLayout
 
@@ -3595,9 +3613,7 @@ Called when this FrameNode needs to determine its layout. This API provides cust
 
 **Examples**
 
-```TypeScript
 See Example of Customizing a Node.
-```
 
 ## onMeasure
 
@@ -3623,9 +3639,7 @@ Called when this FrameNode needs to determine its size. This API provides custom
 
 **Examples**
 
-```TypeScript
 See Example of Customizing a Node.
-```
 
 ## recycle
 
@@ -3645,9 +3659,7 @@ Triggers child component recycling in global reuse scenarios and fully releases 
 
 **Examples**
 
-```TypeScript
 See Example of Reusing and Recycling Nodes.
-```
 
 ## removeAdoptedChild
 
@@ -3658,6 +3670,8 @@ removeAdoptedChild(child: FrameNode): void
 Removes a previously-adopted affiliated node.
 
 **Since:** 22
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
@@ -3679,9 +3693,7 @@ Removes a previously-adopted affiliated node.
 
 **Examples**
 
-```TypeScript
 See Example of Adopting a Node as an Affiliate.
-```
 
 ## removeChild
 
@@ -3713,9 +3725,7 @@ Deletes the specified child node from this FrameNode. If this FrameNode is not m
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## removeSupportedUIStates
 
@@ -3741,9 +3751,7 @@ Removes the state processing registration from the component.
 
 **Examples**
 
-```TypeScript
 See Example of Setting and Deleting a Polymorphic Style State.
-```
 
 ## reuse
 
@@ -3763,9 +3771,7 @@ Triggers child component reuse in global reuse scenarios to recycle FrameNode ba
 
 **Examples**
 
-```TypeScript
 See Example of Reusing and Recycling Nodes.
-```
 
 ## setCrossLanguageOptions
 
@@ -3811,9 +3817,7 @@ Sets the cross-language access options for this FrameNode. For example, for node
 
 **Examples**
 
-```TypeScript
 See Example of Node Operations.
-```
 
 ## setLayoutPosition
 
@@ -3839,9 +3843,7 @@ Sets the position of this FrameNode after layout. The default unit is PX.
 
 **Examples**
 
-```TypeScript
 See Example of Customizing a Node.
-```
 
 ## setMeasuredSize
 
@@ -3867,9 +3869,7 @@ Sets the measured size of this FrameNode. The default unit is PX. If the configu
 
 **Examples**
 
-```TypeScript
 See Example of Customizing a Node.
-```
 
 ## setNeedsLayout
 
@@ -3889,9 +3889,7 @@ Marks this FrameNode as needing layout, so that it will be relaid out in the nex
 
 **Examples**
 
-```TypeScript
 See Example of Customizing a Node.
-```
 
 ## commonAttribute
 
@@ -3899,14 +3897,14 @@ See Example of Customizing a Node.
 get commonAttribute(): CommonAttribute
 ```
 
-Obtains the **CommonAttribute** API associated with the FrameNode, which is used to configure universal attributes and universal events.
+Obtains the **CommonAttribute** API associated with the FrameNode, which is used to configure [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) and [universal events](../arkts-components/arkts-arkui-common-comp.md#common).
 
 Note that only the attributes of a custom node can be modified.
 
 > **NOTE:** 
 > 
 > The visual representation of the FrameNode is similar to that of a
-> Stack container that is aligned to the top start edge.
+> [Stack](../arkts-components/arkts-arkui-stack-comp.md#stack) container that is aligned to the top start edge.
 > 
 > For details about the supported attributes, see
 > [attributeModifier Support for Attributes and Events](../../../ui/arkts-user-defined-extension-attributeModifier.md#attributemodifier-support-for-attributes-and-events).
@@ -3923,9 +3921,7 @@ Note that only the attributes of a custom node can be modified.
 
 **Examples**
 
-```TypeScript
 See Basic Event Example.
-```
 
 ## commonEvent
 
@@ -3937,7 +3933,7 @@ Obtains the **UICommonEvent** object held in this FrameNode to set basic events.
 
 In scenarios involving **LazyForEach**, where nodes may be destroyed and reconstructed, you need to reset or re- attach event listeners to the newly created nodes to ensure they respond to events correctly.
 
-**Type:** [UICommonEvent](../arkts-components/arkts-arkui-uicommonevent-i.md)
+**Type:** [UICommonEvent](../arkts-components/arkts-arkui-common-comp-uicommonevent-i.md)
 
 **Since:** 12
 
@@ -3949,9 +3945,7 @@ In scenarios involving **LazyForEach**, where nodes may be destroyed and reconst
 
 **Examples**
 
-```TypeScript
 See Basic Event Example and Example of Using Basic Events in the LazyForEach Scenario.
-```
 
 ## gestureEvent
 
@@ -3959,9 +3953,9 @@ See Basic Event Example and Example of Using Basic Events in the LazyForEach Sce
 get gestureEvent(): UIGestureEvent
 ```
 
-Obtains the **UIGestureEvent** object held by this FrameNode, which is used to set gesture events bound to the component. Gesture events set using the **gestureEvent** API will not override gestures bound using the gesture binding API. If both APIs are used to set gestures, the gesture binding API takes precedence.
+Obtains the **UIGestureEvent** object held by this FrameNode, which is used to set gesture events bound to the component. Gesture events set using the **gestureEvent** API will not override gestures bound using the [gesture binding API](../arkts-components/arkts-arkui-common-comp.md#common). If both APIs are used to set gestures, the gesture binding API takes precedence.
 
-**Type:** [UIGestureEvent](../arkts-components/arkts-arkui-uigestureevent-i.md)
+**Type:** [UIGestureEvent](../arkts-components/arkts-arkui-common-comp-uigestureevent-i.md)
 
 **Since:** 14
 
@@ -3973,6 +3967,4 @@ Obtains the **UIGestureEvent** object held by this FrameNode, which is used to s
 
 **Examples**
 
-```TypeScript
 For details, see Gesture Event Example.
-```

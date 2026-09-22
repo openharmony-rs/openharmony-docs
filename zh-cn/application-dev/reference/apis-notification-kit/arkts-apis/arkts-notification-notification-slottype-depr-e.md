@@ -1,5 +1,9 @@
 # SlotType
 
+```TypeScript
+export enum SlotType
+```
+
 通知渠道类型。
 
 **起始版本：** 7

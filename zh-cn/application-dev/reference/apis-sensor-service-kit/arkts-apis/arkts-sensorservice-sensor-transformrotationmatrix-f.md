@@ -63,6 +63,8 @@ try {
 ```
 
 
+<a id="transformrotationmatrix-1"></a>
+
 ## transformRotationMatrix
 
 ```TypeScript
@@ -97,4 +99,4 @@ function transformRotationMatrix(inRotationVector: Array<number>, coordinates: C
 
 **示例**
 
-参见 transformRotationMatrix
+参见 [transformRotationMatrix](#transformrotationmatrix)

@@ -1,5 +1,9 @@
 # ResolutionLevel
 
+```TypeScript
+enum ResolutionLevel
+```
+
 The defination of suggested resolution.
 
 **Since:** 19

@@ -70,25 +70,8 @@ try {
 }
 ```
 
-```TypeScript
-import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
-try {
-  let logFiles = logLibrary.list('HILOG');
-  if (logFiles.length > 0) {
-    logLibrary.copy('HILOG', logFiles[0].name, 'dir1', (error, copyResult) => {
-      if (error) {
-        console.error(`Failed to copy log file. Code: ${error.code}, message: ${error.message}`);
-      } else {
-        // copy success.
-      }
-    });
-  }
-} catch (error) {
-    console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
-}
-```
-
+<a id="copy-1"></a>
 
 ## copy
 
@@ -126,4 +109,21 @@ function copy(logType: string, logName: string, dest: string, callback: AsyncCal
 
 **示例**
 
-参见 [copy](#copy)
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+
+try {
+  let logFiles = logLibrary.list('HILOG');
+  if (logFiles.length > 0) {
+    logLibrary.copy('HILOG', logFiles[0].name, 'dir1', (error, copyResult) => {
+      if (error) {
+        console.error(`Failed to copy log file. Code: ${error.code}, message: ${error.message}`);
+      } else {
+        // copy success.
+      }
+    });
+  }
+} catch (error) {
+    console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
+}
+```

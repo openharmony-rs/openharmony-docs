@@ -1,5 +1,9 @@
 # GeofenceTransitionEvent
 
+```TypeScript
+export enum GeofenceTransitionEvent
+```
+
 Enum for geofence transition status.
 
 **Since:** 12

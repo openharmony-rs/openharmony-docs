@@ -1,5 +1,9 @@
 # TypedFrameNode
 
+```TypeScript
+export interface TypedFrameNode<C, T> extends FrameNode
+```
+
 TypedFrameNode继承自[FrameNode](arkts-arkui-framenode-c.md)，用于声明具体类型的FrameNode，支持Text、Image、Button、Column等多种组件类型，适用于通过代码动态创建具体类型组件节点的场景。
 
 **继承/实现关系：** TypedFrameNode extends [FrameNode](arkts-arkui-framenode-c.md)

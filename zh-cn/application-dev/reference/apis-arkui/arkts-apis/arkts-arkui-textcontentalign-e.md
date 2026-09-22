@@ -1,5 +1,9 @@
 # TextContentAlign
 
+```TypeScript
+declare enum TextContentAlign
+```
+
 文本内容区垂直对齐方向。
 
 **起始版本：** 21

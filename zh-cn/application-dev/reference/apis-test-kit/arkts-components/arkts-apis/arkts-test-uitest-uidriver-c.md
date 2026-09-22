@@ -1,5 +1,9 @@
 # UiDriver
 
+```TypeScript
+declare class UiDriver
+```
+
 UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
 > **说明：** 

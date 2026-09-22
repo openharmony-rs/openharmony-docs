@@ -1,6 +1,15 @@
 # SegmentButtonItemOptionsConstructorOptions
 
+```TypeScript
+interface SegmentButtonItemOptionsConstructorOptions
+```
+
 Construct parameters for SegmentButtonItemOptions.
+
+> **NOTE:** 
+> 
+> Both the unselected icon `icon` and the selected icon `selectedIcon` must be set. Setting only one of them is
+> invalid.
 
 **Since:** 11
 
@@ -18,9 +27,9 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, Tab
 accessibilityDescription?: ResourceStr
 ```
 
-Accessibility description, which is used to explain component operations to users. You can set detailed description text to help users understand the operation consequences. If a component has both text and accessibility description, the text is read first, and then the accessibility description is read.
+Accessibility description, which provides additional explanation about the current component for users. Developers can set a relatively detailed explanatory text for this attribute to help users understand the operation to be performed, such as the possible consequences of the operation, especially when these consequences cannot be learned from the component's own attributes and accessibility text. If a component has both a text attribute and an accessibility description attribute, the text attribute is announced first when the component is selected, followed by the content of the accessibility description attribute.
 
-The default value is an empty string.
+Default value: empty string.
 
 If the value is **undefined**, the default value is used.
 
@@ -42,19 +51,19 @@ If the value is **undefined**, the default value is used.
 accessibilityLevel?: string
 ```
 
-Accessibility level, which is used to set whether the current component can be recognized by accessibility services.
+Accessibility level, which controls whether the current component can be recognized by accessibility services.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: The component can be recognized by accessibility services.
+"auto": the current component can be recognized by accessibility services.
 
-**"yes"**: The component can be recognized by accessibility services.
+"yes": the current component can be recognized by accessibility services.
 
-**"no"**: The component cannot be recognized by accessibility services.
+"no": the current component cannot be recognized by accessibility services.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+"no-hide-descendants": the current component and all its child components cannot be recognized by accessibility services.
 
-Default value: **"auto"**
+Default value: "auto"
 
 If the value is **undefined**, the default value is used.
 
@@ -76,9 +85,13 @@ If the value is **undefined**, the default value is used.
 icon?: ResourceStr
 ```
 
-Icon of the unselected item.
+Icon for the unselected state.
 
-If the value is undefined, no icon is displayed.
+Default value: the icon for the unselected state is not displayed.
+
+If the value is **undefined**, the default value is used.
+
+**Note:** **icon** and **selectedIcon** must be set together. Setting either one alone does not take effect.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -96,9 +109,9 @@ If the value is undefined, no icon is displayed.
 iconAccessibilityText?: ResourceStr
 ```
 
-Accessibility text of the unselected item.
+Accessibility text for the icon in the unselected state.
 
-The default value is an empty string.
+Default value: empty string.
 
 If the value is **undefined**, the default value is used.
 
@@ -120,9 +133,13 @@ If the value is **undefined**, the default value is used.
 selectedIcon?: ResourceStr
 ```
 
-Icon of the selected item.
+Icon for the selected state.
 
-If the value is undefined, no icon is displayed.
+Default value: the icon for the selected state is not displayed.
+
+If the value is **undefined**, the default value is used.
+
+**Note:** **icon** and **selectedIcon** must be set together. Setting either one alone does not take effect.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -140,9 +157,9 @@ If the value is undefined, no icon is displayed.
 selectedIconAccessibilityText?: ResourceStr
 ```
 
-Accessibility text of the selected item.
+Accessibility text for the icon in the selected state.
 
-The default value is an empty string.
+Default value: empty string.
 
 If the value is **undefined**, the default value is used.
 
@@ -166,7 +183,9 @@ text?: ResourceStr
 
 Button text.
 
-If the value is undefined, no text is displayed.
+Default value: empty string.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

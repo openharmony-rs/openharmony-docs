@@ -1,5 +1,9 @@
 # PrintPageType
 
+```TypeScript
+enum PrintPageType
+```
+
 打印纸张类型的枚举。
 
 **起始版本：** 11

@@ -92,6 +92,37 @@ windowAnimationManager.minimizeWindowWithAnimation(target, (err: BusinessError, 
 });
 ```
 
+
+<a id="minimizewindowwithanimation-1"></a>
+
+## minimizeWindowWithAnimation
+
+```TypeScript
+function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise<WindowAnimationFinishedCallback>
+```
+
+Minimize the window target with animation.
+
+**Since:** 9
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| windowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | The window target to be minimized. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md)&gt; | Promise used to return the animation finished callback. |
+
+**Examples**
+
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -142,34 +173,3 @@ promise.then((data: windowAnimationManager.WindowAnimationFinishedCallback) => {
     return;
 });
 ```
-
-
-## minimizeWindowWithAnimation
-
-```TypeScript
-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise<WindowAnimationFinishedCallback>
-```
-
-Minimize the window target with animation.
-
-**Since:** 9
-
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| windowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | The window target to be minimized. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md)&gt; | Promise used to return the animation finished callback. |
-
-**Examples**
-
-See [minimizeWindowWithAnimation](#minimizewindowwithanimation)

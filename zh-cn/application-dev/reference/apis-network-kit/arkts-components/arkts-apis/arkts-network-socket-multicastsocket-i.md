@@ -1,5 +1,9 @@
 # MulticastSocket
 
+```TypeScript
+export interface MulticastSocket extends UDPSocket
+```
+
 MulticastSocket连接。在调用MulticastSocket的方法前，需要先通过[socket.constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md)创建MulticastSocket对象。
 
 **继承/实现关系：** MulticastSocket extends [UDPSocket](arkts-network-socket-udpsocket-i.md)
@@ -70,20 +74,7 @@ multicast.addMembership(addr, (err: Object) => {
 })
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-
-let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-let addr: socket.NetAddress = {
-  address: '239.255.0.1',
-  port: 8080
-}
-multicast.addMembership(addr).then(() => {
-  console.info('addMembership success');
-}).catch((err: Object) => {
-  console.error('addMembership fail');
-});
-```
+<a id="addmembership-1"></a>
 
 ## addMembership
 
@@ -128,7 +119,20 @@ addMembership(multicastAddress: NetAddress): Promise<void>
 
 **示例**
 
-参见 [addMembership](#addmembership)
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+let addr: socket.NetAddress = {
+  address: '239.255.0.1',
+  port: 8080
+}
+multicast.addMembership(addr).then(() => {
+  console.info('addMembership success');
+}).catch((err: Object) => {
+  console.error('addMembership fail');
+});
+```
 
 ## dropMembership
 
@@ -187,20 +191,7 @@ multicast.dropMembership(addr, (err: Object) => {
 })
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-
-let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-let addr: socket.NetAddress = {
-  address: '239.255.0.1',
-  port: 8080
-}
-multicast.dropMembership(addr).then(() => {
-  console.info('drop membership success');
-}).catch((err: Object) => {
-  console.error('drop membership fail');
-});
-```
+<a id="dropmembership-1"></a>
 
 ## dropMembership
 
@@ -247,7 +238,20 @@ dropMembership(multicastAddress: NetAddress): Promise<void>
 
 **示例**
 
-参见 [dropMembership](#dropmembership)
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+let addr: socket.NetAddress = {
+  address: '239.255.0.1',
+  port: 8080
+}
+multicast.dropMembership(addr).then(() => {
+  console.info('drop membership success');
+}).catch((err: Object) => {
+  console.error('drop membership fail');
+});
+```
 
 ## getLoopbackMode
 
@@ -299,16 +303,7 @@ multicast.getLoopbackMode((err: Object, value: Boolean) => {
 })
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-
-let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-multicast.getLoopbackMode().then((value: Boolean) => {
-  console.info('loopback mode: ', JSON.stringify(value));
-}).catch((err: Object) => {
-  console.error('get loopback mode failed');
-});
-```
+<a id="getloopbackmode-1"></a>
 
 ## getLoopbackMode
 
@@ -347,7 +342,16 @@ getLoopbackMode(): Promise<boolean>
 
 **示例**
 
-参见 [getLoopbackMode](#getloopbackmode)
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+multicast.getLoopbackMode().then((value: Boolean) => {
+  console.info('loopback mode: ', JSON.stringify(value));
+}).catch((err: Object) => {
+  console.error('get loopback mode failed');
+});
+```
 
 ## getMulticastTTL
 
@@ -401,16 +405,7 @@ multicast.getMulticastTTL((err: Object, value: Number) => {
 })
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-
-let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-multicast.getMulticastTTL().then((value: Number) => {
-  console.info('ttl: ', JSON.stringify(value));
-}).catch((err: Object) => {
-  console.error('set ttl failed');
-});
-```
+<a id="getmulticastttl-1"></a>
 
 ## getMulticastTTL
 
@@ -451,7 +446,16 @@ getMulticastTTL(): Promise<number>
 
 **示例**
 
-参见 [getMulticastTTL](#getmulticastttl)
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+multicast.getMulticastTTL().then((value: Number) => {
+  console.info('ttl: ', JSON.stringify(value));
+}).catch((err: Object) => {
+  console.error('set ttl failed');
+});
+```
 
 ## getSocketFd
 
@@ -564,16 +568,7 @@ multicast.setLoopbackMode(false, (err: Object) => {
 })
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-
-let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-multicast.setLoopbackMode(false).then(() => {
-  console.info('set loopback mode success');
-}).catch((err: Object) => {
-  console.error('set loopback mode failed');
-});
-```
+<a id="setloopbackmode-1"></a>
 
 ## setLoopbackMode
 
@@ -618,7 +613,16 @@ setLoopbackMode(flag: boolean): Promise<void>
 
 **示例**
 
-参见 [setLoopbackMode](#setloopbackmode)
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+multicast.setLoopbackMode(false).then(() => {
+  console.info('set loopback mode success');
+}).catch((err: Object) => {
+  console.error('set loopback mode failed');
+});
+```
 
 ## setMulticastTTL
 
@@ -675,16 +679,7 @@ multicast.setMulticastTTL(ttl, (err: Object) => {
 })
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-
-let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-multicast.setMulticastTTL(8).then(() => {
-  console.info('set ttl success');
-}).catch((err: Object) => {
-  console.error('set ttl failed');
-});
-```
+<a id="setmulticastttl-1"></a>
 
 ## setMulticastTTL
 
@@ -732,7 +727,16 @@ setMulticastTTL(ttl: number): Promise<void>
 
 **示例**
 
-参见 [setMulticastTTL](#setmulticastttl)
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+multicast.setMulticastTTL(8).then(() => {
+  console.info('set ttl success');
+}).catch((err: Object) => {
+  console.error('set ttl failed');
+});
+```
 
 ## setReuseAddress
 

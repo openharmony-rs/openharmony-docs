@@ -1,5 +1,9 @@
 # AudioCapturerOptions
 
+```TypeScript
+interface AudioCapturerOptions
+```
+
 Describes audio capturer configurations.
 
 **Since:** 8

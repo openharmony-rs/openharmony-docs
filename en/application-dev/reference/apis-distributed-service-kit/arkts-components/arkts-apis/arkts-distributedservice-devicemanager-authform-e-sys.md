@@ -1,5 +1,9 @@
 # AuthForm (System API)
 
+```TypeScript
+enum AuthForm
+```
+
 Enumerates the device authentication types.
 
 **Since:** 10

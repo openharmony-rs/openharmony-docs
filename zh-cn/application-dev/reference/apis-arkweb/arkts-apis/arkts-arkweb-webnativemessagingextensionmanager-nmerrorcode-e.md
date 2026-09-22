@@ -1,5 +1,9 @@
 # NmErrorCode
 
+```TypeScript
+export enum NmErrorCode
+```
+
 Native Messaging的错误列表。
 
 **起始版本：** 21

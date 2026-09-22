@@ -1,5 +1,9 @@
 # ClearOptions（系统接口）
 
+```TypeScript
+export interface ClearOptions
+```
+
 清除异常选项，用于指定要清除的异常状态类型。
 
 **起始版本：** 9

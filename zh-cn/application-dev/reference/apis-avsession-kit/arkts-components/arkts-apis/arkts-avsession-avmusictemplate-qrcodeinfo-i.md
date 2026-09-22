@@ -1,5 +1,9 @@
 # QrCodeInfo
 
+```TypeScript
+interface QrCodeInfo
+```
+
 二维码信息的定义。
 
 @interface QrCodeInfo

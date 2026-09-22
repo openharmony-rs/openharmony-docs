@@ -1,5 +1,9 @@
 # LineHeightStyle
 
+```TypeScript
+enum LineHeightStyle
+```
+
 Enumerates the line height scaling base.
 
 **Since:** 21

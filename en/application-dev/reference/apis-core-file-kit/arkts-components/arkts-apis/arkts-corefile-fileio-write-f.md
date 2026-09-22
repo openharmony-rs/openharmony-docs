@@ -45,6 +45,8 @@ Writes data into a file. This API uses a promise to return the result.
 | Promise&lt;number&gt; | Promise that returns the length of the data written, in bytes. |
 
 
+<a id="write-1"></a>
+
 ## write
 
 ```TypeScript
@@ -69,6 +71,8 @@ Writes data to a file. This API uses an asynchronous callback to return the resu
 | buffer | ArrayBuffer &#124; string | Yes | Data to write. It can be a string or data from a buffer. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback invoked when the data is written asynchronously. return the length of the data written, in bytes. |
 
+
+<a id="write-2"></a>
 
 ## write
 

@@ -1,5 +1,9 @@
 # TCPSocketConnection
 
+```TypeScript
+export interface TCPSocketConnection
+```
+
 Defines a **TCPSocketConnection** object, that is, the connection between the TCPSocket client and the server. Before calling TCPSocketConnection APIs, you need to obtain a **TCPSocketConnection** object.
 
 > **NOTE:** 
@@ -64,19 +68,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
-tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
-  client.close().then(() => {
-    console.info('close success');
-  }).catch((err: BusinessError) => {
-    console.error('close fail');
-  });
-});
-```
+<a id="close-1"></a>
 
 ## close
 
@@ -106,23 +98,6 @@ Closes a TCP socket connection. This API uses a promise to return the result.
 | [2300002](../errorcode-net-socket.md#2300002-system-internal-error) | System internal error. |
 
 **Examples**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
-
-tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
-  client.close((err: BusinessError) => {
-    if (err) {
-      console.error('close fail');
-      return;
-    }
-    console.info('close success');
-  });
-});
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -254,19 +229,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
-tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
-  client.getRemoteAddress().then(() => {
-    console.info('getRemoteAddress success');
-  }).catch((err: BusinessError) => {
-    console.error('getRemoteAddress fail');
-  });
-});
-```
+<a id="getremoteaddress-1"></a>
 
 ## getRemoteAddress
 
@@ -301,22 +264,6 @@ Obtains the remote address of a socket connection. This API uses a promise to re
 | [2303188](../errorcode-net-socket.md#2303188-socket-operations-on-non-sockets) | Socket operation on non-socket. |
 
 **Examples**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
-tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
-  client.getRemoteAddress((err: BusinessError, data: socket.NetAddress) => {
-    if (err) {
-      console.error('getRemoteAddress fail');
-      return;
-    }
-    console.info('getRemoteAddress success:' + JSON.stringify(data));
-  });
-});
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';
@@ -416,6 +363,32 @@ Unsubscribes from **message** events of the **TCPSocketConnection** object. This
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+let callback = (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  for (let i: number = 0; i < value.message.byteLength; i++) {
+    let uint8Array = new Uint8Array(value.message) 
+    let messages = uint8Array[i]
+    let message = String.fromCharCode(messages);
+    messageView += message;
+  }
+  console.info('on message message: ' + JSON.stringify(messageView));
+  console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+}
+tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+  client.on('message', callback);
+  // You can pass the callback of the on function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.
+  client.off('message', callback);
+  client.off('message');
+});
+```
+
 ## off('close')
 
 ```TypeScript
@@ -440,6 +413,23 @@ Unsubscribes from **close** events of the **TCPSocketConnection** object. This A
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
+
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+let callback = () => {
+  console.info("on close success");
+}
+tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+  client.on('close', callback);
+  // You can pass the callback of the on function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.
+  client.off('close', callback);
+  client.off('close');
+});
+```
 
 ## off('error')
 
@@ -466,6 +456,24 @@ Unsubscribes from **error** events of the **TCPSocketConnection** object. This A
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback = (err: BusinessError) => {
+  console.error("on error, err:" + JSON.stringify(err));
+}
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+  client.on('error', callback);
+  // You can pass the callback of the on function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.
+  client.off('error', callback);
+  client.off('error');
+});
+```
+
 ## on('message')
 
 ```TypeScript
@@ -490,6 +498,29 @@ Subscribes to **message** events of the **TCPSocketConnection** object. This API
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
+
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+
+tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+  client.on('message', (value: socket.SocketMessageInfo) => {
+    let messageView = '';
+    let uint8Array = new Uint8Array(value.message); 
+    for (let i: number = 0; i < value.message.byteLength; i++) {
+      let messages = uint8Array[i];
+      let message = String.fromCharCode(messages);
+      messageView += message;
+    }
+    console.info('on message message: ' + JSON.stringify(messageView));
+    console.info('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+  });
+});
+```
 
 ## on('close')
 
@@ -516,6 +547,20 @@ Subscribes to **close** events of the **TCPSocketConnection** object. This API u
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+  client.on('close', () => {
+    console.info("on close success")
+  });
+});
+```
+
 ## on('error')
 
 ```TypeScript
@@ -540,6 +585,20 @@ Subscribes to **error** events of the **TCPSocketConnection** object. This API u
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
+
+**Examples**
+
+```TypeScript
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+  client.on('error', (err: BusinessError) => {
+    console.error("on error, err:" + JSON.stringify(err))
+  });
+});
+```
 
 ## send
 
@@ -591,23 +650,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
-
-tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
-  let tcpSendOption: socket.TCPSendOptions = {
-    data: 'Hello, client!'
-  }
-  client.send(tcpSendOption).then(() => {
-    console.info('send success');
-  }).catch((err: BusinessError) => {
-    console.error('send fail');
-  });
-});
-```
+<a id="send-1"></a>
 
 ## send
 
@@ -648,21 +691,6 @@ Sends data over a **TCPSocketConnection** object. This API uses a promise to ret
 | [2300002](../errorcode-net-socket.md#2300002-system-internal-error) | System internal error. |
 
 **Examples**
-
-```TypeScript
-import { socket } from '@kit.NetworkKit';
-
-let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
-
-tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
-  let tcpSendOption: socket.TCPSendOptions = {
-    data: 'Hello, client!'
-  }
-  client.send(tcpSendOption, () => {
-    console.info('send success');
-  });
-});
-```
 
 ```TypeScript
 import { socket } from '@kit.NetworkKit';

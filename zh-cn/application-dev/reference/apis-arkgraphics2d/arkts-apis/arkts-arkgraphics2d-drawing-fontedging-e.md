@@ -1,5 +1,9 @@
 # FontEdging
 
+```TypeScript
+enum FontEdging
+```
+
 字型边缘效果类型枚举。
 
 > **说明：** 

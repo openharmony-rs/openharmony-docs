@@ -1,5 +1,9 @@
 # AttachState
 
+```TypeScript
+export enum AttachState
+```
+
 Device attach states.
 
 @enum { int }

@@ -1,5 +1,9 @@
 # ColorManagement
 
+```TypeScript
+interface ColorManagement extends ColorManagementQuery
+```
+
 **ColorManagement** inherits from [ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md).
 
 It provides the APIs for color space settings.
@@ -41,6 +45,24 @@ Obtains the color space in use.
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function getActiveColorSpace(session: camera.PhotoSession): colorSpaceManager.ColorSpace | undefined {
+  let colorSpace: colorSpaceManager.ColorSpace | undefined = undefined;
+  try {
+    colorSpace = session.getActiveColorSpace();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The getActiveColorSpace call failed. error code: ${err.code}`);
+  }
+  return colorSpace;
+}
+```
 
 ## setColorSpace
 
@@ -104,3 +126,22 @@ Recording mode:
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | The colorSpace does not match the format. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function setColorSpace(session: camera.PhotoSession, colorSpaces: Array<colorSpaceManager.ColorSpace>): void {
+  if (colorSpaces === undefined || colorSpaces.length <= 0) {
+    return;
+  }
+  try {
+    session.setColorSpace(colorSpaces[0]);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The setColorSpace call failed, error code: ${err.code}`);
+  }
+}
+```

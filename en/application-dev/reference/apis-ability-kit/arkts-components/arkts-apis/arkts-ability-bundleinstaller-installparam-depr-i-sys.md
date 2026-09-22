@@ -1,5 +1,9 @@
 # InstallParam (System API)
 
+```TypeScript
+export interface InstallParam
+```
+
 Describes the parameters required for bundle installation, recovery, or uninstall.
 
 **Since:** 7

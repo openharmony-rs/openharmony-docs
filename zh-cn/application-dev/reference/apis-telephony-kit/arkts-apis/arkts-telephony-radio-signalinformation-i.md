@@ -1,5 +1,9 @@
 # SignalInformation
 
+```TypeScript
+export interface SignalInformation
+```
+
 网络信号强度信息对象。
 
 **起始版本：** 6

@@ -29,6 +29,8 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 发布通知的回调方法。 |
 
 
+<a id="publish-1"></a>
+
 ## publish
 
 ```TypeScript

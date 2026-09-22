@@ -1,5 +1,9 @@
 # SubscribeGyroscopeOptions
 
+```TypeScript
+export interface SubscribeGyroscopeOptions
+```
+
 Defines the type of data to return for a subscription to data changes of the gyroscope sensor.
 
 **Since:** 6

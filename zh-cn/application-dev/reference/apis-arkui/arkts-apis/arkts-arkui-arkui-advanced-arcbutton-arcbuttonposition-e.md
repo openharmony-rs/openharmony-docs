@@ -1,5 +1,9 @@
 # ArcButtonPosition
 
+```TypeScript
+export declare enum ArcButtonPosition
+```
+
 定义ArcButton可设置的弧形按钮的类型。
 
 **起始版本：** 18

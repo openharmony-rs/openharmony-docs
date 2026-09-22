@@ -1,5 +1,9 @@
 # UiDirection
 
+```TypeScript
+declare enum UiDirection
+```
+
 Describes the direction of a UI operation such as fling.
 
 **Since:** 10

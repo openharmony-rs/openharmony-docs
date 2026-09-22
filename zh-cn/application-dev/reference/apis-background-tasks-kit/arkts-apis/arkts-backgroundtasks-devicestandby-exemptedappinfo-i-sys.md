@@ -1,5 +1,9 @@
 # ExemptedAppInfo（系统接口）
 
+```TypeScript
+export interface ExemptedAppInfo
+```
+
 豁免应用信息，未进入待机管控的应用信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # PointMode
 
+```TypeScript
+enum PointMode
+```
+
 Enumerates the modes for drawing multiple points in an array.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # CapturePhoto
 
+```TypeScript
+interface CapturePhoto
+```
+
 获取全质量图和未压缩图的对象。
 
 **起始版本：** 23
@@ -33,6 +37,16 @@ release(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+
+async function releaseCapturePhoto(capturePhoto: camera.CapturePhoto): Promise<void> {
+  await capturePhoto.release();
+}
+```
 
 ## main
 

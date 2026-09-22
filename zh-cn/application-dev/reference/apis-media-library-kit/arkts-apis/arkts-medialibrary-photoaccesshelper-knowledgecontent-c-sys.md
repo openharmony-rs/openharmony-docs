@@ -1,5 +1,9 @@
 # KnowledgeContent（系统接口）
 
+```TypeScript
+class KnowledgeContent
+```
+
 支持的MIME类型。
 
 **起始版本：** 23
@@ -63,7 +67,7 @@ static getSearchResult(query: SearchQuery): Promise<SearchResult>
 
 根据提供的查询搜索媒资。该接口使用promise返回结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 

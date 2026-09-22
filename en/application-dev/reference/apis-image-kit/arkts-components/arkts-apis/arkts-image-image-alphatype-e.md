@@ -1,5 +1,9 @@
 # AlphaType
 
+```TypeScript
+enum AlphaType
+```
+
 Enumerates the alpha types of images.
 
 **Since:** 9

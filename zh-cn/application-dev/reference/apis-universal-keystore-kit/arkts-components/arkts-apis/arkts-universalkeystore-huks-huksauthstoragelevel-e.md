@@ -1,5 +1,9 @@
 # HuksAuthStorageLevel
 
+```TypeScript
+export enum HuksAuthStorageLevel
+```
+
 表示生成或导入密钥时，指定该密钥的存储安全等级。
 
 > **说明：** 
@@ -22,6 +26,8 @@ HUKS_AUTH_STORAGE_LEVEL_DE = 0
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -38,6 +44,8 @@ HUKS_AUTH_STORAGE_LEVEL_CE = 1
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -53,6 +61,8 @@ HUKS_AUTH_STORAGE_LEVEL_ECE = 2
 表示密钥仅在解锁状态时可访问。
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 

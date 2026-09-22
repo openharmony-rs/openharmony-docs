@@ -36,6 +36,28 @@ function on(type: SensorId.COLOR, callback: Callback<ColorResponse>, options?: O
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system API.<br>**适用版本：** 11+ |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try{
+  sensor.on(sensor.SensorId.COLOR, (data: sensor.ColorResponse) => {
+    console.info('Succeeded in getting the intensity of light: ' + data.lightIntensity);
+    console.info('Succeeded in getting the color temperature: ' + data.colorTemperature);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+        sensor.off(sensor.SensorId.COLOR);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-1"></a>
 
 ## on
 
@@ -66,3 +88,22 @@ function on(type: SensorId.SAR, callback: Callback<SarResponse>, options?: Optio
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system API.<br>**适用版本：** 11+ |
+
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  sensor.on(sensor.SensorId.SAR, (data: sensor.SarResponse) => {
+    console.info('Succeeded in getting specific absorption rate : ' + data.absorptionRatio);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.SAR);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```

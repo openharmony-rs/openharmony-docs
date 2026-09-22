@@ -1,5 +1,9 @@
 # TlsConfig
 
+```TypeScript
+export interface TlsConfig
+```
+
 TLS加密版本及套件配置。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # ApplicationInfo
 
+```TypeScript
+export interface ApplicationInfo
+```
+
 应用程序信息。
 
 **起始版本：** 9
@@ -12,7 +16,7 @@
 readonly accessTokenId: number
 ```
 
-应用程序的accessTokenId，应用的身份标识，在程序访问控制校验接口中使用。
+应用程序的accessTokenId，应用的身份标识，在[程序访问控制校验接口](../../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。
 
 **类型：** number
 

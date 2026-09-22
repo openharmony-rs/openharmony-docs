@@ -1,5 +1,9 @@
 # DeviceType（系统接口）
 
+```TypeScript
+enum DeviceType
+```
+
 表示设备类型的枚举类。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # ModuleInfo
 
+```TypeScript
+export interface ModuleInfo
+```
+
 The ModuleInfo module provides module information of an application.
 
 > **NOTE:** 

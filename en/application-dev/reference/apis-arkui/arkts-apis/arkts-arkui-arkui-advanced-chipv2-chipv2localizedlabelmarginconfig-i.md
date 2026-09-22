@@ -1,6 +1,10 @@
 # ChipV2LocalizedLabelMarginConfig
 
-Defines localized label margin.
+```TypeScript
+export interface ChipV2LocalizedLabelMarginConfig
+```
+
+Defines the margin configuration between the localized text and the left and right icons.
 
 **Since:** 26.0.0
 
@@ -18,7 +22,25 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 end?: LengthMetrics
 ```
 
-end localized label margin length.
+Margin between the text and the end-side icon. Percentage values are not supported. If a percentage value is passed in, the default value is used.
+
+Default values:
+
+When **size** is **ChipV2Size.SMALL**, the default value of **end** is:
+
+`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`.
+
+When **size** is **ChipV2Size.NORMAL**, the default value of **end** is:
+
+`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`.
+
+Unit: vp
+
+Value range: [0, +∞)
+
+If the value is out of range, the default value is used.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -36,7 +58,25 @@ end localized label margin length.
 start?: LengthMetrics
 ```
 
-start localized label margin length.
+Margin between the text and the start-side icon. Percentage values are not supported. If a percentage value is passed in, the default value is used.
+
+Default values:
+
+When **size** is **ChipV2Size.SMALL**, the default value of **start** is:
+
+`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`.
+
+When **size** is **ChipV2Size.NORMAL**, the default value of **start** is:
+
+`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`.
+
+Unit: vp
+
+Value range: [0, +∞)
+
+If the value is out of range, the default value is used.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 

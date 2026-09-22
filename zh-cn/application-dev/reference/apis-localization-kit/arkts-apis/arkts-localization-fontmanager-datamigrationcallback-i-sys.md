@@ -1,5 +1,9 @@
 # DataMigrationCallback（系统接口）
 
+```TypeScript
+interface DataMigrationCallback
+```
+
 数据迁移时使用的回调接口类型，定义了数据迁移过程中的回调方法。开发者需实现该接口的所有方法，以接收迁移过程中的心跳通知、进度更新和最终结果。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # BoidsSimPlugin (System API)
 
+```TypeScript
+export declare class BoidsSimPlugin
+```
+
 Boids simulation plugin, providing static methods for obtaining the boids simulation world.
 
 **Since:** 26.0.0

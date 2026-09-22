@@ -63,29 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { securityManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(null);
-  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
-} catch (err) {
-  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { securityManager } from '@kit.MDMKit';
-
-try {
-  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy();
-  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
-} catch(err) {
-  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getpasswordpolicy-1"></a>
 
 ## getPasswordPolicy
 
@@ -126,4 +105,14 @@ function getPasswordPolicy(admin: Want | null): PasswordPolicy
 
 **示例**
 
-参见 [getPasswordPolicy](#getpasswordpolicy)
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(null);
+  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+}
+```

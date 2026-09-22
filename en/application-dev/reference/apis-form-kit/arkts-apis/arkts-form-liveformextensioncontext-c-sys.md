@@ -1,5 +1,9 @@
 # LiveFormExtensionContext
 
+```TypeScript
+declare class LiveFormExtensionContext extends ExtensionContext
+```
+
 **LiveFormExtensionContext**, inherited from [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md), is the context of [LiveFormExtensionAbility](arkts-form-app-form-liveformextensionability-liveformextensionability-c.md).
 
 **Inheritance/Implementation:** LiveFormExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)

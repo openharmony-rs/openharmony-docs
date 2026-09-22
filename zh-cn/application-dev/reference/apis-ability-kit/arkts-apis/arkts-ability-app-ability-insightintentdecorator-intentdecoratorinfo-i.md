@@ -1,5 +1,9 @@
 # IntentDecoratorInfo
 
+```TypeScript
+declare interface IntentDecoratorInfo
+```
+
 意图装饰器的通用属性，用于定义意图的基本信息（包括意图名称、意图版本号）。适用于本模块的所有装饰器。
 
 > **说明：** 
@@ -80,7 +84,7 @@ icon?: ResourceStr
 表示意图图标，用于在AI入口显示。
 
 - 当取值为字符串类型时，表示图标读取网络资源。  
-- 当取值为Resource时，表示图标读取本地资源。
+- 当取值为[Resource](../../reference/apis-localization-kit/js-apis-resource-manager.md)时，表示图标读取本地资源。
 
 **类型：** [ResourceStr](../../apis-arkui/arkts-apis/arkts-arkui-resourcestr-t.md)
 

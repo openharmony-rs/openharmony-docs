@@ -1,5 +1,9 @@
 # HuksHandle
 
+```TypeScript
+export interface HuksHandle
+```
+
 huks Handle结构体。
 
 > **说明：** 

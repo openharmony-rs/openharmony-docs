@@ -1,5 +1,9 @@
 # NodeType
 
+```TypeScript
+export enum NodeType
+```
+
 节点类型枚举。
 
 @enum { int }

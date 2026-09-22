@@ -1,5 +1,9 @@
 # QuotaPolicy（系统接口）
 
+```TypeScript
+export interface QuotaPolicy
+```
+
 计量网络策略
 
 **起始版本：** 10

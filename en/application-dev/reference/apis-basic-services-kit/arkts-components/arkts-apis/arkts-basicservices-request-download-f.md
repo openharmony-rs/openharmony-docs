@@ -44,16 +44,6 @@ Downloads a file. This API uses an asynchronous callback to return the result.
 ```TypeScript
 let downloadTask: request.DownloadTask;
 // Replace the URL with the HTTP address of the real server.
-request.download({ url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
-  downloadTask = data;
-}).catch((err: BusinessError) => {
-  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
-})
-```
-
-```TypeScript
-let downloadTask: request.DownloadTask;
-// Replace the URL with the HTTP address of the real server.
 request.download({ url: 'https://xxxx/xxxxx.hap', 
 filePath: 'xxx/xxxxx.hap'}, (err: BusinessError, data: request.DownloadTask) => {
   if (err) {
@@ -64,6 +54,8 @@ filePath: 'xxx/xxxxx.hap'}, (err: BusinessError, data: request.DownloadTask) => 
 });
 ```
 
+
+<a id="download-1"></a>
 
 ## download
 
@@ -77,7 +69,7 @@ Downloads a file. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md)(context: BaseContext, config: DownloadConfig)
+**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)(context: BaseContext, config: DownloadConfig)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -105,4 +97,12 @@ Downloads a file. This API uses a promise to return the result.
 
 **Examples**
 
-See [download](#download)
+```TypeScript
+let downloadTask: request.DownloadTask;
+// Replace the URL with the HTTP address of the real server.
+request.download({ url: 'https://xxxx/xxxx.hap' }).then((data: request.DownloadTask) => {
+  downloadTask = data;
+}).catch((err: BusinessError) => {
+  console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
+})
+```

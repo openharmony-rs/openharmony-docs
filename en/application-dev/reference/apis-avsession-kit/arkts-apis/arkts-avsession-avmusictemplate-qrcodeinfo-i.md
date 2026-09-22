@@ -1,5 +1,9 @@
 # QrCodeInfo
 
+```TypeScript
+interface QrCodeInfo
+```
+
 The definition of QR code Information.
 
 @interface QrCodeInfo

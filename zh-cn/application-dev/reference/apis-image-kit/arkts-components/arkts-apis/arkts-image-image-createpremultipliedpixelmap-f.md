@@ -63,30 +63,8 @@ function createPremultipliedPixelMap() {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-function createPremultipliedPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
-  let bufferArr = new Uint8Array(color);
-  for (let i = 0; i < bufferArr.length; i += 4) {
-    bufferArr[i] = 255;
-    bufferArr[i + 1] = 255;
-    bufferArr[i + 2] = 122;
-    bufferArr[i + 3] = 122;
-  }
-  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
-  let srcPixelMap = image.createPixelMapSync(color, optsForUnpre);
-  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
-  let dstPixelMap = image.createPixelMapSync(optsForPre);
-  image.createPremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
-    console.info('Succeeded in converting the PixelMap.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
-  });
-}
-```
-
+<a id="createpremultipliedpixelmap-1"></a>
 
 ## createPremultipliedPixelMap
 
@@ -124,4 +102,26 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 
 **示例**
 
-参见 [createPremultipliedPixelMap](#createpremultipliedpixelmap)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createPremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  let bufferArr = new Uint8Array(color);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    bufferArr[i] = 255;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
+  }
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
+  let srcPixelMap = image.createPixelMapSync(color, optsForUnpre);
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
+  let dstPixelMap = image.createPixelMapSync(optsForPre);
+  image.createPremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
+    console.info('Succeeded in converting the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```

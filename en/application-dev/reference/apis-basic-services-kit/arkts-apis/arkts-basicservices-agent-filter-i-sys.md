@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+interface Filter
+```
+
 Defines the filter criteria.
 
 **Since:** 10

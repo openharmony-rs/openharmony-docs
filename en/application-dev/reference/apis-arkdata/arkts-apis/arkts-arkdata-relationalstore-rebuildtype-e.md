@@ -1,5 +1,9 @@
 # RebuildType
 
+```TypeScript
+enum RebuildType
+```
+
 Enumerates the RDB store rebuild types. Use the enum name rather than the enum value.
 
 **Since:** 12

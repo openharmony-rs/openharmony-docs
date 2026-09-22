@@ -1,5 +1,9 @@
 # CallbackParamV2
 
+```TypeScript
+export interface CallbackParamV2
+```
+
 节点回调参数接口，用于传递节点事件回调的参数信息。
 
 **起始版本：** 26.0.0

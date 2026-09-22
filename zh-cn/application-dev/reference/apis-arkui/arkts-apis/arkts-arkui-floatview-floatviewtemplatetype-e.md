@@ -1,5 +1,9 @@
 # FloatViewTemplateType
 
+```TypeScript
+enum FloatViewTemplateType
+```
+
 标准悬浮窗模板类型的枚举。
 
 **起始版本：** 26.0.0

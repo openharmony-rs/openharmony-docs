@@ -35,3 +35,31 @@ minApiVersion用于标识最低可用版本，由两部分组成：系统类型+
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Base
+
+**示例**
+
+```TypeScript
+import { Available, deviceInfo } from '@kit.BasicServicesKit';
+
+@Available({minApiVersion: 'OpenHarmony 22'}) // 标记函数最低可用版本
+function myFunc() {}
+
+@Available({minApiVersion: '22'}) // 标记类最低可用版本，系统类型默认值为 OpenHarmony
+class MyClass {}
+
+// 不建议写法：如果工程根目录下build-profile.json5文件设置的compatibleSdkVersion值小于 22，直接调用myFunc方法且没有做版本判断处理，编译器会在myFunc方法调用处抛出告警，提示该方法可能在低版本设备上运行失败
+myFunc();
+
+// 建议写法1：使用deviceInfo.sdkApiVersion获取系统软件API版本进行判断，可以避免低版本设备运行异常，消除编译告警
+if (deviceInfo.sdkApiVersion >= 22) {
+  myFunc();
+} else {
+  // 根据业务逻辑选择低版本可用方法
+}
+
+// 建议写法2：在myFunc调用处的父级函数（或类）上，标记@Available起始版本信息，当新标记的版本号不低于 myFunc的最低可用版本, 消除编译告警
+@Available({minApiVersion: 'OpenHarmony 22'})
+function myNewFunc() {
+  myFunc();
+}
+```

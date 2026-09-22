@@ -1,5 +1,9 @@
 # DataFilter
 
+```TypeScript
+interface DataFilter
+```
+
 联系人数据过滤项。
 
 **起始版本：** 15

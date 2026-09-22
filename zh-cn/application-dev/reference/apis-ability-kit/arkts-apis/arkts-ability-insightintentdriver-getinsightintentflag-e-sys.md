@@ -1,5 +1,9 @@
 # GetInsightIntentFlag（系统接口）
 
+```TypeScript
+enum GetInsightIntentFlag
+```
+
 意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)）的标识，用于[getAllInsightIntentInfo](arkts-ability-insightintentdriver-getinsightintentinfobybundlename-f-sys.md)、[getInsightIntentInfoByBundleName](arkts-ability-insightintentdriver-getinsightintentinfobybundlename-f-sys.md)和[getInsightIntentInfoByIntentName](arkts-ability-insightintentdriver-getinsightintentinfobyintentname-f-sys.md)接口查询意图信息。
 
 > **说明：** 

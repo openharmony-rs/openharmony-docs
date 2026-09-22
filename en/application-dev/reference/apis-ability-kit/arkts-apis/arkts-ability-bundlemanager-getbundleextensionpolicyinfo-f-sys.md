@@ -14,7 +14,7 @@ function getBundleExtensionPolicyInfo(bundleName: string, userId: number): Bundl
 
 Obtains the bundle extension policy information of a specified application.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 

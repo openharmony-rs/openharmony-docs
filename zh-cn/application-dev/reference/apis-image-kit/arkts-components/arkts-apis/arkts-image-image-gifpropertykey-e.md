@@ -1,5 +1,9 @@
 # GifPropertyKey
 
+```TypeScript
+enum GifPropertyKey
+```
+
 表示GIF图片信息的枚举。
 
 **起始版本：** 20

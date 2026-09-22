@@ -1,7 +1,7 @@
 # ValueType
 
 ```TypeScript
-type ValueType = null | number | number | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint
+type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint
 ```
 
 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。

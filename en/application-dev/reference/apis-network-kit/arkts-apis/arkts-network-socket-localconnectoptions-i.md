@@ -1,5 +1,9 @@
 # LocalConnectOptions
 
+```TypeScript
+export interface LocalConnectOptions
+```
+
 Defines local socket connection parameters.
 
 **Since:** 11

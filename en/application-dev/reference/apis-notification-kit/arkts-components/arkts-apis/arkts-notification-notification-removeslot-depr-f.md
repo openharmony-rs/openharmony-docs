@@ -29,6 +29,8 @@ Removes a notification slot of a specified type. This API uses an asynchronous c
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="removeslot-1"></a>
+
 ## removeSlot
 
 ```TypeScript

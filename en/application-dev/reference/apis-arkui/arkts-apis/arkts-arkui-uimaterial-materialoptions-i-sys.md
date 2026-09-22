@@ -1,5 +1,9 @@
 # MaterialOptions (System API)
 
+```TypeScript
+interface MaterialOptions
+```
+
 System material options.
 
 **Since:** 23

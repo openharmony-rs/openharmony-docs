@@ -1,5 +1,9 @@
 # KVStoreType
 
+```TypeScript
+enum KVStoreType
+```
+
 Enumerates the KV store types.
 
 **Since:** 7

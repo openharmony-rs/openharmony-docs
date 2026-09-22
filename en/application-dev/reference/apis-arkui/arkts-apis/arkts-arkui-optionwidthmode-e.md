@@ -1,5 +1,9 @@
 # OptionWidthMode
 
+```TypeScript
+declare enum OptionWidthMode
+```
+
 Decide whether the width of select menu fit the trigger or content
 
 **Since:** 11

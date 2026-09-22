@@ -1,5 +1,9 @@
 # PackingOption
 
+```TypeScript
+interface PackingOption
+```
+
 表示图片编码选项。
 
 **起始版本：** 6

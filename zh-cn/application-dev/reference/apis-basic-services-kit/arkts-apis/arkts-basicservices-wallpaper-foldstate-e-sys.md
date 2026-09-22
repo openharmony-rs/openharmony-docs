@@ -1,5 +1,9 @@
 # FoldState（系统接口）
 
+```TypeScript
+enum FoldState
+```
+
 定义设备的折展状态枚举类型。
 
 **起始版本：** 14

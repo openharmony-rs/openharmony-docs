@@ -1,5 +1,9 @@
 # PopupOptions
 
+```TypeScript
+export interface PopupOptions
+```
+
 PopupOptions定义Popup的具体样式参数。
 
 **起始版本：** 11
@@ -105,7 +109,7 @@ maxWidth?: Dimension
 **说明：** 
 
 1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。
-2. maxWidth是数字类型，支持float和integer，例如`&#36;r('app.float.maxWidth')`、`&#36;r('app.integer.maxWidth')`。
+2. maxWidth是数字类型，支持float和integer，例如`$r('app.float.maxWidth')`、`$r('app.integer.maxWidth')`。
 3. 当类型为Resource时，如果未设置单位，默认单位为px。
 
 默认值：400vp

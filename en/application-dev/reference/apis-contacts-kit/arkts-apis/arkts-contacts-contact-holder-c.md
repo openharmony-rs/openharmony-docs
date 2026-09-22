@@ -1,5 +1,9 @@
 # Holder
 
+```TypeScript
+class Holder
+```
+
 Defines an application that creates the contact.
 
 **Since:** 7

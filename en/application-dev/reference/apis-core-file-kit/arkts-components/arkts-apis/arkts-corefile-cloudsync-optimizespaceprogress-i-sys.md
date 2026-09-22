@@ -1,5 +1,9 @@
 # OptimizeSpaceProgress (System API)
 
+```TypeScript
+interface OptimizeSpaceProgress
+```
+
 Represents the space optimization states and optimization progress.
 
 **Since:** 17

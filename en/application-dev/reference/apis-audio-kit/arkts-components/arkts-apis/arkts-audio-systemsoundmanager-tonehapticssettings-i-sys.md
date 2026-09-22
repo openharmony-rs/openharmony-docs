@@ -1,5 +1,9 @@
 # ToneHapticsSettings (System API)
 
+```TypeScript
+interface ToneHapticsSettings
+```
+
 Haptics settings in tone scenario.
 
 **Since:** 14

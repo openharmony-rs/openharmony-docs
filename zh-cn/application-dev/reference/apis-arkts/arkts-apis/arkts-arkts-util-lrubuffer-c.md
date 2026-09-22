@@ -1,5 +1,9 @@
 # LruBuffer
 
+```TypeScript
+class LruBuffer<K, V>
+```
+
 LruBuffer 算法在缓存空间不足时使用新数据替换最不常使用的数据。
 
 **起始版本：** 8

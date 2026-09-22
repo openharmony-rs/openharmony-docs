@@ -1,5 +1,9 @@
 # FaceTipsCode（系统接口）
 
+```TypeScript
+enum FaceTipsCode
+```
+
 表示人脸验证过程中提示的枚举。
 
 **起始版本：** 8

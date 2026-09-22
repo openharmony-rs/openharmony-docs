@@ -1,5 +1,9 @@
 # OperateIcon
 
+```TypeScript
+export declare class OperateIcon
+```
+
 列表右侧图标元素的类型。
 
 **起始版本：** 10
@@ -110,7 +114,7 @@ symbolStyle?: SymbolGlyphModifier
 
 默认不设置或设置为undefined，Symbol图标不显示。
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 

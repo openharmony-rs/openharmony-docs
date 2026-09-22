@@ -1,5 +1,9 @@
 # HuksUserAuthMode
 
+```TypeScript
+export enum HuksUserAuthMode
+```
+
 表示用户认证模式。
 
 **起始版本：** 12

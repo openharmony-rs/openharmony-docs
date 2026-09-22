@@ -1,5 +1,9 @@
 # Pkcs12MacDigestAlgorithm
 
+```TypeScript
+enum Pkcs12MacDigestAlgorithm
+```
+
 表示P12的MAC摘要算法枚举。
 
 **起始版本：** 21

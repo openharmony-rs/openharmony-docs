@@ -1,5 +1,9 @@
 # PixelMapDrawableDescriptor
 
+```TypeScript
+export class PixelMapDrawableDescriptor extends DrawableDescriptor
+```
+
 Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. Inherits from [DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptorloadedresult-i.md).
 
 **Inheritance/Implementation:** PixelMapDrawableDescriptor extends [DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md)
@@ -38,9 +42,31 @@ A constructor used to create a **PixelMapDrawableDescriptor** object.
 
 **Examples**
 
-```TypeScript
 The following is the sample code for creating a PixelMapDrawableDescriptor object using ResourceStr:
+
+```TypeScript
+// xxx.ets
+import { DrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PixelMapDrawableDescriptorExample {
+  // Create a PixelMapDrawableDescriptor object using Resource.
+  // Replace $r('app.media.icon') with the image resource file you use.
+  @State drawable: DrawableDescriptor = new PixelMapDrawableDescriptor($r('app.media.icon'))
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+        .margin({ bottom: 20 })
+    }
+  }
+}
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -66,6 +92,26 @@ A constructor used to create a **PixelMapDrawableDescriptor** object through the
 
 **Examples**
 
-```TypeScript
 The following is the sample code for creating a PixelMapDrawableDescriptor object using ResourceStr:
+
+```TypeScript
+// xxx.ets
+import { DrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PixelMapDrawableDescriptorExample {
+  // Create a PixelMapDrawableDescriptor object using Resource.
+  // Replace $r('app.media.icon') with the image resource file you use.
+  @State drawable: DrawableDescriptor = new PixelMapDrawableDescriptor($r('app.media.icon'))
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+        .margin({ bottom: 20 })
+    }
+  }
+}
 ```

@@ -1,5 +1,9 @@
 # AuthorizeRequest
 
+```TypeScript
+export interface AuthorizeRequest
+```
+
 证书凭据授权请求信息。
 
 **起始版本：** 22

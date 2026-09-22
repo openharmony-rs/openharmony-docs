@@ -1,5 +1,9 @@
 # OperationType
 
+```TypeScript
+export enum OperationType
+```
+
 Identifies the operation for using a WantAgent, such as starting an ability or sending a common event.
 
 **Since:** 7

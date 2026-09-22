@@ -1,5 +1,9 @@
 # StatisticInfo (System API)
 
+```TypeScript
+interface StatisticInfo
+```
+
 Represents the device-cloud sync statistics.
 
 **Since:** 12

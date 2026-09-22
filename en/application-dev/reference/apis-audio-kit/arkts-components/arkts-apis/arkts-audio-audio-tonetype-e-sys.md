@@ -1,5 +1,9 @@
 # ToneType (System API)
 
+```TypeScript
+enum ToneType
+```
+
 Enumerates tone types for player.
 
 **Since:** 9

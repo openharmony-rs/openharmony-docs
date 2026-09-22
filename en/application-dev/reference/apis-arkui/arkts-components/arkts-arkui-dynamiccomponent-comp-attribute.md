@@ -1,6 +1,10 @@
 # DynamicComponent properties/events
 
-The universal attributes are supported.
+```TypeScript
+declare class DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>
+```
+
+The [universal attributes](arkts-arkui-common-comp.md#common) are supported.
 
 The following events are supported:
 

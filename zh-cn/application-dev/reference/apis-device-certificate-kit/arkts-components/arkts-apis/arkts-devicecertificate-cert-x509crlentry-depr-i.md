@@ -1,5 +1,9 @@
 # X509CrlEntry
 
+```TypeScript
+interface X509CrlEntry
+```
+
 证书吊销条目。
 
 > **说明：** 
@@ -194,55 +198,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 });
 ```
 
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// string转Uint8Array。
-function stringToUint8Array(str: string): Uint8Array {
-  let arr: Array<number> = [];
-  for (let i = 0, j = str.length; i < j; i++) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
-let crlData = '-----BEGIN X509 CRL-----\n' +
-  'MIHzMF4CAQMwDQYJKoZIhvcNAQEEBQAwFTETMBEGA1UEAxMKQ1JMIGlzc3VlchcN\n' +
-  'MTcwODA3MTExOTU1WhcNMzIxMjE0MDA1MzIwWjAVMBMCAgPoFw0zMjEyMTQwMDUz\n' +
-  'MjBaMA0GCSqGSIb3DQEBBAUAA4GBACEPHhlaCTWA42ykeaOyR0SGQIHIOUR3gcDH\n' +
-  'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
-  '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
-  'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n';
-
-let encodingBlob: cert.EncodingBlob = {
-  data: stringToUint8Array(crlData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
-  encodingFormat: cert.EncodingFormat.FORMAT_PEM
-};
-
-cert.createX509Crl(encodingBlob, (err, x509Crl) => {
-  if (err) {
-    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
-  } else {
-    console.info('create x509 crl result: success.');
-
-    try {
-      let serialNumber = 1000;
-      let crlEntry = x509Crl.getRevokedCert(serialNumber);
-      crlEntry.getEncoded().then(_result => {
-        console.info('getEncoded result: success.');
-      }).catch((error: BusinessError) => {
-        console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
-      });
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
-    }
-  }
-});
-```
+<a id="getencoded-1"></a>
 
 ## getEncoded
 
@@ -280,58 +236,6 @@ getEncoded(): Promise<EncodingBlob>
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
-
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// string转Uint8Array。
-function stringToUint8Array(str: string): Uint8Array {
-  let arr: Array<number> = [];
-  for (let i = 0, j = str.length; i < j; i++) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
-let crlData = '-----BEGIN X509 CRL-----\n' +
-  'MIHzMF4CAQMwDQYJKoZIhvcNAQEEBQAwFTETMBEGA1UEAxMKQ1JMIGlzc3VlchcN\n' +
-  'MTcwODA3MTExOTU1WhcNMzIxMjE0MDA1MzIwWjAVMBMCAgPoFw0zMjEyMTQwMDUz\n' +
-  'MjBaMA0GCSqGSIb3DQEBBAUAA4GBACEPHhlaCTWA42ykeaOyR0SGQIHIOUR3gcDH\n' +
-  'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
-  '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
-  'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n';
-
-let encodingBlob: cert.EncodingBlob = {
-  data: stringToUint8Array(crlData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
-  encodingFormat: cert.EncodingFormat.FORMAT_PEM
-};
-
-cert.createX509Crl(encodingBlob, (err, x509Crl) => {
-  if (err) {
-    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
-  } else {
-    console.info('create x509 crl result: success.');
-
-    try {
-      let serialNumber = 1000;
-      let crlEntry = x509Crl.getRevokedCert(serialNumber);
-      crlEntry.getEncoded((error, _data) => {
-        if (error) {
-          console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
-        } else {
-          console.info('getEncoded result: success.');
-        }
-      });
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
-    }
-  }
-});
-```
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';

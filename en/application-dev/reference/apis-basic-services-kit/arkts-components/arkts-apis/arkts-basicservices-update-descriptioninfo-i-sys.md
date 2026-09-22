@@ -1,5 +1,9 @@
 # DescriptionInfo (System API)
 
+```TypeScript
+export interface DescriptionInfo
+```
+
 Represents information about the version description file.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # HuksCryptoExtensionResult
 
+```TypeScript
+export interface HuksCryptoExtensionResult
+```
+
 接口返回值的通用类型。
 
 **起始版本：** 22

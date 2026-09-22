@@ -1,5 +1,9 @@
 # AxisValue
 
+```TypeScript
+export declare interface AxisValue
+```
+
 Defines the mouse axis type and axis value.
 
 **Since:** 9

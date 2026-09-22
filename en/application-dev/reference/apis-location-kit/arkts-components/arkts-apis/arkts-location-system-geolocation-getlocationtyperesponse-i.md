@@ -1,5 +1,9 @@
 # GetLocationTypeResponse
 
+```TypeScript
+export interface GetLocationTypeResponse
+```
+
 **Since:** 3
 
 **Deprecated since:** 9

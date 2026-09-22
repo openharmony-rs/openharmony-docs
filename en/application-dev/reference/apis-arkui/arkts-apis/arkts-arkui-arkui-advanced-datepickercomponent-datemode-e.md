@@ -1,5 +1,9 @@
 # DateMode
 
+```TypeScript
+export declare enum DateMode
+```
+
 DateMode enum defines the mode of the date picker.
 
 **Since:** 26.0.0

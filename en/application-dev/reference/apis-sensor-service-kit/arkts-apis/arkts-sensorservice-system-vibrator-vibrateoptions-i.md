@@ -1,5 +1,9 @@
 # VibrateOptions
 
+```TypeScript
+export interface VibrateOptions
+```
+
 Defines the vibration options.
 
 **Since:** 3

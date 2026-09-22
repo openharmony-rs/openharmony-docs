@@ -36,20 +36,6 @@ Creates an AVImageGenerator instance. This API uses a promise to return the resu
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let avImageGenerator: media.AVImageGenerator;
-media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator) {
-    avImageGenerator = generator;
-    console.info('Succeeded in creating AVImageGenerator');
-  } else {
-    console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
-  }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let avImageGenerator: media.AVImageGenerator;
 media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
@@ -62,6 +48,8 @@ media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
 });
 ```
 
+
+<a id="createavimagegenerator-2"></a>
 
 ## createAVImageGenerator
 
@@ -89,4 +77,16 @@ Creates an AVImageGenerator instance. This API uses an asynchronous callback to 
 
 **Examples**
 
-See [createAVImageGenerator](#createavimagegenerator)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avImageGenerator: media.AVImageGenerator;
+media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGenerator) => {
+  if (generator) {
+    avImageGenerator = generator;
+    console.info('Succeeded in creating AVImageGenerator');
+  } else {
+    console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
+  }
+});
+```

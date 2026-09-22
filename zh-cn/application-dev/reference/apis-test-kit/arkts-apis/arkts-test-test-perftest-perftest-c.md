@@ -1,5 +1,9 @@
 # PerfTest
 
+```TypeScript
+declare class PerfTest
+```
+
 PerfTest类为白盒性能测试框架的总入口。提供测试任务创建、测试代码段执行和数据采集、测量结果获取等能力。通过[create](#create)创建实例。
 
 **起始版本：** 20

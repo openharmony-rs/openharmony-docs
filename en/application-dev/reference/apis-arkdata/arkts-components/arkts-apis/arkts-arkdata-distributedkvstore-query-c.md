@@ -1,5 +1,9 @@
 # Query
 
+```TypeScript
+class Query
+```
+
 Provides methods to create a **Query** object, which defines different data query criteria. A **Query** object supports a maximum of 256 predicates.
 
 **Since:** 9
@@ -206,7 +210,7 @@ try {
 ## equalTo
 
 ```TypeScript
-equalTo(field: string, value: number | number | string | boolean): Query
+equalTo(field: string, value: number | string | boolean): Query
 ```
 
 Creates a **Query** object to match the specified field whose value is equal to the given value.
@@ -230,7 +234,7 @@ Creates a **Query** object to match the specified field whose value is equal to 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; number &#124; string &#124; boolean | Yes | Value specified. |
+| value | number &#124; string &#124; boolean | Yes | Value specified. |
 
 **Return value:**
 
@@ -302,7 +306,7 @@ try {
 ## greaterThan
 
 ```TypeScript
-greaterThan(field: string, value: number | number | string | boolean): Query
+greaterThan(field: string, value: number | string | boolean): Query
 ```
 
 Creates a **Query** object to match the specified field whose value is greater than the specified value.
@@ -326,7 +330,7 @@ Creates a **Query** object to match the specified field whose value is greater t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Indicates the field, which cannot contain ^. |
-| value | number &#124; number &#124; string &#124; boolean | Yes | Indicates the value to be compared. |
+| value | number &#124; string &#124; boolean | Yes | Indicates the value to be compared. |
 
 **Return value:**
 
@@ -361,7 +365,7 @@ try {
 ## greaterThanOrEqualTo
 
 ```TypeScript
-greaterThanOrEqualTo(field: string, value: number | number | string): Query
+greaterThanOrEqualTo(field: string, value: number | string): Query
 ```
 
 Creates a **Query** object to match the specified field whose value is greater than or equal to the specified value.
@@ -385,7 +389,7 @@ Creates a **Query** object to match the specified field whose value is greater t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; number &#124; string | Yes | Value specified. |
+| value | number &#124; string | Yes | Value specified. |
 
 **Return value:**
 
@@ -654,7 +658,7 @@ try {
 ## lessThan
 
 ```TypeScript
-lessThan(field: string, value: number | number | string): Query
+lessThan(field: string, value: number | string): Query
 ```
 
 Creates a **Query** object to match the specified field whose value is less than the specified value.
@@ -678,7 +682,7 @@ Creates a **Query** object to match the specified field whose value is less than
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; number &#124; string | Yes | Value specified. |
+| value | number &#124; string | Yes | Value specified. |
 
 **Return value:**
 
@@ -713,7 +717,7 @@ try {
 ## lessThanOrEqualTo
 
 ```TypeScript
-lessThanOrEqualTo(field: string, value: number | number | string): Query
+lessThanOrEqualTo(field: string, value: number | string): Query
 ```
 
 Creates a **Query** object to match the specified field whose value is less than or equal to the specified value.
@@ -737,7 +741,7 @@ Creates a **Query** object to match the specified field whose value is less than
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; number &#124; string | Yes | Value specified. |
+| value | number &#124; string | Yes | Value specified. |
 
 **Return value:**
 
@@ -885,7 +889,7 @@ try {
 ## notEqualTo
 
 ```TypeScript
-notEqualTo(field: string, value: number | number | string | boolean): Query
+notEqualTo(field: string, value: number | string | boolean): Query
 ```
 
 Creates a **Query** object to match the specified field whose value is not equal to the specified value.
@@ -909,7 +913,7 @@ Creates a **Query** object to match the specified field whose value is not equal
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; number &#124; string &#124; boolean | Yes | Value specified. |
+| value | number &#124; string &#124; boolean | Yes | Value specified. |
 
 **Return value:**
 

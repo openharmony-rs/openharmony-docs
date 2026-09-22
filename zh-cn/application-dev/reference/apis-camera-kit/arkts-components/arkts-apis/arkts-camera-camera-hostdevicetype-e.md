@@ -1,5 +1,9 @@
 # HostDeviceType
 
+```TypeScript
+enum HostDeviceType
+```
+
 枚举，远端相机设备类型。
 
 **起始版本：** 15

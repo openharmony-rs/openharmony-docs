@@ -1,5 +1,9 @@
 # SessionStatus（系统接口）
 
+```TypeScript
+enum SessionStatus
+```
+
 执行CLI工具时，系统会为调用方和CLI工具建立一个会话，此字段描述会话状态。
 
 **起始版本：** 26.0.0

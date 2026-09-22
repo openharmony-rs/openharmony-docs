@@ -1,5 +1,9 @@
 # ShieldMode (System API)
 
+```TypeScript
+enum ShieldMode
+```
+
 Enumerates shortcut key shield modes.
 
 **Since:** 11

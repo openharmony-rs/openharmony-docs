@@ -1,5 +1,9 @@
 # ReminderType
 
+```TypeScript
+export enum ReminderType
+```
+
 提醒的类型。
 
 **起始版本：** 9

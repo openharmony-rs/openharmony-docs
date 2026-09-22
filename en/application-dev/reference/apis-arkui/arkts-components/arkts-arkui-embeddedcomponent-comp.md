@@ -68,7 +68,7 @@ Construct the EmbeddedComponent.<br> Called when the EmbeddedComponent is used.
 | --- | --- | --- | --- |
 | loader | import('../api/@ohos.app.ability.Want').default | Yes | indicates initialization parameter. |
 | type | [EmbeddedType](../arkts-apis/arkts-arkui-embeddedtype-e.md) | Yes | indicates type of the EmbeddedComponent. |
-| options | [EmbeddedOptions](arkts-arkui-embeddedoptions-i.md) | No | construction configuration of EmbeddedComponent. |
+| options | [EmbeddedOptions](arkts-arkui-embeddedcomponent-comp-embeddedoptions-i.md) | No | construction configuration of EmbeddedComponent. |
 
 ## Summary
 
@@ -76,12 +76,12 @@ Construct the EmbeddedComponent.<br> Called when the EmbeddedComponent is used.
 
 | Name | Description |
 | --- | --- |
-| [EmbeddedOptions](arkts-arkui-embeddedoptions-i.md) | This interface is used to set the options for EmbeddedComponentAttribute during construction |
-| [TerminationInfo](arkts-arkui-terminationinfo-i.md) | Provides the result returned by the started **EmbeddedUIExtensionAbility**. |
+| [EmbeddedOptions](arkts-arkui-embeddedcomponent-comp-embeddedoptions-i.md) | This interface is used to set the options for EmbeddedComponentAttribute during construction |
+| [TerminationInfo](arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md) | Provides the result returned by the started **EmbeddedUIExtensionAbility**. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [EmbeddedDpiFollowStrategy](arkts-arkui-embeddeddpifollowstrategy-e.md) | Enumeration of different types of EmbeddedDpiFollowStrategy. |
-| [EmbeddedWindowModeFollowStrategy](arkts-arkui-embeddedwindowmodefollowstrategy-e.md) | Enumeration of different types of EmbeddedWindowModeFollowStrategy. |
+| [EmbeddedDpiFollowStrategy](arkts-arkui-embeddedcomponent-comp-embeddeddpifollowstrategy-e.md) | Enumeration of different types of EmbeddedDpiFollowStrategy. |
+| [EmbeddedWindowModeFollowStrategy](arkts-arkui-embeddedcomponent-comp-embeddedwindowmodefollowstrategy-e.md) | Enumeration of different types of EmbeddedWindowModeFollowStrategy. |

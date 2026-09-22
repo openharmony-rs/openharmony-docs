@@ -1,5 +1,9 @@
 # GattClientDevice
 
+```TypeScript
+interface GattClientDevice
+```
+
 Manages GATT client. Before calling an Gatt client method, you must use [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md) to create an GattClientDevice instance.
 
 **Since:** 10

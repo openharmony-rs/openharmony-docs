@@ -1,5 +1,9 @@
 # ContactSelectionOptions
 
+```TypeScript
+interface ContactSelectionOptions
+```
+
 选择联系人条件。
 
 **起始版本：** 10

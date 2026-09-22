@@ -1,5 +1,9 @@
 # UIExtensionContentSession
 
+```TypeScript
+declare class UIExtensionContentSession
+```
+
 UIExtensionAbility组件的界面操作类，提供页面加载、设置宿主应用窗口隐私模式等功能。
 
 **起始版本：** 10
@@ -161,12 +165,60 @@ loadContentByName(name: string, storage?: LocalStorage): void
 
 **示例**
 
-```TypeScript
 UIExtensionAbility组件的实现：
-```
 
 ```TypeScript
+// UIExtensionAbility组件不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
+import { UIExtensionContentSession, ShareExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import './pages/UIExtensionPage'; // 导入命名路由页面，示例代码以“./pages/UIExtensionPage.ets”文件为例，在实际代码开发过程中修改为真实路径和文件名称。
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  // 其他生命周期和实现
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let storage: LocalStorage = new LocalStorage();
+    storage.setOrCreate('session', session);
+
+    let name: string = 'UIExtPage'; // 命名路由页面的名字。
+    try {
+      session.loadContentByName(name, storage);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`Failed to load content by name ${name}, code: ${code}, msg: ${message}`);
+    }
+  }
+
+  // 其他生命周期和实现
+}
+```
+
 UIExtensionAbility组件加载的命名路由页面的实现：
+
+```TypeScript
+// “./pages/UIExtensionPage.ets”文件的实现。
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+
+@Entry({ routeName: 'UIExtPage' }) // 通过“routeName”定义命名路由页面的名字。
+@Component
+struct UIExtensionPage {
+  @State message: string = 'Hello world';
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
 ```
 
 ## setWindowPrivacyMode
@@ -235,34 +287,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-```TypeScript
-// UIExtensionAbility组件不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
-import { UIExtensionContentSession, ShareExtensionAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class ShareExtAbility extends ShareExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let isPrivacyMode: boolean = true;
-    try {
-      session.setWindowPrivacyMode(isPrivacyMode, (err: BusinessError) => {
-        if (err) {
-          console.error(`Failed to set window to privacy mode, code: ${err.code}, msg: ${err.message}`);
-          return;
-        }
-        console.info(`Succeeded in setting window to privacy mode.`);
-      });
-    } catch (e) {
-      let code = (e as BusinessError).code;
-      let msg = (e as BusinessError).message;
-      console.error(`Failed to set window to privacy mode, code: ${code}, msg: ${msg}`);
-    }
-  }
-
-  // ...
-}
-```
+<a id="setwindowprivacymode-1"></a>
 
 ## setWindowPrivacyMode
 
@@ -296,7 +321,34 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback<void>): voi
 
 **示例**
 
-参见 [setWindowPrivacyMode](#setwindowprivacymode)
+```TypeScript
+// UIExtensionAbility组件不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
+import { UIExtensionContentSession, ShareExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let isPrivacyMode: boolean = true;
+    try {
+      session.setWindowPrivacyMode(isPrivacyMode, (err: BusinessError) => {
+        if (err) {
+          console.error(`Failed to set window to privacy mode, code: ${err.code}, msg: ${err.message}`);
+          return;
+        }
+        console.info(`Succeeded in setting window to privacy mode.`);
+      });
+    } catch (e) {
+      let code = (e as BusinessError).code;
+      let msg = (e as BusinessError).message;
+      console.error(`Failed to set window to privacy mode, code: ${code}, msg: ${msg}`);
+    }
+  }
+
+  // ...
+}
+```
 
 ## startAbilityByType
 
@@ -370,39 +422,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-```TypeScript
-// UIExtensionAbility组件不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
-import { UIExtensionContentSession, ShareExtensionAbility, Want, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class ShareExtAbility extends ShareExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let wantParams: Record<string, Object> = {
-      'sceneType': 1
-    };
-    let abilityStartCallback: common.AbilityStartCallback = {
-      onError: (code: number, name: string, message: string) => {
-        console.error(`onError, code: ${code}, name: ${name}, msg: ${message}`);
-      },
-      onResult: (result: common.AbilityResult) => {
-        console.info(`onResult, result: ${JSON.stringify(result)}`);
-      }
-    };
-
-    session.startAbilityByType('test', wantParams, abilityStartCallback)
-      .then(() => {
-        console.info(`Succeeded in startAbilityByType`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbilityByType, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
+<a id="startabilitybytype-2"></a>
 
 ## startAbilityByType
 
@@ -447,7 +467,39 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 
 **示例**
 
-参见 [startAbilityByType](#startabilitybytype)
+```TypeScript
+// UIExtensionAbility组件不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
+import { UIExtensionContentSession, ShareExtensionAbility, Want, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let wantParams: Record<string, Object> = {
+      'sceneType': 1
+    };
+    let abilityStartCallback: common.AbilityStartCallback = {
+      onError: (code: number, name: string, message: string) => {
+        console.error(`onError, code: ${code}, name: ${name}, msg: ${message}`);
+      },
+      onResult: (result: common.AbilityResult) => {
+        console.info(`onResult, result: ${JSON.stringify(result)}`);
+      }
+    };
+
+    session.startAbilityByType('test', wantParams, abilityStartCallback)
+      .then(() => {
+        console.info(`Succeeded in startAbilityByType`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbilityByType, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```
 
 ## terminateSelf
 
@@ -509,6 +561,30 @@ struct Index {
 }
 ```
 
+<a id="terminateself-1"></a>
+
+## terminateSelf
+
+```TypeScript
+terminateSelf(): Promise<void>
+```
+
+销毁UIExtensionAbility组件自身，同时关闭对应的宿主应用窗口界面。使用Promise异步回调。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
 ```TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -540,30 +616,6 @@ struct Index {
   }
 }
 ```
-
-## terminateSelf
-
-```TypeScript
-terminateSelf(): Promise<void>
-```
-
-销毁UIExtensionAbility组件自身，同时关闭对应的宿主应用窗口界面。使用Promise异步回调。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**示例**
-
-参见 [terminateSelf](#terminateself)
 
 ## terminateSelfWithResult
 
@@ -636,6 +688,42 @@ struct Index {
 }
 ```
 
+<a id="terminateselfwithresult-1"></a>
+
+## terminateSelfWithResult
+
+```TypeScript
+terminateSelfWithResult(parameter: AbilityResult): Promise<void>
+```
+
+销毁UIExtensionAbility组件自身，关闭对应的宿主应用窗口界面，并将结果返回给宿主应用。使用Promise异步回调。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给宿主应用的信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例**
+
 ```TypeScript
 import { UIExtensionContentSession, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -677,39 +765,3 @@ struct Index {
   }
 }
 ```
-
-## terminateSelfWithResult
-
-```TypeScript
-terminateSelfWithResult(parameter: AbilityResult): Promise<void>
-```
-
-销毁UIExtensionAbility组件自身，关闭对应的宿主应用窗口界面，并将结果返回给宿主应用。使用Promise异步回调。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给宿主应用的信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
-**示例**
-
-参见 [terminateSelfWithResult](#terminateselfwithresult)

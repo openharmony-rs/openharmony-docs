@@ -1,5 +1,9 @@
 # LteCellInformation（系统接口）
 
+```TypeScript
+export interface LteCellInformation
+```
+
 Obtains LTE cell information.
 
 **起始版本：** 8

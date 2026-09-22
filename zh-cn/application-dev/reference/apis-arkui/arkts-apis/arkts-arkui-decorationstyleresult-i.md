@@ -1,5 +1,9 @@
 # DecorationStyleResult
 
+```TypeScript
+interface DecorationStyleResult
+```
+
 后端返回的文本装饰线样式信息。
 
 **起始版本：** 12

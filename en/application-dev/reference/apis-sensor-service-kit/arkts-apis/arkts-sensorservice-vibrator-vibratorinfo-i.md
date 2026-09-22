@@ -1,5 +1,9 @@
 # VibratorInfo
 
+```TypeScript
+interface VibratorInfo
+```
+
 Defines the vibrator information.
 
 **Since:** 19

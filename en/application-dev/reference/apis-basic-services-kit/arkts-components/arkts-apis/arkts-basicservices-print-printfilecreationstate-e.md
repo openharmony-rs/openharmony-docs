@@ -1,5 +1,9 @@
 # PrintFileCreationState
 
+```TypeScript
+enum PrintFileCreationState
+```
+
 Enumerates the print file creation status.
 
 **Since:** 11

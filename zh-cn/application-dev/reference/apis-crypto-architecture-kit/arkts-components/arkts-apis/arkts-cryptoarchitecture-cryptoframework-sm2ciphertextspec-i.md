@@ -1,5 +1,9 @@
 # SM2CipherTextSpec
 
+```TypeScript
+interface SM2CipherTextSpec
+```
+
 SM2密文参数，使用SM2密文格式转换函数进行格式转换时，需要用到此对象。可以通过指定此参数，生成符合国密标准的ASN.1格式的SM2密文，反之，也可以从ASN.1格式的SM2密文中获取具体参数。
 
 > **说明：** 

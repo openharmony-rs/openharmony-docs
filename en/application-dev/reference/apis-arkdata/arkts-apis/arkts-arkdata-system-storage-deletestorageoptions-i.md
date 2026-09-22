@@ -1,5 +1,9 @@
 # DeleteStorageOptions
 
+```TypeScript
+export interface DeleteStorageOptions
+```
+
 @typedef DeleteStorageOptions
 
 **Since:** 3

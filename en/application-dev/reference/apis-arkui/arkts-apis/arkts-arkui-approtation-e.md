@@ -1,5 +1,9 @@
 # AppRotation
 
+```TypeScript
+declare enum AppRotation
+```
+
 Enumerates the app rotation.
 
 @enum { number }

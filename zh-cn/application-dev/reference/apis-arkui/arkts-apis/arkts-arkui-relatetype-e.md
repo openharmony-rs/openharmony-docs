@@ -1,5 +1,9 @@
 # RelateType
 
+```TypeScript
+declare enum RelateType
+```
+
 RelateType enumeration description
 
 @enum { number }
@@ -18,6 +22,8 @@ Scales the current component to fill the parent component.
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -31,6 +37,8 @@ FIT
 Scales the current component to fit the parent component.
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

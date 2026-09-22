@@ -1,5 +1,9 @@
 # SegmentButtonV2Item
 
+```TypeScript
+export declare class SegmentButtonV2Item
+```
+
 **起始版本：** 18
 
 **装饰器类型：** @ObservedV2
@@ -40,7 +44,7 @@ constructor(options: SegmentButtonV2ItemOptions)
 accessibilityDescription?: ResourceStr
 ```
 
-分段按钮选项无障碍说明accessibilityDescription。
+分段按钮选项无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription)。
 
 默认值：""
 
@@ -66,7 +70,7 @@ accessibilityDescription?: ResourceStr
 accessibilityLevel?: string
 ```
 
-分段按钮选项无障碍重要性accessibilityLevel。
+分段按钮选项无障碍重要性[accessibilityLevel](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel)。
 
 默认值："auto"
 
@@ -92,7 +96,7 @@ accessibilityLevel?: string
 accessibilityText?: ResourceStr
 ```
 
-分段按钮选项的无障碍文本accessibilityText。
+分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)。
 
 默认值：""
 
@@ -176,7 +180,7 @@ iconModifier?: ImageModifier
 
 装饰器类型：@Trace
 
-**类型：** ImageModifier
+**类型：** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
@@ -242,7 +246,7 @@ symbolModifier?: SymbolGlyphModifier
 
 装饰器类型：@Trace
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
@@ -290,7 +294,7 @@ textModifier?: TextModifier
 
 装饰器类型：@Trace
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 

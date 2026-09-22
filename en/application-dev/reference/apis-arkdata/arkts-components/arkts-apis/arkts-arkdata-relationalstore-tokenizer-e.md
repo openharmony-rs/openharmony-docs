@@ -1,5 +1,9 @@
 # Tokenizer
 
+```TypeScript
+enum Tokenizer
+```
+
 Enumerates tokenizers that can be used for FTS. Use the enum name rather than the enum value.
 
 The table creation statement varies with the tokenizer in use.

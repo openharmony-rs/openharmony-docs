@@ -1,5 +1,9 @@
 # SuspendType
 
+```TypeScript
+enum SuspendType
+```
+
 Enumerates the suspension types of the player.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # ActivityEvent
 
+```TypeScript
+enum ActivityEvent
+```
+
 Enumerates the device status events.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # ModuleMetadata
 
+```TypeScript
+export interface ModuleMetadata
+```
+
 描述模块的元数据信息。
 
 **起始版本：** 10

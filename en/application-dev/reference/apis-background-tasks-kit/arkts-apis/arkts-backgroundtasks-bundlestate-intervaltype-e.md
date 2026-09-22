@@ -1,5 +1,9 @@
 # IntervalType
 
+```TypeScript
+export enum IntervalType
+```
+
 Declares interval type.
 
 **Since:** 7

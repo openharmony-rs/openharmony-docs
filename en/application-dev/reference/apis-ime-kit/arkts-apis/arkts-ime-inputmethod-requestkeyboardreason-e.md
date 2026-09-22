@@ -1,5 +1,9 @@
 # RequestKeyboardReason
 
+```TypeScript
+export enum RequestKeyboardReason
+```
+
 Enumerates the reasons for requesting the keyboard.
 
 **Since:** 15

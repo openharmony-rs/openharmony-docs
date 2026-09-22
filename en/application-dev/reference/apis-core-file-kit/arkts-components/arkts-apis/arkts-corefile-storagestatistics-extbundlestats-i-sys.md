@@ -1,5 +1,9 @@
 # ExtBundleStats (System API)
 
+```TypeScript
+export interface ExtBundleStats
+```
+
 Details the space usage of system applications or system services.
 
 **Since:** 23

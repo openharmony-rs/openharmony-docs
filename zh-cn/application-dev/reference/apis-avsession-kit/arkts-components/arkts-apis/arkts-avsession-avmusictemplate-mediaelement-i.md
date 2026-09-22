@@ -1,5 +1,9 @@
 # MediaElement
 
+```TypeScript
+interface MediaElement extends MediaEntity
+```
+
 媒体元素Singer/Radio/Banner结构体定义
 
 @extends MediaEntity @interface MediaElement

@@ -1,5 +1,9 @@
 # OsAccountSubProfileEvent（系统接口）
 
+```TypeScript
+enum OsAccountSubProfileEvent
+```
+
 枚举系统账号子身份资料的事件。
 
 **起始版本：** 26.0.0

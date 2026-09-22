@@ -61,6 +61,29 @@ struct Index {
 }
 ```
 
+
+<a id="getdevicelist-1"></a>
+
+## getDeviceList
+
+```TypeScript
+function getDeviceList(): Promise<Array<number>>
+```
+
+获取所有输入设备的ID列表，使用Promise异步回调。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
+
+**示例**
+
 ```TypeScript
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -87,26 +110,3 @@ struct Index {
   }
 }
 ```
-
-
-## getDeviceList
-
-```TypeScript
-function getDeviceList(): Promise<Array<number>>
-```
-
-获取所有输入设备的ID列表，使用Promise异步回调。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
-
-**示例**
-
-参见 getDeviceList

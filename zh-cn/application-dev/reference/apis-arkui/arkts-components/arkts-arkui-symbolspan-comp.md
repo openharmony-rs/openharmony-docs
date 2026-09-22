@@ -30,32 +30,219 @@ SymbolSpan(value: Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolSpan组件的资源引用，如 &#36;r('sys.symbol.ohos_wifi')。仅支持系统预置的symbol资源，引用非symbol资源将显示异常。 |
+| value | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolSpan组件的资源引用，如 $r('sys.symbol.ohos_wifi')。仅支持系统预置的symbol资源，引用非symbol资源将显示异常。 |
 
 ## 汇总
 
 ## 示例
 
-```TypeScript
 ### 示例1（设置渲染和动效策略）
 
 从API version 11开始，该示例通过[renderingStrategy](#renderingstrategy)、[effectStrategy](#effectstrategy)属性展示了不同的渲染和动效策略。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          Text('Light')
+          Text() {
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(FontWeight.Lighter)
+              .fontSize(96)
+          }
+        }
+
+        Column() {
+          Text('Normal')
+          Text() {
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(FontWeight.Normal)
+              .fontSize(96)
+          }
+        }
+
+        Column() {
+          Text('Bold')
+          Text() {
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(FontWeight.Bold)
+              .fontSize(96)
+          }
+        }
+      }
+
+      Row() {
+        Column() {
+          Text('单色')
+          Text() {
+            SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+              .fontSize(96)
+              .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+              .fontColor([Color.Black, Color.Green, Color.White])
+          }
+        }
+
+        Column() {
+          Text('多色')
+          Text() {
+            SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+              .fontSize(96)
+              .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+              .fontColor([Color.Black, Color.Green, Color.White])
+          }
+        }
+
+        Column() {
+          Text('分层')
+          Text() {
+            SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+              .fontSize(96)
+              .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+              .fontColor([Color.Black, Color.Green, Color.White])
+          }
+        }
+      }
+
+      Row() {
+        Column() {
+          Text('无动效')
+          Text() {
+            SymbolSpan($r('sys.symbol.ohos_wifi'))
+              .fontSize(96)
+              .effectStrategy(SymbolEffectStrategy.NONE)
+          }
+        }
+
+        Column() {
+          Text('整体缩放动效')
+          Text() {
+            SymbolSpan($r('sys.symbol.ohos_wifi'))
+              .fontSize(96)
+              .effectStrategy(SymbolEffectStrategy.SCALE)
+          }
+        }
+
+        Column() {
+          Text('层级动效')
+          Text() {
+            SymbolSpan($r('sys.symbol.ohos_wifi'))
+              .fontSize(96)
+              .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 ### 示例2（设置动态属性）
 
 从API version 12开始，该示例通过[attributeModifier](#attributemodifier12)属性创建指定样式图标。
 
 
-```
 
 ```TypeScript
+import { SymbolSpanModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State modifier: SymbolSpanModifier =
+    new SymbolSpanModifier($r('sys.symbol.ohos_wifi')).fontColor([Color.Blue]).fontSize(100);
+
+  build() {
+    Row() {
+      Column() {
+        Text() {
+          SymbolSpan(undefined).attributeModifier(this.modifier)
+        }
+
+        Button('更改SymbolSpanModifier')
+          .onClick(() => {
+            this.modifier = new SymbolSpanModifier($r("sys.symbol.ohos_trash")).fontColor([Color.Red]).fontSize(100);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 示例3（设置字体粗细）
 
 该示例通过[fontWeight](#fontweight-1)属性展示SymbolSpan不同粗细配置下的效果：第一行图标小符号展示启用可变字重后，分别设置字重值为220和660的效果；第二行图标小符号展示在将设备的系统字体粗细设置为粗体后，分别设置跟随和不跟随设备的字体粗细级别自动更新的效果。
 
 从API版本26.0.0开始，新增[fontWeight](#fontweight-1)属性。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          Text('font weight: 220')
+          Text() {
+            // ohos_trash为系统预置的垃圾桶小符号
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(220, { enableVariableFontWeight: true })
+              .fontSize(96)
+          }
+        }
+        Column() {
+          Text('            ')
+        }
+        Column() {
+          Text('font weight: 660')
+          Text() {
+            // ohos_trash为系统预置的垃圾桶小符号
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(660, { enableVariableFontWeight: true })
+              .fontSize(96)
+          }
+        }
+      }
+      Row() {
+        Text('    ')
+      }
+      Row() {
+        Text('After set system text weight: Bold')
+      }
+      Row() {
+        Column() {
+          Text('device category: true')
+          Text() {
+            // ohos_trash为系统预置的垃圾桶小符号
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: true })
+              .fontSize(96)
+          }
+        }
+        Column() {
+          Text('    ')
+        }
+        Column() {
+          Text('device category: false')
+          Text() {
+            // ohos_trash为系统预置的垃圾桶小符号
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: false })
+              .fontSize(96)
+          }
+        }
+      }
+    }
+  }
+}
 ```

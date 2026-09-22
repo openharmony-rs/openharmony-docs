@@ -1,5 +1,9 @@
 # SearchPlayVideoInfo
 
+```TypeScript
+interface SearchPlayVideoInfo
+```
+
 The definition of SearchPlayVideoInfo.
 
 @interface SearchPlayVideoInfo

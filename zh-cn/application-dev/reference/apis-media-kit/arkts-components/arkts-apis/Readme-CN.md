@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-mediakit-->
 
-- [@ohos.multimedia.media](arkts-media-multimedia-media.md)
+- [@ohos.multimedia.media((媒体服务))](arkts-media-multimedia-media.md)
   - [createAudioPlayer](arkts-media-media-createaudioplayer-f.md)
   - [createAudioRecorder](arkts-media-media-createaudiorecorder-f.md)
   - [createAVAdsController](arkts-media-media-createavadscontroller-f.md)

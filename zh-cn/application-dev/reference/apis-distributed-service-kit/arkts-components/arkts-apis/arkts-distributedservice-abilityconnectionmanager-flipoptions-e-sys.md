@@ -1,5 +1,9 @@
 # FlipOptions（系统接口）
 
+```TypeScript
+export enum FlipOptions
+```
+
 翻转选项。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # HttpDataType
 
+```TypeScript
+export enum HttpDataType
+```
+
 HTTP的数据类型。
 
 | 名称 | 值 | 说明 |  

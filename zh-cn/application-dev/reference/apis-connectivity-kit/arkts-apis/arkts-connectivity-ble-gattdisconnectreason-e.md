@@ -1,5 +1,9 @@
 # GattDisconnectReason
 
+```TypeScript
+enum GattDisconnectReason
+```
+
 枚举，指定GATT链路断开的原因。
 
 **起始版本：** 20

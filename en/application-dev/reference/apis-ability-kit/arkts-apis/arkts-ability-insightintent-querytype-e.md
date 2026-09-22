@@ -1,5 +1,9 @@
 # QueryType
 
+```TypeScript
+enum QueryType
+```
+
 Enum for query entity mode.
 
 **Since:** 26.0.0

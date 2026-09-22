@@ -1,8 +1,10 @@
 # PolicyType（系统接口）
 
-表示静音策略类型的枚举。
+```TypeScript
+enum PolicyType
+```
 
-@enum { int }
+表示静音策略类型的枚举。
 
 **起始版本：** 12
 

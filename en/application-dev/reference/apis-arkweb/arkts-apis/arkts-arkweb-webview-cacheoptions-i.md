@@ -1,5 +1,9 @@
 # CacheOptions
 
+```TypeScript
+interface CacheOptions
+```
+
 Represents a configuration object for precompiling JavaScript in the **Web** component to generate bytecode cache, which is designed to control the updating of the bytecode cache.
 
 **Since:** 12

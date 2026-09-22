@@ -1,5 +1,9 @@
 # ContinueState（系统接口）
 
+```TypeScript
+enum ContinueState
+```
+
 当前任务流转状态的枚举。模型约束：此接口仅可在Stage模型下使用。
 
 **起始版本：** 10

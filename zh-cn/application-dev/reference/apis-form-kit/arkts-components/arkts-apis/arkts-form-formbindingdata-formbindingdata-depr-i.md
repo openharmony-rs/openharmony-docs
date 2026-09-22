@@ -1,5 +1,9 @@
 # FormBindingData
 
+```TypeScript
+interface FormBindingData
+```
+
 FormBindingData提供卡片数据绑定的能力，用于存储卡片需要展示的数据。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # VideoCodecType
 
+```TypeScript
+enum VideoCodecType
+```
+
 Enumerates the video codec types.
 
 **Since:** 13

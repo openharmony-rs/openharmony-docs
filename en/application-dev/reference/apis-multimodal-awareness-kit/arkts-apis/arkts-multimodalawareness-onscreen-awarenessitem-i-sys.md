@@ -1,5 +1,9 @@
 # AwarenessItem (System API)
 
+```TypeScript
+export interface AwarenessItem
+```
+
 Provides page information, which includes:
 
 * Basic page information, such as page content, links, and screenshots.  

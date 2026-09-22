@@ -1,5 +1,9 @@
 # PowerScene（系统接口）
 
+```TypeScript
+enum PowerScene
+```
+
 执行电源策略的场景。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # NotificationExtensionContent
 
+```TypeScript
+export interface NotificationExtensionContent
+```
+
 The **NotificationExtensionContent** module describes the notification extension content.
 
 **Since:** 22

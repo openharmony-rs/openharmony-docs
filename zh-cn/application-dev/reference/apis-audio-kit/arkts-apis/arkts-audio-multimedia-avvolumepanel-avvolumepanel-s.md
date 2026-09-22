@@ -1,5 +1,9 @@
 # AVVolumePanel
 
+```TypeScript
+export declare struct AVVolumePanel
+```
+
 音量面板，可用于在当前应用内展示音量调节面板。
 
 **起始版本：** 12

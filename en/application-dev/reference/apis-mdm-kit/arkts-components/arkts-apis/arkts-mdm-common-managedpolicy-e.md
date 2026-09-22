@@ -1,5 +1,9 @@
 # ManagedPolicy
 
+```TypeScript
+export enum ManagedPolicy
+```
+
 Enumerates enterprise device management policies.
 
 **Since:** 22

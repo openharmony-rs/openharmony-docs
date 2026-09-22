@@ -1,5 +1,9 @@
 # KVManagerConfig
 
+```TypeScript
+interface KVManagerConfig
+```
+
 Provides the **KVManager** instance configuration, including the bundle name of the invoker and the application context.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # Touch
 
+```TypeScript
+export declare interface Touch
+```
+
 Defines the touch point information.
 
 **Since:** 9

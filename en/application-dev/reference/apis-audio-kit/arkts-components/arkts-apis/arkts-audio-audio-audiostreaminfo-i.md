@@ -1,5 +1,9 @@
 # AudioStreamInfo
 
+```TypeScript
+interface AudioStreamInfo
+```
+
 Describes audio stream information.
 
 **Since:** 8

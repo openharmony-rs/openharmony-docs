@@ -1,5 +1,9 @@
 # SeekMode
 
+```TypeScript
+enum SeekMode
+```
+
 视频播放的Seek模式枚举，可通过seek方法作为参数传递下去。
 
 **起始版本：** 8

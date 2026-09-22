@@ -1,5 +1,9 @@
 # OnscreenAwarenessOptions（系统接口）
 
+```TypeScript
+export interface OnscreenAwarenessOptions
+```
+
 屏上感知参数列表，用于特定场景下获取屏上信息，如提供窗口ID用以采集应用界面内容和链接。
 
 **起始版本：** 23

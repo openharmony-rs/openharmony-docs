@@ -1,5 +1,9 @@
 # AVAdsController
 
+```TypeScript
+interface AVAdsController
+```
+
 Definition of the Ad Content Control Interface
 
 **Since:** 26.0.0

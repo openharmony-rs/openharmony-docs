@@ -1,5 +1,9 @@
 # WifiBandType
 
+```TypeScript
+enum WifiBandType
+```
+
 Wi-Fi band type. @enum { int }
 
 **Since:** 10

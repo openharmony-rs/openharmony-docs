@@ -1,5 +1,9 @@
 # MediaQueryListener
 
+```TypeScript
+interface MediaQueryListener extends MediaQueryResult
+```
+
 媒体查询的句柄，并包含了申请句柄时的首次查询结果。媒体查询根据设置的条件语句，比如'(width &lt;= 600vp)'，比较系统信息，若首次查询时相关信息未初始化，matches返回false。
 
 继承自[MediaQueryResult](arkts-arkui-mediaquery-mediaqueryresult-i.md)。
@@ -39,6 +43,23 @@ off(type: 'change', callback?: Callback<MediaQueryResult>): void
 | type | 'change' | 是 | 必须填写字符串'change'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MediaQueryResult](arkts-arkui-mediaquery-mediaqueryresult-i.md)&gt; | 否 | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
 
+**示例**
+
+```TypeScript
+import { mediaquery } from '@kit.ArkUI';
+
+let listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+  if (mediaQueryResult.matches) {
+    // do something here
+  } else {
+    // do something here
+  }
+}
+listener.on('change', onPortrait) // 注册回调
+listener.off('change', onPortrait) // 注销回调
+```
+
 ## on('change')
 
 ```TypeScript
@@ -65,3 +86,7 @@ on(type: 'change', callback: Callback<MediaQueryResult>): void
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 必须填写字符串'change'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MediaQueryResult](arkts-arkui-mediaquery-mediaqueryresult-i.md)&gt; | 是 | 向媒体查询注册的回调。 |
+
+**示例**
+
+详见[off('change')](#offchange)示例。

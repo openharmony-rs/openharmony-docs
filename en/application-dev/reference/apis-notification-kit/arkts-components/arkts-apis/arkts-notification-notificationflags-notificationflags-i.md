@@ -1,5 +1,9 @@
 # NotificationFlags
 
+```TypeScript
+export interface NotificationFlags
+```
+
 Defines the notification flags.
 
 **Since:** 8

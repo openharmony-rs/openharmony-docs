@@ -43,40 +43,8 @@ let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
 emitter.once(innerEvent, callback);
 ```
 
-```TypeScript
-import { Callback } from '@kit.BasicServicesKit';
 
-let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
-  console.info(`eventData: ${JSON.stringify(eventData)}`);
-};
-// 收到eventId为"eventId"的事件后执行该回调函数
-emitter.once('eventId', callback);
-```
-
-```TypeScript
-import { Callback } from '@kit.BasicServicesKit';
-
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
-
-let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.GenericEventData<Sample>): void => {
-  console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
-  if (eventData?.data instanceof Sample) {
-    eventData?.data?.printCount();
-  }
-};
-// 收到eventId为"eventId"的事件后执行回调函数
-emitter.once('eventId', callback);
-```
-
+<a id="once-1"></a>
 
 ## once
 
@@ -104,20 +72,6 @@ function once(eventId: string, callback: Callback<EventData>): void
 ```TypeScript
 import { Callback } from '@kit.BasicServicesKit';
 
-let innerEvent: emitter.InnerEvent = {
-  eventId: 1
-};
-
-let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
-  console.info(`eventData: ${JSON.stringify(eventData)}`);
-};
-// 收到eventId为1的事件后执行该回调处理函数
-emitter.once(innerEvent, callback);
-```
-
-```TypeScript
-import { Callback } from '@kit.BasicServicesKit';
-
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 };
@@ -125,30 +79,8 @@ let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
 emitter.once('eventId', callback);
 ```
 
-```TypeScript
-import { Callback } from '@kit.BasicServicesKit';
 
-@Sendable
-class Sample {
-  constructor() {
-    this.count = 100;
-  }
-  printCount() {
-    console.info('Print count : ' + this.count);
-  }
-  count: number;
-}
-
-let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.GenericEventData<Sample>): void => {
-  console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
-  if (eventData?.data instanceof Sample) {
-    eventData?.data?.printCount();
-  }
-};
-// 收到eventId为"eventId"的事件后执行回调函数
-emitter.once('eventId', callback);
-```
-
+<a id="once-2"></a>
 
 ## once
 
@@ -172,30 +104,6 @@ function once<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 | callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | 是 | 接收到该事件时需要执行的回调处理函数。 |
 
 **示例**
-
-```TypeScript
-import { Callback } from '@kit.BasicServicesKit';
-
-let innerEvent: emitter.InnerEvent = {
-  eventId: 1
-};
-
-let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
-  console.info(`eventData: ${JSON.stringify(eventData)}`);
-};
-// 收到eventId为1的事件后执行该回调处理函数
-emitter.once(innerEvent, callback);
-```
-
-```TypeScript
-import { Callback } from '@kit.BasicServicesKit';
-
-let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
-  console.info(`eventData: ${JSON.stringify(eventData)}`);
-};
-// 收到eventId为"eventId"的事件后执行该回调函数
-emitter.once('eventId', callback);
-```
 
 ```TypeScript
 import { Callback } from '@kit.BasicServicesKit';

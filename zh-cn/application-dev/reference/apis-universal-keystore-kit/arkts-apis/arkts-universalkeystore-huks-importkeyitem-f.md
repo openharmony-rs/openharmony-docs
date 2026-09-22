@@ -16,6 +16,8 @@ Imports a key in plaintext. This API uses an asynchronous callback to return the
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -103,53 +105,8 @@ huks.importKeyItem(keyAlias, options, (error) => {
 });
 ```
 
-```TypeScript
-/* 以导入AES密钥为例 */
-import { huks } from '@kit.UniversalKeystoreKit';
 
-function makeRandomArr(size: number) {
-  let arr = new Uint8Array(size);
-  for (let i = 0; i < size; i++) {
-    arr[i] = Math.floor(Math.random() * 10);
-  }
-  return arr;
-};
-
-let plainTextSize32 = makeRandomArr(32);
-let keyAlias = 'keyAlias';
-let properties: Array<huks.HuksParam> = [
-  {
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_AES
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_PADDING,
-    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-    value: huks.HuksCipherMode.HUKS_MODE_ECB
-  }
-];
-let huksOptions: huks.HuksOptions = {
-  properties: properties,
-  inData: plainTextSize32
-};
-/* 导入密钥 */
-huks.importKeyItem(keyAlias, huksOptions)
-  .then(() => {
-    console.info(`promise: importKeyItem success`);
-  });
-```
-
+<a id="importkeyitem-1"></a>
 
 ## importKeyItem
 
@@ -200,4 +157,49 @@ Imports a key in plaintext. This API uses a promise to return the result.
 
 **示例**
 
-参见 importKeyItem
+```TypeScript
+/* 以导入AES密钥为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+
+function makeRandomArr(size: number) {
+  let arr = new Uint8Array(size);
+  for (let i = 0; i < size; i++) {
+    arr[i] = Math.floor(Math.random() * 10);
+  }
+  return arr;
+};
+
+let plainTextSize32 = makeRandomArr(32);
+let keyAlias = 'keyAlias';
+let properties: Array<huks.HuksParam> = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB
+  }
+];
+let huksOptions: huks.HuksOptions = {
+  properties: properties,
+  inData: plainTextSize32
+};
+/* 导入密钥 */
+huks.importKeyItem(keyAlias, huksOptions)
+  .then(() => {
+    console.info(`promise: importKeyItem success`);
+  });
+```

@@ -1,5 +1,9 @@
 # AbilityState（系统接口）
 
+```TypeScript
+export enum AbilityState
+```
+
 Ability的状态信息。
 
 **起始版本：** 8

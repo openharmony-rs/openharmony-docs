@@ -1,5 +1,9 @@
 # Attendee
 
+```TypeScript
+export interface Attendee
+```
+
 Describes the attendees in a meeting.
 
 **Since:** 10

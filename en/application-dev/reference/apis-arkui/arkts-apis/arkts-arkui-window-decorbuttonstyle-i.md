@@ -1,5 +1,9 @@
 # DecorButtonStyle
 
+```TypeScript
+interface DecorButtonStyle
+```
+
 Describes the button style of the system decoration bar.
 
 **Since:** 14

@@ -1,5 +1,9 @@
 # TcpNetPortStatesInfo
 
+```TypeScript
+export interface TcpNetPortStatesInfo
+```
+
 TCP端口状态信息。
 
 **起始版本：** 24

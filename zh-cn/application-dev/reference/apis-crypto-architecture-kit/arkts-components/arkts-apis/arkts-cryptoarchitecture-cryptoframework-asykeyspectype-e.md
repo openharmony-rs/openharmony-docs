@@ -1,5 +1,9 @@
 # AsyKeySpecType
 
+```TypeScript
+enum AsyKeySpecType
+```
+
 表示密钥参数类型的枚举。
 
 **起始版本：** 10

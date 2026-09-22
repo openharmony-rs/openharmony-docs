@@ -1,5 +1,9 @@
 # NumberOptions
 
+```TypeScript
+export interface NumberOptions
+```
+
 创建数字格式化对象时可设置的配置项。从API version 9开始，NumberOptions的属性由必填改为可选。
 
 **起始版本：** 6

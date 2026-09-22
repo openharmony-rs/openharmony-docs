@@ -1,5 +1,9 @@
 # SnapshotSizeLimitation
 
+```TypeScript
+interface SnapshotSizeLimitation
+```
+
 Defines the size limit of a component screenshot.
 
 **Since:** 26.0.0

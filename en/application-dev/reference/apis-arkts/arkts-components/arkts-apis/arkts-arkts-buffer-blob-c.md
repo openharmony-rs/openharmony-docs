@@ -1,5 +1,9 @@
 # Blob
 
+```TypeScript
+class Blob
+```
+
 Process data as blob type
 
 **Since:** 9

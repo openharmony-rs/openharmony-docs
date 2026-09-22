@@ -1,5 +1,9 @@
 # BackgroundTaskStateInfo（系统接口）
 
+```TypeScript
+interface BackgroundTaskStateInfo
+```
+
 长时任务授权信息。
 
 **起始版本：** 22

@@ -43,6 +43,8 @@ Instructs the widget framework to make a widget not updatable. After this API is
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
 
 
+<a id="disableformsupdate-1"></a>
+
 ## disableFormsUpdate
 
 ```TypeScript

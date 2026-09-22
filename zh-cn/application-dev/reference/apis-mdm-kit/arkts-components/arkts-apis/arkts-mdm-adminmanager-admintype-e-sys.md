@@ -1,5 +1,9 @@
 # AdminType
 
+```TypeScript
+export enum AdminType
+```
+
 设备管理应用的类型。
 
 **起始版本：** 15

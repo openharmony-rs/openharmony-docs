@@ -1,5 +1,9 @@
 # KeyEvent
 
+```TypeScript
+interface KeyEvent
+```
+
 Represents the attributes of a key.
 
 **Since:** 8

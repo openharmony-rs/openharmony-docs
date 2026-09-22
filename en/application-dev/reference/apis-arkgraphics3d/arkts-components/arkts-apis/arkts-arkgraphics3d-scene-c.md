@@ -1,5 +1,9 @@
 # Scene
 
+```TypeScript
+export declare class Scene
+```
+
 Describes a scene.
 
 **Since:** 12
@@ -33,26 +37,6 @@ Clones a node in the current scene. Cross-scene node cloning is not supported.
 | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) &#124; null | Returns the cloned node. If the operation fails, null is returned. |
 
 **Examples**
-
-```TypeScript
-import { Scene, Node } from '@kit.ArkGraphics3D';
-
-function CloneNode() {
-  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
-  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"))
-    .then(async (result: Scene) => {
-      let node = result.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube") as Node;
-      let parent = result.root as Node;
-      let name = "cloneNode_";
-      let clone = result.cloneNode(node, parent, name);
-      if (clone) {
-        console.info("Succeeded in cloning node");
-      } else {
-        console.error("Failed to clone node");
-      }
-    });
-}
-```
 
 ## createComponent
 
@@ -412,21 +396,49 @@ Loads a resource by path. This API uses a promise to return the result.
 
 **Examples**
 
-```TypeScript
 Example 1: Load resources via rawfile (a relative path).
-```
 
 ```TypeScript
+import { Scene } from '@kit.ArkGraphics3D';
+
+function loadModel(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+  scene.then((result: Scene) => {
+    console.info("Scene loaded, root node: " + result.root?.name);
+  });
+}
+```
+
 Example 2: Load via an absolute path (from /data/storage/el2/base/files in the application sandbox directory).
-```
 
 ```TypeScript
-import { Scene, SceneLoadParams } from '@kit.ArkGraphics3D';
+import { common } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { Scene } from '@kit.ArkGraphics3D';
 
-function loadModelWithParams(): Promise<Scene> {
-  let loadParams: SceneLoadParams = { offset: 0 };
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"), loadParams);
-  return scene;
+async function loadModelFromAbsolutePath(context: common.UIAbilityContext): Promise<void> {
+  // Obtain the application sandbox directory. (Scene.load can read only files written by the application itself, not files written by hdc/adb push.)
+  const appCtx = context.getApplicationContext();
+  const filesDir = appCtx.filesDir; // /data/storage/el2/base/files
+
+  // Read the model content from rawfile. (In practice, you can replace rawfile with data from other sources.)
+  // Use a .glb file for easier copying and loading. If the file is in.gltf format, copy its .bin file and texture files to the same directory.
+  const src = 'gltf/CubeWithFloor/glTF/AnimatedCube.glb';
+  const load_uri = `${filesDir}/AnimatedCube.glb`;
+
+  // Write the model file to the application sandbox directory to create a file accessible by Scene.load (absolute path).
+  const rawData = await context.resourceManager.getRawFileContent(src);
+  const file = fileIo.openSync(load_uri, fileIo.OpenMode.CREATE | fileIo.OpenMode.TRUNC | fileIo.OpenMode.WRITE_ONLY);
+  fileIo.writeSync(file.fd, rawData.buffer.slice(rawData.byteOffset, rawData.byteOffset + rawData.byteLength));
+  fileIo.closeSync(file);
+
+  // Load the model using the absolute path.
+  Scene.load(load_uri).then((scene: Scene) => {
+    // Handle the loaded scene.
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
+  });
 }
 ```
 

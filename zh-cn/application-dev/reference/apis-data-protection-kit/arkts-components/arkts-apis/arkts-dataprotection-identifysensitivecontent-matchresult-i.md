@@ -1,5 +1,9 @@
 # MatchResult
 
+```TypeScript
+export interface MatchResult
+```
+
 表示敏感内容的识别结果。
 
 **起始版本：** 21

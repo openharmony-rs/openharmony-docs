@@ -1,5 +1,9 @@
 # PreDefinedConfigName
 
+```TypeScript
+enum PreDefinedConfigName
+```
+
 Enumerates the predefined configuration properties.
 
 **Since:** 11

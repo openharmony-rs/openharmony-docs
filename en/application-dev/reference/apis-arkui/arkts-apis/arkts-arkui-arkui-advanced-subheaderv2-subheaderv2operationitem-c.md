@@ -1,5 +1,9 @@
 # SubHeaderV2OperationItem
 
+```TypeScript
+export declare class SubHeaderV2OperationItem
+```
+
 Represents an item in the operation area.
 
 **Since:** 18

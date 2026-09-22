@@ -1,5 +1,9 @@
 # TrafficPlanParam (System API)
 
+```TypeScript
+export enum TrafficPlanParam
+```
+
 Defines the fields related to the traffic plan.
 
 **Since:** 26.0.0

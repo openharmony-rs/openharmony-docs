@@ -1,5 +1,9 @@
 # AudioCapturerMicInData（系统接口）
 
+```TypeScript
+interface AudioCapturerMicInData
+```
+
 音频采集器数据，包含处理后的音频数据和未经任何处理的麦克风输入（mic-in）音频数据。
 
 **起始版本：** 24

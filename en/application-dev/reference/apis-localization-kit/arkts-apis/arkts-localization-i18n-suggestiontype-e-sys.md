@@ -1,5 +1,9 @@
 # SuggestionType (System API)
 
+```TypeScript
+export enum SuggestionType
+```
+
 Represents the language or country/region suggestion type.
 
 **Since:** 10

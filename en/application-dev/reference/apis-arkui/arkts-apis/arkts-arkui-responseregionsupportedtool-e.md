@@ -1,5 +1,9 @@
 # ResponseRegionSupportedTool
 
+```TypeScript
+declare enum ResponseRegionSupportedTool
+```
+
 Sets the type of the input tool applicable to the touch target.
 
 **Since:** 22

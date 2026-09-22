@@ -1,5 +1,9 @@
 # CertificateDialogPageType
 
+```TypeScript
+export enum CertificateDialogPageType
+```
+
 Enumerates the page types of the certificate management dialog box.
 
 **Since:** 13

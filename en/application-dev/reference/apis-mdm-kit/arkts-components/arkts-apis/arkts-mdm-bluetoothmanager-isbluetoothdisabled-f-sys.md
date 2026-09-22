@@ -18,7 +18,7 @@ Queries whether Bluetooth is disabled.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 

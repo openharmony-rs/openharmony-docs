@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+export declare enum Action
+```
+
 鼠标事件类型。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # ExposureMode
 
+```TypeScript
+enum ExposureMode
+```
+
 Enumerates the exposure modes.
 
 **Since:** 10

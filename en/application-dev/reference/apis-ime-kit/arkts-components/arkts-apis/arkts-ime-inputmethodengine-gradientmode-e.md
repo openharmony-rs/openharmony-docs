@@ -1,5 +1,9 @@
 # GradientMode
 
+```TypeScript
+export enum GradientMode
+```
+
 Enumerates the gradient modes of the input method.<br> <br>
 
 | Name | Value| Description |  

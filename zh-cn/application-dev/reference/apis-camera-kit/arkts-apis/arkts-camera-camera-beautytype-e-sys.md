@@ -1,5 +1,9 @@
 # BeautyType（系统接口）
 
+```TypeScript
+enum BeautyType
+```
+
 Enumerates the beauty types.
 
 **起始版本：** 10

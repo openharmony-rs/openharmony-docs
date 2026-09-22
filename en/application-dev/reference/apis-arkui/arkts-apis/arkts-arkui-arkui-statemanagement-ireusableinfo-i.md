@@ -1,5 +1,9 @@
 # IReusableInfo
 
+```TypeScript
+export declare interface IReusableInfo
+```
+
 The **IReusableInfo** API provides information about the current number and maximum number of reusable components managed by the reuse pool.
 
 **Since:** 26.0.0

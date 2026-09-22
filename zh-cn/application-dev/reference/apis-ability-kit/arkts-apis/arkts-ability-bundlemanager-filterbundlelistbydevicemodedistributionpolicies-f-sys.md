@@ -21,7 +21,7 @@ function filterBundleListByDeviceModeDistributionPolicies(
 > 入参不能为空。所有值必须在的枚举值范围内。
 > DeviceModeDistributePolicy，以及所有不同套餐的策略（通用差分包、部分兼容差分包和全兼容差分包）必须包含。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 

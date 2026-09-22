@@ -1,5 +1,9 @@
 # Normalizer
 
+```TypeScript
+export class Normalizer
+```
+
 提供文本标准化的能力。
 
 **起始版本：** 10

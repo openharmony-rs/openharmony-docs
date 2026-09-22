@@ -1,5 +1,9 @@
 # bluetoothManager
 
+```TypeScript
+declare namespace bluetoothManager
+```
+
 Provides methods to operate or manage Bluetooth.
 
 **Since:** 9

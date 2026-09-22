@@ -1,5 +1,9 @@
 # AutoExposure
 
+```TypeScript
+interface AutoExposure extends AutoExposureQuery
+```
+
 **AutoExposure** inherits from [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md).
 
 It provides APIs related to auto exposure.
@@ -44,6 +48,24 @@ Obtains the exposure metering mode in use.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed, the inputDevice or the session is abnormal.<br>**Applicable version:** 24 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getExposureMeteringMode(photoSession: camera.PhotoSession): camera.ExposureMeteringMode {
+  let meteringMode: camera.ExposureMeteringMode = camera.ExposureMeteringMode.MATRIX;
+  try {
+    meteringMode = photoSession.getExposureMeteringMode();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getExposureMeteringMode call failed. error code: ${err.code}`);
+  }
+  return meteringMode;
+}
+```
+
 ## getExposureMode
 
 ```TypeScript
@@ -75,6 +97,24 @@ Obtains the exposure mode in use.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getExposureMode(photoSession: camera.PhotoSession): camera.ExposureMode | undefined {
+  let exposureMode: camera.ExposureMode | undefined = undefined;
+  try {
+    exposureMode = photoSession.getExposureMode();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getExposureMode call failed. error code: ${err.code}`);
+  }
+  return exposureMode;
+}
+```
+
 ## getExposureValue
 
 ```TypeScript
@@ -100,6 +140,25 @@ Obtains the exposure value in use.
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getExposureValue(photoSession: camera.PhotoSession): number {
+  const invalidValue: number = -1;
+  let exposureValue: number = invalidValue;
+  try {
+    exposureValue = photoSession.getExposureValue();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getExposureValue call failed. error code: ${err.code}`);
+  }
+  return exposureValue;
+}
+```
 
 ## getMeteringPoint
 
@@ -127,6 +186,24 @@ Obtains the metering point of the camera device.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getMeteringPoint(photoSession: camera.PhotoSession): camera.Point | undefined {
+  let exposurePoint: camera.Point | undefined = undefined;
+  try {
+    exposurePoint = photoSession.getMeteringPoint();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getMeteringPoint call failed. error code: ${err.code}`);
+  }
+  return exposurePoint;
+}
+```
+
 ## offExposureStateChange
 
 ```TypeScript
@@ -149,6 +226,24 @@ Unregisters the listener for exposure state change events. This API uses an asyn
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ExposureState](arkts-camera-camera-exposurestate-e.md)&gt; | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. If the callback object is null or an anonymous function, the subscriptions to the specified event with all the callbacks are canceled. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(exposureState: camera.ExposureState): void {
+  console.info(`exposureState: ${exposureState}`);
+}
+
+function unregisterPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+  captureSession.offExposureStateChange(callback);
+}
+
+function unregisterPhotoOutputCaptureStartWithoutParam(captureSession: camera.PhotoSession): void {
+  captureSession.offExposureStateChange();
+}
+```
+
 ## onExposureStateChange
 
 ```TypeScript
@@ -170,6 +265,20 @@ Listens to exposure state change events. This API uses an asynchronous callback 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ExposureState](arkts-camera-camera-exposurestate-e.md)&gt; | Yes | Callback used to return the exposure state. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(exposureState: camera.ExposureState): void {
+  console.info(`exposureState: ${exposureState}`);
+}
+
+function registerPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+  captureSession.onExposureStateChange(callback);
+}
+```
 
 ## setExposureBias
 
@@ -200,6 +309,25 @@ Before the setting, you are advised to use [getExposureBiasRange](arkts-camera-c
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed.<br>**Applicable version:** 12 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setExposureBias(photoSession: camera.PhotoSession, biasRangeArray: Array<number>): void {
+  if (biasRangeArray && biasRangeArray.length > 0) {
+    let exposureBias = biasRangeArray[0];
+    try {
+      photoSession.setExposureBias(exposureBias);
+    } catch (error) {
+      // If the operation fails, error.code is returned and processed.
+      let err = error as BusinessError;
+      console.error(`The setExposureBias call failed. error code: ${err.code}`);
+    }
+  }
+}
+```
+
 ## setExposureMeteringMode
 
 ```TypeScript
@@ -229,6 +357,22 @@ Sets exposure metering mode.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed, the inputDevice or the session is abnormal.<br>**Applicable version:** 24 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setExposureMeteringMode(photoSession: camera.PhotoSession, aeMeteringMode: camera.ExposureMeteringMode): void {
+  try {
+    photoSession.setExposureMeteringMode(aeMeteringMode);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The setExposureMeteringMode call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## setExposureMode
 
 ```TypeScript
@@ -255,6 +399,22 @@ Sets an exposure mode. Before the setting, call [isExposureModeSupported](arkts-
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed.<br>**Applicable version:** 19 and later |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setExposureMode(photoSession: camera.PhotoSession): void {
+  try {
+    photoSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_LOCKED);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The setExposureMode call failed. error code: ${err.code}`);
+  }
+}
+```
 
 ## setMeteringPoint
 
@@ -283,3 +443,20 @@ The coordinate system is based on the horizontal device direction with the devic
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setMeteringPoint(photoSession: camera.PhotoSession): void {
+  const point: camera.Point = {x: 1, y: 1};
+  try {
+    photoSession.setMeteringPoint(point);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The setMeteringPoint call failed. error code: ${err.code}`);
+  }
+}
+```

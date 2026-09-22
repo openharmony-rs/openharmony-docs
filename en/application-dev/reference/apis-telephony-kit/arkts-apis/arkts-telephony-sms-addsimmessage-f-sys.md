@@ -58,23 +58,8 @@ sms.addSimMessage(simMessageOptions, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let simMessageOptions: sms.SimMessageOptions = {
-    slotId: 0,
-    smsc: "test",
-    pdu: "xxxxxx",
-    status: sms.SimMessageStatus.SIM_MESSAGE_STATUS_READ
-};
-sms.addSimMessage(simMessageOptions).then(() => {
-    console.info(`addSimMessage success.`);
-}).catch((err: BusinessError) => {
-    console.error(`addSimMessage failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="addsimmessage-1"></a>
 
 ## addSimMessage
 
@@ -118,4 +103,19 @@ Adds a message to the SIM card. If the SIM card is full, an error is reported. T
 
 **Examples**
 
-See [addSimMessage](#addsimmessage)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let simMessageOptions: sms.SimMessageOptions = {
+    slotId: 0,
+    smsc: "test",
+    pdu: "xxxxxx",
+    status: sms.SimMessageStatus.SIM_MESSAGE_STATUS_READ
+};
+sms.addSimMessage(simMessageOptions).then(() => {
+    console.info(`addSimMessage success.`);
+}).catch((err: BusinessError) => {
+    console.error(`addSimMessage failed, promise: err->${JSON.stringify(err)}`);
+});
+```

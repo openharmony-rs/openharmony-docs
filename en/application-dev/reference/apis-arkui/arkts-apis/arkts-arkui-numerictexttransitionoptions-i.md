@@ -1,5 +1,9 @@
 # NumericTextTransitionOptions
 
+```TypeScript
+declare interface NumericTextTransitionOptions
+```
+
 Defines the options of the numeric flip animation.
 
 **Since:** 20

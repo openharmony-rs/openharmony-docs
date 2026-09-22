@@ -1,5 +1,9 @@
 # Extension
 
+```TypeScript
+interface Extension
+```
+
 Provides the extension information of nnrt device
 
 **Since:** 12

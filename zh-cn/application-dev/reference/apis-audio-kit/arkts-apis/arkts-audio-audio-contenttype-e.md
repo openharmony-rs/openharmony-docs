@@ -1,5 +1,9 @@
 # ContentType
 
+```TypeScript
+enum ContentType
+```
+
 表示音频内容类型的枚举。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # FusionPressureResponse
 
+```TypeScript
+interface FusionPressureResponse extends Response
+```
+
 融合压力传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
 **继承/实现关系：** FusionPressureResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

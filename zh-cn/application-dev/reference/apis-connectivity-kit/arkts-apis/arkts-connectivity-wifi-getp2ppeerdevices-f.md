@@ -53,6 +53,8 @@ wifi.getP2pPeerDevices().then(data => {
 ```
 
 
+<a id="getp2ppeerdevices-1"></a>
+
 ## getP2pPeerDevices
 
 ```TypeScript
@@ -83,4 +85,4 @@ function getP2pPeerDevices(callback: AsyncCallback<WifiP2pDevice[]>): void
 
 **示例**
 
-参见 getP2pPeerDevices
+参见 [getP2pPeerDevices](#getp2ppeerdevices)

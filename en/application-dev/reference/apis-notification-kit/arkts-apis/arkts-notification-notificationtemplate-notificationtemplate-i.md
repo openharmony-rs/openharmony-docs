@@ -1,5 +1,9 @@
 # NotificationTemplate
 
+```TypeScript
+export interface NotificationTemplate
+```
+
 This module defines the notification template, which is used to specify the template type for a notification.
 
 > **NOTE:** 

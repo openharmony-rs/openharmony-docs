@@ -1,6 +1,10 @@
 # LabelOptions
 
-Defines the label configuration options.
+```TypeScript
+export interface LabelOptions
+```
+
+Defines the text attributes.
 
 **Since:** 12
 
@@ -18,7 +22,7 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 text: string
 ```
 
-Text of the chip.
+Text content displayed on the chip item. Used to set the text information shown on the chip.
 
 **Type:** string
 

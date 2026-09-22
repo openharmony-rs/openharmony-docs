@@ -1,5 +1,9 @@
 # PublishFormResult（系统接口）
 
+```TypeScript
+interface PublishFormResult
+```
+
 发布卡片加桌结果。
 
 **起始版本：** 12

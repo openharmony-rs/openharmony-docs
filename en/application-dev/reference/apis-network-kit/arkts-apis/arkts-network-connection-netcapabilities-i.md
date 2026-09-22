@@ -1,5 +1,9 @@
 # NetCapabilities
 
+```TypeScript
+export interface NetCapabilities
+```
+
 Defines the network capability set.
 
 **Since:** 8

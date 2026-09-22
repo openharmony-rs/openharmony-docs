@@ -1,5 +1,9 @@
 # ResourceType (System API)
 
+```TypeScript
+export enum ResourceType
+```
+
 Enumerates the efficiency resource types.
 
 **Since:** 9

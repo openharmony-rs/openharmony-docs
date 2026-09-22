@@ -1,8 +1,12 @@
 # SweepRefractionMaskOptions（系统接口）
 
+```TypeScript
+interface SweepRefractionMaskOptions
+```
+
 创建 SweepRefractionMask 的可选参数。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -26,7 +30,7 @@ cornerRadius?: number
 
 **默认值：** {0.16}
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +50,7 @@ prismHeight?: number
 
 **默认值：** {1.0}
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,7 +70,7 @@ prismWidth?: number
 
 **默认值：** {1.0}
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,7 +90,7 @@ shapeType?: PrismShapeType
 
 **默认值：** {PrismShapeType.ROUNDED_RECT}
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,7 +110,7 @@ sweepCenterX?: number
 
 **默认值：** {0.0}
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -126,7 +130,7 @@ sweepCenterY?: number
 
 **默认值：** {0.0}
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

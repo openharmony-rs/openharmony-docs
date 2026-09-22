@@ -1,5 +1,9 @@
 # AccessibilityEventInfo（系统接口）
 
+```TypeScript
+export declare interface AccessibilityEventInfo
+```
+
 无障碍事件信息。
 
 **起始版本：** 20

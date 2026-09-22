@@ -1,5 +1,9 @@
 # Emotion
 
+```TypeScript
+enum Emotion
+```
+
 枚举，人脸检测信息中的情绪类型。
 
 **起始版本：** 26.0.0

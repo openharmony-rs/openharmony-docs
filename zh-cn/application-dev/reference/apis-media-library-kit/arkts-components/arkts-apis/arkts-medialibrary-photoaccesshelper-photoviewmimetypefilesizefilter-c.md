@@ -1,5 +1,9 @@
 # PhotoViewMimeTypeFileSizeFilter
 
+```TypeScript
+class PhotoViewMimeTypeFileSizeFilter
+```
+
 指定媒体文件类型和文件大小进行过滤。
 
 **起始版本：** 20

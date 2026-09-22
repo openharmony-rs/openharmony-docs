@@ -6,6 +6,8 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
+<a id="getusergrantedenabledbundles-1"></a>
+
 ## getUserGrantedEnabledBundles
 
 ```TypeScript
@@ -38,19 +40,6 @@ function getUserGrantedEnabledBundles(): Promise<GrantedBundleInfo[]>
 
 ```TypeScript
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
-  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-let targetBundle: notificationExtensionSubscription.BundleOption =
-{
-  // 应改为开发者需要查询的目标应用信息
-  bundle: 'com.example.testnotification',
-};
-notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);

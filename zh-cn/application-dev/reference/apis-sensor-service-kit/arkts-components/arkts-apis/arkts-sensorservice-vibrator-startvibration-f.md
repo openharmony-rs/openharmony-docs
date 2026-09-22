@@ -41,18 +41,129 @@ function startVibration(effect: VibrateEffect, attribute: VibrateAttribute, call
 
 **示例**
 
-```TypeScript
 按照预置振动效果触发马达振动：
-```
 
 ```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 查询是否支持'haptic.notice.success'
+  vibrator.isSupportEffect('haptic.notice.success', (err: BusinessError, state: boolean) => {
+    if (err) {
+      console.error(`Failed to query effect. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeed in querying effect');
+    if (state) {
+      try {
+        vibrator.startVibration({
+          type: 'preset',
+          effectId: 'haptic.notice.success',
+          count: 1,
+        }, {
+          usage: 'notification' // 根据实际选择类型归属不同的开关管控
+        }, (error: BusinessError) => {
+          if (error) {
+            console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+       return;
+          }
+          console.info('Succeed in starting vibration');
+
+        });
+      } catch (err) {
+        let e: BusinessError = err as BusinessError;
+    console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+      }
+    }
+  })
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
 按照自定义振动配置文件触发马达振动：
-```
 
 ```TypeScript
-按照指定时长触发马达振动：
+import { vibrator } from '@kit.SensorServiceKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const fileName: string = 'xxx.json';
+
+@Entry
+@Component
+struct Index {
+  uiContext = this.getUIContext();
+
+  build() {
+    Row() {
+      Column() {
+        Button('alarm-file')
+          .onClick(() => {
+            let rawFd: resourceManager.RawFileDescriptor | undefined = this.uiContext.getHostContext()?.resourceManager.getRawFdSync(fileName);
+            if (rawFd != undefined) {
+              try {
+                vibrator.startVibration({
+                  type: 'file',
+                  hapticFd: { fd: rawFd.fd, offset: rawFd.offset, length: rawFd.length }
+                }, {
+                  id: 0,
+                  usage: 'alarm' // 根据实际选择类型归属不同的开关管控
+                }, (error: BusinessError) => {
+                  if (error) {
+                    console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+                    return;
+                  }
+                  console.info('Succeed in starting vibration');
+                });
+              } catch (err) {
+                let e: BusinessError = err as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              } finally {
+                vibrator.stopVibration();
+                this.uiContext.getHostContext()?.resourceManager.closeRawFdSync(fileName);
+              }
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
 ```
 
+按照指定时长触发马达振动：
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  vibrator.startVibration({
+    type: 'time',
+    duration: 1000,
+  }, {
+    id: 0,
+    usage: 'alarm' // 根据实际选择类型归属不同的开关管控
+  }, (error: BusinessError) => {
+    if (error) {
+      console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    console.info('Succeed in starting vibration');
+  });
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="startvibration-1"></a>
 
 ## startVibration
 
@@ -94,4 +205,114 @@ function startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Pro
 
 **示例**
 
-参见 [startVibration](#startvibration)
+按照预置振动效果触发马达振动：
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 查询是否支持'haptic.notice.success'
+  vibrator.isSupportEffect('haptic.notice.success').then((state: boolean) => {
+    console.info('Succeed in querying effect');
+    if (state) {
+      try {
+        vibrator.startVibration({
+          type: 'preset',
+          effectId: 'haptic.notice.success',
+          count: 1,
+        }, {
+          usage: 'notification' // 根据实际选择类型归属不同的开关管控
+        }).then(() => {
+          console.info('Succeed in starting vibration');
+        }).catch((error: BusinessError) => {
+          console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+        });
+      } catch (err) {
+        let e: BusinessError = err as BusinessError;
+        console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+      }
+    }
+  }, (error: BusinessError) => {
+    console.error(`Failed to query effect. Code: ${error.code}, message: ${error.message}`);
+  })
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+按照自定义振动配置文件触发马达振动：
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const fileName: string = 'xxx.json';
+
+@Entry
+@Component
+struct Index {
+  uiContext = this.getUIContext();
+
+  build() {
+    Row() {
+      Column() {
+        Button('alarm-file')
+          .onClick(() => {
+            let rawFd: resourceManager.RawFileDescriptor | undefined = this.uiContext.getHostContext()?.resourceManager.getRawFdSync(fileName);
+            if (rawFd != undefined) {
+              try {
+                vibrator.startVibration({
+                  type: 'file',
+                  hapticFd: { fd: rawFd.fd, offset: rawFd.offset, length: rawFd.length }
+                }, {
+                  id: 0,
+                  usage: 'alarm' // 根据实际选择类型归属不同的开关管控
+                }).then(() => {
+                  console.info('Succeed in starting vibration');
+                }).catch((error: BusinessError) => {
+                  console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+                });
+              } catch (err) {
+                let e: BusinessError = err as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              } finally {
+                vibrator.stopVibration();
+                this.uiContext.getHostContext()?.resourceManager.closeRawFdSync(fileName);
+              }
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+按照指定时长触发马达振动：
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  vibrator.startVibration({
+    type: 'time',
+    duration: 1000
+  }, {
+    id: 0,
+    usage: 'alarm' // 根据实际选择类型归属不同的开关管控
+  }).then(() => {
+    console.info('Succeed in starting vibration');
+  }, (error: BusinessError) => {
+    console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+}
+```

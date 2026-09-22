@@ -1,5 +1,9 @@
 # PlaceholderAlignment
 
+```TypeScript
+enum PlaceholderAlignment
+```
+
 Enumerates the vertical alignment modes of a placeholder relative to the surrounding text.
 
 ![PlaceholderAlignment.png](../../../reference/apis-arkgraphics2d/figures/PlaceholderAlignment.png)

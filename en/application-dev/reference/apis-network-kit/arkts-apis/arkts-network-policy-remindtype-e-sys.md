@@ -1,5 +1,9 @@
 # RemindType (System API)
 
+```TypeScript
+export enum RemindType
+```
+
 Enumerates the reminder types.
 
 **Since:** 10

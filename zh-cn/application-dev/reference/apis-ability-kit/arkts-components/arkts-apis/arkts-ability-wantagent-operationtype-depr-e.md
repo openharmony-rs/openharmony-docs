@@ -1,5 +1,9 @@
 # OperationType
 
+```TypeScript
+export enum OperationType
+```
+
 表示WantAgent支持的操作类型。
 
 **起始版本：** 7

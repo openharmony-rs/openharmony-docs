@@ -1,5 +1,9 @@
 # PngPropertyKey
 
+```TypeScript
+enum PngPropertyKey
+```
+
 Enumerates the properties available for the metadata of a PNG image.
 
 > **NOTE:** 

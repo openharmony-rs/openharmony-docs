@@ -51,17 +51,8 @@ connection.clearCustomDnsRules((error: BusinessError, data: void) => {
 })
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.clearCustomDnsRules().then(() => {
-    console.info("success");
-}).catch((error: BusinessError) => {
-    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
-})
-```
-
+<a id="clearcustomdnsrules-1"></a>
 
 ## clearCustomDnsRules
 
@@ -94,4 +85,13 @@ function clearCustomDnsRules(): Promise<void>
 
 **示例**
 
-参见 [clearCustomDnsRules](#clearcustomdnsrules)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.clearCustomDnsRules().then(() => {
+    console.info("success");
+}).catch((error: BusinessError) => {
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+})
+```

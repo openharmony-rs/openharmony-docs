@@ -1,5 +1,9 @@
 # AgentCapabilities
 
+```TypeScript
+export interface AgentCapabilities
+```
+
 定义Agent支持的可选能力。
 
 @typedef AgentCapabilities

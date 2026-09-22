@@ -19,6 +19,8 @@ function deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -47,16 +49,38 @@ function deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 此处options选择emptyOptions传空 */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+
+/* 删除密钥 */
+huks.deleteKeyItem(keyAlias, emptyOptions, (error) => {
+  if (error) {
+    console.error(`callback: deleteKeyItem failed`);
+  } else {
+    console.info(`callback: deleteKeyItem key success`);
+  }
+});
+```
+
 JS示例：
 
 > 说明
 > 
 > JS示例代码仅供轻量级设备使用。
+
+```TypeScript
+<stack class="container">
+    <input type="button" class="deleteBtn" @click="deleteKey">删除密钥</input>
+    <text class="result">{{result}}</text>
+</stack>
 ```
 
 ```TypeScript
@@ -121,21 +145,8 @@ export default {
 };
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 此处options选择emptyOptions传空 */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-/* 删除密钥 */
-huks.deleteKeyItem(keyAlias, emptyOptions)
-  .then(() => {
-    console.info(`promise: deleteKeyItem key success`);
-  });
-```
-
+<a id="deletekeyitem-1"></a>
 
 ## deleteKeyItem
 
@@ -184,4 +195,17 @@ function deleteKeyItem(keyAlias: string, options: HuksOptions): Promise<void>
 
 **示例**
 
-参见 [deleteKeyItem](#deletekeyitem)
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 此处options选择emptyOptions传空 */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+/* 删除密钥 */
+huks.deleteKeyItem(keyAlias, emptyOptions)
+  .then(() => {
+    console.info(`promise: deleteKeyItem key success`);
+  });
+```

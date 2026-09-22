@@ -1,8 +1,10 @@
 # AudioLoopbackStatus
 
-表示返听状态的枚举。
+```TypeScript
+enum AudioLoopbackStatus
+```
 
-@enum { int }
+表示返听状态的枚举。
 
 **起始版本：** 20
 
@@ -14,7 +16,7 @@
 UNAVAILABLE_DEVICE = -2
 ```
 
-表示返听由于输入\输出设备而不可用（如出声设备变更）。
+表示返听由于输入/输出设备而不可用（如出声设备变更）。
 
 **起始版本：** 20
 

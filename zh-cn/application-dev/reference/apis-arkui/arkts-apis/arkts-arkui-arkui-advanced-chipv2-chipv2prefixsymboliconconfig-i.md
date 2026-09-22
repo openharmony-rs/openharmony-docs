@@ -1,5 +1,9 @@
 # ChipV2PrefixSymbolIconConfig
 
+```TypeScript
+export interface ChipV2PrefixSymbolIconConfig extends ChipV2SymbolIconConfig
+```
+
 ChipV2PrefixSymbolIconConfig定义前缀Symbol图标的属性配置。
 
 继承自[ChipV2SymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2symboliconconfig-i.md)。

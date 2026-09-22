@@ -1,5 +1,9 @@
 # ReaderIterator
 
+```TypeScript
+declare interface ReaderIterator
+```
+
 文件读取迭代器。在调用ReaderIterator的方法前，需要先通过readLines方法（同步或异步）来构建一个ReaderIterator实例。
 
 **起始版本：** 11

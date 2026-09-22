@@ -1,5 +1,9 @@
 # Character
 
+```TypeScript
+export class Character
+```
+
 Provides the API for accessing unicode character properties. For example, determine whether a character is a number.
 
 **Since:** 8

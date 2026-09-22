@@ -1,5 +1,9 @@
 # RequestKeyboardReason
 
+```TypeScript
+export enum RequestKeyboardReason
+```
+
 枚举，请求键盘输入的原因。<br>
 
 | 名称 | 值 | 说明 |  

@@ -1,5 +1,9 @@
 # Profile
 
+```TypeScript
+interface Profile
+```
+
 相机配置信息项。
 
 **起始版本：** 10

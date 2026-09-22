@@ -48,6 +48,8 @@ Recovers recycled widgets and updates their status to non-recyclable, or updates
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
 
+<a id="recoverforms-1"></a>
+
 ## recoverForms
 
 ```TypeScript

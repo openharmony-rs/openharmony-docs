@@ -1,5 +1,9 @@
 # ShortcutExistence (System API)
 
+```TypeScript
+export enum ShortcutExistence
+```
+
 Result returned when querying whether a shortcut exists.
 
 **Since:** 9

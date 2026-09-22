@@ -1,5 +1,9 @@
 # Beauty (System API)
 
+```TypeScript
+interface Beauty extends BeautyQuery
+```
+
 Beauty extends [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md) Provides APIs to obtain and set the beauty effect.
 
 **Inheritance/Implementation:** Beauty extends [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md)

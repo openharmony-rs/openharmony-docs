@@ -1,5 +1,9 @@
 # Configuration
 
+```TypeScript
+export class Configuration
+```
+
 Defines the device configuration.
 
 **Since:** 6

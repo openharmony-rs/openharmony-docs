@@ -1,5 +1,9 @@
 # UserAuthResult (System API)
 
+```TypeScript
+interface UserAuthResult
+```
+
 User authorization result.
 
 **Since:** 26.0.0
@@ -25,6 +29,8 @@ Permission information list.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -40,6 +46,8 @@ Permission query information.
 **Type:** [PermissionQuery](arkts-ability-abilitytoolaccessctrl-permissionquery-i-sys.md)
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

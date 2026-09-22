@@ -1,5 +1,9 @@
 # CoordinatesOptions
 
+```TypeScript
+interface CoordinatesOptions
+```
+
 Describes the coordinate options.
 
 **Since:** 8

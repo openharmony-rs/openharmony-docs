@@ -1,6 +1,10 @@
 # GetAuthInfoOptions (System API)
 
-Represents a set of optional parameters for [GetAuthInfo](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo).
+```TypeScript
+interface GetAuthInfoOptions
+```
+
+Represents a set of optional parameters for [GetAuthInfo](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo-3).
 
 **Since:** 12
 

@@ -1,5 +1,9 @@
 # SearchParams
 
+```TypeScript
+export interface SearchParams
+```
+
 AtomicServiceSearch中“搜索区”的可选属性。
 
 **起始版本：** 18
@@ -108,7 +112,7 @@ caretStyle?: CaretStyle
 componentBackgroundColor?: ResourceColor
 ```
 
-设置组件的背景色。默认值：`&#36;r('sys.color.ohos_id_color_text_field_sub_bg')`。
+设置组件的背景色。默认值：`$r('sys.color.ohos_id_color_text_field_sub_bg')`。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -142,7 +146,7 @@ decoration?: TextDecorationOptions
 
 文本装饰线对象。默认值：`{type: TextDecorationType.None, color: Color.Black, style: TextDecorationStyle.SOLID}`。
 
-**类型：** [TextDecorationOptions](../arkts-components/arkts-arkui-textdecorationoptions-i.md)
+**类型：** [TextDecorationOptions](../arkts-components/arkts-arkui-common-comp-textdecorationoptions-i.md)
 
 **起始版本：** 18
 
@@ -224,7 +228,7 @@ enterKeyType?: EnterKeyType
 
 输入法回车键类型。默认值：`EnterKeyType.Search`。
 
-**类型：** [EnterKeyType](../arkts-components/arkts-arkui-enterkeytype-e.md)
+**类型：** [EnterKeyType](../arkts-components/arkts-arkui-textinput-comp-enterkeytype-e.md)
 
 **起始版本：** 18
 
@@ -238,7 +242,7 @@ enterKeyType?: EnterKeyType
 fontColor?: ResourceColor
 ```
 
-输入文本的字体颜色。默认值：`&#36;r('sys.color.ohos_id_color_text_secondary')`。
+输入文本的字体颜色。默认值：`$r('sys.color.ohos_id_color_text_secondary')`。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -462,7 +466,7 @@ onSubmit?: Callback<string> | SearchSubmitCallback
 
 点击搜索图标、搜索按钮或者按下软键盘搜索按钮时触发该回调。string为当前搜索框中输入的文本内容。默认值为`undefined`。
 
-**类型：** Callback&lt;string&gt; &#124; [SearchSubmitCallback](../arkts-components/arkts-arkui-searchsubmitcallback-t.md)
+**类型：** Callback&lt;string&gt; &#124; [SearchSubmitCallback](../arkts-components/arkts-arkui-search-comp-searchsubmitcallback-t.md)
 
 **起始版本：** 18
 
@@ -508,7 +512,7 @@ onWillInsert?: Callback<InsertValue, boolean>
 placeholderColor?: ResourceColor
 ```
 
-placeholder文本颜色。默认值：`&#36;r('sys.color.ohos_id_color_text_secondary')`。
+placeholder文本颜色。默认值：`$r('sys.color.ohos_id_color_text_secondary')`。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -524,7 +528,7 @@ placeholder文本颜色。默认值：`&#36;r('sys.color.ohos_id_color_text_seco
 placeholderFont?: Font
 ```
 
-设置placeholder文本样式，包括字体大小、字体粗细、字体族、字体风格。目前仅支持默认字体族。默认值：`{size: &#36;r('sys.float.ohos_id_text_size_body1')}`。
+设置placeholder文本样式，包括字体大小、字体粗细、字体族、字体风格。目前仅支持默认字体族。默认值：`{size: $r('sys.float.ohos_id_text_size_body1')}`。
 
 **类型：** Font
 
@@ -540,7 +544,7 @@ placeholderFont?: Font
 pressedBackgroundColor?: ResourceColor
 ```
 
-设置组件按压态的背景色。默认值：`&#36;r('sys.color.ohos_id_color_click_effect')`。
+设置组件按压态的背景色。默认值：`$r('sys.color.ohos_id_color_click_effect')`。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -582,7 +586,7 @@ searchIcon?: IconOptions | SymbolGlyphModifier
 
 深色模式默认值：`{size: '16vp', color: '#99ffffff', src: ' '}`。
 
-**类型：** IconOptions &#124; [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** IconOptions &#124; [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 
@@ -644,7 +648,7 @@ textAlign?: TextAlign
 textFont?: Font
 ```
 
-设置搜索框内输入文本样式，包括字体大小、字体粗细、字体族、字体风格。目前仅支持默认字体族。默认值：`{size: &#36;r('sys.float.ohos_id_text_size_body1')}`。
+设置搜索框内输入文本样式，包括字体大小、字体粗细、字体族、字体风格。目前仅支持默认字体族。默认值：`{size: $r('sys.float.ohos_id_text_size_body1')}`。
 
 **类型：** Font
 
@@ -678,7 +682,7 @@ type?: SearchType
 
 输入框类型。默认值：`SearchType.Normal`。
 
-**类型：** [SearchType](../arkts-components/arkts-arkui-searchtype-e.md)
+**类型：** [SearchType](../arkts-components/arkts-arkui-search-comp-searchtype-e.md)
 
 **起始版本：** 18
 

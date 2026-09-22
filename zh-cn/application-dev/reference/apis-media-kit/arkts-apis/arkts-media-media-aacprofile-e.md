@@ -1,5 +1,9 @@
 # AacProfile
 
+```TypeScript
+enum AacProfile
+```
+
 高级音频编码（AAC）类型枚举。
 
 **起始版本：** 22

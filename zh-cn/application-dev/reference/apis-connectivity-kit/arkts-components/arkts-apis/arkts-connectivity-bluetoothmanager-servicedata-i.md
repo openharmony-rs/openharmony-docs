@@ -1,5 +1,9 @@
 # ServiceData
 
+```TypeScript
+interface ServiceData
+```
+
 描述广播包中服务数据内容。
 
 从API version 9开始支持，从API version 10开始废弃。

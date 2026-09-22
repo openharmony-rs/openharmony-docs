@@ -1,5 +1,9 @@
 # AuthorizationMode（系统接口）
 
+```TypeScript
+enum AuthorizationMode
+```
+
 枚举，授权模式。
 
 **起始版本：** 12

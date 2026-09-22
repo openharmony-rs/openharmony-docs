@@ -1,5 +1,9 @@
 # MediaAssetDataHandler
 
+```TypeScript
+interface MediaAssetDataHandler<T>
+```
+
 媒体资源处理器，应用在onDataPrepared方法中可自定义媒体资源处理逻辑。
 
 > **说明：** 
@@ -42,3 +46,5 @@ map支持返回的信息：
 | --- | --- | --- | --- |
 | data | T | 是 | 已就绪的图片资源数据。泛型，支持ArrayBuffer, [ImageSource](../../apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md), [MovingPhoto](arkts-medialibrary-photoaccesshelper-movingphoto-i.md)和boolean四种数据类型。 |
 | map | Map&lt;string, string&gt; | 否 | 用于获取图片资源的额外信息，如图片质量。当前仅支持'quality'。<br>**适用版本：** 12 |
+
+**示例**

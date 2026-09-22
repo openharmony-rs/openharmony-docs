@@ -1,5 +1,9 @@
 # DevelopType（系统接口）
 
+```TypeScript
+enum DevelopType
+```
+
 用于描述意图的开发方式。
 
 **起始版本：** 23

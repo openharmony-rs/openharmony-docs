@@ -1,5 +1,9 @@
 # FloatingBallConfiguration
 
+```TypeScript
+interface FloatingBallConfiguration
+```
+
 Describes the parameters for creating a floating ball controller.
 
 **Since:** 20

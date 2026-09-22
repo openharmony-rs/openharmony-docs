@@ -1,5 +1,9 @@
 # SearchPlayVideoInfo
 
+```TypeScript
+interface SearchPlayVideoInfo
+```
+
 搜播的视频信息的定义。
 
 @interface SearchPlayVideoInfo

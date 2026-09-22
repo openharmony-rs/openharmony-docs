@@ -1,5 +1,9 @@
 # StartAnimationParams
 
+```TypeScript
+interface StartAnimationParams
+```
+
 启动动画配置。
 
 仅对同应用的不同ability间跳转生效。

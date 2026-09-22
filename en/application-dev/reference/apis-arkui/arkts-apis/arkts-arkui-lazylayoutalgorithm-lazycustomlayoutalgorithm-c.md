@@ -1,5 +1,9 @@
 # LazyCustomLayoutAlgorithm
 
+```TypeScript
+export class LazyCustomLayoutAlgorithm implements LazyLayoutAlgorithm
+```
+
 Defines the lazy custom layout algorithm.
 
 **Inheritance/Implementation:** LazyCustomLayoutAlgorithm implements [LazyLayoutAlgorithm](arkts-arkui-lazylayoutalgorithm-i.md)

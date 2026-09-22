@@ -1,5 +1,9 @@
 # CloudMediaAssetTaskStatus（系统接口）
 
+```TypeScript
+enum CloudMediaAssetTaskStatus
+```
+
 枚举，表示云端媒体资产的下载任务状态。
 
 **起始版本：** 14

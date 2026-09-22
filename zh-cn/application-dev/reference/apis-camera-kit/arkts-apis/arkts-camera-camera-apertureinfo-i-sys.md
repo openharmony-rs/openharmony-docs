@@ -1,5 +1,9 @@
 # ApertureInfo（系统接口）
 
+```TypeScript
+interface ApertureInfo
+```
+
 Describes the aperture information.
 
 **起始版本：** 12

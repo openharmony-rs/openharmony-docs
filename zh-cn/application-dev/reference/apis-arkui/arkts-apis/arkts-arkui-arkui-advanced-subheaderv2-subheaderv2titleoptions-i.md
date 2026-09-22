@@ -1,5 +1,9 @@
 # SubHeaderV2TitleOptions
 
+```TypeScript
+export interface SubHeaderV2TitleOptions
+```
+
 用于构建SubHeaderV2Title对象。
 
 **起始版本：** 18
@@ -64,7 +68,7 @@ primaryTitleModifier?: TextModifier
 
 默认值：undefined
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
@@ -104,7 +108,7 @@ secondaryTitleModifier?: TextModifier
 
 默认值：undefined
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 

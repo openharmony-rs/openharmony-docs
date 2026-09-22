@@ -1,5 +1,9 @@
 # BoidsSimGravityParameters (System API)
 
+```TypeScript
+export interface BoidsSimGravityParameters
+```
+
 Attraction field parameters, used to configure the attraction field in the scene.
 
 **Since:** 26.0.0

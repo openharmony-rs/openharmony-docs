@@ -1,5 +1,9 @@
 # AdsBlockManager
 
+```TypeScript
+class AdsBlockManager
+```
+
 AdsBlockManager是ArkWeb框架中用于管理Web组件广告过滤功能的类，提供对广告过滤规则的设置、域名黑白名单管理及过滤策略控制等能力。每个应用中的所有Web组件共享一个AdsBlockManager静态类，开发者可通过该类向Web组件注入符合通用EasyList语法规则的广告过滤配置文件，并灵活控制特定网站的广告过滤启用状态。
 
 AdsBlockManager的核心机制基于域名后缀匹配的AllowedList/DisallowedList双层策略：DisallowedList用于禁用特定网站的广告过滤，而AllowedList具有更高优先级，可在DisallowedList的范围内重新开启部分子域名的广告过滤。广告过滤规则内部解析成功后会被持久化存储，应用重启后无需重复设置；而域名黑白名单不会持久化，应用重启后需重新配置。
@@ -47,6 +51,61 @@ static addAdsBlockAllowedList(domainSuffixes: Array<string>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+// 演示通过一个按钮的点击向Web组件设置广告过滤的域名策略
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("addAdsBlockAllowedList") }
+          .onClick(() => {
+            // 演示AllowedList优先级：先禁用example.com所有子域名，再重新启用news.example.com
+            let arrDisallowDomainSuffixes = new Array<string>();
+            arrDisallowDomainSuffixes.push('example.com');
+            webview.AdsBlockManager.addAdsBlockDisallowedList(arrDisallowDomainSuffixes);
+
+            let arrAllowedDomainSuffixes = new Array<string>();
+            arrAllowedDomainSuffixes.push('news.example.com');
+            webview.AdsBlockManager.addAdsBlockAllowedList(arrAllowedDomainSuffixes);
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
+
 ## addAdsBlockDisallowedList
 
 ```TypeScript
@@ -80,6 +139,57 @@ static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+// 演示通过一个按钮的点击向Web组件设置广告过滤的域名策略
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("addAdsBlockDisallowedList") }
+          .onClick(() => {
+            let arrDomainSuffixes = new Array<string>();
+            arrDomainSuffixes.push('example.com');
+            arrDomainSuffixes.push('abcdefg.cn');
+            webview.AdsBlockManager.addAdsBlockDisallowedList(arrDomainSuffixes);
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
+
 ## clearAdsBlockAllowedList
 
 ```TypeScript
@@ -104,6 +214,8 @@ static clearAdsBlockAllowedList(): void
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+**示例**
+
 ## clearAdsBlockDisallowedList
 
 ```TypeScript
@@ -127,6 +239,53 @@ static clearAdsBlockDisallowedList(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("clearAdsBlockDisallowedList") }
+          .onClick(() => {
+            webview.AdsBlockManager.clearAdsBlockDisallowedList();
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
 
 ## removeAdsBlockAllowedList
 
@@ -159,6 +318,57 @@ static removeAdsBlockAllowedList(domainSuffixes: Array<string>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+// 演示通过一个按钮的点击从AdsBlockManager的AllowedList中删除域名元素
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("removeAdsBlockAllowedList") }
+          .onClick(() => {
+            let arrDomainSuffixes = new Array<string>();
+            arrDomainSuffixes.push('example.com');
+            arrDomainSuffixes.push('abcdefg.cn');
+            webview.AdsBlockManager.removeAdsBlockAllowedList(arrDomainSuffixes);
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
+
 ## removeAdsBlockDisallowedList
 
 ```TypeScript
@@ -189,6 +399,57 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+// 演示通过一个按钮的点击从AdsBlockManager的DisallowedList中删除域名元素
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("removeAdsBlockDisallowedList") }
+          .onClick(() => {
+            let arrDomainSuffixes = new Array<string>();
+            arrDomainSuffixes.push('example.com');
+            arrDomainSuffixes.push('abcdefg.cn');
+            webview.AdsBlockManager.removeAdsBlockDisallowedList(arrDomainSuffixes);
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+        .onControllerAttached(()=>{
+          this.controller.enableAdsBlock(true);
+        })
+    }
+  }
+}
+```
 
 ## setAdsBlockRules
 
@@ -221,3 +482,43 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { picker, fileUri } from '@kit.CoreFileKit';
+
+// 演示点击按钮，通过filepicker打开一个EasyList规则文件并设置到Web组件中
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Row() {
+      Flex() {
+        Button({ type: ButtonType.Capsule }) {
+          Text("setAdsBlockRules")
+        }
+        .onClick(() => {
+          try {
+            let documentSelectionOptions: ESObject = new picker.DocumentSelectOptions();
+            let documentPicker: ESObject = new picker.DocumentViewPicker();
+            documentPicker.select(documentSelectionOptions).then((documentSelectResult: ESObject) => {
+              if (documentSelectResult && documentSelectResult.length > 0) {
+                let fileRealPath = new fileUri.FileUri(documentSelectResult[0]);
+                console.info('DocumentViewPicker.select successfully, uri: ' + fileRealPath);
+                webview.AdsBlockManager.setAdsBlockRules(fileRealPath.path, true);
+              }
+            })
+          } catch (err) {
+            console.error(`DocumentViewPicker.select failed, Error code: ${err.code}, message: ${err.message}`);
+          }
+        })
+      }
+    }
+  }
+}
+```

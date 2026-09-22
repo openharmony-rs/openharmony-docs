@@ -1,5 +1,9 @@
 # Range
 
+```TypeScript
+export interface Range
+```
+
 Describes the range of the selected text.
 
 **Since:** 10

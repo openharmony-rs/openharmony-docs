@@ -1,5 +1,9 @@
 # RouterPageInfo
 
+```TypeScript
+export class RouterPageInfo
+```
+
 RouterPageInfo包含的信息，由系统返回给开发者。
 
 **起始版本：** 11

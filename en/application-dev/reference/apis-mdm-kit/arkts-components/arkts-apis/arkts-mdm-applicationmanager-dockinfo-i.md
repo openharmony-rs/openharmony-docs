@@ -1,5 +1,9 @@
 # DockInfo
 
+```TypeScript
+interface DockInfo
+```
+
 Describes information about an application in the shortcut bar.
 
 **Since:** 24

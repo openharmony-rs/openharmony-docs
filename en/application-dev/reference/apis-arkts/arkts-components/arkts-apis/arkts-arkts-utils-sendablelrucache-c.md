@@ -1,5 +1,9 @@
 # SendableLruCache
 
+```TypeScript
+class SendableLruCache<K, V>
+```
+
 Object used for store least recently used sendable Object.
 
 **Since:** 18

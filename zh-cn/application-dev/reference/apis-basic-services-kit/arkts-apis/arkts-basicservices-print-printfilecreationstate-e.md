@@ -1,5 +1,9 @@
 # PrintFileCreationState
 
+```TypeScript
+enum PrintFileCreationState
+```
+
 打印文件创建状态的枚举。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # HuksKeyClassType
 
+```TypeScript
+export enum HuksKeyClassType
+```
+
 表示密钥的来源。
 
 **起始版本：** 22

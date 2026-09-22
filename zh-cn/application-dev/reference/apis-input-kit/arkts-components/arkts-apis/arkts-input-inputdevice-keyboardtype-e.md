@@ -1,5 +1,9 @@
 # KeyboardType
 
+```TypeScript
+enum KeyboardType
+```
+
 键盘输入设备的类型。
 
 **起始版本：** 9

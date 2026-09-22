@@ -29,15 +29,3 @@ function getCurrentInputMethod(): InputMethodProperty
 ```TypeScript
 let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
 ```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
-  console.info('Succeeded in getting current input method, name: ' + currentIme.name + ', id: ' + currentIme.id);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getCurrentInputMethod. Code: ${error.code}, message: ${error.message}`);
-}
-```

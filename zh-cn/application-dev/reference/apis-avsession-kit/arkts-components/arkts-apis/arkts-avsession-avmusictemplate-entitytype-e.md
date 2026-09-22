@@ -1,5 +1,9 @@
 # EntityType
 
+```TypeScript
+enum EntityType
+```
+
 表示媒体资源类型的枚举。
 
 @enum { int }

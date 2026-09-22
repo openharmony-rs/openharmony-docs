@@ -1,5 +1,9 @@
 # WindowModeType (System API)
 
+```TypeScript
+enum WindowModeType
+```
+
 Enumerates the display types of the user authentication screen. This enum defines the display modes that can be used on the authentication screen and is used to control the window style of the system authentication widget.
 
 **Since:** 10

@@ -1,6 +1,10 @@
 # AsrProcessingController（系统接口）
 
-自动语音识别（ASR）处理控制器。
+```TypeScript
+interface AsrProcessingController
+```
+
+自动语音识别（ASR）处理控制器，提供回声消除、噪音抑制、耳语检测、音频通路控制等能力。主要用于语音助手场景，实现自定义控制语音数据处理效果功能。
 
 **起始版本：** 12
 
@@ -276,7 +280,7 @@ let flag = asrProcessingController.setAsrVoiceControlMode(audio.AsrVoiceControlM
 setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 ```
 
-在系统通话中，对自动语音识别（ASR）的音频通路进行静音控制。
+在系统通话中，设置自动语音识别（ASR）场景下，音频通路的静音控制模式。
 
 **起始版本：** 12
 

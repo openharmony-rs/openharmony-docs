@@ -1,5 +1,9 @@
 # LoopMode
 
+```TypeScript
+enum LoopMode
+```
+
 Loop Play Mode Definition
 
 **Since:** 10

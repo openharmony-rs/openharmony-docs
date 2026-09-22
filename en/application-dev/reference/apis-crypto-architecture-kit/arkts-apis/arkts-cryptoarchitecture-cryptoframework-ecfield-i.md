@@ -1,5 +1,9 @@
 # ECField
 
+```TypeScript
+interface ECField
+```
+
 Defines the field type of an elliptic curve. Currently, only the **Fp** field is supported.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # ParallelStrategy
 
+```TypeScript
+export enum ParallelStrategy
+```
+
 ParallelStrategy
 
 **Since:** 18

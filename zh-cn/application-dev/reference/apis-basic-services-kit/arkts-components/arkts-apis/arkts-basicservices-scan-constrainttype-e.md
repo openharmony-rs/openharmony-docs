@@ -1,5 +1,9 @@
 # ConstraintType
 
+```TypeScript
+enum ConstraintType
+```
+
 定义参数限制类型的枚举。
 
 **起始版本：** 20

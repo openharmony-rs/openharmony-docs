@@ -69,33 +69,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置鼠标指针颜色
-            pointer.setPointerColor(0xF6C800).then(() => {
-              console.info(`Succeeded in setting pointer color.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="setpointercolor-1"></a>
 
 ## setPointerColor
 
@@ -136,4 +111,29 @@ function setPointerColor(color: number): Promise<void>
 
 **示例**
 
-参见 [setPointerColor](#setpointercolor)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标指针颜色
+            pointer.setPointerColor(0xF6C800).then(() => {
+              console.info(`Succeeded in setting pointer color.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

@@ -1,5 +1,9 @@
 # ChannelStateInfo
 
+```TypeScript
+interface ChannelStateInfo
+```
+
 Represents the connection state information of the proxy channel.
 
 **Since:** 20

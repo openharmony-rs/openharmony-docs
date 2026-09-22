@@ -1,5 +1,9 @@
 # AlertDialogButtonOptions
 
+```TypeScript
+declare interface AlertDialogButtonOptions extends AlertDialogButtonBaseOptions
+```
+
 继承自[AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md)。
 
 **继承/实现关系：** AlertDialogButtonOptions extends [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md)

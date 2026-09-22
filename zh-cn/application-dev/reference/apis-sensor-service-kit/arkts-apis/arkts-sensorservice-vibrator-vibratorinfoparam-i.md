@@ -1,5 +1,9 @@
 # VibratorInfoParam
 
+```TypeScript
+interface VibratorInfoParam
+```
+
 设备上马达的参数。用于指定需要查询或控制的设备和马达信息。默认情况下，VibratorInfoParam默认为查询或控制本地全部马达。
 
 **起始版本：** 19

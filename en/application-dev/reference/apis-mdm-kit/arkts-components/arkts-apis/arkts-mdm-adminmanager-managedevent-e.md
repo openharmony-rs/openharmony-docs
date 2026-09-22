@@ -1,5 +1,9 @@
 # ManagedEvent
 
+```TypeScript
+export enum ManagedEvent
+```
+
 Enumerates the system management events that can be subscribed to.
 
 **Since:** 12

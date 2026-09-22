@@ -1,5 +1,9 @@
 # FocusBoxStyle
 
+```TypeScript
+declare interface FocusBoxStyle
+```
+
 Sets the system focus box style for the component.
 
 **Since:** 12

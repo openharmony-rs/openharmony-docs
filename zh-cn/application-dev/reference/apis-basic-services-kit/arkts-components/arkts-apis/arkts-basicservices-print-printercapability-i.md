@@ -1,5 +1,9 @@
 # PrinterCapability
 
+```TypeScript
+interface PrinterCapability
+```
+
 定义打印能力的接口。
 
 **起始版本：** 24

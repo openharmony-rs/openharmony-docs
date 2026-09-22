@@ -38,8 +38,24 @@ Subscribe to changes in WiFi/BT scanning information, and use the WiFi/BT scanni
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call &#36;{geoLocationManager.on('locatingRequiredDataChange')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.on('locatingRequiredDataChange')} due to limited device capabilities. |
 | [3301800](../errorcode-geoLocationManager.md#3301800-failed-to-start-wi-fi-or-bluetooth-scanning) | Failed to start WiFi or Bluetooth scanning. |
+
+**Examples**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+let callback = (code: Array<geoLocationManager.LocatingRequiredData>): void => {
+  console.info('locatingRequiredDataChange: ' + JSON.stringify(code));
+}
+let config: geoLocationManager.LocatingRequiredDataConfig = { 'type': 1, 'needStartScan': true, 'scanInterval': 10000 };
+try {
+  geoLocationManager.on('locatingRequiredDataChange', config, callback);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 
 ## on('locationIconStatusChange')
@@ -69,5 +85,20 @@ Subscribe location icon status changed.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call &#36;{geoLocationManager.on('locationIconStatusChange')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.on('locationIconStatusChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-location-service-unavailable) | The location service is unavailable. |
+
+**Examples**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+let callback = (code: geoLocationManager.LocationIconStatus): void => {
+  console.info('LocationIconStatus: ' + JSON.stringify(code));
+}
+try {
+  geoLocationManager.on('locationIconStatusChange', callback);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```

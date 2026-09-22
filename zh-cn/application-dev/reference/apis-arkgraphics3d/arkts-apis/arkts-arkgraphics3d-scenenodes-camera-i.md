@@ -1,5 +1,9 @@
 # Camera
 
+```TypeScript
+export interface Camera extends Node
+```
+
 相机类型，Camera继承自Node。
 
 @extends Node @interface Camera

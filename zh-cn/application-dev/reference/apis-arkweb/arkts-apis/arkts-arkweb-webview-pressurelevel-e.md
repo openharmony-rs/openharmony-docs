@@ -1,5 +1,9 @@
 # PressureLevel
 
+```TypeScript
+enum PressureLevel
+```
+
 内存压力等级。在应用主动清理Web组件占用的缓存时，Web内核会根据内存压力等级，进行缓存释放。
 
 **起始版本：** 14

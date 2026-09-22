@@ -1,5 +1,9 @@
 # VolumeEvent
 
+```TypeScript
+interface VolumeEvent
+```
+
 音量改变时，应用接收的事件。
 
 **起始版本：** 9
@@ -34,7 +38,7 @@ networkId: string
 percentage?: number
 ```
 
-音量百分比，取值范围为[0, 100]。取值限定为整数。
+音量百分比，为整数值，取值范围为[0, 100]。
 
 **类型：** number
 

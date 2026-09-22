@@ -1,5 +1,9 @@
 # KeepAliveSetter（系统接口）
 
+```TypeScript
+export enum KeepAliveSetter
+```
+
 表示应用保活的设置方类型。
 
 **起始版本：** 14

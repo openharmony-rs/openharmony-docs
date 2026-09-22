@@ -1,5 +1,9 @@
 # OperateIntention
 
+```TypeScript
+declare enum OperateIntention
+```
+
 智慧手势原始操作意图枚举。
 
 **起始版本：** 26.0.0

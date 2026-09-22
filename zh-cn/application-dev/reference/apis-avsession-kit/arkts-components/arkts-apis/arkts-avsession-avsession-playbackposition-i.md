@@ -1,5 +1,9 @@
 # PlaybackPosition
 
+```TypeScript
+interface PlaybackPosition
+```
+
 媒体播放位置的相关属性。
 
 **起始版本：** 10

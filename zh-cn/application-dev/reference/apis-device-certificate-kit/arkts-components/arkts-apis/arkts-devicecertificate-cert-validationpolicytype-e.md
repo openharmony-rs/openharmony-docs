@@ -1,5 +1,9 @@
 # ValidationPolicyType
 
+```TypeScript
+enum ValidationPolicyType
+```
+
 表示证书链在线校验策略的枚举。
 
 **起始版本：** 12

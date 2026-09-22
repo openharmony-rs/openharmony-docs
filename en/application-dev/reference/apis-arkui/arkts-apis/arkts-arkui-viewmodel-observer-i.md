@@ -1,5 +1,9 @@
 # observer
 
+```TypeScript
+export interface observer
+```
+
 Defines the observer interface.
 
 @interface observer

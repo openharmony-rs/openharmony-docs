@@ -1,5 +1,9 @@
 # LayoutManager
 
+```TypeScript
+declare interface LayoutManager
+```
+
 Implements a layout manager object.
 
 > **NOTE:** 
@@ -39,6 +43,8 @@ Obtains the position of the character nearest to the specified coordinate.
 | Type | Description |
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | Character position. Returns **undefined** when [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component. |
+
+<a id="getcharacterpositionatcoordinate-1"></a>
 
 ## getCharacterPositionAtCoordinate
 
@@ -98,6 +104,8 @@ Obtains the character range and the actual glyph range based on the specified gl
 | Type | Description |
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | Contains two elements: the first is the character range, and the second is the actual glyph range. When the returned range is invalid, the element in the range is **-1**. Returns **undefined** when [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component. |
+
+<a id="getcharacterrangeforglyphrange-1"></a>
 
 ## getCharacterRangeForGlyphRange
 
@@ -184,6 +192,8 @@ Obtains the glyph range and the actual character range based on the specified ch
 | Type | Description |
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | Contains two elements: the first is the glyph range, and the second is the actual character range. When the returned range is invalid, the element in the range is **-1**. Returns **undefined** when [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component. |
+
+<a id="getglyphrangeforcharacterrange-1"></a>
 
 ## getGlyphRangeForCharacterRange
 

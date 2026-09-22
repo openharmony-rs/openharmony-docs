@@ -1,5 +1,9 @@
 # LiteResultSet
 
+```TypeScript
+class LiteResultSet
+```
+
 Defines APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
 
 The **LiteResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data.
@@ -33,6 +37,22 @@ Closes this **resultSet** to release memory. If the **resultSet** is not closed,
 **Model restriction:** This API can be used only in the stage model.
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Examples**
+
+```TypeScript
+async function closeExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
 
 ## getAsset
 
@@ -71,6 +91,24 @@ If the data type of the current column is Asset, the value is returned as an Ass
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
 | [14800041](../errorcode-data-rdb.md#14800041-type-conversion-failure) | Type conversion failed. |
 
+**Examples**
+
+```TypeScript
+async function getAssetExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const doc = resultSet.getAsset(resultSet.getColumnIndex("DOC"));
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getAssets
 
 ```TypeScript
@@ -107,6 +145,24 @@ If the data type of the current column is Assets, the value is returned as Asset
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
 | [14800041](../errorcode-data-rdb.md#14800041-type-conversion-failure) | Type conversion failed. |
+
+**Examples**
+
+```TypeScript
+async function getAssetsExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.getAssets(resultSet.getColumnIndex("DOCS"));
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
 
 ## getBlob
 
@@ -147,6 +203,24 @@ If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT,
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
 | [14800041](../errorcode-data-rdb.md#14800041-type-conversion-failure) | Type conversion failed. |
 
+**Examples**
+
+```TypeScript
+async function getBlobExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getColumnIndex
 
 ```TypeScript
@@ -185,6 +259,26 @@ Obtains the column index based on the column name.
 | [14800026](../errorcode-data-rdb.md#14800026-sqlite-insufficient-database-memory) | SQLite: The database is out of memory. |
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
+
+**Examples**
+
+```TypeScript
+async function getColumnIndexExample(store : relationalStore.RdbStore){
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      const idIndex = resultSet.getColumnIndex("ID");
+      const nameIndex = resultSet.getColumnIndex("NAME");
+      const ageIndex = resultSet.getColumnIndex("AGE");
+      const salaryIndex = resultSet.getColumnIndex("SALARY");
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
 
 ## getColumnName
 
@@ -226,6 +320,26 @@ Obtains the column name based on the column index.
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
 
+**Examples**
+
+```TypeScript
+async function getColumnNameExample(store : relationalStore.RdbStore){
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      const id = resultSet.getColumnName(0);
+      const name = resultSet.getColumnName(1);
+      const age = resultSet.getColumnName(2);
+      const salary = resultSet.getColumnName(3);
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getColumnNames
 
 ```TypeScript
@@ -260,6 +374,24 @@ The column names are returned in a string array. The sequence of strings in the 
 | [14800026](../errorcode-data-rdb.md#14800026-sqlite-insufficient-database-memory) | SQLite: The database is out of memory. |
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
+
+**Examples**
+
+```TypeScript
+async function getColumnNamesExample(store: relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    // Query EMPLOYEE1 and EMPLOYEE2 and obtain the duplicate column names. store is the obtained RdbStore instance.
+    resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+    if (resultSet != undefined) {
+      const names = resultSet.getColumnNames();
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
+  }
+}
+```
 
 ## getColumnType
 
@@ -302,6 +434,34 @@ Obtains the column type based on the specified column index or column name. This
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
 
+**Examples**
+
+```TypeScript
+async function getColumnTypeExample(store : relationalStore.RdbStore){
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      //Method 1: Obtain the column type by column name.
+      let idType = await resultSet.getColumnType("ID");
+      let nameType = await resultSet.getColumnType("NAME");
+      let ageType = await resultSet.getColumnType("AGE");
+      let salaryType = await resultSet.getColumnType("SALARY");
+      let codesType = await resultSet.getColumnType("CODES");
+      //Method 2: Obtain the column type by column index.
+      let identityType = await resultSet.getColumnType(5);
+      let assetDataType = await resultSet.getColumnType(6);
+      let assetsDataType = await resultSet.getColumnType(7);
+      let floatArrayType = await resultSet.getColumnType(8);
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getColumnTypeSync
 
 ```TypeScript
@@ -343,6 +503,34 @@ Obtains the column type based on the specified column index or column name.
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
 
+**Examples**
+
+```TypeScript
+async function getColumnTypeSyncExample(store : relationalStore.RdbStore){
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      //Method 1: Obtain the column type by column name.
+      let idType = resultSet.getColumnTypeSync("ID");
+      let nameType = resultSet.getColumnTypeSync("NAME");
+      let ageType = resultSet.getColumnTypeSync("AGE");
+      let salaryType = resultSet.getColumnTypeSync("SALARY");
+      let codesType = resultSet.getColumnTypeSync("CODES");
+      //Method 2: Obtain the column type by column index.
+      let identityType = resultSet.getColumnTypeSync(5);
+      let assetDataType = resultSet.getColumnTypeSync(6);
+      let assetsDataType = resultSet.getColumnTypeSync(7);
+      let floatArrayType = resultSet.getColumnTypeSync(8);
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getCurrentRowData
 
 ```TypeScript
@@ -376,6 +564,26 @@ Obtains the values of all columns in this row.
 | [14800026](../errorcode-data-rdb.md#14800026-sqlite-insufficient-database-memory) | SQLite: The database is out of memory. |
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
+
+**Examples**
+
+```TypeScript
+async function getCurrentRowDataExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    // Query EMPLOYEE1 and EMPLOYEE2 and obtain the values of the current row that contain duplicate column names. store is the obtained RdbStore instance.
+    resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const rowData = resultSet.getCurrentRowData();
+      console.info(`rowData: ${JSON.stringify(rowData)}`);
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
+  }
+}
+```
 
 ## getDouble
 
@@ -416,6 +624,24 @@ If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT,
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
 | [14800041](../errorcode-data-rdb.md#14800041-type-conversion-failure) | Type conversion failed. |
 
+**Examples**
+
+```TypeScript
+async function getDoubleExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getLong
 
 ```TypeScript
@@ -455,6 +681,24 @@ If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT,
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
 | [14800041](../errorcode-data-rdb.md#14800041-type-conversion-failure) | Type conversion failed. |
 
+**Examples**
+
+```TypeScript
+async function getLongExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getRow
 
 ```TypeScript
@@ -488,6 +732,25 @@ Obtains data for the current row.
 | [14800026](../errorcode-data-rdb.md#14800026-sqlite-insufficient-database-memory) | SQLite: The database is out of memory. |
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
+
+**Examples**
+
+```TypeScript
+async function getRowExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const rowData = resultSet.getRow();
+      console.info(`rowData: ${JSON.stringify(rowData)}`);
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
 
 ## getRows
 
@@ -531,6 +794,42 @@ Obtains a specified amount of data from the result set. This API uses a promise 
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
 | [14800031](../errorcode-data-rdb.md#14800031-sqlite-text-or-blob-exceeds-the-limit) | SQLite: TEXT or BLOB exceeds size limit. |
 
+**Examples**
+
+```TypeScript
+async function getRowsExample(store : relationalStore.RdbStore) {
+  // Obtain 100 rows of data.
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    // Example 1: Specify only maxCount.
+    if (resultSet != undefined) {
+      let rows: Array<relationalStore.ValuesBucket>;
+      let maxCount: number = 50;
+      // Obtain data from the current row of the result set. By default, the first fetch starts from the first row of the current result set. Subsequent fetches start from the row following the last row retrieved.
+      // getRows automatically moves the current row of the result set to the next row after the end position of the last retrieval by getRows. You do not need to use the goToNextRow API to move the row.
+      while ((rows = await resultSet.getRows(maxCount)).length != 0) {
+        console.info(JSON.stringify(rows[0]));
+      }
+    }
+  
+    // Example 2: Specify maxCount and position.
+    if (resultSet != undefined) {
+      let rows: Array<relationalStore.ValuesBucket>;
+      let maxCount: number = 50;
+      let position: number = 50;
+      while ((rows = await resultSet.getRows(maxCount, position)).length != 0) {
+        console.info(JSON.stringify(rows[0]));
+        position += rows.length;
+      }
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getRowsData
 
 ```TypeScript
@@ -573,6 +872,51 @@ Obtains data of a specified number of rows from the specified position. This API
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
 | [14800031](../errorcode-data-rdb.md#14800031-sqlite-text-or-blob-exceeds-the-limit) | SQLite: TEXT or BLOB exceeds size limit. |
 
+**Examples**
+
+```TypeScript
+async function getRowsDataExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    // Query EMPLOYEE1 and EMPLOYEE2 and obtain the values of multiple rows that contain duplicate column names. store is the obtained RdbStore instance.
+    resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+    // Obtain 50 rows of data.
+    // Example 1: Specify only maxCount.
+    if (resultSet != undefined) {
+      let rowsData: relationalStore.RowsData;
+      // Obtain data from the current row of the result set. By default, the first fetch starts from the first row of the current result set. Subsequent fetches start from the row following the last row retrieved.
+      // getRowsData automatically moves the current row of the result set to the next row after the end position of the last retrieval by getRowsData. You do not need to use the goToNextRow API to move the row.
+      let maxCount: number = 50;
+      let rowCount: number = 0;
+      while ((rowsData = await resultSet.getRowsData(maxCount)).length != 0) {
+        rowsData.forEach((rowData, index) => {
+          // Query result of the row specified by rowCount + index + 1
+          console.info(`${rowCount + index + 1}: ${rowData}`);
+        });
+        rowCount += rowsData.length;
+      }
+    }
+  
+    // Example 2: Specify maxCount and position.
+    if (resultSet != undefined) {
+      let rowsData: relationalStore.RowsData;
+      let maxCount: number = 50;
+      let position: number = 50;
+      while ((rowsData = await resultSet.getRowsData(maxCount, position)).length != 0) {
+        rowsData.forEach((rowData, index) => {
+          // Query result of the row specified by position + index + 1
+          console.info(`${position + index + 1}: ${rowData}`);
+        });
+        position += rowsData.length;
+      }
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
+  }
+}
+```
+
 ## getString
 
 ```TypeScript
@@ -614,6 +958,24 @@ If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT,
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
 | [14800041](../errorcode-data-rdb.md#14800041-type-conversion-failure) | Type conversion failed. |
 
+**Examples**
+
+```TypeScript
+async function getStringExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getValue
 
 ```TypeScript
@@ -650,6 +1012,24 @@ If the value type is INTEGER and the value is greater than **Number.MAX_SAFE_INT
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
 
+**Examples**
+
+```TypeScript
+async function getValueExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.getValue(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## goToNextRow
 
 ```TypeScript
@@ -684,6 +1064,23 @@ Moves the result set to the next row.
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file. |
 | [14800031](../errorcode-data-rdb.md#14800031-sqlite-text-or-blob-exceeds-the-limit) | SQLite: TEXT or BLOB exceeds size limit. |
+
+**Examples**
+
+```TypeScript
+async function goToNextRowExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
 
 ## isColumnNull
 
@@ -725,3 +1122,21 @@ Checks whether the value in the specified column is null.
 | [14800026](../errorcode-data-rdb.md#14800026-sqlite-insufficient-database-memory) | SQLite: The database is out of memory. |
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800030](../errorcode-data-rdb.md#14800030-sqlite-unable-to-open-the-database-file) | SQLite: Unable to open the database file |
+
+**Examples**
+
+```TypeScript
+async function isColumnNullExample(store : relationalStore.RdbStore) {
+  try {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.isColumnNull(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```

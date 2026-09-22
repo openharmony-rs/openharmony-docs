@@ -1,5 +1,9 @@
 # PlayParameters
 
+```TypeScript
+export interface PlayParameters
+```
+
 Describes the playback parameters of the sound pool.
 
 These parameters are used to control the playback volume, number of loops, and priority.

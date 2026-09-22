@@ -1,5 +1,9 @@
 # PickerProfile
 
+```TypeScript
+class PickerProfile
+```
+
 Defines the configuration information about the camera picker.
 
 **Since:** 11

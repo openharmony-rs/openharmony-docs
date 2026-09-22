@@ -1,5 +1,9 @@
 # ChipGroupSpaceOptions
 
+```TypeScript
+export interface ChipGroupSpaceOptions
+```
+
 Defines the left and right padding of the chip group, and the spacing between chips.
 
 **Since:** 12
@@ -18,13 +22,15 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 endSpace?: Length
 ```
 
-Right padding. Percentage values are not supported.
+Right padding (percentages are not supported).
+
+When a negative number, percentage, or invalid string format is passed, the default value is used.
 
 Default value: **16**
 
 Unit: vp
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [Length](arkts-arkui-length-t.md)
 
@@ -42,21 +48,21 @@ If the value is **undefined**, the default value is used.
 itemSpace?: string | number
 ```
 
-Spacing between chips. Percentage values are not supported.
+Spacing between chips (percentages are not supported).
 
 Value range:
 
-Number type: a value greater than or equal to 0 (for example, **0**, **8**, **16**, or **24.5**)
+number type: a value greater than or equal to 0 (for example, 0, 8, 16, 24.5).
 
-String type: a value greater than or equal to 0, with a unit of fp, vp, px, or lpx (for example, **"8vp"**, **"16fp"**, **"12px"**, or **"10lpx"**)
+string type: a string in fp | vp | px | lpx with the numeric part greater than or equal to 0 (for example, "8vp", "16fp", "12px", "10lpx").
 
-Not supported: negative values, percentage units, and invalid string formats.
+**Note:** When a negative number, percentage, or invalid string format is passed, the default value is used.
 
 Default value: **8**
 
 Unit: vp
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** string &#124; number
 
@@ -74,13 +80,15 @@ If the value is **undefined**, the default value is used.
 startSpace?: Length
 ```
 
-Left padding. Percentage values are not supported.
+Left padding (percentages are not supported).
+
+When a negative number, percentage, or invalid string format is passed, the default value is used.
 
 Default value: **16**
 
 Unit: vp
 
-If this parameter is set to **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [Length](arkts-arkui-length-t.md)
 

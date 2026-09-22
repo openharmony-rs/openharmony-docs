@@ -1,5 +1,9 @@
 # DialogInfo
 
+```TypeScript
+interface DialogInfo
+```
+
 The definition of dialog information.
 
 @interface DialogInfo

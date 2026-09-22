@@ -1,5 +1,9 @@
 # MmsAttachment（系统接口）
 
+```TypeScript
+export interface MmsAttachment
+```
+
 彩信附件。
 
 **起始版本：** 8

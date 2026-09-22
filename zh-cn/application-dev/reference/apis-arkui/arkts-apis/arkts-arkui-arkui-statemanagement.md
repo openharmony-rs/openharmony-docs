@@ -23,15 +23,15 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 
 | 名称 | 说明 |
 | --- | --- |
-| @ComponentActive | 自定义组件由非激活状态转变为激活状态后，调用@ComponentActive装饰的函数。在组件回收复用场景下，当缓存的组件被重新复用（即从复用池重新添加到节点树）时，组件由非激活状态转为激活状态，触发此回调。 |
-| @ComponentAppear | 与aboutToAppear相似，\@ComponentAppear装饰的函数在创建自定义组件的新实例后，在其build()函数执行前调用，不同的是，\@ComponentAppear装饰的函数仅在自定义组件处于[CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md).INIT状态才会触发。允许在\@ComponentAppear装饰的函数中改变状态变量，更改将在后续执行build()函数中生效。 |
-| @ComponentBuilt | \@ComponentBuilt装饰的函数在自定义组件的build()函数首次执行后调用，即从CustomComponentLifecycleState.APPEARED到CustomComponentLifecycleState.BUILT的阶段触发。开发者可以在此阶段实现埋点数据上报等不影响实际UI的功能。 |
-| @ComponentDisappear | @ComponentDisappear装饰的函数在自定义组件销毁前执行，即向CustomComponentLifecycleState.DISAPPEARED状态转变时触发。不建议在此函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。 |
-| @ComponentInactive | 自定义组件由激活状态转变为非激活状态后，调用@ComponentInactive装饰的函数。在组件回收复用场景下，当组件被回收到复用池时，组件由激活状态转为非激活状态，触发此回调。 |
-| @ComponentInit | \@ComponentInit装饰的函数在自定义组件初始化即将完成时执行，先于\@ComponentAppear触发。开发者可以在此时注册生命周期监听器和修改状态变量。与\@ComponentAppear的区别在于：\@ComponentInit侧重于初始化阶段的准备操作（如注册监听），\@ComponentAppear侧重于组件即将展现前的状态变更，两者配合使用可分别承担初始化与显现前的职责。 |
-| @ComponentRecycle | 当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用\@ComponentRecycle装饰的函数，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发。随后该组件被冻结，以避免该组件处于复用池时进行UI更新。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中\@ComponentRecycle装饰的函数。 |
-| @ComponentReuse | 当可复用的自定义组件从缓存中重新添加到节点树时调用\@ComponentReuse装饰的函数，即从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发，以接收组件的构造参数。最后，复用会递归遍历所有子组件，对每个完成复用的子组件，会调用子组件中\@ComponentReuse装饰的函数。 |
-| @Type | @Type标记属性的原始类型，可确保在序列化过程中正确保留和还原属性的复杂类型信息。 |
+| [@ComponentActive](arkts-arkui-arkui-statemanagement-componentactive-d.md#componentactive) | 自定义组件由非激活状态转变为激活状态后，调用@ComponentActive装饰的函数。在组件回收复用场景下，当缓存的组件被重新复用（即从复用池重新添加到节点树）时，组件由非激活状态转为激活状态，触发此回调。 |
+| [@ComponentAppear](arkts-arkui-arkui-statemanagement-componentappear-d.md#componentappear) | 与aboutToAppear相似，\@ComponentAppear装饰的函数在创建自定义组件的新实例后，在其build()函数执行前调用，不同的是，\@ComponentAppear装饰的函数仅在自定义组件处于[CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md).INIT状态才会触发。允许在\@ComponentAppear装饰的函数中改变状态变量，更改将在后续执行build()函数中生效。 |
+| [@ComponentBuilt](arkts-arkui-arkui-statemanagement-componentbuilt-d.md#componentbuilt) | \@ComponentBuilt装饰的函数在自定义组件的build()函数首次执行后调用，即从CustomComponentLifecycleState.APPEARED到CustomComponentLifecycleState.BUILT的阶段触发。开发者可以在此阶段实现埋点数据上报等不影响实际UI的功能。 |
+| [@ComponentDisappear](arkts-arkui-arkui-statemanagement-componentdisappear-d.md#componentdisappear) | @ComponentDisappear装饰的函数在自定义组件销毁前执行，即向CustomComponentLifecycleState.DISAPPEARED状态转变时触发。不建议在此函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。 |
+| [@ComponentInactive](arkts-arkui-arkui-statemanagement-componentinactive-d.md#componentinactive) | 自定义组件由激活状态转变为非激活状态后，调用@ComponentInactive装饰的函数。在组件回收复用场景下，当组件被回收到复用池时，组件由激活状态转为非激活状态，触发此回调。 |
+| [@ComponentInit](arkts-arkui-arkui-statemanagement-componentinit-d.md#componentinit) | \@ComponentInit装饰的函数在自定义组件初始化即将完成时执行，先于\@ComponentAppear触发。开发者可以在此时注册生命周期监听器和修改状态变量。与\@ComponentAppear的区别在于：\@ComponentInit侧重于初始化阶段的准备操作（如注册监听），\@ComponentAppear侧重于组件即将展现前的状态变更，两者配合使用可分别承担初始化与显现前的职责。 |
+| [@ComponentRecycle](arkts-arkui-arkui-statemanagement-componentrecycle-d.md#componentrecycle) | 当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用\@ComponentRecycle装饰的函数，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发。随后该组件被冻结，以避免该组件处于复用池时进行UI更新。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中\@ComponentRecycle装饰的函数。 |
+| [@ComponentReuse](arkts-arkui-arkui-statemanagement-componentreuse-d.md#componentreuse) | 当可复用的自定义组件从缓存中重新添加到节点树时调用\@ComponentReuse装饰的函数，即从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发，以接收组件的构造参数。最后，复用会递归遍历所有子组件，对每个完成复用的子组件，会调用子组件中\@ComponentReuse装饰的函数。 |
+| [@Type](arkts-arkui-arkui-statemanagement-type-d.md#type) | @Type标记属性的原始类型，可确保在序列化过程中正确保留和还原属性的复杂类型信息。 |
 
 ### 类
 
@@ -73,7 +73,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | --- | --- |
 | [CollectionType](arkts-arkui-collectiontype-t.md) | globalConnect的入参泛型，用于定义globalConnect支持的持久化集合数据类型。 |
 | [GetterCallback](arkts-arkui-gettercallback-t.md) | 获取值的回调方法。 |
-| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 参数为[IMonitor](../arkts-components/arkts-arkui-imonitor-i.md)类型的监听回调函数。 |
+| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 参数为[IMonitor](../arkts-components/arkts-arkui-common-comp-imonitor-i.md)类型的监听回调函数。 |
 | [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md) | 持久化失败时返回错误原因的回调。 |
 | [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | 复用自定义组件初始化函数。 |
 | [SetterCallback](arkts-arkui-settercallback-t.md) | 设置值的回调方法。 |

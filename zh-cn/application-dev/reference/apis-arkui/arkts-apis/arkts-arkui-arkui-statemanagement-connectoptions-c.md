@@ -1,5 +1,9 @@
 # ConnectOptions
 
+```TypeScript
+export class ConnectOptions<T extends object>
+```
+
 globalConnect参数类型。
 
 **起始版本：** 18

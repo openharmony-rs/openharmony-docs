@@ -1,5 +1,9 @@
 # DsdsMode (System API)
 
+```TypeScript
+export enum DsdsMode
+```
+
 Indicates the Dsds Mode.
 
 **Since:** 11

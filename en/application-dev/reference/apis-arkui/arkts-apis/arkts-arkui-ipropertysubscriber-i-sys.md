@@ -1,5 +1,9 @@
 # IPropertySubscriber (System API)
 
+```TypeScript
+interface IPropertySubscriber
+```
+
 Provides an interface for attribute subscribers.
 
 **Since:** 7
@@ -17,6 +21,8 @@ aboutToBeDeleted(owningView?: IPropertySubscriber): void
 Called when the object is about to be destroyed.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,6 +43,8 @@ id(): number
 Obtains the ID.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

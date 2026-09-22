@@ -42,17 +42,8 @@ formHost.isSystemReady((error: Base.BusinessError) => {
 });
 ```
 
-```TypeScript
-import Base from '@ohos.base';
 
-let formId: string = '12400633174999288';
-formHost.isSystemReady().then(() => {
-  console.info('formHost isSystemReady success');
-}).catch((error: Base.BusinessError) => {
-  console.error(`formHost isSystemReady, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="issystemready-1"></a>
 
 ## isSystemReady
 
@@ -80,4 +71,13 @@ function isSystemReady(): Promise<void>
 
 **示例**
 
-参见 [isSystemReady](#issystemready)
+```TypeScript
+import Base from '@ohos.base';
+
+let formId: string = '12400633174999288';
+formHost.isSystemReady().then(() => {
+  console.info('formHost isSystemReady success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost isSystemReady, error: ${JSON.stringify(error)}`);
+});
+```

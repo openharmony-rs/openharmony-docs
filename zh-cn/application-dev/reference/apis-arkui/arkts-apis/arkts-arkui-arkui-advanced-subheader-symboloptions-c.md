@@ -1,5 +1,9 @@
 # SymbolOptions
 
+```TypeScript
+export declare class SymbolOptions
+```
+
 Declare type SymbolOptions
 
 **起始版本：** 12
@@ -18,15 +22,15 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 effectStrategy?: SymbolEffectStrategy
 ```
 
-设置SymbolGlyph动效策略。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)动效策略。
 
 默认值：SymbolEffectStrategy.NONE
 
 **说明：** 
 
-&#36;r('sys.symbol.ohos_*')中引用的资源仅ohos_wifi支持层级动效模式。
+$r('sys.symbol.ohos_*')中引用的资源仅ohos_wifi支持层级动效模式。
 
-**类型：** [SymbolEffectStrategy](../arkts-components/arkts-arkui-symboleffectstrategy-e.md)
+**类型：** [SymbolEffectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md)
 
 **起始版本：** 12
 
@@ -42,7 +46,7 @@ effectStrategy?: SymbolEffectStrategy
 fontColor?: Array<ResourceColor>
 ```
 
-设置SymbolGlyph颜色。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)颜色。
 
 默认值：不同渲染策略下默认值不同。
 
@@ -62,7 +66,7 @@ fontColor?: Array<ResourceColor>
 fontSize?: number | string | Resource
 ```
 
-设置SymbolGlyph大小。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)大小。
 
 number类型取值范围：大于等于0。
 
@@ -86,7 +90,7 @@ number类型取值范围：大于等于0。
 fontWeight?: number | FontWeight | string
 ```
 
-设置SymbolGlyph粗细。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)粗细。
 
 number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。
 
@@ -110,15 +114,15 @@ string类型仅支持number类型取值的字符串形式，例如“400”，�
 renderingStrategy?: SymbolRenderingStrategy
 ```
 
-设置SymbolGlyph渲染策略。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)渲染策略。
 
 默认值：SymbolRenderingStrategy.SINGLE
 
 **说明：** 
 
-&#36;r('sys.symbol.ohos_*')中引用的资源仅ohos_trash_circle、ohos_folder_badge_plus、ohos_lungs支持分层与多色模式。
+$r('sys.symbol.ohos_*')中引用的资源仅ohos_trash_circle、ohos_folder_badge_plus、ohos_lungs支持分层与多色模式。
 
-**类型：** [SymbolRenderingStrategy](../arkts-components/arkts-arkui-symbolrenderingstrategy-e.md)
+**类型：** [SymbolRenderingStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md)
 
 **起始版本：** 12
 

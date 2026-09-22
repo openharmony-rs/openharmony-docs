@@ -1,5 +1,9 @@
 # RotationAxisLimited (System API)
 
+```TypeScript
+export enum RotationAxisLimited
+```
+
 Enumerates the rotation axis limit states. @enum { int }
 
 **Since:** 20

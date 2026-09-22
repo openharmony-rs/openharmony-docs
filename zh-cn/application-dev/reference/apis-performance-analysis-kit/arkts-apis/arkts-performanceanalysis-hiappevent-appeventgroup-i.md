@@ -1,5 +1,9 @@
 # AppEventGroup
 
+```TypeScript
+interface AppEventGroup
+```
+
 提供订阅返回的事件组的参数定义。可用于获取事件组的详细信息，事件组常在[Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md)的onReceive回调中使用。
 
 **起始版本：** 11

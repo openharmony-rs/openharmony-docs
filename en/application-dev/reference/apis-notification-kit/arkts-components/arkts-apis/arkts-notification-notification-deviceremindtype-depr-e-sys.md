@@ -1,5 +1,9 @@
 # DeviceRemindType (System API)
 
+```TypeScript
+export enum DeviceRemindType
+```
+
 Defines the notification reminder type.
 
 **Since:** 8

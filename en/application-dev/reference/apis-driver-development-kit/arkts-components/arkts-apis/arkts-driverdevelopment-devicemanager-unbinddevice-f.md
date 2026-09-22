@@ -59,22 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { deviceManager } from '@kit.DriverDevelopmentKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  // For example, deviceId is 12345678. You can use queryDevices() to obtain the deviceId.
-  deviceManager.unbindDevice(12345678).then((data : number) => {
-    console.info(`unbindDevice success, Device_Id is ${data}.`);
-  }, (error : BusinessError) => {
-    console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
-  });
-} catch (error) {
-  console.error(`unbindDevice fail. Code is ${error.code}, message is ${error.message}`);
-}
-```
-
+<a id="unbinddevice-1"></a>
 
 ## unbindDevice
 
@@ -116,4 +102,18 @@ Unbinds a peripheral device. This API uses a promise to return the result.
 
 **Examples**
 
-See [unbindDevice](#unbinddevice)
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // For example, deviceId is 12345678. You can use queryDevices() to obtain the deviceId.
+  deviceManager.unbindDevice(12345678).then((data : number) => {
+    console.info(`unbindDevice success, Device_Id is ${data}.`);
+  }, (error : BusinessError) => {
+    console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
+  });
+} catch (error) {
+  console.error(`unbindDevice fail. Code is ${error.code}, message is ${error.message}`);
+}
+```

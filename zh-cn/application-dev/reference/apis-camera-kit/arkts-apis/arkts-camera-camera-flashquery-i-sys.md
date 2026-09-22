@@ -1,5 +1,9 @@
 # FlashQuery
 
+```TypeScript
+interface FlashQuery
+```
+
 提供了查询设备的闪光灯状态和模式的能力。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # ScanResults
 
+```TypeScript
+interface ScanResults
+```
+
 表示扫描结果。
 
 **起始版本：** 26.0.0

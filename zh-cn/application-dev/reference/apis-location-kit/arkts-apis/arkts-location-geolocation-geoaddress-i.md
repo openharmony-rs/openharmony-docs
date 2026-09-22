@@ -1,5 +1,9 @@
 # GeoAddress
 
+```TypeScript
+export interface GeoAddress
+```
+
 地理编码地址信息。
 
 @interface GeoAddress

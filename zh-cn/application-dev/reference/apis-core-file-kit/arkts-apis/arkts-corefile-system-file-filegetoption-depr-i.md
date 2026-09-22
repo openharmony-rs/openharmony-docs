@@ -1,5 +1,9 @@
 # FileGetOption
 
+```TypeScript
+export interface FileGetOption
+```
+
 可选项类型，支持get接口使用。
 
 **起始版本：** 3
@@ -54,7 +58,7 @@ fail?: (data: string, code: number) => void
 success?: (file: FileResponse) => void
 ```
 
-接口调用成功的回调函数。 返回FileResponse。
+接口调用成功的回调函数。 返回[FileResponse](arkts-corefile-system-file-fileresponse-depr-i.md#fileresponse)。
 
 **起始版本：** 3
 

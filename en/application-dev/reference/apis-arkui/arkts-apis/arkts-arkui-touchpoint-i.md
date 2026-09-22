@@ -1,5 +1,9 @@
 # TouchPoint
 
+```TypeScript
+declare interface TouchPoint
+```
+
 Defines the coordinates of the touch point. If it is not set, the touch point is centered.
 
 **Since:** 11

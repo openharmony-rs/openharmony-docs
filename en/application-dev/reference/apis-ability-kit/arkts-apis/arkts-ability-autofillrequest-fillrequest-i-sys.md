@@ -1,5 +1,9 @@
 # FillRequest
 
+```TypeScript
+export interface FillRequest
+```
+
 Defines the information about an auto-fill request.
 
 **Since:** 26.0.0

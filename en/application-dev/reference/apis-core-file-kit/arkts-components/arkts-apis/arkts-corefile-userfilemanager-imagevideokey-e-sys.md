@@ -1,5 +1,9 @@
 # ImageVideoKey (System API)
 
+```TypeScript
+enum ImageVideoKey
+```
+
 Defines the key information about an image or video file.
 
 **Since:** 9

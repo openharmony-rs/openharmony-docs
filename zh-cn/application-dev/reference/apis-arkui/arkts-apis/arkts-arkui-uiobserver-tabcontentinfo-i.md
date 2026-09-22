@@ -1,5 +1,9 @@
 # TabContentInfo
 
+```TypeScript
+export interface TabContentInfo
+```
+
 TabContent页面的切换信息。
 
 **起始版本：** 12

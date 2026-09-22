@@ -1,5 +1,9 @@
 # ImmersiveMode
 
+```TypeScript
+export enum ImmersiveMode
+```
+
 页面内弹窗蒙层显示区域模式。
 
 **起始版本：** 15

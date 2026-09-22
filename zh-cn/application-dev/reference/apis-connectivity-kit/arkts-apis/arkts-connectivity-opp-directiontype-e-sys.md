@@ -1,5 +1,9 @@
 # DirectionType（系统接口）
 
+```TypeScript
+enum DirectionType
+```
+
 枚举，文件传输方向。
 
 **起始版本：** 16

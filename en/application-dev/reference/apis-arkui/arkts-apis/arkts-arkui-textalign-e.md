@@ -1,5 +1,9 @@
 # TextAlign
 
+```TypeScript
+declare enum TextAlign
+```
+
 The horizontal alignment of the text paragraph.
 
 **Since:** 7

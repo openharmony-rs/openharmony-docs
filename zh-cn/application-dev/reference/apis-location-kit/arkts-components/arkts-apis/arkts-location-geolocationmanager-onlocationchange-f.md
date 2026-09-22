@@ -36,7 +36,7 @@ function onLocationChange(request: LocationRequest | ContinuousLocationRequest,
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 23+ |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**适用版本：** 23+ |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.onLocationChange} due to limited device capabilities.<br>**适用版本：** 23+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.onLocationChange} due to limited device capabilities.<br>**适用版本：** 23+ |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable.<br>**适用版本：** 23+ |
 | [3301100](../errorcode-geoLocationManager.md#3301100-位置功能的开关未开启导致功能失败) | The location switch is off.<br>**适用版本：** 23+ |
 

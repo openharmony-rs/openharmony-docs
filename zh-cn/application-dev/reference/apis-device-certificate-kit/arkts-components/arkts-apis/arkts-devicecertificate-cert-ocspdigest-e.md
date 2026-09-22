@@ -1,5 +1,9 @@
 # OcspDigest
 
+```TypeScript
+enum OcspDigest
+```
+
 表示OCSP摘要算法的枚举。
 
 **起始版本：** 26.0.0

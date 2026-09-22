@@ -1,5 +1,9 @@
 # ProfileId
 
+```TypeScript
+enum ProfileId
+```
+
 蓝牙profile枚举，API9新增PROFILE_HID_HOST，PROFILE_PAN_NETWORK。
 
 从API version 8开始支持，从API version 9开始废弃。

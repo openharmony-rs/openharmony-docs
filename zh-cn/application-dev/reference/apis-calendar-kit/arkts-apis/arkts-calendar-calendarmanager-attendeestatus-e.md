@@ -1,5 +1,9 @@
 # AttendeeStatus
 
+```TypeScript
+export enum AttendeeStatus
+```
+
 会议日程参与者状态类型枚举。
 
 **起始版本：** 18

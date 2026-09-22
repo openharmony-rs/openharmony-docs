@@ -35,6 +35,15 @@ Disables listening for **connect** events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+
+let sessionId = 100;
+abilityConnectionManager.off("connect", sessionId);
+```
+
 
 ## off('disconnect')
 
@@ -64,6 +73,16 @@ Disables listening for **disconnect** events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.off("disconnect", sessionId);
+```
 
 
 ## off('receiveMessage')
@@ -95,6 +114,16 @@ Disables listening for **receiveMessage** events.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.off("receiveMessage", sessionId);
+```
+
 
 ## off('receiveData')
 
@@ -124,3 +153,13 @@ Disables listening for **receiveData** events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.off("receiveData", sessionId);
+```

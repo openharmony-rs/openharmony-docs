@@ -1,5 +1,9 @@
 # InputMethodProperty
 
+```TypeScript
+interface InputMethodProperty
+```
+
 Describes the input method application attributes.
 
 **Since:** 8

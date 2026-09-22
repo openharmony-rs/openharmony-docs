@@ -1,10 +1,14 @@
 # MediaShareAlbumChangeRequest (System API)
 
+```TypeScript
+class MediaShareAlbumChangeRequest implements MediaChangeRequest
+```
+
 Represents a change request for managing the share album.
 
 **Inheritance/Implementation:** MediaShareAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,7 +28,7 @@ public addShareMember(owner: string, member: string, status: ShareMemberStatus):
 
 Add member of share Album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
@@ -58,7 +62,7 @@ public constructor(album: Album)
 
 Constructor used to initialize a new MediaShareAlbumChangeRequest.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO
 
@@ -91,7 +95,7 @@ public static createShareAlbum(context: Context, owner: string, name: string, cl
 
 Creates a MediaShareAlbumChangeRequest instance of creating share album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
@@ -123,7 +127,7 @@ Creates a MediaShareAlbumChangeRequest instance of creating share album.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
-| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: 1. The context is null. 2. The album name must meet the following requirements: The total length of the album name must be between 1 and 255 characters. It must not contain any invalid characters, which are: . \ / : * ? " ' ` &lt; &gt; &#124; { } [ ] It is case-insensitive. 3. The lpath does not meet the uniqueness requirement. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: 1. The context is null. 2. The album name must meet the following requirements: The total length of the album name must be between 1 and 255 characters. It must not contain any invalid characters, which are: . \ / : * ? " ' ` &lt; &gt; &#124; { } [ ]It is case-insensitive. 3. The lpath does not meet the uniqueness requirement. |
 
 ## deleteMemberShareAlbum
 
@@ -133,7 +137,7 @@ public static deleteMemberShareAlbum(context: Context, owner: string, albums: Al
 
 Delete member share album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
@@ -174,7 +178,7 @@ public static deleteShareAlbum(context: Context, owner: string, albums: Album[])
 
 Delete share album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
@@ -215,7 +219,7 @@ public static deleteShareAssets(context: Context, owner: string, assets: string[
 
 Delete assets of share album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
@@ -256,7 +260,7 @@ public deleteShareMember(owner: string, member: string): void
 
 delete share member.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
@@ -290,7 +294,7 @@ public static getShareAlbumMemberInfo(context: Context, owner: string,
 
 Get the member information of share album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO
 
@@ -331,7 +335,7 @@ public setShareAlbumName(owner: string, name: string): void
 
 set the name of share album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
@@ -364,7 +368,7 @@ public updateShareMemberStatus(owner: string, member: string, status: ShareMembe
 
 update share member status.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
@@ -400,7 +404,7 @@ A readonly member for type checking.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

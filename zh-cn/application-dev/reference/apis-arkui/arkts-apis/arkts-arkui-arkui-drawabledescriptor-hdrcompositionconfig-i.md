@@ -1,5 +1,9 @@
 # HdrCompositionConfig
 
+```TypeScript
+declare interface HdrCompositionConfig
+```
+
 HDR合成配置选项。
 
 **起始版本：** 26.0.0
@@ -20,7 +24,7 @@ rect: Rectangle
 
 HDR合成的矩形区域。
 
-**类型：** [Rectangle](../arkts-components/arkts-arkui-rectangle-i.md)
+**类型：** [Rectangle](../arkts-components/arkts-arkui-common-comp-rectangle-i.md)
 
 **起始版本：** 26.0.0
 

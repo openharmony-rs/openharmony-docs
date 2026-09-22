@@ -37,7 +37,7 @@ function getRetentionSandboxList(bundleName?: string): Promise<Array<RetentionSa
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100007](../errorcode-dlp.md#19100007-dlp沙箱应用不允许调用此接口) | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
@@ -54,30 +54,8 @@ dlpPermission.getRetentionSandboxList().then((sandboxList) => { // 获取沙箱�
 });
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.getRetentionSandboxList('bundleName', (err, sandboxList) => {
-  if (err) {
-    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('sandboxList', JSON.stringify(sandboxList));
-  }
-}); // 获取沙箱保留列表。
-```
-
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-
-dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
-  if (err) {
-    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
-  }
-}); // 获取沙箱保留列表。
-```
-
+<a id="getretentionsandboxlist-1"></a>
 
 ## getRetentionSandboxList
 
@@ -105,15 +83,27 @@ function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Arr
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100007](../errorcode-dlp.md#19100007-dlp沙箱应用不允许调用此接口) | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 getRetentionSandboxList
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
 
+dlpPermission.getRetentionSandboxList('bundleName', (err, sandboxList) => {
+  if (err) {
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('sandboxList', JSON.stringify(sandboxList));
+  }
+}); // 获取沙箱保留列表。
+```
+
+
+<a id="getretentionsandboxlist-2"></a>
 
 ## getRetentionSandboxList
 
@@ -140,11 +130,21 @@ function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxI
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100007](../errorcode-dlp.md#19100007-dlp沙箱应用不允许调用此接口) | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 getRetentionSandboxList
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
+  if (err) {
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
+  }
+}); // 获取沙箱保留列表。
+```

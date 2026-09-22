@@ -1,5 +1,9 @@
 # NetworkSelectionMode
 
+```TypeScript
+export enum NetworkSelectionMode
+```
+
 选网模式。
 
 **起始版本：** 6

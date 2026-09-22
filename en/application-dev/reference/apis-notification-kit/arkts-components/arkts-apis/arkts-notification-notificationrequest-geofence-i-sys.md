@@ -1,5 +1,9 @@
 # Geofence (System API)
 
+```TypeScript
+export interface Geofence
+```
+
 Defines the configuration of a geofence.
 
 **Since:** 23

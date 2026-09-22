@@ -1,5 +1,9 @@
 # Email
 
+```TypeScript
+class Email
+```
+
 联系人的邮箱。
 
 **起始版本：** 7

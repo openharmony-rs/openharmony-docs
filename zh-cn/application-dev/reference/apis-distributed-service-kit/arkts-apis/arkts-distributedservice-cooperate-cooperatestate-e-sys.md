@@ -1,5 +1,9 @@
 # CooperateState（系统接口）
 
+```TypeScript
+enum CooperateState
+```
+
 键鼠穿越状态的枚举。
 
 **起始版本：** 11

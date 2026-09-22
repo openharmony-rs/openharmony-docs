@@ -1,5 +1,9 @@
 # ZoomQuery
 
+```TypeScript
+interface ZoomQuery
+```
+
 ZoomQuery provides APIs to query the zoom feature of a device camera, including the API to obtain the supported zoom ratio range.
 
 > **NOTE:** 

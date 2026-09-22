@@ -1,5 +1,9 @@
 # BatteryResponse
 
+```TypeScript
+export interface BatteryResponse
+```
+
 Defines a response that returns the charging status and remaining power of the device.
 
 **Since:** 3
@@ -32,6 +36,8 @@ Note: This API is no longer maintained since API version 6 except for lite weara
 
 **Substitutes:** [chargingStatus](arkts-basicservices-batteryinfo-con.md#chargingstatus)
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 
 ## level
@@ -51,5 +57,7 @@ Note: This API is no longer maintained since API version 6 except for lite weara
 **Deprecated since:** 6
 
 **Substitutes:** [batterySOC](arkts-basicservices-batteryinfo-con.md#batterysoc)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite

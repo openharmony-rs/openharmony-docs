@@ -1,5 +1,9 @@
 # ExecutorProperty (System API)
 
+```TypeScript
+interface ExecutorProperty
+```
+
 Defines the executor property.
 
 **Since:** 8

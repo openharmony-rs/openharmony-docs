@@ -1,5 +1,9 @@
 # RunningFormInfo
 
+```TypeScript
+interface RunningFormInfo
+```
+
 已经添加到桌面的卡片信息。
 
 **起始版本：** 20

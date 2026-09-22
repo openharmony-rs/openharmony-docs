@@ -1,5 +1,9 @@
 # AppProvisionInfo (System API)
 
+```TypeScript
+export interface AppProvisionInfo
+```
+
 The module provides information in the [HarmonyAppProvision configuration file](../../../security/app-provision-structure.md).
 
 **Since:** 10
@@ -18,7 +22,7 @@ Additional of the application.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -84,7 +88,7 @@ Index of the application.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -102,7 +106,7 @@ ServiceCapabilities of the application.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -200,7 +204,7 @@ Specified distribution type of the application.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

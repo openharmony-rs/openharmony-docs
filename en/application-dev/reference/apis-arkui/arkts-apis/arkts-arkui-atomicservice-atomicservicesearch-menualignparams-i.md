@@ -1,5 +1,9 @@
 # MenuAlignParams
 
+```TypeScript
+export interface MenuAlignParams
+```
+
 Sets the alignment between the drop-down list button and the drop-down list box.
 
 **Since:** 18
@@ -20,7 +24,7 @@ alignType: MenuAlignType
 
 Alignment type. Default value: **MenuAlignType.START**
 
-**Type:** [MenuAlignType](../arkts-components/arkts-arkui-menualigntype-e.md)
+**Type:** [MenuAlignType](../arkts-components/arkts-arkui-select-comp-menualigntype-e.md)
 
 **Since:** 18
 

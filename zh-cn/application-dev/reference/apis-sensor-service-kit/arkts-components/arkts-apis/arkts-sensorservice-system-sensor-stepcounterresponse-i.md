@@ -1,5 +1,9 @@
 # StepCounterResponse
 
+```TypeScript
+export interface StepCounterResponse
+```
+
 计步传感器数据改变后的回调函数的响应对象，包含计步传感器重启后累计记录的步数数据。
 
 **起始版本：** 3

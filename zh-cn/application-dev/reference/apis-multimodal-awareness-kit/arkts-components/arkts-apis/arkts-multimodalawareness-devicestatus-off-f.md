@@ -32,3 +32,38 @@ function off(type: 'steadyStandingDetect', callback?: Callback<SteadyStandingSta
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [32500001](../errorcode-deviceStatus.md#32500001-服务异常) | Service exception. |
 | [32500003](../errorcode-deviceStatus.md#32500003-取消订阅失败) | Unsubscription failed. |
+
+**示例**
+
+示例一：取消订阅该客户端订阅设备静止姿态感知（支架态）事件的所有回调。
+
+```TypeScript
+try {
+   deviceStatus.off('steadyStandingDetect');
+} catch (err) {
+   console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+示例二：取消订阅该客户端订阅设备静止姿态感知（支架态）事件的特定回调。
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// 定义callback变量
+let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus.SteadyStandingStatus) => {
+   console.info('succeeded to get status, now status = ' + JSON.stringify(data));
+};
+// 以callback为回调函数，订阅设备静止姿态感知（支架态）事件
+try {
+   deviceStatus.on('steadyStandingDetect', callback);
+} catch (err) {
+   console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
+}
+// 取消该客户端订阅设备静止姿态感知（支架态）事件的特定回调函数
+try {
+   deviceStatus.off('steadyStandingDetect', callback);
+} catch (err) {
+   console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
+}
+```

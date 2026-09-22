@@ -1,5 +1,9 @@
 # WindowStage
 
+```TypeScript
+interface WindowStage
+```
+
 Implements a window manager, which manages each basic window unit, that is, [Window](arkts-arkui-window-n.md) instance.
 
 Before calling any of the following APIs, you must use [onWindowStageCreate()](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate) to create a WindowStage instance.
@@ -56,6 +60,8 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+<a id="setimageforrecent-1"></a>
+
 ## setImageForRecent
 
 ```TypeScript
@@ -76,7 +82,7 @@ Sets the image displayed in the multitasking view. This API uses a promise to re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| imgResourceId | number | Yes | Resource ID of the custom image. The image must be stored in the **resources/base/media** directory and its resource ID can be obtained using the **&#36;r** resource access mode. For example, to obtain the resource ID of the startIcon image, use the following: &#36;r("app.media.startIcon").id. |
+| imgResourceId | number | Yes | Resource ID of the custom image. The image must be stored in the **resources/base/media** directory and its resource ID can be obtained using the **$r** resource access mode. For example, to obtain the resource ID of the startIcon image, use the following: $r("app.media.startIcon").id. |
 | value | ImageFit | Yes | Fill mode of the custom image. |
 
 **Return value:**

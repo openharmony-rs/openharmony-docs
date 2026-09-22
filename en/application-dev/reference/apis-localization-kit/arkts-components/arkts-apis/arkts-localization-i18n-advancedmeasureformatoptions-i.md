@@ -1,5 +1,9 @@
 # AdvancedMeasureFormatOptions
 
+```TypeScript
+export interface AdvancedMeasureFormatOptions
+```
+
 Represents optional configuration items for AdvancedMeasureFormat object.
 
 **Since:** 23

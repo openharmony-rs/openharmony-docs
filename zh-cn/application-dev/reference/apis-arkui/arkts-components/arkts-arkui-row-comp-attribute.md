@@ -1,10 +1,14 @@
 # Row属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性：
+```TypeScript
+declare class RowAttribute extends CommonMethod<RowAttribute>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
-**继承/实现关系：** RowAttribute extends CommonMethod&lt;RowAttribute&gt;
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+
+**继承/实现关系：** RowAttribute extends CommonMethod<RowAttribute>
 
 **起始版本：** 7
 
@@ -76,4 +80,4 @@ reverse(isReversed: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isReversed | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 子组件在水平方向上的排列顺序是否反转。<br>设置true表示子组件在水平方向上反转排列（从右到左），设置false表示子组件在水平方向上正序排列（从左到右）。参数值为undefined时视为true，主轴方向反转。 |
+| isReversed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 子组件在水平方向上的排列顺序是否反转。<br>设置true表示子组件在水平方向上反转排列（从右到左），设置false表示子组件在水平方向上正序排列（从左到右）。参数值为undefined时视为true，主轴方向反转。 |

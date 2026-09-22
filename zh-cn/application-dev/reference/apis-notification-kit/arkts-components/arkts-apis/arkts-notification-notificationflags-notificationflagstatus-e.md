@@ -1,5 +1,9 @@
 # NotificationFlagStatus
 
+```TypeScript
+export enum NotificationFlagStatus
+```
+
 描述通知标志状态。
 
 **起始版本：** 11

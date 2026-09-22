@@ -1,5 +1,9 @@
 # AvailabilityStatus
 
+```TypeScript
+enum AvailabilityStatus
+```
+
 Enumeration of medialibrary availability status.
 
 **Since:** 26.0.0

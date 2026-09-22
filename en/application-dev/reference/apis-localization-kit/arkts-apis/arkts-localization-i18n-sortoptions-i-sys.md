@@ -1,5 +1,9 @@
 # SortOptions (System API)
 
+```TypeScript
+export interface SortOptions
+```
+
 Represents the language or country/region sorting option.
 
 **Since:** 10

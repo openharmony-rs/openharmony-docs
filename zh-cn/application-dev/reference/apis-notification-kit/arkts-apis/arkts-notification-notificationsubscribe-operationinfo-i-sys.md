@@ -1,5 +1,9 @@
 # OperationInfo（系统接口）
 
+```TypeScript
+export interface OperationInfo
+```
+
 跨设备协同操作信息。
 
 **起始版本：** 18

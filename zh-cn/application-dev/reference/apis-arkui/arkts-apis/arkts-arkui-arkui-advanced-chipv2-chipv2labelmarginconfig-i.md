@@ -1,5 +1,9 @@
 # ChipV2LabelMarginConfig
 
+```TypeScript
+export interface ChipV2LabelMarginConfig
+```
+
 ChipV2LabelMarginConfig定义文本与左右侧图标之间间距配置。
 
 **起始版本：** 26.0.0

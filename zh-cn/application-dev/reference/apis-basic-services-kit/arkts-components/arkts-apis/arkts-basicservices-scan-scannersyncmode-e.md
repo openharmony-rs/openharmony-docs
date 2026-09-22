@@ -1,5 +1,9 @@
 # ScannerSyncMode
 
+```TypeScript
+enum ScannerSyncMode
+```
+
 定义扫描仪同步码的枚举。
 
 **起始版本：** 20

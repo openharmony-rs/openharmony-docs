@@ -1,5 +1,9 @@
 # CertCRLCollection
 
+```TypeScript
+interface CertCRLCollection
+```
+
 Provides APIs for locating certificates or CRLs in a **CertCRLCollection** object.
 
 **Since:** 11
@@ -111,6 +115,39 @@ async function selectCerts() {
 }
 ```
 
+<a id="selectcerts-1"></a>
+
+## selectCerts
+
+```TypeScript
+selectCerts(param: X509CertMatchParameters, callback: AsyncCallback<Array<X509Cert>>): void
+```
+
+Selects certificates that match the specified parameters. This API uses an asynchronous callback to return the result.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| param | [X509CertMatchParameters](arkts-devicecertificate-cert-x509certmatchparameters-i.md) | Yes | Parameters used to match the certificates. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the matched certificates obtained. Otherwise, **err** is an error object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
+
+**Examples**
+
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -173,39 +210,6 @@ async function selectCerts() {
   });
 }
 ```
-
-## selectCerts
-
-```TypeScript
-selectCerts(param: X509CertMatchParameters, callback: AsyncCallback<Array<X509Cert>>): void
-```
-
-Selects certificates that match the specified parameters. This API uses an asynchronous callback to return the result.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Security.Cert
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| param | [X509CertMatchParameters](arkts-devicecertificate-cert-x509certmatchparameters-i.md) | Yes | Parameters used to match the certificates. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the matched certificates obtained. Otherwise, **err** is an error object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
-
-**Examples**
-
-See [selectCerts](#selectcerts)
 
 ## selectCRLs
 
@@ -340,6 +344,39 @@ async function selectCRLs() {
 }
 ```
 
+<a id="selectcrls-1"></a>
+
+## selectCRLs
+
+```TypeScript
+selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback<Array<X509CRL>>): void
+```
+
+Selects CRLs that match the specified parameters. This API uses an asynchronous callback to return the result.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| param | [X509CRLMatchParameters](arkts-devicecertificate-cert-x509crlmatchparameters-i.md) | Yes | Parameters used to match the CRLs. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the matched CRLs obtained. Otherwise, **err** is an error object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
+
+**Examples**
+
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -436,36 +473,3 @@ async function selectCRLs() {
   });
 }
 ```
-
-## selectCRLs
-
-```TypeScript
-selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback<Array<X509CRL>>): void
-```
-
-Selects CRLs that match the specified parameters. This API uses an asynchronous callback to return the result.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Security.Cert
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| param | [X509CRLMatchParameters](arkts-devicecertificate-cert-x509crlmatchparameters-i.md) | Yes | Parameters used to match the CRLs. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the matched CRLs obtained. Otherwise, **err** is an error object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
-
-**Examples**
-
-See [selectCRLs](#selectcrls)

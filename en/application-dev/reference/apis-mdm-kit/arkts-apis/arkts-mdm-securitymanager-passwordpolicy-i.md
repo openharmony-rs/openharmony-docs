@@ -1,5 +1,9 @@
 # PasswordPolicy
 
+```TypeScript
+export interface PasswordPolicy
+```
+
 Represents a device screen lock password policy.
 
 **Since:** 12

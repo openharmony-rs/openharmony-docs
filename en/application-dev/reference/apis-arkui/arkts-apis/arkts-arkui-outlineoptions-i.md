@@ -1,5 +1,9 @@
 # OutlineOptions
 
+```TypeScript
+declare interface OutlineOptions
+```
+
 Defines the outline options.
 
 **Since:** 11
@@ -62,7 +66,7 @@ Sets the outer outline style.
 
 Default value: **OutlineStyle.SOLID**
 
-**Type:** EdgeOutlineStyles &#124; [OutlineStyle](../arkts-components/arkts-arkui-outlinestyle-e.md)
+**Type:** EdgeOutlineStyles &#124; [OutlineStyle](../arkts-components/arkts-arkui-common-comp-outlinestyle-e.md)
 
 **Since:** 11
 

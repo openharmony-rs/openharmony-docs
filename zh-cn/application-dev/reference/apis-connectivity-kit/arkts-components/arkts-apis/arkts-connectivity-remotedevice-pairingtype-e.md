@@ -1,5 +1,9 @@
 # PairingType
 
+```TypeScript
+enum PairingType
+```
+
 星闪配对类型，为枚举值。
 
 **起始版本：** 26.0.0

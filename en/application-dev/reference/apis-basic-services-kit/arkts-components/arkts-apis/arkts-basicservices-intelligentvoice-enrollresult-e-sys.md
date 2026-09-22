@@ -1,5 +1,9 @@
 # EnrollResult (System API)
 
+```TypeScript
+enum EnrollResult
+```
+
 Enumerates enroll result. @enum {number}
 
 **Since:** 10

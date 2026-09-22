@@ -1,5 +1,9 @@
 # EnabledState
 
+```TypeScript
+export enum EnabledState
+```
+
 Indicates whether the input method is enabled.
 
 **Since:** 15

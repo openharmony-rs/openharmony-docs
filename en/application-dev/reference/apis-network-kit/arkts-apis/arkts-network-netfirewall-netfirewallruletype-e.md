@@ -1,5 +1,9 @@
 # NetFirewallRuleType
 
+```TypeScript
+enum NetFirewallRuleType
+```
+
 Enumerates the firewall rule types, including IP, Domain, and DNS.
 
 **Since:** 15

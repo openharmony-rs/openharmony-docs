@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 Defines the data operation performed by the UDMF. It includes three optional parameters: **intention**, **key**, and **visibility**. The three parameters can be left unspecified. For details, see the parameter description of the specific API.
 
 **Since:** 10

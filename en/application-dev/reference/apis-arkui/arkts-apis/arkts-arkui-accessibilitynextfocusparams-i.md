@@ -1,5 +1,9 @@
 # AccessibilityNextFocusParams
 
+```TypeScript
+declare interface AccessibilityNextFocusParams
+```
+
 Defines the detailed parameter object that can be used during the accessibility custom next focus processing.
 
 **Since:** 26.0.0

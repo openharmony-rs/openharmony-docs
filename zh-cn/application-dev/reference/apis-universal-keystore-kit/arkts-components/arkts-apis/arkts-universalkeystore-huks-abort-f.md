@@ -130,6 +130,45 @@ async function huksAbort() {
 }
 ```
 
+
+<a id="abort-1"></a>
+
+## abort
+
+```TypeScript
+function abort(handle: number, options: HuksOptions): Promise<HuksResult>
+```
+
+abort终止密钥操作。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用
+> [huks.abortSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)(handle: number, options: HuksOptions)
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| handle | number | 是 | Abort操作的uint64类型的handle值。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Abort操作的参数集合。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | Promise对象，返回HuksResult。 |
+
+**示例**
+
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
 
@@ -236,42 +275,3 @@ function huksAbort() {
   });
 }
 ```
-
-
-## abort
-
-```TypeScript
-function abort(handle: number, options: HuksOptions): Promise<HuksResult>
-```
-
-abort终止密钥操作。使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.abortSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-abortsession-f.md)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [abortSession](arkts-universalkeystore-huks-abortsession-f.md)(handle: number, options: HuksOptions)
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| handle | number | 是 | Abort操作的uint64类型的handle值。 |
-| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Abort操作的参数集合。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | Promise对象，返回HuksResult。 |
-
-**示例**
-
-参见 [abort](#abort)

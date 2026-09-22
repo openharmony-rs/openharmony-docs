@@ -1,5 +1,9 @@
 # UIContext
 
+```TypeScript
+export class UIContext
+```
+
 Implements a **UIContext** instance.
 
 > **NOTE:** 
@@ -56,7 +60,7 @@ InputEventSubTypeMask.LEFT_MOUSE_DOWN,
 (wrapper: RawInputEventWrapper) =&gt; {
 if (wrapper.isMouseEvent()) {
 const mouseEvent = wrapper.asMouseEvent();
-console.log(`Mouse: (&#36;{mouseEvent.windowX}, &#36;{mouseEvent.windowY})`);
+console.log(`Mouse: (${mouseEvent.windowX}, ${mouseEvent.windowY})`);
 return { action: InputEventInterceptAction.CONTINUE }; // Allow event to continue
 }
 return { action: InputEventInterceptAction.BLOCK }; // Block event
@@ -68,7 +72,7 @@ InputEventSubTypeMask.LEFT_MOUSE_DOWN | InputEventSubTypeMask.RIGHT_MOUSE_DOWN,
 (wrapper: RawInputEventWrapper) =&gt; {
 if (wrapper.isMouseEvent()) {
 const mouseEvent = wrapper.asMouseEvent()!;
-console.log(`Mouse button: &#36;{mouseEvent.button}`);
+console.log(`Mouse button: ${mouseEvent.button}`);
 return { action: InputEventInterceptAction.BLOCK };
 }
 return { action: InputEventInterceptAction.CONTINUE };
@@ -92,13 +96,53 @@ uiContext.removeLocalInputEventMonitor(monitor2);
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | eventMask | number | Yes | Event type mask, specifying the types of events to monitor through bitwise operations. |
-| listener | [InputEventListener](../arkts-components/arkts-arkui-inputeventlistener-t.md) | Yes | Event listener callback function. |
+| listener | [InputEventListener](../arkts-components/arkts-arkui-common-comp-inputeventlistener-t.md) | Yes | Event listener callback function. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [InputEventMonitor](../arkts-components/arkts-arkui-inputeventmonitor-i.md) | Unique identifier object for the monitor, used for subsequent cancellation of registration. |
+| [InputEventMonitor](../arkts-components/arkts-arkui-common-comp-inputeventmonitor-i.md) | Unique identifier object for the monitor, used for subsequent cancellation of registration. |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct InputEventMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    // Listen for mouse left button down events.
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        if (wrapper.isMouseEvent()) {
+          const event = wrapper.asMouseEvent()!;
+          console.info(`Mouse down at (${event.windowX}, ${event.windowY})`);
+          return { action: InputEventInterceptAction.CONTINUE };  // Allow the event to continue propagating.
+        }
+        return { action: InputEventInterceptAction.BLOCK };  // Prevents event propagating.
+      }
+    );
+  }
+  aboutToDisappear() {
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Text('Input Event Monitor Sample')
+        .fontSize(20)
+        .margin(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## animateTo
 
@@ -123,7 +167,7 @@ Adds transition animations for state changes in closure code.
 > - In certain scenarios, using animateTo with [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
 > 
 > 
-> - When a UIAbility switches from the foreground to the background, any limited iteration animations that are currently running will end immediately, thereby triggering the [onFinish animation completion callback](../arkts-components/arkts-arkui-animateparam-i.md).
+> - When a UIAbility switches from the foreground to the background, any limited iteration animations that are currently running will end immediately, thereby triggering the [onFinish animation completion callback](../arkts-components/arkts-arkui-common-comp-animateparam-i.md).
 > 
 > - If transition animations are turned off in Developer options, animations end on the current frame, and the
 > **onFinish** callback is executed immediately. Avoid placing timing-dependent functional logic inside this
@@ -141,8 +185,88 @@ Adds transition animations for state changes in closure code.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | Yes | Animation settings. |
+| value | [AnimateParam](../arkts-components/arkts-arkui-common-comp-animateparam-i.md) | Yes | Animation settings. |
 | event | () =&gt; void | Yes | Closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AnimateToExample {
+  @State widthSize: number = 250;
+  @State heightSize: number = 100;
+  @State rotateAngle: number = 0;
+  private flag: boolean = true;
+  uiContext: UIContext | undefined = undefined;
+
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    if (!this.uiContext) {
+      console.warn("no uiContext");
+      return;
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change size')
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .margin(30)
+        .onClick(() => {
+          if (this.flag) {
+            this.uiContext?.animateTo({
+              duration: 2000,
+              curve: Curve.EaseOut,
+              iterations: 3,
+              playMode: PlayMode.Normal,
+              onFinish: () => {
+                console.info('play end');
+              }
+            }, () => {
+              this.widthSize = 150;
+              this.heightSize = 60;
+            });
+          } else {
+            this.uiContext?.animateTo({}, () => {
+              this.widthSize = 250;
+              this.heightSize = 100;
+            });
+          }
+          this.flag = !this.flag;
+        })
+      Button('stop rotating')
+        .margin(50)
+        .rotate({ x: 0, y: 0, z: 1, angle: this.rotateAngle })
+        .onAppear(() => {
+          // The animation starts when the component appears.
+          this.uiContext?.animateTo({
+            duration: 1200,
+            curve: Curve.Friction,
+            delay: 500,
+            iterations: -1, // The value -1 indicates that the animation is played for an unlimited number of times.
+            playMode: PlayMode.Alternate,
+            expectedFrameRateRange: {
+              min: 10,
+              max: 120,
+              expected: 60,
+            }
+          }, () => {
+            this.rotateAngle = 90
+          });
+        })
+        .onClick(() => {
+          this.uiContext?.animateTo({ duration: 0 }, () => {
+            // The value of this.rotateAngle is 90 before the animation. In an animation with a duration of 0, changing the property stops any previous animations for that property and applies the new value immediately.
+            this.rotateAngle = 0;
+          });
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
 
 ## animateToImmediately
 
@@ -164,8 +288,95 @@ Specifies a clear animation host instance context via the UIContext object and t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | Yes | Animation settings. |
+| param | [AnimateParam](../arkts-components/arkts-arkui-common-comp-animateparam-i.md) | Yes | Animation settings. |
 | processor | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback function. It specifies the closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function. |
+
+**Examples**
+
+This example shows how to use animateToImmediately to implement immediate delivery of an explicit animation through a UIContext object.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AnimateToImmediatelyExample {
+  @State widthSize: number = 250
+  @State heightSize: number = 100
+  @State opacitySize: number = 0
+  private flag: boolean = true
+  uiContext: UIContext | null | undefined = this.getUIContext();
+
+  build() {
+    Column() {
+      Column()
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(Color.Green)
+        .opacity(this.opacitySize)
+      Button('change size')
+        .margin(30)
+        .onClick(() => {
+          if (this.flag) {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 1
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.widthSize = 150
+              this.heightSize = 60
+            })
+          } else {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.widthSize = 250
+              this.heightSize = 100
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 0
+            })
+          }
+          this.flag = !this.flag
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+## applyDefaultImmersiveStrategy
+
+```TypeScript
+applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void
+```
+
+Applies the default safe area immersive strategy on the current page. This API applies to scenarios such as full-screen or immersive applications. You can centrally configure the safe area immersive strategy before the first layout. After the strategies are applied, the way the page handles the safe area is adjusted based on the specified strategies.
+
+> **NOTE:** 
+> 
+> - Dynamic update is not supported. This API takes effect only when called before the first layout process starts on the current page. If it is called after the page enters the first layout process, the applied strategies remain unchanged and this API does not take effect.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| types | [ImmersiveStrategy](arkts-arkui-immersivestrategy-e.md)[] | Yes | Immersive strategies to apply. An empty array clears all applied immersive strategies. |
 
 ## bindTabsToNestedScrollable
 
@@ -187,9 +398,13 @@ Bind tabs to nested scrollable container components to automatically hide tab ba
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | Yes | The controller of the tabs. |
-| parentScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | Yes | The controller of the parent scrollable container component. |
-| childScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | Yes | The controller of the child scrollable container component. |
+| tabsController | [TabsController](../arkts-components/arkts-arkui-tabs-comp-tabscontroller-c.md) | Yes | The controller of the tabs. |
+| parentScroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | Yes | The controller of the parent scrollable container component. |
+| childScroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | Yes | The controller of the child scrollable container component. |
+
+**Examples**
+
+See the example for [bindTabsToScrollable](#bindtabstoscrollable).
 
 ## bindTabsToScrollable
 
@@ -211,8 +426,105 @@ Bind tabs to scrollable container component to automatically hide tab bar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | Yes | The controller of the tabs. |
-| scroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | Yes | The controller of the scrollable container component. |
+| tabsController | [TabsController](../arkts-components/arkts-arkui-tabs-comp-tabscontroller-c.md) | Yes | The controller of the tabs. |
+| scroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | Yes | The controller of the scrollable container component. |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct TabsExample {
+  private arr: string[] = [];
+  private parentTabsController: TabsController = new TabsController();
+  private childTabsController: TabsController = new TabsController();
+  private listScroller: Scroller = new Scroller();
+  private parentScroller: Scroller = new Scroller();
+  private childScroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.arr.push(i.toString());
+    }
+    let context = this.getUIContext();
+    context.bindTabsToScrollable(this.parentTabsController, this.listScroller);
+    context.bindTabsToScrollable(this.childTabsController, this.listScroller);
+    context.bindTabsToNestedScrollable(this.parentTabsController, this.parentScroller, this.childScroller);
+  }
+
+  aboutToDisappear(): void {
+    let context = this.getUIContext();
+    context.unbindTabsFromScrollable(this.parentTabsController, this.listScroller);
+    context.unbindTabsFromScrollable(this.childTabsController, this.listScroller);
+    context.unbindTabsFromNestedScrollable(this.parentTabsController, this.parentScroller, this.childScroller);
+  }
+
+  build() {
+    Tabs({ barPosition: BarPosition.End, controller: this.parentTabsController }) {
+      TabContent() {
+        Tabs({ controller: this.childTabsController }) {
+          TabContent() {
+            List({ space: 20, initialIndex: 0, scroller: this.listScroller }) {
+              ForEach(this.arr, (item: string) => {
+                ListItem() {
+                  Text(item)
+                    .width('100%')
+                    .height(100)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .borderRadius(10)
+                    .backgroundColor(Color.Gray)
+                }
+              }, (item: string) => item)
+            }
+            .scrollBar(BarState.Off)
+            .width('90%')
+            .height('100%')
+            .contentStartOffset(56)
+            .contentEndOffset(52)
+          }.tabBar(SubTabBarStyle.of('Top tab'))
+        }
+        .width('100%')
+        .height('100%')
+        .barOverlap (true) // Make the tab bar overlap the TabContent component. This means that when the tab bar is hidden upwards or downwards, the area it occupies will not appear empty.
+        .clip (true) // Clip any child components that extend beyond the Tabs component's boundaries, preventing accidental touches on the tab bar when it is hidden.
+      }.tabBar(BottomTabBarStyle.of($r('app.media.startIcon'), 'Scroller linked with TabsControllers'))
+
+      TabContent() {
+        Scroll(this.parentScroller) {
+            List({ space: 20, initialIndex: 0, scroller: this.childScroller }) {
+              ForEach(this.arr, (item: string) => {
+                ListItem() {
+                  Text(item)
+                    .width('100%')
+                    .height(100)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .borderRadius(10)
+                    .backgroundColor(Color.Gray)
+                }
+              }, (item: string) => item)
+            }
+            .scrollBar(BarState.Off)
+            .width('90%')
+            .height('100%')
+            .contentEndOffset(52)
+            .nestedScroll({ scrollForward: NestedScrollMode.SELF_FIRST, scrollBackward: NestedScrollMode.SELF_FIRST })
+        }
+        .width('100%')
+        .height('100%')
+        .scrollBar(BarState.Off)
+        .scrollable(ScrollDirection.Vertical)
+        .edgeEffect(EdgeEffect.Spring)
+      }.tabBar(BottomTabBarStyle.of($r('app.media.startIcon'), 'Nested Scroller linked with TabsController'))
+    }
+    .width('100%')
+    .height('100%')
+    .barOverlap (true) // Make the tab bar overlap the TabContent component. This means that when the tab bar is hidden upwards or downwards, the area it occupies will not appear empty.
+    .clip (true) // Clip any child components that extend beyond the Tabs component's boundaries, preventing accidental touches on the tab bar when it is hidden.
+  }
+}
+```
 
 ## closeBindSheet
 
@@ -254,6 +566,95 @@ Closes the sheet corresponding to **bindSheetContent**. This API uses a promise 
 | [120001](../errorcode-bindSheet.md#120001-incorrect-bindsheetcontent) | The bindSheetContent is incorrect. |
 | [120003](../errorcode-bindSheet.md#120003-no-matching-modal-found) | The bindSheetContent cannot be found. |
 
+**Examples**
+
+```TypeScript
+import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+let contentNode: ComponentContent<Params>;
+let gUIContext: UIContext;
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+    Button('Update BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.updateBindSheet(contentNode, {
+          backgroundColor: Color.Pink,
+        }, true)
+          .then(() => {
+            console.info('updateBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+
+    Button('Close BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.closeBindSheet(contentNode)
+          .then(() => {
+            console.info('closeBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+  }
+}
+
+@Entry
+@Component
+struct UIContextBindSheet {
+  @State message: string = 'BindSheet';
+
+  aboutToAppear() {
+    gUIContext = this.getUIContext();
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message));
+  }
+
+  build() {
+    RelativeContainer() {
+      Column() {
+        Button('Open BindSheet')
+          .fontSize(20)
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let uniqueId = this.getUniqueId();
+            let frameNode: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
+            let targetId = frameNode?.getFirstChild()?.getUniqueId();
+            uiContext.openBindSheet(contentNode, {
+              height: SheetSize.MEDIUM,
+              backgroundColor: Color.Green,
+              title: { title: "Title", subtitle: "subtitle" }
+            }, targetId)
+              .then(() => {
+                console.info('openBindSheet success');
+              })
+              .catch((err: BusinessError) => {
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
+              })
+          })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## constructor
 
 ```TypeScript
@@ -274,6 +675,76 @@ Construct a **UIContext** object.
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Examples**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function getUIContextByAtomicInterface(): UIContext {
+  let callingScopeUIContext = UIContext.getCallingScopeUIContext();
+  if (callingScopeUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
+    return callingScopeUIContext;
+  }
+  let allContexts = UIContext.getAllUIContexts();
+  let length = allContexts.length;
+  if (length === 1) {
+    hilog.info(0x00, 'testTag', `Get UIContext of unique UI instance.`)
+    return allContexts[0];
+  }
+  let lastFocusedUIContext = UIContext.getLastFocusedUIContext();
+  if (lastFocusedUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last focused instance.`)
+    return lastFocusedUIContext;
+  }
+  let lastForegroundUIContext = UIContext.getLastForegroundUIContext();
+  if (lastForegroundUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last foregrounded instance.`)
+    return lastForegroundUIContext;
+  }
+  if (length !== 0) {
+    hilog.info(0x00, 'testTag', `Get UIContext with maximum instanceId.`)
+    return allContexts[length - 1];
+  }
+  hilog.info(0x00, 'testTag', `Get UIContext of undefined calling scope.`)
+  return new UIContext();
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    let uiContext = this.getUIContext();
+    hilog.info(0x00, 'testTag', `aboutToAppear UIContext: ${uiContext.getId()}`)
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let resolvedUIContext = UIContext.resolveUIContext();
+          let contextByAtomicInterface = getUIContextByAtomicInterface();
+          hilog.info(0x00, 'testTag',
+            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
+          this.message = 'Welcome';
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## createAnimator
 
@@ -309,6 +780,43 @@ Creates an **Animator** object.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { AnimatorOptions, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Create the main window and set the home page for this ability.
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      let uiContext = windowStage.getMainWindowSync().getUIContext();
+      let options:AnimatorOptions = {
+        duration: 1500,
+        easing: "friction",
+        delay: 0,
+        fill: "forwards",
+        direction: "normal",
+        iterations: 3,
+        begin: 200.0,
+        end: 400.0
+      };
+      uiContext.createAnimator(options);
+    });
+  }
+}
+```
+
+<a id="createanimator-1"></a>
+
 ## createAnimator
 
 ```TypeScript
@@ -342,6 +850,32 @@ Creates an **AnimatorResult** object for animations. Compared to the previous [c
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { SimpleAnimatorOptions, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Create the main window and set the home page for this ability.
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      let uiContext = windowStage.getMainWindowSync().getUIContext();
+      let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
+      uiContext.createAnimator(options);
+    });
+  }
+}
+```
 
 ## createUIContextWithoutWindow
 
@@ -383,6 +917,24 @@ Creates a UI instance that does not depend on a window and returns its UI contex
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. The number of parameters is incorrect. <br> 2. Invalid parameter type of context. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 
+**Examples**
+
+```TypeScript
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+  }
+
+  // ......
+}
+```
+
 ## destroyUIContextWithoutWindow
 
 ```TypeScript
@@ -398,6 +950,25 @@ Destroys the UI instance created using [createUIContextWithoutWindow](#createuic
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Examples**
+
+```TypeScript
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    UIContext.destroyUIContextWithoutWindow();
+  }
+
+  // ......
+}
+```
 
 ## dispatchKeyEvent
 
@@ -420,13 +991,55 @@ Dispach keyboard event to the frameNode with inspector key.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | node | number &#124; string | Yes | The uniqueId or inspector key of the target FrameNode. |
-| event | [KeyEvent](../arkts-components/arkts-arkui-keyevent-i.md) | Yes | The key event to be sent. |
+| event | [KeyEvent](../arkts-components/arkts-arkui-common-comp-keyevent-i.md) | Yes | The key event to be sent. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | boolean | Returns whether the key event is consumed. |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Row() {
+        Button('Button1').id('Button1').onKeyEvent((event) => {
+          console.info("Button1");
+          return true;
+        })
+        Button('Button2').id('Button2').onKeyEvent((event) => {
+          console.info("Button2");
+          return true;
+        })
+      }
+      .width('100%')
+      .height('100%')
+      .id('Row1')
+      .onKeyEventDispatch((event) => {
+        let context = this.getUIContext();
+        context.getFocusController().requestFocus('Button1');
+        return context.dispatchKeyEvent('Button1', event);
+      })
+
+    }
+    .height('100%')
+    .width('100%')
+    .onKeyEventDispatch((event) => {
+      if (event.type == KeyType.Down) {
+        let context = this.getUIContext();
+        context.getFocusController().requestFocus('Row1');
+        return context.dispatchKeyEvent('Row1', event);
+      }
+      return true;
+    })
+  }
+}
+```
 
 ## enableEventPassthrough
 
@@ -451,6 +1064,25 @@ Whether to enable or disable event passthrough.
 | enabled | boolean | Yes | enable or disable event passthrough. The default value is false. |
 | eventType | [RawInputEventType](arkts-arkui-rawinputeventtype-e.md) | Yes | the type of raw input event. |
 
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## enableSwipeBack
 
 ```TypeScript
@@ -469,7 +1101,28 @@ whether to enable or disable swipe to back event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | enable or disable swipe to back event. |
+| enabled | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | enable or disable swipe to back event. |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  @State isEnable: boolean = true;
+
+  build() {
+    RelativeContainer() {
+      Button(`enable swipe back: ${this.isEnable}`).onClick(() => {
+        this.isEnable = !this.isEnable;
+        this.getUIContext().enableSwipeBack(this.isEnable);
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## fp2px
 
@@ -499,6 +1152,32 @@ Converts a value in fp units to a value in px.
 | --- | --- |
 | number |  |
 
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().fp2px(50),
+          centerY: this.getUIContext().fp2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## getAllUIContexts
 
 ```TypeScript
@@ -521,6 +1200,37 @@ Obtains all currently valid UIContext instances.
 | --- | --- |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)[] | Array of all currently valid UIContext instances. Returns an empty array if no valid UIContext instance exists. |
 
+**Examples**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContexts = UIContext.getAllUIContexts();
+          hilog.info(0x00, 'testTag', `There are ${uiContexts.length} UIContext(s)`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## getAtomicServiceBar
 
 ```TypeScript
@@ -542,6 +1252,30 @@ Get AtomicServiceBar.
 | Type | Description |
 | --- | --- |
 | [Nullable](arkts-arkui-nullable-t.md)&lt;[AtomicServiceBar](arkts-arkui-arkui-uicontext-atomicservicebar-i.md)&gt; | The atomic service bar. |
+
+**Examples**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+      if (atomicServiceBar != undefined) {
+        console.info('Get AtomServiceBar Successfully.');
+      } else {
+        console.error('Get AtomicServiceBar failed.');
+      }
+    });
+  }
+}
+```
 
 ## getAttachedFrameNodeById
 
@@ -571,6 +1305,35 @@ Get the FrameNode attached to current window by id.
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) &#124; null | The instance of FrameNode. |
 
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct MyComponent {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let node = this.getUIContext().getAttachedFrameNodeById("HelloWorld");
+          console.info(`Find HelloWorld Tag:${node!.getNodeType()} id:${node!.getUniqueId()}`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## getCallingScopeUIContext
 
 ```TypeScript
@@ -599,6 +1362,37 @@ Obtains the UIContext of this [calling scope](../../../ui/arkts-global-interface
 | --- | --- |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) &#124; undefined | UIContext of the current [calling scope](../../../ui/arkts-global-interface.md#basic-concepts). Returns **undefined** if the calling scope is ambiguous. |
 
+**Examples**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getCallingScopeUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## getComponentSnapshot
 
 ```TypeScript
@@ -621,6 +1415,10 @@ Get ComponentSnapshot.
 | --- | --- |
 | [ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md) | the ComponentSnapshot |
 
+**Examples**
+
+See the example for [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md).
+
 ## getComponentUtils
 
 ```TypeScript
@@ -642,6 +1440,10 @@ get object ComponentUtils.
 | Type | Description |
 | --- | --- |
 | [ComponentUtils](arkts-arkui-arkui-uicontext-componentutils-c.md) | object ComponentUtils. |
+
+**Examples**
+
+For the complete example, see [Example 1: Obtaining the ComponentUtils Object](arkts-arkui-arkui-componentutils.md#example-1-obtaining-the-componentutils-object).
 
 ## getContextMenuController
 
@@ -687,6 +1489,10 @@ Get object cursor controller.
 | --- | --- |
 | [CursorController](arkts-arkui-arkui-uicontext-cursorcontroller-c.md) | object cursor controller. |
 
+**Examples**
+
+See the example for [CursorController](arkts-apis-uicontext-cursorcontroller.md).
+
 ## getDialogPresenter
 
 ```TypeScript
@@ -695,11 +1501,11 @@ getDialogPresenter(): DialogPresenter
 
 Get the Dialog object.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -708,6 +1514,10 @@ Get the Dialog object.
 | Type | Description |
 | --- | --- |
 | [DialogPresenter](arkts-arkui-arkui-uicontext-dialogpresenter-c.md) | Dialog object. |
+
+**Examples**
+
+See the example for [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md).
 
 ## getDragController
 
@@ -730,6 +1540,10 @@ Get DragController.
 | Type | Description |
 | --- | --- |
 | [DragController](arkts-arkui-arkui-uicontext-dragcontroller-c.md) | the DragController |
+
+**Examples**
+
+See the example for [DragController](./arkts-apis-uicontext-dragcontroller.md).
 
 ## getFilteredInspectorTree
 
@@ -765,6 +1579,72 @@ Obtains the component tree and component attributes. This API has a long process
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+uiContext.getFilteredInspectorTree(['id', 'src', 'content']);
+```
+
+```TypeScript
+// xxx.ets
+import { UIContext } from '@kit.ArkUI';
+@Entry
+@Component
+struct ComponentPage {
+  loopConsole(inspectorStr: string, i: string) {
+    console.info(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
+    if (JSON.parse(inspectorStr).$children) {
+      i += '-';
+      for (let index = 0; index < JSON.parse(inspectorStr).$children.length; index++) {
+        this.loopConsole(JSON.stringify(JSON.parse(inspectorStr).$children[index]), i);
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Button('content').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
+        console.info(`InsTree : ${inspectorStr}`);
+        inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
+        this.loopConsole(inspectorStr, '-');
+      })
+      Button('isLayoutInspector').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
+        console.info(`InsTree : ${inspectorStr}`);
+        inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
+        this.loopConsole(inspectorStr, '-');
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+When the "content" filter field is passed, the returned JSON string has the following structure:
+
+```TypeScript
+InsTree : {"$type":"root","width":"720.000000","height":"1280.000000","$resolution":"1.500000","$children":[{"$type":"Column","$ID":15,"type":"build-in","$rect":"[0.00, 72.00],[720.00,1208.00]","$debugLine":"","$attrs":{},"$children":[{"$type":"Button","$ID":16,"type":"build-in","$rect":"[293.00, 72.00],[427.00,132.00]","$debugLine":"","$attrs":{}},{"$type":"Button","$ID":18,"type":"build-in","$rect":"[237.00, 132.00],[484.00,192.00]","$debugLine":"","$attrs":{}}]}]}\
+InsTree -| type: root, ID: undefined
+InsTree --| type: Column, ID: 15
+InsTree ---| type: Button, ID: 16
+InsTree ---| type: Button, ID: 18
+```
+
+Since API version 20, when the "isLayoutInspector" filter field is passed, the returned JSON string structure includes an outer layer with "type" and "content" fields, where "content" contains the original JSON structure (as returned without this field), and the return value structure includes custom components. This JSON string structure is as follows:
+
+```TypeScript
+InsTree : {"type":"root","content":{"$type":"root","width":"720.000000","height":"1280.000000","$resolution":"1.500000","$children":[{"$type":"JsView","$ID":13,"type":"custom","state":{"observedPropertiesInfo":[],"viewInfo":{"componentName":"ComponentPage","id":14,"isV2":false,"isViewActive_":true}},"$rect":"[0.00, 72.00],[720.00,1208.00]","$debugLine":"{\"$line\":\"(0:0)\"}","viewTag":"ComponentPage","$attrs":{"viewKey":"13"},"$children":[{"$type":"Column","$ID":15, "type":"build-in","$rect":"[0.00, 72.00],[720.00,1208.00]","$debugLine":"","$attrs":{ ...
+InsTree -| type: root, ID: undefined
+InsTree --| type: JsView, ID: 13
+InsTree ---| type: Column, ID: 15
+InsTree ----| type: Button, ID: 16
+InsTree ----| type: Button, ID: 18
+```
+
 ## getFilteredInspectorTreeById
 
 ```TypeScript
@@ -785,7 +1665,7 @@ Obtains the attributes of the specified component and its child components. This
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | ID of the target component. |
+| id | string | Yes | [ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) of the target component. |
 | depth | number | Yes | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of<br>the specified component are obtained. If the value is **2**, the attributes of <br>the specified component and its <br>level-1 child components are obtained. The rest can be deduced by analogy. |
 | filters | Array&lt;string&gt; | No | List of component attributes used for filtering. Currently, only the following filter fields are supported:<br>**"id"**: unique ID of the component. <br>**"src"**: source of the resource. <br>**"content"**: information or data contained in the element, component, or object. <br>**"editable"**: whether the component is editable. <br>**"scrollable"**: whether the component is scrollable. <br>**"selectable"**: whether the component is selectable. <br>**"focusable"**: whether the component is focusable. <br>**"focused"**: whether the component is currently focused. <br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. <br>If **filters** is not provided or is an empty array, none of the aforementioned fields <br>will be filtered out. <br>Other filter fields are used only in testing scenarios. |
 
@@ -800,6 +1680,51 @@ Obtains the attributes of the specified component and its child components. This
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+uiContext.getFilteredInspectorTreeById('testId', 0, ['id', 'src', 'content']);
+```
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+@Entry
+@Component
+struct ComponentPage {
+  build() {
+    Column() {
+      Text("Hello World")
+        .fontSize(20)
+        .id("TEXT")
+      Button('getFilteredInspectorTreeById').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        try {
+          let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["id", "src"]);
+          console.info(`result1: ${inspectorStr}`);
+          inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
+          console.info(`result2: ${inspectorStr}`);
+          inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["src"]);
+          inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
+          console.info(`result3: ${inspectorStr}`);
+        } catch(e) {
+          console.error(`getFilteredInspectorTreeById error: ${e}`);
+        }
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+This JSON string structure is as follows:
+
+```TypeScript
+result1: {"$type":"root","width":"1260.000000","height":"2720.000000","$resolution":"3.250000","$children":[{"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"id":"TEXT","isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}]}
+result2: {"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"id":"TEXT","isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}
+result3: {"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}
+```
 
 ## getFocusController
 
@@ -823,6 +1748,10 @@ Get FocusController.
 | --- | --- |
 | [FocusController](arkts-arkui-arkui-uicontext-focuscontroller-c.md) | the FocusController |
 
+**Examples**
+
+See the example for [FocusController](arkts-apis-uicontext-focuscontroller.md).
+
 ## getFont
 
 ```TypeScript
@@ -844,6 +1773,10 @@ Obtains a **Font** object.
 | Type | Description |
 | --- | --- |
 | [Font](arkts-arkui-arkui-uicontext-font-c.md) | **Font** object. |
+
+**Examples**
+
+See the example for [Font](arkts-apis-uicontext-font.md).
 
 ## getFrameNodeById
 
@@ -872,6 +1805,10 @@ Get FrameNode by id.
 | Type | Description |
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) &#124; null | The instance of FrameNode. |
+
+**Examples**
+
+See Example of Obtaining the Root Node.
 
 ## getFrameNodeByUniqueId
 
@@ -906,6 +1843,28 @@ returned, with the type __Common__; if the component has no rendered content, th
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) &#124; null | The FrameNode with the target uniqueId, or null if the frameNode is not existed. |
 
+**Examples**
+
+```TypeScript
+import { UIContext, FrameNode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyComponent {
+  aboutToAppear() {
+    let uniqueId: number = this.getUniqueId();
+    let uiContext: UIContext = this.getUIContext();
+    if (uiContext) {
+      let node: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
+    }
+  }
+
+  build() {
+    // ...
+  }
+}
+```
+
 ## getHostContext
 
 ```TypeScript
@@ -927,6 +1886,33 @@ Obtains the context of this ability.
 | Type | Description |
 | --- | --- |
 | [Context](arkts-arkui-context-t.md) &#124; undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md). If the ability context does not exist, **undefined** is returned. |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  uiContext = this.getUIContext();
+
+  build() {
+    Row() {
+      Column() {
+        Text("cacheDir='" + this.uiContext?.getHostContext()?.cacheDir + "'")
+          .fontSize(25)
+          .border({ color: Color.Red, width: 2 })
+          .padding(50)
+        Text("bundleCodeDir='" + this.uiContext?.getHostContext()?.bundleCodeDir + "'")
+          .fontSize(25)
+          .border({ color: Color.Red, width: 2 })
+          .padding(50)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getId
 
@@ -950,6 +1936,23 @@ Obtains the unique ID of a UI instance object. In multi-instance scenarios, you 
 | --- | --- |
 | number | Unique ID of the backend instance. The value range is [-1, +∞). |
 
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct Index{
+  build(){
+    Column()
+      .width("100%")
+      .height("100%")
+      .onClick(() => {
+      console.info(`id:${this.getUIContext()?.getId()}`);
+    })
+  }
+}
+```
+
 ## getKeyboardAvoidMode
 
 ```TypeScript
@@ -957,6 +1960,11 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 ```
 
 Obtains the avoidance mode of the virtual keyboard.
+
+> **NOTE:** 
+> 
+> Since API version 18, the **getKeyboardAvoidMode** API returns an enumeration value of **KeyboardAvoidMode**,
+> which is an integer. Before API version 18, the **getKeyboardAvoidMode** API returns a string.
 
 **Since:** 11
 
@@ -971,6 +1979,26 @@ Obtains the avoidance mode of the virtual keyboard.
 | Type | Description |
 | --- | --- |
 | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | Avoidance mode of the virtual keyboard. |
+
+**Examples**
+
+See [Example 4: Setting the Keyboard Avoidance Mode to Resize](../arkui-ts/ts-universal-attributes-expand-safe-area.md#example-4-setting-the-keyboard-avoidance-mode-to-resize), [Example 5: Setting Keyboard Avoidance Mode to Offset](../arkui-ts/ts-universal-attributes-expand-safe-area.md#example-5-setting-keyboard-avoidance-mode-to-offset), and [Example 6: Switching Avoidance Modes](../arkui-ts/ts-universal-attributes-expand-safe-area.md#example-6-switching-avoidance-modes).
+
+```TypeScript
+// EntryAbility.ets
+import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        let currentKeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
+        console.info("KeyboardAvoidMode:", JSON.stringify(currentKeyboardAvoidMode));
+      });
+    }
+}
+```
 
 ## getLastFocusedUIContext
 
@@ -994,6 +2022,37 @@ Obtains the UIContext of the UI instance that most recently switched to the focu
 | --- | --- |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) &#124; undefined | UIContext of the UI instance that most recently switched to the focused state. Returns **undefined** if the most recently focused instance has been destroyed or if no instance has ever been focused. |
 
+**Examples**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastFocusedUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## getLastForegroundUIContext
 
 ```TypeScript
@@ -1015,6 +2074,37 @@ Obtains the UIContext of the UI instance that most recently switched to the fore
 | Type | Description |
 | --- | --- |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) &#124; undefined | UIContext of the UI instance that most recently switched to the foreground state. Returns **undefined** if the most recently foreground UI instance has been destroyed or if no UI instance has ever been in the foreground. |
+
+**Examples**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastForegroundUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## getMagnifier
 
@@ -1038,6 +2128,10 @@ Obtains a [Magnifier](arkts-arkui-arkui-uicontext-magnifier-c.md) object, which 
 | --- | --- |
 | [Magnifier](arkts-arkui-arkui-uicontext-magnifier-c.md) | **Magnifier** object, which can be used to control the display and hiding of a magnifier. |
 
+**Examples**
+
+See the example of the bind API in [Magnifier](arkts-apis-uicontext-magnifier.md).
+
 ## getMaxFontScale
 
 ```TypeScript
@@ -1059,6 +2153,24 @@ Get the max font scale.
 | Type | Description |
 | --- | --- |
 | number | The max font scale. |
+
+**Examples**
+
+Refer to the [configuration tag](../../../quick-start/app-configuration-file.md#configuration) and set the value of fontSizeMaxScale to "1.75".
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('getMaxFontScale').onClick(() => {
+        console.info('getMaxFontScale', this.getUIContext().getMaxFontScale().toFixed(2));
+      });
+    }
+  }
+}
+```
 
 ## getMeasureUtils
 
@@ -1082,6 +2194,10 @@ Obtains a **MeasureUtils** object for text calculation.
 | --- | --- |
 | [MeasureUtils](arkts-arkui-arkui-uicontext-measureutils-c.md) | Text metrics, such as text height and width. |
 
+**Examples**
+
+See the example for [MeasureUtils](arkts-apis-uicontext-measureutils.md).
+
 ## getMediaQuery
 
 ```TypeScript
@@ -1103,6 +2219,10 @@ get object mediaQuery.
 | Type | Description |
 | --- | --- |
 | [MediaQuery](arkts-arkui-arkui-uicontext-mediaquery-c.md) | object MediaQuery. |
+
+**Examples**
+
+See the mediaquery Example.
 
 ## getNavigationInfoByUniqueId
 
@@ -1132,6 +2252,10 @@ Get navigation information of the frameNode with uniqueId.
 | --- | --- |
 | [observer.NavigationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md) &#124; undefined | The navigation information of the frameNode with the target uniqueId, or undefined if the frameNode is not existed or does not have navigation information. |
 
+**Examples**
+
+See the example of [getPageInfoByUniqueId](#getpageinfobyuniqueid).
+
 ## getOverlayManager
 
 ```TypeScript
@@ -1154,6 +2278,10 @@ Obtains the OverlayManager object.
 | --- | --- |
 | [OverlayManager](arkts-arkui-arkui-uicontext-overlaymanager-c.md) | OverlayManager instance obtained. |
 
+**Examples**
+
+See the example for [OverlayManager](arkts-apis-uicontext-overlaymanager.md).
+
 ## getOverlayManagerOptions
 
 ```TypeScript
@@ -1175,6 +2303,10 @@ Get object OverlayManagerOptions.
 | Type | Description |
 | --- | --- |
 | [OverlayManagerOptions](arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md) | object OverlayManagerOptions. |
+
+**Examples**
+
+See the example for [OverlayManager](arkts-apis-uicontext-overlaymanager.md).
 
 ## getPageInfoByUniqueId
 
@@ -1204,6 +2336,53 @@ Get page information of the frameNode with uniqueId.
 | --- | --- |
 | [PageInfo](arkts-arkui-arkui-uicontext-pageinfo-i.md) | The page information of the frameNode with the target uniqueId, includes navDestination and router page information. If the frame node does not have navDestination and router page information, it will return an empty object. |
 
+**Examples**
+
+```TypeScript
+import { UIContext, PageInfo } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PageInfoExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        NavDestination() {
+          MyComponent()
+        }
+      }.id('navigation')
+    }
+  }
+}
+
+@Component
+struct MyComponent {
+  @State content: string = '';
+
+  build() {
+    Column() {
+      Text('PageInfoExample')
+      Button('click').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        const uniqueId: number = this.getUniqueId();
+        const pageInfo: PageInfo = uiContext.getPageInfoByUniqueId(uniqueId);
+        console.info('pageInfo: ' + JSON.stringify(pageInfo));
+        console.info('navigationInfo: ' + JSON.stringify(uiContext.getNavigationInfoByUniqueId(uniqueId)));
+      })
+      TextArea({
+        text: this.content
+      })
+      .width('100%')
+      .height(100)
+    }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
 ## getPageRootNode
 
 ```TypeScript
@@ -1213,6 +2392,8 @@ getPageRootNode(): FrameNode | null
 Obtains the root node of the page corresponding to the UIContext.
 
 **Since:** 24
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
@@ -1229,6 +2410,133 @@ Obtains the root node of the page corresponding to the UIContext.
 | Error Code ID | Error Message |
 | --- | --- |
 | [120007](../errorcode-uicontext.md#120007-instance-not-exist) | The UIContext is not available. |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct NavigationExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  private arr: number[] = [1, 2, 3];
+  @State pageRootNode: FrameNode | null = null;
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'NavDestinationTitle1') {
+      PageOne();
+    } else if (name === 'NavDestinationTitle2') {
+      PageTwo();
+    } else if (name === 'NavDestinationTitle3') {
+      PageThree();
+    }
+  }
+
+  onPageShow(): void {
+    setTimeout(() => {
+      this.pageRootNode = this.getUIContext()?.getPageRootNode();
+      console.info('NavigationExample' + JSON.stringify(this.getUIContext().getPageRootNode()));
+    });
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        Text(`CurrentPageRootNode info: Tag ${this.pageRootNode?.getNodeType()}, NodeId: ${this.pageRootNode?.getUniqueId()}`)
+          .width('90%')
+          .height(40)
+          .backgroundColor('#FFFFFF')
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('Page' + item)
+                .width('100%')
+                .height(72)
+                .backgroundColor('#FFFFFF')
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .margin({ top: 12 })
+      }
+      .title('Main Title')
+      .mode(NavigationMode.Stack)
+      .navDestination(this.pageMap)
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#F1F3F5')
+  }
+}
+
+@Component
+export struct PageOne {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  aboutToDisappear(): void {
+    console.info('PageOne', 'aboutToDisappear');
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('PageOne')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId: ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle1')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // Pop the top entry of the route stack.
+      console.info('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct PageTwo {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('PageTwo')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId: ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle2')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // Pop the top entry of the route stack.
+      console.info('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct PageThree {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('PageThree')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId: ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle3')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // Pop the top entry of the route stack.
+      console.info('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
 
 ## getPixelRoundMode
 
@@ -1252,6 +2560,23 @@ Obtains the pixel rounding mode for this page.
 | --- | --- |
 | [PixelRoundMode](arkts-arkui-pixelroundmode-e.md) | Pixel rounding mode of the current page. |
 
+**Examples**
+
+```TypeScript
+// EntryAbility.ets
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        console.info("pixelRoundMode : " + uiContext.getPixelRoundMode().valueOf());
+      });
+    }
+}
+```
+
 ## getPromptAction
 
 ```TypeScript
@@ -1273,6 +2598,10 @@ Obtains a PromptAction object.
 | Type | Description |
 | --- | --- |
 | [PromptAction](arkts-arkui-arkui-uicontext-promptaction-c.md) | PromptAction object. |
+
+**Examples**
+
+See the example for [PromptAction](arkts-apis-uicontext-promptaction.md).
 
 ## getRouter
 
@@ -1296,6 +2625,10 @@ Obtains a Router object.
 | --- | --- |
 | [Router](arkts-arkui-arkui-uicontext-router-c.md) | Router object. |
 
+**Examples**
+
+See the example for pushUrl.
+
 ## getSharedLocalStorage
 
 ```TypeScript
@@ -1317,6 +2650,49 @@ Obtains the **LocalStorage** instance shared by this stage.
 | Type | Description |
 | --- | --- |
 | [LocalStorage](arkts-arkui-localstorage-c.md) &#124; undefined | **LocalStorage** instance if it exists; **undefined** if it does not exist. |
+
+**Examples**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  storage: LocalStorage = new LocalStorage();
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', this.storage);
+  }
+}
+```
+
+```TypeScript
+// Index.ets
+
+@Entry
+@Component
+struct SharedLocalStorage {
+  localStorage = this.getUIContext().getSharedLocalStorage();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Change Local Storage to 47")
+          .onClick(() => {
+            this.localStorage?.setOrCreate("propA", 47);
+          })
+        Button("Get Local Storage")
+          .onClick(() => {
+            console.info(`localStorage: ${this.localStorage?.get("propA")}`);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getSmartGestureController
 
@@ -1340,6 +2716,10 @@ Get object smart gesture controller.
 | --- | --- |
 | [SmartGestureController](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md) | object smart gesture controller. |
 
+**Examples**
+
+For details, see Example 1: Enabling Smart Gestures and Customizing Action Handling.
+
 ## getTextMenuController
 
 ```TypeScript
@@ -1361,6 +2741,10 @@ Obtains a [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.
 | Type | Description |
 | --- | --- |
 | [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.md) | Obtained **TextMenuController** object. |
+
+**Examples**
+
+See the example for [TextMenuController](arkts-apis-uicontext-textmenucontroller.md).
 
 ## getUIInspector
 
@@ -1384,6 +2768,10 @@ Obtains the **UIInspector** object.
 | --- | --- |
 | [UIInspector](arkts-arkui-arkui-uicontext-uiinspector-c.md) | **UIInspector** object. |
 
+**Examples**
+
+See the example for [UIInspector](./arkts-apis-uicontext-uiinspector.md).
+
 ## getUIObserver
 
 ```TypeScript
@@ -1406,6 +2794,54 @@ Obtains the **UIObserver** object.
 | --- | --- |
 | [UIObserver](arkts-arkui-arkui-uicontext-uiobserver-c.md) | **UIObserver** object. |
 
+**Examples**
+
+```TypeScript
+@Component
+struct PageOne {
+  build() {
+    NavDestination() {
+      Text("pageOne")
+    }.title("pageOne")
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageBuilder(name: string) {
+    PageOne()
+  }
+
+  aboutToAppear() {
+    this.getUIContext().getUIObserver().on('navDestinationUpdate', (info) => {
+      console.info('NavDestination state update', JSON.stringify(info));
+    });
+  }
+
+  aboutToDisappear() {
+    this.getUIContext().getUIObserver().off('navDestinationUpdate');
+  }
+
+  build() {
+    Column() {
+      Navigation(this.stack) {
+        Button("push").onClick(() => {
+          this.stack.pushPath({ name: "pageOne" });
+        })
+      }
+      .title("Navigation")
+      .navDestination(this.PageBuilder)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## getWindowHeightBreakpoint
 
 ```TypeScript
@@ -1427,6 +2863,40 @@ Obtains the height breakpoint value of the window where this instance is located
 | Type | Description |
 | --- | --- |
 | [HeightBreakpoint](arkts-arkui-heightbreakpoint-e.md) | Height breakpoint value of the window where the current instance is located. If the window aspect ratio is 0, **HEIGHT_SM** is returned. |
+
+**Examples**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+        Button() {
+          Text('test')
+            .fontSize(30)
+        }
+        .onClick(() => {
+          let uiContext: UIContext = this.getUIContext();
+          let heightBp: HeightBreakpoint = uiContext.getWindowHeightBreakpoint();
+          let widthBp: WidthBreakpoint = uiContext.getWindowWidthBreakpoint();
+          console.info(`Window heightBP: ${heightBp}, widthBp: ${widthBp}`);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getWindowId
 
@@ -1456,6 +2926,35 @@ Obtains the ID of the window to which the current application instance belongs.
 | --- | --- |
 | number &#124; undefined | ID of the window to which the current application instance belongs. If the window does not exist, **undefined** is returned. |
 
+**Examples**
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    const windowId = this.getUIContext().getWindowId();
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId ?? -1);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## getWindowName
 
 ```TypeScript
@@ -1477,6 +2976,40 @@ Obtains the name of the window where this instance is located.
 | Type | Description |
 | --- | --- |
 | string &#124; undefined | Name of the window where the current instance is located. If the window does not exist, **undefined** is returned. |
+
+**Examples**
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    const windowName = this.getUIContext().getWindowName();
+    console.info('WindowName ' + windowName);
+    if (windowName) {
+      const currWindow = window.findWindow(windowName);
+      const windowProperties = currWindow.getWindowProperties();
+      console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getWindowWidthBreakpoint
 
@@ -1500,6 +3033,39 @@ Obtains the width breakpoint value of the window where this instance is located.
 | --- | --- |
 | [WidthBreakpoint](arkts-arkui-widthbreakpoint-e.md) | Width breakpoint value of the window where the current instance is located. If the window width is 0 vp, **WIDTH_XS** is returned. |
 
+**Examples**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+        Button() {
+          Text('test')
+            .fontSize(30)
+        }
+        .onClick(() => {
+          let uiContext: UIContext = this.getUIContext();
+          let widthBp: WidthBreakpoint = uiContext.getWindowWidthBreakpoint();
+          console.info(`Window widthBp: ${widthBp}`);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## isAvailable
 
 ```TypeScript
@@ -1521,6 +3087,66 @@ Checks whether the UI instance corresponding to this **UIContext** object is val
 | Type | Description |
 | --- | --- |
 | boolean | Whether the UI instance corresponding to the current **UIContext** object is valid. The value **true** indicates yes, and the value **false** indicates no. |
+
+**Examples**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct UIContextCompare {
+  @State result1: string = '';
+  @State result2: string = '';
+
+  build() {
+    Column() {
+      Text('getUIContext() result: ' + this.result1)
+        .fontSize(20)
+        .margin(10)
+
+      Text('new UIContext() result: ' + this.result2)
+        .fontSize(20)
+        .margin(10)
+
+      Divider().margin(20)
+
+      Button('getUIContext()')
+        .width('70%')
+        .height(50)
+        .margin(10)
+        .onClick(() => {
+          try {
+            const ctx: UIContext = this.getUIContext();
+            const available: boolean = ctx.isAvailable();
+            this.result1 = `Status: ${available} (Valid UI instance)`;
+            console.info('getUIContext test:', available);
+          } catch (error) {
+            this.result1 = 'Error: ' + (error instanceof Error ? error.message : String(error));
+          }
+        })
+
+      Button('new UIContext()')
+        .width('70%')
+        .height(50)
+        .margin(10)
+        .onClick(() => {
+          try {
+            const ctx: UIContext = new UIContext();
+            const available: boolean = ctx.isAvailable();
+            this.result2 = `Status: ${available} (Invalid UI instance)`;
+            console.info('new UIContext test:', available);
+          } catch (error) {
+            this.result2 = 'Error: ' + (error instanceof Error ? error.message : String(error));
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
 
 ## isEasySplit
 
@@ -1544,6 +3170,30 @@ Checks whether the current UI instance is in easy split mode.
 | --- | --- |
 | boolean | Returns true if the current UI instance is in easy split mode; returns false otherwise. |
 
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  @State isEasySplit: boolean = false;
+
+  build() {
+    Column() {
+      Text(`${this.isEasySplit ? 'current is easy split mode' : 'current is not easy split mode'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Check EasySplit')
+        .onClick(() => {
+          this.isEasySplit = this.getUIContext()?.isEasySplit();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## isFollowingSystemFontScale
 
 ```TypeScript
@@ -1566,6 +3216,24 @@ Checks whether current font scale follows the system.
 | --- | --- |
 | boolean | Returns true if current font scale follows the system; returns false otherwise. |
 
+**Examples**
+
+Refer to the [configuration tag](../../../quick-start/app-configuration-file.md#configuration) and set the value of fontSizeScale to "followSystem".
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('isFollowingSystemFontScale').onClick(() => {
+        console.info('isFollowingSystemFontScale', this.getUIContext().isFollowingSystemFontScale());
+      });
+    }
+  }
+}
+```
+
 ## keyframeAnimateTo
 
 ```TypeScript
@@ -1586,8 +3254,68 @@ Generates a key frame animation. For details about how to use this API, see [key
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [KeyframeAnimateParam](../arkts-components/arkts-arkui-keyframeanimateparam-i.md) | Yes | Overall animation parameter of the keyframe animation. |
-| keyframes | Array&lt;[KeyframeState](../arkts-components/arkts-arkui-keyframestate-i.md)&gt; | Yes | List of all keyframe states. |
+| param | [KeyframeAnimateParam](../arkts-components/arkts-arkui-common-comp-keyframeanimateparam-i.md) | Yes | Overall animation parameter of the keyframe animation. |
+| keyframes | Array&lt;[KeyframeState](../arkts-components/arkts-arkui-common-comp-keyframestate-i.md)&gt; | Yes | List of all keyframe states. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct KeyframeDemo {
+  @State myScale: number = 1.0;
+  uiContext: UIContext | undefined = undefined;
+
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+  }
+
+  build() {
+    Column() {
+      Circle()
+        .width(100)
+        .height(100)
+        .fill("#46B1E3")
+        .margin(100)
+        .scale({ x: this.myScale, y: this.myScale })
+        .onClick(() => {
+          if (!this.uiContext) {
+            console.error("no uiContext, keyframe failed");
+            return;
+          }
+          this.myScale = 1;
+          // Configure the keyframe animation to play three times.
+          this.uiContext.keyframeAnimateTo({
+              iterations: 3,
+              expectedFrameRateRange: {
+                min: 10,
+                max: 120,
+                expected: 60,
+              }
+            }, [
+            {
+              // The first keyframe animation lasts for 800 ms, during which the scale attribute changes from 1 to 1.5.
+              duration: 800,
+              event: () => {
+                this.myScale = 1.5;
+              }
+            },
+            {
+              // The second keyframe animation lasts for 500 ms, during which the scale attribute changes from 1.5 to 1.
+              duration: 500,
+              event: () => {
+                this.myScale = 1;
+              }
+            }
+          ]);
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
 
 ## lpx2px
 
@@ -1616,6 +3344,32 @@ Converts a value in lpx units to a value in px.
 | Type | Description |
 | --- | --- |
 | number |  |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().lpx2px(50),
+          centerY: this.getUIContext().lpx2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## openBindSheet
 
@@ -1647,7 +3401,7 @@ Creates a sheet whose content is as defined in **bindSheetContent** and displays
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bindSheetContent | [ComponentContent](arkts-arkui-componentcontent-c.md)&lt;T&gt; | Yes | Content to display on the sheet. |
-| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-sheetoptions-i.md) | No | Style of the sheet.<br>**NOTE:** <br>1. **SheetOptions.uiContext** cannot be set. Its value is fixed to the **UIContext** object of the current instance.<br>2. If **targetId** is not passed in, **SheetOptions.preferType** cannot be set to **POPUP**; if **POPUP** is set, it will be replaced with **CENTER**.<br>3. If **targetId** is not passed in, **SheetOptions.mode** cannot be set to **EMBEDDED**; the default mode is **OVERLAY**.<br>4. For the default values of other attributes, see [SheetOptions](../arkts-components/arkts-arkui-sheetoptions-i.md). |
+| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md) | No | Style of the sheet.<br>**NOTE:** <br>1. **SheetOptions.uiContext** cannot be set. Its value is fixed to the **UIContext** object of the current instance.<br>2. If **targetId** is not passed in, **SheetOptions.preferType** cannot be set to **POPUP**; if **POPUP** is set, it will be replaced with **CENTER**.<br>3. If **targetId** is not passed in, **SheetOptions.mode** cannot be set to **EMBEDDED**; the default mode is **OVERLAY**.<br>4. For the default values of other attributes, see [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md). |
 | targetId | number | No | ID of the component to be bound. If this parameter is not set, no component is bound. If the ID does not exist, the error code 120004 is returned. Returns error code 401 if **undefined** is passed in. |
 
 **Return value:**
@@ -1666,6 +3420,95 @@ Creates a sheet whose content is as defined in **bindSheetContent** and displays
 | [120004](../errorcode-bindSheet.md#120004-specified-targetid-does-not-exist) | The targetId does not exist. |
 | [120005](../errorcode-bindSheet.md#120005-node-specified-by-targetid-is-not-mounted-on-the-component-tree) | The node of targetId is not in the component tree. |
 | [120006](../errorcode-bindSheet.md#120006-node-specified-by-targetid-is-not-a-child-of-a-page-node-or-navdestination-node) | The node of targetId is not a child of the page node or NavDestination node. |
+
+**Examples**
+
+```TypeScript
+import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+let contentNode: ComponentContent<Params>;
+let gUIContext: UIContext;
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+    Button('Update BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.updateBindSheet(contentNode, {
+          backgroundColor: Color.Pink,
+        }, true)
+          .then(() => {
+            console.info('updateBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+
+    Button('Close BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.closeBindSheet(contentNode)
+          .then(() => {
+            console.info('closeBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+  }
+}
+
+@Entry
+@Component
+struct UIContextBindSheet {
+  @State message: string = 'BindSheet';
+
+  aboutToAppear() {
+    gUIContext = this.getUIContext();
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message));
+  }
+
+  build() {
+    RelativeContainer() {
+      Column() {
+        Button('Open BindSheet')
+          .fontSize(20)
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let uniqueId = this.getUniqueId();
+            let frameNode: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
+            let targetId = frameNode?.getFirstChild()?.getUniqueId();
+            uiContext.openBindSheet(contentNode, {
+              height: SheetSize.MEDIUM,
+              backgroundColor: Color.Green,
+              title: { title: "Title", subtitle: "subtitle" }
+            }, targetId)
+              .then(() => {
+                console.info('openBindSheet success');
+              })
+              .catch((err: BusinessError) => {
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
+              })
+          })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## postDelayedFrameCallback
 
@@ -1690,6 +3533,38 @@ Post a frame callback to run on the next frame after the specified delay.
 | frameCallback | [FrameCallback](arkts-arkui-arkui-uicontext-framecallback-c.md) | Yes | The frame callback to run on the next frame. |
 | delayTime | number | Yes | The delay time in milliseconds, |
 
+**Examples**
+
+```TypeScript
+import { FrameCallback } from '@kit.ArkUI';
+
+class MyFrameCallback extends FrameCallback {
+  private tag: string;
+
+  constructor(tag: string) {
+    super();
+    this.tag = tag;
+  }
+
+  onFrame(frameTimeNanos: number) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeNanos.toString());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button('Invoke postDelayedFrameCallback')
+        .onClick(() => {
+          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback('delayTask'), 5);
+        })
+    }
+  }
+}
+```
+
 ## postFrameCallback
 
 ```TypeScript
@@ -1711,6 +3586,38 @@ Post a frame callback to run on the next frame.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | frameCallback | [FrameCallback](arkts-arkui-arkui-uicontext-framecallback-c.md) | Yes | The frame callback to run on the next frame. |
+
+**Examples**
+
+```TypeScript
+import { FrameCallback } from '@kit.ArkUI';
+
+class MyFrameCallback extends FrameCallback {
+  private tag: string;
+
+  constructor(tag: string) {
+    super();
+    this.tag = tag;
+  }
+
+  onFrame(frameTimeNanos: number) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeNanos.toString());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button('Invoke postFrameCallback')
+        .onClick(() => {
+          this.getUIContext().postFrameCallback(new MyFrameCallback('normTask'));
+        })
+    }
+  }
+}
+```
 
 ## px2fp
 
@@ -1740,6 +3647,32 @@ Converts a value in px units to a value in fp.
 | --- | --- |
 | number |  |
 
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2fp(50),
+          centerY: this.getUIContext().px2fp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## px2lpx
 
 ```TypeScript
@@ -1767,6 +3700,32 @@ Converts a value in px units to a value in lpx.
 | Type | Description |
 | --- | --- |
 | number |  |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2lpx(50),
+          centerY: this.getUIContext().px2lpx(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## px2vp
 
@@ -1796,6 +3755,32 @@ Converts a value in px units to a value in vp.
 | --- | --- |
 | number |  |
 
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2vp(50),
+          centerY: this.getUIContext().px2vp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## removeLocalInputEventMonitor
 
 ```TypeScript
@@ -1822,7 +3807,46 @@ Removes a local input event monitor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| monitor | [InputEventMonitor](../arkts-components/arkts-arkui-inputeventmonitor-i.md) | Yes | Monitor identifier object (returned by addLocalInputEventMonitor). |
+| monitor | [InputEventMonitor](../arkts-components/arkts-arkui-common-comp-inputeventmonitor-i.md) | Yes | Monitor identifier object (returned by addLocalInputEventMonitor). |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct RemoveMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        return { action: InputEventInterceptAction.CONTINUE };
+      }
+    );
+  }
+  aboutToDisappear() {
+    // Remove the listener when destroying the component.
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Button('Remove Monitor')
+        .onClick(() => {
+          if (this.monitor && this.uiContext) {
+            this.uiContext.removeLocalInputEventMonitor(this.monitor);
+            this.monitor = null;
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## requireDynamicSyncScene
 
@@ -1851,6 +3875,56 @@ Require DynamicSyncScene by id.
 | Type | Description |
 | --- | --- |
 | Array&lt;[DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)&gt; | The instance of SwiperDynamicSyncScene. |
+
+**Examples**
+
+```TypeScript
+import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Frame {
+  @State animationFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State gestureFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
+  private scenes: SwiperDynamicSyncScene[] = [];
+
+  build() {
+    Column() {
+      Text("Animation "+ JSON.stringify(this.animationFrameRateRange))
+      Text ("Gesture: " + JSON.stringify (this.gestureFrameRateRange))
+      Row() {
+        Swiper() {
+          Text("one")
+          Text("two")
+          Text("three")
+        }
+        .width('100%')
+        .height('300vp')
+        .id("dynamicSwiper")
+        .backgroundColor(Color.Blue)
+        .autoPlay(true)
+        .onAppear(() => {
+          this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
+        })
+      }
+
+      Button("set frame")
+        .onClick(() => {
+          this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
+
+            if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
+              scenes.setFrameRateRange(this.animationFrameRateRange);
+            }
+
+            if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
+              scenes.setFrameRateRange(this.gestureFrameRateRange);
+            }
+          });
+        })
+    }
+  }
+}
+```
 
 ## resolveUIContext
 
@@ -1892,6 +3966,28 @@ Obtains a UIContext instance along with its resolution strategy using a predefin
 | --- | --- |
 | [ResolvedUIContext](arkts-arkui-arkui-uicontext-resolveduicontext-c.md) | UIContext instance along with its resolution strategy. |
 
+**Examples**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('click').onClick(() => {
+        let resolvedUIContext = UIContext.resolveUIContext();
+        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}`);
+      })
+    }
+    .width(UIContext.resolveUIContext().px2vp(100))
+    .height('100%')
+  }
+}
+```
+
 ## runScopedTask
 
 ```TypeScript
@@ -1913,6 +4009,28 @@ Run custom functions inside the UIContext scope.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | () =&gt; void | Yes | The function called through UIContext. |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  private selectedDate: Date = new Date('2025-10-01');
+
+  build() {
+    Button('Show CalendarPicker Dialog')
+      .onClick(() => {
+        const uiContext = this.getUIContext();
+        uiContext.runScopedTask(() => {
+          CalendarPickerDialog.show({
+            selected: this.selectedDate
+          });
+        });
+      });
+  }
+}
+```
 
 ## setCustomKeyboardContinueFeature
 
@@ -1936,6 +4054,113 @@ Set custom keyboard continue feature.
 | --- | --- | --- | --- |
 | feature | [CustomKeyboardContinueFeature](arkts-arkui-arkui-uicontext-customkeyboardcontinuefeature-e.md) | Yes | The custom keyboard continue feature. |
 
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { CustomKeyboardContinueFeature } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct Index {
+  controller: TextInputController = new TextInputController();
+  controller2: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+  @State inputValue2: string = '';
+  @State supportAvoidance: boolean = true;
+  @State isValue: CustomKeyboardContinueFeature = CustomKeyboardContinueFeature.DISABLED;
+  @State str: string = 'No';
+
+  // Customize a keyboard.
+  @Builder
+  CustomKeyboardBuilder() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // Disable the custom keyboard.
+          this.controller.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue = this.inputValue.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(213, 213, 213)').height(300)
+  }
+
+  // Customize a keyboard.
+  @Builder
+  CustomKeyboardBuilder2() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // Disable the custom keyboard.
+          this.controller2.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue2 = this.inputValue2.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue2 += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(227, 248, 249)').height(150)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Button ('Persist Input:' this.str).onClick(() => {
+          if (this.isValue == CustomKeyboardContinueFeature.ENABLED) {
+            this.isValue = CustomKeyboardContinueFeature.DISABLED
+            this.str = 'No'
+          } else {
+            this.isValue = CustomKeyboardContinueFeature.ENABLED
+            this.str = 'Yes'
+          }
+          this.getUIContext().setCustomKeyboardContinueFeature(this.isValue);
+        }).fontSize(20).width('80%').key('button')
+
+        TextInput({
+          placeholder: 'TextInput1 bind CustomKeyboardBuilder',
+          controller: this.controller,
+          text: this.inputValue
+        }) // Bind a custom keyboard.
+          .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+        TextInput({
+          placeholder: 'TextInput2 bind CustomKeyboardBuilder2',
+          controller: this.controller2,
+          text: this.inputValue2
+        }) // Bind a custom keyboard.
+          .customKeyboard(this.CustomKeyboardBuilder2(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+      }
+    }
+  }
+}
+```
+
 ## setImageCacheCount
 
 ```TypeScript
@@ -1958,6 +4183,32 @@ Set image cache capacity of decoded image count. if not set, the application wil
 | --- | --- | --- | --- |
 | value | number | Yes | capacity of decoded image count. |
 
+**Examples**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // Set the maximum number of decoded images that can be cached in the memory to 100.
+    this.getUIContext().setImageCacheCount(100);
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // Enter a specific online image URL.
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
 ## setImageRawDataCacheSize
 
 ```TypeScript
@@ -1979,6 +4230,32 @@ Set image cache capacity of raw image data size in bytes before decode. if not s
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number | Yes | capacity of raw image data size in bytes. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // Set the upper limit of the memory for caching image data before decoding to 100 MB. (100 x 1024 x 1024 B =104857600 B = 100 MB).
+    this.getUIContext().setImageRawDataCacheSize(104857600); 
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // Enter a specific online image URL.
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
 
 ## setKeyboardAvoidMode
 
@@ -2016,7 +4293,26 @@ Sets the avoidance mode for the virtual keyboard.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | Yes | Avoidance mode of the virtual keyboard.<br>Default value: **KeyboardAvoidMode.OFFSET**, which means that the page moves up when the keyboard is displayed.<br>When **setKeyboardAvoidMode** is set to an invalid value, this attribute does not take effect. |
+| value | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | Yes | Avoidance mode of the virtual keyboard.<br>Default value: **KeyboardAvoidMode.OFFSET**. |
+
+**Examples**
+
+See [Example 4: Setting the Keyboard Avoidance Mode to Resize](../arkui-ts/ts-universal-attributes-expand-safe-area.md#example-4-setting-the-keyboard-avoidance-mode-to-resize), [Example 5: Setting Keyboard Avoidance Mode to Offset](../arkui-ts/ts-universal-attributes-expand-safe-area.md#example-5-setting-keyboard-avoidance-mode-to-offset), and [Example 6: Switching Avoidance Modes](../arkui-ts/ts-universal-attributes-expand-safe-area.md#example-6-switching-avoidance-modes).
+
+```TypeScript
+// EntryAbility.ets
+import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      });
+    }
+}
+```
 
 ## setOverlayManagerOptions
 
@@ -2046,13 +4342,17 @@ Init OverlayManager.
 | --- | --- |
 | boolean | Returns true if it is called first and before getting an OverlayManager instance; returns false otherwise. |
 
+**Examples**
+
+See the example for [OverlayManager](arkts-apis-uicontext-overlaymanager.md).
+
 ## setPixelRoundMode
 
 ```TypeScript
 setPixelRoundMode(mode: PixelRoundMode): void
 ```
 
-Sets the pixel rounding mode for this page.
+Sets the pixel rounding mode of the current page.
 
 **Since:** 18
 
@@ -2066,7 +4366,24 @@ Sets the pixel rounding mode for this page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [PixelRoundMode](arkts-arkui-pixelroundmode-e.md) | Yes | Pixel rounding mode. Default value:**PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH**.<br>If this parameter is set to an invalid value, the default value will be used. |
+| mode | [PixelRoundMode](arkts-arkui-pixelroundmode-e.md) | Yes | Pixel rounding mode.<br>Default value:**PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH**. |
+
+**Examples**
+
+```TypeScript
+// EntryAbility.ets
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
+    });
+  }
+}
+```
 
 ## setResourceManagerCacheMaxCountForHSP
 
@@ -2100,6 +4417,31 @@ If the upper limit of the cache is set too high, there is a risk of excessive me
 | [100102](../errorcode-uicontext.md#100102-incorrect-parameter-type) | The parameter value cannot be a floating point number. |
 | [100103](../errorcode-uicontext.md#100103-invalid-thread-context) | The function cannot be called from a non main thread. |
 
+**Examples**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      UIContext.setResourceManagerCacheMaxCountForHSP(5);
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+}
+```
+
 ## setTextSelectionClearPolicy
 
 ```TypeScript
@@ -2121,6 +4463,8 @@ Sets the text selection clear policy for text component. Default policy: **TextS
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | policy | [TextSelectionClearPolicy](arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md) | Yes | The text selection clear policy. |
+
+**Examples**
 
 ## showActionSheet
 
@@ -2144,6 +4488,60 @@ Shows an action sheet in the given settings.
 | --- | --- | --- | --- |
 | value | [ActionSheetOptions](arkts-arkui-actionsheetoptions-i.md) | Yes | Parameters of the action sheet. |
 
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  uiContext: UIContext = this.getUIContext()
+
+  build() {
+    Column() {
+      Button('showActionSheet')
+        .onClick(() => {
+          this.uiContext.showActionSheet({
+            title: 'ActionSheet title',
+            message: 'message',
+            autoCancel: true,
+            confirm: {
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          });
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ## showAlertDialog
 
 ```TypeScript
@@ -2166,6 +4564,43 @@ Shows an alert dialog box.
 | --- | --- | --- | --- |
 | options | [AlertDialogParamWithConfirm](arkts-arkui-alertdialogparamwithconfirm-i.md) &#124; [AlertDialogParamWithButtons](arkts-arkui-alertdialogparamwithbuttons-i.md) &#124; [AlertDialogParamWithOptions](arkts-arkui-alertdialogparamwithoptions-i.md) | Yes | Shows an AlertDialog component in the given settings. |
 
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  uiContext: UIContext = this.getUIContext()
+
+  build() {
+    Column() {
+      Button('showAlertDialog')
+        .onClick(() => {
+          this.uiContext.showAlertDialog(
+            {
+              title: 'title',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 3,
+              confirm: {
+                value: 'button',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              }
+            }
+          );
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ## showDatePickerDialog
 
 ```TypeScript
@@ -2186,7 +4621,60 @@ datePickerDialog display.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [DatePickerDialogOptions](../arkts-components/arkts-arkui-datepickerdialogoptions-i.md) | Yes | Options. |
+| options | [DatePickerDialogOptions](../arkts-components/arkts-arkui-datepicker-comp-datepickerdialogoptions-i.md) | Yes | Options. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct DatePickerDialogExample {
+  selectedDate: Date = new Date("2010-1-1");
+
+  build() {
+    Row(){
+      Column() {
+        Button("DatePickerDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showDatePickerDialog({
+              start: new Date("2000-1-1"),
+              end: new Date("2100-12-31"),
+              selected: this.selectedDate,
+              showTime: true,
+              useMilitaryTime: false,
+              dateTimeOptions: { hour: "numeric", minute: "2-digit" },
+              onDateAccept: (value: Date) => {
+                // Use the setFullYear method to set the date when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
+                this.selectedDate = value;
+                console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              },
+              onCancel: () => {
+                console.info("DatePickerDialog:onCancel()");
+              },
+              onDateChange: (value: Date) => {
+                console.info("DatePickerDialog:onDateChange()" + value.toString());
+              },
+              onDidAppear: () => {
+                console.info("DatePickerDialog:onDidAppear()");
+              },
+              onDidDisappear: () => {
+                console.info("DatePickerDialog:onDidDisappear()");
+              },
+              onWillAppear: () => {
+                console.info("DatePickerDialog:onWillAppear()");
+              },
+              onWillDisappear: () => {
+                console.info("DatePickerDialog:onWillDisappear()");
+              }
+            })
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
 
 ## showTextPickerDialog
 
@@ -2208,7 +4696,64 @@ textPickerDialog display.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpickerdialogoptions-i.md) | Yes | Options. |
+| options | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpicker-comp-textpickerdialogoptions-i.md) | Yes | Options. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+
+class SelectedValue{
+  select: number = 2;
+  set(val: number){
+    this.select = val;
+  }
+}
+class SelectedArray{
+  select: number[] = [];
+  set(val: number[]){
+    this.select = val;
+  }
+}
+@Entry
+@Component
+struct TextPickerDialogExample {
+  @State selectTime: Date = new Date('2023-12-25T08:30:00');
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
+  private select: number  = 0;
+  build() {
+    Row(){
+      Column() {
+        Button('showTextPickerDialog')
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              onAccept: (value: TextPickerResult) => {
+                // Set select to the index of the item selected when the OK button is touched. In this way, when the text picker dialog box is displayed again, the selected item is the one last confirmed.
+                let selectedVal = new SelectedValue();
+                let selectedArr = new SelectedArray();
+                if (value.index){
+                  value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+                }
+                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+              },
+              onCancel: () => {
+                console.info("TextPickerDialog:onCancel()");
+              },
+              onChange: (value: TextPickerResult) => {
+                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+              }
+            });
+          })
+      }.width('100%').margin({ top: 5 })
+    }.height('100%')
+  }
+}
+```
+
+<a id="showtextpickerdialog-1"></a>
 
 ## showTextPickerDialog
 
@@ -2230,7 +4775,11 @@ textPickerDialog display.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpickerdialogoptions-i.md) &#124; [TextPickerDialogOptionsExt](../arkts-components/arkts-arkui-textpickerdialogoptionsext-i.md) | Yes | Dialog style. |
+| style | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpicker-comp-textpickerdialogoptions-i.md) &#124; [TextPickerDialogOptionsExt](../arkts-components/arkts-arkui-textpicker-comp-textpickerdialogoptionsext-i.md) | Yes | Dialog style. |
+
+**Examples**
+
+See [showTextPickerDialog](#showtextpickerdialog)
 
 ## showTimePickerDialog
 
@@ -2252,7 +4801,52 @@ timePickerDialog display.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TimePickerDialogOptions](../arkts-components/arkts-arkui-timepickerdialogoptions-i.md) | Yes | Options. |
+| options | [TimePickerDialogOptions](../arkts-components/arkts-arkui-timepicker-comp-timepickerdialogoptions-i.md) | Yes | Options. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+
+class SelectTime{
+  selectTime: Date = new Date('2020-12-25T08:30:00');
+  hours(h:number,m:number){
+    this.selectTime.setHours(h, m);
+  }
+}
+
+@Entry
+@Component
+struct TimePickerDialogExample {
+  @State selectTime: Date = new Date('2023-12-25T08:30:00');
+
+  build() {
+    Column() {
+      Button('showTimePickerDialog')
+        .margin(30)
+        .onClick(() => {
+          this.getUIContext().showTimePickerDialog({
+            selected: this.selectTime,
+            onAccept: (value: TimePickerResult) => {
+              // Set selectTime to the time when the OK button is clicked. In this way, when the dialog box is displayed again, the selected time is the time when the operation was confirmed last time.
+              let time = new SelectTime();
+              if(value.hour && value.minute){
+                time.hours(value.hour, value.minute);
+              }
+              console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+            },
+            onCancel: () => {
+              console.info("TimePickerDialog:onCancel()");
+            },
+            onChange: (value: TimePickerResult) => {
+              console.info("TimePickerDialog:onChange()" + JSON.stringify(value));
+            }
+          });
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
 
 ## unbindTabsFromNestedScrollable
 
@@ -2274,9 +4868,13 @@ Unbind tabs from nested scrollable container components.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | Yes | The controller of the tabs. |
-| parentScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | Yes | The controller of the parent scrollable container component. |
-| childScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | Yes | The controller of the child scrollable container component. |
+| tabsController | [TabsController](../arkts-components/arkts-arkui-tabs-comp-tabscontroller-c.md) | Yes | The controller of the tabs. |
+| parentScroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | Yes | The controller of the parent scrollable container component. |
+| childScroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | Yes | The controller of the child scrollable container component. |
+
+**Examples**
+
+See the example for [bindTabsToScrollable](#bindtabstoscrollable).
 
 ## unbindTabsFromScrollable
 
@@ -2298,8 +4896,12 @@ Unbind tabs from scrollable container component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | Yes | The controller of the tabs. |
-| scroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | Yes | The controller of the scrollable container component. |
+| tabsController | [TabsController](../arkts-components/arkts-arkui-tabs-comp-tabscontroller-c.md) | Yes | The controller of the tabs. |
+| scroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | Yes | The controller of the scrollable container component. |
+
+**Examples**
+
+See the example for [bindTabsToScrollable](#bindtabstoscrollable).
 
 ## updateBindSheet
 
@@ -2326,7 +4928,7 @@ Updates the style of the sheet corresponding to the provided **bindSheetContent*
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bindSheetContent | [ComponentContent](arkts-arkui-componentcontent-c.md)&lt;T&gt; | Yes | Content to display on the sheet. |
-| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-sheetoptions-i.md) | Yes | Style of the sheet.<br>**NOTE:** <br>**SheetOptions.UIContext** and **SheetOptions.mode** cannot be updated. |
+| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md) | Yes | Style of the sheet.<br>**NOTE:** <br>**SheetOptions.UIContext** and **SheetOptions.mode** cannot be updated. |
 | partialUpdate | boolean | No | Whether to update the sheet in incremental mode.<br>Default value: **false**<br> **NOTE:** <br>1. **true**: incremental update, where the specified properties in **SheetOptions** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **SheetOptions** are restored to default values. |
 
 **Return value:**
@@ -2342,6 +4944,95 @@ Updates the style of the sheet corresponding to the provided **bindSheetContent*
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120001](../errorcode-bindSheet.md#120001-incorrect-bindsheetcontent) | The bindSheetContent is incorrect. |
 | [120003](../errorcode-bindSheet.md#120003-no-matching-modal-found) | The bindSheetContent cannot be found. |
+
+**Examples**
+
+```TypeScript
+import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+let contentNode: ComponentContent<Params>;
+let gUIContext: UIContext;
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+    Button('Update BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.updateBindSheet(contentNode, {
+          backgroundColor: Color.Pink,
+        }, true)
+          .then(() => {
+            console.info('updateBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+
+    Button('Close BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.closeBindSheet(contentNode)
+          .then(() => {
+            console.info('closeBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+  }
+}
+
+@Entry
+@Component
+struct UIContextBindSheet {
+  @State message: string = 'BindSheet';
+
+  aboutToAppear() {
+    gUIContext = this.getUIContext();
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message));
+  }
+
+  build() {
+    RelativeContainer() {
+      Column() {
+        Button('Open BindSheet')
+          .fontSize(20)
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let uniqueId = this.getUniqueId();
+            let frameNode: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
+            let targetId = frameNode?.getFirstChild()?.getUniqueId();
+            uiContext.openBindSheet(contentNode, {
+              height: SheetSize.MEDIUM,
+              backgroundColor: Color.Green,
+              title: { title: "Title", subtitle: "subtitle" }
+            }, targetId)
+              .then(() => {
+                console.info('openBindSheet success');
+              })
+              .catch((err: BusinessError) => {
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
+              })
+          })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## vp2px
 
@@ -2370,3 +5061,29 @@ Converts a value in vp units to a value in px.
 | Type | Description |
 | --- | --- |
 | number |  |
+
+**Examples**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().vp2px(50),
+          centerY: this.getUIContext().vp2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```

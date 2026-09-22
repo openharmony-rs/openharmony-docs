@@ -1,5 +1,9 @@
 # PublishedDataChangeNode (System API)
 
+```TypeScript
+interface PublishedDataChangeNode
+```
+
 Defines the subscription/unsubscription result of the changes in the published data.
 
 **Since:** 10

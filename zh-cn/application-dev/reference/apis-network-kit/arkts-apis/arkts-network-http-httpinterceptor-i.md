@@ -1,5 +1,9 @@
 # HttpInterceptor
 
+```TypeScript
+export interface HttpInterceptor
+```
+
 HTTP拦截器接口。用户可以实现此接口来定义拦截处理函数。
 
 **起始版本：** 22

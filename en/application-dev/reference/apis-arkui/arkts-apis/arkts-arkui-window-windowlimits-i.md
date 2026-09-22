@@ -1,11 +1,15 @@
 # WindowLimits
 
+```TypeScript
+interface WindowLimits
+```
+
 Describes the parameters for window size limits. Applications can obtain the current window size limits (in px) via [getWindowLimits](arkts-arkui-window-window-i.md#getwindowlimits). Starting from API version 22, they can also be obtained via [getWindowLimitsVP](arkts-arkui-window-window-i.md#getwindowlimitsvp) (in vp).
 
 The actual window size limits applied are determined by the intersection of the default system limits, application configurations, and runtime settings, with the priority (from highest to lowest) as follows:
 
 1. Window size limits configured by the application via [setWindowLimits](arkts-arkui-window-window-i.md#setwindowlimits).
-2. Window size limits specified by the application via [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md) when the application starts the window through [startAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability). (This approach is supported since API version 17.)
+2. Window size limits specified by the application via [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md) when the application starts the window through [startAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-2). (This approach is supported since API version 17.)
 3. Window size limits configured by the application in [abilities in the module.json5 file](../../../quick-start/module-configuration-file.md#abilities).
 4. Default system limits (which vary depending on the product and window type).
 

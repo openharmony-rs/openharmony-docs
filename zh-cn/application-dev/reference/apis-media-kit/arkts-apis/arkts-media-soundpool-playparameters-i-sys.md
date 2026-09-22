@@ -1,5 +1,9 @@
 # PlayParameters
 
+```TypeScript
+export interface PlayParameters
+```
+
 表示音频池播放参数设置。
 
 通过设置播放相关参数，来控制播放的音量，循环次数，播放优先级等参数。

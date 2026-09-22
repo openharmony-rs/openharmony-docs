@@ -1,5 +1,9 @@
 # InsertValue
 
+```TypeScript
+declare interface InsertValue
+```
+
 Defines the inserted text value info.
 
 **Since:** 12

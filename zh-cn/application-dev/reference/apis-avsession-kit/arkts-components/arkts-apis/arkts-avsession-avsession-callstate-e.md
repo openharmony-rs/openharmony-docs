@@ -1,5 +1,9 @@
 # CallState
 
+```TypeScript
+enum CallState
+```
+
 表示通话状态的枚举。
 
 **起始版本：** 11

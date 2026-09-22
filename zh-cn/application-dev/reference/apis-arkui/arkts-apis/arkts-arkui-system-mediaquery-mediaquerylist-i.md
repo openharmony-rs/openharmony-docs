@@ -1,5 +1,9 @@
 # MediaQueryList
 
+```TypeScript
+export interface MediaQueryList
+```
+
 定义MediaQuery列表信息。
 
 **起始版本：** 3

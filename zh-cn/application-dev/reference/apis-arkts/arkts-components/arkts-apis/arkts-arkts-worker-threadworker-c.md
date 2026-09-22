@@ -1,5 +1,9 @@
 # ThreadWorker
 
+```TypeScript
+class ThreadWorker implements WorkerEventTarget
+```
+
 使用以下方法前，需先构造ThreadWorker实例。ThreadWorker类继承WorkerEventTarget。
 
 使用Worker模块时，API version 18及之后的版本建议在宿主线程中注册onAllErrors回调，以捕获Worker线程生命周期内的各种异常。API version 18之前的版本应注册onerror回调。如果未注册onAllErrors或onerror回调，当Worker线程出现异常时会发生崩溃问题。注意，onerror接口仅能捕获onmessage回调中的同步异常，捕获异常后，Worker线程将进入销毁流程，无法继续使用。
@@ -112,8 +116,14 @@ ThreadWorker构造函数。
 
 **示例**
 
-```TypeScript
 以下示例展示了在Stage模型的entry模块Index.ets文件中加载Worker线程文件的方法，使用Library加载Worker线程文件的场景参考[文件路径注意事项](../../../arkts-utils/worker-introduction.md#文件路径注意事项)。
+
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+// worker文件所在路径："entry/src/main/ets/workers/worker.ets"
+const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.ets', {name: "WorkerThread"});
 ```
 
 ## dispatchEvent
@@ -541,18 +551,7 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { worker } from '@kit.ArkTS';
-
-const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
-
-workerInstance.postMessage("hello world");
-
-let buffer = new ArrayBuffer(8);
-
-// 填入options参数，buffer的所有权会转移到Worker线程，在宿主线程中将不可用
-workerInstance.postMessage(buffer, {transfer: [buffer]});
-```
+<a id="postmessage-1"></a>
 
 ## postMessage
 
@@ -583,79 +582,6 @@ postMessage(message: Object, options?: PostMessageOptions): void
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
 **示例**
-
-```TypeScript
-// Worker.ets
-import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
-
-// 创建worker线程中与宿主线程通信的对象
-const workerPort = worker.workerPort;
-
-// worker线程接收宿主线程信息
-workerPort.onmessage = (e: MessageEvents): void => {
-  // data：宿主线程发送的信息
-  let data: ArrayBuffer = e.data;
-  // 往收到的buffer里写入数据
-  const view = new Int8Array(data).fill(3);
-  // worker线程向宿主线程发送信息
-  workerPort.postMessage(view);
-}
-
-// worker线程发生error的回调
-workerPort.onerror = (err: ErrorEvent) => {
-  console.error("worker.ets onerror" + err.message);
-}
-```
-
-```TypeScript
-// Index.ets
-import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            // 宿主线程中创建Worker对象
-            const workerInstance = new worker.ThreadWorker("entry/ets/workers/Worker.ets");
-            // 宿主线程向worker线程传递信息
-            const buffer = new ArrayBuffer(8);
-            workerInstance.postMessage(buffer, [buffer]);
-
-            // 此时buffer的所有权转移到了worker线程，在宿主线程中不可用
-            // const view = new Int8Array(buffer).fill(3);
-
-            // 宿主线程接收worker线程信息
-            workerInstance.onmessage = (e: MessageEvents): void => {
-              // data：worker线程发送的信息
-              let data: Int8Array = e.data;
-              console.info("main thread data is  " + data);
-              // 销毁Worker对象
-              workerInstance.terminate();
-            }
-            // 在调用terminate后，执行onexit
-            workerInstance.onexit = (code) => {
-              console.info("main thread terminate");
-            }
-            // 监听Worker错误
-            workerInstance.onAllErrors = (err: ErrorEvent) => {
-              console.error("main error message " + err.message);
-            }
-          })
-      }
-      .width('100%')
-      .height('100%')
-    }
-  }
-}
-```
 
 ```TypeScript
 import { worker } from '@kit.ArkTS';

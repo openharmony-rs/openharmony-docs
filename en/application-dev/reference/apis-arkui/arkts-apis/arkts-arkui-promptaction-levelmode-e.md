@@ -1,5 +1,9 @@
 # LevelMode
 
+```TypeScript
+export enum LevelMode
+```
+
 Enumerates the display level modes of the dialog box.
 
 **Since:** 15

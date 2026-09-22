@@ -1,6 +1,12 @@
 # ChipV2PrefixImageIcon
 
-Defines prefix icon.
+```TypeScript
+export declare class ChipV2PrefixImageIcon extends ChipV2ImageIcon
+```
+
+Defines the prefix icon class.
+
+This API inherits from [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md).
 
 **Inheritance/Implementation:** ChipV2PrefixImageIcon extends [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md)
 
@@ -22,7 +28,7 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 constructor(config: ChipV2PrefixImageIconConfig)
 ```
 
-The constructor of ChipV2PrefixImageIcon
+A constructor used to create a **ChipV2PrefixImageIcon** object.
 
 **Since:** 26.0.0
 
@@ -36,4 +42,4 @@ The constructor of ChipV2PrefixImageIcon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ChipV2PrefixImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefiximageiconconfig-i.md) | Yes | config of prefix icon |
+| config | [ChipV2PrefixImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefiximageiconconfig-i.md) | Yes | Attribute configuration of the prefix icon, which is used to set the display attributes of the prefix Image icon. This parameter inherits from **ChipV2ImageIconConfig** and includes configuration options such as **src**, **size**, and **fillColor**. |

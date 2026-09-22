@@ -1,5 +1,9 @@
 # WindowState
 
+```TypeScript
+enum WindowState
+```
+
 Enumerates application window states.
 
 **Since:** 26.0.0

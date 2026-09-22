@@ -57,16 +57,8 @@ let getDeviceRemindTypeCallback = (err: BusinessError, data: notificationManager
 notificationManager.getDeviceRemindType(getDeviceRemindTypeCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getDeviceRemindType().then((data: notificationManager.DeviceRemindType) => {
-    console.info(`getDeviceRemindType success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getDeviceRemindType failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getdeviceremindtype-1"></a>
 
 ## getDeviceRemindType
 
@@ -105,4 +97,12 @@ Obtains the notification reminder type. This API uses a promise to return the re
 
 **Examples**
 
-See [getDeviceRemindType](#getdeviceremindtype)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getDeviceRemindType().then((data: notificationManager.DeviceRemindType) => {
+    console.info(`getDeviceRemindType success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getDeviceRemindType failed, code is ${err.code}, message is ${err.message}`);
+});
+```

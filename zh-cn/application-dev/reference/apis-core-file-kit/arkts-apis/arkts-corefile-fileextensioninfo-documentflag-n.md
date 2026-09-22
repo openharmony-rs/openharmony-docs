@@ -1,5 +1,9 @@
 # DocumentFlag(公共文件访问与管理属性信息)
 
+```TypeScript
+namespace DocumentFlag
+```
+
 组成FileInfo中的mode字段，通过与运算判断是否具备某种能力。
 
 **起始版本：** 9

@@ -1,13 +1,15 @@
 # ColumnLayoutAlgorithm
 
-Vertical linear layout algorithm class.
+```TypeScript
+export class ColumnLayoutAlgorithm implements LayoutAlgorithm
+```
+
+A vertical linear layout algorithm class, which is used to implement vertical linear arrangement of child components. It is suitable for scenarios where child components need to be arranged vertically, such as vertical lists, vertically stacked form items, and vertical menus. It supports setting the spacing between child components, horizontal alignment mode, vertical alignment mode, and arrangement direction, which provides layout capabilities similar to the **Column** component.
 
 > **NOTE:** 
 > 
-> The object of the **ColumnLayoutAlgorithm** class can be assigned to a variable of the **LayoutAlgorithm** type as
-> the input parameter of the
-> [DynamicLayout](../../../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md) component to specify the
-> layout algorithm.
+> The object of the **ColumnLayoutAlgorithm** class can be used as the input parameter of the
+> [DynamicLayout](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md#dynamiclayoutattribute) component to specify a layout algorithm.
 
 **Inheritance/Implementation:** ColumnLayoutAlgorithm implements [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md)
 
@@ -39,13 +41,11 @@ Constructs the vertical linear layout algorithm class.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| option | [ColumnLayoutAlgorithmOptions](arkts-arkui-layoutalgorithm-columnlayoutalgorithmoptions-i.md) | No | Input parameters for constructing the vertical linear layout algorithm, which are used to set the spacing, main axis alignment method, cross axis alignment method, and main axis arrangement direction of the layout algorithm. |
+| option | [ColumnLayoutAlgorithmOptions](arkts-arkui-layoutalgorithm-columnlayoutalgorithmoptions-i.md) | No | Input parameters for constructing the vertical linear layout algorithm, which are used to set the spacing, main axis alignment method, cross axis alignment method, and main axis arrangement direction of the layout algorithm. If not passed, the default value of each attribute is used. |
 
 **Examples**
 
-```TypeScript
 For details, see [Example 2: Switching the Layout Algorithm](../arkui-ts/ts-container-dynamiclayout.md#example-2-switching-the-layout-algorithm).
-```
 
 ## alignItems
 
@@ -58,6 +58,8 @@ Horizontal alignment mode of all child components.
 Default value: **HorizontalAlign.Center**
 
 Invalid values are treated as the default value.
+
+Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Type:** [HorizontalAlign](arkts-arkui-horizontalalign-e.md)
 
@@ -77,11 +79,13 @@ Invalid values are treated as the default value.
 public isReverse?: boolean
 ```
 
-Whether to reverse the vertical arrangement of child components. **true** indicates to reverse the vertical arrangement of child components. **false** indicates to arrange child components in the vertical direction in normal order.
+Whether to reverse the vertical arrangement of child components. **true** indicates to reverse the vertical arrangement of child components. The vertical direction is not affected by the common attribute **direction**. **false** indicates to arrange child components in the vertical direction in normal order.
 
 Default value: **false**
 
 Invalid values are treated as the default value.
+
+Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Type:** boolean
 
@@ -107,6 +111,8 @@ Default value: **FlexAlign.Start**
 
 Invalid values are treated as the default value.
 
+Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 **Type:** [FlexAlign](arkts-arkui-flexalign-e.md)
 
 **Since:** 24
@@ -125,11 +131,15 @@ Invalid values are treated as the default value.
 public space?: LengthMetrics
 ```
 
-Vertical spacing between elements in a vertical layout.
+Vertical spacing between child components in a vertical layout.
+
+Value range: a non-negative number.
 
 Default value: **LengthMetrics.vp(0)**
 
 Invalid values are treated as the default value.
+
+Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 

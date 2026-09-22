@@ -1,5 +1,9 @@
 # DeviceBlockStatusInfo
 
+```TypeScript
+interface DeviceBlockStatusInfo
+```
+
 Describes the audio device blocked status and device information.
 
 **Since:** 13

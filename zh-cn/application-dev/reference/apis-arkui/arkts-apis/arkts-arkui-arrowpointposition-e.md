@@ -1,5 +1,9 @@
 # ArrowPointPosition
 
+```TypeScript
+declare enum ArrowPointPosition
+```
+
 ArrowPointPosition enumeration description
 
 @enum { string }

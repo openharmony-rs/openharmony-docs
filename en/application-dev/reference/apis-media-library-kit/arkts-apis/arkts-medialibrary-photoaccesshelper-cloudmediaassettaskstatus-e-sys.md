@@ -1,5 +1,9 @@
 # CloudMediaAssetTaskStatus (System API)
 
+```TypeScript
+enum CloudMediaAssetTaskStatus
+```
+
 Enumerates the statuses of tasks used for downloading cloud media assets.
 
 **Since:** 14

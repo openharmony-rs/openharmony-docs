@@ -1,5 +1,9 @@
 # DeviceKey（系统接口）
 
+```TypeScript
+interface DeviceKey
+```
+
 设备标识。用于唯一标识一个设备及其用户，包含设备ID类型、设备ID和设备用户ID等信息。
 
 **起始版本：** 23
@@ -62,7 +66,7 @@ deviceSubProfileId?: number
 
 **默认值：** -1
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

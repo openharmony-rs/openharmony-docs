@@ -1,5 +1,9 @@
 # AVMimeTypes
 
+```TypeScript
+enum AVMimeTypes
+```
+
 媒体MIME类型，通过[setMimeType](arkts-media-media-mediasource-i.md#setmimetype)设置。
 
 **起始版本：** 12

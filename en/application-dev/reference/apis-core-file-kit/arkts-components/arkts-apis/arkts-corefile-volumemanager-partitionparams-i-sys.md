@@ -1,5 +1,9 @@
 # PartitionParams (System API)
 
+```TypeScript
+export interface PartitionParams
+```
+
 Partition creation options.
 
 **Since:** 26.0.0

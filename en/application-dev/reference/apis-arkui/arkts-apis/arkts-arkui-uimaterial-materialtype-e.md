@@ -1,5 +1,9 @@
 # MaterialType
 
+```TypeScript
+enum MaterialType
+```
+
 Enumerates system material types.
 
 **Since:** 26.0.0

@@ -32,7 +32,7 @@ Obtains all information about the requested efficiency resources, including the 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [18700001](../errorcode-backgroundTaskMgr.md#18700001-caller-information-verification-failure-for-an-energy-resource-request) | Caller information verification failed for an energy resource request. |
-| [18700002](../errorcode-backgroundTaskMgr.md#18700002-parcel-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [18700002](../errorcode-backgroundTaskMgr.md#18700002-parcel-readwrite-operation-failure) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
 | [18700004](../errorcode-backgroundTaskMgr.md#18700004-system-service-failure) | System service operation failed. |
 
 **Examples**

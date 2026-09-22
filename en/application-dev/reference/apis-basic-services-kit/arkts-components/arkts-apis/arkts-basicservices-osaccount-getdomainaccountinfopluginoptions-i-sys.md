@@ -1,5 +1,9 @@
 # GetDomainAccountInfoPluginOptions (System API)
 
+```TypeScript
+interface GetDomainAccountInfoPluginOptions extends GetDomainAccountInfoOptions
+```
+
 Defines the options for the domain plug-in to obtain the domain account information. The **GetDomainAccountInfoPluginOptions** class inherits from [**GetDomainAccountInfoOptions**](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md).
 
 **Inheritance/Implementation:** GetDomainAccountInfoPluginOptions extends [GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md)

@@ -1,5 +1,9 @@
 # AtManager
 
+```TypeScript
+interface AtManager
+```
+
 程序访问控制管理类，提供权限校验、运行时权限弹窗申请、设置页授权引导、全局开关请求和权限状态监听等能力。通过[createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md)获取实例。
 
 **起始版本：** 8
@@ -23,6 +27,8 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSta
 适用于应用访问相机、麦克风、位置等受保护资源前进行前置权限判断的场景。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -84,6 +90,8 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 **起始版本：** 10
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -137,6 +145,8 @@ getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 适用于在判断是否需要请求权限前、权限申请后确认授权结果、或监听到权限状态变化后重新查询等场景。
 
 **起始版本：** 20
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
@@ -199,6 +209,8 @@ off(
 
 **起始版本：** 18
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -238,22 +250,6 @@ try {
 }
 ```
 
-```TypeScript
-import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
-  let tokenIDList: Array<number> = [bundleInfo.appInfo.accessTokenId];
-  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
-  atManager.off('permissionStateChange', tokenIDList, permissionList);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`catch errcode: ${error.code}, message: ${error.message}`);
-}
-```
-
 ## on('selfPermissionStateChange')
 
 ```TypeScript
@@ -275,6 +271,8 @@ on(
 > - 系统主动回收：应用进程不会终止。典型场景如安全控件的单次授权，在授权周期结束后由系统自动回收。该接口通常与[off](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#off)配套使用，当不再需要监听时应调用off取消订阅。
 
 **起始版本：** 18
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
@@ -320,26 +318,6 @@ try {
 }
 ```
 
-```TypeScript
-import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
-  let tokenIDList: Array<number> = [bundleInfo.appInfo.accessTokenId];
-  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
-
-  atManager.on('permissionStateChange', tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-    console.info('receive permission state change');
-    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
-    });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`catch errcode: ${error.code}, message: ${error.message}`);
-}
-```
-
 ## openPermissionOnSetting
 
 ```TypeScript
@@ -379,8 +357,22 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 
 **示例**
 
-```TypeScript
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 拉起跳转设置页弹窗
+atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
+  console.info(`openPermissionOnSetting success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`openPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## requestGlobalSwitch
@@ -433,8 +425,22 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 **示例**
 
-```TypeScript
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 拉起全局开关设置弹窗
+atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: boolean) => {
+  console.info(`requestGlobalSwitch success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`requestGlobalSwitch fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## requestPermissionOnSetting
@@ -489,8 +495,22 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 
 **示例**
 
-```TypeScript
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 拉起权限设置弹窗
+atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
+  console.info(`requestPermissionOnSetting success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## requestPermissionsFromUser
@@ -537,11 +557,33 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>,
 
 **示例**
 
-```TypeScript
 下述示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../../security/AccessToken/request-user-authorization.md)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 请求用户授权
+atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
+  if (err) {
+    console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`requestPermissionsFromUser success, result: ${data}`);
+    console.info('requestPermissionsFromUser data permissions:' + data.permissions);
+    console.info('requestPermissionsFromUser data authResults:' + data.authResults);
+    console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
+    console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
+  }
+});
 ```
+
+<a id="requestpermissionsfromuser-1"></a>
 
 ## requestPermissionsFromUser
 
@@ -588,7 +630,29 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>)
 
 **示例**
 
-参见 [requestPermissionsFromUser](#requestpermissionsfromuser)
+下述示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../../security/AccessToken/request-user-authorization.md)。
+
+```TypeScript
+import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 请求用户授权
+atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
+  console.info(`requestPermissionsFromUser success, result: ${data}`);
+  console.info('requestPermissionsFromUser data permissions:' + data.permissions);
+  console.info('requestPermissionsFromUser data authResults:' + data.authResults);
+  console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
+  console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
+}).catch((err: BusinessError): void => {
+  console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## verifyAccessToken
 
@@ -604,6 +668,8 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSt
 > 建议使用[checkAccessToken](#checkaccesstoken)替代。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -642,6 +708,8 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 });
 ```
 
+<a id="verifyaccesstoken-1"></a>
+
 ## verifyAccessToken
 
 ```TypeScript
@@ -658,6 +726,8 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>
 **废弃版本：** 9
 
 **替代接口：** [checkAccessToken](#checkaccesstoken)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -676,7 +746,25 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>
 
 **示例**
 
-参见 [verifyAccessToken](#verifyaccesstoken)
+```TypeScript
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理器实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 获取应用的bundleInfo信息
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+// 获取应用的TokenID
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
+// 设置需要校验的权限名
+let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+// 校验应用是否被授予权限
+atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
+  console.info(`verifyAccessToken success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## verifyAccessTokenSync
 
@@ -691,6 +779,8 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 建议使用[checkAccessTokenSync](#checkaccesstokensync)替代。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 

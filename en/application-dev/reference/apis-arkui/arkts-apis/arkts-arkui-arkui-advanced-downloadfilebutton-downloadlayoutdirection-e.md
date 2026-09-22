@@ -1,5 +1,9 @@
 # DownloadLayoutDirection
 
+```TypeScript
+export declare enum DownloadLayoutDirection
+```
+
 Enum for DownloadDescription
 
 @enum { number }

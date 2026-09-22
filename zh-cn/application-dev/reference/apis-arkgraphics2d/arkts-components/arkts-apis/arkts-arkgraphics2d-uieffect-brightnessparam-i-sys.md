@@ -1,5 +1,9 @@
 # BrightnessParam（系统接口）
 
+```TypeScript
+interface BrightnessParam
+```
+
 材质提亮参数的详细说明。
 
 **起始版本：** 22

@@ -1,5 +1,9 @@
 # LocationPrivacyType
 
+```TypeScript
+export enum LocationPrivacyType
+```
+
 定位服务隐私协议类型。
 
 **起始版本：** 8

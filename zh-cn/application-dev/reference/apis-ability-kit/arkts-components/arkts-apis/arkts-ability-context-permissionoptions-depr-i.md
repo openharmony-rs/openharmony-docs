@@ -1,5 +1,9 @@
 # PermissionOptions
 
+```TypeScript
+interface PermissionOptions
+```
+
 权限选项。
 
 **起始版本：** 7

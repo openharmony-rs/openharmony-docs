@@ -1,5 +1,9 @@
 # Vector2
 
+```TypeScript
+interface Vector2
+```
+
 Defines a vector that contains the x and y coordinate values.
 
 **Since:** 11

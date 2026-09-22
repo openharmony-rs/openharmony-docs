@@ -1,5 +1,9 @@
 # KeyboardInfo
 
+```TypeScript
+interface KeyboardInfo
+```
+
 软键盘窗口信息。
 
 **起始版本：** 18

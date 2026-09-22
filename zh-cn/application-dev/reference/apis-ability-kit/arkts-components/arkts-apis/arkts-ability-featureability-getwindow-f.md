@@ -43,19 +43,8 @@ featureAbility.getWindow((error: BusinessError, data: window.Window) => {
 });
 ```
 
-```TypeScript
-import { featureAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 获取当前Ability对应的窗口
-featureAbility.getWindow().then((data: window.Window) => {
-  console.info(`getWindow success, data: ${typeof(data)}`);
-}).catch((error: BusinessError)=>{
-  console.error(`getWindow fail, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="getwindow-1"></a>
 
 ## getWindow
 
@@ -79,4 +68,15 @@ function getWindow(): Promise<window.Window>
 
 **示例**
 
-参见 [getWindow](#getwindow)
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取当前Ability对应的窗口
+featureAbility.getWindow().then((data: window.Window) => {
+  console.info(`getWindow success, data: ${typeof(data)}`);
+}).catch((error: BusinessError)=>{
+  console.error(`getWindow fail, error: ${JSON.stringify(error)}`);
+});
+```

@@ -1,5 +1,9 @@
 # OperateCheckV2
 
+```TypeScript
+export declare class OperateCheckV2
+```
+
 Declare type OperateCheckV2
 
 **Since:** 26.0.0

@@ -51,19 +51,8 @@ policy.setPolicyByUid(11111, policy.NetUidPolicy.NET_POLICY_NONE, (error: Busine
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .setPolicyByUid(11111, policy.NetUidPolicy.NET_POLICY_NONE)
-  .then(() => {
-    console.info('setPolicyByUid success');
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="setpolicybyuid-1"></a>
 
 ## setPolicyByUid
 
@@ -107,4 +96,15 @@ Sets whether the application with the corresponding UID can access the metering 
 
 **Examples**
 
-See [setPolicyByUid](#setpolicybyuid)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy
+  .setPolicyByUid(11111, policy.NetUidPolicy.NET_POLICY_NONE)
+  .then(() => {
+    console.info('setPolicyByUid success');
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

@@ -1,5 +1,9 @@
 # RangingStateChangeInfo
 
+```TypeScript
+interface RangingStateChangeInfo
+```
+
 描述测距状态变化信息，主动测距和被动测距的状态变化共用此结构。
 
 **起始版本：** 26.0.0

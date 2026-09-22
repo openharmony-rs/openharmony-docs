@@ -1,5 +1,9 @@
 # ItemAlign
 
+```TypeScript
+declare enum ItemAlign
+```
+
 ItemAlign enumeration description
 
 @enum { number }
@@ -18,6 +22,8 @@ Use the default configuration in the Flex container.
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -33,6 +39,8 @@ Start
 The element is in the Flex container with the cross-axis direction head aligned.
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -50,6 +58,8 @@ The element is centered in the Flex container with the cross axis direction alig
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -65,6 +75,8 @@ End
 The element is bottom aligned in the Flex container with the cross axis direction.
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -82,6 +94,8 @@ Element In the Flex container, the cross-axis direction text baseline is aligned
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -97,6 +111,8 @@ Stretch
 Element In a Flex container, the fill is stretched across the axis and, when no dimension is set, to the container size.
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

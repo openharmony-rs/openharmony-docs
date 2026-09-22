@@ -1,5 +1,9 @@
 # VideoElement
 
+```TypeScript
+export interface VideoElement extends Element
+```
+
 The &lt;video&gt; component provides a video player.
 
 @extends Element @interface VideoElement

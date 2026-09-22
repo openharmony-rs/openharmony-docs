@@ -1,5 +1,9 @@
 # MessageEvents
 
+```TypeScript
+export interface MessageEvents extends Event
+```
+
 消息类，持有Worker线程间传递的数据。
 
 **继承/实现关系：** MessageEvents extends [Event](arkts-arkts-worker-event-i.md)

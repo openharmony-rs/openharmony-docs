@@ -18,7 +18,7 @@ function cancelReminder(reminderId: number, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** cancelReminder
+**替代接口：** [cancelReminder](arkts-backgroundtasks-reminderagentmanager-cancelreminder-f.md)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -40,14 +40,8 @@ reminderAgent.cancelReminder(1, (err: BusinessError, data: void) => {
 });
 ```
 
-```TypeScript
-import reminderAgent from '@ohos.reminderAgent';
 
-reminderAgent.cancelReminder(1).then(() => {
-    console.info("cancelReminder promise");
-});
-```
-
+<a id="cancelreminder-1"></a>
 
 ## cancelReminder
 
@@ -61,7 +55,7 @@ function cancelReminder(reminderId: number): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** cancelReminder
+**替代接口：** [cancelReminder](arkts-backgroundtasks-reminderagentmanager-cancelreminder-f.md)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -79,4 +73,10 @@ function cancelReminder(reminderId: number): Promise<void>
 
 **示例**
 
-参见 cancelReminder
+```TypeScript
+import reminderAgent from '@ohos.reminderAgent';
+
+reminderAgent.cancelReminder(1).then(() => {
+    console.info("cancelReminder promise");
+});
+```

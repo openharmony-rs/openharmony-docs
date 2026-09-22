@@ -1,5 +1,9 @@
 # MultiSlotsAdLoadListener
 
+```TypeScript
+export interface MultiSlotsAdLoadListener
+```
+
 多广告位广告请求回调。
 
 **起始版本：** 11

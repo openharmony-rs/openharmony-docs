@@ -1,5 +1,9 @@
 # Resource
 
+```TypeScript
+interface Resource
+```
+
 资源相关信息，包括应用包名、应用模块名、资源id。
 
 **起始版本：** 20

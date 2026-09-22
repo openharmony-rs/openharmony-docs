@@ -1,5 +1,9 @@
 # ImageSize
 
+```TypeScript
+declare enum ImageSize
+```
+
 ImageSize enumeration description
 
 **Since:** 7

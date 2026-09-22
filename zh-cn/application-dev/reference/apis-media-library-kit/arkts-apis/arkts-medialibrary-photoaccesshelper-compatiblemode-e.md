@@ -1,5 +1,9 @@
 # CompatibleMode
 
+```TypeScript
+enum CompatibleMode
+```
+
 配置转码模式。
 
 **起始版本：** 15

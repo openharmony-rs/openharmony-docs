@@ -50,31 +50,6 @@ Replaces the current page with another one using the named route and destroys th
 ```TypeScript
 import { router } from '@kit.ArkUI';
 
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class RouterParams {
-  data1: string;
-
-  constructor(str: string) {
-    this.data1 = str;
-  }
-}
-
-router.replaceNamedRoute({
-  name: 'myPage',
-  params: new RouterParams('message')
-})
-  .then(() => {
-    console.info(`replaceNamedRoute finish`);
-  })
-  .catch((err: BusinessError) => {
-    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
-  })
-```
-
-```TypeScript
-import { router } from '@kit.ArkUI';
-
 class RouterParams {
   data1: string;
 
@@ -95,54 +70,8 @@ router.replaceNamedRoute({
 })
 ```
 
-```TypeScript
-import { router } from '@kit.ArkUI';
 
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class RouterParams {
-  data1: string;
-
-  constructor(str: string) {
-    this.data1 = str;
-  }
-}
-
-router.replaceNamedRoute({
-  name: 'myPage',
-  params: new RouterParams('message')
-}, router.RouterMode.Standard)
-  .then(() => {
-    console.info(`replaceNamedRoute finish`);
-  })
-  .catch((err: BusinessError) => {
-    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
-  })
-```
-
-```TypeScript
-import { router } from '@kit.ArkUI';
-
-class RouterParams {
-  data1: string;
-
-  constructor(str: string) {
-    this.data1 = str;
-  }
-}
-
-router.replaceNamedRoute({
-  name: 'myPage',
-  params: new RouterParams('message')
-}, router.RouterMode.Standard, (err) => {
-  if (err) {
-    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('replaceNamedRoute success');
-});
-```
-
+<a id="replacenamedroute-1"></a>
 
 ## replaceNamedRoute
 
@@ -160,7 +89,7 @@ Replaces the current page with another one using the named route and destroys th
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-1)(options: router.NamedRouterOptions)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -190,8 +119,33 @@ Replaces the current page with another one using the named route and destroys th
 
 **Examples**
 
-See [replaceNamedRoute](#replacenamedroute)
+```TypeScript
+import { router } from '@kit.ArkUI';
 
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class RouterParams {
+  data1: string;
+
+  constructor(str: string) {
+    this.data1 = str;
+  }
+}
+
+router.replaceNamedRoute({
+  name: 'myPage',
+  params: new RouterParams('message')
+})
+  .then(() => {
+    console.info(`replaceNamedRoute finish`);
+  })
+  .catch((err: BusinessError) => {
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
+  })
+```
+
+
+<a id="replacenamedroute-2"></a>
 
 ## replaceNamedRoute
 
@@ -209,7 +163,7 @@ Replaces the current page with another one using the named route and destroys th
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-2)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -235,8 +189,31 @@ Replaces the current page with another one using the named route and destroys th
 
 **Examples**
 
-See [replaceNamedRoute](#replacenamedroute)
+```TypeScript
+import { router } from '@kit.ArkUI';
 
+class RouterParams {
+  data1: string;
+
+  constructor(str: string) {
+    this.data1 = str;
+  }
+}
+
+router.replaceNamedRoute({
+  name: 'myPage',
+  params: new RouterParams('message')
+}, router.RouterMode.Standard, (err) => {
+  if (err) {
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('replaceNamedRoute success');
+});
+```
+
+
+<a id="replacenamedroute-3"></a>
 
 ## replaceNamedRoute
 
@@ -254,7 +231,7 @@ Replaces the current page with another one using the named route and destroys th
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions, mode: router.RouterMode)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-3)(options: router.NamedRouterOptions, mode: router.RouterMode)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -285,4 +262,27 @@ Replaces the current page with another one using the named route and destroys th
 
 **Examples**
 
-See [replaceNamedRoute](#replacenamedroute)
+```TypeScript
+import { router } from '@kit.ArkUI';
+
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class RouterParams {
+  data1: string;
+
+  constructor(str: string) {
+    this.data1 = str;
+  }
+}
+
+router.replaceNamedRoute({
+  name: 'myPage',
+  params: new RouterParams('message')
+}, router.RouterMode.Standard)
+  .then(() => {
+    console.info(`replaceNamedRoute finish`);
+  })
+  .catch((err: BusinessError) => {
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
+  })
+```

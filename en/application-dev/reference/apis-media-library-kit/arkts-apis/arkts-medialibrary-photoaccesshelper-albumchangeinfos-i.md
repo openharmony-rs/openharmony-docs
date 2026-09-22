@@ -1,5 +1,9 @@
 # AlbumChangeInfos
 
+```TypeScript
+interface AlbumChangeInfos
+```
+
 Describes the notification information about the change of an album.
 
 **Since:** 20

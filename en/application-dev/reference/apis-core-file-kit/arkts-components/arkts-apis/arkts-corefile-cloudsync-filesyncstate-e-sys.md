@@ -1,5 +1,9 @@
 # FileSyncState (System API)
 
+```TypeScript
+enum FileSyncState
+```
+
 Enumerates the device-cloud file sync states.
 
 **Since:** 11

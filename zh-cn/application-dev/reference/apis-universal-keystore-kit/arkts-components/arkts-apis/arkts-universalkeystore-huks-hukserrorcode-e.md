@@ -1,5 +1,9 @@
 # HuksErrorCode
 
+```TypeScript
+export enum HuksErrorCode
+```
+
 表示错误码的枚举。
 
 > **说明：** 

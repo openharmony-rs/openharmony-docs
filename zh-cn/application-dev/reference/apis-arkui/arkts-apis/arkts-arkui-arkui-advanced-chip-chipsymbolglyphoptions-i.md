@@ -1,5 +1,9 @@
 # ChipSymbolGlyphOptions
 
+```TypeScript
+export interface ChipSymbolGlyphOptions
+```
+
 ChipSymbolGlyphOptions定义前缀图标和后缀图标的属性。
 
 > **说明：** 
@@ -29,7 +33,7 @@ activated?: SymbolGlyphModifier
 
 值为undefined时，按默认值处理。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 12
 
@@ -51,7 +55,7 @@ normal?: SymbolGlyphModifier
 
 值为undefined时，按默认值处理。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 12
 

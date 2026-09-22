@@ -62,23 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 使用try catch对可能出现的异常进行捕获
-try {
-  sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data: sensor.Sensor) => {
-    console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
-  }, (err: BusinessError) => {
-    console.error(`Failed to get singleSensor . Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getsinglesensor-1"></a>
 
 ## getSingleSensor
 
@@ -114,4 +99,19 @@ function getSingleSensor(type: SensorId): Promise<Sensor>
 
 **示例**
 
-参见 getSingleSensor
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data: sensor.Sensor) => {
+    console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
+  }, (err: BusinessError) => {
+    console.error(`Failed to get singleSensor . Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
+}
+```

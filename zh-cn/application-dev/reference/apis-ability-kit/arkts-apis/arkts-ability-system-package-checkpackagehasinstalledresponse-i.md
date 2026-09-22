@@ -1,5 +1,9 @@
 # CheckPackageHasInstalledResponse
 
+```TypeScript
+export interface CheckPackageHasInstalledResponse
+```
+
 
 > **说明：** 
 > 

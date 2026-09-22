@@ -1,5 +1,9 @@
 # HttpProtocol
 
+```TypeScript
+export enum HttpProtocol
+```
+
 Enumerates HTTP protocol versions.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # Banner
 
+```TypeScript
+interface Banner extends MediaEntity
+```
+
 The definition of Banner.
 
 @extends MediaEntity @interface Banner

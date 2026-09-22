@@ -1,5 +1,9 @@
 # Portrait
 
+```TypeScript
+class Portrait
+```
+
 联系人的头像类。
 
 > **说明：** 

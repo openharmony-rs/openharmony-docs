@@ -1,5 +1,9 @@
 # BlePhy
 
+```TypeScript
+enum BlePhy
+```
+
 Phy type for advertising or connection.
 
 **Since:** 23

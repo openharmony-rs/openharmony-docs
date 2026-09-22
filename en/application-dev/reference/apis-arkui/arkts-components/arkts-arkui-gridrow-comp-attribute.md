@@ -1,6 +1,12 @@
 # GridRow properties/events
 
-In addition to the [universal events](arkts-arkui-commonmethod-c.md), the following events are supported.
+```TypeScript
+declare class GridRowAttribute extends CommonMethod<GridRowAttribute>
+```
+
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
+
+In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
 
 **Inheritance/Implementation:** GridRowAttribute extends CommonMethod<GridRowAttribute>
 
@@ -14,7 +20,7 @@ In addition to the [universal events](arkts-arkui-commonmethod-c.md), the follow
 alignItems(value: ItemAlign)
 ```
 
-Sets the alignment mode of the **GridCol** components along the vertical main axis of the **GridRow** component. The alignment mode of the **GridCol** component can also be set using **alignSelf(ItemAlign)**. If both of the preceding methods are used, the setting of **alignSelf(ItemAlign)** prevails.
+Sets the alignment mode of **GridCol** within **GridRow** along the cross axis. The **GridCol** component can also set its own alignment mode through **alignSelf([ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md))**. When both alignment modes are set, the setting of the **GridCol** component takes precedence.
 
 **Since:** 10
 
@@ -30,7 +36,7 @@ Sets the alignment mode of the **GridCol** components along the vertical main ax
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | Yes | Alignment mode of the **GridCol** components along the vertical main axis of the **GridRow** component.<br>Default value: **ItemAlign.Start**<br>Invalid values are treated as the default value.<br><br>**NOTE:** <br>**ItemAlign** supports the following enums: **ItemAlign.Start**, **ItemAlign.Center**, **ItemAlign.End**, and **ItemAlign.Stretch**. |
+| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | Yes | Alignment mode of **GridCol** within **GridRow** along the cross axis.<br>Default value: **ItemAlign.Start** <br>Invalid value: The default value is used. <br>**NOTE:** <br>The supported **ItemAlign** values are: **ItemAlign.Start**, **ItemAlign.Center**, **ItemAlign.End**, **ItemAlign.Stretch**. |
 
 ## onBreakpointChange
 
@@ -38,14 +44,11 @@ Sets the alignment mode of the **GridCol** components along the vertical main ax
 onBreakpointChange(callback: (breakpoints: string) => void)
 ```
 
-Triggered when the breakpoint changes.
+Triggered when the breakpoint changes. The **breakpoints** parameter received by the callback indicates the current breakpoint value (with possible values of **"xs"**, **"sm"**, **"md"**, **"lg"**, **"xl"**, and **"xxl"**). You can perform corresponding UI layout adjustments or service logic processing based on the breakpoint value in the callback.
 
 > **NOTE:** 
 > 
-> 
-> When [breakpointsreference](arkts-arkui-breakpointsreference-e.md) is set to **BreakpointsReference.ComponentSize**, you are not
-> advised to dynamically change the padding or margin
-> attribute value of the **GridRow** component in the **onBreakpointChange** callback.
+> - When [breakpointsreference](arkts-arkui-gridrow-comp-breakpointsreference-e.md) is set to **BreakpointsReference.ComponentSize**, do not dynamically modify the [padding](arkts-arkui-common-comp-commonmethod-c.md#padding) or [margin](arkts-arkui-common-comp-commonmethod-c.md#margin) attribute of the **GridRow** component in the **onBreakpointChange** callback. Otherwise, it may cause cyclic triggering of component size calculation, layout jitter, or rendering performance degradation.
 
 **Since:** 9
 
@@ -59,4 +62,4 @@ Triggered when the breakpoint changes.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | (breakpoints: string) =&gt; void | Yes | Breakpoint change. The value can be **"xs"**, **"sm"**, **"md"**, **"lg"**, **"xl"**, or **"xxl"**. |
+| callback | (breakpoints: string) =&gt; void | Yes | Callback invoked when the breakpoint changes. The parameter **breakpoints** indicates the current breakpoint value, which can be `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`, or `"xxl"`. |

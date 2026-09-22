@@ -1,5 +1,9 @@
 # Size
 
+```TypeScript
+interface Size
+```
+
 Describes the window size, in px.
 
 **Since:** 7

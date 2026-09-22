@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 Defines options used to compress or decompress a ZIP file.
 
 **Since:** 7

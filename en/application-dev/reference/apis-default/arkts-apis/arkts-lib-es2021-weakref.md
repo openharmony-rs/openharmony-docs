@@ -20,5 +20,5 @@
 
 | Name | Description |
 | --- | --- |
-| [FinalizationRegistry](arkts-libes2021weakref-p.md) |  |
-| [WeakRef](arkts-libes2021weakref-p.md) |  |
+| [FinalizationRegistry](arkts-lib-es2021-weakref-p.md) |  |
+| [WeakRef](arkts-lib-es2021-weakref-p.md) |  |

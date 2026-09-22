@@ -1,5 +1,9 @@
 # FaultLogExtensionAbility
 
+```TypeScript
+declare class FaultLogExtensionAbility
+```
+
 本模块实现故障的延迟通知功能。
 
 [HiAppEvent](arkts-performanceanalysis-hiappevent-n.md)订阅崩溃、应用冻屏事件时，只有当应用下次启动后才能接收上一次的事件。如果应用无法启动或长时间未打开，则存在故障无法及时上报的局限性。

@@ -1,5 +1,9 @@
 # MediaQuery
 
+```TypeScript
+export default class MediaQuery
+```
+
 提供根据不同媒体类型定义不同的样式。定义MediaQuery接口。
 
 **起始版本：** 3

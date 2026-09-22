@@ -1,5 +1,9 @@
 # PlainText
 
+```TypeScript
+interface PlainText
+```
+
 Represents data of the plain text type.
 
 **Since:** 12

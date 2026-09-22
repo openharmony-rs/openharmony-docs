@@ -18,7 +18,7 @@ Removes a notification slot of a specified type. This API uses an asynchronous c
 
 **Deprecated since:** 9
 
-**Substitutes:** removeNotificationSlot
+**Substitutes:** [removeNotificationSlot](arkts-backgroundtasks-reminderagentmanager-removenotificationslot-f.md)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -41,15 +41,8 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION, 
 });
 ```
 
-```TypeScript
-import notification from '@ohos.notification';
-import reminderAgent from '@ohos.reminderAgent';
 
-reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).then(() => {
-  console.info("removeNotificationSlot promise");
-});
-```
-
+<a id="removenotificationslot-1"></a>
 
 ## removeNotificationSlot
 
@@ -63,7 +56,7 @@ Removes a notification slot of a specified type. This API uses a promise to retu
 
 **Deprecated since:** 9
 
-**Substitutes:** removeNotificationSlot
+**Substitutes:** [removeNotificationSlot](arkts-backgroundtasks-reminderagentmanager-removenotificationslot-f.md)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -81,4 +74,11 @@ Removes a notification slot of a specified type. This API uses a promise to retu
 
 **Examples**
 
-See [removeNotificationSlot](#removenotificationslot)
+```TypeScript
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
+
+reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).then(() => {
+  console.info("removeNotificationSlot promise");
+});
+```

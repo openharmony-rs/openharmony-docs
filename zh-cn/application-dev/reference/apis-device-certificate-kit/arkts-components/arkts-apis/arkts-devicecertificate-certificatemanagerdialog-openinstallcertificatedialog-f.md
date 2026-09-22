@@ -12,7 +12,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 function openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise<string>
 ```
 
-打开证书管理安装证书向导，显示相应的页面。证书安装成功后，返回证书的唯一标识符，应用可通过该标识符对证书进行使用。使用Promise异步回调。
+打开证书管理安装证书对话框。证书安装成功后，返回证书的唯一标识符。应用可以使用该标识符来使用证书。使用Promise异步回调。
 
 **起始版本：** 14
 
@@ -26,16 +26,16 @@ function openInstallCertificateDialog(context: common.Context, certType: Certifi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md) | 是 | 表示应用的上下文信息。 |
-| certType | [CertificateType](arkts-devicecertificate-certificatemanagerdialog-certificatetype-e.md) | 是 | 表示安装证书类型，目前仅支持CA_CERT、CREDENTIAL_USER、CREDENTIAL_SYSTEM。 |
-| certScope | [CertificateScope](arkts-devicecertificate-certificatemanagerdialog-certificatescope-e.md) | 是 | 表示安装证书的使用范围，目前仅支持CURRENT_USER、NOT_SPECIFIED。 |
-| cert | Uint8Array | 是 | 表示证书数据，大小不超过8KB。<br>当certType为CA_CERT，应为PEM或DER编码格式的证书数据。<br>当certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM，应为P12编码格式的证书凭据数据。 |
+| context | [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md) | 是 | 应用的Context。 |
+| certType | [CertificateType](arkts-devicecertificate-certificatemanagerdialog-certificatetype-e.md) | 是 | 要安装的证书类型。当前支持**CA_CERT**、**CREDENTIAL_USER**和**CREDENTIAL_SYSTEM**。 |
+| certScope | [CertificateScope](arkts-devicecertificate-certificatemanagerdialog-certificatescope-e.md) | 是 | 要安装的证书的使用范围。当前支持**CURRENT_USER**和**NOT_SPECIFIED**。 |
+| cert | Uint8Array | 是 | 证书数据。大小不能超过8 KB。<br>当certType设置为CA_CERT时，证书数据必须为PEM或DER格式。<br>当certType设置为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，值必须为P12编码格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象。表示返回证书uri的结果，最大长度为256字节。 |
+| Promise&lt;string&gt; | Promise用于返回证书URI。值最多包含256字节。 |
 
 **错误码：**
 

@@ -1,5 +1,9 @@
 # CallRestrictionMode (System API)
 
+```TypeScript
+export enum CallRestrictionMode
+```
+
 Enumerates call restriction modes.
 
 **Since:** 8

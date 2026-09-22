@@ -1,5 +1,9 @@
 # BarcodeTag
 
+```TypeScript
+export interface BarcodeTag extends TagSession
+```
+
 Provides the capability of reading barcode label attributes and accessing I/O operations. It is inherited from **TagSession**.
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).

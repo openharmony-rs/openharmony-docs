@@ -1,5 +1,9 @@
 # PiPTemplateType
 
+```TypeScript
+enum PiPTemplateType
+```
+
 Enumerates the PiP template types.
 
 **Since:** 11

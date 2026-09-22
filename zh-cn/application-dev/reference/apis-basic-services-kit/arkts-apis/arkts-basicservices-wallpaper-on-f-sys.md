@@ -36,3 +36,19 @@ function on(
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | permission verification failed, application which is not a system application uses system API. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
+        console.info(`wallpaper changed.`);
+    };
+    wallpaper.on('wallpaperChange', listener);
+} catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
+}
+```

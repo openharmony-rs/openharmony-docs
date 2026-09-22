@@ -1,5 +1,9 @@
 # ReadOptions
 
+```TypeScript
+export interface ReadOptions
+```
+
 可选项类型，支持read接口使用。
 
 **起始版本：** 11

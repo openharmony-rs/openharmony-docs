@@ -1,10 +1,14 @@
 # Button属性/事件
 
+```TypeScript
+declare class ButtonAttribute extends CommonMethod<ButtonAttribute>
+```
+
 除支持通用属性外，还支持以下属性：
 
 支持通用事件。
 
-**继承/实现关系：** ButtonAttribute extends CommonMethod&lt;ButtonAttribute&gt;
+**继承/实现关系：** ButtonAttribute extends CommonMethod<ButtonAttribute>
 
 **起始版本：** 7
 
@@ -16,11 +20,11 @@
 buttonStyle(value: ButtonStyleMode)
 ```
 
-设置Button组件的样式和重要程度。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过backgroundColor、[fontColor](#fontcolor)和[role](#role)接口设置，实际显示效果以最后一次设置为准。
+设置Button组件的样式和重要程度。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[fontColor](#fontcolor)和[role](#role)接口设置，实际显示效果以最后一次设置为准。
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -36,7 +40,7 @@ buttonStyle(value: ButtonStyleMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ButtonStyleMode](arkts-arkui-buttonstylemode-e.md) | 是 | Button组件的样式和重要程度。<br>默认值：ButtonStyleMode.EMPHASIZED |
+| value | [ButtonStyleMode](arkts-arkui-button-comp-buttonstylemode-e.md) | 是 | Button组件的样式和重要程度。<br>默认值：ButtonStyleMode.EMPHASIZED |
 
 ## contentModifier
 
@@ -58,7 +62,7 @@ contentModifier(modifier: ContentModifier<ButtonConfiguration>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[ButtonConfiguration](arkts-arkui-buttonconfiguration-i.md)&gt; | 是 | 在Button组件上，定制内容区的方法。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[ButtonConfiguration](arkts-arkui-button-comp-buttonconfiguration-i.md)&gt; | 是 | 在Button组件上，定制内容区的方法。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## controlSize
 
@@ -70,7 +74,7 @@ controlSize(value: ControlSize)
 
 > **说明：** 
 > 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -86,7 +90,7 @@ controlSize(value: ControlSize)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ControlSize](arkts-arkui-controlsize-e.md) | 是 | Button组件的尺寸。<br>默认值：ControlSize.NORMAL |
+| value | [ControlSize](arkts-arkui-button-comp-controlsize-e.md) | 是 | Button组件的尺寸。<br>默认值：ControlSize.NORMAL |
 
 ## fontColor
 
@@ -98,6 +102,8 @@ fontColor(value: ResourceColor)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -108,7 +114,7 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 文本显示颜色。<br>默认值：&#36;r('sys.color.font_on_primary')，显示为白色字体。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 文本显示颜色。<br>默认值：$r('sys.color.font_on_primary')，显示为白色字体。 |
 
 ## fontFamily
 
@@ -119,6 +125,8 @@ fontFamily(value: string | Resource)
 设置字体列表。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -142,6 +150,8 @@ fontSize(value: Length)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -152,7 +162,7 @@ fontSize(value: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 设置文本显示字号。<br>默认值：当controlSize为ControlSize.NORMAL时，默认值为`&#36;r('sys.float.Body_L')`。<br>当controlSize为ControlSize.SMALL时，默认值为`&#36;r('sys.float.Body_S')`。<br>**说明：** 设置string类型时，不支持百分比。 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 设置文本显示字号。<br>默认值：当controlSize为ControlSize.NORMAL时，默认值为`$r('sys.float.Body_L')`。<br>当controlSize为ControlSize.SMALL时，默认值为`$r('sys.float.Body_S')`。<br>**说明：** 设置string类型时，不支持百分比。 |
 
 ## fontStyle
 
@@ -163,6 +173,8 @@ fontStyle(value: FontStyle)
 设置文本的字体样式。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -185,6 +197,8 @@ fontWeight(value: number | FontWeight | string)
 设置文本的字体粗细。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -218,7 +232,7 @@ labelStyle(value: LabelStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [LabelStyle](arkts-arkui-labelstyle-i.md) | 是 | Button组件label文本和字体的样式。 |
+| value | [LabelStyle](arkts-arkui-button-comp-labelstyle-i.md) | 是 | Button组件label文本和字体的样式。 |
 
 ## maxFontScale
 
@@ -270,7 +284,7 @@ minFontScale(scale: number | Resource)
 role(value: ButtonRole)
 ```
 
-设置Button组件的角色。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过backgroundColor、[fontColor](#fontcolor)和[buttonStyle](#buttonstyle)接口设置，实际显示效果以最后一次设置为准。ERROR角色通常用于删除、清空等危险或警示性操作。
+设置Button组件的角色。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[fontColor](#fontcolor)和[buttonStyle](#buttonstyle)接口设置，实际显示效果以最后一次设置为准。ERROR角色通常用于删除、清空等危险或警示性操作。
 
 **起始版本：** 12
 
@@ -286,7 +300,7 @@ role(value: ButtonRole)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ButtonRole](arkts-arkui-buttonrole-e.md) | 是 | Button组件的角色。<br>默认值：ButtonRole.NORMAL |
+| value | [ButtonRole](arkts-arkui-button-comp-buttonrole-e.md) | 是 | Button组件的角色。<br>默认值：ButtonRole.NORMAL |
 
 ## stateEffect
 
@@ -297,6 +311,8 @@ stateEffect(value: boolean)
 设置是否开启按压态显示效果。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -320,6 +336,8 @@ type(value: ButtonType)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -330,4 +348,4 @@ type(value: ButtonType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ButtonType](arkts-arkui-buttontype-e.md) | 是 | Button样式。<br>API version 18及之后，ButtonType的默认值从ButtonType.Capsule变更为ButtonType.ROUNDED_RECTANGLE。 |
+| value | [ButtonType](arkts-arkui-button-comp-buttontype-e.md) | 是 | Button样式。<br>API version 18及之后，ButtonType的默认值从ButtonType.Capsule变更为ButtonType.ROUNDED_RECTANGLE。 |

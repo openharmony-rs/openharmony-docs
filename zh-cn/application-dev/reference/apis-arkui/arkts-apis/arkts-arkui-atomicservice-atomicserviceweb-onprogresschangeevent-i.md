@@ -1,5 +1,9 @@
 # OnProgressChangeEvent
 
+```TypeScript
+export declare interface OnProgressChangeEvent
+```
+
 定义网页加载进度变化时触发该回调。
 
 **起始版本：** 12

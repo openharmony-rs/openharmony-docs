@@ -65,33 +65,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Set the number of mouse scroll lines.
-            pointer.setMouseScrollRows(20).then(() => {
-              console.info(`Succeeded in setting mouse scroll rows.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="setmousescrollrows-1"></a>
 
 ## setMouseScrollRows
 
@@ -128,4 +103,29 @@ Sets the number of mouse scroll lines. This API uses a promise to return the res
 
 **Examples**
 
-See [setMouseScrollRows](#setmousescrollrows)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // Set the number of mouse scroll lines.
+            pointer.setMouseScrollRows(20).then(() => {
+              console.info(`Succeeded in setting mouse scroll rows.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

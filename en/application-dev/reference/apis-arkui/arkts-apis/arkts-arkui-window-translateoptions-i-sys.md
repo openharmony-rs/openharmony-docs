@@ -1,5 +1,9 @@
 # TranslateOptions (System API)
 
+```TypeScript
+interface TranslateOptions
+```
+
 Describes the translation parameters.
 
 **Since:** 9

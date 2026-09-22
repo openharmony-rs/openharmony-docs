@@ -1,5 +1,9 @@
 # XMPEnumerateOptions
 
+```TypeScript
+interface XMPEnumerateOptions
+```
+
 表示XMP枚举选项。
 
 **起始版本：** 26.0.0

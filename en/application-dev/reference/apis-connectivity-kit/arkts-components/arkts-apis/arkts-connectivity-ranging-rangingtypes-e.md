@@ -1,5 +1,9 @@
 # RangingTypes
 
+```TypeScript
+enum RangingTypes
+```
+
 The enumeration of ranging capability types.
 
 **Since:** 26.0.0

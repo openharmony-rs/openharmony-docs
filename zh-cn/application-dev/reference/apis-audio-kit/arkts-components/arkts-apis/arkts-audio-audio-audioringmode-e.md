@@ -1,5 +1,9 @@
 # AudioRingMode
 
+```TypeScript
+enum AudioRingMode
+```
+
 表示铃声模式的枚举。
 
 **起始版本：** 7
@@ -24,7 +28,7 @@ RINGER_MODE_SILENT = 0
 RINGER_MODE_VIBRATE = 1
 ```
 
-震动模式。
+振动模式。
 
 **起始版本：** 7
 

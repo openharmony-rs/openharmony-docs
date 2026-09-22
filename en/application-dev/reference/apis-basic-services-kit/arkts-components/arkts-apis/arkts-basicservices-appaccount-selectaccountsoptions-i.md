@@ -1,5 +1,9 @@
 # SelectAccountsOptions
 
+```TypeScript
+interface SelectAccountsOptions
+```
+
 Defines the options for selecting accounts.
 
 **Since:** 9

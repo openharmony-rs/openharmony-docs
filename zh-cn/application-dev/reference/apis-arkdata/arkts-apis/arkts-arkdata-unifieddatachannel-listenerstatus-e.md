@@ -1,5 +1,9 @@
 # ListenerStatus
 
+```TypeScript
+enum ListenerStatus
+```
+
 表示从UDMF获取数据时的状态码的枚举。
 
 **起始版本：** 15

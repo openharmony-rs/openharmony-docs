@@ -1,5 +1,9 @@
 # ArrayLike
 
+```TypeScript
+interface ArrayLike<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

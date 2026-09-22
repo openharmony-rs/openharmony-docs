@@ -1,5 +1,9 @@
 # AccessibilityAbilityInfo
 
+```TypeScript
+interface AccessibilityAbilityInfo
+```
+
 辅助应用信息。
 
 **起始版本：** 7

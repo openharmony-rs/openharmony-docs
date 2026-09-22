@@ -1,5 +1,9 @@
 # LocatingRequiredDataConfig (System API)
 
+```TypeScript
+export interface LocatingRequiredDataConfig
+```
+
 Describes the request parameters for obtaining the data required for locating.
 
 **Since:** 10

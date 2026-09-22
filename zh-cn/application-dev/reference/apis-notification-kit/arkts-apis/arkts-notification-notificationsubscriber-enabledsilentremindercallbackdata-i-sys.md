@@ -1,5 +1,9 @@
 # EnabledSilentReminderCallbackData（系统接口）
 
+```TypeScript
+export interface EnabledSilentReminderCallbackData
+```
+
 应用通知静默提醒开关状态的回调函数类型。
 
 **起始版本：** 24

@@ -47,24 +47,12 @@ function isMediaKeySystemSupported(name: string, mimeType: string, level: Conten
 ```TypeScript
 import { drm } from '@kit.DrmKit';
 
-let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm');
-console.info("isMediaKeySystemSupported: ", supported);
-```
-
-```TypeScript
-import { drm } from '@kit.DrmKit';
-
-let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm', 'video/avc');
-console.info("isMediaKeySystemSupported: ", supported);
-```
-
-```TypeScript
-import { drm } from '@kit.DrmKit';
-
 let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm', 'video/avc', drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
 console.info("isMediaKeySystemSupported: ", supported);
 ```
 
+
+<a id="ismediakeysystemsupported-1"></a>
 
 ## isMediaKeySystemSupported
 
@@ -103,8 +91,15 @@ function isMediaKeySystemSupported(name: string, mimeType: string): boolean
 
 **示例**
 
-参见 isMediaKeySystemSupported
+```TypeScript
+import { drm } from '@kit.DrmKit';
 
+let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm', 'video/avc');
+console.info("isMediaKeySystemSupported: ", supported);
+```
+
+
+<a id="ismediakeysystemsupported-2"></a>
 
 ## isMediaKeySystemSupported
 
@@ -142,4 +137,9 @@ function isMediaKeySystemSupported(name: string): boolean
 
 **示例**
 
-参见 isMediaKeySystemSupported
+```TypeScript
+import { drm } from '@kit.DrmKit';
+
+let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm');
+console.info("isMediaKeySystemSupported: ", supported);
+```

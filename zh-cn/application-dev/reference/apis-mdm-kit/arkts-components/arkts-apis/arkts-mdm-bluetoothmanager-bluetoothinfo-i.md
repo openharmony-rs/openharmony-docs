@@ -1,5 +1,9 @@
 # BluetoothInfo
 
+```TypeScript
+export interface BluetoothInfo
+```
+
 设备的蓝牙信息。
 
 **起始版本：** 12

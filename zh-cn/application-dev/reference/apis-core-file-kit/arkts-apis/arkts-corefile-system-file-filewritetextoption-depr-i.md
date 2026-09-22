@@ -1,5 +1,9 @@
 # FileWriteTextOption
 
+```TypeScript
+export interface FileWriteTextOption
+```
+
 可选项类型，支持writeText接口使用。
 
 **起始版本：** 3

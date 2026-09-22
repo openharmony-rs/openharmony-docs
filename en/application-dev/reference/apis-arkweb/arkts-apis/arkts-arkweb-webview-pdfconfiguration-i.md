@@ -1,5 +1,9 @@
 # PdfConfiguration
 
+```TypeScript
+interface PdfConfiguration
+```
+
 Input parameter of the [createPdf](arkts-arkweb-webview-webviewcontroller-c.md#createpdf) function.
 
 > **NOTE:** 

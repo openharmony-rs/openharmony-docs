@@ -1,5 +1,9 @@
 # WebGLProgram
 
+```TypeScript
+interface WebGLProgram
+```
+
 WebGL 1.0
 
 **Since:** 7

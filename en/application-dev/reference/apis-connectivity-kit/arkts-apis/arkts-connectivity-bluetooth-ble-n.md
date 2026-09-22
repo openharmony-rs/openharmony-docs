@@ -1,5 +1,9 @@
 # BLE
 
+```TypeScript
+namespace BLE
+```
+
 Provides methods to operate or manage Bluetooth.
 
 **Since:** 7

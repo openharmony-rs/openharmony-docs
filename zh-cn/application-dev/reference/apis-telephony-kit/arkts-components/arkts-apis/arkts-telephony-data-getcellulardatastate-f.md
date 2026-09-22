@@ -49,17 +49,8 @@ data.getCellularDataState((err: BusinessError, contextData: data.DataConnectStat
 });
 ```
 
-```TypeScript
-import { data } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getCellularDataState().then((contextData: data.DataConnectState) => {
-    console.info(`getCellularDataState success, contextData: ${contextData}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getcellulardatastate-1"></a>
 
 ## getCellularDataState
 
@@ -91,4 +82,13 @@ function getCellularDataState(): Promise<DataConnectState>
 
 **示例**
 
-参见 [getCellularDataState](#getcellulardatastate)
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getCellularDataState().then((contextData: data.DataConnectState) => {
+    console.info(`getCellularDataState success, contextData: ${contextData}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}`);
+});
+```

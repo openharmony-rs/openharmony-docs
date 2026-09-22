@@ -1,5 +1,9 @@
 # TextDecorationType
 
+```TypeScript
+declare enum TextDecorationType
+```
+
 Type of text modifier.
 
 **起始版本：** 7

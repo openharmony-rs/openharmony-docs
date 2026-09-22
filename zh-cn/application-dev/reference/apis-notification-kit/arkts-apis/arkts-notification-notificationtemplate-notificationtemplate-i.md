@@ -1,5 +1,9 @@
 # NotificationTemplate
 
+```TypeScript
+export interface NotificationTemplate
+```
+
 通知模板。用于指定通知所使用的模板类型。
 
 > **说明：** 

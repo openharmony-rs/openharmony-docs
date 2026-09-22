@@ -18,12 +18,12 @@ import { vcard } from '@kit.TelephonyKit';
 
 | Name | Description |
 | --- | --- |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md) | Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result. |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md) | Exports contacts as a vcard file (VCF). This API uses a promise to return the result. |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md) | Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result. |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md) | Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result. |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md) | Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses a promise to return the result. |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md) | Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result. |
+| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard) | Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result. |
+| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-1) | Exports contacts as a vcard file (VCF). This API uses a promise to return the result. |
+| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-2) | Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result. |
+| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard) | Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result. |
+| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-1) | Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses a promise to return the result. |
+| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-2) | Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result. |
 
 ### Interfaces
 

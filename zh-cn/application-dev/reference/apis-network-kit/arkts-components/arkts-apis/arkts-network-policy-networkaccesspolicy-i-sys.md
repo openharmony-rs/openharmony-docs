@@ -1,5 +1,9 @@
 # NetworkAccessPolicy（系统接口）
 
+```TypeScript
+export interface NetworkAccessPolicy
+```
+
 应用对应的连接网络的策略。
 
 **起始版本：** 12

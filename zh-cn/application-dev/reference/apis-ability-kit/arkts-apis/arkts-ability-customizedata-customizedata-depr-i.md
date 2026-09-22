@@ -1,5 +1,9 @@
 # CustomizeData
 
+```TypeScript
+export interface CustomizeData
+```
+
 自定义元数据。
 
 > **说明：** 

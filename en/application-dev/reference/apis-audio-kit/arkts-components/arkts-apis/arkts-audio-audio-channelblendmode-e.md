@@ -1,5 +1,9 @@
 # ChannelBlendMode
 
+```TypeScript
+enum ChannelBlendMode
+```
+
 Enumerates the audio channel blending modes.
 
 **Since:** 11

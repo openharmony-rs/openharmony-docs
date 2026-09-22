@@ -1,5 +1,9 @@
 # BundlePackFlag（系统接口）
 
+```TypeScript
+export enum BundlePackFlag
+```
+
 要查询的应用包标志
 
 **起始版本：** 9

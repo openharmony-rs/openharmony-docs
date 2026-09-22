@@ -1,5 +1,9 @@
 # Alignment
 
+```TypeScript
+declare enum Alignment
+```
+
 Alignment enumeration description.
 
 **Since:** 7
@@ -15,6 +19,8 @@ TopStart
 Top Start.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -32,6 +38,8 @@ The top is centered horizontally.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -47,6 +55,8 @@ TopEnd
 Top tail end.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -64,6 +74,8 @@ The starting end is centered longitudinally.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -79,6 +91,8 @@ Center
 Center horizontal and vertical.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -96,6 +110,8 @@ The tail end is centered longitudinally.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -111,6 +127,8 @@ BottomStart
 Bottom starting end.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -128,6 +146,8 @@ The bottom is centered horizontally.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -143,6 +163,8 @@ BottomEnd
 Bottom end.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

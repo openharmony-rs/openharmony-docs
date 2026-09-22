@@ -1,5 +1,9 @@
 # Disk (System API)
 
+```TypeScript
+export interface Disk
+```
+
 Disk information.
 
 **Since:** 26.0.0

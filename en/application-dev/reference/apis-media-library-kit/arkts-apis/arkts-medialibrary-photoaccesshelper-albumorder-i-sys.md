@@ -1,5 +1,9 @@
 # AlbumOrder (System API)
 
+```TypeScript
+interface AlbumOrder
+```
+
 Describes the album sorting order.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # DesktopLyricState
 
+```TypeScript
+interface DesktopLyricState
+```
+
 桌面歌词状态。
 
 @typedef DesktopLyricState

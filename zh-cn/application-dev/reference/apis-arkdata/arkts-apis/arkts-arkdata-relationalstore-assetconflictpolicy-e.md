@@ -1,5 +1,9 @@
 # AssetConflictPolicy
 
+```TypeScript
+enum AssetConflictPolicy
+```
+
 资产冲突策略枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 26.0.0

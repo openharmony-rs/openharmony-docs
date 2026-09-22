@@ -1,5 +1,9 @@
 # AudioSelectOptions
 
+```TypeScript
+class AudioSelectOptions
+```
+
 Defines the options for selecting audio clips.
 
 **Since:** 9

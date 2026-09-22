@@ -1,5 +1,9 @@
 # ImageStream
 
+```TypeScript
+export interface ImageStream extends Image
+```
+
 ImageStream resource.
 
 **Inheritance/Implementation:** ImageStream extends [Image](arkts-arkgraphics3d-sceneresources-image-i.md)

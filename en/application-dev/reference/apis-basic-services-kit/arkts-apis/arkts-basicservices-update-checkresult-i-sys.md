@@ -1,5 +1,9 @@
 # CheckResult (System API)
 
+```TypeScript
+export interface CheckResult
+```
+
 Indicates the version check result.
 
 **Since:** 9

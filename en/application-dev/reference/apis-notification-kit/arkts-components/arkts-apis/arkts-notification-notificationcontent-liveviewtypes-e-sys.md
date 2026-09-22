@@ -1,5 +1,9 @@
 # LiveViewTypes (System API)
 
+```TypeScript
+export enum LiveViewTypes
+```
+
 Enumerates live view types.
 
 **Since:** 18

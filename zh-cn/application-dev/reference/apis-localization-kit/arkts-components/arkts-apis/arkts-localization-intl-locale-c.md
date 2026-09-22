@@ -1,5 +1,9 @@
 # Locale
 
+```TypeScript
+export class Locale
+```
+
 区域信息
 
 **起始版本：** 6
@@ -47,13 +51,7 @@ let locale = new intl.Locale();
 let localeID = locale.toString();
 ```
 
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// 创建zh-CN区域对象
-let locale = new intl.Locale('zh-CN');
-let localeID = locale.toString(); // localeID = 'zh-CN'
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -83,15 +81,6 @@ constructor(locale: string, options?: LocaleOptions)
 | options | [LocaleOptions](arkts-localization-intl-localeoptions-i.md) | 否 | 创建区域对象的配置项。<br>默认值：所有属性都取默认值时的配置项。<br>**适用版本：** 12 |
 
 **示例**
-
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// 默认构造函数使用系统当前区域ID创建
-let locale = new intl.Locale();
-// 返回系统当前区域ID
-let localeID = locale.toString();
-```
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';

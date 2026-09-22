@@ -1,5 +1,9 @@
 # AudioDeviceDescriptor
 
+```TypeScript
+interface AudioDeviceDescriptor
+```
+
 描述音频设备。
 
 **起始版本：** 7

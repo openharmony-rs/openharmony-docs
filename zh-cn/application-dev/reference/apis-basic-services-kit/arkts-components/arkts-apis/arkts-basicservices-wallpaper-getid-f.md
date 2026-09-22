@@ -44,16 +44,8 @@ wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError,
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: number) => {
-    console.info(`success to getId: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to getId. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="getid-1"></a>
 
 ## getId
 
@@ -86,4 +78,12 @@ function getId(wallpaperType: WallpaperType): Promise<number>
 
 **示例**
 
-参见 [getId](#getid)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: number) => {
+    console.info(`success to getId: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to getId. Code: ${error.code}, message: ${error.message}`);
+});
+```

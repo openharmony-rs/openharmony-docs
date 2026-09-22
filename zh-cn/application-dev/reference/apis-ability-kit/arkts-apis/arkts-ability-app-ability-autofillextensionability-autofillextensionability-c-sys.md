@@ -1,5 +1,9 @@
 # AutoFillExtensionAbility（系统接口）
 
+```TypeScript
+declare class AutoFillExtensionAbility extends ExtensionAbility
+```
+
 AutoFillExtensionAbility模块支持账号、密码、地址等多种数据类型的自动填充与保存，继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)。
 
 **继承/实现关系：** AutoFillExtensionAbility extends [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)

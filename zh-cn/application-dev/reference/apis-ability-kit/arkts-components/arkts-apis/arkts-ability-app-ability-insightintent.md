@@ -40,6 +40,7 @@ import { insightIntent } from '@kit.AbilityKit';
 | [IntentResult](arkts-ability-insightintent-intentresult-i-sys.md) | 意图执行的返回结果，支持[泛型类型](../../../quick-start/introduction-to-arkts.md#泛型类和接口)。 |
 | [InteractionInfo](arkts-ability-insightintent-interactioninfo-i-sys.md) | 定义当前意图执行完成后返回的交互信息，包括下一个要触发的意图和要显示的交互界面。 |
 | [InteractionModalUIExtension](arkts-ability-insightintent-interactionmodaluiextension-i-sys.md) | 定义当意图执行完成时模态UIExtension要显示为交互界面的信息，不支持分布式。 |
+| [InteractionText](arkts-ability-insightintent-interactiontext-i-sys.md) | 定义当意图执行完成时TEXT要显示为交互界面的信息，不支持分布式。 |
 | [InteractionUI](arkts-ability-insightintent-interactionui-i-sys.md) | 定义当前意图执行完成后需要展示的交互界面的信息。 |
 <!--DelEnd-->
 

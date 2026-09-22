@@ -1,5 +1,9 @@
 # AVQueueInfo (System API)
 
+```TypeScript
+interface AVQueueInfo
+```
+
 The play list information definition.
 
 **Since:** 11

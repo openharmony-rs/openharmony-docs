@@ -1,5 +1,9 @@
 # PermissionUsingOptions（系统接口）
 
+```TypeScript
+interface PermissionUsingOptions
+```
+
 权限使用可选参数集。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # SetPropertyRequest (System API)
 
+```TypeScript
+interface SetPropertyRequest
+```
+
 Defines the request for setting property information.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # AntiAliasingLevel
 
+```TypeScript
+enum AntiAliasingLevel
+```
+
 缩放时的插值算法。可根据缩放质量和性能需求选择合适的级别。
 
 **起始版本：** 12

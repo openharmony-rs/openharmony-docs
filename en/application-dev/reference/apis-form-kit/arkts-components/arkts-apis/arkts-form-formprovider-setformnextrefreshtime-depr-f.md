@@ -43,18 +43,8 @@ formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { formProvider } from '@kit.FormKit';
-// Use an existing widget ID (formId).
-let formId: string = '12400633174999288';
-formProvider.setFormNextRefreshTime(formId, 5).then(() => {
-  console.info('formProvider setFormNextRefreshTime success');
-}).catch((error: BusinessError) => {
-  console.error(`formProvider setFormNextRefreshTime, errorCode: ${error.code}, errorMessage: ${error.message}`);
-});
-```
 
+<a id="setformnextrefreshtime-1"></a>
 
 ## setFormNextRefreshTime
 
@@ -87,4 +77,14 @@ Sets the next refresh time for a widget. This API uses a promise to return the r
 
 **Examples**
 
-See [setFormNextRefreshTime](#setformnextrefreshtime)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+// Use an existing widget ID (formId).
+let formId: string = '12400633174999288';
+formProvider.setFormNextRefreshTime(formId, 5).then(() => {
+  console.info('formProvider setFormNextRefreshTime success');
+}).catch((error: BusinessError) => {
+  console.error(`formProvider setFormNextRefreshTime, errorCode: ${error.code}, errorMessage: ${error.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # DeepOptimizeSpaceProgress（系统接口）
 
+```TypeScript
+interface DeepOptimizeSpaceProgress
+```
+
 深度优化存储空间的进度信息。
 
 **起始版本：** 26.0.0

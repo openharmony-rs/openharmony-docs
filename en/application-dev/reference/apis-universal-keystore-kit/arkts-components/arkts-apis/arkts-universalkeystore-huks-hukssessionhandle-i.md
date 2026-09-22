@@ -1,5 +1,9 @@
 # HuksSessionHandle
 
+```TypeScript
+export interface HuksSessionHandle
+```
+
 Defines the struct for a HUKS handle.
 
 **Since:** 9
@@ -24,6 +28,8 @@ Challenge obtained after the [initSession](arkts-universalkeystore-huks-initsess
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -39,6 +45,8 @@ Handle of the unsigned integer type.
 **Type:** number
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

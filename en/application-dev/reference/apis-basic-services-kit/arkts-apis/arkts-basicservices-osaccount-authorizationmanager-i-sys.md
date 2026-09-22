@@ -1,5 +1,9 @@
 # AuthorizationManager (System API)
 
+```TypeScript
+interface AuthorizationManager
+```
+
 Defines the OS account authorization manager class.
 
 **Since:** 24

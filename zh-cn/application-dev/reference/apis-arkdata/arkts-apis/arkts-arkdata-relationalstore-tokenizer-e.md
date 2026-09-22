@@ -1,5 +1,9 @@
 # Tokenizer
 
+```TypeScript
+enum Tokenizer
+```
+
 描述fts（全文搜索）场景下使用的分词器枚举。请使用枚举名称而非枚举值。
 
 在使用不同的分词器时，使用的建表语句会有所区别。

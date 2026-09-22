@@ -43,8 +43,18 @@ Queries the number of all contacts. This API uses a promise to return the result
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the examples of this document, the UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { contact } from '@kit.ContactsKit';
+
+// Obtain the context in the component.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let promise = contact.queryContactsCount(context);
+promise.then((data) => {
+  console.info(`Succeeded in querying ContactsCount. data->${JSON.stringify(data)}`);
+});
 ```

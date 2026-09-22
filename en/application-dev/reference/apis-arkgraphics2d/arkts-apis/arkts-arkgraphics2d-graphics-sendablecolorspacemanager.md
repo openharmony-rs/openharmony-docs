@@ -18,8 +18,8 @@ import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 
 | Name | Description |
 | --- | --- |
-| [create](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md) | Creates a criterion color space management instance that is sendable. |
-| [create](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md) | Creates a custom color space object that is sendable. |
+| [create](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md#create) | Creates a criterion color space management instance that is sendable. |
+| [create](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md#create-1) | Creates a custom color space object that is sendable. |
 
 ### Interfaces
 

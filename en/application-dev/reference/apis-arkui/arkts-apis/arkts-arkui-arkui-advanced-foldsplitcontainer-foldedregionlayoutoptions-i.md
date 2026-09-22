@@ -1,6 +1,10 @@
 # FoldedRegionLayoutOptions
 
-Provides the layout information of the folded state.
+```TypeScript
+export interface FoldedRegionLayoutOptions
+```
+
+Defines the layout information for the folded state.
 
 **Since:** 12
 
@@ -18,7 +22,9 @@ import { ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayout
 verticalSplitRatio?: number
 ```
 
-Height ratio between the primary and extra regions. The value range is all integers. Default value: {@link.PresetSplitRatio}.LAYOUT_1V1.
+Ratio of the primary area height to the secondary area height. The value can be a **PresetSplitRatio** preset value or a custom value. The value range is (0, +∞). If a value less than or equal to 0 is passed, the default value is used. This field takes effect only in the folded state layout. For example, when the value is 1.5, it indicates that the primary area height is 1.5 times the secondary area height (i.e., a 3:2 ratio).
+
+Default value: [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-presetsplitratio-e.md).LAYOUT_1V1
 
 **Type:** number
 

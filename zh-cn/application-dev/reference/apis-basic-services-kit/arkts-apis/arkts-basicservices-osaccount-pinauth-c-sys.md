@@ -1,5 +1,9 @@
 # PINAuth（系统接口）
 
+```TypeScript
+class PINAuth
+```
+
 PIN码认证基类。
 
 **起始版本：** 8

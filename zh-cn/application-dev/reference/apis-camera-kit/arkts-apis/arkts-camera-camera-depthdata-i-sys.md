@@ -1,5 +1,9 @@
 # DepthData（系统接口）
 
+```TypeScript
+interface DepthData
+```
+
 Describes a depth data object.
 
 **起始版本：** 13

@@ -18,6 +18,8 @@ Get the SMS short code type of the destination address.
 
 **Required permissions:** ohos.permission.SEND_MESSAGES
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.

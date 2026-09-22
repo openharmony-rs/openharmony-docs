@@ -1,5 +1,9 @@
 # ShortcutInfo
 
+```TypeScript
+export interface ShortcutInfo
+```
+
 
 > **说明：** 
 > 

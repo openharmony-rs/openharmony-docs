@@ -1,5 +1,9 @@
 # PriorityStrategyStatus (System API)
 
+```TypeScript
+export enum PriorityStrategyStatus
+```
+
 Describes the application notification strategy.
 
 **Since:** 23

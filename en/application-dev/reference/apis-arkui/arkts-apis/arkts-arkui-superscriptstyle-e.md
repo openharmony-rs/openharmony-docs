@@ -1,5 +1,9 @@
 # SuperscriptStyle
 
+```TypeScript
+declare enum SuperscriptStyle
+```
+
 Enumerates the text superscript and subscript styles.
 
 **Since:** 20

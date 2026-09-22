@@ -6,6 +6,8 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="switchinputmethod-2"></a>
+
 ## switchInputMethod
 
 ```TypeScript
@@ -46,38 +48,6 @@ function switchInputMethod(bundleName: string, subtypeId?: string): Promise<void
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
-inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) => {
-  if (err) {
-    console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  if (result) {
-    console.info('Succeeded in switching input method.');
-  } else {
-    console.error('Failed to switch input method.');
-  }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
-inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in switching input method.');
-  } else {
-    console.error('Failed to switch input method.');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-});
-```
 
 ```TypeScript
 import { InputMethodSubtype } from '@kit.IMEKit';

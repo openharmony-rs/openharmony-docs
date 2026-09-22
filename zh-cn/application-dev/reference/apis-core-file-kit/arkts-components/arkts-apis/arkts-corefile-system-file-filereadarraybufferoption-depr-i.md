@@ -1,5 +1,9 @@
 # FileReadArrayBufferOption
 
+```TypeScript
+export interface FileReadArrayBufferOption
+```
+
 可选项类型，支持readArrayBuffer接口使用。
 
 **起始版本：** 3

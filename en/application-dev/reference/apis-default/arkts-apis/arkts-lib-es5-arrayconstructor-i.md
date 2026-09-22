@@ -1,5 +1,9 @@
 # ArrayConstructor
 
+```TypeScript
+interface ArrayConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -17,6 +21,8 @@
 | --- | --- | --- | --- |
 | arrayLength | number | No |  |
 
+<a id="call-1"></a>
+
 ## [[Call]]
 
 ```TypeScript
@@ -28,6 +34,8 @@
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | arrayLength | number | Yes |  |
+
+<a id="call-2"></a>
 
 ## [[Call]]
 
@@ -53,6 +61,8 @@ new(arrayLength?: number): any[]
 | --- | --- | --- | --- |
 | arrayLength | number | No |  |
 
+<a id="construct-1"></a>
+
 ## [[Construct]]
 
 ```TypeScript
@@ -64,6 +74,8 @@ new <T>(arrayLength: number): T[]
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | arrayLength | number | Yes |  |
+
+<a id="construct-2"></a>
 
 ## [[Construct]]
 

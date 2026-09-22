@@ -1,5 +1,9 @@
 # SarResponse (System API)
 
+```TypeScript
+interface SarResponse extends Response
+```
+
 Describes the SAR sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** SarResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

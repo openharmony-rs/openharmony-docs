@@ -1,5 +1,9 @@
 # X509CertRevokedParams
 
+```TypeScript
+interface X509CertRevokedParams
+```
+
 Parameters for checking certificate revocation status.
 
 **Since:** 26.0.0

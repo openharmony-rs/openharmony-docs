@@ -1,5 +1,9 @@
 # TextChangeOptions
 
+```TypeScript
+declare interface TextChangeOptions
+```
+
 文本变化相关信息，包括变化前后的选区范围、变化前的文本内容等。
 
 **起始版本：** 15

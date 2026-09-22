@@ -1,5 +1,9 @@
 # Asset
 
+```TypeScript
+interface Asset
+```
+
 Represents the asset (such as a document, image, or video).
 
 **Since:** 10

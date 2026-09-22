@@ -18,6 +18,8 @@ Obtains call transfer information with the phone number. This API uses a promise
 
 **Required permissions:** ohos.permission.GET_CALL_TRANSFER_INFO
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Parameters:**
@@ -61,26 +63,4 @@ call.getCallTransferInfo(type, number)
     .catch((err:BusinessError) => {
         console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
     });
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY, (err: BusinessError, data: call.CallTransferResult) => {
-    if (err) {
-        console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY).then((data: call.CallTransferResult) => {
-    console.info(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCallTransferInfo fail, promise: err->${JSON.stringify(err)}`);
-});
 ```

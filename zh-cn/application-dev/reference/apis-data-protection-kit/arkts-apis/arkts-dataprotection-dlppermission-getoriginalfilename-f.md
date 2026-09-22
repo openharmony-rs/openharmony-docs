@@ -36,7 +36,7 @@ function getOriginalFileName(fileName: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 

@@ -1,5 +1,9 @@
 # List properties/events
 
+```TypeScript
+declare class ListAttribute extends ScrollableCommonMethod<ListAttribute>
+```
+
 In addition to universal attributes and [scrollable component common attributes](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are also supported.
 
 In addition to universal events and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
@@ -20,6 +24,8 @@ Sets the layout mode of list items along the cross axis when the cross-axis widt
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -30,7 +36,7 @@ Sets the layout mode of list items along the cross axis when the cross-axis widt
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ListItemAlign](arkts-arkui-listitemalign-e.md) | Yes | Alignment mode of list items along the cross axis.<br>Default value: **ListItemAlign.Start** |
+| value | [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md) | Yes | Alignment mode of list items along the cross axis.<br>Default value: **ListItemAlign.Start** |
 
 ## backPressBehavior
 
@@ -52,7 +58,7 @@ Sets the system back button behavior of the **List** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| behavior | [ListBackPressBehavior](arkts-arkui-listbackpressbehavior-i.md) &#124; undefined | Yes | System back button behavior of the **List** component. Currently, you can use the [ListBackPressBehavior](arkts-arkui-listbackpressbehavior-i.md) parameter to configure whether to collapse the expanded swipe-out component of a **ListItem** when the system back button takes effect.<br>If this parameter is set to **undefined**, the default behavior is restored. That is, when the system back button takes effect, the expanded swipe-out component of the **ListItem** is collapsed. |
+| behavior | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) &#124; undefined | Yes | System back button behavior of the **List** component. Currently, you can use the [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) parameter to configure whether to collapse the expanded swipe-out component of a **ListItem** when the system back button takes effect.<br>If this parameter is set to **undefined**, the default behavior is restored. That is, when the system back button takes effect, the expanded swipe-out component of the **ListItem** is collapsed. |
 
 ## cachedCount
 
@@ -68,6 +74,8 @@ When a list is nested with **LazyForEach**, and within **LazyForEach** there is 
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -78,7 +86,9 @@ When a list is nested with **LazyForEach**, and within **LazyForEach** there is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Number of list items or list item groups to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: 0, +∞).<br>Values less than 0 are treated as **1**. |
+| value | number | Yes | Number of list items or list item groups to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**. |
+
+<a id="cachedcount-1"></a>
 
 ## cachedCount
 
@@ -88,7 +98,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of list items or list item groups to be cached (preloaded) and specifies whether to display the preloaded nodes.
 
-When **cachedCount** is set for the list, the system preloads and lays out the **cachedCount**-specified number of rows of list items both above and below the currently visible area of the list. When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
+When **cachedCount** is set for the list, the system preloads and lays out the **cachedCount**-specified number of rows of list items both above and below the currently visible area of the list. When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
 > **NOTE:** 
 > 
@@ -110,8 +120,10 @@ When **cachedCount** is set for the list, the system preloads and lays out the *
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| count | number | Yes | Number of list items to be preloaded.<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: 0, +∞).<br>Values less than 0 are treated as **1**. |
+| count | number | Yes | Number of list items to be preloaded.<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**. |
 | show | boolean | Yes | Whether to display the preloaded list items. If this parameter is set to **true**, the preloaded list items are displayed. If this parameter is set to **false**, the preloaded list items are not displayed.<br> Default value: **false** |
+
+<a id="cachedcount-2"></a>
 
 ## cachedCount
 
@@ -125,7 +137,7 @@ If the first parameter of the **cachedCount** attribute is of the **number** typ
 
 If the first parameter of the **cachedCount** attribute is of the **CacheCountInfo** type, preloading and layout will occur during idle frames when the number of cached rows is less than **CacheCountInfo.minCount**. When the number of cached rows is greater than **CacheCountInfo.maxCount**, the nodes outside the specified range will be destroyed or reused. When the UI is idle (no animation or user operation), a specified number (specified by **CacheCountInfo.maxCount**) of rows of list items will be preloaded above and below the visible area.
 
-When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
+When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
 Default behavior: The **count** parameter is of the **number** type by default, with its value set based on the number of nodes displayed on the screen, up to a maximum of 16. Preloaded **ListItem** components are not involved in drawing by default.
 
@@ -176,6 +188,8 @@ Sets whether to enable the chain linkage effect for the current **List** compone
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -198,11 +212,11 @@ Sets the size information of the child components of a **List** component along 
 
 > **NOTE:** 
 > 
-> - This attribute provides the **List** component with the size of all child components in the main-axis direction. This ensures that the **List** component can maintain the accuracy of the scrolling position in scenarios such as varying main-axis sizes among child components, adding or removing child components, or using [scrollToIndex](arkts-arkui-scroller-c.md#scrolltoindex). In this way, scrollTo can accurately jump to the specified position, currentOffset can obtain the accurate scroll position, and the built-in scroll bar can be smoothly moved without jumps.
+> - This attribute provides the **List** component with the size of all child components in the main-axis direction. This ensures that the **List** component can maintain the accuracy of the scrolling position in scenarios such as varying main-axis sizes among child components, adding or removing child components, or using [scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex). In this way, [scrollTo](arkts-arkui-scroll-comp-scroller-c.md#scrollto) can accurately jump to the specified position, [currentOffset](arkts-arkui-scroll-comp-scroller-c.md#currentoffset) can obtain the accurate scroll position, and the built-in scroll bar can be smoothly moved without jumps.
 > 
 > - If a child component is **ListItemGroup**, the overall size of **ListItemGroup** in the main-axis direction needs to be accurately calculated based on the column count of **ListItemGroup**, the spacing between list items in **ListItemGroup** in the main-axis direction, and the size of the header, footer, and **ListItem** components in **ListItemGroup**. This calculated size must then be passed to the **List** component.
 > 
-> - If a child component contains **ListItemGroup** components, the childrenMainSize attribute must be set for each
+> - If a child component contains **ListItemGroup** components, the [childrenMainSize](arkts-arkui-listitemgroup-comp-attribute.md#childrenmainsize) attribute must be set for each
 > **ListItemGroup** component. The **List** component and each **ListItemGroup** component must be bound to a
 > **ChildrenMainSize** object through the **childrenMainSize** attribute in one-to-one mode.
 > 
@@ -220,7 +234,7 @@ Sets the size information of the child components of a **List** component along 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ChildrenMainSize](arkts-arkui-childrenmainsize-c.md) | Yes | Size information of child components in the main axis direction. |
+| value | [ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md) | Yes | Size information of child components in the main axis direction. |
 
 ## contentEndOffset
 
@@ -245,6 +259,8 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number | Yes | Offset from the end of the list content to the boundary of the list display area.<br> Default value: **0**<br>Unit: vp<br>**NOTE:** <br>If the set value is a negative number, the default value will be used. |
+
+<a id="contentendoffset-1"></a>
 
 ## contentEndOffset
 
@@ -294,6 +310,8 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 | --- | --- | --- | --- |
 | value | number | Yes | Offset from the start of the list content to the boundary of the list display area.<br> Default value: **0**<br>Unit: vp<br>**NOTE:** <br>If the set value is a negative number, the default value will be used. |
 
+<a id="contentstartoffset-1"></a>
+
 ## contentStartOffset
 
 ```TypeScript
@@ -336,6 +354,8 @@ When a list item has polymorphic styles applied, the dividers above and below th
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -346,7 +366,7 @@ When a list item has polymorphic styles applied, the dividers above and below th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ListDividerOptions](arkts-arkui-listdivideroptions-i.md) &#124; null | Yes | Style of the divider for the list items.<br>Default value: **null**<br>**Since:** 18 |
+| value | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) &#124; null | Yes | Style of the divider for the list items.<br>Default value: **null**<br>**Since:** 18 |
 
 ## edgeEffect
 
@@ -364,6 +384,8 @@ Sets the effect used when the scroll boundary is reached.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -375,7 +397,7 @@ Sets the effect used when the scroll boundary is reached.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: **EdgeEffect.Spring** |
-| options | [EdgeEffectOptions](arkts-arkui-edgeeffectoptions-i.md) | No | Whether to enable the scroll effect when the component content is smaller than the component itself. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value: **{ alwaysEnabled: false }**<br>**Since:** 11 |
+| options | [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | No | Whether to enable the scroll effect when the component content is smaller than the component itself. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value: **{ alwaysEnabled: false }**<br>**Since:** 11 |
 
 ## editMode
 
@@ -392,6 +414,8 @@ Sets whether to enable edit mode. For details about how to delete selected list 
 **Since:** 7
 
 **Deprecated since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -421,7 +445,7 @@ Configures the options of the edit mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [EditModeOptions](arkts-arkui-editmodeoptions-i.md) | No | Edit mode options. |
+| options | [EditModeOptions](arkts-arkui-common-comp-editmodeoptions-i.md) | No | Edit mode options. |
 
 ## enableEditMode
 
@@ -465,7 +489,7 @@ Sets whether to support the scroll gesture.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to support the scroll gesture. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](arkts-arkui-scroller-c.md).<br>Default value: **true** |
+| value | boolean | Yes | Whether to support the scroll gesture. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](arkts-arkui-scroll-comp-scroller-c.md).<br>Default value: **true** |
 
 ## focusWrapMode
 
@@ -487,7 +511,7 @@ Sets the focus wrap mode for arrow keys.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-optional-t.md)&lt;[FocusWrapMode](../arkts-apis/arkts-arkui-focuswrapmode-e.md)&gt; | Yes | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE:** <br>Abnormal values are treated as the default value, meaning that cross- axis arrow keys cannot wrap. |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[FocusWrapMode](../arkts-apis/arkts-arkui-focuswrapmode-e.md)&gt; | Yes | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE:** <br>Abnormal values are treated as the default value, meaning that cross- axis arrow keys cannot wrap. |
 
 ## friction
 
@@ -531,6 +555,8 @@ on the width of **ListItemGroup**. Therefore, when the width of **ListItemGroup*
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -543,6 +569,8 @@ on the width of **ListItemGroup**. Therefore, when the width of **ListItemGroup*
 | --- | --- | --- | --- |
 | value | number &#124; LengthConstrain | Yes | Number of columns or rows in the list.<br>Default value: **1**<br>Value range: [1, +∞) |
 | gutter | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | No | Column gap or row gap.<br>Default value: **0** <br>Value range: [0, +∞) <br>**NOTE:** <br>This parameter takes effect when the number of columns or rows is greater than 1.<br>**Since:** 10 |
+
+<a id="lanes-1"></a>
 
 ## lanes
 
@@ -578,6 +606,8 @@ listDirection(value: Axis)
 Sets the direction in which the list items are arranged.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -623,6 +653,8 @@ Sets whether to enable multiselect.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -655,7 +687,7 @@ Sets the nested scrolling mode in the forward and backward directions to impleme
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](arkts-arkui-nestedscrolloptions-i.md) | Yes | Nested scrolling options.<br>Default value: **{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }** |
+| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Yes | Nested scrolling options.<br>Default value: **{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }** |
 
 ## onEditModeChange
 
@@ -691,6 +723,8 @@ Triggered when a list item is deleted.
 
 **Deprecated since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -708,6 +742,8 @@ onItemDragEnter(event: (event: ItemDragInfo) => void)
 Called when a dragged list item enters the list.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -729,6 +765,8 @@ Triggered when the dragged item leaves the drop target of the list.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -748,6 +786,8 @@ onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: numb
 Triggered when the dragged item moves over the drop target of the list.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -771,9 +811,11 @@ Automatic scrolling of the list cannot be triggered when a list item is dragged 
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 14.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 14.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -783,7 +825,7 @@ Automatic scrolling of the list cannot be triggered when a list item is dragged 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md) | Yes | Callback triggered when the dragging of a list item starts.<br> In API version 22 and earlier versions, the parameter type is **(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void**. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md).<br>**Since:** 23 |
+| event | [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md) | Yes | Callback triggered when the dragging of a list item starts.<br> In API version 22 and earlier versions, the parameter type is **(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void**. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md).<br>**Since:** 23 |
 
 ## onItemDrop
 
@@ -794,6 +836,8 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 Triggered when the dragged item is dropped on the drop target of the list. During dragging across lists, **isSuccess** is set to **true** if the drop target is bound to **onItemDrop**. Otherwise, **isSuccess** is set to **false**. During dragging within a list, **isSuccess** is the return value of the **onItemMove** event.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -814,6 +858,8 @@ onItemMove(event: (from: number, to: number) => boolean)
 Triggered when a list item moves.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -839,6 +885,8 @@ When the list edge scrolling effect is the spring effect, this event is triggere
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -862,6 +910,8 @@ Triggered when the list reaches the start position.
 This event is triggered once when **initialIndex** is **0** during list initialization and once when the list scrolls to the start position. When the list edge scrolling effect is the spring effect, this event is triggered once when the list passes the start position and is triggered again when the list returns to the start position.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -889,6 +939,8 @@ Triggered when the list scrolls.
 
 **Substitutes:** onDidScroll
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -915,15 +967,17 @@ This event is triggered when either of the following conditions is met:
 
 1. Scrolling is initiated by user interaction (for example, finger swipe, keyboard, or mouse operation).
 2. The **List** component scrolls by inertia.
-3. Call the fling API to trigger scrolling.
+3. Call the [fling](arkts-arkui-scroll-comp-scroller-c.md#fling) API to trigger scrolling.
 
 This event is not triggered in the following scenarios:
 
-1. A scroll control API other than fling is called.
+1. A scroll control API other than [fling](arkts-arkui-scroll-comp-scroller-c.md#fling) is called.
 2. The out-of-bounds bounce effect is active.
 3. The scrollbar is dragged.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -935,7 +989,7 @@ This event is not triggered in the following scenarios:
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md) | Yes | Callback triggered when each frame scrolling starts.<br>**Since:** 20 |
+| event | [OnScrollFrameBeginCallback](arkts-arkui-scroll-comp-onscrollframebegincallback-t.md) | Yes | Callback triggered when each frame scrolling starts.<br>**Since:** 20 |
 
 ## onScrollIndex
 
@@ -946,6 +1000,8 @@ onScrollIndex(event: (start: number, end: number, center: number) => void)
 Triggered when a child component enters or leaves the list display area.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -965,9 +1021,11 @@ Triggered when a child component enters or leaves the list display area.
 onScrollStart(event: () => void)
 ```
 
-Triggered when the list starts scrolling initiated by the user's finger dragging the list or its scrollbar. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroller-c.md) starts.
+Triggered when the list starts scrolling initiated by the user's finger dragging the list or its scrollbar. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroll-comp-scroller-c.md) starts.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -987,9 +1045,11 @@ Triggered when the list starts scrolling initiated by the user's finger dragging
 onScrollStop(event: () => void)
 ```
 
-Triggered when the list stops scrolling after the user's finger leaves the screen. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroller-c.md) stops.
+Triggered when the list stops scrolling after the user's finger leaves the screen. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroll-comp-scroller-c.md) stops.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -1027,7 +1087,7 @@ This event is triggered once when the list is initialized and when the index of 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| handler | [OnScrollVisibleContentChangeCallback](arkts-arkui-onscrollvisiblecontentchangecallback-t.md) | Yes | Callback invoked when the displayed content changes. |
+| handler | [OnScrollVisibleContentChangeCallback](arkts-arkui-list-comp-onscrollvisiblecontentchangecallback-t.md) | Yes | Callback invoked when the displayed content changes. |
 
 ## scrollBar
 
@@ -1038,6 +1098,8 @@ scrollBar(value: BarState)
 Sets the scrollbar state.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -1073,7 +1135,7 @@ This API is available only when the heights of list items are the same. During t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ScrollSnapAlign](arkts-arkui-scrollsnapalign-e.md) | Yes | Alignment mode of the scroll snap position.<br>Default value: **ScrollSnapAlign.NONE** |
+| value | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) | Yes | Alignment mode of the scroll snap position.<br>Default value: **ScrollSnapAlign.NONE** |
 
 ## scrollSnapAnimationSpeed
 
@@ -1095,7 +1157,7 @@ Sets the speed of the snap animation for list item scrolling. This parameter tak
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| speed | [ScrollSnapAnimationSpeed](arkts-arkui-scrollsnapanimationspeed-e.md) | Yes | Speed of the snap animation for listing scrolling.<br>Default value: **ScrollSnapAnimationSpeed.NORMAL** |
+| speed | [ScrollSnapAnimationSpeed](arkts-arkui-list-comp-scrollsnapanimationspeed-e.md) | Yes | Speed of the snap animation for listing scrolling.<br>Default value: **ScrollSnapAnimationSpeed.NORMAL** |
 
 ## stackFromEnd
 
@@ -1130,10 +1192,12 @@ Sets whether to pin the header to the top or the footer to the bottom in the lis
 > **NOTE:** 
 > 
 > Occasionally, after **sticky** is set, floating-point calculation precision may result in small gaps appearing
-> during scrolling. To address this issue, you can apply the [pixelRound](arkts-arkui-commonmethod-c.md#pixelround) attribute
+> during scrolling. To address this issue, you can apply the [pixelRound](arkts-arkui-common-comp-commonmethod-c.md#pixelround) attribute
 > to the current component, which rounds down the pixel values and help eliminate the gaps.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -1145,7 +1209,7 @@ Sets whether to pin the header to the top or the footer to the bottom in the lis
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [StickyStyle](arkts-arkui-stickystyle-e.md) | Yes | Whether to pin the header to the top or the footer to the bottom in the list item group.<br>Default value: **StickyStyle.None** |
+| value | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) | Yes | Whether to pin the header to the top or the footer to the bottom in the list item group.<br>Default value: **StickyStyle.None** |
 
 ## supportEmptyBranchInLazyLoading
 

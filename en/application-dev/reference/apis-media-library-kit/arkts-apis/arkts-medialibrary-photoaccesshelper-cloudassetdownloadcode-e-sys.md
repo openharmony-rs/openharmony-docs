@@ -1,5 +1,9 @@
 # CloudAssetDownloadCode (System API)
 
+```TypeScript
+enum CloudAssetDownloadCode
+```
+
 Enumerates the status codes returned when adding an item to a batch download.
 
 **Since:** 21

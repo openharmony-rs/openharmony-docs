@@ -1,5 +1,9 @@
 # TextTimer properties/events
 
+```TypeScript
+declare class TextTimerAttribute extends CommonMethod<TextTimerAttribute>
+```
+
 In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 In addition to the [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md), the following events are supported.
@@ -30,7 +34,7 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[TextTimerConfiguration](arkts-arkui-texttimerconfiguration-i.md)&gt; | Yes | Content modifier to apply to the **TextTimer** component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextTimerConfiguration](arkts-arkui-texttimer-comp-texttimerconfiguration-i.md)&gt; | Yes | Content modifier to apply to the **TextTimer** component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
 
 ## fontColor
 
@@ -186,7 +190,7 @@ Event triggered when the time text changes. This event is not triggered when the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | (utc: number, elapsedTime: number) =&gt; void | Yes | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 197 0, in the minimum unit of the format.<br>elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
+| event | (utc: number, elapsedTime: number) =&gt; void | Yes | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 1970, in the minimum unit of the format.<br>elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
 
 ## textShadow
 
@@ -198,7 +202,7 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -212,4 +216,4 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](arkts-arkui-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt; | Yes | Parameters of the text shadow effect, including the color, blur radius, and offset. |
+| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | Yes | Parameters of the text shadow effect, including the color, blur radius, and offset. |

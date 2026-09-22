@@ -1,10 +1,14 @@
 # Tabs属性/事件
 
+```TypeScript
+declare class TabsAttribute extends CommonMethod<TabsAttribute>
+```
+
 除支持通用属性外，还支持以下属性：
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** TabsAttribute extends CommonMethod&lt;TabsAttribute&gt;
+**继承/实现关系：** TabsAttribute extends CommonMethod<TabsAttribute>
 
 **起始版本：** 7
 
@@ -54,7 +58,7 @@ animationCurve不设置时，由于滑动TabContent翻页动画曲线interpolati
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | Tabs翻页的动画时长。<br>默认值：<br>API version 10及以前，不设置该属性或设置为null时，默认值为0，即Tabs翻页无动画。设置为小于0或undefined时，默认值为300。<br>API version 11及以后，不设置该属性或设置为异常值，且设置TabBar为BottomTabBarStyle样式时，默认值为0。设置TabBar为其他样式时，默认值为300。<br>单位：ms<br>取值范围：0, +∞) |
+| value | number | 是 | Tabs翻页的动画时长。<br>默认值：<br>API version 10及以前，不设置该属性或设置为null时，默认值为0，即Tabs翻页无动画。设置为小于0或undefined时，默认值为300。<br>API version 11及以后，不设置该属性或设置为异常值，且设置TabBar为BottomTabBarStyle样式时，默认值为0。设置TabBar为其他样式时，默认值为300。<br>单位：ms<br>取值范围：[0, +∞) |
 
 ## animationMode
 
@@ -66,7 +70,7 @@ animationMode(mode: Optional<AnimationMode>)
 
 > **说明：** 
 
-> 此属性不支持在[attributeModifier中调用。
+> 此属性不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -80,7 +84,7 @@ animationMode(mode: Optional<AnimationMode>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-optional-t.md)&lt;[AnimationMode](arkts-arkui-animationmode-e.md)&gt; | 是 | 点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。<br>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。 |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[AnimationMode](arkts-arkui-tabs-comp-animationmode-e.md)&gt; | 是 | 点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。<br>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。 |
 
 ## barBackgroundBlurStyle
 
@@ -92,7 +96,7 @@ barBackgroundBlurStyle(value: BlurStyle)
 
 > **说明：** 
 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -106,7 +110,9 @@ barBackgroundBlurStyle(value: BlurStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BlurStyle](arkts-arkui-blurstyle-e.md) | 是 | TabBar的背景模糊材质。<br>默认值：BlurStyle.NONE |
+| value | [BlurStyle](arkts-arkui-common-comp-blurstyle-e.md) | 是 | TabBar的背景模糊材质。<br>默认值：BlurStyle.NONE |
+
+<a id="barbackgroundblurstyle-1"></a>
 
 ## barBackgroundBlurStyle
 
@@ -128,8 +134,8 @@ barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [BlurStyle](arkts-arkui-blurstyle-e.md) | 是 | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。 |
-| options | [BackgroundBlurStyleOptions](arkts-arkui-backgroundblurstyleoptions-i.md) | 是 | 背景模糊选项，用于自定义模糊效果。 |
+| style | [BlurStyle](arkts-arkui-common-comp-blurstyle-e.md) | 是 | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。 |
+| options | [BackgroundBlurStyleOptions](arkts-arkui-common-comp-backgroundblurstyleoptions-i.md) | 是 | 背景模糊选项，用于自定义模糊效果。 |
 
 ## barBackgroundColor
 
@@ -173,7 +179,7 @@ barBackgroundEffect(options: BackgroundEffectOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [BackgroundEffectOptions](arkts-arkui-backgroundeffectoptions-i.md) | 是 | 设置TabBar背景属性包括：模糊半径，亮度，饱和度，颜色等。 |
+| options | [BackgroundEffectOptions](arkts-arkui-common-comp-backgroundeffectoptions-i.md) | 是 | 设置TabBar背景属性包括：模糊半径，亮度，饱和度，颜色等。 |
 
 ## barFloatingStyle
 
@@ -195,7 +201,7 @@ barFloatingStyle(style: Optional<FloatingTabBarStyle>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-optional-t.md)&lt;[FloatingTabBarStyle](arkts-arkui-floatingtabbarstyle-i.md)&gt; | 是 | 页签栏的浮动样式 |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[FloatingTabBarStyle](arkts-arkui-tabs-comp-floatingtabbarstyle-i.md)&gt; | 是 | 页签栏的浮动样式 |
 
 ## barGridAlign
 
@@ -217,7 +223,7 @@ barGridAlign(value: BarGridColumnOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BarGridColumnOptions](arkts-arkui-bargridcolumnoptions-i.md) | 是 | 以栅格化方式设置TabBar的可见区域。 |
+| value | [BarGridColumnOptions](arkts-arkui-tabs-comp-bargridcolumnoptions-i.md) | 是 | 以栅格化方式设置TabBar的可见区域。 |
 
 ## barHeight
 
@@ -227,7 +233,7 @@ barHeight(value: Length)
 
 设置TabBar的高度值。横向Tabs可以设置height为'auto'，让TabBar自适应子组件高度。height设置为小于0或大于Tabs高度值时，按默认值显示。设置为负值或undefined时按默认值处理。
 
-API version 14之前的版本，若设置barHeight为固定值后，TabBar无法扩展底部安全区。从API version 14开始支持配合[safeAreaPadding](arkts-arkui-commonmethod-c.md#safeareapadding)属性，当safeAreaPadding不设置bottom或者bottom设置为0时，可以实现扩展安全区。
+API version 14之前的版本，若设置barHeight为固定值后，TabBar无法扩展底部安全区。从API version 14开始支持配合[safeAreaPadding](arkts-arkui-common-comp-commonmethod-c.md#safeareapadding)属性，当safeAreaPadding不设置bottom或者bottom设置为0时，可以实现扩展安全区。
 
 **起始版本：** 7
 
@@ -239,7 +245,9 @@ API version 14之前的版本，若设置barHeight为固定值后，TabBar无法
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | TabBar的高度值。<br>默认值：<br>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为false时，默认值为56vp。<br>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为true时，默认值为Tabs的高度。<br>设置[SubTabBarStyle](arkts-arkui-subtabbarstyle-c.md)样式且vertical属性为false时，默认值为56vp。<br>设置SubTabBarStyle样式且vertical属性为true时，默认值为Tabs的高度。<br>设置[BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md)样式且vertical属性为true时，默认值为Tabs的高度。<br>设置BottomTabBarStyle样式且vertical属性为false时，默认值为56vp，从API version 12开始，默认值变更为48vp。<br>**适用版本：** 8 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | TabBar的高度值。<br>默认值：<br>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为false时，默认值为56vp。<br>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为true时，默认值为Tabs的高度。<br>设置[SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md)样式且vertical属性为false时，默认值为56vp。<br>设置SubTabBarStyle样式且vertical属性为true时，默认值为Tabs的高度。<br>设置[BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md)样式且vertical属性为true时，默认值为Tabs的高度。<br>设置BottomTabBarStyle样式且vertical属性为false时，默认值为56vp，从API version 12开始，默认值变更为48vp。<br>**适用版本：** 8 |
+
+<a id="barheight-1"></a>
 
 ## barHeight
 
@@ -261,7 +269,7 @@ barHeight(height: Length, noMinHeightLimit: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| height | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | TabBar的高度值。<br>默认值：<br>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为false时，默认值为56 vp。<br>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为true时，默认值为Tabs的高度。<br>设置[SubTabBarStyle](arkts-arkui-subtabbarstyle-c.md)样式且vertical属性为false时，默认值为56vp。<br>设置SubTabBarStyle样式且vertical属性为true时，默认值为Tabs的高度。<br>设置[BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md)样式且vertical属性为true时，默认值为Tabs的高度。<br>设置BottomTabBarStyle样式且vertical属性为false时，默认值为48vp。 |
+| height | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | TabBar的高度值。<br>默认值：<br>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为false时，默认值为56 vp。<br>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为true时，默认值为Tabs的高度。<br>设置[SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md)样式且vertical属性为false时，默认值为56vp。<br>设置SubTabBarStyle样式且vertical属性为true时，默认值为Tabs的高度。<br>设置[BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md)样式且vertical属性为true时，默认值为Tabs的高度。<br>设置BottomTabBarStyle样式且vertical属性为false时，默认值为48vp。 |
 | noMinHeightLimit | boolean | 是 | height设置为'auto'时，设置是否取消TabBar的最小高度限制。默认值为false。<br>**说明：** <br>值为true表示取消TabBar的最小高度限制，即TabBar的高度值可以小于默认值。<br>值为false表示限制TabBar的最小高度，即TabBar的最小高度值等于默认值。 |
 
 ## barMode
@@ -284,7 +292,9 @@ barMode(value: BarMode.Fixed)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BarMode.Fixed](arkts-arkui-barmode-e.md) | 是 | 所有TabBar会平均分配barWidth宽度（纵向时平均分配barHeight高度）。 |
+| value | [BarMode.Fixed](arkts-arkui-tabs-comp-barmode-e.md) | 是 | 所有TabBar会平均分配barWidth宽度（纵向时平均分配barHeight高度）。 |
+
+<a id="barmode-1"></a>
 
 ## barMode
 
@@ -306,8 +316,10 @@ barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BarMode.Scrollable](arkts-arkui-barmode-e.md) | 是 | 所有TabBar都使用实际布局宽度，超过总宽度（横向Tabs的barWidth，纵向Tabs的barHeight）后可滑动。 |
-| options | [ScrollableBarModeOptions](arkts-arkui-scrollablebarmodeoptions-i.md) | 是 | Scrollable模式下的TabBar的布局样式。<br>**说明：** <br>仅水平模式下有效。 |
+| value | [BarMode.Scrollable](arkts-arkui-tabs-comp-barmode-e.md) | 是 | 所有TabBar都使用实际布局宽度，超过总宽度（横向Tabs的barWidth，纵向Tabs的barHeight）后可滑动。 |
+| options | [ScrollableBarModeOptions](arkts-arkui-tabs-comp-scrollablebarmodeoptions-i.md) | 是 | Scrollable模式下的TabBar的布局样式。<br>**说明：** <br>仅水平模式下有效。 |
+
+<a id="barmode-2"></a>
 
 ## barMode
 
@@ -327,8 +339,8 @@ barMode(value: BarMode, options?: ScrollableBarModeOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BarMode](arkts-arkui-barmode-e.md) | 是 | 布局模式。<br>默认值：BarMode.Fixed |
-| options | [ScrollableBarModeOptions](arkts-arkui-scrollablebarmodeoptions-i.md) | 否 | Scrollable模式下的TabBar的布局样式。<br>**说明：** <br>仅Scrollable且水平模式下有效。<br>**适用版本：** 10 |
+| value | [BarMode](arkts-arkui-tabs-comp-barmode-e.md) | 是 | 布局模式。<br>默认值：BarMode.Fixed |
+| options | [ScrollableBarModeOptions](arkts-arkui-tabs-comp-scrollablebarmodeoptions-i.md) | 否 | Scrollable模式下的TabBar的布局样式。<br>**说明：** <br>仅Scrollable且水平模式下有效。<br>**适用版本：** 10 |
 
 ## barOverlap
 
@@ -370,7 +382,7 @@ barPosition(value: BarPosition)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BarPosition](arkts-arkui-barposition-e.md) | 是 | 设置Tabs的页签位置。页签的具体位置受vertical属性影响：vertical为true时Start位于左侧、End位于右侧；vertical为false时Start位于顶部、End位于底部。默认值：垂直Tabs为BarPosition.End，非垂直Tabs为BarPosition.Start |
+| value | [BarPosition](arkts-arkui-tabs-comp-barposition-e.md) | 是 | 设置Tabs的页签位置。页签的具体位置受vertical属性影响：vertical为true时Start位于左侧、End位于右侧；vertical为false时Start位于顶部、End位于底部。默认值：垂直Tabs为BarPosition.End，非垂直Tabs为BarPosition.Start |
 
 ## barWidth
 
@@ -390,7 +402,7 @@ barWidth(value: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | TabBar的宽度值。<br>默认值：<br>未设置[SubTabBarStyle](arkts-arkui-subtabbarstyle-c.md)和[BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md)的TabBar且vertical属性为false时，默认值为Tabs的宽度。<br>未设置SubTabBarStyle和BottomTabBarStyle的TabBar且vertical属性为true时，默认值为56vp。<br>设置SubTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。<br>设置SubTabBarStyle样式且vertical属性为true时，默认值为56vp。<br>设置BottomTabBarStyle样式且vertical属性为true时，默认值为96vp。<br>设置BottomTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。<br>**适用版本：** 8 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | TabBar的宽度值。<br>默认值：<br>未设置[SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md)和[BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md)的TabBar且vertical属性为false时，默认值为Tabs的宽度。<br>未设置SubTabBarStyle和BottomTabBarStyle的TabBar且vertical属性为true时，默认值为56vp。<br>设置SubTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。<br>设置SubTabBarStyle样式且vertical属性为true时，默认值为56vp。<br>设置BottomTabBarStyle样式且vertical属性为true时，默认值为96vp。<br>设置BottomTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。<br>**适用版本：** 8 |
 
 ## cachedMaxCount
 
@@ -413,7 +425,7 @@ cachedMaxCount(count: number, mode: TabsCacheMode)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | count | number | 是 | 子组件的最大缓存个数。<br>取值范围：[0, +∞)。设置为小于0的值时，子组件不受缓存管理。超出缓存个数时自动释放不再需要的子组件。 |
-| mode | [TabsCacheMode](arkts-arkui-tabscachemode-e.md) | 是 | 子组件的缓存模式。<br>默认值：TabsCacheMode.CACHE_BOTH_SIDE |
+| mode | [TabsCacheMode](arkts-arkui-tabs-comp-tabscachemode-e.md) | 是 | 子组件的缓存模式。<br>默认值：TabsCacheMode.CACHE_BOTH_SIDE |
 
 ## customContentTransition
 
@@ -431,12 +443,12 @@ customContentTransition(delegate: TabsCustomContentTransitionCallback)
 4. 目前自定义切换动画只支持两种场景触发：点击页签和调用TabsController.changeIndex()接口。
 5. 当使用自定义切换动画时，Tabs组件支持的事件中，除了onGestureSwipe，其他事件均支持。
 6. [onChange](#onchange)和[onAnimationEnd](#onanimationend)事件的触发时机需要特殊说明：如果在第一次自定义动画执行过程中，触发了第二次自定义动画，那么在开始第二次自定义动画时，就会触发第一次自定义动画的onChange和onAnimationEnd事件。
-7. 当使用自定义动画时，参与动画的页面布局方式会改为Stack布局。如果开发者未主动设置相关页面的zIndex属性，那么所有页面的zIndex值是一样的，页面的渲染层级会按照在组件树上的顺序（即页面的index值顺序）确定。因此，开发者需要主动修改页面的zIndex属性，来控制页面的渲染层级。
-8. 此属性不支持在attributeModifier中调用。
+7. 当使用自定义动画时，参与动画的页面布局方式会改为Stack布局。如果开发者未主动设置相关页面的[zIndex](arkts-arkui-common-comp-commonmethod-c.md#zindex)属性，那么所有页面的zIndex值是一样的，页面的渲染层级会按照在组件树上的顺序（即页面的index值顺序）确定。因此，开发者需要主动修改页面的zIndex属性，来控制页面的渲染层级。
+8. 此属性不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 > **说明：** 
 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -450,7 +462,7 @@ customContentTransition(delegate: TabsCustomContentTransitionCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| delegate | [TabsCustomContentTransitionCallback](arkts-arkui-tabscustomcontenttransitioncallback-t.md) | 是 | 自定义Tabs页面切换动画开始时触发的回调。<br>**适用版本：** 18 |
+| delegate | [TabsCustomContentTransitionCallback](arkts-arkui-tabs-comp-tabscustomcontenttransitioncallback-t.md) | 是 | 自定义Tabs页面切换动画开始时触发的回调。<br>**适用版本：** 18 |
 
 ## divider
 
@@ -472,7 +484,7 @@ divider(value: DividerStyle | null)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [DividerStyle](arkts-arkui-dividerstyle-i.md) &#124; null | 是 | 分割线样式，默认不显示分割线。<br>DividerStyle：分割线的样式；<br>null：不显示分割线。 |
+| value | [DividerStyle](arkts-arkui-tabs-comp-dividerstyle-i.md) &#124; null | 是 | 分割线样式，默认不显示分割线。<br>DividerStyle：分割线的样式；<br>null：不显示分割线。 |
 
 ## edgeEffect
 
@@ -484,7 +496,7 @@ edgeEffect(edgeEffect: Optional<EdgeEffect>)
 
 > **说明：** 
 
-> 从API version 17开始，该接口支持在attributeModifier中调用。
+> 从API version 17开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -498,7 +510,7 @@ edgeEffect(edgeEffect: Optional<EdgeEffect>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| edgeEffect | [Optional](arkts-arkui-optional-t.md)&lt;[EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md)&gt; | 是 | 边缘滑动效果。<br>默认值：EdgeEffect.Spring |
+| edgeEffect | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md)&gt; | 是 | 边缘滑动效果。<br>默认值：EdgeEffect.Spring |
 
 ## fadingEdge
 
@@ -528,7 +540,7 @@ fadingEdge(value: boolean)
 nestedScroll(value: TabsNestedScrollMode | undefined)
 ```
 
-设置Tabs组件与其父组件的嵌套滚动模式。未设置时默认嵌套滚动模式为[SELF_ONLY](arkts-arkui-tabsnestedscrollmode-e.md)。
+设置Tabs组件与其父组件的嵌套滚动模式。未设置时默认嵌套滚动模式为[SELF_ONLY](arkts-arkui-tabs-comp-tabsnestedscrollmode-e.md)。
 
 **起始版本：** 24
 
@@ -542,7 +554,7 @@ nestedScroll(value: TabsNestedScrollMode | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [TabsNestedScrollMode](arkts-arkui-tabsnestedscrollmode-e.md) &#124; undefined | 是 | Tabs组件和父组件的嵌套滚动模式。<br>设置undefined时，Tabs自身滚动，不与父组件联动。 |
+| value | [TabsNestedScrollMode](arkts-arkui-tabs-comp-tabsnestedscrollmode-e.md) &#124; undefined | 是 | Tabs组件和父组件的嵌套滚动模式。<br>设置undefined时，Tabs自身滚动，不与父组件联动。 |
 
 ## onAnimationEnd
 
@@ -564,7 +576,7 @@ onAnimationEnd(handler: OnTabsAnimationEndCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [OnTabsAnimationEndCallback](arkts-arkui-ontabsanimationendcallback-t.md) | 是 | 切换动画结束时触发的回调。<br>**适用版本：** 18 |
+| handler | [OnTabsAnimationEndCallback](arkts-arkui-tabs-comp-ontabsanimationendcallback-t.md) | 是 | 切换动画结束时触发的回调。<br>**适用版本：** 18 |
 
 ## onAnimationStart
 
@@ -586,7 +598,7 @@ onAnimationStart(handler: OnTabsAnimationStartCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [OnTabsAnimationStartCallback](arkts-arkui-ontabsanimationstartcallback-t.md) | 是 | 切换动画开始时触发的回调。<br>**适用版本：** 18 |
+| handler | [OnTabsAnimationStartCallback](arkts-arkui-tabs-comp-ontabsanimationstartcallback-t.md) | 是 | 切换动画开始时触发的回调。<br>**适用版本：** 18 |
 
 ## onChange
 
@@ -600,7 +612,7 @@ Tab页签切换后触发的事件。
 
 1、滑动页面进行页面切换时，组件滑动动画结束后触发。
 
-2、通过[控制器](arkts-arkui-tabscontroller-c.md)调用[changeIndex](arkts-arkui-tabscontroller-c.md#changeindex)接口，Tab页签切换后触发。
+2、通过[控制器](arkts-arkui-tabs-comp-tabscontroller-c.md)调用[changeIndex](arkts-arkui-tabs-comp-tabscontroller-c.md#changeindex)接口，Tab页签切换后触发。
 
 3、动态修改[状态变量](../../../ui/state-management/arkts-state.md)构造的index属性值，Tab页签切换后触发。
 
@@ -610,7 +622,7 @@ Tab页签切换后触发的事件。
 
 > 使用自定义页签时，在onChange事件中联动可能会导致滑动页面切换后才执行页签联动，引起自定义页签切换效果延迟。建议在
 > [onAnimationStart](#onanimationstart)中监听并刷新当前索引，以确保动效能够及时触发。具体实现可参考
-> 示例3。
+> [示例3](../../../reference/apis-arkui/arkui-ts/ts-container-tabs.md#示例3自定义页签切换联动)。
 > 
 > 如果在动画过程中index参数发生变化，将使用最新值触发回调。
 
@@ -634,7 +646,7 @@ onContentDidScroll(handler: OnTabsContentDidScrollCallback | undefined)
 
 监听Tabs页面滑动事件。
 
-在页面滑动过程中，会对视窗内所有页面逐帧触发[OnTabsContentDidScrollCallback](arkts-arkui-ontabscontentdidscrollcallback-t.md)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
+在页面滑动过程中，会对视窗内所有页面逐帧触发[OnTabsContentDidScrollCallback](arkts-arkui-tabs-comp-ontabscontentdidscrollcallback-t.md)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
 
 **起始版本：** 23
 
@@ -648,7 +660,7 @@ onContentDidScroll(handler: OnTabsContentDidScrollCallback | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [OnTabsContentDidScrollCallback](arkts-arkui-ontabscontentdidscrollcallback-t.md) &#124; undefined | 是 | Tabs滑动时触发的回调，undefined会解绑原有回调。 |
+| handler | [OnTabsContentDidScrollCallback](arkts-arkui-tabs-comp-ontabscontentdidscrollcallback-t.md) &#124; undefined | 是 | Tabs滑动时触发的回调，undefined会解绑原有回调。 |
 
 ## onContentWillChange
 
@@ -662,7 +674,7 @@ onContentWillChange(handler: OnTabsContentWillChangeCallback)
 
 1、滑动TabContent切换新页面时触发。
 
-2、通过TabsController.[changeIndex](arkts-arkui-tabscontroller-c.md#changeindex)接口切换新页面时触发。
+2、通过TabsController.[changeIndex](arkts-arkui-tabs-comp-tabscontroller-c.md#changeindex)接口切换新页面时触发。
 
 3、通过动态修改index属性值切换新页面时触发。
 
@@ -672,7 +684,7 @@ onContentWillChange(handler: OnTabsContentWillChangeCallback)
 
 > **说明：** 
 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -686,7 +698,7 @@ onContentWillChange(handler: OnTabsContentWillChangeCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [OnTabsContentWillChangeCallback](arkts-arkui-ontabscontentwillchangecallback-t.md) | 是 | 自定义Tabs页面切换拦截事件能力，新页面即将显示时触发的回调。<br>**适用版本：** 18 |
+| handler | [OnTabsContentWillChangeCallback](arkts-arkui-tabs-comp-ontabscontentwillchangecallback-t.md) | 是 | 自定义Tabs页面切换拦截事件能力，新页面即将显示时触发的回调。<br>**适用版本：** 18 |
 
 ## onGestureSwipe
 
@@ -708,7 +720,7 @@ onGestureSwipe(handler: OnTabsGestureSwipeCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [OnTabsGestureSwipeCallback](arkts-arkui-ontabsgestureswipecallback-t.md) | 是 | 在页面跟手滑动过程中，逐帧触发，用于监听当前显示页面的实时滑动状态。<br>**适用版本：** 18 |
+| handler | [OnTabsGestureSwipeCallback](arkts-arkui-tabs-comp-ontabsgestureswipecallback-t.md) | 是 | 在页面跟手滑动过程中，逐帧触发，用于监听当前显示页面的实时滑动状态。<br>**适用版本：** 18 |
 
 ## onSelected
 
@@ -722,7 +734,7 @@ onSelected(event: Callback<number>)
 
 1. 滑动离手时满足翻页阈值，开始切换动画时触发。
 
-2. 通过[TabsController控制器](arkts-arkui-tabscontroller-c.md)调用[changeIndex](arkts-arkui-tabscontroller-c.md#changeindex)接口，开始切换动画时触发。
+2. 通过[TabsController控制器](arkts-arkui-tabs-comp-tabscontroller-c.md)调用[changeIndex](arkts-arkui-tabs-comp-tabscontroller-c.md#changeindex)接口，开始切换动画时触发。
 
 3. 动态修改[状态变量](../../../ui/state-management/arkts-state.md)构造的index属性值后触发。
 
@@ -730,7 +742,7 @@ onSelected(event: Callback<number>)
 
 > **说明：** 
 
-> onSelected回调中不可通过[TabsOptions](arkts-arkui-tabsoptions-i.md)的index设置当前显示页的索引，不可调用TabsController.changeIndex()方法。
+> onSelected回调中不可通过[TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md)的index设置当前显示页的索引，不可调用TabsController.changeIndex()方法。
 
 **起始版本：** 18
 
@@ -780,7 +792,7 @@ onUnselected(event: Callback<number>)
 
 1. 滑动离手时满足翻页阈值，开始切换动画时触发。
 
-2. 通过[TabsController控制器](arkts-arkui-tabscontroller-c.md)调用[changeIndex](arkts-arkui-tabscontroller-c.md#changeindex)接口，开始切换动画时触发。
+2. 通过[TabsController控制器](arkts-arkui-tabs-comp-tabscontroller-c.md)调用[changeIndex](arkts-arkui-tabs-comp-tabscontroller-c.md#changeindex)接口，开始切换动画时触发。
 
 3. 动态修改[状态变量](../../../ui/state-management/arkts-state.md)构造的index属性值后触发。
 
@@ -824,7 +836,7 @@ pageFlipMode(mode: Optional<PageFlipMode>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-optional-t.md)&lt;[PageFlipMode](../arkts-apis/arkts-arkui-pageflipmode-e.md)&gt; | 是 | 鼠标滚轮翻页模式。<br>默认值：PageFlipMode.CONTINUOUS |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PageFlipMode](../arkts-apis/arkts-arkui-pageflipmode-e.md)&gt; | 是 | 鼠标滚轮翻页模式。<br>默认值：PageFlipMode.CONTINUOUS |
 
 ## scrollable
 

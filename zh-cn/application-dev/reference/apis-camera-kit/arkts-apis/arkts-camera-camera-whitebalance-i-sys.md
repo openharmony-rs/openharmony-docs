@@ -1,5 +1,9 @@
 # WhiteBalance
 
+```TypeScript
+interface WhiteBalance extends WhiteBalanceQuery
+```
+
 WhiteBalance继承自[WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md)。
 
 提供了处理设备白平衡的相关功能，包括获取和设置白平衡模式以及白平衡值。
@@ -24,7 +28,7 @@ getWhiteBalanceGains(): WhiteBalanceGains
 
 Gets RGB white balance gain values.
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,7 +57,7 @@ setWhiteBalanceGains(gains: WhiteBalanceGains): void
 
 Sets RGB white balance gain values.
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

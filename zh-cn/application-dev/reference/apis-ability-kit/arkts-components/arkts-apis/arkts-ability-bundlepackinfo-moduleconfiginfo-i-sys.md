@@ -1,5 +1,9 @@
 # ModuleConfigInfo（系统接口）
 
+```TypeScript
+export interface ModuleConfigInfo
+```
+
 包的module配置信息。
 
 **起始版本：** 9

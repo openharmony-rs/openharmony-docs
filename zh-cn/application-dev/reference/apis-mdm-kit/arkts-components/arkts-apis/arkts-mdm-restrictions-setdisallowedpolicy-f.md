@@ -72,24 +72,8 @@ try {
 }
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  restrictions.setDisallowedPolicy(wantTemp, restrictions.FeatureForDevice.WIFI_P2P, true);
-  console.info('Succeeded in setting Wi-Fi P2P disabled');
-} catch (err) {
-  console.error(`Failed to set Wi-Fi P2P disabled. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="setdisallowedpolicy-1"></a>
 
 ## setDisallowedPolicy
 
@@ -128,4 +112,20 @@ function setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: b
 
 **示例**
 
-参见 [setDisallowedPolicy](#setdisallowedpolicy)
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  restrictions.setDisallowedPolicy(wantTemp, restrictions.FeatureForDevice.WIFI_P2P, true);
+  console.info('Succeeded in setting Wi-Fi P2P disabled');
+} catch (err) {
+  console.error(`Failed to set Wi-Fi P2P disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```

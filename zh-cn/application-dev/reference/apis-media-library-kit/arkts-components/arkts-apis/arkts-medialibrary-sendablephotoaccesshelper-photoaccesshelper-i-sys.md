@@ -1,8 +1,12 @@
 # PhotoAccessHelper
 
+```TypeScript
+interface PhotoAccessHelper extends lang.ISendable
+```
+
 提供操作系统媒体资源能力的接口。
 
-**继承/实现关系：** PhotoAccessHelper extends lang.ISendable
+**继承/实现关系：** PhotoAccessHelper extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
 **起始版本：** 12
 
@@ -65,13 +69,23 @@ API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
 
 **示例**
 
-```TypeScript
-phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
-```
+phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](arkts-medialibrary-file-sendablephotoaccesshelper.md)的示例使用。
 
 ```TypeScript
-phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](arkts-medialibrary-file-sendablephotoaccesshelper.md)的示例使用。
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('createAssetDemo');
+  try {
+    let testFileName: string = 'testFile' + Date.now() + '.jpg';
+    let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await phAccessHelper.createAsset(testFileName);
+    console.info('createAsset file displayName' + photoAsset.displayName);
+    console.info('createAsset successfully');
+  } catch (err) {
+    console.error(`createAsset failed, error: ${err.code}, ${err.message}`);
+  }
+}
 ```
+
+<a id="createasset-1"></a>
 
 ## createAsset
 
@@ -125,7 +139,24 @@ API10-17，非法字符包括： . .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
 
 **示例**
 
-参见 [createAsset](#createasset)
+phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](arkts-medialibrary-file-sendablephotoaccesshelper.md)的示例使用。
+
+```TypeScript
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('createAssetDemo');
+  try {
+    let testFileName:string = 'testFile' + Date.now() + '.jpg';
+    let createOption: photoAccessHelper.PhotoCreateOptions = {
+      subtype: photoAccessHelper.PhotoSubtype.DEFAULT
+    }
+    let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await phAccessHelper.createAsset(testFileName, createOption);
+    console.info('createAsset file displayName' + photoAsset.displayName);
+    console.info('createAsset successfully');
+  } catch (err) {
+    console.error(`createAsset failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## getHiddenAlbums
 
@@ -170,8 +201,58 @@ getHiddenAlbums(
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](arkts-medialibrary-file-sendablephotoaccesshelper.md)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取系统预置的隐藏相册。
+async function getSysHiddenAlbum(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('getSysHiddenAlbumDemo');
+  phAccessHelper.getHiddenAlbums(photoAccessHelper.HiddenPhotosDisplayMode.ASSETS_MODE)
+    .then( async (fetchResult) => {
+      if (fetchResult === undefined) {
+        console.error('getSysHiddenAlbumPromise fetchResult is undefined');
+        return;
+      }
+      let hiddenAlbum: sendablePhotoAccessHelper.Album = await fetchResult.getFirstObject();
+      console.info('getAlbumsPromise successfully, albumUri: ' + hiddenAlbum.albumUri);
+      fetchResult.close();
+    }).catch((err: BusinessError) => {
+      console.error(`getSysHiddenAlbumPromise failed with err: ${err.code}, ${err.message}`);
+    });
+}
+
+// 获取隐藏相册-相册视图，即系统中包含隐藏文件的相册（不包含系统预置的隐藏相册本身和回收站相册）。
+async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('getHiddenAlbumsViewDemo');
+  phAccessHelper.getHiddenAlbums(photoAccessHelper.HiddenPhotosDisplayMode.ALBUMS_MODE).then( async (fetchResult) => {
+    if (fetchResult === undefined) {
+      console.error('getHiddenAlbumsViewPromise fetchResult is undefined');
+      return;
+    }
+    let albums: Array<sendablePhotoAccessHelper.Album> = await fetchResult.getAllObjects();
+    console.info('getHiddenAlbumsViewPromise successfully, albums size: ' + albums.length);
+
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    for (let i = 0; i < albums.length; i++) {
+      // 获取相册中的隐藏文件。
+      albums[i].getAssets(fetchOption).then((assetFetchResult) => {
+        console.info('album get hidden assets successfully, getCount: ' + assetFetchResult.getCount());
+      }).catch((err: BusinessError) => {
+        console.error(`album get hidden assets failed with error: ${err.code}, ${err.message}`);
+      });
+    }
+    fetchResult.close();
+  }).catch((err: BusinessError) => {
+    console.error(`getHiddenAlbumsViewPromise failed with err: ${err.code}, ${err.message}`);
+  });
+}
 ```
 
 ## getPhotoAssets
@@ -212,8 +293,30 @@ getPhotoAssets(assetsData: photoAccessHelper.ValuesBucket[]): Promise<PhotoAsset
 
 **示例**
 
-```TypeScript
 phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](arkts-medialibrary-file-sendablephotoaccesshelper.md)的示例使用。
+
+```TypeScript
+import { Context } from '@kit.AbilityKit';
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('getPhotoAssets demo');
+  let valuesArr: photoAccessHelper.ValuesBucket[] = [];
+  let resultSet: photoAccessHelper.ResultSet | undefined = undefined;
+  let photoAssetArr: sendablePhotoAccessHelper.PhotoAsset[] = [];
+  let QUERY_SQL = 'SELECT file_id,data,display_name,media_type,subtype from Photos limit 100';
+  try {
+    resultSet = await photoAccessHelper.getPhotoAccessHelper(context).query(QUERY_SQL);
+    let index: number = 0;
+    while(resultSet && index < resultSet.rowCount){
+      resultSet.goToRow(index);
+      valuesArr.push(resultSet.getRow());
+      index++;
+    }
+    photoAssetArr = await phAccessHelper.getPhotoAssets(valuesArr);
+    console.info('getPhotoAssets successfully');
+  } catch (err) {
+    console.error(`valuesArr failed: ${err.code}, ${err.message}`);
+  }
+}
 ```
 
 ## getSharedPhotoAssets

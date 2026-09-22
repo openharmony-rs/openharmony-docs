@@ -13,9 +13,11 @@ export function verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): 
 
 Verifies the authorization package from the controlled device. This function verifies the remote authorization package sent by the controlled device. It validates the ticket to ensure the authorization is legitimate.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.QUERY_TOOL_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -31,7 +33,7 @@ Verifies the authorization package from the controlled device. This function ver
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean[]&gt; | Promise used to return &#36;{boolean[]}. |
+| Promise&lt;boolean[]&gt; | Promise used to return ${boolean[]}. |
 
 **Error codes:**
 

@@ -1,5 +1,9 @@
 # ReturningConfig
 
+```TypeScript
+interface ReturningConfig
+```
+
 指定returning相关接口操作后需要返回的字段名列表和结果集中允许包含的最大记录数。
 
 **起始版本：** 23

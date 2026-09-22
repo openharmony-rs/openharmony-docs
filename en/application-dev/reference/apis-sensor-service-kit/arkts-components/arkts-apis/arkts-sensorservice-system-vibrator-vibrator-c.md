@@ -1,5 +1,9 @@
 # Vibrator
 
+```TypeScript
+export default class Vibrator
+```
+
 **Since:** 3
 
 **Deprecated since:** 8

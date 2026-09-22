@@ -1,5 +1,9 @@
 # SubscribeHeartRateOptions
 
+```TypeScript
+export interface SubscribeHeartRateOptions
+```
+
 用于设置心率传感器订阅的参数，包括回调函数。心率数据回调频率固定为5秒/次，不支持通过interval参数配置。
 
 **起始版本：** 3

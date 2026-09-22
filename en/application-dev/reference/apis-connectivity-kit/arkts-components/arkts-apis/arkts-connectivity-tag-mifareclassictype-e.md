@@ -1,5 +1,9 @@
 # MifareClassicType
 
+```TypeScript
+enum MifareClassicType
+```
+
 Enumerates the MIFARE Classic tag types.
 
 **Since:** 9

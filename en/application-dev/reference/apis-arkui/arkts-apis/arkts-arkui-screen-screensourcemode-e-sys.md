@@ -1,5 +1,9 @@
 # ScreenSourceMode (System API)
 
+```TypeScript
+enum ScreenSourceMode
+```
+
 Enumerates the sources of the content displayed on the screen.
 
 **Since:** 10

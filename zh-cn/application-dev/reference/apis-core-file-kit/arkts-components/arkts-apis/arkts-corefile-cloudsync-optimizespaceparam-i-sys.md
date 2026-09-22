@@ -1,5 +1,9 @@
 # OptimizeSpaceParam（系统接口）
 
+```TypeScript
+interface OptimizeSpaceParam
+```
+
 立即优化空间设置参数，设置优化总空间和老化天数。
 
 **起始版本：** 17

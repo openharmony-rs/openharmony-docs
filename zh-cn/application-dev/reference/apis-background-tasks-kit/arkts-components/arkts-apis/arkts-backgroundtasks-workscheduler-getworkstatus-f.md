@@ -52,17 +52,8 @@ workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkIn
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { workScheduler } from '@kit.BackgroundTasksKit';
 
-workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
-  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-}).catch((error: BusinessError) => {
-  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-})
-```
-
+<a id="getworkstatus-1"></a>
 
 ## getWorkStatus
 
@@ -102,4 +93,13 @@ function getWorkStatus(workId: number): Promise<WorkInfo>
 
 **示例**
 
-参见 [getWorkStatus](#getworkstatus)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
+
+workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
+  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+})
+```

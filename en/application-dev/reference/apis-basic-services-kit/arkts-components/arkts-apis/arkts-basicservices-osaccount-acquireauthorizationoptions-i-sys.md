@@ -1,5 +1,9 @@
 # AcquireAuthorizationOptions (System API)
 
+```TypeScript
+interface AcquireAuthorizationOptions
+```
+
 Defines the options for acquiring the authorization.
 
 **Since:** 24

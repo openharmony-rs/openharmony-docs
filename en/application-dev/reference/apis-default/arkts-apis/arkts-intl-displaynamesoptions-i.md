@@ -1,5 +1,9 @@
 # DisplayNamesOptions
 
+```TypeScript
+interface DisplayNamesOptions
+```
+
 ## Modules to Import
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # CameraTakePhotoOptions
 
+```TypeScript
+export interface CameraTakePhotoOptions
+```
+
 CameraTakePhotoOptions
 
 @interface CameraTakePhotoOptions

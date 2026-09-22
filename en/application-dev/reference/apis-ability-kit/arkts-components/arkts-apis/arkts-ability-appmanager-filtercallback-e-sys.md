@@ -1,5 +1,9 @@
 # FilterCallback (System API)
 
+```TypeScript
+export enum FilterCallback
+```
+
 Enumerates the callbacks to filter. It can be used with [AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md) to filter the callbacks you want to listen for.
 
 **Since:** 21

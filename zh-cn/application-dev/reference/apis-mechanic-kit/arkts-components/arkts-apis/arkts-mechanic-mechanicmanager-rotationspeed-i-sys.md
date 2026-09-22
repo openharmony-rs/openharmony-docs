@@ -1,5 +1,9 @@
 # RotationSpeed（系统接口）
 
+```TypeScript
+export interface RotationSpeed
+```
+
 转速，负值表示顺时针旋转。正值表示逆时针旋转。@typedef RotationSpeed
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # ThreadWorkerGlobalScope
 
+```TypeScript
+export interface ThreadWorkerGlobalScope extends GlobalScope
+```
+
 Worker线程用于与宿主线程通信的类。其中postMessage接口用于向宿主线程发送消息，close接口用于销毁Worker线程。ThreadWorkerGlobalScope类继承GlobalScope9+。
 
 **继承/实现关系：** ThreadWorkerGlobalScope extends [GlobalScope](arkts-arkts-worker-globalscope-i.md)
@@ -248,26 +252,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
 }
 ```
 
-```TypeScript
-// Index.ets
-import { worker, MessageEvents } from '@kit.ArkTS';
-
-const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
-workerInstance.postMessage("hello world");
-workerInstance.onmessage = (e: MessageEvents): void => {
-    console.info("receive data from worker.ets");
-}
-```
-
-```TypeScript
-// worker.ets
-import { worker, MessageEvents } from '@kit.ArkTS';
-
-const workerPort = worker.workerPort;
-workerPort.onmessage = (e: MessageEvents): void => {
-    workerPort.postMessage("receive data from main thread");
-}
-```
+<a id="postmessage-1"></a>
 
 ## postMessage
 
@@ -298,28 +283,6 @@ Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程�
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
 **示例**
-
-```TypeScript
-// Index.ets
-import { worker, MessageEvents } from '@kit.ArkTS';
-
-const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
-workerInstance.postMessage("hello world");
-workerInstance.onmessage = (e: MessageEvents): void => {
-  console.info("receive data from worker.ets");
-}
-```
-
-```TypeScript
-// worker.ets
-import { worker, MessageEvents } from '@kit.ArkTS';
-
-const workerPort = worker.workerPort;
-workerPort.onmessage = (e: MessageEvents): void => {
-  let buffer = new ArrayBuffer(8);
-  workerPort.postMessage(buffer, [buffer]);
-}
-```
 
 ```TypeScript
 // Index.ets
@@ -435,8 +398,32 @@ workerInstance.onmessage = (e: MessageEvents) => {
 }
 ```
 
-```TypeScript
 如果传递的参数是对象字面量的话，需要[显式标注对象字面量的类型](../../../quick-start/typescript-to-arkts-migration-guide.md#需要显式标注对象字面量的类型)。
+
+```TypeScript
+import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent, Priority } from '@kit.ArkTS';
+
+class ClassA {
+  public obj: string = ""
+}
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+workerPort.onmessage = (e: MessageEvents) => {
+  // 使用可选链操作符调用接口，传递字面量对象时会编译报错，需要显式标注对象字面量的类型。
+  // workerPort.postMessageAtFront?.({obj: "obj"}, Priority.HIGH);
+
+  let classAInstance: ClassA = { obj: "obj" };
+  workerPort.postMessageAtFront?.(classAInstance, Priority.HIGH);
+
+  // 使用非空断言，直接调用。可以直接传递对象字面量。
+  workerPort.postMessageAtFront!({ obj: "obj" }, Priority.HIGH);
+  // 判断方法存在后再使用。可以直接传递对象字面量。
+  if (workerPort.postMessageAtFront) {
+    workerPort.postMessageAtFront({ obj: "obj" }, Priority.HIGH);
+  } else {
+    workerPort.postMessageWithSharedSendable({ obj: "obj" });
+  }
+}
 ```
 
 ## postMessageWithSharedSendable

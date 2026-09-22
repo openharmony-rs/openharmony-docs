@@ -1,5 +1,9 @@
 # LocaleItem (System API)
 
+```TypeScript
+export interface LocaleItem
+```
+
 Represents the locale information, which consists of the language, script, and country/region.
 
 **Since:** 10

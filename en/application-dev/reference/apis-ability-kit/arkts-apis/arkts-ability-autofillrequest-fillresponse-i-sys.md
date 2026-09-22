@@ -1,5 +1,9 @@
 # FillResponse (System API)
 
+```TypeScript
+export interface FillResponse
+```
+
 Defines the information about the response to an auto-fill request.
 
 **Since:** 11

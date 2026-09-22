@@ -1,5 +1,9 @@
 # AttachOptions
 
+```TypeScript
+export interface AttachOptions
+```
+
 Defines additional options for binding an input method.
 
 **Since:** 23

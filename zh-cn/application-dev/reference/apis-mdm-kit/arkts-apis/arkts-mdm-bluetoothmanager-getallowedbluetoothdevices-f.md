@@ -64,20 +64,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bluetoothManager } from '@kit.MDMKit';
 
-// 创建企业设备管理扩展组件
-try {
-  // 获取蓝牙设备允许名单
-  // 参数需根据实际情况进行替换
-  let result: Array<string> = bluetoothManager.getAllowedBluetoothDevices(null);
-  console.info(`Succeeded in getting allowed bluetooth devices. Result: ${JSON.stringify(result)}`);
-} catch(err) {
-  console.error(`Failed to get allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getallowedbluetoothdevices-1"></a>
 
 ## getAllowedBluetoothDevices
 
@@ -118,4 +106,16 @@ function getAllowedBluetoothDevices(admin: Want | null): Array<string>
 
 **示例**
 
-参见 getAllowedBluetoothDevices
+```TypeScript
+import { bluetoothManager } from '@kit.MDMKit';
+
+// 创建企业设备管理扩展组件
+try {
+  // 获取蓝牙设备允许名单
+  // 参数需根据实际情况进行替换
+  let result: Array<string> = bluetoothManager.getAllowedBluetoothDevices(null);
+  console.info(`Succeeded in getting allowed bluetooth devices. Result: ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+}
+```

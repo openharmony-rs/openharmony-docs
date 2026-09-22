@@ -48,26 +48,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let appId = "com.example.myapplication_xxxxx";
 
 try {
-  appControl.getDisposedStatus(appId)
-    .then((data) => {
-      console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
-    }).catch((error: BusinessError) => {
-    let message = (error as BusinessError).message;
-    console.error('getDisposedStatus failed ' + message);
-  });
-} catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('getDisposedStatus failed ' + message);
-}
-```
-
-```TypeScript
-import { appControl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let appId = "com.example.myapplication_xxxxx";
-
-try {
   appControl.getDisposedStatus(appId, (error, data) => {
     if (error) {
       let message = (error as BusinessError).message;
@@ -82,6 +62,8 @@ try {
 }
 ```
 
+
+<a id="getdisposedstatus-1"></a>
 
 ## getDisposedStatus
 
@@ -123,4 +105,22 @@ function getDisposedStatus(appId: string): Promise<Want>
 
 **示例**
 
-参见 [getDisposedStatus](#getdisposedstatus)
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let appId = "com.example.myapplication_xxxxx";
+
+try {
+  appControl.getDisposedStatus(appId)
+    .then((data) => {
+      console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
+    }).catch((error: BusinessError) => {
+    let message = (error as BusinessError).message;
+    console.error('getDisposedStatus failed ' + message);
+  });
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('getDisposedStatus failed ' + message);
+}
+```

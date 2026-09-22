@@ -1,5 +1,9 @@
 # ColorReservationType（系统接口）
 
+```TypeScript
+enum ColorReservationType
+```
+
 Enumerates the color reservation types.
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # DecodingDynamicRange
 
+```TypeScript
+enum DecodingDynamicRange
+```
+
 Enumerates the desired dynamic range of an image during decoding.
 
 **Since:** 12

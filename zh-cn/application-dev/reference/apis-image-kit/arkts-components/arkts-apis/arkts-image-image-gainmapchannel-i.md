@@ -1,5 +1,9 @@
 # GainmapChannel
 
+```TypeScript
+interface GainmapChannel
+```
+
 Gainmap图单个通道的数据内容，参考ISO 21496-1。
 
 **起始版本：** 12

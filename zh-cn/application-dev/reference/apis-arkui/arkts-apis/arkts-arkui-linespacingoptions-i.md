@@ -1,5 +1,9 @@
 # LineSpacingOptions
 
+```TypeScript
+declare interface LineSpacingOptions
+```
+
 设置文本的行间距，是否仅在行与行之间生效。
 
 **起始版本：** 20

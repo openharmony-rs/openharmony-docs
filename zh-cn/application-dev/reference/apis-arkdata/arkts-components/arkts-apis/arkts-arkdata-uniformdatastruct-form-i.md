@@ -1,5 +1,9 @@
 # Form
 
+```TypeScript
+interface Form
+```
+
 系统定义的卡片类型数据，用于跨应用共享卡片信息。典型使用场景包括：卡片拖拽分享、卡片内容跨应用传输、桌面小组件数据共享等。
 
 **起始版本：** 15
@@ -47,12 +51,12 @@ bundleName: string
 ## details
 
 ```TypeScript
-details?: Record<string, number | number | number | string | Uint8Array>
+details?: Record<string, number | string | Uint8Array>
 ```
 
 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。
 
-**类型：** Record&lt;string, number &#124; number &#124; number &#124; string &#124; Uint8Array&gt;
+**类型：** Record&lt;string, number &#124; string &#124; Uint8Array&gt;
 
 **起始版本：** 15
 

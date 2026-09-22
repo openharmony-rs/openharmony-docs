@@ -1,5 +1,9 @@
 # TextShadow
 
+```TypeScript
+interface TextShadow
+```
+
 文本阴影。
 
 **起始版本：** 12

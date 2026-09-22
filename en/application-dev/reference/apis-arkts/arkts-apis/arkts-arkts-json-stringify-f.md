@@ -35,6 +35,8 @@ Converts an ArkTS object or array into a JSON string. In the case of a container
 | string | Return a JSON text. |
 
 
+<a id="stringify-1"></a>
+
 ## stringify
 
 ```TypeScript

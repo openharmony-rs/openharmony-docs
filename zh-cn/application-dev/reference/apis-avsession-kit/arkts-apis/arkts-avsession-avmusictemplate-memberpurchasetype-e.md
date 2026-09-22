@@ -1,5 +1,9 @@
 # MemberPurchaseType
 
+```TypeScript
+enum MemberPurchaseType
+```
+
 表示会员购买类型的枚举。
 
 @enum { string }

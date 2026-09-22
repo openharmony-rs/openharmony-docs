@@ -37,8 +37,8 @@ Identifies sensitive content in a specified file based on the configured policy 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: The device type does not support the capability. |
 | [19110001](../errorcode-dlp.md#19110001-invalid-parameter) | Parameter error. Possible causes: 1. Incorrect policy format. 2. Invalid parameter range. |
 | [19110002](../errorcode-dlp.md#19110002-file-sensitive-content-identification-timed-out) | Sensitive file content identification timed out. |
 | [19110003](../errorcode-dlp.md#19110003-file-not-supported) | The file is not supported. Possible causes: 1. The file path does not exist. 2. The file type is not supported. 3. The file permission is not supported. |

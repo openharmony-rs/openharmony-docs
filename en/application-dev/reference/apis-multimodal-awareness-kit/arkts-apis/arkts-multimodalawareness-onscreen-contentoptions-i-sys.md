@@ -1,5 +1,9 @@
 # ContentOptions (System API)
 
+```TypeScript
+export interface ContentOptions
+```
+
 Defines the options for obtaining the onscreen content.
 
 **Since:** 20

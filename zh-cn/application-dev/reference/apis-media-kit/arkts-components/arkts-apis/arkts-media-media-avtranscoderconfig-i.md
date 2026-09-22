@@ -1,5 +1,9 @@
 # AVTranscoderConfig
 
+```TypeScript
+interface AVTranscoderConfig
+```
+
 表示视频转码的参数设置。
 
 **起始版本：** 12

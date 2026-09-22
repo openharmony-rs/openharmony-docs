@@ -1,5 +1,9 @@
 # ConnectionInfo
 
+```TypeScript
+export interface ConnectionInfo
+```
+
 Web原生消息连接的信息对象。
 
 **起始版本：** 21

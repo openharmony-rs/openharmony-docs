@@ -1,5 +1,9 @@
 # SharingCode（系统接口）
 
+```TypeScript
+enum SharingCode
+```
+
 端云共享错误码。
 
 **起始版本：** 11

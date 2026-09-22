@@ -1,5 +1,9 @@
 # BLECharacteristic
 
+```TypeScript
+interface BLECharacteristic
+```
+
 GATT特征值结构定义，是服务[GattService](arkts-connectivity-ble-gattservice-i.md)的核心数据单元。
 
 **起始版本：** 10

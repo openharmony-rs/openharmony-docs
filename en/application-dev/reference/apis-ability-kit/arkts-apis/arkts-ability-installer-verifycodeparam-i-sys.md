@@ -1,5 +1,9 @@
 # VerifyCodeParam (System API)
 
+```TypeScript
+export interface VerifyCodeParam
+```
+
 Defines the information about the code signature file.
 
 **Since:** 10

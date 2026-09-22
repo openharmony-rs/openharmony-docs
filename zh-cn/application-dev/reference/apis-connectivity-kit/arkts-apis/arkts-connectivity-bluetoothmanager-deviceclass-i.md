@@ -1,5 +1,9 @@
 # DeviceClass
 
+```TypeScript
+interface DeviceClass
+```
+
 描述蓝牙设备的类别。
 
 从API version 9开始支持，从API version 10开始废弃。

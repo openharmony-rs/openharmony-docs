@@ -1,5 +1,9 @@
 # AutoFillRect
 
+```TypeScript
+export default interface AutoFillRect
+```
+
 AutoFillRect describes the rectangle used for auto-fill.
 
 **Since:** 26.0.0

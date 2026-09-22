@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+export declare enum Action
+```
+
 Enumerates the touch event types.
 
 **Since:** 9

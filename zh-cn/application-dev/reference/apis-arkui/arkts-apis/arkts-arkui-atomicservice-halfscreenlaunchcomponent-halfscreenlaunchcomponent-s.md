@@ -1,5 +1,9 @@
 # HalfScreenLaunchComponent
 
+```TypeScript
+export declare struct HalfScreenLaunchComponent
+```
+
 半屏嵌入式启动原子化服务组件，当被拉起方未授权嵌入式运行原子化服务时，宿主将使用跳出式拉起原子化服务。
 
 > **说明：** 
@@ -96,7 +100,7 @@ onTerminated?: Callback<TerminationInfo>
 
 被拉起的嵌入式运行原子化服务通过点击原子化服务退出按钮、手势侧滑、调用terminateSelfWithResult或者[terminateSelf](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateself)正常退出时，触发本回调。
 
-**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TerminationInfo](../arkts-components/arkts-arkui-terminationinfo-i.md)&gt;
+**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TerminationInfo](../arkts-components/arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md)&gt;
 
 **起始版本：** 18
 

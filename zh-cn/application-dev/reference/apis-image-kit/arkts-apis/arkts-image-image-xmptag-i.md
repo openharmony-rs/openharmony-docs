@@ -1,5 +1,9 @@
 # XMPTag
 
+```TypeScript
+interface XMPTag
+```
+
 表示XMP标签信息。
 
 **起始版本：** 26.0.0

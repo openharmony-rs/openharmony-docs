@@ -1,5 +1,9 @@
 # IconStyle
 
+```TypeScript
+export declare enum IconStyle
+```
+
 Sets the color style of the close button. By default, the close button is set to light color.
 
 | Name| Value| Description|  

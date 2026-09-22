@@ -1,5 +1,9 @@
 # WifiScanInfo
 
+```TypeScript
+interface WifiScanInfo
+```
+
 Wi-Fi热点信息。
 
 **起始版本：** 9

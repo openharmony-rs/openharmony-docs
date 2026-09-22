@@ -1,5 +1,9 @@
 # LengthUnit
 
+```TypeScript
+declare enum LengthUnit
+```
+
 Enumerates length units.
 
 **Since:** 12

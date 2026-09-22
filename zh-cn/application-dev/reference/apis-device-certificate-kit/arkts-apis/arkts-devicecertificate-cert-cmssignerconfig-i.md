@@ -1,5 +1,9 @@
 # CmsSignerConfig
 
+```TypeScript
+interface CmsSignerConfig
+```
+
 表示Cms签名者的配置选项。
 
 **起始版本：** 18

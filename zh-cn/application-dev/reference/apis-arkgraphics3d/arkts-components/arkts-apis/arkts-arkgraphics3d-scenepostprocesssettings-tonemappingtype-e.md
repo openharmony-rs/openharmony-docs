@@ -1,5 +1,9 @@
 # ToneMappingType
 
+```TypeScript
+export enum ToneMappingType
+```
+
 色调映射类型枚举。
 
 @enum { int }

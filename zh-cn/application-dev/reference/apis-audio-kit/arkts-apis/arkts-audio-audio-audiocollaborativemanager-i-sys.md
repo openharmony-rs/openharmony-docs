@@ -1,6 +1,10 @@
 # AudioCollaborativeManager（系统接口）
 
-移动全景声管理器。在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](arkts-audio-audio-audiomanager-i-sys.md#getcollaborativemanager)获取AudioCollaborativeManager实例。
+```TypeScript
+interface AudioCollaborativeManager
+```
+
+移动全景声管理器，支持蓝牙设备与本地扬声器协同播放音频。适用于系统应用控制移动全景声功能场景。在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](arkts-audio-audio-audiomanager-i-sys.md#getcollaborativemanager)获取AudioCollaborativeManager实例。
 
 @typedef AudioCollaborativeManager
 

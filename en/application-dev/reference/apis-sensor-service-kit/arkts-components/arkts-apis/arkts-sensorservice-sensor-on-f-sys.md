@@ -36,6 +36,28 @@ Subscribes to data of the color sensor.
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system API.<br>**Applicable version:** 11 and later |
 
+**Examples**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try{
+  sensor.on(sensor.SensorId.COLOR, (data: sensor.ColorResponse) => {
+    console.info('Succeeded in getting the intensity of light: ' + data.lightIntensity);
+    console.info('Succeeded in getting the color temperature: ' + data.colorTemperature);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+        sensor.off(sensor.SensorId.COLOR);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-1"></a>
 
 ## on
 
@@ -66,3 +88,22 @@ Subscribes to data of the Sodium Adsorption Ratio (SAR) sensor.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system API.<br>**Applicable version:** 11 and later |
+
+**Examples**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  sensor.on(sensor.SensorId.SAR, (data: sensor.SarResponse) => {
+    console.info('Succeeded in getting specific absorption rate : ' + data.absorptionRatio);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.SAR);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```

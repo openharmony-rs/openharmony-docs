@@ -1,5 +1,9 @@
 # OperationResult（系统接口）
 
+```TypeScript
+interface OperationResult
+```
+
 订阅/取消订阅数据变更和发布数据的操作结果。
 
 **起始版本：** 10

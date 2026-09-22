@@ -1,5 +1,9 @@
 # ImagingMode（系统接口）
 
+```TypeScript
+interface ImagingMode extends ImagingModeQuery
+```
+
 Implements imaging mode.
 
 **继承/实现关系：** ImagingMode extends [ImagingModeQuery](arkts-camera-camera-imagingmodequery-i-sys.md)

@@ -1,5 +1,9 @@
 # ExtraOptionsBase
 
+```TypeScript
+export interface ExtraOptionsBase
+```
+
 Socket套接字的基础属性。
 
 **起始版本：** 7

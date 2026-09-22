@@ -1,5 +1,9 @@
 # Credential
 
+```TypeScript
+export interface Credential
+```
+
 Represents the credential used for server identity verification in a session, including the user name and password.
 
 **Since:** 18

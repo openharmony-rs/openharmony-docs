@@ -1,5 +1,9 @@
 # MissionListener (System API)
 
+```TypeScript
+export interface MissionListener
+```
+
 The module defines the listeners used to observe the mission status. The listeners can be registered by using [on](arkts-ability-missionmanager-on-f-sys.md).
 
 **Since:** 8
@@ -97,9 +101,7 @@ Called when the system creates a mission.
 
 **Examples**
 
-```TypeScript
 For details, see [onMissionClosed](#onmissionclosed).
-```
 
 ## onMissionDestroyed
 
@@ -123,9 +125,7 @@ Called when the system destroys a mission.
 
 **Examples**
 
-```TypeScript
 For details, see [onMissionClosed](#onmissionclosed).
-```
 
 ## onMissionIconUpdated
 
@@ -150,9 +150,7 @@ Called when the system updates the icon of a mission.
 
 **Examples**
 
-```TypeScript
 For details, see [onMissionClosed](#onmissionclosed).
-```
 
 ## onMissionLabelUpdated
 
@@ -176,9 +174,7 @@ Called when the system updates the label of a mission.
 
 **Examples**
 
-```TypeScript
 For details, see [onMissionClosed](#onmissionclosed).
-```
 
 ## onMissionMovedToFront
 
@@ -202,9 +198,7 @@ Called when the system moves a mission to the foreground.
 
 **Examples**
 
-```TypeScript
 For details, see [onMissionClosed](#onmissionclosed).
-```
 
 ## onMissionSnapshotChanged
 
@@ -212,7 +206,7 @@ For details, see [onMissionClosed](#onmissionclosed).
 onMissionSnapshotChanged(mission: number): void
 ```
 
-Called when the system updates the snapshot of a mission.
+This callback is triggered when the system updates the task thumbnail of a mission.
 
 **Since:** 8
 
@@ -224,10 +218,8 @@ Called when the system updates the snapshot of a mission.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mission | number | Yes | Mission ID. |
+| mission | number | Yes | Indicates the mission ID. |
 
 **Examples**
 
-```TypeScript
 For details, see [onMissionClosed](#onmissionclosed).
-```

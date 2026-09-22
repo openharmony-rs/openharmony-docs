@@ -1,5 +1,9 @@
 # LightType
 
+```TypeScript
+export enum LightType
+```
+
 Enumerates the light types.
 
 @enum { int }

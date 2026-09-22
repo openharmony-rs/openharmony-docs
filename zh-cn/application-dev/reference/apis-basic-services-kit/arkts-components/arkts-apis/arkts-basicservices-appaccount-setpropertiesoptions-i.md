@@ -1,5 +1,9 @@
 # SetPropertiesOptions
 
+```TypeScript
+interface SetPropertiesOptions
+```
+
 表示用于设置属性的选项。
 
 **起始版本：** 9

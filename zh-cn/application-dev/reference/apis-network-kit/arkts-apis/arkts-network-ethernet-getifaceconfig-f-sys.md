@@ -61,22 +61,8 @@ ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.Interface
 });
 ```
 
-```TypeScript
-import { ethernet } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => {
-  console.info("getIfaceConfig promise mode = " + JSON.stringify(data.mode));
-  console.info("getIfaceConfig promise ipAddr = " + JSON.stringify(data.ipAddr));
-  console.info("getIfaceConfig promise route = " + JSON.stringify(data.route));
-  console.info("getIfaceConfig promise gateway = " + JSON.stringify(data.gateway));
-  console.info("getIfaceConfig promise netMask = " + JSON.stringify(data.netMask));
-  console.info("getIfaceConfig promise dnsServers = " + JSON.stringify(data.dnsServers));
-}).catch((error: BusinessError) => {
-  console.error("getIfaceConfig promise error = " + JSON.stringify(error));
-});
-```
-
+<a id="getifaceconfig-1"></a>
 
 ## getIfaceConfig
 
@@ -120,4 +106,18 @@ function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>
 
 **示例**
 
-参见 [getIfaceConfig](#getifaceconfig)
+```TypeScript
+import { ethernet } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => {
+  console.info("getIfaceConfig promise mode = " + JSON.stringify(data.mode));
+  console.info("getIfaceConfig promise ipAddr = " + JSON.stringify(data.ipAddr));
+  console.info("getIfaceConfig promise route = " + JSON.stringify(data.route));
+  console.info("getIfaceConfig promise gateway = " + JSON.stringify(data.gateway));
+  console.info("getIfaceConfig promise netMask = " + JSON.stringify(data.netMask));
+  console.info("getIfaceConfig promise dnsServers = " + JSON.stringify(data.dnsServers));
+}).catch((error: BusinessError) => {
+  console.error("getIfaceConfig promise error = " + JSON.stringify(error));
+});
+```

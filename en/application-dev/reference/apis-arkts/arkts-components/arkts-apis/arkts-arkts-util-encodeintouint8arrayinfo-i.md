@@ -1,5 +1,9 @@
 # EncodeIntoUint8ArrayInfo
 
+```TypeScript
+interface EncodeIntoUint8ArrayInfo
+```
+
 Encrypted information, including the number of read characters and the number of written bytes.
 
 **Since:** 11

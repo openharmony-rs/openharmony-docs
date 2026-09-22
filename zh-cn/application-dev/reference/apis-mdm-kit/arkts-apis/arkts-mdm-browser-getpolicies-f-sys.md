@@ -64,25 +64,8 @@ browser.getPolicies(wantTemp, appId, (err, result) => {
 });
 ```
 
-```TypeScript
-import { browser } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
-let appId: string = 'com.example.******_******/******5t5CoBM=';
-browser.getPolicies(wantTemp, appId).then((result) => {
-  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getpolicies-1"></a>
 
 ## getPolicies
 
@@ -127,4 +110,21 @@ function getPolicies(admin: Want, appId: string): Promise<string>
 
 **示例**
 
-参见 [getPolicies](#getpolicies)
+```TypeScript
+import { browser } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
+let appId: string = 'com.example.******_******/******5t5CoBM=';
+browser.getPolicies(wantTemp, appId).then((result) => {
+  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
+});
+```

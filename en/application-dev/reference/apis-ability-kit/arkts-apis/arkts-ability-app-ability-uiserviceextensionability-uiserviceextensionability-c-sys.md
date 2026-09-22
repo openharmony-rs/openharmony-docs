@@ -1,5 +1,9 @@
 # UIServiceExtensionAbility (System API)
 
+```TypeScript
+declare class UIServiceExtensionAbility extends ExtensionAbility
+```
+
 UIServiceExtensionAbility provides extended capabilities related to the floating window component. It inherits from [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md). It is mainly used to provide services with UIs for third-party applications.
 
 > **NOTE:** 

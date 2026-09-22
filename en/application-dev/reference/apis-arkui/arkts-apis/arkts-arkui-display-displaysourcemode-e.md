@@ -1,5 +1,9 @@
 # DisplaySourceMode
 
+```TypeScript
+enum DisplaySourceMode
+```
+
 Enumerates the display modes for screen content.
 
 **Since:** 19

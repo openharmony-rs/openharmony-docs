@@ -1,5 +1,9 @@
 # SetPropertyType (System API)
 
+```TypeScript
+enum SetPropertyType
+```
+
 Enumerates the types of properties to set.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # CaptureEndInfo
 
+```TypeScript
+interface CaptureEndInfo
+```
+
 拍照停止信息。
 
 **起始版本：** 10

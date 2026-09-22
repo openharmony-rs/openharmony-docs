@@ -1,5 +1,9 @@
 # PickerOptions
 
+```TypeScript
+export declare class PickerOptions extends photoAccessHelper.BaseSelectOptions
+```
+
 Describes the configuration of a Picker. It inherits from [photoAccessHelper.BaseSelectOptions](arkts-medialibrary-photoaccesshelper-baseselectoptions-c.md).
 
 **Inheritance/Implementation:** PickerOptions extends [photoAccessHelper.BaseSelectOptions](arkts-medialibrary-photoaccesshelper-baseselectoptions-c.md)

@@ -1,5 +1,9 @@
 # SyncFolderState (System API)
 
+```TypeScript
+enum SyncFolderState
+```
+
 Enumerates the states of the sync root.
 
 **Since:** 21

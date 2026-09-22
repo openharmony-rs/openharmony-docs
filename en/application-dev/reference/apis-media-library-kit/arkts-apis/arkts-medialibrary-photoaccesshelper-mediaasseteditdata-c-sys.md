@@ -1,5 +1,9 @@
 # MediaAssetEditData (System API)
 
+```TypeScript
+class MediaAssetEditData
+```
+
 Represents the edited media asset data.
 
 **Since:** 11

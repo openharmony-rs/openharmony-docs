@@ -1,5 +1,9 @@
 # RectHeightStyle
 
+```TypeScript
+enum RectHeightStyle
+```
+
 Enumerates the rectangle height styles.
 
 **Since:** 12

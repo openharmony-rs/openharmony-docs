@@ -1,5 +1,9 @@
 # WebSocketConnection
 
+```TypeScript
+export interface WebSocketConnection
+```
+
 Client information, including the IP address and port number.
 
 **Since:** 19

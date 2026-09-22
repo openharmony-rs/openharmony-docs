@@ -1,5 +1,9 @@
 # StyledDateTimeFormatOptions
 
+```TypeScript
+export interface StyledDateTimeFormatOptions
+```
+
 创建富文本显示的时间日期格式化对象时的可选配置项。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # UserActivityScenario
 
+```TypeScript
+export enum UserActivityScenario
+```
+
 Enum for user activity scenario.
 
 **Since:** 12

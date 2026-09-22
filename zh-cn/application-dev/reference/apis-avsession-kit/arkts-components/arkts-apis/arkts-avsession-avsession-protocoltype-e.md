@@ -1,5 +1,9 @@
 # ProtocolType
 
+```TypeScript
+enum ProtocolType
+```
+
 远端设备支持的协议类型的枚举。
 
 **起始版本：** 11

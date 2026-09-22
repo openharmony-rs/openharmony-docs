@@ -1,5 +1,9 @@
 # NotificationCapsule
 
+```TypeScript
+export interface NotificationCapsule
+```
+
 描述通知胶囊，用于在实况窗中展示胶囊形态。
 
 > **说明：** 

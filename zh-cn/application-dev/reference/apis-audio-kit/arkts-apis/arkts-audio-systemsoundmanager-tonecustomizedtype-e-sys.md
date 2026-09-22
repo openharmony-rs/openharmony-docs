@@ -1,5 +1,9 @@
 # ToneCustomizedType（系统接口）
 
+```TypeScript
+enum ToneCustomizedType
+```
+
 枚举，铃声自定义类型。
 
 **起始版本：** 12

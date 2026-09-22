@@ -1,5 +1,9 @@
 # RetentionSandboxInfo
 
+```TypeScript
+export interface RetentionSandboxInfo
+```
+
 保留沙箱的沙箱信息。
 
 **起始版本：** 10

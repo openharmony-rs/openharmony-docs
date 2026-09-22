@@ -34,3 +34,20 @@ function getSelectionContent(): Promise<string>
 | [33600006](../errorcode-selection.md#33600006-当前应用禁止获取内容) | The current application is prohibited from accessing content. |
 | [33600007](../errorcode-selection.md#33600007-划词内容长度超出范围) | The length of selected content is out of range. |
 | [33600008](../errorcode-selection.md#33600008-获取选中内容超时) | Getting the selected content times out. |
+
+**示例**
+
+```TypeScript
+import { selectionManager } from '@kit.BasicServicesKit';
+
+// 订阅划词完成事件，在回调中获取选中文本
+selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
+  try {
+    // 获取选中文本内容
+    let content = await selectionManager.getSelectionContent();
+    console.info(`Succeeded in getting selection content: ${content}`);
+  } catch (err) {
+    console.error(`Failed to get selection content. Error code: ${err.code}, error message: ${err.message}`);
+  }
+});
+```

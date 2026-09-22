@@ -1,5 +1,9 @@
 # AppBriefInfo（系统接口）
 
+```TypeScript
+export interface AppBriefInfo
+```
+
 简要应用信息。
 
 **起始版本：** 11

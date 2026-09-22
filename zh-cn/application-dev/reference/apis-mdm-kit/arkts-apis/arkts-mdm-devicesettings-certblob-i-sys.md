@@ -1,5 +1,9 @@
 # CertBlob（系统接口）
 
+```TypeScript
+export interface CertBlob
+```
+
 证书信息。
 
 **起始版本：** 10

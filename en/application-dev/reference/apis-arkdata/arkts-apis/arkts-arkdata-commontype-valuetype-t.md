@@ -1,7 +1,7 @@
 # ValueType
 
 ```TypeScript
-type ValueType = null | number | number | string | boolean | Uint8Array | Asset | Assets
+type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets
 ```
 
 Enumerates the value types, which vary with the parameter function.

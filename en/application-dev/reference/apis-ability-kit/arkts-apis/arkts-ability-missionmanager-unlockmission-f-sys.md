@@ -12,7 +12,7 @@ import { missionManager } from '@kit.AbilityKit';
 function unlockMission(missionId: number, callback: AsyncCallback<void>): void
 ```
 
-Unlocks a given mission. This API uses an asynchronous callback to return the result.
+Unlocks a given mission. This API is applicable to scenarios where a locked mission is allowed to be cleaned up by the system, such as when a system management application no longer needs to keep a mission running in the background. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -61,25 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { missionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// testMissionId is the mission ID, which can be obtained through the getMissionInfos API.
-let testMissionId = 2;
-
-try {
-  missionManager.unlockMission(testMissionId).then((data: void) => {
-    console.info(`unlockMission successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`unlockMission failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`unlockMission failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="unlockmission-1"></a>
 
 ## unlockMission
 
@@ -87,7 +70,7 @@ try {
 function unlockMission(missionId: number): Promise<void>
 ```
 
-Unlocks a given mission. This API uses a promise to return the result.
+Unlocks a given mission. This API is applicable to scenarios where a locked mission is allowed to be cleaned up by the system, such as when a system management application no longer needs to keep a mission running in the background. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -120,4 +103,21 @@ Unlocks a given mission. This API uses a promise to return the result.
 
 **Examples**
 
-See [unlockMission](#unlockmission)
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// testMissionId is the mission ID, which can be obtained through the getMissionInfos API.
+let testMissionId = 2;
+
+try {
+  missionManager.unlockMission(testMissionId).then((data: void) => {
+    console.info(`unlockMission successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`unlockMission failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`unlockMission failed. Code: ${err.code}, message: ${err.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # hiAppEvent(应用事件打点)
 
+```TypeScript
+declare namespace hiAppEvent
+```
+
 本模块提供了应用事件打点能力，包括对打点数据的落盘，以及对打点功能的管理配置。
 
 > **说明：** 
@@ -33,7 +37,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [write](arkts-performanceanalysis-hiappevent-write-depr-f.md#write) | 应用事件打点方法，将事件写入到当天的事件文件中，使用Promise方式作为异步回调。 |
-| [write](arkts-performanceanalysis-hiappevent-write-depr-f.md#write) | 应用事件打点方法，将事件写入到当天的事件文件中，使用callback方式作为异步回调。 |
+| [write](arkts-performanceanalysis-hiappevent-write-depr-f.md#write-1) | 应用事件打点方法，将事件写入到当天的事件文件中，使用callback方式作为异步回调。 |
 | [configure](arkts-performanceanalysis-hiappevent-configure-depr-f.md#configure) | 应用事件打点配置方法，可用于配置打点开关、文件目录存储限额大小等功能。 |
 
 ### 接口

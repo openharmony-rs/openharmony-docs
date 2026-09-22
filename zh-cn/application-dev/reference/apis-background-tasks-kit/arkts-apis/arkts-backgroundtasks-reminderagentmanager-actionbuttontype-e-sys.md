@@ -1,5 +1,9 @@
 # ActionButtonType
 
+```TypeScript
+export enum ActionButtonType
+```
+
 提醒上的按钮的类型。
 
 **起始版本：** 9

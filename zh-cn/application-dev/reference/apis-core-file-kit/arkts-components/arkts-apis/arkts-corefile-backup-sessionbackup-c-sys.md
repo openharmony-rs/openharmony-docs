@@ -1,5 +1,9 @@
 # SessionBackup（系统接口）
 
+```TypeScript
+class SessionBackup
+```
+
 备份流程对象，用于支撑应用全量备份流程。
 
 **起始版本：** 10
@@ -102,68 +106,6 @@ let generalCallbacks: backup.GeneralCallbacks = {
   }
 };
 let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
-try {
-  let backupApps: Array<string> = [
-    "com.example.hiworld",
-  ];
-  sessionBackup.appendBundles(backupApps, (err: BusinessError) => {
-    if (err) {
-      console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('appendBundles success');
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
 async function appendBundles() {
   try {
     let backupApps: Array<string> = [
@@ -221,6 +163,8 @@ async function appendBundles() {
   }
 }
 ```
+
+<a id="appendbundles-1"></a>
 
 ## appendBundles
 
@@ -318,109 +262,6 @@ try {
 } catch (error) {
   let err: BusinessError = error as BusinessError;
   console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
-async function appendBundles() {
-  try {
-    let backupApps: Array<string> = [
-      "com.example.hiworld",
-      "com.example.myApp"
-    ];
-    await sessionBackup.appendBundles(backupApps);
-    console.info('appendBundles success');
-    // 携带扩展参数, 其中infos,details和外层的type节点为固定节点
-    let infos: Array<string> = [
-      `
-      {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.hiworld"
-          }
-      ]
-  },
-  {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.myApp"
-          }
-      ]
-  }
-    `
-  ]
-    await sessionBackup.appendBundles(backupApps, infos);
-    console.info('appendBundles success');
-  } catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-  }
 }
 ```
 
@@ -821,8 +662,24 @@ try {
 }
 ```
 
-```TypeScript
 异步返回JSON串示例：
+
+```TypeScript
+{
+ "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
+     {
+         "name": "com.example.hiworld", // 应用名称
+         "dataSize": 1006060, // 数据量大小
+         "incDataSize":-1 // 增量数据量大小，全量扫描、非精确扫描时为-1，增量精确扫描时为实际增量数据量大小
+     },
+     {
+         "name": "com.example.myAPP",
+         "dataSize": 5000027,
+         "incDataSize": -1
+     }
+ ],
+ "scanning": "com.example.smartAPP" // 正在扫描的应用，在最后一次结果返回时，该字段为空
+}
 ```
 
 ## getCompatibilityInfo
@@ -1068,8 +925,23 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
-```TypeScript
 能力文件可以通过[@ohos.file.fs](arkts-corefile-fileio-n.md)提供的fileIo.stat等相关接口获取，能力文件内容示例：
+
+```TypeScript
+{
+ "backupVersion" : "16.0",
+ "bundleInfos" :[{
+   "allToBackup" : true,
+   "extensionName" : "BackupExtensionAbility",
+   "name" : "com.example.hiworld",
+   "needToInstall" : false,
+   "spaceOccupied" : 0,
+   "versionCode" : 1000000,
+   "versionName" : "1.0.0"
+   }],
+ "deviceType" : "default",
+ "systemFullName" : "OpenHarmony-4.0.0.0"
+}
 ```
 
 ## release

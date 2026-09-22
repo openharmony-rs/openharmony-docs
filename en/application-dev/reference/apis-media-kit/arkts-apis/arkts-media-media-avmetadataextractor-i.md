@@ -1,6 +1,10 @@
 # AVMetadataExtractor
 
-AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md) to create an AVMetadataExtractor instance.
+```TypeScript
+interface AVMetadataExtractor
+```
+
+AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-2) to create an AVMetadataExtractor instance.
 
 For details about the demo of obtaining audio or video metadata and video thumbnails, see [Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)](../../../media/media/avmetadataextractor.md).
 
@@ -28,6 +32,24 @@ Cancels the ongoing task of obtaining thumbnails in batches. (The thumbnails tha
 
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**Examples**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
+
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+  if (extractor) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.cancelAllFetchFrames();
+  } else {
+    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+  }
+});
+```
+
 ## fetchAlbumCover
 
 ```TypeScript
@@ -53,6 +75,30 @@ Obtains the cover of the audio album. This API uses an asynchronous callback to 
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400106](../errorcode-media.md#5400106-format-not-supported) | Unsupported format. Returned by callback. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVMetadataExtractor instance.
+  let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+  let pixel_map: image.PixelMap | undefined = undefined;
+
+  avMetadataExtractor.fetchAlbumCover((error: BusinessError, pixelMap: image.PixelMap) => {
+    if (error) {
+      console.error(`Failed to fetch AlbumCover, error = ${JSON.stringify(error)}`);
+      return;
+    }
+    pixel_map = pixelMap;
+  });
+}
+```
+
+<a id="fetchalbumcover-2"></a>
+
 ## fetchAlbumCover
 
 ```TypeScript
@@ -77,6 +123,26 @@ Obtains the cover of the audio album. This API uses a promise to return the resu
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Returned by promise. |
 | [5400106](../errorcode-media.md#5400106-format-not-supported) | Unsupported format. Returned by promise. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVMetadataExtractor instance.
+  let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+  let pixel_map: image.PixelMap | undefined = undefined;
+
+  avMetadataExtractor.fetchAlbumCover().then((pixelMap: image.PixelMap) => {
+    pixel_map = pixelMap;
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to fetch AlbumCover, error message:${error.message}`);
+  });
+}
+```
 
 ## fetchFrameByTime
 
@@ -112,6 +178,39 @@ Obtains a video thumbnail. This API uses a promise to return the result.
 | [5400106](../errorcode-media.md#5400106-format-not-supported) | Unsupported format. Returned by promise. |
 | [5400108](../errorcode-media.md#5400108-parameter-value-out-of-range) | Parameter check failed. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-request-not-supported-due-to-http-plaintext-interception) | Http cleartext traffic is not permitted.<br>**Applicable version:** 23 and later |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
+let pixelMap: image.PixelMap | undefined = undefined;
+
+// Initialize input parameters.
+let timeUs: number = 0;
+let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+let param: media.PixelMapParams = {
+  width: 300,
+  height: 300
+};
+// Obtain the thumbnail.
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+  if (extractor) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+      pixelMap = pixelMap;
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
+    });
+  } else {
+    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+  }
+});
+```
 
 ## fetchFrameByTimeWithTimeout
 
@@ -152,6 +251,40 @@ Obtains a video thumbnail. You can set the maximum timeout interval (**timeoutMs
 | [5400106](../errorcode-media.md#5400106-format-not-supported) | Unsupported format. Returned by promise. |
 | [5400108](../errorcode-media.md#5400108-parameter-value-out-of-range) | Parameter check failed. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-request-not-supported-due-to-http-plaintext-interception) | Http cleartext traffic is not permitted. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
+let pixelMap: image.PixelMap | undefined = undefined;
+
+// Initialize input parameters.
+let timeUs: number = 0;
+let timeoutMs: number = 3000;
+let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+let param: media.PixelMapParams = {
+  width: 300,
+  height: 300
+};
+// Obtain the thumbnail.
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+  if (extractor) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
+      pixelMap = pixelMap;
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
+    });
+  } else {
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code}, message:${error.message}`);
+  }
+});
+```
 
 ## fetchFramesByTimes
 
@@ -195,6 +328,37 @@ Obtains video thumbnails in batches. This API uses an asynchronous callback to r
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. |
 | [5400108](../errorcode-media.md#5400108-parameter-value-out-of-range) | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
 | [5411012](../errorcode-media.md#5411012-request-not-supported-due-to-http-plaintext-interception) | Http cleartext not permitted. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+async function fetchFramesByTimesDemo() {
+  // Initialize input parameters.
+  let timesUs: number[] = [0];
+  let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+  let param: media.PixelMapParams = {
+    width: 300,
+    height: 300
+  };
+  // Obtain the thumbnail.
+  let avMetadataExtractor = await media.createAVMetadataExtractor();
+  if (avMetadataExtractor) {
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+      if (err) {
+        console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
+        return;
+      }
+      if (frameInfo != undefined && frameInfo.image != undefined) {
+        let pixelMap = frameInfo.image;
+      }});
+  }
+}
+```
 
 ## fetchFramesByTimesWithTimeout
 
@@ -242,6 +406,38 @@ Obtains video thumbnails in batches. You can set the maximum timeout interval (*
 | [5400108](../errorcode-media.md#5400108-parameter-value-out-of-range) | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
 | [5411012](../errorcode-media.md#5411012-request-not-supported-due-to-http-plaintext-interception) | Http cleartext not permitted. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+async function fetchFramesByTimesDemo() {
+  // Initialize input parameters.
+  let timesUs: number[] = [0];
+  let timeoutMs: number = 3000;
+  let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+  let param: media.PixelMapParams = {
+    width: 300,
+    height: 300
+  };
+  // Obtain the thumbnail.
+  let avMetadataExtractor = await media.createAVMetadataExtractor();
+  if (avMetadataExtractor) {
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+      if (err) {
+        console.error(`fetchFramesByTimes callback failed, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      if (frameInfo != undefined && frameInfo.image != undefined) {
+        let pixelMap = frameInfo.image;
+      }});
+  }
+}
+```
+
 ## fetchMetadata
 
 ```TypeScript
@@ -268,6 +464,27 @@ Obtains the media metadata. This API uses an asynchronous callback to return the
 | [5400106](../errorcode-media.md#5400106-format-not-supported) | Unsupported format. Returned by callback. |
 | [5411012](../errorcode-media.md#5411012-request-not-supported-due-to-http-plaintext-interception) | Http cleartext traffic is not permitted.<br>**Applicable version:** 23 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVMetadataExtractor instance.
+  let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+  avMetadataExtractor.fetchMetadata((error: BusinessError, metadata: media.AVMetadata) => {
+    if (error) {
+      console.error(`Failed to fetch Metadata, err = ${JSON.stringify(error)}`);
+      return;
+    }
+    console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+  });
+}
+```
+
+<a id="fetchmetadata-2"></a>
+
 ## fetchMetadata
 
 ```TypeScript
@@ -293,6 +510,23 @@ Obtains the media metadata. This API uses a promise to return the result.
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Returned by promise. |
 | [5400106](../errorcode-media.md#5400106-format-not-supported) | Unsupported format. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-request-not-supported-due-to-http-plaintext-interception) | Http cleartext traffic is not permitted.<br>**Applicable version:** 23 and later |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVMetadataExtractor instance.
+  let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+  avMetadataExtractor.fetchMetadata().then((metadata: media.AVMetadata) => {
+    console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to fetch Metadata, error message:${error.message}`);
+  });
+}
+```
 
 ## fetchMetadataWithTimeout
 
@@ -330,6 +564,26 @@ Obtains the media metadata. You can set the maximum timeout interval (**timeoutM
 | [5400108](../errorcode-media.md#5400108-parameter-value-out-of-range) | Parameter check failed. Returned by promise. |
 | [5411012](../errorcode-media.md#5411012-request-not-supported-due-to-http-plaintext-interception) | Http cleartext traffic is not permitted. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVMetadataExtractor instance.
+  let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+  let timeoutMs = 3000;
+  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata | undefined) => {
+    if (metadata) {
+      console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to fetch Metadata, code: ${error.code}, message: ${error.message}`);
+  });
+}
+```
+
 ## release
 
 ```TypeScript
@@ -353,6 +607,27 @@ Releases this AVMetadataExtractor instance. This API uses an asynchronous callba
 | Error Code ID | Error Message |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Returned by callback. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVMetadataExtractor instance.
+  let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+  avMetadataExtractor.release((error: BusinessError) => {
+    if (error) {
+      console.error(`Failed to release, err = ${JSON.stringify(error)}`);
+      return;
+    }
+    console.info(`Succeeded in releasing.`);
+  });
+}
+```
+
+<a id="release-1"></a>
 
 ## release
 
@@ -378,6 +653,23 @@ Releases this AVMetadataExtractor instance. This API uses a promise to return th
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Returned by promise. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVMetadataExtractor instance.
+  let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+  avMetadataExtractor.release().then(() => {
+    console.info(`Succeeded in releasing.`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to release, error message:${error.message}`);
+  });
+}
+```
+
 ## setUrlSource
 
 ```TypeScript
@@ -396,6 +688,29 @@ Sets the data source for a network on-demand resource. Only network metadata ([f
 | --- | --- | --- | --- |
 | url | string | Yes | URL of the media resource.<br>1. The video formats MP4, MPEG-TS, and MKV are supported.<br>2. The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported.<br> **Example of supported URLs**:<br>1. HTTP: http://xx<br>2. HTTPS: https://xx<br>Note: HLS/DASH and live streaming resources are not supported. |
 | headers | Record&lt;string, string&gt; | No | Custom HTTP headers for accessing the network resource. The default value is empty. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
+
+media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
+  if (extractor) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+    let url = "http://xx";
+    let headers: Record<string, string> = {
+      "User-Agent": "User-Agent-Value"
+    };
+    avMetadataExtractor.setUrlSource(url, headers);
+  } else {
+    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+  }
+});
+```
 
 ## dataSrc
 

@@ -1,8 +1,12 @@
 # RGBBias (System API)
 
+```TypeScript
+interface RGBBias
+```
+
 RGB bias values.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -24,7 +28,7 @@ The blue bias.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ The green bias.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -60,7 +64,7 @@ The red bias.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

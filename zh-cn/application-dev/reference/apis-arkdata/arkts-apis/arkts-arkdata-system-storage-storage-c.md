@@ -1,5 +1,9 @@
 # Storage
 
+```TypeScript
+export default class Storage
+```
+
 **起始版本：** 3
 
 **废弃版本：** 6

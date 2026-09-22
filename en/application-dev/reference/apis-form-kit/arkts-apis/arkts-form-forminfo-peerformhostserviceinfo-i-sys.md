@@ -1,8 +1,12 @@
 # PeerFormHostServiceInfo (System API)
 
+```TypeScript
+interface PeerFormHostServiceInfo
+```
+
 PeerFormHostServiceInfo
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -24,7 +28,7 @@ The custom data of the peer form host service.
 
 **Type:** Record&lt;string, string&gt;
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ The device Id of the peer form host service.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -60,7 +64,7 @@ The display Id of the peer form host service.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -78,7 +82,7 @@ The network Id of the peer form host service.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -96,7 +100,7 @@ The service display name of the peer form host service.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -114,7 +118,7 @@ The service Id of the peer form host service.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -132,7 +136,7 @@ The service name of the peer form host service.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

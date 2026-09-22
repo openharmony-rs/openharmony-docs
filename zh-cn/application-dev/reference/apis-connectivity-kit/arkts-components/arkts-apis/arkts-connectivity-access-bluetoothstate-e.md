@@ -1,5 +1,9 @@
 # BluetoothState
 
+```TypeScript
+export enum BluetoothState
+```
+
 枚举，蓝牙开关状态。
 
 **起始版本：** 10

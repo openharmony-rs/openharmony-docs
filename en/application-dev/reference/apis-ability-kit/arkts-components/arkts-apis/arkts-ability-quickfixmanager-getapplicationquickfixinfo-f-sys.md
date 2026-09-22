@@ -59,22 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { quickFixManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let bundleName = 'bundleName';
-  quickFixManager.getApplicationQuickFixInfo(bundleName).then((data) => {
-    console.info(`getApplicationQuickFixInfo success: ${data}`);
-  }).catch((error: BusinessError) => {
-    console.error(`getApplicationQuickFixInfo err: ${error}`);
-  });
-} catch (paramError) {
-  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-}
-```
-
+<a id="getapplicationquickfixinfo-1"></a>
 
 ## getApplicationQuickFixInfo
 
@@ -116,4 +102,18 @@ Obtains the quick fix information of the application. This API uses a promise to
 
 **Examples**
 
-See [getApplicationQuickFixInfo](#getapplicationquickfixinfo)
+```TypeScript
+import { quickFixManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let bundleName = 'bundleName';
+  quickFixManager.getApplicationQuickFixInfo(bundleName).then((data) => {
+    console.info(`getApplicationQuickFixInfo success: ${data}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getApplicationQuickFixInfo err: ${error}`);
+  });
+} catch (paramError) {
+  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+}
+```

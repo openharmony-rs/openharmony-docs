@@ -51,17 +51,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
   }
 ```
 
-```TypeScript
-import { wifiManager } from '@kit.ConnectivityKit';
 
-  try {
-    let setting:wifiManager.ConnectSettings = { networkId: 0 }; // 候选网络ID，在添加候选网络时生成
-    wifiManager.connectToCandidateConfig(setting);
-  }catch(error){
-    console.error("failed:" + JSON.stringify(error));
-  }
-```
-
+<a id="connecttocandidateconfig-1"></a>
 
 ## connectToCandidateConfig
 
@@ -107,4 +98,13 @@ function connectToCandidateConfig(settings: ConnectSettings): Promise<void>
 
 **示例**
 
-参见 connectToCandidateConfig
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let setting:wifiManager.ConnectSettings = { networkId: 0 }; // 候选网络ID，在添加候选网络时生成
+    wifiManager.connectToCandidateConfig(setting);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+```

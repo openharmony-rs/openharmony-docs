@@ -1,5 +1,9 @@
 # Geofence（系统接口）
 
+```TypeScript
+export interface Geofence
+```
+
 地理围栏的配置信息。
 
 **起始版本：** 23

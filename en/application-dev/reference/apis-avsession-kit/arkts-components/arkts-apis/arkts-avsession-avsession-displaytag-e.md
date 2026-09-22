@@ -1,5 +1,9 @@
 # DisplayTag
 
+```TypeScript
+enum DisplayTag
+```
+
 The pre-defined display tag by system.
 
 **Since:** 11

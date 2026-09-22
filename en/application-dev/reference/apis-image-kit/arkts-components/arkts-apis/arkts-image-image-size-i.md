@@ -1,5 +1,9 @@
 # Size
 
+```TypeScript
+interface Size
+```
+
 Describes the size of an image.
 
 **Since:** 6

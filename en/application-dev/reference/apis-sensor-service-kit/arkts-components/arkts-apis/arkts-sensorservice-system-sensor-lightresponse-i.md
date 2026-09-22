@@ -1,5 +1,9 @@
 # LightResponse
 
+```TypeScript
+export interface LightResponse
+```
+
 Defines a **LightResponse** object.
 
 **Since:** 3

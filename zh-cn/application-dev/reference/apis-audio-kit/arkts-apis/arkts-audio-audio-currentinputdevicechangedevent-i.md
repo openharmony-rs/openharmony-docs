@@ -1,5 +1,9 @@
 # CurrentInputDeviceChangedEvent
 
+```TypeScript
+interface CurrentInputDeviceChangedEvent
+```
+
 应用接收到输入设备的变更事件。
 
 **起始版本：** 21

@@ -1,5 +1,9 @@
 # KeyFramePolicy
 
+```TypeScript
+interface KeyFramePolicy
+```
+
 Describes the configuration for keyframe policies.
 
 **Since:** 20

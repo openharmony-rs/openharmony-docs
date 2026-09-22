@@ -1,5 +1,9 @@
 # CarKeyActionType (System API)
 
+```TypeScript
+enum CarKeyActionType
+```
+
 Enum for the action of car key.
 
 **Since:** 26.0.0

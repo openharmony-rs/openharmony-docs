@@ -17,6 +17,8 @@ Post-Quantum Cryptography密钥解封装操作，支持HUKS密钥管理或由应
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **参数：**

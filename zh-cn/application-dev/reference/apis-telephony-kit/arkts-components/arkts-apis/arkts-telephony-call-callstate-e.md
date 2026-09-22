@@ -1,5 +1,9 @@
 # CallState
 
+```TypeScript
+export enum CallState
+```
+
 通话状态码。
 
 **起始版本：** 6

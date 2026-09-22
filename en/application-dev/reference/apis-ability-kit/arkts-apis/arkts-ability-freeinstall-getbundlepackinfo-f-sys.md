@@ -42,6 +42,8 @@ Obtains bundlePackInfo based on **bundleName** and **bundlePackFlag**. This API 
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name is not found. |
 
 
+<a id="getbundlepackinfo-1"></a>
+
 ## getBundlePackInfo
 
 ```TypeScript

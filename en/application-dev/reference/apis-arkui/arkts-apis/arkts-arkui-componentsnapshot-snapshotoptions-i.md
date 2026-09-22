@@ -1,5 +1,9 @@
 # SnapshotOptions
 
+```TypeScript
+interface SnapshotOptions
+```
+
 Defines the extra options for snapshot taking.
 
 **Since:** 12

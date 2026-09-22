@@ -1,5 +1,9 @@
 # ShortMessageClass
 
+```TypeScript
+export enum ShortMessageClass
+```
+
 短信类型。
 
 **起始版本：** 6

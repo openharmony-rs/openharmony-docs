@@ -1,5 +1,9 @@
 # SensorType
 
+```TypeScript
+enum SensorType
+```
+
 表示要订阅或取消订阅的传感器类型。
 
 > **说明：** 

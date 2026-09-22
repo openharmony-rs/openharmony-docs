@@ -1,5 +1,9 @@
 # NetworkInformation（系统接口）
 
+```TypeScript
+export interface NetworkInformation
+```
+
 Obtains the network information.
 
 **起始版本：** 6

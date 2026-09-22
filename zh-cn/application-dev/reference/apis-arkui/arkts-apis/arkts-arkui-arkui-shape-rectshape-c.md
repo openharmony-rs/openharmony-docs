@@ -1,10 +1,14 @@
 # RectShape
 
+```TypeScript
+export declare class RectShape extends BaseShape<RectShape>
+```
+
 用于clipShape和maskShape接口的矩形形状。
 
 继承自[BaseShape](arkts-arkui-arkui-shape-baseshape-c.md)。
 
-**继承/实现关系：** RectShape extends BaseShape&lt;RectShape&gt;
+**继承/实现关系：** RectShape extends BaseShape<RectShape>
 
 **起始版本：** 12
 

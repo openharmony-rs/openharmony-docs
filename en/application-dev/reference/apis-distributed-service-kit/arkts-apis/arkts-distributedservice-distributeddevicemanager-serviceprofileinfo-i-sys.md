@@ -1,5 +1,9 @@
 # ServiceProfileInfo (System API)
 
+```TypeScript
+interface ServiceProfileInfo
+```
+
 Defines the service profile information. It is populated based on the data returned from the cloud.
 
 **Since:** 15

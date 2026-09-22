@@ -1,5 +1,9 @@
 # SharedPhotoAsset (System API)
 
+```TypeScript
+interface SharedPhotoAsset
+```
+
 Describes the information about a shared media asset.
 
 **Since:** 13

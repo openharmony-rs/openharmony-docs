@@ -1,5 +1,9 @@
 # ComponentType
 
+```TypeScript
+enum ComponentType
+```
+
 表示图像的组件类型的枚举。
 
 **起始版本：** 9

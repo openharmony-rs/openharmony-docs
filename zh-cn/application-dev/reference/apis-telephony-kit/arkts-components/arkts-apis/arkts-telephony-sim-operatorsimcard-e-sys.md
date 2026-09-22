@@ -1,5 +1,9 @@
 # OperatorSimCard（系统接口）
 
+```TypeScript
+export enum OperatorSimCard
+```
+
 **起始版本：** 11
 
 **系统能力：** SystemCapability.Telephony.CoreService

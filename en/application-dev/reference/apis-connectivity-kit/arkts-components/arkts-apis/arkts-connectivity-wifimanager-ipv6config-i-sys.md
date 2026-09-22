@@ -1,5 +1,9 @@
 # Ipv6Config (System API)
 
+```TypeScript
+interface Ipv6Config
+```
+
 Wi-Fi Ipv6 configuration information. @typedef Ipv6Config
 
 **Since:** 20

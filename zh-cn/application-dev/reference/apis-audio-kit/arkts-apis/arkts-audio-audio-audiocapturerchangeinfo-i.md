@@ -1,5 +1,9 @@
 # AudioCapturerChangeInfo
 
+```TypeScript
+interface AudioCapturerChangeInfo
+```
+
 描述音频采集器更改信息。
 
 **起始版本：** 9
@@ -60,7 +64,7 @@ readonly muted?: boolean
 readonly streamId: number
 ```
 
-音频流唯一id。
+音频流唯一ID。
 
 **类型：** number
 

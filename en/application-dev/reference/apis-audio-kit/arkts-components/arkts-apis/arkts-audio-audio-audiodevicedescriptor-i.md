@@ -1,5 +1,9 @@
 # AudioDeviceDescriptor
 
+```TypeScript
+interface AudioDeviceDescriptor
+```
+
 Describes an audio device.
 
 **Since:** 7

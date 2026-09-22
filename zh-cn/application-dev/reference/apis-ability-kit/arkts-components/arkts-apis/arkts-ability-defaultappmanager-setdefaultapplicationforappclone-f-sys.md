@@ -12,7 +12,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 function setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: number, userId?: number): void
 ```
 
-以同步方法将分身应用设置为打开相应type类型的默认应用。将应用设置为默认浏览器时，目标应用必须已被授予ohos.permission.DEFAULT_WEB_BROWSER权限，否则返回错误码18000001。 [since 26.1.0]
+以同步方法将分身应用设置为打开相应type类型的默认应用。将应用设置为默认浏览器时，目标应用必须已被授予ohos.permission.DEFAULT_WEB_BROWSER权限，否则返回错误码18000001。 [since 26.0.1]
 
 **起始版本：** 23
 
@@ -42,7 +42,7 @@ function setDefaultApplicationForAppClone(type: string, elementName: ElementName
 | [17700025](../errorcode-bundle.md#17700025-输入的type无效) | The specified type is invalid. |
 | [17700028](../errorcode-bundle.md#17700028-输入的ability与type不匹配) | The specified ability and type do not match. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
-| [18000001](../errorcode-bundle.md#18000001-设置默认浏览器时应用缺少默认浏览器权限) | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br>**适用版本：** 26.1.0+ |
+| [18000001](../errorcode-bundle.md#18000001-设置默认浏览器时应用缺少默认浏览器权限) | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br>**适用版本：** 26.0.1+ |
 
 **示例**
 

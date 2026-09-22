@@ -1,5 +1,9 @@
 # FocusQuery
 
+```TypeScript
+interface FocusQuery
+```
+
 提供了查询是否支持当前对焦模式的方法。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # RecentPhotoInfo
 
+```TypeScript
+export class RecentPhotoInfo
+```
+
 最近图片相关信息。
 
 **起始版本：** 20

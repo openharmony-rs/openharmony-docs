@@ -1,5 +1,9 @@
 # AbilityFormInfo（系统接口）
 
+```TypeScript
+export interface AbilityFormInfo
+```
+
 卡片信息。
 
 **起始版本：** 9

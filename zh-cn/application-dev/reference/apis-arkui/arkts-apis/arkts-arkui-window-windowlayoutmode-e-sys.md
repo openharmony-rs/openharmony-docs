@@ -1,5 +1,9 @@
 # WindowLayoutMode（系统接口）
 
+```TypeScript
+enum WindowLayoutMode
+```
+
 窗口布局模式枚举。
 
 **起始版本：** 9

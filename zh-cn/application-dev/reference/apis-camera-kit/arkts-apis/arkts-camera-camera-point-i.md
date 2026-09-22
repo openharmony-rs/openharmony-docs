@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+interface Point
+```
+
 点坐标用于对焦和曝光配置。
 
 **起始版本：** 10

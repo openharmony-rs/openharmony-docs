@@ -1,5 +1,9 @@
 # SharedPhotoAsset（系统接口）
 
+```TypeScript
+interface SharedPhotoAsset
+```
+
 共享图片资产。
 
 **起始版本：** 13

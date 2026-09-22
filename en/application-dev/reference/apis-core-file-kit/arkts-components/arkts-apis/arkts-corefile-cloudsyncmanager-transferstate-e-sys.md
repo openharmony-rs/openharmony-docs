@@ -1,5 +1,9 @@
 # TransferState (System API)
 
+```TypeScript
+enum TransferState
+```
+
 Describes the state type of transfer task.
 
 **Since:** 26.0.0

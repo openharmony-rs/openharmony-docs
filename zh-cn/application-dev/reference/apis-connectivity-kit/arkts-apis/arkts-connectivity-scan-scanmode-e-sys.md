@@ -1,5 +1,9 @@
 # ScanMode
 
+```TypeScript
+enum ScanMode
+```
+
 表示扫描模式，为枚举值。
 
 **起始版本：** 26.0.0

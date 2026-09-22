@@ -1,5 +1,9 @@
 # Flags
 
+```TypeScript
+export enum Flags
+```
+
 Enumerates the flags that specify how the Want will be handled.
 
 **Since:** 6

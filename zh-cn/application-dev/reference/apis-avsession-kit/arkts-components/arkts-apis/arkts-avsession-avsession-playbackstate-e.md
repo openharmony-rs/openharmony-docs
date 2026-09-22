@@ -1,5 +1,9 @@
 # PlaybackState
 
+```TypeScript
+enum PlaybackState
+```
+
 表示媒体播放状态的枚举。
 
 **起始版本：** 10

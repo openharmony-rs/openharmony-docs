@@ -18,7 +18,7 @@ function setPrinterDisabled(admin: Want, disabled: boolean, callback: AsyncCallb
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -67,24 +67,8 @@ restrictions.setPrinterDisabled(wantTemp, true, (err) => {
 })
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-restrictions.setPrinterDisabled(wantTemp, true).then(() => {
-  console.info('Succeeded in setting printer disabled');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set printer disabled. Code is ${err.code}, message is ${err.message}`);
-})
-```
-
+<a id="setprinterdisabled-1"></a>
 
 ## setPrinterDisabled
 
@@ -98,7 +82,7 @@ function setPrinterDisabled(admin: Want, disabled: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -133,4 +117,20 @@ function setPrinterDisabled(admin: Want, disabled: boolean): Promise<void>
 
 **示例**
 
-参见 [setPrinterDisabled](#setprinterdisabled)
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+restrictions.setPrinterDisabled(wantTemp, true).then(() => {
+  console.info('Succeeded in setting printer disabled');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set printer disabled. Code is ${err.code}, message is ${err.message}`);
+})
+```

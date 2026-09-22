@@ -1,5 +1,9 @@
 # USBEndpoint
 
+```TypeScript
+interface USBEndpoint
+```
+
 USB端点，用于主机与设备之间数据传输的通信端点。通过[USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md)获取。
 
 > **说明：** 
@@ -8,6 +12,8 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 > isochronous)采用带宽预留调度，适合音视频等实时数据流。
 > 
 > 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
+
+![USBEndpoint](../../../reference/figures/USBEndpoint.png)
 
 **起始版本：** 9
 

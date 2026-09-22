@@ -56,6 +56,8 @@ wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
 ```
 
 
+<a id="getlinkedinfo-1"></a>
+
 ## getLinkedInfo
 
 ```TypeScript
@@ -94,4 +96,4 @@ function getLinkedInfo(callback: AsyncCallback<WifiLinkedInfo>): void
 
 **示例**
 
-参见 getLinkedInfo
+参见 [getLinkedInfo](#getlinkedinfo)

@@ -1,5 +1,9 @@
 # Component
 
+```TypeScript
+interface Component
+```
+
 描述图像颜色分量。
 
 **起始版本：** 9

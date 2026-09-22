@@ -1,5 +1,9 @@
 # HuksExternalErrorInfo
 
+```TypeScript
+export interface HuksExternalErrorInfo
+```
+
 详细错误信息
 
 **起始版本：** 26.0.0

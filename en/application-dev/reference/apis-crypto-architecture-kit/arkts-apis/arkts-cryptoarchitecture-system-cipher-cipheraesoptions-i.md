@@ -1,5 +1,9 @@
 # CipherAesOptions
 
+```TypeScript
+export interface CipherAesOptions
+```
+
 Defines the input parameters of **cipher.aes()**.
 
 **Since:** 3

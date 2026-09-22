@@ -1,5 +1,9 @@
 # ColorEffectQuery（系统接口）
 
+```TypeScript
+interface ColorEffectQuery
+```
+
 Provides the API to obtain the color effects supported.
 
 **起始版本：** 12

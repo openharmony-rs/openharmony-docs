@@ -1,5 +1,9 @@
 # FenceExtensionAbility
 
+```TypeScript
+export default class FenceExtensionAbility
+```
+
 FenceExtensionAbility为开发者提供的地理围栏相关的能力。
 
 **起始版本：** 14

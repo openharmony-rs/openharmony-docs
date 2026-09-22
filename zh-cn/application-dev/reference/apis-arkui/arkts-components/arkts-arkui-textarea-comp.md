@@ -26,7 +26,7 @@ TextArea(value?: TextAreaOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [TextAreaOptions](arkts-arkui-textareaoptions-i.md) | 否 | TextArea组件参数。默认值：详见TextAreaOptions。 |
+| value | [TextAreaOptions](arkts-arkui-textarea-comp-textareaoptions-i.md) | 否 | TextArea组件参数。默认值：详见TextAreaOptions。 |
 
 ## 汇总
 
@@ -34,39 +34,114 @@ TextArea(value?: TextAreaOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [TextAreaOptions](arkts-arkui-textareaoptions-i.md) | TextArea初始化参数。 |
+| [TextAreaOptions](arkts-arkui-textarea-comp-textareaoptions-i.md) | TextArea初始化参数。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [TextAreaSubmitCallback](arkts-arkui-textareasubmitcallback-t.md) | 软键盘按下回车键时的回调事件。 |
+| [TextAreaSubmitCallback](arkts-arkui-textarea-comp-textareasubmitcallback-t.md) | 软键盘按下回车键时的回调事件。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [TextAreaType](arkts-arkui-textareatype-e.md) | 多行文本输入框类型。 |
+| [TextAreaType](arkts-arkui-textarea-comp-textareatype-e.md) | 多行文本输入框类型。 |
 
 ## 示例
 
-```TypeScript
 ### 示例1（设置与获取光标位置）
 
-从API version 8开始，该示例通过[controller](arkts-arkui-textareacontroller-c.md)实现了光标位置的设置与获取。
+从API version 8开始，该示例通过[controller](arkts-arkui-textarea-comp-textareacontroller-c.md)实现了光标位置的设置与获取。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = '';
+  @State positionInfo: CaretOffset = { index: 0, x: 0, y: 0 };
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({
+        text: this.text,
+        placeholder: 'The text area can hold an unlimited amount of text. input your word...',
+        controller: this.controller
+      })
+        .placeholderFont({ size: 16, weight: 400 })
+        .width(336)
+        .height(56)
+        .margin(20)
+        .fontSize(16)
+        .fontColor('#182431')
+        .backgroundColor('#FFFFFF')
+        .onChange((value: string) => {
+          this.text = value;
+        })
+      Text(this.text)
+      Button('Set caretPosition 1')
+        .backgroundColor('#007DFF')
+        .margin(15)
+        .onClick(() => {
+          // 设置光标位置到第一个字符后
+          this.controller.caretPosition(1);
+        })
+      Button('Get CaretOffset')
+        .backgroundColor('#007DFF')
+        .margin(15)
+        .onClick(() => {
+          this.positionInfo = this.controller.getCaretOffset();
+        })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
 ### 示例2（设置计数器）
 
 从API version 10开始，该示例通过[maxLength](#maxlength10)、[showCounter](#showcounter10)属性实现了计数器的功能。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = '';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({
+        text: this.text,
+        placeholder: 'The text area can hold an unlimited amount of text. input your word...',
+        controller: this.controller
+      })
+        .placeholderFont({ size: 16, weight: 400 })
+        .width(336)
+        .height(56)
+        .margin(20)
+        .fontSize(16)
+        .fontColor('#182431')
+        .backgroundColor('#FFFFFF')
+        .maxLength(4)
+        // 计数器显示效果为用户当前输入字符数/最大字符限制数。最大字符限制数通过maxLength()接口设置。
+        // 如果用户当前输入字符数达到最大字符限制乘50%（thresholdPercentage）。字符计数器显示。
+        // 用户设置highlightBorder为false时，配置取消红色边框。不设置此参数时，默认为true。
+        .showCounter(true, { thresholdPercentage: 50, highlightBorder: true })
+        .onChange((value: string) => {
+          this.text = value;
+        })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
 ### 示例3（设置自定义键盘）
 
 该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性分别将value中的入参类型设置为[CustomBuilder](ts-types.md#custombuilder8)和ComponentContent，实现了自定义键盘的功能。
@@ -74,95 +149,615 @@ TextArea(value?: TextAreaOptions)
 从API version 22开始[customKeyboard](#customkeyboard10)属性新增了入参类型ComponentContent。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+class BuilderParams {
+  inputValue: string;
+  controller: TextAreaController;
+
+  constructor(inputValue: string, controller: TextAreaController) {
+    this.inputValue = inputValue;
+    this.controller = controller;
+  }
+}
+@Builder
+function CustomKeyboardBuilder(builderParams: BuilderParams) {
+  Column() {
+    Row() {
+      Button('x').onClick(() => {
+        // 关闭自定义键盘
+        builderParams.controller.stopEditing();
+      }).margin(10)
+    }
+
+    Grid() {
+      ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+        GridItem() {
+          Button(item + "")
+            .width(110).onClick(() => {
+            builderParams.inputValue += item;
+          })
+        }
+      })
+    }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+  }.backgroundColor(Color.Gray)
+}
+@Entry
+@Component
+struct TextAreaExample {
+  controller: TextAreaController = new TextAreaController();
+  @State inputValue: string = "";
+  @State componentContent ?: ComponentContent<BuilderParams> = undefined;
+  @State builderParam: BuilderParams = new BuilderParams(this.inputValue, this.controller);
+  @State supportAvoidance: boolean = true;
+
+  aboutToAppear(): void {
+    // 创建ComponentContent
+    this.componentContent = new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
+  }
+  build(){
+    Column() {
+      Text('Builder').margin(10).border({ width: 1 })
+      TextArea({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
+
+      Text('ComponentContent').margin(10).border({ width: 1 })
+      TextArea({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
+    }
+  }
+}
+```
+
 ### 示例4（设置输入法回车键类型）
 
 从API version 11开始，该示例通过[enterKeyType](#enterkeytype11)属性实现了动态切换输入法回车键的效果。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = '';
+  @State enterTypes: Array<EnterKeyType> =
+    [EnterKeyType.Go, EnterKeyType.Search, EnterKeyType.Send, EnterKeyType.Done, EnterKeyType.Next,
+      EnterKeyType.PREVIOUS, EnterKeyType.NEW_LINE];
+  @State index: number = 0;
+
+  build() {
+    Column({ space: 20 }) {
+      TextArea({ placeholder: '请输入用户名', text: this.text })
+        .width(380)
+        .enterKeyType(this.enterTypes[this.index])
+        .onChange((value: string) => {
+          this.text = value;
+        })
+        .onSubmit((enterKey: EnterKeyType) => {
+          console.info('trigger area onSubmit' + enterKey);
+        })
+      Button('改变EnterKeyType').onClick(() => {
+        this.index = (this.index + 1) % this.enterTypes.length;
+      })
+
+    }.width('100%')
+  }
+}
+```
+
 ### 示例5（设置文本断行规则）
 
 从API version 12开始，该示例通过[wordBreak](#wordbreak12)属性实现了TextArea不同断行规则下的效果。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Column() {
+      Text('wordBreak属性为NORMAL的样式：').fontSize(16).fontColor(0xFF0000)
+      TextArea({
+        text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
+      })
+        .fontSize(16)
+        .border({ width: 1 })
+        .wordBreak(WordBreak.NORMAL)
+      Text('英文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
+      TextArea({
+        text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
+      })
+        .fontSize(16)
+        .border({ width: 1 })
+        .wordBreak(WordBreak.BREAK_ALL)
+      Text('中文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
+      TextArea({
+        text: '多行文本输入框组件，当输入的文本内容超过组件宽度时会自动换行显示。\n高度未设置时，组件无默认高度，自适应内容高度。宽度未设置时，默认撑满最大宽度。'
+      })
+        .fontSize(16)
+        .border({ width: 1 })
+        .wordBreak(WordBreak.BREAK_ALL)
+      Text('wordBreak属性为BREAK_WORD的样式：').fontSize(16).fontColor(0xFF0000)
+      TextArea({
+        text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
+      })
+        .fontSize(16)
+        .border({ width: 1 })
+        .wordBreak(WordBreak.BREAK_WORD)
+    }
+  }
+}
+```
+
 ### 示例6（设置文本样式）
 
 从API version 12开始，该示例通过[lineHeight](#lineheight12)、[letterSpacing](#letterspacing12)、[decoration](#decoration12)属性展示了不同样式的文本效果。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Row() {
+      Column() {
+        Text('lineHeight').fontSize(9).fontColor(0xCCCCCC)
+        TextArea({ text: 'lineHeight unset' })
+          .border({ width: 1 }).padding(10).margin(5)
+        TextArea({ text: 'lineHeight 15' })
+          .border({ width: 1 }).padding(10).margin(5).lineHeight(15)
+        TextArea({ text: 'lineHeight 30' })
+          .border({ width: 1 }).padding(10).margin(5).lineHeight(30)
+
+        Text('letterSpacing').fontSize(9).fontColor(0xCCCCCC)
+        TextArea({ text: 'letterSpacing 0' })
+          .border({ width: 1 }).padding(5).margin(5).letterSpacing(0)
+        TextArea({ text: 'letterSpacing 3' })
+          .border({ width: 1 }).padding(5).margin(5).letterSpacing(3)
+        TextArea({ text: 'letterSpacing -1' })
+          .border({ width: 1 }).padding(5).margin(5).letterSpacing(-1)
+
+        Text('decoration').fontSize(9).fontColor(0xCCCCCC)
+        TextArea({ text: 'LineThrough, Red\nsecond line' })
+          .border({ width: 1 }).padding(5).margin(5)
+          .decoration({ type: TextDecorationType.LineThrough, color: Color.Red })
+        TextArea({ text: 'Overline, Red, DOTTED\nsecond line' })
+          .border({ width: 1 }).padding(5).margin(5)
+          .decoration({ type: TextDecorationType.Overline, color: Color.Red, style: TextDecorationStyle.DOTTED })
+        TextArea({ text: 'Underline, Red, WAVY\nsecond line' })
+          .border({ width: 1 }).padding(5).margin(5)
+          .decoration({ type: TextDecorationType.Underline, color: Color.Red, style: TextDecorationStyle.WAVY })
+      }.height('90%')
+    }
+    .width('90%')
+    .margin(10)
+  }
+}
+```
+
 ### 示例7（设置文字特性效果）
 
 从API version 12开始，该示例通过[fontFeature](#fontfeature12)属性实现了文本在不同文字特性下的展示效果。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text1: string = 'This is ss01 on : 0123456789';
+  @State text2: string = 'This is ss01 off: 0123456789';
+
+  build() {
+    Column() {
+      TextArea({ text: this.text1 })
+        .fontSize(20)
+        .margin({ top: 200 })
+        .fontFeature('"ss01" on')
+      TextArea({ text: this.text2 })
+        .margin({ top: 10 })
+        .fontSize(20)
+        .fontFeature('"ss01" off')
+    }
+    .width('90%')
+    .margin('5%')
+  }
+}
+```
+
 ### 示例8（自定义键盘避让）
 
 该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性配置[KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)（从API version 12开始）接口实现了自定义键盘避让的效果。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  controller: TextAreaController = new TextAreaController();
+  @State inputValue: string = '';
+  @State height1: string | number = '80%';
+  @State supportAvoidance: boolean = true;
+
+  // 自定义键盘组件
+  @Builder
+  CustomKeyboardBuilder() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller.stopEditing();
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor(Color.Gray)
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('20%')
+          .fontSize(24)
+          .onClick(() => {
+            this.height1 = '20%';
+          })
+        Button('80%')
+          .fontSize(24)
+          .margin({ left: 20 })
+          .onClick(() => {
+            this.height1 = '80%';
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .alignItems(VerticalAlign.Bottom)
+      .height(this.height1)
+      .width('100%')
+      .padding({ bottom: 50 })
+
+      TextArea({ controller: this.controller, text: this.inputValue }) // 绑定自定义键盘
+        .height(100)
+        .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
+        .margin(10)
+        .border({ width: 1 })
+    }
+  }
+}
+```
+
 ### 示例9（设置文本自适应）
 
 从API version 12开始，该示例通过[minFontSize](#minfontsize12)、[maxFontSize](#maxfontsize12)、[heightAdaptivePolicy](#heightadaptivepolicy12)属性展示了文本自适应字号的效果。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Row() {
+      Column() {
+        Text('heightAdaptivePolicy').fontSize(9).fontColor(0xCCCCCC)
+        TextArea({text: 'This is the text with the height adaptive policy set'})
+          .width('80%').height(90).borderWidth(1).margin(1)
+          .minFontSize(4)
+          .maxFontSize(40)
+          .maxLines(3)
+          .heightAdaptivePolicy(TextHeightAdaptivePolicy.MAX_LINES_FIRST)
+        TextArea({text: 'This is the text with the height adaptive policy set'})
+          .width('80%').height(90).borderWidth(1).margin(1)
+          .minFontSize(4)
+          .maxFontSize(40)
+          .maxLines(3)
+          .heightAdaptivePolicy(TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST)
+        TextArea({text: 'This is the text with the height adaptive policy set'})
+          .width('80%').height(90).borderWidth(1).margin(1)
+          .minFontSize(4)
+          .maxFontSize(40)
+          .maxLines(3)
+          .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+      }.height('90%')
+    }
+    .width('90%')
+    .margin(10)
+  }
+}
+```
+
 ### 示例10（设置文本行间距）
 
 从API version 12开始，该示例通过[lineSpacing](#linespacing12)属性展示了文本在不同行间距下的展示效果，同时，配置[LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明)中的onlyBetweenLines（从API version 20开始）属性，可以设置文本的行间距是否仅在行与行之间生效。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
+      Text('TextArea lineSpacing.').fontSize(9).fontColor(0xCCCCCC)
+      TextArea({ text: 'This is the TextArea with no lineSpacing set.' })
+        .fontSize(12)
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 20_px.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.px(20))
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 20_vp.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.vp(20))
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 20_fp.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.fp(20))
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 20_lpx.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.lpx(20))
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 100%.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.percent(1))
+      TextArea({ text: 'The line spacing of this TextArea is set to 20_px, and the spacing is effective only between the lines.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
+    }.height(600).width(350).padding({ left: 35, right: 35, top: 35 })
+  }
+}
+```
+
 ### 示例11（设置自动填充）
 
 从API version 12开始，该示例通过[contentType](#contenttype12)、[enableAutoFill](#enableautofill12)属性实现了文本自动填充的功能。
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = '';
+
+  build() {
+    Column() {
+      // 邮箱地址自动填充类型
+      TextArea({ placeholder: 'input your email...' })
+        .width('95%')
+        .height(40)
+        .margin(20)
+        .contentType(ContentType.EMAIL_ADDRESS)
+        .enableAutoFill(true)
+        .maxLength(20)
+      // 街道地址自动填充类型
+      TextArea({ placeholder: 'input your street address...' })
+        .width('95%')
+        .height(40)
+        .margin(20)
+        .contentType(ContentType.FULL_STREET_ADDRESS)
+        .enableAutoFill(true)
+        .maxLength(20)
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
 ### 示例12（设置折行规则）
 
 从API version 12开始，该示例通过[lineBreakStrategy](#linebreakstrategy12)属性实现了TextArea不同折行规则下的效果。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State message1: string =
+    'They can be classified as built-in components–those directly provided by the ArkUI framework and custom components – those defined by developers' +
+      'The built-in components include buttons radio buttonsprogress indicators and text You can set the rendering effect of these components in method chaining mode,' +
+      'page components are divided into independent UI units to implement independent creation development and reuse of different units on pages making pages more engineering-oriented.';
+  @State lineBreakStrategyIndex: number = 0;
+  @State lineBreakStrategy: LineBreakStrategy[] =
+    [LineBreakStrategy.GREEDY, LineBreakStrategy.HIGH_QUALITY, LineBreakStrategy.BALANCED];
+  @State lineBreakStrategyStr: string[] = ['GREEDY', 'HIGH_QUALITY', 'BALANCED'];
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+      Text('lineBreakStrategy').fontSize(9).fontColor(0xCCCCCC)
+      TextArea({ text: this.message1 })
+        .fontSize(12)
+        .border({ width: 1 })
+        .padding(10)
+        .width('100%')
+        .lineBreakStrategy(this.lineBreakStrategy[this.lineBreakStrategyIndex])
+      Row() {
+        Button('当前lineBreakStrategy模式：' + this.lineBreakStrategyStr[this.lineBreakStrategyIndex]).onClick(() => {
+          this.lineBreakStrategyIndex++;
+          if (this.lineBreakStrategyIndex > (this.lineBreakStrategyStr.length - 1)) {
+            this.lineBreakStrategyIndex = 0;
+          }
+        })
+      }.padding({ top: 10 })
+    }.height(700).width(370).padding({ left: 35, right: 35, top: 35 })
+  }
+}
+```
+
 ### 示例13（支持插入和删除回调）
 
 从API version 12开始，该示例通过[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)接口实现了插入和删除的功能。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State insertValue: string = '';
+  @State deleteValue: string = '';
+  @State insertOffset: number = 0;
+  @State deleteOffset: number = 0;
+  @State deleteDirection: number = 0;
+  @State currentValue_1: string = '';
+  @State currentValue_2: string = '';
+
+  build() {
+    Row() {
+      Column() {
+        TextArea({ text: 'TextArea支持插入回调文本' })
+          .width(300)
+          .height(60)
+          .onWillInsert((info: InsertValue) => {
+            this.insertValue = info.insertValue;
+            return true;
+          })
+          .onDidInsert((info: InsertValue) => {
+            this.insertOffset = info.insertOffset;
+          })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.currentValue_1 = info.content;
+            return true;
+          })
+
+        Text('insertValue:' + this.insertValue + '  insertOffset:' + this.insertOffset).height(30)
+        Text('currentValue_1:' + this.currentValue_1).height(30)
+
+        TextArea({ text: 'TextArea支持删除回调文本b' })
+          .width(300)
+          .height(60)
+          .onWillDelete((info: DeleteValue) => {
+            this.deleteValue = info.deleteValue;
+            this.deleteDirection = info.direction;
+            return true;
+          })
+          .onDidDelete((info: DeleteValue) => {
+            this.deleteOffset = info.deleteOffset;
+            this.deleteDirection = info.direction;
+          })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.currentValue_2 = info.content;
+            return true;
+          })
+
+        Text('deleteValue:' + this.deleteValue + '  deleteOffset:' + this.deleteOffset).height(30)
+        Text('deleteDirection:' + (this.deleteDirection == 0 ? 'BACKWARD' : 'FORWARD')).height(30)
+        Text('currentValue_2:' + this.currentValue_2).height(30)
+
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 示例14（文本扩展自定义菜单）
 
 从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = 'TextArea editMenuOptions';
+  @State endIndex: number = 0;
+  onCreateMenu = (menuItems: Array<TextMenuItem>) => {
+    // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+    let item1: TextMenuItem = {
+      content: 'create1',
+      icon: $r('app.media.startIcon'),
+      id: TextMenuItemId.of('create1'),
+    };
+    let item2: TextMenuItem = {
+      content: 'create2',
+      id: TextMenuItemId.of('create2'),
+      icon: $r('app.media.startIcon'),
+    };
+    // 从API version 23开始支持TextMenuItemId.autoFill
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
+    }
+    menuItems.push(item1);
+    menuItems.unshift(item2);
+    return menuItems;
+  }
+  onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
+    if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
+      console.info('拦截 id: create2 start:' + textRange.start + '; end:' + textRange.end);
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
+      console.info('拦截 id: prepare1 start:' + textRange.start + '; end:' + textRange.end);
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.COPY)) {
+      console.info('拦截 COPY start:' + textRange.start + '; end:' + textRange.end);
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+      console.info('不拦截 SELECT_ALL start:' + textRange.start + '; end:' + textRange.end);
+      return false;
+    }
+    return false;
+  }
+  onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
+    // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+    let item1: TextMenuItem = {
+      content: 'prepare1_' + this.endIndex,
+      icon: $r('app.media.startIcon'),
+      id: TextMenuItemId.of('prepare1'),
+    };
+    menuItems.unshift(item1);
+    return menuItems;
+  }
+  @State editMenuOptions: EditMenuOptions = {
+    onCreateMenu: this.onCreateMenu,
+    onMenuItemClick: this.onMenuItemClick,
+    onPrepareMenu: this.onPrepareMenu
+  };
+
+  build() {
+    Column() {
+      TextArea({ text: this.text })
+        .width('95%')
+        .height(56)
+        .editMenuOptions(this.editMenuOptions)
+        .margin({ top: 100 })
+        .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
+          this.endIndex = selectionEnd;
+        })
+    }
+    .width('90%')
+    .margin('5%')
+  }
+}
+```
+
 ### 示例15（文本设置省略模式）
 
 该示例通过[textOverflow](#textoverflow12)、[ellipsisMode](#ellipsismode18)、[maxLines](#maxlines10)属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。
@@ -176,9 +771,72 @@ TextArea(value?: TextAreaOptions)
 从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct EllipsisModeExample {
+  @State textIndex: number = 0;
+  @State text: string = 'As the sun begins to set, casting a warm golden hue across the sky,' +
+    'the world seems to slow down and breathe a sigh of relief. The sky is painted with hues of orange, ' +
+    ' pink, and lavender, creating a breath taking tapestry that stretches as far as the eye can see.' +
+    'The air is filled with the sweet scent of blooming flowers, mingling with the earthy aroma of freshly turned soil.';
+  @State ellipsisModeIndex: number = 0;
+  @State ellipsisMode: (EllipsisMode | undefined | null)[] =
+    [EllipsisMode.START, EllipsisMode.END, EllipsisMode.CENTER, EllipsisMode.MULTILINE_START,
+      EllipsisMode.MULTILINE_CENTER, undefined, null]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER
+  @State ellipsisModeStr: string[] =
+    ['START ', 'END', 'CENTER', 'MULTILINE_START', 'MULTILINE_CENTER', 'undefined', 'null'];
+  @State textOverflowIndex: number = 0;
+  @State textOverflow: TextOverflow[] = [TextOverflow.Ellipsis, TextOverflow.Clip];
+  @State textOverflowStr: string[] = ['Ellipsis', 'Clip'];
+  @State maxLinesIndex: number = 0;
+  @State maxLines: number[] = [1, 2, 3];
+  @State maxLinesStr: string[] = ['1', '2', '3'];
+  @State styleAreaIndex: number = 0;
+  @State styleArea: TextContentStyle[] = [TextContentStyle.INLINE, TextContentStyle.DEFAULT];
+  @State styleAreaStr: string[] = ['INLINE', 'DEFAULT'];
+
+  build() {
+    Column({ space: 20 }) {
+      TextArea({ text: this.text })
+        .textOverflow(this.textOverflow[this.textOverflowIndex])
+        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
+        .maxLines(this.maxLines[this.maxLinesIndex])
+        .style(this.styleArea[this.styleAreaIndex])
+        .fontSize(30)
+        .margin(30)
+
+      Button('更改ellipsisMode模式：' + this.ellipsisModeStr[this.ellipsisModeIndex]).onClick(() => {
+        this.ellipsisModeIndex++;
+        if (this.ellipsisModeIndex > (this.ellipsisModeStr.length - 1)) {
+          this.ellipsisModeIndex = 0;
+        }
+      }).fontSize(20)
+      Button('更改textOverflow模式：' + this.textOverflowStr[this.textOverflowIndex]).onClick(() => {
+        this.textOverflowIndex++;
+        if (this.textOverflowIndex > (this.textOverflowStr.length - 1)) {
+          this.textOverflowIndex = 0;
+        }
+      }).fontSize(20)
+      Button('更改maxLines大小：' + this.maxLinesStr[this.maxLinesIndex]).onClick(() => {
+        this.maxLinesIndex++;
+        if (this.maxLinesIndex > (this.maxLinesStr.length - 1)) {
+          this.maxLinesIndex = 0;
+        }
+      }).fontSize(20)
+      Button('更改Style大小：' + this.styleAreaStr[this.styleAreaIndex]).onClick(() => {
+        this.styleAreaIndex++;
+        if (this.styleAreaIndex > (this.styleAreaStr.length - 1)) {
+          this.styleAreaIndex = 0;
+        }
+      }).fontSize(20)
+    }.height(600).width('100%')
+  }
+}
+```
+
 ### 示例16（自定义复制、剪切、粘贴）
 
 该示例通过[onCopy](#oncopy8)、[onCut](#oncut8)、[onPaste](#onpaste)、[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)展示如何监听文本选择菜单的复制、剪切、粘贴按钮、如何屏蔽系统粘贴功能并实现自定义的粘贴能力、如何屏蔽系统复制功能，以及如何屏蔽系统剪切功能，同时，可以通过[maxFontScale](#maxfontscale18)、[minFontScale](#minfontscale18)属性设置文本最大和最小的字体缩放倍数。
@@ -186,12 +844,102 @@ TextArea(value?: TextAreaOptions)
 从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = '';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({
+        text: this.text,
+        placeholder: 'placeholder',
+        controller: this.controller
+      })
+        .placeholderColor(Color.Red)
+        .textAlign(TextAlign.Center)
+        .caretColor(Color.Green)
+        .caretStyle({ width: '2vp' })
+        .fontStyle(FontStyle.Italic)
+        .fontWeight(FontWeight.Bold)
+        .fontFamily('HarmonyOS Sans')
+        .inputFilter('[a-zA-Z]+', (value) => { // 只允许字母输入
+          console.error(`unsupported char ${value}`);
+        })
+        .copyOption(CopyOptions.LocalDevice)
+        .enableKeyboardOnFocus(false)
+        .selectionMenuHidden(false)
+        .barState(BarState.On)
+        .type(TextAreaType.NORMAL)
+        .selectedBackgroundColor(Color.Orange)
+        .textIndent(2)
+        .halfLeading(true)
+        .minFontScale(1)
+        .maxFontScale(2)
+        .enablePreviewText(true)
+        .enableHapticFeedback(true)
+        .stopBackPress(false) // 返回键交给其他组件处理
+        .width(336)
+        .height(56)
+        .margin(20)
+        .fontSize(16)
+        .onEditChange((isEditing: boolean) => {
+          console.info(`isEditing ${isEditing}`);
+        })
+        .onCopy((value) => {
+          console.info(`copy ${value}`);
+        })
+        // 从API版本26.0.0开始支持onWillCopy
+        .onWillCopy((value: string) => {
+          console.info(`on will copy ${value}`);
+          return false;
+        })
+        .onCut((value) => {
+          console.info(`cut ${value}`);
+        })
+        // 从API版本26.0.0开始支持onWillCut
+        .onWillCut((value: string) => {
+          console.info(`on will cut ${value}`);
+          return false;
+        })
+        .onPaste((value, event) => {
+          // 阻止系统粘贴功能，开发者可自行实现
+          if (event.preventDefault) {
+            event.preventDefault();
+          }
+          console.info(`paste:${value}`);
+          this.text = value;
+        })
+        .onTextSelectionChange((start: number, end: number) => {
+          console.info(`onTextSelectionChange start ${start}, end ${end}`);
+        })
+        .onContentScroll((totalOffsetX: number, totalOffsetY: number) => {
+          console.info(`onContentScroll offsetX ${totalOffsetX}, offsetY ${totalOffsetY}`);
+        })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
 ### 示例17（设置最小字体范围与最大字体范围）
 
 从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）。
+
+```TypeScript
+// 开启应用缩放跟随系统
+// AppScope/resources/base，新建文件夹profile。
+// AppScope/resources/base/profile，新建文件configuration.json。
+// AppScope/resources/base/profile/configuration.json，增加如下代码。
+{
+  "configuration": {
+    "fontSizeScale": "followSystem",
+    "fontSizeMaxScale": "3.2"
+  }
+}
 ```
 
 ```TypeScript
@@ -274,15 +1022,47 @@ struct TextAreaExample {
 }
 ```
 
-```TypeScript
 ### 示例18（设置选中指定区域的文本内容）
 
 从API version 10开始，该示例通过[setTextSelection](#settextselection10)方法展示如何设置选中指定区域的文本内容以及菜单的显隐策略。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+
+@Entry
+@Component
+struct TextAreaExample {
+  controller: TextAreaController = new TextAreaController();
+  @State startIndex: number = 0;
+  @State endIndex: number = 0;
+
+  build() {
+    Column({ space: 3 }) {
+      Text('Selection start:' + this.startIndex + ' end:' + this.endIndex)
+      TextArea({ text: 'Hello World', controller: this.controller })
+        .width('95%')
+        .height(80)
+        .margin(10)
+        .defaultFocus(true)
+        .enableKeyboardOnFocus(true)
+        .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
+          this.startIndex = selectionStart;
+          this.endIndex = selectionEnd;
+        })
+
+      Button('setTextSelection [0,3], set menuPolicy is MenuPolicy.SHOW')
+        .onClick(() => {
+          this.controller.setTextSelection(0, 3, { menuPolicy: MenuPolicy.SHOW });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 示例19（设置文本描边）
 
 从API version 20开始，该示例通过[strokeWidth](#strokewidth20)和[strokeColor](#strokecolor20)属性设置文本的描边宽度及颜色。
@@ -290,49 +1070,234 @@ struct TextAreaExample {
 从API版本26.0.0开始，新增[strokeJoinStyle](#strokejoinstyle)接口，支持设置文本描边拐角样式。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Row() {
+      Column() {
+        Text('stroke feature').fontSize(9).fontColor(0xCCCCCC)
+
+        TextArea({ text: 'Text without stroke' })
+          .width('100%')
+          .height(60)
+          .borderWidth(1)
+          .fontSize(40)
+        TextArea({ text: 'Text with stroke' })
+          .width('100%')
+          .height(60)
+          .borderWidth(1)
+          .fontSize(40)
+          .strokeWidth(LengthMetrics.px(-3.0))
+          .strokeColor(Color.Red)
+        TextArea({ text: 'Text with stroke' })
+          .width('100%')
+          .height(60)
+          .borderWidth(1)
+          .fontSize(40)
+          .strokeWidth(LengthMetrics.px(3.0))
+          .strokeJoinStyle(StrokeJoinStyle.MITER_JOIN)
+          .strokeColor(Color.Red)
+      }.height('90%')
+    }
+    .width('90%')
+    .margin(10)
+  }
+}
+```
+
 ### 示例20（设置中西文自动间距）
 
 从API version 20开始，该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Row() {
+      Column() {
+        Text('开启中西文自动间距').margin(5)
+        TextArea({text: '中西文Auto Spacing自动间距'})
+          .enableAutoSpacing(true)
+        Text('关闭中西文自动间距').margin(5)
+        TextArea({text: '中西文Auto Spacing自动间距'})
+          .enableAutoSpacing(false)
+      }.height('100%')
+    }
+    .width('60%')
+  }
+}
+```
+
 ### 示例21（设置最大行数）
 
 从API version 20开始，该示例通过[maxLines](#maxlines20)属性设置显示最大行数，超出最大行数后可滚动。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Row() {
+      Column() {
+        TextArea({ text: '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20' })
+          .fontSize(50)
+          .width('50%')
+          .borderWidth(1)
+          .margin(100)
+          .textOverflow(TextOverflow.Clip)
+          .maxLines(3, { overflowMode: MaxLinesMode.SCROLL })
+      }.height('90%')
+    }
+    .width('90%')
+    .margin(10)
+  }
+}
+```
+
 ### 示例22（设置最小行数）
 
 从API version 20开始，该示例通过[minLines](#minlines20)属性设置显示的最小行数。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        TextArea({ text: this.message })
+          .width('95%')
+          .fontSize(20)
+          .margin(10)
+          .minLines(3)
+      }
+    }
+    .width('90%')
+    .margin(10)
+  }
+}
+```
+
 ### 示例23（设置字符计数颜色以及超出字符颜色）
 
 从API version 22开始，该示例通过[showCounter](#showcounter10)属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
 
 
-```
 
 ```TypeScript
+import { ColorMetrics } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = '';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({
+        text: this.text,
+        placeholder: 'The text area can hold an unlimited amount of text. input your word...',
+        controller: this.controller
+      })
+        .placeholderFont({ size: 16, weight: 400 })
+        .width(336)
+        .height(56)
+        .margin(20)
+        .fontSize(16)
+        .fontColor('#182431')
+        .backgroundColor('#FFFFFF')
+        .maxLength(4)
+        .showCounter(true, {
+          thresholdPercentage: 50,
+          highlightBorder: true,
+          counterTextColor: ColorMetrics.resourceColor(Color.Red),
+          counterTextOverflowColor: ColorMetrics.resourceColor(Color.Orange)
+        })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
 ### 示例24（设置滚动条颜色）
 
 从API version 22开始，该示例通过[scrollBarColor](#scrollbarcolor22)属性设置滚动条颜色。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  controller: TextAreaController = new TextAreaController();
+  build() {
+      Column() {
+        TextArea({
+          text: 'Hello World TextArea\nHello World TextArea\nHello World TextArea\nHello World TextArea',
+          placeholder: 'Type to text area...',
+          controller: this.controller
+        })
+          .width(336)
+          .height(56)
+          .margin({bottom:5})
+          .fontSize(16)
+          .fontColor('#182431')
+          .backgroundColor('#FFFFFF')
+          .barState(BarState.On)
+          .scrollBarColor(undefined)
+        TextArea({
+          text: 'Hello World TextArea\nHello World TextArea\nHello World TextArea\nHello World TextArea',
+          placeholder: 'Type to text area...',
+          controller: this.controller
+        })
+          .width(336)
+          .height(56)
+          .margin({bottom:5})
+          .fontSize(16)
+          .fontColor('#182431')
+          .backgroundColor('#FFFFFF')
+          .barState(BarState.On)
+          .scrollBarColor(ColorMetrics.resourceColor(Color.Orange))
+        TextArea({
+          text: 'Hello World TextArea\nHello World TextArea\nHello World TextArea\nHello World TextArea',
+          placeholder: 'Type to text area...',
+          controller: this.controller
+        })
+          .width(336)
+          .height(56)
+          .margin({bottom:5})
+          .fontSize(16)
+          .fontColor('#182431')
+          .backgroundColor('#FFFFFF')
+          .barState(BarState.On)
+          .scrollBarColor(ColorMetrics.rgba(255, 100, 255))
+      }
+      .backgroundColor(Color.Blue).width('100%').height('100%')
+  }
+}
+```
+
 ### 示例25（设置placeholder富文本样式）
 
 从API version 22开始，该示例通过[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)接口设置placeholder富文本样式。
@@ -340,15 +1305,95 @@ struct TextAreaExample {
 原始文本支持多种语言，不同语言内容时样式起始索引下标start和length会有差异，以下仅以中文设置富文本样式为例。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextAreaExample {
+  styledString: MutableStyledString =
+    new MutableStyledString('段落标题\n正文第一段\n正文第二段indent 40 vp\n正文第三段textAlign居中对齐',
+      [
+        {
+          start: 0,
+          length: 4,
+          styledKey: StyledStringKey.FONT,
+          styledValue: new TextStyle({ fontSize: LengthMetrics.vp(24), fontWeight: FontWeight.Bolder })
+        },
+        {
+          start: 5,
+          length: 5,
+          styledKey: StyledStringKey.FONT,
+          styledValue: new TextStyle({ fontColor: Color.Gray })
+        },
+        {
+          start: 11,
+          length: 1,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: new ParagraphStyle({
+            textIndent: LengthMetrics.vp(40),
+            maxLines: 1,
+            overflow: TextOverflow.Ellipsis
+          })
+        },
+        {
+          start: 29,
+          length: 1,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: new ParagraphStyle({
+            textAlign: TextAlign.Center
+          })
+        }
+      ]);
+  controller: TextAreaController = new TextAreaController();
+
+  aboutToAppear() {
+    this.controller.setStyledPlaceholder(this.styledString)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Text('TextArea placeholder富文本')
+          .fontSize(8)
+        TextArea({ controller: this.controller })
+          .width(200)
+          .fontSize(24)
+          .margin(10)
+      }
+      .width('100%')
+    }
+  }
+}
+```
+
 ### 示例26（设置输入法扩展信息）
 
 从API version 22开始，该示例通过[IMEClient](ts-text-common.md#imeclient20对象说明)的setExtraConfig设置输入法扩展信息。
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Column() {
+      TextArea({ text: '拉起输入法前执行onWillAttachIME回调' })
+        .onWillAttachIME((client: IMEClient) => {
+          client.setExtraConfig({
+            customSettings: {
+              name: 'TextArea', // 自定义属性
+              id: client.nodeId // 自定义属性
+            }
+          })
+        })
+    }.height('100%')
+  }
+}
+```
+
 ### 示例27（设置行首标点符号压缩和行尾标点符号悬挂）
 
 本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
@@ -362,9 +1407,44 @@ struct TextAreaExample {
 从API版本26.0.0开始，新增punctuationOverflow接口。
 
 
-```
 
 ```TypeScript
+@Entry
+@Component
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】';
+
+  build() {
+    Column() {
+      TextArea({ text: this.text })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .fontSize('20fp')
+        .align(Alignment.Center)
+        .height('35%')
+        .width('50%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = true;
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = false;
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true;
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false;
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
+  }
+}
+```
+
 ### 示例28（设置自适应间距）
 
 该示例通过[includeFontPadding](#includefontpadding23)接口增加首行尾行间距和[fallbackLineSpacing](#fallbacklinespacing23)接口设置自适应行间距。
@@ -372,9 +1452,66 @@ struct TextAreaExample {
 从API version 23开始，新增[includeFontPadding](#includefontpadding23)和[fallbackLineSpacing](#fallbacklinespacing23)接口。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+
+const UYGHUR_TEXT: string = 'ياخشىمۇسەنياخشىمۇسەنياخشىمۇسەنياخشىمۇسەنياخشىمۇسەنياخشىمۇسەنياخشىمۇسەن';
+@Entry
+@Component
+struct Index {
+  @State include: boolean | null | undefined = false;
+  @State fallback: boolean | null | undefined = false;
+  @State displayText: string = UYGHUR_TEXT;
+
+  build() {
+    Column() {
+      TextArea({
+        text: this.displayText,
+        placeholder: '请输入内容...'
+      })
+        .includeFontPadding(this.include)
+        .fallbackLineSpacing(this.fallback)
+        .lineHeight(5)
+        .width('100%')
+        .height(100)
+        .backgroundColor('#eee')
+        .borderWidth(1)
+        .borderColor('#dddddd')
+
+      Scroll() {
+        Column() {
+          // --- IncludeFontPadding相关按钮 ---
+          Button('设置includePadding: ' + this.include)
+            .onClick(() => {
+              this.include = this.include === false ? true : false;
+            })
+            .margin({ bottom: 10 })
+
+          // --- FallbackLineSpacing相关按钮 ---
+          Button('设置fallbackLineSpacing: ' + this.fallback)
+            .onClick(() => {
+              this.fallback = this.fallback === false ? true : false;
+            })
+            .margin({ bottom: 10 })
+
+        }
+        .width('100%')
+        .padding(5)
+      }
+      .height(250)
+      .backgroundColor('transparent')
+      .scrollBarWidth(2)
+      .scrollBarColor('#888')
+
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
 ### 示例29（设置文本拖拽时的背板样式）
 
 该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置文本拖拽时的背板样式。
@@ -382,9 +1519,26 @@ struct TextAreaExample {
 从API version 23开始，新增selectedDragPreviewStyle接口。
 
 
-```
 
 ```TypeScript
+@Entry
+@Component
+struct TextAreaTest {
+  build() {
+    Column() {
+      TextArea({ text: 'HelloWorld', placeholder: 'please input words' })
+        .copyOption(CopyOptions.InApp)
+        .width(200)
+        .height(50)
+        .margin(150)
+        .draggable(true)
+        .selectedDragPreviewStyle({color: 'rgba(227, 248, 249, 1)'})
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 示例30（删除文本框内的最后一个字符）
 
 该示例通过调用[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口删除文本框内最后一个字符。
@@ -392,9 +1546,25 @@ struct TextAreaExample {
 从API version 23开始，新增[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口。
 
 
-```
 
 ```TypeScript
+@Entry
+@Component
+struct Page {
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({ text: 'TextArea输入框Deletebackward示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
 ### 示例31（设置文本排版方向）
 
 该示例通过[textDirection](#textdirection23)接口设置文本排版方向。
@@ -402,9 +1572,53 @@ struct TextAreaExample {
 从API version 23开始，新增textDirection接口。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = 'TextArea文本排版方向示例';
+
+  build() {
+    Column() {
+      Text('TextArea文本排版方向RTL，布局方向default')
+        .fontSize(12).width('90%')
+      TextArea({ text: this.text })
+        .width(336)
+        .height(56)
+        .margin(10)
+        .fontSize(16)
+        .textDirection(TextDirection.RTL)
+        .showCounter(true)
+        .maxLength(50)
+      Text('TextArea文本排版方向RTL，布局方向default，文本水平方向对齐方式LEFT')
+        .fontSize(12).width('90%')
+      TextArea({ text: this.text })
+        .width(336)
+        .height(56)
+        .margin(10)
+        .fontSize(16)
+        .textDirection(TextDirection.RTL)
+        .textAlign(TextAlign.LEFT)
+        .showCounter(true)
+        .maxLength(50)
+      Text('TextArea文本排版方向LTR，布局方向Rtl')
+        .fontSize(12).width('90%')
+      TextArea({ text: this.text })
+        .width(336)
+        .height(56)
+        .margin(10)
+        .fontSize(16)
+        .textDirection(TextDirection.LTR)
+        .direction(Direction.Rtl)
+        .maxLength(50)
+        .showCounter(true)
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ### 示例32（将指定范围的文字滚动到可视区内）
 
 本示例通过[scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23)将可视区外的文本滚动到可视区内。
@@ -412,9 +1626,34 @@ struct TextAreaExample {
 从API version 23开始，新增scrollToVisible接口。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = '123456789134567891234567891234567😁😁😁😁89123456789123456789123456789123456789123456789123';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({ text: this.text, controller: this.controller })
+        .width(336)
+        .height(150)
+      Button('滚动文本到可视区').onClick(() => {
+        this.controller.scrollToVisible({ start: 110, end: 115 });
+      })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.text += this.text
+    }
+  }
+}
+```
+
 ### 示例33（设置水平滚动）
 
 本示例通过[horizontalScrolling](#horizontalscrolling24)设置水平滚动。
@@ -422,9 +1661,35 @@ struct TextAreaExample {
 从API version 24开始，新增horizontalScrolling接口。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State message: string = `Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+`
+
+  build() {
+    Column() {
+      TextArea({ text: this.message })
+        .horizontalScrolling(true)
+        .width('200vp')
+        .height('150vp')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### 示例34（设置文本排版时是否使能孤字优化）
 
 该示例通过[orphanCharOptimization](#orphancharoptimization)接口设置使能孤字优化，确保段落最后一行不出现孤字。
@@ -434,9 +1699,36 @@ struct TextAreaExample {
 该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa文本aaaaaaaaaaaaa';
+
+  build() {
+    Column({ space: 3 }) {
+      Text('TextArea不使能孤字优化')
+        .fontSize(12).width('90%').margin(5)
+      TextArea({ text: this.text })
+        .fontSize(20)
+        .width('408')
+        .borderWidth(1)
+      Text('TextArea使能孤字优化')
+        .fontSize(12).width('90%').margin(5)
+      TextArea({ text: this.text })
+        .fontSize(20)
+        .width('408')
+        .borderWidth(1)
+        .orphanCharOptimization(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 示例35（设置文本着色器效果）
 
 该示例通过[shaderStyle](#shaderstyle)接口实现对TextArea组件内文本着色效果。
@@ -444,12 +1736,92 @@ struct TextAreaExample {
 从API版本26.0.0开始，新增shaderStyle接口。
 
 
-```
 
 ```TypeScript
+@Entry
+@Component
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    };
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State colorShaderStyle: ColorShaderStyle =
+    {
+      color: Color.Blue
+    };
+  build() {
+    Column({ space: 5 }) {
+      Text('angle为45°的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextArea({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.linearGradientOptions1)
+      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextArea({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.linearGradientOptions2)
+      Text('径向渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextArea({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.radialGradientOptions)
+      Text('纯色').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextArea({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.colorShaderStyle)
+    }
+  }
+}
+```
+
 ### 示例36（设置文本选择的AI菜单）
 
 该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
 
 从API version 22开始，新增enableSelectedDataDetector。
+
+```TypeScript
+@Entry
+@Component
+struct Demo36 {
+  exampleText: string = '示例网址：www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        TextArea({ text: this.exampleText })
+          .copyOption(CopyOptions.LocalDevice)
+          .enableSelectedDataDetector(true)
+          .border({ width: 1, color: Color.Black })
+          .height(300)
+          .margin(10)
+      }
+    }
+  }
+}
 ```

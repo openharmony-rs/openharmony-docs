@@ -1,5 +1,9 @@
 # IIdmCallback（系统接口）
 
+```TypeScript
+interface IIdmCallback
+```
+
 表示身份管理回调类。
 
 **起始版本：** 8
@@ -35,6 +39,22 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | module | number | 是 |  |
 | acquire | number | 是 |  |
 | extraInfo | Uint8Array | 是 |  |
+
+**示例**
+
+```TypeScript
+let idmCallback: osAccount.IIdmCallback = {
+  onResult: (result: number, extraInfo: Object) => {
+    console.info('callback result = ' + result)
+    console.info('callback onResult = ' + JSON.stringify(extraInfo));
+  },
+  onAcquireInfo: (module: number, acquire: number, extraInfo: Uint8Array) => {
+    console.info('callback module = ' + module);
+    console.info('callback acquire = ' + acquire);
+    console.info('callback onacquireinfo = ' + JSON.stringify(extraInfo));
+  }
+};
+```
 
 ## onResult
 

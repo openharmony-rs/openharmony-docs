@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 设置传感器上报频率及传感器选择参数。
 
 **起始版本：** 8

@@ -35,15 +35,3 @@ Obtains the default input method.
 ```TypeScript
 let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod();
 ```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
-  console.info('Succeeded in getting default input method, name: ' + defaultIme.name + ', id: ' + defaultIme.id);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getDefaultInputMethod. Code: ${error.code}, message: ${error.message}`);
-}
-```

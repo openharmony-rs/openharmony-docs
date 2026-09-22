@@ -1,5 +1,9 @@
 # PortraitEffect（系统接口）
 
+```TypeScript
+enum PortraitEffect
+```
+
 Enumerates the portrait effects.
 
 **起始版本：** 10

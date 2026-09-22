@@ -1,5 +1,9 @@
 # CertBlob
 
+```TypeScript
+export interface CertBlob
+```
+
 证书信息。
 
 **起始版本：** 12

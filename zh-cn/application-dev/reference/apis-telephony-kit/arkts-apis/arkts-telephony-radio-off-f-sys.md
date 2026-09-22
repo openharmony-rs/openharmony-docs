@@ -42,3 +42,13 @@ Unsubscribe from imsRegStateChange event.
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+let slotId: number = 0;
+let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
+radio.off('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
+    console.info(`off imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
+});
+```

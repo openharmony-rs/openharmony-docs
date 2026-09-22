@@ -43,18 +43,8 @@ connectedTag.readNdefTag().then((data) => {
 });
 ```
 
-```TypeScript
-import { connectedTag } from '@kit.ConnectivityKit';
 
-connectedTag.readNdefTag((err, data)=> {
-    if (err) {
-        console.error("connectedTag readNdefTag AsyncCallback err: " + err);
-    } else {
-        console.info("connectedTag readNdefTag AsyncCallback data: " + data);
-    }
-});
-```
-
+<a id="readndeftag-1"></a>
 
 ## readNdefTag
 
@@ -82,4 +72,14 @@ function readNdefTag(callback: AsyncCallback<string>): void
 
 **示例**
 
-参见 [readNdefTag](#readndeftag)
+```TypeScript
+import { connectedTag } from '@kit.ConnectivityKit';
+
+connectedTag.readNdefTag((err, data)=> {
+    if (err) {
+        console.error("connectedTag readNdefTag AsyncCallback err: " + err);
+    } else {
+        console.info("connectedTag readNdefTag AsyncCallback data: " + data);
+    }
+});
+```

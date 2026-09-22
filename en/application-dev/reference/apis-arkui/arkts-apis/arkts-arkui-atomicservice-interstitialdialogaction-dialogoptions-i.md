@@ -1,5 +1,9 @@
 # DialogOptions
 
+```TypeScript
+export declare interface DialogOptions
+```
+
 Defines the attributes specific to the dialog box and custom click actions for the user.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # CacheCountInfo
 
+```TypeScript
+declare interface CacheCountInfo
+```
+
 Defines the number of cached items.
 
 **Since:** 22

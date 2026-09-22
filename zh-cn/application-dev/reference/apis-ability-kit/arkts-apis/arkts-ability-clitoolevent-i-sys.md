@@ -1,5 +1,9 @@
 # CliToolEvent（系统接口）
 
+```TypeScript
+export interface CliToolEvent
+```
+
 CliToolEvent用于描述CLI工具进程运行期间产生的会话事件信息。
 
 **起始版本：** 26.0.0

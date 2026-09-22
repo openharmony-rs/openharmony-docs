@@ -1,5 +1,9 @@
 # ListFileOptions
 
+```TypeScript
+export interface ListFileOptions
+```
+
 Defines the options used in **listFile()**.
 
 **Since:** 11

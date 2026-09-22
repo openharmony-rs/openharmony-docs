@@ -1,5 +1,9 @@
 # DlpConnPlugin
 
+```TypeScript
+export interface DlpConnPlugin
+```
+
 被用于registerPlugin接口中，将回调能力注册到SA（System Ability）中。
 
 > **说明：** 
@@ -53,7 +57,7 @@ connectServer(requestId: string, requestData: string, callback: Callback<string>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**

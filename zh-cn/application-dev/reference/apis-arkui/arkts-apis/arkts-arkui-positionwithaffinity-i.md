@@ -1,5 +1,9 @@
 # PositionWithAffinity
 
+```TypeScript
+interface PositionWithAffinity
+```
+
 位置以及亲和度。
 
 **起始版本：** 12

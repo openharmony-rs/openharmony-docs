@@ -1,5 +1,9 @@
 # AssetCompatibleCapability
 
+```TypeScript
+interface AssetCompatibleCapability
+```
+
 Defines the asset compatibility capability.
 
 **Since:** 24

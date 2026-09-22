@@ -1,5 +1,9 @@
 # CooperateMessage（系统接口）
 
+```TypeScript
+interface CooperateMessage
+```
+
 键鼠穿越的消息。
 
 **起始版本：** 11

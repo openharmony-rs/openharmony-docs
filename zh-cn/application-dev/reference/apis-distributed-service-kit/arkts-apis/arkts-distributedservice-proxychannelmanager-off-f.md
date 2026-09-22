@@ -27,7 +27,7 @@ function off(type: 'receiveData', channelId: number, callback?: Callback<DataInf
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'receiveData' | 是 | 设置订阅类型，固定取值为'receiveData'。 |
-| channelId | number | 是 | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32 390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
+| channelId | number | 是 | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DataInfo](arkts-distributedservice-proxychannelmanager-datainfo-i.md)&gt; | 否 | 注册的回调函数。默认效果：不传入此参数时取消订阅所有的数据接收事件。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅；传入其他回调函数不会生效。 |
 
 **错误码：**
@@ -39,6 +39,33 @@ function off(type: 'receiveData', channelId: number, callback?: Callback<DataInf
 | [32390006](../errorcode-proxyChannelManager.md#32390006-参数错误) | Parameter error. |
 | [32390100](../errorcode-proxyChannelManager.md#32390100-内部异常) | Internal error. |
 | [32390101](../errorcode-proxyChannelManager.md#32390101-调用受限) | Call is restricted. |
+
+**示例**
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button('测试')
+        .onClick(() => {
+          try {
+            proxyChannelManager.off('receiveData', channelId); // channelId通过openProxyChannel接口的Promise返回值获取
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to unregister receiveData callback. Code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 
 ## off('channelStateChange')
@@ -62,7 +89,7 @@ function off(type: 'channelStateChange', channelId: number, callback?: Callback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'channelStateChange' | 是 | 设置订阅类型，固定取值为'channelStateChange'。 |
-| channelId | number | 是 | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32 390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
+| channelId | number | 是 | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChannelStateInfo](arkts-distributedservice-proxychannelmanager-channelstateinfo-i.md)&gt; | 否 | 注册的回调函数。默认效果：不传入此参数时取消订阅所有的通道状态事件。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅；传入其他回调函数不会生效。 |
 
 **错误码：**
@@ -74,3 +101,30 @@ function off(type: 'channelStateChange', channelId: number, callback?: Callback<
 | [32390006](../errorcode-proxyChannelManager.md#32390006-参数错误) | Parameter error. |
 | [32390100](../errorcode-proxyChannelManager.md#32390100-内部异常) | Internal error. |
 | [32390101](../errorcode-proxyChannelManager.md#32390101-调用受限) | Call is restricted. |
+
+**示例**
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button('测试')
+        .onClick(() => {
+          try {
+            proxyChannelManager.off('channelStateChange', channelId); // channelId通过openProxyChannel接口的Promise返回值获取
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to unregister channelStateChange callback. Code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```

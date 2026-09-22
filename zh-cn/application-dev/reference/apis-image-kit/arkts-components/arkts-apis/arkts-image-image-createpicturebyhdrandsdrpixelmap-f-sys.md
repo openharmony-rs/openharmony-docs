@@ -77,46 +77,8 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
-```TypeScript
-import { fileIo } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
-async function CreatePictureTest(context: Context) {
-  const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // 获取SDR图片。
-  let imageSource: image.ImageSource = image.createImageSource(rawFile);
-  let decodingOptionsForSDR: image.DecodingOptions = {
-    desiredDynamicRange : image.DecodingDynamicRange.SDR,
-  }
-  let decodingOptionsForHDR: image.DecodingOptions = {
-    desiredDynamicRange : image.DecodingDynamicRange.HDR, // 通过AIHDR将SDR解码为HDR。
-  }
-  let sdrPixelMap = await imageSource.createPixelMap(decodingOptionsForSDR);
-  let hdrPixelMap = await imageSource.createPixelMap(decodingOptionsForHDR);
-  let params : image.GainmapParams = {
-    isFullSizeGainmap: true
-  }
-
-  // 获取计算生成的gainmap并编码。
-  let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap, params);
-  if (picture != null) {
-    console.info('Succeeded in creating picture');
-  } else {
-    console.error('Create picture failed');
-  }
-  const imagePackerObj = image.createImagePacker();
-  let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
-  packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
-  const path: string = context.filesDir + "/hdr-test.jpg";
-  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-  imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
-  }).catch((error : BusinessError) => {
-    console.error('Failed to pack the image. And the error is: ' + error);
-  })
-}
-```
-
+<a id="createpicturebyhdrandsdrpixelmap-1"></a>
 
 ## createPictureByHdrAndSdrPixelMap
 
@@ -158,4 +120,42 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 
 **示例**
 
-参见 [createPictureByHdrAndSdrPixelMap](#createpicturebyhdrandsdrpixelmap)
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function CreatePictureTest(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // 获取SDR图片。
+  let imageSource: image.ImageSource = image.createImageSource(rawFile);
+  let decodingOptionsForSDR: image.DecodingOptions = {
+    desiredDynamicRange : image.DecodingDynamicRange.SDR,
+  }
+  let decodingOptionsForHDR: image.DecodingOptions = {
+    desiredDynamicRange : image.DecodingDynamicRange.HDR, // 通过AIHDR将SDR解码为HDR。
+  }
+  let sdrPixelMap = await imageSource.createPixelMap(decodingOptionsForSDR);
+  let hdrPixelMap = await imageSource.createPixelMap(decodingOptionsForHDR);
+  let params : image.GainmapParams = {
+    isFullSizeGainmap: true
+  }
+
+  // 获取计算生成的gainmap并编码。
+  let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap, params);
+  if (picture != null) {
+    console.info('Succeeded in creating picture');
+  } else {
+    console.error('Create picture failed');
+  }
+  const imagePackerObj = image.createImagePacker();
+  let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
+  packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
+  const path: string = context.filesDir + "/hdr-test.jpg";
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
+  }).catch((error : BusinessError) => {
+    console.error('Failed to pack the image. And the error is: ' + error);
+  })
+}
+```

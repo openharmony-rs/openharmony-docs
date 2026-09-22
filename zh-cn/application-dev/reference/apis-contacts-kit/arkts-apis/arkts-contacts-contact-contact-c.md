@@ -1,5 +1,9 @@
 # Contact
 
+```TypeScript
+class Contact
+```
+
 联系人对象类。
 
 **起始版本：** 7

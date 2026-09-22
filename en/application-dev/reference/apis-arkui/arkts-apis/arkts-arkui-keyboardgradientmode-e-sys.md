@@ -1,5 +1,9 @@
 # KeyboardGradientMode (System API)
 
+```TypeScript
+declare enum KeyboardGradientMode
+```
+
 Enumerates keyboard gradient effects.
 
 **Since:** 20

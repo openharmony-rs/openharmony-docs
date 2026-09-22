@@ -1,5 +1,9 @@
 # SingleLocationRequest
 
+```TypeScript
+export interface SingleLocationRequest
+```
+
 Configuring parameters in single location requests.
 
 **Since:** 12

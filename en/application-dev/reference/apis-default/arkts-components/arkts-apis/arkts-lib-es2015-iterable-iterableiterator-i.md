@@ -1,5 +1,9 @@
 # IterableIterator
 
+```TypeScript
+interface IterableIterator<T> extends Iterator<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

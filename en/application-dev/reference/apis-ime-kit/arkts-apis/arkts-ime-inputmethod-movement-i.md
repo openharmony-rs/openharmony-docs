@@ -1,5 +1,9 @@
 # Movement
 
+```TypeScript
+export interface Movement
+```
+
 Describes the direction in which the cursor moves when the text is selected.
 
 **Since:** 10

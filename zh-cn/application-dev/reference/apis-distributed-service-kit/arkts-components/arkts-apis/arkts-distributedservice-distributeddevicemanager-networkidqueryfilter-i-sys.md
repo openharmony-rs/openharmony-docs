@@ -1,5 +1,9 @@
 # NetworkIdQueryFilter（系统接口）
 
+```TypeScript
+interface NetworkIdQueryFilter
+```
+
 设备网络ID过滤器选项。
 
 **起始版本：** 18

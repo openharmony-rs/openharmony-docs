@@ -1,5 +1,9 @@
 # Callback
 
+```TypeScript
+declare interface Callback<T, V = void>
+```
+
 Defines the window callback.
 
 **Since:** 15

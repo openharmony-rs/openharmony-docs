@@ -1,5 +1,9 @@
 # DownloadError
 
+```TypeScript
+interface DownloadError
+```
+
 预下载错误回调的返回信息。
 
 **起始版本：** 23

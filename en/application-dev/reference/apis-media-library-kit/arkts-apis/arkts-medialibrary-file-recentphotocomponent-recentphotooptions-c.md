@@ -1,5 +1,9 @@
 # RecentPhotoOptions
 
+```TypeScript
+export declare class RecentPhotoOptions
+```
+
 Represents the configuration of the recent image or video.
 
 **Since:** 12

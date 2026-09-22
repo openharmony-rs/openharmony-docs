@@ -1,5 +1,9 @@
 # PhotoSubtype
 
+```TypeScript
+export enum PhotoSubtype
+```
+
 PhotoSubtype是不同[PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md)类型的枚举。
 
 **起始版本：** 12

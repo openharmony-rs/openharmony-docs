@@ -1,5 +1,9 @@
 # NdefRecord
 
+```TypeScript
+export interface NdefRecord
+```
+
 Defines an NDEF record. For details, see *NFCForum-TS-NDEF_1.0*.
 
 **Since:** 9

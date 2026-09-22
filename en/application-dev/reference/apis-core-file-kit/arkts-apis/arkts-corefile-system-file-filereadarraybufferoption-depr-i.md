@@ -1,5 +1,9 @@
 # FileReadArrayBufferOption
 
+```TypeScript
+export interface FileReadArrayBufferOption
+```
+
 Defines the options used in readArrayBuffer().
 
 **Since:** 3

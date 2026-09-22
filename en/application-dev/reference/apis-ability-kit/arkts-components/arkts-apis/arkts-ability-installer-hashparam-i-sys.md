@@ -1,5 +1,9 @@
 # HashParam (System API)
 
+```TypeScript
+export interface HashParam
+```
+
 Defines the hash parameters for bundle installation and uninstall.
 
 **Since:** 9

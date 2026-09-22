@@ -1,5 +1,9 @@
 # SportsType
 
+```TypeScript
+export enum SportsType
+```
+
 运动类型。
 
 **起始版本：** 18

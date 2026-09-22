@@ -1,5 +1,9 @@
 # TrackingEvent
 
+```TypeScript
+export enum TrackingEvent
+```
+
 Enumerates the tracking events. @enum { int }
 
 **Since:** 20

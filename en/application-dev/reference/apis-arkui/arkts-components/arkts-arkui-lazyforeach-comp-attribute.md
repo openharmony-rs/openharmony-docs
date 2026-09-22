@@ -1,6 +1,10 @@
 # LazyForEach properties/events
 
-The drag-and-drop sorting attribute is supported.
+```TypeScript
+declare class LazyForEachAttribute extends DynamicNode<LazyForEachAttribute>
+```
+
+The [drag-and-drop sorting](arkts-arkui-common-comp.md#common) attribute is supported.
 
 **Inheritance/Implementation:** LazyForEachAttribute extends DynamicNode<LazyForEachAttribute>
 

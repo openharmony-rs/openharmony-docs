@@ -1,5 +1,9 @@
 # MmsPriorityType（系统接口）
 
+```TypeScript
+export enum MmsPriorityType
+```
+
 彩信优先级类型。
 
 **起始版本：** 8

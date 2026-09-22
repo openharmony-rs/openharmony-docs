@@ -1,5 +1,9 @@
 # WifiLinkType
 
+```TypeScript
+enum WifiLinkType
+```
+
 枚举，Wi-Fi7连接类型。
 
 **起始版本：** 18

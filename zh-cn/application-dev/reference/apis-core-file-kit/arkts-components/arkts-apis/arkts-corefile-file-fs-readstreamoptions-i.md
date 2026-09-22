@@ -1,5 +1,9 @@
 # ReadStreamOptions
 
+```TypeScript
+export interface ReadStreamOptions
+```
+
 可选项类型，支持 createReadStream 接口使用。
 
 **起始版本：** 12

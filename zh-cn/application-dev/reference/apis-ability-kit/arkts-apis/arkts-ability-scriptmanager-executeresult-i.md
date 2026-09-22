@@ -1,5 +1,9 @@
 # ExecuteResult
 
+```TypeScript
+interface ExecuteResult
+```
+
 ArkTS脚本执行结果。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # CloudFileCache
 
+```TypeScript
+class CloudFileCache
+```
+
 云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。
 
 **起始版本：** 11
@@ -63,6 +67,8 @@ try {
 }
 ```
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -92,10 +98,6 @@ A constructor used to create a CloudFileCache object.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
 **示例**
-
-```TypeScript
-let fileCache = new cloudSync.CloudFileCache();
-```
 
 ```TypeScript
 let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");

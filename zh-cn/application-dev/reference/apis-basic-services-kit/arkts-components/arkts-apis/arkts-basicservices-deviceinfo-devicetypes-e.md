@@ -1,5 +1,9 @@
 # DeviceTypes
 
+```TypeScript
+enum DeviceTypes
+```
+
 设备类型枚举值，可用于校验deviceType的返回值。
 
 **起始版本：** 20

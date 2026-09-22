@@ -64,33 +64,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 获取鼠标指针大小
-            pointer.getPointerSize().then((size: number) => {
-              console.info(`Succeeded in getting pointer size, size: ${JSON.stringify(size)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="getpointersize-1"></a>
 
 ## getPointerSize
 
@@ -120,4 +95,29 @@ function getPointerSize(): Promise<number>
 
 **示例**
 
-参见 [getPointerSize](#getpointersize)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标指针大小
+            pointer.getPointerSize().then((size: number) => {
+              console.info(`Succeeded in getting pointer size, size: ${JSON.stringify(size)}.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

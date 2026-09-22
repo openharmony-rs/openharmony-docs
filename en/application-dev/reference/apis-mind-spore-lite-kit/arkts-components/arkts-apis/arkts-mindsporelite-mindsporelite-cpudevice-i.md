@@ -1,5 +1,9 @@
 # CpuDevice
 
+```TypeScript
+interface CpuDevice
+```
+
 Provides the CPU device info
 
 **Since:** 10

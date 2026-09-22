@@ -1,5 +1,9 @@
 # DeviceType
 
+```TypeScript
+enum DeviceType
+```
+
 Device type definition
 
 **Since:** 10

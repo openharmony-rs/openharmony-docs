@@ -1,5 +1,9 @@
 # ProgressCode
 
+```TypeScript
+enum ProgressCode
+```
+
 表示端云同步过程的状态码。请使用枚举名称而非枚举值。
 
 **起始版本：** 10

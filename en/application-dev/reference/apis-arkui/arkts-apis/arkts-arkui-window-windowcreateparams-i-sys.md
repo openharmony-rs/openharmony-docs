@@ -1,5 +1,9 @@
 # WindowCreateParams
 
+```TypeScript
+interface WindowCreateParams
+```
+
 Describes the window parameters during application startup.
 
 **Since:** 20

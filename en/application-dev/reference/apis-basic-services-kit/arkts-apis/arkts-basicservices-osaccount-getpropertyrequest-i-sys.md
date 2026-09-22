@@ -1,5 +1,9 @@
 # GetPropertyRequest (System API)
 
+```TypeScript
+interface GetPropertyRequest
+```
+
 Defines the request for obtaining property information.
 
 **Since:** 8

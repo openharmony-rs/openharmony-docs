@@ -1,6 +1,10 @@
 # CounterType
 
-Enum for the counter type.
+```TypeScript
+declare enum CounterType
+```
+
+Enumerates counter types.
 
 **Since:** 11
 
@@ -44,7 +48,7 @@ Compact counter.
 INLINE = 2
 ```
 
-Inline counter.
+Inline number counter.
 
 **Since:** 11
 
@@ -60,7 +64,7 @@ Inline counter.
 INLINE_DATE = 3
 ```
 
-Date inline counter.
+Inline date counter.
 
 **Since:** 11
 

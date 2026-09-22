@@ -1,5 +1,9 @@
 # WirelessSignalFeature (System API)
 
+```TypeScript
+export interface WirelessSignalFeature
+```
+
 Indicates wireless signal feature.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # TextDataDetectorType
 
+```TypeScript
+declare enum TextDataDetectorType
+```
+
 定义文本数据检测类型。
 
 **起始版本：** 11

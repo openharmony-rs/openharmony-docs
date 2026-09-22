@@ -1,5 +1,9 @@
 # MmsParams (System API)
 
+```TypeScript
+export interface MmsParams
+```
+
 Defines the parameters for sending SMS messages.
 
 **Since:** 11

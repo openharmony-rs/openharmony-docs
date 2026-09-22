@@ -1,5 +1,9 @@
 # SphereGeometry
 
+```TypeScript
+export declare class SphereGeometry extends GeometryDefinition
+```
+
 球体几何类型，继承自GeometryDefinition。
 
 @extends GeometryDefinition

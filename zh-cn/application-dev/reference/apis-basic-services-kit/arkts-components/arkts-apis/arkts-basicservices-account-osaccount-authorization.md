@@ -12,7 +12,7 @@
 > Authorization_DENIED表示不满足授权策略；
 > [Authorization_PRIVILEGE_NOT_SUPPORTED]{@链接授权.AuthorizationResultCode.AUTHORATION_PRIVILEGE_NOT_SUPPORTED}表示特权的配置未部署在当前系统版本中。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

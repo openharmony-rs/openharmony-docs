@@ -1,5 +1,9 @@
 # FloatViewState
 
+```TypeScript
+enum FloatViewState
+```
+
 标准悬浮窗状态的枚举。
 
 **起始版本：** 26.0.0

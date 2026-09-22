@@ -1,5 +1,9 @@
 # DialogActionInfo
 
+```TypeScript
+interface DialogActionInfo
+```
+
 The definition of dialog action result.
 
 @interface DialogActionInfo

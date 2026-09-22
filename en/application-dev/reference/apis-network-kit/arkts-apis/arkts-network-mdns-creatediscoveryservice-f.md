@@ -41,10 +41,20 @@ Creates a **DiscoveryService** object, which is used to discover MDNS services o
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
+
+```TypeScript
+import { mdns } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the application context.
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+let serviceType = "_print._tcp";
+let discoveryService : Object = mdns.createDiscoveryService(context, serviceType);
 ```

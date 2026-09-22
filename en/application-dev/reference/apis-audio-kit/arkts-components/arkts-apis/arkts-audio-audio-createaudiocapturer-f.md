@@ -59,6 +59,35 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 });
 ```
 
+
+<a id="createaudiocapturer-2"></a>
+
+## createAudioCapturer
+
+```TypeScript
+function createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer>
+```
+
+Creates an AudioCapturer instance. This API uses a promise to return the result.
+
+**Since:** 8
+
+**System capability:** SystemCapability.Multimedia.Audio.Capturer
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| options | [AudioCapturerOptions](arkts-audio-audio-audiocaptureroptions-i.md) | Yes | Capturer configurations. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md)&gt; | Promise used to return the result. If the operation is successful, an AudioCapturer instance is returned; otherwise, an error object with either of the following error codes is returned:<br>Error code 6800301: indicates a parameter verification exception, permission verification exception, or system processing exception. For details, see system logs. <br>Error code 6800101: indicates that a mandatory parameter is null or the parameter type is incorrect. |
+
+**Examples**
+
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -89,32 +118,3 @@ audio.createAudioCapturer(audioCapturerOptions).then((data) => {
   console.error(`AudioCapturer Created : ERROR : ${err}`);
 });
 ```
-
-
-## createAudioCapturer
-
-```TypeScript
-function createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer>
-```
-
-Creates an AudioCapturer instance. This API uses a promise to return the result.
-
-**Since:** 8
-
-**System capability:** SystemCapability.Multimedia.Audio.Capturer
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| options | [AudioCapturerOptions](arkts-audio-audio-audiocaptureroptions-i.md) | Yes | Capturer configurations. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md)&gt; | Promise used to return the result. If the operation is successful, an AudioCapturer instance is returned; otherwise, an error object with either of the following error codes is returned:<br>Error code 6800301: indicates a parameter verification exception, permission verification exception, or system processing exception. For details, see system logs. <br>Error code 6800101: indicates that a mandatory parameter is null or the parameter type is incorrect. |
-
-**Examples**
-
-See [createAudioCapturer](#createaudiocapturer)

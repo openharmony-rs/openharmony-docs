@@ -1,5 +1,9 @@
 # DataProxyHandle
 
+```TypeScript
+interface DataProxyHandle
+```
+
 Defines the data proxy handle, which can be used to access or manage shared configuration information. Before calling an API provided by **DataProxyHandle**, you must create a **DataProxyHandle** instance using [createDataProxyHandle](arkts-arkdata-datashare-createdataproxyhandle-f.md).
 
 **Since:** 20
@@ -270,6 +274,29 @@ Unsubscribes from the change event of the proxy data corresponding to a specifie
 | [15700000](../errorcode-datashare.md#15700000-internal-error) | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
 | [15700014](../errorcode-datashare.md#15700014-incorrect-parameters-for-shared-configuration) | The parameter format is incorrect or the value range is invalid. |
 
+**Examples**
+
+```TypeScript
+const urisToUnWatch: string[] =
+  ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+const config: dataShare.DataProxyConfig = {
+  type: dataShare.DataProxyType.SHARED_CONFIG,
+};
+const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
+  if (err) {
+    console.error(`Failed to receive data change notification. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    changes.forEach((change) => {
+      console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
+    });
+  }
+};
+const results: dataShare.DataProxyResult[] = dataProxyHandle.off('dataChange', urisToUnWatch, config, callback);
+results.forEach((result) => {
+  console.info(`URI: ${result.uri}, Result: ${result.result}`);
+});
+```
+
 ## on
 
 ```TypeScript
@@ -312,6 +339,29 @@ When the publisher calls the [publish](#publish) or [delete](#delete) API to pub
 | --- | --- |
 | [15700000](../errorcode-datashare.md#15700000-internal-error) | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
 | [15700014](../errorcode-datashare.md#15700014-incorrect-parameters-for-shared-configuration) | The parameter format is incorrect or the value range is invalid. |
+
+**Examples**
+
+```TypeScript
+const urisToWatch: string[] =
+  ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+const config: dataShare.DataProxyConfig = {
+  type: dataShare.DataProxyType.SHARED_CONFIG,
+};
+const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
+  if (err) {
+    console.error(`Failed to receive data change notification. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    changes.forEach((change) => {
+      console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
+    });
+  }
+};
+const results: dataShare.DataProxyResult[] = dataProxyHandle.on('dataChange', urisToWatch, config, callback);
+results.forEach((result) => {
+  console.info(`URI: ${result.uri}, Result: ${result.result}`);
+});
+```
 
 ## publish
 

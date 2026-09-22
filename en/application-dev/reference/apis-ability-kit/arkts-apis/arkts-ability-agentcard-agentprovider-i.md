@@ -1,5 +1,9 @@
 # AgentProvider
 
+```TypeScript
+export interface AgentProvider
+```
+
 Represents the service provider of an agent.
 
 @typedef AgentProvider

@@ -1,5 +1,9 @@
 # AutoStartupInfo (System API)
 
+```TypeScript
+export interface AutoStartupInfo
+```
+
 The module defines information about the application component that automatically starts upon system boot.
 
 **Since:** 11

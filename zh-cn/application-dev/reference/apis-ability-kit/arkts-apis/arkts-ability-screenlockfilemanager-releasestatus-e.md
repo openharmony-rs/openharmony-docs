@@ -1,5 +1,9 @@
 # ReleaseStatus
 
+```TypeScript
+export enum ReleaseStatus
+```
+
 表示锁屏下敏感数据访问权限释放状态的枚举。
 
 **起始版本：** 12

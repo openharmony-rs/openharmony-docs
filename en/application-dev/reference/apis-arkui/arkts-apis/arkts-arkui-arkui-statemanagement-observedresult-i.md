@@ -1,5 +1,9 @@
 # ObservedResult
 
+```TypeScript
+export interface ObservedResult
+```
+
 Provides the result of whether the object can be observed.
 
 **Since:** 23

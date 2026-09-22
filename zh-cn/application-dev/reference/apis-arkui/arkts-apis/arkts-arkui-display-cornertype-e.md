@@ -1,5 +1,9 @@
 # CornerType
 
+```TypeScript
+enum CornerType
+```
+
 屏幕圆角类型枚举。
 
 **起始版本：** 23

@@ -79,80 +79,8 @@ try {
 }
 ```
 
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 实现回调函数
-function onContinueDone(resultCode: number): void {
-  console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
-};
-try {
-  // 通过任务ID方式迁移任务
-  // missionId需通过系统API获取实际任务ID
-  distributedMissionManager.continueMission(
-    {
-      srcDeviceId: '',
-      dstDeviceId: '',
-      missionId: 1,
-      wantParam: {'key': 'value'}
-    },
-    { onContinueDone: onContinueDone }).then(() => {
-      console.info('continueMission finished successfully');
-    }).catch((error: BusinessError) => {
-    console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  distributedMissionManager.continueMission(
-    {
-      srcDeviceId: '',
-      dstDeviceId: '',
-      bundleName: 'ohos.test.continueapp',
-      wantParam: {'key': 'value'}
-    },
-    (error: BusinessError) => {
-      if (error) {
-        console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
-        return;
-      }
-      console.info('continueMission finished');
-  })
-} catch (error) {
-  console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    distributedMissionManager.continueMission(
-      {
-        srcDeviceId: '',
-        dstDeviceId: '',
-        bundleName: 'ohos.test.continueapp',
-        wantParam: {"key": "value"}
-      }
-    ).then(() => {
-        console.info('continueMission finished successfully');
-    }).catch((error: BusinessError) => {
-        console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
-    });
-} catch (error) {
-    console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="continuemission-1"></a>
 
 ## continueMission
 
@@ -201,8 +129,36 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 **示例**
 
-参见 [continueMission](#continuemission)
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 实现回调函数
+function onContinueDone(resultCode: number): void {
+  console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
+};
+try {
+  // 通过任务ID方式迁移任务
+  // missionId需通过系统API获取实际任务ID
+  distributedMissionManager.continueMission(
+    {
+      srcDeviceId: '',
+      dstDeviceId: '',
+      missionId: 1,
+      wantParam: {'key': 'value'}
+    },
+    { onContinueDone: onContinueDone }).then(() => {
+      console.info('continueMission finished successfully');
+    }).catch((error: BusinessError) => {
+    console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="continuemission-2"></a>
 
 ## continueMission
 
@@ -245,8 +201,32 @@ function continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback
 
 **示例**
 
-参见 [continueMission](#continuemission)
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+  distributedMissionManager.continueMission(
+    {
+      srcDeviceId: '',
+      dstDeviceId: '',
+      bundleName: 'ohos.test.continueapp',
+      wantParam: {'key': 'value'}
+    },
+    (error: BusinessError) => {
+      if (error) {
+        console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
+        return;
+      }
+      console.info('continueMission finished');
+  })
+} catch (error) {
+  console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="continuemission-3"></a>
 
 ## continueMission
 
@@ -294,4 +274,24 @@ function continueMission(parameter: ContinueMissionInfo): Promise<void>
 
 **示例**
 
-参见 [continueMission](#continuemission)
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    distributedMissionManager.continueMission(
+      {
+        srcDeviceId: '',
+        dstDeviceId: '',
+        bundleName: 'ohos.test.continueapp',
+        wantParam: {"key": "value"}
+      }
+    ).then(() => {
+        console.info('continueMission finished successfully');
+    }).catch((error: BusinessError) => {
+        console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
+    });
+} catch (error) {
+    console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
+}
+```

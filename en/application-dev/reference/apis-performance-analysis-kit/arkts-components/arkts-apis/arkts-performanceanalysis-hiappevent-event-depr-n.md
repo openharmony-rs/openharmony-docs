@@ -1,5 +1,9 @@
 # Event(Application Event Logging)
 
+```TypeScript
+namespace Event
+```
+
 Provides constants that define the names of all predefined events.
 
 | Name | Type | Readable| Writable| Description |  

@@ -1,5 +1,9 @@
 # DialogActionInfo
 
+```TypeScript
+interface DialogActionInfo
+```
+
 对话框动作信息的定义。
 
 @interface DialogActionInfo

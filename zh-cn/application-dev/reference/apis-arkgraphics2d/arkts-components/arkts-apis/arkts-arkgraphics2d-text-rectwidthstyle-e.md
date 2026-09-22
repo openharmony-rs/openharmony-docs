@@ -1,5 +1,9 @@
 # RectWidthStyle
 
+```TypeScript
+enum RectWidthStyle
+```
+
 矩形区域宽度规格枚举。
 
 **起始版本：** 12

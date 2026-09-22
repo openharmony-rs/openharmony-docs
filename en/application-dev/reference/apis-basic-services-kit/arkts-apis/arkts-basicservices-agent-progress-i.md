@@ -1,5 +1,9 @@
 # Progress
 
+```TypeScript
+interface Progress
+```
+
 Describes the data structure of the task progress.
 
 **Since:** 10

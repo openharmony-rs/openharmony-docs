@@ -1,5 +1,9 @@
 # NotificationExtensionSubscriptionInfo
 
+```TypeScript
+export interface NotificationExtensionSubscriptionInfo
+```
+
 The **NotificationExtensionSubscriptionInfo** module describes the information about notification extension subscription.
 
 **Since:** 22

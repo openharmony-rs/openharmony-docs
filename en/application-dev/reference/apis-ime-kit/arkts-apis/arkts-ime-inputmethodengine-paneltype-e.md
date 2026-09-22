@@ -1,5 +1,9 @@
 # PanelType
 
+```TypeScript
+export enum PanelType
+```
+
 Enumerates the types of the input method panel.<br> <br>
 
 | Name | Value| Description |  

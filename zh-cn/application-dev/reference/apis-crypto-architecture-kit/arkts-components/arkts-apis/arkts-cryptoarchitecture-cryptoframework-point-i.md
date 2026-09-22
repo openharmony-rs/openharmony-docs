@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+interface Point
+```
+
 指定椭圆曲线上的一个点。
 
 **起始版本：** 10

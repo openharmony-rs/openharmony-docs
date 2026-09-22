@@ -1,5 +1,9 @@
 # EapMethod
 
+```TypeScript
+enum EapMethod
+```
+
 Wi-Fi EAP method. @enum { int }
 
 **Since:** 10

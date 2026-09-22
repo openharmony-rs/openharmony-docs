@@ -1,5 +1,9 @@
 # PropertyDescriptor
 
+```TypeScript
+interface PropertyDescriptor
+```
+
 表示Property的描述符。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # PortraitQuery (System API)
 
+```TypeScript
+interface PortraitQuery
+```
+
 Queries portrait parameters.
 
 **Since:** 12

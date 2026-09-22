@@ -1,5 +1,9 @@
 # CaptureEndInfo
 
+```TypeScript
+interface CaptureEndInfo
+```
+
 Describes the capture end information.
 
 **Since:** 10

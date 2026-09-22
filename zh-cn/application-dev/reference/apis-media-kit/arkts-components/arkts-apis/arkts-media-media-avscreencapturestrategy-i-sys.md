@@ -1,5 +1,9 @@
 # AVScreenCaptureStrategy
 
+```TypeScript
+interface AVScreenCaptureStrategy
+```
+
 录屏策略。
 
 **起始版本：** 20

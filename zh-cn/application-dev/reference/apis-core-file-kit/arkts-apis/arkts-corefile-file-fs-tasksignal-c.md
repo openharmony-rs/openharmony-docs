@@ -1,5 +1,9 @@
 # TaskSignal
 
+```TypeScript
+export class TaskSignal
+```
+
 拷贝中断信号。
 
 **起始版本：** 12

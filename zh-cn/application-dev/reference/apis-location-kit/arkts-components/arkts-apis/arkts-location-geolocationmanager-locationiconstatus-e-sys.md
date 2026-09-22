@@ -1,5 +1,9 @@
 # LocationIconStatus（系统接口）
 
+```TypeScript
+export enum LocationIconStatus
+```
+
 定位图标状态。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # Mask（系统接口）
 
+```TypeScript
+class Mask
+```
+
 Mask效果类，作为Filter以及VisualEffect的输入使用。不同类型的Mask提供不同的灰度分布模式，如波环遮罩、径向渐变、像素图遮罩等。
 
 **起始版本：** 20
@@ -14,6 +18,34 @@ Mask效果类，作为Filter以及VisualEffect的输入使用。不同类型的M
 import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
+## createAtlasFrameMask
+
+```TypeScript
+static createAtlasFrameMask(atlasInfo: drawing.AtlasImage): Mask
+```
+
+创建用于精灵图集序列帧动画的图集帧遮罩。该遮罩携带用于驱动图集序列帧动画的图集帧参数。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| atlasInfo | [drawing.AtlasImage](arkts-arkgraphics2d-drawing-atlasimage-i-sys.md) | 是 | 图集帧参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 返回携带图集帧参数的Mask实例。 |
+
 ## createBinocularMask
 
 ```TypeScript
@@ -22,7 +54,7 @@ static createBinocularMask(radiusX: number, radiusY: number, gap: number, softne
 
 创建一个双目蒙版。生成一个左右对称的双椭圆弧形蒙版形状，与 maskDispersion 滤镜配合使用，用于控制色散效果的作用区域和方向。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,7 +113,7 @@ static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoft
 
 创建一个分形玻璃蒙版。它通过分形条纹对输入纹理进行周期性水平位移采样，产生类似玻璃折射的扭曲效果。扭曲效果关于图像垂直轴对称。配合 displacementDistort 使用，可产生光栅折射的视觉效果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -212,6 +244,42 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
+<a id="createpixelmapmask-1"></a>
+
+## createPixelMapMask
+
+```TypeScript
+static createPixelMapMask(pixelMap: image.PixelMap): Mask
+```
+
+通过输入的pixelMap创建Mask实例。该接口不会对传入的pixelMap进行缩放处理。
+
+**起始版本：** 22
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| pixelMap | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | image模块创建的PixelMap实例。可通过图片解码或直接创建获得。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 返回具有pixelMap的Mask。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
+
+**示例**
+
 ```TypeScript
 import { uiEffect } from '@kit.ArkGraphics2D';
 import { image } from '@kit.ImageKit';
@@ -300,42 +368,6 @@ struct Index {
   }
 }
 ```
-
-## createPixelMapMask
-
-```TypeScript
-static createPixelMapMask(pixelMap: image.PixelMap): Mask
-```
-
-通过输入的pixelMap创建Mask实例。该接口不会对传入的pixelMap进行缩放处理。
-
-**起始版本：** 22
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| pixelMap | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | image模块创建的PixelMap实例。可通过图片解码或直接创建获得。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 返回具有pixelMap的Mask。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
-
-**示例**
-
-参见 [createPixelMapMask](#createpixelmapmask)
 
 ## createRadialGradientMask
 
@@ -445,7 +477,7 @@ static createSweepRefractionMask(param: SweepRefractionParam,
 
 创建一个模拟棱镜色散效果的扫光折射遮罩 Mask 实例。该遮罩会在组件上生成一条带有颜色分离效果的扫光光带。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -631,7 +663,7 @@ static createWarpedRingMask(ringParam: WarpedRingParam): Mask
 
 创建一个表示扭曲光环的 Mask 实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

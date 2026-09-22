@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+declare interface Rect
+```
+
 Represents the rectangle area on the device screen.
 
 **Since:** 9

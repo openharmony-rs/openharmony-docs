@@ -50,20 +50,8 @@ sharing.getStatsRxBytes((error: BusinessError, data: number) => {
 });
 ```
 
-```TypeScript
-import { sharing } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-sharing
-  .getStatsRxBytes()
-  .then((data: number) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="getstatsrxbytes-1"></a>
 
 ## getStatsRxBytes
 
@@ -99,4 +87,16 @@ function getStatsRxBytes(): Promise<number>
 
 **示例**
 
-参见 [getStatsRxBytes](#getstatsrxbytes)
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+sharing
+  .getStatsRxBytes()
+  .then((data: number) => {
+    console.info(JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

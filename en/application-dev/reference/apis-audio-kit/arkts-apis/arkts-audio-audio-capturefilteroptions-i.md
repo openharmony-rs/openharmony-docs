@@ -1,5 +1,9 @@
 # CaptureFilterOptions
 
+```TypeScript
+interface CaptureFilterOptions
+```
+
 Defines the options for filtering the played audio streams to be recorded.
 
 **Since:** 10

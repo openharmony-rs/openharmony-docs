@@ -1,5 +1,9 @@
 # LocationCommand
 
+```TypeScript
+export interface LocationCommand
+```
+
 扩展命令参数。
 
 **起始版本：** 9

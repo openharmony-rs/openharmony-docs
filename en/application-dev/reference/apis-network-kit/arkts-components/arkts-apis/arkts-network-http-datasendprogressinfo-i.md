@@ -1,5 +1,9 @@
 # DataSendProgressInfo
 
+```TypeScript
+export interface DataSendProgressInfo
+```
+
 Defines the data sending progress information.
 
 **Since:** 11

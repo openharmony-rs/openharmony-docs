@@ -1,5 +1,9 @@
 # InteractionEventBindingInfo
 
+```TypeScript
+declare interface InteractionEventBindingInfo
+```
+
 Describes the binding state of interaction events on components. When querying reveals an interaction event bound to the current node, this object provides detailed event binding information.
 
 **Since:** 19

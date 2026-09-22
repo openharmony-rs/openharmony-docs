@@ -1,5 +1,9 @@
 # CaptureSession
 
+```TypeScript
+interface CaptureSession
+```
+
 **CaptureSession** implements a capture session, which saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera and requests the camera to complete shooting or video recording.
 
 **Since:** 10

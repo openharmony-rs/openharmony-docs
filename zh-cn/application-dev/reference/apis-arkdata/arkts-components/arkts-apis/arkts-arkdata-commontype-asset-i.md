@@ -1,5 +1,9 @@
 # Asset
 
+```TypeScript
+interface Asset
+```
+
 记录资产附件（文件、图片、视频等类型文件）的相关信息，相关示例见[在跨端迁移中使用分布式数据对象迁移数据](../../../database/data-sync-of-distributed-data-object.md#在跨端迁移中使用分布式数据对象迁移数据)的示例代码。
 
 **起始版本：** 11

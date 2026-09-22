@@ -1,5 +1,9 @@
 # WindowProperties
 
+```TypeScript
+interface WindowProperties
+```
+
 Describes the window properties.
 
 **Since:** 6
@@ -182,7 +186,7 @@ In other cases, the return value is **false**.
 isPrivacyMode: boolean
 ```
 
-Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. You can call [setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode) to set the privacy mode of the window.
+Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. You can call [setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode-1) to set the privacy mode of the window.
 
 **Type:** boolean
 
@@ -284,7 +288,7 @@ Window type.
 windowRect: Rect
 ```
 
-Window size, which can be obtained from the page lifecycle [onPageShow](../arkts-components/arkts-arkui-basecustomcomponent-c.md#onpageshow) or the application lifecycle [onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground).
+Window size, which can be obtained from the page lifecycle [onPageShow](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onpageshow) or the application lifecycle [onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground).
 
 **Type:** [Rect](arkts-arkui-window-rect-i.md)
 

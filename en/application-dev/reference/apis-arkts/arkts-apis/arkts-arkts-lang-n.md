@@ -1,5 +1,9 @@
 # lang(Defines the language features for ArkTS)
 
+```TypeScript
+declare namespace lang
+```
+
 ArkTS language
 
 **Since:** 12

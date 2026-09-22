@@ -34,3 +34,16 @@ function off(type: 'sppRead', clientSocket: number, callback?: Callback<ArrayBuf
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let clientNumber = 1; // 入参clientNumber由sppAccept或sppConnect接口获取。
+try {
+    socket.off('sppRead', clientNumber);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

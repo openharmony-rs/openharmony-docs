@@ -1,5 +1,9 @@
 # SensorColorFilterArrangement
 
+```TypeScript
+enum SensorColorFilterArrangement
+```
+
 Enumerates the arrangement modes of the sensor color filter.
 
 **Since:** 24

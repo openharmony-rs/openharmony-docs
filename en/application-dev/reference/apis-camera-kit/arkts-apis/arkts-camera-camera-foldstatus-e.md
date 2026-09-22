@@ -1,5 +1,9 @@
 # FoldStatus
 
+```TypeScript
+enum FoldStatus
+```
+
 Enumerates the fold states available for a fordable device.
 
 **Since:** 12

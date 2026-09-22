@@ -1,5 +1,9 @@
 # FontDescriptor
 
+```TypeScript
+interface FontDescriptor
+```
+
 字体描述符信息。
 
 **起始版本：** 14

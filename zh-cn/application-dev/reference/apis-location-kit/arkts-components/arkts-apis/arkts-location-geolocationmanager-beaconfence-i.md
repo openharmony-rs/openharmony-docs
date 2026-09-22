@@ -1,5 +1,9 @@
 # BeaconFence
 
+```TypeScript
+export interface BeaconFence
+```
+
 beacon围栏的参数配置。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # Vector2
 
+```TypeScript
+interface Vector2
+```
+
 用于表示包含x和y两个值的向量。
 
 **起始版本：** 11

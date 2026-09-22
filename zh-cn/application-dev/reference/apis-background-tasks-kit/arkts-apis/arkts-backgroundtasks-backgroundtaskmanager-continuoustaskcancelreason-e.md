@@ -1,5 +1,9 @@
 # ContinuousTaskCancelReason
 
+```TypeScript
+export enum ContinuousTaskCancelReason
+```
+
 长时任务取消原因。
 
 **起始版本：** 15

@@ -42,14 +42,38 @@ function resolveLocalService(context: Context, serviceInfo: LocalServiceInfo,
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 Stage模型示例：
+
+```TypeScript
+import { mdns } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 获取context。
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+let localServiceInfo: mdns.LocalServiceInfo = {
+  serviceType: "_print._tcp",
+  serviceName: "servicename",
+  port: 5555,
+  host: {
+  address: "10.14.**.***",
+  },
+  serviceAttribute: [{key: "111", value: [1]}]
+}
+
+mdns.resolveLocalService(context, localServiceInfo, (error: BusinessError, data: mdns.LocalServiceInfo) =>  {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
+});
 ```
 
+
+<a id="resolvelocalservice-1"></a>
 
 ## resolveLocalService
 
@@ -91,4 +115,31 @@ function resolveLocalService(context: Context, serviceInfo: LocalServiceInfo): P
 
 **示例**
 
-参见 [resolveLocalService](#resolvelocalservice)
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+Stage模型示例：
+
+```TypeScript
+import { mdns } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 获取context。
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+let localServiceInfo: mdns.LocalServiceInfo = {
+  serviceType: "_print._tcp",
+  serviceName: "servicename",
+  port: 5555,
+  host: {
+  address: "10.14.**.***",
+  },
+  serviceAttribute: [{key: "111", value: [1]}]
+}
+
+mdns.resolveLocalService(context, localServiceInfo).then((data: mdns.LocalServiceInfo) => {
+  console.info(JSON.stringify(data));
+});
+```

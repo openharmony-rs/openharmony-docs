@@ -1,5 +1,9 @@
 # ColorSpaceManager
 
+```TypeScript
+interface ColorSpaceManager
+```
+
 当前色域对象实例。
 
 下列API示例中都需先使用[create()](arkts-arkgraphics2d-colorspacemanager-create-f.md)获取到ColorSpaceManager实例，再通过此实例调用对应方法。

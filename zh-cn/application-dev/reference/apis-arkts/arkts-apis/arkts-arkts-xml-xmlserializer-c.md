@@ -1,5 +1,9 @@
 # XmlSerializer
 
+```TypeScript
+class XmlSerializer
+```
+
 XmlSerializer接口用于生成XML文件。该接口基于预分配的ArrayBuffer缓存区域，通过顺序调用元素写入方法（如startElement、setAttributes、setText和endElement）将XML文本写入缓存。
 
 **起始版本：** 8

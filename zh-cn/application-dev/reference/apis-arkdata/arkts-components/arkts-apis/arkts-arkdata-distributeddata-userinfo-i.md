@@ -1,5 +1,9 @@
 # UserInfo
 
+```TypeScript
+interface UserInfo
+```
+
 用户信息。
 
 **起始版本：** 7

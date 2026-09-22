@@ -1,5 +1,9 @@
 # TraceFlag
 
+```TypeScript
+enum TraceFlag
+```
+
 Describes types of trace collection threads, including the main thread and all threads.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # TextChangeOptions
 
+```TypeScript
+declare interface TextChangeOptions
+```
+
 Provides information about the text before and after a change, including the selection ranges.
 
 **Since:** 15

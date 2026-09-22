@@ -1,5 +1,9 @@
 # UsbEndpointTransferType
 
+```TypeScript
+export enum UsbEndpointTransferType
+```
+
 USB传输类型。
 
 **起始版本：** 18

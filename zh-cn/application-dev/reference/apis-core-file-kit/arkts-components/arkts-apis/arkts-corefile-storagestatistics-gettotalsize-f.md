@@ -42,15 +42,6 @@ function getTotalSize(callback: AsyncCallback<number>): void
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getTotalSize().then((totalSize: number) => {
-  console.info('getTotalSize successfully:' + totalSize);
-}).catch((err: BusinessError) => {
-  console.error(`getTotalSize failed. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getTotalSize((error: BusinessError, totalSize: number) => {
   if (error) {
     console.error(`getTotalSize failed. Code: ${error.code}, message: ${error.message}`);
@@ -61,6 +52,8 @@ storageStatistics.getTotalSize((error: BusinessError, totalSize: number) => {
 });
 ```
 
+
+<a id="gettotalsize-1"></a>
 
 ## getTotalSize
 
@@ -95,4 +88,11 @@ function getTotalSize(): Promise<number>
 
 **示例**
 
-参见 [getTotalSize](#gettotalsize)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getTotalSize().then((totalSize: number) => {
+  console.info('getTotalSize successfully:' + totalSize);
+}).catch((err: BusinessError) => {
+  console.error(`getTotalSize failed. Code: ${err.code}, message: ${err.message}`);
+});
+```

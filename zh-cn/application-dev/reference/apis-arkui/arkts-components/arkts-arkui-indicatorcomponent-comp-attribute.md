@@ -1,10 +1,14 @@
 # IndicatorComponent属性/事件
 
+```TypeScript
+declare class IndicatorComponentAttribute extends CommonMethod<IndicatorComponentAttribute>
+```
+
 除支持通用属性外，还支持以下属性。
 
 @extends CommonMethod&lt;IndicatorComponentAttribute&gt;
 
-**继承/实现关系：** IndicatorComponentAttribute extends CommonMethod&lt;IndicatorComponentAttribute&gt;
+**继承/实现关系：** IndicatorComponentAttribute extends CommonMethod<IndicatorComponentAttribute>
 
 **起始版本：** 15
 
@@ -134,7 +138,7 @@ style(indicatorStyle: DotIndicator | DigitIndicator)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indicatorStyle | [DotIndicator](arkts-arkui-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-digitindicator-c.md) | 是 | 可选导航点指示器样式。<br> - DotIndicator：圆点指示器样式。<br> - DigitIndicator：数字指示器样式。<br>  默认类型：DotIndicator。 |
+| indicatorStyle | [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | 是 | 可选导航点指示器样式。<br> - DotIndicator：圆点指示器样式。<br> - DigitIndicator：数字指示器样式。<br>  默认类型：DotIndicator。 |
 
 ## vertical
 

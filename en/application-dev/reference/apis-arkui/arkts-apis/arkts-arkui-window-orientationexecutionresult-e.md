@@ -1,5 +1,9 @@
 # OrientationExecutionResult
 
+```TypeScript
+enum OrientationExecutionResult
+```
+
 Type of execution result of setting preferred orientation
 
 **Since:** 26.0.0

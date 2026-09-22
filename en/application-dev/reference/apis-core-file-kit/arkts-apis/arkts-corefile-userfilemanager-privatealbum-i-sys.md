@@ -1,5 +1,9 @@
 # PrivateAlbum (System API)
 
+```TypeScript
+interface PrivateAlbum extends AbsAlbum
+```
+
 Provides APIs for managing the system albums.
 
 This API will be deprecated. Use [Album](arkts-corefile-userfilemanager-album-i-sys.md) instead.
@@ -53,9 +57,34 @@ This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfi
 
 **Examples**
 
-```TypeScript
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(mgr: userFileManager.UserFileManager) {
+  console.info('privateAlbumDeleteCallback');
+  let albumList: userFileManager.FetchResult<userFileManager.PrivateAlbum> = await mgr.getPrivateAlbum(userFileManager.PrivateAlbumType.TYPE_TRASH);
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: userFileManager.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let trashAlbum: userFileManager.PrivateAlbum = await albumList.getFirstObject();
+  let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await trashAlbum.getPhotoAssets(fetchOption);
+  let fileAsset: userFileManager.FileAsset = await fetchResult.getFirstObject();
+  let deleteFileUri = fileAsset.uri;
+  trashAlbum.delete(deleteFileUri, (err) => {
+    if (err != undefined) {
+      console.error('trashAlbum.delete failed, message = ', err);
+    } else {
+      console.info('trashAlbum.delete successfully');
+    }
+  });
+}
 ```
+
+<a id="delete-1"></a>
 
 ## delete
 
@@ -93,8 +122,30 @@ This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfi
 
 **Examples**
 
-```TypeScript
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(mgr: userFileManager.UserFileManager) {
+  console.info('privateAlbumDeleteDemoPromise');
+  let albumList: userFileManager.FetchResult<userFileManager.PrivateAlbum> = await mgr.getPrivateAlbum(userFileManager.PrivateAlbumType.TYPE_TRASH);
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: userFileManager.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let trashAlbum: userFileManager.PrivateAlbum = await albumList.getFirstObject();
+  let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await trashAlbum.getPhotoAssets(fetchOption);
+  let fileAsset: userFileManager.FileAsset = await fetchResult.getFirstObject();
+  let deleteFileUri = fileAsset.uri;
+  trashAlbum.delete(deleteFileUri).then(() => {
+    console.info('trashAlbum.delete successfully');
+  }).catch((err: BusinessError) => {
+    console.error('trashAlbum.delete failed, message = ', err);
+  });
+}
 ```
 
 ## recover
@@ -128,9 +179,42 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userf
 
 **Examples**
 
-```TypeScript
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(mgr: userFileManager.UserFileManager) {
+  console.info('privateAlbumRecoverDemoCallback');
+  let albumList: userFileManager.FetchResult<userFileManager.PrivateAlbum> = await mgr.getPrivateAlbum(userFileManager.PrivateAlbumType.TYPE_TRASH);
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: userFileManager.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let trashAlbum: userFileManager.PrivateAlbum = await albumList.getFirstObject();
+  if (trashAlbum === undefined) {
+    console.error('privateAlbumRecoverDemoCallback trashAlbum is undefined');
+    return;
+  }
+  let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await trashAlbum.getPhotoAssets(fetchOption);
+  let fileAsset: userFileManager.FileAsset = await fetchResult.getFirstObject();
+  if (fileAsset === undefined) {
+    console.error('privateAlbumRecoverDemoCallback fileAsset is undefined');
+    return;
+  }
+  let recoverFileUri: string = fileAsset.uri;
+  trashAlbum.recover(recoverFileUri, (err) => {
+    if (err != undefined) {
+      console.error('trashAlbum.recover failed, message = ', err);
+    } else {
+      console.info('trashAlbum.recover successfully');
+    }
+  });
+}
 ```
+
+<a id="recover-1"></a>
 
 ## recover
 
@@ -168,4 +252,28 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userf
 
 **Examples**
 
-See [recover](#recover)
+For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(mgr: userFileManager.UserFileManager) {
+  console.info('privateAlbumRecoverDemoPromise');
+  let albumList: userFileManager.FetchResult<userFileManager.PrivateAlbum> = await mgr.getPrivateAlbum(userFileManager.PrivateAlbumType.TYPE_TRASH);
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: userFileManager.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let trashAlbum: userFileManager.PrivateAlbum = await albumList.getFirstObject();
+  let fetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await trashAlbum.getPhotoAssets(fetchOption);
+  let fileAsset: userFileManager.FileAsset = await fetchResult.getFirstObject();
+  let recoverFileUri: string = fileAsset.uri;
+  trashAlbum.recover(recoverFileUri).then(() => {
+    console.info('trashAlbum.recover successfully');
+  }).catch((err: BusinessError) => {
+    console.error('trashAlbum.recover failed, message = ', err);
+  });
+}
+```

@@ -1,5 +1,9 @@
 # NetUidRule (System API)
 
+```TypeScript
+export enum NetUidRule
+```
+
 Enumerates the metered network rules.
 
 **Since:** 10

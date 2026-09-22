@@ -82,6 +82,8 @@ try {
 ```
 
 
+<a id="getlauncherabilityresourceinfo-1"></a>
+
 ## getLauncherAbilityResourceInfo
 
 ```TypeScript

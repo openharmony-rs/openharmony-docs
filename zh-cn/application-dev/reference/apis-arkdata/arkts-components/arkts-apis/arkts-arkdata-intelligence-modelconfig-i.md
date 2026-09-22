@@ -1,5 +1,9 @@
 # ModelConfig
 
+```TypeScript
+interface ModelConfig
+```
+
 管理嵌入模型的配置信息。
 
 @interface ModelConfig

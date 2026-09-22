@@ -1,5 +1,9 @@
 # NotificationClassification (System API)
 
+```TypeScript
+export interface NotificationClassification
+```
+
 Returns the notification classification information.
 
 **Since:** 26.0.0

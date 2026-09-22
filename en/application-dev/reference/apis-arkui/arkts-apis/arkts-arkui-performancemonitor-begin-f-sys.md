@@ -32,6 +32,8 @@ Marks the start of a user scene. Call this API when the scene begins.
 
 **Examples**
 
-```TypeScript
 Start point of the user scene where the user taps an icon to launch an application, triggered by a release event (LAST_UP).
+
+```TypeScript
+performanceMonitor.begin("LAUNCHER_APP_LAUNCH_FROM_ICON", performanceMonitor.ActionType.LAST_UP, "APP_START_BEGIN");
 ```

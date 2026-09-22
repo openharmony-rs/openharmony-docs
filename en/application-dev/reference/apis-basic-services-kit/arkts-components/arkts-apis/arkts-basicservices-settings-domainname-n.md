@@ -1,5 +1,9 @@
 # domainName
 
+```TypeScript
+namespace domainName
+```
+
 Provide domain name for query.
 
 @namespace domainName

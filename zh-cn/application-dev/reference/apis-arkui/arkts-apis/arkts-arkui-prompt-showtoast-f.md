@@ -20,6 +20,8 @@ function showToast(options: ShowToastOptions): void
 
 **替代接口：** showToast
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

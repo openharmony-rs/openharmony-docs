@@ -1,5 +1,9 @@
 # RankingMethod (System API)
 
+```TypeScript
+enum RankingMethod
+```
+
 Enumerates related entity Ranking Method
 
 **Since:** 23

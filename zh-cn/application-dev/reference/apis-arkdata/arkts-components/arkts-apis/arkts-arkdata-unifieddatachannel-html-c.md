@@ -1,5 +1,9 @@
 # HTML
 
+```TypeScript
+class HTML extends Text
+```
+
 HTML类型数据，是[Text](arkts-arkdata-unifieddatachannel-text-c.md)的子类，用于描述超文本标记语言数据。
 
 **继承/实现关系：** HTML extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)

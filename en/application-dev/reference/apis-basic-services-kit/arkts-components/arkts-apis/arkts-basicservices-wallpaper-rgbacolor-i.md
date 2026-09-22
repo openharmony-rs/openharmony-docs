@@ -1,5 +1,9 @@
 # RgbaColor
 
+```TypeScript
+interface RgbaColor
+```
+
 RgbaColor definition
 
 @typedef RgbaColor

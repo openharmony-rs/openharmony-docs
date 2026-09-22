@@ -29,6 +29,8 @@ function cancelGroup(groupName: string, callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 取消本应用指定组下通知的回调函数。 |
 
 
+<a id="cancelgroup-1"></a>
+
 ## cancelGroup
 
 ```TypeScript

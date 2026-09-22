@@ -1,5 +1,9 @@
 # MechDeviceType
 
+```TypeScript
+export enum MechDeviceType
+```
+
 Enumerates the mechanical device types. @enum { int }
 
 **Since:** 20

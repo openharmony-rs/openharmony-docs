@@ -1,5 +1,9 @@
 # DownloadableProfile
 
+```TypeScript
+export interface DownloadableProfile
+```
+
 Defines a downloadable profile.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # WindowProperties
 
+```TypeScript
+interface WindowProperties
+```
+
 窗口属性。
 
 **起始版本：** 6
@@ -182,7 +186,7 @@ isLayoutFullScreen: boolean
 isPrivacyMode: boolean
 ```
 
-窗口是否为隐私模式。true表示窗口为隐私模式；false表示窗口为非隐私模式。可通过[setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode)设置窗口的隐私模式。
+窗口是否为隐私模式。true表示窗口为隐私模式；false表示窗口为非隐私模式。可通过[setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode-1)设置窗口的隐私模式。
 
 **类型：** boolean
 
@@ -286,7 +290,7 @@ type: WindowType
 windowRect: Rect
 ```
 
-窗口尺寸，其中左边界上边界是相对于窗口所在屏幕左上顶点计算，可在页面生命周期[onPageShow](../arkts-components/arkts-arkui-basecustomcomponent-c.md#onpageshow)或应用生命周期[onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground)阶段获取。
+窗口尺寸，其中左边界上边界是相对于窗口所在屏幕左上顶点计算，可在页面生命周期[onPageShow](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onpageshow)或应用生命周期[onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground)阶段获取。
 
 **类型：** [Rect](arkts-arkui-window-rect-i.md)
 

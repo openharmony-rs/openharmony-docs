@@ -1,5 +1,9 @@
 # ControlCenterQuery
 
+```TypeScript
+interface ControlCenterQuery
+```
+
 控制中心类，用于查询是否支持相机控制器。
 
 **起始版本：** 20
@@ -32,6 +36,8 @@ getSupportedEffectTypes(): Array<ControlCenterEffectType>
 | --- | --- |
 | Array&lt;[ControlCenterEffectType](arkts-camera-camera-controlcentereffecttype-e.md)&gt; | 支持的效果类型。 |
 
+**示例**
+
 ## isControlCenterSupported
 
 ```TypeScript
@@ -51,3 +57,12 @@ isControlCenterSupported(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回是否支持相机控制器。true表示支持，false表示不支持。 |
+
+**示例**
+
+```TypeScript
+function isControlCenterSupported(videoSession: camera.VideoSession): boolean {
+    let isSupported: boolean = videoSession.isControlCenterSupported();
+    return isSupported;
+}
+```

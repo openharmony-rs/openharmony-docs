@@ -1,5 +1,9 @@
 # ExtensionWindowConfig (System API)
 
+```TypeScript
+interface ExtensionWindowConfig
+```
+
 Describes the parameters for creating a window for a UI ServiceExtensionAbility.
 
 **Since:** 14

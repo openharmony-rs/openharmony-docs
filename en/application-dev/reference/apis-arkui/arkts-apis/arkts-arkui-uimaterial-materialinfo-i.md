@@ -1,5 +1,9 @@
 # MaterialInfo
 
+```TypeScript
+interface MaterialInfo
+```
+
 Provides material configuration information, including the material enabling state and material type.
 
 **Since:** 26.0.0

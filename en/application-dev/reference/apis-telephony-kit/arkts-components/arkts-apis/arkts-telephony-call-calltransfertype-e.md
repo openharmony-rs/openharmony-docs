@@ -1,5 +1,9 @@
 # CallTransferType
 
+```TypeScript
+export enum CallTransferType
+```
+
 Enumerates call transfer types.
 
 **Since:** 26.0.0

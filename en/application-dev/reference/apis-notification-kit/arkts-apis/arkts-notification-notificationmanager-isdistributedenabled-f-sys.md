@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="isdistributedenabled-2"></a>
+
 ## isDistributedEnabled
 
 ```TypeScript
@@ -42,29 +44,6 @@ Checks whether a device enables cross-device notification. This API uses a promi
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let isDistributedEnabledCallback = (err: BusinessError, data: boolean): void => {
-  if (err) {
-    console.error(`isDistributedEnabled failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`isDistributedEnabled success ${JSON.stringify(data)}`);
-  }
-};
-notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.isDistributedEnabled().then((data: boolean) => {
-  console.info(`isDistributedEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`isDistributedEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

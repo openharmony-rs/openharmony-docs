@@ -63,19 +63,8 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError): void =>
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
-let enable: boolean = true;
-notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(() => {
-    console.info('setSyncNotificationEnabledWithoutApp success');
-}).catch((err: BusinessError) => {
-    console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="setsyncnotificationenabledwithoutapp-1"></a>
 
 ## setSyncNotificationEnabledWithoutApp
 
@@ -123,4 +112,15 @@ function setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): 
 
 **示例**
 
-参见 [setSyncNotificationEnabledWithoutApp](#setsyncnotificationenabledwithoutapp)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 100;
+let enable: boolean = true;
+notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(() => {
+    console.info('setSyncNotificationEnabledWithoutApp success');
+}).catch((err: BusinessError) => {
+    console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
+});
+```

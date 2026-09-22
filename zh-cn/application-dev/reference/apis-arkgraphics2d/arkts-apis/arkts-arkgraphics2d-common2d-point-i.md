@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+interface Point
+```
+
 坐标点。
 
 **起始版本：** 12

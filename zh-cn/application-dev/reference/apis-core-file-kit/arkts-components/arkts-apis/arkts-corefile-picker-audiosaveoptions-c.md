@@ -1,5 +1,9 @@
 # AudioSaveOptions
 
+```TypeScript
+class AudioSaveOptions
+```
+
 音频保存选项。
 
 **起始版本：** 9

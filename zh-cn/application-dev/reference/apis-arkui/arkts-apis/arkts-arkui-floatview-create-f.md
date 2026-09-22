@@ -24,7 +24,7 @@ function create(config: FloatViewConfiguration): Promise<FloatViewController>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [FloatViewConfiguration](arkts-arkui-floatview-floatviewconfiguration-i.md) | 是 | 创建标准悬浮窗控制器的参数。该参数以及构造该参数的context不能为null或者undefined，否则抛出401。其他参数异常情况抛出130 0016。 |
+| config | [FloatViewConfiguration](arkts-arkui-floatview-floatviewconfiguration-i.md) | 是 | 创建标准悬浮窗控制器的参数。该参数以及构造该参数的context不能为null或者undefined，否则抛出401。其他参数异常情况抛出1300016。 |
 
 **返回值：**
 

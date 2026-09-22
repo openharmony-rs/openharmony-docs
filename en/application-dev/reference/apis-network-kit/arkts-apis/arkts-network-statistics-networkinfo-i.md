@@ -1,5 +1,9 @@
 # NetworkInfo
 
+```TypeScript
+export interface NetworkInfo
+```
+
 Defines the network information.
 
 **Since:** 22

@@ -1,5 +1,9 @@
 # AlbumSubType (System API)
 
+```TypeScript
+enum AlbumSubType
+```
+
 Enumerates the album subtypes.
 
 **Since:** 10

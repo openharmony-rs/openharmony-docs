@@ -1,5 +1,9 @@
 # ChangeSceneAnimationStateRequest（系统接口）
 
+```TypeScript
+interface ChangeSceneAnimationStateRequest
+```
+
 互动卡片状态切换请求信息。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
 
 **起始版本：** 20

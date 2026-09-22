@@ -1,5 +1,9 @@
 # HoverModeRegionLayoutOptions
 
+```TypeScript
+export interface HoverModeRegionLayoutOptions
+```
+
 悬停态布局信息。
 
 > **说明：** 

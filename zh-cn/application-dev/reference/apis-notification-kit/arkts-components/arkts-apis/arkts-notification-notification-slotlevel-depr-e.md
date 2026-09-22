@@ -1,5 +1,9 @@
 # SlotLevel
 
+```TypeScript
+export enum SlotLevel
+```
+
 通知级别。
 
 **起始版本：** 7

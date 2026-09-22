@@ -1,5 +1,9 @@
 # HuksCryptoExtensionResultCode
 
+```TypeScript
+export const enum HuksCryptoExtensionResultCode
+```
+
 Enum for crypto extension ability result code, used by HuksCryptoExtensionResult.resultCode.
 
 **Since:** 22

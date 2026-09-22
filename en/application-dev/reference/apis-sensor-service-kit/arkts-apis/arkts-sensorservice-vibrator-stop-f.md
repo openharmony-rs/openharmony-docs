@@ -58,6 +58,36 @@ vibrator.stop(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_PRESET).then(() => {
 });
 ```
 
+
+<a id="stop-1"></a>
+
+## stop
+
+```TypeScript
+function stop(stopMode: VibratorStopMode, callback?: AsyncCallback<void>): void
+```
+
+Stops vibration in the specified mode. This API uses an asynchronous callback to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-1)(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;)
+
+**Required permissions:** ohos.permission.VIBRATE
+
+**System capability:** SystemCapability.Sensors.MiscDevice
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| stopMode | [VibratorStopMode](arkts-sensorservice-vibrator-vibratorstopmode-e.md) | Yes | Mode to stop the vibration. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | No | Callback used to return the result. If the vibration stops, **err** is **undefined**; otherwise, **err** is an error object. |
+
+**Examples**
+
 ```TypeScript
 import { vibrator } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -79,33 +109,3 @@ vibrator.stop(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_PRESET, (error: Busin
   }
 })
 ```
-
-
-## stop
-
-```TypeScript
-function stop(stopMode: VibratorStopMode, callback?: AsyncCallback<void>): void
-```
-
-Stops vibration in the specified mode. This API uses an asynchronous callback to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;)
-
-**Required permissions:** ohos.permission.VIBRATE
-
-**System capability:** SystemCapability.Sensors.MiscDevice
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| stopMode | [VibratorStopMode](arkts-sensorservice-vibrator-vibratorstopmode-e.md) | Yes | Mode to stop the vibration. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | No | Callback used to return the result. If the vibration stops, **err** is **undefined**; otherwise, **err** is an error object. |
-
-**Examples**
-
-See [stop](#stop)

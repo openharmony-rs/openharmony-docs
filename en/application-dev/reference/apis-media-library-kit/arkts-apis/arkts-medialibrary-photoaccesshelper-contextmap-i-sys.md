@@ -1,5 +1,9 @@
 # ContextMap (System API)
 
+```TypeScript
+interface ContextMap
+```
+
 Provides APIs for input Context Map.
 
 **Since:** 23

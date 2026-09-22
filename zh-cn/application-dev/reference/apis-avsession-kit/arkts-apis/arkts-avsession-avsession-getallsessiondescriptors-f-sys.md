@@ -40,33 +40,6 @@ function getAllSessionDescriptors(callback: AsyncCallback<Array<Readonly<AVSessi
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
-              if (descriptors.length > 0 ) {
-                console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`);
-                console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`);
-                console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-```TypeScript
-import { avSession } from '@kit.AVSessionKit';
 
 @Entry 
 @Component 

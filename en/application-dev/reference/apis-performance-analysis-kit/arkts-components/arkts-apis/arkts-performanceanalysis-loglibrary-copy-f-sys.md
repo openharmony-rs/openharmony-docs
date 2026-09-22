@@ -70,25 +70,8 @@ try {
 }
 ```
 
-```TypeScript
-import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
-try {
-  let logObj = logLibrary.list('HILOG');
-  if (logObj.length > 0) {
-    logLibrary.copy('HILOG', logObj[0].name, 'dir1', (error, val) => {
-      if (val === undefined) {
-        // copy failed.
-      } else {
-        // copy success.
-      }
-    });
-  }
-} catch (error) {
-    console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
-}
-```
-
+<a id="copy-1"></a>
 
 ## copy
 
@@ -126,4 +109,21 @@ Copies log files of the specified type to the target application directory. This
 
 **Examples**
 
-See [copy](#copy)
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+
+try {
+  let logObj = logLibrary.list('HILOG');
+  if (logObj.length > 0) {
+    logLibrary.copy('HILOG', logObj[0].name, 'dir1', (error, val) => {
+      if (val === undefined) {
+        // copy failed.
+      } else {
+        // copy success.
+      }
+    });
+  }
+} catch (error) {
+    console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+}
+```

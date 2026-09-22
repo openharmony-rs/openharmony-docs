@@ -42,14 +42,31 @@ function removePreferencesFromCacheSync(context: Context, name: string): void
 
 **示例**
 
-```TypeScript
 FA模型示例：
-```
 
 ```TypeScript
-Stage模型示例：
+// 获取context
+import { featureAbility } from '@kit.AbilityKit';
+
+let context = featureAbility.getContext();
+preferences.removePreferencesFromCacheSync(context, 'myStore');
 ```
 
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.removePreferencesFromCacheSync(this.context, 'myStore');
+  }
+}
+```
+
+
+<a id="removepreferencesfromcachesync-1"></a>
 
 ## removePreferencesFromCacheSync
 
@@ -90,4 +107,27 @@ function removePreferencesFromCacheSync(context: Context, options: Options): voi
 
 **示例**
 
-参见 removePreferencesFromCacheSync
+FA模型示例：
+
+```TypeScript
+// 获取context
+import { featureAbility } from '@kit.AbilityKit';
+
+let context = featureAbility.getContext();
+let options: preferences.Options = { name: 'myStore' };
+preferences.removePreferencesFromCacheSync(context, options);
+```
+
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let options: preferences.Options = { name: 'myStore' };
+    preferences.removePreferencesFromCacheSync(this.context, options);
+  }
+}
+```

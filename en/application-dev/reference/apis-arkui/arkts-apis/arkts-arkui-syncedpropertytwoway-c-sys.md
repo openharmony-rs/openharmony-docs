@@ -1,5 +1,10 @@
 # SyncedPropertyTwoWay (System API)
 
+```TypeScript
+declare class SyncedPropertyTwoWay<T> extends SubscribedAbstractProperty<T>
+  implements ISinglePropertyChangeSubscriber<T>
+```
+
 Inherits from [SubscribedAbstractProperty&lt;T&gt;](arkts-arkui-subscribedabstractproperty-c.md). Represents a property with two-way synchronization.
 
 **Inheritance/Implementation:** SyncedPropertyTwoWay extends SubscribedAbstractProperty<T> and implements ISinglePropertyChangeSubscriber<T>
@@ -20,6 +25,8 @@ Called when the object is about to be destroyed.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -39,6 +46,8 @@ constructor(source: SubscribedAbstractProperty<T>, subscribeMe?: IPropertySubscr
 Constructor.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +71,8 @@ Obtains the current value of the property.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -81,6 +92,8 @@ hasChanged(newValue: T): void
 Notifies subscribers that the property value has changed.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +115,8 @@ Sets a new value for the property.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -121,6 +136,8 @@ private source_
 Data source for the two-way synchronized property.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

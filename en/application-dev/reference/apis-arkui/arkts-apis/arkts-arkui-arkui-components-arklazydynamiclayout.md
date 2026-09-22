@@ -28,16 +28,108 @@ import { LazyDynamicLayout, LazyDynamicLayoutAttribute } from '@kit.ArkUI';
 
 ## Examples
 
-```TypeScript
 ### Example 1: Implementing Lazy-Loading Custom Layout
 
 A custom lazy-loading list layout is implemented through the [List](ts-container-list.md) and LazyDynamicLayout components, and the index is called back through onVisibleIndexesChange when the visible area changes.
 
-LazyListLayout implements a custom lazy loading list layout algorithm. In the layout algorithm, the setAdjustedOffset API is used to ensure that the position of the first child component in the visible area remains unchanged when the spacing between child components changes.
+LazyListLayout implements a custom lazy loading list layout algorithm. In the layout algorithm, the [setAdjustedOffset](arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md#setadjustedoffset) API is used to ensure that the position of the first child component in the visible area remains unchanged when the spacing between child components changes.
 
 MyDataSource implements the [LazyForEach](ts-rendering-control-lazyforeach.md) data source API [IDataSource](ts-rendering-control-lazyforeach.md#idatasource), which is used to provide child components to LazyDynamicLayout through LazyForEach.
 
 The LazyDynamicLayout component is added since API version 26.0.0.
+
+```TypeScript
+import { LazyDynamicLayout, LazyDynamicLayoutAttribute } from '@kit.ArkUI';
+import { MyDataSource } from './MyDataSource';
+import { LazyListLayout } from './LazyListLayout';
+
+// Custom lazy-loading list layout component.
+@Component
+struct MyLazyListLayout {
+  // Spacing size. Use @Watch to monitor changes, triggering the onSpaceChange method when changed.
+  @Prop @Watch('onSpaceChange') space: number;
+  arr: MyDataSource<string> = new MyDataSource<string>();
+  private itemHeight: number = 100;
+  // Lazy layout algorithm instance. Convert the height to pixel units.
+  private lazyAlgorithm: LazyListLayout = new LazyListLayout(this.getUIContext().vp2px(this.itemHeight));
+
+  // Update the spacing value in the layout algorithm when the spacing changes.
+  onSpaceChange(): void {
+    this.lazyAlgorithm.setSpace(this.getUIContext().vp2px(this.space));
+  }
+
+  aboutToAppear(): void {
+    this.lazyAlgorithm.setSpace(this.getUIContext().vp2px(this.space));
+  }
+
+  build() {
+    // Use the LazyDynamicLayout component and pass in the lazy layout algorithm.
+    LazyDynamicLayout(this.lazyAlgorithm) {
+      LazyForEach(this.arr, (item: string) => {
+        Text(item)
+          .height(this.itemHeight)
+          .width('100%')
+          .borderRadius(8)
+          .backgroundColor('#E0E0FF')
+          .padding(10)
+      })
+    }
+    // Listen for changes in the indexes of child components in the visible area.
+    .onVisibleIndexesChange((child: number[]) => {
+      console.info(`onVisibleIndexesChange:start:${child}`);
+    })
+  }
+}
+
+// Define the group data interface.
+interface GroupData {
+  title: string;
+  data: MyDataSource<string>;
+}
+
+// Main page component.
+@Entry
+@Component
+struct CustomListLayoutTest {
+  @State groupArr: GroupData[] = []; // Group data array.
+  @State space: number = 5; // List item spacing.
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 3; i++) {
+      let data = new MyDataSource<string>();
+      for (let j = 0; j < 10; j++) {
+        data.pushData('item' + j.toString());
+      }
+      this.groupArr.push({ title: 'group' + i.toString(), data: data });
+    }
+  }
+
+  build() {
+    Stack({ alignContent: Alignment.Bottom }) {
+      List() {
+        ForEach(this.groupArr, (item: GroupData) => {
+          ListItem() {
+            Text(item.title).margin({ top: 20, bottom: 8 })
+          }
+          // Use the custom lazy-loading layout component.
+          MyLazyListLayout({ arr: item.data, space: this.space })
+        })
+      }
+      .layoutWeight(1)
+      .padding({ left: 12, right: 12 })
+      .height('100%')
+      .width('100%')
+
+      Button('Space:' + this.space.toString())
+        .onClick(() => {
+          // Switch the spacing between 5 and 10, and keep the position of the first child component in the visible area unchanged before and after the switch.
+          this.space = this.space === 5 ? 10 : 5;
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 
 ```TypeScript

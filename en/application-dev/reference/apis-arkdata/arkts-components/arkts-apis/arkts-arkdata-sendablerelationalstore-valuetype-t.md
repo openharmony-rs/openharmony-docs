@@ -1,8 +1,7 @@
 # ValueType
 
 ```TypeScript
-type ValueType = null | number | string | boolean | collections.Uint8Array | Asset | Assets |
-    collections.Float32Array | bigint
+type ValueType = null | number | string | boolean | collections.Uint8Array | Asset | Assetscollections.Float32Array | bigint
 ```
 
 Defines the types of the value in a KV pair. The type varies with the parameter function.

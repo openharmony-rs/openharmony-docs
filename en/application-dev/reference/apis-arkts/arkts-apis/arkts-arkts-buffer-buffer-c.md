@@ -1,5 +1,9 @@
 # Buffer
 
+```TypeScript
+class Buffer
+```
+
 The Buffer object is a method of handling buffers dedicated to binary data.
 
 **Since:** 9
@@ -210,7 +214,7 @@ console.info(buf1.equals(buf3).toString());
 
 ```TypeScript
 fill(
-      value: string | Buffer | Uint8Array | number | number | number,
+      value: string | Buffer | Uint8Array | number,
       offset?: number,
       end?: number,
       encoding?: BufferEncoding
@@ -229,7 +233,7 @@ Fills this **Buffer** object at the specified position. By default, data is fill
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string &#124; Buffer &#124; Uint8Array &#124; number &#124; number &#124; number | Yes | Value to fill.<br>**Since:** 11 |
+| value | string &#124; Buffer &#124; Uint8Array &#124; number | Yes | Value to fill.<br>**Since:** 11 |
 | offset | number | No | Offset to the start position in this **Buffer** object where data is filled. The default value is **0**. |
 | end | number | No | Offset to the end position in this **Buffer** object (not inclusive). The default value is the length of this **Buffer** object. |
 | encoding | BufferEncoding | No | Encoding format (valid only when **value** is a string). The default value is **'utf8'**. |
@@ -259,7 +263,7 @@ console.info(b.toString());
 ## includes
 
 ```TypeScript
-includes(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): boolean
+includes(value: string | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): boolean
 ```
 
 Checks whether this **Buffer** object contains the specified value.
@@ -274,7 +278,7 @@ Checks whether this **Buffer** object contains the specified value.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string &#124; number &#124; number &#124; number &#124; Buffer &#124; Uint8Array | Yes | Value to match.<br>**Since:** 11 |
+| value | string &#124; number &#124; Buffer &#124; Uint8Array | Yes | Value to match.<br>**Since:** 11 |
 | byteOffset | number | No | Number of bytes to skip before starting to check data. If the offset is a negative number, data is checked from the end of the **Buffer** object. The default value is **0**. |
 | encoding | BufferEncoding | No | Encoding format (valid only when **value** is a string). The default value is **'utf8'**. |
 
@@ -299,7 +303,7 @@ console.info(buf.includes('be').toString());
 ## indexOf
 
 ```TypeScript
-indexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
+indexOf(value: string | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
 ```
 
 Obtains the index of the first occurrence of the specified value in this **Buffer** object. If no match is found, **-1** is returned.
@@ -314,7 +318,7 @@ Obtains the index of the first occurrence of the specified value in this **Buffe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string &#124; number &#124; number &#124; number &#124; Buffer &#124; Uint8Array | Yes | Value to match.<br>**Since:** 11 |
+| value | string &#124; number &#124; Buffer &#124; Uint8Array | Yes | Value to match.<br>**Since:** 11 |
 | byteOffset | number | No | Number of bytes to skip before starting to check data. If the offset is a negative number, data is checked from the end of the **Buffer** object. The default value is **0**. |
 | encoding | BufferEncoding | No | Encoding format (valid only when **value** is a string). The default value is **'utf8'**. |
 
@@ -379,7 +383,7 @@ Output: 0
 ## lastIndexOf
 
 ```TypeScript
-lastIndexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
+lastIndexOf(value: string | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
 ```
 
 Obtains the index of the last occurrence of the specified value in this **Buffer** object. If no match is found, **-1** is returned.
@@ -394,7 +398,7 @@ Obtains the index of the last occurrence of the specified value in this **Buffer
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string &#124; number &#124; number &#124; number &#124; Buffer &#124; Uint8Array | Yes | Value to match.<br>**Since:** 11 |
+| value | string &#124; number &#124; Buffer &#124; Uint8Array | Yes | Value to match.<br>**Since:** 11 |
 | byteOffset | number | No | Number of bytes to skip before starting to check data. If the offset is a negative number, data is checked from the end of the **Buffer** object. The default value is the length of this **Buffer** object. |
 | encoding | BufferEncoding | No | Encoding format (valid only when **value** is a string). The default value is **'utf8'**. |
 

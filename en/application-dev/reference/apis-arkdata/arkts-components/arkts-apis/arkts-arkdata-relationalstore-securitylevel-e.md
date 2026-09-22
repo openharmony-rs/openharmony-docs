@@ -1,5 +1,9 @@
 # SecurityLevel
 
+```TypeScript
+enum SecurityLevel
+```
+
 Enumerates the KV store security levels. Use the enum name rather than the enum value. You cannot change the security level of an RDB store from a higher level to a lower one.
 
 > **NOTE:** 

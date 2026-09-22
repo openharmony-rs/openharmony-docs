@@ -1,5 +1,9 @@
 # AudioLatencyType
 
+```TypeScript
+enum AudioLatencyType
+```
+
 表示音频时延类型的枚举。
 
 **起始版本：** 23

@@ -1,8 +1,12 @@
 # UIExtensionComponent properties/events
 
-The universal attributes are supported.
+```TypeScript
+declare class UIExtensionComponentAttribute extends CommonMethod<UIExtensionComponentAttribute>
+```
 
-Universal events, such as the click event, are not supported.
+The [universal attributes](arkts-arkui-common-comp.md#common) are supported.
+
+Universal events, such as the [click event](arkts-arkui-common-comp.md#common), are not supported.
 
 The events are passed to the remote UIExtensionAbility for processing after coordinate conversion.
 

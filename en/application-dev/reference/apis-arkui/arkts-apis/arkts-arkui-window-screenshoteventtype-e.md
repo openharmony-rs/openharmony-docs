@@ -1,5 +1,9 @@
 # ScreenshotEventType
 
+```TypeScript
+enum ScreenshotEventType
+```
+
 Enumerates the screenshot event types.
 
 **Since:** 20

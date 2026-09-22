@@ -1,5 +1,9 @@
 # Fetch
 
+```TypeScript
+export default class Fetch
+```
+
 **表1** data与Content-Type关系
 
 | data | Content-Type | 说明 |  

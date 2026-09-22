@@ -1,5 +1,9 @@
 # AccessibilityAction（系统接口）
 
+```TypeScript
+export enum AccessibilityAction
+```
+
 表示无障碍节点元素可执行的操作枚举。
 
 无障碍节点元素是指，UI界面上可执行无障碍操作的组件，例如：按钮、文本输入框等。

@@ -1,5 +1,9 @@
 # RangingCapabilitySupported
 
+```TypeScript
+interface RangingCapabilitySupported
+```
+
 描述设备支持的测距类型。
 
 **起始版本：** 26.0.0

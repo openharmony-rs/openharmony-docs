@@ -1,5 +1,9 @@
 # PanelInfo
 
+```TypeScript
+export interface PanelInfo
+```
+
 划词面板属性信息，包含面板类型、位置和宽高。开发者通过panelType指定面板类型（菜单面板或主面板），通过x、y设定面板左上角坐标，通过width、height设定面板尺寸，各项属性共同定义面板的呈现形态。
 
 **起始版本：** 24

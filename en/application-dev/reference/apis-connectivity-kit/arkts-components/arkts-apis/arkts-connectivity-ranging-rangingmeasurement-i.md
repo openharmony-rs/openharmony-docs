@@ -1,5 +1,9 @@
 # RangingMeasurement
 
+```TypeScript
+interface RangingMeasurement
+```
+
 Describes the measurement result.
 
 **Since:** 26.0.0

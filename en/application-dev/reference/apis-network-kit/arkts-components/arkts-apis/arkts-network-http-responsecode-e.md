@@ -1,5 +1,9 @@
 # ResponseCode
 
+```TypeScript
+export enum ResponseCode
+```
+
 Enumerates the response codes for an HTTP request.
 
 **Since:** 6

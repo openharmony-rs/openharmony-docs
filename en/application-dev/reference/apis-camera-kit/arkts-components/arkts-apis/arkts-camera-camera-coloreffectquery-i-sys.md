@@ -1,5 +1,9 @@
 # ColorEffectQuery (System API)
 
+```TypeScript
+interface ColorEffectQuery
+```
+
 Provides the API to obtain the color effects supported.
 
 **Since:** 12

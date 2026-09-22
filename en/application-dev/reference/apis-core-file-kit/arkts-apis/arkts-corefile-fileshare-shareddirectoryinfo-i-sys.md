@@ -1,5 +1,9 @@
 # SharedDirectoryInfo (System API)
 
+```TypeScript
+export interface SharedDirectoryInfo
+```
+
 The directory information shared with the system by the application.
 
 **Since:** 26.0.0

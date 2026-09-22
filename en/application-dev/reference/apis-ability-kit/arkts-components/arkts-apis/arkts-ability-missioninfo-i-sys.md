@@ -1,5 +1,9 @@
 # MissionInfo (System API)
 
+```TypeScript
+export interface MissionInfo
+```
+
 The module defines detailed information about a mission. The information can be obtained through [getMissionInfo](arkts-ability-missionmanager-getmissioninfo-f-sys.md).
 
 **Since:** 8
@@ -30,7 +34,7 @@ Indicates the ability state of this mission.
 continuable: boolean
 ```
 
-Indicates whether the mission is continuable.
+Indicates whether the mission is continuable. The value **true** means continuable, and **false** means not continuable.
 
 **Type:** boolean
 
@@ -62,7 +66,7 @@ Indicates icon path of the mission.
 label: string
 ```
 
-Indicates label of the mission.
+Indicates the label of the mission, used as the task name displayed in the task list.
 
 **Type:** string
 
@@ -78,7 +82,7 @@ Indicates label of the mission.
 lockedState: boolean
 ```
 
-Indicates locked state.
+Indicates the locked state. The value **true** means the locked state, and **false** means the unlocked state.
 
 **Type:** boolean
 
@@ -110,7 +114,7 @@ Indicates mission id.
 runningState: number
 ```
 
-Indicates running state.
+Indicates the running state. The value **0** means enabled, indicating that the task is active and valid, and the corresponding Ability is running or can be restored to the foreground. The value **-1** means not enabled, indicating that the task is closed, destroyed, or cannot be restored.
 
 **Type:** number
 
@@ -126,7 +130,7 @@ Indicates running state.
 timestamp: string
 ```
 
-Indicates the recent created or updated time of the mission.
+Indicates the recent created or updated time of the mission. Unit: ns
 
 **Type:** string
 
@@ -142,7 +146,7 @@ Indicates the recent created or updated time of the mission.
 unclearable: boolean
 ```
 
-Indicates whether the mission is unclearable.
+Indicates whether the mission can be manually deleted by the user. The value **true** means it can be manually deleted by the user, and **false** means it cannot be manually deleted by the user.
 
 **Type:** boolean
 

@@ -1,5 +1,9 @@
 # PrintDuplexMode
 
+```TypeScript
+enum PrintDuplexMode
+```
+
 Enumerates the duplex modes.
 
 **Since:** 11

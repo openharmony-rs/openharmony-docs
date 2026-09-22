@@ -1,8 +1,12 @@
 # PrismShapeType (System API)
 
+```TypeScript
+enum PrismShapeType
+```
+
 Enumerates the prism shape types for SweepRefractionMask.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -16,7 +20,7 @@ ROUNDED_RECT = 0
 
 Rounded rectangle prism shape.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -32,7 +36,7 @@ ELLIPSE = 1
 
 Ellipse prism shape.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

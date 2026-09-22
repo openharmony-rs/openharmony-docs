@@ -1,5 +1,9 @@
 # ProtocolData
 
+```TypeScript
+interface ProtocolData
+```
+
 描述从HID主机接收的通信协议数据。
 
 **起始版本：** 23

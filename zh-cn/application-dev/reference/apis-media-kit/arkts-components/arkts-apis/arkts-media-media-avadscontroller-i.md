@@ -1,5 +1,9 @@
 # AVAdsController
 
+```TypeScript
+interface AVAdsController
+```
+
 广告内容控制接口，用于管理广告播放控制器中的广告资源及监听广告事件，支持添加和移除广告源、跳过当前广告、禁用剩余广告等，适用于需要在视频播放过程中插入和管理广告内容的场景。通过[createAVAdsController](arkts-media-media-createavadscontroller-f.md)创建实例。
 
 **起始版本：** 26.0.0
@@ -45,6 +49,21 @@ addAdsMediaSource(src: MediaSource, start: number): Promise<string>
 | --- | --- |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Insert a media asset whose start value exceeds the value of the main content. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+    let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/ad.mp4', headers);
+    let adsId: string = await adsController.addAdsMediaSource(mediaSource, 5000);
+    console.info(`Succeeded in adding ads media source, adsId: ${adsId}`);
+  }
+}
+```
+
 ## disableAllAdsMediaSource
 
 ```TypeScript
@@ -58,6 +77,18 @@ disableAllAdsMediaSource(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.disableAllAdsMediaSource();
+  }
+}
+```
 
 ## offAdsEventListenerLoadingError
 
@@ -79,6 +110,18 @@ offAdsEventListenerLoadingError(callback?: OnAdsEventLoadingErrorHandle): void
 | --- | --- | --- | --- |
 | callback | [OnAdsEventLoadingErrorHandle](arkts-media-media-onadseventloadingerrorhandle-t.md) | 否 | 广告内容加载失败的处理函数。<br>传入指定回调时，仅取消订阅该回调；不传入该参数时，默认取消订阅该事件的所有回调函数。 |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.offAdsEventListenerLoadingError();
+  }
+}
+```
+
 ## offAdsListenerAdsCompleted
 
 ```TypeScript
@@ -98,6 +141,18 @@ offAdsListenerAdsCompleted(callback?: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 否 | 广告播放完成的处理函数。<br>传入指定回调时，仅取消订阅该回调；不传入该参数时默认取消订阅该事件的所有回调函数。 |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.offAdsListenerAdsCompleted();
+  }
+}
+```
 
 ## offAdsListenerAdsSkipped
 
@@ -119,6 +174,18 @@ offAdsListenerAdsSkipped(callback?: Callback<string>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 否 | 广告跳过的处理函数。<br>传入指定回调时，仅取消订阅该回调；不传入该参数时，默认取消订阅该事件的所有回调函数。 |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.offAdsListenerAdsSkipped();
+  }
+}
+```
+
 ## offAdsListenerAdsStarted
 
 ```TypeScript
@@ -138,6 +205,18 @@ offAdsListenerAdsStarted(callback?: OnAdsEventAdsStartedHandle): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | 否 | 广告内容开始播放时的处理函数。常用于从主内容播放界面切换到广告播放界面的场景。<br>传入指定回调时，仅取消订阅该回调；不传入该参数时，默认取消订阅该事件的所有回调函数。 |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.offAdsListenerAdsStarted();
+  }
+}
+```
 
 ## onAdsEventListenerLoadingError
 
@@ -159,6 +238,22 @@ onAdsEventListenerLoadingError(callback: OnAdsEventLoadingErrorHandle): void
 | --- | --- | --- | --- |
 | callback | [OnAdsEventLoadingErrorHandle](arkts-media-media-onadseventloadingerrorhandle-t.md) | 是 | 广告内容加载失败的处理函数。由使用方实现。<br>第一个参数用于传递广告ID，第二个参数用于传递失败原因。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.onAdsEventListenerLoadingError((adsId: string, reason: BusinessError) => {
+      console.error(`Failed to load ads, adsId: ${adsId}, Code: ${reason.code}, message: ${reason.message}`);
+    });
+  }
+}
+```
+
 ## onAdsListenerAdsCompleted
 
 ```TypeScript
@@ -178,6 +273,20 @@ onAdsListenerAdsCompleted(callback: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 是 | 广告播放完成的处理函数。常用于恢复主内容播放。参数为播放完成的广告ID。 |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.onAdsListenerAdsCompleted((adsId: string) => {
+      console.info(`Ads completed, adsId: ${adsId}`);
+    });
+  }
+}
+```
 
 ## onAdsListenerAdsSkipped
 
@@ -199,6 +308,20 @@ onAdsListenerAdsSkipped(callback: Callback<string>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 是 | 广告跳过的处理函数。常用于恢复主内容播放。参数为被跳过的广告ID。 |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.onAdsListenerAdsSkipped((adsId: string) => {
+      console.info(`Ads skipped, adsId: ${adsId}`);
+    });
+  }
+}
+```
+
 ## onAdsListenerAdsStarted
 
 ```TypeScript
@@ -219,6 +342,20 @@ onAdsListenerAdsStarted(callback: OnAdsEventAdsStartedHandle): void
 | --- | --- | --- | --- |
 | callback | [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | 是 | 广告内容开始播放时的处理函数。常用于从主内容播放界面切换到广告播放界面的场景。<br>第一个参数表示正在播放的广告ID，第二个参数表示广告的时长，单位为毫秒（ms）。 |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.onAdsListenerAdsStarted((adsId: string, duration: number) => {
+      console.info(`Ads started, adsId: ${adsId}, duration: ${duration}ms`);
+    });
+  }
+}
+```
+
 ## release
 
 ```TypeScript
@@ -232,6 +369,18 @@ release(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.release();
+  }
+}
+```
 
 ## removeAdsMediaSource
 
@@ -259,6 +408,21 @@ removeAdsMediaSource(id: string): void
 | --- | --- |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | If the specified ID is not in the AdsController. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+    let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/ad.mp4', headers);
+    let adsId: string = await adsController.addAdsMediaSource(mediaSource, 5000);
+    adsController.removeAdsMediaSource(adsId);
+  }
+}
+```
+
 ## skipCurrentAdsMediaSource
 
 ```TypeScript
@@ -272,3 +436,15 @@ skipCurrentAdsMediaSource(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**示例**
+
+```TypeScript
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  let adsController: media.AVAdsController | undefined = await media.createAVAdsController(player);
+  if (adsController) {
+    adsController.skipCurrentAdsMediaSource();
+  }
+}
+```

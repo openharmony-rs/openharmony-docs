@@ -64,18 +64,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: Array<string> = bundleManager.getAllowedInstallBundlesSync(null, 100);
-  console.info(`Succeeded in getting allowed install bundles, result : ${JSON.stringify(result)}`);
-} catch (err) {
-  console.error(`Failed to get allowed install bundles. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getallowedinstallbundlessync-1"></a>
 
 ## getAllowedInstallBundlesSync
 
@@ -117,4 +107,14 @@ function getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): A
 
 **示例**
 
-参见 [getAllowedInstallBundlesSync](#getallowedinstallbundlessync)
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<string> = bundleManager.getAllowedInstallBundlesSync(null, 100);
+  console.info(`Succeeded in getting allowed install bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed install bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```

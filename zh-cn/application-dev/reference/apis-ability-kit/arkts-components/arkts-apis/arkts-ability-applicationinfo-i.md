@@ -1,5 +1,9 @@
 # ApplicationInfo
 
+```TypeScript
+export interface ApplicationInfo
+```
+
 应用程序信息。
 
 **起始版本：** 9

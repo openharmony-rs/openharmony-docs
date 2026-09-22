@@ -1,6 +1,10 @@
 # ChipV2SymbolIconConfig
 
-Defines chip symbol icon config.
+```TypeScript
+export declare interface ChipV2SymbolIconConfig
+```
+
+Defines the attribute configuration of the symbol icon.
 
 **Since:** 26.0.0
 
@@ -18,7 +22,11 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 activated?: SymbolGlyphModifier
 ```
 
-Symbol activated.
+Icon settings in the active state.
+
+Default value: **undefined**, which means no prefix icon or suffix icon is displayed. When the value is **undefined**, the default value is used.
+
+Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect) and setting the animation effect using [effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) are not supported.
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -36,7 +44,11 @@ Symbol activated.
 normal?: SymbolGlyphModifier
 ```
 
-Symbol normal.
+Icon settings in the inactive state.
+
+Default value: no prefix icon or suffix icon is displayed. When the value is **undefined**, the default value is used.
+
+Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect) and setting the animation effect using [effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) are not supported.
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 

@@ -1,5 +1,9 @@
 # AnimatorParams
 
+```TypeScript
+export declare class AnimatorParams
+```
+
 Defines animation parameters for entering or exiting the photo browser page.
 
 **Since:** 12

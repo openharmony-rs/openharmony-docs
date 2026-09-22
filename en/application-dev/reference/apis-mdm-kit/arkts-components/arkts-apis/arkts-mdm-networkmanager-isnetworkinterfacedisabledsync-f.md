@@ -66,6 +66,8 @@ try {
 ```
 
 
+<a id="isnetworkinterfacedisabledsync-1"></a>
+
 ## isNetworkInterfaceDisabledSync
 
 ```TypeScript

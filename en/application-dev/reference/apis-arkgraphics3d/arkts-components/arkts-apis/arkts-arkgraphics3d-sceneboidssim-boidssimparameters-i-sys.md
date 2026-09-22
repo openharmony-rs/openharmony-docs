@@ -1,5 +1,9 @@
 # BoidsSimParameters (System API)
 
+```TypeScript
+export interface BoidsSimParameters
+```
+
 Boids simulation parameters used to configure the behavioral attributes of each individual.
 
 > **NOTE:** 

@@ -338,7 +338,7 @@
   - [getAttestStatusSync(system api)](arkts-basicservices-deviceattest-getatteststatussync-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AttestResultInfo(system api)](arkts-basicservices-deviceattest-attestresultinfo-i-sys.md)<!--DelEnd-->
-- [@ohos.deviceInfo](arkts-basicservices-deviceinfo.md)
+- [@ohos.deviceInfo(Device Information)](arkts-basicservices-deviceinfo.md)
   - [apiAvailable](arkts-basicservices-deviceinfo-apiavailable-f.md)
   - [DeviceTypes](arkts-basicservices-deviceinfo-devicetypes-e.md)
   - [PerformanceClassLevel](arkts-basicservices-deviceinfo-performanceclasslevel-e.md)
@@ -834,7 +834,7 @@
   - [updateNtpTime(system api)](arkts-basicservices-systemdatetime-updatentptime-f-sys.md)<!--DelEnd-->
   - [TimeType](arkts-basicservices-systemdatetime-timetype-e.md)
 <!--Del-->
-- [@ohos.systemparameter](arkts-basicservices-systemparameter.md)<!--DelEnd-->
+- [@ohos.systemparameter(System Parameter)](arkts-basicservices-systemparameter.md)<!--DelEnd-->
   <!--Del-->
   - [get(system api)](arkts-basicservices-systemparameter-get-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -844,7 +844,7 @@
   <!--Del-->
   - [setSync(system api)](arkts-basicservices-systemparameter-setsync-f-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.systemParameterEnhance](arkts-basicservices-systemparameterenhance.md)<!--DelEnd-->
+- [@ohos.systemParameterEnhance(System Parameter)](arkts-basicservices-systemparameterenhance.md)<!--DelEnd-->
   <!--Del-->
   - [get(system api)](arkts-basicservices-systemparameterenhance-get-f-sys.md)<!--DelEnd-->
   <!--Del-->

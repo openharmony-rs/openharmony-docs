@@ -1,5 +1,9 @@
 # TaskInfo（系统接口）
 
+```TypeScript
+export interface TaskInfo
+```
+
 任务信息。
 
 **起始版本：** 9

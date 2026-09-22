@@ -25,7 +25,7 @@ function getRemainingDelayTime(requestId: number, callback: AsyncCallback<number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| requestId | number | 是 | 延迟挂起的请求ID。这个值通过调用requestSuspendDelay方法获取。 |
+| requestId | number | 是 | 延迟挂起的请求ID。这个值通过调用[requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md#requestsuspenddelay)方法获取。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回本次短时任务的剩余时间，单位：ms。 |
 
 **示例**
@@ -44,18 +44,8 @@ backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId, (err: BusinessE
 });
 ```
 
-```TypeScript
-import backgroundTaskManager from '@ohos.backgroundTaskManager';
-import { BusinessError } from '@ohos.base';
 
-let delayInfo = backgroundTaskManager.requestSuspendDelay('test', () => {});
-backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId).then((res:number) => {
-  console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
-}).catch((err : BusinessError) => {
-  console.info(`promise => Operation getRemainingDelayTime failed. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getremainingdelaytime-1"></a>
 
 ## getRemainingDelayTime
 
@@ -77,7 +67,7 @@ function getRemainingDelayTime(requestId: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| requestId | number | 是 | 延迟挂起的请求ID。这个值通过调用requestSuspendDelay方法获取。 |
+| requestId | number | 是 | 延迟挂起的请求ID。这个值通过调用[requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md#requestsuspenddelay)方法获取。 |
 
 **返回值：**
 
@@ -87,4 +77,14 @@ function getRemainingDelayTime(requestId: number): Promise<number>
 
 **示例**
 
-参见 getRemainingDelayTime
+```TypeScript
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import { BusinessError } from '@ohos.base';
+
+let delayInfo = backgroundTaskManager.requestSuspendDelay('test', () => {});
+backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId).then((res:number) => {
+  console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+}).catch((err : BusinessError) => {
+  console.info(`promise => Operation getRemainingDelayTime failed. Code: ${err.code}, message: ${err.message}`);
+});
+```

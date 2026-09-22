@@ -1,5 +1,9 @@
 # Button
 
+```TypeScript
+export declare enum Button
+```
+
 Enumerates mouse buttons.
 
 **Since:** 9

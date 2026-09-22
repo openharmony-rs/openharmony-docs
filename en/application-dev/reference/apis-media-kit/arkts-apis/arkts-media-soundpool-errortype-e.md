@@ -1,5 +1,9 @@
 # ErrorType
 
+```TypeScript
+export enum ErrorType
+```
+
 Enumerates the error types (used to distinguish error stages).
 
 **Since:** 20

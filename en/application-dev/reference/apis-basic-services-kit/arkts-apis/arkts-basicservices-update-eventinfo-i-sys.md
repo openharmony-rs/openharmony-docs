@@ -1,5 +1,9 @@
 # EventInfo (System API)
 
+```TypeScript
+export interface EventInfo
+```
+
 Defines an **EventInfo** object, which is used to receive the event details transferred by upgrade event notification. The object contains the **eventId** and **taskBody** fields. **eventId** indicates the event ID, which identifies the event type; **taskBody** indicates the task data, which contains the task status and progress.
 
 Use scenarios: After an event listener is registered by calling **on**, the callback function receives an **EventInfo** object when an event occurs. The real-time status and progress of the upgrade task can be obtained by parsing **eventId** and **taskBody**, which can be used to monitor the upgrade process in real time.

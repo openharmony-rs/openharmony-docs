@@ -50,19 +50,8 @@ policy.getNetQuotaPolicies((error: BusinessError, data: policy.NetQuotaPolicy[])
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .getNetQuotaPolicies()
-  .then((data: policy.NetQuotaPolicy[]) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="getnetquotapolicies-1"></a>
 
 ## getNetQuotaPolicies
 
@@ -98,4 +87,15 @@ function getNetQuotaPolicies(): Promise<Array<NetQuotaPolicy>>
 
 **示例**
 
-参见 [getNetQuotaPolicies](#getnetquotapolicies)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy
+  .getNetQuotaPolicies()
+  .then((data: policy.NetQuotaPolicy[]) => {
+    console.info(JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

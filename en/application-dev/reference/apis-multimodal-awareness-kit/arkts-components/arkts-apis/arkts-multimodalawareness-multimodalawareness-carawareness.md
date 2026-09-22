@@ -2,7 +2,7 @@
 
 This module provides the capability to use car awareness
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

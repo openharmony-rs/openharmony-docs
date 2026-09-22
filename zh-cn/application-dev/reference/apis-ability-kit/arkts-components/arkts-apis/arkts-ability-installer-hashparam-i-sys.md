@@ -1,5 +1,9 @@
 # HashParam（系统接口）
 
+```TypeScript
+export interface HashParam
+```
+
 应用程序安装卸载哈希参数信息。
 
 **起始版本：** 9

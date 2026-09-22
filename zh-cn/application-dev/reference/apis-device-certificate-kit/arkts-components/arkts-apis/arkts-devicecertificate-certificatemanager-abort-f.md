@@ -57,26 +57,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-/* cmHandle为业务调用init接口的返回值，此处仅为示例 */
-let cmHandle: Uint8Array = new Uint8Array([
-  0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
-]);
-try {
-  certificateManager.abort(cmHandle).then(() => {
-    console.info('Succeeded in aborting.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to abort. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="abort-1"></a>
 
 ## abort
 
@@ -114,4 +96,22 @@ function abort(handle: Uint8Array): Promise<void>
 
 **示例**
 
-参见 [abort](#abort)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* cmHandle为业务调用init接口的返回值，此处仅为示例 */
+let cmHandle: Uint8Array = new Uint8Array([
+  0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
+]);
+try {
+  certificateManager.abort(cmHandle).then(() => {
+    console.info('Succeeded in aborting.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to abort. Code: ${error.code}, message: ${error.message}`);
+}
+```

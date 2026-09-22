@@ -1,5 +1,9 @@
 # AudioSessionDeactivatedEvent
 
+```TypeScript
+interface AudioSessionDeactivatedEvent
+```
+
 音频会话停用事件。
 
 **起始版本：** 12

@@ -56,40 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// promise
-try {
-    connection.pairDevice('11:22:33:44:55:66').then(() => {
-        console.info('pairDevice');
-    }, (error: BusinessError) => {
-        console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
-    })
 
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.ConnectivityKit';
-// promise
-try {
-    let btAddr: common.BluetoothAddress = {
-        "address": '11:22:33:44:55:66', // Actual or virtual MAC address of the target device.
-        "addressType": common.BluetoothAddressType.REAL, // Address type of the target device.
-    }
-    connection.pairDevice(btAddr).then(() => {
-        console.info('pairDevice');
-    }, (error: BusinessError) => {
-        console.error('errCode: ' + error.code + ', errMessage' + error.message);
-    });
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
+<a id="pairdevice-1"></a>
 
 ## pairDevice
 
@@ -134,8 +102,23 @@ Starts pairing with a remote Bluetooth device.
 
 **Examples**
 
-See [pairDevice](#pairdevice)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// promise
+try {
+    connection.pairDevice('11:22:33:44:55:66').then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
+    })
 
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+<a id="pairdevice-2"></a>
 
 ## pairDevice
 
@@ -177,4 +160,21 @@ Starts pairing with a remote Bluetooth device.
 
 **Examples**
 
-See [pairDevice](#pairdevice)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.ConnectivityKit';
+// promise
+try {
+    let btAddr: common.BluetoothAddress = {
+        "address": '11:22:33:44:55:66', // Actual or virtual MAC address of the target device.
+        "addressType": common.BluetoothAddressType.REAL, // Address type of the target device.
+    }
+    connection.pairDevice(btAddr).then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('errCode: ' + error.code + ', errMessage' + error.message);
+    });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

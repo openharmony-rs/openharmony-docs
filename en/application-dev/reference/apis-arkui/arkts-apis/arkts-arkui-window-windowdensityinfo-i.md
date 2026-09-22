@@ -1,5 +1,9 @@
 # WindowDensityInfo
 
+```TypeScript
+interface WindowDensityInfo
+```
+
 Describes the information about the display density of the screen where the window is located and the window's custom display density. It is a scale factor independent of pixel units, that is, a factor for scaling display size.
 
 **Since:** 15

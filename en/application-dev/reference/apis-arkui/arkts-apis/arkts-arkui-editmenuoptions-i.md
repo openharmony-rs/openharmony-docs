@@ -1,5 +1,9 @@
 # EditMenuOptions
 
+```TypeScript
+declare interface EditMenuOptions
+```
+
 EditMenuOptions
 
 **Since:** 12

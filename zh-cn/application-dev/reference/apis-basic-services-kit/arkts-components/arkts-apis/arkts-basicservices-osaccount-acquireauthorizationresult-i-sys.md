@@ -1,5 +1,9 @@
 # AcquireAuthorizationResult（系统接口）
 
+```TypeScript
+interface AcquireAuthorizationResult
+```
+
 表示获取授权的结果。
 
 **起始版本：** 24

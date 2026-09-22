@@ -1,5 +1,9 @@
 # BlurStyle（系统接口）
 
+```TypeScript
+enum BlurStyle
+```
+
 窗口模糊类型枚举。
 
 **起始版本：** 9

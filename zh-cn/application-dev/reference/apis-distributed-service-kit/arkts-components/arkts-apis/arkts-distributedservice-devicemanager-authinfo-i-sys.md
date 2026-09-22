@@ -1,5 +1,9 @@
 # AuthInfo（系统接口）
 
+```TypeScript
+interface AuthInfo
+```
+
 认证信息。
 
 **起始版本：** 7

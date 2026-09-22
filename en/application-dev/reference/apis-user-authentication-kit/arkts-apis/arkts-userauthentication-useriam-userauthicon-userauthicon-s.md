@@ -1,5 +1,9 @@
 # UserAuthIcon
 
+```TypeScript
+export default struct UserAuthIcon
+```
+
 The **userAuthIcon** module is a UI component module of the OpenHarmony user identity and access management (UserIAM) system. It provides an out-of-the-box authentication icon component (**UserAuthIcon**). This component is used to display the face or fingerprint authentication icon in the application UI. It supports custom icon colors and sizes, and tapping the icon launches the system authentication dialog box component.
 
 This module applies to the following scenarios:
@@ -78,7 +82,7 @@ User authentication parameters. The parameters include the **challenge** value, 
 iconColor?: ResourceColor
 ```
 
-Icon color. Multiple formats are supported, such as color values and resource references. By default, the system accent color is used. You can customize the color based on the application theme, for example, using **Color.Blue** or **&#36;r('app.color.primary')**.
+Icon color. Multiple formats are supported, such as color values and resource references. By default, the system accent color is used. You can customize the color based on the application theme, for example, using **Color.Blue** or **$r('app.color.primary')**.
 
 **Type:** [ResourceColor](../../apis-arkui/arkts-apis/arkts-arkui-resourcecolor-t.md)
 

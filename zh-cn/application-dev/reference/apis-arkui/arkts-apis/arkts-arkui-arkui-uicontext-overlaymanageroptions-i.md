@@ -1,5 +1,9 @@
 # OverlayManagerOptions
 
+```TypeScript
+export interface OverlayManagerOptions
+```
+
 初始化OverlayManager时所用参数。
 
 **起始版本：** 15

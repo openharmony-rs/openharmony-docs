@@ -1,5 +1,9 @@
 # SystemSoundError (System API)
 
+```TypeScript
+enum SystemSoundError
+```
+
 Error enum for system sound.
 
 **Since:** 20

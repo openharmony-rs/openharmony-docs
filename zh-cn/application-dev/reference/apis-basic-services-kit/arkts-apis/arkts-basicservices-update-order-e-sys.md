@@ -1,5 +1,9 @@
 # Order（系统接口）
 
+```TypeScript
+export enum Order
+```
+
 升级指令。
 
 **起始版本：** 9

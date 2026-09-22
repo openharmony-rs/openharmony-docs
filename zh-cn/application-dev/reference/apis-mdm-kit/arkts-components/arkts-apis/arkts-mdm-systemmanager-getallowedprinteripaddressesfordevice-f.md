@@ -14,7 +14,7 @@ function getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy)
 
 查询打印机IP地址白名单
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 

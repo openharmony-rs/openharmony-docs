@@ -1,8 +1,10 @@
 # AudioHapticPlayer
 
-音振播放器，提供音振协同播放功能。在调用AudioHapticPlayer的接口前，需要先通过[createPlayer](arkts-audio-audiohaptic-audiohapticmanager-i.md#createplayer)创建实例。
+```TypeScript
+interface AudioHapticPlayer
+```
 
-@typedef AudioHapticPlayer
+音振播放器，提供音振协同播放功能。在调用AudioHapticPlayer的接口前，需要先通过[createPlayer](arkts-audio-audiohaptic-audiohapticmanager-i.md#createplayer)创建实例。
 
 **起始版本：** 11
 
@@ -20,7 +22,11 @@ import { audioHaptic } from '@kit.AudioKit';
 enableHapticsInSilentMode(enable: boolean): void
 ```
 
-Enable haptics when the ringer mode is silent mode.这个方法只能在播放器start前，或stop后release前调用
+设置静音模式下是否开启振动。
+
+> **注意：**
+> 
+> 该方法必须在释放音振播放器前使用，不能在播放中调用。
 
 **起始版本：** 20
 
@@ -32,7 +38,7 @@ Enable haptics when the ringer mode is silent mode.这个方法只能在播放�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | use `true` if application want to enable this feature. |
+| enable | boolean | 是 | 是否在静音模式下开启振动。true表示在静音模式下开启振动，false表示在静音模式下不开启振动。 |
 
 **错误码：**
 
@@ -47,7 +53,7 @@ Enable haptics when the ringer mode is silent mode.这个方法只能在播放�
 isHapticsIntensityAdjustmentSupported(): boolean
 ```
 
-Check whether the device supports haptics intensity adjustment.
+查询设备是否可以调整振动幅度。
 
 **起始版本：** 20
 
@@ -59,7 +65,7 @@ Check whether the device supports haptics intensity adjustment.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | `true` means supported. |
+| boolean | 设备是否可以调整振动幅度。true表示可以调整振动幅度，false表示不可以调整振动幅度。 |
 
 **错误码：**
 
@@ -73,7 +79,7 @@ Check whether the device supports haptics intensity adjustment.
 isHapticsRampSupported(): boolean
 ```
 
-Check whether the device supports haptics intensity ramp effect.
+查询设备是否可以设置振动渐变。
 
 **起始版本：** 20
 
@@ -85,7 +91,7 @@ Check whether the device supports haptics intensity ramp effect.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | `true` means supported. |
+| boolean | 设备是否可以设置振动渐变。true表示设备可以设置振动渐变，false表示设备不可以设置振动渐变。 |
 
 **错误码：**
 
@@ -99,7 +105,11 @@ Check whether the device supports haptics intensity ramp effect.
 setHapticsIntensity(intensity: number): Promise<void>
 ```
 
-Set haptics intensity for this player. This method uses a promise to return the result.这个方法只能在播放器释放前调用，并且每次播放过程只能设置一次。
+设置音振播放器的振幅。使用Promise异步回调。
+
+> **注意：**
+> 
+> 该方法需在音振播放器释放前调用，且每次播放仅支持调用一次。
 
 **起始版本：** 20
 
@@ -111,13 +121,13 @@ Set haptics intensity for this player. This method uses a promise to return the 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| intensity | number | 是 | Target Haptics intensity. The value ranges from 0.00 to 1.00, where 1.00 indicates the maximum intensity (100%). |
+| intensity | number | 是 | 取值范围为[0.00, 1.00]，其中1.00表示最大振幅（100%）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -134,7 +144,13 @@ Set haptics intensity for this player. This method uses a promise to return the 
 setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): Promise<void>
 ```
 
-Set haptics intensity ramp effect for this player. This method uses a promise to return the result.这个方法只能在播放器start前，或stop后release前调用
+设置音振播放器渐变播放。使用Promise异步回调。
+
+> **注意：**
+> 
+> - 该方法需在音振协同播放器播放前/后，以及释放前使用。
+> 
+> - 该方法仅能调用一次。
 
 **起始版本：** 20
 
@@ -146,15 +162,15 @@ Set haptics intensity ramp effect for this player. This method uses a promise to
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| duration | number | 是 | ramp duration to set, unit is milliseconds. The value should be an integer, and not less than 100. |
-| startIntensity | number | 是 | Starting intensity for Haptics ramp to set. The value ranges from 0.00 to 1.00. 1.00 indicates the maximum intensity (100%). |
-| endIntensity | number | 是 | End intensity for haptics ramp to set. The value ranges from 0.00 to 1.00. 1.00 indicates the maximum intensity (100%). |
+| duration | number | 是 | 渐变时间段，单位为毫秒（ms），值必须为整数，且不能小于100ms。 |
+| startIntensity | number | 是 | 起始振动幅度，取值范围为[0.00, 1.00]，其中1.00表示最大振幅（100%）。 |
+| endIntensity | number | 是 | 结束振动幅度，取值范围为[0.00, 1.00]，其中1.00表示最大振幅（100%）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

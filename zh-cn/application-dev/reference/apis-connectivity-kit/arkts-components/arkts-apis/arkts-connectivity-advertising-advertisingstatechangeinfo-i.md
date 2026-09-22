@@ -1,5 +1,9 @@
 # AdvertisingStateChangeInfo
 
+```TypeScript
+interface AdvertisingStateChangeInfo
+```
+
 表示广播启停状态变化信息。
 
 **起始版本：** 26.0.0

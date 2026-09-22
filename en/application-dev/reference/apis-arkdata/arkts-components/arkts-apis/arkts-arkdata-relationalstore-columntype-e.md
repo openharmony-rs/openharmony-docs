@@ -1,5 +1,9 @@
 # ColumnType
 
+```TypeScript
+enum ColumnType
+```
+
 Enumerates the types of the column data. Use the enum name rather than the enum value.
 
 **Since:** 18

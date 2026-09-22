@@ -1,5 +1,9 @@
 # PushParameters
 
+```TypeScript
+interface PushParameters
+```
+
 使用pluginComponentManager.push方法时需要传递的参数。
 
 **起始版本：** 8

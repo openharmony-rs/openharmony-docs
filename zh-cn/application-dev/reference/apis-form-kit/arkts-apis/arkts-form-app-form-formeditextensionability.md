@@ -1,4 +1,4 @@
-# @ohos.app.form.FormEditExtensionAbility(FormEditExtensionAbility)
+# @ohos.app.form.FormEditExtensionAbility(卡片编辑扩展能力-FormEditExtensionAbility)
 
 ## 导入模块
 

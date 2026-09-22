@@ -1,5 +1,9 @@
 # DistributedType
 
+```TypeScript
+enum DistributedType
+```
+
 描述表的分布式类型的枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 10

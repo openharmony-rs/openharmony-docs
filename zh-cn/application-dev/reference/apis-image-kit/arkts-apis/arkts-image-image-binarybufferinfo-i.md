@@ -1,5 +1,9 @@
 # BinaryBufferInfo
 
+```TypeScript
+interface BinaryBufferInfo
+```
+
 描述二值图像缓冲区内的信息及数据。
 
 **起始版本：** 26.0.0

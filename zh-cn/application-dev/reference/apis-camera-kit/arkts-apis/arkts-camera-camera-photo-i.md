@@ -1,5 +1,9 @@
 # Photo
 
+```TypeScript
+interface Photo
+```
+
 全质量图对象。
 
 **起始版本：** 11
@@ -31,6 +35,14 @@ Releases output resources. This API uses a promise to return the result.
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+**示例**
+
+```TypeScript
+async function releasePhoto(photo: camera.Photo): Promise<void> {
+  await photo.release();
+}
+```
 
 ## main
 

@@ -1,5 +1,9 @@
 # Vec3
 
+```TypeScript
+export interface Vec3
+```
+
 三维向量，通常用于表示3D空间中的点、方向或向量变换，由x、y和z三个分量组成。
 
 @typedef Vec3

@@ -55,6 +55,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
+<a id="getp2ppeerdevices-1"></a>
+
 ## getP2pPeerDevices
 
 ```TypeScript

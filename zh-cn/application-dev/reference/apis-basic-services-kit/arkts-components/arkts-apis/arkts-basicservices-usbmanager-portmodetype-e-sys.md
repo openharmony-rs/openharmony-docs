@@ -1,5 +1,9 @@
 # PortModeType（系统接口）
 
+```TypeScript
+export enum PortModeType
+```
+
 USB端口模式类型。
 
 **起始版本：** 9

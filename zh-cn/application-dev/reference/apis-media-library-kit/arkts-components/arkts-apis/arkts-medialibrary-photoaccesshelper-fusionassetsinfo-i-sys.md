@@ -1,5 +1,9 @@
 # FusionAssetsInfo（系统接口）
 
+```TypeScript
+interface FusionAssetsInfo
+```
+
 融合资产信息。
 
 **起始版本：** 22

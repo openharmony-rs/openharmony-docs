@@ -1,5 +1,9 @@
 # AudioCapturerInfo
 
+```TypeScript
+interface AudioCapturerInfo
+```
+
 Describes audio capturer information.
 
 **Since:** 8

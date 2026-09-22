@@ -1,5 +1,9 @@
 # InterruptMode
 
+```TypeScript
+enum InterruptMode
+```
+
 Enumerates the audio interruption modes.
 
 **Since:** 9

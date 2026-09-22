@@ -1,5 +1,9 @@
 # Material
 
+```TypeScript
+class Material
+```
+
 系统材质对象基类。
 
 **起始版本：** 26.0.0

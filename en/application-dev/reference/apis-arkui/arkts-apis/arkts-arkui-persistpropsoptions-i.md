@@ -1,5 +1,9 @@
 # PersistPropsOptions
 
+```TypeScript
+declare interface PersistPropsOptions
+```
+
 Defines a key-value pair object used to specify persistent properties and their default values, passed as a parameter to [persistProps](arkts-arkui-persistentstorage-c.md#persistprops).
 
 **Since:** 10

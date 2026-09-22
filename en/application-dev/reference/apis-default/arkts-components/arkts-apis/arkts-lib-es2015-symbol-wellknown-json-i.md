@@ -1,5 +1,9 @@
 # JSON
 
+```TypeScript
+interface JSON
+```
+
 ## Modules to Import
 
 ```TypeScript

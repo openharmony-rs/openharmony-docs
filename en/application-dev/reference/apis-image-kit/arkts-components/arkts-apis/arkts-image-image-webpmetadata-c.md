@@ -1,5 +1,9 @@
 # WebPMetadata
 
+```TypeScript
+class WebPMetadata
+```
+
 WebP metadata.
 
 **Since:** 24

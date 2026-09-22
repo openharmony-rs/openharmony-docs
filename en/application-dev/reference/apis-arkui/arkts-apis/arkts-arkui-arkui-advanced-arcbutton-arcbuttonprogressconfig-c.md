@@ -1,5 +1,9 @@
 # ArcButtonProgressConfig
 
+```TypeScript
+export declare class ArcButtonProgressConfig
+```
+
 Defines the progress indicator configuration options of the **ArcButton** component.
 
 **Since:** 23

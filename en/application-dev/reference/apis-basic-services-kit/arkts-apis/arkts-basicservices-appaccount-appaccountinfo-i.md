@@ -1,5 +1,9 @@
 # AppAccountInfo
 
+```TypeScript
+interface AppAccountInfo
+```
+
 Defines application account information.
 
 **Since:** 7

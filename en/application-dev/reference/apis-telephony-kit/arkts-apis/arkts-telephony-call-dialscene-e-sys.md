@@ -1,5 +1,9 @@
 # DialScene (System API)
 
+```TypeScript
+export enum DialScene
+```
+
 Enumerates dialup scenarios.
 
 **Since:** 8

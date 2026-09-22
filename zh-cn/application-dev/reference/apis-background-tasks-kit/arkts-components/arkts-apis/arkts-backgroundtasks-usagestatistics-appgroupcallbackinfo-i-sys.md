@@ -1,5 +1,9 @@
 # AppGroupCallbackInfo（系统接口）
 
+```TypeScript
+interface AppGroupCallbackInfo
+```
+
 应用分组变化回调返回的属性集合
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # TransitionType
 
+```TypeScript
+declare enum TransitionType
+```
+
 TransitionType enumeration description.
 
 **Since:** 7

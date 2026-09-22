@@ -1,5 +1,9 @@
 # DivElement
 
+```TypeScript
+export interface DivElement extends Element
+```
+
 The &lt;div&gt; component provides a div container.
 
 @extends Element @interface DivElement

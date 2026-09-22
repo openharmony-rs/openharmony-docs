@@ -1,5 +1,9 @@
 # SteadyStandingStatus
 
+```TypeScript
+export enum SteadyStandingStatus
+```
+
 设备静止姿态感知状态（支架态）。
 
 设备进入支架态指设备静止，且屏幕与水平面角度处于45度-135度。折叠屏手机需处于折叠状态或者完全展开状态。系统通过传感器检测设备的运动状态和角度变化，<br>判断设备是否满足支架态条件。

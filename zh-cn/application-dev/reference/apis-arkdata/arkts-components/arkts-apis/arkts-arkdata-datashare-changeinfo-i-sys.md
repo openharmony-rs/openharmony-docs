@@ -1,5 +1,9 @@
 # ChangeInfo（系统接口）
 
+```TypeScript
+interface ChangeInfo
+```
+
 数据变更时通知用户具体变更的内容，包括数据变更类型、变化的uri、变更的数据内容。
 
 **起始版本：** 12

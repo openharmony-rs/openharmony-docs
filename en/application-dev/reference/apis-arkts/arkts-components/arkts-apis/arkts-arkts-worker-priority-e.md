@@ -1,5 +1,9 @@
 # Priority
 
+```TypeScript
+export enum Priority
+```
+
 Enumerates the priorities available for EventHandler. For details about the mappings between priorities and EventHandler levels, see EventHandler Level.
 
 **Since:** 26.0.0

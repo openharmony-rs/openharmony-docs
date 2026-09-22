@@ -1,5 +1,9 @@
 # IfaceInfo（系统接口）
 
+```TypeScript
+export interface IfaceInfo
+```
+
 查询网卡历史流量参数信息。
 
 **起始版本：** 10

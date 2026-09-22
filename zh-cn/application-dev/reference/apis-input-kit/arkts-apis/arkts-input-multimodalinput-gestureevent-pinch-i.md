@@ -1,5 +1,9 @@
 # Pinch
 
+```TypeScript
+export declare interface Pinch
+```
+
 捏合手势事件。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # SppOptions
 
+```TypeScript
+interface SppOptions
+```
+
 描述套接字的配置参数。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # AccessibilityOptions
 
+```TypeScript
+declare interface AccessibilityOptions
+```
+
 定义AccessibilityOptions的结构体。
 
 **起始版本：** 14
@@ -36,7 +40,7 @@ accessibilityPreferred?: boolean
 actionControllerId?: string
 ```
 
-指定特定唯一标识ID的子组件。配置accessibilityGroup的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定标识的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。**说明：** 如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。当前只支持无障碍点击操作。如果与actionControllerRoleType同时配置，则优先匹配ID一致的组件。不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。默认值：无指定组件。
+指定特定[唯一标识ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id)的子组件。配置[accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup-1)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定标识的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。**说明：** 如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。当前只支持无障碍点击操作。如果与actionControllerRoleType同时配置，则优先匹配ID一致的组件。不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。默认值：无指定组件。
 
 **类型：** string
 
@@ -54,7 +58,7 @@ actionControllerId?: string
 actionControllerRoleType?: AccessibilityRoleType
 ```
 
-指定特定类型的子组件。配置accessibilityGroup的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。
+指定特定类型的子组件。配置[accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup-1)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。
 
 **说明：** 
 
@@ -66,7 +70,7 @@ actionControllerRoleType?: AccessibilityRoleType
 
 默认值：无指定组件
 
-**类型：** [AccessibilityRoleType](../arkts-components/arkts-arkui-accessibilityroletype-e.md)
+**类型：** [AccessibilityRoleType](../arkts-components/arkts-arkui-common-comp-accessibilityroletype-e.md)
 
 **起始版本：** 23
 
@@ -82,7 +86,7 @@ actionControllerRoleType?: AccessibilityRoleType
 stateControllerId?: string
 ```
 
-指定特定唯一标识ID的子组件。配置accessibilityGroup的容器组件进行无障碍聚合后，会将该特定标识的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。**说明：** 如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。如果与stateControllerRoleType同时配置，则优先匹配ID一致的组件。不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。默认值：无指定组件。
+指定特定[唯一标识ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id)的子组件。配置[accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup-1)的容器组件进行无障碍聚合后，会将该特定标识的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。**说明：** 如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。如果与stateControllerRoleType同时配置，则优先匹配ID一致的组件。不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。默认值：无指定组件。
 
 **类型：** string
 
@@ -100,7 +104,7 @@ stateControllerId?: string
 stateControllerRoleType?: AccessibilityRoleType
 ```
 
-指定特定类型的子组件。配置accessibilityGroup的容器组件进行无障碍聚合后，会将该特定类型的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。
+指定特定类型的子组件。配置[accessibilityGroup](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup-1)的容器组件进行无障碍聚合后，会将该特定类型的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。
 
 **说明：** 
 
@@ -110,7 +114,7 @@ stateControllerRoleType?: AccessibilityRoleType
 
 默认值：无指定组件
 
-**类型：** [AccessibilityRoleType](../arkts-components/arkts-arkui-accessibilityroletype-e.md)
+**类型：** [AccessibilityRoleType](../arkts-components/arkts-arkui-common-comp-accessibilityroletype-e.md)
 
 **起始版本：** 23
 

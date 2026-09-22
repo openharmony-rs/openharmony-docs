@@ -60,21 +60,8 @@ appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
 });
 ```
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
 
-const bundleName = 'com.example.myapplication';
-const versionCode = 1;
-
-appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
-  if (err) {
-    console.error(`err: ${JSON.stringify(err)}`);
-  } else {
-    console.info(`The shared bundle running is: ${JSON.stringify(data)}`);
-  }
-});
-```
-
+<a id="issharedbundlerunning-1"></a>
 
 ## isSharedBundleRunning
 
@@ -111,4 +98,17 @@ Checks whether the shared library is in use. This API uses an asynchronous callb
 
 **Examples**
 
-See [isSharedBundleRunning](#issharedbundlerunning)
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+
+const bundleName = 'com.example.myapplication';
+const versionCode = 1;
+
+appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
+  if (err) {
+    console.error(`err: ${JSON.stringify(err)}`);
+  } else {
+    console.info(`The shared bundle running is: ${JSON.stringify(data)}`);
+  }
+});
+```

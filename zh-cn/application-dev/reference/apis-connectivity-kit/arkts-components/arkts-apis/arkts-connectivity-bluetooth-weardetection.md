@@ -19,12 +19,12 @@ import { wearDetection } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [disableWearDetection](arkts-connectivity-weardetection-disableweardetection-f-sys.md) | 禁用佩戴检测。使用Callback异步回调。 |
-| [disableWearDetection](arkts-connectivity-weardetection-disableweardetection-f-sys.md) | 禁用佩戴检测。使用Promise异步回调。 |
-| [enableWearDetection](arkts-connectivity-weardetection-enableweardetection-f-sys.md) | 使能佩戴检测。使用Callback异步回调。 |
-| [enableWearDetection](arkts-connectivity-weardetection-enableweardetection-f-sys.md) | 使能佩戴检测。使用Promise异步回调。 |
-| [isWearDetectionEnabled](arkts-connectivity-weardetection-isweardetectionenabled-f-sys.md) | 判断设备佩戴检测能力是否开启。使用Callback异步回调。 |
-| [isWearDetectionEnabled](arkts-connectivity-weardetection-isweardetectionenabled-f-sys.md) | 判断设备佩戴检测能力是否开启。使用Promise异步回调。 |
-| [isWearDetectionSupported](arkts-connectivity-weardetection-isweardetectionsupported-f-sys.md) | 判断设备是否支持佩戴检测能力。使用Callback异步回调。 |
-| [isWearDetectionSupported](arkts-connectivity-weardetection-isweardetectionsupported-f-sys.md) | 判断设备是否支持佩戴检测能力。使用Promise异步回调。 |
+| [disableWearDetection](arkts-connectivity-weardetection-disableweardetection-f-sys.md#disableweardetection) | 禁用佩戴检测。使用Callback异步回调。 |
+| [disableWearDetection](arkts-connectivity-weardetection-disableweardetection-f-sys.md#disableweardetection-1) | 禁用佩戴检测。使用Promise异步回调。 |
+| [enableWearDetection](arkts-connectivity-weardetection-enableweardetection-f-sys.md#enableweardetection) | 使能佩戴检测。使用Callback异步回调。 |
+| [enableWearDetection](arkts-connectivity-weardetection-enableweardetection-f-sys.md#enableweardetection-1) | 使能佩戴检测。使用Promise异步回调。 |
+| [isWearDetectionEnabled](arkts-connectivity-weardetection-isweardetectionenabled-f-sys.md#isweardetectionenabled) | 判断设备佩戴检测能力是否开启。使用Callback异步回调。 |
+| [isWearDetectionEnabled](arkts-connectivity-weardetection-isweardetectionenabled-f-sys.md#isweardetectionenabled-1) | 判断设备佩戴检测能力是否开启。使用Promise异步回调。 |
+| [isWearDetectionSupported](arkts-connectivity-weardetection-isweardetectionsupported-f-sys.md#isweardetectionsupported) | 判断设备是否支持佩戴检测能力。使用Callback异步回调。 |
+| [isWearDetectionSupported](arkts-connectivity-weardetection-isweardetectionsupported-f-sys.md#isweardetectionsupported-1) | 判断设备是否支持佩戴检测能力。使用Promise异步回调。 |
 <!--DelEnd-->

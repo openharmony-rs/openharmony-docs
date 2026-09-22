@@ -27,10 +27,10 @@ import { audio } from '@kit.AudioKit';
 | Name | Description |
 | --- | --- |
 | [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md) | Creates an AudioCapturer instance. This API uses an asynchronous callback to return the result. |
-| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md) | Creates an AudioCapturer instance. This API uses a promise to return the result. |
+| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-2) | Creates an AudioCapturer instance. This API uses a promise to return the result. |
 | [createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md) | Creates an &lt;b&gt;AudioLoopback&lt;/b&gt; instance, which provides low-latency in-ear monitoring using a fast capturer and renderer. |
 | [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
-| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
+| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-2) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
 | [getAudioManager](arkts-audio-audio-getaudiomanager-f.md) | Obtains an AudioManager instance. |
 
 <!--Del-->
@@ -42,7 +42,7 @@ import { audio } from '@kit.AudioKit';
 | [createGlobalAudioLoopback](arkts-audio-audio-createglobalaudioloopback-f-sys.md) | Creates a global audio loopback instance, which provides low-latency in-ear monitor function. Hardware audio loopback can only be created in supported platform, application can use [isAudioLoopbackSupported](arkts-audio-audio-audiostreammanager-i.md#isaudioloopbacksupported) to check first. There should be only one main instance that own the global loopback in the system, the others are controllers. A controller can manage the global loopback by sending commands to the main instance, and listen status change from it. |
 | [createMicInAudioCapturer](arkts-audio-audio-createmicinaudiocapturer-f-sys.md) | Obtains a special [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) instance. This method uses a promise to return the capturer instance. This capture can be used to record both Mic-In audio data and echo reference signal, for application to process algorithm. Mic-In audio data and echo reference signal will be put in one buffer or multiple buffers according to configuration set by application. Capturer is also not allowed to be created when application is in background. |
 | [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses an asynchronous callback to return the renderer instance. |
-| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses a promise to return the renderer instance. |
+| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer-2) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses a promise to return the renderer instance. |
 <!--DelEnd-->
 
 ### Interfaces
@@ -131,6 +131,7 @@ import { audio } from '@kit.AudioKit';
 | [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) | Provides APIs for tone playing. |
 | [VolumeEvent](arkts-audio-audio-volumeevent-i-sys.md) | Describes the event received by the application when the volume is changed. |
 | [VolumeGroupInfo](arkts-audio-audio-volumegroupinfo-i-sys.md) | Describes an audio volume group. |
+| [VolumeLimitExceededEvent](arkts-audio-audio-volumelimitexceededevent-i-sys.md) | Describes the notification event indicating that the volume exceeds the threshold. after receiving the notification, the app must send the acknowledgment result. through [confirmVolumeLimitExceeded](arkts-audio-audio-audiovolumemanager-i-sys.md#confirmvolumelimitexceeded) before continuing to adjust the volume. |
 <!--DelEnd-->
 
 ### Enums

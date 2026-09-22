@@ -25,8 +25,8 @@ import { installer } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md) | 获取BundleInstaller对象。使用callback异步回调。 |
-| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md) | 获取BundleInstaller对象。使用Promise异步回调。 |
+| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller) | 获取BundleInstaller对象。使用callback异步回调。 |
+| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller-1) | 获取BundleInstaller对象。使用Promise异步回调。 |
 | [getBundleInstallerSync](arkts-ability-installer-getbundleinstallersync-f-sys.md) | 获取并返回BundleInstaller对象。 |
 <!--DelEnd-->
 

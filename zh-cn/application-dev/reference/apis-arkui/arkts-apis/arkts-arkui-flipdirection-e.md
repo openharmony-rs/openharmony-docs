@@ -1,5 +1,9 @@
 # FlipDirection
 
+```TypeScript
+declare enum FlipDirection
+```
+
 翻牌方向。默认值为DOWN。
 
 **起始版本：** 20

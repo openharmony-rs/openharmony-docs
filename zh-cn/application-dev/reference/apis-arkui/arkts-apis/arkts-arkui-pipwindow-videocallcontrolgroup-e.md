@@ -1,5 +1,9 @@
 # VideoCallControlGroup
 
+```TypeScript
+enum VideoCallControlGroup
+```
+
 视频通话控件组枚举。仅当[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md) 为VIDEO_CALL时使用。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # ActionMenuSuccessResponse
 
+```TypeScript
+interface ActionMenuSuccessResponse
+```
+
 操作菜单的响应结果。
 
 **起始版本：** 8
@@ -31,5 +35,7 @@ index: number
 **废弃版本：** 9
 
 **替代接口：** [index](arkts-arkui-promptaction-actionmenusuccessresponse-i.md#index)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

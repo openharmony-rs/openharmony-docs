@@ -48,7 +48,7 @@ NavRouter(value: RouteInfo)
 
 **废弃版本：** 13
 
-**替代接口：** [NavPathInfo](arkts-arkui-navpathinfo-c.md)
+**替代接口：** [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,7 +60,7 @@ NavRouter(value: RouteInfo)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [RouteInfo](arkts-arkui-routeinfo-i.md) | 是 | 路由信息。 |
+| value | [RouteInfo](arkts-arkui-navrouter-comp-routeinfo-i.md) | 是 | 路由信息。 |
 
 ## 汇总
 
@@ -68,13 +68,13 @@ NavRouter(value: RouteInfo)
 
 | 名称 | 说明 |
 | --- | --- |
-| [RouteInfo](arkts-arkui-routeinfo-i.md) | 路由信息。 |
+| [RouteInfo](arkts-arkui-navrouter-comp-routeinfo-i.md) | 路由信息。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [NavRouteMode](arkts-arkui-navroutemode-e.md) | 路由模式。 |
+| [NavRouteMode](arkts-arkui-navrouter-comp-navroutemode-e.md) | 路由模式。 |
 
 ## 示例
 

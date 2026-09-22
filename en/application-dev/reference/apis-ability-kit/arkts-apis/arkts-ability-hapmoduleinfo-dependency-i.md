@@ -1,5 +1,9 @@
 # Dependency
 
+```TypeScript
+export interface Dependency
+```
+
 Describes the information about the dynamic shared library on which the module depends.
 
 **Since:** 9

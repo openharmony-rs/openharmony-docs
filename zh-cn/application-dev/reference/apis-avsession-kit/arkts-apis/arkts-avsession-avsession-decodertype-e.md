@@ -1,5 +1,9 @@
 # DecoderType
 
+```TypeScript
+enum DecoderType
+```
+
 枚举，设备所支持的解码格式。
 
 **起始版本：** 19

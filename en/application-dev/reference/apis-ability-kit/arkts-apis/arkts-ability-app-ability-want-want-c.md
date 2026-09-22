@@ -1,5 +1,9 @@
 # Want
 
+```TypeScript
+export default class Want
+```
+
 Want is a carrier for information transfer between objects (application components). A typical scenario is when a UIAbility (for example, UIAbility A) needs to launch another UIAbility (for example, UIAbility B) and pass some data along. In this case, a Want can be used as the medium. For example, in the **want** parameter of the **startAbility** API, you can specify the target ability using the **abilityName** field or include additional data via the **parameters** field.
 
 **Since:** 9
@@ -231,3 +235,301 @@ URI, which is used with **type** to specify the data type to be processed in the
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Ability.AbilityBase
+
+**Examples**
+
+Basic usage: called in a UIAbility object, as shown in the example below. For details about how to obtain the context, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let want: Want = {
+      deviceId: '', // An empty deviceId indicates the local device.
+      bundleName: 'com.example.myapplication',
+      abilityName: 'FuncAbility',
+      moduleName: 'entry' // moduleName is optional.
+    };
+
+    this.context.startAbility(want, (err: BusinessError) => {
+      if (err.code) {
+        // Start an ability explicitly. The bundleName, abilityName, and moduleName parameters work together to uniquely identify an ability.
+        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+Currently, the following data types are supported: string, number, Boolean, object, array, and file descriptor (FD).
+
+String
+
+```TypeScript
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'FuncAbility',
+      parameters: {
+        keyForString: 'str',
+      },
+    };
+
+    this.context.startAbility(want, (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+Number
+
+```TypeScript
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'FuncAbility',
+      parameters: {
+        keyForInt: 100,
+        keyForDouble: 99.99,
+      },
+    };
+
+    this.context.startAbility(want, (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+Boolean
+
+```TypeScript
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'FuncAbility',
+      parameters: {
+        keyForBool: true,
+      },
+    };
+
+    this.context.startAbility(want, (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+Object
+
+```TypeScript
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'FuncAbility',
+      parameters: {
+        keyForObject: {
+          keyForObjectString: 'str',
+          keyForObjectInt: -200,
+          keyForObjectDouble: 35.5,
+          keyForObjectBool: false,
+        },
+      },
+    };
+
+    this.context.startAbility(want, (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+Array
+
+```TypeScript
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'FuncAbility',
+      parameters: {
+        keyForArrayString: ['str1', 'str2', 'str3'],
+        keyForArrayInt: [100, 200, 300, 400],
+        keyForArrayDouble: [0.1, 0.2],
+        keyForArrayObject: [{ obj1: 'aaa' }, { obj2: 100 }],
+      },
+    };
+
+    this.context.startAbility(want, (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+FD
+
+```TypeScript
+// Launcher: Pass the file descriptor in parameters in the fixed key-value pair format {'type':'FD','value':fd}.
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let fd: number = 0;
+
+    try {
+      fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`Failed to openSync. Code: ${code}, message: ${message}`);
+    }
+    let want: Want = {
+      deviceId: '', // An empty deviceId indicates the local device.
+      bundleName: 'com.example.myapplication',
+      abilityName: 'FuncAbility',
+      moduleName: 'entry', // moduleName is optional.
+      parameters: {
+        // keyFd is a custom key. The launched party uses this key to find the corresponding value.
+        // {'type':'FD','value':fd} is a fixed key-value pair, where fd is the file descriptor passed by the developer.
+        'keyFd': { 'type': 'FD', 'value': fd }
+      }
+    };
+
+    this.context.startAbility(want, (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+```TypeScript
+// Launched party: Obtain the file descriptor passed by the launcher through want.fds.
+import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+export default class FuncAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let fd: number = -1;
+    // Obtain the file descriptor passed by the launcher from want.fds. The keyFd must be consistent with the key used by the launcher when passing it.
+    const fds = want.fds;
+    if (fds && fds.keyFd !== undefined) {
+      fd = fds.keyFd;
+    }
+    // Check whether the file descriptor is valid (a non-negative integer indicates validity). If it is invalid, log an error and exit immediately to avoid a crash caused by using an invalid fd later.
+    if (fd < 0) {
+      console.error(`Failed to get fd from want.fds`);
+      return;
+    }
+    // ...
+    fileIo.closeSync(fd); // Close the file descriptor after use to avoid file descriptor leakage.
+  }
+}
+```
+
+parameters usage: parameters carries custom parameters. It is transferred by UIAbilityA to UIAbilityB and obtained from UIAbilityB.
+
+```TypeScript
+// (1) UIAbilityA starts UIAbilityB through startAbility.
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'UIAbilityB',
+      parameters: {
+        developerParameters: 'parameters',
+      },
+    };
+
+    this.context.startAbility(want, (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+```TypeScript
+// (2) If the UIAbilityB instance is started for the first time, it enters the onCreate lifecycle.
+import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
+
+class UIAbilityB extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info(`onCreate, want parameters: ${want.parameters?.developerParameters}`);
+  }
+}
+```
+
+Usage of the keys of [wantConstant](arkts-ability-app-ability-wantconstant.md) in parameters.
+
+```TypeScript
+import { UIAbility, Want, wantConstant } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'FuncAbility',
+      parameters: {
+        [wantConstant.Params.CONTENT_TITLE_KEY]: 'contentTitle',
+      },
+    };
+
+    this.context.startAbility(want, (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```

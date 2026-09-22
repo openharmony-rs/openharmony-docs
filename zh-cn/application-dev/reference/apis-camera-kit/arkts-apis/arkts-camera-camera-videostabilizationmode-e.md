@@ -1,5 +1,9 @@
 # VideoStabilizationMode
 
+```TypeScript
+enum VideoStabilizationMode
+```
+
 枚举，视频防抖模式。
 
 **起始版本：** 10

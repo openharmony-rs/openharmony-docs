@@ -1,5 +1,9 @@
 # PermissionQuery（系统接口）
 
+```TypeScript
+interface PermissionQuery
+```
+
 权限查询信息。
 
 **起始版本：** 26.0.0
@@ -25,6 +29,8 @@ callerTokenId?: number
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -40,6 +46,8 @@ domainId?: string
 **类型：** string
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -57,6 +65,8 @@ needTicket?: boolean
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -73,6 +83,8 @@ operationInfo: OperationInfo[]
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -87,7 +99,9 @@ remoteInfo?: RemoteInfo
 
 **类型：** [RemoteInfo](arkts-ability-abilitytoolaccessctrl-remoteinfo-i-sys.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -104,6 +118,8 @@ ticketExpireTimeMs?: number
 **类型：** number
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

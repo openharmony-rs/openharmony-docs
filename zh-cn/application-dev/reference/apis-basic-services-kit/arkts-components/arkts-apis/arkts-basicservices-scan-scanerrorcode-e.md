@@ -1,5 +1,9 @@
 # ScanErrorCode
 
+```TypeScript
+enum ScanErrorCode
+```
+
 定义扫描错误码的枚举。
 
 **起始版本：** 20

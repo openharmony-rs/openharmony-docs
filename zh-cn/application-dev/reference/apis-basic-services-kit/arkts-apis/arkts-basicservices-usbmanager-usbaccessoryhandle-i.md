@@ -1,5 +1,9 @@
 # USBAccessoryHandle
 
+```TypeScript
+interface USBAccessoryHandle
+```
+
 USB配件句柄，包含配件文件描述符，用于通过CoreFileKit提供的read/write接口和配件进行通信。
 
 **起始版本：** 14

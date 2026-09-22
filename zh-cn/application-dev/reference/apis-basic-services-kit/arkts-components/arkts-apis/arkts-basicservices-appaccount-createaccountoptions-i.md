@@ -1,5 +1,9 @@
 # CreateAccountOptions
 
+```TypeScript
+interface CreateAccountOptions
+```
+
 表示创建账号的选项。
 
 **起始版本：** 9

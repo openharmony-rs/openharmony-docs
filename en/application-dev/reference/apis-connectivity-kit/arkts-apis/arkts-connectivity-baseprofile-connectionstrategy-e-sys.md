@@ -1,5 +1,9 @@
 # ConnectionStrategy (System API)
 
+```TypeScript
+export enum ConnectionStrategy
+```
+
 Enum for connection strategy of the profile
 
 **Since:** 10

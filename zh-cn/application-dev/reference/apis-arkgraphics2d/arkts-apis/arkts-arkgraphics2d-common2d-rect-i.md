@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+interface Rect
+```
+
 矩形区域，通过左上角点和右下角点两个坐标点定义。
 
 **起始版本：** 11

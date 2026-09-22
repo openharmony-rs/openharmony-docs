@@ -1,5 +1,9 @@
 # WallpaperType
 
+```TypeScript
+enum WallpaperType
+```
+
 Indicates wallpaper type.
 
 @enum { int } WallpaperType

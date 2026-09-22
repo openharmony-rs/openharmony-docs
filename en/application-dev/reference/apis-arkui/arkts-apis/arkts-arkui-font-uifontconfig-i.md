@@ -1,5 +1,9 @@
 # UIFontConfig
 
+```TypeScript
+interface UIFontConfig
+```
+
 UI font configuration of the system.
 
 **Since:** 11

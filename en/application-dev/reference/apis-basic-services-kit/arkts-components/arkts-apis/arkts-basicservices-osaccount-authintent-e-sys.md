@@ -1,5 +1,9 @@
 # AuthIntent (System API)
 
+```TypeScript
+enum AuthIntent
+```
+
 Enumerates the authentication intents.
 
 **Since:** 12

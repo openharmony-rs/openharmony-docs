@@ -33,6 +33,8 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
 
 
+<a id="subscribe-1"></a>
+
 ## subscribe
 
 ```TypeScript
@@ -65,6 +67,8 @@ function subscribe(
 | info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-notificationsubscribeinfo-i-sys.md) | 是 | 通知订阅信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
 
+
+<a id="subscribe-2"></a>
 
 ## subscribe
 

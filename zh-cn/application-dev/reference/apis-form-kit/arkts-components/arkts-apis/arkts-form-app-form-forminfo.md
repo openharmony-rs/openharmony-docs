@@ -1,4 +1,4 @@
-# @ohos.app.form.formInfo(formInfo)
+# @ohos.app.form.formInfo(卡片信息-FormInfo)
 
 formInfo模块提供了卡片信息和状态等相关类型和枚举。
 

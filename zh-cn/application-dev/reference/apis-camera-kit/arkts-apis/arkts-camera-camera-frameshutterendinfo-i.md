@@ -1,5 +1,9 @@
 # FrameShutterEndInfo
 
+```TypeScript
+interface FrameShutterEndInfo
+```
+
 拍照曝光结束信息。
 
 **起始版本：** 12

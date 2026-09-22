@@ -1,5 +1,9 @@
 # GZip
 
+```TypeScript
+interface GZip
+```
+
 Describes gzip-related APIs.
 
 **Since:** 12

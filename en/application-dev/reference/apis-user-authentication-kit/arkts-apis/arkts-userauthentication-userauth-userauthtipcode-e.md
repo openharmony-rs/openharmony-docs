@@ -1,5 +1,9 @@
 # UserAuthTipCode
 
+```TypeScript
+enum UserAuthTipCode
+```
+
 Enumerates the intermediate states of identity authentication. This enum is used to describe various intermediate states during authentication, including authentication failure, timeout, lockout, and loading and release of the authentication screen. Applications can subscribe to these intermediate states through the [on('authTip')](arkts-userauthentication-userauth-userauthinstance-i.md#onauthtip) API to provide more refined user feedback and status awareness during authentication.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # PromptOptionsV2Config
 
+```TypeScript
+export interface PromptOptionsV2Config
+```
+
 PromptOptionsV2Config定义用于构造PromptOptionsV2对象的配置信息接口。
 
 **起始版本：** 26.0.0
@@ -122,7 +126,7 @@ symbolStyle?: SymbolGlyphModifier
 
 默认不设置或设置为undefined，Symbol图标不显示。
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 26.0.0
 
@@ -142,10 +146,10 @@ tip?: ResourceStr
 
 支持自定义资源，或如下四种状态文字系统资源。
 
-1. 无网络状态：显示网络未连接，引用&#36;r('sys.string.ohos_network_not_connected')。
-2. 网络差状态：显示网络连接不稳定，请点击重试，引用&#36;r('sys.string.ohos_network_connected_unstable')。
-3. 连不上服务器状态：显示无法连接到服务器，请点击重试，引用&#36;r('sys.string.ohos_unstable_connect_server')。
-4. 有网但是获取不到位置状态：显示无法获取位置，请点击重试，引用&#36;r('sys.string.ohos_custom_network_tips_left')。
+1. 无网络状态：显示网络未连接，引用$r('sys.string.ohos_network_not_connected')。
+2. 网络差状态：显示网络连接不稳定，请点击重试，引用$r('sys.string.ohos_network_connected_unstable')。
+3. 连不上服务器状态：显示无法连接到服务器，请点击重试，引用$r('sys.string.ohos_unstable_connect_server')。
+4. 有网但是获取不到位置状态：显示无法获取位置，请点击重试，引用$r('sys.string.ohos_custom_network_tips_left')。
 
 默认不设置或设置为undefined，文字提示内容不显示。
 

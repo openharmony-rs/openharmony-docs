@@ -1,5 +1,9 @@
 # LengthMetrics
 
+```TypeScript
+declare class LengthMetrics
+```
+
 Defines the length attribute. When the length unit is PERCENT, the value **1** indicates 100%.
 
 **Since:** 12
@@ -218,8 +222,48 @@ Represents the length of a resource of the Resource type.
 
 **Examples**
 
-```TypeScript
 Use LengthMetrics to set the padding and margin attributes of Row.
+
+```TypeScript
+import { LengthMetrics, LengthUnit } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SizeExample {
+  build() {
+    Column({ space: 10 }) {
+      Text('margin and padding:')
+        .fontSize(12)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+      Row() {
+        Row() {
+          Row()
+            .size({ width: '100%', height: '100%' })
+            .backgroundColor('#ffd5d5d5')
+        }
+        .width(80)
+        .height(80)
+        .padding({
+          top: new LengthMetrics(20, LengthUnit.VP),
+          bottom: LengthMetrics.px(15),
+          start: LengthMetrics.vp(10),
+          end: LengthMetrics.fp(20)
+        })
+        .margin({
+          top: LengthMetrics.percent(0.1),
+          bottom: LengthMetrics.lpx(20),
+          start: LengthMetrics.resource($r('app.float.row_margin_start')),
+          end: LengthMetrics.vp(10)
+        })
+        .backgroundColor(Color.White)
+      }
+      .backgroundColor('#ff2787d9')
+    }
+    .width('100%')
+    .margin({ top: 5 })
+  }
+}
 ```
 
 ## vp

@@ -1,5 +1,9 @@
 # UserStatusAtomicCap（系统接口）
 
+```TypeScript
+export enum UserStatusAtomicCap
+```
+
 表示用户状态支持的原子化服务能力。
 
 **起始版本：** 26.0.0

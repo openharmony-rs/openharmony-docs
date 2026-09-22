@@ -1,5 +1,9 @@
 # BLECharacteristic
 
+```TypeScript
+interface BLECharacteristic
+```
+
 Describes the Gatt characteristic.
 
 **Since:** 7

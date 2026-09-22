@@ -19,8 +19,8 @@ import { hash } from '@kit.CoreFileKit';
 | Name | Description |
 | --- | --- |
 | [createHash](arkts-corefile-hash-createhash-f.md) | Creates a **HashStream** instance, which can be used to generate a message digest (a hash value) using the given algorithm. |
-| [hash](arkts-corefile-hash-f.md) | Calculates a hash value for a file. This API uses a promise to return the result. |
-| [hash](arkts-corefile-hash-f.md) | Calculates a hash value for a file. This API uses an asynchronous callback to return the result. |
+| [hash](arkts-corefile-hash-f.md#hash) | Calculates a hash value for a file. This API uses a promise to return the result. |
+| [hash](arkts-corefile-hash-f.md#hash-1) | Calculates a hash value for a file. This API uses an asynchronous callback to return the result. |
 
 ### Classes
 

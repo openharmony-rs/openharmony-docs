@@ -1,5 +1,9 @@
 # VerifyCodeParam（系统接口）
 
+```TypeScript
+export interface VerifyCodeParam
+```
+
 应用程序代码签名文件信息。
 
 **起始版本：** 10

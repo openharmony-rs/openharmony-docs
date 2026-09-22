@@ -36,3 +36,20 @@ function on(type: 'sppRead', clientSocket: number, callback: Callback<ArrayBuffe
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2901054](../errorcode-bluetoothManager.md#2901054-io传输失败) | IO error. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let clientNumber = 1; // 入参clientNumber由sppAccept或sppConnect接口获取。
+let dataRead = (dataBuffer: ArrayBuffer) => {
+    let data = new Uint8Array(dataBuffer);
+    console.info('bluetooth data length is: ' + data.byteLength);
+}
+try {
+    socket.on('sppRead', clientNumber, dataRead);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

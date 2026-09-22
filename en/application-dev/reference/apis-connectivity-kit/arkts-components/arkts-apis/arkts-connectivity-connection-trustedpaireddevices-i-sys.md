@@ -1,5 +1,9 @@
 # TrustedPairedDevices (System API)
 
+```TypeScript
+interface TrustedPairedDevices
+```
+
 Describes the cloud pair device.
 
 **Since:** 15

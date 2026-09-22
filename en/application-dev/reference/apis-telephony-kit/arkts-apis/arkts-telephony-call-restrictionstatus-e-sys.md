@@ -1,5 +1,9 @@
 # RestrictionStatus (System API)
 
+```TypeScript
+export enum RestrictionStatus
+```
+
 Enumerates call restriction states.
 
 **Since:** 8

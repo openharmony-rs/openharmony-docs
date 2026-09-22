@@ -1,5 +1,9 @@
 # AgentSkill
 
+```TypeScript
+export interface AgentSkill
+```
+
 表示Agent可以执行的不同能力或功能。
 
 @typedef AgentSkill

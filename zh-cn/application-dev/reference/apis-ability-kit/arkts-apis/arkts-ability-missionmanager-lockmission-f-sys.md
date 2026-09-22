@@ -12,7 +12,7 @@ import { missionManager } from '@kit.AbilityKit';
 function lockMission(missionId: number, callback: AsyncCallback<void>): void
 ```
 
-锁定指定任务ID的任务。使用callback异步回调。
+锁定指定任务ID的任务。适用于需要保持任务不被清理的场景，如系统管理类应用需要在后台持续运行时锁定关键任务。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -61,25 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { missionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// testMissionId为任务ID，可通过getMissionInfos接口获取真实有效的任务ID
-let testMissionId = 2;
-
-try {
-  missionManager.lockMission(testMissionId).then((data: void) => {
-    console.info(`lockMission successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`lockMission failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`lockMission failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="lockmission-1"></a>
 
 ## lockMission
 
@@ -87,7 +70,7 @@ try {
 function lockMission(missionId: number): Promise<void>
 ```
 
-锁定指定任务ID的任务。使用Promise异步回调。
+锁定指定任务ID的任务。适用于需要保持任务不被清理的场景，如系统管理类应用需要在后台持续运行时锁定关键任务。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -120,4 +103,21 @@ function lockMission(missionId: number): Promise<void>
 
 **示例**
 
-参见 [lockMission](#lockmission)
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// testMissionId为任务ID，可通过getMissionInfos接口获取真实有效的任务ID
+let testMissionId = 2;
+
+try {
+  missionManager.lockMission(testMissionId).then((data: void) => {
+    console.info(`lockMission successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`lockMission failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`lockMission failed. Code: ${err.code}, message: ${err.message}`);
+}
+```

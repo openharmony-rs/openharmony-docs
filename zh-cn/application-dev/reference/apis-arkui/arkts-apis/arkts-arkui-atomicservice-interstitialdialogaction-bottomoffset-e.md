@@ -1,5 +1,9 @@
 # BottomOffset
 
+```TypeScript
+export declare enum BottomOffset
+```
+
 设置不同情景模式下弹框距离底部的距离，判断依据为是否存在菜单栏，默认显示为不存在菜单栏情况下的距离。
 
 | 名称 | 值 | 说明 |  

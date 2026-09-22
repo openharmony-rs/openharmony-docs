@@ -1,5 +1,9 @@
 # Size
 
+```TypeScript
+interface Size
+```
+
 窗口大小，单位为px。
 
 **起始版本：** 7

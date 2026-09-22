@@ -1,8 +1,12 @@
 # PublishFormCrossDeviceResult (System API)
 
+```TypeScript
+interface PublishFormCrossDeviceResult
+```
+
 PublishFormCrossDeviceResult
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -24,7 +28,7 @@ The form Id of the form added to the peer form host service.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

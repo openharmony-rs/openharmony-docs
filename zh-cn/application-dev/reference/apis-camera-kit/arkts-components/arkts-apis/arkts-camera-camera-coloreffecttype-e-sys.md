@@ -1,5 +1,9 @@
 # ColorEffectType（系统接口）
 
+```TypeScript
+enum ColorEffectType
+```
+
 Enumerates the color effect types.
 
 **起始版本：** 11

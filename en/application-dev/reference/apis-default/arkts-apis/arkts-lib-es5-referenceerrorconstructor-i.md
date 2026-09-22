@@ -1,5 +1,9 @@
 # ReferenceErrorConstructor
 
+```TypeScript
+interface ReferenceErrorConstructor extends ErrorConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

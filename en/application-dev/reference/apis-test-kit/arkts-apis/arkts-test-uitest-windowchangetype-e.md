@@ -1,5 +1,9 @@
 # WindowChangeType
 
+```TypeScript
+declare enum WindowChangeType
+```
+
 Enumerates the window change event types that can be listened for.
 
 **Since:** 22

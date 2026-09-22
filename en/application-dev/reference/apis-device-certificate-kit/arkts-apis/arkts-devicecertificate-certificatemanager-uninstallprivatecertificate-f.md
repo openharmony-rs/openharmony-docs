@@ -55,23 +55,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* The service needs to use the unique identifier of the credential to delete the private credential, which is not elaborated here. */
-try {
-  certificateManager.uninstallPrivateCertificate(uri).then((cmResult) => {
-    console.info('Succeeded in uninstalling private certificate.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (error) {
-  console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="uninstallprivatecertificate-1"></a>
 
 ## uninstallPrivateCertificate
 
@@ -110,4 +95,19 @@ Uninstalls a private credential. This API uses a promise to return the result.
 
 **Examples**
 
-See [uninstallPrivateCertificate](#uninstallprivatecertificate)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uri: string = 'test'; /* The service needs to use the unique identifier of the credential to delete the private credential, which is not elaborated here. */
+try {
+  certificateManager.uninstallPrivateCertificate(uri).then((cmResult) => {
+    console.info('Succeeded in uninstalling private certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # LocatingRequiredDataType (System API)
 
+```TypeScript
+export enum LocatingRequiredDataType
+```
+
 Enum for locating required data type.
 
 **Since:** 10

@@ -27,7 +27,7 @@ Removes disallowed Wi-Fi networks. If some Wi-Fi networks are removed from the d
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| list | Array&lt;[WifiAccessInfo](arkts-mdm-wifimanager-wifiaccessinfo-i.md)&gt; | Yes | Array of Wi-Fi networks to be removed. The maximum length of the array is 2 00. |
+| list | Array&lt;[WifiAccessInfo](arkts-mdm-wifimanager-wifiaccessinfo-i.md)&gt; | Yes | Array of Wi-Fi networks to be removed. The maximum length of the array is 200. |
 
 **Error codes:**
 

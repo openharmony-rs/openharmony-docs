@@ -50,16 +50,8 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: Error) => {
 });
 ```
 
-```TypeScript
-power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
-.then(() => {
-    console.info('set power mode to MODE_PERFORMANCE');
-})
-.catch((err : Error)=> {
-    console.error('set power mode failed, err: ' + err);
-});
-```
 
+<a id="setpowermode-1"></a>
 
 ## setPowerMode
 
@@ -100,4 +92,12 @@ Sets the power mode of a device. This API uses a promise to return the result.
 
 **Examples**
 
-See [setPowerMode](#setpowermode)
+```TypeScript
+power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
+.then(() => {
+    console.info('set power mode to MODE_PERFORMANCE');
+})
+.catch((err : Error)=> {
+    console.error('set power mode failed, err: ' + err);
+});
+```

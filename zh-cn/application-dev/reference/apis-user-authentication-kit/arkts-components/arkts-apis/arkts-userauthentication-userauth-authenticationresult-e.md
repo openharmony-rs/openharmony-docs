@@ -1,5 +1,9 @@
 # AuthenticationResult
 
+```TypeScript
+export enum AuthenticationResult
+```
+
 表示认证结果的枚举。
 
 **起始版本：** 6

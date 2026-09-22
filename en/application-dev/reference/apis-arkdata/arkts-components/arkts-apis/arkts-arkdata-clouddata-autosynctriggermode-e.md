@@ -1,5 +1,9 @@
 # AutoSyncTriggerMode
 
+```TypeScript
+enum AutoSyncTriggerMode
+```
+
 Indicates automatic synchronization triggering method for Device-Cloud data.
 
 **Since:** 26.0.0

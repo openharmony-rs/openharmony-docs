@@ -53,6 +53,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
+<a id="getcurrentgroup-1"></a>
+
 ## getCurrentGroup
 
 ```TypeScript

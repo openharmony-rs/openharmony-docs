@@ -53,18 +53,8 @@ print.removePrinters([printerId], (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let printerId : string = '1212';
-print.removePrinters([printerId]).then(() => {
-    console.info('remove printers success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to remove printers. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="removeprinters-1"></a>
 
 ## removePrinters
 
@@ -104,4 +94,14 @@ Removes printers. This API uses a promise to return the result.
 
 **Examples**
 
-See [removePrinters](#removeprinters)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerId : string = '1212';
+print.removePrinters([printerId]).then(() => {
+    console.info('remove printers success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to remove printers. Code: ${error.code}, message: ${error.message}`);
+});
+```

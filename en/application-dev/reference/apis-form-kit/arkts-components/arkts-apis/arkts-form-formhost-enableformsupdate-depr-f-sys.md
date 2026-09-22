@@ -33,6 +33,8 @@ Instructs the widget framework to make a widget updatable. After this API is cal
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If a notification is sent to the widget framework to make the widget updatable, **error** is undefined; otherwise, **error** is an error object. |
 
 
+<a id="enableformsupdate-1"></a>
+
 ## enableFormsUpdate
 
 ```TypeScript

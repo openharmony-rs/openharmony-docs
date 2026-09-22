@@ -55,16 +55,8 @@ call.switchCall(1, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.switchCall(1).then(() => {
-    console.info(`switchCall success.`);
-}).catch((err: BusinessError) => {
-    console.error(`switchCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="switchcall-1"></a>
 
 ## switchCall
 
@@ -108,4 +100,12 @@ function switchCall(callId: number): Promise<void>
 
 **示例**
 
-参见 [switchCall](#switchcall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.switchCall(1).then(() => {
+    console.info(`switchCall success.`);
+}).catch((err: BusinessError) => {
+    console.error(`switchCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```

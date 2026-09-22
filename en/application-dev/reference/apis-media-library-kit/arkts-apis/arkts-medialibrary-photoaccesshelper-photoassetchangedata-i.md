@@ -1,5 +1,9 @@
 # PhotoAssetChangeData
 
+```TypeScript
+interface PhotoAssetChangeData
+```
+
 Describes the change data of a media asset.
 
 **Since:** 20

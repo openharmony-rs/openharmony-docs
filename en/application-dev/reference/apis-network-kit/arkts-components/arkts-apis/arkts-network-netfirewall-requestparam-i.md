@@ -1,5 +1,9 @@
 # RequestParam
 
+```TypeScript
+interface RequestParam
+```
+
 Defines query parameters.
 
 **Since:** 15

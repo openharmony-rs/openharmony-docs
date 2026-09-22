@@ -1,5 +1,9 @@
 # Base64
 
+```TypeScript
+class Base64
+```
+
 将包含 Base64 数据的字符串或 Uint8Array 解码为重新分配的 Uint8Array。
 
 **起始版本：** 8

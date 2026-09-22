@@ -1,5 +1,9 @@
 # TextEncoding
 
+```TypeScript
+enum TextEncoding
+```
+
 文本的编码类型枚举。
 
 **起始版本：** 11

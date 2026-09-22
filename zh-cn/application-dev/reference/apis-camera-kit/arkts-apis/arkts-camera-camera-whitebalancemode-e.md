@@ -1,5 +1,9 @@
 # WhiteBalanceMode
 
+```TypeScript
+enum WhiteBalanceMode
+```
+
 枚举，白平衡模式。
 
 **起始版本：** 20

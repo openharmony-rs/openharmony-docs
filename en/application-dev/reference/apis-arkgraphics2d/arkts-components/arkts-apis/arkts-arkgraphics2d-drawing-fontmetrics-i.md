@@ -1,5 +1,9 @@
 # FontMetrics
 
+```TypeScript
+interface FontMetrics
+```
+
 Describes the attributes that describe the font size and layout. A typeface has similar font metrics.
 
 **Since:** 11

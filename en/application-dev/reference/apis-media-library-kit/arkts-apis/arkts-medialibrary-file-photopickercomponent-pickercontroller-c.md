@@ -1,5 +1,9 @@
 # PickerController
 
+```TypeScript
+export declare class PickerController
+```
+
 Defines an instance used to send data to the **PhotoPickerComponent**.
 
 **Since:** 12

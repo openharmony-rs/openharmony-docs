@@ -1,5 +1,9 @@
 # MovingPhotoEffectMode (System API)
 
+```TypeScript
+enum MovingPhotoEffectMode
+```
+
 Enumerates the effects of a moving photo.
 
 **Since:** 12

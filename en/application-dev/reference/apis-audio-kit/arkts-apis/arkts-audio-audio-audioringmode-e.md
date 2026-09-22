@@ -1,5 +1,9 @@
 # AudioRingMode
 
+```TypeScript
+enum AudioRingMode
+```
+
 Enumerates the audio ring modes.
 
 **Since:** 7

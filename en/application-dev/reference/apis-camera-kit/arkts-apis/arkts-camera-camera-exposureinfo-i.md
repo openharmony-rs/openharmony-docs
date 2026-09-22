@@ -1,5 +1,9 @@
 # ExposureInfo
 
+```TypeScript
+interface ExposureInfo
+```
+
 Describes the exposure information object.
 
 **Since:** 24

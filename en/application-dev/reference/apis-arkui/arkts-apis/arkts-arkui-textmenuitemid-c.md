@@ -1,5 +1,9 @@
 # TextMenuItemId
 
+```TypeScript
+declare class TextMenuItemId
+```
+
 Defines the unique identifier for a custom menu item. It is used to identify menu items. The IDs for built-in menu items are listed in the table below.
 
 **Since:** 12
@@ -248,7 +252,7 @@ ID for the email menu item. It is a level-1 menu item. This menu item provides t
 static readonly passwordVault: TextMenuItemId
 ```
 
-ID for the password vault menu item. It is a level-2 menu item. Tapping this menu item launches the password vault app, which supports automatic username and password filling. The menu item is supported only for Search, TextInput, TextArea, and RichEditor.
+ID for the password vault menu item. It is a level-2 menu item. Tapping this menu item launches the password vault app, which supports automatic username and password filling. The menu item is supported only for [Search](../arkts-components/arkts-arkui-search-comp.md#search), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input), [TextArea](../arkts-components/arkts-arkui-textarea-comp.md#text_area), and [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor).
 
 **Type:** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 

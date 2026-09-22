@@ -1,5 +1,9 @@
 # TabTitleBarMenuItem
 
+```TypeScript
+export declare class TabTitleBarMenuItem
+```
+
 **起始版本：** 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -144,7 +148,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol图标资源，优先级大于value。当需要使用Symbol图标时传入此参数，不传入时使用value参数设置的图标。
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 

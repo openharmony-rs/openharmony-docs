@@ -1,5 +1,9 @@
 # EditableTitleBarMenuItem
 
+```TypeScript
+export declare class EditableTitleBarMenuItem
+```
+
 **起始版本：** 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -178,7 +182,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol图标资源，优先级大于value。不设置时使用value参数显示图标。
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 

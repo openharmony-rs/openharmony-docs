@@ -1,5 +1,9 @@
 # SecurityLevel
 
+```TypeScript
+enum SecurityLevel
+```
+
 数据库的安全级别枚举。
 
 **起始版本：** 7

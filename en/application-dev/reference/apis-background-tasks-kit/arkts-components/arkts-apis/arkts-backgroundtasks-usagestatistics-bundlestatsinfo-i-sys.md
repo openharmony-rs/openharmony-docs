@@ -1,5 +1,9 @@
 # BundleStatsInfo (System API)
 
+```TypeScript
+interface BundleStatsInfo
+```
+
 **Since:** 9
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App

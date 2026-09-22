@@ -1,5 +1,9 @@
 # NetworkState
 
+```TypeScript
+enum NetworkState
+```
+
 Enumerates the network statuses of the player.
 
 **Since:** 12

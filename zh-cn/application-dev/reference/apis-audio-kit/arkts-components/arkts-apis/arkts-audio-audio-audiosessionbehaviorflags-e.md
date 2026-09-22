@@ -1,5 +1,9 @@
 # AudioSessionBehaviorFlags
 
+```TypeScript
+enum AudioSessionBehaviorFlags
+```
+
 表示音频会话行为的枚举。
 
 **起始版本：** 24
@@ -57,8 +61,6 @@ PAUSE_WHEN_INTERRUPTED = 0x00000004
 在AudioRenderer和AudioCapturer场景下，当音频流暂停或恢复时，应用将分别收到[InterruptHint](arkts-audio-audio-interrupthint-e.md).INTERRUPT_HINT_PAUSE与[InterruptHint](arkts-audio-audio-interrupthint-e.md).INTERRUPT_HINT_RESUME的通知。
 
 **注意：** 该标志不能与MUTE_WHEN_INTERRUPTED共存，若同时设置，仅该标志生效。
-
-26.0.0
 
 **起始版本：** 26.0.0
 

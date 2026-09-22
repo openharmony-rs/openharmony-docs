@@ -1,5 +1,9 @@
 # AudioVolumeType
 
+```TypeScript
+enum AudioVolumeType
+```
+
 枚举，音频流类型。
 
 **起始版本：** 7

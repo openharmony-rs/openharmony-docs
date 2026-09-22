@@ -1,5 +1,9 @@
 # SubscribeCap（系统接口）
 
+```TypeScript
+enum SubscribeCap
+```
+
 表示发现能力的枚举。
 
 **起始版本：** 7

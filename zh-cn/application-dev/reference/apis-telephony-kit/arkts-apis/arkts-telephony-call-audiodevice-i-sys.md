@@ -1,5 +1,9 @@
 # AudioDevice（系统接口）
 
+```TypeScript
+export interface AudioDevice
+```
+
 音频设备。
 
 **起始版本：** 10

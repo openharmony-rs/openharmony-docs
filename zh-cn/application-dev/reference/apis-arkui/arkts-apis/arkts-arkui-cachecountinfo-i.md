@@ -1,5 +1,9 @@
 # CacheCountInfo
 
+```TypeScript
+declare interface CacheCountInfo
+```
+
 缓存数量信息。
 
 **起始版本：** 22

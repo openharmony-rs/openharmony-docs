@@ -1,5 +1,9 @@
 # BusinessAbilityInfo（系统接口）
 
+```TypeScript
+export interface BusinessAbilityInfo
+```
+
 包含基本业务路由信息。
 
 @typedef BusinessAbilityInfo

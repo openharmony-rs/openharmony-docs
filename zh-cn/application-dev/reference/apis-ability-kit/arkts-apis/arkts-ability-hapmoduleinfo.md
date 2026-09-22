@@ -18,3 +18,11 @@ The module defines the HAP module information. An application can obtain its own
 | [HapModuleInfo](arkts-ability-hapmoduleinfo-i.md) | HAP信息。 |
 | [PreloadItem](arkts-ability-hapmoduleinfo-preloaditem-i.md) | 描述原子化服务中模块的预加载模块信息。 |
 | [RouterItem](arkts-ability-hapmoduleinfo-routeritem-i.md) | 描述模块配置的路由表信息。 |
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [HapModuleInfo](arkts-ability-hapmoduleinfo-i-sys.md) | HAP信息。 |
+<!--DelEnd-->

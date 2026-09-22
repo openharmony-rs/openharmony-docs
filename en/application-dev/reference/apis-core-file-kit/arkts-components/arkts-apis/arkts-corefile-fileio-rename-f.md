@@ -35,6 +35,8 @@ Renames a file. This API uses a promise to return the result.
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
+<a id="rename-1"></a>
+
 ## rename
 
 ```TypeScript

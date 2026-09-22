@@ -1,5 +1,9 @@
 # SizeT
 
+```TypeScript
+export interface SizeT<T>
+```
+
 Sets the width and height attributes.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # BeaconFenceInfoType
 
+```TypeScript
+export enum BeaconFenceInfoType
+```
+
 beacon围栏信息类型。当前仅支持设备制造商数据过滤。
 
 **起始版本：** 20

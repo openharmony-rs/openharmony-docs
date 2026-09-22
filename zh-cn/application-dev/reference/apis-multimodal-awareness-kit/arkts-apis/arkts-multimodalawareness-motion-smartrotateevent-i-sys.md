@@ -1,5 +1,9 @@
 # SmartRotateEvent（系统接口）
 
+```TypeScript
+interface SmartRotateEvent
+```
+
 智能旋转传感器事件的基本数据结构。该事件包含传感器检测到的物理方向和由智能算法计算得出的逻辑方向。
 
 **起始版本：** 26.0.0

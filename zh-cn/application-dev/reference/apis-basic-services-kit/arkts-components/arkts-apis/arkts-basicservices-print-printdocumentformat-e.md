@@ -1,5 +1,9 @@
 # PrintDocumentFormat
 
+```TypeScript
+enum PrintDocumentFormat
+```
+
 打印数据格式的枚举。
 
 **起始版本：** 23

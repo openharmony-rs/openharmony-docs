@@ -1,5 +1,9 @@
 # EditorAttribute
 
+```TypeScript
+interface EditorAttribute
+```
+
 Represents the attributes of the edit box.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # ElementAttributeValues
 
+```TypeScript
+export interface ElementAttributeValues
+```
+
 节点元素具备的属性名称及属性值类型信息。
 
 **起始版本：** 9
@@ -208,7 +212,7 @@ currentIndex: number
 customComponentType?: string
 ```
 
-自定义组件类型。与元素的[AccessibilityRoleType](../../apis-arkui/arkts-components/arkts-arkui-accessibilityroletype-e.md)类型对应。默认值为空。
+自定义组件类型。与元素的[AccessibilityRoleType](../../apis-arkui/arkts-components/arkts-arkui-common-comp-accessibilityroletype-e.md)类型对应。默认值为空。
 
 **类型：** string
 

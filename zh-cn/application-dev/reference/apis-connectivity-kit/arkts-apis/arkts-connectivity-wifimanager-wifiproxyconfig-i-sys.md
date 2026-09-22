@@ -1,5 +1,9 @@
 # WifiProxyConfig（系统接口）
 
+```TypeScript
+interface WifiProxyConfig
+```
+
 Wifi 代理配置。
 
 **起始版本：** 10

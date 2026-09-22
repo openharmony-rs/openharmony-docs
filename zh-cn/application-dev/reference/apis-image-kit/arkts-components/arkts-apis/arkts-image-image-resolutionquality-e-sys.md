@@ -1,5 +1,9 @@
 # ResolutionQuality（系统接口）
 
+```TypeScript
+enum ResolutionQuality
+```
+
 枚举，画质效果等级类型。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # NfcFTag
 
+```TypeScript
+export interface NfcFTag extends TagSession
+```
+
 Provides APIs to access NFC-F (JIS 6319-4) properties and perform I/O operations on a tag. This class inherits from **TagSession**.
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).

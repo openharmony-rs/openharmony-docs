@@ -1,5 +1,9 @@
 # HuksKeyStorageType
 
+```TypeScript
+export enum HuksKeyStorageType
+```
+
 Enumerates the key storage modes.
 
 **Since:** 8
@@ -20,6 +24,8 @@ Note: This tag is supported since API version 8 and deprecated since API version
 
 **Deprecated since:** 10
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_STORAGE_PERSISTENT
@@ -36,6 +42,8 @@ Note: This tag is supported since API version 8 and deprecated since API version
 
 **Deprecated since:** 10
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_STORAGE_ONLY_USED_IN_HUKS
@@ -47,6 +55,8 @@ HUKS_STORAGE_ONLY_USED_IN_HUKS = 2
 The key derived from the master key is stored in the HUKS and managed by the HUKS.
 
 **Since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -63,6 +73,8 @@ HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3
 The key derived from the master key is exported to the service, and not managed by the HUKS.
 
 **Since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

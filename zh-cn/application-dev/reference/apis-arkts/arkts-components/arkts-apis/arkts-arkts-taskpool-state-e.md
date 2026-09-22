@@ -1,5 +1,9 @@
 # State
 
+```TypeScript
+enum State
+```
+
 表示任务（Task）状态的枚举。
 
 状态转换规则如下：  

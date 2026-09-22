@@ -1,8 +1,12 @@
 # RemoteUserAuthResults（系统接口）
 
+```TypeScript
+interface RemoteUserAuthResults
+```
+
 远程用户授权结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -23,7 +27,9 @@ permissionQuery: PermissionQuery
 
 **类型：** [PermissionQuery](arkts-ability-abilitytoolaccessctrl-permissionquery-i-sys.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -39,7 +45,9 @@ results: RemoteUserAuthItem[]
 
 **类型：** [RemoteUserAuthItem](arkts-ability-abilitytoolaccessctrl-remoteuserauthitem-i-sys.md)[]
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

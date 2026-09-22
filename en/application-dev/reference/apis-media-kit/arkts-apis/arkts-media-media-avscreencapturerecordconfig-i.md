@@ -1,5 +1,9 @@
 # AVScreenCaptureRecordConfig
 
+```TypeScript
+interface AVScreenCaptureRecordConfig
+```
+
 Defines the screen capture parameters.
 
 **Since:** 12

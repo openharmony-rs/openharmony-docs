@@ -32,9 +32,9 @@ import { dialogRequest } from '@kit.AbilityKit';
 | Name | Description |
 | --- | --- |
 | [RequestCallback](arkts-ability-dialogrequest-requestcallback-i.md) | Provides a callback for setting the modal dialog box request result. |
-| [RequestInfo](arkts-ability-dialogrequest-requestinfo-i.md) | Defines the request information, which is used as an input parameter for binding the modal dialog box. |
+| [RequestInfo](arkts-ability-dialogrequest-requestinfo-i.md) | Indicates the request information of the initiator, which is used as an input parameter for the window to bind a modal dialog box. |
 | [RequestResult](arkts-ability-dialogrequest-requestresult-i.md) | Defines the result of the request for the modal dialog box. It contains **ResultCode** and **ResultWant**. |
-| [WindowRect](arkts-ability-dialogrequest-windowrect-i.md) | Defines the location attributes of a modal dialog box. |
+| [WindowRect](arkts-ability-dialogrequest-windowrect-i.md) | Indicates the attributes of a modal dialog box. |
 
 ### Enums
 

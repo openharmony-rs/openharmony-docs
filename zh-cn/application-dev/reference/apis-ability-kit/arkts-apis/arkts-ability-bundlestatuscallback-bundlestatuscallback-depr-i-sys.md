@@ -1,5 +1,9 @@
 # BundleStatusCallback（系统接口）
 
+```TypeScript
+export interface BundleStatusCallback
+```
+
 应用状态发生变化时回调的信息。  
 > **说明：** 
 > 

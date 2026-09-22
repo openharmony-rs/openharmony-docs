@@ -1,5 +1,9 @@
 # UserAuthExtensionAbility (System API)
 
+```TypeScript
+export default class UserAuthExtensionAbility extends UIExtensionAbility
+```
+
 The class of user authentication extension ability.
 
 @extends UIExtensionAbility

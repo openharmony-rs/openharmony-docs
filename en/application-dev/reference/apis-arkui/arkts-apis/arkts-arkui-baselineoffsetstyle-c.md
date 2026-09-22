@@ -1,5 +1,9 @@
 # BaselineOffsetStyle
 
+```TypeScript
+declare class BaselineOffsetStyle
+```
+
 Describes the text baseline offset style.
 
 **Since:** 12

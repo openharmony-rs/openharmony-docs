@@ -1,5 +1,9 @@
 # SerialPortInfo
 
+```TypeScript
+interface SerialPortInfo
+```
+
 串口设备信息。
 
 **起始版本：** 26.0.0

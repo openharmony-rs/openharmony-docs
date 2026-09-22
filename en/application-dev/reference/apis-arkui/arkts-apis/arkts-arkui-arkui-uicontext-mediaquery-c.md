@@ -1,5 +1,9 @@
 # MediaQuery
 
+```TypeScript
+export class MediaQuery
+```
+
 class MediaQuery
 
 **Since:** 10
@@ -42,3 +46,7 @@ Sets the media query criteria and returns the corresponding listening handle
 | Type | Description |
 | --- | --- |
 | [mediaQuery.MediaQueryListener](arkts-arkui-mediaquery-mediaquerylistener-i.md) | the corresponding listening handle |
+
+**Examples**
+
+See the example for mediaquery.

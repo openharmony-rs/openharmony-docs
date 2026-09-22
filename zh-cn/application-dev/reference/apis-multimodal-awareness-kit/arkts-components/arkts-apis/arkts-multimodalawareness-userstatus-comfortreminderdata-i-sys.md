@@ -1,5 +1,9 @@
 # ComfortReminderData（系统接口）
 
+```TypeScript
+export interface ComfortReminderData extends UserStatusData
+```
+
 表示舒适提醒数据。
 
 **继承/实现关系：** ComfortReminderData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

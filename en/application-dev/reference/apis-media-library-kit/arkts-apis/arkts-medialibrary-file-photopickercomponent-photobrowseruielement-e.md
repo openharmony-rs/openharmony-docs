@@ -1,5 +1,9 @@
 # PhotoBrowserUIElement
 
+```TypeScript
+export declare enum PhotoBrowserUIElement
+```
+
 Represents other UI elements except the image preview component on the photo browser page.
 
 **Since:** 13

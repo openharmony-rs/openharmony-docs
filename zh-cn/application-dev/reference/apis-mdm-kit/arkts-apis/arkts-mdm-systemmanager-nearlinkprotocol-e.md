@@ -1,5 +1,9 @@
 # NearLinkProtocol
 
+```TypeScript
+enum NearLinkProtocol
+```
+
 星闪协议枚举。
 
 **起始版本：** 20

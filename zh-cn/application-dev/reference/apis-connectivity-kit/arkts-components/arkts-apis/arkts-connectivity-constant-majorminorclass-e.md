@@ -1,5 +1,9 @@
 # MajorMinorClass
 
+```TypeScript
+export enum MajorMinorClass
+```
+
 枚举，蓝牙设备的子类型，在[MajorClass](arkts-connectivity-constant-majorclass-e.md)基础上进一步细分的类型。蓝牙标准协议字段。
 
 **起始版本：** 10

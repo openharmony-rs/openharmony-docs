@@ -1,5 +1,9 @@
 # OtaUpdatePolicy
 
+```TypeScript
+export interface OtaUpdatePolicy
+```
+
 升级策略。
 
 **起始版本：** 12

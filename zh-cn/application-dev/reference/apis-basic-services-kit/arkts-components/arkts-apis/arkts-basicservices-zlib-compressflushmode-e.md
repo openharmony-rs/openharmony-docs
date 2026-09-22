@@ -1,5 +1,9 @@
 # CompressFlushMode
 
+```TypeScript
+export enum CompressFlushMode
+```
+
 压缩刷新模式。
 
 **起始版本：** 12

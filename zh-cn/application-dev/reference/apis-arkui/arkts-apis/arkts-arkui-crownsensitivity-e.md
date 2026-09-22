@@ -1,5 +1,9 @@
 # CrownSensitivity
 
+```TypeScript
+declare enum CrownSensitivity
+```
+
 旋转表冠灵敏度。
 
 **起始版本：** 18

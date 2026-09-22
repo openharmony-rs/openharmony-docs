@@ -1,5 +1,9 @@
 # ConflictResolution
 
+```TypeScript
+enum ConflictResolution
+```
+
 Enumerates the policies for resolving conflicts (for example, a duplicate alias) when an asset is added.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # VideoProfile
 
+```TypeScript
+interface VideoProfile extends Profile
+```
+
 视频配置信息项，继承[Profile](arkts-camera-camera-profile-i.md)。
 
 **继承/实现关系：** VideoProfile extends [Profile](arkts-camera-camera-profile-i.md)

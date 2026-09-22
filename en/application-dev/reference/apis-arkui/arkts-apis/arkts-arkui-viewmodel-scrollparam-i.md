@@ -1,5 +1,9 @@
 # ScrollParam
 
+```TypeScript
+export interface ScrollParam
+```
+
 ScrollParam
 
 @interface ScrollParam

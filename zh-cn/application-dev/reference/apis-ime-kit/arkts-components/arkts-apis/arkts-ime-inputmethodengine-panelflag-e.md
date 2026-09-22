@@ -1,5 +1,9 @@
 # PanelFlag
 
+```TypeScript
+export enum PanelFlag
+```
+
 输入法面板状态类型枚举。<br>
 
 | 名称 | 值 | 说明 |  

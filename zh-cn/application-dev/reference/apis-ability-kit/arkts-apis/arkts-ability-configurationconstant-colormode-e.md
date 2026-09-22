@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+export enum ColorMode
+```
+
 表示深浅色模式的枚举，用于[Configuration.colorMode](arkts-ability-app-ability-configuration-configuration-i.md)字段。开发者可以使用这些预置枚举设置或获取系统/应用的深浅色模式。
 
 **起始版本：** 9

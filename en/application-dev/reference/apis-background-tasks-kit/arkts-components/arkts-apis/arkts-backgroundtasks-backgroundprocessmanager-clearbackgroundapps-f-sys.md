@@ -14,7 +14,7 @@ function clearBackgroundApps(clearType: ClearType): Promise<void>
 
 One-tap background app cleanup
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.CLEAR_BACKGROUND_APPS
 

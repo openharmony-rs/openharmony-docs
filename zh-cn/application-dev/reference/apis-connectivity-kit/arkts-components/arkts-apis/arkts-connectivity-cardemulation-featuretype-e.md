@@ -1,5 +1,9 @@
 # FeatureType
 
+```TypeScript
+enum FeatureType
+```
+
 定义不同的NFC卡模拟类型。
 
 **起始版本：** 6

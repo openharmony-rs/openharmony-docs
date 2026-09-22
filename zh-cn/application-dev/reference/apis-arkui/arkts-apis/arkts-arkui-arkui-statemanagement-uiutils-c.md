@@ -1,5 +1,9 @@
 # UIUtils
 
+```TypeScript
+export declare class UIUtils
+```
+
 UIUtils状态管理相关的工具方法，包括获取代理对象的原始对象、将非观察数据变为可观察数据、动态添加和删除状态变量监听、同步刷新状态变量修改、创建数据绑定等，适用于需要手动管理状态观察、监听和同步刷新的场景。
 
 **起始版本：** 12
@@ -15,7 +19,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 ## addMonitor
 
 ```TypeScript
-static addMonitor(target: object, path: string | string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
+static addMonitor(target: object, path: string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
 ```
 
 给状态管理V2的状态变量动态添加监听方法，详见[addMonitor/clearMonitor](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md)。
@@ -33,7 +37,7 @@ static addMonitor(target: object, path: string | string[], monitorCallback: Moni
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | target | object | 是 | 目标对象，仅支持[@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)和[@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。<br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| path | string &#124; string[] | 是 | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。<br>仅支持string和string数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| path | string[] | 是 | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。<br>仅支持string和string数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 是 | 给对应的状态变量注册的监听函数，即path路径对应的状态变量改变时，会回调对应的函数。<br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | options | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | 否 | 监听函数的配置项，具体可见[MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md)。默认为异步回调。 |
 
@@ -267,7 +271,7 @@ export struct School {
 ## clearMonitor
 
 ```TypeScript
-static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback) : void
+static clearMonitor(target: object, path: string[], monitorCallback?: MonitorCallback) : void
 ```
 
 删除通过[addMonitor](#addmonitor)给状态管理V2的状态变量添加的监听方法，详见[addMonitor/clearMonitor](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md)。
@@ -285,7 +289,7 @@ static clearMonitor(target: object, path: string | string[], monitorCallback?: M
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | target | object | 是 | 目标对象，仅支持[@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)和[@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。<br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| path | string &#124; string[] | 是 | 删除监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定删除多个状态变量的监听函数。<br>仅支持string和数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| path | string[] | 是 | 删除监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定删除多个状态变量的监听函数。<br>仅支持string和数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 否 | 指定被删除的监听函数。<br>当开发者不传此参数时，将删除path对应变量注册的所有监听函数。<br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 
 **错误码：**
@@ -596,7 +600,7 @@ struct Index {
 static getLifecycle<T extends BaseCustomComponent>(customComponent: T): CustomComponentLifecycle
 ```
 
-getLifecycle用于获取自定义组件的生命周期实例。
+getLifecycle用于获取[自定义组件的生命周期](arkts-arkui-arkui-statemanagement.md)实例。
 
 **起始版本：** 23
 
@@ -766,6 +770,39 @@ struct CompV2 {
 }
 ```
 
+<a id="makebinding-1"></a>
+
+## makeBinding
+
+```TypeScript
+static makeBinding<T>(getter: GetterCallback<T>, setter: SetterCallback<T>): MutableBinding<T>
+```
+
+创建可修改的双向数据绑定实例，用于构建\@Builder函数中参数类型为`MutableBinding`的对应实参。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| getter | [GetterCallback](arkts-arkui-gettercallback-t.md)&lt;T&gt; | 是 | 获取值的回调函数，每次访问值都会重新执行函数，获取最新值。 |
+| setter | [SetterCallback](arkts-arkui-settercallback-t.md)&lt;T&gt; | 是 | 定义如何更新值，当`.value`被修改时自动调用此函数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md)&lt;T&gt; | 包含一个`value`属性，支持通过`.value`读取和修改数据，设置值时会检查类型是否匹配泛型`T`。 |
+
+**示例**
+
 ```TypeScript
 import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
@@ -810,39 +847,6 @@ struct CompV2 {
   }
 }
 ```
-
-## makeBinding
-
-```TypeScript
-static makeBinding<T>(getter: GetterCallback<T>, setter: SetterCallback<T>): MutableBinding<T>
-```
-
-创建可修改的双向数据绑定实例，用于构建\@Builder函数中参数类型为`MutableBinding`的对应实参。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| getter | [GetterCallback](arkts-arkui-gettercallback-t.md)&lt;T&gt; | 是 | 获取值的回调函数，每次访问值都会重新执行函数，获取最新值。 |
-| setter | [SetterCallback](arkts-arkui-settercallback-t.md)&lt;T&gt; | 是 | 定义如何更新值，当`.value`被修改时自动调用此函数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md)&lt;T&gt; | 包含一个`value`属性，支持通过`.value`读取和修改数据，设置值时会检查类型是否匹配泛型`T`。 |
-
-**示例**
-
-参见 [makeBinding](#makebinding)
 
 ## makeObserved
 

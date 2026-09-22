@@ -1,5 +1,9 @@
 # BluetoothAndNearlinkPreferredRecordCategory
 
+```TypeScript
+enum BluetoothAndNearlinkPreferredRecordCategory
+```
+
 Enumerates the preferred device categories available for recording with Bluetooth or NearLink.
 
 **Since:** 21

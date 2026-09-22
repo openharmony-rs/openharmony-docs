@@ -18,5 +18,5 @@ Defines the callback type for gesture event listeners in **UIObserver**.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [GestureEvent](../arkts-components/arkts-arkui-gestureevent-i.md) | Yes | Information about the gesture event that triggers the callback. |
+| event | [GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md) | Yes | Information about the gesture event that triggers the callback. |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | No | Component bound to the gesture event. |

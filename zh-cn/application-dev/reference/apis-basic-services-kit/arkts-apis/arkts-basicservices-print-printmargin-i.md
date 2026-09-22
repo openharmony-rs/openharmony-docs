@@ -1,5 +1,9 @@
 # PrintMargin
 
+```TypeScript
+interface PrintMargin
+```
+
 定义打印页边距的接口。
 
 **起始版本：** 24

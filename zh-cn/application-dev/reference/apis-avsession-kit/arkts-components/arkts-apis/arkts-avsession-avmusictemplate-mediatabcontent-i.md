@@ -1,5 +1,9 @@
 # MediaTabContent
 
+```TypeScript
+interface MediaTabContent extends OperResult
+```
+
 媒体标签页内容的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。
 
 @extends OperResult @interface MediaTabContent

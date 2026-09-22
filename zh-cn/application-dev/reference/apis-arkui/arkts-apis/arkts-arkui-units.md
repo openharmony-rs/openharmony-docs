@@ -12,7 +12,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AccessibilityActionOptions](arkts-arkui-accessibilityactionoptions-i.md) | 设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。仅Slider组件支持使用。在其他组件使用该接口时，编译环节可正常通过，但接口功能不生效。 |
+| [AccessibilityActionOptions](arkts-arkui-accessibilityactionoptions-i.md) | 设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。仅[Slider](../arkts-components/arkts-arkui-slider-comp.md#slider)组件支持使用。在其他组件使用该接口时，编译环节可正常通过，但接口功能不生效。 |
 | [AccessibilityCustomAction](arkts-arkui-accessibilitycustomaction-i.md) | 自定义无障碍操作接口。 |
 | [AccessibilityNextFocusParams](arkts-arkui-accessibilitynextfocusparams-i.md) | 定义无障碍自定义下一个焦点处理过程中可使用的详细参数对象。 |
 | [AccessibilityOptions](arkts-arkui-accessibilityoptions-i.md) | 定义AccessibilityOptions的结构体。 |

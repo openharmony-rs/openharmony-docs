@@ -1,5 +1,9 @@
 # ShaderMaterial
 
+```TypeScript
+export interface ShaderMaterial extends Material
+```
+
 Shader material, which inherits from Material.
 
 @extends Material @interface ShaderMaterial

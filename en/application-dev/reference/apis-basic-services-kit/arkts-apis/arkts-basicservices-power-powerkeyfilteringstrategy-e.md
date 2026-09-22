@@ -1,5 +1,9 @@
 # PowerKeyFilteringStrategy
 
+```TypeScript
+export enum PowerKeyFilteringStrategy
+```
+
 Enumerates the power key filtering strategies.
 
 **Since:** 21

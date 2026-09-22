@@ -1,5 +1,9 @@
 # HideSensitiveType（系统接口）
 
+```TypeScript
+enum HideSensitiveType
+```
+
 枚举，应用访问媒体资源时，对媒体资源进行信息脱敏的类型。
 
 **起始版本：** 12

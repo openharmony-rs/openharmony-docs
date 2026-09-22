@@ -1,5 +1,9 @@
 # AudioSessionDeactivatedEvent
 
+```TypeScript
+interface AudioSessionDeactivatedEvent
+```
+
 Describes the event indicating that an audio session is deactivated.
 
 **Since:** 12

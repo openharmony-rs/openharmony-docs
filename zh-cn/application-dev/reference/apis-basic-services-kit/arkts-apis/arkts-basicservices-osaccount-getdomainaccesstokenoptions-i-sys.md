@@ -1,5 +1,9 @@
 # GetDomainAccessTokenOptions（系统接口）
 
+```TypeScript
+interface GetDomainAccessTokenOptions
+```
+
 表示获取域访问令牌的选项。
 
 **起始版本：** 10

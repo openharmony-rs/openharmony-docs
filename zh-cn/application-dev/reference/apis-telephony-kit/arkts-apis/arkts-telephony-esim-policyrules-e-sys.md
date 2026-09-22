@@ -1,5 +1,9 @@
 # PolicyRules（系统接口）
 
+```TypeScript
+export enum PolicyRules
+```
+
 配置文件的策略规则。
 
 **起始版本：** 18

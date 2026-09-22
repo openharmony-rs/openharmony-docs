@@ -1,5 +1,9 @@
 # PluginParam (System API)
 
+```TypeScript
+export interface PluginParam
+```
+
 Defines the parameters for installing or uninstalling a plugin.
 
 **Since:** 19

@@ -1,5 +1,9 @@
 # AutoCapitalizationMode
 
+```TypeScript
+declare enum AutoCapitalizationMode
+```
+
 Enumerates automatic capitalization modes. This only provides API capabilities; the specific implementation depends on the input method application.
 
 **Since:** 20

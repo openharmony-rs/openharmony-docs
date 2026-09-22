@@ -1,5 +1,9 @@
 # FlexAlign
 
+```TypeScript
+declare enum FlexAlign
+```
+
 FlexAlign enumeration description.
 
 @enum { number }

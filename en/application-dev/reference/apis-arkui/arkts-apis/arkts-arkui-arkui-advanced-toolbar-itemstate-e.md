@@ -1,5 +1,9 @@
 # ItemState
 
+```TypeScript
+export declare enum ItemState
+```
+
 Enumerates toolbar item states.
 
 **Since:** 10

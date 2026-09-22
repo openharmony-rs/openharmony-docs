@@ -1,5 +1,9 @@
 # DisposedType（系统接口）
 
+```TypeScript
+export enum DisposedType
+```
+
 标识拦截应用程序的方式，例如禁用应用的全部能力、禁用应用的指定能力、或者不禁用。
 
 **起始版本：** 11

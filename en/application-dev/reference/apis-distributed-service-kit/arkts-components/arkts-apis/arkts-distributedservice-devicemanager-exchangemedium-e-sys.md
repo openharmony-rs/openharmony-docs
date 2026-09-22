@@ -1,5 +1,9 @@
 # ExchangeMedium (System API)
 
+```TypeScript
+enum ExchangeMedium
+```
+
 Enumerates the media used for device discovery.
 
 **Since:** 7

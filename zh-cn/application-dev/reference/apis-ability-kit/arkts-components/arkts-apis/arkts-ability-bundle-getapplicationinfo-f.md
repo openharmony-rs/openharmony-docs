@@ -38,22 +38,6 @@ function getApplicationInfo(bundleName: string,
 
 ```TypeScript
 import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let bundleName: string = "com.example.myapplication";
-let bundleFlags: number = 0;
-let userId: number = 100;
-
-bundle.getApplicationInfo(bundleName, bundleFlags, userId)
-  .then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
 
 let bundleName: string = "com.example.myapplication";
 let bundleFlags: number = 0;
@@ -68,21 +52,8 @@ bundle.getApplicationInfo(bundleName, bundleFlags, userId, (err, data) => {
 })
 ```
 
-```TypeScript
-import bundle from '@ohos.bundle';
 
-let bundleName: string = "com.example.myapplication";
-let bundleFlags: number = 0;
-
-bundle.getApplicationInfo(bundleName, bundleFlags, (err, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. Data:' + JSON.stringify(data));
-})
-```
-
+<a id="getapplicationinfo-1"></a>
 
 ## getApplicationInfo
 
@@ -112,8 +83,23 @@ function getApplicationInfo(bundleName: string, bundleFlags: number, callback: A
 
 **示例**
 
-参见 [getApplicationInfo](#getapplicationinfo)
+```TypeScript
+import bundle from '@ohos.bundle';
 
+let bundleName: string = "com.example.myapplication";
+let bundleFlags: number = 0;
+
+bundle.getApplicationInfo(bundleName, bundleFlags, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+
+<a id="getapplicationinfo-2"></a>
 
 ## getApplicationInfo
 
@@ -149,4 +135,18 @@ function getApplicationInfo(bundleName: string, bundleFlags: number, userId?: nu
 
 **示例**
 
-参见 [getApplicationInfo](#getapplicationinfo)
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleName: string = "com.example.myapplication";
+let bundleFlags: number = 0;
+let userId: number = 100;
+
+bundle.getApplicationInfo(bundleName, bundleFlags, userId)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```

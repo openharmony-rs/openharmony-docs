@@ -1,5 +1,9 @@
 # SamplerAddressMode
 
+```TypeScript
+export enum SamplerAddressMode
+```
+
 采样器寻址模式枚举，用于控制纹理坐标超出[0, 1]范围时的处理方式。
 
 @enum { int }

@@ -44,13 +44,8 @@ geolocation.isLocationEnabled((err, data) => {
 });
 ```
 
-```TypeScript
-import geolocation from '@ohos.geolocation';
-geolocation.isLocationEnabled().then((result) => {
-    console.info('promise, isLocationEnabled: ' + JSON.stringify(result));
-});
-```
 
+<a id="islocationenabled-1"></a>
 
 ## isLocationEnabled
 
@@ -78,4 +73,9 @@ Obtain current location switch status
 
 **Examples**
 
-See [isLocationEnabled](#islocationenabled)
+```TypeScript
+import geolocation from '@ohos.geolocation';
+geolocation.isLocationEnabled().then((result) => {
+    console.info('promise, isLocationEnabled: ' + JSON.stringify(result));
+});
+```

@@ -1,5 +1,9 @@
 # ClearStorageOptions
 
+```TypeScript
+export interface ClearStorageOptions
+```
+
 @typedef ClearStorageOptions
 
 **Since:** 3

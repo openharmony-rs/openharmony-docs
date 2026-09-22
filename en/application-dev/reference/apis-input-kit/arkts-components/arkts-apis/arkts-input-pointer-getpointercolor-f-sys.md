@@ -64,33 +64,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Obtain the mouse pointer color.
-            pointer.getPointerColor().then((color: number) => {
-              console.info(`Succeeded in getting pointer color, color: ${JSON.stringify(color)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="getpointercolor-1"></a>
 
 ## getPointerColor
 
@@ -120,4 +95,29 @@ Obtains the current mouse pointer color. This API uses a promise to return the r
 
 **Examples**
 
-See [getPointerColor](#getpointercolor)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // Obtain the mouse pointer color.
+            pointer.getPointerColor().then((color: number) => {
+              console.info(`Succeeded in getting pointer color, color: ${JSON.stringify(color)}.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

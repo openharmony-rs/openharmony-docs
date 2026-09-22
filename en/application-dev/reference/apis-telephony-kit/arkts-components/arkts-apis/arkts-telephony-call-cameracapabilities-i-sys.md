@@ -1,5 +1,9 @@
 # CameraCapabilities (System API)
 
+```TypeScript
+export interface CameraCapabilities
+```
+
 Defines the local image resolution in a video call.
 
 **Since:** 11

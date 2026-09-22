@@ -1,5 +1,9 @@
 # KeyboardStatus
 
+```TypeScript
+export enum KeyboardStatus
+```
+
 Enumerates the soft keyboard states of the input method.
 
 **Since:** 10

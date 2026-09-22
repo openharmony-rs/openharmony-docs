@@ -1,5 +1,9 @@
 # DecoratorInfo
 
+```TypeScript
+export interface DecoratorInfo
+```
+
 可被观察对象关联的装饰器和组件信息。
 
 **起始版本：** 23

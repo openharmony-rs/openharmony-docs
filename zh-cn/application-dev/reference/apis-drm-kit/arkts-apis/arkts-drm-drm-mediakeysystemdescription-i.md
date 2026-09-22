@@ -1,5 +1,9 @@
 # MediaKeySystemDescription
 
+```TypeScript
+interface MediaKeySystemDescription
+```
+
 插件信息。
 
 **起始版本：** 12

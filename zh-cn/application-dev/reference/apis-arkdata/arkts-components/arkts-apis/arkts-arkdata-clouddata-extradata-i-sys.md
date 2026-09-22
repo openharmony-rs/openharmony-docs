@@ -1,5 +1,9 @@
 # ExtraData（系统接口）
 
+```TypeScript
+interface ExtraData
+```
+
 透传数据，携带通知数据变更所需要的信息。
 
 **起始版本：** 11

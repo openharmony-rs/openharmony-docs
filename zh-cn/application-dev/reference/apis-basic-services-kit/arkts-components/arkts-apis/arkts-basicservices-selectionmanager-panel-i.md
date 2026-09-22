@@ -1,5 +1,9 @@
 # Panel
 
+```TypeScript
+interface Panel
+```
+
 划词面板对象，通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f.md)创建，提供面板内容设置、显示、隐藏、移动及事件订阅等管理能力，适用于在划词完成后向用户展示自定义操作界面的场景。
 
 **起始版本：** 24
@@ -120,6 +124,17 @@ off(type: 'destroyed', callback?: Callback<void>): void
 | type | 'destroyed' | 是 | 取消订阅的事件类型，固定取值为'destroyed'。 |
 | callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 需要取消的回调函数（即之前通过on方法订阅时的回调实例）。参数不填写时，取消订阅type对应的所有回调事件。 |
 
+**示例**
+
+```TypeScript
+try {
+  // 取消订阅划词面板销毁事件。selectionPanel为createPanel创建出的panel实例
+  selectionPanel.off('destroyed');
+} catch (err) {
+  console.error(`Failed to unregister destroyed. Error code: ${err.code}, error message: ${err.message}`);
+}
+```
+
 ## off('hidden')
 
 ```TypeScript
@@ -138,6 +153,17 @@ off(type: 'hidden', callback?: Callback<void>): void
 | --- | --- | --- | --- |
 | type | 'hidden' | 是 | 取消订阅的事件类型，固定取值为'hidden'。 |
 | callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 需要取消的回调函数（即之前通过on方法订阅时的回调实例）。参数不填写时，取消订阅type对应的所有回调事件。 |
+
+**示例**
+
+```TypeScript
+try {
+  // 取消订阅划词面板隐藏事件。selectionPanel为createPanel创建出的panel实例
+  selectionPanel.off('hidden');
+} catch (err) {
+  console.error(`Failed to unregister hidden. Error code: ${err.code}, error message: ${err.message}`);
+}
+```
 
 ## on('destroyed')
 
@@ -158,6 +184,19 @@ on(type: 'destroyed', callback: Callback<void>): void
 | type | 'destroyed' | 是 | 设置监听类型，固定取值为'destroyed'。 |
 | callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数，调用[destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f.md)销毁面板时触发。 |
 
+**示例**
+
+```TypeScript
+try {
+  // 订阅划词面板销毁事件。selectionPanel为createPanel创建出的panel实例
+  selectionPanel.on('destroyed', () => {
+    console.info('Panel has been destroyed.');
+  });
+} catch (err) {
+  console.error(`Failed to register destroyed callback. Error code: ${err.code}, error message: ${err.message}`);
+}
+```
+
 ## on('hidden')
 
 ```TypeScript
@@ -176,6 +215,19 @@ on(type: 'hidden', callback: Callback<void>): void
 | --- | --- | --- | --- |
 | type | 'hidden' | 是 | 设置监听类型，固定取值为'hidden'。 |
 | callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数，面板隐藏时触发。面板可通过调用[hide](#hide)主动隐藏，或在失焦时自动隐藏。 |
+
+**示例**
+
+```TypeScript
+try {
+  // 订阅划词面板隐藏事件。selectionPanel为createPanel创建出的panel实例
+  selectionPanel.on('hidden', () => {
+    console.info('Panel has been hidden.');
+  });
+} catch (err) {
+  console.error(`Failed to register hidden callback. Error code: ${err.code}, error message: ${err.message}`);
+}
+```
 
 ## setUiContent
 

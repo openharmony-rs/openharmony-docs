@@ -1,5 +1,9 @@
 # Image
 
+```TypeScript
+export interface Image extends SceneResource
+```
+
 图片类型，继承自SceneResource。
 
 @extends SceneResource @interface Image

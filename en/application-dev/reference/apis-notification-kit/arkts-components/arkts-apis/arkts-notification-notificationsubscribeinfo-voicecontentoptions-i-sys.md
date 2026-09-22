@@ -1,5 +1,9 @@
 # VoiceContentOptions (System API)
 
+```TypeScript
+export interface VoiceContentOptions
+```
+
 Describes the configuration options for notification voice broadcast.
 
 **Since:** 26.0.0

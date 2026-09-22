@@ -68,24 +68,8 @@ try {
 }
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  let result: boolean = restrictions.getUserRestricted(wantTemp, restrictions.SettingsForDevice.SET_APN);
-  console.info(`Succeeded in getting user restricted: ${result}`);
-} catch (err) {
-  console.error(`Failed to get user restricted. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getuserrestricted-1"></a>
 
 ## getUserRestricted
 
@@ -127,4 +111,20 @@ function getUserRestricted(admin: Want | null, settingsItem: SettingsForDevice):
 
 **示例**
 
-参见 getUserRestricted
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: boolean = restrictions.getUserRestricted(wantTemp, restrictions.SettingsForDevice.SET_APN);
+  console.info(`Succeeded in getting user restricted: ${result}`);
+} catch (err) {
+  console.error(`Failed to get user restricted. Code is ${err.code}, message is ${err.message}`);
+}
+```

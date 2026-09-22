@@ -1,5 +1,9 @@
 # LocationError
 
+```TypeScript
+export enum LocationError
+```
+
 Enum for location error code.
 
 **Since:** 12

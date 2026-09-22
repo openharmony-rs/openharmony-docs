@@ -1,5 +1,9 @@
 # TextDirection
 
+```TypeScript
+declare enum TextDirection
+```
+
 文本排版方向。
 
 **起始版本：** 22

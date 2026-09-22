@@ -1,5 +1,9 @@
 # WriteStreamOptions
 
+```TypeScript
+export interface WriteStreamOptions
+```
+
 可选项类型，支持 createWriteStream 接口使用。
 
 **起始版本：** 12
@@ -18,7 +22,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 mode?: number
 ```
 
-创建文件可写流的选项，必须指定如下选项中的一个，默认只写方式创建：
+创建文件可写流的[选项](../../../reference/apis-core-file-kit/js-apis-file-fs.md#openmode)，必须指定如下选项中的一个，默认只写方式创建：
 
 - OpenMode.READ_ONLY(0o0)：只读。
 

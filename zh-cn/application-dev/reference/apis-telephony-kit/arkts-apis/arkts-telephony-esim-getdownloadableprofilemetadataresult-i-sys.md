@@ -1,5 +1,9 @@
 # GetDownloadableProfileMetadataResult（系统接口）
 
+```TypeScript
+export interface GetDownloadableProfileMetadataResult
+```
+
 获取可下载配置文件的元数据。
 
 **起始版本：** 18

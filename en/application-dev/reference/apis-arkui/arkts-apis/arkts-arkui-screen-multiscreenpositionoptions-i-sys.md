@@ -1,5 +1,9 @@
 # MultiScreenPositionOptions (System API)
 
+```TypeScript
+interface MultiScreenPositionOptions
+```
+
 Describes the screen position information.
 
 **Since:** 13

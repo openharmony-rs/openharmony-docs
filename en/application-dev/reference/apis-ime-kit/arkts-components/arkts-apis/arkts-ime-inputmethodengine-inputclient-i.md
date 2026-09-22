@@ -1,5 +1,9 @@
 # InputClient
 
+```TypeScript
+interface InputClient
+```
+
 You must first use [on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#oninputstart) to obtain a **InputClient** instance, and then use this instance to call the following APIs.
 
 **Since:** 9
@@ -58,20 +62,7 @@ inputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let length: number = 1;
-inputClient.deleteBackward(length).then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in deleting backward.');
-  } else {
-    console.error('Failed to deleteBackward.');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to deleteBackward. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="deletebackward-1"></a>
 
 ## deleteBackward
 
@@ -106,23 +97,6 @@ Deletes the fixed-length text after the cursor. This API uses a promise to retur
 | [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let length: number = 1;
-inputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
-  if (err) {
-    console.error(`Failed to deleteBackward. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  if (result) {
-    console.info('Succeeded in deleting backward.');
-  } else {
-    console.error(`Failed to deleteBackward.`);
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -218,20 +192,7 @@ inputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let length: number = 1;
-inputClient.deleteForward(length).then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in deleting forward.');
-  } else {
-    console.error('Failed to delete Forward.');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to deleteForward. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="deleteforward-1"></a>
 
 ## deleteForward
 
@@ -266,23 +227,6 @@ Deletes the fixed-length text before the cursor. This API uses a promise to retu
 | [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let length: number = 1;
-inputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
-  if (err) {
-    console.error(`Failed to deleteForward. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  if (result) {
-    console.info('Succeeded in deleting forward.');
-  } else {
-    console.error(`Failed to deleteForward.`);
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -473,16 +417,7 @@ inputClient.getBackward(length, (err: BusinessError, text: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let length: number = 1;
-inputClient.getBackward(length).then((text: string) => {
-  console.info('Succeeded in getting backward, text: ' + text);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getBackward. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getbackward-1"></a>
 
 ## getBackward
 
@@ -517,19 +452,6 @@ Obtains the specific-length text after the cursor. This API uses a promise to re
 | [12800006](../errorcode-inputmethod-framework.md#12800006-input-method-controller-error) | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let length: number = 1;
-inputClient.getBackward(length, (err: BusinessError, text: string) => {
-  if (err) {
-    console.error(`Failed to getBackward. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in getting backward, text: ' + text);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -663,16 +585,7 @@ inputClient.getEditorAttribute((err: BusinessError, editorAttribute: inputMethod
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.EditorAttribute) => {
-  console.info(`editorAttribute.inputPattern:  ${editorAttribute.inputPattern}`);
-  console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getEditorAttribute. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="geteditorattribute-2"></a>
 
 ## getEditorAttribute
 
@@ -699,19 +612,6 @@ Obtains the attribute of the edit box. This API uses a promise to return the res
 | [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputClient.getEditorAttribute((err: BusinessError, editorAttribute: inputMethodEngine.EditorAttribute) => {
-  if (err) {
-    console.error(`Failed to getEditorAttribute. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info(`editorAttribute.inputPattern:  ${editorAttribute.inputPattern}`);
-  console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -798,16 +698,7 @@ inputClient.getForward(length, (err: BusinessError, text: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let length: number = 1;
-inputClient.getForward(length).then((text: string) => {
-  console.info('Succeeded in getting forward, text: ' + text);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getForward. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="getforward-1"></a>
 
 ## getForward
 
@@ -842,19 +733,6 @@ Obtains the specific-length text before the cursor. This API uses a promise to r
 | [12800006](../errorcode-inputmethod-framework.md#12800006-input-method-controller-error) | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let length: number = 1;
-inputClient.getForward(length, (err: BusinessError, text: string) => {
-  if (err) {
-    console.error(`Failed to getForward. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in getting forward, text: ' + text);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -946,15 +824,7 @@ inputClient.getTextIndexAtCursor((err: BusinessError, index: number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputClient.getTextIndexAtCursor().then((index: number) => {
-  console.info('Succeeded in getTextIndexAtCursor: ' + index);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getTextIndexAtCursor. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="gettextindexatcursor-1"></a>
 
 ## getTextIndexAtCursor
 
@@ -983,7 +853,15 @@ Obtains the index of the text where the cursor is located. This API uses a promi
 
 **Examples**
 
-See [getTextIndexAtCursor](#gettextindexatcursor)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputClient.getTextIndexAtCursor().then((index: number) => {
+  console.info('Succeeded in getTextIndexAtCursor: ' + index);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getTextIndexAtCursor. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## getTextIndexAtCursorSync
 
@@ -1063,19 +941,7 @@ inputClient.insertText('test', (err: BusinessError, result: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputClient.insertText('test').then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in inserting text.');
-  } else {
-    console.error('Failed to insertText.');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to insertText. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="inserttext-1"></a>
 
 ## insertText
 
@@ -1110,23 +976,6 @@ Inserts text. This API uses a promise to return the result.
 | [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-
-inputClient.insertText('test', (err: BusinessError, result: boolean) => {
-  if (err) {
-    console.error(`Failed to insertText. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  if (result) {
-    console.info('Succeeded in inserting text.');
-  } else {
-    console.error('Failed to insertText.');
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1214,15 +1063,7 @@ inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP, (err: BusinessErro
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP).then(() => {
-  console.info('Succeeded in moving cursor.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to moveCursor. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="movecursor-1"></a>
 
 ## moveCursor
 
@@ -1257,7 +1098,15 @@ Moves the cursor. This API uses a promise to return the result.
 
 **Examples**
 
-See [moveCursor](#movecursor)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP).then(() => {
+  console.info('Succeeded in moving cursor.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to moveCursor. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## moveCursorSync
 
@@ -1309,6 +1158,20 @@ Unsubscribes from the event indicating that additional options for binding an in
 | type | 'attachOptionsDidChange' | Yes | Additional option change event when the input method is bound. The value is fixed to **'attachOptionsDidChange'**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AttachOptions](arkts-ime-inputmethodengine-attachoptions-i.md)&gt; | No | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type by default. |
 
+**Examples**
+
+```TypeScript
+let attachOptionsDidChangeCallback: (attachOptions: inputMethodEngine.AttachOptions) => void =
+  (attachOptions: inputMethodEngine.AttachOptions) => {
+    console.info(`AttachOptionsDidChangeCallback1: attachOptionsDidChange event triggered`);
+  };
+
+inputClient.on('attachOptionsDidChange', attachOptionsDidChangeCallback);
+console.info(`attachOptionsDidChangeCallback subscribed to attachOptionsDidChange`);
+inputClient.off('attachOptionsDidChange', attachOptionsDidChangeCallback);
+console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
+```
+
 ## on('attachOptionsDidChange')
 
 ```TypeScript
@@ -1334,6 +1197,20 @@ Subscribes to the event indicating that the additional options for binding an in
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 19 |
 
+**Examples**
+
+```TypeScript
+let attachOptionsDidChangeCallback: (attachOptions: inputMethodEngine.AttachOptions) => void =
+  (attachOptions: inputMethodEngine.AttachOptions) => {
+    console.info(`AttachOptionsDidChangeCallback1: attachOptionsDidChange event triggered`);
+  };
+
+inputClient.on('attachOptionsDidChange', attachOptionsDidChangeCallback);
+console.info(`attachOptionsDidChangeCallback subscribed to attachOptionsDidChange`);
+inputClient.off('attachOptionsDidChange', attachOptionsDidChangeCallback);
+console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
+```
+
 ## recvMessage
 
 ```TypeScript
@@ -1355,7 +1232,7 @@ Registers or unregisters MessageHandler. <br> <br>
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| msgHandler | [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) | No | This object receives custom communication data from the edit box application attached to the input method application through [onMessage](arkts-ime-inputmethodengine-messagehandler-i.md#onmessage) and receives a message for terminating the subscription to this object through [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated). <br>If no parameter is set, unregister [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md). Its [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated) callback will be triggered. |
+| msgHandler | [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) | No | This object receives custom communication data from the edit box application attached to the input method application through [onMessage](arkts-ime-inputmethodengine-messagehandler-i.md#onmessage-1) and receives a message for terminating the subscription to this object through [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated). <br>If no parameter is set, unregister [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md). Its [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated) callback will be triggered. |
 
 **Error codes:**
 
@@ -1424,16 +1301,7 @@ inputClient.selectByMovement(movement, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let movement: inputMethodEngine.Movement = { direction: 1 };
-inputClient.selectByMovement(movement).then(() => {
-  console.info('Succeeded in selecting by movement.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to selectByMovement. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="selectbymovement-1"></a>
 
 ## selectByMovement
 
@@ -1468,7 +1336,16 @@ Selects text based on the cursor movement direction. This API uses a promise to 
 
 **Examples**
 
-See [selectByMovement](#selectbymovement)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let movement: inputMethodEngine.Movement = { direction: 1 };
+inputClient.selectByMovement(movement).then(() => {
+  console.info('Succeeded in selecting by movement.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to selectByMovement. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## selectByMovementSync
 
@@ -1543,16 +1420,7 @@ inputClient.selectByRange(range, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let range: inputMethodEngine.Range = { start: 0, end: 1 };
-inputClient.selectByRange(range).then(() => {
-  console.info('Succeeded in selecting by range.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to selectByRange. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="selectbyrange-1"></a>
 
 ## selectByRange
 
@@ -1587,7 +1455,16 @@ Selects text based on the specified range. This API uses a promise to return the
 
 **Examples**
 
-See [selectByRange](#selectbyrange)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let range: inputMethodEngine.Range = { start: 0, end: 1 };
+inputClient.selectByRange(range).then(() => {
+  console.info('Succeeded in selecting by range.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to selectByRange. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## selectByRangeSync
 
@@ -1667,15 +1544,7 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY, (err: Business
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
-  console.info('Succeeded in sending extend action.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to sendExtendAction. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="sendextendaction-1"></a>
 
 ## sendExtendAction
 
@@ -1716,7 +1585,15 @@ Sends an extended edit action. This API uses a promise to return the result. <br
 
 **Examples**
 
-See [sendExtendAction](#sendextendaction)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
+  console.info('Succeeded in sending extend action.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to sendExtendAction. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## sendKeyFunction
 
@@ -1764,20 +1641,7 @@ inputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let action: number = 1;
-inputClient.sendKeyFunction(action).then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in sending key function.');
-  } else {
-    console.error('Failed to sendKeyFunction.');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to sendKeyFunction. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="sendkeyfunction-1"></a>
 
 ## sendKeyFunction
 
@@ -1811,24 +1675,6 @@ Sends the function key. This API uses a promise to return the result.
 | [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let action: number = 1;
-
-inputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
-  if (err) {
-    console.error(`Failed to sendKeyFunction. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  if (result) {
-    console.info('Succeeded in sending key function.');
-  } else {
-    console.error('Failed to sendKeyFunction.');
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

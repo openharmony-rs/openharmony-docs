@@ -1,5 +1,9 @@
 # MultiFormData
 
+```TypeScript
+export interface MultiFormData
+```
+
 Defines the type of multi-form data.
 
 **Since:** 11

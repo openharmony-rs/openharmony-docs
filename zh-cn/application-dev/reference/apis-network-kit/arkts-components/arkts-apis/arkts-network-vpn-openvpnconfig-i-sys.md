@@ -1,5 +1,9 @@
 # OpenVpnConfig（系统接口）
 
+```TypeScript
+export interface OpenVpnConfig extends SysVpnConfig
+```
+
 定义开放VPN网络的配置。
 
 **继承/实现关系：** OpenVpnConfig extends [SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)

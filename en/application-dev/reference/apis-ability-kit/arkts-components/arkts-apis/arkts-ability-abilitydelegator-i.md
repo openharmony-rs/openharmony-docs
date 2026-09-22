@@ -1,5 +1,9 @@
 # AbilityDelegator
 
+```TypeScript
+export interface AbilityDelegator
+```
+
 The **AbilityDelegator** module can listen for and manage the lifecycle changes of [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) through [AbilityMonitor](arkts-ability-abilitymonitor-i.md) instances. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism. You can obtain **AbilityDelegator** by calling [getAbilityDelegator](../../apis-test-kit/arkts-apis/arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md).
 
 > **NOTE:** 
@@ -69,24 +73,7 @@ abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let onAbilityCreateCallback = (data: UIAbility) => {
-  console.info('onAbilityCreateCallback');
-};
-
-let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
-};
-let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-
-abilityDelegator.addAbilityMonitor(monitor).then(() => {
-  console.info('addAbilityMonitor promise');
-});
-```
+<a id="addabilitymonitor-1"></a>
 
 ## addAbilityMonitor
 
@@ -123,7 +110,24 @@ Adds an **AbilityMonitor** instance. This API uses a promise to return the resul
 
 **Examples**
 
-See [addAbilityMonitor](#addabilitymonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
+let monitor: abilityDelegatorRegistry.AbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+
+abilityDelegator.addAbilityMonitor(monitor).then(() => {
+  console.info('addAbilityMonitor promise');
+});
+```
 
 ## addAbilityMonitorSync
 
@@ -222,19 +226,7 @@ abilityDelegator.addAbilityStageMonitor({
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.addAbilityStageMonitor({
-  moduleName: 'moduleName',
-  srcEntrance: 'srcEntrance',
-}).then(() => {
-  console.info('addAbilityStageMonitor promise');
-});
-```
+<a id="addabilitystagemonitor-1"></a>
 
 ## addAbilityStageMonitor
 
@@ -271,7 +263,19 @@ Adds an **AbilityStageMonitor** instance to monitor the lifecycle state changes 
 
 **Examples**
 
-See [addAbilityStageMonitor](#addabilitystagemonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.addAbilityStageMonitor({
+  moduleName: 'moduleName',
+  srcEntrance: 'srcEntrance',
+}).then(() => {
+  console.info('addAbilityStageMonitor promise');
+});
+```
 
 ## addAbilityStageMonitorSync
 
@@ -398,27 +402,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let ability: UIAbility;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  if (err) {
-    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getCurrentTopAbility callback');
-    ability = data;
-    abilityDelegator.doAbilityBackground(ability).then(() => {
-      console.info('doAbilityBackground promise');
-    });
-  }
-});
-```
+<a id="doabilitybackground-1"></a>
 
 ## doAbilityBackground
 
@@ -455,7 +439,27 @@ Schedules the lifecycle state of an ability to **Background**. This API uses a p
 
 **Examples**
 
-See [doAbilityBackground](#doabilitybackground)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let ability: UIAbility;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityBackground(ability).then(() => {
+      console.info('doAbilityBackground promise');
+    });
+  }
+});
+```
 
 ## doAbilityForeground
 
@@ -513,27 +517,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let ability: UIAbility;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  if (err) {
-    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getCurrentTopAbility callback');
-    ability = data;
-    abilityDelegator.doAbilityForeground(ability).then(() => {
-      console.info('doAbilityForeground promise');
-    });
-  }
-});
-```
+<a id="doabilityforeground-1"></a>
 
 ## doAbilityForeground
 
@@ -570,7 +554,27 @@ Schedules the lifecycle state of an ability to **Foreground**. This API uses a p
 
 **Examples**
 
-See [doAbilityForeground](#doabilityforeground)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let ability: UIAbility;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability).then(() => {
+      console.info('doAbilityForeground promise');
+    });
+  }
+});
+```
 
 ## executeShellCommand
 
@@ -615,36 +619,7 @@ abilityDelegator.executeShellCommand(shellCommand, (err: BusinessError, data: ab
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let shellCommand = 'cmd';
-let timeout = 100;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(shellCommand, timeout, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-  if (err) {
-    console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('executeShellCommand callback');
-  }
-});
-```
-
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let shellCommand = 'cmd';
-let timeout = 100;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
-  console.info('executeShellCommand promise');
-});
-```
+<a id="executeshellcommand-1"></a>
 
 ## executeShellCommand
 
@@ -670,7 +645,25 @@ Executes a shell command with the timeout period specified. This API uses an asy
 
 **Examples**
 
-See [executeShellCommand](#executeshellcommand)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let shellCommand = 'cmd';
+let timeout = 100;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.executeShellCommand(shellCommand, timeout, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
+  if (err) {
+    console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('executeShellCommand callback');
+  }
+});
+```
+
+<a id="executeshellcommand-2"></a>
 
 ## executeShellCommand
 
@@ -701,7 +694,18 @@ Executes a shell command with the timeout period specified. This API uses a prom
 
 **Examples**
 
-See [executeShellCommand](#executeshellcommand)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let shellCommand = 'cmd';
+let timeout = 100;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
+  console.info('executeShellCommand promise');
+});
+```
 
 ## finishTest
 
@@ -753,17 +757,7 @@ abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let msg = 'msg';
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.finishTest(msg, 0).then(() => {
-  console.info('finishTest promise');
-});
-```
+<a id="finishtest-1"></a>
 
 ## finishTest
 
@@ -803,7 +797,17 @@ Finishes the test and prints log information to the unit test console. This API 
 
 **Examples**
 
-See [finishTest](#finishtest)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let msg = 'msg';
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.finishTest(msg, 0).then(() => {
+  console.info('finishTest promise');
+});
+```
 
 ## getAbilityState
 
@@ -940,19 +944,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let ability: UIAbility;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
-  console.info('getCurrentTopAbility promise');
-  ability = data;
-});
-```
+<a id="getcurrenttopability-1"></a>
 
 ## getCurrentTopAbility
 
@@ -982,7 +974,19 @@ Obtains the top ability of this application. This API uses a promise to return t
 
 **Examples**
 
-See [getCurrentTopAbility](#getcurrenttopability)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let ability: UIAbility;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
+  console.info('getCurrentTopAbility promise');
+  ability = data;
+});
+```
 
 ## print
 
@@ -1026,17 +1030,7 @@ abilityDelegator.print(msg, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let msg = 'msg';
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.print(msg).then(() => {
-  console.info('print promise');
-});
-```
+<a id="print-1"></a>
 
 ## print
 
@@ -1068,7 +1062,17 @@ Prints log information to the unit test console. This API uses a promise to retu
 
 **Examples**
 
-See [print](#print)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let msg = 'msg';
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.print(msg).then(() => {
+  console.info('print promise');
+});
+```
 
 ## printSync
 
@@ -1164,26 +1168,7 @@ abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-let onAbilityCreateCallback = (data: UIAbility) => {
-  console.info('onAbilityCreateCallback');
-};
-
-let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
-};
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.removeAbilityMonitor(monitor).then(() => {
-  console.info('removeAbilityMonitor promise');
-});
-```
+<a id="removeabilitymonitor-1"></a>
 
 ## removeAbilityMonitor
 
@@ -1220,7 +1205,26 @@ Removes an **AbilityMonitor** instance. This API uses a promise to return the re
 
 **Examples**
 
-See [removeAbilityMonitor](#removeabilitymonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
+let monitor: abilityDelegatorRegistry.AbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.removeAbilityMonitor(monitor).then(() => {
+  console.info('removeAbilityMonitor promise');
+});
+```
 
 ## removeAbilityMonitorSync
 
@@ -1319,19 +1323,7 @@ abilityDelegator.removeAbilityStageMonitor({
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.removeAbilityStageMonitor({
-  moduleName: 'moduleName',
-  srcEntrance: 'srcEntrance',
-}).then(() => {
-  console.info('removeAbilityStageMonitor promise');
-});
-```
+<a id="removeabilitystagemonitor-1"></a>
 
 ## removeAbilityStageMonitor
 
@@ -1368,7 +1360,19 @@ Removes an **AbilityStageMonitor** instance from the application memory. This AP
 
 **Examples**
 
-See [removeAbilityStageMonitor](#removeabilitystagemonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.removeAbilityStageMonitor({
+  moduleName: 'moduleName',
+  srcEntrance: 'srcEntrance',
+}).then(() => {
+  console.info('removeAbilityStageMonitor promise');
+});
+```
 
 ## removeAbilityStageMonitorSync
 
@@ -1553,21 +1557,7 @@ abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { Want } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let want: Want = {
-  bundleName: 'bundleName',
-  abilityName: 'abilityName'
-};
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.startAbility(want).then((data: void) => {
-  console.info('startAbility promise');
-});
-```
+<a id="startability-1"></a>
 
 ## startAbility
 
@@ -1618,7 +1608,21 @@ Starts an ability. This API uses a promise to return the result.
 
 **Examples**
 
-See [startAbility](#startability)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { Want } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let want: Want = {
+  bundleName: 'bundleName',
+  abilityName: 'abilityName'
+};
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.startAbility(want).then((data: void) => {
+  console.info('startAbility promise');
+});
+```
 
 ## waitAbilityMonitor
 
@@ -1676,57 +1680,7 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Declare an AbilityDelegator object.
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-// Set the maximum waiting time, in milliseconds.
-let timeout = 100;
-// Create an AbilityMonitor instance and set the name of the ability to be monitored.
-let onAbilityCreateCallback = (data: UIAbility) => {
-  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}.`);
-};
-
-let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
-};
-
-// Obtain the AbilityDelegator instance.
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-// Call waitAbilityMonitor and pass the timeout parameter to wait for the matched ability instance.
-abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, data: UIAbility) => {
-  if (error) {
-    console.error(`waitAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
-  } else {
-    console.info('waitAbilityMonitor success.');
-  }
-});
-```
-
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-let onAbilityCreateCallback = (data: UIAbility) => {
-  console.info('onAbilityCreateCallback');
-};
-
-let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
-};
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
-  console.info('waitAbilityMonitor promise');
-});
-```
+<a id="waitabilitymonitor-1"></a>
 
 ## waitAbilityMonitor
 
@@ -1759,7 +1713,38 @@ Waits a period of time for the **Ability** instance that matches the **AbilityMo
 
 **Examples**
 
-See [waitAbilityMonitor](#waitabilitymonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Declare an AbilityDelegator object.
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+// Set the maximum waiting time, in milliseconds.
+let timeout = 100;
+// Create an AbilityMonitor instance and set the name of the ability to be monitored.
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}.`);
+};
+
+let monitor: abilityDelegatorRegistry.AbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+// Obtain the AbilityDelegator instance.
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// Call waitAbilityMonitor and pass the timeout parameter to wait for the matched ability instance.
+abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, data: UIAbility) => {
+  if (error) {
+    console.error(`waitAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
+  } else {
+    console.info('waitAbilityMonitor success.');
+  }
+});
+```
+
+<a id="waitabilitymonitor-2"></a>
 
 ## waitAbilityMonitor
 
@@ -1797,7 +1782,26 @@ Waits a period of time for the **Ability** instance that matches the **AbilityMo
 
 **Examples**
 
-See [waitAbilityMonitor](#waitabilitymonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
+let monitor: abilityDelegatorRegistry.AbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
+  console.info('waitAbilityMonitor promise');
+});
+```
 
 ## waitAbilityStageMonitor
 
@@ -1849,41 +1853,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { AbilityStage } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityStageMonitor({
-  moduleName: 'moduleName',
-  srcEntrance: 'srcEntrance',
-}).then((data: AbilityStage) => {
-  console.info('waitAbilityStageMonitor promise');
-});
-```
-
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { AbilityStage } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let timeout = 100;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityStageMonitor({
-  moduleName: 'moduleName',
-  srcEntrance: 'srcEntrance',
-}, timeout, (err: BusinessError, data: AbilityStage) => {
-  if (err) {
-    console.error(`waitAbilityStageMonitor fail. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('waitAbilityStageMonitor callback');
-  }
-});
-```
+<a id="waitabilitystagemonitor-1"></a>
 
 ## waitAbilityStageMonitor
 
@@ -1916,7 +1886,28 @@ Returns an **AbilityStage** instance that matches the conditions set in an **Abi
 
 **Examples**
 
-See [waitAbilityStageMonitor](#waitabilitystagemonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { AbilityStage } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let timeout = 100;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.waitAbilityStageMonitor({
+  moduleName: 'moduleName',
+  srcEntrance: 'srcEntrance',
+}, timeout, (err: BusinessError, data: AbilityStage) => {
+  if (err) {
+    console.error(`waitAbilityStageMonitor fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('waitAbilityStageMonitor callback');
+  }
+});
+```
+
+<a id="waitabilitystagemonitor-2"></a>
 
 ## waitAbilityStageMonitor
 
@@ -1954,4 +1945,17 @@ Returns an **AbilityStage** instance that matches the conditions set in an **Abi
 
 **Examples**
 
-See [waitAbilityStageMonitor](#waitabilitystagemonitor)
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { AbilityStage } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.waitAbilityStageMonitor({
+  moduleName: 'moduleName',
+  srcEntrance: 'srcEntrance',
+}).then((data: AbilityStage) => {
+  console.info('waitAbilityStageMonitor promise');
+});
+```

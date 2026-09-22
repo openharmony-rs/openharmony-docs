@@ -54,21 +54,8 @@ adminManager.isSuperAdmin(bundleName, (err, result) => {
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Replace with actual values.
-let bundleName: string = 'com.example.myapplication';
-
-adminManager.isSuperAdmin(bundleName).then((result) => {
-  console.info(`Succeeded in querying admin is super admin or not, result : ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query admin is super admin or not. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="issuperadmin-1"></a>
 
 ## isSuperAdmin
 
@@ -107,4 +94,17 @@ Checks whether the super device administrator application of the first user (u10
 
 **Examples**
 
-See [isSuperAdmin](#issuperadmin)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Replace with actual values.
+let bundleName: string = 'com.example.myapplication';
+
+adminManager.isSuperAdmin(bundleName).then((result) => {
+  console.info(`Succeeded in querying admin is super admin or not, result : ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query admin is super admin or not. Code: ${err.code}, message: ${err.message}`);
+});
+```

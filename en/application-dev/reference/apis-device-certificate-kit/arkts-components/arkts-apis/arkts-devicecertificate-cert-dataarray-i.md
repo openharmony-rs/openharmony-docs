@@ -1,5 +1,9 @@
 # DataArray
 
+```TypeScript
+interface DataArray
+```
+
 Defines a list of data arrays.
 
 **Since:** 9

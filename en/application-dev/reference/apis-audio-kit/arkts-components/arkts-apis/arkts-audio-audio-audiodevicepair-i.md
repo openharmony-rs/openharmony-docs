@@ -1,5 +1,9 @@
 # AudioDevicePair
 
+```TypeScript
+interface AudioDevicePair
+```
+
 Describes an audio device pair including both input and output devices.
 
 **Since:** 26.0.0

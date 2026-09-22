@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+enum ColorMode
+```
+
 Enumerates the color modes supported by the widget.
 
 **Since:** 8

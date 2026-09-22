@@ -1,5 +1,9 @@
 # domain(Application Event Logging)
 
+```TypeScript
+namespace domain
+```
+
 Provides domain name constants.
 
 | Name| Type | Read Only | Description |  

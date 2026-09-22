@@ -1,5 +1,9 @@
 # FormBindingData
 
+```TypeScript
+interface FormBindingData
+```
+
 Defines the createFormBindingData result interface.
 
 @typedef FormBindingData

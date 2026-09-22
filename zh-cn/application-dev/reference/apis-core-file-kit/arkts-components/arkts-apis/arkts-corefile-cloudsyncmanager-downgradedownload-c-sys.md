@@ -1,5 +1,9 @@
 # DowngradeDownload（系统接口）
 
+```TypeScript
+class DowngradeDownload
+```
+
 全量下载：为云盘管理应用提供集中下载云端数据的能力。
 
 云盘全量下载对象，用于支撑云盘管理应用完成云盘文件的全量下载流程。

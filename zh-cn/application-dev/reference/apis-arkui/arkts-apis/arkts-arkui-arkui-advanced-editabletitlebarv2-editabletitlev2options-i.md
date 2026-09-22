@@ -1,5 +1,9 @@
 # EditableTitleV2Options
 
+```TypeScript
+export declare interface EditableTitleV2Options
+```
+
 标题配置选项接口。
 
 **起始版本：** 26.0.0

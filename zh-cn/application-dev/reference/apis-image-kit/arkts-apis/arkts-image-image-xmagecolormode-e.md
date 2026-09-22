@@ -1,5 +1,9 @@
 # XmageColorMode
 
+```TypeScript
+enum XmageColorMode
+```
+
 表示XMAGE颜色模式类型的枚举。
 
 **起始版本：** 23

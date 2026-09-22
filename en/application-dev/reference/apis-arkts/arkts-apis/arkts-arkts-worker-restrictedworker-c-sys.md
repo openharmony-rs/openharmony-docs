@@ -1,5 +1,9 @@
 # RestrictedWorker (System API)
 
+```TypeScript
+class RestrictedWorker extends ThreadWorker
+```
+
 The RestrictedWorker class contains all Worker functions.
 
 **Inheritance/Implementation:** RestrictedWorker extends [ThreadWorker](arkts-arkts-worker-threadworker-c.md)

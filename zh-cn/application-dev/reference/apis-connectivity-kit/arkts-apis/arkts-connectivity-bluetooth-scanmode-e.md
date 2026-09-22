@@ -1,5 +1,9 @@
 # ScanMode
 
+```TypeScript
+enum ScanMode
+```
+
 枚举，扫描模式。
 
 从API version 8开始支持，从API version 9开始废弃。

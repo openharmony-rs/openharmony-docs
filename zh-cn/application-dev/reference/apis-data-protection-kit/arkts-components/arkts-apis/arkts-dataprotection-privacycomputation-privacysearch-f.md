@@ -14,9 +14,11 @@ function privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyPr
 
 执行隐私保护搜索。根据加密的隐私目标搜索给定的数据集元素而不向对方透露目标或数据集内容。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

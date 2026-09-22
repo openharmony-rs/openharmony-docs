@@ -53,6 +53,8 @@ wifi.getP2pPeerDevices().then(data => {
 ```
 
 
+<a id="getp2ppeerdevices-1"></a>
+
 ## getP2pPeerDevices
 
 ```TypeScript

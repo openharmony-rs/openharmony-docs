@@ -54,17 +54,8 @@ call.inputDialerSpecialCode('*#*#2846579#*#*', (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    call.inputDialerSpecialCode('*#*#2846579#*#*');
-    console.info(`inputDialerSpecialCode success`);
-} catch (error) {
-    console.error(`inputDialerSpecialCode fail, promise: err->${JSON.stringify(error)}`);
-}
-```
-
+<a id="inputdialerspecialcode-1"></a>
 
 ## inputDialerSpecialCode
 
@@ -107,4 +98,13 @@ Performs a secret code broadcast. This API uses a promise to return the result.
 
 **Examples**
 
-See [inputDialerSpecialCode](#inputdialerspecialcode)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    call.inputDialerSpecialCode('*#*#2846579#*#*');
+    console.info(`inputDialerSpecialCode success`);
+} catch (error) {
+    console.error(`inputDialerSpecialCode fail, promise: err->${JSON.stringify(error)}`);
+}
+```

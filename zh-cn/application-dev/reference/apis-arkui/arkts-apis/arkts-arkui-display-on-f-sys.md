@@ -33,3 +33,19 @@ function on(type: 'privateModeChange', callback: Callback<boolean>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<boolean> = (data: boolean) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+try {
+  // 注册隐私模式变化监听
+  display.on('privateModeChange', callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```

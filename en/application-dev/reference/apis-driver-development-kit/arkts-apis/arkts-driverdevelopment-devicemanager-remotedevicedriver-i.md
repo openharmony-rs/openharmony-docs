@@ -1,5 +1,9 @@
 # RemoteDeviceDriver
 
+```TypeScript
+interface RemoteDeviceDriver
+```
+
 Represents information about a remote device driver.
 
 **Since:** 11

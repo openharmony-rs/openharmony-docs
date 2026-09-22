@@ -1,5 +1,9 @@
 # DeviceListener
 
+```TypeScript
+interface DeviceListener
+```
+
 Provides hot swap information about an input device.
 
 **Since:** 9

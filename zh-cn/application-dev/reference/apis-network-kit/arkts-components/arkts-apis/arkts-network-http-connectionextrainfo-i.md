@@ -1,5 +1,9 @@
 # ConnectionExtraInfo
 
+```TypeScript
+export interface ConnectionExtraInfo
+```
+
 HTTP请求交互的详细信息。
 
 **起始版本：** 24

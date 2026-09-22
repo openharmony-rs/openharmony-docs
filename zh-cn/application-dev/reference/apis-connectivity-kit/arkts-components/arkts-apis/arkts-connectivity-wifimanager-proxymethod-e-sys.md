@@ -1,5 +1,9 @@
 # ProxyMethod（系统接口）
 
+```TypeScript
+enum ProxyMethod
+```
+
 表示WiFi代理方法的枚举。
 
 **起始版本：** 10

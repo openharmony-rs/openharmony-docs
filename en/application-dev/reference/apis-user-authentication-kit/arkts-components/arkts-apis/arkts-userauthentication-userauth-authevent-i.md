@@ -1,5 +1,9 @@
 # AuthEvent
 
+```TypeScript
+interface AuthEvent
+```
+
 Provides an asynchronous callback to return the authentication event information.
 
 **Since:** 9

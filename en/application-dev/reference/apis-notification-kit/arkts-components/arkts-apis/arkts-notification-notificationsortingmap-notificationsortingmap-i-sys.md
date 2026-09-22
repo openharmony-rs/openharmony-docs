@@ -1,5 +1,9 @@
 # NotificationSortingMap (System API)
 
+```TypeScript
+export interface NotificationSortingMap
+```
+
 The **NotificationSortingMap** module provides APIs for defining the sorting information of active notifications in all subscribed notifications.
 
 **Since:** 7

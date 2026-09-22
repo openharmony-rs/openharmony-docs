@@ -1,5 +1,9 @@
 # RequestCallbackParameters
 
+```TypeScript
+interface RequestCallbackParameters
+```
+
 Provides the result returned after the **PluginManager.Request** API is called.
 
 **Since:** 8

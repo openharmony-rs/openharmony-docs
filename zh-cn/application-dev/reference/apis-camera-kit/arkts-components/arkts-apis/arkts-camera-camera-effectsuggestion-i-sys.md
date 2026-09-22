@@ -1,5 +1,9 @@
 # EffectSuggestion（系统接口）
 
+```TypeScript
+interface EffectSuggestion
+```
+
 EffectSuggestion object.
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+export interface Rect
+```
+
 用于表示平面中的矩形。
 
 @typedef Rect

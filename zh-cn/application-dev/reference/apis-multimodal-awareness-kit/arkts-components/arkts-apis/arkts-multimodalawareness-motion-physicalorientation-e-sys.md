@@ -1,5 +1,9 @@
 # PhysicalOrientation（系统接口）
 
+```TypeScript
+export enum PhysicalOrientation
+```
+
 传感器检测到的物理方向枚举。
 
 **起始版本：** 26.0.0

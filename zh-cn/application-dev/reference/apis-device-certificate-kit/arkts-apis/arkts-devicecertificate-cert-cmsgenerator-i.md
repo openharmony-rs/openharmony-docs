@@ -1,5 +1,9 @@
 # CmsGenerator
 
+```TypeScript
+interface CmsGenerator
+```
+
 提供生成CMS（Cryptographic Message Syntax）消息的API。
 
 > **说明：** 

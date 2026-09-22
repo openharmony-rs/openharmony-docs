@@ -68,24 +68,8 @@ try {
 }
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  let result: boolean = restrictions.getUserRestricted(wantTemp, restrictions.SettingsForDevice.SET_APN);
-  console.info(`Succeeded in getting user restricted: ${result}`);
-} catch (err) {
-  console.error(`Failed to get user restricted. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getuserrestricted-1"></a>
 
 ## getUserRestricted
 
@@ -127,4 +111,39 @@ Obtains the disabled status of the specified device setting item.
 
 **Examples**
 
-See [getUserRestricted](#getuserrestricted)
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+import { restrictions } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace input parameters with actual values.
+  let result: boolean = restrictions.getUserRestricted(wantTemp, 'setEthernetIp');
+  console.info('Succeeded in getting user restricted');
+} catch (err) {
+  console.error(`Failed to get user restricted. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: boolean = restrictions.getUserRestricted(wantTemp, restrictions.SettingsForDevice.SET_APN);
+  console.info(`Succeeded in getting user restricted: ${result}`);
+} catch (err) {
+  console.error(`Failed to get user restricted. Code is ${err.code}, message is ${err.message}`);
+}
+```

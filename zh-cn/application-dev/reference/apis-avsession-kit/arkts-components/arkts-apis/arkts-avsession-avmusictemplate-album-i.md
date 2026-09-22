@@ -1,5 +1,9 @@
 # Album
 
+```TypeScript
+interface Album extends MediaEntity
+```
+
 专辑的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。
 
 @extends MediaEntity @interface Album

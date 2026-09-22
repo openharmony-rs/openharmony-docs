@@ -1,5 +1,9 @@
 # StartMovingOptions (System API)
 
+```TypeScript
+interface StartMovingOptions
+```
+
 Optional configuration for startMovingWithOptions.
 
 **Since:** 26.0.0

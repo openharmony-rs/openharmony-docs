@@ -1,5 +1,9 @@
 # AVRecorderConfig
 
+```TypeScript
+interface AVRecorderConfig
+```
+
 Describes the audio and video recording parameters.
 
 The **audioSourceType** and **videoSourceType** parameters are used to distinguish audio-only recording, video-only recording, and audio and video recording. For audio-only recording, set only **audioSourceType**. For video-only recording, set only **videoSourceType**. For audio and video recording, set both **audioSourceType** and **videoSourceType**.

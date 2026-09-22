@@ -1,5 +1,9 @@
 # USBInterface
 
+```TypeScript
+interface USBInterface
+```
+
 Represents a USB interface. One [USBConfig](arkts-basicservices-usb-usbconfig-i.md) can contain multiple **USBInterface** instances, each providing a specific function.
 
 **Since:** 8

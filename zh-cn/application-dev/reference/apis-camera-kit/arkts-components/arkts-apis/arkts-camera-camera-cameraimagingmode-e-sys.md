@@ -1,5 +1,9 @@
 # CameraImagingMode（系统接口）
 
+```TypeScript
+enum CameraImagingMode
+```
+
 Enumerates the camera imaging modes.
 
 **起始版本：** 26.0.0

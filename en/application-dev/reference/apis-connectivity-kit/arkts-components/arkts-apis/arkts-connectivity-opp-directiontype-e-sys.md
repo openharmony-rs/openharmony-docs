@@ -1,5 +1,9 @@
 # DirectionType (System API)
 
+```TypeScript
+enum DirectionType
+```
+
 Enum for file transfer direction.
 
 **Since:** 16

@@ -1,5 +1,9 @@
 # TileMode（系统接口）
 
+```TypeScript
+enum TileMode
+```
+
 像素填充模式枚举。
 
 **起始版本：** 12

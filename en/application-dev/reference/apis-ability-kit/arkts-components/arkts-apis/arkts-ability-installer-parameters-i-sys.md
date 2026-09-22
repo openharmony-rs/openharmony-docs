@@ -1,5 +1,9 @@
 # Parameters (System API)
 
+```TypeScript
+export interface Parameters
+```
+
 Describes the extended parameter information.
 
 **Since:** 15

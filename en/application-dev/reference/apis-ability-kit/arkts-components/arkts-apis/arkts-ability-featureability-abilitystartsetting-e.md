@@ -1,5 +1,9 @@
 # AbilityStartSetting
 
+```TypeScript
+export enum AbilityStartSetting
+```
+
 Defines the window property corresponding to this ability. The **abilityStartSetting** property is an object defined in the format of [**key: string]: any**, where **key** is an enumerated value of ** AbilityStartSetting** and **value** is an enumerated value of **AbilityWindowConfiguration**.
 
 The value is obtained through **featureAbility.AbilityStartSetting**.

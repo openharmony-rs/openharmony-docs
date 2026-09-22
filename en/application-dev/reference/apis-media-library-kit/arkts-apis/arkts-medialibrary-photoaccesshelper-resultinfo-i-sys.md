@@ -1,5 +1,9 @@
 # ResultInfo (System API)
 
+```TypeScript
+interface ResultInfo
+```
+
 ResultInfo info of batch operations.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # DocumentSelectOptions
 
+```TypeScript
+class DocumentSelectOptions
+```
+
 文档选择选项。
 
 **起始版本：** 9

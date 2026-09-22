@@ -1,5 +1,9 @@
 # CodecBitsPerSample
 
+```TypeScript
+enum CodecBitsPerSample
+```
+
 Describes the codec bits per sample.
 
 **Since:** 11

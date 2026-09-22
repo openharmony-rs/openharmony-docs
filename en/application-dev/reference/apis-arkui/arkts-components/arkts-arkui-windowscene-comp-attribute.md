@@ -1,5 +1,9 @@
 # WindowScene properties/events
 
+```TypeScript
+declare class WindowSceneAttribute extends CommonMethod<WindowSceneAttribute>
+```
+
 Defines the attribute functions of WindowScene.
 
 @extends CommonMethod&lt;WindowSceneAttribute&gt;

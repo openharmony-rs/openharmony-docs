@@ -1,5 +1,9 @@
 # Progress
 
+```TypeScript
+enum Progress
+```
+
 描述端云同步过程的枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # DepthComponent properties/events
 
+```TypeScript
+declare class DepthComponentAttribute extends CommonMethod<DepthComponentAttribute>
+```
+
 Style the DepthComponent.
 
 **Inheritance/Implementation:** DepthComponentAttribute extends CommonMethod<DepthComponentAttribute>

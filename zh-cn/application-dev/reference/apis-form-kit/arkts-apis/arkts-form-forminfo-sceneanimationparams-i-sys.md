@@ -1,5 +1,9 @@
 # SceneAnimationParams（系统接口）
 
+```TypeScript
+interface SceneAnimationParams
+```
+
 场景动效卡片配置参数。
 
 **起始版本：** 20

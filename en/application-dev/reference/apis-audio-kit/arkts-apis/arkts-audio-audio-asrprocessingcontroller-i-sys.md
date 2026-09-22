@@ -1,5 +1,9 @@
 # AsrProcessingController (System API)
 
+```TypeScript
+interface AsrProcessingController
+```
+
 ASR processing controller.
 
 **Since:** 12

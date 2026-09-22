@@ -1,5 +1,9 @@
 # LightWeightSet
 
+```TypeScript
+declare class LightWeightSet<T>
+```
+
 LightWeightSet可用于存储一系列值，存储元素中value唯一。
 
 **起始版本：** 8

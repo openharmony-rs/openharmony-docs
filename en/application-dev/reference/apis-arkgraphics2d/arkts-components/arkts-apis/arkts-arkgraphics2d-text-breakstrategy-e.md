@@ -1,5 +1,9 @@
 # BreakStrategy
 
+```TypeScript
+enum BreakStrategy
+```
+
 Enumerates the text break strategies.
 
 **Since:** 12

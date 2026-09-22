@@ -18,7 +18,7 @@ function reboot(admin: Want): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md)(admin: Want, operation: Operation, addition?: string)
+**替代接口：** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1)(admin: Want, operation: Operation, addition?: string)
 
 **需要权限：** ohos.permission.ENTERPRISE_REBOOT
 

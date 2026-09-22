@@ -60,35 +60,8 @@ cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let uris: Array<string> = ["file://uri"];
-cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSync.FileSyncState>) => {
-  if (err) {
-    console.error("get file sync state with error message: " + err.message + ", error code: " + err.code);
-  } else {
-    for(let i = 0, len = syncStates.length; i < len; i++){
-      console.info("get file sync state successfully" + syncStates[i]);
-  }
-  }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-let path = "/data/storage/el2/cloud/1.txt";
-let uri = fileUri.getUriFromPath(path);
-try {
-  let state = cloudSync.getFileSyncState(uri);
-} catch (err) {
-  let error:BusinessError = err as BusinessError;
-  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
-}
-```
-
+<a id="getfilesyncstate-1"></a>
 
 ## getFileSyncState
 
@@ -126,8 +99,23 @@ Obtains the file sync state. This API uses an asynchronous callback to return th
 
 **Examples**
 
-See [getFileSyncState](#getfilesyncstate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let uris: Array<string> = ["file://uri"];
+cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSync.FileSyncState>) => {
+  if (err) {
+    console.error("get file sync state with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    for(let i = 0, len = syncStates.length; i < len; i++){
+      console.info("get file sync state successfully" + syncStates[i]);
+  }
+  }
+});
+```
+
+
+<a id="getfilesyncstate-2"></a>
 
 ## getFileSyncState
 
@@ -171,4 +159,16 @@ Obtains the file sync state.
 
 **Examples**
 
-See [getFileSyncState](#getfilesyncstate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+try {
+  let state = cloudSync.getFileSyncState(uri);
+} catch (err) {
+  let error:BusinessError = err as BusinessError;
+  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
+}
+```

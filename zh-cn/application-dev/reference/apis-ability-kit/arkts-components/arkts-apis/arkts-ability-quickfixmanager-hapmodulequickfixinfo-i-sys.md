@@ -1,5 +1,9 @@
 # HapModuleQuickFixInfo（系统接口）
 
+```TypeScript
+export interface HapModuleQuickFixInfo
+```
+
 hap级别的快速修复信息。
 
 **起始版本：** 9

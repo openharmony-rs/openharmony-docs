@@ -1,5 +1,9 @@
 # ModelVersion
 
+```TypeScript
+enum ModelVersion
+```
+
 Version of the model.
 
 @enum { int }

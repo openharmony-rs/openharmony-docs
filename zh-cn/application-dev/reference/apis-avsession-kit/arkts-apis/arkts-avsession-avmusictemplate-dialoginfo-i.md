@@ -1,5 +1,9 @@
 # DialogInfo
 
+```TypeScript
+interface DialogInfo
+```
+
 对话框信息的定义。
 
 @interface DialogInfo

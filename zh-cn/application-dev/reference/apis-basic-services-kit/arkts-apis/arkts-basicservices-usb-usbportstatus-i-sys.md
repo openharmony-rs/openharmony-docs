@@ -1,5 +1,9 @@
 # USBPortStatus（系统接口）
 
+```TypeScript
+interface USBPortStatus
+```
+
 USB设备端口角色信息。
 
 **起始版本：** 9

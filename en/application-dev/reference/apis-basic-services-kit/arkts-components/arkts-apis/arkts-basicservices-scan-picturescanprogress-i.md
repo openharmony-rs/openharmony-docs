@@ -1,5 +1,9 @@
 # PictureScanProgress
 
+```TypeScript
+interface PictureScanProgress
+```
+
 Defines the progress of scanning pictures.
 
 **Since:** 20

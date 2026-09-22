@@ -1,5 +1,9 @@
 # TextTab
 
+```TypeScript
+interface TextTab
+```
+
 段落风格的文本制表符，储存了对齐方式和位置。
 
 **起始版本：** 18

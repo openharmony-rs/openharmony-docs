@@ -13,7 +13,7 @@ function getConfiguration(): AssessmentConfig
 
 Queries the current assessment configuration.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ASSESSMENT_CONFIGURATION
 

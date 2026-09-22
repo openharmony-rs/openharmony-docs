@@ -1,5 +1,9 @@
 # ConferenceState（系统接口）
 
+```TypeScript
+export enum ConferenceState
+```
+
 会议状态。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # ModuleConfigInfo (System API)
 
+```TypeScript
+export interface ModuleConfigInfo
+```
+
 ModuleConfigInfo: the module summary of a bundle.
 
 **Since:** 9

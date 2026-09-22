@@ -1,5 +1,9 @@
 # EncodingInfo
 
+```TypeScript
+export interface EncodingInfo
+```
+
 Defines the detect encoding result information.
 
 **Since:** 26.0.0

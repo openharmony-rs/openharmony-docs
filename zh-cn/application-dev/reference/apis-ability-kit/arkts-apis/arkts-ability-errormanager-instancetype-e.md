@@ -1,5 +1,9 @@
 # InstanceType
 
+```TypeScript
+export enum InstanceType
+```
+
 虚拟机的实例类型。
 
 **起始版本：** 18

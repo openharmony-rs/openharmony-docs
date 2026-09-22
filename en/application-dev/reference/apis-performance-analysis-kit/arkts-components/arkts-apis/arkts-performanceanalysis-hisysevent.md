@@ -27,8 +27,8 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 | [removeWatcher](arkts-performanceanalysis-hisysevent-removewatcher-f-sys.md) | Removes a watcher used for event subscription. |
 | [subscribe](arkts-performanceanalysis-hisysevent-subscribe-f-sys.md) | Subscribes to real-time system events that occur occasionally or occur in a low frequency. These events are written as a file to the fixed directory of the application sandbox (that is, /data/storage/el2/base/cache/hiview/event/). |
 | [unsubscribe](arkts-performanceanalysis-hisysevent-unsubscribe-f-sys.md) | Unsubscribes from system events. |
-| [write](arkts-performanceanalysis-hisysevent-write-f-sys.md) | Writes event information to the event file. This API uses a promise to return the result. |
-| [write](arkts-performanceanalysis-hisysevent-write-f-sys.md) | Writes event information to the event file. This API uses an asynchronous callback to return the result. |
+| [write](arkts-performanceanalysis-hisysevent-write-f-sys.md#write) | Writes event information to the event file. This API uses a promise to return the result. |
+| [write](arkts-performanceanalysis-hisysevent-write-f-sys.md#write-1) | Writes event information to the event file. This API uses an asynchronous callback to return the result. |
 <!--DelEnd-->
 
 <!--Del-->

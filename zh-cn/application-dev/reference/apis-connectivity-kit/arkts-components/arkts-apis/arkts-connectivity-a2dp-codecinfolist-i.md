@@ -1,5 +1,9 @@
 # CodecInfoList
 
+```TypeScript
+interface CodecInfoList
+```
+
 蓝牙媒体音频编解码器支持的能力集合。不同编解码器支持的位深、声道模式、采样率、码率和帧长类型与音频接收器设备端能力有关。
 
 **起始版本：** 19

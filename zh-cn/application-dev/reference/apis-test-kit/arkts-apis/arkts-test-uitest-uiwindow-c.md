@@ -1,5 +1,9 @@
 # UiWindow
 
+```TypeScript
+declare class UiWindow
+```
+
 UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口拖动、调整窗口大小等能力。该类对象可通过[findWindow](arkts-test-uitest-driver-c.md#findwindow)接口获取。该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 **起始版本：** 9

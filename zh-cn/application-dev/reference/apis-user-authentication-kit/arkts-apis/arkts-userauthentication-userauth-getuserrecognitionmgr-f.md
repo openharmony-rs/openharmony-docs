@@ -17,13 +17,13 @@ function getUserRecognitionMgr(): UserRecognitionMgr | null
 > **说明：** 
 > 每次调用都会返回一个新的**UserRecognitionMgr**实例。需使用同一实例进行订阅和取消订阅。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 

@@ -1,5 +1,9 @@
 # GeneralNameType
 
+```TypeScript
+enum GeneralNameType
+```
+
 X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用者备用名称”（Subject Alternative Name）及其他扩展项中。
 
 **起始版本：** 12

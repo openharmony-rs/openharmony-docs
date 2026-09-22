@@ -1,5 +1,9 @@
 # InterfaceSharingStateInfo (System API)
 
+```TypeScript
+export interface InterfaceSharingStateInfo
+```
+
 Wakes up the listener for network sharing state changes of an NIC.
 
 **Since:** 11

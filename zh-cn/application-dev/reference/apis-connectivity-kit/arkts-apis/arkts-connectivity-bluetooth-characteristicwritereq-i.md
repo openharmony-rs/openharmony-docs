@@ -1,5 +1,9 @@
 # CharacteristicWriteReq
 
+```TypeScript
+interface CharacteristicWriteReq
+```
+
 描述server端订阅后收到的特征值写请求事件参数结构。
 
 从API version 7开始支持，从API version 9开始废弃。

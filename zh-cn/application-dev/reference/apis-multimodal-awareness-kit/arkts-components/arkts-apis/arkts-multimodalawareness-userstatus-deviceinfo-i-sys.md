@@ -1,5 +1,9 @@
 # DeviceInfo（系统接口）
 
+```TypeScript
+export interface DeviceInfo
+```
+
 表示设备信息。
 
 **起始版本：** 26.0.0

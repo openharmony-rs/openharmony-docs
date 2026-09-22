@@ -1,5 +1,9 @@
 # ConvertXML
 
+```TypeScript
+class ConvertXML
+```
+
 ConvertXML类提供将XML文本转换为JavaScript对象的能力。推荐使用[fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](#fastconverttojsobject)进行常规XML文本解析，当单元素文本内容超过10M时推荐使用[largeConvertToJSObject&lt;sup&gt;23+&lt;/sup&gt;](#largeconverttojsobject)。已废弃的[convertToJSObject](#converttojsobject)和[convert](#convert)方法不再维护，建议使用[fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](#fastconverttojsobject)替代。
 
 **起始版本：** 8

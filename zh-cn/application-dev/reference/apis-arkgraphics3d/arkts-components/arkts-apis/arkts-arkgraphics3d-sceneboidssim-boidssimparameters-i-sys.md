@@ -1,5 +1,9 @@
 # BoidsSimParameters（系统接口）
 
+```TypeScript
+export interface BoidsSimParameters
+```
+
 群组模拟参数，用于配置每个个体的行为属性。
 
 > **说明：** 

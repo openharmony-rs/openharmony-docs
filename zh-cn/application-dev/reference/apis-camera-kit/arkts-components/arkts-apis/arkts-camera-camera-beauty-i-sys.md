@@ -1,5 +1,9 @@
 # Beauty（系统接口）
 
+```TypeScript
+interface Beauty extends BeautyQuery
+```
+
 Beauty extends [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md) Provides APIs to obtain and set the beauty effect.
 
 **继承/实现关系：** Beauty extends [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md)

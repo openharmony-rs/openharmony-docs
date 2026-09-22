@@ -1,5 +1,9 @@
 # SubHeaderV2
 
+```TypeScript
+export declare struct SubHeaderV2
+```
+
 The component is positioned at the top of list items or content sections, organizing lists or content into distinct groups. The subheader text summarizes the content within each respective section.
 
 This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now more easily manage subheader data and states with greater flexibility, leading to faster UI updates.
@@ -8,7 +12,7 @@ This component is implemented based on [state management V2](../../../ui/state-m
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **SubHeaderV2** component has universal attributes and universal events configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeaderV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeaderV2** component.
+> - If the **SubHeaderV2** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) and [universal events](../arkts-components/arkts-arkui-common-comp.md#common) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeaderV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeaderV2** component.
 
 **Since:** 18
 
@@ -39,6 +43,24 @@ Default value: **() =&gt; void**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## endIcon
+
+```TypeScript
+readonly endIcon?: SubHeaderV2IconType
+```
+
+End icon of the title. The **endIcon** attribute takes effect only when **primaryTitle** or **secondaryTitle** is used for **title**. Default value: **undefined**.
+
+**Type:** [SubHeaderV2IconType](arkts-arkui-subheaderv2icontype-t.md)
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,5 +1,9 @@
 # ArcButton
 
+```TypeScript
+export declare struct ArcButton
+```
+
 The **ArcButton** component offers various button styles, such as emphasized, normal, and warning. It is recommended for devices with circular screens.
 
 > **NOTE:** 

@@ -1,5 +1,9 @@
 # LineMetrics
 
+```TypeScript
+interface LineMetrics
+```
+
 Describes the measurement information of a single line of text in the text layout.
 
 **Since:** 12

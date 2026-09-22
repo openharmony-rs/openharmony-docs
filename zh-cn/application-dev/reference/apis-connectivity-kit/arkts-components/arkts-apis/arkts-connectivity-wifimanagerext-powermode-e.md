@@ -1,5 +1,9 @@
 # PowerMode
 
+```TypeScript
+export enum PowerMode
+```
+
 表示功率模式的枚举。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # ExpandedRegionLayoutOptions
 
+```TypeScript
+export interface ExpandedRegionLayoutOptions
+```
+
 展开态布局信息。
 
 **起始版本：** 12

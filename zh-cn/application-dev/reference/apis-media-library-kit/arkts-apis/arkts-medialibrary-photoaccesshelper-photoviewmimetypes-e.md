@@ -1,5 +1,9 @@
 # PhotoViewMIMETypes
 
+```TypeScript
+export enum PhotoViewMIMETypes
+```
+
 枚举，可选择的媒体文件类型。
 
 **起始版本：** 10

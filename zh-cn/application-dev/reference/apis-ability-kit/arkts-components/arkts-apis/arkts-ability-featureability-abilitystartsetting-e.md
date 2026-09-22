@@ -1,5 +1,9 @@
 # AbilityStartSetting
 
+```TypeScript
+export enum AbilityStartSetting
+```
+
 表示当前Ability对应的窗口属性，abilityStartSetting属性是一个定义为[key: string]: any的对象，key对应设定类型为：AbilityStartSetting枚举类型，value对应设定类型为：AbilityWindowConfiguration枚举类型。
 
 使用时通过featureAbility.AbilityStartSetting获取。

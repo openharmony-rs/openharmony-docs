@@ -1,5 +1,9 @@
 # SysVpnConfig（系统接口）
 
+```TypeScript
+export interface SysVpnConfig extends VpnConfig
+```
+
 定义系统VPN网络的配置。
 
 **继承/实现关系：** SysVpnConfig extends [VpnConfig](arkts-network-vpn-vpnconfig-i-sys.md)

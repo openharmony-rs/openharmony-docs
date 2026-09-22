@@ -68,24 +68,8 @@ adminManager.subscribeManagedEvent(wantTemp, events, (err) => {
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
-
-adminManager.subscribeManagedEvent(wantTemp, events).then(() => {
-}).catch((err: BusinessError) => {
-  console.error(`Failed to subscribe managed event. Code: ${err.code}, message: ${err.message}`);
-})
-```
-
+<a id="subscribemanagedevent-1"></a>
 
 ## subscribeManagedEvent
 
@@ -134,4 +118,20 @@ function subscribeManagedEvent(admin: Want, managedEvents: Array<ManagedEvent>):
 
 **示例**
 
-参见 [subscribeManagedEvent](#subscribemanagedevent)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
+
+adminManager.subscribeManagedEvent(wantTemp, events).then(() => {
+}).catch((err: BusinessError) => {
+  console.error(`Failed to subscribe managed event. Code: ${err.code}, message: ${err.message}`);
+})
+```

@@ -1,5 +1,9 @@
 # WriteOptions
 
+```TypeScript
+export interface WriteOptions extends Options
+```
+
 Defines the options used in **write()**. It inherits from [Options](arkts-corefile-file-fs-options-i.md).
 
 **Inheritance/Implementation:** WriteOptions extends [Options](arkts-corefile-file-fs-options-i.md)

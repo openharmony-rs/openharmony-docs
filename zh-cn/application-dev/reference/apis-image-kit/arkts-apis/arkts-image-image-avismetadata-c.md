@@ -1,5 +1,9 @@
 # AvisMetadata
 
+```TypeScript
+class AvisMetadata
+```
+
 Avis metadata.
 
 **起始版本：** 26.0.0

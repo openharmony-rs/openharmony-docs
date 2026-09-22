@@ -1,5 +1,9 @@
 # FloatViewProperties
 
+```TypeScript
+interface FloatViewProperties
+```
+
 标准悬浮窗窗口的属性。
 
 **起始版本：** 26.0.0

@@ -53,19 +53,8 @@ sms.splitMessage(content, (err: BusinessError, data: string[]) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let content: string = "long message";
-let promise = sms.splitMessage(content);
-promise.then((data: string[]) => {
-    console.info(`splitMessage success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`splitMessage failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="splitmessage-1"></a>
 
 ## splitMessage
 
@@ -109,4 +98,15 @@ Splits an SMS message into multiple segments. This API uses a promise to return 
 
 **Examples**
 
-See [splitMessage](#splitmessage)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let content: string = "long message";
+let promise = sms.splitMessage(content);
+promise.then((data: string[]) => {
+    console.info(`splitMessage success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`splitMessage failed, promise: err->${JSON.stringify(err)}`);
+});
+```

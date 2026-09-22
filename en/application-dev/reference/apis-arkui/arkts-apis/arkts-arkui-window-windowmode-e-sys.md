@@ -1,5 +1,9 @@
 # WindowMode (System API)
 
+```TypeScript
+enum WindowMode
+```
+
 Enumerates the window modes.
 
 **Since:** 7

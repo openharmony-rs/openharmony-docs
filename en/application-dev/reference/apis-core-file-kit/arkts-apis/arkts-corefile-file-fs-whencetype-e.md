@@ -1,5 +1,9 @@
 # WhenceType
 
+```TypeScript
+declare enum WhenceType
+```
+
 Enumerates the types of the relative offset position used in **lseek()**.
 
 **Since:** 11

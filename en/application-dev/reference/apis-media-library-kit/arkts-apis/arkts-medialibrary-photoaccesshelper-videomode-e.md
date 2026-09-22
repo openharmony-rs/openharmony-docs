@@ -1,5 +1,9 @@
 # VideoMode
 
+```TypeScript
+export enum VideoMode
+```
+
 Enumerates the log modes of video files.
 
 **Since:** 22

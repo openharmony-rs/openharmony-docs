@@ -1,5 +1,9 @@
 # WifiBandType
 
+```TypeScript
+enum WifiBandType
+```
+
 表示WIFI频段类型的枚举。
 
 **起始版本：** 10

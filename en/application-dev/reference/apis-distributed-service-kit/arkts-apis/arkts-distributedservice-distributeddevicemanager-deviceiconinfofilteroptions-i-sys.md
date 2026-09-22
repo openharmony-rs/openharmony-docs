@@ -1,5 +1,9 @@
 # DeviceIconInfoFilterOptions (System API)
 
+```TypeScript
+interface DeviceIconInfoFilterOptions
+```
+
 Defines the device icon information filter options.
 
 **Since:** 18

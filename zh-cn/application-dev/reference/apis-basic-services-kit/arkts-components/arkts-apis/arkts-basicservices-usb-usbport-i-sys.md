@@ -1,5 +1,9 @@
 # USBPort（系统接口）
 
+```TypeScript
+interface USBPort
+```
+
 USB设备端口。
 
 **起始版本：** 9

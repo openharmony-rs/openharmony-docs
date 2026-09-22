@@ -1,5 +1,9 @@
 # RootInfo（系统接口）
 
+```TypeScript
+interface RootInfo
+```
+
 表示设备的根属性信息和接口能力。
 
 **起始版本：** 9

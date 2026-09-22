@@ -1,5 +1,9 @@
 # SocketStateBase
 
+```TypeScript
+export interface SocketStateBase
+```
+
 Defines the status of the socket connection.
 
 **Since:** 7

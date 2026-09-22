@@ -1,5 +1,9 @@
 # FormLink properties/events
 
+```TypeScript
+declare class FormLinkAttribute extends CommonMethod<FormLinkAttribute>
+```
+
 The universal attributes are supported.
 
 The universal events are not supported.

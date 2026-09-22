@@ -1,5 +1,9 @@
 # DisplayMode
 
+```TypeScript
+export declare enum DisplayMode
+```
+
 DisplayMode enum defines the display mode of the picker.
 
 **Since:** 26.0.0

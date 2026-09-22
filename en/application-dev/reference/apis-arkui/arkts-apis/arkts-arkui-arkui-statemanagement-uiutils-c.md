@@ -1,5 +1,9 @@
 # UIUtils
 
+```TypeScript
+export declare class UIUtils
+```
+
 Provides APIs for handling data transformations related to state management.
 
 **Since:** 12
@@ -15,7 +19,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 ## addMonitor
 
 ```TypeScript
-static addMonitor(target: object, path: string | string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
+static addMonitor(target: object, path: string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
 ```
 
 Dynamically adds a listener to the state variable of state management V2. For details, see [addMonitor and clearMonitor APIs: Dynamically Adding and Removing Listeners](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md).
@@ -33,7 +37,7 @@ Dynamically adds a listener to the state variable of state management V2. For de
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | target | object | Yes | Target object. Only [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2) and [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported. <br>If an unsupported type is provided, a runtime error is thrown. |
-| path | string &#124; string[] | Yes | Name path of the variable to be listened for. You can specify a path or pass a string array to specify multiple variable paths to be listened for at a time.<br>Only string and string array are supported. If an unsupported type is provided, a runtime error is thrown. |
+| path | string[] | Yes | Name path of the variable to be listened for. You can specify a path or pass a string array to specify multiple variable paths to be listened for at a time.<br>Only string and string array are supported. If an unsupported type is provided, a runtime error is thrown. |
 | monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | Yes | Listener function registered with the corresponding state variable. That is, when the state variable corresponding to the path changes, a specific function is called.<br>If an unsupported type is provided, a runtime error is thrown. |
 | options | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | No | Configuration item of the listener. For details, see [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md). By default, the asynchronous callback is used. |
 
@@ -267,7 +271,7 @@ export struct School {
 ## clearMonitor
 
 ```TypeScript
-static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback) : void
+static clearMonitor(target: object, path: string[], monitorCallback?: MonitorCallback) : void
 ```
 
 Deletes the listener added to the state variable of the state management V2 by calling the [addMonitor](#addmonitor) API. For details, see [addMonitor and clearMonitor APIs: Dynamically Adding and Removing Listeners](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md).
@@ -285,7 +289,7 @@ Deletes the listener added to the state variable of the state management V2 by c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | target | object | Yes | Target object. Only [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2) and [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported. <br>If an unsupported type is provided, a runtime error is thrown. |
-| path | string &#124; string[] | Yes | Name path of the variable to be deleted. You can specify a path or pass a string array to delete the listener functions of multiple state variables at a time.<br>Only string and string array are supported. If an unsupported type is provided, a runtime error is thrown. |
+| path | string[] | Yes | Name path of the variable to be deleted. You can specify a path or pass a string array to delete the listener functions of multiple state variables at a time.<br>Only string and string array are supported. If an unsupported type is provided, a runtime error is thrown. |
 | monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | No | Listener function to be deleted.<br>If this parameter is not specified, all listener functions registered with the variable corresponding to the path will be deleted. <br>If an unsupported type is provided, a runtime error is thrown. |
 
 **Error codes:**
@@ -766,6 +770,39 @@ struct CompV2 {
 }
 ```
 
+<a id="makebinding-1"></a>
+
+## makeBinding
+
+```TypeScript
+static makeBinding<T>(getter: GetterCallback<T>, setter: SetterCallback<T>): MutableBinding<T>
+```
+
+Creates a mutable two-way data binding instance, which is used to construct the argument of the **MutableBinding** type in the \@Builder function.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| getter | [GetterCallback](arkts-arkui-gettercallback-t.md)&lt;T&gt; | Yes | Callback used to obtain the value. Each value access triggers this function to obtain the latest value. |
+| setter | [SetterCallback](arkts-arkui-settercallback-t.md)&lt;T&gt; | Yes | Callback used to update the value. Each modification to **.value** triggers this function. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md)&lt;T&gt; | Returns a two-way data binding instance with a **value** attribute, which allows you to read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**. |
+
+**Examples**
+
 ```TypeScript
 import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
@@ -810,39 +847,6 @@ struct CompV2 {
   }
 }
 ```
-
-## makeBinding
-
-```TypeScript
-static makeBinding<T>(getter: GetterCallback<T>, setter: SetterCallback<T>): MutableBinding<T>
-```
-
-Creates a mutable two-way data binding instance, which is used to construct the argument of the **MutableBinding** type in the \@Builder function.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| getter | [GetterCallback](arkts-arkui-gettercallback-t.md)&lt;T&gt; | Yes | Callback used to obtain the value. Each value access triggers this function to obtain the latest value. |
-| setter | [SetterCallback](arkts-arkui-settercallback-t.md)&lt;T&gt; | Yes | Callback used to update the value. Each modification to **.value** triggers this function. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md)&lt;T&gt; | Returns a two-way data binding instance with a **value** attribute, which allows you to read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**. |
-
-**Examples**
-
-See [makeBinding](#makebinding)
 
 ## makeObserved
 

@@ -1,5 +1,9 @@
 # MacSpec
 
+```TypeScript
+interface MacSpec
+```
+
 消息认证码参数，计算HMAC或CMAC时，需要构建子类对象并作为输入参数。
 
 > **说明：** 

@@ -38,7 +38,7 @@ This API takes effect only when the device is active. For details about the devi
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [4900101](../errorcode-power.md#4900101-service-connection-failure) | Failed to connect to the service. |
 | [4900201](../errorcode-power.md#4900201-frequent-status-refreshes) | The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. This API cannot work in car devices.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. This API cannot work in car devices.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 

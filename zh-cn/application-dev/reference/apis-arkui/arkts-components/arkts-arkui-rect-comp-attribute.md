@@ -1,8 +1,12 @@
 # Rect属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
+```TypeScript
+declare class RectAttribute extends CommonShapeMethod<RectAttribute>
+```
 
-**继承/实现关系：** RectAttribute extends CommonShapeMethod&lt;RectAttribute&gt;
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
+
+**继承/实现关系：** RectAttribute extends CommonShapeMethod<RectAttribute>
 
 **起始版本：** 7
 
@@ -14,9 +18,11 @@
 radius(value: Length | Array<any>)
 ```
 
-设置圆角半径大小，取值范围≥0，支持attributeModifier动态设置属性方法。该属性与[radiusWidth](#radiuswidth)、[radiusHeight](#radiusheight)属性效果类似，在组合使用时优先于radiusWidth和radiusHeight生效。异常值undefined、null、NaN和Infinity按照默认值处理。
+设置圆角半径大小，取值范围≥0，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。该属性与[radiusWidth](#radiuswidth)、[radiusHeight](#radiusheight)属性效果类似，在组合使用时优先于radiusWidth和radiusHeight生效。异常值undefined、null、NaN和Infinity按照默认值处理。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -36,9 +42,11 @@ radius(value: Length | Array<any>)
 radiusHeight(value: Length)
 ```
 
-设置圆角的高度。仅设置radiusHeight时，圆角的高度和宽度相同。该属性与[radius](#radius)属性效果类似，当与radius组合使用时，radius属性优先于本属性生效。支持attributeModifier动态设置属性方法。异常值undefined、null、NaN和Infinity按照默认值处理。
+设置圆角的高度。仅设置radiusHeight时，圆角的高度和宽度相同。该属性与[radius](#radius)属性效果类似，当与radius组合使用时，radius属性优先于本属性生效。支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。异常值undefined、null、NaN和Infinity按照默认值处理。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -58,9 +66,11 @@ radiusHeight(value: Length)
 radiusWidth(value: Length)
 ```
 
-设置圆角的宽度。仅设置radiusWidth时，圆角的宽度和高度相同。该属性与[radius](#radius)属性效果类似，当与radius组合使用时，radius属性优先于本属性生效。支持attributeModifier动态设置属性方法。异常值undefined、null、NaN和Infinity按照默认值处理。
+设置圆角的宽度。仅设置radiusWidth时，圆角的宽度和高度相同。该属性与[radius](#radius)属性效果类似，当与radius组合使用时，radius属性优先于本属性生效。支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。异常值undefined、null、NaN和Infinity按照默认值处理。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

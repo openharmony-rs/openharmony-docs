@@ -1,5 +1,9 @@
 # MarqueeUpdateStrategy
 
+```TypeScript
+declare enum MarqueeUpdateStrategy
+```
+
 The scrolling strategy for the marquee after its attributes are updated.
 
 **Since:** 12

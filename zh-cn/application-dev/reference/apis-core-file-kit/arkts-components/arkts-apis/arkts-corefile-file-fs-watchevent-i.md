@@ -1,5 +1,9 @@
 # WatchEvent
 
+```TypeScript
+export interface WatchEvent
+```
+
 事件接口
 
 **起始版本：** 10

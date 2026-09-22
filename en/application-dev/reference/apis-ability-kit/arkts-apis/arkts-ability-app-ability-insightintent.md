@@ -40,6 +40,7 @@ import { insightIntent } from '@kit.AbilityKit';
 | [IntentResult](arkts-ability-insightintent-intentresult-i-sys.md) | Defines the return result of intent execution. The [generic type](../../../quick-start/introduction-to-arkts.md#generic-class-and-interface) is supported. |
 | [InteractionInfo](arkts-ability-insightintent-interactioninfo-i-sys.md) | Defines the interaction information returned after the current intent execution completes, including the next intent to be triggered and the interaction UI to be displayed. |
 | [InteractionModalUIExtension](arkts-ability-insightintent-interactionmodaluiextension-i-sys.md) | Defines the information of the modal UIExtension to be displayed as the interaction UI after the current intent execution completes. Does not support distributed scenarios. |
+| [InteractionText](arkts-ability-insightintent-interactiontext-i-sys.md) | Defines the information of the Text to be displayed as the interaction UI after the current intent execution completes. Does not support distributed scenarios. |
 | [InteractionUI](arkts-ability-insightintent-interactionui-i-sys.md) | Defines the base information of the interaction UI to be displayed after the current intent execution completes. This is a base class. Use its subclasses such as [InteractionModalUIExtension](arkts-ability-insightintent-interactionmodaluiextension-i-sys.md) in practice. |
 <!--DelEnd-->
 

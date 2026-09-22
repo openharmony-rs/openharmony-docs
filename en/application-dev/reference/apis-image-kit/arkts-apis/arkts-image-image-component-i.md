@@ -1,5 +1,9 @@
 # Component
 
+```TypeScript
+interface Component
+```
+
 Describes the color components of an image.
 
 **Since:** 9

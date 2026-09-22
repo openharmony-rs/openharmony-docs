@@ -1,5 +1,9 @@
 # ArrayBufferView
 
+```TypeScript
+interface ArrayBufferView
+```
+
 ## Modules to Import
 
 ```TypeScript

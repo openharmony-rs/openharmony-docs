@@ -1,5 +1,9 @@
 # ContinueStateCode
 
+```TypeScript
+enum ContinueStateCode
+```
+
 Enumerates the status codes of the quick start result.
 
 **Since:** 18

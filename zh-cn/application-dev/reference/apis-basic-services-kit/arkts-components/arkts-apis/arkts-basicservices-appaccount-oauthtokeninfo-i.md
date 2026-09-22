@@ -1,5 +1,9 @@
 # OAuthTokenInfo
 
+```TypeScript
+interface OAuthTokenInfo
+```
+
 表示OAuth令牌信息。
 
 > **说明：** 

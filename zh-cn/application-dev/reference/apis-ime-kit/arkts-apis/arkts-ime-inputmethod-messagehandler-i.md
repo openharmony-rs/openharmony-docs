@@ -1,10 +1,14 @@
 # MessageHandler
 
+```TypeScript
+interface MessageHandler
+```
+
 自定义通信对象。<br> <br>  
 > **说明：** <br>
 > <br>
 > 开发者可通过注册此对象来接收输入法应用发送的自定义通信数据，接收到自定义通信数据时会触发此对象中<br>
-> [onMessage](#onmessage)回调函数。<br>
+> [onMessage](#onmessage-1)回调函数。<br>
 > <br>
 > 此对象全局唯一，多次注册仅保留最后一次注册的对象及有效性，并触发上一个已注册对象的[onTerminated](#onterminated)回调函数。<br>
 > <br>
@@ -19,6 +23,8 @@
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
 ```
+
+<a id="onmessage-1"></a>
 
 ## onMessage
 

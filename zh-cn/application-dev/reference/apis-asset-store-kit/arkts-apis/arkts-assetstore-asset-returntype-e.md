@@ -1,5 +1,9 @@
 # ReturnType
 
+```TypeScript
+enum ReturnType
+```
+
 枚举，关键资产查询返回的结果类型。
 
 **起始版本：** 11

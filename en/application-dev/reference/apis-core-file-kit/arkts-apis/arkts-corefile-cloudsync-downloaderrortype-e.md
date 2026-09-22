@@ -1,5 +1,9 @@
 # DownloadErrorType
 
+```TypeScript
+enum DownloadErrorType
+```
+
 Enumerates the device-cloud download error types.
 
 **Since:** 11

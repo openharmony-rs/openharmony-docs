@@ -1,5 +1,9 @@
 # AVPlaybackState
 
+```TypeScript
+interface AVPlaybackState
+```
+
 Used to indicate the playback state of the current media. If the playback state of the media changes, it needs to be updated synchronously
 
 **Since:** 10
@@ -69,6 +73,8 @@ Current custom media packets
 **Type:** {[key: string]: Object}
 
 **Since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

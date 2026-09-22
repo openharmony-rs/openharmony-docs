@@ -1,5 +1,9 @@
 # I18NUtil
 
+```TypeScript
+export class I18NUtil
+```
+
 国际化工具类，提供单位转换、获取日期顺序、获取时段名称、区域匹配和路径本地化等能力。
 
 **起始版本：** 9
@@ -329,21 +333,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { i18n, intl } from '@kit.LocalizationKit';
-
-try {
-  let path: string = '/data/out/tmp';
-  let delimiter: string = '/';
-  let locale: intl.Locale = new intl.Locale('ar');
-  let mirrorPath: string =
-    i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter, locale); // mirrorPath显示为: 'tmp/out/data/'
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`call I18NUtil.getUnicodeWrappedFilePath failed, error code: ${err.code}, message: ${err.message}.`);
-}
-```
+<a id="getunicodewrappedfilepath-1"></a>
 
 ## getUnicodeWrappedFilePath
 
@@ -387,7 +377,21 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl
 
 **示例**
 
-参见 [getUnicodeWrappedFilePath](#getunicodewrappedfilepath)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n, intl } from '@kit.LocalizationKit';
+
+try {
+  let path: string = '/data/out/tmp';
+  let delimiter: string = '/';
+  let locale: intl.Locale = new intl.Locale('ar');
+  let mirrorPath: string =
+    i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter, locale); // mirrorPath显示为: 'tmp/out/data/'
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call I18NUtil.getUnicodeWrappedFilePath failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
 
 ## setUnicodeWrappedBidiDirection
 

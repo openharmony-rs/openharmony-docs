@@ -1,5 +1,9 @@
 # SysVpnType (System API)
 
+```TypeScript
+export enum SysVpnType
+```
+
 Defines the type for the VPN network.
 
 **Since:** 12

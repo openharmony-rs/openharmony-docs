@@ -1,5 +1,9 @@
 # FontVariation
 
+```TypeScript
+interface FontVariation
+```
+
 Describes a font variation.
 
 **Since:** 12
@@ -26,7 +30,7 @@ Keyword identifier in the variable font property key-value pair, such as 'wght' 
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.1.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -44,7 +48,7 @@ Whether to normalize. If the value is **true**, the value range of the value fie
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.1.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -62,6 +66,6 @@ Value in the font variation key-value pair.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.1.
 
 **System capability:** SystemCapability.Graphics.Drawing

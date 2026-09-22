@@ -1,5 +1,9 @@
 # OsAccountInfo
 
+```TypeScript
+interface OsAccountInfo
+```
+
 表示系统账号信息。
 
 **起始版本：** 7

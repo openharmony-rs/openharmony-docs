@@ -1,5 +1,9 @@
 # TreeController
 
+```TypeScript
+export declare class TreeController
+```
+
 Implements a **TreeController** object, which can be bound to a tree view component to control the node information of the component. One **TreeController** object can be bound to only one tree view component.
 
 **Since:** 10

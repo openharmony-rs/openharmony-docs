@@ -1,5 +1,9 @@
 # BundleEvents (System API)
 
+```TypeScript
+interface BundleEvents
+```
+
 **Since:** 9
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App

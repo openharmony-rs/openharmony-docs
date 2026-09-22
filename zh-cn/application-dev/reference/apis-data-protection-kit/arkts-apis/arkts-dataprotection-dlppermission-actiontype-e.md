@@ -1,5 +1,9 @@
 # ActionType
 
+```TypeScript
+export enum ActionType
+```
+
 表示在文件设定的权限时间到期后所执行的动作枚举，默认为NOT_OPEN。
 
 **起始版本：** 21

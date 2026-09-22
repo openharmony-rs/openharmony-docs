@@ -1,5 +1,9 @@
 # GridPinchMode
 
+```TypeScript
+export class GridPinchMode
+```
+
 picker内宫格的捏合模式。
 
 **起始版本：** 23

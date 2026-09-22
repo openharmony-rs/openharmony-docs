@@ -23,6 +23,8 @@ Based on the principle that the key cannot be transferred out of [Trusted Execut
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -63,16 +65,54 @@ Based on the principle that the key cannot be transferred out of [Trusted Execut
 
 **Examples**
 
-```TypeScript
 ArkTS sample code:
-```
 
 ```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* Generate a 256-bit ECC key. */
+let keyAlias: string = 'keyAlias';
+let properties: Array<huks.HuksParam> = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ECC
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  },
+];
+let options: huks.HuksOptions = {
+  properties: properties
+};
+huks.generateKeyItem(keyAlias, options, (error) => {
+  if (error) {
+    console.error(`callback: generateKeyItem failed`);
+  } else {
+    console.info(`callback: generateKeyItem key success`);
+  }
+});
+```
+
 JS sample code:
 
 > NOTE
 > 
 > The JS sample code is used only for the lightweight devices.
+
+```TypeScript
+<stack class="container">
+    <input type="button" class="generateBtn" @click="generateKey">Generate Key</input>
+    <text class="result">{{result}}</text>
+</stack>
 ```
 
 ```TypeScript
@@ -149,38 +189,8 @@ export default {
 };
 ```
 
-```TypeScript
-/* Generate a 256-bit ECC key. */
-import { huks } from '@kit.UniversalKeystoreKit';
 
-let keyAlias = 'keyAlias';
-let properties: Array<huks.HuksParam> = [
-  {
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_ECC
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_DIGEST,
-    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-  },
-];
-let options: huks.HuksOptions = {
-  properties: properties
-};
-huks.generateKeyItem(keyAlias, options)
-  .then((data) => {
-    console.info(`promise: generateKeyItem success`);
-  });
-```
-
+<a id="generatekeyitem-1"></a>
 
 ## generateKeyItem
 
@@ -244,4 +254,34 @@ Based on the principle that the key cannot be transferred out of [Trusted Execut
 
 **Examples**
 
-See [generateKeyItem](#generatekeyitem)
+```TypeScript
+/* Generate a 256-bit ECC key. */
+import { huks } from '@kit.UniversalKeystoreKit';
+
+let keyAlias = 'keyAlias';
+let properties: Array<huks.HuksParam> = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ECC
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  },
+];
+let options: huks.HuksOptions = {
+  properties: properties
+};
+huks.generateKeyItem(keyAlias, options)
+  .then((data) => {
+    console.info(`promise: generateKeyItem success`);
+  });
+```

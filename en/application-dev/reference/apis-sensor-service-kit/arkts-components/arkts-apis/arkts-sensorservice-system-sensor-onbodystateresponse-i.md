@@ -1,5 +1,9 @@
 # OnBodyStateResponse
 
+```TypeScript
+export interface OnBodyStateResponse
+```
+
 Specifies whether the device that houses the sensor is worn.
 
 **Since:** 3

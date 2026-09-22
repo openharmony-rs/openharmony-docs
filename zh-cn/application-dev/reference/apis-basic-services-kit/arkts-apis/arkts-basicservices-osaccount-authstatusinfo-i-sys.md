@@ -1,5 +1,9 @@
 # AuthStatusInfo（系统接口）
 
+```TypeScript
+interface AuthStatusInfo
+```
+
 表示认证状态信息。
 
 **起始版本：** 10

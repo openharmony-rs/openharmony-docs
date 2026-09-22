@@ -1,5 +1,9 @@
 # Font
 
+```TypeScript
+declare interface Font
+```
+
 设置文本样式。
 
 > **说明：** 

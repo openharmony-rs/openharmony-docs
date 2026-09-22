@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+export declare enum Action
+```
+
 Key event type.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # RectObj
 
+```TypeScript
+export interface RectObj
+```
+
 RectObj
 
 @interface RectObj

@@ -1,5 +1,9 @@
 # WifiScanInfo (System API)
 
+```TypeScript
+export interface WifiScanInfo
+```
+
 Describes the scanned WiFi information.
 
 **Since:** 10

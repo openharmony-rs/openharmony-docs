@@ -1,5 +1,9 @@
 # ConstraintSourceTypeInfo (System API)
 
+```TypeScript
+interface ConstraintSourceTypeInfo
+```
+
 Defines the constraint source type.
 
 **Since:** 9

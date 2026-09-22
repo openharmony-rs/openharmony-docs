@@ -1,5 +1,16 @@
 # systemTonePlayer(系统提示音播放器)
 
+系统提示音播放器提供了短信提示音、通知提示音的播放、配置、获取信息等功能。
+ systemTonePlayer需要和
+ [@ohos.multimedia.systemSoundManager](arkts-audio-multimedia-systemsoundmanager.md)配合使用，才能完成管理系统提示音的功
+ 能。
+
+> **说明：**
+
+> - 本模块接口为系统接口。
+
+
+
 ## 汇总
 
 <!--Del-->

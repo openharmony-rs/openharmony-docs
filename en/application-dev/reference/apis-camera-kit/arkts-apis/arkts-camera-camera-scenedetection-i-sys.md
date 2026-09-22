@@ -1,5 +1,9 @@
 # SceneDetection (System API)
 
+```TypeScript
+interface SceneDetection extends SceneDetectionQuery
+```
+
 Provides the scene detection capability. It inherits from [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md).
 
 **Inheritance/Implementation:** SceneDetection extends [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md)

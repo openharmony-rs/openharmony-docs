@@ -1,5 +1,9 @@
 # FactoryResetInfo（系统接口）
 
+```TypeScript
+export interface FactoryResetInfo
+```
+
 恢复出厂设置信息。
 
 **起始版本：** 26.0.0

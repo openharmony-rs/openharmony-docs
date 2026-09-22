@@ -1,5 +1,9 @@
 # ColorMetrics
 
+```TypeScript
+declare class ColorMetrics
+```
+
 提供颜色的统一表示与封装，支持颜色混合以及 RGB、Alpha 分量的获取。
 
 **起始版本：** 12

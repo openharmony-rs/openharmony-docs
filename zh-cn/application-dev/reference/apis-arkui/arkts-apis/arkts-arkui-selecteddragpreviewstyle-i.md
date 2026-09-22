@@ -1,5 +1,9 @@
 # SelectedDragPreviewStyle
 
+```TypeScript
+declare interface SelectedDragPreviewStyle
+```
+
 文本拖拽时的背板样式。
 
 **起始版本：** 23

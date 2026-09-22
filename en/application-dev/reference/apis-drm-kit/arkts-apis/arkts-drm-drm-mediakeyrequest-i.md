@@ -1,5 +1,9 @@
 # MediaKeyRequest
 
+```TypeScript
+interface MediaKeyRequest
+```
+
 Defines a media key request.
 
 **Since:** 11

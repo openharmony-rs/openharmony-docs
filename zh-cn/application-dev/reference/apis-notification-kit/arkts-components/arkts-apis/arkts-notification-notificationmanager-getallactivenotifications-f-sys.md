@@ -55,16 +55,8 @@ let getAllActiveNotificationsCallback = (err: BusinessError, data: Array<notific
 notificationManager.getAllActiveNotifications(getAllActiveNotificationsCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getAllActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
-    console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getallactivenotifications-1"></a>
 
 ## getAllActiveNotifications
 
@@ -100,4 +92,12 @@ function getAllActiveNotifications(): Promise<Array<NotificationRequest>>
 
 **示例**
 
-参见 [getAllActiveNotifications](#getallactivenotifications)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getAllActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
+    console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
+});
+```

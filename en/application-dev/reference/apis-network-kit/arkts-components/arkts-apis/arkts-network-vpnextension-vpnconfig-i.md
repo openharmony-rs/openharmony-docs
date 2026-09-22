@@ -1,5 +1,9 @@
 # VpnConfig
 
+```TypeScript
+export interface VpnConfig
+```
+
 Defines the VPN configuration.
 
 **Since:** 11

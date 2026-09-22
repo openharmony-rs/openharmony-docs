@@ -1,5 +1,9 @@
 # AvoidAreaInfo
 
+```TypeScript
+interface AvoidAreaInfo
+```
+
 用于表示窗口避让区的信息。
 
 **起始版本：** 12

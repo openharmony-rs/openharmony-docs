@@ -33,3 +33,13 @@ Unregister a listener for axis state changes.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-system-error) | Service exception. |
+
+**Examples**
+
+```TypeScript
+console.info('Unregister Axis Status listener');
+mechanicManager.off("rotationAxesStatusChange", (result: mechanicManager.RotationAxesStateChangeInfo) => {
+  console.info(`'result:' ${result}`);
+});
+console.info('Unregister successfully');
+```

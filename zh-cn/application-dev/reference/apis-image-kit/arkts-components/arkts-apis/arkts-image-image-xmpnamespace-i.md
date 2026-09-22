@@ -1,5 +1,9 @@
 # XMPNamespace
 
+```TypeScript
+interface XMPNamespace
+```
+
 表示XMP命名空间。
 
 **起始版本：** 26.0.0

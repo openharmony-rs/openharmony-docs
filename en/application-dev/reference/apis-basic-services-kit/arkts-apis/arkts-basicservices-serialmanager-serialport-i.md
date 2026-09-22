@@ -1,5 +1,9 @@
 # SerialPort
 
+```TypeScript
+interface SerialPort
+```
+
 Represents the parameters of a serial port.
 
 **Since:** 19

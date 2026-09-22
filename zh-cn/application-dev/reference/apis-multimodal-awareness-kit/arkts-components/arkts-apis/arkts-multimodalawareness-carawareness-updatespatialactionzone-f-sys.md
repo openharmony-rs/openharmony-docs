@@ -14,7 +14,7 @@ function updateSpatialActionZone(zone: number): void
 
 语音更新声音区域，当语音订阅空间点引擎能力时
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.vehicle.MMA_SPATIALACTION
 

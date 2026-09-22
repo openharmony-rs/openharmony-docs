@@ -1,5 +1,9 @@
 # CurrentVersionInfo (System API)
 
+```TypeScript
+export interface CurrentVersionInfo
+```
+
 Represents information about the current version.
 
 **Since:** 9

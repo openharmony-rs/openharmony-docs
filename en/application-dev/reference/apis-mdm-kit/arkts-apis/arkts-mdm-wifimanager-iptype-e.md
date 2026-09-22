@@ -1,5 +1,9 @@
 # IpType
 
+```TypeScript
+enum IpType
+```
+
 Enumerates the IP address types.
 
 **Since:** 12

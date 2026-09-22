@@ -1,5 +1,9 @@
 # HeatDistortionEffectParam (System API)
 
+```TypeScript
+interface HeatDistortionEffectParam
+```
+
 The parameters of heat distortion effect.
 
 **Since:** 26.0.0

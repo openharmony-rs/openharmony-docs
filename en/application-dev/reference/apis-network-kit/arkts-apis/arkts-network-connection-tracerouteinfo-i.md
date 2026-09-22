@@ -1,5 +1,9 @@
 # TraceRouteInfo
 
+```TypeScript
+export interface TraceRouteInfo
+```
+
 Defines the route tracing information.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ExecCmdOptions（系统接口）
 
+```TypeScript
+interface ExecCmdOptions
+```
+
 执行Shell命令的可选参数。可用于指定工作目录、环境变量、后台运行、前台执行时长、超时时长、安全策略及事件回调。
 
 **起始版本：** 26.0.0
@@ -11,7 +15,7 @@
 ## 导入模块
 
 ```TypeScript
-import { cliManager } from '@kit.AbilityKit';
+import { cliManager, CliHook, ExecToolParam, ExecCmdParam, ExecResultWrap } from '@kit.AbilityKit';
 ```
 
 ## background
@@ -70,7 +74,7 @@ challenge?: string
 
 **默认值：** ""
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,7 +116,7 @@ true：作为Shell命令执行，false：不作为Shell命令执行。
 
 **默认值：** true
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

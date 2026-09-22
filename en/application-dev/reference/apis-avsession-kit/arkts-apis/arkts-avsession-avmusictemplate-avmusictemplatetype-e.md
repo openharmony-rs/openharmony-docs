@@ -1,5 +1,9 @@
 # AVMusicTemplateType
 
+```TypeScript
+enum AVMusicTemplateType
+```
+
 Enumeration of AVMusicTemplate type.
 
 @enum { string }

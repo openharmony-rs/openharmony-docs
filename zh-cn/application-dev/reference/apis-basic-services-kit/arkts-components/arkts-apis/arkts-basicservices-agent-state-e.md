@@ -1,5 +1,9 @@
 # State
 
+```TypeScript
+enum State
+```
+
 定义任务当前的状态。
 
 **起始版本：** 10

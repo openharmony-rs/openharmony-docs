@@ -1,5 +1,9 @@
 # Edges
 
+```TypeScript
+export interface Edges<T>
+```
+
 Describes the edges.
 
 **Since:** 12

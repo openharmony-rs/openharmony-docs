@@ -1,5 +1,9 @@
 # MediaQueryEvent
 
+```TypeScript
+export interface MediaQueryEvent
+```
+
 Defines a media query event.
 
 **Since:** 3

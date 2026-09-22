@@ -1,5 +1,9 @@
 # USBAccessoryHandle
 
+```TypeScript
+interface USBAccessoryHandle
+```
+
 Defines a USB accessory handle, including the accessory file descriptor. This API is used to communicate with the accessory through the **read** or **write** API provided by Core File Kit.
 
 **Since:** 14

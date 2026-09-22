@@ -1,5 +1,9 @@
 # AppForegroundStateObserver（系统接口）
 
+```TypeScript
+export default class AppForegroundStateObserver
+```
+
 定义应用启动、前后台和退出的状态监听，可以作为[appManager.on('appForegroundState')](arkts-ability-appmanager-on-f-sys.md#onappforegroundstate)的入参监听所有应用的启动、前后台和退出的变化。
 
 **起始版本：** 11

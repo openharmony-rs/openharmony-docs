@@ -1,5 +1,9 @@
 # VMMemoryInfo
 
+```TypeScript
+interface VMMemoryInfo
+```
+
 Describes the VM memory information.
 
 **Since:** 12

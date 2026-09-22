@@ -18,8 +18,8 @@ import { pasteboard } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [createData](arkts-basicservices-pasteboard-createdata-f.md) | Creates a **PasteData** object of the specified type. |
-| [createData](arkts-basicservices-pasteboard-createdata-f.md) | Creates a **PasteData** object that contains multiple types of data. |
+| [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata) | Creates a **PasteData** object of the specified type. |
+| [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata-1) | Creates a **PasteData** object that contains multiple types of data. |
 | [createHtmlData](arkts-basicservices-pasteboard-createhtmldata-f.md) | Creates a **PasteData** object of the HTML type. |
 | [createHtmlTextRecord](arkts-basicservices-pasteboard-createhtmltextrecord-f.md) | Creates a **PasteDataRecord** object of the HTML text type. |
 | [createPlainTextData](arkts-basicservices-pasteboard-createplaintextdata-f.md) | Creates a **PasteData** object of the plain text type. |

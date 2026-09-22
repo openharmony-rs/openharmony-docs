@@ -1,5 +1,9 @@
 # DomainServerConfig
 
+```TypeScript
+interface DomainServerConfig
+```
+
 域服务器配置。
 
 **起始版本：** 18

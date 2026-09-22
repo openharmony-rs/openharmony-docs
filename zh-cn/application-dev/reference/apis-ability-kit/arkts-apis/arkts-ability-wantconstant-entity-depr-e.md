@@ -1,5 +1,9 @@
 # Entity
 
+```TypeScript
+export enum Entity
+```
+
 want实体的常数。用于表示目标Ability额外的类别信息。
 
 **起始版本：** 6

@@ -1,6 +1,12 @@
 # ChipV2CloseIcon
 
-Defines default close icon.
+```TypeScript
+export declare class ChipV2CloseIcon extends ChipV2Accessibility
+```
+
+Defines the functional attribute class for the close icon of the **ChipV2** component, including accessibility attribute.
+
+This API inherits from [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md).
 
 **Inheritance/Implementation:** ChipV2CloseIcon extends [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md)
 
@@ -22,7 +28,7 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 constructor(config: ChipV2CloseConfig)
 ```
 
-The constructor of ChipV2CloseIcon
+A constructor used to create a **ChipV2CloseIcon** object.
 
 **Since:** 26.0.0
 
@@ -36,7 +42,7 @@ The constructor of ChipV2CloseIcon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ChipV2CloseConfig](arkts-arkui-arkui-advanced-chipv2-chipv2closeconfig-i.md) | Yes | config of close icon |
+| config | [ChipV2CloseConfig](arkts-arkui-arkui-advanced-chipv2-chipv2closeconfig-i.md) | Yes | Close icon configuration, which is used to customize the size and accessibility attribute of the close icon. This parameter inherits from **ChipV2AccessibilityConfig** and includes configuration options such as **fontSize**, **accessibilityText**, and **accessibilityDescription**. |
 
 ## fontSize
 
@@ -44,7 +50,19 @@ The constructor of ChipV2CloseIcon
 public fontSize?: LengthMetrics
 ```
 
-Set font size for the close icon.
+Size of the default close icon of the **ChipV2** component. Percentage values are not supported. If a percentage value is passed, the default value is used.
+
+Default values:
+
+When **size** is **ChipV2Size.SMALL**, the default value is `$r('sys.float.chip_small_font_size')`.
+
+When **size** is not **ChipV2Size.SMALL**, the default value is `$r('sys.float.chip_normal_font_size')`.
+
+Unit: fp
+
+If the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 

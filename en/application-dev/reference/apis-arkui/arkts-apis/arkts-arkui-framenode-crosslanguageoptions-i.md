@@ -1,5 +1,9 @@
 # CrossLanguageOptions
 
+```TypeScript
+declare interface CrossLanguageOptions
+```
+
 Provides options for configuring or querying the cross-language access permissions for a FrameNode. For example, for nodes created using ArkTS, this API can control whether non-ArkTS languages are allowed to access or modify the attributes of these nodes.
 
 **Since:** 15

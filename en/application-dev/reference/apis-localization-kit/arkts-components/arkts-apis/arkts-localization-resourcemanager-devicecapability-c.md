@@ -1,5 +1,9 @@
 # DeviceCapability
 
+```TypeScript
+export class DeviceCapability
+```
+
 Defines the device capability.
 
 **Since:** 6

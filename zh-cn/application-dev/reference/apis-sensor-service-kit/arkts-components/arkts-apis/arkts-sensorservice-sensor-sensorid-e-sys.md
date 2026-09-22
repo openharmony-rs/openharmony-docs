@@ -1,5 +1,9 @@
 # SensorId
 
+```TypeScript
+enum SensorId
+```
+
 表示当前支持订阅或取消订阅的传感器类型。
 
 **起始版本：** 9

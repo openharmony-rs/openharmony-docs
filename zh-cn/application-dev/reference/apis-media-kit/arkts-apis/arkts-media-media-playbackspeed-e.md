@@ -1,5 +1,9 @@
 # PlaybackSpeed
 
+```TypeScript
+enum PlaybackSpeed
+```
+
 视频播放的倍速枚举，可通过setSpeed方法作为参数传递下去。
 
 **起始版本：** 8

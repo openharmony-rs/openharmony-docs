@@ -1,5 +1,9 @@
 # MouseLocation（系统接口）
 
+```TypeScript
+interface MouseLocation
+```
+
 键鼠穿越的位置。
 
 **起始版本：** 12

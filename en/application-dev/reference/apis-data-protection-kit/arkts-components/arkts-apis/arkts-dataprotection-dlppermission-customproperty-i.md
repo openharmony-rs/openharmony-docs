@@ -1,5 +1,9 @@
 # CustomProperty
 
+```TypeScript
+export interface CustomProperty
+```
+
 Represents a custom policy.
 
 **Since:** 21

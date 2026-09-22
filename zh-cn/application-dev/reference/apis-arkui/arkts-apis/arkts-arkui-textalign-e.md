@@ -1,5 +1,9 @@
 # TextAlign
 
+```TypeScript
+declare enum TextAlign
+```
+
 Alignment of text.
 
 **起始版本：** 7

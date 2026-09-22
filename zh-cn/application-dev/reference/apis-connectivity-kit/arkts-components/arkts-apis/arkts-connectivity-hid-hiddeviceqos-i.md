@@ -1,5 +1,9 @@
 # HidDeviceQos
 
+```TypeScript
+interface HidDeviceQos
+```
+
 描述HID设备服务质量（Qos）参数。该结构定义了HID数据传输通道的流量控制、延迟保证和可靠性策略，用于优化蓝牙传输性能，确保设备的实时响应性。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # ConnectOptionsCollections
 
+```TypeScript
+export class ConnectOptionsCollections<T extends CollectionType<S>, S extends object> extends ConnectOptions<T>
+```
+
 Defines the parameter type for the globalConnect API. **ConnectOptionsCollections** is inherited from [ConnectOptions\&lt;T\&gt;](arkts-arkui-arkui-statemanagement-connectoptions-c.md). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\&lt;S&gt;**).
 
 The following shows the examples of **StorageDefaultCreator\&lt;T&gt;** and **StorageDefaultCreator\&lt;S&gt;**:

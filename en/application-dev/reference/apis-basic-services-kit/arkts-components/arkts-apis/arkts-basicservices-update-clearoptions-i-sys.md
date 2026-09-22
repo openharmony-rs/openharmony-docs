@@ -1,5 +1,9 @@
 # ClearOptions (System API)
 
+```TypeScript
+export interface ClearOptions
+```
+
 Defines the clearing options, which specify the errors to be cleared.
 
 **Since:** 9

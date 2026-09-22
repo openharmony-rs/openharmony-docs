@@ -1,5 +1,9 @@
 # UserAuthResult
 
+```TypeScript
+interface UserAuthResult
+```
+
 Represents the user authentication result. If the authentication is successful, the authentication type and token information are returned. If the authentication fails, the corresponding error code is returned. This API is used to describe the result information after the authentication is complete. The application can obtain the result through the **onResult** callback of [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md).
 
 **Since:** 10

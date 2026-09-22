@@ -1,5 +1,9 @@
 # HideSensitiveType (System API)
 
+```TypeScript
+enum HideSensitiveType
+```
+
 Enumerates the types of data masking applied to media resources when accessed by an application.
 
 **Since:** 12

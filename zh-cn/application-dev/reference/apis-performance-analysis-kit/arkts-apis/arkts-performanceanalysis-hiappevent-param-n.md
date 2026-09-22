@@ -1,5 +1,9 @@
 # param(应用事件打点)
 
+```TypeScript
+namespace param
+```
+
 提供参数名常量。
 
 |名称|类型|只读|描述|  

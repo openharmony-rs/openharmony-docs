@@ -1,5 +1,9 @@
 # AddressInfo（系统接口）
 
+```TypeScript
+export interface AddressInfo
+```
+
 配件设备信息定义
 
 **起始版本：** 26.0.0

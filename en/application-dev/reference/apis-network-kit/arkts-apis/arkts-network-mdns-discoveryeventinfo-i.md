@@ -1,5 +1,9 @@
 # DiscoveryEventInfo
 
+```TypeScript
+export interface DiscoveryEventInfo
+```
+
 Defines the MDNS service event information.
 
 **Since:** 11

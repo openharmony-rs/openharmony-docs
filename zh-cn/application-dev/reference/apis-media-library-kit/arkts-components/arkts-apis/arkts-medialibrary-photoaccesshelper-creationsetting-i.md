@@ -1,5 +1,9 @@
 # CreationSetting
 
+```TypeScript
+export interface CreationSetting
+```
+
 保存图片或视频到媒体库时的配置项，包括保存的文件名、文件类型和其他相关参数。
 
 **起始版本：** 23

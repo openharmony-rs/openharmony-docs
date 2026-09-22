@@ -56,22 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  cooperate.prepareCooperate().then(() => {
-    console.info(`Keyboard mouse crossing prepareCooperate success.`);
-  }, (error: BusinessError) => {
-    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
-      [`code`, `message`])}`);
-  });
-} catch (error) {
-  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
-    [`code`, `message`])}`);
-}
-```
-
+<a id="preparecooperate-1"></a>
 
 ## prepareCooperate
 
@@ -105,4 +91,18 @@ function prepareCooperate(): Promise<void>
 
 **示例**
 
-参见 [prepareCooperate](#preparecooperate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  cooperate.prepareCooperate().then(() => {
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);
+  }, (error: BusinessError) => {
+    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+      [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
+}
+```

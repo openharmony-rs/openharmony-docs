@@ -1,5 +1,9 @@
 # SmoothZoomMode
 
+```TypeScript
+enum SmoothZoomMode
+```
+
 平滑变焦模式。
 
 **起始版本：** 11

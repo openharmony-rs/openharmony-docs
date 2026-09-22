@@ -1,5 +1,9 @@
 # Zoom
 
+```TypeScript
+interface Zoom extends ZoomQuery
+```
+
 **Zoom** inherits from [ZoomQuery](arkts-camera-camera-zoomquery-i.md).
 
 It provides APIs related to zoom operations.

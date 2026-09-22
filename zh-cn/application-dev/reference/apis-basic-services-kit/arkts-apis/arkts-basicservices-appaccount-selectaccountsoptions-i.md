@@ -1,5 +1,9 @@
 # SelectAccountsOptions
 
+```TypeScript
+interface SelectAccountsOptions
+```
+
 表示用于选择账号的选项。
 
 **起始版本：** 9

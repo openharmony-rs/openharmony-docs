@@ -40,14 +40,8 @@ Returns to the previous page or a specified page, which deletes all pages betwee
 this.getUIContext().getRouter().back({ url: 'pages/detail' });
 ```
 
-```TypeScript
-this.getUIContext().getRouter().back(1);
-```
 
-```TypeScript
-this.getUIContext().getRouter().back(1, { info: 'From Home' }); // Returning with parameters.
-```
-
+<a id="back-1"></a>
 
 ## back
 
@@ -65,7 +59,7 @@ Returns to the specified page, which deletes all pages between the current page 
 
 **Deprecated since:** 18
 
-**Substitutes:** [back](arkts-arkui-arkui-uicontext-router-c.md#back)(index: number, params?: Object)
+**Substitutes:** [back](arkts-arkui-arkui-uicontext-router-c.md#back-1)(index: number, params?: Object)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -82,4 +76,10 @@ Returns to the specified page, which deletes all pages between the current page 
 
 **Examples**
 
-See [back](#back)
+```TypeScript
+this.getUIContext().getRouter().back(1);
+```
+
+```TypeScript
+this.getUIContext().getRouter().back(1, { info: 'From Home' }); // Returning with parameters.
+```

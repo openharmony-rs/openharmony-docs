@@ -1,8 +1,12 @@
 # DialogButton
 
+```TypeScript
+declare interface DialogButton
+```
+
 Button configuration for fixed-style dialog.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,11 +24,11 @@ action: VoidCallback
 
 Callback executed when the button is clicked.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,11 +42,11 @@ Background color of the button.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,11 +62,11 @@ Whether to respond when the button is clicked.
 
 **Default:** true
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,11 +80,11 @@ Text color of the button.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,11 +98,11 @@ Define whether the button responds to Enter/Space key by default.
 
 **Type:** boolean
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,11 +118,11 @@ Style of the button.
 
 **Default:** DialogButtonStyle.DEFAULT
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,10 +136,10 @@ Text content of the button.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

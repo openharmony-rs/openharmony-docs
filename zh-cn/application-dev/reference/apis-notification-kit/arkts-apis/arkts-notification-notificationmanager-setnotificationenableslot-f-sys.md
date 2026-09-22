@@ -70,39 +70,8 @@ notificationManager.setNotificationEnableSlot(
     setNotificationEnableSlotCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let setNotificationEnableSlotCallback = (err: BusinessError): void => {
-    if (err) {
-        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info('setNotificationEnableSlot success');
-    }
-};
-
-notificationManager.setNotificationEnableSlot(
-    { bundle: 'ohos.samples.notification', },
-    notificationManager.SlotType.SOCIAL_COMMUNICATION,
-    true,
-    false,
-    setNotificationEnableSlotCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// setNotificationEnableSlot
-notificationManager.setNotificationEnableSlot(
-    { bundle: 'ohos.samples.notification', },
-    notificationManager.SlotType.SOCIAL_COMMUNICATION,
-    true).then(() => {
-        console.info('setNotificationEnableSlot success');
-    }).catch((err: BusinessError) => {
-        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
-    });
-```
-
+<a id="setnotificationenableslot-1"></a>
 
 ## setNotificationEnableSlot
 
@@ -152,8 +121,59 @@ function setNotificationEnableSlot(
 
 **示例**
 
-参见 [setNotificationEnableSlot](#setnotificationenableslot)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// setNotificationEnableSlot
+let setNotificationEnableSlotCallback = (err: BusinessError): void => {
+    if (err) {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info('setNotificationEnableSlot success');
+    }
+};
+notificationManager.setNotificationEnableSlot(
+    { bundle: 'ohos.samples.notification', },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true,
+    setNotificationEnableSlotCallback);
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let setNotificationEnableSlotCallback = (err: BusinessError): void => {
+    if (err) {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info('setNotificationEnableSlot success');
+    }
+};
+
+notificationManager.setNotificationEnableSlot(
+    { bundle: 'ohos.samples.notification', },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true,
+    false,
+    setNotificationEnableSlotCallback);
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// setNotificationEnableSlot
+notificationManager.setNotificationEnableSlot(
+    { bundle: 'ohos.samples.notification', },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true).then(() => {
+        console.info('setNotificationEnableSlot success');
+    }).catch((err: BusinessError) => {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    });
+```
+
+
+<a id="setnotificationenableslot-2"></a>
 
 ## setNotificationEnableSlot
 
@@ -202,4 +222,16 @@ function setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable:
 
 **示例**
 
-参见 [setNotificationEnableSlot](#setnotificationenableslot)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// setNotificationEnableSlot
+notificationManager.setNotificationEnableSlot(
+    { bundle: 'ohos.samples.notification', },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true).then(() => {
+        console.info('setNotificationEnableSlot success');
+    }).catch((err: BusinessError) => {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    });
+```

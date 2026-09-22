@@ -1,5 +1,9 @@
 # TimeLapseRecordState (System API)
 
+```TypeScript
+enum TimeLapseRecordState
+```
+
 Enumerates the time-lapse recording states.
 
 **Since:** 12

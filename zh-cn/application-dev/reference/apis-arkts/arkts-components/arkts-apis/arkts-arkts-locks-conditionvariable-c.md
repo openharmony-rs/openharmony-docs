@@ -1,5 +1,9 @@
 # ConditionVariable
 
+```TypeScript
+class ConditionVariable
+```
+
 实现异步等待功能的类，支持异步等待通知操作。该类使用@Sendable装饰器装饰。
 
 **起始版本：** 18

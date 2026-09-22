@@ -1,5 +1,9 @@
 # ProfileState（系统接口）
 
+```TypeScript
+export enum ProfileState
+```
+
 配置文件状态。
 
 **起始版本：** 18

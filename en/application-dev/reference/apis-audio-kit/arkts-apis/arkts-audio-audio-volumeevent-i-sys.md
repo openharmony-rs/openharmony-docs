@@ -1,5 +1,9 @@
 # VolumeEvent
 
+```TypeScript
+interface VolumeEvent
+```
+
 Describes the event received by the application when the volume is changed.
 
 **Since:** 9

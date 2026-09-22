@@ -1,5 +1,9 @@
 # EnabledState
 
+```TypeScript
+export enum EnabledState
+```
+
 输入法启用状态。
 
 **起始版本：** 15

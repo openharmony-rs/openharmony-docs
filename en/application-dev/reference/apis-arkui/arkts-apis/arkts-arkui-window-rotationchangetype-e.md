@@ -1,5 +1,9 @@
 # RotationChangeType
 
+```TypeScript
+enum RotationChangeType
+```
+
 Enumerates the types of window rotation events.
 
 **Since:** 19

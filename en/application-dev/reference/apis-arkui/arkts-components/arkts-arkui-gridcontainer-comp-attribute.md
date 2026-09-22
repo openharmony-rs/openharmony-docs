@@ -1,6 +1,12 @@
 # GridContainer properties/events
 
-Defines the grid container attribute from inheritance Column
+```TypeScript
+declare class GridContainerAttribute extends ColumnAttribute
+```
+
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and attributes of the [Column](../../../reference/apis-arkui/arkui-ts/ts-container-column.md#attributes) component are supported.
+
+The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 @extends ColumnAttribute
 

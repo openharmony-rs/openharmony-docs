@@ -1,5 +1,9 @@
 # SmoothZoomMode
 
+```TypeScript
+enum SmoothZoomMode
+```
+
 Enumerates the smooth zoom modes.
 
 **Since:** 11

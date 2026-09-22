@@ -1,8 +1,12 @@
 # AudioSessionStrategy
 
+```TypeScript
+interface AudioSessionStrategy
+```
+
 音频会话策略。
 
-@ @typedef AudioSessionStrategy [since 12 - 24]
+@typedef AudioSessionStrategy [since 12 - 24]
 
 **起始版本：** 12
 

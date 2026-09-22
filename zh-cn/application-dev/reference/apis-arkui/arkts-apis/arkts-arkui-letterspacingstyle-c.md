@@ -1,5 +1,9 @@
 # LetterSpacingStyle
 
+```TypeScript
+declare class LetterSpacingStyle
+```
+
 文本字符间距对象说明。适用于需要调整字符间距的场景，例如标题文字加宽间距以增强视觉效果、密集文本缩小间距以节省空间等。
 
 **起始版本：** 12

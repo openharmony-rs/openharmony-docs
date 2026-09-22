@@ -1,5 +1,9 @@
 # FingerprintTips (System API)
 
+```TypeScript
+enum FingerprintTips
+```
+
 Enumerates the tip codes for fingerprint authentication.
 
 **Since:** 8

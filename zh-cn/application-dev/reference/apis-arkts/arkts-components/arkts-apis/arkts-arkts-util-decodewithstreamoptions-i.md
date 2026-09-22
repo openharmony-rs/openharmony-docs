@@ -1,5 +1,9 @@
 # DecodeWithStreamOptions
 
+```TypeScript
+interface DecodeWithStreamOptions
+```
+
 定义解码是否跟随数据块。
 
 **起始版本：** 11

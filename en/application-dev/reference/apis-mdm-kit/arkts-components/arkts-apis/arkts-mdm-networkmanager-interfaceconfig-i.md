@@ -1,5 +1,9 @@
 # InterfaceConfig
 
+```TypeScript
+interface InterfaceConfig
+```
+
 Enumerates Ethernet network interface configurations. Only IPv4 is supported.
 
 **Since:** 23

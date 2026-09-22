@@ -1,5 +1,9 @@
 # HuksExternalCryptoTag
 
+```TypeScript
+export enum HuksExternalCryptoTag
+```
+
 表示调用参数的Tag。
 
 **起始版本：** 22

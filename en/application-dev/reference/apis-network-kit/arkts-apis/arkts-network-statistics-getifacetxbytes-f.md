@@ -51,17 +51,8 @@ statistics.getIfaceTxBytes("wlan0", (error: BusinessError, stats: number) => {
 });
 ```
 
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
-  console.info(`getIfaceTxBytes success, ${JSON.stringify(stats)}`);
-}).catch((err: BusinessError) => {
-   console.error(`getIfaceTxBytes error, ${JSON.stringify(err)}`);
-});
-```
-
+<a id="getifacetxbytes-1"></a>
 
 ## getIfaceTxBytes
 
@@ -100,4 +91,13 @@ Obtains the total uplink traffic (in bytes) of the specified NIC from the last s
 
 **Examples**
 
-See [getIfaceTxBytes](#getifacetxbytes)
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
+  console.info(`getIfaceTxBytes success, ${JSON.stringify(stats)}`);
+}).catch((err: BusinessError) => {
+   console.error(`getIfaceTxBytes error, ${JSON.stringify(err)}`);
+});
+```

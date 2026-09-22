@@ -1,5 +1,9 @@
 # AlbumChangeData
 
+```TypeScript
+interface AlbumChangeData
+```
+
 相册的具体变更数据。
 
 **起始版本：** 20

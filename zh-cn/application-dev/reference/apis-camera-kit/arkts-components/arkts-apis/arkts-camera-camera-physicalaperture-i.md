@@ -1,5 +1,9 @@
 # PhysicalAperture
 
+```TypeScript
+interface PhysicalAperture
+```
+
 物理光圈对象。
 
 **起始版本：** 24

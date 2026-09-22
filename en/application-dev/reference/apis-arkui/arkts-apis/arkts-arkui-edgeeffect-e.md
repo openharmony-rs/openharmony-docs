@@ -1,5 +1,9 @@
 # EdgeEffect
 
+```TypeScript
+declare enum EdgeEffect
+```
+
 Sliding effect
 
 **Since:** 7

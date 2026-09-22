@@ -1,6 +1,10 @@
 # ChipV2Accessibility
 
-Defines accessibility.
+```TypeScript
+export declare class ChipV2Accessibility
+```
+
+Defines the accessibility attribute class of **ChipV2**.
 
 **Since:** 26.0.0
 
@@ -20,7 +24,7 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 constructor(config: ChipV2AccessibilityConfig)
 ```
 
-The constructor of ChipV2Accessibility
+A constructor used to create a **ChipV2Accessibility** object.
 
 **Since:** 26.0.0
 
@@ -34,7 +38,7 @@ The constructor of ChipV2Accessibility
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md) | Yes | config of accessibility. config is mandatory. |
+| config | [ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md) | Yes | Accessibility attribute configuration of the component, including configuration options such as **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel**. |
 
 ## accessibilityDescription
 
@@ -42,7 +46,13 @@ The constructor of ChipV2Accessibility
 public accessibilityDescription?: ResourceStr
 ```
 
-Set accessibility description.
+Accessibility description. This description is used to explain the current component to users in detail. You should provide comprehensive text descriptions to help users understand the actions to be performed and their consequences, especially when these consequences cannot be directly inferred from the component's attributes and accessibility text. When a component that is selected has both a text attribute and an accessibility description attribute, the system first reads the component's text attribute, followed by the accessibility description.
+
+Default value: empty string.
+
+When the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -62,7 +72,23 @@ Set accessibility description.
 public accessibilityLevel?: string
 ```
 
-Set accessibility level.
+Accessibility level. This attribute controls whether the component can be recognized by accessibility services.
+
+Supported values:
+
+**"auto"**: The attribute value of the current component is converted to **"yes"**.
+
+**"yes"**: The current component can be recognized by accessibility services.
+
+**"no"**: The current component cannot be recognized by accessibility services.
+
+**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.
+
+Default value: **"auto"**
+
+When the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** string
 
@@ -84,7 +110,13 @@ Set accessibility level.
 public accessibilityText?: ResourceStr
 ```
 
-Set accessibility text.
+Accessibility text. When a component has no text attribute, the screen reader does not read it aloud when this component is selected, making it difficult for users to identify the currently selected component. You can set accessibility text for such components so that the screen reader reads the text aloud, helping users identify the selected component.
+
+Default value: empty string.
+
+When the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

@@ -1,5 +1,9 @@
 # ModelRule (System API)
 
+```TypeScript
+interface ModelRule
+```
+
 Provides the ModelRule type.
 
 @typedef ModelRule

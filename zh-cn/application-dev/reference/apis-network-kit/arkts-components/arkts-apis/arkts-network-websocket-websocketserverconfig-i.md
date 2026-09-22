@@ -1,5 +1,9 @@
 # WebSocketServerConfig
 
+```TypeScript
+export interface WebSocketServerConfig
+```
+
 启动服务端的service时，需要输入的配置信息和说明。
 
 **起始版本：** 19

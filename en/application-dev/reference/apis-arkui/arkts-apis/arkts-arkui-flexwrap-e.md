@@ -1,5 +1,9 @@
 # FlexWrap
 
+```TypeScript
+declare enum FlexWrap
+```
+
 FlexWrap enumeration description
 
 **Since:** 7

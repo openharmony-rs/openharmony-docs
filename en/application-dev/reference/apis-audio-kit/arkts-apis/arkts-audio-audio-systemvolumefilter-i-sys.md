@@ -1,5 +1,9 @@
 # SystemVolumeFilter (System API)
 
+```TypeScript
+interface SystemVolumeFilter
+```
+
 Describes the system volume filter.
 
 **Since:** 26.0.0

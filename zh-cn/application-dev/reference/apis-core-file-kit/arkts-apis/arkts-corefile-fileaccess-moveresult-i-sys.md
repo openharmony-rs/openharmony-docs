@@ -1,5 +1,9 @@
 # MoveResult（系统接口）
 
+```TypeScript
+interface MoveResult
+```
+
 表示移动操作失败时的返回信息，移动成功时则没有返回信息。
 
 **起始版本：** 11

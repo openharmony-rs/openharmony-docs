@@ -1,5 +1,9 @@
 # NdefTag
 
+```TypeScript
+export interface NdefTag extends TagSession
+```
+
 Provides APIs to access the tags in the NFC Data Exchange Format (NDEF). This class inherits from **TagSession**.
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).
@@ -278,6 +282,8 @@ function nfcTechDemo() {
 }
 ```
 
+<a id="readndef-1"></a>
+
 ## readNdef
 
 ```TypeScript
@@ -373,34 +379,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain the correct ndefTag tag by using the tag.TagInfo API in @ohos.nfc.tag.
-
-function nfcTechDemo() {
-    // Connect the tag if it has not been connected.
-    if (!ndefTag.isTagConnected()) {
-        if (!ndefTag.connectTag()) {
-            console.error("ndefTag connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        ndefTag.setReadOnly((err : BusinessError)=> {
-            if (err) {
-                console.error(`ndef setReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}`);
-            } else {
-                console.info("ndef setReadOnly AsyncCallback success.");
-            }
-        });
-    } catch (businessError) {
-        console.error(`ndef setReadOnly AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="setreadonly-1"></a>
 
 ## setReadOnly
 
@@ -435,7 +414,34 @@ Sets the NDEF tag to read-only. This API uses an asynchronous callback to return
 
 **Examples**
 
-See [setReadOnly](#setreadonly)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the correct ndefTag tag by using the tag.TagInfo API in @ohos.nfc.tag.
+
+function nfcTechDemo() {
+    // Connect the tag if it has not been connected.
+    if (!ndefTag.isTagConnected()) {
+        if (!ndefTag.connectTag()) {
+            console.error("ndefTag connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        ndefTag.setReadOnly((err : BusinessError)=> {
+            if (err) {
+                console.error(`ndef setReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}`);
+            } else {
+                console.info("ndef setReadOnly AsyncCallback success.");
+            }
+        });
+    } catch (businessError) {
+        console.error(`ndef setReadOnly AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```
 
 ## writeNdef
 
@@ -539,6 +545,8 @@ function nfcTechDemo() {
     }
 }
 ```
+
+<a id="writendef-1"></a>
 
 ## writeNdef
 

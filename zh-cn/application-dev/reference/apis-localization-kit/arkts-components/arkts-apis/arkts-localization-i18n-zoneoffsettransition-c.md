@@ -1,5 +1,9 @@
 # ZoneOffsetTransition
 
+```TypeScript
+export class ZoneOffsetTransition
+```
+
 提供解析时区跳变规则的能力。
 
 **起始版本：** 20

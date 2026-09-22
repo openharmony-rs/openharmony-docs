@@ -1,5 +1,9 @@
 # ValueType
 
+```TypeScript
+enum ValueType
+```
+
 Enumerates the data types.
 
 **Since:** 7

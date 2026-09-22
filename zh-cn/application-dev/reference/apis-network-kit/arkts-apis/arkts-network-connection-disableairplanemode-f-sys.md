@@ -49,14 +49,8 @@ connection.disableAirplaneMode((error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
 
-connection.disableAirplaneMode().then((error: void) => {
-  console.error(JSON.stringify(error));
-});
-```
-
+<a id="disableairplanemode-1"></a>
 
 ## disableAirplaneMode
 
@@ -91,4 +85,10 @@ function disableAirplaneMode(): Promise<void>
 
 **示例**
 
-参见 [disableAirplaneMode](#disableairplanemode)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+
+connection.disableAirplaneMode().then((error: void) => {
+  console.error(JSON.stringify(error));
+});
+```

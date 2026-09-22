@@ -32,6 +32,8 @@ function begin(scene: string, startInputType: ActionType, note?: string): void
 
 **示例**
 
-```TypeScript
 用户点击图标启动应用场景动效开始点，由离手事件LAST_UP触发。
+
+```TypeScript
+performanceMonitor.begin("LAUNCHER_APP_LAUNCH_FROM_ICON", performanceMonitor.ActionType.LAST_UP, "APP_START_BEGIN");
 ```

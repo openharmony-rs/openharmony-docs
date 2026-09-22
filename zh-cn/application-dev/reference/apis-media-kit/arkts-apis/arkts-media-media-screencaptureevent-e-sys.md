@@ -1,5 +1,9 @@
 # ScreenCaptureEvent（系统接口）
 
+```TypeScript
+enum ScreenCaptureEvent
+```
+
 Enumerates the states available for the system screen recorder.
 
 **起始版本：** 18

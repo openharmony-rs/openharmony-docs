@@ -1,5 +1,9 @@
 # Album
 
+```TypeScript
+interface Album extends AbsAlbum
+```
+
 实体相册。
 
 **继承/实现关系：** Album extends [AbsAlbum](arkts-medialibrary-photoaccesshelper-absalbum-i.md)
@@ -48,6 +52,44 @@ addAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
 
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('addAssetsDemoCallback');
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('addAssetsDemoCallback asset is undefined');
+      return;
+    }
+    album.addAssets([asset], (err) => {
+      if (!err) {
+        console.info('album addAssets successfully');
+      } else {
+        console.error(`album addAssets failed with error: ${err.code}, ${err.message}`);
+      }
+    });
+  } catch (err) {
+    console.error(`addAssetsDemoCallback failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+<a id="addassets-1"></a>
+
 ## addAssets
 
 ```TypeScript
@@ -87,6 +129,42 @@ addAssets(assets: Array<PhotoAsset>): Promise<void>
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
 
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('addAssetsDemoPromise');
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('addAssetsDemoPromise asset is undefined');
+      return;
+    }
+    // 向相册添加资源。
+    album.addAssets([asset]).then(() => {
+      console.info('album addAssets successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`album addAssets failed with error: ${err.code}, ${err.message}`);
+    });
+  } catch (err) {
+    console.error(`addAssetsDemoPromise failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## commitModify
 
 ```TypeScript
@@ -116,6 +194,43 @@ commitModify(callback: AsyncCallback<void>): void
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
 
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('albumCommitModifyDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  if (albumList === undefined) {
+    console.error('albumList is undefined');
+    return;
+  }
+  let album: photoAccessHelper.Album = await albumList.getFirstObject();
+  if (album === undefined) {
+    console.error('album is undefined');
+    return;
+  }
+  album.albumName = 'hello';
+  album.commitModify((err) => {
+    if (err) {
+      console.error(`commitModify failed with error: ${err.code}, ${err.message}`);
+    } else {
+      console.info('commitModify successfully');
+    }
+  });
+}
+```
+
+<a id="commitmodify-1"></a>
+
 ## commitModify
 
 ```TypeScript
@@ -144,6 +259,41 @@ commitModify(): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('albumCommitModifyDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  if (albumList === undefined) {
+    console.error('albumList is undefined');
+    return;
+  }
+  let album: photoAccessHelper.Album = await albumList.getFirstObject();
+  if (album === undefined) {
+    console.error('album is undefined');
+    return;
+  }
+  album.albumName = 'hello';
+  // 提交相册名称修改到数据库。
+  album.commitModify().then(() => {
+    console.info('commitModify successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`commitModify failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
 
 ## removeAssets
 
@@ -178,6 +328,44 @@ removeAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('removeAssetsDemoCallback');
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOption);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('removeAssetsDemoCallback asset is undefined');
+      return;
+    }
+    album.removeAssets([asset], (err) => {
+      if (!err) {
+        console.info('album removeAssets successfully');
+      } else {
+        console.error(`album removeAssets failed with error: ${err.code}, ${err.message}`);
+      }
+    });
+  } catch (err) {
+    console.error(`removeAssetsDemoCallback failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+<a id="removeassets-1"></a>
 
 ## removeAssets
 
@@ -217,6 +405,46 @@ removeAssets(assets: Array<PhotoAsset>): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid argument |
 | 14000011 | System inner fail |
+
+**示例**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('removeAssetsDemoPromise');
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('removeAssetsPromise albums is undefined');
+      return;
+    }
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOption);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('removeAssetsPromise asset is undefined');
+      return;
+    }
+    // 从相册移除资源。
+    album.removeAssets([asset]).then(() => {
+      console.info('album removeAssets successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`album removeAssets failed with error: ${err.code}, ${err.message}`);
+    });
+  } catch (err) {
+    console.error(`removeAssetsDemoPromise failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ## imageCount
 

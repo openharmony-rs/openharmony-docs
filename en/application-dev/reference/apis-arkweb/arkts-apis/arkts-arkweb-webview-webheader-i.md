@@ -1,5 +1,9 @@
 # WebHeader
 
+```TypeScript
+interface WebHeader
+```
+
 Describes the request/response header returned by the **Web** component.
 
 @interface WebHeader [since 9 - 11]

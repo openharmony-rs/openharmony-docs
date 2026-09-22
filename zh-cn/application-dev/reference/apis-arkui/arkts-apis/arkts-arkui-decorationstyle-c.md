@@ -1,5 +1,9 @@
 # DecorationStyle
 
+```TypeScript
+declare class DecorationStyle
+```
+
 文本装饰线样式对象说明。
 
 **起始版本：** 12
@@ -27,6 +31,8 @@ constructor(value: DecorationStyleInterface)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [DecorationStyleInterface](arkts-arkui-decorationstyleinterface-i.md) | 是 | 文本装饰线设置项。 |
+
+<a id="constructor-1"></a>
 
 ## constructor
 

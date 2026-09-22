@@ -1,5 +1,9 @@
 # RotationAngles（系统接口）
 
+```TypeScript
+export interface RotationAngles
+```
+
 The rotion angles, relative to the current position. @typedef RotationAngles
 
 **起始版本：** 20

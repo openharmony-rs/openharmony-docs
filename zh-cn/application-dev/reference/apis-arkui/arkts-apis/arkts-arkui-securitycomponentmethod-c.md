@@ -1,7 +1,11 @@
 # SecurityComponentMethod
 
+```TypeScript
+declare class SecurityComponentMethod<T>
+```
+
 安全控件通用属性模块，提供安全控件的布局、尺寸、文字、图标、颜色、边框和交互等通用属性的统一配置能力。  
-- 为PasteButton、SaveButton等安全控件统一设置布局、尺寸、文字、图标、颜色、边框和交互相关属性。  
+- 为[PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md#paste_button)、[SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md#save_button)等安全控件统一设置布局、尺寸、文字、图标、颜色、边框和交互相关属性。  
 - 在满足安全控件规范的前提下，调整安全控件显示效果和交互体验。具体约束请参见[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。  
 - 通过链式调用方式复用安全控件通用属性能力。
 
@@ -168,7 +172,7 @@ align(alignType: Alignment): T
 alignRules(alignRule: AlignRuleOption): T
 ```
 
-设置在相对容器中子组件的对齐规则，仅当父容器为RelativeContainer时生效。
+设置在相对容器中子组件的对齐规则，仅当父容器为[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container)时生效。
 
 **起始版本：** 15
 
@@ -182,13 +186,15 @@ alignRules(alignRule: AlignRuleOption): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-alignruleoption-i.md) | 是 | 对齐规则配置对象，包含top、bottom、left、right、center等锚点对齐配置，用于指定安全控件在RelativeContainer中的对齐位置和方式。 |
+| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-common-comp-alignruleoption-i.md) | 是 | 对齐规则配置对象，包含top、bottom、left、right、center等锚点对齐配置，用于指定安全控件在[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container)中的对齐位置和方式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | T | 安全控件的属性。 |
+
+<a id="alignrules-1"></a>
 
 ## alignRules
 
@@ -210,7 +216,7 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-localizedalignruleoptions-i.md) | 是 | 对齐规则配置对象，使用start和end替代left和right以支持RTL布局镜像。包含top、bottom、start、end、center等锚点对齐配置，用于指定安全控件在RelativeContainer中的对齐位置和方式。 |
+| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-common-comp-localizedalignruleoptions-i.md) | 是 | 对齐规则配置对象，使用start和end替代left和right以支持RTL布局镜像。包含top、bottom、start、end、center等锚点对齐配置，用于指定安全控件在[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container)中的对齐位置和方式。 |
 
 **返回值：**
 
@@ -238,7 +244,7 @@ backgroundColor(value: ResourceColor): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 安全控件的背景颜色。<br>默认值：&#36;r('sys.color.icon_emphasize')。<br>安全控件按钮背景色高八位的α值低于**0x1a**（例如**0x1800ff00**）时，会被系统强制调整为**0xff**。以确保安全控件具有足够的可见性，防止因控件过度透明导致用户在不知情的情况下触发授权。 |
+| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 安全控件的背景颜色。<br>默认值：$r('sys.color.icon_emphasize')。<br>安全控件按钮背景色高八位的α值低于**0x1a**（例如**0x1800ff00**）时，会被系统强制调整为**0xff**。以确保安全控件具有足够的可见性，防止因控件过度透明导致用户在不知情的情况下触发授权。 |
 
 **返回值：**
 
@@ -303,6 +309,8 @@ borderRadius的设置效果受ButtonType影响。当按钮类型为Capsule或Cir
 | 类型 | 说明 |
 | --- | --- |
 | T | 安全控件的属性。 |
+
+<a id="borderradius-1"></a>
 
 ## borderRadius
 
@@ -396,7 +404,7 @@ borderWidth(value: Dimension): T
 chainMode(direction: Axis, style: ChainStyle): T
 ```
 
-设置以该组件为链头所构成的链式布局的参数（包括链的方向和样式），仅当父容器为RelativeContainer时生效。
+设置以该组件为链头所构成的链式布局的参数（包括链的方向和样式），仅当父容器为[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container)时生效。
 
 **起始版本：** 15
 
@@ -410,8 +418,8 @@ chainMode(direction: Axis, style: ChainStyle): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| direction | [Axis](arkts-arkui-axis-e.md) | 是 | 链式布局的方向，用于指定以该组件为链头的链在RelativeContainer中的排列方向。 |
-| style | [ChainStyle](../arkts-components/arkts-arkui-chainstyle-e.md) | 是 | 链式布局的样式，用于控制链内子组件的分布方式，如均匀分布、两端对齐或紧凑排列等，具体取值及效果请参考[ChainStyle](../arkts-components/arkts-arkui-chainstyle-e.md)。 |
+| direction | [Axis](arkts-arkui-axis-e.md) | 是 | 链式布局的方向，用于指定以该组件为链头的链在[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container)中的排列方向。 |
+| style | [ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md) | 是 | 链式布局的样式，用于控制链内子组件的分布方式，如均匀分布、两端对齐或紧凑排列等，具体取值及效果请参考[ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md)。 |
 
 **返回值：**
 
@@ -483,7 +491,7 @@ fallbackLineSpacing(enabled: boolean): T
 
 针对多行文字叠加，支持行高基于文字实际高度自适应。
 
-fallbackLineSpacing属性和[RichEditorTextStyle](../arkts-components/arkts-arkui-richeditortextstyle-i.md)的lineHeight属性强相关。当设置的 lineHeight值小于文本在当前字号下的实际渲染高度时，将根据fallbackLineSpacing 属性值来确定行高是否要基于文字实际高度自适应。
+fallbackLineSpacing属性和[RichEditorTextStyle](../arkts-components/arkts-arkui-richeditor-comp-richeditortextstyle-i.md)的lineHeight属性强相关。当设置的 lineHeight值小于文本在当前字号下的实际渲染高度时，将根据fallbackLineSpacing 属性值来确定行高是否要基于文字实际高度自适应。
 
 **起始版本：** 26.0.0
 
@@ -553,7 +561,7 @@ fontColor(value: ResourceColor): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 安全控件上文字的颜色。<br>默认值：&#36;r('sys.color.font_on_primary')。 |
+| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 安全控件上文字的颜色。<br>默认值：$r('sys.color.font_on_primary')。 |
 
 **返回值：**
 
@@ -609,7 +617,7 @@ fontSize(value: Dimension): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Dimension](arkts-arkui-dimension-t.md) | 是 | 安全控件上文字的尺寸。<br>未显式指定单位时，单位为fp。<br>默认值：&#36;r('sys.float.ohos_id_text_size_button1')。<br>该参数不支持百分比字符串。<br>设置异常值时该属性不生效。<br>**说明：** 安全控件文本未完全显示时，点击不授权。fontSize的设置会影响文本是否能完整显示，进而影响安全控件的授权行为。 |
+| value | [Dimension](arkts-arkui-dimension-t.md) | 是 | 安全控件上文字的尺寸。<br>未显式指定单位时，单位为fp。<br>默认值：$r('sys.float.ohos_id_text_size_button1')。<br>该参数不支持百分比字符串。<br>设置异常值时该属性不生效。<br>**说明：** 安全控件文本未完全显示时，点击不授权。fontSize的设置会影响文本是否能完整显示，进而影响安全控件的授权行为。 |
 
 **返回值：**
 
@@ -759,7 +767,7 @@ iconColor(value: ResourceColor): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 安全控件上图标的颜色。<br>默认值：&#36;r('sys.color.icon_on_primary')。 |
+| value | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 安全控件上图标的颜色。<br>默认值：$r('sys.color.icon_on_primary')。 |
 
 **返回值：**
 

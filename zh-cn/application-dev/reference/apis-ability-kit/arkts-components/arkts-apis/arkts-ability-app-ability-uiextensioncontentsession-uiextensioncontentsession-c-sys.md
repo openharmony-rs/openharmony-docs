@@ -1,5 +1,9 @@
 # UIExtensionContentSession
 
+```TypeScript
+declare class UIExtensionContentSession
+```
+
 UIExtensionAbility组件的界面操作类，提供页面加载、设置宿主应用窗口隐私模式等功能。
 
 **起始版本：** 10
@@ -400,55 +404,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbility(want, startOptions, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in startAbility`);
-    })
-  }
-
-  // ...
-}
-```
-
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbility(want, startOptions)
-      .then(() => {
-        console.info(`Succeeded in startAbility`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
+<a id="startability-1"></a>
 
 ## startAbility
 
@@ -503,7 +459,32 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 **示例**
 
-参见 [startAbility](#startability)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbility(want, startOptions, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in startAbility`);
+    })
+  }
+
+  // ...
+}
+```
+
+<a id="startability-2"></a>
 
 ## startAbility
 
@@ -565,7 +546,30 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 **示例**
 
-参见 [startAbility](#startability)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbility(want, startOptions)
+      .then(() => {
+        console.info(`Succeeded in startAbility`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```
 
 ## startAbilityAsCaller
 
@@ -641,65 +645,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let localWant: Want = want;
-    localWant.bundleName = 'com.example.demo';
-    localWant.moduleName = 'entry';
-    localWant.abilityName = 'TestAbility';
-
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityAsCaller(localWant, startOptions, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in startAbilityAsCaller`);
-    })
-  }
-
-  // ...
-}
-```
-
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let localWant: Want = want;
-    localWant.bundleName = 'com.example.demo';
-    localWant.moduleName = 'entry';
-    localWant.abilityName = 'TestAbility';
-
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityAsCaller(localWant, startOptions)
-      .then(() => {
-        console.info(`Succeeded in startAbilityAsCaller`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
+<a id="startabilityascaller-1"></a>
 
 ## startAbilityAsCaller
 
@@ -748,7 +694,37 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<
 
 **示例**
 
-参见 [startAbilityAsCaller](#startabilityascaller)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let localWant: Want = want;
+    localWant.bundleName = 'com.example.demo';
+    localWant.moduleName = 'entry';
+    localWant.abilityName = 'TestAbility';
+
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityAsCaller(localWant, startOptions, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in startAbilityAsCaller`);
+    })
+  }
+
+  // ...
+}
+```
+
+<a id="startabilityascaller-2"></a>
 
 ## startAbilityAsCaller
 
@@ -804,7 +780,35 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 **示例**
 
-参见 [startAbilityAsCaller](#startabilityascaller)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let localWant: Want = want;
+    localWant.bundleName = 'com.example.demo';
+    localWant.moduleName = 'entry';
+    localWant.abilityName = 'TestAbility';
+
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityAsCaller(localWant, startOptions)
+      .then(() => {
+        console.info(`Succeeded in startAbilityAsCaller`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```
 
 ## startAbilityForResult
 
@@ -885,55 +889,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityForResult(want, startOptions, (err: BusinessError, data: common.AbilityResult) => {
-      if (err) {
-        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
-    })
-  }
-
-  // ...
-}
-```
-
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityForResult(want, startOptions)
-      .then((data: common.AbilityResult) => {
-        console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
+<a id="startabilityforresult-1"></a>
 
 ## startAbilityForResult
 
@@ -992,7 +948,32 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 **示例**
 
-参见 [startAbilityForResult](#startabilityforresult)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityForResult(want, startOptions, (err: BusinessError, data: common.AbilityResult) => {
+      if (err) {
+        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
+    })
+  }
+
+  // ...
+}
+```
+
+<a id="startabilityforresult-2"></a>
 
 ## startAbilityForResult
 
@@ -1058,4 +1039,27 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 **示例**
 
-参见 [startAbilityForResult](#startabilityforresult)
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityForResult(want, startOptions)
+      .then((data: common.AbilityResult) => {
+        console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```

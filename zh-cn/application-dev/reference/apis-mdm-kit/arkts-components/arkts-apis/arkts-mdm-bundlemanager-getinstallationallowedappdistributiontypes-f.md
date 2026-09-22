@@ -62,19 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: Array<bundleManager.AppDistributionType> =
-    bundleManager.getInstallationAllowedAppDistributionTypes(null);
-  console.info(`Succeeded in getting allowed appDistributionTypes. Result: ${JSON.stringify(result)}`);
-} catch (err) {
-  console.error(`Failed to get allowed appDistributionTypes. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getinstallationallowedappdistributiontypes-1"></a>
 
 ## getInstallationAllowedAppDistributionTypes
 
@@ -114,4 +103,15 @@ function getInstallationAllowedAppDistributionTypes(admin: Want | null): Array<A
 
 **示例**
 
-参见 [getInstallationAllowedAppDistributionTypes](#getinstallationallowedappdistributiontypes)
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<bundleManager.AppDistributionType> =
+    bundleManager.getInstallationAllowedAppDistributionTypes(null);
+  console.info(`Succeeded in getting allowed appDistributionTypes. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed appDistributionTypes. Code: ${err.code}, message: ${err.message}`);
+}
+```

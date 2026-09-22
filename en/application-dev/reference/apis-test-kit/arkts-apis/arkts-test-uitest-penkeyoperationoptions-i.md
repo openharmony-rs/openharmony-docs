@@ -1,5 +1,9 @@
 # PenKeyOperationOptions
 
+```TypeScript
+declare interface PenKeyOperationOptions
+```
+
 Pen key operation options.
 
 **Since:** 26.0.0
@@ -26,6 +30,8 @@ The coordinate point for air mouse mode operations. Required when key is AIR_MOU
 **Type:** [Point](arkts-test-uitest-point-i.md)
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

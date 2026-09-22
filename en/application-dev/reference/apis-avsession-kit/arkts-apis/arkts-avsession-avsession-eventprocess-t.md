@@ -6,7 +6,7 @@ type EventProcess = (event: string, args: Record<string, Object>) => void
 
 The general process funcation with an event and arguments.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 

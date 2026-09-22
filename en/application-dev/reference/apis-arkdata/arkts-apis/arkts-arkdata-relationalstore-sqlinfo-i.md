@@ -1,5 +1,9 @@
 # SqlInfo
 
+```TypeScript
+interface SqlInfo
+```
+
 Represents details about the SQL statement executed by the database.
 
 **Since:** 20

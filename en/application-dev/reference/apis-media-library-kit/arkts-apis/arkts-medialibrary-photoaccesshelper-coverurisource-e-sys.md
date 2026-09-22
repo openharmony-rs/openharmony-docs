@@ -1,5 +1,9 @@
 # CoverUriSource (System API)
 
+```TypeScript
+enum CoverUriSource
+```
+
 Enumerates the sources of the album covers.
 
 **Since:** 20

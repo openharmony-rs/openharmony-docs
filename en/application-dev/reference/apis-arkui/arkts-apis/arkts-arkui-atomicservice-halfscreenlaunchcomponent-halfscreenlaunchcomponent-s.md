@@ -1,5 +1,9 @@
 # HalfScreenLaunchComponent
 
+```TypeScript
+export declare struct HalfScreenLaunchComponent
+```
+
 **HalfScreenLaunchComponent** is a component designed for launching atomic services in half screen. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in half-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
 
 > **NOTE:** 
@@ -94,7 +98,7 @@ onTerminated?: Callback<TerminationInfo>
 
 Callback triggered when an embedded atomic service exits normally. Exit scenarios include user-triggered exit button taps or edge swipes, or calls to terminateSelfWithResult or terminateSelf.
 
-**Type:** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TerminationInfo](../arkts-components/arkts-arkui-terminationinfo-i.md)&gt;
+**Type:** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TerminationInfo](../arkts-components/arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md)&gt;
 
 **Since:** 18
 

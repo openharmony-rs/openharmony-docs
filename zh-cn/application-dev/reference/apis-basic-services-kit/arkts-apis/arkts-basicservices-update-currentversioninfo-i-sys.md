@@ -1,5 +1,9 @@
 # CurrentVersionInfo（系统接口）
 
+```TypeScript
+export interface CurrentVersionInfo
+```
+
 当前版本信息。
 
 **起始版本：** 9

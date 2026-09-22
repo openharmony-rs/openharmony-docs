@@ -1,5 +1,9 @@
 # ContinuousTaskSuspendInfo
 
+```TypeScript
+interface ContinuousTaskSuspendInfo
+```
+
 长时任务暂停信息。
 
 **起始版本：** 20

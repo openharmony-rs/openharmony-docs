@@ -1,5 +1,9 @@
 # Database（系统接口）
 
+```TypeScript
+export interface Database
+```
+
 数据库结构信息。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # ChipV2Options
 
+```TypeScript
+export class ChipV2Options
+```
+
 ChipV2Options定义ChipV2的样式及具体样式参数。
 
 **起始版本：** 26.0.0
@@ -174,7 +178,7 @@ public activatedBackgroundColor?: ColorMetrics
 
 ChipV2激活时的背景颜色。
 
-默认值：&#36;r('sys.color.chip_container_activated_color')
+默认值：$r('sys.color.chip_container_activated_color')
 
 值为undefined时，按默认值处理。
 
@@ -198,7 +202,7 @@ ChipV2激活时的背景颜色。
 public activatedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色backgroundColor、边框颜色borderColor、边框宽度borderWidth、阴影shadow效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-commonmethod-c.md#materialfilter)。
+设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
 
 默认值：undefined，不应用材质样式。
 
@@ -250,7 +254,7 @@ public backgroundColor?: ColorMetrics
 
 ChipV2背景颜色。
 
-默认值：&#36;r('sys.color.chip_background_color')
+默认值：$r('sys.color.chip_background_color')
 
 值为undefined时，按默认值处理。
 
@@ -274,7 +278,7 @@ ChipV2背景颜色。
 public backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色backgroundColor、边框颜色borderColor、边框宽度borderWidth、阴影shadow效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-commonmethod-c.md#materialfilter)。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
 
 默认值：undefined，不应用材质样式。
 
@@ -300,9 +304,9 @@ ChipV2背景圆角半径大小，不支持百分比。传入百分比时按默�
 
 默认值：
 
-size为ChipV2Size.NORMAL时，borderRadius默认值为：`&#36;r('sys.float.chip_border_radius_normal')`。
+size为ChipV2Size.NORMAL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_normal')`。
 
-size为ChipV2Size.SMALL时，borderRadius默认值为：`&#36;r('sys.float.chip_border_radius_small')`
+size为ChipV2Size.SMALL时，borderRadius默认值为：`$r('sys.float.chip_border_radius_small')`
 
 单位：vp
 
@@ -330,8 +334,8 @@ public closeIcon?: ChipV2CloseIcon
 
 默认值：
 
-- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`&#36;r('sys.float.chip_small_font_size')`；其他情况默认值为  
-`&#36;r('sys.float.chip_normal_font_size')`。  
+- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为  
+`$r('sys.float.chip_normal_font_size')`。  
 - 无障碍默认值：无无障碍描述。
 
 值为undefined时，按默认值处理。
@@ -410,8 +414,8 @@ public fontSize?: LengthMetrics
 
 默认值：
 
-- size为ChipV2Size.SMALL时，文本默认值：`&#36;r('sys.float.chip_small_font_size')`；图标默认值：`&#36;r('sys.float.chip_small_icon_size')`。  
-- 其他情况下，文本默认值：`&#36;r('sys.float.chip_normal_font_size')`；图标默认值：`&#36;r('sys.float.chip_normal_icon_size')`
+- size为ChipV2Size.SMALL时，文本默认值：`$r('sys.float.chip_small_font_size')`；图标默认值：`$r('sys.float.chip_small_icon_size')`。  
+- 其他情况下，文本默认值：`$r('sys.float.chip_normal_font_size')`；图标默认值：`$r('sys.float.chip_normal_icon_size')`
 
 单位：fp
 

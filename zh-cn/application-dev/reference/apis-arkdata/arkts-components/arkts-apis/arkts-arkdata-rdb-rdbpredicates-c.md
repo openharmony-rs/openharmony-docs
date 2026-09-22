@@ -1,5 +1,9 @@
 # RdbPredicates
 
+```TypeScript
+class RdbPredicates
+```
+
 表示关系型数据库（RDB）的谓词。该类确定RDB中条件表达式的值是true还是false。
 
 **起始版本：** 7

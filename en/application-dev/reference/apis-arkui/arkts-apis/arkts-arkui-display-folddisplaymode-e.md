@@ -1,5 +1,9 @@
 # FoldDisplayMode
 
+```TypeScript
+enum FoldDisplayMode
+```
+
 Enumerates the display modes of a foldable device.
 
 > **NOTE:** 

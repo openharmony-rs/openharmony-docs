@@ -1,5 +1,9 @@
 # CompatiblePolicy
 
+```TypeScript
+export enum CompatiblePolicy
+```
+
 Defines the version compatibility type of the dynamic shared library.
 
 **Since:** 10

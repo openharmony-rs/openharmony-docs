@@ -24,7 +24,7 @@ After cancellation, all notifications of the current application will be removed
 
 [publish](arkts-notification-notificationmanager-publish-f.md) publishes a notification.
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md) cancels a published notification based on the notification ID and label.
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-1) cancels a published notification based on the notification ID and label.
 
 **Parameters:**
 
@@ -57,16 +57,8 @@ let cancelAllCallback = (err: BusinessError): void => {
 notificationManager.cancelAll(cancelAllCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.cancelAll().then(() => {
-  console.info(`Succeeded in canceling all notification.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="cancelall-1"></a>
 
 ## cancelAll
 
@@ -84,9 +76,9 @@ After cancellation, all notifications of the current application will be removed
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish-1) publishes a notification.
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md) cancels a notification with the specified ID.
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) cancels a notification with the specified ID.
 
 **Return value:**
 
@@ -104,4 +96,12 @@ After cancellation, all notifications of the current application will be removed
 
 **Examples**
 
-See [cancelAll](#cancelall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.cancelAll().then(() => {
+  console.info(`Succeeded in canceling all notification.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
+});
+```

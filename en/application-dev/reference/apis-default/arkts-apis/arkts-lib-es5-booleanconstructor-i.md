@@ -1,5 +1,9 @@
 # BooleanConstructor
 
+```TypeScript
+interface BooleanConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

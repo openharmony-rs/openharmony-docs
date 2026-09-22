@@ -19,7 +19,7 @@ Obtains the information about the child processes of the current application. Th
 > The child process started in SELF_FORK mode is not included in the returned list.
 > If no child processes exist, an empty array is returned.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

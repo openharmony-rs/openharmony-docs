@@ -1,5 +1,9 @@
 # KemEncapResult
 
+```TypeScript
+interface KemEncapResult
+```
+
 KEM封装结果。
 
 **起始版本：** 26.0.0

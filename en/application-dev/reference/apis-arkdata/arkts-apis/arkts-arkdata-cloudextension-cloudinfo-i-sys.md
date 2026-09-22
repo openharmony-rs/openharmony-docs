@@ -1,5 +1,9 @@
 # CloudInfo (System API)
 
+```TypeScript
+export interface CloudInfo
+```
+
 Represents the cloud information.
 
 **Since:** 11

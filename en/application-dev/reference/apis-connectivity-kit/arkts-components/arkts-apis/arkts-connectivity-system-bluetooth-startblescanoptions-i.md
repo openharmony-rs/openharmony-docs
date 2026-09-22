@@ -1,5 +1,9 @@
 # StartBLEScanOptions
 
+```TypeScript
+export interface StartBLEScanOptions
+```
+
 **Since:** 6
 
 **System capability:** SystemCapability.Communication.Bluetooth.Lite

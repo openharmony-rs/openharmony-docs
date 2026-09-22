@@ -26,11 +26,11 @@ import { browser } from '@kit.MDMKit';
 | Name | Description |
 | --- | --- |
 | [getManagedBrowserPolicy](arkts-mdm-browser-getmanagedbrowserpolicy-f.md) | Obtains the policy of a specified browser based on the application bundle name. This API is applicable to scenarios where the current browser policy configuration needs to be queried, for example, displaying policy details in an enterprise device administrator application and verifying whether a policy has taken effect. |
-| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md) | Obtains the browser policy by app ID. |
-| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md) | Obtains the policy set for a specified browser based on **appid**. This API is applicable to scenarios where the current browser policy configuration needs to be queried, for example, displaying policy details in an enterprise device administrator application and verifying whether a policy has taken effect. |
+| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync) | Obtains the browser policy by app ID. |
+| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync-1) | Obtains the policy set for a specified browser based on **appid**. This API is applicable to scenarios where the current browser policy configuration needs to be queried, for example, displaying policy details in an enterprise device administrator application and verifying whether a policy has taken effect. |
 | [getSelfManagedBrowserPolicy](arkts-mdm-browser-getselfmanagedbrowserpolicy-f.md) | Obtains the browser policy of the current device. |
 | [getSelfManagedBrowserPolicyVersion](arkts-mdm-browser-getselfmanagedbrowserpolicyversion-f.md) | Obtains the browser policy version of the current device. |
-| [setManagedBrowserPolicy](arkts-mdm-browser-setmanagedbrowserpolicy-f.md) | Sets a browser policy for a specified browser. This API is applicable to scenarios where an enterprise needs to manage employees' browser behavior in a unified manner, such as configuring browser security policies. After the setting is successful, the system common event [COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed) is released. |
+| [setManagedBrowserPolicy](arkts-mdm-browser-setmanagedbrowserpolicy-f.md) | Sets a browser policy for a specified browser. This API is applicable to scenarios where an enterprise needs to manage employees' browser behavior in a unified manner, such as configuring browser security policies. After thesetting is successful, the system common event [COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed) is released. |
 | [setPolicySync](arkts-mdm-browser-setpolicysync-f.md) | Sets a browser sub-policy for a specified browser. This API is applicable to scenarios where an enterprise needs to manage employees' browser behavior in a unified manner. |
 
 <!--Del-->
@@ -38,8 +38,8 @@ import { browser } from '@kit.MDMKit';
 
 | Name | Description |
 | --- | --- |
-| [getPolicies](arkts-mdm-browser-getpolicies-f-sys.md) | Obtains the policy of the specified browser. This API uses an asynchronous callback to return the result. |
-| [getPolicies](arkts-mdm-browser-getpolicies-f-sys.md) | Obtains the policy of the specified browser. This API uses a promise to return the result. |
-| [setPolicies](arkts-mdm-browser-setpolicies-f-sys.md) | Sets the browsing policy for a specified browser. This API uses an asynchronous callback to return the result. |
-| [setPolicies](arkts-mdm-browser-setpolicies-f-sys.md) | Sets the browsing policy for a specified browser. This API uses a promise to return the result. |
+| [getPolicies](arkts-mdm-browser-getpolicies-f-sys.md#getpolicies) | Obtains the policy of the specified browser. This API uses an asynchronous callback to return the result. |
+| [getPolicies](arkts-mdm-browser-getpolicies-f-sys.md#getpolicies-1) | Obtains the policy of the specified browser. This API uses a promise to return the result. |
+| [setPolicies](arkts-mdm-browser-setpolicies-f-sys.md#setpolicies) | Sets the browsing policy for a specified browser. This API uses an asynchronous callback to return the result. |
+| [setPolicies](arkts-mdm-browser-setpolicies-f-sys.md#setpolicies-1) | Sets the browsing policy for a specified browser. This API uses a promise to return the result. |
 <!--DelEnd-->

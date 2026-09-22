@@ -1,5 +1,9 @@
 # TargetInfo（系统接口）
 
+```TypeScript
+export interface TargetInfo
+```
+
 Target information.
 
 @typedef TargetInfo

@@ -14,7 +14,7 @@ function getTaskInfo(taskId: number): Promise<TaskInfo>
 
 获取后台预取任务信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

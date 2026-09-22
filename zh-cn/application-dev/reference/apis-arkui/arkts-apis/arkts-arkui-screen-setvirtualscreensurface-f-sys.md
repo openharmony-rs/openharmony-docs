@@ -81,43 +81,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-// Index.ets
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  xComponentController: XComponentController = new XComponentController();
-
-  setVirtualScreenSurface = () => {
-    let screenId: number = 1; // 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
-    let surfaceId = this.xComponentController.getXComponentSurfaceId();
-    // 设置虚拟屏幕的surface
-    screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
-      console.info('Succeeded in setting the surface for the virtual screen.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
-    });
-  }
-  build() {
-    RelativeContainer() {
-      XComponent({
-        type: XComponentType.SURFACE,
-        controller: this.xComponentController
-      })
-      Button('setSurface')
-        .onClick((event: ClickEvent) => {
-          this.setVirtualScreenSurface();
-      }).width('100%')
-      .height(20)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
+<a id="setvirtualscreensurface-1"></a>
 
 ## setVirtualScreenSurface
 
@@ -159,4 +124,39 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string): Promise<vo
 
 **示例**
 
-参见 [setVirtualScreenSurface](#setvirtualscreensurface)
+```TypeScript
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1; // 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    // 设置虚拟屏幕的surface
+    screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

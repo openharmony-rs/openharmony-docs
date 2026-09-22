@@ -1,5 +1,9 @@
 # AppEventPackageHolder
 
+```TypeScript
+class AppEventPackageHolder
+```
+
 订阅数据持有者类，用于对事件信息进行处理。
 
 **起始版本：** 9

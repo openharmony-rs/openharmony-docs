@@ -70,25 +70,8 @@ try {
 }
 ```
 
-```TypeScript
-import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
-try {
-  let logFiles = logLibrary.list('FAULTLOG');
-  if (logFiles.length > 0) {
-    logLibrary.move('FAULTLOG', logFiles[0].name, 'dir1/dir2', (error, moveResult) => {
-      if (error) {
-        console.error(`Failed to move log file. Code: ${error.code}, message: ${error.message}`);
-      } else {
-        // move success.
-      }
-    });
-  }
-} catch (error) {
-    console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
-}
-```
-
+<a id="move-1"></a>
 
 ## move
 
@@ -126,4 +109,21 @@ function move(logType: string, logName: string, dest: string, callback: AsyncCal
 
 **示例**
 
-参见 [move](#move)
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+
+try {
+  let logFiles = logLibrary.list('FAULTLOG');
+  if (logFiles.length > 0) {
+    logLibrary.move('FAULTLOG', logFiles[0].name, 'dir1/dir2', (error, moveResult) => {
+      if (error) {
+        console.error(`Failed to move log file. Code: ${error.code}, message: ${error.message}`);
+      } else {
+        // move success.
+      }
+    });
+  }
+} catch (error) {
+    console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
+}
+```

@@ -58,24 +58,8 @@ adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-adminManager.getEnterpriseInfo(wantTemp).then((result) => {
-  console.info(`Succeeded in getting enterprise info, enterprise name : ${result.name}, enterprise description : ${result.description}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get enterprise info. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getenterpriseinfo-1"></a>
 
 ## getEnterpriseInfo
 
@@ -115,4 +99,20 @@ Obtains the enterprise information of the device administrator application. This
 
 **Examples**
 
-See [getEnterpriseInfo](#getenterpriseinfo)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+adminManager.getEnterpriseInfo(wantTemp).then((result) => {
+  console.info(`Succeeded in getting enterprise info, enterprise name : ${result.name}, enterprise description : ${result.description}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get enterprise info. Code: ${err.code}, message: ${err.message}`);
+});
+```

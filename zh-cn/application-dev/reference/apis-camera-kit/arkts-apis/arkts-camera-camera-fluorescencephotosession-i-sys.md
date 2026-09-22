@@ -1,5 +1,9 @@
 # FluorescencePhotoSession（系统接口）
 
+```TypeScript
+interface FluorescencePhotoSession extends Session, AutoExposure, Focus, Zoom
+```
+
 Fluorescence photo session object.
 
 **继承/实现关系：** FluorescencePhotoSession extends [Session](arkts-camera-camera-session-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)

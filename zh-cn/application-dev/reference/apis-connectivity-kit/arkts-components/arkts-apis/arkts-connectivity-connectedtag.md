@@ -22,16 +22,16 @@ import { connectedTag } from '@kit.ConnectivityKit';
 | [initialize](arkts-connectivity-connectedtag-initialize-f.md) | 初始化有源标签芯片。对有源标签进行读写操作前需调用本接口初始化一次，若想再次初始化需先调用[uninitialize](arkts-connectivity-connectedtag-uninitialize-f.md)。 |
 | [off](arkts-connectivity-connectedtag-off-f.md#offnotify) | 取消NFC场强状态事件的注册。 |
 | [on](arkts-connectivity-connectedtag-on-f.md#onnotify) | 注册NFC场强状态事件。 |
-| [read](arkts-connectivity-connectedtag-read-f.md) | 读取有源标签内容。使用Promise异步回调。 |
-| [read](arkts-connectivity-connectedtag-read-f.md) | 读取有源标签内容，使用AsyncCallback方式作为异步方法。 |
-| [readNdefTag](arkts-connectivity-connectedtag-readndeftag-f.md) | 读取有源标签内容。使用Promise异步回调。 |
-| [readNdefTag](arkts-connectivity-connectedtag-readndeftag-f.md) | 读取有源标签内容，使用AsyncCallback方式作为异步方法。 |
+| [read](arkts-connectivity-connectedtag-read-f.md#read) | 读取有源标签内容。使用Promise异步回调。 |
+| [read](arkts-connectivity-connectedtag-read-f.md#read-1) | 读取有源标签内容，使用AsyncCallback方式作为异步方法。 |
+| [readNdefTag](arkts-connectivity-connectedtag-readndeftag-f.md#readndeftag) | 读取有源标签内容。使用Promise异步回调。 |
+| [readNdefTag](arkts-connectivity-connectedtag-readndeftag-f.md#readndeftag-1) | 读取有源标签内容，使用AsyncCallback方式作为异步方法。 |
 | [uninit](arkts-connectivity-connectedtag-uninit-f.md) | 卸载有源标签芯片资源。 |
 | [uninitialize](arkts-connectivity-connectedtag-uninitialize-f.md) | 卸载有源标签芯片资源。 |
-| [write](arkts-connectivity-connectedtag-write-f.md) | 写入内容到有源标签。使用Promise异步回调。 |
-| [write](arkts-connectivity-connectedtag-write-f.md) | 写入内容到有源标签，使用AsyncCallback方式作为异步方法。 |
-| [writeNdefTag](arkts-connectivity-connectedtag-writendeftag-f.md) | 写入内容到有源标签。使用Promise异步回调。 |
-| [writeNdefTag](arkts-connectivity-connectedtag-writendeftag-f.md) | 写入内容到有源标签，使用AsyncCallback方式作为异步方法。 |
+| [write](arkts-connectivity-connectedtag-write-f.md#write) | 写入内容到有源标签。使用Promise异步回调。 |
+| [write](arkts-connectivity-connectedtag-write-f.md#write-1) | 写入内容到有源标签，使用AsyncCallback方式作为异步方法。 |
+| [writeNdefTag](arkts-connectivity-connectedtag-writendeftag-f.md#writendeftag) | 写入内容到有源标签。使用Promise异步回调。 |
+| [writeNdefTag](arkts-connectivity-connectedtag-writendeftag-f.md#writendeftag-1) | 写入内容到有源标签，使用AsyncCallback方式作为异步方法。 |
 
 ### 枚举
 

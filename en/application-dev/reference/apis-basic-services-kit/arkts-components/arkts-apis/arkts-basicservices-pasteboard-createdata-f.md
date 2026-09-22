@@ -40,6 +40,8 @@ Creates a **PasteData** object of the specified type.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 
+<a id="createdata-1"></a>
+
 ## createData
 
 ```TypeScript

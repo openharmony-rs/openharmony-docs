@@ -1,5 +1,9 @@
 # TextStyle
 
+```TypeScript
+interface TextStyle
+```
+
 Represents a text style, which controls the visual appearance attributes of text, including font, color, font size, spacing, decoration lines, and shadows. TextStyle is applied to subsequently added text content through the [pushStyle](arkts-arkgraphics2d-text-paragraphbuilder-c.md#pushstyle) method of [ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md), and works together with [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md) (which controls paragraph-level attributes). Within the same paragraph, you can call pushStyle multiple times to apply different styles to different text segments.
 
 **Since:** 12

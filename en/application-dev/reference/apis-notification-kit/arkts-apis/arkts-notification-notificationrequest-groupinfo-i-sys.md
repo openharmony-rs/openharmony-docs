@@ -1,5 +1,9 @@
 # GroupInfo (System API)
 
+```TypeScript
+export interface GroupInfo
+```
+
 Defines the group notification information.
 
 **Since:** 26.0.0

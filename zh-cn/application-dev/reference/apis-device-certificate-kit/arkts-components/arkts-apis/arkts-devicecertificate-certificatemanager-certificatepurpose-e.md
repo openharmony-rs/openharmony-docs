@@ -1,5 +1,9 @@
 # CertificatePurpose
 
+```TypeScript
+export enum CertificatePurpose
+```
+
 表示凭据用途的枚举。
 
 **起始版本：** 22

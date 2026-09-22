@@ -1,5 +1,9 @@
 # InnerEvent
 
+```TypeScript
+export interface InnerEvent
+```
+
 Describes an event to subscribe to or emit. The **EventPriority** settings do not take effect under event subscription.
 
 **Since:** 7

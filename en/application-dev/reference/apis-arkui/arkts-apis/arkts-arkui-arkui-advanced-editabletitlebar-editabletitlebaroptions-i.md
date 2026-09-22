@@ -1,5 +1,9 @@
 # EditableTitleBarOptions
 
+```TypeScript
+export declare interface EditableTitleBarOptions
+```
+
 Indicates the options of the editable title bar.
 
 **Since:** 12
@@ -22,7 +26,7 @@ Background blur style of the title bar.
 
 Default value: **BlurStyle.NONE**
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Since:** 12
 
@@ -62,7 +66,7 @@ Edges for expanding the safe area.
 
 Default value: **[SafeAreaEdge.TOP]**
 
-**Type:** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-safeareaedge-e.md)&gt;
+**Type:** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-common-comp-safeareaedge-e.md)&gt;
 
 **Since:** 12
 
@@ -82,7 +86,7 @@ Types of the expanded safe areas.
 
 Default value: **[SafeAreaType.SYSTEM]**
 
-**Type:** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-safeareatype-e.md)&gt;
+**Type:** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-common-comp-safeareatype-e.md)&gt;
 
 **Since:** 12
 

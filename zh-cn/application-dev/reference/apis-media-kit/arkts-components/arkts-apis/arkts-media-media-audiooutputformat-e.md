@@ -1,5 +1,9 @@
 # AudioOutputFormat
 
+```TypeScript
+enum AudioOutputFormat
+```
+
 
 > **说明：** 
 > 

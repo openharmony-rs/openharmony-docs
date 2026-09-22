@@ -1,5 +1,9 @@
 # AlertDialog
 
+```TypeScript
+export declare struct AlertDialog
+```
+
 操作确认类弹出框，用于在触发一个将产生严重后果的不可逆操作（如删除、重置、取消编辑、停止等）时进行确认。
 
 **起始版本：** 10
@@ -166,7 +170,7 @@ themeColorMode?: ThemeColorMode
 
 默认值：ThemeColorMode.SYSTEM
 
-**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-themecolormode-e.md)
+**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-common-comp-themecolormode-e.md)
 
 **起始版本：** 12
 

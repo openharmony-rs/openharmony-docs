@@ -58,21 +58,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.zip";
-try {
-    wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-        console.info(`success to setCustomWallpaper.`);
-    }).catch((error: BusinessError) => {
-        console.error(`Failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
-    });
-} catch (error) {
-    console.error(`Failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
-}
-```
-
+<a id="setcustomwallpaper-1"></a>
 
 ## setCustomWallpaper
 
@@ -113,4 +100,17 @@ function setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promi
 
 **示例**
 
-参见 [setCustomWallpaper](#setcustomwallpaper)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.zip";
+try {
+    wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+        console.info(`success to setCustomWallpaper.`);
+    }).catch((error: BusinessError) => {
+        console.error(`Failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+    });
+} catch (error) {
+    console.error(`Failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+}
+```

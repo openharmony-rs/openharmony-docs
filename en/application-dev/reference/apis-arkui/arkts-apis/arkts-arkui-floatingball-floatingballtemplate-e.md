@@ -1,5 +1,9 @@
 # FloatingBallTemplate
 
+```TypeScript
+enum FloatingBallTemplate
+```
+
 Enumerates the types of the floating ball template.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # RunningMultiInstanceInfo（系统接口）
 
+```TypeScript
+export interface RunningMultiInstanceInfo
+```
+
 定义多实例应用在运行态的结构信息，包含实例标识、应用UID和进程ID。通过appManager的[getRunningMultiAppInfo](arkts-ability-appmanager-getrunningmultiappinfo-f-sys.md)来获取，用于监控和管理多实例应用的运行状态。应用多实例相关开发指南请参见[创建应用多实例](../../../quick-start/multiInstance.md)。
 
 **起始版本：** 14
@@ -55,3 +59,21 @@ uid: number
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
+
+**示例**
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let bundleName = 'ohos.samples.etsclock';
+  appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
+      console.info(`getRunningMultiAppInfo success`);
+    }).catch((err: BusinessError) => {
+      console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+    });
+} catch (err: BusinessError) {
+  console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+}
+```

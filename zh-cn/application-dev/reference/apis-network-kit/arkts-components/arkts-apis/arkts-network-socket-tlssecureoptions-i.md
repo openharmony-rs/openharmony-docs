@@ -1,5 +1,9 @@
 # TLSSecureOptions
 
+```TypeScript
+export interface TLSSecureOptions
+```
+
 TLS安全相关操作。当本地证书cert和私钥key不为空时，开启双向验证模式。cert和key其中一项为空时，开启单向验证模式。
 
 **起始版本：** 9

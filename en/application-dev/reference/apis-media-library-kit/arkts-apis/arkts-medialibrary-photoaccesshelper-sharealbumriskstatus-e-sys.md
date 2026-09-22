@@ -1,8 +1,12 @@
 # ShareAlbumRiskStatus (System API)
 
+```TypeScript
+enum ShareAlbumRiskStatus
+```
+
 Enumerates the risk status of share album.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -16,7 +20,7 @@ UNDER_REVIEW = 0
 
 Under review.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -32,7 +36,7 @@ LOW_REVIEW_RISK = 1
 
 Low review risk.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -48,7 +52,7 @@ HIGH_REVIEW_RISK = 2
 
 High review risk.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

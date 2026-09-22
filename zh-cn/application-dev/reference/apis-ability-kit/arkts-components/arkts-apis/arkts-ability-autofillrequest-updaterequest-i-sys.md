@@ -1,5 +1,9 @@
 # UpdateRequest（系统接口）
 
+```TypeScript
+export interface UpdateRequest
+```
+
 自动填充更新信息。
 
 **起始版本：** 12

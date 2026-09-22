@@ -1,5 +1,9 @@
 # ExposureState
 
+```TypeScript
+enum ExposureState
+```
+
 枚举，曝光状态。
 
 **起始版本：** 26.0.0

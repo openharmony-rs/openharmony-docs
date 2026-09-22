@@ -1,5 +1,9 @@
 # RequestInfo
 
+```TypeScript
+export interface RequestInfo
+```
+
 表示发起方请求信息，作为窗口绑定模态弹框的入参。
 
 **起始版本：** 9

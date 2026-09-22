@@ -1,5 +1,9 @@
 # OptionValueType
 
+```TypeScript
+enum OptionValueType
+```
+
 Enumerates the option value types.
 
 **Since:** 20

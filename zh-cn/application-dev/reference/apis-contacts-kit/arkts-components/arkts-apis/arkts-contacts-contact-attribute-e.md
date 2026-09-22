@@ -1,5 +1,9 @@
 # Attribute
 
+```TypeScript
+enum Attribute
+```
+
 枚举，类型为number。联系人属性列表。通过JSON格式创建数据。
 
 **起始版本：** 7

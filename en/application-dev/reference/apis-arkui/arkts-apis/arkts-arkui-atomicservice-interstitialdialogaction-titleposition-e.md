@@ -1,5 +1,9 @@
 # TitlePosition
 
+```TypeScript
+export declare enum TitlePosition
+```
+
 Defines the vertical position of the title relative to the subtitle in the dialog box. By default, the title is above the subtitle.
 
 | Name| Value| Description|  

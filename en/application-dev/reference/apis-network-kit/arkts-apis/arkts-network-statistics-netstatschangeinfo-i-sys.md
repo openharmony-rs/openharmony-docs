@@ -1,5 +1,9 @@
 # NetStatsChangeInfo (System API)
 
+```TypeScript
+export interface NetStatsChangeInfo
+```
+
 Defines the NIC status and usage of an application.
 
 **Since:** 11

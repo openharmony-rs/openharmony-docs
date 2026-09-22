@@ -1,5 +1,9 @@
 # RootScene properties/events
 
+```TypeScript
+declare class RootSceneAttribute extends CommonMethod<RootSceneAttribute>
+```
+
 Defines the attribute functions of RootScene.
 
 @extends CommonMethod&lt;RootSceneAttribute&gt;

@@ -1,5 +1,9 @@
 # DecodeWithStreamOptions
 
+```TypeScript
+interface DecodeWithStreamOptions
+```
+
 Defines whether decoding follows data blocks.
 
 **Since:** 11

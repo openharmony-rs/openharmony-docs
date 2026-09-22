@@ -42,3 +42,17 @@ Unregisters the observer for cell information change events. This API uses an as
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error. |
+
+**Examples**
+
+```TypeScript
+import { radio } from '@kit.TelephonyKit';
+
+let callback: (data: Array<radio.CellInformation>) => void = (data: Array<radio.CellInformation>) => {
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
+}
+observer.on('cellInfoChange', callback);
+// You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
+observer.off('cellInfoChange', callback);
+observer.off('cellInfoChange');
+```

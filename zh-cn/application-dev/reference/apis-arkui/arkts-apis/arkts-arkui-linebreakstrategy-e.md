@@ -1,5 +1,9 @@
 # LineBreakStrategy
 
+```TypeScript
+declare enum LineBreakStrategy
+```
+
 Enum of line break strategy
 
 @enum { number }

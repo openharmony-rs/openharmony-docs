@@ -1,5 +1,9 @@
 # ParagraphBuilder
 
+```TypeScript
+class ParagraphBuilder
+```
+
 段落生成器，采用建造者模式构建段落对象。开发者通过构造函数传入[ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md)和[FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md)初始化ParagraphBuilder，然后通过[pushStyle](#pushstyle)设置文本样式、[addText](#addtext)添加文本内容，最终调用[build()](#build)接口生成[Paragraph](arkts-arkgraphics2d-text-paragraph-c.md)对象进行排版和绘制。
 
 **起始版本：** 12

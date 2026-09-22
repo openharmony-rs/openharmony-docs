@@ -1,5 +1,9 @@
 # LeadingMarginSpanDrawInfo
 
+```TypeScript
+declare interface LeadingMarginSpanDrawInfo
+```
+
 Provides the custom drawing information.
 
 **Since:** 22

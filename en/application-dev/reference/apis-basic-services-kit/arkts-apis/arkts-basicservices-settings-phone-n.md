@@ -1,5 +1,9 @@
 # phone
 
+```TypeScript
+namespace phone
+```
+
 Provides methods for setting the answering mode of incoming and outgoing calls.
 
 @namespace phone

@@ -1,5 +1,9 @@
 # SyncProgress
 
+```TypeScript
+interface SyncProgress
+```
+
 端云同步过程。
 
 **起始版本：** 12

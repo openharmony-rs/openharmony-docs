@@ -1,5 +1,9 @@
 # OIS
 
+```TypeScript
+interface OIS extends OISQuery
+```
+
 OIS (Optical Image Stabilization) interface.
 
 **继承/实现关系：** OIS extends [OISQuery](arkts-camera-camera-oisquery-i.md)

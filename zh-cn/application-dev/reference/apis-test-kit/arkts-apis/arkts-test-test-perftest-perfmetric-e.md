@@ -1,5 +1,9 @@
 # PerfMetric
 
+```TypeScript
+declare enum PerfMetric
+```
+
 框架支持采集的性能指标。
 
 > **说明：** 

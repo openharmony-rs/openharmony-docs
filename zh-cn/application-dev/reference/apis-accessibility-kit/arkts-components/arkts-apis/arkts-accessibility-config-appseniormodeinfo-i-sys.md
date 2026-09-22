@@ -1,5 +1,9 @@
 # AppSeniorModeInfo（系统接口）
 
+```TypeScript
+interface AppSeniorModeInfo
+```
+
 “长辈模式”在应用中的状态信息。
 
 **起始版本：** 26.0.0

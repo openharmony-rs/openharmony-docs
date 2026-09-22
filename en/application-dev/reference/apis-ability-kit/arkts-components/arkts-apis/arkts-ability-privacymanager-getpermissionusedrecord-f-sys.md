@@ -18,6 +18,8 @@ Obtains historical permission usage records, which can be used in permission aud
 
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -69,31 +71,8 @@ privacyManager.getPermissionUsedRecord(request).then((data) => {
 });
 ```
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let request: privacyManager.PermissionUsedRequest = {
-    'tokenId': 1, // It can be obtained through the accessTokenId field in the ApplicationInfo of the application's BundleInfo.
-    'isRemote': false,
-    'deviceId': 'device',
-    'bundleName': 'bundle',
-    'permissionNames': [],
-    'beginTime': 0,
-    'endTime': 1,
-    'flag': privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
-};
-
-// Query historical permission usage records
-privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: privacyManager.PermissionUsedResponse) => {
-  if (err) {
-    console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`getPermissionUsedRecord success, result: ${data}`);
-  }
-});
-```
-
+<a id="getpermissionusedrecord-1"></a>
 
 ## getPermissionUsedRecord
 
@@ -108,6 +87,8 @@ Obtains historical permission usage records, which can be used in permission aud
 **Since:** 9
 
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -132,4 +113,27 @@ Obtains historical permission usage records, which can be used in permission aud
 
 **Examples**
 
-See [getPermissionUsedRecord](#getpermissionusedrecord)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let request: privacyManager.PermissionUsedRequest = {
+    'tokenId': 1, // It can be obtained through the accessTokenId field in the ApplicationInfo of the application's BundleInfo.
+    'isRemote': false,
+    'deviceId': 'device',
+    'bundleName': 'bundle',
+    'permissionNames': [],
+    'beginTime': 0,
+    'endTime': 1,
+    'flag': privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
+};
+
+// Query historical permission usage records
+privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: privacyManager.PermissionUsedResponse) => {
+  if (err) {
+    console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`getPermissionUsedRecord success, result: ${data}`);
+  }
+});
+```

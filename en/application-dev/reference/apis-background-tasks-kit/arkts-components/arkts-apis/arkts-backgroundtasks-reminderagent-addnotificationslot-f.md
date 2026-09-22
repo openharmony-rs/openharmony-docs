@@ -18,7 +18,7 @@ Adds a notification slot. This API uses an asynchronous callback to return the r
 
 **Deprecated since:** 9
 
-**Substitutes:** addNotificationSlot
+**Substitutes:** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -45,19 +45,8 @@ reminderAgent.addNotificationSlot(mySlot, (err: BusinessError, data: void) => {
 });
 ```
 
-```TypeScript
-import notification from '@ohos.notification';
-import reminderAgent from '@ohos.reminderAgent';
-import { NotificationSlot } from './notification/notificationSlot';
 
-let mySlot:NotificationSlot = {
-  type: notification.SlotType.SOCIAL_COMMUNICATION
-}
-reminderAgent.addNotificationSlot(mySlot).then(() => {
-  console.info("addNotificationSlot promise");
-});
-```
-
+<a id="addnotificationslot-1"></a>
 
 ## addNotificationSlot
 
@@ -71,7 +60,7 @@ Adds a notification slot. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** addNotificationSlot
+**Substitutes:** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -89,4 +78,15 @@ Adds a notification slot. This API uses a promise to return the result.
 
 **Examples**
 
-See [addNotificationSlot](#addnotificationslot)
+```TypeScript
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
+import { NotificationSlot } from './notification/notificationSlot';
+
+let mySlot:NotificationSlot = {
+  type: notification.SlotType.SOCIAL_COMMUNICATION
+}
+reminderAgent.addNotificationSlot(mySlot).then(() => {
+  console.info("addNotificationSlot promise");
+});
+```

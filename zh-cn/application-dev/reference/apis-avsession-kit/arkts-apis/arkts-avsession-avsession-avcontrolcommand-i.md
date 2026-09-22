@@ -1,5 +1,9 @@
 # AVControlCommand
 
+```TypeScript
+interface AVControlCommand
+```
+
 会话接受的命令的对象描述。
 
 @interface AVControlCommand [since 10 - 11]

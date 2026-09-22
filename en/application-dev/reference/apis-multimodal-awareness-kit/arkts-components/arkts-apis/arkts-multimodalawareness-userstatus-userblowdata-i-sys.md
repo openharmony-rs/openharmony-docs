@@ -1,5 +1,9 @@
 # UserBlowData (System API)
 
+```TypeScript
+export interface UserBlowData extends UserStatusData
+```
+
 Defines user blow data.
 
 **Inheritance/Implementation:** UserBlowData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

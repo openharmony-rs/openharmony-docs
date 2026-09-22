@@ -12,9 +12,9 @@ import { fontManager } from '@kit.LocalizationKit';
 function uninstallScopeFont(url: string): Promise<void>
 ```
 
-Uninstalls a scope font file from the system font library by URL. This API uses a promise to return the result.
+Uninstall installed application-level or session-level fonts based on the font path. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.UPDATE_SCOPE_FONT
 

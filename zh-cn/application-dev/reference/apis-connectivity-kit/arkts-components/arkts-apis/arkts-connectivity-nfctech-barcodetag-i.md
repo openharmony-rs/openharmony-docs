@@ -1,5 +1,9 @@
 # BarcodeTag
 
+```TypeScript
+export interface BarcodeTag extends TagSession
+```
+
 BarcodeTag提供读取条形码标签的属性和访问I/O操作的能力，继承自TagSession。
 
 TagSession是所有NFC Tag 技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-tagsession-i.md)。

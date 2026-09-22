@@ -1,5 +1,9 @@
 # HolidayLocalName
 
+```TypeScript
+export interface HolidayLocalName
+```
+
 节假日名称在不同语言下的翻译。
 
 **起始版本：** 11

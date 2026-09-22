@@ -1,5 +1,9 @@
 # BackForwardCacheOptions
 
+```TypeScript
+class BackForwardCacheOptions
+```
+
 Implements a **BackForwardCacheOptions** object to set back-forward cache options of the **Web** component.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # ProxySchemeFilter
 
+```TypeScript
+enum ProxySchemeFilter
+```
+
 Enumerates the schemes that use the proxy.
 
 **Since:** 15

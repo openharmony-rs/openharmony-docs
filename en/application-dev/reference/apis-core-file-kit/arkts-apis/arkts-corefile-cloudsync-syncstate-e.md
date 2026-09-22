@@ -1,5 +1,9 @@
 # SyncState
 
+```TypeScript
+enum SyncState
+```
+
 Enumerates the device-cloud sync states.
 
 > **NOTE:** 

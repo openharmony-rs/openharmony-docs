@@ -1,5 +1,9 @@
 # AuthState (System API)
 
+```TypeScript
+enum AuthState
+```
+
 Indicates the screen lock authentication state.
 
 @enum { int }

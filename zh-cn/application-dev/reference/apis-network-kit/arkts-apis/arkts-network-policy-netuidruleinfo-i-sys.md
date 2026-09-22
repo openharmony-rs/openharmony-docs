@@ -1,5 +1,9 @@
 # NetUidRuleInfo（系统接口）
 
+```TypeScript
+export interface NetUidRuleInfo
+```
+
 生成网络唯一标识。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # PhotoCreationSource (System API)
 
+```TypeScript
+interface PhotoCreationSource
+```
+
 Defines the application information provided to create assets on behalf of the application.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # CharacteristicReadRequest
 
+```TypeScript
+interface CharacteristicReadRequest
+```
+
 描述server端订阅client端读特征值请求事件后，接收到的事件参数结构。
 
 **起始版本：** 10

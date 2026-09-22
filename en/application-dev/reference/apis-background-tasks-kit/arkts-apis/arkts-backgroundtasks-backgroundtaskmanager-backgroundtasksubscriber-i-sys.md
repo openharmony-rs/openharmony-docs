@@ -1,5 +1,9 @@
 # BackgroundTaskSubscriber (System API)
 
+```TypeScript
+export interface BackgroundTaskSubscriber
+```
+
 Represents a listener object used to listen for background task state changes.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # HuksExternalCryptoTag
 
+```TypeScript
+export enum HuksExternalCryptoTag
+```
+
 Enumerates the tags used to invoke parameters.
 
 **Since:** 22

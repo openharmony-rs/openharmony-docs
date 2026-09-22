@@ -65,28 +65,8 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 })
 ```
 
-```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
-  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
-}).catch((error: BusinessError) => {
-  console.error(`error code: ${error.code}, error msg: ${error.message}`);
-})
-```
-
-```TypeScript
-import { hidebug } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
-  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
-}).catch((error: BusinessError) => {
-  console.error(`error code: ${error.code}, error msg: ${error.message}`);
-})
-```
-
+<a id="dumpjsrawheapdata-1"></a>
 
 ## dumpJsRawHeapData
 
@@ -140,8 +120,19 @@ Dumps the original heap snapshot of the VM for the current thread and clears the
 
 **Examples**
 
-See [dumpJsRawHeapData](#dumpjsrawheapdata)
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+
+<a id="dumpjsrawheapdata-2"></a>
 
 ## dumpJsRawHeapData
 
@@ -196,4 +187,13 @@ Dumps the original heap snapshot of the VM for the current thread or the process
 
 **Examples**
 
-See [dumpJsRawHeapData](#dumpjsrawheapdata)
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```

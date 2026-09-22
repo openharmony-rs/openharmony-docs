@@ -1,5 +1,9 @@
 # PermissionUsedType (System API)
 
+```TypeScript
+enum PermissionUsedType
+```
+
 Enumerates the means for using a sensitive permission.
 
 | Name | Value| Description |  
@@ -24,6 +28,8 @@ Sensitive resources are accessed with the declared permission or permission gran
 
 **Since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -38,6 +44,8 @@ Sensitive resources are accessed through a picker.
 
 **Since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -51,6 +59,8 @@ SECURITY_COMPONENT_TYPE = 2
 Sensitive resources are accessed through a security component.
 
 **Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 

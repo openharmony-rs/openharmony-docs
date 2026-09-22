@@ -1,5 +1,9 @@
 # NotifyDescription
 
+```TypeScript
+interface NotifyDescription
+```
+
 企业自定义更新通知说明。
 
 **起始版本：** 12

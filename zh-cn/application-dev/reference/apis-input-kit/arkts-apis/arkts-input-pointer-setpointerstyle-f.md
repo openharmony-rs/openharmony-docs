@@ -72,6 +72,42 @@ struct Index {
 }
 ```
 
+
+<a id="setpointerstyle-1"></a>
+
+## setPointerStyle
+
+```TypeScript
+function setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise<void>
+```
+
+设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcursor)，使用Promise异步回调。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| windowId | number | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md)获取。 |
+| pointerStyle | [PointerStyle](arkts-input-pointer-pointerstyle-e.md) | 是 | 鼠标样式。不能传入DEVELOPER_DEFINED_ICON作为参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
 ```TypeScript
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -111,39 +147,3 @@ struct Index {
   }
 }
 ```
-
-
-## setPointerStyle
-
-```TypeScript
-function setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise<void>
-```
-
-设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcursor)，使用Promise异步回调。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| windowId | number | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md)获取。 |
-| pointerStyle | [PointerStyle](arkts-input-pointer-pointerstyle-e.md) | 是 | 鼠标样式。不能传入DEVELOPER_DEFINED_ICON作为参数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**
-
-参见 setPointerStyle

@@ -56,21 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  systemTime.setTimezone('Asia/Shanghai').then(() => {
-    console.info(`Succeeded in setting timezone.`);
-  }).catch((error: BusinessError) => {
-    console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
-}
-```
-
+<a id="settimezone-1"></a>
 
 ## setTimezone
 
@@ -110,4 +97,17 @@ function setTimezone(timezone: string): Promise<void>
 
 **示例**
 
-参见 [setTimezone](#settimezone)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemTime.setTimezone('Asia/Shanghai').then(() => {
+    console.info(`Succeeded in setting timezone.`);
+  }).catch((error: BusinessError) => {
+    console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
+}
+```

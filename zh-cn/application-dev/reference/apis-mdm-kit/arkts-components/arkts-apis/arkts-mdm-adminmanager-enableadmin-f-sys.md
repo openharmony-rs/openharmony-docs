@@ -70,52 +70,8 @@ adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let enterpriseInfo: adminManager.EnterpriseInfo = {
-  // 需根据实际情况进行替换
-  name: 'enterprise name',
-  description: 'enterprise description'
-};
-
-adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100, (err) => {
-  if (err) {
-    console.error(`Failed to enable admin. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in enabling admin');
-});
-```
-
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let enterpriseInfo: adminManager.EnterpriseInfo = {
-  // 需根据实际情况进行替换
-  name: 'enterprise name',
-  description: 'enterprise description'
-};
-
-adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100).catch(
-  (err: BusinessError) => {
-    console.error(`Failed to enable admin. Code: ${err.code}, message: ${err.message}`);
-  });
-```
-
+<a id="enableadmin-1"></a>
 
 ## enableAdmin
 
@@ -158,8 +114,32 @@ function enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminTyp
 
 **示例**
 
-参见 [enableAdmin](#enableadmin)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // 需根据实际情况进行替换
+  name: 'enterprise name',
+  description: 'enterprise description'
+};
+
+adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100, (err) => {
+  if (err) {
+    console.error(`Failed to enable admin. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in enabling admin');
+});
+```
+
+
+<a id="enableadmin-2"></a>
 
 ## enableAdmin
 
@@ -207,4 +187,24 @@ function enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminTyp
 
 **示例**
 
-参见 [enableAdmin](#enableadmin)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // 需根据实际情况进行替换
+  name: 'enterprise name',
+  description: 'enterprise description'
+};
+
+adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100).catch(
+  (err: BusinessError) => {
+    console.error(`Failed to enable admin. Code: ${err.code}, message: ${err.message}`);
+  });
+```

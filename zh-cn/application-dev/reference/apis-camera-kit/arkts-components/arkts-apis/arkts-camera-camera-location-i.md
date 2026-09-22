@@ -1,5 +1,9 @@
 # Location
 
+```TypeScript
+interface Location
+```
+
 图片地理位置信息。
 
 **起始版本：** 10

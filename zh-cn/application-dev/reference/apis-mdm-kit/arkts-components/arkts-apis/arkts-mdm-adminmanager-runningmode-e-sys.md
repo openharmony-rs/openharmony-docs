@@ -1,5 +1,9 @@
 # RunningMode（系统接口）
 
+```TypeScript
+export enum RunningMode
+```
+
 设备管理的运行模式。
 
 **起始版本：** 19

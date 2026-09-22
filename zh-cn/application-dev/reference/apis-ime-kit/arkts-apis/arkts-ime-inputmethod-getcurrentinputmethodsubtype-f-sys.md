@@ -6,6 +6,8 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="getcurrentinputmethodsubtype-1"></a>
+
 ## getCurrentInputMethodSubtype
 
 ```TypeScript
@@ -45,12 +47,6 @@ function getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
 | [12800025](../errorcode-inputmethod-framework.md#12800025-跨用户操作被拒绝) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
 **示例**
-
-```TypeScript
-import { InputMethodSubtype } from '@kit.IMEKit';
-
-let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
-```
 
 ```TypeScript
 import { InputMethodSubtype } from '@kit.IMEKit';

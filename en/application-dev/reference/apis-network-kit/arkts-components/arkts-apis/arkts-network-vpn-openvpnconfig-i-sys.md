@@ -1,5 +1,9 @@
 # OpenVpnConfig (System API)
 
+```TypeScript
+export interface OpenVpnConfig extends SysVpnConfig
+```
+
 Define configuration of the open VPN network.
 
 **Inheritance/Implementation:** OpenVpnConfig extends [SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)

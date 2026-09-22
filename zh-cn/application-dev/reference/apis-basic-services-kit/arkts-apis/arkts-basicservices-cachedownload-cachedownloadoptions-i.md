@@ -1,5 +1,9 @@
 # CacheDownloadOptions
 
+```TypeScript
+interface CacheDownloadOptions
+```
+
 缓存下载的配置选项。包括HTTP选项、传输选项和任务选项。
 
 **起始版本：** 18

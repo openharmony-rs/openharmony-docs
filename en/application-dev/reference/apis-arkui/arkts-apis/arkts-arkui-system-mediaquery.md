@@ -1,4 +1,4 @@
-# @system.mediaquery
+# @system.mediaquery(Media Query)
 
 The **mediaquery** module provides different styles for different media types.
 

@@ -1,0 +1,21 @@
+# PluginErrorCallback（系统接口）
+
+```TypeScript
+declare type PluginErrorCallback = (info: PluginErrorData) => void
+```
+
+发生错误时触发事件回调。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| info | [PluginErrorData](arkts-arkui-plugincomponent-comp-pluginerrordata-i-sys.md) | 是 | 插件错误数据 |

@@ -1,5 +1,9 @@
 # MaterialLevel
 
+```TypeScript
+enum MaterialLevel
+```
+
 材质等级枚举，表示设备的算力等级。可通过[uiMaterial.getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md)获取当前设备的材质等级。
 
 **起始版本：** 26.0.0

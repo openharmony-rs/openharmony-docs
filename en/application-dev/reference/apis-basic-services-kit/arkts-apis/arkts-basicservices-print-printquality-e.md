@@ -1,5 +1,9 @@
 # PrintQuality
 
+```TypeScript
+enum PrintQuality
+```
+
 Enumerates the print qualities.
 
 **Since:** 14

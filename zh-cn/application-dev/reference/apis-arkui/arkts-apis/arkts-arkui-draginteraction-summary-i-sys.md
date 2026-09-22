@@ -1,5 +1,9 @@
 # Summary（系统接口）
 
+```TypeScript
+interface Summary
+```
+
 拖拽对象的数据摘要。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # NetworkCapabilityType（系统接口）
 
+```TypeScript
+export enum NetworkCapabilityType
+```
+
 Enum for network capability type.
 
 **起始版本：** 10

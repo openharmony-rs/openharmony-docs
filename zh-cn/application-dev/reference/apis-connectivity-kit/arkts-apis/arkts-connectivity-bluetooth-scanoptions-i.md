@@ -1,5 +1,9 @@
 # ScanOptions
 
+```TypeScript
+interface ScanOptions
+```
+
 扫描的配置参数。
 
 从API version 7开始支持，从API version 9开始废弃。

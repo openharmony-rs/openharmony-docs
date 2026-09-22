@@ -1,5 +1,9 @@
 # CloudAssetDownloadProgressInfo（系统接口）
 
+```TypeScript
+interface CloudAssetDownloadProgressInfo
+```
+
 批量下载进度信息。
 
 **起始版本：** 21

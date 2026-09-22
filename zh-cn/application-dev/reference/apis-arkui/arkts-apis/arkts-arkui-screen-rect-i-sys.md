@@ -1,5 +1,9 @@
 # Rect（系统接口）
 
+```TypeScript
+interface Rect
+```
+
 矩形信息。
 
 **起始版本：** 19

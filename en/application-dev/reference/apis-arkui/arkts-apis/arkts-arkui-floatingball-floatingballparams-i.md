@@ -1,5 +1,9 @@
 # FloatingBallParams
 
+```TypeScript
+interface FloatingBallParams
+```
+
 Describes the parameters for starting and updating the floating ball.
 
 **Since:** 20

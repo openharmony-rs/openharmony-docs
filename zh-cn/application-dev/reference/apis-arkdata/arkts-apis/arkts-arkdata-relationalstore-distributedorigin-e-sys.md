@@ -1,5 +1,9 @@
 # DistributedOrigin（系统接口）
 
+```TypeScript
+enum DistributedOrigin
+```
+
 表示数据来源。请使用枚举名称而非枚举值。
 
 **起始版本：** 24

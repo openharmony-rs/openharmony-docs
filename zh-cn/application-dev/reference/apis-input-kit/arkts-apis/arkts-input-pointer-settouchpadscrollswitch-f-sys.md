@@ -65,33 +65,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置触摸板滚动开关
-            pointer.setTouchpadScrollSwitch(false).then(() => {
-              console.info(`Succeeded in setting touchpad scroll switch.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="settouchpadscrollswitch-1"></a>
 
 ## setTouchpadScrollSwitch
 
@@ -128,4 +103,29 @@ function setTouchpadScrollSwitch(state: boolean): Promise<void>
 
 **示例**
 
-参见 [setTouchpadScrollSwitch](#settouchpadscrollswitch)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板滚动开关
+            pointer.setTouchpadScrollSwitch(false).then(() => {
+              console.info(`Succeeded in setting touchpad scroll switch.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

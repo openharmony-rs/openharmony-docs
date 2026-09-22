@@ -1,5 +1,9 @@
 # CmsEnvelopedDecryptionConfig
 
+```TypeScript
+interface CmsEnvelopedDecryptionConfig
+```
+
 CMS解封装的配置。
 
 **起始版本：** 22

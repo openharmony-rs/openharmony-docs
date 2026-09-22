@@ -1,5 +1,9 @@
 # TextStyleInterface
 
+```TypeScript
+declare interface TextStyleInterface
+```
+
 TextStyleInterface
 
 **Since:** 12

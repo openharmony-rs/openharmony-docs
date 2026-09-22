@@ -1,5 +1,9 @@
 # ElementAttributeValues
 
+```TypeScript
+export interface ElementAttributeValues
+```
+
 节点元素具备的属性名称及属性值类型信息。
 
 **起始版本：** 9

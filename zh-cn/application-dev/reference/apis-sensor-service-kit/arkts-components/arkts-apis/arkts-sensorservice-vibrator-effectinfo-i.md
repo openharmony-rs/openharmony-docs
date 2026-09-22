@@ -1,5 +1,9 @@
 # EffectInfo
 
+```TypeScript
+interface EffectInfo
+```
+
 查询的预置效果信息。通过[vibrator.getEffectInfoSync](arkts-sensorservice-vibrator-geteffectinfosync-f.md)返回此对象，用于判断预置振动效果是否受指定设备的指定马达支持。
 
 **起始版本：** 19

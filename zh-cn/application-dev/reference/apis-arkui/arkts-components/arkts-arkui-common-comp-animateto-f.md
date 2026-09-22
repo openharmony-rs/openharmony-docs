@@ -6,11 +6,11 @@
 declare function animateTo(value: AnimateParam, event: () => void): void
 ```
 
-显式动画接口。在需要动画时，显式调用该接口改变状态以产生动画。对于改变布局类属性（如宽高）的动画，内容通常会直接跳转到最终状态，如果希望内容跟随宽高变化，可以使用[renderFit](arkts-arkui-commonmethod-c.md#renderfit)属性进行配置。
+显式动画接口。在需要动画时，显式调用该接口改变状态以产生动画。对于改变布局类属性（如宽高）的动画，内容通常会直接跳转到最终状态，如果希望内容跟随宽高变化，可以使用[renderFit](arkts-arkui-common-comp-commonmethod-c.md#renderfit)属性进行配置。
 
 > **说明：** 
 > 
-> - 从API version 10开始，可以通过使用[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中的animateTo来明确UI的执行上下文。
+> - 从API version 10开始，可以通过使用[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中的[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)来明确UI的执行上下文。
 > 
 > - 不推荐在aboutToAppear、aboutToDisappear中调用动画。
 > 
@@ -18,9 +18,9 @@ declare function animateTo(value: AnimateParam, event: () => void): void
 > 
 > - 执行aboutToDisappear时，组件即将销毁，不能在aboutToDisappear里面做动画。
 > 
-> - 在组件出现和消失时，可以通过组件内转场添加动画效果。
+> - 在组件出现和消失时，可以通过[组件内转场](arkts-arkui-common-comp.md#common)添加动画效果。
 > 
-> - 组件内转场不支持的属性，可以参考[示例2](arkts-arkui-commonmethod-c.md)，使用animateTo实现动画执行结束后组件消失的效果。
+> - 组件内转场不支持的属性，可以参考[示例2](arkts-arkui-common-comp-commonmethod-c.md)，使用animateTo实现动画执行结束后组件消失的效果。
 > 
 > - 某些场景下，在[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
 
@@ -40,5 +40,5 @@ declare function animateTo(value: AnimateParam, event: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 |  |
+| value | [AnimateParam](arkts-arkui-common-comp-animateparam-i.md) | 是 |  |
 | event | () =&gt; void | 是 |  |

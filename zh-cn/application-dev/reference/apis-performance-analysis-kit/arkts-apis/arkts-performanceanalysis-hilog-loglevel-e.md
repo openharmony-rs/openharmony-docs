@@ -1,5 +1,9 @@
 # LogLevel
 
+```TypeScript
+enum LogLevel
+```
+
 日志级别。
 
 **起始版本：** 7

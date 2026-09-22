@@ -14,7 +14,7 @@ function createWindow(config: Configuration, callback: AsyncCallback<Window>): v
 
 创建子窗口或者系统窗口，使用callback异步回调。
 
-非自由窗口状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)。
+非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -82,34 +82,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    let windowClass: window.Window | undefined = undefined;
-    let config: window.Configuration = {
-      name: 'test',
-      windowType: window.WindowType.TYPE_DIALOG,
-      ctx: this.context
-    };
-    try {
-      window.createWindow(config).then((value:window.Window) => {
-        console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
-        windowClass = value;
-        windowClass.resize(500, 1000);
-      }).catch((err:BusinessError) => {
-        console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (exception) {
-      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
-  }
-}
-```
-
+<a id="createwindow-1"></a>
 
 ## createWindow
 
@@ -119,7 +93,7 @@ function createWindow(config: Configuration): Promise<Window>
 
 创建子窗口或者系统窗口，使用Promise异步回调。
 
-非自由窗口状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)。
+非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-arkui-window-configuration-i.md)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -161,4 +135,30 @@ function createWindow(config: Configuration): Promise<Window>
 
 **示例**
 
-参见 createWindow
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: 'test',
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config).then((value:window.Window) => {
+        console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
+        windowClass = value;
+        windowClass.resize(500, 1000);
+      }).catch((err:BusinessError) => {
+        console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```

@@ -1,5 +1,9 @@
 # DownloadableProfile
 
+```TypeScript
+export interface DownloadableProfile
+```
+
 可下载的配置文件。
 
 **起始版本：** 18

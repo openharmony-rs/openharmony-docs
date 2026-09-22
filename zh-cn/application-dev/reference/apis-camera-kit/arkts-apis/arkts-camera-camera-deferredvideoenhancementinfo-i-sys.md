@@ -1,5 +1,9 @@
 # DeferredVideoEnhancementInfo（系统接口）
 
+```TypeScript
+interface DeferredVideoEnhancementInfo
+```
+
 Deferred video enhancement info.
 
 **起始版本：** 13

@@ -1,5 +1,9 @@
 # DeviceRemindType（系统接口）
 
+```TypeScript
+export enum DeviceRemindType
+```
+
 通知提醒方式。
 
 **起始版本：** 8

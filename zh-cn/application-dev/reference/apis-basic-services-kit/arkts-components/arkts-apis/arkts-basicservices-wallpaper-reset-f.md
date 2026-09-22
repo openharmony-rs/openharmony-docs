@@ -46,16 +46,8 @@ wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError)
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-    console.info(`success to reset.`);
-}).catch((error: BusinessError) => {
-    console.error(`Failed to reset. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="reset-1"></a>
 
 ## reset
 
@@ -90,4 +82,12 @@ function reset(wallpaperType: WallpaperType): Promise<void>
 
 **示例**
 
-参见 [reset](#reset)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+    console.info(`success to reset.`);
+}).catch((error: BusinessError) => {
+    console.error(`Failed to reset. Code: ${error.code}, message: ${error.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # DevicePowerMode
 
+```TypeScript
+export enum DevicePowerMode
+```
+
 Enumerates power modes.
 
 **Since:** 9

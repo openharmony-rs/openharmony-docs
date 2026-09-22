@@ -1,5 +1,9 @@
 # ColorEffect（系统接口）
 
+```TypeScript
+interface ColorEffect extends ColorEffectQuery
+```
+
 ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md) Provides the APIs to obtain and set the lens color effect.
 
 **继承/实现关系：** ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md)

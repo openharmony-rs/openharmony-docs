@@ -1,5 +1,9 @@
 # Color4f
 
+```TypeScript
+interface Color4f
+```
+
 Describes a color in ARGB format.
 
 **Since:** 20

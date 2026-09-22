@@ -1,5 +1,9 @@
 # SettingsForAccount
 
+```TypeScript
+enum SettingsForAccount
+```
+
 Enumerates user setting items.
 
 **Since:** 26.0.0

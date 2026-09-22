@@ -1,5 +1,9 @@
 # ListItem properties/events
 
+```TypeScript
+declare class ListItemAttribute extends CommonMethod<ListItemAttribute>
+```
+
 In addition to the universal attributes, the following attributes are supported.
 
 **Inheritance/Implementation:** ListItemAttribute extends CommonMethod<ListItemAttribute>
@@ -20,13 +24,15 @@ Sets whether to enable edit mode, where the list item can be deleted or moved.
 
 **Deprecated since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean &#124; [EditMode](arkts-arkui-editmode-e.md) | Yes |  |
+| value | boolean &#124; [EditMode](arkts-arkui-listitem-comp-editmode-e.md) | Yes |  |
 
 ## onSelect
 
@@ -37,6 +43,8 @@ onSelect(event: (isSelected: boolean) => void)
 Triggered when the selected state of the list item for multiselect changes.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -60,6 +68,8 @@ Sets whether the list item is selectable for multiselect. This attribute takes e
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -78,7 +88,7 @@ Sets whether the list item is selectable for multiselect. This attribute takes e
 selected(value: boolean)
 ```
 
-Sets whether the list item is selected. This attribute supports two-way binding through &#36;&#36;. This attribute must be used before the polymorphic style is set. Otherwise, the style settings will not take effect.
+Sets whether the list item is selected. This attribute supports two-way binding through $$. This attribute must be used before the polymorphic style is set. Otherwise, the style settings will not take effect.
 
 **Since:** 10
 
@@ -110,13 +120,15 @@ Sets the sticky effect of the list item.
 
 **Substitutes:** sticky
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Sticky](arkts-arkui-sticky-e.md) | Yes |  |
+| value | [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | Yes |  |
 
 ## swipeAction
 
@@ -128,6 +140,8 @@ Sets the swipe action item displayed when the list item is swiped out from the s
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -136,4 +150,4 @@ Sets the swipe action item displayed when the list item is swiped out from the s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SwipeActionOptions](arkts-arkui-swipeactionoptions-i.md) | Yes | Swipe action item displayed when the list item is swiped out from the screen edge. |
+| value | [SwipeActionOptions](arkts-arkui-listitem-comp-swipeactionoptions-i.md) | Yes | Swipe action item displayed when the list item is swiped out from the screen edge. |

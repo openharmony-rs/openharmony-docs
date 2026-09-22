@@ -1,5 +1,9 @@
 # ChipGroupV2IconItemConfig
 
+```TypeScript
+export interface ChipGroupV2IconItemConfig
+```
+
 ChipGroupV2IconItemConfig定义了尾部图标项的配置，用于设置尾部图标的样式、交互和无障碍属性。
 
 **起始版本：** 26.0.0

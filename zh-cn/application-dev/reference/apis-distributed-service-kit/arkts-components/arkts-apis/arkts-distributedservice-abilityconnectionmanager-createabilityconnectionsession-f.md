@@ -48,10 +48,117 @@ function createAbilityConnectionSession(serviceName: string, context: Context, p
 
 **示例**
 
-```TypeScript
 在设备A上，调用createAbilityConnectionSession()接口创建协同会话并返回sessionId。
-```
 
 ```TypeScript
+import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let dmClass: distributedDeviceManager.DeviceManager;
+
+function initDmClass(): void {
+  try {
+    dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
+  } catch (err) {
+    hilog.error(0x0000, 'testTag', 'createDeviceManager err: ' + JSON.stringify(err));
+  }
+}
+
+function getRemoteDeviceId(): string | undefined {
+  initDmClass();
+  if (typeof dmClass === 'object' && dmClass !== null) {
+    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
+    let list = dmClass.getAvailableDeviceListSync();
+    if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
+      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
+      return;
+    }
+    if (list.length === 0) {
+      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      return;
+    }
+    return list[0].networkId;
+  } else {
+    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    return;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  createSession(): void {
+    // 定义peer信息
+    const peerInfo: abilityConnectionManager.PeerInfo = {
+      deviceId: getRemoteDeviceId()!,
+      bundleName: 'com.example.remotephotodemo',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      serviceName: 'collabTest'
+    };
+     const myRecord: Record<string, string> = {
+       'newKey1': 'value1',
+     };
+
+    // 定义连接选项
+    const connectOptions: abilityConnectionManager.ConnectOptions = {
+      needSendData: true,
+      startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
+      parameters: myRecord
+    };
+    let context = this.getUIContext().getHostContext();
+    try {
+      let sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", context, peerInfo, connectOptions);
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is', sessionId);
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', error);
+    }
+  }
+
+  build() {
+  }
+}
+```
+
 在设备B上，对于createAbilityConnectionSession接口的调用，可在应用被拉起后触发协同生命周期函数onCollaborate时，在onCollaborate内进行。
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+    let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
+    this.onCollab(param);
+    return 0;
+  }
+
+  onCollab(collabParam: Record<string, Object>) {
+    const sessionId = this.createSessionFromWant(collabParam);
+    if (sessionId == -1) {
+      hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+      return;
+    }
+  }
+
+  createSessionFromWant(collabParam: Record<string, Object>): number {
+    let sessionId = -1;
+    const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
+    if (peerInfo == undefined) {
+      return sessionId;
+    }
+
+    const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
+    try {
+      sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
+      AppStorage.setOrCreate('sessionId', sessionId);
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', error);
+    }
+    return sessionId;
+  }
+}
 ```

@@ -1,5 +1,9 @@
 # UserStatusAtomicCap (System API)
 
+```TypeScript
+export enum UserStatusAtomicCap
+```
+
 Enumerates user status atomic capabilities.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ToolBarV2ItemImageOptions
 
+```TypeScript
+export interface ToolBarV2ItemImageOptions
+```
+
 Declare the options of ToolBarV2ItemImage
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # SymbolDateTimeFormatOptions
 
+```TypeScript
+export interface SymbolDateTimeFormatOptions extends Intl.DateTimeFormatOptions
+```
+
 创建自定义符号时间日期格式化对象时的可选配置项。继承自Intl.DateTimeFormatOptions，支持Intl.DateTimeFormatOptions的所有配置项，并且功能与其一致。
 
 **继承/实现关系：** SymbolDateTimeFormatOptions extends Intl.DateTimeFormatOptions

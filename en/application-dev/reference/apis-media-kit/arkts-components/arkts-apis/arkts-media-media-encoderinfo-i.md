@@ -1,5 +1,9 @@
 # EncoderInfo
 
+```TypeScript
+interface EncoderInfo
+```
+
 Describes the information about an encoder.
 
 **Since:** 11

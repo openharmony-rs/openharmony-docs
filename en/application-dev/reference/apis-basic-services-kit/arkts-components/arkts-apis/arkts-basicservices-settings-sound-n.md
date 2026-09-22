@@ -1,5 +1,9 @@
 # sound
 
+```TypeScript
+namespace sound
+```
+
 Provides methods for setting the sound effect, including the ringtone, dial tone, alarm sound, notification tone, and haptic feedback.
 
 @namespace sound

@@ -1,5 +1,9 @@
 # WorkerOptions
 
+```TypeScript
+export interface WorkerOptions
+```
+
 Provides options that can be set for the Worker instance to create.
 
 **Since:** 7

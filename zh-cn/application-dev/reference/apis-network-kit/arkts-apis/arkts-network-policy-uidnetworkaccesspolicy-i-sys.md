@@ -1,5 +1,9 @@
 # UidNetworkAccessPolicy（系统接口）
 
+```TypeScript
+export interface UidNetworkAccessPolicy
+```
+
 应用标识以及对应应用连接网络的策略。
 
 **起始版本：** 12

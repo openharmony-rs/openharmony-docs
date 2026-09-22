@@ -1,5 +1,9 @@
 # HidDeviceSdp
 
+```TypeScript
+interface HidDeviceSdp
+```
+
 Describe the HID device capability fields of this endpoint being queried.
 
 **Since:** 23

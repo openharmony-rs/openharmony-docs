@@ -1,5 +1,9 @@
 # LineMetrics
 
+```TypeScript
+interface LineMetrics
+```
+
 描述文本布局中单行文字的度量信息。
 
 **起始版本：** 12

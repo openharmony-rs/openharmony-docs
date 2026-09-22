@@ -1,5 +1,9 @@
 # TypedPropertyDescriptor
 
+```TypeScript
+interface TypedPropertyDescriptor<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # AlertDialogV2
 
+```TypeScript
+export declare struct AlertDialogV2
+```
+
 操作确认类弹出框。当触发一个将产生严重后果的不可逆操作时，如删除、重置、取消编辑、停止等，会触发该类弹出框提示。
 
 **起始版本：** 18

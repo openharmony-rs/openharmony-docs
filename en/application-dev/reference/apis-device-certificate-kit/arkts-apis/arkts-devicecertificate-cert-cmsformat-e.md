@@ -1,5 +1,9 @@
 # CmsFormat
 
+```TypeScript
+enum CmsFormat
+```
+
 Enumerates the CMS encoding formats.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # AppSchema（系统接口）
 
+```TypeScript
+export interface AppSchema
+```
+
 应用数据库模式。
 
 **起始版本：** 11

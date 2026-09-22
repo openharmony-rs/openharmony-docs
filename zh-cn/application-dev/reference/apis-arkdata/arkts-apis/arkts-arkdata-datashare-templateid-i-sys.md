@@ -1,5 +1,9 @@
 # TemplateId（系统接口）
 
+```TypeScript
+interface TemplateId
+```
+
 标记模板的数据结构，TemplateId是在[addTemplate](arkts-arkdata-datashare-datasharehelper-i-sys.md#addtemplate)中自动生成的，在[addTemplate](arkts-arkdata-datashare-datasharehelper-i-sys.md#addtemplate)后，可以使用模板id来标记模板。
 
 **起始版本：** 10

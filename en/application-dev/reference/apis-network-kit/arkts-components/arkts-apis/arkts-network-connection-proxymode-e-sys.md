@@ -1,5 +1,9 @@
 # ProxyMode (System API)
 
+```TypeScript
+export enum ProxyMode
+```
+
 Enumerates the proxy modes. This API uses a promise to return the result.
 
 **Since:** 20

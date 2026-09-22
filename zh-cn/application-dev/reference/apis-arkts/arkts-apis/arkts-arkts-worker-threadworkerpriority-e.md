@@ -1,5 +1,9 @@
 # ThreadWorkerPriority
 
+```TypeScript
+export enum ThreadWorkerPriority
+```
+
 Worker线程的优先级枚举，各优先级对应关系请参考QoS等级定义。
 
 **起始版本：** 18

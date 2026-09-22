@@ -1,5 +1,9 @@
 # CustomCursor
 
+```TypeScript
+interface CustomCursor
+```
+
 自定义光标资源。
 
 **起始版本：** 15

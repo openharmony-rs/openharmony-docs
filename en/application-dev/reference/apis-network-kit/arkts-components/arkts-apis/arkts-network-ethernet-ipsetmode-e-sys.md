@@ -1,5 +1,9 @@
 # IPSetMode (System API)
 
+```TypeScript
+export enum IPSetMode
+```
+
 Defines the configuration mode of the Ethernet connection.
 
 **Since:** 9

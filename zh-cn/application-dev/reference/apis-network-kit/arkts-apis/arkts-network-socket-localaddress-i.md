@@ -1,5 +1,9 @@
 # LocalAddress
 
+```TypeScript
+export interface LocalAddress
+```
+
 LocalSocket本地套接字文件路径信息，在传入套接字路径进行绑定时，会在此路径下创建套接字文件。
 
 **起始版本：** 11

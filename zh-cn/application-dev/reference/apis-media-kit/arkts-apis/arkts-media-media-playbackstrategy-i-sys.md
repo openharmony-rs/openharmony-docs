@@ -1,5 +1,9 @@
 # PlaybackStrategy
 
+```TypeScript
+interface PlaybackStrategy
+```
+
 播放策略，播放器首选播放设置。
 
 **起始版本：** 12

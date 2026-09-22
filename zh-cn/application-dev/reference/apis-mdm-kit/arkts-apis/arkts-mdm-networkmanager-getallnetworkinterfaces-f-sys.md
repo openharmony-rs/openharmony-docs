@@ -66,24 +66,8 @@ networkManager.getAllNetworkInterfaces(wantTemp, (err, result) => {
 });
 ```
 
-```TypeScript
-import { networkManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-networkManager.getAllNetworkInterfaces(wantTemp).then((result) => {
-  console.info(`Succeeded in getting all network interfaces, result : ${JSON.stringify(result)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get all network interfaces. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getallnetworkinterfaces-1"></a>
 
 ## getAllNetworkInterfaces
 
@@ -131,4 +115,20 @@ function getAllNetworkInterfaces(admin: Want): Promise<Array<string>>
 
 **示例**
 
-参见 [getAllNetworkInterfaces](#getallnetworkinterfaces)
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+networkManager.getAllNetworkInterfaces(wantTemp).then((result) => {
+  console.info(`Succeeded in getting all network interfaces, result : ${JSON.stringify(result)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all network interfaces. Code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # GalleryFormInfo（系统接口）
 
+```TypeScript
+interface GalleryFormInfo
+```
+
 图库卡片相关信息。
 
 **起始版本：** 18

@@ -18,7 +18,7 @@ function setTimezone(timezone: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** setTimezone
+**替代接口：** [setTimezone](arkts-basicservices-systemdatetime-settimezone-f-sys.md)
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
@@ -28,7 +28,7 @@ function setTimezone(timezone: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timezone | string | 是 | 系统时区。具体可见支持的系统时区 。 |
+| timezone | string | 是 | 系统时区。具体可见[支持的系统时区](../../../reference/apis-basic-services-kit/js-apis-system-time.md#支持的系统时区) 。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -56,21 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  systemTime.setTimezone('Asia/Shanghai').then(() => {
-    console.info(`Succeeded in setting timezone.`);
-  }).catch((error: BusinessError) => {
-    console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
-}
-```
-
+<a id="settimezone-1"></a>
 
 ## setTimezone
 
@@ -84,7 +71,7 @@ function setTimezone(timezone: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** setTimezone
+**替代接口：** [setTimezone](arkts-basicservices-systemdatetime-settimezone-f-sys.md)
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
@@ -94,7 +81,7 @@ function setTimezone(timezone: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timezone | string | 是 | 系统时区。具体可见支持的系统时区 。 |
+| timezone | string | 是 | 系统时区。具体可见[支持的系统时区](../../../reference/apis-basic-services-kit/js-apis-system-time.md#支持的系统时区) 。 |
 
 **返回值：**
 
@@ -110,4 +97,17 @@ function setTimezone(timezone: string): Promise<void>
 
 **示例**
 
-参见 setTimezone
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemTime.setTimezone('Asia/Shanghai').then(() => {
+    console.info(`Succeeded in setting timezone.`);
+  }).catch((error: BusinessError) => {
+    console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
+}
+```

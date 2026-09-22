@@ -1,5 +1,9 @@
 # SettingsForAccount
 
+```TypeScript
+enum SettingsForAccount
+```
+
 用户设置项枚举。
 
 **起始版本：** 26.0.0

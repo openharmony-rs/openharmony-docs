@@ -1,5 +1,9 @@
 # ModelRule（系统接口）
 
+```TypeScript
+interface ModelRule
+```
+
 安全模型规则。
 
 @typedef ModelRule

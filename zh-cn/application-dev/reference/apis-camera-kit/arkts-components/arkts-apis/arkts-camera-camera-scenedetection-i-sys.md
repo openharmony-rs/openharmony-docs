@@ -1,5 +1,9 @@
 # SceneDetection（系统接口）
 
+```TypeScript
+interface SceneDetection extends SceneDetectionQuery
+```
+
 Provides the scene detection capability. It inherits from [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md).
 
 **继承/实现关系：** SceneDetection extends [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md)

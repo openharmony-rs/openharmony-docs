@@ -1,5 +1,9 @@
 # SubtitleInfo
 
+```TypeScript
+interface SubtitleInfo
+```
+
 Provides subtitle information. When a subtitle update event is subscribed to, the information about the external subtitle is returned through a callback. Can be synchronized to the time reported by AVPlayer#timeUpdate event
 
 **Since:** 12

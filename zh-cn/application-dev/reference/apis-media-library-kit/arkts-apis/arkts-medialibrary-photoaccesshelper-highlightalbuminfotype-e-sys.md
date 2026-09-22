@@ -1,5 +1,9 @@
 # HighlightAlbumInfoType（系统接口）
 
+```TypeScript
+enum HighlightAlbumInfoType
+```
+
 枚举，时刻相册信息类型。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # Origin
 
+```TypeScript
+enum Origin
+```
+
 Enumerates the data sources. Use the enum name rather than the enum value.
 
 **Since:** 11

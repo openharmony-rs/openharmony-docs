@@ -1,5 +1,9 @@
 # FontInfo
 
+```TypeScript
+interface FontInfo
+```
+
 Information about the system font.
 
 **Since:** 10

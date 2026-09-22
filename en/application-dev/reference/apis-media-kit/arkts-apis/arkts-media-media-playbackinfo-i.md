@@ -1,5 +1,9 @@
 # PlaybackInfo
 
+```TypeScript
+interface PlaybackInfo
+```
+
 Provides player statistic info.
 
 **Since:** 12

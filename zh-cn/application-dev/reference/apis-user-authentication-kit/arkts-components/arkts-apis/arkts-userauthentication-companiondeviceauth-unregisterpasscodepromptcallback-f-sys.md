@@ -14,7 +14,7 @@ function unregisterPasscodePromptCallback(): void
 
 取消注册用于提示输入辅助设备密码的回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 

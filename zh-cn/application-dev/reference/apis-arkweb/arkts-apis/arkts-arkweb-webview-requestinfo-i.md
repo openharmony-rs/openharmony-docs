@@ -1,5 +1,9 @@
 # RequestInfo
 
+```TypeScript
+interface RequestInfo
+```
+
 Web组件发送的资源请求信息。
 
 **起始版本：** 12

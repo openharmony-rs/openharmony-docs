@@ -1,5 +1,9 @@
 # DataReceiveProgressInfo
 
+```TypeScript
+export interface DataReceiveProgressInfo
+```
+
 Defines the data receiving progress information.
 
 **Since:** 11

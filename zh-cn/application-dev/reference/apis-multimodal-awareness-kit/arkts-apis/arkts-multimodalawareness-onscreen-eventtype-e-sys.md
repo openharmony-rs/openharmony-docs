@@ -1,5 +1,9 @@
 # EventType
 
+```TypeScript
+export enum EventType
+```
+
 定义控制事件的类型。
 
 **起始版本：** 20

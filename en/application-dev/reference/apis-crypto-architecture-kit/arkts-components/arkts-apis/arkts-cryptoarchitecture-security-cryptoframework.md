@@ -28,8 +28,8 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | [createKdf](arkts-cryptoarchitecture-cryptoframework-createkdf-f.md) | Creates a key derivation function instance. |
 | [createKem](arkts-cryptoarchitecture-cryptoframework-createkem-f.md) | Creates a Kem instance for key encapsulation and decapsulation operations. |
 | [createKeyAgreement](arkts-cryptoarchitecture-cryptoframework-createkeyagreement-f.md) | Creates a **KeyAgreement** instance. |
-| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md) | Creates a **Mac** instance. |
-| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md) | Creates a **Mac** instance. |
+| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac) | Creates a **Mac** instance. |
+| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac-1) | Creates a **Mac** instance. |
 | [createMd](arkts-cryptoarchitecture-cryptoframework-createmd-f.md) | Creates an **Md** instance. |
 | [createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md) | Creates a **Random** instance. |
 | [createSign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md) | Creates a **Sign** instance. |

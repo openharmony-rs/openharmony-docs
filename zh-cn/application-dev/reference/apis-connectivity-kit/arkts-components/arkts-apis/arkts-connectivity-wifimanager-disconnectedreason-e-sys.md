@@ -1,5 +1,9 @@
 # DisconnectedReason（系统接口）
 
+```TypeScript
+enum DisconnectedReason
+```
+
 表示Wi-Fi断开原因的枚举，用于诊断网络连接问题和优化连接策略。
 
 **起始版本：** 10

@@ -64,33 +64,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 获取键盘重复速率
-            inputDevice.getKeyboardRepeatRate().then((rate: number) => {
-              console.info(`Succeeded in getting keyboard repeat rate.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="getkeyboardrepeatrate-1"></a>
 
 ## getKeyboardRepeatRate
 
@@ -121,4 +96,29 @@ function getKeyboardRepeatRate(): Promise<number>
 
 **示例**
 
-参见 [getKeyboardRepeatRate](#getkeyboardrepeatrate)
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取键盘重复速率
+            inputDevice.getKeyboardRepeatRate().then((rate: number) => {
+              console.info(`Succeeded in getting keyboard repeat rate.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

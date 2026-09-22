@@ -1,5 +1,9 @@
 # TextDecoderOptions
 
+```TypeScript
+interface TextDecoderOptions
+```
+
 Describes decoding-related options, which include **fatal** and **ignoreBOM**.
 
 **Since:** 11

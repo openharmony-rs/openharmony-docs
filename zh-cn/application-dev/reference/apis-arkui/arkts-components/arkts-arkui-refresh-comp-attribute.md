@@ -1,10 +1,14 @@
 # Refresh属性/事件
 
-除支持通用属性外，还支持以下属性：
+```TypeScript
+declare class RefreshAttribute extends CommonMethod<RefreshAttribute>
+```
 
-除支持通用事件外，还支持以下事件：
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
-**继承/实现关系：** RefreshAttribute extends CommonMethod&lt;RefreshAttribute&gt;
+除支持[通用事件](arkts-arkui-common-comp.md#common)外，还支持以下事件：
+
+**继承/实现关系：** RefreshAttribute extends CommonMethod<RefreshAttribute>
 
 **起始版本：** 8
 
@@ -30,7 +34,9 @@ maxPullDownDistance(distance: Optional<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| distance | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 最大下拉距离。<br>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br>undefined和null按没有设置此属性处理。<br>默认值：undefined<br>单位：vp |
+| distance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | 是 | 最大下拉距离。<br>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br>undefined和null按没有设置此属性处理。<br>默认值：undefined<br>单位：vp |
+
+<a id="maxpulldowndistance-1"></a>
 
 ## maxPullDownDistance
 
@@ -66,7 +72,7 @@ onOffsetChange(callback: Callback<number>)
 
 > **说明：** 
 > 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -92,6 +98,8 @@ onRefreshing(callback: () => void)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -111,6 +119,8 @@ onStateChange(callback: (state: RefreshStatus) => void)
 当前刷新状态变更时，触发回调。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -142,7 +152,7 @@ pullDownRatio(ratio: Optional<number>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ratio | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 下拉跟手系数。数值越大，跟随手势下拉的反应越灵敏。0表示不跟随手势下拉，1表示等比例跟随手势下拉。<br>没有设置或设置为undefined时，默认使用动态下拉跟手系数，下拉距离越大，跟手系数越小。<br>取值范围：[0, 1]。小于0的值会被视为0，大于1的值会被视为1。 |
+| ratio | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | 是 | 下拉跟手系数。数值越大，跟随手势下拉的反应越灵敏。0表示不跟随手势下拉，1表示等比例跟随手势下拉。<br>没有设置或设置为undefined时，默认使用动态下拉跟手系数，下拉距离越大，跟手系数越小。<br>取值范围：[0, 1]。小于0的值会被视为0，大于1的值会被视为1。 |
 
 ## pullToRefresh
 
@@ -208,7 +218,9 @@ refreshOffset(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 下拉偏移量，单位vp。<br>取值范围：(0, +∞)。<br>默认值：未设置[promptText](arkts-arkui-refreshoptions-i.md)参数时为64vp，设置了[promptText](arkts-arkui-refreshoptions-i.md)参数时为96vp。 <br>如果取值为0或负数的时候此接口采用默认值。 |
+| value | number | 是 | 下拉偏移量，单位vp。<br>取值范围：(0, +∞)。<br>默认值：未设置[promptText](arkts-arkui-refresh-comp-refreshoptions-i.md)参数时为64vp，设置了[promptText](arkts-arkui-refresh-comp-refreshoptions-i.md)参数时为96vp。 <br>如果取值为0或负数的时候此接口采用默认值。 |
+
+<a id="refreshoffset-1"></a>
 
 ## refreshOffset
 
@@ -218,7 +230,7 @@ refreshOffset(value: number | Resource)
 
 设置触发刷新的下拉偏移量，当下拉距离小于该属性设置值时离手不会触发刷新，支持Resource资源类型。
 
-未通过该接口设置时，当未设置[promptText](arkts-arkui-refreshoptions-i.md)参数时，默认偏移量为64vp；设置了[promptText](arkts-arkui-refreshoptions-i.md)参数时，默认偏移量为96vp。
+未通过该接口设置时，当未设置[promptText](arkts-arkui-refresh-comp-refreshoptions-i.md)参数时，默认偏移量为64vp；设置了[promptText](arkts-arkui-refresh-comp-refreshoptions-i.md)参数时，默认偏移量为96vp。
 
 **起始版本：** 26.0.0
 
@@ -232,4 +244,4 @@ refreshOffset(value: number | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 下拉偏移量。<br>单位：vp<br>取值范围：(0, +∞)。<br>默认值：未设置[promptText](arkts-arkui-refreshoptions-i.md)参数时为64vp，设置了[promptText](arkts-arkui-refreshoptions-i.md)参数时为96vp。<br>值为0或负数时，按默认值处理。 |
+| value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 下拉偏移量。<br>单位：vp<br>取值范围：(0, +∞)。<br>默认值：未设置[promptText](arkts-arkui-refresh-comp-refreshoptions-i.md)参数时为64vp，设置了[promptText](arkts-arkui-refresh-comp-refreshoptions-i.md)参数时为96vp。<br>值为0或负数时，按默认值处理。 |

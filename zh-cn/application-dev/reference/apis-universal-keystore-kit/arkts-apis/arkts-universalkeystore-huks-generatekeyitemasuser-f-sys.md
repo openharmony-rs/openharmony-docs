@@ -58,8 +58,56 @@ function generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: Hu
 
 **示例**
 
-```TypeScript
 以下代码示例接口调用的前置条件：
 
 调用方必须是运行在User0~99（包含0和99）用户身份下的系统应用，同时需要申请ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。允许应用安装到User0的配置指导，请参考[singleton|bool|false|是否允许应用安装到单用户下(U0)](../../../../../zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)
+
+```TypeScript
+/* 以生成AES密钥为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const aesKeyAlias = 'test_aesKeyAlias';
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+
+function GetAesGenerateProperties(): Array<huks.HuksParam> {
+  return [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CBC
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+    value: userIdStorageLevel,
+  }]
+}
+
+/* 生成密钥 */
+async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
+  const options: huks.HuksOptions = {
+    properties: genProperties
+  }
+  await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
+  }).catch((err: BusinessError) => {
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
+  })
+}
+
+export default function HuksAsUserTest() {
+  console.info('begin huks as user test')
+  GenerateKey(aesKeyAlias, GetAesGenerateProperties())
+}
 ```

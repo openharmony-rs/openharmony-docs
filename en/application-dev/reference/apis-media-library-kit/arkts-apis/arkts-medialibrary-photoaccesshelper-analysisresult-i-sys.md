@@ -1,5 +1,9 @@
 # AnalysisResult (System API)
 
+```TypeScript
+interface AnalysisResult
+```
+
 Defines the asset analysis result.
 
 **Since:** 24

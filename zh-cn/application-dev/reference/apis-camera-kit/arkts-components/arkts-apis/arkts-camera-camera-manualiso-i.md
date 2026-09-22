@@ -1,5 +1,9 @@
 # ManualIso
 
+```TypeScript
+interface ManualIso extends ManualIsoQuery
+```
+
 ManualIso object.
 
 **继承/实现关系：** ManualIso extends [ManualIsoQuery](arkts-camera-camera-manualisoquery-i.md)

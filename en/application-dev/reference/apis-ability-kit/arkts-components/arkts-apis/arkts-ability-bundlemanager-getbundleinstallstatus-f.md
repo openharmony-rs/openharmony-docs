@@ -14,7 +14,7 @@ function getBundleInstallStatus(bundleName: string): BundleInstallStatus
 
 Obtains the installation status of a specified application under a given user.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

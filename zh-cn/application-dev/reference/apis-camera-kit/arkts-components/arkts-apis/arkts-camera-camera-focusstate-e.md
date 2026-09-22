@@ -1,5 +1,9 @@
 # FocusState
 
+```TypeScript
+enum FocusState
+```
+
 枚举，焦距状态。
 
 **起始版本：** 10

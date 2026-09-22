@@ -1,5 +1,9 @@
 # KemAlgNameId
 
+```TypeScript
+enum KemAlgNameId
+```
+
 枚举KEM算法名称ID。
 
 **起始版本：** 26.0.0

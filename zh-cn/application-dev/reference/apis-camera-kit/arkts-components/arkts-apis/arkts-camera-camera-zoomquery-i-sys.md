@@ -1,5 +1,9 @@
 # ZoomQuery
 
+```TypeScript
+interface ZoomQuery
+```
+
 提供了与设备的缩放相关的查询功能，包括获取支持的缩放比例范围。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # TxPowerMode
 
+```TypeScript
+enum TxPowerMode
+```
+
 Enumerates the advertising transmission power modes.
 
 **Since:** 26.0.0

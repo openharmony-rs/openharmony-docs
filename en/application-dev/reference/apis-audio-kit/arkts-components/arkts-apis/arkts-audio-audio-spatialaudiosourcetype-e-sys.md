@@ -1,5 +1,9 @@
 # SpatialAudioSourceType (System API)
 
+```TypeScript
+enum SpatialAudioSourceType
+```
+
 Enumerates the spatial audio source type.
 
 **Since:** 24

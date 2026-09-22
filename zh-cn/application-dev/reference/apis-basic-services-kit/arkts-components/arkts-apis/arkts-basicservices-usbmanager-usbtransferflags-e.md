@@ -1,5 +1,9 @@
 # UsbTransferFlags
 
+```TypeScript
+export enum UsbTransferFlags
+```
+
 USB传输标志。
 
 **起始版本：** 18

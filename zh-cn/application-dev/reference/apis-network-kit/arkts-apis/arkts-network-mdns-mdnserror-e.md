@@ -1,5 +1,9 @@
 # MdnsError
 
+```TypeScript
+export enum MdnsError
+```
+
 MDNS错误信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # ConnectResult
 
+```TypeScript
+interface ConnectResult
+```
+
 客户端调用connect()后，返回的连接结果。
 
 **起始版本：** 20

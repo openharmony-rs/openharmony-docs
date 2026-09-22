@@ -1,5 +1,9 @@
 # PrinterEvent
 
+```TypeScript
+enum PrinterEvent
+```
+
 打印机相关事件的枚举。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+export interface Filter
+```
+
 文件过滤配置项，支持listFile接口使用。
 
 **起始版本：** 10

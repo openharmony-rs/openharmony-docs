@@ -1,5 +1,9 @@
 # PlayMode
 
+```TypeScript
+export enum PlayMode
+```
+
 枚举，是否支持动态照片自动播放。
 
 **起始版本：** 23

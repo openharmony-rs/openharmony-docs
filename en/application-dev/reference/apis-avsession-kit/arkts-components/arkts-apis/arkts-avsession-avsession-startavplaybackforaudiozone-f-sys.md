@@ -14,7 +14,7 @@ function startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId
 
 Start an application for media playback with command info for an specific audio zone.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
 

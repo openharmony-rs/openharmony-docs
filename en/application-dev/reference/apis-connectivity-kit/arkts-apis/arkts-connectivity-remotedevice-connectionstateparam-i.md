@@ -1,5 +1,9 @@
 # ConnectionStateParam
 
+```TypeScript
+interface ConnectionStateParam
+```
+
 Describes the connection state parameters.
 
 **Since:** 26.0.0

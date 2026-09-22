@@ -1,5 +1,9 @@
 # RegExpConstructor
 
+```TypeScript
+interface RegExpConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -16,6 +20,8 @@
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | pattern | RegExp &#124; string | Yes |  |
+
+<a id="call-1"></a>
 
 ## [[Call]]
 
@@ -41,6 +47,8 @@ new(pattern: RegExp | string): RegExp
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | pattern | RegExp &#124; string | Yes |  |
+
+<a id="construct-1"></a>
 
 ## [[Construct]]
 

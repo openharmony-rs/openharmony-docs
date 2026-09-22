@@ -1,5 +1,9 @@
 # AtomicServiceOptions
 
+```TypeScript
+export default class AtomicServiceOptions extends StartOptions
+```
+
 **AtomicServiceOptions**可以作为[openAtomicService()](arkts-ability-uiabilitycontext-c.md#openatomicservice)的入参，用于携带参数。继承自[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)。
 
 **继承/实现关系：** AtomicServiceOptions extends [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)

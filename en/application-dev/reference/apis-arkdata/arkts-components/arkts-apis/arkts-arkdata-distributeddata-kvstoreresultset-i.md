@@ -1,5 +1,9 @@
 # KvStoreResultSet
 
+```TypeScript
+interface KvStoreResultSet
+```
+
 Provides APIs to obtain the KV store result sets, and query and move the data read position. Before calling any method in **KvStoreResultSet**, you must use getKVStore to obtain a **KVStore** object.
 
 **Since:** 7

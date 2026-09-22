@@ -1,5 +1,9 @@
 # FieldType (System API)
 
+```TypeScript
+export enum FieldType
+```
+
 Enumerates the types of the fields in a database table. Use the enum name rather than the enum value.
 
 **Since:** 11
@@ -98,7 +102,7 @@ BLOB, which can hold a binary file.
 ASSET = 6
 ```
 
-Asset. For details, see Asset.
+Asset. For details, see [Asset](arkts-arkdata-relationalstore-asset-i.md).
 
 **Since:** 11
 
@@ -112,7 +116,7 @@ Asset. For details, see Asset.
 ASSETS = 7
 ```
 
-Assets. For details, see Assets.
+Assets. For details, see [Assets](arkts-arkdata-relationalstore-assets-t.md).
 
 **Since:** 11
 

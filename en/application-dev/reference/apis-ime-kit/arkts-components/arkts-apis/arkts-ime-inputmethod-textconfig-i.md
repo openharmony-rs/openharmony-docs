@@ -1,5 +1,9 @@
 # TextConfig
 
+```TypeScript
+export interface TextConfig
+```
+
 Describes the configuration of the edit box.
 
 **Since:** 10

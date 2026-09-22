@@ -1,5 +1,9 @@
 # CryptoExtensionAbility
 
+```TypeScript
+declare class CryptoExtensionAbility
+```
+
 Class to be override for external crypto extension ability.
 
 **起始版本：** 22

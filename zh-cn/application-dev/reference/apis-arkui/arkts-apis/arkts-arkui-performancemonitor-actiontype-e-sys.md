@@ -1,5 +1,9 @@
 # ActionType（系统接口）
 
+```TypeScript
+export enum ActionType
+```
+
 用户场景（通常为具有动效的场景）触发模式枚举。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # Trigger（系统接口）
 
+```TypeScript
+export interface Trigger
+```
+
 触发条件的具体信息。
 
 **起始版本：** 23

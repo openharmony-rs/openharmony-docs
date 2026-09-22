@@ -1,5 +1,9 @@
 # OffsetReferencePoint
 
+```TypeScript
+export enum OffsetReferencePoint
+```
+
 Defines the reference point for the offset.
 
 **Since:** 12

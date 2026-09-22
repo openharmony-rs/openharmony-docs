@@ -1,5 +1,9 @@
 # AccountType
 
+```TypeScript
+export enum AccountType
+```
+
 表示授权账号类型的枚举。
 
 **起始版本：** 21

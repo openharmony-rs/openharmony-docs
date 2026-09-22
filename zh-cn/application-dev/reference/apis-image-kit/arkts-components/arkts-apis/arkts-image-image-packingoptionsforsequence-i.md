@@ -1,5 +1,9 @@
 # PackingOptionsForSequence
 
+```TypeScript
+interface PackingOptionsForSequence
+```
+
 描述动图编码参数的选项。
 
 **起始版本：** 18

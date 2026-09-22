@@ -1,5 +1,9 @@
 # ResourceType（系统接口）
 
+```TypeScript
+export enum ResourceType
+```
+
 非待机应用资源枚举。
 
 **起始版本：** 10

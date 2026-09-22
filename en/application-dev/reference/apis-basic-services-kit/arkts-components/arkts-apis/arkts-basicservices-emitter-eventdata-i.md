@@ -1,5 +1,9 @@
 # EventData
 
+```TypeScript
+export interface EventData
+```
+
 Describes data carried by the emitted event.
 
 **Since:** 7

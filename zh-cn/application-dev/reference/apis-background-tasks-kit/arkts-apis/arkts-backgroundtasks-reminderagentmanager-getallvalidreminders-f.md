@@ -16,6 +16,8 @@ function getAllValidReminders(): Promise<Array<ReminderInfo>>
 
 **起始版本：** 12
 
+**需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 **返回值：**
@@ -28,7 +30,7 @@ function getAllValidReminders(): Promise<Array<ReminderInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 

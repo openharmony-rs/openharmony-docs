@@ -1,5 +1,9 @@
 # SettingParam (System API)
 
+```TypeScript
+interface SettingParam
+```
+
 Defines the effect parameters used to preheat an image.
 
 **Since:** 11

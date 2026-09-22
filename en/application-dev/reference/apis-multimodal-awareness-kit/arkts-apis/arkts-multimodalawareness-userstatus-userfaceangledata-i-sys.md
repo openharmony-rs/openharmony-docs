@@ -1,5 +1,9 @@
 # UserFaceAngleData (System API)
 
+```TypeScript
+export interface UserFaceAngleData extends UserStatusData
+```
+
 Defines user face angle data.
 
 **Inheritance/Implementation:** UserFaceAngleData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

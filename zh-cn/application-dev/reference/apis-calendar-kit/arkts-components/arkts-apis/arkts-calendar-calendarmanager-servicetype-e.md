@@ -1,5 +1,9 @@
 # ServiceType
 
+```TypeScript
+export enum ServiceType
+```
+
 日程服务类型枚举。
 
 **起始版本：** 10

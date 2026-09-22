@@ -1,5 +1,9 @@
 # DeviceIdType（系统接口）
 
+```TypeScript
+enum DeviceIdType
+```
+
 设备ID类型枚举。用于定义设备业务标识的类型，支持系统预设类型和厂商自定义扩展类型。
 
 **起始版本：** 23

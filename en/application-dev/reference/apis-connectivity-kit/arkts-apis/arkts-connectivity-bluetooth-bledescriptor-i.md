@@ -1,5 +1,9 @@
 # BLEDescriptor
 
+```TypeScript
+interface BLEDescriptor
+```
+
 Describes the Gatt descriptor.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # PathIteratorVerb
 
+```TypeScript
+enum PathIteratorVerb
+```
+
 迭代器包含的路径操作类型枚举，可用于读取path的操作指令。常用于路径分析、路径转换、路径动画等需要解析路径构成的场景。
 
 **起始版本：** 18

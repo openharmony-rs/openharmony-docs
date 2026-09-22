@@ -69,29 +69,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDeviceCooperate } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          let deviceDescriptor = 'descriptor';
-          inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
-            console.info(`Succeeded in getting the status, data: ${JSON.stringify(data)}.`);
-          }).catch((error: BusinessError) => {
-            console.error(`Failed to get the status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          });
-        })
-    }
-  }
-}
-```
-
+<a id="getstate-1"></a>
 
 ## getState
 
@@ -132,4 +111,25 @@ Checks whether screen hopping is enabled. This API uses a promise to return the 
 
 **Examples**
 
-See [getState](#getstate)
+```TypeScript
+import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let deviceDescriptor = 'descriptor';
+          inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
+            console.info(`Succeeded in getting the status, data: ${JSON.stringify(data)}.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get the status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
+        })
+    }
+  }
+}
+```

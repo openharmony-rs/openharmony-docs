@@ -1,5 +1,9 @@
 # RemoveFilterRule（系统接口）
 
+```TypeScript
+interface RemoveFilterRule
+```
+
 移除网络包过滤规则。
 
 **起始版本：** 10

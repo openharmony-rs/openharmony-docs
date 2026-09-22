@@ -1,10 +1,16 @@
 # Ellipse properties/events
 
-In addition to the [universal attributes](arkts-arkui-commonmethod-c.md), the following attributes are supported.
+```TypeScript
+declare class EllipseAttribute extends CommonShapeMethod<EllipseAttribute>
+```
+
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal attributes for drawing components](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** EllipseAttribute extends CommonShapeMethod<EllipseAttribute>
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

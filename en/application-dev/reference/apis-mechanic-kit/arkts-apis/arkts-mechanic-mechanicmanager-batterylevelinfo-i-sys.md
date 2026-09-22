@@ -1,5 +1,9 @@
 # BatteryLevelInfo (System API)
 
+```TypeScript
+export interface BatteryLevelInfo
+```
+
 Definition of battery level information.
 
 **Since:** 26.2.0

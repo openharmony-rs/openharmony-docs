@@ -1,5 +1,9 @@
 # Container
 
+```TypeScript
+export interface Container<T>
+```
+
 Container for defining scene nodes. It provides a way to group scene nodes into a hierarchy.
 
 @interface Container

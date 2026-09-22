@@ -1,5 +1,9 @@
 # FenceExtensionAbility
 
+```TypeScript
+export default class FenceExtensionAbility
+```
+
 FenceExtensionAbility为开发者提供的地理围栏相关的能力。
 
 **起始版本：** 14
@@ -115,7 +119,7 @@ context: FenceExtensionContext
 
 表示围栏的的上下文环境。
 
-**类型：** FenceExtensionContext
+**类型：** [FenceExtensionContext](arkts-location-app-ability-fenceextensioncontext-fenceextensioncontext-c-sys.md)
 
 **起始版本：** 14
 

@@ -12,7 +12,7 @@
 
 | Name | Description |
 | --- | --- |
-| [AccessibilityActionOptions](arkts-arkui-accessibilityactionoptions-i.md) | Defines optional parameters for accessibility operations of a component, which is used to restrict or modify the operations initiated by accessibility apps such as the screen reader. This API is supported only by the Slider component. If this API is used on other components, compilation succeeds but the API does not take effect. |
+| [AccessibilityActionOptions](arkts-arkui-accessibilityactionoptions-i.md) | Defines optional parameters for accessibility operations of a component, which is used to restrict or modify the operations initiated by accessibility apps such as the screen reader. This API is supported only by the [Slider](../arkts-components/arkts-arkui-slider-comp.md#slider) component. If this API is used on other components, compilation succeeds but the API does not take effect. |
 | [AccessibilityCustomAction](arkts-arkui-accessibilitycustomaction-i.md) | Custom accessibility action API. |
 | [AccessibilityNextFocusParams](arkts-arkui-accessibilitynextfocusparams-i.md) | Defines the detailed parameter object that can be used during the accessibility custom next focus processing. |
 | [AccessibilityOptions](arkts-arkui-accessibilityoptions-i.md) | Defines the struct of AccessibilityOptions. |

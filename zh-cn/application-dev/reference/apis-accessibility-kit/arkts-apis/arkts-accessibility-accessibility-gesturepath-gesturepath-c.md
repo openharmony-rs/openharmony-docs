@@ -1,5 +1,9 @@
 # GesturePath
 
+```TypeScript
+export declare class GesturePath
+```
+
 表示手势路径信息，用于无障碍服务中模拟用户触摸手势（如点击、滑动等）。
 
 **起始版本：** 9

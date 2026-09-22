@@ -1,5 +1,9 @@
 # FocusMoveResult (System API)
 
+```TypeScript
+export declare interface FocusMoveResult
+```
+
 Return value type of the accessibility node query.
 
 **Since:** 23

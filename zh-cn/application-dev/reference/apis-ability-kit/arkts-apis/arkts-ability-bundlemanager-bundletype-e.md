@@ -1,5 +1,9 @@
 # BundleType
 
+```TypeScript
+export enum BundleType
+```
+
 标识应用的类型。
 
 **起始版本：** 9

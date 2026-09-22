@@ -1,5 +1,9 @@
 # MetadataType
 
+```TypeScript
+enum MetadataType
+```
+
 Enumerates image metadata types.
 
 **Since:** 13

@@ -1,5 +1,9 @@
 # Location
 
+```TypeScript
+interface Location
+```
+
 提供媒体资源的地理位置定义。
 
 **起始版本：** 6

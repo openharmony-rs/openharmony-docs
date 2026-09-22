@@ -1,5 +1,9 @@
 # LocationPolicy
 
+```TypeScript
+export enum LocationPolicy
+```
+
 位置服务策略值。
 
 **起始版本：** 12

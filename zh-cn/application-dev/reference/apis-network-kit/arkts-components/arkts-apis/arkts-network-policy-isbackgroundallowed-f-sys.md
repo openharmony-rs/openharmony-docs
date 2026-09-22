@@ -50,19 +50,8 @@ policy.isBackgroundAllowed((error: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .isBackgroundAllowed()
-  .then((data: boolean) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="isbackgroundallowed-1"></a>
 
 ## isBackgroundAllowed
 
@@ -99,4 +88,15 @@ function isBackgroundAllowed(): Promise<boolean>
 
 **示例**
 
-参见 [isBackgroundAllowed](#isbackgroundallowed)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy
+  .isBackgroundAllowed()
+  .then((data: boolean) => {
+    console.info(JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

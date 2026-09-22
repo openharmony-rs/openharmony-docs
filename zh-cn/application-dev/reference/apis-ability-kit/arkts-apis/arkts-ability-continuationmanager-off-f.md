@@ -45,6 +45,19 @@ function off(type: 'deviceSelected', token: number): void
 | [16600002](../errorcode-DistributedSchedule.md#16600002-指定的token或callback未注册) | The specified token or callback is not registered. |
 | [16600004](../errorcode-DistributedSchedule.md#16600004-指定的callback已注册) | The specified callback has been registered. |
 
+**示例**
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+
+let token: number = 1;
+try {
+  continuationManager.off("deviceSelected", token);
+} catch (err) {
+  console.error('off failed, cause: ' + JSON.stringify(err));
+}
+```
+
 
 ## off('deviceUnselected')
 
@@ -85,6 +98,19 @@ function off(type: 'deviceUnselected', token: number): void
 | [16600002](../errorcode-DistributedSchedule.md#16600002-指定的token或callback未注册) | The specified token or callback is not registered. |
 | [16600004](../errorcode-DistributedSchedule.md#16600004-指定的callback已注册) | The specified callback has been registered. |
 
+**示例**
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+
+let token: number = 1;
+try {
+  continuationManager.off("deviceUnselected", token);
+} catch (err) {
+  console.error('off failed, cause: ' + JSON.stringify(err));
+}
+```
+
 
 ## off('deviceConnect')
 
@@ -111,6 +137,18 @@ function off(type: 'deviceConnect', callback?: Callback<ContinuationResult>): vo
 | type | 'deviceConnect' | 是 | 取消监听的事件类型，固定值"deviceConnect"。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ContinuationResult](arkts-ability-continuationmanager-continuationresult-t.md)&gt; | 否 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
 
+**示例**
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+
+continuationManager.off("deviceConnect", (data) => {
+  console.info('onDeviceConnect deviceId: ' + JSON.stringify(data.id));
+  console.info('onDeviceConnect deviceType: ' + JSON.stringify(data.type));
+  console.info('onDeviceConnect deviceName: ' + JSON.stringify(data.name));
+});
+```
+
 
 ## off('deviceDisconnect')
 
@@ -136,3 +174,13 @@ function off(type: 'deviceDisconnect', callback?: Callback<string>): void
 | --- | --- | --- | --- |
 | type | 'deviceDisconnect' | 是 | 取消监听的事件类型，固定值"deviceDisconnect"。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 否 | 当用户从设备选择模块中断开设备时调用，返回设备ID供开发者使用。 |
+
+**示例**
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+
+continuationManager.off("deviceDisconnect", (data) => {
+  console.info('onDeviceDisconnect deviceId: ' + JSON.stringify(data));
+});
+```

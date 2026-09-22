@@ -1,5 +1,9 @@
 # AvailabilityStatus
 
+```TypeScript
+enum AvailabilityStatus
+```
+
 枚举，媒体库可用性状态。
 
 **起始版本：** 26.0.0

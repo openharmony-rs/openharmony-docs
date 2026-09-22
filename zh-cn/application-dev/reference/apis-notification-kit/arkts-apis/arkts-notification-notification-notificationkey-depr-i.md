@@ -1,5 +1,9 @@
 # NotificationKey
 
+```TypeScript
+export interface NotificationKey
+```
+
 通知键值。
 
 **起始版本：** 7

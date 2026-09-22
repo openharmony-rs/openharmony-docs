@@ -1,5 +1,9 @@
 # Hyperlink
 
+```TypeScript
+interface Hyperlink
+```
+
 超链接类型数据，用于描述和管理超链接信息。创建Hyperlink对象后，可用于拖拽、分享等场景，实现跨应用的超链接数据传递和跳转。
 
 **起始版本：** 12

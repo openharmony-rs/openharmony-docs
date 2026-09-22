@@ -1,5 +1,9 @@
 # On
 
+```TypeScript
+declare class On
+```
+
 UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。
 
 On提供的API能力具有以下几个特点：
@@ -34,6 +38,8 @@ afterComponent(com: Component): On
 指定目标控件位于给出的特征控件（参数 [Component](arkts-test-uitest-component-c.md)）之后，返回 On 对象自身。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -81,6 +87,8 @@ beforeComponent(com: Component): On
 指定目标控件位于给出的特征控件（参数 [Component](arkts-test-uitest-component-c.md)）之前，返回 On 对象自身。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -508,12 +516,7 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目标控件的id属性。
 ```
 
-```TypeScript
-// xxx.test.ets
-import { MatchPattern, On, ON } from '@kit.TestKit';
-
-let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控件的id属性值。
-```
+<a id="id-1"></a>
 
 ## id
 
@@ -551,13 +554,6 @@ id(id: string, pattern: MatchPattern): On
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-```TypeScript
-// xxx.test.ets
-import { On, ON } from '@kit.TestKit';
-
-let on: On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目标控件的id属性。
-```
 
 ```TypeScript
 // xxx.test.ets
@@ -751,7 +747,7 @@ originalText(text: string, pattern?: MatchPattern): On
 > **说明：** 
 > 
 > 如果控件的无障碍属性
-> accessibilityLevel
+> [accessibilityLevel](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel)
 > 设置为'no'或'no-hide-descendants'，可以使用本接口指定目标控件的文本属性用于查找控件，使用[On.text()](#text)接口不生效。
 
 **起始版本：** 20
@@ -887,7 +883,7 @@ text(txt: string, pattern?: MatchPattern): On
 > **说明：** 
 > 
 > 如果控件的无障碍属性
-> accessibilityLevel
+> [accessibilityLevel](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel)
 > 设置为'no'或'no-hide-descendants'，无法使用本接口指定目标控件的文本属性用于查找控件，可以使用[On.originalText()](#originaltext)接口实现。
 
 **起始版本：** 9
@@ -969,12 +965,7 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
 ```
 
-```TypeScript
-// xxx.test.ets
-import { On, ON, MatchPattern } from '@kit.TestKit';
-
-let on: On = ON.type('Button', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
-```
+<a id="type-1"></a>
 
 ## type
 
@@ -1012,13 +1003,6 @@ type(tp: string, pattern: MatchPattern): On
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
-
-```TypeScript
-// xxx.test.ets
-import { On, ON } from '@kit.TestKit';
-
-let on: On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
-```
 
 ```TypeScript
 // xxx.test.ets
@@ -1080,6 +1064,8 @@ withinComponent(com: Component): On
 指定目标控件位于给出的特征控件（参数 [Component](arkts-test-uitest-component-c.md)）之内，返回 On 对象自身。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 

@@ -1,5 +1,9 @@
 # PositionType
 
+```TypeScript
+enum PositionType
+```
+
 Enumerates the file locations.
 
 **Since:** 16

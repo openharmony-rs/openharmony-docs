@@ -1,5 +1,9 @@
 # DownloadRequestOptions
 
+```TypeScript
+export interface DownloadRequestOptions
+```
+
 
 > **NOTE:** 
 > 

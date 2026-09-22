@@ -1,5 +1,9 @@
 # Support
 
+```TypeScript
+export enum Support
+```
+
 System common events are events published by system services or system apps. Subscribing to these common events requires specific permissions and event values.
 
 **Since:** 9

@@ -53,6 +53,8 @@ wifi.getP2pLinkedInfo().then(data => {
 ```
 
 
+<a id="getp2plinkedinfo-1"></a>
+
 ## getP2pLinkedInfo
 
 ```TypeScript

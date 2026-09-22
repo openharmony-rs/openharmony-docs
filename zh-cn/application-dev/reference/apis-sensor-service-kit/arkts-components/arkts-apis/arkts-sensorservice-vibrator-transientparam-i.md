@@ -1,5 +1,9 @@
 # TransientParam
 
+```TypeScript
+interface TransientParam
+```
+
 瞬态振动参数。用于[VibratorPatternBuilder.addTransientEvent](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#addtransientevent)的options参数，指定短振事件的振动强度、频率和通道编号。
 
 **起始版本：** 18

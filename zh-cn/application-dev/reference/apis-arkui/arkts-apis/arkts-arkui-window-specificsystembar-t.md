@@ -1,7 +1,7 @@
 # SpecificSystemBar
 
 ```TypeScript
-type SpecificSystemBar = 'status' | 'navigation'| 'navigationIndicator'
+type SpecificSystemBar = 'status' | 'navigation' | 'navigationIndicator'
 ```
 
 当前支持显示或隐藏的系统栏类型。

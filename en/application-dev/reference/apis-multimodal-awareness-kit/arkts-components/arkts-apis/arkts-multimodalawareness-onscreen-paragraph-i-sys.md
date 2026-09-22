@@ -1,5 +1,9 @@
 # Paragraph (System API)
 
+```TypeScript
+export interface Paragraph
+```
+
 Defines the paragraph information.
 
 **Since:** 20

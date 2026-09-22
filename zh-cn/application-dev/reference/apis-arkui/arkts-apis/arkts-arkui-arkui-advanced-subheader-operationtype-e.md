@@ -1,5 +1,9 @@
 # OperationType
 
+```TypeScript
+export declare enum OperationType
+```
+
 定义子标题操作区的元素样式。
 
 **起始版本：** 10

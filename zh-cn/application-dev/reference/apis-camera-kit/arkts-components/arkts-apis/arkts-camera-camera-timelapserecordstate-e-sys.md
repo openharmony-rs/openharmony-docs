@@ -1,5 +1,9 @@
 # TimeLapseRecordState（系统接口）
 
+```TypeScript
+enum TimeLapseRecordState
+```
+
 Enumerates the time-lapse recording states.
 
 **起始版本：** 12

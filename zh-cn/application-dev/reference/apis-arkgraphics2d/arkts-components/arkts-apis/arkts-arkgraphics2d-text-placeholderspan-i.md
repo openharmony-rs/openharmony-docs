@@ -1,5 +1,9 @@
 # PlaceholderSpan
 
+```TypeScript
+interface PlaceholderSpan
+```
+
 描述占位符样式。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # ImageRawData
 
+```TypeScript
+interface ImageRawData
+```
+
 图像的RAW数据。
 
 **起始版本：** 24

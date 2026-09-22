@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+export enum ColorMode
+```
+
 Enumerates the color modes.
 
 **Since:** 8

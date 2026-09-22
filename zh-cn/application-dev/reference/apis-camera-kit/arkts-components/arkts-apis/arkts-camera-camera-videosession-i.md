@@ -1,5 +1,11 @@
 # VideoSession
 
+```TypeScript
+interface VideoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization,
+    ColorManagement, ControlCenter, AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS,
+    Aperture
+```
+
 VideoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[Stabilization](arkts-camera-camera-stabilization-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ControlCenter](arkts-camera-camera-controlcenter-i.md)、[ManualExposure](../../../reference/apis-camera-kit/arkts-apis-camera-ManualExposure.md)、[ManualFocus](../../../reference/apis-camera-kit/arkts-apis-camera-ManualFocus.md)、[ManualIso](../../../reference/apis-camera-kit/arkts-apis-camera-ManualIso.md)、[OIS](../../../reference/apis-camera-kit/arkts-apis-camera-OIS.md)、[Aperture](../../../reference/apis-camera-kit/arkts-apis-camera-Aperture.md)。
 
 普通录像模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、视频防抖、色彩空间、微距及控制器、手动曝光、手动对焦、手动ISO、光学防抖及光圈的操作。
@@ -53,6 +59,23 @@ canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boo
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testCanPreconfig(videoSession: camera.VideoSession, preconfigType: camera.PreconfigType,
+  preconfigRatio: camera.PreconfigRatio): void {
+  try {
+    let result = videoSession.canPreconfig(preconfigType, preconfigRatio);
+    console.info(`canPreconfig ${preconfigType} ${preconfigRatio} result is : ${result}`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The canPreconfig call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## off('error')
 
 ```TypeScript
@@ -73,6 +96,14 @@ off(type: 'error', callback?: ErrorCallback): void
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 监听事件，固定为'error'，session创建成功之后可监听该接口。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例**
+
+```TypeScript
+function unregisterSessionError(videoSession: camera.VideoSession): void {
+  videoSession.off('error');
+}
+```
 
 ## off('focusStateChange')
 
@@ -95,6 +126,14 @@ off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 | type | 'focusStateChange' | 是 | 监听事件，固定为'focusStateChange'，session创建成功可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
+**示例**
+
+```TypeScript
+function unregisterFocusStateChange(videoSession: camera.VideoSession): void {
+  videoSession.off('focusStateChange');
+}
+```
+
 ## off('smoothZoomInfoAvailable')
 
 ```TypeScript
@@ -116,6 +155,14 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): 
 | type | 'smoothZoomInfoAvailable' | 是 | 监听事件，固定为'smoothZoomInfoAvailable'，session创建成功可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
+**示例**
+
+```TypeScript
+function unregisterSmoothZoomInfo(videoSession: camera.VideoSession): void {
+  videoSession.off('smoothZoomInfoAvailable');
+}
+```
+
 ## off('controlCenterEffectStatusChange')
 
 ```TypeScript
@@ -136,6 +183,14 @@ off(type: 'controlCenterEffectStatusChange', callback?: AsyncCallback<ControlCen
 | --- | --- | --- | --- |
 | type | 'controlCenterEffectStatusChange' | 是 | 注销监听事件，固定为'controlCenterEffectStatusChange'，session创建成功可触发此事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ControlCenterStatusInfo](arkts-camera-camera-controlcenterstatusinfo-i.md)&gt; | 否 | 回调函数，如果指定参数则取消对应callback (callback对象不可是匿名函数)，否则参数默认为空，取消所有callback。 |
+
+**示例**
+
+```TypeScript
+function unregisterControlCenterEffectStatusChange(videoSession: camera.VideoSession): void {
+  videoSession.off('controlCenterEffectStatusChange');
+}
+```
 
 ## off('macroStatusChanged')
 
@@ -164,6 +219,14 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback<boolean>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 11 - 19 |
 
+**示例**
+
+```TypeScript
+function unregisterMacroStatusChanged(videoSession: camera.VideoSession): void {
+  videoSession.off('macroStatusChanged');
+}
+```
+
 ## off('autoDeviceSwitchStatusChange')
 
 ```TypeScript
@@ -185,6 +248,14 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback<AutoDeviceSwi
 | type | 'autoDeviceSwitchStatusChange' | 是 | 监听事件，固定为'autoDeviceSwitchStatusChange'，session创建成功可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AutoDeviceSwitchStatus](arkts-camera-camera-autodeviceswitchstatus-i.md)&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
+**示例**
+
+```TypeScript
+function unregisterSmoothZoomInfo(videoSession: camera.VideoSession): void {
+  videoSession.off('autoDeviceSwitchStatusChange');
+}
+```
+
 ## off('systemPressureLevelChange')
 
 ```TypeScript
@@ -205,6 +276,14 @@ off(type: 'systemPressureLevelChange', callback?: AsyncCallback<SystemPressureLe
 | --- | --- | --- | --- |
 | type | 'systemPressureLevelChange' | 是 | 注销监听事件，固定为'systemPressureLevelChange'，session创建成功可触发此事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SystemPressureLevel](arkts-camera-camera-systempressurelevel-e.md)&gt; | 否 | 回调函数，如果指定参数则取消对应callback (callback对象不可是匿名函数)，否则参数默认为空，取消所有callback。 |
+
+**示例**
+
+```TypeScript
+function unregisterSystemPressureLevelChangeCallback(videoSession: camera.VideoSession): void {
+  videoSession.off('systemPressureLevelChange');
+}
+```
 
 ## offExposureInfoChange
 
@@ -228,6 +307,14 @@ offExposureInfoChange(callback?: Callback<ExposureInfo>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
+**示例**
+
+```TypeScript
+function offExposureInfoChange(videoSession: camera.VideoSession): void {
+  videoSession.offExposureInfoChange();
+}
+```
+
 ## offIsoInfoChange
 
 ```TypeScript
@@ -249,6 +336,22 @@ offIsoInfoChange(callback?: Callback<IsoInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 否 | 回调函数，可选。<br>如果指定callback参数则注销该callback监听，callback不可是匿名函数。<br>如果未指定callback，则注销所有已存在的callback监听。 |
+
+**示例**
+
+```TypeScript
+function callback(isoInfo: camera.IsoInfo): void {
+  console.info(`Iso : ${isoInfo}`);
+}
+
+function unregisterIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.offIsoInfoChange(callback);
+}
+
+function unregisterAllIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.offIsoInfoChange();
+}
+```
 
 ## on('error')
 
@@ -275,6 +378,20 @@ on(type: 'error', callback: ErrorCallback): void
 | type | 'error' | 是 | 监听事件，固定为'error'，session创建成功之后可监听该接口。session调用相关接口出现错误时会触发该事件，比如调用[beginConfig](arkts-camera-camera-session-i.md#beginconfig)，[commitConfig](arkts-camera-camera-session-i.md#commitconfig)，[addInput](arkts-camera-camera-session-i.md#addinput)等接口发生错误时返回错误信息。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Video session error code: ${err.code}`);
+}
+
+function registerSessionError(videoSession: camera.VideoSession): void {
+  videoSession.on('error', callback);
+}
+```
+
 ## on('focusStateChange')
 
 ```TypeScript
@@ -299,6 +416,24 @@ on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 | --- | --- | --- | --- |
 | type | 'focusStateChange' | 是 | 监听事件，固定为'focusStateChange'，session创建成功可监听。仅当自动对焦模式时，且相机对焦状态发生改变时可触发该事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | 回调函数，用于获取当前对焦状态。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, focusState: camera.FocusState): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(videoSession: camera.VideoSession): void {
+  videoSession.on('focusStateChange', callback);
+}
+```
 
 ## on('smoothZoomInfoAvailable')
 
@@ -325,6 +460,24 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): vo
 | type | 'smoothZoomInfoAvailable' | 是 | 监听事件，固定为'smoothZoomInfoAvailable'，session创建成功可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | 回调函数，用于获取当前平滑变焦状态。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, smoothZoomInfo: camera.SmoothZoomInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`The duration of smooth zoom: ${smoothZoomInfo.duration}`);
+}
+
+function registerSmoothZoomInfo(videoSession: camera.VideoSession): void {
+  videoSession.on('smoothZoomInfoAvailable', callback);
+}
+```
+
 ## on('controlCenterEffectStatusChange')
 
 ```TypeScript
@@ -349,6 +502,24 @@ on(type: 'controlCenterEffectStatusChange', callback: AsyncCallback<ControlCente
 | --- | --- | --- | --- |
 | type | 'controlCenterEffectStatusChange' | 是 | 监听事件，固定为'controlCenterEffectStatusChange'，session创建成功可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ControlCenterStatusInfo](arkts-camera-camera-controlcenterstatusinfo-i.md)&gt; | 是 | 回调函数，用于获取当前控制器激活状态。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, status: camera.ControlCenterStatusInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`controlCenterEffectStatusChange: ${status}`);
+}
+
+function registerControlCenterEffectStatusChangeCallback(videoSession: camera.VideoSession): void {
+  videoSession.on('controlCenterEffectStatusChange', callback);
+}
+```
 
 ## on('macroStatusChanged')
 
@@ -377,6 +548,24 @@ on(type: 'macroStatusChanged', callback: AsyncCallback<boolean>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 11 - 19 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, macroStatus: boolean): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Macro state: ${macroStatus}`);
+}
+
+function registerMacroStatusChanged(videoSession: camera.VideoSession): void {
+  videoSession.on('macroStatusChanged', callback);
+}
+```
+
 ## on('autoDeviceSwitchStatusChange')
 
 ```TypeScript
@@ -401,6 +590,24 @@ on(type: 'autoDeviceSwitchStatusChange', callback: AsyncCallback<AutoDeviceSwitc
 | --- | --- | --- | --- |
 | type | 'autoDeviceSwitchStatusChange' | 是 | 监听事件，固定为'autoDeviceSwitchStatusChange'，session创建成功可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AutoDeviceSwitchStatus](arkts-camera-camera-autodeviceswitchstatus-i.md)&gt; | 是 | 回调函数，用于获取当前自动切换镜头的状态。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, autoDeviceSwitchStatus: camera.AutoDeviceSwitchStatus): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`isDeviceSwitched: ${autoDeviceSwitchStatus.isDeviceSwitched}, isDeviceCapabilityChanged: ${autoDeviceSwitchStatus.isDeviceCapabilityChanged}`);
+}
+
+function registerAutoDeviceSwitchStatus(videoSession: camera.VideoSession): void {
+  videoSession.on('autoDeviceSwitchStatusChange', callback);
+}
+```
 
 ## on('systemPressureLevelChange')
 
@@ -427,6 +634,24 @@ on(type: 'systemPressureLevelChange', callback: AsyncCallback<SystemPressureLeve
 | type | 'systemPressureLevelChange' | 是 | 监听事件，固定为'systemPressureLevelChange'，session创建成功可监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SystemPressureLevel](arkts-camera-camera-systempressurelevel-e.md)&gt; | 是 | 回调函数，用于获取当前系统压力状态。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, systemPressureLevel: camera.SystemPressureLevel): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`systemPressureLevel: ${systemPressureLevel}`);
+}
+
+function registerSystemPressureLevelChangeCallback(videoSession: camera.VideoSession): void {
+    videoSession.on('systemPressureLevelChange', callback);
+}
+```
+
 ## onExposureInfoChange
 
 ```TypeScript
@@ -449,6 +674,16 @@ onExposureInfoChange(callback: Callback<ExposureInfo>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 是 | 回调函数，用于获取曝光值变化信息。 |
 
+**示例**
+
+```TypeScript
+function onExposureInfoChange(videoSession: camera.VideoSession): void {
+  videoSession.onExposureInfoChange((exposureInfo: camera.ExposureInfo) => {
+    console.info(`Exposure info changed, exposureTime: ${exposureInfo.exposureTime}`);
+  });
+}
+```
+
 ## onIsoInfoChange
 
 ```TypeScript
@@ -470,6 +705,18 @@ onIsoInfoChange(callback: Callback<IsoInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 是 | 回调函数，用于获取相机当前的ISO值。 |
+
+**示例**
+
+```TypeScript
+function callback(isoInfo: camera.IsoInfo): void {
+  console.info(`Iso : ${isoInfo}`);
+}
+
+function registerIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.onIsoInfoChange(callback);
+}
+```
 
 ## preconfig
 
@@ -497,6 +744,23 @@ preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testPreconfig(videoSession: camera.VideoSession, preconfigType: camera.PreconfigType,
+  preconfigRatio: camera.PreconfigRatio): void {
+  try {
+    videoSession.preconfig(preconfigType, preconfigRatio);
+    console.info(`preconfig ${preconfigType} ${preconfigRatio} success`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The preconfig call failed. error code: ${err.code}`);
+  }
+}
+```
 
 ## setQualityPrioritization
 
@@ -530,3 +794,19 @@ setQualityPrioritization(quality: QualityPrioritization): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. The session has not been committed or configured. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setQualityPrioritization(videoSession: camera.VideoSession): void {
+  try {
+    videoSession.setQualityPrioritization(camera.QualityPrioritization.POWER_BALANCE);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setQualityPrioritization call failed. error code: ${err.code}`);
+  }
+}
+```

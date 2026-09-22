@@ -1,5 +1,9 @@
 # CounterOptions
 
+```TypeScript
+declare class CounterOptions
+```
+
 CounterOptions定义了Counter类型及样式。
 
 选择不同的Counter类型时，需选择对应的Counter样式。若样式参数与类型不匹配，将使用该类型对应的默认样式。

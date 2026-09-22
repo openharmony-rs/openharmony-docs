@@ -1,5 +1,9 @@
 # MdnsError
 
+```TypeScript
+export enum MdnsError
+```
+
 Defines the MDNS error information.
 
 **Since:** 10

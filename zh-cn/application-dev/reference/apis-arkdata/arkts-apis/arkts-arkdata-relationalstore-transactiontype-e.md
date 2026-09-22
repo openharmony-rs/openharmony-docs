@@ -1,5 +1,9 @@
 # TransactionType
 
+```TypeScript
+enum TransactionType
+```
+
 描述创建事务对象的枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 14

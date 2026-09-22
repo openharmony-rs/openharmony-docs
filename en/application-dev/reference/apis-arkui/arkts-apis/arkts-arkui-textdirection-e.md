@@ -1,5 +1,9 @@
 # TextDirection
 
+```TypeScript
+declare enum TextDirection
+```
+
 Enumerates the text layout directions.
 
 **Since:** 22

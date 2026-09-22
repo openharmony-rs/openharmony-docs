@@ -1,5 +1,9 @@
 # BundleVersion
 
+```TypeScript
+export interface BundleVersion
+```
+
 Describe bundle version
 
 @interface BundleVersion

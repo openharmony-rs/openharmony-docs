@@ -1,5 +1,9 @@
 # ApplicationQuickFixInfo（系统接口）
 
+```TypeScript
+export interface ApplicationQuickFixInfo
+```
+
 应用级别的快速修复信息。
 
 **起始版本：** 9

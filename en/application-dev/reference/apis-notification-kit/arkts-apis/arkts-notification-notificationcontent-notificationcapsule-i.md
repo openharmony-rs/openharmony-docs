@@ -1,5 +1,9 @@
 # NotificationCapsule
 
+```TypeScript
+export interface NotificationCapsule
+```
+
 Describes the notification capsule, which is used to display the capsule form in the live view.
 
 > **NOTE:** 

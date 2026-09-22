@@ -1,5 +1,9 @@
 # Flags
 
+```TypeScript
+export enum Flags
+```
+
 Flags说明。用于表示处理Want的方式。
 
 **起始版本：** 6

@@ -1,5 +1,9 @@
 # hiAppEvent(应用事件打点)
 
+```TypeScript
+declare namespace hiAppEvent
+```
+
 本模块提供应用打点和事件订阅能力，包括事件存储、事件订阅、事件清理、打点配置等功能。HiAppEvent将应用运行过程中触发的事件信息统一归纳到[AppEventInfo](arkts-performanceanalysis-hiappevent-appeventinfo-i.md)中，并将事件分为系统事件和应用事件两类。
 
 系统事件来源于系统服务，是系统预先定义的事件，这类事件信息中的事件参数对象params包含的字段已由各系统事件定义，具体字段含义在各系统事件指南的介绍中，例如[崩溃事件介绍](../../../dfx/hiappevent-watcher-crash-events.md)。
@@ -31,8 +35,8 @@ import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 | 名称 | 说明 |
 | --- | --- |
 | [configure](arkts-performanceanalysis-hiappevent-configure-f.md) | 应用事件打点配置方法，支持配置打点开关和目录存储配额大小。 |
-| [write](arkts-performanceanalysis-hiappevent-write-f.md) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行处理。 |
-| [write](arkts-performanceanalysis-hiappevent-write-f.md) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行订阅。 |
+| [write](arkts-performanceanalysis-hiappevent-write-f.md#write) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行处理。 |
+| [write](arkts-performanceanalysis-hiappevent-write-f.md#write-1) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行订阅。 |
 | [setEventParam](arkts-performanceanalysis-hiappevent-seteventparam-f.md) | 事件自定义参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件领域和事件名称关联系统事件和应用事件。 |
 | [setEventConfig](arkts-performanceanalysis-hiappevent-seteventconfig-f.md) | 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。 |
 | [addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md) | 添加事件观察者。可通过事件观察者的回调函数监听事件。 |

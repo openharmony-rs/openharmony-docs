@@ -1,5 +1,9 @@
 # SettingsItem
 
+```TypeScript
+enum SettingsItem
+```
+
 Policy type.
 
 **Since:** 24

@@ -1,5 +1,9 @@
 # LocalSendOptions
 
+```TypeScript
+export interface LocalSendOptions
+```
+
 LocalSocket发送请求的参数。
 
 **起始版本：** 11

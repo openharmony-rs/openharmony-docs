@@ -1,5 +1,9 @@
 # WifiP2pDevice
 
+```TypeScript
+interface WifiP2pDevice
+```
+
 表示P2P设备信息。
 
 **起始版本：** 9

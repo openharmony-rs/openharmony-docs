@@ -1,5 +1,9 @@
 # Context
 
+```TypeScript
+interface Context
+```
+
 Provides the device configurations
 
 **Since:** 10

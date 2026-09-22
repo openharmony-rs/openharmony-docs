@@ -1,5 +1,9 @@
 # LightPaintingType（系统接口）
 
+```TypeScript
+enum LightPaintingType
+```
+
 Enumerates the types of light painting shutter modes.
 
 **起始版本：** 12

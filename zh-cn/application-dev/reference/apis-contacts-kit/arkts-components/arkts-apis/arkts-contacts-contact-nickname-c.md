@@ -1,5 +1,9 @@
 # NickName
 
+```TypeScript
+class NickName
+```
+
 联系人的昵称类。
 
 **起始版本：** 7

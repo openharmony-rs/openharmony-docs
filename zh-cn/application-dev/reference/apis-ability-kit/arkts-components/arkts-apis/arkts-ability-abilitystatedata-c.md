@@ -1,5 +1,9 @@
 # AbilityStateData
 
+```TypeScript
+declare class AbilityStateData
+```
+
 AbilityStateData是Ability状态信息的数据结构。使用[on](arkts-ability-appmanager-on-f.md#onapplicationstate)注册生命周期变化监听后，可以通过ApplicationStateObserver的onAbilityStateChanged回调的入参获取该数据结构。
 
 **起始版本：** 14
@@ -40,7 +44,7 @@ abilityType: number
 appCloneIndex?: number
 ```
 
-应用包的[分身](../../../quick-start/app-clone.md)索引标识。
+应用包的[分身](../../../quick-start/app-clone.md)索引标识。0表示主实例，1及以上表示分身实例。不返回时默认为主实例。
 
 **类型：** number
 

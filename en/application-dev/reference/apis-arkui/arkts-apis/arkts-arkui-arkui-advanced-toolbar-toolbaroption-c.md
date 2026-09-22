@@ -1,5 +1,9 @@
 # ToolBarOption
 
+```TypeScript
+export declare class ToolBarOption
+```
+
 Defines the content and attributes of a toolbar.
 
 **Since:** 10
@@ -110,7 +114,7 @@ activatedIconColor?: ResourceColor
 
 Icon fill color of the toolbar option in the activated state.
 
-Default value: **&#36;r('sys.color.icon_emphasize')**
+Default value: **$r('sys.color.icon_emphasize')**
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -130,7 +134,7 @@ activatedTextColor?: ResourceColor
 
 Font color of the toolbar item in the activated state.
 
-Default value: **&#36;r('sys.color.font_emphasize')**
+Default value: **$r('sys.color.font_emphasize')**
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -190,7 +194,7 @@ iconColor?: ResourceColor
 
 Icon fill color of the toolbar item.
 
-Default value: **&#36;r('sys.color.icon_primary')**
+Default value: **$r('sys.color.icon_primary')**
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -230,7 +234,7 @@ textColor?: ResourceColor
 
 Font color of the toolbar item.
 
-Default value: **&#36;r('sys.color.font_primary')**
+Default value: **$r('sys.color.font_primary')**
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 

@@ -1,5 +1,9 @@
 # DistrictRequestParams
 
+```TypeScript
+export interface DistrictRequestParams
+```
+
 表示获取区县信息的请求参数。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # TaskSignal
 
+```TypeScript
+export class TaskSignal
+```
+
 Provides APIs for interrupting a copy task.
 
 **Since:** 12

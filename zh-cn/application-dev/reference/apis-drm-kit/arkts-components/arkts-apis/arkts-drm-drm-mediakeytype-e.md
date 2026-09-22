@@ -1,5 +1,9 @@
 # MediaKeyType
 
+```TypeScript
+enum MediaKeyType
+```
+
 枚举，媒体密钥类型。
 
 **起始版本：** 11

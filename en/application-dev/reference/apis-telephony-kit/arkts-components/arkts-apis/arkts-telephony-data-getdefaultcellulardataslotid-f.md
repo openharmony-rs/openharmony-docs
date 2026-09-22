@@ -39,17 +39,8 @@ data.getDefaultCellularDataSlotId((err: BusinessError, contextData: number) => {
 });
 ```
 
-```TypeScript
-import { data } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getDefaultCellularDataSlotId().then((contextData: number) => {
-    console.info(`getDefaultCellularDataSlotId success, contextData: ${contextData}`);
-}).catch((err: BusinessError) => {
-    console.error(`getDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getdefaultcellulardataslotid-1"></a>
 
 ## getDefaultCellularDataSlotId
 
@@ -71,4 +62,13 @@ Obtains the default slot of the SIM card used for mobile data. This API uses a p
 
 **Examples**
 
-See [getDefaultCellularDataSlotId](#getdefaultcellulardataslotid)
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getDefaultCellularDataSlotId().then((contextData: number) => {
+    console.info(`getDefaultCellularDataSlotId success, contextData: ${contextData}`);
+}).catch((err: BusinessError) => {
+    console.error(`getDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}`);
+});
+```

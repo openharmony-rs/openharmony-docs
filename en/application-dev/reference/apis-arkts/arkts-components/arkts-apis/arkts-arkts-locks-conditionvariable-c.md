@@ -1,5 +1,9 @@
 # ConditionVariable
 
+```TypeScript
+class ConditionVariable
+```
+
 Object used for thread synchronization.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # FileInfo (System API)
 
+```TypeScript
+interface FileInfo
+```
+
 Provides APIs for managing file or directory attribute information.
 
 **Since:** 9

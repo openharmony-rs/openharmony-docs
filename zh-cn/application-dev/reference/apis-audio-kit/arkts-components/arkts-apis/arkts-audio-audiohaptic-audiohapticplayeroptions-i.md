@@ -1,8 +1,10 @@
 # AudioHapticPlayerOptions
 
-音振播放器选项。
+```TypeScript
+interface AudioHapticPlayerOptions
+```
 
-@typedef AudioHapticPlayerOptions
+音振播放器选项。
 
 **起始版本：** 11
 

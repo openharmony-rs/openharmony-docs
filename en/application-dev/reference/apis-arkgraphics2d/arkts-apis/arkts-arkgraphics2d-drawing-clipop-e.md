@@ -1,5 +1,9 @@
 # ClipOp
 
+```TypeScript
+enum ClipOp
+```
+
 Enumerates the canvas clipping modes.
 
 > **NOTE:** 

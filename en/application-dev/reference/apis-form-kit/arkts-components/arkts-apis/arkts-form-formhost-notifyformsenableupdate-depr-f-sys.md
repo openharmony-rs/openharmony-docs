@@ -38,6 +38,8 @@ Instructs the widgets to enable or disable updates. This API uses an asynchronou
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the notification is sent, **error** is undefined; otherwise, **error** is an error object. |
 
 
+<a id="notifyformsenableupdate-1"></a>
+
 ## notifyFormsEnableUpdate
 
 ```TypeScript

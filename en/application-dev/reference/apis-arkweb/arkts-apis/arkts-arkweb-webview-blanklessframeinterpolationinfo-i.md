@@ -1,5 +1,9 @@
 # BlanklessFrameInterpolationInfo
 
+```TypeScript
+interface BlanklessFrameInterpolationInfo
+```
+
 White-Screen-Free Loading frame interpolation status information, which is used as the callback input parameter in [BlanklessLoadingParam](arkts-arkweb-webview-blanklessloadingparam-i.md).
 
 **Since:** 23

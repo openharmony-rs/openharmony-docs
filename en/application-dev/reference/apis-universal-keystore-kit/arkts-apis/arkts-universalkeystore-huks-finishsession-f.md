@@ -18,6 +18,8 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -56,6 +58,8 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the group id specified by the access group tag is invalid<br>**Applicable version:** 23 and later |
 | [12000026](../errorcode-huks.md#12000026-secure-element-fault) | the secure element is not available<br>**Applicable version:** 26.0.0 and later |
 
+
+<a id="finishsession-1"></a>
 
 ## finishSession
 
@@ -109,6 +113,8 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the group id specified by the access group tag is invalid<br>**Applicable version:** 23 and later |
 | [12000026](../errorcode-huks.md#12000026-secure-element-fault) | the secure element is not available<br>**Applicable version:** 26.0.0 and later |
 
+
+<a id="finishsession-2"></a>
 
 ## finishSession
 

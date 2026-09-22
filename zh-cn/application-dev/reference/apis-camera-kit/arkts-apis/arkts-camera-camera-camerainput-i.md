@@ -1,5 +1,9 @@
 # CameraInput
 
+```TypeScript
+interface CameraInput
+```
+
 相机设备输入对象。
 
 会话中[Session](arkts-camera-camera-session-i.md)使用的相机信息。
@@ -40,6 +44,24 @@ close(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function closeCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.close((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to close the cameras, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback returned with camera closed.');
+  });
+}
+```
+
+<a id="close-1"></a>
+
 ## close
 
 ```TypeScript
@@ -66,6 +88,20 @@ close(): Promise<void>
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function closeCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.close().then(() => {
+    console.info('Promise returned with camera closed.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to close the cameras, error code: ${error.code}.`);
+  }); 
+}
+```
+
 ## getPhysicalCameraOrientation
 
 ```TypeScript
@@ -86,6 +122,15 @@ getPhysicalCameraOrientation(): number
 | --- | --- |
 | number | 返回设备当前折叠状态下的物理镜头角度。<br>单位为度数（degree），取值范围为[0, 360]。 |
 
+**示例**
+
+```TypeScript
+function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
+  let physicalCameraOrientation: number = cameraInput.getPhysicalCameraOrientation();
+  return physicalCameraOrientation;
+}
+```
+
 ## isPhysicalCameraOrientationVariable
 
 ```TypeScript
@@ -105,6 +150,15 @@ isPhysicalCameraOrientationVariable(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 查询设备不同折叠状态下，相机物理镜头角度是否可变。true表示可变，false表示不可变。若接口调用失败，返回undefined。 |
+
+**示例**
+
+```TypeScript
+function isPhysicalCameraOrientationVariable(cameraInput: camera.CameraInput): boolean {
+  let isVariable: boolean = cameraInput.isPhysicalCameraOrientationVariable();
+  return isVariable;
+}
+```
 
 ## off('error')
 
@@ -127,6 +181,14 @@ off(type: 'error', camera: CameraDevice, callback?: ErrorCallback): void
 | type | 'error' | 是 | 监听事件，固定为'error'，CameraInput对象创建成功可监听。相机设备出错情况下可触发该事件并返回结果，比如设备不可用或者冲突等返回对应错误信息。 |
 | camera | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 是 | CameraDevice对象。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。 |
+
+**示例**
+
+```TypeScript
+function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: camera.CameraDevice): void {
+  cameraInput.off('error', camera);
+}
+```
 
 ## off('cameraOcclusionDetection')
 
@@ -155,6 +217,31 @@ off(type: 'cameraOcclusionDetection', callback?: AsyncCallback<CameraOcclusionDe
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 22 |
 
+**示例**
+
+```TypeScript
+function callback(err: BusinessError, result: camera.CameraOcclusionDetectionResult): void {
+  if (err !== undefined && err.code !== 0) {
+      console.error('cameraOcclusionDetection with errorCode = ' + err.code);
+      return;
+  }
+  if (!result) {
+      console.error(`cameraOcclusionDetection result: undefined`);
+      return;
+  }
+  console.info(`onCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
+  console.info(`onCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
+}
+
+function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+    cameraInput.off('cameraOcclusionDetection', callback);
+}
+
+function unregisterAllCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+    cameraInput.off('cameraOcclusionDetection');
+}
+```
+
 ## on('error')
 
 ```TypeScript
@@ -180,6 +267,20 @@ on(type: 'error', camera: CameraDevice, callback: ErrorCallback): void
 | type | 'error' | 是 | 监听事件，固定为'error'，CameraInput对象创建成功可监听。相机设备出错情况下可触发该事件并返回结果，比如设备不可用或者冲突等返回对应错误信息。 |
 | camera | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 是 | CameraDevice对象。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于获取结果。返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Camera input error code: ${err.code}`);
+}
+
+function registerCameraInputError(cameraInput: camera.CameraInput, camera: camera.CameraDevice): void {
+  cameraInput.on('error', camera, callback);
+}
+```
 
 ## on('cameraOcclusionDetection')
 
@@ -212,6 +313,29 @@ on(type: 'cameraOcclusionDetection', callback: AsyncCallback<CameraOcclusionDete
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 22 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, result: camera.CameraOcclusionDetectionResult): void {
+  if (err !== undefined && err.code !== 0) {
+      console.error('cameraOcclusionDetection with errorCode = ' + err.code);
+      return;
+  }
+  if (!result) {
+      console.error(`cameraOcclusionDetection result: undefined`);
+      return;
+  }
+  console.info(`onCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
+  console.info(`onCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
+}
+
+function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+  cameraInput.on('cameraOcclusionDetection', callback);
+}
+```
+
 ## open
 
 ```TypeScript
@@ -239,6 +363,24 @@ open(callback: AsyncCallback<void>): void
 | [7400107](../errorcode-camera.md#7400107-相机冲突) | Can not use camera cause of conflict. |
 | [7400108](../errorcode-camera.md#7400108-安全策略无法使用相机) | Camera disabled cause of security reason. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function openCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.open((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to open camera, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback returned with camera opened.');
+  });
+}
+```
+
+<a id="open-1"></a>
 
 ## open
 
@@ -268,6 +410,22 @@ open(): Promise<void>
 | [7400107](../errorcode-camera.md#7400107-相机冲突) | Can not use camera cause of conflict. |
 | [7400108](../errorcode-camera.md#7400108-安全策略无法使用相机) | Camera disabled cause of security reason. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function openCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.open().then(() => {
+    console.info('Promise returned with camera opened.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to open camera, error code: ${error.code}.`);
+  });
+}
+```
+
+<a id="open-2"></a>
 
 ## open
 
@@ -302,6 +460,22 @@ open(isSecureEnabled: boolean): Promise<bigint>
 | [7400107](../errorcode-camera.md#7400107-相机冲突) | Can not use camera cause of conflict. |
 | [7400108](../errorcode-camera.md#7400108-安全策略无法使用相机) | Camera disabled cause of security reason. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function openCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.open(true).then(() => {
+    console.info('Promise returned with camera opened.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to open camera, error code: ${error.code}.`);
+  });
+}
+```
+
+<a id="open-3"></a>
 
 ## open
 
@@ -338,6 +512,20 @@ open(type: CameraConcurrentType): Promise<void>
 | [7400108](../errorcode-camera.md#7400108-安全策略无法使用相机) | Camera disabled cause of security reason. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function openCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.open(0).then(() => {
+    console.info('Promise returned with camera opened.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to open camera, error code: ${error.code}.`);
+  });
+}
+```
+
 ## usePhysicalCameraOrientation
 
 ```TypeScript
@@ -364,3 +552,18 @@ usePhysicalCameraOrientation(isUsed: boolean): void
 | --- | --- |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function usePhysicalCameraOrientation(cameraInput: camera.CameraInput, isUsed: boolean): void {
+  try {
+    cameraInput.usePhysicalCameraOrientation(isUsed);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The usePhysicalCameraOrientation call failed. error code: ${err.code}`);
+  }
+}
+```

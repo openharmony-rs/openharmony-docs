@@ -1,5 +1,9 @@
 # TargetType（系统接口）
 
+```TypeScript
+export enum TargetType
+```
+
 Target type.
 
 @enum { int }

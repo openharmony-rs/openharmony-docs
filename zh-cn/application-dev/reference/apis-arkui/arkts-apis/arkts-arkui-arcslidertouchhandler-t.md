@@ -16,4 +16,4 @@ declare type ArcSliderTouchHandler = (event: TouchEvent) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [TouchEvent](../arkts-components/arkts-arkui-touchevent-i.md) | 是 | 获得TouchEvent对象。 |
+| event | [TouchEvent](../arkts-components/arkts-arkui-common-comp-touchevent-i.md) | 是 | 获得TouchEvent对象。 |

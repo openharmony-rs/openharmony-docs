@@ -1,5 +1,9 @@
 # ProgressSignal
 
+```TypeScript
+export class ProgressSignal
+```
+
 定义进度取消的函数，在粘贴过程中可选择取消任务，且仅当进度指示选项[ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md)设置为NONE时此参数才生效。
 
 **起始版本：** 15

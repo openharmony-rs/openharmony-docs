@@ -1,5 +1,9 @@
 # RangingState
 
+```TypeScript
+enum RangingState
+```
+
 枚举，测距状态。
 
 **起始版本：** 26.0.0

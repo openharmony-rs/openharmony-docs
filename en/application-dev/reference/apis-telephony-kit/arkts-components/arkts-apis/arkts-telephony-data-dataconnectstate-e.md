@@ -1,5 +1,9 @@
 # DataConnectState
 
+```TypeScript
+export enum DataConnectState
+```
+
 Describes the connection status of a cellular data link.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # TipsDialog
 
+```TypeScript
+export declare struct TipsDialog
+```
+
 Declare CustomDialog TipsDialog
 
 **Since:** 18
@@ -98,7 +102,7 @@ imageRes: ResourceStr | PixelMap
 
 Sets the TipsDialog imageRes.
 
-**Type:** [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; [PixelMap](../arkts-components/arkts-arkui-pixelmap-t.md)
+**Type:** [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; [PixelMap](../arkts-components/arkts-arkui-common-comp-pixelmap-t.md)
 
 **Since:** 18
 
@@ -224,7 +228,7 @@ themeColorMode?: ThemeColorMode
 
 Sets the TipsDialog dark or light Mode.
 
-**Type:** [ThemeColorMode](../arkts-components/arkts-arkui-themecolormode-e.md)
+**Type:** [ThemeColorMode](../arkts-components/arkts-arkui-common-comp-themecolormode-e.md)
 
 **Since:** 12
 

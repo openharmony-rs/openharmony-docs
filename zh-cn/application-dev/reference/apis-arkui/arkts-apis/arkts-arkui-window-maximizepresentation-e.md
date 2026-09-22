@@ -1,5 +1,9 @@
 # MaximizePresentation
 
+```TypeScript
+enum MaximizePresentation
+```
+
 窗口最大化时的布局枚举。
 
 **起始版本：** 12

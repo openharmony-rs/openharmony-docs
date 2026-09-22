@@ -14,7 +14,7 @@ function getUserExtendCredential(accountId: number): Promise<UserExtCredentialIn
 
 Gets the extended user credential information of the specified account.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 

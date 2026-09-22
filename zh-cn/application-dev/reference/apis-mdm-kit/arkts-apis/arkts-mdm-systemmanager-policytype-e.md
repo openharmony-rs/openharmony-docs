@@ -1,5 +1,9 @@
 # PolicyType
 
+```TypeScript
+enum PolicyType
+```
+
 升级策略类型枚举。
 
 **起始版本：** 12

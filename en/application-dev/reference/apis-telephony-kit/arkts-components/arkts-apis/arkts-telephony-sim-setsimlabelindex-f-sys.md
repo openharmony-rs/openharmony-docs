@@ -18,6 +18,8 @@ Set the SIM card labelIndex.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.

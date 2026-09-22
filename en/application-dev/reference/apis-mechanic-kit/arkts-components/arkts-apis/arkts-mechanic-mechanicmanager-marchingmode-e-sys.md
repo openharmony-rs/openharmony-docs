@@ -1,5 +1,9 @@
 # MarchingMode (System API)
 
+```TypeScript
+export enum MarchingMode
+```
+
 Marching mode definition.
 
 **Since:** 26.0.0

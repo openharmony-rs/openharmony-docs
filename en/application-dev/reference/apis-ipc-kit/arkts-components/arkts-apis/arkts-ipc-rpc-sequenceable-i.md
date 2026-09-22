@@ -1,5 +1,9 @@
 # Sequenceable
 
+```TypeScript
+interface Sequenceable
+```
+
 Writes objects of classes to a **MessageParcel** and reads them from the **MessageParcel** during IPC.
 
 **Since:** 7

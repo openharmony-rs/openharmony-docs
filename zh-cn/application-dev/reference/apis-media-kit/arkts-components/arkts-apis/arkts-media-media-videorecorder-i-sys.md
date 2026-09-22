@@ -1,5 +1,9 @@
 # VideoRecorder（系统接口）
 
+```TypeScript
+interface VideoRecorder
+```
+
 
 > **说明：** 
 > AVRecorder&lt;sup&gt;9+&lt;/sup&gt;发布后，VideoRecorder停止维护，建议使用[AVRecorder](arkts-media-media-avrecorder-i.md)替代。
@@ -64,18 +68,7 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// promise.
-let surfaceID: string; // 传递给外界的surfaceID。
-videoRecorder.getInputSurface().then((surfaceId: string) => {
-  console.info('getInputSurface success');
-  surfaceID = surfaceId;
-}).catch((err: BusinessError) => {
-  console.error('getInputSurface failed and catch error is ' + err.message);
-});
-```
+<a id="getinputsurface-2"></a>
 
 ## getInputSurface
 
@@ -107,21 +100,6 @@ getInputSurface(): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// asyncallback.
-let surfaceID: string; // 传递给外界的surfaceID。
-videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
-  if (err == null) {
-    console.info('getInputSurface success');
-    surfaceID = surfaceId;
-  } else {
-    console.error('getInputSurface failed and error is ' + err.message);
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -165,6 +143,17 @@ on(type: 'error', callback: ErrorCallback): void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 当获取videoRecordState接口出错时通过此订阅事件上报。
+videoRecorder.on('error', (error: BusinessError) => { // 设置'error'事件回调。
+  console.error(`audio error called, error: ${error}`);
+})
+```
 
 ## pause
 
@@ -212,16 +201,7 @@ videoRecorder.pause((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// promise.
-videoRecorder.pause().then(() => {
-  console.info('pause videorecorder success');
-}).catch((err: BusinessError) => {
-  console.error('pause videorecorder failed and catch error is ' + err.message);
-});
-```
+<a id="pause-1"></a>
 
 ## pause
 
@@ -255,19 +235,6 @@ pause(): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// asyncallback.
-videoRecorder.pause((err: BusinessError) => {
-  if (err == null) {
-    console.info('pause videorecorder success');
-  } else {
-    console.error('pause videorecorder failed and error is ' + err.message);
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -351,39 +318,7 @@ videoRecorder.prepare(videoConfig, (err: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 配置参数以实际硬件设备支持的范围为准。
-let videoProfile: media.VideoRecorderProfile = {
-  audioBitrate : 48000,
-  audioChannels : 2,
-  audioCodec : media.CodecMimeType.AUDIO_AAC,
-  audioSampleRate : 48000,
-  fileFormat : media.ContainerFormatType.CFT_MPEG_4,
-  videoBitrate : 2000000,
-  videoCodec : media.CodecMimeType.VIDEO_AVC,
-  videoFrameWidth : 640,
-  videoFrameHeight : 480,
-  videoFrameRate : 30
-}
-
-let videoConfig: media.VideoRecorderConfig = {
-  audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-  videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
-  profile : videoProfile,
-  url : 'fd://xx', // 文件需先由调用者创建，并给予适当的权限。
-  rotation : 0,
-  location : { latitude : 30, longitude : 130 }
-}
-
-// promise.
-videoRecorder.prepare(videoConfig).then(() => {
-  console.info('prepare success');
-}).catch((err: BusinessError) => {
-  console.error('prepare failed and catch error is ' + err.message);
-});
-```
+<a id="prepare-1"></a>
 
 ## prepare
 
@@ -424,42 +359,6 @@ prepare(config: VideoRecorderConfig): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 配置参数以实际硬件设备支持的范围为准。
-let videoProfile: media.VideoRecorderProfile = {
-  audioBitrate : 48000,
-  audioChannels : 2,
-  audioCodec : media.CodecMimeType.AUDIO_AAC,
-  audioSampleRate : 48000,
-  fileFormat : media.ContainerFormatType.CFT_MPEG_4,
-  videoBitrate : 2000000,
-  videoCodec : media.CodecMimeType.VIDEO_AVC,
-  videoFrameWidth : 640,
-  videoFrameHeight : 480,
-  videoFrameRate : 30
-}
-
-let videoConfig: media.VideoRecorderConfig = {
-  audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-  videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
-  profile : videoProfile,
-  url : 'fd://xx', // 文件需先由调用者创建，并给予适当的权限。
-  rotation : 0,
-  location : { latitude : 30, longitude : 130 }
-}
-
-// asyncallback.
-videoRecorder.prepare(videoConfig, (err: BusinessError) => {
-  if (err == null) {
-    console.info('prepare success');
-  } else {
-    console.error('prepare failed and error is ' + err.message);
-  }
-})
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -537,16 +436,7 @@ videoRecorder.release((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// promise.
-videoRecorder.release().then(() => {
-  console.info('release videorecorder success');
-}).catch((err: BusinessError) => {
-  console.error('release videorecorder failed and catch error is ' + err.message);
-});
-```
+<a id="release-1"></a>
 
 ## release
 
@@ -576,19 +466,6 @@ release(): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// asyncallback.
-videoRecorder.release((err: BusinessError) => {
-  if (err == null) {
-    console.info('release videorecorder success');
-  } else {
-    console.error('release videorecorder failed and error is ' + err.message);
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -646,16 +523,7 @@ videoRecorder.reset((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// promise.
-videoRecorder.reset().then(() => {
-  console.info('reset videorecorder success');
-}).catch((err: BusinessError) => {
-  console.error('reset videorecorder failed and catch error is ' + err.message);
-});
-```
+<a id="reset-1"></a>
 
 ## reset
 
@@ -688,19 +556,6 @@ reset(): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// asyncallback.
-videoRecorder.reset((err: BusinessError) => {
-  if (err == null) {
-    console.info('reset videorecorder success');
-  } else {
-    console.error('reset videorecorder failed and error is ' + err.message);
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -757,16 +612,7 @@ videoRecorder.resume((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// promise.
-videoRecorder.resume().then(() => {
-  console.info('resume videorecorder success');
-}).catch((err: BusinessError) => {
-  console.error('resume videorecorder failed and catch error is ' + err.message);
-});
-```
+<a id="resume-1"></a>
 
 ## resume
 
@@ -798,19 +644,6 @@ resume(): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// asyncallback.
-videoRecorder.resume((err: BusinessError) => {
-  if (err == null) {
-    console.info('resume videorecorder success');
-  } else {
-    console.error('resume videorecorder failed and error is ' + err.message);
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -869,16 +702,7 @@ videoRecorder.start((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// promise.
-videoRecorder.start().then(() => {
-  console.info('start videorecorder success');
-}).catch((err: BusinessError) => {
-  console.error('start videorecorder failed and catch error is ' + err.message);
-});
-```
+<a id="start-1"></a>
 
 ## start
 
@@ -912,19 +736,6 @@ start(): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// asyncallback.
-videoRecorder.start((err: BusinessError) => {
-  if (err == null) {
-    console.info('start videorecorder success');
-  } else {
-    console.error('start videorecorder failed and error is ' + err.message);
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -983,16 +794,7 @@ videoRecorder.stop((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// promise.
-videoRecorder.stop().then(() => {
-  console.info('stop videorecorder success');
-}).catch((err: BusinessError) => {
-  console.error('stop videorecorder failed and catch error is ' + err.message);
-});
-```
+<a id="stop-1"></a>
 
 ## stop
 
@@ -1026,19 +828,6 @@ stop(): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// asyncallback.
-videoRecorder.stop((err: BusinessError) => {
-  if (err == null) {
-    console.info('stop videorecorder success');
-  } else {
-    console.error('stop videorecorder failed and error is ' + err.message);
-  }
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

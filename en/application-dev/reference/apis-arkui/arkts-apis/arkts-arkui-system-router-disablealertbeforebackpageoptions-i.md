@@ -1,5 +1,9 @@
 # DisableAlertBeforeBackPageOptions
 
+```TypeScript
+export interface DisableAlertBeforeBackPageOptions
+```
+
 Defines the **DisableAlertBeforeBackPage** parameter.
 
 **Since:** 6

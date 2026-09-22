@@ -52,14 +52,8 @@ connection.getAddressesByName("xxxx", (error: BusinessError, data: connection.Ne
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
 
-connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
-});
-```
-
+<a id="getaddressesbyname-1"></a>
 
 ## getAddressesByName
 
@@ -98,19 +92,6 @@ Obtains all IP addresses of the default network by resolving the host name. This
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
 **Examples**
-
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-connection.getAddressesByName("xxxx", (error: BusinessError, data: connection.NetAddress[]) => {
-  if (error) {
-    console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
-    return;
-  }
-  console.info("Succeeded to get data: " + JSON.stringify(data));
-});
-```
 
 ```TypeScript
 import { connection } from '@kit.NetworkKit';

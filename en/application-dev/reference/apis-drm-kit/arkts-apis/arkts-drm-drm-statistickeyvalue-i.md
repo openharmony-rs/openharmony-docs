@@ -1,5 +1,9 @@
 # StatisticKeyValue
 
+```TypeScript
+interface StatisticKeyValue
+```
+
 Defines a key-value pair for DRM metrics.
 
 **Since:** 11

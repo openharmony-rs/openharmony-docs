@@ -1,5 +1,9 @@
 # FlyMode（系统接口）
 
+```TypeScript
+enum FlyMode
+```
+
 飞入飞出形变场景模式枚举。
 
 **起始版本：** 12

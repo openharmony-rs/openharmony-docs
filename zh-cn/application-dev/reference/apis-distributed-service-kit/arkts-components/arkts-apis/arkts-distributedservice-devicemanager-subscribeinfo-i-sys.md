@@ -1,5 +1,9 @@
 # SubscribeInfo（系统接口）
 
+```TypeScript
+interface SubscribeInfo
+```
+
 发现信息。
 
 **起始版本：** 7

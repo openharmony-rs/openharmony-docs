@@ -1,5 +1,9 @@
 # KVManager
 
+```TypeScript
+interface KVManager
+```
+
 数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md)构建一个KVManager实例。
 
 **起始版本：** 7
@@ -67,34 +71,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvManager;
-let kvStore;
-const options = {
-    createIfMissing: true,
-    encrypt: false,
-    backup: false,
-    autoSync: false,
-    kvStoreType: distributedData.KVStoreType.SINGLE_VERSION,
-    schema: undefined,
-    securityLevel: distributedData.SecurityLevel.S3,
-}
-try {
-    kvManager.getKVStore('storeId', options).then(async (store) => {
-        console.info('getKVStore success');
-        kvStore = store;
-        kvManager.closeKVStore('appId', 'storeId', kvStore).then(() => {
-            console.info('closeKVStore success');
-        }).catch((err) => {
-            console.error('closeKVStore err ' + JSON.stringify(err));
-        });
-    }).catch((err) => {
-        console.error('CloseKVStore getKVStore err ' + JSON.stringify(err));
-    });
-} catch (e) {
-    console.error('closeKVStore e ' + e);
-}
-```
+<a id="closekvstore-1"></a>
 
 ## closeKVStore
 
@@ -128,7 +105,34 @@ closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>
 
 **示例**
 
-参见 [closeKVStore](#closekvstore)
+```TypeScript
+let kvManager;
+let kvStore;
+const options = {
+    createIfMissing: true,
+    encrypt: false,
+    backup: false,
+    autoSync: false,
+    kvStoreType: distributedData.KVStoreType.SINGLE_VERSION,
+    schema: undefined,
+    securityLevel: distributedData.SecurityLevel.S3,
+}
+try {
+    kvManager.getKVStore('storeId', options).then(async (store) => {
+        console.info('getKVStore success');
+        kvStore = store;
+        kvManager.closeKVStore('appId', 'storeId', kvStore).then(() => {
+            console.info('closeKVStore success');
+        }).catch((err) => {
+            console.error('closeKVStore err ' + JSON.stringify(err));
+        });
+    }).catch((err) => {
+        console.error('CloseKVStore getKVStore err ' + JSON.stringify(err));
+    });
+} catch (e) {
+    console.error('closeKVStore e ' + e);
+}
+```
 
 ## deleteKVStore
 
@@ -181,34 +185,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvManager;
-let kvStore;
-const options = {
-    createIfMissing : true,
-    encrypt : false,
-    backup : false,
-    autoSync : true,
-    kvStoreType : distributedData.KVStoreType.SINGLE_VERSION,
-    schema : undefined,
-    securityLevel : distributedData.SecurityLevel.S3,
-}
-try {
-    kvManager.getKVStore('storeId', options).then(async (store) => {
-        console.info('getKVStore success');
-        kvStore = store;
-        kvManager.deleteKVStore('appId', 'storeId').then(() => {
-            console.info('deleteKVStore success');
-        }).catch((err) => {
-            console.error('deleteKVStore err ' + JSON.stringify(err));
-        });
-    }).catch((err) => {
-        console.error('getKVStore err ' + JSON.stringify(err));
-    });
-} catch (e) {
-    console.error('deleteKVStore e ' + e);
-}
-```
+<a id="deletekvstore-1"></a>
 
 ## deleteKVStore
 
@@ -241,7 +218,34 @@ deleteKVStore(appId: string, storeId: string): Promise<void>
 
 **示例**
 
-参见 [deleteKVStore](#deletekvstore)
+```TypeScript
+let kvManager;
+let kvStore;
+const options = {
+    createIfMissing : true,
+    encrypt : false,
+    backup : false,
+    autoSync : true,
+    kvStoreType : distributedData.KVStoreType.SINGLE_VERSION,
+    schema : undefined,
+    securityLevel : distributedData.SecurityLevel.S3,
+}
+try {
+    kvManager.getKVStore('storeId', options).then(async (store) => {
+        console.info('getKVStore success');
+        kvStore = store;
+        kvManager.deleteKVStore('appId', 'storeId').then(() => {
+            console.info('deleteKVStore success');
+        }).catch((err) => {
+            console.error('deleteKVStore err ' + JSON.stringify(err));
+        });
+    }).catch((err) => {
+        console.error('getKVStore err ' + JSON.stringify(err));
+    });
+} catch (e) {
+    console.error('deleteKVStore e ' + e);
+}
+```
 
 ## getAllKVStoreId
 
@@ -280,20 +284,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvManager;
-try {
-    console.info('GetAllKVStoreId');
-    kvManager.getAllKVStoreId('appId').then((data) => {
-        console.info('getAllKVStoreId success');
-        console.info('size = ' + data.length);
-    }).catch((err) => {
-        console.error('getAllKVStoreId err ' + JSON.stringify(err));
-    });
-} catch(e) {
-    console.error('getAllKVStoreId e ' + e);
-}
-```
+<a id="getallkvstoreid-1"></a>
 
 ## getAllKVStoreId
 
@@ -325,7 +316,20 @@ getAllKVStoreId(appId: string): Promise<string[]>
 
 **示例**
 
-参见 [getAllKVStoreId](#getallkvstoreid)
+```TypeScript
+let kvManager;
+try {
+    console.info('GetAllKVStoreId');
+    kvManager.getAllKVStoreId('appId').then((data) => {
+        console.info('getAllKVStoreId success');
+        console.info('size = ' + data.length);
+    }).catch((err) => {
+        console.error('getAllKVStoreId err ' + JSON.stringify(err));
+    });
+} catch(e) {
+    console.error('getAllKVStoreId e ' + e);
+}
+```
 
 ## getKVStore
 
@@ -370,31 +374,6 @@ try {
         kvStoreType : distributedData.KVStoreType.SINGLE_VERSION,
         securityLevel : distributedData.SecurityLevel.S3,
     };
-    kvManager.getKVStore('storeId', options, function (err, store) {
-        if (err) {
-            console.error("getKVStore err: "  + JSON.stringify(err));
-            return;
-        }
-        console.info("getKVStore success");
-        kvStore = store;
-    });
-} catch (e) {
-    console.error("An unexpected error occurred. Error:" + e);
-}
-```
-
-```TypeScript
-let kvStore;
-let kvManager;
-try {
-    const options = {
-        createIfMissing : true,
-        encrypt : false,
-        backup : false,
-        autoSync : true,
-        kvStoreType : distributedData.KVStoreType.SINGLE_VERSION,
-        securityLevel : distributedData.SecurityLevel.S3,
-    };
     kvManager.getKVStore('storeId', options).then((store) => {
         console.info("getKVStore success");
         kvStore = store;
@@ -405,6 +384,8 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
+
+<a id="getkvstore-1"></a>
 
 ## getKVStore
 
@@ -432,7 +413,30 @@ getKVStore<T extends KVStore>(storeId: string, options: Options, callback: Async
 
 **示例**
 
-参见 [getKVStore](#getkvstore)
+```TypeScript
+let kvStore;
+let kvManager;
+try {
+    const options = {
+        createIfMissing : true,
+        encrypt : false,
+        backup : false,
+        autoSync : true,
+        kvStoreType : distributedData.KVStoreType.SINGLE_VERSION,
+        securityLevel : distributedData.SecurityLevel.S3,
+    };
+    kvManager.getKVStore('storeId', options, function (err, store) {
+        if (err) {
+            console.error("getKVStore err: "  + JSON.stringify(err));
+            return;
+        }
+        console.info("getKVStore success");
+        kvStore = store;
+    });
+} catch (e) {
+    console.error("An unexpected error occurred. Error:" + e);
+}
+```
 
 ## off
 
@@ -457,6 +461,21 @@ off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void
 | event | 'distributedDataServiceDie' | 是 | 取消订阅的事件名，固定为'distributedDataServiceDie'，即服务状态变更事件。 |
 | deathCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有已订阅的函数。 |
 
+**示例**
+
+```TypeScript
+let kvManager;
+try {
+    console.info('KVManagerOff');
+    const deathCallback = function () {
+        console.info('death callback call');
+    }
+    kvManager.off('distributedDataServiceDie', deathCallback);
+} catch (e) {
+    console.error("An unexpected error occurred. Error:" + e);
+}
+```
+
 ## on
 
 ```TypeScript
@@ -479,3 +498,18 @@ on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
 | --- | --- | --- | --- |
 | event | 'distributedDataServiceDie' | 是 | 订阅的事件名，固定为'distributedDataServiceDie'，即服务状态变更事件。 |
 | deathCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
+
+**示例**
+
+```TypeScript
+let kvManager;
+try {
+    console.info('KVManagerOn');
+    const deathCallback = function () {
+        console.info('death callback call');
+    }
+    kvManager.on('distributedDataServiceDie', deathCallback);
+} catch (e) {
+    console.error("An unexpected error occurred. Error:" + e);
+}
+```

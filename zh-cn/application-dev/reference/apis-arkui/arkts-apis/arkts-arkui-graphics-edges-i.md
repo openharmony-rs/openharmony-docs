@@ -1,5 +1,9 @@
 # Edges
 
+```TypeScript
+export interface Edges<T>
+```
+
 用于设置边框的属性。
 
 **起始版本：** 12

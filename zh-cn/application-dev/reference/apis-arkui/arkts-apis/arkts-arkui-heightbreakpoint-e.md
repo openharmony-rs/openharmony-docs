@@ -1,5 +1,9 @@
 # HeightBreakpoint
 
+```TypeScript
+declare enum HeightBreakpoint
+```
+
 Type of window height breakpoint.
 
 @enum { number }

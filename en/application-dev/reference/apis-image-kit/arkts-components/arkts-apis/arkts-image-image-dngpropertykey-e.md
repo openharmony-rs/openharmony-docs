@@ -1,5 +1,9 @@
 # DngPropertyKey
 
+```TypeScript
+enum DngPropertyKey
+```
+
 Enumerates the properties available for the metadata of a DNG image.
 
 **Since:** 24

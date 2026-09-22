@@ -1,5 +1,9 @@
 # PortModeType (System API)
 
+```TypeScript
+export enum PortModeType
+```
+
 Enumerates USB port mode types.
 
 **Since:** 9

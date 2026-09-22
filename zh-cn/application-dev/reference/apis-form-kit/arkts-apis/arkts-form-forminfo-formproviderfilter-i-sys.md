@@ -1,5 +1,9 @@
 # FormProviderFilter（系统接口）
 
+```TypeScript
+interface FormProviderFilter
+```
+
 Information about a running form.
 
 @typedef FormProviderFilter

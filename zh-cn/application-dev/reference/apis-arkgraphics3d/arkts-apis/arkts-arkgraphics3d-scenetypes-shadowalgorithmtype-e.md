@@ -1,5 +1,9 @@
 # ShadowAlgorithmType
 
+```TypeScript
+export enum ShadowAlgorithmType
+```
+
 阴影算法的枚举类型。
 
 **起始版本：** 26.0.0

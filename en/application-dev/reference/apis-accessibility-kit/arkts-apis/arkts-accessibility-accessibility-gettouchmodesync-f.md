@@ -30,21 +30,3 @@ Obtains the single-tap/double-tap operation mode in touch guide mode. This can b
 | string | Touch mode.<br>- **singleTouchMode**: Single-touch mode. <br>- **doubleTouchMode**: Double-touch mode. <br>- **none**: Touch guide mode is disabled. |
 
 **Examples**
-
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-
-@Entry
-@Component
-struct Index {
-  aboutToAppear(): void {
-    let touchMode: string = accessibility.getTouchModeSync();
-    console.info(`current touch mode: ${JSON.stringify(touchMode)}`);
-  }
-
-  build() {
-    Column() {
-    }
-  }
-}
-```

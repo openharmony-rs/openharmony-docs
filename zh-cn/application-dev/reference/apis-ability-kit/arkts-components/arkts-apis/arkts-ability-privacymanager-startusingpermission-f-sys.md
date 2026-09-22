@@ -20,6 +20,8 @@ function startUsingPermission(tokenID: number, permissionName: Permissions): Pro
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -66,97 +68,8 @@ privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(
 });
 ```
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit';
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
-let pid: number = rpc.IPCSkeleton.getCallingPid();
-let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
-
-// 开始使用指定权限
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
-  console.info('startUsingPermission success');
-}).catch((err: BusinessError): void => {
-  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-// with pid
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
-  console.info('startUsingPermission success');
-}).catch((err: BusinessError): void => {
-  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-// with usedType
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
-  console.info('startUsingPermission success');
-}).catch((err: BusinessError): void => {
-  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-// with pid and usedType
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
-  console.info('startUsingPermission success');
-}).catch((err: BusinessError): void => {
-  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit';
-
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
-let pid: number = rpc.IPCSkeleton.getCallingPid();
-let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
-
-// 不带pid和usedType参数
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
-  console.info('startUsingPermission success.');
-}).catch((err: BusinessError): void => {
-  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-// 带pid参数
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
-  console.info('startUsingPermission success.');
-}).catch((err: BusinessError): void => {
-  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-// 带usedType参数
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
-  console.info('startUsingPermission success.');
-}).catch((err: BusinessError): void => {
-  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-// 带pid和usedType参数
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
-  console.info('startUsingPermission success.');
-}).catch((err: BusinessError): void => {
-  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-// 带pid、usedType和enhancedIdentity
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType, {enhancedIdentity: 'test'}).then(() => {
-  console.info('startUsingPermission success.');
-}).catch((err: BusinessError): void => {
-  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
-// 开始使用指定权限
-privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
-  if (err) {
-    console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('startUsingPermission success');
-  }
-});
-```
-
+<a id="startusingpermission-1"></a>
 
 ## startUsingPermission
 
@@ -176,6 +89,8 @@ function startUsingPermission(
 **起始版本：** 18
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -211,8 +126,43 @@ function startUsingPermission(
 
 **示例**
 
-参见 [startUsingPermission](#startusingpermission)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit';
 
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
+let pid: number = rpc.IPCSkeleton.getCallingPid();
+let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
+
+// 开始使用指定权限
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
+  console.info('startUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// with pid
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
+  console.info('startUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// with usedType
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
+  console.info('startUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// with pid and usedType
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
+  console.info('startUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+<a id="startusingpermission-2"></a>
 
 ## startUsingPermission
 
@@ -272,8 +222,49 @@ function startUsingPermission(
 
 **示例**
 
-参见 [startUsingPermission](#startusingpermission)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit';
 
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
+let pid: number = rpc.IPCSkeleton.getCallingPid();
+let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
+
+// 不带pid和usedType参数
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// 带pid参数
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// 带usedType参数
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// 带pid和usedType参数
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// 带pid、usedType和enhancedIdentity
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType, {enhancedIdentity: 'test'}).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+<a id="startusingpermission-3"></a>
 
 ## startUsingPermission
 
@@ -292,6 +283,8 @@ function startUsingPermission(
 **起始版本：** 9
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -321,4 +314,17 @@ function startUsingPermission(
 
 **示例**
 
-参见 [startUsingPermission](#startusingpermission)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
+// 开始使用指定权限
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
+  if (err) {
+    console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('startUsingPermission success');
+  }
+});
+```

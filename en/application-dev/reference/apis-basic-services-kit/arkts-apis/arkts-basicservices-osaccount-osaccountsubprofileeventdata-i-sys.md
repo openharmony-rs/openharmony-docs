@@ -1,5 +1,9 @@
 # OsAccountSubProfileEventData (System API)
 
+```TypeScript
+interface OsAccountSubProfileEventData
+```
+
 Defines the data of an OS account sub-profile event.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # FeatureForAccount
 
+```TypeScript
+enum FeatureForAccount
+```
+
 可为指定用户设置禁用/启用的特性的枚举。
 
 **起始版本：** 26.0.0

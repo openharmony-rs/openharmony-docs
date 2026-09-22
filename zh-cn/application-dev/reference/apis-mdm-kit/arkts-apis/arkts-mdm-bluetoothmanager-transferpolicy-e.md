@@ -1,5 +1,9 @@
 # TransferPolicy
 
+```TypeScript
+export enum TransferPolicy
+```
+
 传输策略。
 
 **起始版本：** 26.0.0

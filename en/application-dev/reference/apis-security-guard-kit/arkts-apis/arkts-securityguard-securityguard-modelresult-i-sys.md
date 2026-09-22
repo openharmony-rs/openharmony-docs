@@ -1,5 +1,9 @@
 # ModelResult (System API)
 
+```TypeScript
+interface ModelResult
+```
+
 Provides the ModelResult type.
 
 @typedef ModelResult

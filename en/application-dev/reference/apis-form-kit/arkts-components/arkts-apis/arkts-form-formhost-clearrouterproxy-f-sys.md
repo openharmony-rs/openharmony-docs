@@ -42,6 +42,8 @@ Clears the router proxy set for widgets. This API uses an asynchronous callback 
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
 
 
+<a id="clearrouterproxy-1"></a>
+
 ## clearRouterProxy
 
 ```TypeScript

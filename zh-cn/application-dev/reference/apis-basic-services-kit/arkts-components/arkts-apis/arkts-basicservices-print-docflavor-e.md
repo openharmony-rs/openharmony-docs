@@ -1,5 +1,9 @@
 # DocFlavor
 
+```TypeScript
+enum DocFlavor
+```
+
 打印数据来源形式的枚举。
 
 **起始版本：** 23

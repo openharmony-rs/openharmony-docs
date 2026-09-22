@@ -1,5 +1,9 @@
 # Entry
 
+```TypeScript
+interface Entry
+```
+
 Defines the KV pairs stored in the KV store.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # HeifsPropertyKey
 
+```TypeScript
+enum HeifsPropertyKey
+```
+
 表示HEIF序列图片信息的枚举。
 
 **起始版本：** 23

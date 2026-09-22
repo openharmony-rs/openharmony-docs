@@ -1,5 +1,9 @@
 # InsightIntentEntryExecutor
 
+```TypeScript
+declare class InsightIntentEntryExecutor<T>
+```
+
 The class of insight intent entry executor.
 
 @class InsightIntentEntryExecutor&lt;T&gt;

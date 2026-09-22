@@ -29,3 +29,12 @@ Checks whether the current device supports embodied control for a specific type 
 | Type | Description |
 | --- | --- |
 | boolean | Returns whether embodied control is supported. |
+
+**Examples**
+
+```TypeScript
+console.info('Check whether control is supported');
+// Call the isControlSupported method and pass MechDeviceType.GIMBAL_DEVICE to check whether gimbal device control is supported.
+let isSupported = mechanicManager.isControlSupported(mechanicManager.MechDeviceType.GIMBAL_DEVICE);
+console.info(`isSupported: ${isSupported}`);
+```

@@ -1,5 +1,9 @@
 # PointerStyle
 
+```TypeScript
+enum PointerStyle
+```
+
 鼠标光标样式类型。
 
 **起始版本：** 9

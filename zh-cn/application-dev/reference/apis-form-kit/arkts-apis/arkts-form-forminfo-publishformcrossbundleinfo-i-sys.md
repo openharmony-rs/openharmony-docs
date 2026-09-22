@@ -1,5 +1,9 @@
 # PublishFormCrossBundleInfo（系统接口）
 
+```TypeScript
+interface PublishFormCrossBundleInfo
+```
+
 跨应用加卡管控信息。
 
 **起始版本：** 23

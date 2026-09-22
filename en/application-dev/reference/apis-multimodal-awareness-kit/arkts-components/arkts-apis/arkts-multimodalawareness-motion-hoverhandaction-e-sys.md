@@ -1,5 +1,9 @@
 # HoverHandAction (System API)
 
+```TypeScript
+export enum HoverHandAction
+```
+
 Enum for hover hand actions.
 
 **Since:** 26.0.0

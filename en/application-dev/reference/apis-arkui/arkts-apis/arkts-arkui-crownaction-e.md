@@ -1,5 +1,9 @@
 # CrownAction
 
+```TypeScript
+declare enum CrownAction
+```
+
 Enumerates the crown actions.
 
 **Since:** 18

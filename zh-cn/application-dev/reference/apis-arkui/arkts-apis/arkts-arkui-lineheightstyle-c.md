@@ -1,5 +1,9 @@
 # LineHeightStyle
 
+```TypeScript
+declare class LineHeightStyle
+```
+
 文本行高对象说明。
 
 **起始版本：** 12
@@ -27,6 +31,8 @@ constructor(lineHeight: LengthMetrics)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | lineHeight | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本行高设置项。如果LengthMetrics的unit值是PERCENT，当前设置不生效。LengthMetrics的value值大于0时，文本行高设置生效，否则文本行高自适应字体大小。 |
+
+<a id="constructor-1"></a>
 
 ## constructor
 

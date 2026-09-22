@@ -1,5 +1,9 @@
 # ScanFilter
 
+```TypeScript
+interface ScanFilter
+```
+
 扫描BLE广播的过滤条件，只有符合该条件的广播报文才会上报。
 
 **起始版本：** 10

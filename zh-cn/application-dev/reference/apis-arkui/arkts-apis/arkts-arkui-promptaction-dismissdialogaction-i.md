@@ -1,5 +1,9 @@
 # DismissDialogAction
 
+```TypeScript
+declare interface DismissDialogAction
+```
+
 Dialog关闭的信息。
 
 **起始版本：** 12
@@ -38,7 +42,7 @@ reason: DismissReason
 
 触发Dialog关闭的操作类型（如点击遮障层、按返回键等）。开发者可根据reason判断用户的具体关闭操作，决定是否调用dismiss()关闭Dialog。
 
-**类型：** [DismissReason](../arkts-components/arkts-arkui-dismissreason-e.md)
+**类型：** [DismissReason](../arkts-components/arkts-arkui-common-comp-dismissreason-e.md)
 
 **起始版本：** 12
 

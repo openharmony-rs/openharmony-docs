@@ -1,0 +1,85 @@
+# LinearGradient
+
+```TypeScript
+declare interface LinearGradient
+```
+
+Linear Gradient Interface
+
+@interface LinearGradient
+
+**起始版本：** 11
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## angle
+
+```TypeScript
+angle?: number | string
+```
+
+Linear Gradient Angle
+
+**类型：** number &#124; string
+
+**起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## colors
+
+```TypeScript
+colors: Array<[ResourceColor, number]>
+```
+
+Linear Gradient Colors
+
+**类型：** Array&lt;[ResourceColor, number]&gt;
+
+**起始版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## direction
+
+```TypeScript
+direction?: GradientDirection
+```
+
+Linear Gradient Direction
+
+**类型：** [GradientDirection](../arkts-apis/arkts-arkui-gradientdirection-e.md)
+
+**起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## repeating
+
+```TypeScript
+repeating?: boolean
+```
+
+Linear Gradient Repeating
+
+**类型：** boolean
+
+**起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

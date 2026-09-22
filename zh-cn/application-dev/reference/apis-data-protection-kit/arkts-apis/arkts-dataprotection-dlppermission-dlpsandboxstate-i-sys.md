@@ -1,5 +1,9 @@
 # DLPSandboxState（系统接口）
 
+```TypeScript
+export interface DLPSandboxState
+```
+
 DLP沙箱的状态信息。
 
 **起始版本：** 10

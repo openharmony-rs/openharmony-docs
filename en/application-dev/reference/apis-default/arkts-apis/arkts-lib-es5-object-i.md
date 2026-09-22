@@ -1,5 +1,9 @@
 # Object
 
+```TypeScript
+interface Object
+```
+
 ## Modules to Import
 
 ```TypeScript

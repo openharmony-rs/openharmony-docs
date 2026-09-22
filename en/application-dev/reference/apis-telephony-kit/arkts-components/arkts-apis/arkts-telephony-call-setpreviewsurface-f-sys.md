@@ -27,7 +27,7 @@ Sets the local preview window. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callId | number | Yes | Call ID. You can obtain the value by subscribing to **callDetailsChange** events. |
-| surfaceId | string | Yes | Preview window ID. For details about how to obtain **surfaceId**, see [getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponentcontroller-c.md#getxcomponentsurfaceid). |
+| surfaceId | string | Yes | Preview window ID. For details about how to obtain **surfaceId**, see [getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#getxcomponentsurfaceid). |
 
 **Return value:**
 

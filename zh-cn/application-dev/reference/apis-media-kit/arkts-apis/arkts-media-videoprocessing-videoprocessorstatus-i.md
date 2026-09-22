@@ -1,5 +1,9 @@
 # VideoProcessorStatus
 
+```TypeScript
+interface VideoProcessorStatus
+```
+
 提供统一的视频处理功能状态。
 
 **起始版本：** 26.0.0

@@ -1,6 +1,10 @@
 # RequestInfo
 
-Defines the request information, which is used as an input parameter for binding the modal dialog box.
+```TypeScript
+export interface RequestInfo
+```
+
+Indicates the request information of the initiator, which is used as an input parameter for the window to bind a modal dialog box.
 
 **Since:** 9
 
@@ -18,7 +22,7 @@ import { dialogRequest } from '@kit.AbilityKit';
 windowRect?: WindowRect
 ```
 
-Location attributes of a modal dialog box.
+Indicates the location attributes of a modal dialog box.
 
 **Type:** [WindowRect](arkts-ability-dialogrequest-windowrect-i.md)
 

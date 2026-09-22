@@ -18,7 +18,7 @@ Enables or disables [HDC](../../../../device-dev/subsystems/subsys-toolchain-hdc
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -67,24 +67,8 @@ restrictions.setHdcDisabled(wantTemp, true, (err) => {
 })
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-restrictions.setHdcDisabled(wantTemp, true).then(() => {
-  console.info('Succeeded in setting hdc disabled');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set hdc disabled. Code is ${err.code}, message is ${err.message}`);
-})
-```
-
+<a id="sethdcdisabled-1"></a>
 
 ## setHdcDisabled
 
@@ -98,7 +82,7 @@ Enables or disables HDC on a device. This API uses a promise to return the resul
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -133,4 +117,20 @@ Enables or disables HDC on a device. This API uses a promise to return the resul
 
 **Examples**
 
-See [setHdcDisabled](#sethdcdisabled)
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+restrictions.setHdcDisabled(wantTemp, true).then(() => {
+  console.info('Succeeded in setting hdc disabled');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set hdc disabled. Code is ${err.code}, message is ${err.message}`);
+})
+```

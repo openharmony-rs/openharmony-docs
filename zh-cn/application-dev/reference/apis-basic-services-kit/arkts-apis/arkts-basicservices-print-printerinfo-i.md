@@ -1,5 +1,9 @@
 # PrinterInfo
 
+```TypeScript
+interface PrinterInfo
+```
+
 定义打印信息的接口。
 
 **起始版本：** 24

@@ -1,6 +1,16 @@
 # AgentExtensionContext
 
-The context of the agent service extension. It provides resources and methods that developers can access.
+```TypeScript
+declare class AgentExtensionContext extends ExtensionContext
+```
+
+AgentExtensionContext is the context environment of [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md), inheriting from [ExtensionContext](arkts-ability-extensioncontext-c.md).
+
+AgentExtensionContext provides developers with the capability to access the [AgentCard](arkts-ability-agentcard-i.md) information configured by the current [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md) agent.
+
+> **NOTE:** 
+> 
+> - In the examples in this document, `this.context` is used to obtain the `AgentExtensionContext`, where `this`represents an instance inheriting from `AgentExtensionAbility`.
 
 @extends ExtensionContext
 
@@ -16,7 +26,7 @@ The context of the agent service extension. It provides resources and methods th
 agentCard: AgentCard
 ```
 
-Indicates the agent card of the current agent.
+The [AgentCard](arkts-ability-agentcard-i.md) information configured by the current [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md) agent, used to describe the basic information and capabilities of the agent.
 
 **Type:** [AgentCard](arkts-ability-agentcard-i.md)
 

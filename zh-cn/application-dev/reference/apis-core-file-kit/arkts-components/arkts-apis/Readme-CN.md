@@ -196,11 +196,14 @@
   - [常量(系统接口)](arkts-corefile-fileaccess-con-sys.md)<!--DelEnd-->
 <!--Del-->
 - [@ohos.file.fileExtensionInfo(公共文件访问与管理属性信息)](arkts-corefile-file-fileextensioninfo.md)<!--DelEnd-->
-  - [fileExtensionInfo](arkts-corefile-fileextensioninfo-n.md)
-    - [DeviceFlag](arkts-corefile-fileextensioninfo-deviceflag-n.md)
+  <!--Del-->
+  - [fileExtensionInfo(系统接口)](arkts-corefile-fileextensioninfo-n.md)<!--DelEnd-->
+    <!--Del-->
+    - [DeviceFlag(系统接口)](arkts-corefile-fileextensioninfo-deviceflag-n.md)<!--DelEnd-->
       <!--Del-->
       - [常量(系统接口)](arkts-corefile-deviceflag-con-sys.md)<!--DelEnd-->
-    - [DocumentFlag](arkts-corefile-fileextensioninfo-documentflag-n.md)
+    <!--Del-->
+    - [DocumentFlag(系统接口)](arkts-corefile-fileextensioninfo-documentflag-n.md)<!--DelEnd-->
       <!--Del-->
       - [常量(系统接口)](arkts-corefile-documentflag-con-sys.md)<!--DelEnd-->
     <!--Del-->

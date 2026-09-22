@@ -1,5 +1,9 @@
 # SimShortMessage（系统接口）
 
+```TypeScript
+export interface SimShortMessage
+```
+
 SIM卡短消息。
 
 **起始版本：** 7

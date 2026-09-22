@@ -1,5 +1,9 @@
 # FontStyle
 
+```TypeScript
+declare enum FontStyle
+```
+
 Text style
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # DistributedAccountAbility
 
+```TypeScript
+interface DistributedAccountAbility
+```
+
 提供查询和更新分布式账号登录状态方法（使用前需要先获取分布式账号的单实例对象）。
 
 **起始版本：** 7
@@ -62,22 +66,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 获取分布式账号的单实例对象
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-try {
-  accountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-    console.info('distributed information: ' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getosaccountdistributedinfo-1"></a>
 
 ## getOsAccountDistributedInfo
 
@@ -108,7 +97,22 @@ getOsAccountDistributedInfo(): Promise<DistributedInfo>
 
 **示例**
 
-参见 [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取分布式账号的单实例对象
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+try {
+  accountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
+    console.info('distributed information: ' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## queryOsAccountDistributedInfo
 
@@ -157,17 +161,7 @@ accountAbility.queryOsAccountDistributedInfo(
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 获取分布式账号的单实例对象
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-  console.info('distributed information: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="queryosaccountdistributedinfo-1"></a>
 
 ## queryOsAccountDistributedInfo
 
@@ -201,7 +195,17 @@ queryOsAccountDistributedInfo(): Promise<DistributedInfo>
 
 **示例**
 
-参见 [queryOsAccountDistributedInfo](#queryosaccountdistributedinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取分布式账号的单实例对象
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
+  console.info('distributed information: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## setOsAccountDistributedInfo
 
@@ -259,25 +263,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 获取分布式账号的单实例对象
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
-let accountInfo: distributedAccount.DistributedInfo =
-  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
-try {
-  accountAbility.setOsAccountDistributedInfo(accountInfo).then(() => {
-    console.info('setOsAccountDistributedInfo successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setosaccountdistributedinfo-1"></a>
 
 ## setOsAccountDistributedInfo
 
@@ -318,7 +304,25 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 
 **示例**
 
-参见 [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取分布式账号的单实例对象
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
+let accountInfo: distributedAccount.DistributedInfo =
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
+try {
+  accountAbility.setOsAccountDistributedInfo(accountInfo).then(() => {
+    console.info('setOsAccountDistributedInfo successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## updateOsAccountDistributedInfo
 
@@ -370,20 +374,7 @@ accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 获取分布式账号的单实例对象
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
-let accountInfo: distributedAccount.DistributedInfo =
-  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
-accountAbility.updateOsAccountDistributedInfo(accountInfo).then(() => {
-  console.info('updateOsAccountDistributedInfo successfully');
-}).catch((err: BusinessError) => {
-  console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="updateosaccountdistributedinfo-1"></a>
 
 ## updateOsAccountDistributedInfo
 
@@ -423,4 +414,17 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 
 **示例**
 
-参见 [updateOsAccountDistributedInfo](#updateosaccountdistributedinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取分布式账号的单实例对象
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+// 示例值，实际使用时请通过getOsAccountDistributedInfo获取真实分布式账号信息
+let accountInfo: distributedAccount.DistributedInfo =
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
+accountAbility.updateOsAccountDistributedInfo(accountInfo).then(() => {
+  console.info('updateOsAccountDistributedInfo successfully');
+}).catch((err: BusinessError) => {
+  console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+});
+```

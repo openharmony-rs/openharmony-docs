@@ -1,5 +1,9 @@
 # CopyResult (System API)
 
+```TypeScript
+interface CopyResult
+```
+
 Defines the information returned when the file copy operation fails. If the copy operation is successful, no information is returned.
 
 **Since:** 10

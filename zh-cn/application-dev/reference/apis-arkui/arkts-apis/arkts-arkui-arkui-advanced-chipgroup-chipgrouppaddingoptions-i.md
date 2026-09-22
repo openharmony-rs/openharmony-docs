@@ -1,5 +1,9 @@
 # ChipGroupPaddingOptions
 
+```TypeScript
+export interface ChipGroupPaddingOptions
+```
+
 ChipGroupPaddingOptions定义了ChipGroup的上下内边距，用于控制其整体高度。
 
 **起始版本：** 12

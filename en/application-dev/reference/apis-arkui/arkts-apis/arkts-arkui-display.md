@@ -22,22 +22,22 @@ import { display } from '@kit.ArkUI';
 | [convertRelativeToGlobalCoordinate](arkts-arkui-display-convertrelativetoglobalcoordinate-f.md) | Converts relative coordinates (based on the top-left corner of the screen) into global coordinates (based on the top-left corner of the primary screen). This API supports only coordinate conversion between the primary screen and extended screen. |
 | [createVirtualScreen](arkts-arkui-display-createvirtualscreen-f.md) | Creates a virtual screen. This API uses a promise to return the result. |
 | [destroyVirtualScreen](arkts-arkui-display-destroyvirtualscreen-f.md) | Destroys a virtual screen. This API uses a promise to return the result. |
-| [getAllDisplay](arkts-arkui-display-getalldisplay-f.md) | Obtains all Display objects. This API uses an asynchronous callback to return the result. |
-| [getAllDisplay](arkts-arkui-display-getalldisplay-f.md) | Obtains all Display objects. This API uses a promise to return the result. |
+| [getAllDisplay](arkts-arkui-display-getalldisplay-f.md#getalldisplay) | Obtains all Display objects. This API uses an asynchronous callback to return the result. |
+| [getAllDisplay](arkts-arkui-display-getalldisplay-f.md#getalldisplay-1) | Obtains all Display objects. This API uses a promise to return the result. |
 | [getAllDisplayPhysicalResolution](arkts-arkui-display-getalldisplayphysicalresolution-f.md) | Obtains all the display modes supported by the current device, along with the physical screen resolutions for each mode. This API uses a promise to return the result. |
-| [getAllDisplays](arkts-arkui-display-getalldisplays-f.md) | Obtains all Display objects. This API uses an asynchronous callback to return the result. |
-| [getAllDisplays](arkts-arkui-display-getalldisplays-f.md) | Obtains all Display objects. This API uses a promise to return the result. |
+| [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getalldisplays) | Obtains all Display objects. This API uses an asynchronous callback to return the result. |
+| [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getalldisplays-1) | Obtains all Display objects. This API uses a promise to return the result. |
 | [getBrightnessInfo](arkts-arkui-display-getbrightnessinfo-f.md) | Obtains the screen brightness information of a display. If the screen does not support HDR, the **currentHeadroom** and **maxHeadroom** fields in the returned [BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md) object use the default values. For virtual screens, the **sdrNits** field in the BrightnessInfo object uses the default value. |
 | [getCurrentFoldCreaseRegion](arkts-arkui-display-getcurrentfoldcreaseregion-f.md) | Obtains the crease region of the foldable device in the current display mode. |
-| [getDefaultDisplay](arkts-arkui-display-getdefaultdisplay-f.md) | Obtains the default Display object. This API uses an asynchronous callback to return the result. |
-| [getDefaultDisplay](arkts-arkui-display-getdefaultdisplay-f.md) | Obtains the default Display object. This API uses a promise to return the result. |
+| [getDefaultDisplay](arkts-arkui-display-getdefaultdisplay-f.md#getdefaultdisplay) | Obtains the default Display object. This API uses an asynchronous callback to return the result. |
+| [getDefaultDisplay](arkts-arkui-display-getdefaultdisplay-f.md#getdefaultdisplay-1) | Obtains the default Display object. This API uses a promise to return the result. |
 | [getDefaultDisplaySync](arkts-arkui-display-getdefaultdisplaysync-f.md) | Obtains the **Display** object of the screen where the application is located. If multiple abilities of an application are on different screens, the **Display** object of the main screen is returned. If multiple abilities of an application are on the same screen, the **Display** object of the screen is returned. |
 | [getDisplayByIdSync](arkts-arkui-display-getdisplaybyidsync-f.md) | Obtains a Display object based on the display ID. |
 | [getFoldDisplayMode](arkts-arkui-display-getfolddisplaymode-f.md) | Obtains the display mode of this foldable device. |
 | [getFoldStatus](arkts-arkui-display-getfoldstatus-f.md) | Obtains the fold status of this foldable device. |
 | [getPrimaryDisplaySync](arkts-arkui-display-getprimarydisplaysync-f.md) | Obtains the information about the primary display. For devices other than 2-in-1 devices, the Display object obtained is the built-in screen. For 2-in-1 devices with an external screen, the Display object obtained is the primary screen. For 2-in-1 devices without an external screen, the Display object obtained is the built-in screen. |
-| [isCaptured](arkts-arkui-display-iscaptured-f.md) | Checks whether the device's screen content is being captured. |
-| [isCaptured](arkts-arkui-display-iscaptured-f.md) | Check whether the device is captured, projected, or recorded by any app in the bundle name list. |
+| [isCaptured](arkts-arkui-display-iscaptured-f.md#iscaptured) | Checks whether the device's screen content is being captured. |
+| [isCaptured](arkts-arkui-display-iscaptured-f.md#iscaptured-1) | Check whether the device is captured, projected, or recorded by any app in the bundle name list. |
 | [isFoldable](arkts-arkui-display-isfoldable-f.md) | Checks whether this device is foldable. |
 | [makeUnique](arkts-arkui-display-makeunique-f.md) | Sets the screen to independent display mode. This API uses a promise to return the result. |
 | [off](arkts-arkui-display-off-f.md#offadd-remove-change) | Unsubscribes from display changes. |
@@ -71,8 +71,8 @@ import { display } from '@kit.ArkUI';
 | [on](arkts-arkui-display-on-f-sys.md#onprivatemodechange) | Subscribes to privacy mode changes of this display. When there is a privacy window in the foreground of the display, the display is in privacy mode, and the content in the privacy window cannot be captured or recorded. |
 | [removeVirtualScreenBlocklist](arkts-arkui-display-removevirtualscreenblocklist-f-sys.md) | Removes windows from the list of windows that are not allowed to be displayed during casting. This API takes effect only for the main window of an application or system windows. This API uses a promise to return the result. |
 | [removeVirtualScreenSurface](arkts-arkui-display-removevirtualscreensurface-f-sys.md) | Remove surface for the virtual screen. |
-| [setFoldDisplayMode](arkts-arkui-display-setfolddisplaymode-f-sys.md) | Sets the display mode of the foldable device. |
-| [setFoldDisplayMode](arkts-arkui-display-setfolddisplaymode-f-sys.md) | Sets the display mode of the foldable device, with the reason for the change specified. |
+| [setFoldDisplayMode](arkts-arkui-display-setfolddisplaymode-f-sys.md#setfolddisplaymode) | Sets the display mode of the foldable device. |
+| [setFoldDisplayMode](arkts-arkui-display-setfolddisplaymode-f-sys.md#setfolddisplaymode-1) | Sets the display mode of the foldable device, with the reason for the change specified. |
 | [setFoldStatusLocked](arkts-arkui-display-setfoldstatuslocked-f-sys.md) | Sets whether to lock the current fold status of the foldable device. |
 <!--DelEnd-->
 

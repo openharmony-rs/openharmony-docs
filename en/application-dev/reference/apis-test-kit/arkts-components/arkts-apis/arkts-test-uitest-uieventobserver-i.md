@@ -1,5 +1,9 @@
 # UIEventObserver
 
+```TypeScript
+declare interface UIEventObserver
+```
+
 Defines a UI event listener, which is used to listen for various events on the UI, including the display of the **Toast** and **Dialog** components, window change event, and component operation event. An instance can be created using [createUIEventObserver](arkts-test-uitest-driver-c.md#createuieventobserver).
 
 **Since:** 10
@@ -44,6 +48,28 @@ Subscribes to events of the toast component. This API uses a callback to return 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+
+async function demo() {
+  // Create a Driver object.
+  let driver: Driver = Driver.create();
+  // Register a UI event listener.
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  // Define a callback to output the attribute information of the Toast component.
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+  }
+  // Subscribe to the events of the Toast component display.
+  observer.once('toastShow', callback);
+}
+```
+
 ## once('dialogShow')
 
 ```TypeScript
@@ -72,6 +98,24 @@ Subscribes to events of the dialog component. This API uses a callback to return
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+  }
+  observer.once('dialogShow', callback);
+}
+```
 
 ## once('windowChange')
 
@@ -105,6 +149,30 @@ Starts listening for window change events of the specified type with extended co
 | [17000005](../errorcode-uitest.md#17000005-operation-not-supported) | This operation is not supported. |
 | [17000007](../errorcode-uitest.md#17000007-parameters-are-invalid) | Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver, WindowChangeOptions, WindowChangeType } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let options: WindowChangeOptions = {
+    timeout: 20000,
+    bundleName: 'com.example.myapplication'  // Use the actual bundle name.
+  }
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.windowChangeType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+  }
+  observer.once('windowChange', WindowChangeType.WINDOW_ADDED, options, callback);
+}
+```
+
 ## once('componentEventOccur')
 
 ```TypeScript
@@ -136,3 +204,32 @@ Starts listening for component operation events of the specified type with exten
 | --- | --- |
 | [17000005](../errorcode-uitest.md#17000005-operation-not-supported) | This operation is not supported. |
 | [17000007](../errorcode-uitest.md#17000007-parameters-are-invalid) | Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver, ComponentEventOptions, ComponentEventType, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let option: ComponentEventOptions = {
+    timeout: 20000,
+    on: ON.id('123')  // Use the actual component ID.
+  };
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.componentEventType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+    console.info(UIElementInfo.componentId);
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.top.toString());
+    console.info(UIElementInfo.componentRect?.right.toString());
+    console.info(UIElementInfo.componentRect?.bottom.toString());
+  };
+  observer.once('componentEventOccur', ComponentEventType.COMPONENT_CLICKED, option, callback);
+}
+```

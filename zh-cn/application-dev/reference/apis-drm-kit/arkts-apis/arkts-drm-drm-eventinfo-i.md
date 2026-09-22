@@ -1,5 +1,9 @@
 # EventInfo
 
+```TypeScript
+interface EventInfo
+```
+
 事件信息。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # TCPExtraOptions
 
+```TypeScript
+export interface TCPExtraOptions extends ExtraOptionsBase
+```
+
 Defines other properties of the **TCPSocket** object. This object is inherited from [ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md).
 
 **Inheritance/Implementation:** TCPExtraOptions extends [ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)

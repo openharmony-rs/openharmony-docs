@@ -1,5 +1,9 @@
 # LiquidMaterialEffectParam（系统接口）
 
+```TypeScript
+interface LiquidMaterialEffectParam
+```
+
 材质效果参数，用于控制材质的折射、反射、扰动和叠加颜色等显示属性。
 
 **起始版本：** 22

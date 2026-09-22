@@ -1,5 +1,9 @@
 # UpgradeFile（系统接口）
 
+```TypeScript
+export interface UpgradeFile
+```
+
 升级文件，包含文件类型和文件路径，用于指定要安装的本地升级包。
 
 **起始版本：** 9

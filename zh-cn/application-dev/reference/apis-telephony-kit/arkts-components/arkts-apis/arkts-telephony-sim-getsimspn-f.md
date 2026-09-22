@@ -51,17 +51,8 @@ sim.getSimSpn(0, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getSimSpn(0).then((data: string) => {
-    console.info(`getSimSpn success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getSimSpn failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getsimspn-1"></a>
 
 ## getSimSpn
 
@@ -100,4 +91,13 @@ function getSimSpn(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getSimSpn](#getsimspn)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimSpn(0).then((data: string) => {
+    console.info(`getSimSpn success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSimSpn failed, promise: err->${JSON.stringify(err)}`);
+});
+```

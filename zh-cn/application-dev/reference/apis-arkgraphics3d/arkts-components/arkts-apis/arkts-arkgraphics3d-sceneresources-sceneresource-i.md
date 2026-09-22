@@ -1,5 +1,9 @@
 # SceneResource
 
+```TypeScript
+export interface SceneResource
+```
+
 用于表示场景中的资源。
 
 @interface SceneResource

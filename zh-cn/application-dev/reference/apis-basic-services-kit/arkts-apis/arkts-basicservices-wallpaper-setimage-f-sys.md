@@ -75,37 +75,8 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
-// source类型为string
-let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
-wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-    console.info(`success to setImage.`);
-}).catch((error: BusinessError) => {
-    console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
-});
-
-// source类型为image.PixelMap
-let imageSource = image.createImageSource('file://' + wallpaperPath);
-let opts: image.DecodingOptions = {
-    desiredSize: {
-        height: 3648,
-        width: 2736
-    }
-};
-imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
-    wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-        console.info(`success to setImage.`);
-    }).catch((error: BusinessError) => {
-        console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
-    });
-}).catch((error: BusinessError) => {
-    console.error(`Failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
-});
-```
-
+<a id="setimage-1"></a>
 
 ## setImage
 
@@ -146,4 +117,33 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType)
 
 **示例**
 
-参见 [setImage](#setimage)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+// source类型为string
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
+wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+    console.info(`success to setImage.`);
+}).catch((error: BusinessError) => {
+    console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+});
+
+// source类型为image.PixelMap
+let imageSource = image.createImageSource('file://' + wallpaperPath);
+let opts: image.DecodingOptions = {
+    desiredSize: {
+        height: 3648,
+        width: 2736
+    }
+};
+imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
+    wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+        console.info(`success to setImage.`);
+    }).catch((error: BusinessError) => {
+        console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+    });
+}).catch((error: BusinessError) => {
+    console.error(`Failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
+});
+```

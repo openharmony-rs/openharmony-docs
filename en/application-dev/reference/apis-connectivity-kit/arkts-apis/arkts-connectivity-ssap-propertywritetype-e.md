@@ -1,5 +1,9 @@
 # PropertyWriteType
 
+```TypeScript
+enum PropertyWriteType
+```
+
 Enumerates the write types supported by a property.
 
 **Since:** 26.0.0

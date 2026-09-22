@@ -1,5 +1,9 @@
 # MultiFormData
 
+```TypeScript
+export interface MultiFormData
+```
+
 多部分表单数据的类型。
 
 **起始版本：** 11

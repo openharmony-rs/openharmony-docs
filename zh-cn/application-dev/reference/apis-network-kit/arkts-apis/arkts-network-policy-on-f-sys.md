@@ -40,6 +40,25 @@ function on(type: 'netUidPolicyChange', callback: Callback<NetUidPolicyInfo>): v
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+interface Data {
+  uid: number,
+  policy: policy.NetUidPolicy
+}
+
+try {
+  policy.on('netUidPolicyChange', (data: Data) => {
+    console.info('on netUidPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netUidPolicyChange error: ' + JSON.stringify(err));
+}
+```
+
 
 ## on('netUidRuleChange')
 
@@ -74,6 +93,25 @@ function on(type: 'netUidRuleChange', callback: Callback<NetUidRuleInfo>): void
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+interface Data {
+  uid: number,
+  rule: policy.NetUidRule
+}
+
+try {
+  policy.on('netUidRuleChange', (data: Data) => {
+    console.info('on netUidRuleChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netUidRuleChange error: ' + JSON.stringify(err));
+}
+```
 
 
 ## on('netMeteredIfacesChange')
@@ -110,6 +148,20 @@ function on(type: 'netMeteredIfacesChange', callback: Callback<Array<string>>): 
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+try {
+  policy.on('netMeteredIfacesChange', (data: string[]) => {
+    console.info('on netMeteredIfacesChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netMeteredIfacesChange error: ' + JSON.stringify(err));
+}
+```
+
 
 ## on('netQuotaPolicyChange')
 
@@ -145,6 +197,25 @@ function on(type: 'netQuotaPolicyChange', callback: Callback<Array<NetQuotaPolic
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+interface Data {
+  uid: number,
+  policy: policy.NetUidPolicy
+}
+
+try {
+  policy.on('netQuotaPolicyChange', (data: policy.NetQuotaPolicy[]) => {
+    console.info('on netQuotaPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netQuotaPolicyChange error: ' + JSON.stringify(err));
+}
+```
+
 
 ## on('netBackgroundPolicyChange')
 
@@ -179,3 +250,17 @@ function on(type: 'netBackgroundPolicyChange', callback: Callback<boolean>): voi
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+
+try {
+  policy.on('netBackgroundPolicyChange', (data: boolean) => {
+    console.info('on netBackgroundPolicyChange data: ' + JSON.stringify(data));
+  });
+} catch(err) {
+  console.error('on netBackgroundPolicyChange error: ' + JSON.stringify(err));
+}
+```

@@ -14,7 +14,7 @@ function processPluginCommand(code: PluginCmd, message: string): Promise<string>
 
 Process the plugin-related commands in the transparent encryption and decryption scenario.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.DLP_POLICY_MANAGER
 

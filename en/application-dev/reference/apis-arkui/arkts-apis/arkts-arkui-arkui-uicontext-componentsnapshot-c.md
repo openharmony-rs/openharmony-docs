@@ -1,5 +1,9 @@
 # ComponentSnapshot
 
+```TypeScript
+export class ComponentSnapshot
+```
+
 Provides APIs for obtaining component snapshots, including snapshots of components that have been loaded and snapshots of components that have not been loaded yet.
 
 > **NOTE:** 
@@ -30,7 +34,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
     delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void
 ```
 
-Captures a snapshot of an offscreen-rendered component created from a [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md). This API uses an asynchronous callback to return the result.
+Captures a snapshot of an offscreen-rendered component created from a [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md). This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
@@ -50,9 +54,9 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) | Yes | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001. |
+| builder | [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md) | Yes | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Yes | Callback used to return the result. If the snapshot capture is successful, **err** is **undefined**, and **data** contains the resulting [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md). Otherwise, **err** provides detailed error information. The coordinates and size of the offscreen component's drawing area can be obtained through the callback. |
-| delay | number | No | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when syncLoad is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used. |
+| delay | number | No | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when [syncLoad](../arkts-components/arkts-arkui-image-comp-attribute.md#syncload) is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used. |
 | checkImageStatus | boolean | No | Whether to verify the image decoding status before taking a snapshot. If the value is **true**, the system checks whether all **Image** components have been decoded before taking the snapshot. If the check is not completed, the system aborts the snapshot and returns an exception.<br>Default value: **false**. |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot. |
 
@@ -66,6 +70,64 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 | [160004](../errorcode-snapshot.md#160004-offscreen-node-screenshot-does-not-support-setting-the-isauto-parameter-of-color-space-or-dynamic-range-mode-to-true) | isAuto(true) is not supported for offscreen node snapshots.<br>**Applicable version:** 23 and later |
 
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ComponentSnapshotExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+  uiContext: UIContext = this.getUIContext();
+
+  @Builder
+  randomBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('Test menu item 1')
+        .fontSize(20)
+        .width(100)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('Test menu item 2')
+        .fontSize(20)
+        .width(100)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }
+    .width(100)
+    .id('builder')
+  }
+
+  build() {
+    Column() {
+      Button('click to generate UI snapshot')
+        .onClick(() => {
+          this.uiContext.getComponentSnapshot().createFromBuilder(() => {
+            this.randomBuilder()
+          },
+            (error: Error, pixmap: image.PixelMap) => {
+              if (error) {
+                console.error(`Failed to create component snapshot from builder: ${error}`);
+                return;
+              }
+              this.pixmap = pixmap;
+            }, 320, true, { scale: 2, waitUntilRenderFinished: true });
+        })
+      Image(this.pixmap)
+        .margin(10)
+        .height(200)
+        .width(200)
+        .border({ color: Color.Black, width: 2 })
+    }.width('100%').margin({ left: 10, top: 5, bottom: 5 }).height(300)
+  }
+}
+```
+
+<a id="createfrombuilder-1"></a>
+
 ## createFromBuilder
 
 ```TypeScript
@@ -73,7 +135,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number,
     checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 ```
 
-Captures a snapshot of an offscreen-rendered component created from a [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md). This API uses a promise to return the result.
+Captures a snapshot of an offscreen-rendered component created from a [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md). This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
@@ -93,8 +155,8 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) | Yes | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001. |
-| delay | number | No | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when syncLoad is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used. |
+| builder | [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md) | Yes | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001. |
+| delay | number | No | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when [syncLoad](../arkts-components/arkts-arkui-image-comp-attribute.md#syncload) is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used. |
 | checkImageStatus | boolean | No | Whether to verify the image decoding status before taking a snapshot. If the value is **true**, the system checks whether all **Image** components have been decoded before taking the snapshot. If the check is not completed, the system aborts the snapshot and returns an exception.<br>Default value: **false**. |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot. |
 
@@ -113,6 +175,62 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 | [160001](../errorcode-snapshot.md#160001-image-loading-error) | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 | [160004](../errorcode-snapshot.md#160004-offscreen-node-screenshot-does-not-support-setting-the-isauto-parameter-of-color-space-or-dynamic-range-mode-to-true) | isAuto(true) is not supported for offscreen node snapshots.<br>**Applicable version:** 23 and later |
+
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ComponentSnapshotExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+  uiContext: UIContext = this.getUIContext();
+
+  @Builder
+  randomBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('Test menu item 1')
+        .fontSize(20)
+        .width(100)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('Test menu item 2')
+        .fontSize(20)
+        .width(100)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }
+    .width(100)
+    .id('builder')
+  }
+
+  build() {
+    Column() {
+      Button('click to generate UI snapshot')
+        .onClick(() => {
+          this.uiContext.getComponentSnapshot()
+            .createFromBuilder(() => {
+              this.randomBuilder()
+            }, 320, true, { scale: 2, waitUntilRenderFinished: true })
+            .then((pixmap: image.PixelMap) => {
+              this.pixmap = pixmap;
+            })
+            .catch((err: Error) => {
+              console.error(`Failed to create component snapshot from builder: ${err}`);
+            });
+        })
+      Image(this.pixmap)
+        .margin(10)
+        .height(200)
+        .width(200)
+        .border({ color: Color.Black, width: 2 })
+    }.width('100%').margin({ left: 10, top: 5, bottom: 5 }).height(300)
+  }
+}
+```
 
 ## createFromComponent
 
@@ -136,7 +254,7 @@ Captures a snapshot of the provided component content. This API uses a promise t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | content | [ComponentContent](arkts-arkui-componentcontent-c.md)&lt;T&gt; | Yes | Component content to be captured. This is the content currently displayed in the **UIContext**. |
-| delay | number | No | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when syncLoad is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Value range: [0, +∞). If the value is less than 0, the default value is used.<br>Default value: **300**<br> Unit: ms |
+| delay | number | No | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when [syncLoad](../arkts-components/arkts-arkui-image-comp-attribute.md#syncload) is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Value range: [0, +∞). If the value is less than 0, the default value is used.<br>Default value: **300**<br> Unit: ms |
 | checkImageStatus | boolean | No | Whether to verify the image decoding status before taking a snapshot. If the value is **true**, the system checks whether all **Image** components have been decoded before taking the snapshot. If the check is not completed, the system aborts the snapshot and returns an exception.<br>Default value: **false**. |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot. You can specify the scale ratio for the pixelmap during rendering and whether to force the system to complete all rendering commands before taking the snapshot. |
 
@@ -155,6 +273,86 @@ Captures a snapshot of the provided component content. This API uses a promise t
 | [160001](../errorcode-snapshot.md#160001-image-loading-error) | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 | [160004](../errorcode-snapshot.md#160004-offscreen-node-screenshot-does-not-support-setting-the-isauto-parameter-of-color-space-or-dynamic-range-mode-to-true) | isAuto(true) is not supported for offscreen node snapshots.<br>**Applicable version:** 23 and later |
+
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { ComponentContent, UIContext } from '@kit.ArkUI';
+
+class Params {
+  text: string | undefined | null = '';
+
+  constructor(text: string | undefined | null) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  ReusableChildComponent({ text: params.text })
+}
+
+@Component
+struct ReusableChildComponent {
+  @Prop text: string | undefined | null = '';
+
+  aboutToReuse(params: Record<string, object>) {
+    console.info(`ReusableChildComponent Reusable ${JSON.stringify(params)}`);
+  }
+
+  aboutToRecycle(): void {
+    console.info(`ReusableChildComponent aboutToRecycle ${this.text}`);
+  }
+
+  build() {
+    Column() {
+      Text(this.text)
+        .fontSize(90)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 36 })
+        .width('100%')
+        .height('100%')
+    }.backgroundColor('#FFF0F0F0')
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixmap: image.PixelMap | undefined = undefined;
+  @State message: string | undefined | null = 'hello';
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Click to Create Component Snapshot")
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
+            this.uiContext.getComponentSnapshot()
+              .createFromComponent(contentNode
+                , 320, true, { scale: 2, waitUntilRenderFinished: true })
+              .then((pixmap: image.PixelMap) => {
+                this.pixmap = pixmap;
+              })
+              .catch((err: Error) => {
+                console.error(`Failed to create component snapshot from component content: ${err}`);
+              });
+          });
+        Image(this.pixmap)
+          .margin(10)
+          .height(200)
+          .width(200)
+          .border({ color: Color.Black, width: 2 })
+      }.width('100%').margin({ left: 10, top: 5, bottom: 5 }).height(300)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## get
 
@@ -192,6 +390,51 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
+
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SnapshotExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.img') with the image resource file you use.
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(150)
+          .height(150)
+          .margin(5)
+          .id('root')
+      }
+
+      Button('click to generate UI snapshot')
+        .onClick(() => {
+          this.uiContext.getComponentSnapshot().get('root', (error: Error, pixmap: image.PixelMap) => {
+            if (error) {
+              console.error(`Failed to get component snapshot: ${JSON.stringify(error)}`);
+              return;
+            }
+            this.pixmap = pixmap;
+          }, { scale: 2, waitUntilRenderFinished: true });
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+<a id="get-1"></a>
 
 ## get
 
@@ -235,6 +478,50 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SnapshotExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.icon') with the image resource file you use.
+        Image($r('app.media.icon'))
+          .autoResize(true)
+          .width(150)
+          .height(150)
+          .margin(5)
+          .id('root')
+      }
+
+      Button('click to generate UI snapshot')
+        .onClick(() => {
+          this.uiContext.getComponentSnapshot()
+            .get('root', { scale: 2, waitUntilRenderFinished: true })
+            .then((pixmap: image.PixelMap) => {
+              this.pixmap = pixmap;
+            })
+            .catch((err: Error) => {
+              console.error(`Failed to get component snapshot: ${err}`);
+            });
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
 ## getSizeLimitation
 
 ```TypeScript
@@ -256,6 +543,54 @@ Obtains the size limit of a component screenshot.
 | Type | Description |
 | --- | --- |
 | [componentSnapshot.SnapshotSizeLimitation](arkts-arkui-componentsnapshot-snapshotsizelimitation-i.md) | Size limit of a component screenshot. |
+
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct SnapshotColorModeExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id('root')
+      }
+
+      Button('click to generate UI snapshot')
+        .onClick(() => {
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // Check the size limit.
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+          // Check whether the node size is within the maximum size limit.
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get('root', (error: Error, pixmap: image.PixelMap) => {
+              if (error) {
+                console.error(`Failed to get component snapshot: ${error}`);
+                return;
+              }
+              this.pixmap = pixmap;
+            });
+          }
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
 
 ## getSync
 
@@ -300,6 +635,47 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 | [160002](../errorcode-snapshot.md#160002-snapshot-timeout) | Timeout. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct SnapshotExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.img') with the image resource file you use.
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(150)
+          .height(150)
+          .margin(5)
+          .id('root')
+      }
+
+      Button('click to generate UI snapshot')
+        .onClick(() => {
+          try {
+            let pixelmap =
+              this.getUIContext().getComponentSnapshot().getSync('root', { scale: 2, waitUntilRenderFinished: true });
+            this.pixmap = pixelmap;
+          } catch (error) {
+            console.error(`getSync errorCode: ${error.code} message: ${error.message}`);
+          }
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
 ## getSyncWithUniqueId
 
 ```TypeScript
@@ -343,6 +719,64 @@ Obtains the snapshot of a component that has been loaded based on the provided *
 | [160002](../errorcode-snapshot.md#160002-snapshot-timeout) | Timeout. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 
+**Examples**
+
+```TypeScript
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { UIContext } from '@kit.ArkUI';
+// Create a FrameNode node that contains an Image component.
+class MyNodeController extends NodeController {
+  public node: FrameNode | null = null;
+  public imageNode: FrameNode | null = null;
+  // Build a custom node, create the root node FrameNode, add a child node Image, and configure the Image resource and style.
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.node = new FrameNode(uiContext);
+    this.node.commonAttribute.width('100%').height('100%');
+
+    let image = typeNode.createNode(uiContext, 'Image');
+    // Replace $r('app.media.img') with the image resource file you use.
+    image.initialize($r('app.media.img')).width('100%').height('100%').autoResize(true);
+    this.imageNode = image;
+
+    this.node.appendChild(image);
+    return this.node;
+  }
+}
+
+@Entry
+@Component
+struct SnapshotExample {
+  private myNodeController: MyNodeController = new MyNodeController();
+  @State pixmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        NodeContainer(this.myNodeController).width(200).height(200).margin(5)
+      }
+
+      Button('UniqueId getSync snapshot')
+        .onClick(() => {
+          try {
+            // Generate a component snapshot synchronously by node ID, with the zoom ratio of 2. The snapshot is generated after the rendering is complete.
+            this.pixmap = this.getUIContext()
+              .getComponentSnapshot()
+              .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
+                { scale: 2, waitUntilRenderFinished: true });
+          } catch (error) {
+            console.error(`UniqueId getSync snapshot Error. Code: ${error.code}, message: ${error.message}`);
+          }
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
 ## getWithUniqueId
 
 ```TypeScript
@@ -384,3 +818,66 @@ Obtains the snapshot of a component that has been loaded based on the provided *
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
+
+**Examples**
+
+```TypeScript
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { UIContext } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  public node: FrameNode | null = null;
+  public imageNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.node = new FrameNode(uiContext);
+    this.node.commonAttribute.width('100%').height('100%');
+
+    let image = typeNode.createNode(uiContext, 'Image');
+    // Replace $r('app.media.img') with the image resource file you use.
+    image.initialize($r('app.media.img')).width('100%').height('100%').autoResize(true);
+    this.imageNode = image;
+
+    this.node.appendChild(image);
+    return this.node;
+  }
+}
+
+@Entry
+@Component
+struct SnapshotExample {
+  private myNodeController: MyNodeController = new MyNodeController();
+  @State pixmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        NodeContainer(this.myNodeController).width(200).height(200).margin(5)
+      }
+
+      Button('UniqueId get snapshot')
+        .onClick(() => {
+          try {
+            this.getUIContext()
+              .getComponentSnapshot()
+              .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
+                { scale: 2, waitUntilRenderFinished: true })
+              .then((pixmap: image.PixelMap) => {
+                this.pixmap = pixmap;
+              })
+              .catch((err: Error) => {
+                console.error(`UniqueId get snapshot Error: ${err}`);
+              });
+          } catch (error) {
+            console.error(`UniqueId get snapshot Error. Code: ${error.code}, message: ${error.message}`);
+          }
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```

@@ -1,5 +1,9 @@
 # OpenMode(文件管理)
 
+```TypeScript
+namespace OpenMode
+```
+
 open接口flags参数常量，用于指定文件打开模式（如只读、只写、读写、创建等）。
 
 **起始版本：** 9

@@ -1,8 +1,12 @@
 # Capability
 
+```TypeScript
+enum Capability
+```
+
 CarAwareness Capability.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -14,7 +18,7 @@ SPATIAL_MOTION = 'SpatialMotion'
 
 spatial motion specific capability
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -28,7 +32,7 @@ REALTIME_WEATHER = 'RealTimeWeather'
 
 realtime weather specific capability
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ REFUELING = 'Refueling'
 
 refueling specific capability
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

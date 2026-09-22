@@ -1,8 +1,12 @@
 # InteractionUI (System API)
 
+```TypeScript
+interface InteractionUI
+```
+
 Defines the base information of the interaction UI to be displayed after the current intent execution completes. This is a base class. Use its subclasses such as [InteractionModalUIExtension](arkts-ability-insightintent-interactionmodaluiextension-i-sys.md) in practice.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -24,7 +28,7 @@ Type of the interaction UI.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

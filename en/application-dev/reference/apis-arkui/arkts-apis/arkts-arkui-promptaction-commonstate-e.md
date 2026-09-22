@@ -1,5 +1,9 @@
 # CommonState
 
+```TypeScript
+enum CommonState
+```
+
 Enumerates states of the custom dialog box.
 
 **Since:** 20

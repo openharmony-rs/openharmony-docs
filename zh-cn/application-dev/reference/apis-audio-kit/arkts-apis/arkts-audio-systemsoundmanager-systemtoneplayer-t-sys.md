@@ -6,8 +6,6 @@ type SystemTonePlayer = _SystemTonePlayer
 
 系统提示音播放器对象。
 
-@typedef { _SystemTonePlayer } SystemTonePlayer
-
 **起始版本：** 11
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core

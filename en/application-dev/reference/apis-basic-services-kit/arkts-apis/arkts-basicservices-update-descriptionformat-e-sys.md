@@ -1,5 +1,9 @@
 # DescriptionFormat (System API)
 
+```TypeScript
+export enum DescriptionFormat
+```
+
 Enumerates description file formats.
 
 **Since:** 9

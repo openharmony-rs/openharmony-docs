@@ -1,5 +1,9 @@
 # InstallStatus (System API)
 
+```TypeScript
+export interface InstallStatus
+```
+
 Describes the bundle installation or uninstall status.
 
 **Since:** 7

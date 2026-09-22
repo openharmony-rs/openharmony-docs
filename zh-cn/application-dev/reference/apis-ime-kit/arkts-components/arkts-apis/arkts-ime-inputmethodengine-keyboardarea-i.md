@@ -1,5 +1,9 @@
 # KeyboardArea
 
+```TypeScript
+export interface KeyboardArea
+```
+
 面板中的键盘区域。
 
 **起始版本：** 15

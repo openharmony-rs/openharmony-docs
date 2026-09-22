@@ -1,5 +1,9 @@
 # MediaSourceInfo
 
+```TypeScript
+class MediaSourceInfo
+```
+
 Implements a **MediaSourceInfo** object to provide the information about the media source.
 
 **Since:** 12

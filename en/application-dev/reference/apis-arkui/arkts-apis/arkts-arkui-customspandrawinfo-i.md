@@ -1,5 +1,9 @@
 # CustomSpanDrawInfo
 
+```TypeScript
+declare interface CustomSpanDrawInfo
+```
+
 Defines the CustomSpanDrawInfo interface.
 
 **Since:** 12

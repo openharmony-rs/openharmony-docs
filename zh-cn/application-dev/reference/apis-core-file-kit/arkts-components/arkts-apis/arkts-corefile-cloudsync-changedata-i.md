@@ -1,5 +1,9 @@
 # ChangeData
 
+```TypeScript
+interface ChangeData
+```
+
 定义变更数据。
 
 **起始版本：** 12

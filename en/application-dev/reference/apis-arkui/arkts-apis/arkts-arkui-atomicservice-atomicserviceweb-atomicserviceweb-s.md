@@ -1,5 +1,9 @@
 # AtomicServiceWeb
 
+```TypeScript
+export declare struct AtomicServiceWeb
+```
+
 **AtomicServiceWeb** is an advanced web component offering customization to meet specific demands. It shields irrelevant APIs from the native **Web** component and extends functionality through JavaScript capabilities.
 
 > **NOTE:** 
@@ -58,7 +62,7 @@ darkMode?: WebDarkMode
 
 Sets the dark mode of Web.
 
-**Type:** [WebDarkMode](../../apis-arkweb/arkts-components/arkts-arkweb-webdarkmode-e.md)
+**Type:** [WebDarkMode](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-webdarkmode-e.md)
 
 **Since:** 12
 
@@ -94,7 +98,7 @@ mixedMode?: MixedMode
 
 Sets how to load HTTP and HTTPS content.
 
-**Type:** [MixedMode](../../apis-arkweb/arkts-components/arkts-arkweb-mixedmode-e.md)
+**Type:** [MixedMode](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-mixedmode-e.md)
 
 **Since:** 12
 
@@ -112,7 +116,7 @@ navPathStack?: NavPathStack
 
 The navPathStack to control page route in Navigation and NavDestination.
 
-**Type:** [NavPathStack](../arkts-components/arkts-arkui-navpathstack-c.md)
+**Type:** [NavPathStack](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md)
 
 **Since:** 12
 
@@ -128,7 +132,7 @@ nestedScroll?: NestedScrollOptions | NestedScrollOptionsExt
 
 Sets the nested scroll options.
 
-**Type:** [NestedScrollOptions](../arkts-components/arkts-arkui-nestedscrolloptions-i.md) &#124; [NestedScrollOptionsExt](../../apis-arkweb/arkts-components/arkts-arkweb-nestedscrolloptionsext-i.md)
+**Type:** [NestedScrollOptions](../arkts-components/arkts-arkui-common-comp-nestedscrolloptions-i.md) &#124; [NestedScrollOptionsExt](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-nestedscrolloptionsext-i.md)
 
 **Since:** 15
 

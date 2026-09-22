@@ -1,5 +1,9 @@
 # ReminderRequestTimer
 
+```TypeScript
+interface ReminderRequestTimer extends ReminderRequest
+```
+
 Defines a reminder for a scheduled timer.
 
 **Inheritance/Implementation:** ReminderRequestTimer extends [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)
@@ -32,6 +36,6 @@ Number of seconds in the countdown timer. Unit: s.
 
 **Deprecated since:** 9
 
-**Substitutes:** triggerTimeInSeconds
+**Substitutes:** [triggerTimeInSeconds](arkts-backgroundtasks-reminderagentmanager-reminderrequesttimer-i.md#triggertimeinseconds)
 
 **System capability:** SystemCapability.Notification.ReminderAgent

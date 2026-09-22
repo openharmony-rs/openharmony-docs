@@ -1,5 +1,9 @@
 # UnifiedGroupInfo（系统接口）
 
+```TypeScript
+export interface UnifiedGroupInfo
+```
+
 描述通知智能聚合信息字段。
 
 **起始版本：** 12

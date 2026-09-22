@@ -1,5 +1,9 @@
 # SppType
 
+```TypeScript
+enum SppType
+```
+
 The enum of SPP type.
 
 **Since:** 9

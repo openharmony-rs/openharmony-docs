@@ -1,5 +1,9 @@
 # Image
 
+```TypeScript
+class Image extends File
+```
+
 Represents the image data. It is a child class of [File](arkts-arkdata-unifieddatachannel-file-c.md) and is used to describe images.
 
 **Inheritance/Implementation:** Image extends [File](arkts-arkdata-unifieddatachannel-file-c.md)

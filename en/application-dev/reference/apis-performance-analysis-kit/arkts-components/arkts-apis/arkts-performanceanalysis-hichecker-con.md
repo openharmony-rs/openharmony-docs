@@ -58,6 +58,8 @@ Caution rule, which is programmed to detect whether the thread invokes a time-co
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 ## RULE_THREAD_CHECK_SLOW_PROCESS

@@ -1,5 +1,9 @@
 # AutoFillPopupConfig（系统接口）
 
+```TypeScript
+export default interface AutoFillPopupConfig
+```
+
 自动填充气泡弹窗的尺寸和位置信息。
 
 **起始版本：** 12

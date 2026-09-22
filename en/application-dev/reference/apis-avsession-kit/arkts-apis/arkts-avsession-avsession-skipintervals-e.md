@@ -1,5 +1,9 @@
 # SkipIntervals
 
+```TypeScript
+enum SkipIntervals
+```
+
 Supported skip intervals definition
 
 **Since:** 11

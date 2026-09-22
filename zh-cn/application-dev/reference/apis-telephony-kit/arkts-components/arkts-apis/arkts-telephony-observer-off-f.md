@@ -39,6 +39,18 @@ function off(type: 'networkStateChange', callback?: Callback<NetworkState>): voi
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+**示例**
+
+```TypeScript
+let callback: (data: observer.NetworkState) => void = (data: observer.NetworkState) => {
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
+}
+observer.on('networkStateChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('networkStateChange', callback);
+observer.off('networkStateChange');
+```
+
 
 ## off('signalInfoChange')
 
@@ -72,6 +84,20 @@ function off(type: 'signalInfoChange', callback?: Callback<Array<SignalInformati
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { radio } from '@kit.TelephonyKit';
+
+let callback: (data: Array<radio.SignalInformation>) => void = (data: Array<radio.SignalInformation>) => {
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
+}
+observer.on('signalInfoChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('signalInfoChange', callback);
+observer.off('signalInfoChange');
+```
 
 
 ## off('cellularDataConnectionStateChange')
@@ -107,6 +133,18 @@ function off(type: 'cellularDataConnectionStateChange', callback?: Callback<Data
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+**示例**
+
+```TypeScript
+let callback: (data: observer.DataConnectionStateInfo) => void = (data: observer.DataConnectionStateInfo) => {
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+}
+observer.on('cellularDataConnectionStateChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('cellularDataConnectionStateChange', callback);
+observer.off('cellularDataConnectionStateChange');
+```
+
 
 ## off('cellularDataFlowChange')
 
@@ -140,6 +178,20 @@ function off(type: 'cellularDataFlowChange', callback?: Callback<DataFlowType>):
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+
+let callback: (data: data.DataFlowType) => void = (data: data.DataFlowType) => {
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
+}
+observer.on('cellularDataFlowChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('cellularDataFlowChange', callback);
+observer.off('cellularDataFlowChange');
+```
 
 
 ## off('callStateChange')
@@ -175,6 +227,18 @@ function off(type: 'callStateChange', callback?: Callback<CallStateInfo>): void
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+**示例**
+
+```TypeScript
+let callback: (data: observer.CallStateInfo) => void = (data: observer.CallStateInfo) => {
+    console.info("on callStateChange, data:" + JSON.stringify(data));
+}
+observer.on('callStateChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('callStateChange', callback);
+observer.off('callStateChange');
+```
+
 
 ## off('callStateChangeEx')
 
@@ -207,6 +271,19 @@ function off(type: 'callStateChangeEx', callback?: Callback<TelCallState>): void
 | [8800002](../errorcode-telephony.md#8800002-服务连接失败) | Service connection failed. |
 | [8800003](../errorcode-telephony.md#8800003-系统内部错误) | System internal error. |
 | [8800999](../errorcode-telephony.md#8800999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
+    console.info("on callStateChangeEx, data:" + JSON.stringify(data));
+}
+observer.on('callStateChangeEx', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('callStateChangeEx', callback);
+observer.off('callStateChangeEx');
+```
 
 
 ## off('simStateChange')
@@ -242,6 +319,18 @@ function off(type: 'simStateChange', callback?: Callback<SimStateData>): void
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+**示例**
+
+```TypeScript
+let callback: (data: observer.SimStateData) => void = (data: observer.SimStateData) => {
+    console.info("on simStateChange, data:" + JSON.stringify(data));
+}
+observer.on('simStateChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('simStateChange', callback);
+observer.off('simStateChange');
+```
+
 
 ## off('iccAccountInfoChange')
 
@@ -275,3 +364,15 @@ function off(type: 'iccAccountInfoChange', callback?: Callback<void>): void
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+let callback: () => void = () => {
+    console.info("on iccAccountInfoChange success");
+}
+observer.on('iccAccountInfoChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('iccAccountInfoChange', callback);
+observer.off('iccAccountInfoChange');
+```

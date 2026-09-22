@@ -1,8 +1,12 @@
 # Region
 
+```TypeScript
+interface Region extends lang.ISendable
+```
+
 Describes the region information. It inherits from [lang.ISendable](../../../arkts-utils/arkts-sendable.md#isendable).
 
-**Inheritance/Implementation:** Region extends lang.ISendable
+**Inheritance/Implementation:** Region extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
 **Since:** 12
 

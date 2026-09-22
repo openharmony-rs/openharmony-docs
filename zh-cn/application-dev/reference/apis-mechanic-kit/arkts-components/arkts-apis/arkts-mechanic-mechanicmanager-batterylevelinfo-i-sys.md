@@ -1,5 +1,9 @@
 # BatteryLevelInfo（系统接口）
 
+```TypeScript
+export interface BatteryLevelInfo
+```
+
 设备电池电量信息
 
 **起始版本：** 26.2.0

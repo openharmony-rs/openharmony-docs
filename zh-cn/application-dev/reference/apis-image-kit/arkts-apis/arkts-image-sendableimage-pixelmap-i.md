@@ -1,5 +1,9 @@
 # PixelMap
 
+```TypeScript
+interface PixelMap extends ISendable
+```
+
 Sendable PixelMap instance.
 
 @typedef PixelMap
@@ -127,7 +131,7 @@ Obtains new pixelmap with alpha information.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -216,7 +220,7 @@ Crop the image.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -305,7 +309,7 @@ Image flipping.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -482,7 +486,7 @@ Get image information from image source.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -676,7 +680,7 @@ Set the transparent rate of pixelmap.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -783,7 +787,7 @@ Reads image pixelmap data in an area.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -874,7 +878,7 @@ Reads image pixelmap data and writes the data to an ArrayBuffer.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -993,7 +997,7 @@ Image rotation.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -1081,7 +1085,7 @@ Image zoom in width and height.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -1216,7 +1220,7 @@ Image position transformation.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -1394,7 +1398,7 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 
@@ -1511,7 +1515,7 @@ Writes image pixelmap data to the specified area.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 501 | The resource is unavailable as it is occupied by another thread. |
+| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
 
 **示例**
 

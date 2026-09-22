@@ -1,6 +1,10 @@
 # InvokeOptions (System API)
 
-Invoke options for function execution.
+```TypeScript
+interface InvokeOptions
+```
+
+Optional parameters for Function invocation. Contains the application context information for the Function invocation.
 
 **Since:** 26.0.0
 
@@ -11,7 +15,7 @@ Invoke options for function execution.
 ## Modules to Import
 
 ```TypeScript
-import { functionManager } from '@kit.AbilityKit';
+import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap } from '@kit.AbilityKit';
 ```
 
 ## context

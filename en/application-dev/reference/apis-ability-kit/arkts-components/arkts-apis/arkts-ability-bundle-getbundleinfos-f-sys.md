@@ -38,35 +38,6 @@ Obtains all BundleInfo for a specified user in the system. This API uses an asyn
 
 ```TypeScript
 import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
-let userId: number = 100;
-
-bundle.getBundleInfos(bundleFlag, userId)
-  .then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
-
-let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
-
-bundle.getBundleInfos(bundleFlag, (err, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. Data:' + JSON.stringify(data));
-})
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
 
 let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
 let userId: number = 100;
@@ -80,6 +51,8 @@ bundle.getBundleInfos(bundleFlag, userId, (err, data) => {
 })
 ```
 
+
+<a id="getbundleinfos-1"></a>
 
 ## getBundleInfos
 
@@ -110,8 +83,22 @@ Obtains all BundleInfo for the current user. This API uses an asynchronous callb
 
 **Examples**
 
-See [getBundleInfos](#getbundleinfos)
+```TypeScript
+import bundle from '@ohos.bundle';
 
+let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
+
+bundle.getBundleInfos(bundleFlag, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+
+<a id="getbundleinfos-2"></a>
 
 ## getBundleInfos
 
@@ -148,4 +135,17 @@ Obtains all BundleInfo for a specified user. This API uses a promise to return t
 
 **Examples**
 
-See [getBundleInfos](#getbundleinfos)
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
+let userId: number = 100;
+
+bundle.getBundleInfos(bundleFlag, userId)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```

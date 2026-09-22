@@ -1,5 +1,9 @@
 # NetCap
 
+```TypeScript
+export enum NetCap
+```
+
 网络具体能力。
 
 **起始版本：** 8

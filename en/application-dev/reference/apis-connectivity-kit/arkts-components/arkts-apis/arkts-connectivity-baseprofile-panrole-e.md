@@ -1,5 +1,9 @@
 # PanRole
 
+```TypeScript
+enum PanRole
+```
+
 Enum for PAN profile role.
 
 **Since:** 26.0.0

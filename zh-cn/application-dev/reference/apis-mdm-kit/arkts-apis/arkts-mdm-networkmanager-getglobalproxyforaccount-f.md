@@ -38,7 +38,7 @@ function getGlobalProxyForAccount(admin: Want | null, accountId: number): connec
 
 | 类型 | 说明 |
 | --- | --- |
-| connection.HttpProxy | 网络代理配置信息。 |
+| [connection.HttpProxy](../../apis-network-kit/arkts-apis/arkts-network-connection-httpproxy-i.md) | 网络代理配置信息。 |
 
 **错误码：**
 

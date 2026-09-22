@@ -1,5 +1,9 @@
 # FileFilter
 
+```TypeScript
+export interface FileFilter
+```
+
 Defines the file name filtering interface used by listFileExt().
 
 **Since:** 26.0.0

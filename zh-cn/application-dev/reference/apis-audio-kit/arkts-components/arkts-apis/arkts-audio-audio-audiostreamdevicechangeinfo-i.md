@@ -1,5 +1,9 @@
 # AudioStreamDeviceChangeInfo
 
+```TypeScript
+interface AudioStreamDeviceChangeInfo
+```
+
 流设备变更时，应用接收到的事件。
 
 **起始版本：** 11

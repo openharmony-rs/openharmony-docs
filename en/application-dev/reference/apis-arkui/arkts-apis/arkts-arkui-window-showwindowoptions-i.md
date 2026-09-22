@@ -1,5 +1,9 @@
 # ShowWindowOptions
 
+```TypeScript
+interface ShowWindowOptions
+```
+
 Describes the parameters for displaying a child window or system window.
 
 **Since:** 20
@@ -18,7 +22,7 @@ import { window } from '@kit.ArkUI';
 focusOnShow?: boolean
 ```
 
-Whether the window automatically gains focus when [showWindow()](arkts-arkui-window-window-i.md#showwindow) is called. The default value is **true**. This parameter does not take effect for the main window, modal window, and dialog boxes.
+Whether the window automatically gains focus when [showWindow()](arkts-arkui-window-window-i.md#showwindow-2) is called. The default value is **true**. This parameter does not take effect for the main window, modal window, and dialog boxes.
 
 **Type:** boolean
 

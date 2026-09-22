@@ -47,18 +47,8 @@ sim.getDefaultVoiceSimId((err: BusinessError, data: number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-let promise = sim.getDefaultVoiceSimId();
-promise.then((data: number) => {
-    console.info(`getDefaultVoiceSimId success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getDefaultVoiceSimId failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getdefaultvoicesimid-1"></a>
 
 ## getDefaultVoiceSimId
 
@@ -91,4 +81,14 @@ Obtains the default slot ID of the SIM card that provides voice services. This A
 
 **Examples**
 
-See [getDefaultVoiceSimId](#getdefaultvoicesimid)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+let promise = sim.getDefaultVoiceSimId();
+promise.then((data: number) => {
+    console.info(`getDefaultVoiceSimId success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getDefaultVoiceSimId failed, promise: err->${JSON.stringify(err)}`);
+});
+```

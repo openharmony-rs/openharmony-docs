@@ -1,5 +1,9 @@
 # Shader
 
+```TypeScript
+export interface Shader extends SceneResource
+```
+
 Shader resource, which inherits from SceneResource.
 
 @extends SceneResource @interface Shader

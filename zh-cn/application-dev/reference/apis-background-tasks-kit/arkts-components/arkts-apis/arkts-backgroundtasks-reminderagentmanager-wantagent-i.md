@@ -1,5 +1,9 @@
 # WantAgent
 
+```TypeScript
+interface WantAgent
+```
+
 跳转目标的ability信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # HistoryItem
 
+```TypeScript
+interface HistoryItem
+```
+
 Describes a historical page record.
 
 @interface HistoryItem [since 9 - 11]

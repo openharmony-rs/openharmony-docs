@@ -1,5 +1,9 @@
 # KeyCommandTriggerType（系统接口）
 
+```TypeScript
+export enum KeyCommandTriggerType
+```
+
 按键命令触发类型枚举，用于指定组合按键的触发时机。
 
 **起始版本：** 26.0.0

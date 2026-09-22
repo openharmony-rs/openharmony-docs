@@ -1,5 +1,9 @@
 # CipherResponse
 
+```TypeScript
+export interface CipherResponse
+```
+
 Defines the response to the cipher interface called.
 
 **Since:** 3

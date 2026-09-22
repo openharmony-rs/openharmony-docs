@@ -1,5 +1,9 @@
 # Area
 
+```TypeScript
+declare interface Area
+```
+
 Defines the area information of a component.
 
 **Since:** 8

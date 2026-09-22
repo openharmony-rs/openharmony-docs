@@ -6,8 +6,6 @@ type ToneHapticsAttrsArray = Array<ToneHapticsAttrs>
 
 系统铃音的振动属性数组。
 
-@typedef { Array&lt;ToneHapticsAttrs&gt; } ToneHapticsAttrsArray
-
 **起始版本：** 14
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core

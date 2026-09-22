@@ -1,6 +1,12 @@
 # ChipV2PrefixSymbolIcon
 
-Defines chip prefix symbol icon.
+```TypeScript
+export declare class ChipV2PrefixSymbolIcon extends ChipV2SymbolIcon
+```
+
+Defines the prefix symbol icon class.
+
+This API inherits from [ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md).
 
 **Inheritance/Implementation:** ChipV2PrefixSymbolIcon extends [ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md)
 
@@ -22,7 +28,7 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 constructor(config: ChipV2PrefixSymbolIconConfig)
 ```
 
-The constructor of ChipV2PrefixSymbolIcon
+A constructor used to create a **ChipV2PrefixSymbolIcon** object.
 
 **Since:** 26.0.0
 
@@ -36,4 +42,4 @@ The constructor of ChipV2PrefixSymbolIcon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ChipV2PrefixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefixsymboliconconfig-i.md) | Yes | config of chip prefix symbol icon |
+| config | [ChipV2PrefixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefixsymboliconconfig-i.md) | Yes | Attribute configuration of the prefix symbol icon, which is used to set the display attributes of the prefix symbol icon. This parameter inherits from **ChipV2SymbolIconConfig** and includes configuration options such as **normal** and **activated**. |

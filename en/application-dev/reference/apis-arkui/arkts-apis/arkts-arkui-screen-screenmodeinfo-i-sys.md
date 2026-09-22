@@ -1,5 +1,9 @@
 # ScreenModeInfo (System API)
 
+```TypeScript
+interface ScreenModeInfo
+```
+
 Defines the screen mode information.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # SketchStatusData（系统接口）
 
+```TypeScript
+interface SketchStatusData
+```
+
 Defines the PiP status data.
 
 **起始版本：** 11

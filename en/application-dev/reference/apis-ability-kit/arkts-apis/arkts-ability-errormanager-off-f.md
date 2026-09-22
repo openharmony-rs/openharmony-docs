@@ -37,6 +37,29 @@ This API can only be used in the main thread. If a thread error occurs, an error
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000003](../errorcode-ability.md#16000003-id-does-not-exist) | The specified ID does not exist. |
 
+**Examples**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observerId = 100;
+
+const unregisterErrorObserverCallback = (err: BusinessError) => {
+  if (err) {
+    console.error('------------ unregisterErrorObserverCallback ------------', err);
+  }
+};
+
+try {
+  errorManager.off('error', observerId, unregisterErrorObserverCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
+```
+
 
 ## off('error')
 
@@ -74,6 +97,29 @@ This API can only be used in the main thread. If a thread error occurs, an error
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000003](../errorcode-ability.md#16000003-id-does-not-exist) | The specified ID does not exist. |
 
+**Examples**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observerId = 100;
+
+try {
+  errorManager.off('error', observerId)
+    .then((data) => {
+      console.info('----------- unregisterErrorObserver success ----------', data);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`Failed to unregister error observer. Code: ${err.code}, message: ${err.message}`);
+    });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
+```
+
 
 ## off('loopObserver')
 
@@ -103,6 +149,21 @@ This API can only be used in the main thread. If a thread error occurs, an error
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) |  |
+
+**Examples**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  errorManager.off('loopObserver');
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
+```
 
 
 ## off('unhandledRejection')
@@ -136,6 +197,56 @@ This API can only be used in the main thread. If a thread error occurs, an error
 | [16200001](../errorcode-ability.md#16200001-caller-released) | If the caller is invalid. |
 | [16300004](../errorcode-ability.md#16300004-observer-does-not-exist) | If the observer does not exist |
 
+**Examples**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+
+let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
+  if (promise === promise1) {
+    console.info('promise1 is rejected');
+  }
+  console.info('reason.name: ', reason.name);
+  console.info('reason.message: ', reason.message);
+  if (reason.stack) {
+    console.info('reason.stack: ', reason.stack);
+  }
+};
+
+errorManager.on('unhandledRejection', observer);
+
+let promise1 = new Promise<void>(() => {}).then(() => {
+  throw new Error('uncaught error')
+})
+
+errorManager.off('unhandledRejection');
+```
+
+Or:
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+
+let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
+  if (promise === promise1) {
+    console.info('promise1 is rejected');
+  }
+  console.info('reason.name: ', reason.name);
+  console.info('reason.message: ', reason.message);
+  if (reason.stack) {
+    console.info('reason.stack: ', reason.stack);
+  }
+};
+
+errorManager.on('unhandledRejection', observer);
+
+let promise1 = new Promise<void>(() => {}).then(() => {
+  throw new Error('uncaught error')
+})
+
+errorManager.off('unhandledRejection', observer);
+```
+
 
 ## off('globalUnhandledRejectionDetected')
 
@@ -167,6 +278,32 @@ If the observer passed in is not in the observer queue registered via the **on**
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200001](../errorcode-ability.md#16200001-caller-released) | If the caller is invalid. |
 | [16300004](../errorcode-ability.md#16300004-observer-does-not-exist) | If the observer does not exist |
+
+**Examples**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+
+const promiseFunc = (observer: errorManager.GlobalError) => {
+  console.info('result name :' + observer.name);
+  console.info('result message :' + observer.message);
+  console.info('result stack :' + observer.stack);
+  console.info('result instanceName :' + observer.instanceName);
+  console.info('result instanceType :' + observer.instanceType);
+};
+
+errorManager.on('globalUnhandledRejectionDetected', promiseFunc);
+
+const throwError = async () => {
+  throw new Error('uncaught error');
+};
+
+let promise1 = new Promise<void>(() => {}).then(() => {
+  throwError();
+});
+
+errorManager.off('globalUnhandledRejectionDetected', promiseFunc);
+```
 
 
 ## off('freeze')
@@ -201,6 +338,25 @@ If the observer passed in does not match the observer registered via the **on** 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300004](../errorcode-ability.md#16300004-observer-does-not-exist) | If the observer does not exist |
 
+**Examples**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const freezeCallback = () => {
+  console.info('freezecallback');
+};
+try {
+  errorManager.on('freeze', freezeCallback);
+  errorManager.off('freeze', freezeCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
+```
+
 
 ## off('globalErrorOccurred')
 
@@ -232,3 +388,26 @@ If the observer passed in is not in the observer queue registered via the **on**
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200001](../errorcode-ability.md#16200001-caller-released) | If the caller is invalid. |
 | [16300004](../errorcode-ability.md#16300004-observer-does-not-exist) | If the observer does not exist |
+
+**Examples**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const errorFunc = (observer: errorManager.GlobalError) => {
+  console.info('result name :' + observer.name);
+  console.info('result message :' + observer.message);
+  console.info('result stack :' + observer.stack);
+  console.info('result instanceName :' + observer.instanceName);
+  console.info('result instanceType :' + observer.instanceType);
+}
+
+try {
+  errorManager.off('globalErrorOccurred', errorFunc)
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
+```

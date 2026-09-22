@@ -1,5 +1,9 @@
 # UploadRequestOptions
 
+```TypeScript
+export interface UploadRequestOptions
+```
+
 
 > **NOTE:** 
 > 

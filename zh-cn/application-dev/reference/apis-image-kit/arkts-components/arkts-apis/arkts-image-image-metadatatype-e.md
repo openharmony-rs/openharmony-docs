@@ -1,5 +1,9 @@
 # MetadataType
 
+```TypeScript
+enum MetadataType
+```
+
 表示图片元数据类型的枚举。
 
 **起始版本：** 13

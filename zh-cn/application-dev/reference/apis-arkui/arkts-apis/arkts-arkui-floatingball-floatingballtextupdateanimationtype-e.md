@@ -1,5 +1,9 @@
 # FloatingBallTextUpdateAnimationType
 
+```TypeScript
+enum FloatingBallTextUpdateAnimationType
+```
+
 闪控球文本更新动画类型的枚举。
 
 **起始版本：** 26.0.0

@@ -14,7 +14,7 @@ function offSpatialMotion(callback?: Callback<SpatialMotionInfo>): void
 
 关闭空间动作感知，订阅空间动作感知结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.vehicle.MMA_SPATIALACTION
 

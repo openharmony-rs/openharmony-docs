@@ -1,5 +1,9 @@
 # LaunchReason
 
+```TypeScript
+export enum LaunchReason
+```
+
 Enumerates the ability launch reasons. You can use it together with the value of **launchParam.launchReason** in [onCreate(want, launchParam)](arkts-ability-app-ability-uiability-uiability-c.md#oncreate) of the UIAbility to complete different operations.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # AutoFillTriggerType（系统接口）
 
+```TypeScript
+export enum AutoFillTriggerType
+```
+
 自动填充服务的拉起类型，通过用户手势操作来选择不同的自动填充服务拉起方式。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # KeysInfo
 
+```TypeScript
+interface KeysInfo
+```
+
 媒体密钥中密钥信息。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # ApplicationInstance
 
+```TypeScript
+export interface ApplicationInstance
+```
+
 Application instance
 
 **Since:** 20

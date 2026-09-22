@@ -1,5 +1,9 @@
 # SwitchState (System API)
 
+```TypeScript
+export enum SwitchState
+```
+
 Describes the switch state of notifications.
 
 **Since:** 20

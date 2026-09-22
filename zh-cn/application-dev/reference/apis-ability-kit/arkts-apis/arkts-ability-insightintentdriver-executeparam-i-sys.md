@@ -1,5 +1,9 @@
 # ExecuteParam（系统接口）
 
+```TypeScript
+interface ExecuteParam
+```
+
 执行意图调用的参数。
 
 **起始版本：** 11

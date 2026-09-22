@@ -1,5 +1,9 @@
 # BluetoothAddress
 
+```TypeScript
+export interface BluetoothAddress
+```
+
 描述蓝牙设备地址信息的参数结构，包括地址与地址类型。
 
 **起始版本：** 21

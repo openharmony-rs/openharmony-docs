@@ -1,5 +1,9 @@
 # SingleKVStore
 
+```TypeScript
+interface SingleKVStore
+```
+
 Provides APIs for data management in a single KV store, such as adding data, deleting data, and subscribing to data changes or across-device data sync completion events. Before calling any method in **SingleKVStore**, you must use getKVStore to obtain a **SingleKVStore** instance.
 
 **Since:** 9
@@ -11,6 +15,8 @@ Provides APIs for data management in a single KV store, such as adding data, del
 ```TypeScript
 import { distributedKVStore } from '@kit.ArkData';
 ```
+
+<a id="delete-2"></a>
 
 ## delete
 
@@ -99,6 +105,8 @@ try {
 }
 ```
 
+<a id="delete-3"></a>
+
 ## delete
 
 ```TypeScript
@@ -140,6 +148,8 @@ Deletes the key-value pairs based on the dataSharePredicates.
 **Examples**
 
 See [delete](#delete)
+
+<a id="getresultset-4"></a>
 
 ## getResultSet
 
@@ -340,6 +350,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="getresultset-5"></a>
 
 ## getResultSet
 
@@ -546,6 +558,8 @@ try {
 }
 ```
 
+<a id="putbatch-2"></a>
+
 ## putBatch
 
 ```TypeScript
@@ -657,6 +671,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="putbatch-3"></a>
 
 ## putBatch
 

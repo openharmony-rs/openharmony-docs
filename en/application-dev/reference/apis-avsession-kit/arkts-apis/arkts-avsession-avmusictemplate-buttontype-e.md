@@ -1,5 +1,9 @@
 # ButtonType
 
+```TypeScript
+enum ButtonType
+```
+
 Enumeration of button type.
 
 @enum { int }

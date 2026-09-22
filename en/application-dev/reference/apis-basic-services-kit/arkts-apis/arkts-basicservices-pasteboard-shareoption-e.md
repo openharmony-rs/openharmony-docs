@@ -1,5 +1,9 @@
 # ShareOption
 
+```TypeScript
+enum ShareOption
+```
+
 Enumerates the pasteable ranges of PasteData.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # RegExpExecArray
 
+```TypeScript
+interface RegExpExecArray
+```
+
 ## Modules to Import
 
 ```TypeScript

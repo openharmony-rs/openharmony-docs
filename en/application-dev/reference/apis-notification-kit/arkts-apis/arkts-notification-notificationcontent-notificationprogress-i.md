@@ -1,5 +1,9 @@
 # NotificationProgress
 
+```TypeScript
+export interface NotificationProgress
+```
+
 Describes the notification progress, which is used to display progress bar information in the live view.
 
 > **NOTE:** 

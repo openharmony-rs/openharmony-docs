@@ -55,19 +55,8 @@ connectedTag.write(rawData).then(() => {
 });
 ```
 
-```TypeScript
-import { connectedTag } from '@kit.ConnectivityKit';
 
-let rawData = [0x01, 0x02, 0x03]; // change it to be correct.
-connectedTag.write(rawData, (err)=> {
-    if (err) {
-        console.error("connectedTag.write AsyncCallback err: " + err);
-    } else {
-        console.info("connectedTag.write AsyncCallback success.");
-    }
-});
-```
-
+<a id="write-1"></a>
 
 ## write
 
@@ -101,4 +90,15 @@ Writes data to this active tag. This API uses an asynchronous callback to return
 
 **Examples**
 
-See [write](#write)
+```TypeScript
+import { connectedTag } from '@kit.ConnectivityKit';
+
+let rawData = [0x01, 0x02, 0x03]; // change it to be correct.
+connectedTag.write(rawData, (err)=> {
+    if (err) {
+        console.error("connectedTag.write AsyncCallback err: " + err);
+    } else {
+        console.info("connectedTag.write AsyncCallback success.");
+    }
+});
+```

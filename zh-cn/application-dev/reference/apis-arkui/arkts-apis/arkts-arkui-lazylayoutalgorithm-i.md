@@ -1,5 +1,9 @@
 # LazyLayoutAlgorithm
 
+```TypeScript
+export interface LazyLayoutAlgorithm
+```
+
 [LazyDynamicLayout](arkts-arkui-arkui-components-arklazydynamiclayout-lazydynamiclayout-f.md)组件支持的懒加载布局算法详细信息。
 
 **起始版本：** 26.0.0

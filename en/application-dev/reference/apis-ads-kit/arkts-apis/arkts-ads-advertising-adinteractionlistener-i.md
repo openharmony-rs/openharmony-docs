@@ -1,5 +1,9 @@
 # AdInteractionListener
 
+```TypeScript
+export interface AdInteractionListener
+```
+
 Defines the ad status change callback.
 
 **Since:** 11

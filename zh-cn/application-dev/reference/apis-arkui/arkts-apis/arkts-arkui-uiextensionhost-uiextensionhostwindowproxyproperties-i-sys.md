@@ -1,5 +1,9 @@
 # UIExtensionHostWindowProxyProperties（系统接口）
 
+```TypeScript
+interface UIExtensionHostWindowProxyProperties
+```
+
 用于表示宿主应用窗口和UIExtensionComponent组件的信息。
 
 **起始版本：** 11

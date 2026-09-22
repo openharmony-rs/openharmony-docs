@@ -1,5 +1,9 @@
 # PermissionQuery (System API)
 
+```TypeScript
+interface PermissionQuery
+```
+
 Permission query information.
 
 **Since:** 26.0.0
@@ -25,6 +29,8 @@ Caller token ID. Value range: (-∞,+∞).
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -40,6 +46,8 @@ Domain ID.
 **Type:** string
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -57,6 +65,8 @@ Whether a ticket is required.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -73,6 +83,8 @@ Operation information list.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -87,7 +99,9 @@ Remote device information.
 
 **Type:** [RemoteInfo](arkts-ability-abilitytoolaccessctrl-remoteinfo-i-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -104,6 +118,8 @@ Ticket expiration time in milliseconds. Unit: milliseconds. The value must be gr
 **Type:** number
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

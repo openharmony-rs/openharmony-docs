@@ -43,6 +43,8 @@ Converts a temporary widget to a normal one. This API uses an asynchronous callb
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
 
 
+<a id="casttonormalform-1"></a>
+
 ## castToNormalForm
 
 ```TypeScript

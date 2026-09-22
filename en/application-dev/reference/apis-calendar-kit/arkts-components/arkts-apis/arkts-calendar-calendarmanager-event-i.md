@@ -1,5 +1,9 @@
 # Event
 
+```TypeScript
+interface Event
+```
+
 Describes an **Event** object, including the event title, start time, and end time.
 
 **Since:** 10
@@ -66,7 +70,7 @@ End time of an event. The value is a 13-digit timestamp. For an all-day event, t
 id?: number
 ```
 
-Event ID. This parameter does not need to be set in [addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent) or [addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents). This is an auto-increment field of the database, which has no default value. When [deleteEvent()](arkts-calendar-calendarmanager-calendar-i.md#deleteevent) or [deleteEvents()](arkts-calendar-calendarmanager-calendar-i.md#deleteevents) is called to delete an event, the value must be an integer. If an invalid value is passed, an error will be reported. When [getEvents()](arkts-calendar-calendarmanager-calendar-i.md#getevents) is called to query events, this field is queried by default.
+Event ID. This parameter does not need to be set in [addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent-1) or [addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents-1). This is an auto-increment field of the database, which has no default value. When [deleteEvent()](arkts-calendar-calendarmanager-calendar-i.md#deleteevent-1) or [deleteEvents()](arkts-calendar-calendarmanager-calendar-i.md#deleteevents-1) is called to delete an event, the value must be an integer. If an invalid value is passed, an error will be reported. When [getEvents()](arkts-calendar-calendarmanager-calendar-i.md#getevents) is called to query events, this field is queried by default.
 
 **Type:** number
 
@@ -98,7 +102,7 @@ Unique ID of an event, with a maximum of 5,000 characters. If this parameter is 
 instanceEndTime?: number
 ```
 
-End time of an event instance, which must be a 13-digit timestamp. The default value is undefined. This parameter is not required when [addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent) or [addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents) is called to create an event or [getEvents()](arkts-calendar-calendarmanager-calendar-i.md#getevents) is called to query an event.
+End time of an event instance, which must be a 13-digit timestamp. The default value is undefined. This parameter is not required when [addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent-1) or [addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents-1) is called to create an event or [getEvents()](arkts-calendar-calendarmanager-calendar-i.md#getevents) is called to query an event.
 
 **Type:** number
 
@@ -114,7 +118,7 @@ End time of an event instance, which must be a 13-digit timestamp. The default v
 instanceStartTime?: number
 ```
 
-Start time of an event instance, which must be a 13-digit timestamp. The default value is undefined. This parameter is not required when [addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent) or [addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents) is called to create an event or [getEvents()](arkts-calendar-calendarmanager-calendar-i.md#getevents) is called to query an event.
+Start time of an event instance, which must be a 13-digit timestamp. The default value is undefined. This parameter is not required when [addEvent()](arkts-calendar-calendarmanager-calendar-i.md#addevent-1) or [addEvents()](arkts-calendar-calendarmanager-calendar-i.md#addevents-1) is called to create an event or [getEvents()](arkts-calendar-calendarmanager-calendar-i.md#getevents) is called to query an event.
 
 **Type:** number
 

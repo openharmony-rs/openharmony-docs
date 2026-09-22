@@ -1,5 +1,9 @@
 # CompressLevel
 
+```TypeScript
+export enum CompressLevel
+```
+
 CompressLevel
 
 **Since:** 7

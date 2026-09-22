@@ -33,3 +33,13 @@ function on(type: 'formUninstall', callback: Callback<string>): void
 | --- | --- | --- | --- |
 | type | 'formUninstall' | 是 | 填写'formUninstall'，表示卡片卸载事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 是 | 回调函数，返回卡片标识。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+formHost.on('formUninstall', (formId: string) => {
+  console.info(`formHost on formUninstall, formId: ${formId}`);
+});
+```

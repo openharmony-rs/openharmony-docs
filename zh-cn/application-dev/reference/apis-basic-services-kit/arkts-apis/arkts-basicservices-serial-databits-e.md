@@ -1,5 +1,9 @@
 # DataBits
 
+```TypeScript
+enum DataBits
+```
+
 表示数据位的枚举。
 
 **起始版本：** 26.0.0

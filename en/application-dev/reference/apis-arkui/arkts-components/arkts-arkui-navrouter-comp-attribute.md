@@ -1,5 +1,9 @@
 # NavRouter properties/events
 
+```TypeScript
+declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>
+```
+
 In addition to the universal attributes, the following attributes are supported.
 
 **Inheritance/Implementation:** NavRouterAttribute extends CommonMethod<NavRouterAttribute>
@@ -38,7 +42,7 @@ Sets the route mode used for redirecting the user from the **NavRouter** compone
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [NavRouteMode](arkts-arkui-navroutemode-e.md) | Yes | Route mode used for redirection.<br>Default value: **NavRouteMode.PUSH_WITH_RECREATE** |
+| mode | [NavRouteMode](arkts-arkui-navrouter-comp-navroutemode-e.md) | Yes | Route mode used for redirection.<br>Default value: **NavRouteMode.PUSH_WITH_RECREATE** |
 
 ## onStateChange
 

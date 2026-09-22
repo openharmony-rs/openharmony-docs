@@ -1,5 +1,9 @@
 # UsedScene
 
+```TypeScript
+export interface UsedScene
+```
+
 
 > **NOTE:** 
 > 

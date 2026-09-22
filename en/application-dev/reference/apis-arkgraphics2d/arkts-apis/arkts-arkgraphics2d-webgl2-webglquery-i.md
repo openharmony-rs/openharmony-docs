@@ -1,5 +1,9 @@
 # WebGLQuery
 
+```TypeScript
+interface WebGLQuery
+```
+
 WebGL 2.0
 
 **Since:** 7

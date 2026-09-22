@@ -1,12 +1,16 @@
 # ToolBar
 
+```TypeScript
+export declare struct ToolBar
+```
+
 工具栏组件，用于展示针对当前界面内容的操作选项，在界面底部显示。适用于需要为用户提供快捷操作入口的场景，如编辑页面的复制、粘贴、分享等操作。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。
 
 > **说明：** 
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果ToolBar设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ToolBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ToolBar设置通用属性和通用事件。
+> - 如果ToolBar设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ToolBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ToolBar设置通用属性和通用事件。
 
 ## 子组件
 
@@ -58,7 +62,7 @@ controller: TabsController
 
 根据自定义组件成员属性访问限定符[使用限制](../../../ui/state-management/arkts-custom-components-access-restrictions.md#使用限制)，该接口属于常规成员变量，可以传参进行初始化；也可以不传。不传时，使用组件内预设值进行初始化，组件内预设值为：new TabsController()。
 
-**类型：** [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md)
+**类型：** [TabsController](../arkts-components/arkts-arkui-tabs-comp-tabscontroller-c.md)
 
 **起始版本：** 10
 
@@ -78,7 +82,7 @@ dividerModifier?: DividerModifier
 
 默认值：系统默认值。
 
-**类型：** DividerModifier
+**类型：** [DividerModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 13
 

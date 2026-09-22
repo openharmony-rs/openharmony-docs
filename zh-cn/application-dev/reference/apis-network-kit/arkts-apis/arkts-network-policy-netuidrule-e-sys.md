@@ -1,5 +1,9 @@
 # NetUidRule（系统接口）
 
+```TypeScript
+export enum NetUidRule
+```
+
 计量网络规则。
 
 **起始版本：** 10

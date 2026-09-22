@@ -10,7 +10,7 @@
 
 RowSplit通过分割线限制子组件的宽度。初始化时，分割线位置根据子组件的宽度来计算。初始化后，动态修改子组件的宽度不会改变分割线位置，分割线位置保持不变。可以通过拖动分割线改变子组件宽度。
 
-初始化后，动态修改margin、[border](arkts-arkui-commonmethod-c.md#border)、padding通用属性可能导致子组件宽度大于相邻分割线间距。在此异常情况下，不支持拖动分割线改变子组件的宽度。这是因为分割线的位置在初始化时已确定，动态修改边距、边框、内边距等属性会破坏原有的布局计算，导致分割线无法正确响应拖动操作。建议在初始化时合理设置子组件的尺寸和边距属性。
+初始化后，动态修改[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)、[border](arkts-arkui-common-comp-commonmethod-c.md#border)、[padding](arkts-arkui-common-comp-commonmethod-c.md#padding)通用属性可能导致子组件宽度大于相邻分割线间距。在此异常情况下，不支持拖动分割线改变子组件的宽度。这是因为分割线的位置在初始化时已确定，动态修改边距、边框、内边距等属性会破坏原有的布局计算，导致分割线无法正确响应拖动操作。建议在初始化时合理设置子组件的尺寸和边距属性。
 
 ## RowSplit
 
@@ -30,6 +30,27 @@ RowSplit()
 
 ## 示例
 
-```TypeScript
 RowSplit的基本用法。实现分割线可拖动的横向布局。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct RowSplitExample {
+  build() {
+    Column() {
+      Text('The second line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      // 创建RowSplit组件，实现横向布局
+      RowSplit() {
+        Text('1').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .resizeable(true) // 可拖拽
+      .width('90%').height(100)
+    }.width('100%').margin({ top: 5 })
+  }
+}
 ```

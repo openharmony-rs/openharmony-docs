@@ -1,5 +1,9 @@
 # AudioRendererRate
 
+```TypeScript
+enum AudioRendererRate
+```
+
 表示音频渲染速度的枚举。
 
 **起始版本：** 8

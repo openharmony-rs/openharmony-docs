@@ -1,5 +1,9 @@
 # ErrorCode
 
+```TypeScript
+export enum ErrorCode
+```
+
 Enumerates the error codes that may be returned when an ability is started.
 
 **Since:** 7

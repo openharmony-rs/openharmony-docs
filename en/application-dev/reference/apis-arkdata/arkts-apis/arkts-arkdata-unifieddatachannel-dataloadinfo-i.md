@@ -1,5 +1,9 @@
 # DataLoadInfo
 
+```TypeScript
+interface DataLoadInfo
+```
+
 Defines type and quantity of the data to load.
 
 - Used by the **data sender** to define the data range that can be provided. This field is mandatory.  

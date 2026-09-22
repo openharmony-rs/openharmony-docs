@@ -1,5 +1,9 @@
 # Configuration
 
+```TypeScript
+export default class Configuration
+```
+
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite

@@ -1,5 +1,9 @@
 # CountryCode
 
+```TypeScript
+export interface CountryCode
+```
+
 国家码信息，包含国家码字符串和国家码的来源信息。
 
 **起始版本：** 9

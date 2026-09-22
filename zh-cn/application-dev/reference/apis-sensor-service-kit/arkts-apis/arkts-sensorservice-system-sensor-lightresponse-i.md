@@ -1,5 +1,9 @@
 # LightResponse
 
+```TypeScript
+export interface LightResponse
+```
+
 光线感应数据改变后的回调函数的响应对象，包含环境光线强度数据。
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。

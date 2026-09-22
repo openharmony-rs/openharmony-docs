@@ -12,7 +12,9 @@ import { audio } from '@kit.AudioKit';
 function createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallback<AudioCapturer>): void
 ```
 
-获取音频采集器。使用callback异步回调。
+创建音频采集器。使用callback异步回调。
+
+当设置Mic音频源（即SourceType为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_CAMCORDER）时需要ohos.permission.MICROPHONE权限。
 
 **起始版本：** 8
 
@@ -23,7 +25,7 @@ function createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [AudioCapturerOptions](arkts-audio-audio-audiocaptureroptions-i.md) | 是 | 配置音频采集器。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md)&gt; | 是 | 回调函数。当获取音频采集器成功，err为undefined，data为获取到的音频采集器对象；否则为错误对象。异常将返回error对象：<br>错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。<br>错误码6800101：表示必选参数为空或参数类型错误。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md)&gt; | 是 | 回调函数。当创建音频采集器成功，err为undefined，data为创建的音频采集器对象；否则为错误对象。<br>异常将返回error对象：<br>返回错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。<br>返回错误码6800101：表示必选参数为空或参数类型错误。 |
 
 **示例**
 
@@ -59,6 +61,37 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 });
 ```
 
+
+<a id="createaudiocapturer-2"></a>
+
+## createAudioCapturer
+
+```TypeScript
+function createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer>
+```
+
+创建音频采集器。使用Promise异步回调。
+
+当设置Mic音频源（即SourceType为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_CAMCORDER）时需要ohos.permission.MICROPHONE权限。
+
+**起始版本：** 8
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [AudioCapturerOptions](arkts-audio-audio-audiocaptureroptions-i.md) | 是 | 配置音频采集器。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md)&gt; | Promise对象，成功将返回音频采集器对象，异常将返回error对象。  返回错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。  返回错误码6800101：表示必选参数为空或参数类型错误。 |
+
+**示例**
+
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -89,32 +122,3 @@ audio.createAudioCapturer(audioCapturerOptions).then((data) => {
   console.error(`AudioCapturer Created : ERROR : ${err}`);
 });
 ```
-
-
-## createAudioCapturer
-
-```TypeScript
-function createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer>
-```
-
-获取音频采集器。使用Promise异步回调。
-
-**起始版本：** 8
-
-**系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| options | [AudioCapturerOptions](arkts-audio-audio-audiocaptureroptions-i.md) | 是 | 配置音频采集器。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md)&gt; | Promise对象，成功将返回音频采集器对象，异常将返回error对象：  错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。  错误码6800101：表示必选参数为空或参数类型错误。 |
-
-**示例**
-
-参见 createAudioCapturer

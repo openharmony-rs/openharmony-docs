@@ -1,5 +1,9 @@
 # NetworkSearchRealTimeResult (System API)
 
+```TypeScript
+export interface NetworkSearchRealTimeResult
+```
+
 Indicates the results of manual network scan
 
 **Since:** 23
@@ -26,6 +30,8 @@ Indicates whether the network search was stop.
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -41,6 +47,8 @@ the network search results.
 **Type:** Array&lt;[NetworkInformation](arkts-telephony-radio-networkinformation-i-sys.md)&gt;
 
 **Since:** 23
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Telephony.CoreService
 

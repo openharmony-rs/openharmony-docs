@@ -1,5 +1,9 @@
 # AlbumAttributeInfo（系统接口）
 
+```TypeScript
+interface AlbumAttributeInfo
+```
+
 相册属性信息。
 
 **起始版本：** 26.0.0

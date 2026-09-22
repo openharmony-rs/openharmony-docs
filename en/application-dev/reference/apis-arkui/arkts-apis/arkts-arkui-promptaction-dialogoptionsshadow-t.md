@@ -18,5 +18,5 @@ Defines the allowed data types for specifying the background shadow of a dialog 
 
 | Type | Description |
 | --- | --- |
-| [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) |  |
-| [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md) |  |
+| [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) |  |
+| [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md) |  |

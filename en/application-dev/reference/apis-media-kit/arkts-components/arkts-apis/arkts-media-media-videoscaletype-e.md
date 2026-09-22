@@ -1,5 +1,9 @@
 # VideoScaleType
 
+```TypeScript
+enum VideoScaleType
+```
+
 Enumerates the video scale modes.
 
 **Since:** 9

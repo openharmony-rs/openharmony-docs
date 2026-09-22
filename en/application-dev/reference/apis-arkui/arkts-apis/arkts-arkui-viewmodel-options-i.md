@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+export interface Options<T extends ViewModel, Data = DefaultData<T>>
+```
+
 Options type @interface Options
 
 **Since:** 4
@@ -142,7 +146,7 @@ Called when the page is displayed.
 data?: Data
 ```
 
-Data model of the page that can be converted into a JSON object. The attribute name cannot start with &#36; or an underscore (_) or contain the reserved words such as for, if, show, and tid. For a function, the return value must be an object. Set the value of data to the return value of the function during page initialization.
+Data model of the page that can be converted into a JSON object. The attribute name cannot start with $ or an underscore (_) or contain the reserved words such as for, if, show, and tid. For a function, the return value must be an object. Set the value of data to the return value of the function during page initialization.
 
 **Type:** Data
 

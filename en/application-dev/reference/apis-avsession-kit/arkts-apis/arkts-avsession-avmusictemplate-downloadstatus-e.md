@@ -1,5 +1,9 @@
 # DownloadStatus
 
+```TypeScript
+enum DownloadStatus
+```
+
 Enumeration of DownloadStatus.
 
 @enum { int }

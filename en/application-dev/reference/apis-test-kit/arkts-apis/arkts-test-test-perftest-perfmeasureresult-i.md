@@ -1,5 +1,9 @@
 # PerfMeasureResult
 
+```TypeScript
+declare interface PerfMeasureResult
+```
+
 Represents the measurement result data corresponding to the performance metric.
 
 **Since:** 20

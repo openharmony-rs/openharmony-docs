@@ -40,6 +40,8 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="remove-1"></a>
+
 ## remove
 
 ```TypeScript
@@ -75,6 +77,8 @@ Removes a notification for a specified bundle. This API uses a promise to return
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
+<a id="remove-2"></a>
+
 ## remove
 
 ```TypeScript
@@ -103,6 +107,8 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 | reason | RemoveReason | Yes | Reason for deleting a notification. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+
+<a id="remove-3"></a>
 
 ## remove
 

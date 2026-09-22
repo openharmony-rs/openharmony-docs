@@ -1,5 +1,9 @@
 # Node
 
+```TypeScript
+export interface Node extends SceneResource
+```
+
 The 3D scene consists of nodes in a tree hierarchy, where each node implements a Node interface. This class inherits from SceneResource.
 
 @extends SceneResource @interface Node
@@ -51,8 +55,30 @@ function getNode(): void {
 }
 ```
 
-```TypeScript
 When calling getNodeByPath, you need to pass in the node path parameter path. You can obtain the available path value by traversing the node tree and printing the attributes of each node. The following is an example:
+
+```TypeScript
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+// Print the tree structure of the given node, with each line representing the path of a node.
+function printNodeTreeInRelativePath(node: Node | null): void {
+  if (!node) {
+    return;
+  }
+  let basePath: string = node.path + node.name + '/';
+  let printRelative = (n: Node | null): void => {
+    if (!n) {
+      return;
+    }
+    console.info(n.path.substring(basePath.length + 1) + n.name);
+    for (let i = 0; i < n.children.count(); i++) {
+      printRelative(n.children.get(i));
+    }
+  }
+  for (let i = 0; i < node.children.count(); i++) {
+    printRelative(node.children.get(i));
+  }
+}
 ```
 
 ## children

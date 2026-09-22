@@ -64,23 +64,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
-  }
-  connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
-      console.info("Succeeded to get data: " + JSON.stringify(data));
-  })
-}).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-});
-```
-
+<a id="getnetcapabilities-1"></a>
 
 ## getNetCapabilities
 
@@ -124,4 +109,19 @@ Obtains the network capability set of the data network specified by **NetHandle*
 
 **Examples**
 
-See [getNetCapabilities](#getnetcapabilities)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
+    return;
+  }
+  connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
+      console.info("Succeeded to get data: " + JSON.stringify(data));
+  })
+}).catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+});
+```

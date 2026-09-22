@@ -1,5 +1,9 @@
 # AuthResult
 
+```TypeScript
+interface AuthResult
+```
+
 Represents the authentication result object.
 
 **Since:** 8

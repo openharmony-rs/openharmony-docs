@@ -39,3 +39,19 @@ Unsubscribe the event reported when the Bluetooth state changes.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function onReceiveEvent(data: access.BluetoothState) {
+    console.info('bluetooth state = '+ JSON.stringify(data));
+}
+try {
+    access.on('stateChange', onReceiveEvent);
+    access.off('stateChange', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

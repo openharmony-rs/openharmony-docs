@@ -1,5 +1,9 @@
 # ReadonlyArray
 
+```TypeScript
+interface ReadonlyArray<T>
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -18,6 +22,8 @@ Combines two or more arrays.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | items | ConcatArray&lt;T&gt;[] | Yes |  |
+
+<a id="concat-1"></a>
 
 ## concat
 
@@ -50,6 +56,8 @@ Determines whether all the members of an array satisfy the specified test.
 | predicate | (value: T, index: number, array: readonly T[]) =&gt; value is S | Yes |  |
 | thisArg | any | No |  |
 
+<a id="every-1"></a>
+
 ## every
 
 ```TypeScript
@@ -81,6 +89,8 @@ Returns the elements of an array that meet the condition specified in a callback
 | --- | --- | --- | --- |
 | predicate | (value: T, index: number, array: readonly T[]) =&gt; value is S | Yes |  |
 | thisArg | any | No |  |
+
+<a id="filter-1"></a>
 
 ## filter
 
@@ -185,6 +195,8 @@ Calls the specified callback function for all the elements in an array. The retu
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) =&gt; T | Yes |  |
 
+<a id="reduce-1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -197,6 +209,8 @@ reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, arr
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) =&gt; T | Yes |  |
 | initialValue | T | Yes |  |
+
+<a id="reduce-2"></a>
 
 ## reduce
 
@@ -227,6 +241,8 @@ Calls the specified callback function for all the elements in an array, in desce
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) =&gt; T | Yes |  |
 
+<a id="reduceright-1"></a>
+
 ## reduceRight
 
 ```TypeScript
@@ -239,6 +255,8 @@ reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) =&gt; T | Yes |  |
 | initialValue | T | Yes |  |
+
+<a id="reduceright-2"></a>
 
 ## reduceRight
 

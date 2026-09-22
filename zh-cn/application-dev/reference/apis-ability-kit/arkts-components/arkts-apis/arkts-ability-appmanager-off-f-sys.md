@@ -38,6 +38,40 @@ function off(type: 'appForegroundState', observer?: AppForegroundStateObserver):
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+**示例**
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let savedObserver: appManager.AppForegroundStateObserver | undefined;
+// 1.注册应用启动和退出的监听器
+let observer: appManager.AppForegroundStateObserver = {
+  onAppStateChanged(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStateChanged: ${JSON.stringify(appStateData)}`);
+  },
+};
+
+try {
+  appManager.on('appForegroundState', observer);
+  // 保存observer对象，用于注销
+  savedObserver = observer;
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+
+// 2.注销监听器
+try {
+  appManager.off('appForegroundState',  savedObserver);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
 
 ## off('abilityFirstFrameState')
 
@@ -70,3 +104,32 @@ function off(type: 'abilityFirstFrameState', observer?: AbilityFirstFrameStateOb
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+
+**示例**
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityFirstFrameStateObserverForAll: appManager.AbilityFirstFrameStateObserver = {
+  onAbilityFirstFrameDrawn(abilityStateData: appManager.AbilityFirstFrameStateData) {
+    console.info('abilityFirstFrame: ', JSON.stringify(abilityStateData));
+  }
+};
+
+try {
+  appManager.on('abilityFirstFrameState', abilityFirstFrameStateObserverForAll);
+} catch (e) {
+  let code = (e as BusinessError).code;
+  let message = (e as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+
+try {
+  appManager.off('abilityFirstFrameState', abilityFirstFrameStateObserverForAll);
+} catch (e) {
+  let code = (e as BusinessError).code;
+  let message = (e as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```

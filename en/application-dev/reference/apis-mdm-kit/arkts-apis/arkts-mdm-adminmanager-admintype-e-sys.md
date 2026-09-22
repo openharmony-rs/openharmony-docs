@@ -1,5 +1,9 @@
 # AdminType
 
+```TypeScript
+export enum AdminType
+```
+
 Enumerates the types of device administrator applications.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # EnabledPriorityNotificationCallbackData（系统接口）
 
+```TypeScript
+export interface EnabledPriorityNotificationCallbackData
+```
+
 通知优先级总开关状态。
 
 **起始版本：** 23

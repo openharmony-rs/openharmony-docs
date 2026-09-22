@@ -1,5 +1,9 @@
 # BundleChangedInfo (System API)
 
+```TypeScript
+interface BundleChangedInfo
+```
+
 This module defines the result information of monitoring install, update and uninstall.
 
 @typedef BundleChangedInfo

@@ -1,5 +1,9 @@
 # CmsKeyAgreeRecipientInfo
 
+```TypeScript
+interface CmsKeyAgreeRecipientInfo
+```
+
 Represents KeyAgree recipient information for CMS enveloped data.
 
 **Since:** 22

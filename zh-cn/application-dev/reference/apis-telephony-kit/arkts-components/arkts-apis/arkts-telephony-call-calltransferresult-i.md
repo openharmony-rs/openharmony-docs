@@ -1,5 +1,9 @@
 # CallTransferResult
 
+```TypeScript
+export interface CallTransferResult
+```
+
 呼叫转移结果。
 
 **起始版本：** 26.0.0

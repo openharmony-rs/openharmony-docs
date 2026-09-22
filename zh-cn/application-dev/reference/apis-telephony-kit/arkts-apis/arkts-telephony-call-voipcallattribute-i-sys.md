@@ -1,5 +1,9 @@
 # VoipCallAttribute（系统接口）
 
+```TypeScript
+export interface VoipCallAttribute
+```
+
 VoIP通话信息。
 
 **起始版本：** 11

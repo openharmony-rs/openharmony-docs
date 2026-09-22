@@ -1,5 +1,9 @@
 # DeviceType
 
+```TypeScript
+enum DeviceType
+```
+
 表示设备类型的枚举。
 
 **起始版本：** 7

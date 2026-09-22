@@ -1,5 +1,9 @@
 # TypedFrameNode
 
+```TypeScript
+export interface TypedFrameNode<C, T> extends FrameNode
+```
+
 Extends [FrameNode](arkts-arkui-framenode-c.md) to define a FrameNode with specific type constraints.
 
 **Inheritance/Implementation:** TypedFrameNode extends [FrameNode](arkts-arkui-framenode-c.md)

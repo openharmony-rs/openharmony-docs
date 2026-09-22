@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="rejectcall-3"></a>
+
 ## rejectCall
 
 ```TypeScript
@@ -46,61 +48,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.rejectCall((err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->Code${err.code}, message:${err.message}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.rejectCall(1, (err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let rejectMessageOptions : call.RejectMessageOptions = {
-    messageContent: "拦截陌生号码"
-}
-call.rejectCall(1, rejectMessageOptions, (err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let rejectMessageOptions: call.RejectMessageOptions = {
-    messageContent: "拦截陌生号码"
-}
-call.rejectCall(1, rejectMessageOptions).then(() => {
-    console.info(`rejectCall success.`);
-}).catch((err: BusinessError) => {
-    console.error(`rejectCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let rejectMessageOptions: call.RejectMessageOptions = {
-    messageContent: "拦截陌生号码"
-}
-call.rejectCall(rejectMessageOptions, (err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
         console.info(`rejectCall success.`);
     }

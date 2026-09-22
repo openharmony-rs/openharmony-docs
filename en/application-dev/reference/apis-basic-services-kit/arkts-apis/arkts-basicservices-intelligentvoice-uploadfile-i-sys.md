@@ -1,5 +1,9 @@
 # UploadFile (System API)
 
+```TypeScript
+interface UploadFile
+```
+
 Describes upload file information. @typedef UploadFile
 
 **Since:** 12

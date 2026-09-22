@@ -1,5 +1,9 @@
 # SettingsForDevice
 
+```TypeScript
+enum SettingsForDevice
+```
+
 Enumerates device setting items.
 
 **Since:** 26.0.0

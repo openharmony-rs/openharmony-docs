@@ -55,17 +55,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getOpName(0).then((data: string) => {
-    console.info(`getOpName success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getOpName failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getopname-1"></a>
 
 ## getOpName
 
@@ -104,4 +95,13 @@ function getOpName(slotId: number): Promise<string>
 
 **示例**
 
-参见 getOpName
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getOpName(0).then((data: string) => {
+    console.info(`getOpName success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getOpName failed, promise: err->${JSON.stringify(err)}`);
+});
+```

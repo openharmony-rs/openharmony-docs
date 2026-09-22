@@ -1,5 +1,9 @@
 # ProxySchemeFilter
 
+```TypeScript
+enum ProxySchemeFilter
+```
+
 使用代理的请求的scheme信息。
 
 **起始版本：** 15

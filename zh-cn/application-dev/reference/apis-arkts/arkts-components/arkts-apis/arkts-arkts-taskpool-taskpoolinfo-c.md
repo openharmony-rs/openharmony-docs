@@ -1,5 +1,9 @@
 # TaskPoolInfo
 
+```TypeScript
+class TaskPoolInfo
+```
+
 任务池的内部信息。
 
 **起始版本：** 10

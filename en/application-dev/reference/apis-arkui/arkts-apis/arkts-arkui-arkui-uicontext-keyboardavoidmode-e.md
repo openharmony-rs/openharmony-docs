@@ -1,5 +1,9 @@
 # KeyboardAvoidMode
 
+```TypeScript
+export const enum KeyboardAvoidMode
+```
+
 Enumerates the modes in which the layout responds when the keyboard is displayed.
 
 **Since:** 11

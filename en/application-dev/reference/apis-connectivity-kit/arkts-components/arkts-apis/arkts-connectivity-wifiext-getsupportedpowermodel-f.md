@@ -31,6 +31,8 @@ Obtains the supported power model.
 | Promise&lt;Array&lt;[PowerModel](arkts-connectivity-wifiext-powermodel-e.md)&gt;&gt; | Returns the array of supported power model. |
 
 
+<a id="getsupportedpowermodel-1"></a>
+
 ## getSupportedPowerModel
 
 ```TypeScript

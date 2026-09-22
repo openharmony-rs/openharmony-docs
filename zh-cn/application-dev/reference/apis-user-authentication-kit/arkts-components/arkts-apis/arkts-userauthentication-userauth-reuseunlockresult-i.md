@@ -1,5 +1,9 @@
 # ReuseUnlockResult
 
+```TypeScript
+interface ReuseUnlockResult
+```
+
 复用解锁认证结果。该接口用于配置认证结果复用的相关参数，包括复用模式和有效时长。通过合理配置认证结果复用，可以在保证安全性的前提下提升用户体验，避免用户频繁重复认证。
 
 > **说明：** 

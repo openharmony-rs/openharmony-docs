@@ -1,5 +1,9 @@
 # DownloadResponse
 
+```TypeScript
+export interface DownloadResponse
+```
+
 **起始版本：** 3
 
 **废弃版本：** 9

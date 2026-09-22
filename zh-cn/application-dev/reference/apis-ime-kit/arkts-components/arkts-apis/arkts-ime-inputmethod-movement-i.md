@@ -1,5 +1,9 @@
 # Movement
 
+```TypeScript
+export interface Movement
+```
+
 选中文本时，光标移动的方向。
 
 **起始版本：** 10

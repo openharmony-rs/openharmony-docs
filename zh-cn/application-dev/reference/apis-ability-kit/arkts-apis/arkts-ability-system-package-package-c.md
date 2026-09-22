@@ -1,5 +1,9 @@
 # Package
 
+```TypeScript
+export default class Package
+```
+
 
 > **说明：** 
 > 

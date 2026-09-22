@@ -1,5 +1,9 @@
 # Schema
 
+```TypeScript
+class Schema
+```
+
 表示数据库模式，可以在创建或打开数据库时创建Schema对象并将它们放入[Options](arkts-arkdata-distributedkvstore-options-i.md)中。
 
 STRICT：STRICT模式要求用户插入的值必须与Schema定义严格匹配，字段数量和格式都不能有差异。如果不匹配，数据库将在插入数据时返回错误。

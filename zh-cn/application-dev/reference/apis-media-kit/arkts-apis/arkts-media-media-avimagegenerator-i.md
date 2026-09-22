@@ -1,11 +1,16 @@
 # AVImageGenerator
 
-视频缩略图获取类，用于从视频资源中获取缩略图。在调用AVImageGenerator的方法前，需要先通过[createAVImageGenerator()](arkts-media-media-createavimagegenerator-f.md)构建一个AVImageGenerator实例。
+```TypeScript
+interface AVImageGenerator
+```
+
+视频缩略图获取类，用于从视频资源中获取缩略图。在调用AVImageGenerator的方法前，需要先通过[createAVImageGenerator()](arkts-media-media-createavimagegenerator-f.md#createavimagegenerator-2)构建一个AVImageGenerator实例。
 
 获取视频缩略图的demo可参考：[获取视频缩略图开发指导](../../../media/media/avimagegenerator.md)。
 
 > **说明：** 
 > 
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
 **起始版本：** 12
@@ -47,6 +52,48 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by callback. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let avImageGenerator: media.AVImageGenerator | undefined = undefined;
+let pixel_map: image.PixelMap | undefined = undefined;
+
+// 初始化入参。
+let timeUs: number = 0;
+
+let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+
+let param: media.PixelMapParams = {
+  width: 300,
+  height: 300,
+};
+
+// 获取缩略图。
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
+  if (generator) {
+    avImageGenerator = generator;
+    console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
+    avImageGenerator.fetchFrameByTime(timeUs, queryOption, param, (error: BusinessError, pixelMap) => {
+      if (error) {
+        console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
+        return;
+      }
+      pixel_map = pixelMap;
+    });
+  } else {
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
+  }
+});
+```
+
+<a id="fetchframebytime-2"></a>
+
 ## fetchFrameByTime
 
 ```TypeScript
@@ -79,6 +126,44 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by promise. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let avImageGenerator: media.AVImageGenerator | undefined = undefined;
+let pixel_map: image.PixelMap | undefined = undefined;
+
+// 初始化入参。
+let timeUs: number = 0;
+
+let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+
+let param: media.PixelMapParams = {
+  width: 300,
+  height: 300,
+};
+
+// 获取缩略图。
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
+  if (generator) {
+    avImageGenerator = generator;
+    console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
+    avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+      pixel_map = pixelMap;
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
+    });
+  } else {
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
+  }
+});
+```
 
 ## fetchScaledFrameByTime
 
@@ -114,6 +199,40 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) |  |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) |  |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let avImageGenerator: media.AVImageGenerator | undefined = undefined;
+let pixel_map: image.PixelMap | undefined = undefined;
+// 初始化入参。
+let timeUs: number = 0;
+let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+let outputSize: media.OutputSize = {
+  width: 300,
+  height: 300,
+};
+// 获取缩略图。
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
+  if (generator) {
+    avImageGenerator = generator;
+    console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
+    avImageGenerator.fetchScaledFrameByTime(timeUs, queryOption, outputSize).then((pixelMap: image.PixelMap) => {
+      pixel_map = pixelMap;
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to fetch ScaledFrameByTime, code: ${error.code}, message: ${error.message}`);
+    });
+  } else {
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
+  }
+});
+```
+
 ## release
 
 ```TypeScript
@@ -138,6 +257,34 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+let avImageGenerator: media.AVImageGenerator | undefined = undefined;
+
+// 释放资源。
+media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+  if (generator) {
+    avImageGenerator = generator;
+    console.info(`Succeeded in creating AVImageGenerator`);
+    avImageGenerator.release((error: BusinessError) => {
+      if (error) {
+        console.error(`Failed to release, code: ${error.code}, message: ${error.message}`);
+        return;
+      }
+      console.info(`Succeeded in releasing`);
+    });
+  } else {
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
+  }
+});
+```
+
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -161,6 +308,30 @@ release(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+let avImageGenerator: media.AVImageGenerator | undefined = undefined;
+
+// 释放资源。
+media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+  if (generator) {
+    avImageGenerator = generator;
+    console.info(`Succeeded in creating AVImageGenerator`);
+    avImageGenerator.release().then(() => {
+      console.info(`Succeeded in releasing.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to release, code: ${error.code}, message: ${error.message}`);
+    });
+  } else {
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
+  }
+});
+```
 
 ## fdSrc
 

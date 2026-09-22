@@ -1,5 +1,9 @@
 # GattWriteType
 
+```TypeScript
+enum GattWriteType
+```
+
 The enum of gatt characteristic write type
 
 **Since:** 10

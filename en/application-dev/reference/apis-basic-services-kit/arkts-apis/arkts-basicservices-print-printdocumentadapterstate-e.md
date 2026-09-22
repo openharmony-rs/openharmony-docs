@@ -1,5 +1,9 @@
 # PrintDocumentAdapterState
 
+```TypeScript
+enum PrintDocumentAdapterState
+```
+
 Enumerates the print job states.
 
 **Since:** 11

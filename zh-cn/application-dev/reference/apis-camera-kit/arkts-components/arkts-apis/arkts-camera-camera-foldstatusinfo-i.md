@@ -1,5 +1,9 @@
 # FoldStatusInfo
 
+```TypeScript
+interface FoldStatusInfo
+```
+
 相机管理器回调返回的接口实例，表示折叠机折叠状态信息。
 
 **起始版本：** 12

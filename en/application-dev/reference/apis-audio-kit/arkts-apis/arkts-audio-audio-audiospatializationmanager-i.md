@@ -1,5 +1,9 @@
 # AudioSpatializationManager
 
+```TypeScript
+interface AudioSpatializationManager
+```
+
 Implements audio spatialization management. @typedef AudioSpatializationManager This interface implements spatial audio management.
 
 Before calling any API in AudioSpatializationManager, you must use [getSpatializationManager](arkts-audio-audio-audiomanager-i.md#getspatializationmanager) to obtain an AudioSpatializationManager instance.
@@ -36,6 +40,15 @@ Checks whether spatial audio rendering is enabled for the current device. This A
 | --- | --- |
 | boolean | Check result for whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise. |
 
+**Examples**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let isSpatializationEnabledForCurrentDevice: boolean = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
+console.info(`AudioSpatializationManager isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}`);
+```
+
 ## off('spatializationEnabledChangeForCurrentDevice')
 
 ```TypeScript
@@ -61,6 +74,13 @@ Unsubscribes from the spatial audio rendering status change event of the current
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice');
+```
+
 ## on('spatializationEnabledChangeForCurrentDevice')
 
 ```TypeScript
@@ -85,3 +105,13 @@ Subscribes to the spatial audio rendering status change event of the current dev
 | Error Code ID | Error Message |
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', (isSpatializationEnabledForCurrentDevice: boolean) => {
+  console.info(`isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}`);
+});
+```

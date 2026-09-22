@@ -1,5 +1,9 @@
 # ScannerOptionValue
 
+```TypeScript
+interface ScannerOptionValue
+```
+
 Defines the scanner option value.
 
 **Since:** 20

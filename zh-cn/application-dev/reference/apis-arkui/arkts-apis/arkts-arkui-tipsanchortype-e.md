@@ -1,5 +1,9 @@
 # TipsAnchorType
 
+```TypeScript
+declare enum TipsAnchorType
+```
+
 Follow position type.
 
 @enum { number }

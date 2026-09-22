@@ -1,5 +1,9 @@
 # ClearAction (System API)
 
+```TypeScript
+enum ClearAction
+```
+
 Enumerates the operations for clearing the downloaded cloud data locally.
 
 **Since:** 10

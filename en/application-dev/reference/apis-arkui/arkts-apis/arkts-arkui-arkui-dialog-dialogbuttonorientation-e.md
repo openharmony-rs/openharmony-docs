@@ -1,8 +1,12 @@
 # DialogButtonOrientation
 
+```TypeScript
+export enum DialogButtonOrientation
+```
+
 The arrangement of buttons in dialog.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,11 +18,11 @@ AUTO = 0
 
 Two or fewer buttons are arranged horizontally, and two or more buttons are arranged vertically.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,11 +34,11 @@ HORIZONTAL = 1
 
 Buttons are arranged horizontally.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,10 +50,10 @@ VERTICAL = 2
 
 Buttons are arranged vertically.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

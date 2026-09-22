@@ -1,5 +1,9 @@
 # ContinuousTaskInfo
 
+```TypeScript
+interface ContinuousTaskInfo
+```
+
 Describes the continuous task information.
 
 **Since:** 20

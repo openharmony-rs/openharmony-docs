@@ -1,5 +1,9 @@
 # CmsParser
 
+```TypeScript
+interface CmsParser
+```
+
 Provides APIs for parsing, verifying, and decrypting CMS messages.
 
 > **NOTE:** 

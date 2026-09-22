@@ -1,5 +1,9 @@
 # GeofenceRequest
 
+```TypeScript
+export interface GeofenceRequest
+```
+
 请求添加GNSS围栏消息中携带的参数，包括定位场景和围栏信息。
 
 @interface GeofenceRequest

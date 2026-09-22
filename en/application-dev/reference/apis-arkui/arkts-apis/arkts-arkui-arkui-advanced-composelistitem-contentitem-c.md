@@ -1,5 +1,9 @@
 # ContentItem
 
+```TypeScript
+export declare class ContentItem
+```
+
 Defines elements for the left and center areas of the **ComposeListItem** component.
 
 **Since:** 10
@@ -128,7 +132,7 @@ Symbol icon resource of the element on the left, which has higher priority than 
 
 If this parameter is not set or is set to **undefined**, the symbol icon is not displayed.
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 18
 

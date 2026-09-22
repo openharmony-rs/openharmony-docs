@@ -1,5 +1,9 @@
 # IRemoteObject
 
+```TypeScript
+abstract class IRemoteObject
+```
+
 该接口可用于查询或获取接口描述符、添加或删除死亡通知、转储对象状态到特定文件、发送消息。
 
 **起始版本：** 7
@@ -257,6 +261,8 @@ sendMessageRequest(
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
 
+<a id="sendmessagerequest-1"></a>
+
 ## sendMessageRequest
 
 ```TypeScript
@@ -322,6 +328,8 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 | --- | --- |
 | boolean | true：发送成功，false：发送失败。 |
 
+<a id="sendrequest-1"></a>
+
 ## sendRequest
 
 ```TypeScript
@@ -357,6 +365,8 @@ sendRequest(
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[SendRequestResult](arkts-ipc-rpc-sendrequestresult-i.md)&gt; | Promise对象，返回发送请求的响应结果。 |
+
+<a id="sendrequest-2"></a>
 
 ## sendRequest
 

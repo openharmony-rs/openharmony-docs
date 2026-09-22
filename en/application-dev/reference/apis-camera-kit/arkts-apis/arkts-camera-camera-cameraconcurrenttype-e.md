@@ -1,5 +1,9 @@
 # CameraConcurrentType
 
+```TypeScript
+enum CameraConcurrentType
+```
+
 Enumerates the camera concurrency types.
 
 **Since:** 18

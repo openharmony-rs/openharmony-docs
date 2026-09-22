@@ -1,5 +1,9 @@
 # AdvertisingSettings
 
+```TypeScript
+interface AdvertisingSettings
+```
+
 表示广播配置参数。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # Profiler
 
+```TypeScript
+declare namespace Profiler
+```
+
 Profiler tools for inspectors.
 
 @namespace Profiler

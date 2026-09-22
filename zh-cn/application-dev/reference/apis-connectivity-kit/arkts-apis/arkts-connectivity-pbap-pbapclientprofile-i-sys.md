@@ -1,10 +1,14 @@
 # PbapClientProfile
 
+```TypeScript
+interface PbapClientProfile extends BaseProfile
+```
+
 管理PBAP客户端配置文件。
 
 **继承/实现关系：** PbapClientProfile extends [BaseProfile](arkts-connectivity-pbap-baseprofile-t.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -22,7 +26,7 @@ connect(deviceId: string): void
 
 将PBAP客户端连接与远程设备连接。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -57,7 +61,7 @@ disconnect(deviceId: string): void
 
 断开PBAP客户端与远程设备的连接。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -92,7 +96,7 @@ getSyncState(deviceId: string): SyncStateType
 
 获取PBAP电话本同步状态，只上报同步子状态。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -133,7 +137,7 @@ offSyncStateChange(callback?: Callback<SyncStateChangeParam>): void
 
 取消订阅电话本同步状态变化事件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -164,7 +168,7 @@ onSyncStateChange(callback: Callback<SyncStateChangeParam>): void
 
 订阅电话本同步状态变化事件。只上报同步子状态。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 

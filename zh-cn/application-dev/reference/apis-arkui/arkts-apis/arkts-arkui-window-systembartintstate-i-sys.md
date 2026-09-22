@@ -1,5 +1,9 @@
 # SystemBarTintState（系统接口）
 
+```TypeScript
+interface SystemBarTintState
+```
+
 当前系统栏回调信息集合。
 
 **起始版本：** 8

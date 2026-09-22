@@ -1,5 +1,9 @@
 # PickInfo
 
+```TypeScript
+interface PickInfo
+```
+
 截取图像的信息。
 
 **起始版本：** 12

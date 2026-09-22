@@ -1,5 +1,9 @@
 # DateConstructor
 
+```TypeScript
+interface DateConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -17,6 +21,8 @@
 new(): Date
 ```
 
+<a id="construct-1"></a>
+
 ## [[Construct]]
 
 ```TypeScript
@@ -28,6 +34,8 @@ new(value: number | string): Date
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; string | Yes |  |
+
+<a id="construct-2"></a>
 
 ## [[Construct]]
 

@@ -67,6 +67,8 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 ```
 
 
+<a id="getradiotech-1"></a>
+
 ## getRadioTech
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # CustomTheme
 
+```TypeScript
+export declare interface CustomTheme
+```
+
 Defines the struct of CustomTheme.
 
 **Since:** 12

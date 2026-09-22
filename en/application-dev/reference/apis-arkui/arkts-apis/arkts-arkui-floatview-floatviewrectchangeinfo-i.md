@@ -1,5 +1,9 @@
 # FloatViewRectChangeInfo
 
+```TypeScript
+interface FloatViewRectChangeInfo
+```
+
 Provides the rectangle area change information of the float view.
 
 **Since:** 26.0.0

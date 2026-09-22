@@ -61,25 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { missionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// testMissionId is the mission ID, which can be obtained through the getMissionInfos API.
-let testMissionId = 2;
-
-try {
-  missionManager.getMissionSnapShot('', testMissionId).then((data: missionManager.MissionSnapshot) => {
-    console.info(`getMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`getMissionSnapShot failed. Code: ${error.code}, message: ${error.message}.`);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`getMissionSnapShot failed. Code: ${err.code}, message: ${err.message}.`);
-}
-```
-
+<a id="getmissionsnapshot-1"></a>
 
 ## getMissionSnapShot
 
@@ -120,4 +103,21 @@ Obtains the snapshot of a given mission. This API uses a promise to return the r
 
 **Examples**
 
-See [getMissionSnapShot](#getmissionsnapshot)
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// testMissionId is the mission ID, which can be obtained through the getMissionInfos API.
+let testMissionId = 2;
+
+try {
+  missionManager.getMissionSnapShot('', testMissionId).then((data: missionManager.MissionSnapshot) => {
+    console.info(`getMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getMissionSnapShot failed. Code: ${error.code}, message: ${error.message}.`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getMissionSnapShot failed. Code: ${err.code}, message: ${err.message}.`);
+}
+```

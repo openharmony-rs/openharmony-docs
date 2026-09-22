@@ -1,5 +1,9 @@
 # SuspendMessage
 
+```TypeScript
+interface SuspendMessage
+```
+
 Describes the reason why a continuous task is suspended.
 
 **Since:** 26.0.0

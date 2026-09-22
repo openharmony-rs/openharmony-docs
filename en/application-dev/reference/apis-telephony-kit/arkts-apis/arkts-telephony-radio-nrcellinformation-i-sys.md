@@ -1,5 +1,9 @@
 # NrCellInformation (System API)
 
+```TypeScript
+export interface NrCellInformation
+```
+
 Obtains NR cell information.
 
 **Since:** 8

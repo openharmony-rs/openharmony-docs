@@ -1,5 +1,9 @@
 # FontWeight
 
+```TypeScript
+enum FontWeight
+```
+
 Enumerates the font weights.
 
 **Since:** 12

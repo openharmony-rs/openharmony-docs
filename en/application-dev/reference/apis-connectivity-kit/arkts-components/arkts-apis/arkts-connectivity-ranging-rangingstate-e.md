@@ -1,5 +1,9 @@
 # RangingState
 
+```TypeScript
+enum RangingState
+```
+
 The enum of ranging state.
 
 **Since:** 26.0.0

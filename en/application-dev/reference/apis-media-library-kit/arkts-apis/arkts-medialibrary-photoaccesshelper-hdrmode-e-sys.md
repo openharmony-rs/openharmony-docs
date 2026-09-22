@@ -1,5 +1,9 @@
 # HdrMode (System API)
 
+```TypeScript
+enum HdrMode
+```
+
 Enumerates the HDR modes of media assets.
 
 **Since:** 22

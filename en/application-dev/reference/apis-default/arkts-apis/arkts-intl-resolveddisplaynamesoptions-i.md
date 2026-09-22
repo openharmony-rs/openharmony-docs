@@ -1,5 +1,9 @@
 # ResolvedDisplayNamesOptions
 
+```TypeScript
+interface ResolvedDisplayNamesOptions
+```
+
 ## Modules to Import
 
 ```TypeScript

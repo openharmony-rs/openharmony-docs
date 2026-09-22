@@ -1,5 +1,9 @@
 # UserAuthResultCode
 
+```TypeScript
+enum UserAuthResultCode
+```
+
 表示返回码的枚举。该枚举定义了用户认证操作可能返回的所有结果码，包括成功码和各类错误码。应用可根据返回码判断认证结果，并采取相应的处理措施。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # CdsmMemberInfo
 
+```TypeScript
+interface CdsmMemberInfo
+```
+
 表示合作设备集合的成员信息。
 
 **起始版本：** 26.0.0

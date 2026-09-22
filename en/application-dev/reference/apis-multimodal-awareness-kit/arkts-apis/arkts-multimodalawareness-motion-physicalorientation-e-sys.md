@@ -1,5 +1,9 @@
 # PhysicalOrientation (System API)
 
+```TypeScript
+export enum PhysicalOrientation
+```
+
 Enum for physical orientation detected by the sensor.
 
 **Since:** 26.0.0

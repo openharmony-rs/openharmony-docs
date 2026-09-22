@@ -1,5 +1,9 @@
 # DomainAccountManager
 
+```TypeScript
+class DomainAccountManager
+```
+
 Provides APIs for domain account management.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # ParseInfo
 
+```TypeScript
+interface ParseInfo
+```
+
 当前XML解析信息。
 
 **起始版本：** 8

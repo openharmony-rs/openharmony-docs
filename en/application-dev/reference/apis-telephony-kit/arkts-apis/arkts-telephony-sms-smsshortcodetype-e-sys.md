@@ -1,5 +1,9 @@
 # SmsShortCodeType (System API)
 
+```TypeScript
+export enum SmsShortCodeType
+```
+
 Enumerates SMS short code types.
 
 **Since:** 23
@@ -18,6 +22,8 @@ Indicates an unknown SMS short code type.
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -32,6 +38,8 @@ Indicates a not premium SMS short code type.
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -45,6 +53,8 @@ SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM = 1
 Indicates a possible premium SMS short code type.
 
 **Since:** 23
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

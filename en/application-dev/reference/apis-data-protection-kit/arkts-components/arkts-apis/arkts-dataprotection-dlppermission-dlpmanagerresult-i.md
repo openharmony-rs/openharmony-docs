@@ -1,5 +1,9 @@
 # DLPManagerResult
 
+```TypeScript
+export interface DLPManagerResult
+```
+
 Represents information about the trigger of the DLP manager application.
 
 **Since:** 11

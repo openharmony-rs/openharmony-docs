@@ -1,5 +1,9 @@
 # ObserverOptions
 
+```TypeScript
+export interface ObserverOptions
+```
+
 电话相关事件订阅参数可选项。
 
 **起始版本：** 11

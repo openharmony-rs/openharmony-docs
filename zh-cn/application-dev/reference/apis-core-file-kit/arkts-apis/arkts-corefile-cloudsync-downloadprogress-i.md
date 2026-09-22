@@ -1,5 +1,9 @@
 # DownloadProgress
 
+```TypeScript
+interface DownloadProgress
+```
+
 云文件下载过程。
 
 **起始版本：** 11

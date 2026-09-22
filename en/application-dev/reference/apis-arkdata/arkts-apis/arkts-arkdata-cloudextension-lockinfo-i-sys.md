@@ -1,5 +1,9 @@
 # LockInfo (System API)
 
+```TypeScript
+export interface LockInfo
+```
+
 Represents the cloud database lock information.
 
 **Since:** 11

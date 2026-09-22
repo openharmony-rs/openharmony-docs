@@ -1,5 +1,9 @@
 # GattServer
 
+```TypeScript
+interface GattServer
+```
+
 Manages GATT server. Before calling an Gatt server method, you must use [createGattServer](arkts-connectivity-ble-creategattserver-f.md) to create an GattServer instance.
 
 **Since:** 7
@@ -186,6 +190,13 @@ Unsubscribe characteristic read event.
 | type | 'characteristicRead' | Yes | Type of the characteristic read event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CharacteristicReadReq](arkts-connectivity-bluetooth-characteristicreadreq-i.md)&gt; | No | Callback used to listen for the characteristic read event. |
 
+**Examples**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("characteristicRead");
+```
+
 ## off('characteristicWrite')
 
 ```TypeScript
@@ -210,6 +221,13 @@ Unsubscribe characteristic write event.
 | --- | --- | --- | --- |
 | type | 'characteristicWrite' | Yes | Type of the characteristic write event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CharacteristicWriteReq](arkts-connectivity-bluetooth-characteristicwritereq-i.md)&gt; | No | Callback used to listen for the characteristic write event. |
+
+**Examples**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("characteristicWrite");
+```
 
 ## off('descriptorRead')
 
@@ -236,6 +254,13 @@ Unsubscribe descriptor read event.
 | type | 'descriptorRead' | Yes | Type of the descriptor read event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DescriptorReadReq](arkts-connectivity-bluetooth-descriptorreadreq-i.md)&gt; | No | Callback used to listen for the descriptor read event. |
 
+**Examples**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("descriptorRead");
+```
+
 ## off('descriptorWrite')
 
 ```TypeScript
@@ -260,6 +285,13 @@ Unsubscribe descriptor write event.
 | --- | --- | --- | --- |
 | type | 'descriptorWrite' | Yes | Type of the descriptor write event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DescriptorWriteReq](arkts-connectivity-bluetooth-descriptorwritereq-i.md)&gt; | No | Callback used to listen for the descriptor write event. |
+
+**Examples**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("descriptorWrite");
+```
 
 ## off('connectStateChange')
 
@@ -286,6 +318,13 @@ Unsubscribe server connection state changed event.
 | type | 'connectStateChange' | Yes | Type of the connection state changed event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BLEConnectChangedState](arkts-connectivity-bluetooth-bleconnectchangedstate-i.md)&gt; | No | Callback used to listen for the connection state changed event. |
 
+**Examples**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("connectStateChange");
+```
+
 ## on('characteristicRead')
 
 ```TypeScript
@@ -310,6 +349,33 @@ Subscribe characteristic read event.
 | --- | --- | --- | --- |
 | type | 'characteristicRead' | Yes | Type of the characteristic read event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CharacteristicReadReq](arkts-connectivity-bluetooth-characteristicreadreq-i.md)&gt; | Yes | Callback used to listen for the characteristic read event. |
+
+**Examples**
+
+```TypeScript
+let arrayBufferCCC = new ArrayBuffer(8);
+let cccValue = new Uint8Array(arrayBufferCCC);
+cccValue[0] = 1;
+function ReadCharacteristicReq(CharacteristicReadReq : bluetooth.CharacteristicReadReq) {
+  let deviceId : string = CharacteristicReadReq.deviceId;
+  let transId : number = CharacteristicReadReq.transId;
+  let offset : number = CharacteristicReadReq.offset;
+  let characteristicUuid : string = CharacteristicReadReq.characteristicUuid;
+
+  let serverResponse : bluetooth.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, 
+  offset: offset, value:arrayBufferCCC};
+
+  let ret : boolean = gattServer.sendResponse(serverResponse);
+  if (ret) {
+    console.info('bluetooth sendResponse successfully');
+  } else {
+    console.error('bluetooth sendResponse failed');
+  }
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("characteristicRead", ReadCharacteristicReq);
+```
 
 ## on('characteristicWrite')
 
@@ -336,6 +402,36 @@ Subscribe characteristic write event.
 | type | 'characteristicWrite' | Yes | Type of the characteristic write event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CharacteristicWriteReq](arkts-connectivity-bluetooth-characteristicwritereq-i.md)&gt; | Yes | Callback used to listen for the characteristic write event. |
 
+**Examples**
+
+```TypeScript
+let arrayBufferCCC = new ArrayBuffer(8);
+let cccValue = new Uint8Array(arrayBufferCCC);
+function WriteCharacteristicReq(CharacteristicWriteReq : bluetooth.CharacteristicWriteReq) {
+  let deviceId : string = CharacteristicWriteReq.deviceId;
+  let transId : number = CharacteristicWriteReq.transId;
+  let offset : number = CharacteristicWriteReq.offset;
+  let isPrep : boolean = CharacteristicWriteReq.isPrep;
+  let needRsp : boolean = CharacteristicWriteReq.needRsp;
+  let value =  new Uint8Array(arrayBufferCCC);
+  let characteristicUuid : string = CharacteristicWriteReq.characteristicUuid;
+
+  cccValue.set(new Uint8Array(value));
+  let serverResponse : bluetooth.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, 
+  offset: offset, value:arrayBufferCCC};
+
+  let ret : boolean = gattServer.sendResponse(serverResponse);
+  if (ret) {
+    console.info('bluetooth sendResponse successfully');
+  } else {
+    console.error('bluetooth sendResponse failed');
+  }
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("characteristicWrite", WriteCharacteristicReq);
+```
+
 ## on('descriptorRead')
 
 ```TypeScript
@@ -360,6 +456,33 @@ Subscribe descriptor read event.
 | --- | --- | --- | --- |
 | type | 'descriptorRead' | Yes | Type of the descriptor read event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DescriptorReadReq](arkts-connectivity-bluetooth-descriptorreadreq-i.md)&gt; | Yes | Callback used to listen for the descriptor read event. |
+
+**Examples**
+
+```TypeScript
+let arrayBufferDesc = new ArrayBuffer(8);
+let descValue = new Uint8Array(arrayBufferDesc);
+descValue[0] = 1;
+function ReadDescriptorReq(DescriptorReadReq : bluetooth.DescriptorReadReq) {
+  let deviceId : string = DescriptorReadReq.deviceId;
+  let transId : number = DescriptorReadReq.transId;
+  let offset : number = DescriptorReadReq.offset;
+  let descriptorUuid : string = DescriptorReadReq.descriptorUuid;
+
+  let serverResponse : bluetooth.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, 
+  offset: offset, value:arrayBufferDesc};
+
+  let ret : boolean = gattServer.sendResponse(serverResponse);
+  if (ret) {
+    console.info('bluetooth sendResponse successfully');
+  } else {
+    console.error('bluetooth sendResponse failed');
+  }
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("descriptorRead", ReadDescriptorReq);
+```
 
 ## on('descriptorWrite')
 
@@ -386,6 +509,35 @@ Subscribe descriptor write event.
 | type | 'descriptorWrite' | Yes | Type of the descriptor write event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DescriptorWriteReq](arkts-connectivity-bluetooth-descriptorwritereq-i.md)&gt; | Yes | Callback used to listen for the descriptor write event. |
 
+**Examples**
+
+```TypeScript
+let arrayBufferDesc = new ArrayBuffer(8);
+let descValue = new Uint8Array(arrayBufferDesc);
+function WriteDescriptorReq(DescriptorWriteReq : bluetooth.DescriptorWriteReq) {
+  let deviceId : string = DescriptorWriteReq.deviceId;
+  let transId : number = DescriptorWriteReq.transId;
+  let offset : number = DescriptorWriteReq.offset;
+  let isPrep : boolean = DescriptorWriteReq.isPrep;
+  let needRsp : boolean = DescriptorWriteReq.needRsp;
+  let value = new Uint8Array(arrayBufferDesc);
+  let descriptorUuid : string = DescriptorWriteReq.descriptorUuid;
+
+  descValue.set(new Uint8Array(value));
+  let serverResponse : bluetooth.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, offset: offset, value:arrayBufferDesc};
+
+  let ret : boolean = gattServer.sendResponse(serverResponse);
+  if (ret) {
+    console.info('bluetooth sendResponse successfully');
+  } else {
+    console.error('bluetooth sendResponse failed');
+  }
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("descriptorWrite", WriteDescriptorReq);
+```
+
 ## on('connectStateChange')
 
 ```TypeScript
@@ -410,6 +562,18 @@ Subscribe server connection state changed event.
 | --- | --- | --- | --- |
 | type | 'connectStateChange' | Yes | Type of the connection state changed event to listen for. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BLEConnectChangedState](arkts-connectivity-bluetooth-bleconnectchangedstate-i.md)&gt; | Yes | Callback used to listen for the connection state changed event. |
+
+**Examples**
+
+```TypeScript
+function Connected(BLEConnectChangedState : bluetooth.BLEConnectChangedState) {
+  let deviceId : string = BLEConnectChangedState.deviceId;
+  let status : bluetooth.ProfileConnectionState = BLEConnectChangedState.state;
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("connectStateChange", Connected);
+```
 
 ## removeService
 

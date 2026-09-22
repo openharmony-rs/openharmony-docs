@@ -1,5 +1,9 @@
 # NotificationCheckResult（系统接口）
 
+```TypeScript
+export interface NotificationCheckResult
+```
+
 通知校验结果。
 
 **起始版本：** 10

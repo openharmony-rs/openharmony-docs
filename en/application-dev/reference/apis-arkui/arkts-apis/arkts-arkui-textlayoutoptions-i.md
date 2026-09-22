@@ -1,5 +1,9 @@
 # TextLayoutOptions
 
+```TypeScript
+declare interface TextLayoutOptions
+```
+
 Defines the text layout options.
 
 **Since:** 20

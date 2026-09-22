@@ -50,17 +50,8 @@ print.queryPrintJobList((error: BusinessError, printJobs : print.PrintJob[]) => 
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
-    console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
-}).catch((error: BusinessError) => {
-    console.error(`Failed to query print job list. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="queryprintjoblist-1"></a>
 
 ## queryPrintJobList
 
@@ -93,4 +84,13 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 
 **示例**
 
-参见 [queryPrintJobList](#queryprintjoblist)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
+    console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
+}).catch((error: BusinessError) => {
+    console.error(`Failed to query print job list. Code: ${error.code}, message: ${error.message}`);
+});
+```

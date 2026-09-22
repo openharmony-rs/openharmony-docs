@@ -1,5 +1,9 @@
 # Task
 
+```TypeScript
+class Task
+```
+
 Enumerates tasks, which can be executed for multiple times, placed in a task group, serial queue, or asynchronous queue for execution, or added with dependencies for execution.
 
 **Since:** 9
@@ -112,17 +116,7 @@ function printArgs(args: number): number {
 let task: taskpool.Task = new taskpool.Task(printArgs, "this is my first Task");
 ```
 
-```TypeScript
-@Concurrent
-function printArgs(args: string): string {
-  console.info("printArgs: " + args);
-  return args;
-}
-
-let taskName: string = "taskName";
-let task: taskpool.Task = new taskpool.Task(taskName, printArgs, "this is my first Task");
-let name: string = task.name;
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -153,16 +147,6 @@ A constructor used to create a **Task** instance, with the task name specified.
 | [10200014](../errorcode-utils.md#10200014-non-concurrent-function-error) | The function is not marked as concurrent. |
 
 **Examples**
-
-```TypeScript
-@Concurrent
-function printArgs(args: number): number {
-  console.info("printArgs: " + args);
-  return args;
-}
-
-let task: taskpool.Task = new taskpool.Task(printArgs, "this is my first Task");
-```
 
 ```TypeScript
 @Concurrent
@@ -212,10 +196,38 @@ function inspectStatus(arg: number): number {
 }
 ```
 
-```TypeScript
 > NOTE
 > 
 > isCanceled must be used together with taskpool.cancel. If cancel is not called, isCanceled returns false by default.
+
+```TypeScript
+@Concurrent
+function inspectStatus(arg: number): number {
+  // Check whether the task has been canceled and respond accordingly.
+  if (taskpool.Task.isCanceled()) {
+    console.info("task has been canceled before 2s sleep.");
+    return arg + 2;
+  }
+  // Wait for 2s.
+  let t: number = Date.now();
+  while (Date.now() - t < 2000) {
+    continue;
+  }
+  // Check again whether the task has been canceled and respond accordingly.
+  if (taskpool.Task.isCanceled()) {
+    console.info("task has been canceled after 2s sleep.");
+    return arg + 3;
+  }
+  return arg + 1;
+}
+
+let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
+taskpool.execute(task).then((res: Object) => {
+  console.info("taskpool test result: " + res);
+}).catch((err: string) => {
+  console.error("taskpool test occur error: " + err);
+});
+// If cancel is not called, isCanceled() returns false by default, and the task execution result is 101.
 ```
 
 ## isDone

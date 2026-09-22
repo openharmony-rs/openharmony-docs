@@ -1,5 +1,9 @@
 # NotifyChangeType
 
+```TypeScript
+enum NotifyChangeType
+```
+
 Enumerates the types of changes that trigger the media asset or album change events.
 
 **Since:** 20

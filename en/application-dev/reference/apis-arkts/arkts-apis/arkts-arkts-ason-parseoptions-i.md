@@ -1,5 +1,9 @@
 # ParseOptions
 
+```TypeScript
+interface ParseOptions
+```
+
 Parse's options
 
 **Since:** 12

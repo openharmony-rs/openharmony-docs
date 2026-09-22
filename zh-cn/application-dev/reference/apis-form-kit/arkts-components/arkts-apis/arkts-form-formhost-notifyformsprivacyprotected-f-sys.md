@@ -64,6 +64,8 @@ try {
 ```
 
 
+<a id="notifyformsprivacyprotected-1"></a>
+
 ## notifyFormsPrivacyProtected
 
 ```TypeScript

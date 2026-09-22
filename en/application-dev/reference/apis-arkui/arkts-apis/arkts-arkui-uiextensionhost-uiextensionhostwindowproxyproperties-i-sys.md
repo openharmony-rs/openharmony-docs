@@ -1,5 +1,9 @@
 # UIExtensionHostWindowProxyProperties (System API)
 
+```TypeScript
+interface UIExtensionHostWindowProxyProperties
+```
+
 Defines information about the host application window and **UIExtensionComponent**.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # FloatViewStateChangeInfo
 
+```TypeScript
+interface FloatViewStateChangeInfo
+```
+
 标准悬浮窗状态变化信息。
 
 **起始版本：** 26.0.0

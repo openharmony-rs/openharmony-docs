@@ -1,5 +1,9 @@
 # RectShapeOptions
 
+```TypeScript
+interface RectShapeOptions extends ShapeSize
+```
+
 RectShape 的构造函数参数。
 
 继承自[ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md)。

@@ -1,5 +1,9 @@
 # EllipseShape
 
+```TypeScript
+export declare class EllipseShape extends BaseShape<EllipseShape>
+```
+
 Represents an ellipse shape used in the **clipShape** and **maskShape** APIs.
 
 This API inherits from [BaseShape](arkts-arkui-arkui-shape-baseshape-c.md).

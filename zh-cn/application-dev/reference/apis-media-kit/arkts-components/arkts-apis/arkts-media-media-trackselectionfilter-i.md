@@ -1,5 +1,9 @@
 # TrackSelectionFilter
 
+```TypeScript
+interface TrackSelectionFilter
+```
+
 Describes the filter conditions for track selection.
 
 **起始版本：** 26.0.0

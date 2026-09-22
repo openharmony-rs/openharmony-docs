@@ -1,5 +1,9 @@
 # SerialPortInfo
 
+```TypeScript
+interface SerialPortInfo
+```
+
 Describes the serial port information.
 
 **Since:** 26.0.0

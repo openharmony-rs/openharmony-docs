@@ -1,5 +1,9 @@
 # LifecycleData
 
+```TypeScript
+export declare interface LifecycleData
+```
+
 interface of data lifecycle.
 
 @interface LifecycleData

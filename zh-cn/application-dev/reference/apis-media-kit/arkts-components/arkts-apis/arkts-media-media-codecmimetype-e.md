@@ -1,5 +1,9 @@
 # CodecMimeType
 
+```TypeScript
+enum CodecMimeType
+```
+
 Codec MIME类型枚举。
 
 **起始版本：** 8

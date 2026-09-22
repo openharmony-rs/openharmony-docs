@@ -1,5 +1,9 @@
 # SendSmsResult
 
+```TypeScript
+export enum SendSmsResult
+```
+
 短信发送结果。
 
 **起始版本：** 6

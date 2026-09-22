@@ -1,5 +1,9 @@
 # NotifyMessage (System API)
 
+```TypeScript
+interface NotifyMessage
+```
+
 Represents the notification message.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # RequestData
 
+```TypeScript
+interface RequestData
+```
+
 [UploadConfig](arkts-basicservices-request-uploadconfig-i.md)中的表单数据。
 
 **起始版本：** 6

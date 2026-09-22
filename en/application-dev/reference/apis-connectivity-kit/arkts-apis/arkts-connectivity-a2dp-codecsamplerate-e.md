@@ -1,5 +1,9 @@
 # CodecSampleRate
 
+```TypeScript
+enum CodecSampleRate
+```
+
 Describes the codec sample rate.
 
 **Since:** 11

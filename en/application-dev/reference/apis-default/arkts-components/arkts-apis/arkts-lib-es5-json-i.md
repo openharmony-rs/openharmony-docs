@@ -1,5 +1,9 @@
 # JSON
 
+```TypeScript
+interface JSON
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -35,6 +39,8 @@ Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
 | value | any | Yes |  |
 | replacer | (this: any, key: string, value: any) =&gt; any | No |  |
 | space | string &#124; number | No |  |
+
+<a id="stringify-1"></a>
 
 ## stringify
 

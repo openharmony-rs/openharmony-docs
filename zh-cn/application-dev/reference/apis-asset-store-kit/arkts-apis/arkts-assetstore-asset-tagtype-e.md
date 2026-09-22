@@ -1,5 +1,9 @@
 # TagType
 
+```TypeScript
+enum TagType
+```
+
 枚举，关键资产属性支持的数据类型。
 
 **起始版本：** 11

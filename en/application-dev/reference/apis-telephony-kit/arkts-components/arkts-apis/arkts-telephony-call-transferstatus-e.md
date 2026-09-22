@@ -1,5 +1,9 @@
 # TransferStatus
 
+```TypeScript
+export enum TransferStatus
+```
+
 Enumerates call transfer states.
 
 **Since:** 26.0.0

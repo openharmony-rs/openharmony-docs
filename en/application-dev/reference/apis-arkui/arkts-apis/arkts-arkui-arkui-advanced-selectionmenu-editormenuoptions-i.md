@@ -1,5 +1,9 @@
 # EditorMenuOptions
 
+```TypeScript
+export interface EditorMenuOptions
+```
+
 Describes the edit menu options.
 
 **Since:** 11
@@ -70,7 +74,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol icon resource, which has higher priority than **icon**.
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 18
 

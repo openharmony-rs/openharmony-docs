@@ -1,5 +1,9 @@
 # EditableLeftIconV2Options
 
+```TypeScript
+export declare interface EditableLeftIconV2Options
+```
+
 左侧图标配置选项接口。
 
 **起始版本：** 26.0.0

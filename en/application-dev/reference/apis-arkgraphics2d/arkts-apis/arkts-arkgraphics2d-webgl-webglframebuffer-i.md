@@ -1,5 +1,9 @@
 # WebGLFramebuffer
 
+```TypeScript
+interface WebGLFramebuffer
+```
+
 WebGL 1.0
 
 **Since:** 7

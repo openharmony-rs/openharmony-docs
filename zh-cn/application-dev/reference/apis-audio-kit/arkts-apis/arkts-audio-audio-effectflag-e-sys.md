@@ -1,8 +1,10 @@
 # EffectFlag（系统接口）
 
-枚举，音效分类。
+```TypeScript
+enum EffectFlag
+```
 
-@enum { int }
+枚举，音效分类。
 
 **起始版本：** 18
 

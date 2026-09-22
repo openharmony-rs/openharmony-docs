@@ -1,5 +1,9 @@
 # AdvertisingState
 
+```TypeScript
+enum AdvertisingState
+```
+
 表示广播状态，为枚举值。
 
 **起始版本：** 26.0.0

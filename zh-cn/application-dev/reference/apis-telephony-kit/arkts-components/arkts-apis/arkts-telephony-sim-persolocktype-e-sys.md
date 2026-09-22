@@ -1,5 +1,9 @@
 # PersoLockType（系统接口）
 
+```TypeScript
+export enum PersoLockType
+```
+
 Indicates the personalized lock types.
 
 **起始版本：** 8

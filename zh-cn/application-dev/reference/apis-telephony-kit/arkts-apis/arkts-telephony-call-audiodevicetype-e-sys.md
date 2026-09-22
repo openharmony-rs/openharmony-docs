@@ -1,5 +1,9 @@
 # AudioDeviceType（系统接口）
 
+```TypeScript
+export enum AudioDeviceType
+```
+
 音频设备类型。
 
 **起始版本：** 10

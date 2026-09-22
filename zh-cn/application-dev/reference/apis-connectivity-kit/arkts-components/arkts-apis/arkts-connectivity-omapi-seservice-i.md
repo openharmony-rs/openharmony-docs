@@ -1,5 +1,9 @@
 # SEService
 
+```TypeScript
+export interface SEService
+```
+
 SEService表示可用于连接到系统中所有可用SE的连接（服务），通过[createService](arkts-connectivity-omapi-createservice-f.md)获取SEService实例。
 
 **起始版本：** 10

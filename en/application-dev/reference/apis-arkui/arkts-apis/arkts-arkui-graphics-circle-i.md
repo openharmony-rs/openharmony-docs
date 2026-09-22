@@ -1,5 +1,9 @@
 # Circle
 
+```TypeScript
+export interface Circle
+```
+
 Describes a circle.
 
 **Since:** 12

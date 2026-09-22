@@ -1,5 +1,9 @@
 # LogEntry（系统接口）
 
+```TypeScript
+interface LogEntry
+```
+
 日志文件对象接口。
 
 **起始版本：** 10

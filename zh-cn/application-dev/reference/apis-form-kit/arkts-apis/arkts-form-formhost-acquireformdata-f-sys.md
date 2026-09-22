@@ -62,22 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
-try {
-  formHost.acquireFormData(formId).then((data) => {
-    console.info('formHost acquireFormData success' + data);
-  }).catch((error: BusinessError) => {
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (e) {
-  console.error(`catch error, code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
-}
-```
-
+<a id="acquireformdata-1"></a>
 
 ## acquireFormData
 
@@ -124,4 +110,18 @@ function acquireFormData(formId: string): Promise<Record<string, Object>>
 
 **示例**
 
-参见 [acquireFormData](#acquireformdata)
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+try {
+  formHost.acquireFormData(formId).then((data) => {
+    console.info('formHost acquireFormData success' + data);
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (e) {
+  console.error(`catch error, code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
+}
+```

@@ -1,5 +1,9 @@
 # PopupButtonOptions
 
+```TypeScript
+export interface PopupButtonOptions
+```
+
 PopupButtonOptions定义按钮的相关属性和事件。
 
 **起始版本：** 11
@@ -38,7 +42,7 @@ fontColor?: ResourceColor
 
 设置按钮文本字体颜色。
 
-默认值：`&#36;r('sys.color.ohos_id_color_text_primary_activated')`
+默认值：`$r('sys.color.ohos_id_color_text_primary_activated')`
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -58,7 +62,7 @@ fontSize?: number | string | Resource
 
 设置按钮文本字体大小。
 
-默认值：`&#36;r('sys.float.ohos_id_text_size_button2')`
+默认值：`$r('sys.float.ohos_id_text_size_button2')`
 
 string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。
 

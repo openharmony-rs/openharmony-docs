@@ -1,5 +1,9 @@
 # LaunchType
 
+```TypeScript
+export enum LaunchType
+```
+
 标识组件的[启动模式](../../../application-models/uiability-launch-type.md)。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # FrameShutterEndInfo
 
+```TypeScript
+interface FrameShutterEndInfo
+```
+
 Describes the frame shutter end information during capture.
 
 **Since:** 12

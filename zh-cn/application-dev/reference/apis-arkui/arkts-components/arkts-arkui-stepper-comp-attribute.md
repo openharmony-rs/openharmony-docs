@@ -1,10 +1,14 @@
 # Stepper属性/事件
 
+```TypeScript
+declare class StepperAttribute extends CommonMethod<StepperAttribute>
+```
+
 无
 
 @extends CommonMethod&lt;StepperAttribute&gt;
 
-**继承/实现关系：** StepperAttribute extends CommonMethod&lt;StepperAttribute&gt;
+**继承/实现关系：** StepperAttribute extends CommonMethod<StepperAttribute>
 
 **起始版本：** 8
 

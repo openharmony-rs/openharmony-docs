@@ -1,5 +1,9 @@
 # EffectComponent properties/events
 
+```TypeScript
+declare class EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>
+```
+
 The universal attributes are supported. Currently, this component only works with the **backgroundBlurStyle** attribute.
 
 The universal events are not supported.

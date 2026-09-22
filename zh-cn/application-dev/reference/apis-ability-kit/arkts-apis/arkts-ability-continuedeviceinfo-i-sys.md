@@ -1,5 +1,9 @@
 # ContinueDeviceInfo（系统接口）
 
+```TypeScript
+export interface ContinueDeviceInfo
+```
+
 表示发起Mission迁移时所需参数的接口对象，迁移Mission详见：[continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md)
 
 **起始版本：** 9

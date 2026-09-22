@@ -1,5 +1,9 @@
 # TextVerticalAlign
 
+```TypeScript
+declare enum TextVerticalAlign
+```
+
 文本垂直对齐的方式。默认值BASELINE，沿基线对齐。
 
 **起始版本：** 20

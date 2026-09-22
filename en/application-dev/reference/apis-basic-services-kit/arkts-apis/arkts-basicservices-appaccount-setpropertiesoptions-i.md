@@ -1,5 +1,9 @@
 # SetPropertiesOptions
 
+```TypeScript
+interface SetPropertiesOptions
+```
+
 Represents the options for setting authenticator properties.
 
 **Since:** 9

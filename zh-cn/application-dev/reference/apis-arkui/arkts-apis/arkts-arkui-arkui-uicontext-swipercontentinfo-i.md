@@ -1,5 +1,9 @@
 # SwiperContentInfo
 
+```TypeScript
+export interface SwiperContentInfo
+```
+
 Swiper组件的内容区信息，包含Swiper组件标识、唯一标识符及当前显示状态的子组件信息，用于获取Swiper运行时的内容区状态。
 
 **起始版本：** 22

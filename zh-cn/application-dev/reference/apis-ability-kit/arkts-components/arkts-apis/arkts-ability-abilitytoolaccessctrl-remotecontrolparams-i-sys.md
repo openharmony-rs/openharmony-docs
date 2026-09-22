@@ -1,8 +1,12 @@
 # RemoteControlParams（系统接口）
 
+```TypeScript
+interface RemoteControlParams
+```
+
 远程控制交互参数
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -23,7 +27,9 @@ challenge?: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -39,7 +45,9 @@ controlledDeviceName?: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -55,7 +63,9 @@ controllerDeviceName?: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -71,7 +81,9 @@ remoteControlTicket?: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -87,7 +99,9 @@ signVerifyMsg?: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

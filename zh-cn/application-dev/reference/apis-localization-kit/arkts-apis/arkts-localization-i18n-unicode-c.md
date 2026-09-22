@@ -1,5 +1,9 @@
 # Unicode
 
+```TypeScript
+export class Unicode
+```
+
 提供字符属性相关的能力，包括判断字符是否为空格、数字和字母等。
 
 **起始版本：** 9

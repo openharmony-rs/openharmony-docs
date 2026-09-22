@@ -1,5 +1,9 @@
 # GridLevel
 
+```TypeScript
+export enum GridLevel
+```
+
 枚举类型，用于设置拉起picker后的宫格列数档位。
 
 **起始版本：** 23

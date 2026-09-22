@@ -1,5 +1,9 @@
 # ColorMetrics
 
+```TypeScript
+declare class ColorMetrics
+```
+
 Used to mix colors.
 
 **Since:** 12

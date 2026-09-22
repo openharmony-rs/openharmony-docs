@@ -1,5 +1,9 @@
 # ChannelInfo
 
+```TypeScript
+interface ChannelInfo
+```
+
 打开代理通道函数的入参，包括代理通道的链路类型、对端设备的MAC地址和监听服务的UUID。
 
 **起始版本：** 20

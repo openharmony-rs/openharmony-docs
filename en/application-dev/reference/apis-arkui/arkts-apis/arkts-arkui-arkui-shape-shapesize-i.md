@@ -1,5 +1,9 @@
 # ShapeSize
 
+```TypeScript
+interface ShapeSize
+```
+
 Describes the size of a shape.
 
 **Since:** 12

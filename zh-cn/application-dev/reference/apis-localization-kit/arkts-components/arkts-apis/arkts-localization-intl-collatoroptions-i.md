@@ -1,5 +1,9 @@
 # CollatorOptions
 
+```TypeScript
+export interface CollatorOptions
+```
+
 创建排序对象时可设置的配置项。
 
 从API version 9开始，CollatorOptions中的属性改为可选。

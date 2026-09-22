@@ -1,5 +1,9 @@
 # PrimaryButton
 
+```TypeScript
+enum PrimaryButton
+```
+
 Type of the primary mouse button.
 
 **Since:** 10

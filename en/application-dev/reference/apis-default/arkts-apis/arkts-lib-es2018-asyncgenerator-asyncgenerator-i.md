@@ -1,5 +1,9 @@
 # AsyncGenerator
 
+```TypeScript
+interface AsyncGenerator<T = unknown, TReturn = any, TNext = unknown> extends AsyncIterator<T, TReturn, TNext>
+```
+
 ## Modules to Import
 
 ```TypeScript

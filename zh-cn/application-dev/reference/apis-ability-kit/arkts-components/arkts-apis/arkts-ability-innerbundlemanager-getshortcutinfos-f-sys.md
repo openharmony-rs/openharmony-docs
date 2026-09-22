@@ -40,6 +40,8 @@ function getShortcutInfos(bundleName: string, callback: AsyncCallback<Array<Shor
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ShortcutInfo](arkts-ability-shortcutinfo-shortcutinfo-depr-i.md)&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回快捷方式信息。 |
 
 
+<a id="getshortcutinfos-1"></a>
+
 ## getShortcutInfos
 
 ```TypeScript

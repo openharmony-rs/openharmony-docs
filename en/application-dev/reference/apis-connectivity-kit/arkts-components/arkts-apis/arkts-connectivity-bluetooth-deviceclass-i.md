@@ -1,5 +1,9 @@
 # DeviceClass
 
+```TypeScript
+interface DeviceClass
+```
+
 Describes the class of a bluetooth device.
 
 **Since:** 8

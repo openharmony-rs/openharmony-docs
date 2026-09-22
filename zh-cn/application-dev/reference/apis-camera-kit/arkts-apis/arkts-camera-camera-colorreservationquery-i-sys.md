@@ -1,5 +1,9 @@
 # ColorReservationQuery（系统接口）
 
+```TypeScript
+interface ColorReservationQuery
+```
+
 Provides APIs for querying the color retention type supported by the device.
 
 **起始版本：** 15

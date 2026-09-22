@@ -1,5 +1,9 @@
 # PolicyChangedEvent
 
+```TypeScript
+export interface PolicyChangedEvent
+```
+
 Defines the policy change event.
 
 This API is used as a callback input parameter of [onAdminPolicyChanged](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onadminpolicychanged).
@@ -52,7 +56,7 @@ API name. For example, if the [setPasswordPolicy](arkts-mdm-securitymanager-setp
 parameters: string
 ```
 
-Input parameter value (excluding the **admin** parameter) when an API is called. The value is a JSON string. For example, if the [setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md) API is called, the return value of this parameter is **{"policy":{"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\\d).{8},&#36;","validityPeriod":1808309786000,"additionalDescription":"It must contain at least eight characters, including digits and letters."}}**.
+Input parameter value (excluding the **admin** parameter) when an API is called. The value is a JSON string. For example, if the [setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md) API is called, the return value of this parameter is **{"policy":{"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"It must contain at least eight characters, including digits and letters."}}**.
 
 **Type:** string
 

@@ -1,5 +1,9 @@
 # HuksRsaPssSaltLenType
 
+```TypeScript
+export enum HuksRsaPssSaltLenType
+```
+
 表示Rsa在签名验签、padding为pss时需指定的salt_len类型。
 
 **起始版本：** 10
@@ -18,6 +22,8 @@ HUKS_RSA_PSS_SALT_LEN_DIGEST = 0
 
 **起始版本：** 10
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -33,6 +39,8 @@ HUKS_RSA_PSS_SALT_LEN_MAX = 1
 表示以最大长度设置salt_len。
 
 **起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 

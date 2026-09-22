@@ -1,5 +1,9 @@
 # BluetoothScanInfo (System API)
 
+```TypeScript
+export interface BluetoothScanInfo
+```
+
 Describes the contents of the Bluetooth scan results.
 
 **Since:** 10

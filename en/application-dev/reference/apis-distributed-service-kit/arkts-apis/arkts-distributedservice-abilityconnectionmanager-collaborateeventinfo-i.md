@@ -1,5 +1,9 @@
 # CollaborateEventInfo
 
+```TypeScript
+interface CollaborateEventInfo
+```
+
 Collaboration event information.
 
 **Since:** 18

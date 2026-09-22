@@ -1,5 +1,9 @@
 # AgentCard
 
+```TypeScript
+export interface AgentCard
+```
+
 AgentCard describes the basic information and capabilities provided by an Agent.
 
 @typedef AgentCard

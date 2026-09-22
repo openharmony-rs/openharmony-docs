@@ -7,5 +7,5 @@
 
 | Name | Description |
 | --- | --- |
-| [RunningMultiAppInfo](arkts-ability-runningmultiappinfo-i-sys.md) | The RunningMultiAppInfo module defines the information of an application in multi-app mode in the running state. |
+| [RunningMultiAppInfo](arkts-ability-runningmultiappinfo-i-sys.md) | Defines the structure information of application multi-app in the running state. |
 <!--DelEnd-->

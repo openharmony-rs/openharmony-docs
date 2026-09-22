@@ -1,5 +1,9 @@
 # Zoom
 
+```TypeScript
+interface Zoom extends ZoomQuery
+```
+
 Zoom继承自[ZoomQuery](arkts-camera-camera-zoomquery-i.md)。
 
 变焦类，对设备变焦操作。

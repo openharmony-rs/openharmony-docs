@@ -1,5 +1,9 @@
 # VibratorEvent
 
+```TypeScript
+interface VibratorEvent
+```
+
 Vibration event.
 
 **Since:** 18

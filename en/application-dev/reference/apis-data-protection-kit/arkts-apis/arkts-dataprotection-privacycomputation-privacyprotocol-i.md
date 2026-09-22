@@ -1,8 +1,12 @@
 # PrivacyProtocol
 
+```TypeScript
+interface PrivacyProtocol
+```
+
 Defines the privacy protocol configuration, including the data set size and protocol type used for privacy-preserving computation.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -21,9 +25,11 @@ The data set size for the privacy protocol. Determines the number of comparisons
 
 **Type:** [DataSetSize](arkts-dataprotection-privacycomputation-datasetsize-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -37,8 +43,10 @@ The protocol type for the privacy computation. Determines the privacy-preserving
 
 **Type:** [ProtocolType](arkts-dataprotection-privacycomputation-protocoltype-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Security.Asset

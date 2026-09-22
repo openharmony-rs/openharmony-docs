@@ -1,5 +1,9 @@
 # ListFileExtOptions
 
+```TypeScript
+export interface ListFileExtOptions
+```
+
 Defines the options used in listFileExt().
 
 **Since:** 26.0.0

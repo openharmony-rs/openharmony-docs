@@ -1,5 +1,9 @@
 # HoverHandAction（系统接口）
 
+```TypeScript
+export enum HoverHandAction
+```
+
 悬浮手动作枚举。
 
 **起始版本：** 26.0.0

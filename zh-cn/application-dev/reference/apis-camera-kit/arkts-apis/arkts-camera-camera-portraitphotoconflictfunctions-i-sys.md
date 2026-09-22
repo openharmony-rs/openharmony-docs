@@ -1,5 +1,9 @@
 # PortraitPhotoConflictFunctions（系统接口）
 
+```TypeScript
+interface PortraitPhotoConflictFunctions extends ZoomQuery, PortraitQuery, ApertureQuery
+```
+
 Portrait Photo Conflict Functions object.
 
 **继承/实现关系：** PortraitPhotoConflictFunctions extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md)<!--Del-->, [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md)<!--DelEnd-->, [ApertureQuery](arkts-camera-camera-aperturequery-i.md)

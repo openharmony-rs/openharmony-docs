@@ -1,5 +1,9 @@
 # ApplicationFlag（系统接口）
 
+```TypeScript
+enum ApplicationFlag
+```
+
 应用信息标志，指示需要获取的应用信息的内容。
 
 **起始版本：** 9

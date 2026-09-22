@@ -1,5 +1,9 @@
 # Property
 
+```TypeScript
+interface Property
+```
+
 表示服务的Property。
 
 **起始版本：** 26.0.0

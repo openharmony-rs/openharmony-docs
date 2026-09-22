@@ -52,10 +52,81 @@ function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, opt
 
 **示例**
 
-```TypeScript
 子进程部分，详见[子进程开发指导（ArkTS）- 创建支持参数传递的Native子进程](../../../application-models/arkts-child-process-development-guideline.md#创建支持参数传递的native子进程)：
-```
 
 ```TypeScript
+#include <AbilityKit/native_child_process.h>
+
+extern "C" {
+
+/**
+ * 子进程的入口函数，实现子进程的业务逻辑
+ * 函数名称可以自定义，在主进程调用OH_Ability_StartNativeChildProcess方法时指定，此示例中为Main
+ * 函数返回后子进程退出
+ */
+void Main(NativeChildProcess_Args args)
+{
+    // 获取传入的entryParams
+    char *entryParams = args.entryParams;
+    // 获取传入的fd列表，对应ChildProcessArgs中的args.fds
+    NativeChildProcess_Fd *current = args.fdList.head;
+    while (current != nullptr) {
+        char *fdName = current->fdName;
+        int32_t fd = current->fd;
+        current = current->next;
+        // 业务逻辑..
+    }
+}
+} // extern "C"
+```
+
 主进程部分，示例中的context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)：
+
+```TypeScript
+// 主进程：
+// 使用childProcessManager.startNativeChildProcess方法启动子进程：
+import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            try {
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+              let path = context.filesDir + "/test.txt";
+              let file = fileIo.openSync(path, fileIo.OpenMode.READ_ONLY | fileIo.OpenMode.CREATE);
+              let args: ChildProcessArgs = {
+                entryParams: "testParam",
+                fds: {
+                  "key1": file.fd
+                }
+              };
+              let options: ChildProcessOptions = {
+                isolationMode: false
+              };
+              childProcessManager.startNativeChildProcess("libentry.so:Main", args, options)
+                .then((pid) => {
+                  console.info(`startNativeChildProcess success, pid: ${pid}`);
+                })
+                .catch((err: BusinessError) => {
+                  console.error(`startNativeChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                })
+            } catch (err: BusinessError) {
+              console.error(`startNativeChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
 ```

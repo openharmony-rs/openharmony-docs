@@ -54,16 +54,8 @@ call.isRinging((err: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.isRinging().then((data: boolean) => {
-    console.info(`isRinging success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`isRinging fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="isringing-1"></a>
 
 ## isRinging
 
@@ -99,4 +91,12 @@ function isRinging(): Promise<boolean>
 
 **示例**
 
-参见 [isRinging](#isringing)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.isRinging().then((data: boolean) => {
+    console.info(`isRinging success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isRinging fail, promise: err->${JSON.stringify(err)}`);
+});
+```

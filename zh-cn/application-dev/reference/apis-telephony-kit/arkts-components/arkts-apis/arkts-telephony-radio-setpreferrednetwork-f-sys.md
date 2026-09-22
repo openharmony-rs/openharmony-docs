@@ -58,18 +58,8 @@ radio.setPreferredNetwork(slotId, mode, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-let mode: radio.PreferredNetworkMode = radio.PreferredNetworkMode.PREFERRED_NETWORK_MODE_GSM;
-radio.setPreferredNetwork(slotId, mode).then(() => {
-    console.info(`setPreferredNetwork success.`);
-}).catch((err: BusinessError) => {
-    console.error(`setPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="setpreferrednetwork-1"></a>
 
 ## setPreferredNetwork
 
@@ -114,4 +104,14 @@ Set the preferred network for the specified SIM card slot.
 
 **示例**
 
-参见 [setPreferredNetwork](#setpreferrednetwork)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+let mode: radio.PreferredNetworkMode = radio.PreferredNetworkMode.PREFERRED_NETWORK_MODE_GSM;
+radio.setPreferredNetwork(slotId, mode).then(() => {
+    console.info(`setPreferredNetwork success.`);
+}).catch((err: BusinessError) => {
+    console.error(`setPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
+});
+```

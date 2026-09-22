@@ -1,5 +1,9 @@
 # PhoneNumberFormat
 
+```TypeScript
+export class PhoneNumberFormat
+```
+
 提供电话号码相关的能力，包括电话号码有效性判断、格式化和归属地获取。
 
 **起始版本：** 8

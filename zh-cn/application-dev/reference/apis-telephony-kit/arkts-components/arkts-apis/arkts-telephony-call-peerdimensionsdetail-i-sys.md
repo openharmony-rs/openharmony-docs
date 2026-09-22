@@ -1,5 +1,9 @@
 # PeerDimensionsDetail（系统接口）
 
+```TypeScript
+export interface PeerDimensionsDetail
+```
+
 视频通话对端画面分辨率信息。
 
 **起始版本：** 11

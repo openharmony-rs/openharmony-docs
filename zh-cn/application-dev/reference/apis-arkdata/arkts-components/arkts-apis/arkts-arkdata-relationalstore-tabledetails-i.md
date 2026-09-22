@@ -1,5 +1,9 @@
 # TableDetails
 
+```TypeScript
+interface TableDetails
+```
+
 描述数据库表执行端云同步任务上传和下载的统计信息。
 
 **起始版本：** 10

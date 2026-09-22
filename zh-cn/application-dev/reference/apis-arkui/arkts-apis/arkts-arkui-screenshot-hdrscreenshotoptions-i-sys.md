@@ -1,5 +1,9 @@
 # HdrScreenshotOptions（系统接口）
 
+```TypeScript
+interface HdrScreenshotOptions
+```
+
 设置截取HDR图像的信息。
 
 **起始版本：** 20

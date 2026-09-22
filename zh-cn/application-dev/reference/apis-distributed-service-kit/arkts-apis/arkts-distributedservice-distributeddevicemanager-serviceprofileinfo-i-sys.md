@@ -1,5 +1,9 @@
 # ServiceProfileInfo（系统接口）
 
+```TypeScript
+interface ServiceProfileInfo
+```
+
 服务配置信息。根据云端返回的数据填充。
 
 **起始版本：** 15

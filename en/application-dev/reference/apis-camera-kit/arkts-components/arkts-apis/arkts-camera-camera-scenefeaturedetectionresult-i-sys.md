@@ -1,5 +1,9 @@
 # SceneFeatureDetectionResult (System API)
 
+```TypeScript
+interface SceneFeatureDetectionResult
+```
+
 Describes the scene feature detection result.
 
 **Since:** 12

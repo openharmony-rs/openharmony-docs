@@ -1,5 +1,9 @@
 # InstallParam
 
+```TypeScript
+interface InstallParam
+```
+
 应用包安装需指定的参数信息。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # PermissionStateChangeInfo
 
+```TypeScript
+interface PermissionStateChangeInfo
+```
+
 表示某次权限授权状态变化的详情。
 
 **起始版本：** 18
@@ -24,6 +28,8 @@ change: PermissionStateChangeType
 
 **起始版本：** 18
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -40,6 +46,8 @@ permissionName: Permissions
 
 **起始版本：** 18
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -55,6 +63,8 @@ tokenID: number
 **类型：** number
 
 **起始版本：** 18
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 

@@ -1,5 +1,9 @@
 # BundleStorageStats
 
+```TypeScript
+interface BundleStorageStats
+```
+
 Storage usage information of the application.
 
 **Since:** 26.0.0
@@ -58,7 +62,7 @@ Size of the local data, distributed data, and database data of the application, 
 
 Local file directory (parent directory of the cache file directory):
 
-/data/storage/&#36;{el1-el5}/base
+/data/storage/${el1-el5}/base
 
 Distributed file directory:
 
@@ -66,9 +70,9 @@ Distributed file directory:
 
 Database file directory:
 
-/data/storage/&#36;{el1-el5}/database
+/data/storage/${el1-el5}/database
 
-**Note:**  **&#36;{el1-el5}** refers to the directories [el1, el2, el3, el4, el5](../../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path)
+**Note:**  **${el1-el5}** refers to the directories [el1, el2, el3, el4, el5](../../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path)
 
 **Type:** number
 

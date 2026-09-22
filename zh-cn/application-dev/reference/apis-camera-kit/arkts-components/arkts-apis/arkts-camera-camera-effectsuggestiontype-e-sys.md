@@ -1,5 +1,9 @@
 # EffectSuggestionType（系统接口）
 
+```TypeScript
+enum EffectSuggestionType
+```
+
 Enum for effect suggestion.
 
 **起始版本：** 12

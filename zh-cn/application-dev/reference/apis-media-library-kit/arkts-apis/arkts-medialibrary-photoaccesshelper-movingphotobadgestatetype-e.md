@@ -1,5 +1,9 @@
 # MovingPhotoBadgeStateType
 
+```TypeScript
+export enum MovingPhotoBadgeStateType
+```
+
 枚举，动态照片状态。
 
 **起始版本：** 22

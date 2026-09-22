@@ -1,5 +1,9 @@
 # locks(Defines the utils for ArkTS)
 
+```TypeScript
+namespace locks
+```
+
 Asynchronous lock.
 
 **Since:** 12

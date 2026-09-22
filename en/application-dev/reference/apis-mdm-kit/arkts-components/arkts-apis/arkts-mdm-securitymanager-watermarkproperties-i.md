@@ -1,5 +1,9 @@
 # WatermarkProperties
 
+```TypeScript
+export interface WatermarkProperties
+```
+
 Defines watermark properties.
 
 **Since:** 26.0.0

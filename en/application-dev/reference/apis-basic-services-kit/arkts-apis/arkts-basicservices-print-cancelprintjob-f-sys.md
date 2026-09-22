@@ -53,18 +53,8 @@ print.cancelPrintJob(jobId, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let jobId : string = '121212';
-print.cancelPrintJob(jobId).then(() => {
-    console.info('cancelPrintJob success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to cancel print job. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="cancelprintjob-1"></a>
 
 ## cancelPrintJob
 
@@ -104,4 +94,14 @@ Cancels the specified print job, which is on the print queue of the printer. Thi
 
 **Examples**
 
-See [cancelPrintJob](#cancelprintjob)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobId : string = '121212';
+print.cancelPrintJob(jobId).then(() => {
+    console.info('cancelPrintJob success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to cancel print job. Code: ${error.code}, message: ${error.message}`);
+});
+```

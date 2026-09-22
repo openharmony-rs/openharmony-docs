@@ -1,5 +1,9 @@
 # PartitionInfo (System API)
 
+```TypeScript
+export interface PartitionInfo
+```
+
 Partition information.
 
 **Since:** 26.0.0

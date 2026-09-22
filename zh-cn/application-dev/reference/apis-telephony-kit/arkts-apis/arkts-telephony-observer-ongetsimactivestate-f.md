@@ -18,6 +18,8 @@ SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Telephony.StateRegistry
 
 **参数：**

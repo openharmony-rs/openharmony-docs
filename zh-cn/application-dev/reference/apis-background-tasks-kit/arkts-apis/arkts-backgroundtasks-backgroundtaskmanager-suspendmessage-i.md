@@ -1,5 +1,9 @@
 # SuspendMessage
 
+```TypeScript
+interface SuspendMessage
+```
+
 长时任务暂停原因。
 
 **起始版本：** 26.0.0

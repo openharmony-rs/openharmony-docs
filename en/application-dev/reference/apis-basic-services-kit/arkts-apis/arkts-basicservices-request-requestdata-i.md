@@ -1,5 +1,9 @@
 # RequestData
 
+```TypeScript
+interface RequestData
+```
+
 Describes the form data in [UploadConfig](arkts-basicservices-request-uploadconfig-i.md).
 
 **Since:** 6

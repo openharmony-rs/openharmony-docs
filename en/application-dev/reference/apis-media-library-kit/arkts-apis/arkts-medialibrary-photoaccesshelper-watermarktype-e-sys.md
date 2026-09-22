@@ -1,5 +1,9 @@
 # WatermarkType (System API)
 
+```TypeScript
+enum WatermarkType
+```
+
 Enumerates the watermark editable flags.
 
 **Since:** 14

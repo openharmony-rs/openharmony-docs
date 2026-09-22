@@ -1,5 +1,9 @@
 # NotificationFlags
 
+```TypeScript
+export interface NotificationFlags
+```
+
 描述通知标志位。
 
 **起始版本：** 8

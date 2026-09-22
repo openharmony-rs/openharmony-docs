@@ -1,5 +1,9 @@
 # LocationSourceType
 
+```TypeScript
+export enum LocationSourceType
+```
+
 定位结果的来源。
 
 **起始版本：** 12

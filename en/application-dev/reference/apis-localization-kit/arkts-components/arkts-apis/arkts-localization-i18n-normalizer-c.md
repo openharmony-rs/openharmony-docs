@@ -1,5 +1,9 @@
 # Normalizer
 
+```TypeScript
+export class Normalizer
+```
+
 Provides the text normalization capabilities.
 
 **Since:** 10

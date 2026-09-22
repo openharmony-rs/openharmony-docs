@@ -1,5 +1,9 @@
 # AdvertisingState
 
+```TypeScript
+enum AdvertisingState
+```
+
 枚举，不同操作对应的BLE广播状态。
 
 **起始版本：** 11

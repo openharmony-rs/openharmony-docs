@@ -1,5 +1,9 @@
 # String
 
+```TypeScript
+interface String
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -33,6 +37,8 @@ Passes a string and {@linkcode replaceValue} to the `[Symbol.replace]` method on
 | --- | --- | --- | --- |
 | searchValue | { [Symbol.replace](string: string, replaceValue: string): string; } | Yes |  |
 | replaceValue | string | Yes |  |
+
+<a id="replace-1"></a>
 
 ## replace
 

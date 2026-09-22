@@ -1,5 +1,9 @@
 # AccessibilityVirtualNode（系统接口）
 
+```TypeScript
+export declare interface AccessibilityVirtualNode
+```
+
 无障碍虚拟节点。
 
 **起始版本：** 26.0.0

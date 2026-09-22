@@ -1,5 +1,9 @@
 # CryptoMode
 
+```TypeScript
+enum CryptoMode
+```
+
 Enumerates cipher operation modes for encryption and decryption.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # PostalAddress
 
+```TypeScript
+class PostalAddress
+```
+
 Defines a contact's postal address.
 
 **Since:** 7

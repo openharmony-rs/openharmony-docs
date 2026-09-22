@@ -1,5 +1,9 @@
 # Callee
 
+```TypeScript
+export interface Callee
+```
+
 Background communication object created by the system for the UIAbility, known as the Callee UIAbility (Callee), which is capable of receiving data sent from the Caller object.
 
 **Since:** 9

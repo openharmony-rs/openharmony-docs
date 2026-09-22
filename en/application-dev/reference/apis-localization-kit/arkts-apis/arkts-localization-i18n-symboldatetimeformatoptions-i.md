@@ -1,5 +1,9 @@
 # SymbolDateTimeFormatOptions
 
+```TypeScript
+export interface SymbolDateTimeFormatOptions extends Intl.DateTimeFormatOptions
+```
+
 Represents optional configuration items for the SymbolDateTimeFormat object. Define the symbol element and value that need to be replaced.
 
 **Inheritance/Implementation:** SymbolDateTimeFormatOptions extends Intl.DateTimeFormatOptions

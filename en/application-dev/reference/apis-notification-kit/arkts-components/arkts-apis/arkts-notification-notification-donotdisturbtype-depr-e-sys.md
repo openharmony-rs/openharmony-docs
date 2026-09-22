@@ -1,5 +1,9 @@
 # DoNotDisturbType (System API)
 
+```TypeScript
+export enum DoNotDisturbType
+```
+
 Defines the DND time type.
 
 **Since:** 8

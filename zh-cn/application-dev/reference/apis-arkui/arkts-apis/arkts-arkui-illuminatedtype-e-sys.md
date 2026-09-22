@@ -1,5 +1,9 @@
 # IlluminatedType（系统接口）
 
+```TypeScript
+declare enum IlluminatedType
+```
+
 被照亮的类型枚举。
 
 **起始版本：** 11

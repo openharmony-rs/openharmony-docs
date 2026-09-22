@@ -1,5 +1,9 @@
 # USBAccessory
 
+```TypeScript
+interface USBAccessory
+```
+
 Describes the USB accessory information.
 
 **Since:** 14

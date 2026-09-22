@@ -1,8 +1,12 @@
 # ChildProcessInformation
 
+```TypeScript
+export interface ChildProcessInformation
+```
+
 模块定义子进程信息。这些信息可以通过[getChildProcessInfos](arkts-ability-childprocessmanager-getchildprocessinfos-f.md)的子进程管理器和[getUIAbilityChildProcessInfos](arkts-ability-applicationcontext-c.md#getuiabilitychildprocessinfos)的ApplicationContext。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -16,7 +20,7 @@ parentPid: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -32,7 +36,7 @@ pid: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,7 +52,7 @@ processName: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

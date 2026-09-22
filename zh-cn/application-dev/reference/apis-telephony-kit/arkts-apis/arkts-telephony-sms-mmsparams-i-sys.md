@@ -1,5 +1,9 @@
 # MmsParams（系统接口）
 
+```TypeScript
+export interface MmsParams
+```
+
 发送彩信的参数。
 
 **起始版本：** 11

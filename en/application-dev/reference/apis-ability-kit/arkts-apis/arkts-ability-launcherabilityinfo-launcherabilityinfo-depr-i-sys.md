@@ -1,5 +1,9 @@
 # LauncherAbilityInfo (System API)
 
+```TypeScript
+export interface LauncherAbilityInfo
+```
+
 The LauncherAbilityInfo module provides information about the launcher ability, which is obtained through [innerBundleManager.getLauncherAbilityInfos](../../../reference/apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md#innerbundlemanagergetlauncherabilityinfosdeprecated).
 
 > **NOTE:** 

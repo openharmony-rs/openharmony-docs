@@ -1,5 +1,9 @@
 # cloudData(端云服务)
 
+```TypeScript
+declare namespace cloudData
+```
+
 端云服务提供端云策略能力。<br> <br>端云策略提供端云同步策略配置的能力。
 
 **起始版本：** 10

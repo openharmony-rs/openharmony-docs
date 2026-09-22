@@ -1,5 +1,9 @@
 # CodecBitRate
 
+```TypeScript
+enum CodecBitRate
+```
+
 Describes the codec bit rate.
 
 **Since:** 19

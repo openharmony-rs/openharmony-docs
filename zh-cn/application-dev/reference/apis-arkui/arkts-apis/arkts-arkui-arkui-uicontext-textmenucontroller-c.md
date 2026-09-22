@@ -1,5 +1,9 @@
 # TextMenuController
 
+```TypeScript
+export class TextMenuController
+```
+
 TextMenuController用于控制文本选择菜单的行为，支持设置菜单显示选项（如优先使用独立窗口显示）、屏蔽系统服务菜单项或指定菜单项，适用于需要自定义文本选择菜单显示方式或限制特定菜单功能的应用场景，如在特定业务场景下禁用翻译、搜索等功能。
 
 > **说明：** 
@@ -35,10 +39,10 @@ static disableMenuItems(items: Array<TextMenuItemId>): void
 > - 此接口可在[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)使用。
 > 
 > 
-> - 此接口调用后将影响文本组件的接口editMenuOptions，其回调方法onCreateMenu的入参列表中不包含被屏蔽的菜单选项。
+> - 此接口调用后将影响文本组件的接口[editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions)，其回调方法[onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu)的入参列表中不包含被屏蔽的菜单选项。
 > 
 > 
-> - 涉及文本选择菜单的组件有 Text、TextArea、TextInput、Search、RichEditor、Web。
+> - 涉及文本选择菜单的组件有 [Text](../arkts-components/arkts-arkui-text-comp.md#text)、[TextArea](../arkts-components/arkts-arkui-textarea-comp.md#text_area)、[TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input)、[Search](../arkts-components/arkts-arkui-search-comp.md#search)、[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)、[Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md#webweb控制器)。
 > 
 > 
 > - 系统服务菜单项指除[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)中的复制、剪切、全选、粘贴以外的菜单项。
@@ -75,6 +79,51 @@ static disableMenuItems(items: Array<TextMenuItemId>): void
 | --- | --- | --- | --- |
 | items | Array&lt;[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)&gt; | 是 | 禁用菜单项的列表。仅支持禁用系统服务菜单项（复制、剪切、全选、粘贴除外），禁用一级菜单项会同时禁用其所有二级菜单项，不支持直接禁用二级菜单项。 。 |
 
+**示例**
+
+```TypeScript
+import { TextMenuController } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    // 禁用搜索和翻译菜单。
+    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE]);
+  }
+
+  aboutToDisappear(): void {
+    // 恢复系统服务菜单。
+    TextMenuController.disableMenuItems([]);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        TextInput({ text: '这是一个TextInput，长按弹出文本选择菜单' })
+          .height(60)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .caretStyle({ width: '4vp' })
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+              // menuItems不包含搜索和翻译。
+              return menuItems;
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+              // onMenuItemClick回调函数返回boolean类型
+              return false;
+            }
+          })
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## disableSystemServiceMenuItems
 
 ```TypeScript
@@ -92,10 +141,10 @@ static disableSystemServiceMenuItems(disable: boolean): void
 > - 此接口可在[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)使用。
 > 
 > 
-> - 此接口调用后将影响文本组件的接口editMenuOptions，其回调方法onCreateMenu的入参列表中不包含被屏蔽的菜单选项。
+> - 此接口调用后将影响文本组件的接口[editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions)，其回调方法onCreateMenu的入参列表中不包含被屏蔽的菜单选项。
 > 
 > 
-> - 涉及文本选择菜单的组件有 Text、TextArea、TextInput、Search、RichEditor、Web。
+> - 涉及文本选择菜单的组件有 [Text](../arkts-components/arkts-arkui-text-comp.md#text)、TextArea、[TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input)、Search、[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)、Web。
 > 
 > 
 > - 系统服务菜单项指除[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)中的复制、剪切、全选、粘贴以外的菜单项。
@@ -132,6 +181,51 @@ static disableSystemServiceMenuItems(disable: boolean): void
 | --- | --- | --- | --- |
 | disable | boolean | 是 | 是否禁用系统服务菜单项。true表示禁用，false表示不禁用。 |
 
+**示例**
+
+```TypeScript
+import { TextMenuController } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    // 禁用除复制、剪切、全选、粘贴外的所有系统服务菜单项。
+    TextMenuController.disableSystemServiceMenuItems(true);
+  }
+
+  aboutToDisappear(): void {
+    // 页面消失恢复系统服务菜单。
+    TextMenuController.disableSystemServiceMenuItems(false);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        TextInput({ text: '这是一个TextInput，长按弹出文本选择菜单' })
+          .height(60)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .caretStyle({ width: '4vp' })
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                // menuItems不包含被屏蔽的系统菜单项。
+                return menuItems;
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                // onMenuItemClick回调函数返回boolean类型。
+                return false;
+            }
+          })
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## setMenuOptions
 
 ```TypeScript
@@ -153,3 +247,44 @@ setMenuOptions(options: TextMenuOptions): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [TextMenuOptions](arkts-arkui-textmenuoptions-i.md) | 是 | 设置菜单选项，用于控制文本选择菜单的显示模式。<br>默认值：{showMode: TextMenuShowMode.DEFAULT}。 |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    // 设置在对应的UIContext下优先使用独立窗口显示文本选择菜单
+    this.getUIContext()
+      .getTextMenuController()
+      .setMenuOptions(
+        {
+          showMode: TextMenuShowMode.PREFER_WINDOW
+        }
+      );
+  }
+
+  build() {
+    Row() {
+      Column() {
+        TextInput({ text: '这是一个TextInput，长按弹出文本选择菜单' })
+          .height(60)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .caretStyle({ width: '4vp' })
+
+        Text('这是一个Text，长按弹出文本选择菜单')
+          .height(60)
+          .copyOption(CopyOptions.InApp)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```

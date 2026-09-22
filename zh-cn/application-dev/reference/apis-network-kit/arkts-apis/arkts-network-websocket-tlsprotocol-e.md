@@ -1,5 +1,9 @@
 # TlsProtocol
 
+```TypeScript
+export enum TlsProtocol
+```
+
 TLS协议类型。
 
 **起始版本：** 26.0.0

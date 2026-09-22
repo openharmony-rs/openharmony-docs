@@ -1,5 +1,9 @@
 # CacheStrategy
 
+```TypeScript
+enum CacheStrategy
+```
+
 表示缓存刷新策略的枚举。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # RectInVP
 
+```TypeScript
+interface RectInVP
+```
+
 窗口矩形区域，单位为vp。
 
 **起始版本：** 23

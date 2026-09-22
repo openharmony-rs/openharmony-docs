@@ -1,5 +1,9 @@
 # SystemDefinedForm
 
+```TypeScript
+class SystemDefinedForm extends SystemDefinedRecord
+```
+
 Represents the service widget data defined by the system. It is a child class of [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md).
 
 **Inheritance/Implementation:** SystemDefinedForm extends [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md)

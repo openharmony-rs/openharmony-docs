@@ -1,5 +1,9 @@
 # BluetoothRawAddressType
 
+```TypeScript
+export enum BluetoothRawAddressType
+```
+
 枚举，蓝牙协议定义的蓝牙设备地址类型。关于地址类型的详细介绍请参见蓝牙设备地址类型。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # BlurType
 
+```TypeScript
+enum BlurType
+```
+
 Enumerates the blur types of a mask filter.
 
 | Name | Value| Description | Diagram |  

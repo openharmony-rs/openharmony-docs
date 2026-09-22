@@ -1,5 +1,9 @@
 # Readable
 
+```TypeScript
+export class Readable
+```
+
 Stream from which data can be read. A readable stream is used to read data from a source, such as a file or a network socket.
 
 **Since:** 12
@@ -32,12 +36,7 @@ A constructor used to create a **Readable** object.
 let readableStream = new stream.Readable();
 ```
 
-```TypeScript
-let option : stream.ReadableOptions = {
-  encoding : 'utf-8'
-};
-let readableStream = new stream.Readable(option);
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -60,10 +59,6 @@ A constructor used to create a **Readable** object.
 | options | [ReadableOptions](arkts-arkts-stream-readableoptions-i.md) | Yes | Options in the **Readable** constructor. |
 
 **Examples**
-
-```TypeScript
-let readableStream = new stream.Readable();
-```
 
 ```TypeScript
 let option : stream.ReadableOptions = {

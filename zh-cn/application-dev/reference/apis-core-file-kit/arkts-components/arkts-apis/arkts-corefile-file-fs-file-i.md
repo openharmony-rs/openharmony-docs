@@ -1,5 +1,9 @@
 # File
 
+```TypeScript
+declare interface File
+```
+
 由open接口打开的File对象，持有文件描述符fd，提供文件锁和获取父目录等能力。
 
 **起始版本：** 9
@@ -98,35 +102,7 @@ file.lock(true).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-file.lock((err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to lock file. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in locking file.`);
-  }
-  fileIo.closeSync(file);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-file.lock(true, (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to lock file. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in locking file.`);
-  }
-  fileIo.closeSync(file);
-});
-```
+<a id="lock-1"></a>
 
 ## lock
 
@@ -159,7 +135,22 @@ lock(callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [lock](#lock)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+file.lock((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to lock file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in locking file.`);
+  }
+  fileIo.closeSync(file);
+});
+```
+
+<a id="lock-2"></a>
 
 ## lock
 
@@ -193,7 +184,20 @@ lock(exclusive: boolean, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [lock](#lock)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+file.lock(true, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to lock file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in locking file.`);
+  }
+  fileIo.closeSync(file);
+});
+```
 
 ## tryLock
 

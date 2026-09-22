@@ -1,5 +1,9 @@
 # WidthBreakpoint
 
+```TypeScript
+declare enum WidthBreakpoint
+```
+
 Enumerates the width breakpoint values corresponding to different window width thresholds. The values are returned through [getWindowWidthBreakpoint](arkts-arkui-arkui-uicontext-uicontext-c.md#getwindowwidthbreakpoint).
 
 The following table lists default width breakpoint thresholds for typical devices, serving as a reference for responsive layout design based on window width breakpoints. Device manufacturers may customize these thresholds through product-specific configurations when needed.

@@ -1,5 +1,9 @@
 # BLEConnectionChangeState
 
+```TypeScript
+interface BLEConnectionChangeState
+```
+
 描述GATT profile协议连接状态。
 
 **起始版本：** 10

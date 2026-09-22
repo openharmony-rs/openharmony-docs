@@ -1,5 +1,9 @@
 # CubeGeometry
 
+```TypeScript
+export declare class CubeGeometry extends GeometryDefinition
+```
+
 立方体几何类型，继承自GeometryDefinition。
 
 @extends GeometryDefinition

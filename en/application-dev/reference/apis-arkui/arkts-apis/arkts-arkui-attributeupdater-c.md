@@ -1,5 +1,9 @@
 # AttributeUpdater
 
+```TypeScript
+export declare class AttributeUpdater<T, C = Initializer<T>> implements AttributeModifier<T>
+```
+
 **AttributeUpdater** directly set attributes to a component to trigger UI re-renders, without marking them as state variables.
 
 **Inheritance/Implementation:** AttributeUpdater implements AttributeModifier<T>

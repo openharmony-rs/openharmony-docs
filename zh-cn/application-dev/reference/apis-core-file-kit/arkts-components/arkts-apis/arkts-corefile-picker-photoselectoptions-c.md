@@ -1,5 +1,9 @@
 # PhotoSelectOptions
 
+```TypeScript
+class PhotoSelectOptions
+```
+
 图库选择选项。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # ContactSelectionFilter
 
+```TypeScript
+interface ContactSelectionFilter
+```
+
 联系人查询过滤器。
 
 **起始版本：** 15

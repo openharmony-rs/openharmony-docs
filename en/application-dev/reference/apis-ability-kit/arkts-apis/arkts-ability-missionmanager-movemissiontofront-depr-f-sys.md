@@ -54,43 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import missionManager from '@ohos.application.missionManager';
-import { BusinessError } from '@ohos.base';
 
-let testMissionId = 2;
-try {
-  // Switch the specified mission to the foreground and specify the window mode.
-  missionManager.moveMissionToFront(testMissionId, { windowMode: 101 }, (err, data) => {
-    if (err) {
-      console.error(`moveMissionToFront failed. Code: ${err.code}, message: ${err.message}.`);
-    } else {
-      console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
-    }
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`moveMissionToFront sync failed. Code: ${error.code}, message: ${error.message}.`);
-}
-```
-
-```TypeScript
-import missionManager from '@ohos.application.missionManager';
-import { BusinessError } from '@ohos.base';
-
-let testMissionId = 2;
-try {
-  // Switch the specified mission to the foreground.
-  missionManager.moveMissionToFront(testMissionId).then((data) => {
-    console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`moveMissionToFront failed. Cause: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`moveMissionToFront failed. Cause: ${error.message}`);
-}
-```
-
+<a id="movemissiontofront-1"></a>
 
 ## moveMissionToFront
 
@@ -122,8 +87,28 @@ Switches a given mission to the foreground, with the startup parameters for the 
 
 **Examples**
 
-See [moveMissionToFront](#movemissiontofront)
+```TypeScript
+import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
 
+let testMissionId = 2;
+try {
+  // Switch the specified mission to the foreground and specify the window mode.
+  missionManager.moveMissionToFront(testMissionId, { windowMode: 101 }, (err, data) => {
+    if (err) {
+      console.error(`moveMissionToFront failed. Code: ${err.code}, message: ${err.message}.`);
+    } else {
+      console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`moveMissionToFront sync failed. Code: ${error.code}, message: ${error.message}.`);
+}
+```
+
+
+<a id="movemissiontofront-2"></a>
 
 ## moveMissionToFront
 
@@ -160,4 +145,19 @@ Switches a given mission to the foreground, with the startup parameters for the 
 
 **Examples**
 
-See [moveMissionToFront](#movemissiontofront)
+```TypeScript
+import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
+
+let testMissionId = 2;
+try {
+  // Switch the specified mission to the foreground.
+  missionManager.moveMissionToFront(testMissionId).then((data) => {
+    console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`moveMissionToFront failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`moveMissionToFront failed. Cause: ${error.message}`);
+}
+```

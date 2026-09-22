@@ -1,5 +1,9 @@
 # Pkcs12CreationConfig
 
+```TypeScript
+interface Pkcs12CreationConfig
+```
+
 表示创建P12的配置。
 
 **起始版本：** 21

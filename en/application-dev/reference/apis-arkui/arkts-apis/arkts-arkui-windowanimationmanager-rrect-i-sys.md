@@ -1,5 +1,9 @@
 # RRect (System API)
 
+```TypeScript
+export interface RRect
+```
+
 Round rect.
 
 @interface RRect

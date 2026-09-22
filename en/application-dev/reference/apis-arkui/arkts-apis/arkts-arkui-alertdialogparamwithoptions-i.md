@@ -1,5 +1,9 @@
 # AlertDialogParamWithOptions
 
+```TypeScript
+declare interface AlertDialogParamWithOptions extends AlertDialogParam
+```
+
 Inherited from [AlertDialogParam](arkts-arkui-alertdialogparam-i.md).
 
 **Inheritance/Implementation:** AlertDialogParamWithOptions extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md)

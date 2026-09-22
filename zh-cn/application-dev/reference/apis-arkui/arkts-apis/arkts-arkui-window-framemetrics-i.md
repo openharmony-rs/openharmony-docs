@@ -1,5 +1,9 @@
 # FrameMetrics
 
+```TypeScript
+interface FrameMetrics
+```
+
 帧率指标。
 
 **起始版本：** 22

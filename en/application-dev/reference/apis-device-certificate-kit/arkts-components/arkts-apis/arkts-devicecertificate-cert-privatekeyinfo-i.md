@@ -1,5 +1,9 @@
 # PrivateKeyInfo
 
+```TypeScript
+interface PrivateKeyInfo
+```
+
 Represents the private key information.
 
 **Since:** 18

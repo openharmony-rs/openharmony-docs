@@ -1,5 +1,9 @@
 # Portrait
 
+```TypeScript
+class Portrait
+```
+
 Defines a contact's portrait.
 
 > **NOTE:** 

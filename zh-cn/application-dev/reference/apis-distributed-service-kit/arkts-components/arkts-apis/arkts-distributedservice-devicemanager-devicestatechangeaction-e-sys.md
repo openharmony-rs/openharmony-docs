@@ -1,5 +1,9 @@
 # DeviceStateChangeAction（系统接口）
 
+```TypeScript
+enum DeviceStateChangeAction
+```
+
 表示设备状态变化的枚举。
 
 **起始版本：** 7

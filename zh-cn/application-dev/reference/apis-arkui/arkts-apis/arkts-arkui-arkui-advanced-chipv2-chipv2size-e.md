@@ -1,5 +1,9 @@
 # ChipV2Size
 
+```TypeScript
+export declare enum ChipV2Size
+```
+
 ChipV2Size是ChipV2可指定的尺寸类型，如普通型ChipV2。
 
 **起始版本：** 26.0.0

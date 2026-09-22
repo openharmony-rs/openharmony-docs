@@ -1,5 +1,9 @@
 # ColorShaderStyle
 
+```TypeScript
+declare class ColorShaderStyle extends ShaderStyle
+```
+
 显示为纯色。ColorShaderStyle继承自[ShaderStyle](arkts-arkui-shaderstyle-c.md)。
 
 **继承/实现关系：** ColorShaderStyle extends [ShaderStyle](arkts-arkui-shaderstyle-c.md)

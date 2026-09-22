@@ -1,5 +1,9 @@
 # InterceptedRecordPage (System API)
 
+```TypeScript
+interface InterceptedRecordPage
+```
+
 Intercepted record page information.
 
 **Since:** 14

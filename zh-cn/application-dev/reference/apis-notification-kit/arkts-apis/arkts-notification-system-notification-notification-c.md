@@ -1,5 +1,9 @@
 # Notification
 
+```TypeScript
+declare class Notification
+```
+
 提供通知管理的能力。
 
 **起始版本：** 3

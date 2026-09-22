@@ -42,6 +42,8 @@ Obtains an array of the launcher ability information based on a given bundle nam
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | Yes | Callback used to return an array of the launcher ability information. |
 
 
+<a id="getlauncherabilityinfos-1"></a>
+
 ## getLauncherAbilityInfos
 
 ```TypeScript

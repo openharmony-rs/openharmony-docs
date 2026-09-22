@@ -1,5 +1,9 @@
 # Buffer
 
+```TypeScript
+class Buffer
+```
+
 Buffer对象是处理二进制数据的缓冲区。
 
 **起始版本：** 9
@@ -210,7 +214,7 @@ console.info(buf1.equals(buf3).toString());
 
 ```TypeScript
 fill(
-      value: string | Buffer | Uint8Array | number | number | number,
+      value: string | Buffer | Uint8Array | number,
       offset?: number,
       end?: number,
       encoding?: BufferEncoding
@@ -229,7 +233,7 @@ fill(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string &#124; Buffer &#124; Uint8Array &#124; number &#124; number &#124; number | 是 | 用于填充的值。<br>**适用版本：** 11 |
+| value | string &#124; Buffer &#124; Uint8Array &#124; number | 是 | 用于填充的值。<br>**适用版本：** 11 |
 | offset | number | 否 | 起始偏移量。取值范围：&gt;= 0且&lt;= Buffer.length。默认值：0。 |
 | end | number | 否 | 结束偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
 | encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
@@ -259,7 +263,7 @@ console.info(b.toString());
 ## includes
 
 ```TypeScript
-includes(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): boolean
+includes(value: string | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): boolean
 ```
 
 检查Buffer对象是否包含value值。
@@ -274,7 +278,7 @@ includes(value: string | number | number | number | Buffer | Uint8Array, byteOff
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string &#124; number &#124; number &#124; number &#124; Buffer &#124; Uint8Array | 是 | 要搜索的内容。<br>**适用版本：** 11 |
+| value | string &#124; number &#124; Buffer &#124; Uint8Array | 是 | 要搜索的内容。<br>**适用版本：** 11 |
 | byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
 | encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
@@ -299,7 +303,7 @@ console.info(buf.includes('be').toString());
 ## indexOf
 
 ```TypeScript
-indexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
+indexOf(value: string | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
 ```
 
 返回当前对象中首次出现value的索引，如果不包含value，则返回-1。
@@ -314,7 +318,7 @@ indexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffs
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string &#124; number &#124; number &#124; number &#124; Buffer &#124; Uint8Array | 是 | 要查找的内容。<br>**适用版本：** 11 |
+| value | string &#124; number &#124; Buffer &#124; Uint8Array | 是 | 要查找的内容。<br>**适用版本：** 11 |
 | byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
 | encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
@@ -379,7 +383,7 @@ for (const key of keys) {
 ## lastIndexOf
 
 ```TypeScript
-lastIndexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
+lastIndexOf(value: string | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
 ```
 
 返回this实例中最后一次出现value的索引，如果对象不包含value，则返回-1。
@@ -394,7 +398,7 @@ lastIndexOf(value: string | number | number | number | Buffer | Uint8Array, byte
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string &#124; number &#124; number &#124; number &#124; Buffer &#124; Uint8Array | 是 | 要搜索的内容。<br>**适用版本：** 11 |
+| value | string &#124; number &#124; Buffer &#124; Uint8Array | 是 | 要搜索的内容。<br>**适用版本：** 11 |
 | byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：Buffer.length。 |
 | encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 

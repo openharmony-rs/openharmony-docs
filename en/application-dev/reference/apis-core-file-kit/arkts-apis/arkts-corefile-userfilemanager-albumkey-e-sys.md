@@ -1,5 +1,9 @@
 # AlbumKey (System API)
 
+```TypeScript
+enum AlbumKey
+```
+
 Defines the key album information.
 
 **Since:** 9

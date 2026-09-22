@@ -1,5 +1,9 @@
 # ActionType
 
+```TypeScript
+export declare enum ActionType
+```
+
 手势事件类型。
 
 **起始版本：** 10

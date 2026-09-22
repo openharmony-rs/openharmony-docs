@@ -70,22 +70,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager, common } from '@kit.MDMKit';
 
-try {
-  // 需根据实际情况进行替换
-  // 参数需根据实际情况进行替换
-  let bundleName: string = "com.example.exampleapplication";
-  let accountId: number = 100;
-  let abilityName: string = "EntryAbility";
-  let isDisabled: boolean = applicationManager.isAbilityDisabled(null, bundleName, accountId, abilityName);
-  console.info(`Succeeded in querying whether the ability is disabled, isDisabled: ${isDisabled}`);
-} catch(err) {
-  console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="isabilitydisabled-1"></a>
 
 ## isAbilityDisabled
 
@@ -129,4 +115,18 @@ function isAbilityDisabled(admin: Want | null, bundleName: string, accountId: nu
 
 **示例**
 
-参见 isAbilityDisabled
+```TypeScript
+import { applicationManager, common } from '@kit.MDMKit';
+
+try {
+  // 需根据实际情况进行替换
+  // 参数需根据实际情况进行替换
+  let bundleName: string = "com.example.exampleapplication";
+  let accountId: number = 100;
+  let abilityName: string = "EntryAbility";
+  let isDisabled: boolean = applicationManager.isAbilityDisabled(null, bundleName, accountId, abilityName);
+  console.info(`Succeeded in querying whether the ability is disabled, isDisabled: ${isDisabled}`);
+} catch(err) {
+  console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
+}
+```

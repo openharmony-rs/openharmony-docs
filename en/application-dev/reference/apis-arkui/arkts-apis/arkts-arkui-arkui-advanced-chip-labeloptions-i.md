@@ -1,6 +1,19 @@
 # LabelOptions
 
+```TypeScript
+export interface LabelOptions
+```
+
 Defines text configuration options.
+
+> **NOTE:** 
+> 
+> Starting from API version 26.0.0, when **backgroundSystemMaterial** is set to an auto-invert system material,
+> **fontColor** uses a special system resource that supports color inversion, and the text color automatically adapts
+> to the inverted color of the material background. When **activatedBackgroundSystemMaterial** is set to an auto-
+> invert system material, **activatedFontColor** uses a special system resource that supports color inversion, and
+> the text color of the chip in the activated state automatically adapts to the inverted color of the material
+> background.
 
 **Since:** 11
 
@@ -18,11 +31,11 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 activatedFontColor?: ResourceColor
 ```
 
-Font color when the chip is activated.
+Text color when the **Chip** is activated.
 
-Default value: **&#36;r('sys.color.ohos_id_color_text_primary_contrary')**
+Default value: $r('sys.color.ohos_id_color_text_primary_contrary')
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -40,11 +53,11 @@ If the value is **undefined**, the default value is used.
 fontColor?: ResourceColor
 ```
 
-Font color.
+Text color.
 
-Default value: **&#36;r('sys.color.ohos_id_color_text_primary')**
+Default value: **$r('sys.color.ohos_id_color_text_primary')**
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -62,11 +75,11 @@ If the value is **undefined**, the default value is used.
 fontFamily?: string
 ```
 
-Font family.
+Font style of the **Chip** component text.
 
 Default value: **"HarmonyOS Sans"**
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** string
 
@@ -84,11 +97,15 @@ If the value is **undefined**, the default value is used.
 fontSize?: Dimension
 ```
 
-Font size. This parameter cannot be set in percentage.
+Font size. Percentage is not supported. If a percentage is passed, the default value is used.
 
-Default value: **&#36;r('sys.float.ohos_id_text_size_button2')**
+If a negative value is passed, the default value is used.
 
-If the value is **undefined**, the default value is used.
+Default value: **$r('sys.float.ohos_id_text_size_button2')**
+
+Unit: fp
+
+When the value is **undefined**, the default value is used.
 
 **Type:** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -106,17 +123,17 @@ If the value is **undefined**, the default value is used.
 labelMargin?: LabelMarginOptions
 ```
 
-Spacing between the text and the left and right icons.
+Spacing between the text and the left/right icons.
 
-Default value:
+Default values:
 
-When **size** is **ChipSize.SMALL**: **{ left: 4, right: 4 }**.
+When **size** is **ChipSize.SMALL**, the default value is **{ left: 4, right: 4 }**.
 
-When **size** is **ChipSize.NORMAL**: **{ left: 6, right: 6 }**.
+When **size** is **ChipSize.NORMAL**, the default value is **{ left: 6, right: 6 }**
 
-Unit: vp.
+Unit: vp
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [LabelMarginOptions](arkts-arkui-arkui-advanced-chip-labelmarginoptions-i.md)
 
@@ -134,19 +151,19 @@ If the value is **undefined**, the default value is used.
 localizedLabelMargin?: LocalizedLabelMarginOptions
 ```
 
-Spacing between the localized text and the left and right icons.
+Spacing between the localized text and the left/right icons.
 
-Default value:
+Default values:
 
-When **size** is set to **ChipSize.SMALL**, the default value is as follows:
+When **size** is **ChipSize.SMALL**:
 
-`{ start: LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin')), end: LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin')) }`
+`{ start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')), end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`
 
-When **size** is set to **ChipSize.NORMAL**, the default value is as follows:
+When **size** is **ChipSize.NORMAL**:
 
-`{ start: LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin')), end: LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin')) }`
+`{ start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')), end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [LocalizedLabelMarginOptions](arkts-arkui-arkui-advanced-chip-localizedlabelmarginoptions-i.md)
 
@@ -164,7 +181,7 @@ If the value is **undefined**, the default value is used.
 text: string
 ```
 
-Text content.
+Text content displayed by the **Chip** component.
 
 **Type:** string
 

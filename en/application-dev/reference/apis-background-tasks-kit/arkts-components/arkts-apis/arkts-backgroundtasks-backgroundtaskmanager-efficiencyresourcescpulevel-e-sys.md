@@ -1,5 +1,9 @@
 # EfficiencyResourcesCpuLevel (System API)
 
+```TypeScript
+export enum EfficiencyResourcesCpuLevel
+```
+
 Defines the CPU level of the efficiency resource.
 
 **Since:** 23

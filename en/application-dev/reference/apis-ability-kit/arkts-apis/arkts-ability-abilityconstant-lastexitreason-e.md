@@ -1,5 +1,9 @@
 # LastExitReason
 
+```TypeScript
+export enum LastExitReason
+```
+
 Enumerates the reasons for the last exit of the ability. You can use it together with the value of **launchParam.lastExitReason** in [onCreate()](arkts-ability-app-ability-uiability-uiability-c.md#oncreate) of the UIAbility to complete different operations.
 
 **Since:** 9
@@ -48,7 +52,7 @@ NORMAL = 2
 
 The ability exits normally because the user closes the application.
 
-Note: If the application process is forcibly terminated using methods not provided by Ability Kit, such as calling process.exit() or using the kernel **kill** command, the reason for the last exit is also reported as **NORMAL**.
+Note: If the application process is forcibly terminated using methods not provided by Ability Kit, such as calling [process.exit()](../../apis-arkts/arkts-apis/arkts-arkts-process-exit-f.md) or using the kernel **kill** command, the reason for the last exit is also reported as **NORMAL**.
 
 **Since:** 9
 

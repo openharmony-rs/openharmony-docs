@@ -1,5 +1,9 @@
 # SolvableErrors（系统接口）
 
+```TypeScript
+export enum SolvableErrors
+```
+
 可解决错误码。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # PairingReason
 
+```TypeScript
+enum PairingReason
+```
+
 配对原因的枚举。
 
 **起始版本：** 26.0.0

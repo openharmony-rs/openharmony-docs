@@ -1,5 +1,9 @@
 # NfcForumType
 
+```TypeScript
+enum NfcForumType
+```
+
 Enumerates the NFC Forum tag types.
 
 **Since:** 9

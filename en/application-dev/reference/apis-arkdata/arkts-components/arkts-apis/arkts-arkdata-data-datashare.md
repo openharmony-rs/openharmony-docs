@@ -27,9 +27,9 @@ import { dataShare } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md) | Creates a **DataShareHelper** instance. This API uses an asynchronous callback to return the result. |
-| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md) | Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses an asynchronous callback to return the result. |
-| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md) | Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses a promise to return the result. |
+| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper) | Creates a **DataShareHelper** instance. This API uses an asynchronous callback to return the result. |
+| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper-1) | Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses an asynchronous callback to return the result. |
+| [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper-2) | Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses a promise to return the result. |
 | [disableSilentProxy](arkts-arkdata-datashare-disablesilentproxy-f-sys.md) | Disables silent access. This API uses a promise to return the result. |
 | [enableSilentProxy](arkts-arkdata-datashare-enablesilentproxy-f-sys.md) | Enables silent access. This API uses a promise to return the result. |
 <!--DelEnd-->

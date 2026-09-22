@@ -1,5 +1,9 @@
 # CCallStateInfo
 
+```TypeScript
+export interface CCallStateInfo
+```
+
 Defines information about the call status.
 
 **Since:** 23

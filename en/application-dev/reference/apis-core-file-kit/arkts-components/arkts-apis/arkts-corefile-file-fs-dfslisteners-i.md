@@ -1,5 +1,9 @@
 # DfsListeners
 
+```TypeScript
+export interface DfsListeners
+```
+
 Provides APIs for observing events. listening for the distributed file system status.
 
 **Since:** 12

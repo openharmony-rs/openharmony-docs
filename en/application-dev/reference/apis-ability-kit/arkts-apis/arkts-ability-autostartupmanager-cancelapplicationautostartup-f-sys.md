@@ -43,6 +43,8 @@ Cancels the auto-startup setting for an application component. This API uses an 
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Failed to connect to the system service. |
 
 
+<a id="cancelapplicationautostartup-1"></a>
+
 ## cancelApplicationAutoStartup
 
 ```TypeScript

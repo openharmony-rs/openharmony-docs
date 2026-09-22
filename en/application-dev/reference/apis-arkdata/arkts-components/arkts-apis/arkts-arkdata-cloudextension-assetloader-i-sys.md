@@ -1,5 +1,9 @@
 # AssetLoader (System API)
 
+```TypeScript
+export interface AssetLoader
+```
+
 Provides APIs for uploading and downloading assets.
 
 **Since:** 11

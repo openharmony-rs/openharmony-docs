@@ -1,5 +1,9 @@
 # ImageAttachmentLayoutStyle
 
+```TypeScript
+declare interface ImageAttachmentLayoutStyle
+```
+
 Defines the ImageAttachment Layout Style.
 
 **Since:** 12

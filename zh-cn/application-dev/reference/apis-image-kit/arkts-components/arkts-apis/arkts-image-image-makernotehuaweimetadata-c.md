@@ -1,5 +1,9 @@
 # MakerNoteHuaweiMetadata
 
+```TypeScript
+class MakerNoteHuaweiMetadata implements Metadata
+```
+
 MakerNoteHuaweiMetadata implements Metadata
 
 来自Huawei相机的照片元数据。
@@ -36,6 +40,36 @@ clone(): Promise<MakerNoteHuaweiMetadata>
 | --- | --- |
 | Promise&lt;[MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md)&gt; | Promise对象，当成功获取元数据时返回MakerNoteHuaweiMetadata元数据实例。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiClone(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let new_metadata = await metaData.makerNoteHuaweiMetadata.clone();
+    new_metadata.getProperties(["HwMnoteIsXmageSupported"]).then((data1) => {
+      console.info(`Succeeded in cloning metadata and getting properties. Data: ${JSON.stringify(data1)}.`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to clone metadata and get properties. Code: ${err.code}, message: ${err.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## createInstance
 
 ```TypeScript
@@ -55,6 +89,17 @@ static createInstance(): MakerNoteHuaweiMetadata
 | 类型 | 说明 |
 | --- | --- |
 | [MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md) | 返回MakerNoteHuaweiMetadata的空实例。 |
+
+**示例**
+
+```TypeScript
+async function makerNoteHuaweiCreateInstance(context: Context) {
+  let makerNoteHuaweiMetadata = image.MakerNoteHuaweiMetadata.createInstance();
+  if (makerNoteHuaweiMetadata != undefined) {
+    console.info("Succeeded in creating a MakerNoteHuaweiMetadata instance.");
+  }
+}
+```
 
 ## getAllProperties
 
@@ -76,6 +121,36 @@ getAllProperties(): Promise<Record<string, string | null>>
 | --- | --- |
 | Promise&lt;Record&lt;string, string &#124; null&gt;&gt; | Promise对象，返回元数据中定义的所有键值对。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiGetAllProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    await metaData.makerNoteHuaweiMetadata.getAllProperties().then((data) => {
+      const count = Object.keys(data).length;
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## getBlob
 
 ```TypeScript
@@ -95,6 +170,31 @@ getBlob(): Promise<ArrayBuffer>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise对象，返回元数据的二进制数据。 |
+
+**示例**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiGetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let blob = await metaData.makerNoteHuaweiMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
 
 ## getProperties
 
@@ -130,6 +230,35 @@ getProperties(key: Array<string>): Promise<Record<string, string | null>>
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-不支持的元数据读写) | Unsupported metadata. Possible causes: unsupported metadata type. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiGetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    await metaData.makerNoteHuaweiMetadata.getProperties(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]).then((data) => {
+      console.info(`Succeeded in getting properties. Data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## setBlob
 
 ```TypeScript
@@ -161,6 +290,36 @@ setBlob(blob: ArrayBuffer): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**示例**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiSetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let blob = await metaData.makerNoteHuaweiMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.makerNoteHuaweiMetadata.setBlob(blob);
+    }
+    let new_blob = metaData.makerNoteHuaweiMetadata.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```
 
 ## setProperties
 
@@ -195,6 +354,39 @@ setProperties(records: Record<string, string | null>): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-不支持的元数据读写) | Unsupported metadata. Possible causes: unsupported metadata type. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiSetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let setkey: Record<string, string | null> = {
+      "HwMnoteIsXmageSupported": "1",
+      "HwMnoteXmageMode": "9"
+    };
+    await metaData.makerNoteHuaweiMetadata.setProperties(setkey).then(async () => {
+      console.info('Succeeded in setting properties.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
+    })
+  } else {
+    console.error('metadata is null. ');
+  }
+}
+```
 
 ## burstNumber
 

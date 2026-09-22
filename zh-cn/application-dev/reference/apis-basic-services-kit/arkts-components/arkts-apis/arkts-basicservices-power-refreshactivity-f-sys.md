@@ -36,7 +36,7 @@ function refreshActivity(reason: string): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [4900101](../errorcode-power.md#4900101-连接服务失败) | Failed to connect to the service. |
 | [4900201](../errorcode-power.md#4900201-设备活跃状态刷新间隔过短) | The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. This API cannot work in car devices.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. This API cannot work in car devices.<br>**适用版本：** 26.0.1+ |
 
 **示例**
 

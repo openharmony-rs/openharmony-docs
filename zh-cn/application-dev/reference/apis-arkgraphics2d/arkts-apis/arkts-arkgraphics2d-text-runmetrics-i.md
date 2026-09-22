@@ -1,5 +1,9 @@
 # RunMetrics
 
+```TypeScript
+interface RunMetrics
+```
+
 描述文本行中连续文本块的布局信息和度量数据。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 Represents the configuration options of a **Preferences** instance.
 
 **Since:** 12

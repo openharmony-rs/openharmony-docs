@@ -1,5 +1,9 @@
 # MediaDescriptionKey
 
+```TypeScript
+enum MediaDescriptionKey
+```
+
 Enumerates the media description keys.
 
 **Since:** 8

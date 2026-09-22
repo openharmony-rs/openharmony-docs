@@ -1,5 +1,9 @@
 # CommonShapeMethod
 
+```TypeScript
+declare class CommonShapeMethod<T>
+```
+
 Implements the common shape methods.
 
 **Since:** 12

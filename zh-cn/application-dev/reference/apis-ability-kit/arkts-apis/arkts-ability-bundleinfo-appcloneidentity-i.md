@@ -1,5 +1,9 @@
 # AppCloneIdentity
 
+```TypeScript
+export interface AppCloneIdentity
+```
+
 描述应用包的身份信息。
 
 **起始版本：** 14

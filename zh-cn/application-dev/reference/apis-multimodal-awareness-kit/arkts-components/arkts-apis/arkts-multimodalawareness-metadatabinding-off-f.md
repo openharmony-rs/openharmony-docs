@@ -34,3 +34,18 @@ function off(type: 'operationSubmitMetadata', bundleName: string, callback?: Cal
 | --- | --- |
 | [32100001](../errorcode-metadataBinding.md#32100001-文件创建失败) | Internal handling failed. |
 | [32100005](../errorcode-metadataBinding.md#32100005-取消订阅失败) | Unsubscribe Failed. Possible causes:<br> 1. Abnormal system capability. <br> 2. IPC communication abnormality. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';
+
+let bundleName: string = 'com.example.app';
+try {
+  metadataBinding.off('operationSubmitMetadata', bundleName);
+} catch (error) {
+ const err = error as BusinessError;
+ console.error(`Failed to unsubscribe operationSubmitMetadata event. Code: ${err.code}, message: ${err.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # FingerprintAction（系统接口）
 
+```TypeScript
+export declare enum FingerprintAction
+```
+
 指纹手势事件类型的枚举。
 
 **起始版本：** 12

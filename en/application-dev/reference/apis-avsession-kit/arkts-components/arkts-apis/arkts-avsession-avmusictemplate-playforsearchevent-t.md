@@ -19,7 +19,7 @@ The play for search event.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | command | [SearchPlayInfoType](arkts-avsession-avmusictemplate-searchplayinfotype-e.md) | Yes | command |
-| args | [SearchPlayInfo](arkts-avsession-avmusictemplate-searchplayinfo-i.md) | Yes | [args](../../apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-sqlinfo-i.md) |
+| args | [SearchPlayInfo](arkts-avsession-avmusictemplate-searchplayinfo-i.md) | Yes | args |
 
 **Return value:**
 

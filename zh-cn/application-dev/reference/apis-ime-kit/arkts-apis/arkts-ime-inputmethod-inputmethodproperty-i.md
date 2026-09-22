@@ -1,5 +1,9 @@
 # InputMethodProperty
 
+```TypeScript
+interface InputMethodProperty
+```
+
 输入法应用属性。
 
 **起始版本：** 8

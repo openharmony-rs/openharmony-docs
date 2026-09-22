@@ -61,6 +61,8 @@ Moves a file. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
+<a id="movefile-1"></a>
+
 ## moveFile
 
 ```TypeScript
@@ -109,6 +111,8 @@ Moves a file and forcibly overwrites the file with the same name in the destinat
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
+
+<a id="movefile-2"></a>
 
 ## moveFile
 

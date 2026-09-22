@@ -1,5 +1,9 @@
 # ObjectConstructor
 
+```TypeScript
+interface ObjectConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -10,6 +14,8 @@
 ```TypeScript
 (): any
 ```
+
+<a id="call-1"></a>
 
 ## [[Call]]
 
@@ -48,6 +54,8 @@ Creates an object that has the specified prototype or that has null prototype.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | o | object &#124; null | Yes |  |
+
+<a id="create-1"></a>
 
 ## create
 
@@ -109,6 +117,8 @@ Prevents the modification of existing property attributes and values, and preven
 | --- | --- | --- | --- |
 | f | T | Yes |  |
 
+<a id="freeze-1"></a>
+
 ## freeze
 
 ```TypeScript
@@ -122,6 +132,8 @@ Prevents the modification of existing property attributes and values, and preven
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | o | T | Yes |  |
+
+<a id="freeze-2"></a>
 
 ## freeze
 

@@ -1,5 +1,9 @@
 # AccessibilitySelectedType
 
+```TypeScript
+export declare enum AccessibilitySelectedType
+```
+
 AccessibilitySelectedType定义Chip可指定的选中态类型，用于控制无障碍服务如何向用户传达组件的选中状态。不同的选中态类型提供了不同的语义和用户体验。
 
 **起始版本：** 14
@@ -28,7 +32,7 @@ CLICKED = 0
 CHECKED = 1
 ```
 
-复选型。组件通过 [accessibilityChecked](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitychecked) 属性向无障碍服务报告选中状态。适用于多选场景，如标签筛选、属性选择等。
+复选型。组件通过 [accessibilityChecked](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitychecked) 属性向无障碍服务报告选中状态。适用于多选场景，如标签筛选、属性选择等。
 
 **起始版本：** 14
 
@@ -44,7 +48,7 @@ CHECKED = 1
 SELECTED = 2
 ```
 
-单选型。组件通过 [accessibilitySelected](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilityselected) 属性向无障碍服务报告选中状态。适用于表示当前选中项的场景，如导航栏标签、单选列表项等。
+单选型。组件通过 [accessibilitySelected](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilityselected) 属性向无障碍服务报告选中状态。适用于表示当前选中项的场景，如导航栏标签、单选列表项等。
 
 **起始版本：** 14
 

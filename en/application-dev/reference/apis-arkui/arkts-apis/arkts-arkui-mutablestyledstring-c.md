@@ -1,5 +1,9 @@
 # MutableStyledString
 
+```TypeScript
+declare class MutableStyledString extends StyledString
+```
+
 Inherits from the [StyledString](arkts-arkui-styledstring-c.md) class.
 
 > **An exception is thrown in the following cases:**

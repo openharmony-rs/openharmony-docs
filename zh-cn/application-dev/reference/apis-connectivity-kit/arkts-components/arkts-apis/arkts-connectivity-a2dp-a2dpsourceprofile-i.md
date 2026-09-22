@@ -1,5 +1,9 @@
 # A2dpSourceProfile
 
+```TypeScript
+interface A2dpSourceProfile extends BaseProfile
+```
+
 该实例表示蓝牙媒体音频中的A2DP Source角色。
 
 该类继承于[BaseProfile](arkts-connectivity-a2dp-baseprofile-t.md)，因此可以使用其父类中的方法。使用该类的方法前，需通过[createA2dpSrcProfile](arkts-connectivity-a2dp-createa2dpsrcprofile-f.md)方法构造该类的实例。和该实例角色相对应的是A2DP Sink。

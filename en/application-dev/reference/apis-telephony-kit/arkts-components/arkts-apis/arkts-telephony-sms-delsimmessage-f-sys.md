@@ -55,20 +55,8 @@ sms.delSimMessage(slotId, msgIndex, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-let msgIndex: number = 1;
-let promise = sms.delSimMessage(slotId, msgIndex);
-promise.then(() => {
-    console.info(`delSimMessage success.`);
-}).catch((err: BusinessError) => {
-    console.error(`delSimMessage failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="delsimmessage-1"></a>
 
 ## delSimMessage
 
@@ -113,4 +101,16 @@ Deletes a message from the SIM card. If the specified **msgIndex** is invalid, a
 
 **Examples**
 
-See [delSimMessage](#delsimmessage)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+let msgIndex: number = 1;
+let promise = sms.delSimMessage(slotId, msgIndex);
+promise.then(() => {
+    console.info(`delSimMessage success.`);
+}).catch((err: BusinessError) => {
+    console.error(`delSimMessage failed, promise: err->${JSON.stringify(err)}`);
+});
+```

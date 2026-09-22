@@ -1,5 +1,9 @@
 # SensorAccuracy
 
+```TypeScript
+enum SensorAccuracy
+```
+
 传感器数据的精度挡位。
 
 **起始版本：** 11

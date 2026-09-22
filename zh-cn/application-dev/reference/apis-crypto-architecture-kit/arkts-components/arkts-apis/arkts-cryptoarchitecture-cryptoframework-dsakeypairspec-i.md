@@ -1,5 +1,9 @@
 # DSAKeyPairSpec
 
+```TypeScript
+interface DSAKeyPairSpec extends AsyKeySpec
+```
+
 密钥参数[AsyKeySpec](arkts-cryptoarchitecture-cryptoframework-asykeyspec-i.md)的子类，用于指定DSA算法中公私钥包含的全量参数。
 
 <br>在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md)方法创建密钥生成器。

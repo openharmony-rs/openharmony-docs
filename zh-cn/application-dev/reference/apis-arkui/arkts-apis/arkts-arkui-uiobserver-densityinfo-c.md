@@ -1,5 +1,9 @@
 # DensityInfo
 
+```TypeScript
+export class DensityInfo
+```
+
 屏幕像素密度变化回调包含的信息。
 
 **起始版本：** 12

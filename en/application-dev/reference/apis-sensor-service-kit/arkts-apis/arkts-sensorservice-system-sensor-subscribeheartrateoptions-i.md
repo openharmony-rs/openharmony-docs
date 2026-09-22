@@ -1,5 +1,9 @@
 # SubscribeHeartRateOptions
 
+```TypeScript
+export interface SubscribeHeartRateOptions
+```
+
 Defines the type of data to return for a subscription to data changes of the heart rate sensor.
 
 **Since:** 3

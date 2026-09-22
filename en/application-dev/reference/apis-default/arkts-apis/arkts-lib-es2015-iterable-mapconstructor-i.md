@@ -1,5 +1,9 @@
 # MapConstructor
 
+```TypeScript
+interface MapConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -10,6 +14,8 @@
 ```TypeScript
 new(): Map<any, any>
 ```
+
+<a id="construct-1"></a>
 
 ## [[Construct]]
 

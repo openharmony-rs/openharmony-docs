@@ -1,5 +1,9 @@
 # MmsAddress（系统接口）
 
+```TypeScript
+export interface MmsAddress
+```
+
 彩信地址。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # ContainerFormatType
 
+```TypeScript
+enum ContainerFormatType
+```
+
 表示容器格式类型的枚举，缩写为CFT。
 
 **起始版本：** 8

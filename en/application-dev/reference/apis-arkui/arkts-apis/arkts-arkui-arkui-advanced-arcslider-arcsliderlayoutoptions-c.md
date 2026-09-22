@@ -1,5 +1,9 @@
 # ArcSliderLayoutOptions
 
+```TypeScript
+declare class ArcSliderLayoutOptions
+```
+
 Defines the layout of the arc slider.
 
 **Since:** 18

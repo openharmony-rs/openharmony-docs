@@ -1,5 +1,9 @@
 # LocatingRequiredData（系统接口）
 
+```TypeScript
+export interface LocatingRequiredData
+```
+
 表示定位业务所需的数据，包含WiFi或蓝牙扫描结果，APP拿到这些数据之后可以用于网络定位等业务。
 
 **起始版本：** 10

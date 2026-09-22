@@ -1,5 +1,9 @@
 # Matrix
 
+```TypeScript
+class Matrix
+```
+
 Implements a matrix. A 3 x 3 matrix is shown as below.![matrix_3x3](../../../reference/apis-arkgraphics2d/figures/matrix3X3.PNG) Elements in the matrix from left to right and from top to bottom respectively represent a horizontal scale coefficient, a horizontal skew coefficient, a horizontal translation coefficient, a vertical skew coefficient, a vertical scale coefficient, a vertical translation coefficient, an X-axis perspective coefficient, a Y-axis perspective coefficient, and a perspective scale coefficient. If (x&lt;sub&gt;1&lt;/sub&gt;, y&lt;sub&gt;1&lt;/sub&gt;) is the source coordinate point, (x&lt;sub&gt;2&lt;/sub&gt;, y&lt;sub&gt;2&lt;/sub&gt;) is the coordinate point obtained by transforming the source coordinate point using the matrix, then the relationship between the two coordinate points is as follows:![matrix_xy](../../../reference/apis-arkgraphics2d/figures/matrix_xy.PNG)
 
 > **NOTE:** 
@@ -32,6 +36,16 @@ Creates a **Matrix** object.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+```
+
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -50,6 +64,15 @@ Copies a matrix.
 | --- | --- | --- | --- |
 | matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | Yes | Matrix to be copied. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+let matrix2 = new drawing.Matrix(matrix);
+```
+
 ## getAll
 
 ```TypeScript
@@ -67,6 +90,15 @@ Obtains all element values of this matrix.
 | Type | Description |
 | --- | --- |
 | Array&lt;number&gt; | Array of matrix values obtained. The length is 9. Each value is a floating point number. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+console.info("matrix "+ matrix.getAll());
+```
 
 ## getValue
 
@@ -98,6 +130,17 @@ Obtains a matrix value of a given index, which ranges from 0 to 8.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+for (let i = 0; i < 9; i++) {
+    console.info("matrix "+matrix.getValue(i).toString());
+}
+```
+
 ## invert
 
 ```TypeScript
@@ -128,6 +171,22 @@ Inverts this matrix and returns the result.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+if (matrix1.invert(matrix2)) {
+  console.info("matrix1 is invertible and matrix2 is set as an inverse matrix of the matrix1.");
+} else {
+  console.info("matrix1 is not invertible and matrix2 is not changed.");
+}
+```
+
 ## isAffine
 
 ```TypeScript
@@ -145,6 +204,17 @@ Checks whether the existing matrix is an affine matrix, which includes transform
 | Type | Description |
 | --- | --- |
 | boolean | Whether the existing matrix is an affine matrix. **true** means yes; **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+let isAffine = matrix.isAffine();
+console.info('isAffine :', isAffine);
+```
 
 ## isEqual
 
@@ -176,6 +246,22 @@ Checks whether two **OH_Drawing_Matrix** objects are equal.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+if (matrix1.isEqual(matrix2)) {
+  console.info("matrix1 and matrix2 are equal.");
+} else {
+  console.info("matrix1 and matrix2 are not equal.");
+}
+```
+
 ## isIdentity
 
 ```TypeScript
@@ -193,6 +279,19 @@ Checks whether an **OH_Drawing_Matrix** object is an identity matrix:
 | Type | Description |
 | --- | --- |
 | boolean | Check result. The value **true** means that the matrix is an identity matrix, and **false** means the opposite. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+if (matrix.isIdentity()) {
+  console.info("matrix is identity.");
+} else {
+  console.info("matrix is not identity.");
+}
+```
 
 ## mapPoints
 
@@ -224,6 +323,21 @@ Maps a source point array to a destination point array by means of matrix transf
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let src: Array<common2D.Point> = [];
+src.push({x: 15, y: 20});
+src.push({x: 20, y: 15});
+src.push({x: 30, y: 10});
+let matrix = new drawing.Matrix();
+let dst: Array<common2D.Point> = matrix.mapPoints(src);
+console.info("matrix= src: "+JSON.stringify(src));
+console.info("matrix= dst: "+JSON.stringify(dst));
+```
+
 ## mapRadius
 
 ```TypeScript
@@ -247,6 +361,17 @@ Returns the average radius of the ellipse formed after a circle with the specifi
 | Type | Description |
 | --- | --- |
 | number | Average radius after transformation. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let radius = matrix.mapRadius(10);
+console.info('radius', radius);
+```
 
 ## mapRect
 
@@ -279,6 +404,19 @@ Sets the destination rectangle to the bounding rectangle of the shape obtained a
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let dst: common2D.Rect = { left: 100, top: 20, right: 130, bottom: 60 };
+let src: common2D.Rect = { left: 100, top: 80, right: 130, bottom: 120 };
+let matrix = new drawing.Matrix();
+if (matrix.mapRect(dst, src)) {
+    console.info("matrix= dst "+JSON.stringify(dst));
+}
+```
+
 ## postConcat
 
 ```TypeScript
@@ -296,6 +434,25 @@ Right-multiply the existing matrix by another matrix.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | Yes | Matrix used for calculation. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+if (matrix.isIdentity()) {
+  console.info("matrix is identity.");
+} else {
+  console.info("matrix is not identity.");
+}
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix1.postConcat(matrix2);
+```
 
 ## postRotate
 
@@ -322,6 +479,19 @@ Post multiplies this matrix by a matrix that is derived from an identity matrix 
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let degree: number = 2;
+let px: number = 3;
+let py: number = 4;
+matrix.postRotate(degree, px, py);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## postScale
 
@@ -350,6 +520,20 @@ Post multiplies this matrix by a matrix that is derived from an identity matrix 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let sx: number = 2;
+let sy: number = 0.5;
+let px: number = 1;
+let py: number = 1;
+matrix.postScale(sx, sy, px, py);
+console.info("matrix= "+matrix.getAll().toString());
+```
+
 ## postSkew
 
 ```TypeScript
@@ -370,6 +554,15 @@ Right-multiply the existing matrix by a skew transformation matrix.
 | ky | number | Yes | Amount of tilt on the Y axis. The value is a floating point number. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis. |
 | px | number | Yes | X coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left. |
 | py | number | Yes | Y coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.postSkew(2.0, 1.0, 2.0, 1.0);
+```
 
 ## postTranslate
 
@@ -396,6 +589,18 @@ Post multiplies this matrix by a matrix that is derived from an identity matrix 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let dx: number = 3;
+let dy: number = 4;
+matrix.postTranslate(dx, dy);
+console.info("matrix= "+matrix.getAll().toString());
+```
+
 ## preConcat
 
 ```TypeScript
@@ -419,6 +624,18 @@ Preconcats the existing matrix with the passed-in matrix.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix1.preConcat(matrix2);
+```
 
 ## preRotate
 
@@ -445,6 +662,19 @@ Premultiplies this matrix by a matrix that is derived from an identity matrix af
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let degree: number = 2;
+let px: number = 3;
+let py: number = 4;
+matrix.preRotate(degree, px, py);
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## preScale
 
@@ -473,6 +703,20 @@ Premultiplies this matrix by a matrix that is derived from an identity matrix af
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let sx: number = 2;
+let sy: number = 0.5;
+let px: number = 1;
+let py: number = 1;
+matrix.preScale(sx, sy, px, py);
+console.info("matrix"+matrix.getAll().toString());
+```
+
 ## preSkew
 
 ```TypeScript
@@ -493,6 +737,15 @@ Left-multiply the existing matrix by a skew transformation matrix.
 | ky | number | Yes | Amount of tilt on the Y axis. The value is a floating point number. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis. |
 | px | number | Yes | X coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left. |
 | py | number | Yes | Y coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.preSkew(2.0, 1.0, 2.0, 1.0);
+```
 
 ## preTranslate
 
@@ -519,6 +772,18 @@ Premultiplies this matrix by a matrix that is derived from an identity matrix af
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+let dx: number = 3;
+let dy: number = 4;
+matrix.preTranslate(dx, dy);
+console.info("matrix"+matrix.getAll().toString());
+```
+
 ## rectStaysRect
 
 ```TypeScript
@@ -537,6 +802,18 @@ Checks whether a rectangle stays a rectangle after being mapped by a matrix.
 | --- | --- |
 | boolean | Whether a rectangle stays a rectangle after being mapped by a matrix. **true** means yes; false otherwise. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+let matrix2 = new drawing.Matrix(matrix);
+let isRect = matrix2.rectStaysRect();
+console.info('isRect :', isRect);
+```
+
 ## reset
 
 ```TypeScript
@@ -548,6 +825,17 @@ Resets this matrix to an identity matrix.
 **Since:** 12
 
 **System capability:** SystemCapability.Graphics.Drawing
+
+**Examples**
+
+```TypeScript
+import { drawing } from "@kit.ArkGraphics2D";
+
+let matrix = new drawing.Matrix();
+matrix.postScale(2, 3, 4, 5);
+matrix.reset();
+console.info("matrix= "+matrix.getAll().toString());
+```
 
 ## setConcat
 
@@ -567,6 +855,18 @@ Updates the existing matrix with the product of two matrices.
 | --- | --- | --- | --- |
 | matrixA | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | Yes | Matrix A used for calculation. |
 | matrixB | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | Yes | Matrix B used for calculation. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix1.setConcat(matrix2, matrix1);
+```
 
 ## setMatrix
 
@@ -592,6 +892,18 @@ Sets parameters for this matrix.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+let value : Array<number> = [2, 2, 2, 2, 2, 2, 2, 2, 2];
+matrix.setMatrix(value);
+```
+
+<a id="setmatrix-1"></a>
+
 ## setMatrix
 
 ```TypeScript
@@ -609,6 +921,17 @@ Updates the existing matrix with another matrix.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | matrix | Array&lt;number&gt; &#124; [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | Yes | Array or matrix for the update. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix1 = new drawing.Matrix();
+matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+let matrix2 = new drawing.Matrix();
+matrix1.setMatrix(matrix2);
+```
 
 ## setPolyToPoly
 
@@ -642,6 +965,19 @@ Sets this matrix to a transformation matrix that maps the source point array to 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let srcPoints: Array<common2D.Point> = [ {x: 10, y: 20}, {x: 200, y: 150} ];
+let dstPoints: Array<common2D.Point> = [{ x:0, y: 10 }, { x:300, y: 600 }];
+let matrix = new drawing.Matrix();
+if (matrix.setPolyToPoly(srcPoints, dstPoints, 2)) {
+    console.info("matrix"+matrix.getAll().toString());
+}
+```
+
 ## setRectToRect
 
 ```TypeScript
@@ -674,6 +1010,20 @@ Sets this matrix to a transformation matrix that maps a source rectangle to a de
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { drawing, common2D } from "@kit.ArkGraphics2D";
+
+let src: common2D.Rect = { left: 100, top: 100, right: 300, bottom: 300 };
+let dst: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
+let scaleToFit: drawing.ScaleToFit = drawing.ScaleToFit.FILL_SCALE_TO_FIT;
+let matrix = new drawing.Matrix();
+if (matrix.setRectToRect(src, dst, scaleToFit)) {
+    console.info("matrix"+matrix.getAll().toString());
+}
+```
+
 ## setRotation
 
 ```TypeScript
@@ -699,6 +1049,15 @@ Sets this matrix as an identity matrix and rotates it by a given degree around t
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setRotation(90, 100, 100);
+```
 
 ## setScale
 
@@ -727,6 +1086,15 @@ Sets this matrix as an identity matrix and scales it with the coefficients (sx, 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setScale(100, 100, 150, 150);
+```
+
 ## setSinCos
 
 ```TypeScript
@@ -748,6 +1116,16 @@ Sets the matrix to rotate around the rotation center (px, py) with the specified
 | px | number | Yes | X coordinate of the rotation center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left. |
 | py | number | Yes | Y coordinate of the rotation center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+matrix.setSinCos(0, 1, 1, 0);
+```
+
 ## setSkew
 
 ```TypeScript
@@ -768,6 +1146,16 @@ Sets the skew coefficients of a matrix.
 | ky | number | Yes | Amount of tilt on the Y axis. The value is a floating point number. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis. |
 | px | number | Yes | X coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left. |
 | py | number | Yes | Y coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+matrix.setSkew(2, 0.5, 0.5, 2);
+```
 
 ## setTranslation
 
@@ -793,3 +1181,12 @@ Sets this matrix as an identity matrix and translates it by a given distance (dx
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix = new drawing.Matrix();
+matrix.setTranslation(100, 100);
+```

@@ -48,6 +48,8 @@ Creates an upload or download task and adds it to the queue. This API uses an as
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode. |
 
 
+<a id="create-1"></a>
+
 ## create
 
 ```TypeScript

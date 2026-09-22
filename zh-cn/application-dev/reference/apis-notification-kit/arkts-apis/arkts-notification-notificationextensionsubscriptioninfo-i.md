@@ -1,5 +1,9 @@
 # NotificationExtensionSubscriptionInfo
 
+```TypeScript
+export interface NotificationExtensionSubscriptionInfo
+```
+
 用于描述通知扩展订阅的信息。
 
 **起始版本：** 22

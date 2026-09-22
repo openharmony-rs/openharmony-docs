@@ -1,5 +1,9 @@
 # CacheDownloadOptions
 
+```TypeScript
+interface CacheDownloadOptions
+```
+
 Provides configuration options for download and cache, including HTTP options, transmission options, and task options.
 
 **Since:** 18

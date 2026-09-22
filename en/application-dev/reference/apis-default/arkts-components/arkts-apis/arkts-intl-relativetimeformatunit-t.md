@@ -1,23 +1,7 @@
 # RelativeTimeFormatUnit
 
 ```TypeScript
-type RelativeTimeFormatUnit =
-        | "year"
-        | "years"
-        | "quarter"
-        | "quarters"
-        | "month"
-        | "months"
-        | "week"
-        | "weeks"
-        | "day"
-        | "days"
-        | "hour"
-        | "hours"
-        | "minute"
-        | "minutes"
-        | "second"
-        | "seconds"
+type RelativeTimeFormatUnit = | "year" | "years" | "quarter" | "quarters" | "month" | "months" | "week" | "weeks" | "day" | "days" | "hour" | "hours" | "minute" | "minutes" | "second" | "seconds"
 ```
 
 Unit to use in the relative time internationalized message.

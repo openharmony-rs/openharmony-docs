@@ -58,21 +58,8 @@ config.disableAbility(name).then(() => {
 });
 ```
 
-```TypeScript
-import { config } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let name: string = 'com.ohos.example/axExtension';
-
-config.disableAbility(name, (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to disable ability. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in disabling, name is ${name}`);
-});
-```
-
+<a id="disableability-1"></a>
 
 ## disableAbility
 
@@ -108,4 +95,17 @@ function disableAbility(name: string, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [disableAbility](#disableability)
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let name: string = 'com.ohos.example/axExtension';
+
+config.disableAbility(name, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to disable ability. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in disabling, name is ${name}`);
+});
+```

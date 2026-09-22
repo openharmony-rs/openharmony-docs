@@ -1,5 +1,9 @@
 # AxisType
 
+```TypeScript
+declare enum AxisType
+```
+
 定义轴事件的轴类型。
 
 **起始版本：** 22

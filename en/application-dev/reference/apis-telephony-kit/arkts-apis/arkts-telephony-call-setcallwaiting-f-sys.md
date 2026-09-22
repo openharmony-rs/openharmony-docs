@@ -56,16 +56,8 @@ call.setCallWaiting(0, true, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.setCallWaiting(0, true).then(() => {
-    console.info(`setCallWaiting success.`);
-}).catch((err: BusinessError) => {
-    console.error(`setCallWaiting fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="setcallwaiting-1"></a>
 
 ## setCallWaiting
 
@@ -110,4 +102,12 @@ Specifies whether to enable the call waiting service. This API uses a promise to
 
 **Examples**
 
-See [setCallWaiting](#setcallwaiting)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.setCallWaiting(0, true).then(() => {
+    console.info(`setCallWaiting success.`);
+}).catch((err: BusinessError) => {
+    console.error(`setCallWaiting fail, promise: err->${JSON.stringify(err)}`);
+});
+```

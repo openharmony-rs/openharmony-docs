@@ -1,5 +1,9 @@
 # TextDeleteDirection
 
+```TypeScript
+declare enum TextDeleteDirection
+```
+
 定义删除文本方向。
 
 **起始版本：** 12

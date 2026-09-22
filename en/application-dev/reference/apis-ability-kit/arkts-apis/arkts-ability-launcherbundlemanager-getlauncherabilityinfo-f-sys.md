@@ -63,24 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
-    .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
-      console.info('data is ' + JSON.stringify(data));
-    }).catch((errData: BusinessError) => {
-    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-  })
-} catch (errData) {
-  let code = (errData as BusinessError).code;
-  let message = (errData as BusinessError).message;
-  console.error(`errData is errCode:${code}  message:${message}`);
-}
-```
-
+<a id="getlauncherabilityinfo-1"></a>
 
 ## getLauncherAbilityInfo
 
@@ -124,4 +108,20 @@ Obtains the [launcher ability information](arkts-ability-launcherabilityinfo-i.m
 
 **Examples**
 
-See [getLauncherAbilityInfo](#getlauncherabilityinfo)
+```TypeScript
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
+    .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      console.info('data is ' + JSON.stringify(data));
+    }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  })
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
+}
+```

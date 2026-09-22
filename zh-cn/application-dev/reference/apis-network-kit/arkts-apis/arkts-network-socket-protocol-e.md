@@ -1,5 +1,9 @@
 # Protocol
 
+```TypeScript
+export enum Protocol
+```
+
 TLS通信的协议版本。
 
 **起始版本：** 9

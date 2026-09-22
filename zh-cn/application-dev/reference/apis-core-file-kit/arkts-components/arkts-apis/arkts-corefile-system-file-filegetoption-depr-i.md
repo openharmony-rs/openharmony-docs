@@ -1,5 +1,9 @@
 # FileGetOption
 
+```TypeScript
+export interface FileGetOption
+```
+
 可选项类型，支持get接口使用。
 
 **起始版本：** 3

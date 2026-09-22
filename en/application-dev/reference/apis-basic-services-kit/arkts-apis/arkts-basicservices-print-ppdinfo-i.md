@@ -1,5 +1,9 @@
 # PpdInfo
 
+```TypeScript
+interface PpdInfo
+```
+
 defines ppd info.
 
 **Since:** 24

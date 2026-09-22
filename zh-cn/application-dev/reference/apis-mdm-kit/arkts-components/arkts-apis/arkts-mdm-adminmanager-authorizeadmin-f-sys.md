@@ -66,25 +66,8 @@ adminManager.authorizeAdmin(wantTemp, bundleName, (err) => {
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 需根据实际情况进行替换
-let bundleName: string = "com.example.application";
-
-adminManager.authorizeAdmin(wantTemp, bundleName).then(() => {
-}).catch((err: BusinessError) => {
-  console.error(`Failed to authorize permission to the application. Code: ${err.code}, message: ${err.message}`);
-})
-```
-
+<a id="authorizeadmin-1"></a>
 
 ## authorizeAdmin
 
@@ -130,4 +113,21 @@ function authorizeAdmin(admin: Want, bundleName: string): Promise<void>
 
 **示例**
 
-参见 [authorizeAdmin](#authorizeadmin)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let bundleName: string = "com.example.application";
+
+adminManager.authorizeAdmin(wantTemp, bundleName).then(() => {
+}).catch((err: BusinessError) => {
+  console.error(`Failed to authorize permission to the application. Code: ${err.code}, message: ${err.message}`);
+})
+```

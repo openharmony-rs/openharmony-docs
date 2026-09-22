@@ -1,5 +1,9 @@
 # BackgroundColorStyle
 
+```TypeScript
+declare class BackgroundColorStyle
+```
+
 文本背景颜色对象说明。
 
 **起始版本：** 14
@@ -26,7 +30,7 @@ constructor(textBackgroundStyle: TextBackgroundStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| textBackgroundStyle | [TextBackgroundStyle](../arkts-components/arkts-arkui-textbackgroundstyle-i.md) | 是 | 文本背景色设置项。 |
+| textBackgroundStyle | [TextBackgroundStyle](../arkts-components/arkts-arkui-span-comp-textbackgroundstyle-i.md) | 是 | 文本背景色设置项。 |
 
 ## textBackgroundStyle
 
@@ -46,7 +50,7 @@ radius: 0
 
 }
 
-**类型：** [TextBackgroundStyle](../arkts-components/arkts-arkui-textbackgroundstyle-i.md)
+**类型：** [TextBackgroundStyle](../arkts-components/arkts-arkui-span-comp-textbackgroundstyle-i.md)
 
 **起始版本：** 14
 

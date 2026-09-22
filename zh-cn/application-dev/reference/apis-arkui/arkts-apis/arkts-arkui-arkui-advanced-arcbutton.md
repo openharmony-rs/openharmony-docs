@@ -37,7 +37,6 @@ import { ArcButton, ArcButtonOptions, ArcButtonProgressConfig, ArcButtonPosition
 
 ## 示例
 
-```TypeScript
 ### 示例1 (设置弧形按钮)
 
 该示例展示了ArcButton的基本用法。从API version 18开始，新增ArcButton。示例配置如下：
@@ -47,13 +46,86 @@ topOptions定义了上弧形按钮，按钮文本为ButtonTop，字体大小为1
 bottomOptions定义了底部弧形按钮，按钮文本为ButtonBottom，字体大小为15fp，按钮样式为亮色强调，启用阴影，设置了按钮的点击事件。
 
 该示例推荐在Wearable设备下运行以获得最佳显示效果，同时支持在其他设备上运行。若要在Wearable设备上运行，需在src/main目录下的工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)内配置wearable。
-```
 
 ```TypeScript
-
+// module.json5
+{
+  "module": {
+    // ...
+    "deviceTypes": [
+      "wearable",
+      "phone"
+    ]
+    // ...
+  }
+}
 ```
 
+
+
 ```TypeScript
+// xxx.ets
+import {
+  LengthMetrics,
+  LengthUnit,
+  ArcButton,
+  ArcButtonOptions,
+  ArcButtonStatus,
+  ArcButtonStyleMode,
+  ArcButtonPosition,
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local topOptions: ArcButtonOptions = new ArcButtonOptions({});
+  @Local bottomOptions: ArcButtonOptions = new ArcButtonOptions({});
+
+  aboutToAppear() {
+    this.topOptions = new ArcButtonOptions({
+      label: 'ButtonTop',
+      status: ArcButtonStatus.NORMAL,
+      position: ArcButtonPosition.TOP_EDGE,
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+      fontSize: new LengthMetrics(15, LengthUnit.FP),
+      shadowEnabled: true
+    })
+
+    this.bottomOptions = new ArcButtonOptions({
+      label: 'ButtonBottom',
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+      fontSize: new LengthMetrics(15, LengthUnit.FP),
+      shadowEnabled: true,
+      onClick: () => {
+        console.info('click from ArcButton.');
+      }
+    })
+  }
+
+  build() {
+    Stack() {
+      Stack() {
+        Circle({ width: 233, height: 233 })
+          .strokeWidth(0.1)
+          .fill(Color.White)
+
+        Column() {
+          ArcButton({ options: this.topOptions })
+          Blank()
+          ArcButton({ options: this.bottomOptions })
+
+        }.width('100%')
+        .height('100%')
+      }.width(233)
+      .height(233)
+    }.width('100%')
+    .height('100%')
+    .alignContent(Alignment.Center)
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
 ### 示例2 (设置设备进度条按钮)
 
 该示例展示了ArcButton组件进度条样式的基本用法。从API version 23开始，新增[ArcButtonOptions](arkts-arkui-arkui-advanced-arcbutton-arcbuttonoptions-c.md)的progressConfig接口。示例配置如下：
@@ -63,6 +135,19 @@ topOptions定义了上弧形按钮。按钮文本为Add，字体大小为15fp，
 bottomOptions定义了底部弧形按钮，按钮文本为进度条百分比，字体大小为15fp，按钮状态为进度条状态，按钮样式为默认样式，启用阴影。
 
 该示例推荐在Wearable设备下运行以获得最佳显示效果，同时支持在其他设备上运行。若要在Wearable设备上运行，需在src/main目录下的工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)内配置wearable。
+
+```TypeScript
+// module.json5
+{
+  "module": {
+    // ...
+    "deviceTypes": [
+      "wearable",
+      "phone"
+    ]
+    // ...
+  }
+}
 ```
 
 ```TypeScript

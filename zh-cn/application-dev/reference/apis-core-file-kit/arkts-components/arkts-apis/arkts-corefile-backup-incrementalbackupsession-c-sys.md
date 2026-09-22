@@ -1,5 +1,9 @@
 # IncrementalBackupSession（系统接口）
 
+```TypeScript
+class IncrementalBackupSession
+```
+
 增量备份流程对象，用于支撑应用增量备份流程。
 
 **起始版本：** 12
@@ -116,104 +120,7 @@ incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
 }); // 添加需要增量备份的应用
 ```
 
-```TypeScript
-import { fileIo, backup} from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-let incrementalBackupData: backup.IncrementalBackupData = {
-  bundleName: 'com.example.hiworld',
-  lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
-  manifestFd: fileIo.openSync('/data/storage/el2/base/backup/manifest.json').fd // 调用者传递上一次备份的manifest文件句柄
-}
-    let infos: Array<string> = [
-      `
-      {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.hiworld"
-          }
-      ]
-  },
-  {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.myApp"
-          }
-      ]
-  }
-    `
-  ]
-let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
-// 添加需要增量备份的应用
-incrementalBackupSession.appendBundles(incrementalBackupDataArray, infos).then(() => {
-  console.info('appendBundles success');
-}).catch((err: BusinessError) => {
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="appendbundles-1"></a>
 
 ## appendBundles
 
@@ -259,64 +166,6 @@ appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): P
 | 13900042 | Unknown error |
 
 **示例**
-
-```TypeScript
-import { fileIo, backup} from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-let incrementalBackupData: backup.IncrementalBackupData = {
-  bundleName: 'com.example.hiworld',
-  lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
-  manifestFd: fileIo.openSync('/data/storage/el2/base/backup/manifest.json').fd // 调用者传递上一次备份的manifest文件句柄
-}
-let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
-incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
-  console.info('appendBundles success');
-}).catch((err: BusinessError) => {
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-}); // 添加需要增量备份的应用
-```
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -826,8 +675,24 @@ try {
 }
 ```
 
-```TypeScript
 异步返回JSON串示例：
+
+```TypeScript
+{
+ "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
+     {
+         "name": "com.example.hiworld", // 应用名称
+         "dataSize": 1006060, // 数据量大小
+         "incDataSize": 50800 // 增量数据量大小
+     },
+     {
+         "name": "com.example.myAPP",
+         "dataSize": 5000027,
+         "incDataSize": 232344
+     }
+ ],
+ "scanning" :"com.example.smartAPP" // 正在扫描的应用，在最后一次结果返回时，该字段为空
+}
 ```
 
 ## getCompatibilityInfo
@@ -1073,8 +938,23 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
-```TypeScript
 能力文件可以通过[@ohos.file.fs](arkts-corefile-fileio-n.md)提供的fileIo.stat等相关接口获取，能力文件内容示例：
+
+```TypeScript
+{
+ "backupVersion" : "16.0",
+ "bundleInfos" : [{
+   "allToBackup" : true,
+   "extensionName" : "BackupExtensionAbility",
+   "name" : "com.example.hiworld",
+   "needToInstall" : false,
+   "spaceOccupied" : 0,
+   "versionCode" : 1000000,
+   "versionName" : "1.0.0"
+   }],
+ "deviceType" : "default",
+ "systemFullName" : "OpenHarmony-4.0.0.0"
+}
 ```
 
 ## release

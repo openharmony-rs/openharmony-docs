@@ -1,5 +1,9 @@
 # PermissiveUsbDeviceType
 
+```TypeScript
+export interface PermissiveUsbDeviceType
+```
+
 USB device type information. Partial field matching is supported.
 
 - Compared with [UsbDeviceType](arkts-mdm-usbmanager-usbdevicetype-i.md), the **subClass**, **protocol**, and **descriptor**  

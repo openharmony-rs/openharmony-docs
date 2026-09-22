@@ -42,6 +42,8 @@ function partition(diskId: string, type: number, callback: AsyncCallback<void>):
 | 13900042 | Unknown error. |
 
 
+<a id="partition-1"></a>
+
 ## partition
 
 ```TypeScript

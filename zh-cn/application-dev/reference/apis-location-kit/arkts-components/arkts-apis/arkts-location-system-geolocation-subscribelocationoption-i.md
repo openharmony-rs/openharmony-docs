@@ -1,5 +1,9 @@
 # SubscribeLocationOption
 
+```TypeScript
+export interface SubscribeLocationOption
+```
+
 持续定位请求的配置参数。
 
 **起始版本：** 3

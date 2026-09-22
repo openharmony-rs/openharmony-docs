@@ -1,5 +1,9 @@
 # PropertyReadRequest
 
+```TypeScript
+interface PropertyReadRequest
+```
+
 表示客户端的Property读请求参数。
 
 **起始版本：** 26.0.0

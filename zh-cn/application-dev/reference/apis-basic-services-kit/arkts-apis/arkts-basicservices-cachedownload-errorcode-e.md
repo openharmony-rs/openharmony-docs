@@ -1,5 +1,9 @@
 # ErrorCode
 
+```TypeScript
+enum ErrorCode
+```
+
 表示错误返回信息的特定类型枚举。
 
 **起始版本：** 23

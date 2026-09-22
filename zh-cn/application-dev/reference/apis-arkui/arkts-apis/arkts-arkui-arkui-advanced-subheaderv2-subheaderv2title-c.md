@@ -1,5 +1,9 @@
 # SubHeaderV2Title
 
+```TypeScript
+export declare class SubHeaderV2Title
+```
+
 标题设置项。
 
 **起始版本：** 18
@@ -86,7 +90,7 @@ primaryTitleModifier?: TextModifier
 
 Text modifier for primary title.
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
@@ -126,7 +130,7 @@ secondaryTitleModifier?: TextModifier
 
 Text modifier for secondary title.
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 

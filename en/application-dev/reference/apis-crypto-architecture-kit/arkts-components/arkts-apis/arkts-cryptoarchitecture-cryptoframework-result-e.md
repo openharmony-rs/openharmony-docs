@@ -1,5 +1,9 @@
 # Result
 
+```TypeScript
+enum Result
+```
+
 Enumerates the operation results.
 
 **Since:** 9

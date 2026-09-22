@@ -1,5 +1,9 @@
 # DownloadProfileResult（系统接口）
 
+```TypeScript
+export interface DownloadProfileResult
+```
+
 下载配置文件的结果。
 
 **起始版本：** 18

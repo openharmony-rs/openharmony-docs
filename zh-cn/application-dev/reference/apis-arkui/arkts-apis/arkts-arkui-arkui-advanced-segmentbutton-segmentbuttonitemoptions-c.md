@@ -1,5 +1,9 @@
 # SegmentButtonItemOptions
 
+```TypeScript
+declare class SegmentButtonItemOptions
+```
+
 分段按钮中的按钮选项。
 
 **起始版本：** 11

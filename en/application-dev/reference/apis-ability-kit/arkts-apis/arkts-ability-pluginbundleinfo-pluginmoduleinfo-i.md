@@ -1,5 +1,9 @@
 # PluginModuleInfo
 
+```TypeScript
+export interface PluginModuleInfo
+```
+
 Defines the module information of a plugin.
 
 **Since:** 26.0.0

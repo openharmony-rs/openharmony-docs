@@ -1,5 +1,9 @@
 # Website
 
+```TypeScript
+class Website
+```
+
 联系人的网站信息类。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # KVStoreResultSet
 
+```TypeScript
+interface KVStoreResultSet
+```
+
 提供获取数据库结果集的相关方法，包括查询和移动数据读取位置等。同时允许打开的结果集的最大数量为8个。
 
 KVStoreResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。

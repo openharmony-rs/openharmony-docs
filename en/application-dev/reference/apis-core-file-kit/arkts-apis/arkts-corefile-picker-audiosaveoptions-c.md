@@ -1,5 +1,9 @@
 # AudioSaveOptions
 
+```TypeScript
+class AudioSaveOptions
+```
+
 Defines the options for saving audio clips.
 
 **Since:** 9

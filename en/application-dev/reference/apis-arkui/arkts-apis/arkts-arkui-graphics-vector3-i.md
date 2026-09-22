@@ -1,5 +1,9 @@
 # Vector3
 
+```TypeScript
+interface Vector3
+```
+
 Represents a vector including three values: x, y, and z.
 
 **Since:** 11

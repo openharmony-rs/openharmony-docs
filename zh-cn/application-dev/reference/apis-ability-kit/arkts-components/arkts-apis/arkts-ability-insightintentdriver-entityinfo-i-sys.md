@@ -1,5 +1,9 @@
 # EntityInfo（系统接口）
 
+```TypeScript
+interface EntityInfo
+```
+
 EntityInfo继承自[IntentEntityDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intententitydecoratorinfo-i.md)，用于描述[@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器定义的意图实体的信息。
 
 **起始版本：** 20

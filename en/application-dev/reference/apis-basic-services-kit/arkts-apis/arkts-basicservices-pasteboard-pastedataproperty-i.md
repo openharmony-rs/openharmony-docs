@@ -1,5 +1,9 @@
 # PasteDataProperty
 
+```TypeScript
+interface PasteDataProperty
+```
+
 Defines the properties of PasteData in the pasteboard, including the timestamp, data types, pasteable range, and additional data. The defined properties can be applied to the pasteboard only with the [setProperty](arkts-basicservices-pasteboard-pastedata-i.md#setproperty) method.
 
 **Since:** 7

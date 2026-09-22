@@ -1,5 +1,9 @@
 # ISO8601DateTimeFormatOptions
 
+```TypeScript
+export interface ISO8601DateTimeFormatOptions
+```
+
 符合ISO 8601标准的日期格式化对象创建时的配置项。
 
 **起始版本：** 26.0.0

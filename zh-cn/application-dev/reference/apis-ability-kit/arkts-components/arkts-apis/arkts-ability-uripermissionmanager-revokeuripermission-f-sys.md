@@ -67,64 +67,8 @@ uriPermissionManager.revokeUriPermission(uri, targetBundleName, (error) => {
 });
 ```
 
-```TypeScript
-import { uriPermissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let targetBundleName = 'com.example.test_case2';
-let uri = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
-
-// 撤销指定应用的URI权限
-uriPermissionManager.revokeUriPermission(uri, targetBundleName)
-  .then((data) => {
-    console.info(`Verification success, data: ${JSON.stringify(data)}.`);
-  }).catch((error: BusinessError) => {
-  console.error(`Verification failed, err code: ${error.code}, err msg: ${error.message}.`);
-});
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
-import { fileUri } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-  }
-
-  onForeground(): void {
-    let targetBundleName: string = 'com.example.demo1';
-    let filePath: string = this.context.filesDir + "/test.txt";
-    let uri: string = fileUri.getUriFromPath(filePath);
-    // 撤销主应用的URI权限
-    try {
-      let appCloneIndex: number = 0;
-      uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
-        .then(() => {
-          console.info('revokeUriPermission succeeded.');
-        }).catch((error: BusinessError) => {
-        console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
-      });
-    } catch (error) {
-      console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
-    }
-
-    // 撤销分身应用的URI权限
-    try {
-      let appCloneIndex: number = 1;
-      uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
-        .then(() => {
-          console.info('revokeUriPermission succeeded.');
-        }).catch((error: BusinessError) => {
-        console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
-      });
-    } catch (error) {
-      console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
-    }
-  }
-}
-```
-
+<a id="revokeuripermission-2"></a>
 
 ## revokeUriPermission
 
@@ -176,8 +120,24 @@ function revokeUriPermission(uri: string, targetBundleName: string): Promise<num
 
 **示例**
 
-参见 [revokeUriPermission](#revokeuripermission)
+```TypeScript
+import { uriPermissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let targetBundleName = 'com.example.test_case2';
+let uri = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
+
+// 撤销指定应用的URI权限
+uriPermissionManager.revokeUriPermission(uri, targetBundleName)
+  .then((data) => {
+    console.info(`Verification success, data: ${JSON.stringify(data)}.`);
+  }).catch((error: BusinessError) => {
+  console.error(`Verification failed, err code: ${error.code}, err msg: ${error.message}.`);
+});
+```
+
+
+<a id="revokeuripermission-4"></a>
 
 ## revokeUriPermission
 
@@ -228,4 +188,44 @@ function revokeUriPermission(uri: string, targetBundleName: string, appCloneInde
 
 **示例**
 
-参见 [revokeUriPermission](#revokeuripermission)
+```TypeScript
+import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    let targetBundleName: string = 'com.example.demo1';
+    let filePath: string = this.context.filesDir + "/test.txt";
+    let uri: string = fileUri.getUriFromPath(filePath);
+    // 撤销主应用的URI权限
+    try {
+      let appCloneIndex: number = 0;
+      uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
+        .then(() => {
+          console.info('revokeUriPermission succeeded.');
+        }).catch((error: BusinessError) => {
+        console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
+      });
+    } catch (error) {
+      console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
+    }
+
+    // 撤销分身应用的URI权限
+    try {
+      let appCloneIndex: number = 1;
+      uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
+        .then(() => {
+          console.info('revokeUriPermission succeeded.');
+        }).catch((error: BusinessError) => {
+        console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
+      });
+    } catch (error) {
+      console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
+    }
+  }
+}
+```

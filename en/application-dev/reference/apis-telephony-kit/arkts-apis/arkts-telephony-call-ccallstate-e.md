@@ -1,5 +1,9 @@
 # CCallState
 
+```TypeScript
+export enum CCallState
+```
+
 Carrier call state code.
 
 **Since:** 23

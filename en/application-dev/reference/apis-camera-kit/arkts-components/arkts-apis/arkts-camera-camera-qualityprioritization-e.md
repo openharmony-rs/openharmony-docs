@@ -1,5 +1,9 @@
 # QualityPrioritization
 
+```TypeScript
+enum QualityPrioritization
+```
+
 Enumerates the priority levels for video recording quality.
 
 **Since:** 14

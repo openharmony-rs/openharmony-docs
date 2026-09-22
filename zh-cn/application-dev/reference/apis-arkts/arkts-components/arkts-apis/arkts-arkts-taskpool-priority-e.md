@@ -1,5 +1,9 @@
 # Priority
 
+```TypeScript
+enum Priority
+```
+
 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../../napi/qos-guidelines.md#qos等级定义)。
 
 **起始版本：** 9

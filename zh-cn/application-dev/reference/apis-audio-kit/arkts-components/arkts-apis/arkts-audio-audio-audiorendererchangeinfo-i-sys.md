@@ -1,5 +1,9 @@
 # AudioRendererChangeInfo
 
+```TypeScript
+interface AudioRendererChangeInfo
+```
+
 描述音频渲染器更改信息。
 
 **起始版本：** 9

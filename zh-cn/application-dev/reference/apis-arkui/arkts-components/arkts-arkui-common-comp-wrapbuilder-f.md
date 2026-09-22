@@ -6,7 +6,7 @@
 declare function wrapBuilder<Args extends Object[]>(builder: (...args: Args) => void): WrappedBuilder<Args>
 ```
 
-`wrapBuilder`用于封装全局@Builder，可以将全局`@Builder`函数作为参数传递，实现按引用传递和动态调用，提升代码复用性。开发指南见：[wrapBuilder：封装全局@Builder](../../../ui/state-management/arkts-wrapBuilder.md)。
+`wrapBuilder`用于封装全局[@Builder](arkts-arkui-common-comp-builder-d.md#builder)，可以将全局`@Builder`函数作为参数传递，实现按引用传递和动态调用，提升代码复用性。开发指南见：[wrapBuilder：封装全局@Builder](../../../ui/state-management/arkts-wrapBuilder.md)。
 
 **起始版本：** 11
 
@@ -24,4 +24,4 @@ declare function wrapBuilder<Args extends Object[]>(builder: (...args: Args) => 
 
 | 类型 | 说明 |
 | --- | --- |
-| [WrappedBuilder](arkts-arkui-wrappedbuilder-c.md)&lt;Args&gt; | `WrappedBuilder&lt;Args&gt;`的实例，用于在组件之间复用或传递全局`@Builder`函数。该实例封装了指定的全局`@Builder`函数，可通过其`builder`属性调用被封装的构建函数，便于在组件间作为参数传递或赋值给变量。 |
+| [WrappedBuilder](arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;Args&gt; | `WrappedBuilder&lt;Args&gt;`的实例，用于在组件之间复用或传递全局`@Builder`函数。该实例封装了指定的全局`@Builder`函数，可通过其`builder`属性调用被封装的构建函数，便于在组件间作为参数传递或赋值给变量。 |

@@ -1,5 +1,9 @@
 # MouseController
 
+```TypeScript
+interface MouseController
+```
+
 Provides the capability of simulating mouse operations. The simulated mouse operation sequence must meet the following requirements:
 
 1. A mouse button can be pressed only when it is in the released state.
@@ -130,9 +134,7 @@ Ends an axis event. This API uses a promise to return the result.
 
 **Examples**
 
-```TypeScript
 For details, see [beginAxis](#beginaxis).
-```
 
 ## moveTo
 
@@ -308,9 +310,7 @@ Release a mouse button. This API uses a promise to return the result.
 
 **Examples**
 
-```TypeScript
 For details, see [pressButton](#pressbutton).
-```
 
 ## updateAxis
 
@@ -351,6 +351,4 @@ Updates an axis event. This API uses a promise to return the result.
 
 **Examples**
 
-```TypeScript
 For details, see [beginAxis](#beginaxis).
-```

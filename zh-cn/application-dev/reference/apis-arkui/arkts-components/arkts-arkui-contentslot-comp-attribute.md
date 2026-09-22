@@ -1,5 +1,9 @@
 # ContentSlot属性/事件
 
+```TypeScript
+declare class ContentSlotAttribute
+```
+
 定义ContentSlot属性，以防止不当的递归使用ContentSlot。
 
 **起始版本：** 12

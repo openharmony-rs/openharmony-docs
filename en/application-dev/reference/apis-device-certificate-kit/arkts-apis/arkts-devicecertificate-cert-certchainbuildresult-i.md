@@ -1,5 +1,9 @@
 # CertChainBuildResult
 
+```TypeScript
+interface CertChainBuildResult
+```
+
 Represents the certificate chain build result.
 
 **Since:** 12

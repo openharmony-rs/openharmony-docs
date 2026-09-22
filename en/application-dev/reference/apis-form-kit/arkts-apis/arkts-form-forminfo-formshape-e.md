@@ -1,5 +1,9 @@
 # FormShape
 
+```TypeScript
+enum FormShape
+```
+
 Defines the FormShape enum.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # SwitchConfig (System API)
 
+```TypeScript
+interface SwitchConfig
+```
+
 Defines the switch configuration of a device-cloud synergy database.
 
 **Since:** 23

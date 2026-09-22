@@ -26,6 +26,8 @@ function off(
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。

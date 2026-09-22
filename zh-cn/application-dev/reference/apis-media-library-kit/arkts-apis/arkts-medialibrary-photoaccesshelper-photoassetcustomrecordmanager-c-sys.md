@@ -1,5 +1,9 @@
 # PhotoAssetCustomRecordManager（系统接口）
 
+```TypeScript
+class PhotoAssetCustomRecordManager
+```
+
 媒体库支持图库自定义用户统计行为。
 
 **起始版本：** 20

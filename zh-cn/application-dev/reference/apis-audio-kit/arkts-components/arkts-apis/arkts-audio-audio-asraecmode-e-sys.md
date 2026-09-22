@@ -1,8 +1,10 @@
 # AsrAecMode（系统接口）
 
-枚举，自动语音识别（ASR）的声学回声消除（AEC）模式。
+```TypeScript
+enum AsrAecMode
+```
 
-@enum { int }
+枚举，自动语音识别（ASR）的声学回声消除（AEC）模式。
 
 **起始版本：** 12
 

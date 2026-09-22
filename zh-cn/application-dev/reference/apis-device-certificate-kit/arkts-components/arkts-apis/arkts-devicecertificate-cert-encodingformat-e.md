@@ -1,5 +1,9 @@
 # EncodingFormat
 
+```TypeScript
+enum EncodingFormat
+```
+
 表示证书编码格式的枚举。
 
 **起始版本：** 9

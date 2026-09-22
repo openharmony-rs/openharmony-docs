@@ -1,5 +1,9 @@
 # UIExtensionContext
 
+```TypeScript
+declare class UIExtensionContext extends ExtensionContext
+```
+
 UIExtensionContext是[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的上下文环境，继承自[ExtensionContext](arkts-ability-extensioncontext-c.md)，提供UIExtensionAbility的相关配置信息以及操作UIAbility的方法，如启动UIAbility等。
 
 **继承/实现关系：** UIExtensionContext extends [ExtensionContext](arkts-ability-extensioncontext-c.md)
@@ -135,6 +139,8 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback<vo
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+
+<a id="disconnectserviceextensionability-1"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -431,6 +437,8 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startability-1"></a>
+
 ## startAbility
 
 ```TypeScript
@@ -488,6 +496,8 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 | [16000078](../errorcode-ability.md#16000078-不支持应用多实例) | The multi-instance is not supported.<br>**适用版本：** 14+ |
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
+
+<a id="startability-2"></a>
 
 ## startAbility
 
@@ -617,6 +627,8 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilityforresult-1"></a>
+
 ## startAbilityForResult
 
 ```TypeScript
@@ -678,6 +690,8 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 | [16000078](../errorcode-ability.md#16000078-不支持应用多实例) | The multi-instance is not supported.<br>**适用版本：** 14+ |
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
+
+<a id="startabilityforresult-2"></a>
 
 ## startAbilityForResult
 
@@ -823,6 +837,8 @@ terminateSelf(callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<a id="terminateself-1"></a>
+
 ## terminateSelf
 
 ```TypeScript
@@ -869,6 +885,8 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+<a id="terminateselfwithresult-1"></a>
 
 ## terminateSelfWithResult
 

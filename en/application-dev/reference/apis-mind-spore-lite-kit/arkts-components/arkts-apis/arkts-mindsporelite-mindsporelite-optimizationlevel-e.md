@@ -1,5 +1,9 @@
 # OptimizationLevel
 
+```TypeScript
+export enum OptimizationLevel
+```
+
 Enum for optimization level
 
 **Since:** 12

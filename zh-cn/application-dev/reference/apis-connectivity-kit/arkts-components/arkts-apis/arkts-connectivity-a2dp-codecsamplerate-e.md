@@ -1,5 +1,9 @@
 # CodecSampleRate
 
+```TypeScript
+enum CodecSampleRate
+```
+
 枚举，蓝牙媒体音频编解码器的采样率，表示每秒对蓝牙音频采样的次数，单位为Hz。采样率的选择会影响音质和传输效率。
 
 **起始版本：** 11

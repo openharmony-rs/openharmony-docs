@@ -28,6 +28,8 @@ function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 设备是否支持分布式通知的回调函数。 |
 
 
+<a id="isdistributedenabled-1"></a>
+
 ## isDistributedEnabled
 
 ```TypeScript

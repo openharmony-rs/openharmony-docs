@@ -1,5 +1,9 @@
 # MediaType
 
+```TypeScript
+enum MediaType
+```
+
 媒体类型枚举。
 
 **起始版本：** 8

@@ -6,7 +6,7 @@
 declare function $rawfile(value: string): Resource
 ```
 
-global &#36;rawfile function
+global $rawfile function
 
 **Since:** 11
 

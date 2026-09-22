@@ -1,5 +1,9 @@
 # KioskFeature
 
+```TypeScript
+enum KioskFeature
+```
+
 Kiosk模式的特征。
 
 **起始版本：** 20

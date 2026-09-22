@@ -1,5 +1,9 @@
 # BLEFoundResponse
 
+```TypeScript
+export interface BLEFoundResponse
+```
+
 **Since:** 6
 
 **System capability:** SystemCapability.Communication.Bluetooth.Lite

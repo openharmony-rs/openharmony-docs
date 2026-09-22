@@ -1,5 +1,9 @@
 # LinkAddress
 
+```TypeScript
+export interface LinkAddress
+```
+
 Defines network link information.
 
 **Since:** 8

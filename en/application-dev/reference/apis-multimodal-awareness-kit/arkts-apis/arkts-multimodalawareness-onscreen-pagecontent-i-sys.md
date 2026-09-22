@@ -1,5 +1,9 @@
 # PageContent (System API)
 
+```TypeScript
+export interface PageContent
+```
+
 Defines the onscreen content.
 
 **Since:** 20

@@ -38,3 +38,21 @@ function off(type: 'netStatsChange', callback?: Callback<NetStatsChangeInfo>): v
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+
+class IFace {
+  iface: string = ""
+  uid?: number = 0
+}
+let callback: (data: IFace) => void = (data: IFace) => {
+    console.info("on netStatsChange, iFace:" + data.iface + " uid: " + data.uid);
+}
+statistics.on('netStatsChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+statistics.off('netStatsChange', callback);
+statistics.off('netStatsChange');
+```

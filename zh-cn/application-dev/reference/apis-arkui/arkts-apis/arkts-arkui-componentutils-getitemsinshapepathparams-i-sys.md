@@ -1,5 +1,9 @@
 # GetItemsInShapePathParams（系统接口）
 
+```TypeScript
+interface GetItemsInShapePathParams
+```
+
 需要获取图像对象时设置的图像选项。
 
 @interface GetItemsInShapePathParams

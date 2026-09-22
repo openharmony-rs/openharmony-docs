@@ -1,5 +1,9 @@
 # ActionSheetButtonOptions
 
+```TypeScript
+interface ActionSheetButtonOptions
+```
+
 Provides button style configuration for the dialog box.
 
 > **NOTE:** 
@@ -21,6 +25,8 @@ action: VoidCallback
 Callback invoked when the button is selected.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -105,6 +111,8 @@ If the text is too long to display, it is truncated with an ellipsis (...).
 **Type:** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

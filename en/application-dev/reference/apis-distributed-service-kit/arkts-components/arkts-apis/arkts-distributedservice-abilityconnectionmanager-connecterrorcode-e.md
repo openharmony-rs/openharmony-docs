@@ -1,5 +1,9 @@
 # ConnectErrorCode
 
+```TypeScript
+export enum ConnectErrorCode
+```
+
 Enumerates connection error codes.
 
 **Since:** 18

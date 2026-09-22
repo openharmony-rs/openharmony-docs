@@ -1,8 +1,10 @@
 # AudioHapticType
 
-枚举，音振类型。
+```TypeScript
+enum AudioHapticType
+```
 
-@enum { int }
+枚举，音振类型。
 
 **起始版本：** 11
 

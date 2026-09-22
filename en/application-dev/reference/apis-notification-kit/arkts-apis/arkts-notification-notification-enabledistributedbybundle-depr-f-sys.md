@@ -34,6 +34,8 @@ Sets whether a specified application supports distributed notifications. This AP
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="enabledistributedbybundle-1"></a>
+
 ## enableDistributedByBundle
 
 ```TypeScript

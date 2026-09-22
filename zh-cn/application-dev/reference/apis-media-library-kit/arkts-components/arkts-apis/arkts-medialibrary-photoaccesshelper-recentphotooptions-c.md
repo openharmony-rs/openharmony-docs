@@ -1,5 +1,9 @@
 # RecentPhotoOptions
 
+```TypeScript
+export class RecentPhotoOptions
+```
+
 最近图片配置选项。
 
 **起始版本：** 20

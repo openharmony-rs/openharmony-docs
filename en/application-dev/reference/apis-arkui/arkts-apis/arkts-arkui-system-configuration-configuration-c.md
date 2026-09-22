@@ -1,5 +1,9 @@
 # Configuration
 
+```TypeScript
+export default class Configuration
+```
+
 **Since:** 12
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

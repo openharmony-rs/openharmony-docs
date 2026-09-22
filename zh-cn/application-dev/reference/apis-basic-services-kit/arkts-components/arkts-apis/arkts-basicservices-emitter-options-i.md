@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+export interface Options
+```
+
 发送事件的优先级。
 
 **起始版本：** 11

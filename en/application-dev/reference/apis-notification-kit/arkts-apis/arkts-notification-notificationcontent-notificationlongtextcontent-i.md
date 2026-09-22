@@ -1,5 +1,9 @@
 # NotificationLongTextContent
 
+```TypeScript
+export interface NotificationLongTextContent extends NotificationBasicContent
+```
+
 Describes the long text notification. This API is inherited from NotificationBasicContent.
 
 > **NOTE:** 

@@ -1,5 +1,9 @@
 # GradientMode
 
+```TypeScript
+export enum GradientMode
+```
+
 枚举，输入法渐变模式。<br>
 
 | 名称 | 值 | 说明 |  

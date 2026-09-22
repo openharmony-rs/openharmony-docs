@@ -1,5 +1,9 @@
 # BigIntMode
 
+```TypeScript
+const enum BigIntMode
+```
+
 Enum defining modes for handling bigint.
 
 **Since:** 12

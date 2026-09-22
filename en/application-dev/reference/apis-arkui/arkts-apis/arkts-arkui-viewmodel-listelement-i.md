@@ -1,5 +1,9 @@
 # ListElement
 
+```TypeScript
+export interface ListElement
+```
+
 List element @interface ListElement
 
 **Since:** 4

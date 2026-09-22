@@ -1,5 +1,9 @@
 # DBActionInfo (System API)
 
+```TypeScript
+interface DBActionInfo
+```
+
 Defines the clearance information of a device-cloud synergy database.
 
 **Since:** 23

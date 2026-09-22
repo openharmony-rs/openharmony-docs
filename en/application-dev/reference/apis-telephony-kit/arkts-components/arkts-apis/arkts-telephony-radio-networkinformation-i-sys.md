@@ -1,5 +1,9 @@
 # NetworkInformation (System API)
 
+```TypeScript
+export interface NetworkInformation
+```
+
 Obtains the network information.
 
 **Since:** 6

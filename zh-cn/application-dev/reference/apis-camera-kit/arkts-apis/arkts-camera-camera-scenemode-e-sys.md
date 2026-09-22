@@ -1,5 +1,9 @@
 # SceneMode
 
+```TypeScript
+enum SceneMode
+```
+
 枚举，相机模式。
 
 **起始版本：** 11

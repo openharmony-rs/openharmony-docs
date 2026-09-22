@@ -1,5 +1,9 @@
 # CodecType
 
+```TypeScript
+enum CodecType
+```
+
 枚举，蓝牙媒体音频编解码器类型。
 
 **起始版本：** 11

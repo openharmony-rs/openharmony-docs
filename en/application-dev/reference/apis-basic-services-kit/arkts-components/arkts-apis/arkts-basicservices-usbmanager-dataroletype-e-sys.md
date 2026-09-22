@@ -1,5 +1,9 @@
 # DataRoleType (System API)
 
+```TypeScript
+export enum DataRoleType
+```
+
 Enumerates data role types.
 
 **Since:** 9

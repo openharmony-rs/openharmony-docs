@@ -1,5 +1,9 @@
 # MmsSendReq (System API)
 
+```TypeScript
+export interface MmsSendReq
+```
+
 Defines an MMS message sending request.
 
 **Since:** 8

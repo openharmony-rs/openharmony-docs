@@ -1,5 +1,9 @@
 # ShapeClip
 
+```TypeScript
+export declare class ShapeClip
+```
+
 Sets the clipping shape.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # RadioTechnology
 
+```TypeScript
+export enum RadioTechnology
+```
+
 无线接入技术。
 
 **起始版本：** 6

@@ -1,5 +1,9 @@
 # LivePhoto4dStatus (System API)
 
+```TypeScript
+enum LivePhoto4dStatus
+```
+
 Enumerates the 4d livephoto status.
 
 **Since:** 24

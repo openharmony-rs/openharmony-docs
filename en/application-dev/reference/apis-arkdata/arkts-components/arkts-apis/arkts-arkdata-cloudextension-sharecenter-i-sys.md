@@ -1,5 +1,9 @@
 # ShareCenter (System API)
 
+```TypeScript
+export interface ShareCenter
+```
+
 Provides APIs for interacting with the sharedCenter service. You need to inherit this class and implement APIs of this class. The system calls these APIs to initiate, cancel, or exit a device-cloud share.
 
 **Since:** 11

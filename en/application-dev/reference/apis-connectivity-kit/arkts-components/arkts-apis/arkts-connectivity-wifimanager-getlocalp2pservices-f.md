@@ -14,7 +14,7 @@ function getLocalP2pServices(): Promise<Array<WifiP2pServiceInfo>>
 
 Queries the local P2P services. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO_INTERNAL
 

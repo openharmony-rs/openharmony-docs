@@ -1,5 +1,9 @@
 # ChangeType
 
+```TypeScript
+enum ChangeType
+```
+
 Enumerates the data change types.
 
 **Since:** 20

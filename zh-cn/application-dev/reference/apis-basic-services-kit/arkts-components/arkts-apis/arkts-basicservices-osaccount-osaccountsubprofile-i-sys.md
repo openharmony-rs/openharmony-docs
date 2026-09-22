@@ -1,5 +1,9 @@
 # OsAccountSubProfile（系统接口）
 
+```TypeScript
+interface OsAccountSubProfile
+```
+
 系统账号子身份资料的定义。
 
 **起始版本：** 26.0.0

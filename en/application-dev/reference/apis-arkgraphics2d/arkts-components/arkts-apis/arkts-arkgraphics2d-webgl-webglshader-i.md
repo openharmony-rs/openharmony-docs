@@ -1,5 +1,9 @@
 # WebGLShader
 
+```TypeScript
+interface WebGLShader
+```
+
 WebGL 1.0
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # StaticSubscriberExtensionContext（系统接口）
 
+```TypeScript
+declare class StaticSubscriberExtensionContext extends ExtensionContext
+```
+
 StaticSubscriberExtensionContext模块是StaticSubscriberExtensionAbility的上下文环境，继承自ExtensionContext。
 
 StaticSubscriberExtensionContext模块提供StaticSubscriberExtensionAbility具有的接口和能力。
@@ -99,37 +103,7 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
 }
 ```
 
-```TypeScript
-import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-
-let want: Want = {
-  bundleName: 'com.example.myapp',
-  abilityName: 'MyAbility'
-};
-
-class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
-  onReceiveEvent(event: commonEventManager.CommonEventData) {
-    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
-    try {
-      this.context.startAbility(want)
-        .then(() => {
-          // 执行正常业务
-          console.info('startAbility succeed');
-        })
-        .catch((error: BusinessError) => {
-          // 处理业务逻辑错误
-          console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
-        });
-    } catch (paramError) {
-      // 处理入参错误异常
-      let code = (paramError as BusinessError).code;
-      let message = (paramError as BusinessError).message;
-      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
-    }
-  }
-}
-```
+<a id="startability-1"></a>
 
 ## startAbility
 
@@ -184,4 +158,34 @@ startAbility(want: Want): Promise<void>
 
 **示例**
 
-参见 [startAbility](#startability)
+```TypeScript
+import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let want: Want = {
+  bundleName: 'com.example.myapp',
+  abilityName: 'MyAbility'
+};
+
+class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+  onReceiveEvent(event: commonEventManager.CommonEventData) {
+    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+    try {
+      this.context.startAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('startAbility succeed');
+        })
+        .catch((error: BusinessError) => {
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
+        });
+    } catch (paramError) {
+      // 处理入参错误异常
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+    }
+  }
+}
+```

@@ -50,18 +50,8 @@ print.queryAllPrinterExtensionInfos((error: BusinessError, extensionInfos: print
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-print.queryAllPrinterExtensionInfos().then((extensionInfos: print.PrinterExtensionInfo[]) => {
-    console.info('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
-    // ...
-}).catch((error: BusinessError) => {
-    console.error(`Failed to query all printer extension infos. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="queryallprinterextensioninfos-1"></a>
 
 ## queryAllPrinterExtensionInfos
 
@@ -94,4 +84,14 @@ function queryAllPrinterExtensionInfos(): Promise<Array<PrinterExtensionInfo>>
 
 **示例**
 
-参见 [queryAllPrinterExtensionInfos](#queryallprinterextensioninfos)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+print.queryAllPrinterExtensionInfos().then((extensionInfos: print.PrinterExtensionInfo[]) => {
+    console.info('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
+    // ...
+}).catch((error: BusinessError) => {
+    console.error(`Failed to query all printer extension infos. Code: ${error.code}, message: ${error.message}`);
+});
+```

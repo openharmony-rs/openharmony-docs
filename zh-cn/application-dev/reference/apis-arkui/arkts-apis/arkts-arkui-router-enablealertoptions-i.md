@@ -1,5 +1,9 @@
 # EnableAlertOptions
 
+```TypeScript
+interface EnableAlertOptions
+```
+
 页面状态信息。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # UpdateStatus
 
+```TypeScript
+enum UpdateStatus
+```
+
 Enumerates the system update statuses.
 
 **Since:** 12

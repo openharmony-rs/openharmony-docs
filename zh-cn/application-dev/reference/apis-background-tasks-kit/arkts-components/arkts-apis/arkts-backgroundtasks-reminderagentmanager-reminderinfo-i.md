@@ -1,5 +1,9 @@
 # ReminderInfo
 
+```TypeScript
+interface ReminderInfo
+```
+
 代理提醒信息，包含 ReminderRequest 和 ReminderId。
 
 **起始版本：** 12

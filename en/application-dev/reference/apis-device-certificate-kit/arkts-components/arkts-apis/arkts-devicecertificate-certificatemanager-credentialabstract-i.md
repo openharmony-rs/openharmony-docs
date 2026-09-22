@@ -1,5 +1,9 @@
 # CredentialAbstract
 
+```TypeScript
+export interface CredentialAbstract
+```
+
 Represents brief information about a credential.
 
 **Since:** 11

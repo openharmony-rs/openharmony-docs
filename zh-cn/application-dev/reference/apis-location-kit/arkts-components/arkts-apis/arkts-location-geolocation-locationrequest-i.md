@@ -1,5 +1,9 @@
 # LocationRequest
 
+```TypeScript
+export interface LocationRequest
+```
+
 位置信息请求参数。
 
 @interface LocationRequest

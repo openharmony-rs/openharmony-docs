@@ -1,5 +1,9 @@
 # FoldCreaseRegion
 
+```TypeScript
+interface FoldCreaseRegion
+```
+
 折叠折痕区域。
 
 **起始版本：** 10

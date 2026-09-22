@@ -1,5 +1,9 @@
 # ResultCode
 
+```TypeScript
+enum ResultCode
+```
+
 表示返回码的枚举。
 
 **起始版本：** 8

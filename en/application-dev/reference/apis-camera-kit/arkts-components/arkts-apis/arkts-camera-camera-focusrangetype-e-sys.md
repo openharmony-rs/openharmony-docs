@@ -1,5 +1,9 @@
 # FocusRangeType (System API)
 
+```TypeScript
+enum FocusRangeType
+```
+
 Enumerates the focus range types.
 
 **Since:** 15

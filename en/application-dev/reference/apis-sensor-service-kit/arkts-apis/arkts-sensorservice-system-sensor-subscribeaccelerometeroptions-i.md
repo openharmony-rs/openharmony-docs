@@ -1,5 +1,9 @@
 # subscribeAccelerometerOptions
 
+```TypeScript
+export interface subscribeAccelerometerOptions
+```
+
 Defines the type of data to return for a subscription to data changes of the acceleration sensor.
 
 **Since:** 3

@@ -1,5 +1,9 @@
 # Note
 
+```TypeScript
+class Note
+```
+
 Defines a contact's note.
 
 **Since:** 7

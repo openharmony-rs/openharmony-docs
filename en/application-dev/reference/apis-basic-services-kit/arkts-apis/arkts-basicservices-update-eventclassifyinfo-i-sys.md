@@ -1,5 +1,9 @@
 # EventClassifyInfo (System API)
 
+```TypeScript
+export interface EventClassifyInfo
+```
+
 Represents event type information.
 
 **Since:** 9

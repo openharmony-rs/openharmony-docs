@@ -1,5 +1,9 @@
 # ScreenshotEventType
 
+```TypeScript
+enum ScreenshotEventType
+```
+
 截屏事件类型枚举。
 
 **起始版本：** 20

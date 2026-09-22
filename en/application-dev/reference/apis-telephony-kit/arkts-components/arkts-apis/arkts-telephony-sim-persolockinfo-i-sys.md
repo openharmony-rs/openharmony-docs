@@ -1,5 +1,9 @@
 # PersoLockInfo (System API)
 
+```TypeScript
+export interface PersoLockInfo
+```
+
 Defines the personalized lock information.
 
 **Since:** 8

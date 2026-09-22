@@ -1,5 +1,9 @@
 # ServiceType
 
+```TypeScript
+export enum ServiceType
+```
+
 Enumerates the event service types.
 
 **Since:** 10

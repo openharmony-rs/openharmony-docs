@@ -1,5 +1,9 @@
 # EthernetDeviceInfos（系统接口）
 
+```TypeScript
+export interface EthernetDeviceInfos
+```
+
 以太网设备信息。
 
 **起始版本：** 20

@@ -130,6 +130,40 @@ async function createX509CertChain(): Promise<cert.X509CertChain> {
 createX509CertChain();
 ```
 
+
+<a id="createx509certchain-1"></a>
+
+## createX509CertChain
+
+```TypeScript
+function createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback<X509CertChain>): void
+```
+
+Creates an **X509CertChain** instance. This API uses an asynchronous callback to return the result.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | Yes | X.509 certificate serialization data. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the **X509CertChain** instance created. Otherwise, **err** is an error object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
+
+**Examples**
+
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 
@@ -213,6 +247,45 @@ cert.createX509CertChain(encodingBlob, (err, _certChain) => {
 });
 ```
 
+
+<a id="createx509certchain-2"></a>
+
+## createX509CertChain
+
+```TypeScript
+function createX509CertChain(certs: Array<X509Cert>): X509CertChain
+```
+
+Creates an X.509 certificate chain object based on the specified certificates. This API returns the result synchronously.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| certs | Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Yes | Array of X.509 certificates. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md) | **X509CertChain** object created. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
+
+**Examples**
+
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -268,76 +341,3 @@ async function createX509CertChain(): Promise<cert.X509CertChain> {
 
 createX509CertChain();
 ```
-
-
-## createX509CertChain
-
-```TypeScript
-function createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback<X509CertChain>): void
-```
-
-Creates an **X509CertChain** instance. This API uses an asynchronous callback to return the result.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Security.Cert
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | Yes | X.509 certificate serialization data. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the **X509CertChain** instance created. Otherwise, **err** is an error object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
-
-**Examples**
-
-See [createX509CertChain](#createx509certchain)
-
-
-## createX509CertChain
-
-```TypeScript
-function createX509CertChain(certs: Array<X509Cert>): X509CertChain
-```
-
-Creates an X.509 certificate chain object based on the specified certificates. This API returns the result synchronously.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Security.Cert
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| certs | Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Yes | Array of X.509 certificates. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md) | **X509CertChain** object created. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
-
-**Examples**
-
-See [createX509CertChain](#createx509certchain)

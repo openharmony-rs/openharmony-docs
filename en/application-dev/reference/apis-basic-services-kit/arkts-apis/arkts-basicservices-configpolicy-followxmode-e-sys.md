@@ -1,5 +1,9 @@
 # FollowXMode (System API)
 
+```TypeScript
+export enum FollowXMode
+```
+
 Define followXMode.
 
 **Since:** 11
@@ -42,7 +46,7 @@ No follow rule is used even if the **followx_file_list.cfg** file exists.
 SIM_DEFAULT = 10
 ```
 
-Files are searched in **etc/carrier/&#36;{opkey}** at each configuration level based on the opkey of the default card.
+Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of the default card.
 
 **Since:** 11
 
@@ -56,7 +60,7 @@ Files are searched in **etc/carrier/&#36;{opkey}** at each configuration level b
 SIM_1 = 11
 ```
 
-Files are searched in **etc/carrier/&#36;{opkey}** at each configuration level based on the opkey of card 1.
+Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of card 1.
 
 **Since:** 11
 
@@ -70,7 +74,7 @@ Files are searched in **etc/carrier/&#36;{opkey}** at each configuration level b
 SIM_2 = 12
 ```
 
-Files are searched in **etc/carrier/&#36;{opkey}** at each configuration level based on the opkey of card 2.
+Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of card 2.
 
 **Since:** 11
 

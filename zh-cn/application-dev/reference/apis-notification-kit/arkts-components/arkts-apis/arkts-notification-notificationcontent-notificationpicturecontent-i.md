@@ -1,5 +1,9 @@
 # NotificationPictureContent
 
+```TypeScript
+export interface NotificationPictureContent extends NotificationBasicContent
+```
+
 描述附有图片的通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。
 
 > **说明：** 

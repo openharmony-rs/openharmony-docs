@@ -18,6 +18,8 @@ function getPermissionUsedRecord(request: PermissionUsedRequest): Promise<Permis
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -69,31 +71,8 @@ privacyManager.getPermissionUsedRecord(request).then((data) => {
 });
 ```
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let request: privacyManager.PermissionUsedRequest = {
-    'tokenId': 1, // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
-    'isRemote': false,
-    'deviceId': 'device',
-    'bundleName': 'bundle',
-    'permissionNames': [],
-    'beginTime': 0,
-    'endTime': 1,
-    'flag': privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
-};
-
-// 查询历史权限使用记录
-privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: privacyManager.PermissionUsedResponse) => {
-  if (err) {
-    console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`getPermissionUsedRecord success, result: ${data}`);
-  }
-});
-```
-
+<a id="getpermissionusedrecord-1"></a>
 
 ## getPermissionUsedRecord
 
@@ -108,6 +87,8 @@ function getPermissionUsedRecord(
 **起始版本：** 9
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -132,4 +113,27 @@ function getPermissionUsedRecord(
 
 **示例**
 
-参见 [getPermissionUsedRecord](#getpermissionusedrecord)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let request: privacyManager.PermissionUsedRequest = {
+    'tokenId': 1, // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
+    'isRemote': false,
+    'deviceId': 'device',
+    'bundleName': 'bundle',
+    'permissionNames': [],
+    'beginTime': 0,
+    'endTime': 1,
+    'flag': privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
+};
+
+// 查询历史权限使用记录
+privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: privacyManager.PermissionUsedResponse) => {
+  if (err) {
+    console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`getPermissionUsedRecord success, result: ${data}`);
+  }
+});
+```

@@ -1,5 +1,9 @@
 # FileWriteArrayBufferOption
 
+```TypeScript
+export interface FileWriteArrayBufferOption
+```
+
 可选项类型，支持writeArrayBuffer接口使用。
 
 **起始版本：** 3

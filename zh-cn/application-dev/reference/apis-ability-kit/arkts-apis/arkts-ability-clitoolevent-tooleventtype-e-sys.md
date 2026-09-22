@@ -1,5 +1,9 @@
 # ToolEventType（系统接口）
 
+```TypeScript
+export enum ToolEventType
+```
+
 CLI工具会话事件类型。
 
 **起始版本：** 26.0.0

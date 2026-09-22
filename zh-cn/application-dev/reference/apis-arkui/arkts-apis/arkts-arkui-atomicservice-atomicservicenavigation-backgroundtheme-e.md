@@ -1,5 +1,9 @@
 # BackgroundTheme
 
+```TypeScript
+export declare enum BackgroundTheme
+```
+
 导航栏背景底色的可选项。
 
 **起始版本：** 18

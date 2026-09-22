@@ -1,5 +1,9 @@
 # PiPControlStatus
 
+```TypeScript
+enum PiPControlStatus
+```
+
 控制面板控件状态枚举。
 
 **起始版本：** 12

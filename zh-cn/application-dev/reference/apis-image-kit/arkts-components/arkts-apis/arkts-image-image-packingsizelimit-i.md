@@ -1,5 +1,9 @@
 # PackingSizeLimit
 
+```TypeScript
+interface PackingSizeLimit
+```
+
 图片编码的大小限制。
 
 **起始版本：** 26.0.0

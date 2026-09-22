@@ -1,5 +1,9 @@
 # USBConfiguration
 
+```TypeScript
+interface USBConfiguration
+```
+
 USB配置，一个[USBDevice](arkts-basicservices-usbmanager-usbdevice-i.md)中可以含有多个配置。
 
 **起始版本：** 9

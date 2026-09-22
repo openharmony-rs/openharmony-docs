@@ -1,5 +1,9 @@
 # GenerateImageTaskParams (System API)
 
+```TypeScript
+interface GenerateImageTaskParams
+```
+
 Configuration parameter options for AI-generated image tasks.
 
 @interface GenerateImageTaskParams

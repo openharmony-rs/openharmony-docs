@@ -1,5 +1,9 @@
 # OnContinueResult
 
+```TypeScript
+export enum OnContinueResult
+```
+
 Enumerates the ability continuation results. You can use it in [onContinue()](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue) of the UIAbility to complete different operations.
 
 **Since:** 9

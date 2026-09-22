@@ -1,5 +1,9 @@
 # LetterSpacingStyle
 
+```TypeScript
+declare class LetterSpacingStyle
+```
+
 Describes the letter spacing style.
 
 **Since:** 12

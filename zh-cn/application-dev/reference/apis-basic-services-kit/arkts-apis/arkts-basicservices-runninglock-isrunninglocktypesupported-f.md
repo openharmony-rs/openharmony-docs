@@ -41,16 +41,8 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
 });
 ```
 
-```TypeScript
-runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
-.then((data: boolean) => {
-    console.info('BACKGROUND lock support status: ' + data);
-})
-.catch((err: BusinessError) => {
-    console.error(`Failed to check BACKGROUND lock support status. Code: ${err.code}, message: ${err.message}`);
-});
-```
 
+<a id="isrunninglocktypesupported-1"></a>
 
 ## isRunningLockTypeSupported
 
@@ -82,4 +74,12 @@ function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>
 
 **示例**
 
-参见 isRunningLockTypeSupported
+```TypeScript
+runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
+.then((data: boolean) => {
+    console.info('BACKGROUND lock support status: ' + data);
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to check BACKGROUND lock support status. Code: ${err.code}, message: ${err.message}`);
+});
+```

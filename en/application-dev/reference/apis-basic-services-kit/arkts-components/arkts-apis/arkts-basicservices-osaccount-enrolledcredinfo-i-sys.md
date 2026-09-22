@@ -1,5 +1,9 @@
 # EnrolledCredInfo (System API)
 
+```TypeScript
+interface EnrolledCredInfo
+```
+
 Defines enrolled credential information.
 
 **Since:** 8

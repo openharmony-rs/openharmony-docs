@@ -35,6 +35,31 @@ Unregister session create callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('sessionCreate', (descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.off('sessionCreate');
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 
 ## off('sessionDestroy')
 
@@ -64,6 +89,31 @@ Unregister session destroy callback
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('sessionDestroy', (descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.off('sessionDestroy');
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 
 ## off('topSessionChange')
@@ -95,6 +145,31 @@ Unregister top session changed callback
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('topSessionChange', (descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.off('topSessionChange');
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 
 ## off('sessionServiceDie')
 
@@ -124,6 +199,12 @@ Unregister Session service death callback, notifying the application to clean up
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
+
+**Examples**
+
+```TypeScript
+avSession.off('sessionServiceDie');
+```
 
 
 ## off('distributedSessionChange')
@@ -155,6 +236,12 @@ Unregister distributed session changed callback
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+**Examples**
+
+```TypeScript
+avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE);
+```
+
 
 ## off('deviceAvailable')
 
@@ -184,6 +271,12 @@ Unregister device discovery callback
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+avSession.off('deviceAvailable');
+```
+
 
 ## off('deviceOffline')
 
@@ -212,6 +305,12 @@ Unregister device offline callback
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+avSession.off('deviceOffline');
+```
 
 
 ## off('deviceLogEvent')
@@ -244,6 +343,12 @@ UnRegister log event callback.
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-session-does-not-exist) | The session does not exist. |
 
+**Examples**
+
+```TypeScript
+avSession.off('deviceLogEvent');
+```
+
 
 ## off('deviceStateChanged')
 
@@ -274,3 +379,9 @@ Unregisters a system callback for the device connection phase.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
+
+**Examples**
+
+```TypeScript
+avSession.off('deviceStateChanged');
+```

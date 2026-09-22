@@ -1,8 +1,12 @@
 # Role (System API)
 
+```TypeScript
+enum Role
+```
+
 Device role.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -16,7 +20,9 @@ CONTROLLER = 0x01
 
 Controller device.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -30,7 +36,9 @@ CONTROLLED = 0x02
 
 Controlled device.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

@@ -1,5 +1,9 @@
 # EventService
 
+```TypeScript
+export interface EventService
+```
+
 日程服务。
 
 **起始版本：** 10

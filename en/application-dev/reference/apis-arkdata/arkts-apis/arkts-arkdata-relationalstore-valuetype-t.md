@@ -1,7 +1,7 @@
 # ValueType
 
 ```TypeScript
-type ValueType = null | number | number | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint
+type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint
 ```
 
 Indicates possible value types

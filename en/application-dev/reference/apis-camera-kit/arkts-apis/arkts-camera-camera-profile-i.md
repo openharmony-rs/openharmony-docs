@@ -1,5 +1,9 @@
 # Profile
 
+```TypeScript
+interface Profile
+```
+
 Describes the camera profile.
 
 **Since:** 10

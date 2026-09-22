@@ -1,5 +1,9 @@
 # FontHinting
 
+```TypeScript
+enum FontHinting
+```
+
 Enumerates the font hinting types.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # GainmapParams（系统接口）
 
+```TypeScript
+interface GainmapParams
+```
+
 Gainmap（增益图）参数设置选项。
 
 **起始版本：** 26.0.0

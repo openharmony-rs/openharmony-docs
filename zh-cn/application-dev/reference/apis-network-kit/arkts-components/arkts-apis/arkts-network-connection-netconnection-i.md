@@ -1,5 +1,9 @@
 # NetConnection
 
+```TypeScript
+export interface NetConnection
+```
+
 网络连接对象类型。
 
 > **说明：** 
@@ -43,6 +47,31 @@ on(type: 'netAvailable', callback: Callback<NetHandle>): void
 | type | 'netAvailable' | 是 | 订阅事件，固定为'netAvailable'。<br>netAvailable：数据网络可用事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetHandle](arkts-network-connection-nethandle-i.md)&gt; | 是 | 回调函数，返回数据网络句柄。 |
 
+**示例**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络可用事件。
+netCon.on('netAvailable', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
+});
+
+// 使用unregister接口取消订阅网络可用事件。
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
+});
+```
+
 ## on('netBlockStatusChange')
 
 ```TypeScript
@@ -61,6 +90,31 @@ on(type: 'netBlockStatusChange', callback: Callback<NetBlockStatusInfo>): void
 | --- | --- | --- | --- |
 | type | 'netBlockStatusChange' | 是 | 订阅事件，固定为'netBlockStatusChange'。<br>netBlockStatusChange：网络阻塞状态事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetBlockStatusInfo](arkts-network-connection-netblockstatusinfo-i.md)&gt; | 是 | 回调函数，获取网络阻塞状态信息。<br>**适用版本：** 11 |
+
+**示例**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络阻塞状态事件。
+netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+});
+
+// 使用unregister接口取消订阅网络阻塞状态事件。
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+});
+```
 
 ## on('netCapabilitiesChange')
 
@@ -83,6 +137,31 @@ on(type: 'netCapabilitiesChange', callback: Callback<NetCapabilityInfo>): void
 | type | 'netCapabilitiesChange' | 是 | 订阅事件，固定为'netCapabilitiesChange'。<br>netCapabilitiesChange：网络能力变化事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetCapabilityInfo](arkts-network-connection-netcapabilityinfo-i.md)&gt; | 是 | 回调函数，返回数据网络句柄(netHandle)和网络的能力信息(netCap)。 |
 
+**示例**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络能力变化事件。
+netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+});
+
+// 使用unregister接口取消订阅网络能力变化事件。
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+});
+```
+
 ## on('netConnectionPropertiesChange')
 
 ```TypeScript
@@ -101,6 +180,31 @@ on(type: 'netConnectionPropertiesChange', callback: Callback<NetConnectionProper
 | --- | --- | --- | --- |
 | type | 'netConnectionPropertiesChange' | 是 | 订阅事件，固定为'netConnectionPropertiesChange'。<br> netConnectionPropertiesChange：网络连接信息变化事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetConnectionPropertyInfo](arkts-network-connection-netconnectionpropertyinfo-i.md)&gt; | 是 | 回调函数，获取网络连接属性信息。<br>**适用版本：** 11 |
+
+**示例**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络连接信息变化事件。
+netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+});
+
+// 使用unregister接口取消订阅网络连接信息变化事件。
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+});
+```
 
 ## on('netLost')
 
@@ -123,6 +227,31 @@ on(type: 'netLost', callback: Callback<NetHandle>): void
 | type | 'netLost' | 是 | 订阅事件，固定为'netLost'。<br>netLost：网络严重中断或正常断开事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetHandle](arkts-network-connection-nethandle-i.md)&gt; | 是 | 回调函数，数据网络句柄(netHandle)。 |
 
+**示例**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络丢失事件。
+netCon.on('netLost', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+});
+
+// 使用unregister接口取消订阅网络丢失事件。
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+});
+```
+
 ## on('netUnavailable')
 
 ```TypeScript
@@ -143,6 +272,31 @@ on(type: 'netUnavailable', callback: Callback<void>): void
 | --- | --- | --- | --- |
 | type | 'netUnavailable' | 是 | 订阅事件，固定为'netUnavailable'。<br>netUnavailable：网络不可用事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数，无返回结果。 |
+
+**示例**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络不可用事件。
+netCon.on('netUnavailable', () => {
+  console.info("Succeeded to get unavailable net event");
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to register. Code:${error.code}, message:${error.message}`);
+});
+
+// 使用unregister接口取消订阅网络不可用事件。
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to unregister. Code:${error.code}, message:${error.message}`);
+});
+```
 
 ## register
 

@@ -1,5 +1,9 @@
 # Focus
 
+```TypeScript
+interface Focus extends FocusQuery
+```
+
 **Focus** inherits from [FocusQuery](arkts-camera-camera-focusquery-i.md).
 
 It provides APIs related to focus operations.
@@ -42,6 +46,25 @@ Obtains the focal length in use.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getFocalLength(photoSession: camera.PhotoSession): number {
+  const invalidValue: number = -1;
+  let focalLength: number = invalidValue;
+  try {
+    focalLength = photoSession.getFocalLength();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getFocalLength call failed. error code: ${err.code}`);
+  }
+  return focalLength;
+}
+```
+
 ## getFocusMode
 
 ```TypeScript
@@ -68,6 +91,24 @@ Obtains the focus mode in use.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getFocusMode(photoSession: camera.PhotoSession): camera.FocusMode | undefined {
+  let afMode: camera.FocusMode | undefined = undefined;
+  try {
+    afMode = photoSession.getFocusMode();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getFocusMode call failed. error code: ${err.code}`);
+  }
+  return afMode;
+}
+```
+
 ## getFocusPoint
 
 ```TypeScript
@@ -93,6 +134,24 @@ Obtains the focal point in use.
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getFocusPoint(photoSession: camera.PhotoSession): camera.Point | undefined {
+  let point: camera.Point | undefined = undefined;
+  try {
+    point = photoSession.getFocusPoint();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getFocusPoint call failed. error code: ${err.code}`);
+  }
+  return point;
+}
+```
 
 ## lockFocusTracking
 
@@ -123,6 +182,23 @@ Lock focus tracking.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function lockFocusTracking(photoSession: camera.PhotoSession): void {
+  try {
+    const focusPoint: camera.Point = {x: 0, y: 0};
+    photoSession.lockFocusTracking(focusPoint);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The lockFocusTrack call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## setFocusMode
 
 ```TypeScript
@@ -150,6 +226,22 @@ Before the setting, call [isFocusModeSupported](arkts-camera-camera-focusquery-i
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setFocusMode(photoSession: camera.PhotoSession): void {
+  try {
+    photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The setFocusMode call failed. error code: ${err.code}`);
+  }
+}
+```
 
 ## setFocusPoint
 
@@ -179,6 +271,23 @@ The coordinate system is based on the horizontal device direction with the devic
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setFocusPoint(photoSession: camera.PhotoSession): void {
+  const focusPoint: camera.Point = {x: 1, y: 1};
+  try {
+    photoSession.setFocusPoint(focusPoint);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The setFocusPoint call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## unlockFocusTracking
 
 ```TypeScript
@@ -201,3 +310,19 @@ Unlock focus tracking.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function unlockFocusTracking(photoSession: camera.PhotoSession): void {
+  try {
+    photoSession.unlockFocusTracking();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The unlockFocusTrack call failed. error code: ${err.code}`);
+  }
+}
+```

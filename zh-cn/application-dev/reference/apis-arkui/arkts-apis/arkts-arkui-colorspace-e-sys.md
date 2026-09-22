@@ -1,5 +1,9 @@
 # ColorSpace
 
+```TypeScript
+declare enum ColorSpace
+```
+
 定义了颜色空间的类型，用于指定颜色显示的模式。
 
 **起始版本：** 20

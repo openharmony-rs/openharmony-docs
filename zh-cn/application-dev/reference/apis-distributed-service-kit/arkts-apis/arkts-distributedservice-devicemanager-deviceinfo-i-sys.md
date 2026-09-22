@@ -1,5 +1,9 @@
 # DeviceInfo（系统接口）
 
+```TypeScript
+interface DeviceInfo
+```
+
 设备信息。
 
 **起始版本：** 7

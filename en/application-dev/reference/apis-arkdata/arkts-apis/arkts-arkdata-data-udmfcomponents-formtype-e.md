@@ -1,5 +1,9 @@
 # FormType
 
+```TypeScript
+declare enum FormType
+```
+
 Enumerates content card types, including large, medium, and small.
 
 **Since:** 20

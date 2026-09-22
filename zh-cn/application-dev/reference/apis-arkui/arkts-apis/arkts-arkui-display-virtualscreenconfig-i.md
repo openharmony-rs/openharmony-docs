@@ -1,5 +1,9 @@
 # VirtualScreenConfig
 
+```TypeScript
+interface VirtualScreenConfig
+```
+
 创建虚拟屏幕的参数。
 
 **起始版本：** 16

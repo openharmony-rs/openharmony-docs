@@ -1,5 +1,9 @@
 # CmKeyPurpose
 
+```TypeScript
+export enum CmKeyPurpose
+```
+
 表示密钥使用目的的枚举，用于签名、验签。
 
 **起始版本：** 11

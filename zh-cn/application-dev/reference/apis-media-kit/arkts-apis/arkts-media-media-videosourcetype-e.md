@@ -1,5 +1,9 @@
 # VideoSourceType
 
+```TypeScript
+enum VideoSourceType
+```
+
 表示视频录制中视频源类型的枚举。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # PlaybackStatus
 
+```TypeScript
+enum PlaybackStatus
+```
+
 Enumerates the playback statuses of the player, which is an input parameter of the [handleStatusChanged](arkts-arkweb-webview-nativemediaplayerhandler-i.md#handlestatuschanged) API.
 
 **Since:** 12

@@ -49,6 +49,8 @@ wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => 
 ```
 
 
+<a id="getsupportedpowermode-1"></a>
+
 ## getSupportedPowerMode
 
 ```TypeScript
@@ -79,4 +81,4 @@ function getSupportedPowerMode(callback: AsyncCallback<Array<PowerMode>>): void
 
 **示例**
 
-参见 getSupportedPowerMode
+参见 [getSupportedPowerMode](#getsupportedpowermode)

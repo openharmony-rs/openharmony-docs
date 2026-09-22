@@ -1,5 +1,9 @@
 # BuildOptions
 
+```TypeScript
+export interface BuildOptions
+```
+
 Defines the optional build options.
 
 **Since:** 12

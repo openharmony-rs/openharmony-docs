@@ -1,5 +1,9 @@
 # JoinStyle
 
+```TypeScript
+enum JoinStyle
+```
+
 定义线条转角样式的枚举，即画笔在绘制折线段时，在折线转角处的样式。
 
 **起始版本：** 12

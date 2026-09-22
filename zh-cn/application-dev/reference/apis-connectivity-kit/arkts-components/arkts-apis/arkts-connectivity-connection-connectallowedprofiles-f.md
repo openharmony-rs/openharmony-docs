@@ -62,19 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-  connection.connectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
-      console.info('connectAllowedProfiles');
-    }, (err: BusinessError) => {
-      console.error('connectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
-  });
-} catch (err) {
-  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
 
+<a id="connectallowedprofiles-1"></a>
 
 ## connectAllowedProfiles
 
@@ -122,4 +111,15 @@ API版本26.0.0之前，需先调用[connection.pairDevice](arkts-connectivity-c
 
 **示例**
 
-参见 [connectAllowedProfiles](#connectallowedprofiles)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  connection.connectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
+      console.info('connectAllowedProfiles');
+    }, (err: BusinessError) => {
+      console.error('connectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
+  });
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

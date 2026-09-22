@@ -1,8 +1,12 @@
 # RemoveCredentialInfo
 
+```TypeScript
+export interface RemoveCredentialInfo
+```
+
 Remove credential information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -22,7 +26,7 @@ Authentication token.
 
 **Type:** Uint8Array
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -38,7 +42,7 @@ Credential ID.
 
 **Type:** Uint8Array
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -1,5 +1,9 @@
 # VpnConnection
 
+```TypeScript
+export interface VpnConnection
+```
+
 Defines a VPN connection object. Before calling **VpnConnection** APIs, you need to create a VPN connection object by calling **vpnExt.createVpnConnection**.
 
 **Since:** 11
@@ -179,24 +183,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 }
 ```
 
-```TypeScript
-import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
-import { BusinessError } from "@kit.BasicServicesKit";
-
-export default class MyVpnExtAbility extends VpnExtensionAbility {
-  onCreate() {
-    let vpnConnection = vpnExtension.createVpnConnection(this.context);
-
-    // You can call generateVpnId() to obtain the VPN ID.
-    let vpnId = 'testVpnId';
-    vpnConnection.destroy(vpnId).then(() => {
-      console.info("destroy success");
-    }).catch((error: BusinessError) => {
-      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
-    });
-  }
-}
-```
+<a id="destroy-1"></a>
 
 ## destroy
 
@@ -231,7 +218,24 @@ Destroys a VPN based on the specified VPN ID. This API uses a promise to return 
 
 **Examples**
 
-See [destroy](#destroy)
+```TypeScript
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+import { BusinessError } from "@kit.BasicServicesKit";
+
+export default class MyVpnExtAbility extends VpnExtensionAbility {
+  onCreate() {
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+
+    // You can call generateVpnId() to obtain the VPN ID.
+    let vpnId = 'testVpnId';
+    vpnConnection.destroy(vpnId).then(() => {
+      console.info("destroy success");
+    }).catch((error: BusinessError) => {
+      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
+    });
+  }
+}
+```
 
 ## generateVpnId
 

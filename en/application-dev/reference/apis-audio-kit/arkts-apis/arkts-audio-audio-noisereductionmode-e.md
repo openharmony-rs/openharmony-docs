@@ -1,5 +1,9 @@
 # NoiseReductionMode
 
+```TypeScript
+enum NoiseReductionMode
+```
+
 Enumerates the noise reduction modes.
 
 **Since:** 26.0.0

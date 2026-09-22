@@ -1,5 +1,9 @@
 # PatternLock properties/events
 
+```TypeScript
+declare class PatternLockAttribute extends CommonMethod<PatternLockAttribute>
+```
+
 In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 In addition to the [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md), the following events are supported.
@@ -30,7 +34,7 @@ Sets the background circle style for the dots in a grid when they are in the act
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [Optional](arkts-arkui-optional-t.md)&lt;[CircleStyleOptions](arkts-arkui-circlestyleoptions-i.md)&gt; | Yes | Background circle style of the dots in the activated state. |
+| options | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CircleStyleOptions](arkts-arkui-patternlock-comp-circlestyleoptions-i.md)&gt; | Yes | Background circle style of the dots in the activated state. |
 
 ## activeColor
 
@@ -82,7 +86,7 @@ Sets the background color.
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 20.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 20.
 
 **Since:** 9
 
@@ -128,7 +132,7 @@ The callback parameter is an array of digits, where each digit represents the in
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 20.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 20.
 
 **Since:** 11
 
@@ -254,7 +258,7 @@ Sets the width and height (same value) of the component. If this attribute is se
 
 > **NOTE:** 
 > 
-> When the **PatternLock** component has the universal attribute [aspectRatio](arkts-arkui-commonmethod-c.md#aspectratio) set
+> When the **PatternLock** component has the universal attribute [aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio) set
 > and the ratio is not equal to 1 (the component is constrained to a rectangle), the nine‑grid pattern is still
 > drawn as a square, which exceeds the component's bounds.
 

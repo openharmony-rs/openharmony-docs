@@ -1,5 +1,9 @@
 # SimType
 
+```TypeScript
+export enum SimType
+```
+
 SIM卡类型的枚举。
 
 **起始版本：** 20

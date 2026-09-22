@@ -1,5 +1,9 @@
 # FirewallRulePage
 
+```TypeScript
+interface FirewallRulePage
+```
+
 Defines the pagination structure for firewall rules.
 
 **Since:** 15

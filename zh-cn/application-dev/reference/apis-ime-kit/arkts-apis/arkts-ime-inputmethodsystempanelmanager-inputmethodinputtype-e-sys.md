@@ -1,5 +1,9 @@
 # InputMethodInputType（系统接口）
 
+```TypeScript
+export enum InputMethodInputType
+```
+
 定义输入类型。
 
 **起始版本：** 26.0.0

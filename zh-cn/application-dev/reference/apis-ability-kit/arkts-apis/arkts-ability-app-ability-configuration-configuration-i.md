@@ -1,5 +1,9 @@
 # Configuration
 
+```TypeScript
+export interface Configuration
+```
+
 定义了应用运行时的环境变量，包含语言、深浅色、屏幕方向、字体等。开发者可以通过订阅环境变量，适配不同用户偏好，提升交互体验。
 
 **起始版本：** 9
@@ -243,3 +247,42 @@ screenDensity?: ConfigurationConstant.ScreenDensity
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
+
+**示例**
+
+```TypeScript
+import { UIAbility, AbilityConstant, EnvironmentCallback, Want, Configuration } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let envCallback: EnvironmentCallback = {
+      onConfigurationUpdated(config: Configuration): void {
+        console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
+        let language = config.language;
+        let colorMode = config.colorMode;
+        let direction = config.direction;
+        let screenDensity = config.screenDensity;
+        let displayId = config.displayId;
+        let hasPointerDevice = config.hasPointerDevice;
+        let fontId = config.fontId;
+        let fontSizeScale = config.fontSizeScale;
+        let fontWeightScale = config.fontWeightScale;
+        let mcc = config.mcc;
+        let mnc = config.mnc;
+        let locale = config.locale;
+      },
+      onMemoryLevel(level) {
+        console.info(`onMemoryLevel level: ${level}`);
+      }
+    };
+    try {
+      let applicationContext = this.context.getApplicationContext();
+      let callbackId = applicationContext.on('environment', envCallback);
+      console.info(`callbackId: ${callbackId}`);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```

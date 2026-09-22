@@ -2,7 +2,7 @@
 
 The **NavRouter** component provides default processing logic for responding to clicks, eliminating the need for manual logic definition.
 
-> **NOTE** > > This component is deprecated since API version 13. You are advised to use [NavPathStack](arkts-arkui-navpathstack-c.md) in > conjunction with the **navDestination** attribute for page routing.
+> **NOTE** > > This component is deprecated since API version 13. You are advised to use [NavPathStack](arkts-arkui-navigation-comp-navpathstack-c.md) in > conjunction with the **navDestination** attribute for page routing.
 
 ## Child Components
 
@@ -48,7 +48,7 @@ Provides route information so that clicking the **NavRouter** component redirect
 
 **Deprecated since:** 13
 
-**Substitutes:** [NavPathInfo](arkts-arkui-navpathinfo-c.md)
+**Substitutes:** [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -60,7 +60,7 @@ Provides route information so that clicking the **NavRouter** component redirect
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [RouteInfo](arkts-arkui-routeinfo-i.md) | Yes | Route information. |
+| value | [RouteInfo](arkts-arkui-navrouter-comp-routeinfo-i.md) | Yes | Route information. |
 
 ## Summary
 
@@ -68,13 +68,13 @@ Provides route information so that clicking the **NavRouter** component redirect
 
 | Name | Description |
 | --- | --- |
-| [RouteInfo](arkts-arkui-routeinfo-i.md) | Route information. |
+| [RouteInfo](arkts-arkui-navrouter-comp-routeinfo-i.md) | Route information. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [NavRouteMode](arkts-arkui-navroutemode-e.md) | Defines the routing policy. |
+| [NavRouteMode](arkts-arkui-navrouter-comp-navroutemode-e.md) | Defines the routing policy. |
 
 ## Examples
 

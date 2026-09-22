@@ -124,7 +124,7 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | [QueryCompilationByKeywordEvent](arkts-avsession-avmusictemplate-querycompilationbykeywordevent-t.md) | 按关键字查询合集的事件。使用Promise异步回调。 |
 | [QueryCompilationEvent](arkts-avsession-avmusictemplate-querycompilationevent-t.md) | 合集查询事件。使用Promise异步回调。 |
 | [QueryCurrentSingleEvent](arkts-avsession-avmusictemplate-querycurrentsingleevent-t.md) | 当前单曲查询事件。使用Promise异步回调。 |
-| [QueryCustomContentEvent](arkts-avsession-avmusictemplate-querycustomcontentevent-t.md) | 自定义内容查询事件。使用Promise异步回调。 |
+| [QueryCustomContentEvent](arkts-avsession-avmusictemplate-querycustomcontentevent-t.md) | 自定义内容查询事件。用于查询用户基本信息、界面选项卡配置、合集信息和设置项等自定义内容。使用Promise异步回调。 |
 | [QueryHotWordsEvent](arkts-avsession-avmusictemplate-queryhotwordsevent-t.md) | 热词查询事件。使用Promise异步回调。 |
 | [QueryMainTabsEvent](arkts-avsession-avmusictemplate-querymaintabsevent-t.md) | 主标签页查询事件。使用Promise异步回调。 |
 | [QueryMediaEntityByKeywordEvent](arkts-avsession-avmusictemplate-querymediaentitybykeywordevent-t.md) | 通过关键字查询媒体数据的回调事件 |

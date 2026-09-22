@@ -50,20 +50,8 @@ sharing.getStatsTxBytes((error: BusinessError, data: number) => {
 });
 ```
 
-```TypeScript
-import { sharing } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-sharing
-  .getStatsTxBytes()
-  .then((data: number) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="getstatstxbytes-1"></a>
 
 ## getStatsTxBytes
 
@@ -99,4 +87,16 @@ function getStatsTxBytes(): Promise<number>
 
 **示例**
 
-参见 [getStatsTxBytes](#getstatstxbytes)
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+sharing
+  .getStatsTxBytes()
+  .then((data: number) => {
+    console.info(JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

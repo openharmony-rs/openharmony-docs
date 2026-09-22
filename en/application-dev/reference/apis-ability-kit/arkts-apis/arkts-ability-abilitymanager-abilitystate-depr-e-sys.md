@@ -1,5 +1,9 @@
 # AbilityState (System API)
 
+```TypeScript
+export enum AbilityState
+```
+
 Enumerates the ability states.
 
 **Since:** 8

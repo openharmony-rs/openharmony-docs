@@ -20,9 +20,7 @@ Unsubscribes from the notification extension. This API uses a promise to return 
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:**
-
-[subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md) subscribes to the notification extension.
+**See also:** [subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md) subscribes to the notification extension.
 
 **Return value:**
 

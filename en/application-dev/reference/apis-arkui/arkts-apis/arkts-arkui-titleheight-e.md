@@ -1,5 +1,9 @@
 # TitleHeight
 
+```TypeScript
+declare enum TitleHeight
+```
+
 Title height.
 
 @enum { number }

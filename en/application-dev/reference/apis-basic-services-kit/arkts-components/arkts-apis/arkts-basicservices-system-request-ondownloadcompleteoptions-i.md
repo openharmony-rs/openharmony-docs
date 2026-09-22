@@ -1,5 +1,9 @@
 # OnDownloadCompleteOptions
 
+```TypeScript
+export interface OnDownloadCompleteOptions
+```
+
 **Since:** 3
 
 **Deprecated since:** 9

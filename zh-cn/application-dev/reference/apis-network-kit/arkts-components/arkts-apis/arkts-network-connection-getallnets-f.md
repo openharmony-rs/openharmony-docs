@@ -50,14 +50,8 @@ connection.getAllNets((error: BusinessError, data: connection.NetHandle[]) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
 
-connection.getAllNets().then((data: connection.NetHandle[]) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
-});
-```
-
+<a id="getallnets-1"></a>
 
 ## getAllNets
 
@@ -89,4 +83,10 @@ function getAllNets(): Promise<Array<NetHandle>>
 
 **示例**
 
-参见 [getAllNets](#getallnets)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+
+connection.getAllNets().then((data: connection.NetHandle[]) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+```

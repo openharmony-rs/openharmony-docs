@@ -1,5 +1,9 @@
 # ContactSelectionFilter
 
+```TypeScript
+interface ContactSelectionFilter
+```
+
 Defines the contact selection filter.
 
 **Since:** 15

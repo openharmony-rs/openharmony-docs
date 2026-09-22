@@ -1,5 +1,9 @@
 # PermissionQueryResult（系统接口）
 
+```TypeScript
+interface PermissionQueryResult
+```
+
 权限查询结果。
 
 **起始版本：** 26.0.0
@@ -25,6 +29,8 @@ needDialog: boolean
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -41,6 +47,8 @@ permissionResults: PermissionInfo[]
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -56,6 +64,8 @@ ticket?: TicketInfo
 **类型：** [TicketInfo](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

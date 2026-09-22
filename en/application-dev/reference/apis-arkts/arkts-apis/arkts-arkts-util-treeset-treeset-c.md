@@ -1,5 +1,9 @@
 # TreeSet
 
+```TypeScript
+declare class TreeSet<T>
+```
+
 TreeSet is implemented based on TreeMap. In TreeSet, only value objects are processed. TreeSet can be used to store values, each of which must be unique.
 
 **Since:** 8

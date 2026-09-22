@@ -1,5 +1,9 @@
 # CloudData（系统接口）
 
+```TypeScript
+export interface CloudData
+```
+
 云数据。
 
 **起始版本：** 11

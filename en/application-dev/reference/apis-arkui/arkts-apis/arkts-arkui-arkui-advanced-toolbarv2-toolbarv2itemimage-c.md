@@ -1,5 +1,9 @@
 # ToolBarV2ItemImage
 
+```TypeScript
+export declare class ToolBarV2ItemImage
+```
+
 Declare type ToolBarV2ItemImage
 
 **Since:** 18

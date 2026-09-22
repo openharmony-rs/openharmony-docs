@@ -113,6 +113,51 @@ try {
 }
 ```
 
+
+<a id="enableadvertising-1"></a>
+
+## enableAdvertising
+
+```TypeScript
+function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Promise<void>
+```
+
+Enable the advertising with a specific ID temporarily.
+
+**Since:** 11
+
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| advertisingEnableParams | [AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md) | Yes | Indicates the params for enable advertising. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Returns the promise object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| 2900001 | Service stopped. |
+| 2900003 | Bluetooth disabled. |
+| 2900099 | Operation failed. |
+| 2902055 | Invalid advertising id.<br>**Applicable version:** 20 and later |
+
+**Examples**
+
 ```TypeScript
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
@@ -181,48 +226,3 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
-
-
-## enableAdvertising
-
-```TypeScript
-function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Promise<void>
-```
-
-Enable the advertising with a specific ID temporarily.
-
-**Since:** 11
-
-**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| advertisingEnableParams | [AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md) | Yes | Indicates the params for enable advertising. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Returns the promise object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900003 | Bluetooth disabled. |
-| 2900099 | Operation failed. |
-| 2902055 | Invalid advertising id.<br>**Applicable version:** 20 and later |
-
-**Examples**
-
-See [enableAdvertising](#enableadvertising)

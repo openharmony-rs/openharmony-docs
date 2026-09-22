@@ -1,5 +1,9 @@
 # AutomotiveCameraPosition
 
+```TypeScript
+enum AutomotiveCameraPosition
+```
+
 Enum for automotive camera position.
 
 **Since:** 26.0.0

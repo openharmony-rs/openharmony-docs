@@ -1,5 +1,9 @@
 # OPENFLAGS（系统接口）
 
+```TypeScript
+enum OPENFLAGS
+```
+
 枚举，目前支持的文件打开的标志位。
 
 **起始版本：** 9

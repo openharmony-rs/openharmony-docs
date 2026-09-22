@@ -26,8 +26,21 @@ Obtains the serial port device list, including the device name and port number. 
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > The following sample code shows the basic process for calling the getPortList API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+import { serialManager } from '@kit.BasicServicesKit';
+
+// Obtain the serial port device list.
+function getPortListExample() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+}
 ```

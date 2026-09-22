@@ -1,5 +1,9 @@
 # AudioPlaybackCaptureMode
 
+```TypeScript
+enum AudioPlaybackCaptureMode
+```
+
 表示内录（录制设备内部应用的声音）模式的枚举。不同模式决定可录制的目标播放流类型。支持通过按位或组合枚举值，当前仅支持MODE_DEFAULT（0x0）、MODE_MEDIA（0x1）、MODE_EXCLUDING_SELF（0x 8000），以及MODE_MEDIA和MODE_EXCLUDING_SELF的按位或组合（0x8001）。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # EventId (System API)
 
+```TypeScript
+export enum EventId
+```
+
 Enumerates event IDs.
 
 **Since:** 9

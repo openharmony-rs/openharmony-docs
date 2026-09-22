@@ -1,5 +1,9 @@
 # AppVersionInfo
 
+```TypeScript
+export interface AppVersionInfo
+```
+
 应用版本信息，可以通过[getAppVersionInfo](../../../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetappversioninfo7)获取当前应用的版本信息。
 
 **起始版本：** 7

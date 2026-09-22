@@ -1,5 +1,9 @@
 # Pkcs12Data
 
+```TypeScript
+interface Pkcs12Data
+```
+
 P12(PKCS #12) data, which includes private key, certificate, and other certificates.
 
 **Since:** 18

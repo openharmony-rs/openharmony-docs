@@ -58,6 +58,39 @@ let createCallBack = (err:Base.BusinessError, commonEventSubscriber:CommonEventM
 commonEvent.createSubscriber(subscribeInfo, createCallBack);
 ```
 
+
+<a id="createsubscriber-1"></a>
+
+## createSubscriber
+
+```TypeScript
+function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>
+```
+
+以Promise形式创建订阅者。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)(subscribeInfo: CommonEventSubscribeInfo)
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-commoneventsubscribeinfo-i.md) | 是 | 表示订阅信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md)&gt; | 返回订阅者对象。 |
+
+**示例**
+
 ```TypeScript
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
@@ -77,36 +110,3 @@ commonEvent.createSubscriber(subscribeInfo).then((commonEventSubscriber:CommonEv
     console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-
-## createSubscriber
-
-```TypeScript
-function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>
-```
-
-以Promise形式创建订阅者。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md)(subscribeInfo: CommonEventSubscribeInfo)
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-commoneventsubscribeinfo-i.md) | 是 | 表示订阅信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md)&gt; | 返回订阅者对象。 |
-
-**示例**
-
-参见 [createSubscriber](#createsubscriber)

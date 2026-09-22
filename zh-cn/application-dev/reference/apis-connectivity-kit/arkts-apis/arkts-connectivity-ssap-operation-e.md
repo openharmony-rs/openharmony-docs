@@ -1,5 +1,9 @@
 # Operation
 
+```TypeScript
+enum Operation
+```
+
 表示Property支持的操作类型，为枚举值。
 
 **起始版本：** 26.0.0

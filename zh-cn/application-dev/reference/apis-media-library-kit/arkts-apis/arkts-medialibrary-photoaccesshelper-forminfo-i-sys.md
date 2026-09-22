@@ -1,5 +1,9 @@
 # FormInfo（系统接口）
 
+```TypeScript
+interface FormInfo
+```
+
 图库卡片相关信息。
 
 **起始版本：** 11

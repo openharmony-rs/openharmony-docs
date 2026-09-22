@@ -1,5 +1,9 @@
 # AttachStateChangeInfo
 
+```TypeScript
+export interface AttachStateChangeInfo
+```
+
 设备吸附状态回调信息@typedef AttachStateChangeInfo
 
 **起始版本：** 20

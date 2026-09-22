@@ -1,5 +1,9 @@
 # WidthBreakpoint
 
+```TypeScript
+declare enum WidthBreakpoint
+```
+
 Type of window width breakpoint.
 
 @enum { number }

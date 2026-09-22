@@ -1,5 +1,9 @@
 # ChannelBlendMode
 
+```TypeScript
+enum ChannelBlendMode
+```
+
 表示声道混合模式类型的枚举。
 
 **起始版本：** 11

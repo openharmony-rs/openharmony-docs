@@ -1,5 +1,9 @@
 # VpnConfig
 
+```TypeScript
+export interface VpnConfig
+```
+
 三方VPN配置参数。
 
 **起始版本：** 11

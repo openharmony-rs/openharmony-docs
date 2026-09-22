@@ -1,5 +1,9 @@
 # ShowWindowOptions
 
+```TypeScript
+interface ShowWindowOptions
+```
+
 显示子窗口或系统窗口时的参数。
 
 **起始版本：** 20
@@ -18,7 +22,7 @@ import { window } from '@kit.ArkUI';
 focusOnShow?: boolean
 ```
 
-窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)显示时是否自动获焦，默认为true。该参数对主窗、模态窗、dialog窗口不生效。
+窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-2)显示时是否自动获焦，默认为true。该参数对主窗、模态窗、dialog窗口不生效。
 
 **类型：** boolean
 

@@ -1,5 +1,9 @@
 # DataProxyChangeInfo
 
+```TypeScript
+interface DataProxyChangeInfo
+```
+
 通知订阅者共享配置变更的数据结构。包括数据变更类型、变化的URI、变更的数据内容。
 
 **起始版本：** 20

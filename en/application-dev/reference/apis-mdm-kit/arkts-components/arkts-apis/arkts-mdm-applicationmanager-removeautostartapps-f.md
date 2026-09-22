@@ -65,32 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
- 
-let wantTemp: Want = {
-  // Replace it as required.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 
-let autoStartApps: Array<Want> = [
-  // Replace it as required.
-  {
-    bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
-  }
-];
-
-try {
-  applicationManager.removeAutoStartApps(wantTemp, autoStartApps, 100);
-  console.info('Succeeded in removing auto start applications.');
-} catch(err) {
-  console.error(`Failed to remove auto start applications. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="removeautostartapps-1"></a>
 
 ## removeAutoStartApps
 
@@ -126,4 +102,28 @@ Removes the specified application from the auto-start application list of a spec
 
 **Examples**
 
-See [removeAutoStartApps](#removeautostartapps)
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+ 
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let autoStartApps: Array<Want> = [
+  // Replace it as required.
+  {
+    bundleName: 'com.example.autoStartApplication',
+    abilityName: 'EntryAbility'
+  }
+];
+
+try {
+  applicationManager.removeAutoStartApps(wantTemp, autoStartApps, 100);
+  console.info('Succeeded in removing auto start applications.');
+} catch(err) {
+  console.error(`Failed to remove auto start applications. Code: ${err.code}, message: ${err.message}`);
+}
+```

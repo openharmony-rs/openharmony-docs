@@ -1,5 +1,9 @@
 # Geolocation
 
+```TypeScript
+export default class Geolocation
+```
+
 **起始版本：** 3
 
 **废弃版本：** 9

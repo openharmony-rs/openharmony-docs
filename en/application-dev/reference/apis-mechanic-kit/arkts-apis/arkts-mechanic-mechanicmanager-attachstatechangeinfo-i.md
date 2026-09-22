@@ -1,5 +1,9 @@
 # AttachStateChangeInfo
 
+```TypeScript
+export interface AttachStateChangeInfo
+```
+
 Callback information about the device attachment state change. @typedef AttachStateChangeInfo
 
 **Since:** 20

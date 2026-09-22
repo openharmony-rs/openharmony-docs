@@ -1,5 +1,9 @@
 # AVMetadata
 
+```TypeScript
+interface AVMetadata
+```
+
 音视频元数据，包含各个元数据字段。
 
 **起始版本：** 11

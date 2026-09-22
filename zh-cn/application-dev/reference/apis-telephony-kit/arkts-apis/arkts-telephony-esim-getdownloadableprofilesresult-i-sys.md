@@ -1,5 +1,9 @@
 # GetDownloadableProfilesResult（系统接口）
 
+```TypeScript
+export interface GetDownloadableProfilesResult
+```
+
 获取默认可下载配置文件的列表。
 
 **起始版本：** 18

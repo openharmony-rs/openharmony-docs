@@ -1,5 +1,9 @@
 # WindowPostureMode
 
+```TypeScript
+enum WindowPostureMode
+```
+
 Enumerates of window posture mode.
 
 **Since:** 26.0.0

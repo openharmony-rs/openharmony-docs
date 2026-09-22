@@ -1,5 +1,9 @@
 # IntervalType（系统接口）
 
+```TypeScript
+export enum IntervalType
+```
+
 应用使用时长的查询类型。
 
 **起始版本：** 9

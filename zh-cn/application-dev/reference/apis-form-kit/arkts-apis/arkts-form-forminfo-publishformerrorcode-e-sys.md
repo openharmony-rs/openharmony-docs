@@ -1,5 +1,9 @@
 # PublishFormErrorCode（系统接口）
 
+```TypeScript
+enum PublishFormErrorCode
+```
+
 发布卡片加桌错误码枚举。
 
 **起始版本：** 12
@@ -80,7 +84,7 @@ NOT_SUPPORT = 4
 
 Indicates that the host does not support the form dimension.
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

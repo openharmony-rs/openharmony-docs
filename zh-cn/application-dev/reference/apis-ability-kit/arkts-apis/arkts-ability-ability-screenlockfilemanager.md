@@ -31,9 +31,9 @@ import { screenLockFileManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [acquireAccess](arkts-ability-screenlockfilemanager-acquireaccess-f-sys.md) | 以同步方法申请锁屏下指定类型的敏感数据访问权限。申请成功后，敏感数据密钥的引用计数增加，防止密钥在锁屏达到系统配置的时长阈值后被销毁。该方法需与[releaseAccess](arkts-ability-screenlockfilemanager-releaseaccess-f.md)配对使用。 |
-| [queryAppKeyState](arkts-ability-screenlockfilemanager-queryappkeystate-f-sys.md) | 以同步方法查询锁屏下指定类型敏感数据密钥的状态。 |
-| [releaseAccess](arkts-ability-screenlockfilemanager-releaseaccess-f-sys.md) | 以同步方法释放锁屏下指定类型敏感数据访问权限。释放成功后，敏感数据密钥的引用计数减少，当引用计数归零时，密钥可以在锁屏达到系统配置的时长阈值后被销毁。 |
+| [acquireAccess](arkts-ability-screenlockfilemanager-acquireaccess-f-sys.md#acquireaccess-1) | 以同步方法申请锁屏下指定类型的敏感数据访问权限。申请成功后，敏感数据密钥的引用计数增加，防止密钥在锁屏达到系统配置的时长阈值后被销毁。该方法需与[releaseAccess](arkts-ability-screenlockfilemanager-releaseaccess-f.md)配对使用。 |
+| [queryAppKeyState](arkts-ability-screenlockfilemanager-queryappkeystate-f-sys.md#queryappkeystate-1) | 以同步方法查询锁屏下指定类型敏感数据密钥的状态。 |
+| [releaseAccess](arkts-ability-screenlockfilemanager-releaseaccess-f-sys.md#releaseaccess-1) | 以同步方法释放锁屏下指定类型敏感数据访问权限。释放成功后，敏感数据密钥的引用计数减少，当引用计数归零时，密钥可以在锁屏达到系统配置的时长阈值后被销毁。 |
 <!--DelEnd-->
 
 ### 枚举

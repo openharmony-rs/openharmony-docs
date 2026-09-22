@@ -1,5 +1,9 @@
 # OptionValueType
 
+```TypeScript
+enum OptionValueType
+```
+
 定义选项值类型的枚举。
 
 **起始版本：** 20

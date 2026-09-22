@@ -1,5 +1,9 @@
 # BorderOptions
 
+```TypeScript
+declare interface BorderOptions
+```
+
 边框属性集合，用于描述边框相关信息。
 
 **起始版本：** 7

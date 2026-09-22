@@ -12,7 +12,7 @@ import { SplitPolicy, MultiNavigation, MultiNavPathStack } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [MultiNavPathStack](arkts-arkui-arkui-advanced-multinavigation-multinavpathstack-c.md) | MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用NavDestination的onReady等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。 |
+| [MultiNavPathStack](arkts-arkui-arkui-advanced-multinavigation-multinavpathstack-c.md) | MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用NavDestination的[onReady](../arkts-components/arkts-arkui-navdestination-comp-attribute.md#onready)等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。 |
 
 ### 结构体
 
@@ -36,8 +36,50 @@ import { SplitPolicy, MultiNavigation, MultiNavPathStack } from '@kit.ArkUI';
 
 ## 示例
 
-```TypeScript
 本示例演示MultiNavigation的基本功能。
+
+```TypeScript
+// pages/Index.ets
+import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
+import { PageDetail1 } from './PageDetail1';
+import { PageDetail2 } from './PageDetail2';
+import { PageFull1 } from './PageFull1';
+import { PageHome1 } from './PageHome1';
+import { PagePlaceholder } from './PagePlaceholder';
+
+@Entry
+@Component
+struct Index {
+  @Provide('pageStack') pageStack: MultiNavPathStack = new MultiNavPathStack();
+
+  @Builder
+  PageMap(name: string, param?: object) {
+    if (name === 'PageHome1') {
+      PageHome1({ param: param });
+    } else if (name === 'PageDetail1') {
+      PageDetail1({ param: param });
+    } else if (name === 'PageDetail2') {
+      PageDetail2({ param: param });
+    } else if (name === 'PageFull1') {
+      PageFull1();
+    } else if (name === 'PagePlaceholder') {
+      PagePlaceholder();
+    }
+  }
+
+  aboutToAppear(): void {
+    this.pageStack.pushPathByName('PageHome1', 'paramTest', false, SplitPolicy.HOME_PAGE);
+  }
+
+  build() {
+    Column() {
+      Row() {
+        MultiNavigation({ navDestination: this.PageMap, multiStack: this.pageStack })
+      }
+      .width('100%')
+    }
+  }
+}
 ```
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # CsrGenerationConfig
 
+```TypeScript
+interface CsrGenerationConfig
+```
+
 用于生成CSR的配置参数，包含主体名称、扩展、摘要算法、输出格式等。
 
 > **说明：** 

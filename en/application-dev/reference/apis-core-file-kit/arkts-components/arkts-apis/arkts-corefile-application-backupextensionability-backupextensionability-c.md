@@ -1,5 +1,9 @@
 # BackupExtensionAbility
 
+```TypeScript
+declare class BackupExtensionAbility
+```
+
 Class to be override for backup extension ability.
 
 **Since:** 10
@@ -94,10 +98,39 @@ class BackupExt extends BackupExtensionAbility {
 }
 ```
 
-```TypeScript
 > NOTE
 > 
 > The following shows the sample code for asynchronous implementation.
+
+```TypeScript
+import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+
+interface ErrorInfo {
+  type: string,
+  errorCode: number,
+  errorInfo: string
+}
+class BackupExt extends BackupExtensionAbility {
+  // Asynchronous implementation
+  async onBackupEx(backupInfo: string): Promise<string> {
+    try {
+      if (backupInfo == "") {
+        // If backupInfo is empty, the application processes the data based on the service.
+        console.info("backupInfo is empty");
+      }
+      console.info(`onBackupEx ok`);
+      let errorInfo: ErrorInfo = {
+        type: "ErrorInfo",
+        errorCode: 0,
+        errorInfo: "app customized error info"
+      }
+      return JSON.stringify(errorInfo);
+    } catch (err) {
+      console.error(`BackupExt error. Code:${err.code}, message:${err.message}`);
+    }
+    return "";
+  }
+}
 ```
 
 ## onProcess
@@ -346,10 +379,39 @@ class BackupExt extends BackupExtensionAbility {
 }
 ```
 
-```TypeScript
 > NOTE
 > 
 > The following shows the sample code for synchronous implementation.
+
+```TypeScript
+import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+interface ErrorInfo {
+  type: string,
+  errorCode: number,
+  errorInfo: string
+}
+
+class BackupExt extends BackupExtensionAbility {
+  // Synchronous implementation
+  onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): string {
+    try {
+      if (restoreInfo == "") {
+        // If restoreInfo is empty, the application processes the data based on the service.
+        console.info("restoreInfo is empty");
+      }
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      let errorInfo: ErrorInfo = {
+        type: "ErrorInfo",
+        errorCode: 0,
+        errorInfo: "app customized error info"
+      }
+      return JSON.stringify(errorInfo);
+    } catch (err) {
+      console.error(`onRestoreEx error. Code:${err.code}, message:${err.message}`);
+    }
+    return "";
+  }
+}
 ```
 
 ## context

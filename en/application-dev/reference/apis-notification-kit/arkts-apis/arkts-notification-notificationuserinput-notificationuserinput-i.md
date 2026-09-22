@@ -1,5 +1,9 @@
 # NotificationUserInput
 
+```TypeScript
+export interface NotificationUserInput
+```
+
 The **NotificationUserInput** module provides APIs for defining the notification user input.
 
 **Since:** 8

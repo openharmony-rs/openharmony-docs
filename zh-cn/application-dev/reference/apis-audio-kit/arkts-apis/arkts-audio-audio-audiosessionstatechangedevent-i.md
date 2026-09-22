@@ -1,5 +1,9 @@
 # AudioSessionStateChangedEvent
 
+```TypeScript
+interface AudioSessionStateChangedEvent
+```
+
 音频会话状态变更事件。
 
 **起始版本：** 20

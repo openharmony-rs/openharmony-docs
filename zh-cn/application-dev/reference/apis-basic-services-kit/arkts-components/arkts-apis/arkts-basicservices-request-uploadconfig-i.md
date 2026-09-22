@@ -1,5 +1,9 @@
 # UploadConfig
 
+```TypeScript
+interface UploadConfig
+```
+
 上传任务的配置信息。
 
 **起始版本：** 6

@@ -41,6 +41,8 @@ Obtains information about a volume based on the UUID. This API uses an asynchron
 | 13900042 | Unknown error. |
 
 
+<a id="getvolumebyuuid-1"></a>
+
 ## getVolumeByUuid
 
 ```TypeScript

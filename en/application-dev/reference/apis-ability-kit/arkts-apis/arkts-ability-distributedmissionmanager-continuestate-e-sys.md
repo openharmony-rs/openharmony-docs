@@ -1,5 +1,9 @@
 # ContinueState (System API)
 
+```TypeScript
+enum ContinueState
+```
+
 Enumerates the mission continuation states.
 
 **Since:** 10

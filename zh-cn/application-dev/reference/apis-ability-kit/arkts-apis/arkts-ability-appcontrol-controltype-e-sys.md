@@ -1,5 +1,9 @@
 # ControlType（系统接口）
 
+```TypeScript
+export enum ControlType
+```
+
 标识拦截指定应用程序的不同策略。
 
 **起始版本：** 11

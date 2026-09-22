@@ -14,7 +14,7 @@ function createA2dpSnkProfile(): A2dpSinkProfile
 
 Create the instance of a2dp sink profile.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

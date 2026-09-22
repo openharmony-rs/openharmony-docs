@@ -1,5 +1,9 @@
 # ScreenType（系统接口）
 
+```TypeScript
+enum ScreenType
+```
+
 屏幕类型枚举。
 
 **起始版本：** 26.0.0

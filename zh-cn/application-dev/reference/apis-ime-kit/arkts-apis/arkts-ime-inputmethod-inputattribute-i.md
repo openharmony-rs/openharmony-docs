@@ -1,5 +1,9 @@
 # InputAttribute
 
+```TypeScript
+export interface InputAttribute
+```
+
 编辑框属性，包含文本输入类型和Enter键功能类型。
 
 **起始版本：** 10

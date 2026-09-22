@@ -1,5 +1,9 @@
 # IndexUtil
 
+```TypeScript
+export class IndexUtil
+```
+
 提供索引相关的能力，包括区域索引列表和文本索引值获取。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # BusinessAbilityInfo (System API)
 
+```TypeScript
+export interface BusinessAbilityInfo
+```
+
 Contains basic business ability information.
 
 @typedef BusinessAbilityInfo

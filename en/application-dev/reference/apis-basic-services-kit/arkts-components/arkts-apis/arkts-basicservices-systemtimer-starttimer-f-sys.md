@@ -66,33 +66,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: systemTimer.TimerOptions = {
-  type: systemTimer.TIMER_TYPE_REALTIME,
-  repeat:false
-}
-let triggerTime: number = new Date().getTime();
-triggerTime += 3000;
-
-try {
-  systemTimer.createTimer(options).then((timerId: number) => {
-    systemTimer.startTimer(timerId, triggerTime).then(() => {
-      console.info(`Succeeded in starting the timer.`);
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to start timer. message: ${error.message}, code: ${error.code}`);
-    });
-    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
-  });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
-}
-```
-
+<a id="starttimer-1"></a>
 
 ## startTimer
 
@@ -130,4 +105,29 @@ Starts a timer. This API uses a promise to return the result.
 
 **Examples**
 
-See [startTimer](#starttimer)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: systemTimer.TimerOptions = {
+  type: systemTimer.TIMER_TYPE_REALTIME,
+  repeat:false
+}
+let triggerTime: number = new Date().getTime();
+triggerTime += 3000;
+
+try {
+  systemTimer.createTimer(options).then((timerId: number) => {
+    systemTimer.startTimer(timerId, triggerTime).then(() => {
+      console.info(`Succeeded in starting the timer.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to start timer. message: ${error.message}, code: ${error.code}`);
+    });
+    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+}
+```

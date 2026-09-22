@@ -1,5 +1,9 @@
 # ExtensionAbilityInfo
 
+```TypeScript
+export interface ExtensionAbilityInfo
+```
+
 ExtensionAbility信息，可以通过[bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)获取自身的ExtensionAbility信息，其中参数[bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md)至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY。
 
 **起始版本：** 9

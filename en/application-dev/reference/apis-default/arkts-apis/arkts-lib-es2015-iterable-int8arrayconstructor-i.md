@@ -1,5 +1,9 @@
 # Int8ArrayConstructor
 
+```TypeScript
+interface Int8ArrayConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # PushParameterForStage (System API)
 
+```TypeScript
+interface PushParameterForStage
+```
+
 Plugin component push parameters which is used in push function.
 
 **Since:** 9

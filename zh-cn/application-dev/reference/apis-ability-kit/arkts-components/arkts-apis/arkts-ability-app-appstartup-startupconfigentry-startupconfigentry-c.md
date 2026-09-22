@@ -1,5 +1,9 @@
 # StartupConfigEntry
 
+```TypeScript
+declare class StartupConfigEntry
+```
+
 本模块提供[应用启动框架](../../../application-models/app-startup.md)配置的能力。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # SubIntentInfoForConfiguration（系统接口）
 
+```TypeScript
+interface SubIntentInfoForConfiguration
+```
+
 用于描述[使用配置文件开发的意图](../../../application-models/insight-intent-config-development.md)的特有信息。
 
 **起始版本：** 23

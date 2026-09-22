@@ -1,5 +1,9 @@
 # ReadStreamOptions
 
+```TypeScript
+export interface ReadStreamOptions
+```
+
 Defines the options used in **createReadStream()**.
 
 **Since:** 12

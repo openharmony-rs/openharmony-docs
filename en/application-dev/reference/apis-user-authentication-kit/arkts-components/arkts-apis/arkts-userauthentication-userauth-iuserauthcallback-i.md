@@ -1,5 +1,9 @@
 # IUserAuthCallback
 
+```TypeScript
+interface IUserAuthCallback
+```
+
 Provides callbacks to return the authentication result.
 
 **Since:** 8

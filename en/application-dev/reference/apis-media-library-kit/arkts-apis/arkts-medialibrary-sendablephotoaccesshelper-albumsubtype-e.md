@@ -1,5 +1,9 @@
 # AlbumSubtype
 
+```TypeScript
+const enum AlbumSubtype
+```
+
 Enumerate the album subtypes.
 
 **Since:** 12

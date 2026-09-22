@@ -59,30 +59,6 @@ participants.push({
   },
   attachInfo: ''
 });
-cloudData.sharing.share('sharing_resource_test', participants).then((result) => {
-  console.info(`share success, result: ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`share failed, code is ${err.code},message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let participants = new Array<cloudData.sharing.Participant>();
-participants.push({
-  identity: '000000000',
-  role: cloudData.sharing.Role.ROLE_INVITER,
-  state: cloudData.sharing.State.STATE_UNKNOWN,
-  privilege: {
-    writable: true,
-    readable: true,
-    creatable: false,
-    deletable: false,
-    shareable: false
-  },
-  attachInfo: ''
-});
 cloudData.sharing.share('sharing_resource_test', participants, (err: BusinessError, result) => {
   if (err) {
     console.error(`share failed, code is ${err.code},message is ${err.message}`);
@@ -92,6 +68,8 @@ cloudData.sharing.share('sharing_resource_test', participants, (err: BusinessErr
 });
 ```
 
+
+<a id="share-1"></a>
 
 ## share
 
@@ -133,4 +111,26 @@ function share(
 
 **示例**
 
-参见 [share](#share)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let participants = new Array<cloudData.sharing.Participant>();
+participants.push({
+  identity: '000000000',
+  role: cloudData.sharing.Role.ROLE_INVITER,
+  state: cloudData.sharing.State.STATE_UNKNOWN,
+  privilege: {
+    writable: true,
+    readable: true,
+    creatable: false,
+    deletable: false,
+    shareable: false
+  },
+  attachInfo: ''
+});
+cloudData.sharing.share('sharing_resource_test', participants).then((result) => {
+  console.info(`share success, result: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`share failed, code is ${err.code},message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # NotificationTime
 
+```TypeScript
+export interface NotificationTime
+```
+
 描述通知计时信息。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # OnContinueResult
 
+```TypeScript
+export enum OnContinueResult
+```
+
 Ability迁移结果，该类型为枚举，可配合UIAbility的[onContinue()](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)方法完成相应的返回。
 
 **起始版本：** 9

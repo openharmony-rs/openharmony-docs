@@ -1,5 +1,9 @@
 # HuksExternalCryptoParam
 
+```TypeScript
+export interface HuksExternalCryptoParam
+```
+
 Defines the type of the param array used for calling the API.
 
 **Since:** 22

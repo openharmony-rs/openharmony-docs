@@ -1,5 +1,9 @@
 # ProfileClass（系统接口）
 
+```TypeScript
+export enum ProfileClass
+```
+
 配置文件类。
 
 **起始版本：** 18

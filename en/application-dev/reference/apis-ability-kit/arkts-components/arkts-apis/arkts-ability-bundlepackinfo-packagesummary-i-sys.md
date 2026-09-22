@@ -1,5 +1,9 @@
 # PackageSummary (System API)
 
+```TypeScript
+export interface PackageSummary
+```
+
 PackageSummary: the package summary class.
 
 **Since:** 9

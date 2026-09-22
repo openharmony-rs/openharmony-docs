@@ -1,5 +1,9 @@
 # File (System API)
 
+```TypeScript
+interface File extends FileMeta, FileData, FileManifestData
+```
+
 Corresponds to a file, including its metadata and data and the file's manifest data. Files are useful as IPC and backup services.
 
 @extends FileMeta, FileData, FileManifestData @interface File

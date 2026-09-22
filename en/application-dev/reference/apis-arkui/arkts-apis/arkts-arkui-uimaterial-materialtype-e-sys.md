@@ -1,5 +1,9 @@
 # MaterialType
 
+```TypeScript
+enum MaterialType
+```
+
 Enumerates system material types.
 
 **Since:** 26.0.0
@@ -12,7 +16,7 @@ Enumerates system material types.
 NONE = 0
 ```
 
-No system material effect. The corresponding effects are: backgroundColor and borderColor are transparent, borderWidth is 0, and there is no shadow.
+No system material effect. The corresponding effects are: [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor) and [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor) are transparent, [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth) is 0, and there is no [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow).
 
 **Since:** 23
 
@@ -32,13 +36,13 @@ SEMI_TRANSPARENT = 1
 
 Semi-transparent system material effect. The corresponding effect is as follows:
 
-backgroundColor: #f2f1f3f5 in light mode and #f2303131 in dark mode.
+[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor): #f2f1f3f5 in light mode and #f2303131 in dark mode.
 
-borderColor: [token](../../../ui/theme_skinning.md#system-default-token-color-values) value of **theme.colors.compForegroundPrimary** with 10% transparency.
+[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor): [token](../../../ui/theme_skinning.md#system-default-token-color-values) value of **theme.colors.compForegroundPrimary** with 10% transparency.
 
-borderWidth: 1 vp.
+[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth): 1 vp.
 
-shadow: ShadowStyle.OUTER_DEFAULT_SM.
+[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow): ShadowStyle.OUTER_DEFAULT_SM.
 
 **Since:** 23
 

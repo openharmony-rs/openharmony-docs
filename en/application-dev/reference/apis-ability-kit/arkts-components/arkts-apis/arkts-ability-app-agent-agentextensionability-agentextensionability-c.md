@@ -1,5 +1,9 @@
 # AgentExtensionAbility
 
+```TypeScript
+declare class AgentExtensionAbility extends ExtensionAbility
+```
+
 The class of agent extension ability. This class cannot be used in Harmony Archive(HAR).
 
 @extends ExtensionAbility
@@ -22,7 +26,7 @@ import { AgentExtensionAbility } from '@kit.AbilityKit';
 onAuth(proxy: AgentHostProxy, handshakeData: string): void
 ```
 
-Called back when authentication is sent.
+The system triggers this callback when the AgentExtensionAbility receives a security authentication request sent by the client. The server can process the received security authentication request in this callback, and use [AgentHostProxy.authorize](arkts-ability-agenthostproxy-i.md#authorize) to send a security authentication request to the client.
 
 **Since:** 24
 
@@ -68,7 +72,7 @@ Called back when an agent extension is connected to an ability.
 onCreate(want: Want): void
 ```
 
-Called back when an agent extension is started for initialization.
+The system triggers this callback when an AgentExtensionAbility instance is created. Developers can perform initialization logic (such as defining variables and loading resources) in this callback.
 
 **Since:** 24
 
@@ -90,7 +94,7 @@ Called back when an agent extension is started for initialization.
 onData(proxy: AgentHostProxy, data: string): void
 ```
 
-Called back when data is sent.
+The system triggers this callback when the AgentExtensionAbility receives data sent by the client. The server can use [AgentHostProxy.sendData](arkts-ability-agenthostproxy-i.md#senddata) to send data to the client in this callback.
 
 **Since:** 24
 

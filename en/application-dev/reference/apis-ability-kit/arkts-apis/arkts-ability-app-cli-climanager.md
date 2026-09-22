@@ -1,6 +1,6 @@
 # @ohos.app.cli.cliManager
 
-The module provides the capability to interact with cli tools in the system.
+This module provides the capability to interact with system command-line interface (CLI) tools, including querying tool information, invoking and executing CLI commands, and managing sessions. A session is created when the execTool API is called, and is used to track the execution status and result of the CLI tool.
 
 @namespace cliManager
 
@@ -15,7 +15,7 @@ The module provides the capability to interact with cli tools in the system.
 ## Modules to Import
 
 ```TypeScript
-import { cliManager } from '@kit.AbilityKit';
+import { cliManager, CliHook, ExecToolParam, ExecCmdParam, ExecResultWrap } from '@kit.AbilityKit';
 ```
 
 ## Summary
@@ -32,8 +32,10 @@ import { cliManager } from '@kit.AbilityKit';
 | [querySession](arkts-ability-climanager-querysession-f-sys.md) | Query session status. |
 | [queryTools](arkts-ability-climanager-querytools-f-sys.md) | Query all detailed information of tools |
 | [queryToolSummaries](arkts-ability-climanager-querytoolsummaries-f-sys.md) | Query all tool summary information. The summary information only contains the fields: name, description, version. |
+| [registerCliHook](arkts-ability-climanager-registerclihook-f-sys.md) | Register a CLI hook for intercepting tool and command execution. Only one CLI hook can be registered at a time; registering again while one is already active will fail. This API is only available in developer mode. To update a registered hook, call unregisterCliHook first, then register again. The hook object must implement at least one of the optional methods in CliHook. |
 | [sendMessage](arkts-ability-climanager-sendmessage-f-sys.md) | Send event to target process. |
 | [subscribeSession](arkts-ability-climanager-subscribesession-f-sys.md) | Subscribe session event. |
+| [unregisterCliHook](arkts-ability-climanager-unregisterclihook-f-sys.md) | Unregister the previously registered CLI hook. The hook object must be the same as the one passed to registerCliHook. If no hook is registered, the call will fail with an error. |
 <!--DelEnd-->
 
 <!--Del-->

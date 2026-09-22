@@ -1,5 +1,9 @@
 # SymbolDateTimeFormat
 
+```TypeScript
+export class SymbolDateTimeFormat extends Intl.DateTimeFormat
+```
+
 Provide a DateTime formatting interface that supports custom symbols. This interface formats date time values into strings with custom symbols, and can replace variable symbols in the formatted result with custom fixed symbols (e.g., replacing "2:23 PM" with "2:23 afternoon").
 
 **Inheritance/Implementation:** SymbolDateTimeFormat extends Intl.DateTimeFormat

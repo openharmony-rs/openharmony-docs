@@ -1,5 +1,9 @@
 # ListFormat
 
+```TypeScript
+interface ListFormat
+```
+
 ## Modules to Import
 
 ```TypeScript

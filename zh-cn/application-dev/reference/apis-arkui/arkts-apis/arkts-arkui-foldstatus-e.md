@@ -1,5 +1,9 @@
 # FoldStatus
 
+```TypeScript
+declare enum FoldStatus
+```
+
 Enumerates the fold status.
 
 @enum { number }

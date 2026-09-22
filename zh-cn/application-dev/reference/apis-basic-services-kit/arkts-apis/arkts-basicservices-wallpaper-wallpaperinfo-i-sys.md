@@ -1,5 +1,9 @@
 # WallpaperInfo（系统接口）
 
+```TypeScript
+interface WallpaperInfo
+```
+
 定义壁纸的信息结构。
 
 **起始版本：** 14

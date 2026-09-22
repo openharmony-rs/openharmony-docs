@@ -1,4 +1,4 @@
-# @ohos.app.form.FormExtensionAbility
+# @ohos.app.form.FormExtensionAbility(FormExtensionAbility)
 
 The **FormExtensionAbility** module provides lifecycle callbacks invoked when a widget is created, destroyed, or
  updated.

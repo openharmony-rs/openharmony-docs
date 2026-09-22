@@ -1,5 +1,9 @@
 # IpConfig (System API)
 
+```TypeScript
+interface IpConfig
+```
+
 Wi-Fi IP configuration information. @typedef IpConfig
 
 **Since:** 9

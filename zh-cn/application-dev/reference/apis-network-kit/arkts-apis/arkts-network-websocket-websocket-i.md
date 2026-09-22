@@ -1,5 +1,9 @@
 # WebSocket
 
+```TypeScript
+export interface WebSocket
+```
+
 在调用WebSocket的方法前，需要先通过[webSocket.createWebSocket](arkts-network-websocket-createwebsocket-f.md)创建一个WebSocket。
 
 **起始版本：** 6
@@ -57,42 +61,7 @@ ws.close((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let ws = webSocket.createWebSocket();
-
-let options: webSocket.WebSocketCloseOptions | undefined;
-if (options != undefined) {
-    options.code = 1000
-    options.reason = "your reason"
-}
-ws.close(options, (err: BusinessError) => {
-    if (!err) {
-        console.info("close success")
-    } else {
-        console.error(`close fail. Code: ${err.code}, message: ${err.message}`)
-    }
-});
-```
-
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-
-let ws = webSocket.createWebSocket();
-let options: webSocket.WebSocketCloseOptions | undefined;
-if (options != undefined) {
-    options.code = 1000
-    options.reason = "your reason"
-}
-let promise = ws.close();
-promise.then((value: boolean) => {
-    console.info("close success")
-}).catch((err:string) => {
-    console.error("close fail, error:" + JSON.stringify(err))
-});
-```
+<a id="close-1"></a>
 
 ## close
 
@@ -131,20 +100,6 @@ import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let ws = webSocket.createWebSocket();
-ws.close((err: BusinessError) => {
-  if (!err) {
-    console.info("close success")
-  } else {
-    console.error(`close fail. Code: ${err.code}, message: ${err.message}`)
-  }
-});
-```
-
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let ws = webSocket.createWebSocket();
 
 let options: webSocket.WebSocketCloseOptions | undefined;
 if (options != undefined) {
@@ -160,22 +115,7 @@ ws.close(options, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-
-let ws = webSocket.createWebSocket();
-let options: webSocket.WebSocketCloseOptions | undefined;
-if (options != undefined) {
-    options.code = 1000
-    options.reason = "your reason"
-}
-let promise = ws.close();
-promise.then((value: boolean) => {
-    console.info("close success")
-}).catch((err:string) => {
-    console.error("close fail, error:" + JSON.stringify(err))
-});
-```
+<a id="close-2"></a>
 
 ## close
 
@@ -213,40 +153,6 @@ close(options?: WebSocketCloseOptions): Promise<boolean>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例**
-
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let ws = webSocket.createWebSocket();
-ws.close((err: BusinessError) => {
-  if (!err) {
-    console.info("close success")
-  } else {
-    console.error(`close fail. Code: ${err.code}, message: ${err.message}`)
-  }
-});
-```
-
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let ws = webSocket.createWebSocket();
-
-let options: webSocket.WebSocketCloseOptions | undefined;
-if (options != undefined) {
-    options.code = 1000
-    options.reason = "your reason"
-}
-ws.close(options, (err: BusinessError) => {
-    if (!err) {
-        console.info("close success")
-    } else {
-        console.error(`close fail. Code: ${err.code}, message: ${err.message}`)
-    }
-});
-```
 
 ```TypeScript
 import { webSocket } from '@kit.NetworkKit';
@@ -326,57 +232,7 @@ ws.connect(url, (err: BusinessError, value: boolean) => {
 });
 ```
 
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 示例1：
-let ws = webSocket.createWebSocket();
-let options: webSocket.WebSocketRequestOptions | undefined;
-if (options !=undefined) {
-  options.header = {
-     name1: "value1",
-     name2: "value2",
-     name3: "value3"
-  };
-  options.caPath = "";
-}
-let url = "ws://"
-ws.connect(url, options, (err: BusinessError, value: Object) => {
-  if (!err) {
-    console.info("connect success")
-  } else {
-    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
-  }
-});
-
-// 示例2：
-let url = "ws://"
-let ws = webSocket.createWebSocket();
-let options: webSocket.WebSocketRequestOptions = {
-  minSupportTlsProtocol: webSocket.TlsProtocol.TLS_V_1_1
-};
-ws.connect(url, options, (err: BusinessError, value: Object) => {
-  if (!err) {
-    console.info("connect success")
-  } else {
-    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
-  }
-});
-```
-
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-
-let ws = webSocket.createWebSocket();
-let url = "ws://"
-let promise = ws.connect(url);
-promise.then((value: boolean) => {
-  console.info("connect success")
-}).catch((err:string) => {
-  console.error("connect fail, error:" + JSON.stringify(err))
-});
-```
+<a id="connect-1"></a>
 
 ## connect
 
@@ -425,7 +281,46 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback<b
 
 **示例**
 
-参见 [connect](#connect)
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 示例1：
+let ws = webSocket.createWebSocket();
+let options: webSocket.WebSocketRequestOptions | undefined;
+if (options !=undefined) {
+  options.header = {
+     name1: "value1",
+     name2: "value2",
+     name3: "value3"
+  };
+  options.caPath = "";
+}
+let url = "ws://"
+ws.connect(url, options, (err: BusinessError, value: Object) => {
+  if (!err) {
+    console.info("connect success")
+  } else {
+    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+  }
+});
+
+// 示例2：
+let url = "ws://"
+let ws = webSocket.createWebSocket();
+let options: webSocket.WebSocketRequestOptions = {
+  minSupportTlsProtocol: webSocket.TlsProtocol.TLS_V_1_1
+};
+ws.connect(url, options, (err: BusinessError, value: Object) => {
+  if (!err) {
+    console.info("connect success")
+  } else {
+    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+  }
+});
+```
+
+<a id="connect-2"></a>
 
 ## connect
 
@@ -479,7 +374,18 @@ connect(url: string, options?: WebSocketRequestOptions): Promise<boolean>
 
 **示例**
 
-参见 [connect](#connect)
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+let url = "ws://"
+let promise = ws.connect(url);
+promise.then((value: boolean) => {
+  console.info("connect success")
+}).catch((err:string) => {
+  console.error("connect fail, error:" + JSON.stringify(err))
+});
+```
 
 ## off('open')
 
@@ -506,6 +412,25 @@ off(type: 'open', callback?: AsyncCallback<Object>): void
 | type | 'open' | 是 | 取消订阅的事件类型。'open'：WebSocket的打开事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | 否 | 回调函数。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+class OutValue {
+  status: number = 0
+  message: string = ""
+}
+let callback1 = (err: BusinessError, value: Object) => {
+ console.info("on open, status:" + ((value as OutValue).status + ", message:" + (value as OutValue).message))
+}
+ws.on('open', callback1);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+ws.off('open', callback1);
+```
+
 ## off('openInfo')
 
 ```TypeScript
@@ -530,6 +455,25 @@ off(type: 'openInfo', callback?: AsyncCallback<WebSocketOpenInfo>): void
 | --- | --- | --- | --- |
 | type | 'openInfo' | 是 | 取消订阅的事件类型。'openInfo'：WebSocket的打开信息事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WebSocketOpenInfo](arkts-network-websocket-websocketopeninfo-i.md)&gt; | 否 | 回调函数。 |
+
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+}
+ws.on('openInfo', callback1);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+ws.off('openInfo', callback1);
+```
 
 ## off('message')
 
@@ -558,6 +502,15 @@ off(type: 'message', callback?: AsyncCallback<string | ArrayBuffer>): void
 | type | 'message' | 是 | 取消订阅的事件类型。'message'：WebSocket的接收到服务器消息事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string &#124; ArrayBuffer&gt; | 否 | 回调函数。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.off('message');
+```
+
 ## off('close')
 
 ```TypeScript
@@ -582,6 +535,15 @@ off(type: 'close', callback?: AsyncCallback<CloseResult>): void
 | --- | --- | --- | --- |
 | type | 'close' | 是 | 取消订阅的事件类型。'close'：WebSocket的关闭事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CloseResult](arkts-network-websocket-closeresult-i.md)&gt; | 否 | 回调函数。<br>close：close错误码，reason：错误码说明 |
+
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.off('close');
+```
 
 ## off('error')
 
@@ -608,6 +570,15 @@ off(type: 'error', callback?: ErrorCallback): void
 | type | 'error' | 是 | 取消订阅的事件类型。'error'：WebSocket的Error事件。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.off('error');
+```
+
 ## off('dataEnd')
 
 ```TypeScript
@@ -630,6 +601,15 @@ off(type: 'dataEnd', callback?: Callback<void>): void
 | --- | --- | --- | --- |
 | type | 'dataEnd' | 是 | 取消订阅的事件类型。'dataEnd'：WebSocket的数据接收结束事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 |  |
+
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.off('dataEnd');
+```
 
 ## off('headerReceive')
 
@@ -654,6 +634,15 @@ off(type: 'headerReceive', callback?: Callback<ResponseHeaders>): void
 | type | 'headerReceive' | 是 | 取消订阅的事件类型。'headerReceive'：WebSocket的headerReceive事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ResponseHeaders](arkts-network-websocket-responseheaders-t.md)&gt; | 否 | 回调函数，返回订阅事件。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.off('headerReceive');
+```
+
 ## on('open')
 
 ```TypeScript
@@ -674,6 +663,22 @@ on(type: 'open', callback: AsyncCallback<Object>): void
 | --- | --- | --- | --- |
 | type | 'open' | 是 | 订阅的事件类型。'open'：WebSocket的打开事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | 是 | 回调函数。 |
+
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let ws= webSocket.createWebSocket();
+class OutValue {
+  status: number = 0
+  message: string = ""
+}
+ws.on('open', (err: BusinessError, value: Object) => {
+  console.info("on open, status:" + (value as OutValue).status + ", message:" + (value as OutValue).message)
+});
+```
 
 ## on('message')
 
@@ -700,6 +705,18 @@ on(type: 'message', callback: AsyncCallback<string | ArrayBuffer>): void
 | type | 'message' | 是 | 订阅的事件类型。'message'：WebSocket的接收服务器消息事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string &#124; ArrayBuffer&gt; | 是 | 回调函数。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
+  console.info("on message, message:" + value)
+});
+```
+
 ## on('openInfo')
 
 ```TypeScript
@@ -721,6 +738,22 @@ on(type: 'openInfo', callback: AsyncCallback<WebSocketOpenInfo>): void
 | type | 'openInfo' | 是 | 订阅的事件类型。'openInfo'：WebSocket的打开信息事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WebSocketOpenInfo](arkts-network-websocket-websocketopeninfo-i.md)&gt; | 是 | 回调函数。返回WebSocket连接的详细信息。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+});
+```
+
 ## on('close')
 
 ```TypeScript
@@ -741,6 +774,18 @@ on(type: 'close', callback: AsyncCallback<CloseResult>): void
 | --- | --- | --- | --- |
 | type | 'close' | 是 | 订阅的事件类型。'close'：WebSocket的关闭事件。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CloseResult](arkts-network-websocket-closeresult-i.md)&gt; | 是 | 回调函数。<br>close：close错误码，reason：错误码说明 |
+
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
+  console.info("on close, code is " + value.code + ", reason is " + value.reason)
+});
+```
 
 ## on('error')
 
@@ -765,6 +810,18 @@ on(type: 'error', callback: ErrorCallback): void
 | type | 'error' | 是 | 订阅的事件类型。'error'：WebSocket的Error事件。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('error', (err: BusinessError) => {
+  console.error(`on error. Code: ${err.code}, message: ${err.message}`)
+});
+```
+
 ## on('dataEnd')
 
 ```TypeScript
@@ -784,6 +841,17 @@ on(type: 'dataEnd', callback: Callback<void>): void
 | type | 'dataEnd' | 是 | 订阅的事件类型。'dataEnd'：WebSocket的数据接收结束事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('dataEnd', () => {
+  console.info("on dataEnd")
+});
+```
+
 ## on('headerReceive')
 
 ```TypeScript
@@ -802,6 +870,17 @@ on(type: 'headerReceive', callback: Callback<ResponseHeaders>): void
 | --- | --- | --- | --- |
 | type | 'headerReceive' | 是 | 订阅的事件类型。'headerReceive'：WebSocket的headerReceive事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ResponseHeaders](arkts-network-websocket-responseheaders-t.md)&gt; | 是 | 回调函数，返回订阅事件。 |
+
+**示例**
+
+```TypeScript
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('headerReceive', (data) => {
+  console.info("on headerReceive " + JSON.stringify(data))
+});
+```
 
 ## send
 
@@ -864,34 +943,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 });
 ```
 
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let ws = webSocket.createWebSocket();
-let url = "ws://"
-class OutValue {
-  status: number = 0
-  message: string = ""
-}
-ws.connect(url, (err: BusinessError, value: boolean) => {
-    if (!err) {
-      console.info("connect success")
-    } else {
-      console.error("connect fail. Code: ${err.code}, message: ${err.message}")
-    }
-});
-
-ws.on('open', (err: BusinessError, value: Object) => {
-  console.info("on open, status:" + (value as OutValue).status + ", message:" + (value as OutValue).message)
-  let promise = ws.send("Hello, server!");
-  promise.then((value: boolean) => {
-    console.info("send success")
-  }).catch((err:string) => {
-    console.error("send fail, error:" + JSON.stringify(err))
-  });
-});
-```
+<a id="send-1"></a>
 
 ## send
 
@@ -929,35 +981,6 @@ send(data: string | ArrayBuffer): Promise<boolean>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例**
-
-```TypeScript
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let ws = webSocket.createWebSocket();
-let url = "ws://"
-class OutValue {
-  status: number = 0
-  message: string = ""
-}
-ws.connect(url, (err: BusinessError, value: boolean) => {
-    if (!err) {
-      console.info("connect success")
-    } else {
-      console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
-    }
-});
-ws.on('open', (err: BusinessError, value: Object) => {
-  console.info("on open, status:" + (value as OutValue).status + ", message:" + (value as OutValue).message)
-    ws.send("Hello, server!", (err: BusinessError, value: boolean) => {
-    if (!err) {
-      console.info("send success")
-    } else {
-      console.error(`send fail. Code: ${err.code}, message: ${err.message}`)
-    }
-  });
-});
-```
 
 ```TypeScript
 import { webSocket } from '@kit.NetworkKit';

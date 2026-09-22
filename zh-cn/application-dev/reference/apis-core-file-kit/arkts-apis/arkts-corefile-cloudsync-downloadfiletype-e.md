@@ -1,5 +1,9 @@
 # DownloadFileType
 
+```TypeScript
+enum DownloadFileType
+```
+
 云盘缓存文件类型的枚举。
 
 **起始版本：** 20

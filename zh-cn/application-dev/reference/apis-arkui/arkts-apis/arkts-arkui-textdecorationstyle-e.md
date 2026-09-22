@@ -1,5 +1,9 @@
 # TextDecorationStyle
 
+```TypeScript
+declare enum TextDecorationStyle
+```
+
 Type of text decoration line style.
 
 @enum {number}

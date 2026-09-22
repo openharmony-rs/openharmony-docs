@@ -31,22 +31,6 @@ function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): 
 
 ```TypeScript
 import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let bundleName: string = "com.example.myapplication";
-let abilityName: string = "EntryAbility";
-
-bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
-  bundle.isAbilityEnabled(abilityInfo).then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-})
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
 
 let bundleName: string = "com.example.myapplication";
 let abilityName: string = "EntryAbility";
@@ -62,6 +46,8 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 })
 ```
 
+
+<a id="isabilityenabled-1"></a>
 
 ## isAbilityEnabled
 
@@ -91,4 +77,18 @@ function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 
 **示例**
 
-参见 isAbilityEnabled
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleName: string = "com.example.myapplication";
+let abilityName: string = "EntryAbility";
+
+bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
+  bundle.isAbilityEnabled(abilityInfo).then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+})
+```

@@ -1,5 +1,9 @@
 # ThumbnailVisibility (System API)
 
+```TypeScript
+enum ThumbnailVisibility
+```
+
 Ability to access thumbnail
 
 **Since:** 14

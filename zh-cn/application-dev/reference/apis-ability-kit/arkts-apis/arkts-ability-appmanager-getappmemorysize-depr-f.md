@@ -40,18 +40,8 @@ appManager.getAppMemorySize().then((data) => {
 });
 ```
 
-```TypeScript
-import appManager from '@ohos.application.appManager';
 
-appManager.getAppMemorySize((error, data) => {
-  if (error && error.code !== 0) {
-    console.error(`getAppMemorySize fail, error: ${JSON.stringify(error)}`);
-  } else {
-    console.info(`The size of app memory is: ${JSON.stringify(data)}`);
-  }
-});
-```
-
+<a id="getappmemorysize-1"></a>
 
 ## getAppMemorySize
 
@@ -77,4 +67,14 @@ function getAppMemorySize(callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 getAppMemorySize
+```TypeScript
+import appManager from '@ohos.application.appManager';
+
+appManager.getAppMemorySize((error, data) => {
+  if (error && error.code !== 0) {
+    console.error(`getAppMemorySize fail, error: ${JSON.stringify(error)}`);
+  } else {
+    console.info(`The size of app memory is: ${JSON.stringify(data)}`);
+  }
+});
+```

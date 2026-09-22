@@ -1,5 +1,9 @@
 # PageContent（系统接口）
 
+```TypeScript
+export interface PageContent
+```
+
 屏上内容。
 
 **起始版本：** 20

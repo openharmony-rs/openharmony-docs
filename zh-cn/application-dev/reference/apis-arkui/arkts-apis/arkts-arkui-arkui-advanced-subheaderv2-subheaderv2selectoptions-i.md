@@ -1,5 +1,9 @@
 # SubHeaderV2SelectOptions
 
+```TypeScript
+export interface SubHeaderV2SelectOptions
+```
+
 用于构建SubHeaderV2Select对象。
 
 **起始版本：** 18
@@ -84,7 +88,7 @@ options: SelectOption[]
 
 下拉选项内容。
 
-**类型：** [SelectOption](../arkts-components/arkts-arkui-selectoption-i.md)[]
+**类型：** [SelectOption](../arkts-components/arkts-arkui-select-comp-selectoption-i.md)[]
 
 **起始版本：** 18
 

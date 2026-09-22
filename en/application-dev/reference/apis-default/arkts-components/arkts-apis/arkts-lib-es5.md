@@ -146,33 +146,33 @@
 
 | Name | Description |
 | --- | --- |
-| [Array](arkts-libes5-p.md) |  |
-| [ArrayBuffer](arkts-libes5-p.md) |  |
-| [Boolean](arkts-libes5-p.md) |  |
-| [DataView](arkts-libes5-p.md) |  |
-| [Date](arkts-libes5-p.md) |  |
-| [Error](arkts-libes5-p.md) |  |
-| [EvalError](arkts-libes5-p.md) |  |
-| [Float32Array](arkts-libes5-p.md) |  |
-| [Float64Array](arkts-libes5-p.md) |  |
-| [Function](arkts-libes5-p.md) |  |
-| [Infinity](arkts-libes5-p.md) |  |
-| [Int16Array](arkts-libes5-p.md) |  |
-| [Int32Array](arkts-libes5-p.md) |  |
-| [Int8Array](arkts-libes5-p.md) |  |
-| [JSON](arkts-libes5-p.md) | An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format. |
-| [Math](arkts-libes5-p.md) | An intrinsic object that provides basic mathematics functionality and constants. |
-| [NaN](arkts-libes5-p.md) |  |
-| [Number](arkts-libes5-p.md) | An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers. |
-| [Object](arkts-libes5-p.md) | Provides functionality common to all JavaScript objects. |
-| [RangeError](arkts-libes5-p.md) |  |
-| [ReferenceError](arkts-libes5-p.md) |  |
-| [RegExp](arkts-libes5-p.md) |  |
-| [String](arkts-libes5-p.md) | Allows manipulation and formatting of text strings and determination and location of substrings within strings. |
-| [SyntaxError](arkts-libes5-p.md) |  |
-| [TypeError](arkts-libes5-p.md) |  |
-| [Uint16Array](arkts-libes5-p.md) |  |
-| [Uint32Array](arkts-libes5-p.md) |  |
-| [Uint8Array](arkts-libes5-p.md) |  |
-| [Uint8ClampedArray](arkts-libes5-p.md) |  |
-| [URIError](arkts-libes5-p.md) |  |
+| [Array](arkts-lib-es5-p.md) |  |
+| [ArrayBuffer](arkts-lib-es5-p.md) |  |
+| [Boolean](arkts-lib-es5-p.md) |  |
+| [DataView](arkts-lib-es5-p.md) |  |
+| [Date](arkts-lib-es5-p.md) |  |
+| [Error](arkts-lib-es5-p.md) |  |
+| [EvalError](arkts-lib-es5-p.md) |  |
+| [Float32Array](arkts-lib-es5-p.md) |  |
+| [Float64Array](arkts-lib-es5-p.md) |  |
+| [Function](arkts-lib-es5-p.md) |  |
+| [Infinity](arkts-lib-es5-p.md) |  |
+| [Int16Array](arkts-lib-es5-p.md) |  |
+| [Int32Array](arkts-lib-es5-p.md) |  |
+| [Int8Array](arkts-lib-es5-p.md) |  |
+| [JSON](arkts-lib-es5-p.md) | An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format. |
+| [Math](arkts-lib-es5-p.md) | An intrinsic object that provides basic mathematics functionality and constants. |
+| [NaN](arkts-lib-es5-p.md) |  |
+| [Number](arkts-lib-es5-p.md) | An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers. |
+| [Object](arkts-lib-es5-p.md) | Provides functionality common to all JavaScript objects. |
+| [RangeError](arkts-lib-es5-p.md) |  |
+| [ReferenceError](arkts-lib-es5-p.md) |  |
+| [RegExp](arkts-lib-es5-p.md) |  |
+| [String](arkts-lib-es5-p.md) | Allows manipulation and formatting of text strings and determination and location of substrings within strings. |
+| [SyntaxError](arkts-lib-es5-p.md) |  |
+| [TypeError](arkts-lib-es5-p.md) |  |
+| [Uint16Array](arkts-lib-es5-p.md) |  |
+| [Uint32Array](arkts-lib-es5-p.md) |  |
+| [Uint8Array](arkts-lib-es5-p.md) |  |
+| [Uint8ClampedArray](arkts-lib-es5-p.md) |  |
+| [URIError](arkts-lib-es5-p.md) |  |

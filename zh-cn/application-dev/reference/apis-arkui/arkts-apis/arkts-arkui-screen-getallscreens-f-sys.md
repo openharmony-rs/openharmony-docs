@@ -53,56 +53,8 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenClass: screen.Screen | null = null;
-// 获取所有屏幕对象
-let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
-promise.then((data: Array<screen.Screen>) => {
-  if (data.length > 0) {
-    screenClass = data[0];
-  }
-  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let screenClass: screen.Screen | null = null;
-// 获取所有屏幕对象
-screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
-  const errCode: number = err.code;
-  if (errCode) {
-    console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-  if (data.length > 0) {
-    screenClass = data[0];
-  }
-}, true);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let screenClass: screen.Screen | null = null;
-// 获取所有屏幕对象
-let promise: Promise<Array<screen.Screen>> = screen.getAllScreens(true);
-promise.then((data: Array<screen.Screen>) => {
-  if (data.length > 0) {
-    screenClass = data[0];
-  }
-  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getallscreens-1"></a>
 
 ## getAllScreens
 
@@ -133,4 +85,18 @@ function getAllScreens(): Promise<Array<Screen>>
 
 **示例**
 
-参见 [getAllScreens](#getallscreens)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
+let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+promise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    screenClass = data[0];
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+});
+```

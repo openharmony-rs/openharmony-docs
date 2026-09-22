@@ -1,5 +1,9 @@
 # DeferredPhotoProxy（系统接口）
 
+```TypeScript
+interface DeferredPhotoProxy
+```
+
 A class object that functions as a thumbnail proxy.
 
 **起始版本：** 11

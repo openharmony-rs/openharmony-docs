@@ -1,5 +1,9 @@
 # NotificationMultiLineContent
 
+```TypeScript
+export interface NotificationMultiLineContent extends NotificationBasicContent
+```
+
 描述多行文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。
 
 > **说明：** 

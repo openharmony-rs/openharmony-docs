@@ -1,5 +1,9 @@
 # CodecFrameLength
 
+```TypeScript
+enum CodecFrameLength
+```
+
 Describes the codec frame length.
 
 **Since:** 19

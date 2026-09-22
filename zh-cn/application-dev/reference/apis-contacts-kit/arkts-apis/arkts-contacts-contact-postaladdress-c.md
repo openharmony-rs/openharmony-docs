@@ -1,5 +1,9 @@
 # PostalAddress
 
+```TypeScript
+class PostalAddress
+```
+
 联系人的邮政地址类。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # OISAxes
 
+```TypeScript
+enum OISAxes
+```
+
 Enumerates the OIS axes.
 
 **Since:** 24

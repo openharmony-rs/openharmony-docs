@@ -1,5 +1,9 @@
 # DateTimeFormatPartTypesRegistry
 
+```TypeScript
+interface DateTimeFormatPartTypesRegistry
+```
+
 ## Modules to Import
 
 ```TypeScript

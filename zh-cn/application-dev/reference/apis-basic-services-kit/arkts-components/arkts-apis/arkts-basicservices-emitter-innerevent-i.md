@@ -1,5 +1,9 @@
 # InnerEvent
 
+```TypeScript
+export interface InnerEvent
+```
+
 订阅或发送的事件，订阅事件时`EventPriority`不生效。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # AbilityStartFailureCode
 
+```TypeScript
+export enum AbilityStartFailureCode
+```
+
 拉起指定类型的Ability组件失败的特定错误码。
 
 **起始版本：** 21

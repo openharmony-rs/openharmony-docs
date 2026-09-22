@@ -1,5 +1,9 @@
 # DeviceInformation
 
+```TypeScript
+interface DeviceInformation
+```
+
 Describes the remote device information.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ContextMap（系统接口）
 
+```TypeScript
+interface ContextMap
+```
+
 用户输入的字段类型
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # ProfileUuids
 
+```TypeScript
+export enum ProfileUuids
+```
+
 Enum for the profile's uuid
 
 **Since:** 12

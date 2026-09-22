@@ -1,5 +1,9 @@
 # ColorfulBrightnessBlenderOptions（系统接口）
 
+```TypeScript
+interface ColorfulBrightnessBlenderOptions
+```
+
 基于保持色相的提亮压暗混合器的可选增强配置项，作为createColorfulBrightnessBlender的options参数传入。它在常规参数BrightnessBlenderParam之外，可进一步针对提亮或压暗方向、色彩增强强度、输入色彩影响度、与背景的对比度以及HDR开关进行精细调整，不传时各项采用默认值。
 
 **起始版本：** 26.2.0

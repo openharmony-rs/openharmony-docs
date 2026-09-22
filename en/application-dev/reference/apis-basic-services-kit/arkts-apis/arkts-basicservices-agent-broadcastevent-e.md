@@ -1,5 +1,9 @@
 # BroadcastEvent
 
+```TypeScript
+enum BroadcastEvent
+```
+
 Defines a custom system event. You can use a common event API to obtain the event.
 
 The upload and download SA has the **ohos.permission.SEND_TASK_COMPLETE_EVENT** permission. You can configure the level-2 configuration file to which the metadata of an event points to intercept other event senders.

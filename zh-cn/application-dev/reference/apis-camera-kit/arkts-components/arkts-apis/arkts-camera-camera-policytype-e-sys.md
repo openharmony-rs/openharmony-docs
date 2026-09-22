@@ -1,5 +1,9 @@
 # PolicyType（系统接口）
 
+```TypeScript
+enum PolicyType
+```
+
 Enumerates the policy types.
 
 **起始版本：** 12

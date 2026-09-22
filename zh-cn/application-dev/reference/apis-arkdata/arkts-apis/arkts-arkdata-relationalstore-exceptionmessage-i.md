@@ -1,5 +1,9 @@
 # ExceptionMessage
 
+```TypeScript
+interface ExceptionMessage
+```
+
 描述数据库执行的SQL语句的错误信息。
 
 **起始版本：** 20

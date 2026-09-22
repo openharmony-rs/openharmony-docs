@@ -1,5 +1,9 @@
 # MediaLibraryAvailability
 
+```TypeScript
+interface MediaLibraryAvailability
+```
+
 MediaLibrary availability.
 
 **Since:** 26.0.0

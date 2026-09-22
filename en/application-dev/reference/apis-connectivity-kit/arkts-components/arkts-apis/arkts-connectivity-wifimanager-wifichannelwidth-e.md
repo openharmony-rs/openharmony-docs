@@ -1,5 +1,9 @@
 # WifiChannelWidth
 
+```TypeScript
+enum WifiChannelWidth
+```
+
 Describes the wifi channel width. @enum { int }
 
 **Since:** 9

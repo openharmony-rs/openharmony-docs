@@ -1,5 +1,9 @@
 # MaterialInfo
 
+```TypeScript
+interface MaterialInfo
+```
+
 材质配置信息，包含材质使能状态和材质类型。
 
 **起始版本：** 26.0.0

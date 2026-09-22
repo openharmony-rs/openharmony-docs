@@ -1,6 +1,10 @@
 # AudioVolumeGroupManager
 
-管理音频组音量。在调用AudioVolumeGroupManager的接口前，需要先通过[getVolumeGroupManager](arkts-audio-audio-audiovolumemanager-i.md#getvolumegroupmanager)创建实例。
+```TypeScript
+interface AudioVolumeGroupManager
+```
+
+管理音频组音量，支持设置和调节指定音量流、控制静音状态、设置铃声模式等。适用于需要对特定音量组进行独立管理、实现铃声模式切换、调节系统音量的场景。在调用AudioVolumeGroupManager的接口前，需要先通过[getVolumeGroupManager](arkts-audio-audio-audiovolumemanager-i.md#getvolumegroupmanager)创建实例。
 
 **起始版本：** 9
 
@@ -44,6 +48,27 @@ getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise<numbe
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let capturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+audio.getAudioManager().getRoutingManager().getPreferredInputDeviceForCapturerInfo(capturerInfo).then((data) => {
+  audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((maxAmplitude) => {
+    console.info(`Succeeded in obtaining the maximum amplitude for input device, maxAmplitude: ${maxAmplitude}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to obtain the maximum amplitude for input device. Code: ${err.code}, message: ${err.message}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getMaxAmplitudeForOutputDevice
 
 ```TypeScript
@@ -76,6 +101,27 @@ getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<num
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+
+audio.getAudioManager().getRoutingManager().getPreferOutputDeviceForRendererInfo(rendererInfo).then((data) => {
+  audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((maxAmplitude) => {
+    console.info(`Succeeded in obtaining the maximum amplitude for output device, maxAmplitude: ${maxAmplitude}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to obtain the maximum amplitude for output device. Code: ${err.code}, message: ${err.message}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the preferred output device for renderer info. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getMaxVolume
 
 ```TypeScript
@@ -103,6 +149,22 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, maxVolume: number) => {
+  if (err) {
+    console.error(`Failed to obtain the maximum volume. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${maxVolume}.`);
+});
+```
+
+<a id="getmaxvolume-1"></a>
 
 ## getMaxVolume
 
@@ -136,6 +198,18 @@ getMaxVolume(volumeType: AudioVolumeType): Promise<number>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回最大音量等级。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((maxVolume: number) => {
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${maxVolume}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the maximum volume. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getMaxVolumeSync
 
@@ -177,6 +251,20 @@ getMaxVolumeSync(volumeType: AudioVolumeType): number
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let maxVolume: number = audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${maxVolume}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the maximum volume. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getMinVolume
 
 ```TypeScript
@@ -204,6 +292,22 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, minVolume: number) => {
+  if (err) {
+    console.error(`Failed to obtain the minimum volume. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${minVolume}.`);
+});
+```
+
+<a id="getminvolume-1"></a>
 
 ## getMinVolume
 
@@ -237,6 +341,18 @@ getMinVolume(volumeType: AudioVolumeType): Promise<number>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回最小音量等级。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((minVolume: number) => {
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${minVolume}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the minimum volume. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getMinVolumeSync
 
@@ -278,6 +394,20 @@ getMinVolumeSync(volumeType: AudioVolumeType): number
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let minVolume: number = audioVolumeGroupManager.getMinVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${minVolume}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the minimum volume. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getRingerMode
 
 ```TypeScript
@@ -295,6 +425,22 @@ getRingerMode(callback: AsyncCallback<AudioRingMode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 是 | 回调函数。当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getRingerMode((err: BusinessError, ringerMode: audio.AudioRingMode) => {
+  if (err) {
+    console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${ringerMode}.`);
+});
+```
+
+<a id="getringermode-1"></a>
 
 ## getRingerMode
 
@@ -314,6 +460,18 @@ getRingerMode(): Promise<AudioRingMode>
 | --- | --- |
 | Promise&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | Promise对象，返回系统的铃声模式。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getRingerMode().then((ringerMode: audio.AudioRingMode) => {
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${ringerMode}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getRingerModeSync
 
 ```TypeScript
@@ -331,6 +489,20 @@ getRingerModeSync(): AudioRingMode
 | 类型 | 说明 |
 | --- | --- |
 | [AudioRingMode](arkts-audio-audio-audioringmode-e.md) | 返回系统的铃声模式。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let ringerMode: audio.AudioRingMode = audioVolumeGroupManager.getRingerModeSync();
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${ringerMode}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the ringer mode. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## getSystemVolumeInDb
 
@@ -370,6 +542,22 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER, (err: BusinessError, volumeDb: number) => {
+  if (err) {
+    console.error(`Failed to obtain the system volume in dB. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in obtaining the system volume in dB, volumeDb: ${volumeDb}.`);
+});
+```
+
+<a id="getsystemvolumeindb-1"></a>
 
 ## getSystemVolumeInDb
 
@@ -415,6 +603,18 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((volumeDb: number) => {
+  console.info(`Succeeded in obtaining the system volume in dB, volumeDb: ${volumeDb}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the system volume in dB. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getSystemVolumeInDbSync
 
 ```TypeScript
@@ -458,6 +658,20 @@ getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: number, device
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let volumeDb: number = audioVolumeGroupManager.getSystemVolumeInDbSync(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER);
+  console.info(`Succeeded in obtaining the system volume in dB, volumeDb: ${volumeDb}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the system volume in dB. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getVolume
 
 ```TypeScript
@@ -485,6 +699,22 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, volume: number) => {
+  if (err) {
+    console.error(`Failed to obtain the volume. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in obtaining the volume, volume: ${volume}.`);
+});
+```
+
+<a id="getvolume-1"></a>
 
 ## getVolume
 
@@ -517,7 +747,19 @@ getVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
+| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。音量等级范围可通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA).then((volume: number) => {
+  console.info(`Succeeded in obtaining the volume, volume: ${volume}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the volume. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getVolumeSync
 
@@ -559,6 +801,20 @@ getVolumeSync(volumeType: AudioVolumeType): number
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let volume: number = audioVolumeGroupManager.getVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in obtaining the volume, volume: ${volume}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## isMicrophoneMute
 
 ```TypeScript
@@ -576,6 +832,22 @@ isMicrophoneMute(callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.isMicrophoneMute((err: BusinessError, isMute: boolean) => {
+  if (err) {
+    console.error(`Failed to check whether the microphone is muted. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${isMute}.`);
+});
+```
+
+<a id="ismicrophonemute-1"></a>
 
 ## isMicrophoneMute
 
@@ -595,6 +867,18 @@ isMicrophoneMute(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示麦克风被静音；返回false表示麦克风未被静音。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.isMicrophoneMute().then((isMute: boolean) => {
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${isMute}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the microphone is muted. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## isMicrophoneMuteSync
 
 ```TypeScript
@@ -613,13 +897,27 @@ isMicrophoneMuteSync(): boolean
 | --- | --- |
 | boolean | 系统麦克风静音状态。返回true表示静音，返回false表示非静音。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isMute: boolean = audioVolumeGroupManager.isMicrophoneMuteSync();
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${isMute}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check whether the microphone is muted. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## isMute
 
 ```TypeScript
 isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 ```
 
-获取指定音量流静音状态。使用callback异步回调。
+获取指定音量类型静音状态。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -639,7 +937,23 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取音量静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, isMute: boolean) => {
+  if (err) {
+    console.error(`Failed to check whether the stream is muted. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${isMute}.`);
+});
+```
+
+<a id="ismute-1"></a>
 
 ## isMute
 
@@ -647,7 +961,7 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 isMute(volumeType: AudioVolumeType): Promise<boolean>
 ```
 
-获取指定音量流是否被静音。使用Promise异步回调。
+获取指定音量类型静音状态。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -674,13 +988,25 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示静音；返回false表示非静音。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA).then((isMute: boolean) => {
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${isMute}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the stream is muted. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## isMuteSync
 
 ```TypeScript
 isMuteSync(volumeType: AudioVolumeType): boolean
 ```
 
-获取指定音量流是否被静音。同步返回结果。
+获取指定音量类型静音状态。同步返回结果。
 
 > **说明：** 
 > 
@@ -705,7 +1031,7 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 流静音状态。返回true表示静音，返回false表示非静音。 |
+| boolean | 音量是否为静音状态。返回true表示静音，返回false表示非静音。 |
 
 **错误码：**
 
@@ -713,6 +1039,20 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isMute: boolean = audioVolumeGroupManager.isMuteSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${isMute}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check whether the stream is muted. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## isVolumeUnadjustable
 
@@ -732,13 +1072,20 @@ isVolumeUnadjustable(): boolean
 | --- | --- |
 | boolean | 固定音量模式开关状态。返回true表示固定音量模式，返回false表示非固定音量模式。 |
 
+**示例**
+
+```TypeScript
+let isVolumeUnadjustable: boolean = audioVolumeGroupManager.isVolumeUnadjustable();
+console.info(`Succeeded in checking whether the volume is unadjustable, isVolumeUnadjustable: ${isVolumeUnadjustable}.`);
+```
+
 ## off('ringerModeChange')
 
 ```TypeScript
 off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void
 ```
 
-取消监听铃声模式变化事件。使用callback异步回调。
+取消监听铃声模式变化事件。
 
 **起始版本：** 18
 
@@ -748,8 +1095,8 @@ off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'，当取消监听铃声模式变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 否 | 回调函数，返回变化后的铃音模式。 |
+| type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('ringerModeChange')](#onringermodechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -757,13 +1104,29 @@ off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioVolumeGroupManager.off('ringerModeChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let ringerModeChangeCallback = (ringerMode: audio.AudioRingMode) => {
+  console.info(`Ringer mode changed, ringerMode: ${ringerMode}.`);
+};
+
+audioVolumeGroupManager.on('ringerModeChange', ringerModeChangeCallback);
+
+audioVolumeGroupManager.off('ringerModeChange', ringerModeChangeCallback);
+```
+
 ## off('micStateChange')
 
 ```TypeScript
 off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void
 ```
 
-取消监听系统麦克风状态更改事件。使用callback异步回调。
+取消监听系统麦克风状态更改事件。
 
 **起始版本：** 12
 
@@ -773,8 +1136,8 @@ off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'micStateChange' | 是 | 事件回调类型，支持的事件为'micStateChange'，当取消监听系统麦克风状态更改事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)&gt; | 否 | 回调函数，返回变更后的麦克风状态。 |
+| type | 'micStateChange' | 是 | 事件回调类型，支持的事件为'micStateChange'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('micStateChange')](#onmicstatechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -782,6 +1145,22 @@ off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters missing; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioVolumeGroupManager.off('micStateChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
+  console.info(`Mic state changed, micStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
+};
+
+audioVolumeGroupManager.on('micStateChange', micStateChangeCallback);
+
+audioVolumeGroupManager.off('micStateChange', micStateChangeCallback);
+```
 
 ## on('ringerModeChange')
 
@@ -809,6 +1188,14 @@ on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+audioVolumeGroupManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
+  console.info(`Ringer mode changed, ringerMode: ${ringerMode}.`);
+});
+```
+
 ## on('micStateChange')
 
 ```TypeScript
@@ -834,6 +1221,14 @@ on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChangeEvent) => {
+  console.info(`Mic state changed, micStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
+});
+```
 
 ## setMicrophoneMute
 
@@ -861,6 +1256,22 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | mute | boolean | 是 | 是否设置麦克风为静音状态。true表示静音，false表示非静音。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置麦克风静音状态成功，err为undefined，否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.setMicrophoneMute(true, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to mute the microphone. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in muting the microphone.');
+});
+```
+
+<a id="setmicrophonemute-1"></a>
 
 ## setMicrophoneMute
 
@@ -892,4 +1303,16 @@ setMicrophoneMute(mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.setMicrophoneMute(true).then(() => {
+  console.info('Succeeded in muting the microphone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to mute the microphone. Code: ${err.code}, message: ${err.message}`);
+});
+```

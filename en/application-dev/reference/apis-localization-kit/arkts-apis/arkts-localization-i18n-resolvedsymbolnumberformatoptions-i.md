@@ -1,5 +1,9 @@
 # ResolvedSymbolNumberFormatOptions
 
+```TypeScript
+export interface ResolvedSymbolNumberFormatOptions extends Intl.ResolvedNumberFormatOptions
+```
+
 Represents optional element for the ResolvedSymbolNumberFormatOptions object. Define the resolved symbol element and value that need to get.
 
 **Inheritance/Implementation:** ResolvedSymbolNumberFormatOptions extends Intl.ResolvedNumberFormatOptions

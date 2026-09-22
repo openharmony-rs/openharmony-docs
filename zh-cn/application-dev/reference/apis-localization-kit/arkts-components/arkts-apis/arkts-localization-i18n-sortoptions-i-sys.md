@@ -1,5 +1,9 @@
 # SortOptions（系统接口）
 
+```TypeScript
+export interface SortOptions
+```
+
 语言或国家地区排序选项。
 
 **起始版本：** 10

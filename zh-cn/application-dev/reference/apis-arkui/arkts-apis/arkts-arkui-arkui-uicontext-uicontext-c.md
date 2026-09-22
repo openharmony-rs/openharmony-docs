@@ -1,5 +1,9 @@
 # UIContext
 
+```TypeScript
+export class UIContext
+```
+
 UIContext实例对象。
 
 > **说明：** 
@@ -62,13 +66,53 @@ addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): Inpu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventMask | number | 是 | 事件类型掩码，指定要监视的事件类型位运算。<br>取值限定为整数。 |
-| listener | [InputEventListener](../arkts-components/arkts-arkui-inputeventlistener-t.md) | 是 | 事件监听器回调函数。 |
+| listener | [InputEventListener](../arkts-components/arkts-arkui-common-comp-inputeventlistener-t.md) | 是 | 事件监听器回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [InputEventMonitor](../arkts-components/arkts-arkui-inputeventmonitor-i.md) | Unique identifier object for the monitor, used for subsequent cancellation of registration. |
+| [InputEventMonitor](../arkts-components/arkts-arkui-common-comp-inputeventmonitor-i.md) | Unique identifier object for the monitor, used for subsequent cancellation of registration. |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct InputEventMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    // 监听鼠标左键按下事件
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        if (wrapper.isMouseEvent()) {
+          const event = wrapper.asMouseEvent()!;
+          console.info(`Mouse down at (${event.windowX}, ${event.windowY})`);
+          return { action: InputEventInterceptAction.CONTINUE };  // 允许事件继续传递
+        }
+        return { action: InputEventInterceptAction.BLOCK };  // 阻止事件传递
+      }
+    );
+  }
+  aboutToDisappear() {
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Text('Input Event Monitor Sample')
+        .fontSize(20)
+        .margin(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## animateTo
 
@@ -82,17 +126,17 @@ animateTo(value: AnimateParam, event: () => void): void
 > 
 > - 不推荐在aboutToAppear、aboutToDisappear中调用动画。
 > 
-> - 如果在aboutToAppear中调用动画，自定义组件内的build还未执行，内部组件还未创建，动画时机过早，动画属性没有初值无法对组件产生动画。
+> - 如果在[aboutToAppear](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear)中调用动画，自定义组件内的build还未执行，内部组件还未创建，动画时机过早，动画属性没有初值无法对组件产生动画。
 > 
-> - 执行aboutToDisappear时，组件即将销毁，不能在aboutToDisappear里面做动画。
+> - 执行[aboutToDisappear](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#abouttodisappear)时，组件即将销毁，不能在aboutToDisappear里面做动画。
 > 
 > - 在组件出现和消失时，可以通过[组件内转场](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)添加动画效果。
 > 
-> - 组件内转场不支持的属性，可以参考[显式动画](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)中的示例2，使用animateTo实现动画执行结束后组件消失的效果。
+> - 组件内转场不支持的属性，可以参考[显式动画](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)中的[示例2](../arkts-components/arkts-arkui-common-comp.md#common)，使用animateTo实现动画执行结束后组件消失的效果。
 > 
 > - 某些场景下，在[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
 > 
-> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发动画播放完成回调[onFinish](../arkts-components/arkts-arkui-animateparam-i.md)。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发动画播放完成回调[onFinish](../arkts-components/arkts-arkui-common-comp-animateparam-i.md)。
 > 
 > - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
@@ -108,8 +152,88 @@ animateTo(value: AnimateParam, event: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
+| value | [AnimateParam](../arkts-components/arkts-arkui-common-comp-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
 | event | () =&gt; void | 是 | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AnimateToExample {
+  @State widthSize: number = 250;
+  @State heightSize: number = 100;
+  @State rotateAngle: number = 0;
+  private flag: boolean = true;
+  uiContext: UIContext | undefined = undefined;
+
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    if (!this.uiContext) {
+      console.warn("no uiContext");
+      return;
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change size')
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .margin(30)
+        .onClick(() => {
+          if (this.flag) {
+            this.uiContext?.animateTo({
+              duration: 2000,
+              curve: Curve.EaseOut,
+              iterations: 3,
+              playMode: PlayMode.Normal,
+              onFinish: () => {
+                console.info('play end');
+              }
+            }, () => {
+              this.widthSize = 150;
+              this.heightSize = 60;
+            });
+          } else {
+            this.uiContext?.animateTo({}, () => {
+              this.widthSize = 250;
+              this.heightSize = 100;
+            });
+          }
+          this.flag = !this.flag;
+        })
+      Button('stop rotating')
+        .margin(50)
+        .rotate({ x: 0, y: 0, z: 1, angle: this.rotateAngle })
+        .onAppear(() => {
+          // 组件出现时开始做动画
+          this.uiContext?.animateTo({
+            duration: 1200,
+            curve: Curve.Friction,
+            delay: 500,
+            iterations: -1, // 设置-1表示动画无限循环
+            playMode: PlayMode.Alternate,
+            expectedFrameRateRange: {
+              min: 10,
+              max: 120,
+              expected: 60,
+            }
+          }, () => {
+            this.rotateAngle = 90
+          });
+        })
+        .onClick(() => {
+          this.uiContext?.animateTo({ duration: 0 }, () => {
+            // this.rotateAngle之前为90，在duration为0的动画中修改属性，可以停止该属性之前的动画，按新设置的属性显示
+            this.rotateAngle = 0;
+          });
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
 
 ## animateToImmediately
 
@@ -131,8 +255,69 @@ animateToImmediately(param: AnimateParam, processor: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
+| param | [AnimateParam](../arkts-components/arkts-arkui-common-comp-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
 | processor | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+
+**示例**
+
+该示例通过UIContext对象获取显式立即动画，并调用animateToImmediately接口实现参数定义的动画效果。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AnimateToImmediatelyExample {
+  @State widthSize: number = 250
+  @State heightSize: number = 100
+  @State opacitySize: number = 0
+  private flag: boolean = true
+  uiContext: UIContext | null | undefined = this.getUIContext();
+
+  build() {
+    Column() {
+      Column()
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(Color.Green)
+        .opacity(this.opacitySize)
+      Button('change size')
+        .margin(30)
+        .onClick(() => {
+          if (this.flag) {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 1
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.widthSize = 150
+              this.heightSize = 60
+            })
+          } else {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.widthSize = 250
+              this.heightSize = 100
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 0
+            })
+          }
+          this.flag = !this.flag
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
 
 ## bindTabsToNestedScrollable
 
@@ -154,9 +339,13 @@ Bind tabs to nested scrollable container components to automatically hide tab ba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | 是 | The controller of the tabs. |
-| parentScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the parent scrollable container component. |
-| childScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the child scrollable container component. |
+| tabsController | [TabsController](../arkts-components/arkts-arkui-tabs-comp-tabscontroller-c.md) | 是 | The controller of the tabs. |
+| parentScroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | 是 | The controller of the parent scrollable container component. |
+| childScroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | 是 | The controller of the child scrollable container component. |
+
+**示例**
+
+参考[bindTabsToScrollable](#bindtabstoscrollable)接口示例。
 
 ## bindTabsToScrollable
 
@@ -178,8 +367,105 @@ Bind tabs to scrollable container component to automatically hide tab bar.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | 是 | The controller of the tabs. |
-| scroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the scrollable container component. |
+| tabsController | [TabsController](../arkts-components/arkts-arkui-tabs-comp-tabscontroller-c.md) | 是 | The controller of the tabs. |
+| scroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | 是 | The controller of the scrollable container component. |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct TabsExample {
+  private arr: string[] = [];
+  private parentTabsController: TabsController = new TabsController();
+  private childTabsController: TabsController = new TabsController();
+  private listScroller: Scroller = new Scroller();
+  private parentScroller: Scroller = new Scroller();
+  private childScroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.arr.push(i.toString());
+    }
+    let context = this.getUIContext();
+    context.bindTabsToScrollable(this.parentTabsController, this.listScroller);
+    context.bindTabsToScrollable(this.childTabsController, this.listScroller);
+    context.bindTabsToNestedScrollable(this.parentTabsController, this.parentScroller, this.childScroller);
+  }
+
+  aboutToDisappear(): void {
+    let context = this.getUIContext();
+    context.unbindTabsFromScrollable(this.parentTabsController, this.listScroller);
+    context.unbindTabsFromScrollable(this.childTabsController, this.listScroller);
+    context.unbindTabsFromNestedScrollable(this.parentTabsController, this.parentScroller, this.childScroller);
+  }
+
+  build() {
+    Tabs({ barPosition: BarPosition.End, controller: this.parentTabsController }) {
+      TabContent() {
+        Tabs({ controller: this.childTabsController }) {
+          TabContent() {
+            List({ space: 20, initialIndex: 0, scroller: this.listScroller }) {
+              ForEach(this.arr, (item: string) => {
+                ListItem() {
+                  Text(item)
+                    .width('100%')
+                    .height(100)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .borderRadius(10)
+                    .backgroundColor(Color.Gray)
+                }
+              }, (item: string) => item)
+            }
+            .scrollBar(BarState.Off)
+            .width('90%')
+            .height('100%')
+            .contentStartOffset(56)
+            .contentEndOffset(52)
+          }.tabBar(SubTabBarStyle.of('顶部页签'))
+        }
+        .width('100%')
+        .height('100%')
+        .barOverlap(true) // 使TabBar叠加在TabContent上，当TabBar向上或向下隐藏后，原位置处不为空白
+        .clip(true) // 对超出Tabs组件范围的子组件进行裁剪，防止TabBar向上或向下隐藏后误触TabBar
+      }.tabBar(BottomTabBarStyle.of($r('app.media.startIcon'), 'scroller联动多个TabsController'))
+
+      TabContent() {
+        Scroll(this.parentScroller) {
+            List({ space: 20, initialIndex: 0, scroller: this.childScroller }) {
+              ForEach(this.arr, (item: string) => {
+                ListItem() {
+                  Text(item)
+                    .width('100%')
+                    .height(100)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .borderRadius(10)
+                    .backgroundColor(Color.Gray)
+                }
+              }, (item: string) => item)
+            }
+            .scrollBar(BarState.Off)
+            .width('90%')
+            .height('100%')
+            .contentEndOffset(52)
+            .nestedScroll({ scrollForward: NestedScrollMode.SELF_FIRST, scrollBackward: NestedScrollMode.SELF_FIRST })
+        }
+        .width('100%')
+        .height('100%')
+        .scrollBar(BarState.Off)
+        .scrollable(ScrollDirection.Vertical)
+        .edgeEffect(EdgeEffect.Spring)
+      }.tabBar(BottomTabBarStyle.of($r('app.media.startIcon'), '嵌套的scroller联动TabsController'))
+    }
+    .width('100%')
+    .height('100%')
+    .barOverlap(true) // 使TabBar叠加在TabContent上，当TabBar向上或向下隐藏后，原位置处不为空白
+    .clip(true) // 对超出Tabs组件范围的子组件进行裁剪，防止TabBar向上或向下隐藏后误触TabBar
+  }
+}
+```
 
 ## closeBindSheet
 
@@ -221,6 +507,95 @@ closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
 | [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
+**示例**
+
+```TypeScript
+import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+let contentNode: ComponentContent<Params>;
+let gUIContext: UIContext;
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+    Button('Update BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.updateBindSheet(contentNode, {
+          backgroundColor: Color.Pink,
+        }, true)
+          .then(() => {
+            console.info('updateBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+
+    Button('Close BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.closeBindSheet(contentNode)
+          .then(() => {
+            console.info('closeBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+  }
+}
+
+@Entry
+@Component
+struct UIContextBindSheet {
+  @State message: string = 'BindSheet';
+
+  aboutToAppear() {
+    gUIContext = this.getUIContext();
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message));
+  }
+
+  build() {
+    RelativeContainer() {
+      Column() {
+        Button('Open BindSheet')
+          .fontSize(20)
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let uniqueId = this.getUniqueId();
+            let frameNode: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
+            let targetId = frameNode?.getFirstChild()?.getUniqueId();
+            uiContext.openBindSheet(contentNode, {
+              height: SheetSize.MEDIUM,
+              backgroundColor: Color.Green,
+              title: { title: "Title", subtitle: "subtitle" }
+            }, targetId)
+              .then(() => {
+                console.info('openBindSheet success');
+              })
+              .catch((err: BusinessError) => {
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
+              })
+          })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## constructor
 
 ```TypeScript
@@ -240,6 +615,76 @@ constructor()
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function getUIContextByAtomicInterface(): UIContext {
+  let callingScopeUIContext = UIContext.getCallingScopeUIContext();
+  if (callingScopeUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
+    return callingScopeUIContext;
+  }
+  let allContexts = UIContext.getAllUIContexts();
+  let length = allContexts.length;
+  if (length === 1) {
+    hilog.info(0x00, 'testTag', `Get UIContext of unique UI instance.`)
+    return allContexts[0];
+  }
+  let lastFocusedUIContext = UIContext.getLastFocusedUIContext();
+  if (lastFocusedUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last focused instance.`)
+    return lastFocusedUIContext;
+  }
+  let lastForegroundUIContext = UIContext.getLastForegroundUIContext();
+  if (lastForegroundUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last foregrounded instance.`)
+    return lastForegroundUIContext;
+  }
+  if (length !== 0) {
+    hilog.info(0x00, 'testTag', `Get UIContext with maximum instanceId.`)
+    return allContexts[length - 1];
+  }
+  hilog.info(0x00, 'testTag', `Get UIContext of undefined calling scope.`)
+  return new UIContext();
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    let uiContext = this.getUIContext();
+    hilog.info(0x00, 'testTag', `aboutToAppear UIContext: ${uiContext.getId()}`)
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let resolvedUIContext = UIContext.resolveUIContext();
+          let contextByAtomicInterface = getUIContextByAtomicInterface();
+          hilog.info(0x00, 'testTag',
+            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
+          this.message = 'Welcome';
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## createAnimator
 
@@ -275,6 +720,43 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { AnimatorOptions, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // 创建主窗口，设置此功能的主页
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      let uiContext = windowStage.getMainWindowSync().getUIContext();
+      let options:AnimatorOptions = {
+        duration: 1500,
+        easing: "friction",
+        delay: 0,
+        fill: "forwards",
+        direction: "normal",
+        iterations: 3,
+        begin: 200.0,
+        end: 400.0
+      };
+      uiContext.createAnimator(options);
+    });
+  }
+}
+```
+
+<a id="createanimator-1"></a>
+
 ## createAnimator
 
 ```TypeScript
@@ -308,6 +790,32 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { SimpleAnimatorOptions, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // 创建主窗口，设置此功能的主页
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      let uiContext = windowStage.getMainWindowSync().getUIContext();
+      let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
+      uiContext.createAnimator(options);
+    });
+  }
+}
+```
 
 ## createUIContextWithoutWindow
 
@@ -348,6 +856,24 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. The number of parameters is incorrect. <br> 2. Invalid parameter type of context. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+**示例**
+
+```TypeScript
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+  }
+
+  // ......
+}
+```
+
 ## destroyUIContextWithoutWindow
 
 ```TypeScript
@@ -363,6 +889,25 @@ static destroyUIContextWithoutWindow(): void
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    UIContext.destroyUIContextWithoutWindow();
+  }
+
+  // ......
+}
+```
 
 ## dispatchKeyEvent
 
@@ -385,13 +930,55 @@ Dispach keyboard event to the frameNode with inspector key.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | node | number &#124; string | 是 | The uniqueId or inspector key of the target FrameNode. |
-| event | [KeyEvent](../arkts-components/arkts-arkui-keyevent-i.md) | 是 | The keyboard event. |
+| event | [KeyEvent](../arkts-components/arkts-arkui-common-comp-keyevent-i.md) | 是 | The keyboard event. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | boolean | Returns whether the key event is consumed. |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Row() {
+        Button('Button1').id('Button1').onKeyEvent((event) => {
+          console.info("Button1");
+          return true;
+        })
+        Button('Button2').id('Button2').onKeyEvent((event) => {
+          console.info("Button2");
+          return true;
+        })
+      }
+      .width('100%')
+      .height('100%')
+      .id('Row1')
+      .onKeyEventDispatch((event) => {
+        let context = this.getUIContext();
+        context.getFocusController().requestFocus('Button1');
+        return context.dispatchKeyEvent('Button1', event);
+      })
+
+    }
+    .height('100%')
+    .width('100%')
+    .onKeyEventDispatch((event) => {
+      if (event.type == KeyType.Down) {
+        let context = this.getUIContext();
+        context.getFocusController().requestFocus('Row1');
+        return context.dispatchKeyEvent('Row1', event);
+      }
+      return true;
+    })
+  }
+}
+```
 
 ## enableEventPassthrough
 
@@ -416,6 +1003,25 @@ enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
 | enabled | boolean | 是 | 启用或禁用事件透传。默认值为false。 |
 | eventType | [RawInputEventType](arkts-arkui-rawinputeventtype-e.md) | 是 | 原始输入事件的类型。 |
 
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## enableSwipeBack
 
 ```TypeScript
@@ -434,7 +1040,28 @@ whether to enable or disable swipe to back event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | enable or disable swipe to back event. |
+| enabled | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | enable or disable swipe to back event. |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  @State isEnable: boolean = true;
+
+  build() {
+    RelativeContainer() {
+      Button(`enable swipe back: ${this.isEnable}`).onClick(() => {
+        this.isEnable = !this.isEnable;
+        this.getUIContext().enableSwipeBack(this.isEnable);
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## fp2px
 
@@ -448,7 +1075,7 @@ fp2px(value: number): number
 
 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md).density。
 
-字体缩放比例：系统设置的字体缩放系数，对应 Configuration.fontScale。
+字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../arkts-components/arkts-arkui-common-comp-configuration-i.md#fontscale)。
 
 > **说明：** 
 > 
@@ -474,6 +1101,32 @@ fp2px(value: number): number
 | --- | --- |
 | number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().fp2px(50),
+          centerY: this.getUIContext().fp2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## getAllUIContexts
 
 ```TypeScript
@@ -496,6 +1149,37 @@ static getAllUIContexts(): UIContext[]
 | --- | --- |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)[] | Array of all currently valid UIContext instances. Returns an empty array if no valid UIContext instance exists. |
 
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContexts = UIContext.getAllUIContexts();
+          hilog.info(0x00, 'testTag', `There are ${uiContexts.length} UIContext(s)`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## getAtomicServiceBar
 
 ```TypeScript
@@ -517,6 +1201,30 @@ getAtomicServiceBar(): Nullable<AtomicServiceBar>
 | 类型 | 说明 |
 | --- | --- |
 | [Nullable](arkts-arkui-nullable-t.md)&lt;[AtomicServiceBar](arkts-arkui-arkui-uicontext-atomicservicebar-i.md)&gt; | 如果是原子化服务则返回AtomicServiceBar类型，否则返回undefined。 |
+
+**示例**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+      if (atomicServiceBar != undefined) {
+        console.info('Get AtomServiceBar Successfully.');
+      } else {
+        console.error('Get AtomicServiceBar failed.');
+      }
+    });
+  }
+}
+```
 
 ## getAttachedFrameNodeById
 
@@ -546,6 +1254,35 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) &#124; null | The instance of FrameNode. |
 
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct MyComponent {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let node = this.getUIContext().getAttachedFrameNodeById("HelloWorld");
+          console.info(`Find HelloWorld Tag:${node!.getNodeType()} id:${node!.getUniqueId()}`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## getCallingScopeUIContext
 
 ```TypeScript
@@ -572,6 +1309,37 @@ static getCallingScopeUIContext(): UIContext | undefined
 | --- | --- |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) &#124; undefined | 当前[调用作用域](../../../ui/arkts-global-interface.md#基本概念)的UIContext，调用作用域不明确时返回undefined。 |
 
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getCallingScopeUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## getComponentSnapshot
 
 ```TypeScript
@@ -594,6 +1362,10 @@ getComponentSnapshot(): ComponentSnapshot
 | --- | --- |
 | [ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md) | 组件快照。 |
 
+**示例**
+
+完整示例请参考[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)中的示例。
+
 ## getComponentUtils
 
 ```TypeScript
@@ -615,6 +1387,10 @@ get object ComponentUtils.
 | 类型 | 说明 |
 | --- | --- |
 | [ComponentUtils](arkts-arkui-arkui-uicontext-componentutils-c.md) | object ComponentUtils. |
+
+**示例**
+
+完整示例请参考[示例1（获取ComponentUtils对象）](arkts-arkui-arkui-componentutils.md#示例1获取componentutils对象)。
 
 ## getContextMenuController
 
@@ -660,6 +1436,10 @@ Get object cursor controller.
 | --- | --- |
 | [CursorController](arkts-arkui-arkui-uicontext-cursorcontroller-c.md) | object cursor controller. |
 
+**示例**
+
+完整示例请参考[CursorController](arkts-apis-uicontext-cursorcontroller.md)中的示例。
+
 ## getDialogPresenter
 
 ```TypeScript
@@ -668,11 +1448,11 @@ getDialogPresenter(): DialogPresenter
 
 获取Dialog对象。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -681,6 +1461,10 @@ getDialogPresenter(): DialogPresenter
 | 类型 | 说明 |
 | --- | --- |
 | [DialogPresenter](arkts-arkui-arkui-uicontext-dialogpresenter-c.md) | Dialog对象。 |
+
+**示例**
+
+完整示例请参考[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)中的示例。
 
 ## getDragController
 
@@ -703,6 +1487,10 @@ Get DragController.
 | 类型 | 说明 |
 | --- | --- |
 | [DragController](arkts-arkui-arkui-uicontext-dragcontroller-c.md) | the DragController |
+
+**示例**
+
+完整示例请参考[DragController](./arkts-apis-uicontext-dragcontroller.md)中的示例。
 
 ## getFilteredInspectorTree
 
@@ -738,6 +1526,72 @@ get the filtered attributes of the component tree.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+uiContext.getFilteredInspectorTree(['id', 'src', 'content']);
+```
+
+```TypeScript
+// xxx.ets
+import { UIContext } from '@kit.ArkUI';
+@Entry
+@Component
+struct ComponentPage {
+  loopConsole(inspectorStr: string, i: string) {
+    console.info(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
+    if (JSON.parse(inspectorStr).$children) {
+      i += '-';
+      for (let index = 0; index < JSON.parse(inspectorStr).$children.length; index++) {
+        this.loopConsole(JSON.stringify(JSON.parse(inspectorStr).$children[index]), i);
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Button('content').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
+        console.info(`InsTree : ${inspectorStr}`);
+        inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
+        this.loopConsole(inspectorStr, '-');
+      })
+      Button('isLayoutInspector').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
+        console.info(`InsTree : ${inspectorStr}`);
+        inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
+        this.loopConsole(inspectorStr, '-');
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+当传入"content"过滤字段时，返回的JSON字符串结构如下：
+
+```TypeScript
+InsTree : {"$type":"root","width":"720.000000","height":"1280.000000","$resolution":"1.500000","$children":[{"$type":"Column","$ID":15,"type":"build-in","$rect":"[0.00, 72.00],[720.00,1208.00]","$debugLine":"","$attrs":{},"$children":[{"$type":"Button","$ID":16,"type":"build-in","$rect":"[293.00, 72.00],[427.00,132.00]","$debugLine":"","$attrs":{}},{"$type":"Button","$ID":18,"type":"build-in","$rect":"[237.00, 132.00],[484.00,192.00]","$debugLine":"","$attrs":{}}]}]}\
+InsTree -| type: root, ID: undefined
+InsTree --| type: Column, ID: 15
+InsTree ---| type: Button, ID: 16
+InsTree ---| type: Button, ID: 18
+```
+
+从API version 20开始，当传入"isLayoutInspector"过滤字段时，返回的JSON字符串结构新增外层结构"type"与"content"，其中"content"包含未增加该字段时的原有JSON字符串结构；同时，返回值结构中增添自定义组件。返回的JSON字符串结构如下：
+
+```TypeScript
+InsTree : {"type":"root","content":{"$type":"root","width":"720.000000","height":"1280.000000","$resolution":"1.500000","$children":[{"$type":"JsView","$ID":13,"type":"custom","state":{"observedPropertiesInfo":[],"viewInfo":{"componentName":"ComponentPage","id":14,"isV2":false,"isViewActive_":true}},"$rect":"[0.00, 72.00],[720.00,1208.00]","$debugLine":"{\"$line\":\"(0:0)\"}","viewTag":"ComponentPage","$attrs":{"viewKey":"13"},"$children":[{"$type":"Column","$ID":15, "type":"build-in","$rect":"[0.00, 72.00],[720.00,1208.00]","$debugLine":"","$attrs":{ ...
+InsTree -| type: root, ID: undefined
+InsTree --| type: JsView, ID: 13
+InsTree ---| type: Column, ID: 15
+InsTree ----| type: Button, ID: 16
+InsTree ----| type: Button, ID: 18
+```
+
 ## getFilteredInspectorTreeById
 
 ```TypeScript
@@ -758,7 +1612,7 @@ get the filtered attributes of the component tree with the specified id and dept
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | ID of the target component. |
+| id | string | 是 | [ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) of the target component. |
 | depth | number | 是 | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of<br>the specified component are obtained. If the value is **2**, the attributes of <br>the specified component and its <br>level-1 child components are obtained. The rest can be deduced by analogy. |
 | filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported:<br>**"id"**: unique ID of the component. <br>**"src"**: source of the resource. <br>**"content"**: information or data contained in the element, component, or object. <br>**"editable"**: whether the component is editable. <br>**"scrollable"**: whether the component is scrollable. <br>**"selectable"**: whether the component is selectable. <br>**"focusable"**: whether the component is focusable. <br>**"focused"**: whether the component is currently focused. <br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. <br>If **filters** is not provided or is an empty array, none of the aforementioned fields <br>will be filtered out. <br>Other filter fields are used only in testing scenarios. |
 
@@ -773,6 +1627,51 @@ get the filtered attributes of the component tree with the specified id and dept
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+uiContext.getFilteredInspectorTreeById('testId', 0, ['id', 'src', 'content']);
+```
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+@Entry
+@Component
+struct ComponentPage {
+  build() {
+    Column() {
+      Text("Hello World")
+        .fontSize(20)
+        .id("TEXT")
+      Button('getFilteredInspectorTreeById').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        try {
+          let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["id", "src"]);
+          console.info(`result1: ${inspectorStr}`);
+          inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
+          console.info(`result2: ${inspectorStr}`);
+          inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["src"]);
+          inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
+          console.info(`result3: ${inspectorStr}`);
+        } catch(e) {
+          console.error(`getFilteredInspectorTreeById error: ${e}`);
+        }
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+返回的JSON字符串结构如下：
+
+```TypeScript
+result1: {"$type":"root","width":"1260.000000","height":"2720.000000","$resolution":"3.250000","$children":[{"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"id":"TEXT","isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}]}
+result2: {"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"id":"TEXT","isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}
+result3: {"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}
+```
 
 ## getFocusController
 
@@ -796,6 +1695,10 @@ getFocusController(): FocusController
 | --- | --- |
 | [FocusController](arkts-arkui-arkui-uicontext-focuscontroller-c.md) | 焦点控制器 |
 
+**示例**
+
+完整示例请参考[FocusController](arkts-apis-uicontext-focuscontroller.md)中的示例。
+
 ## getFont
 
 ```TypeScript
@@ -817,6 +1720,10 @@ getFont(): Font
 | 类型 | 说明 |
 | --- | --- |
 | [Font](arkts-arkui-arkui-uicontext-font-c.md) | Font实例对象。 |
+
+**示例**
+
+完整示例请参考[Font](arkts-apis-uicontext-font.md)中的示例。
 
 ## getFrameNodeById
 
@@ -845,6 +1752,10 @@ getFrameNodeById(id: string): FrameNode | null
 | 类型 | 说明 |
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) &#124; null | The instance of FrameNode. |
+
+**示例**
+
+完整示例请参考获取根节点示例。
 
 ## getFrameNodeByUniqueId
 
@@ -880,6 +1791,28 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 | --- | --- |
 | [FrameNode](arkts-arkui-framenode-c.md) &#124; null | The FrameNode with the target uniqueId, or null if the frameNode is not existed. |
 
+**示例**
+
+```TypeScript
+import { UIContext, FrameNode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyComponent {
+  aboutToAppear() {
+    let uniqueId: number = this.getUniqueId();
+    let uiContext: UIContext = this.getUIContext();
+    if (uiContext) {
+      let node: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
+    }
+  }
+
+  build() {
+    // ...
+  }
+}
+```
+
 ## getHostContext
 
 ```TypeScript
@@ -901,6 +1834,33 @@ getHostContext(): Context | undefined
 | 类型 | 说明 |
 | --- | --- |
 | [Context](arkts-arkui-context-t.md) &#124; undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md). If the ability context does not exist, **undefined** is returned. |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  uiContext = this.getUIContext();
+
+  build() {
+    Row() {
+      Column() {
+        Text("cacheDir='" + this.uiContext?.getHostContext()?.cacheDir + "'")
+          .fontSize(25)
+          .border({ color: Color.Red, width: 2 })
+          .padding(50)
+        Text("bundleCodeDir='" + this.uiContext?.getHostContext()?.bundleCodeDir + "'")
+          .fontSize(25)
+          .border({ color: Color.Red, width: 2 })
+          .padding(50)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getId
 
@@ -924,6 +1884,23 @@ getId(): number
 | --- | --- |
 | number | 后端实例的唯一标识。取值范围为[-1, +∞)。 |
 
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Index{
+  build(){
+    Column()
+      .width("100%")
+      .height("100%")
+      .onClick(() => {
+      console.info(`id:${this.getUIContext()?.getId()}`);
+    })
+  }
+}
+```
+
 ## getKeyboardAvoidMode
 
 ```TypeScript
@@ -945,6 +1922,26 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 | 类型 | 说明 |
 | --- | --- |
 | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | 返回虚拟键盘抬起时的页面避让模式。 |
+
+**示例**
+
+完整示例请参考[示例4（设置键盘避让模式为压缩）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
+
+```TypeScript
+// EntryAbility.ets
+import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        let currentKeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
+        console.info("KeyboardAvoidMode:", JSON.stringify(currentKeyboardAvoidMode));
+      });
+    }
+}
+```
 
 ## getLastFocusedUIContext
 
@@ -968,6 +1965,37 @@ static getLastFocusedUIContext(): UIContext | undefined
 | --- | --- |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) &#124; undefined | UIContext of the UI instance that most recently switched to the focused state. Returns **undefined** if the most recently focused instance has been destroyed or if no instance has ever been focused. |
 
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastFocusedUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## getLastForegroundUIContext
 
 ```TypeScript
@@ -989,6 +2017,37 @@ static getLastForegroundUIContext(): UIContext | undefined
 | 类型 | 说明 |
 | --- | --- |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) &#124; undefined | UIContext of the UI instance that most recently switched to the foreground state. Returns **undefined** if the most recently foreground UI instance has been destroyed or if no UI instance has ever been in the foreground. |
+
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastForegroundUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## getMagnifier
 
@@ -1012,6 +2071,10 @@ getMagnifier(): Magnifier
 | --- | --- |
 | [Magnifier](arkts-arkui-arkui-uicontext-magnifier-c.md) | Magnifier对象，可用于控制放大镜的显示和隐藏。 |
 
+**示例**
+
+参考[Magnifier](arkts-apis-uicontext-magnifier.md)的bind接口示例。
+
 ## getMaxFontScale
 
 ```TypeScript
@@ -1033,6 +2096,24 @@ Get the max font scale.
 | 类型 | 说明 |
 | --- | --- |
 | number | The max font scale. |
+
+**示例**
+
+参考[configuration标签](../../../quick-start/app-configuration-file.md#configuration标签)，配置fontSizeMaxScale的值为“1.75”。
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('getMaxFontScale').onClick(() => {
+        console.info('getMaxFontScale', this.getUIContext().getMaxFontScale().toFixed(2));
+      });
+    }
+  }
+}
+```
 
 ## getMeasureUtils
 
@@ -1056,6 +2137,10 @@ getMeasureUtils(): MeasureUtils
 | --- | --- |
 | [MeasureUtils](arkts-arkui-arkui-uicontext-measureutils-c.md) | 提供文本宽度、高度等相关计算。 |
 
+**示例**
+
+完整示例请参考[MeasureUtils](arkts-apis-uicontext-measureutils.md)中的示例。
+
 ## getMediaQuery
 
 ```TypeScript
@@ -1077,6 +2162,10 @@ get object mediaQuery.
 | 类型 | 说明 |
 | --- | --- |
 | [MediaQuery](arkts-arkui-arkui-uicontext-mediaquery-c.md) | object MediaQuery. |
+
+**示例**
+
+完整示例请参考mediaquery示例。
 
 ## getNavigationInfoByUniqueId
 
@@ -1106,6 +2195,10 @@ Get navigation information of the frameNode with uniqueId.
 | --- | --- |
 | [observer.NavigationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md) &#124; undefined | The navigation information of the frameNode with the target uniqueId, or undefined if the frameNode is not existed or does not have navigation information. |
 
+**示例**
+
+请参考[getPageInfoByUniqueId](#getpageinfobyuniqueid)的示例。
+
 ## getOverlayManager
 
 ```TypeScript
@@ -1128,6 +2221,10 @@ Obtains the OverlayManager object.
 | --- | --- |
 | [OverlayManager](arkts-arkui-arkui-uicontext-overlaymanager-c.md) | OverlayManager instance obtained. |
 
+**示例**
+
+完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
+
 ## getOverlayManagerOptions
 
 ```TypeScript
@@ -1149,6 +2246,10 @@ Get object OverlayManagerOptions.
 | 类型 | 说明 |
 | --- | --- |
 | [OverlayManagerOptions](arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md) | object OverlayManagerOptions. |
+
+**示例**
+
+完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
 ## getPageInfoByUniqueId
 
@@ -1178,6 +2279,53 @@ getPageInfoByUniqueId(id: number): PageInfo
 | --- | --- |
 | [PageInfo](arkts-arkui-arkui-uicontext-pageinfo-i.md) | The page information of the frameNode with the target uniqueId, includes navDestination and router page information. If the frame node does not have navDestination and router page information, it will return an empty object. |
 
+**示例**
+
+```TypeScript
+import { UIContext, PageInfo } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PageInfoExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        NavDestination() {
+          MyComponent()
+        }
+      }.id('navigation')
+    }
+  }
+}
+
+@Component
+struct MyComponent {
+  @State content: string = '';
+
+  build() {
+    Column() {
+      Text('PageInfoExample')
+      Button('click').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        const uniqueId: number = this.getUniqueId();
+        const pageInfo: PageInfo = uiContext.getPageInfoByUniqueId(uniqueId);
+        console.info('pageInfo: ' + JSON.stringify(pageInfo));
+        console.info('navigationInfo: ' + JSON.stringify(uiContext.getNavigationInfoByUniqueId(uniqueId)));
+      })
+      TextArea({
+        text: this.content
+      })
+      .width('100%')
+      .height(100)
+    }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
 ## getPageRootNode
 
 ```TypeScript
@@ -1187,6 +2335,8 @@ getPageRootNode(): FrameNode | null
 获取UIContext对应页面的根节点。
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
@@ -1203,6 +2353,133 @@ getPageRootNode(): FrameNode | null
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [120007](../errorcode-uicontext.md#120007-实例不存在) | The UIContext is not available. |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct NavigationExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  private arr: number[] = [1, 2, 3];
+  @State pageRootNode: FrameNode | null = null;
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'NavDestinationTitle1') {
+      PageOne();
+    } else if (name === 'NavDestinationTitle2') {
+      PageTwo();
+    } else if (name === 'NavDestinationTitle3') {
+      PageThree();
+    }
+  }
+
+  onPageShow(): void {
+    setTimeout(() => {
+      this.pageRootNode = this.getUIContext()?.getPageRootNode();
+      console.info('NavigationExample' + JSON.stringify(this.getUIContext().getPageRootNode()));
+    });
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        Text(`CurrentPageRootNode info: Tag ${this.pageRootNode?.getNodeType()}, NodeId： ${this.pageRootNode?.getUniqueId()}`)
+          .width('90%')
+          .height(40)
+          .backgroundColor('#FFFFFF')
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('Page' + item)
+                .width('100%')
+                .height(72)
+                .backgroundColor('#FFFFFF')
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .margin({ top: 12 })
+      }
+      .title('主标题')
+      .mode(NavigationMode.Stack)
+      .navDestination(this.pageMap)
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#F1F3F5')
+  }
+}
+
+@Component
+export struct PageOne {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  aboutToDisappear(): void {
+    console.info('PageOne', 'aboutToDisappear');
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('PageOne')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle1')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct PageTwo {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('PageTwo')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle2')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct PageThree {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('PageThree')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle3')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
 
 ## getPixelRoundMode
 
@@ -1226,6 +2503,23 @@ getPixelRoundMode(): PixelRoundMode
 | --- | --- |
 | [PixelRoundMode](arkts-arkui-pixelroundmode-e.md) | 当前页面的像素取整模式，取值包括：<br>- PIXEL_ROUND_ON_LAYOUT_FINISH（对应数值：0）：在布局完成后进行像素取整。<br>- PIXEL_ROUND_AFTER_MEASURE（对应数值：1）：在组件测量大小结束后进行像素取整。 |
 
+**示例**
+
+```TypeScript
+// EntryAbility.ets
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        console.info("pixelRoundMode : " + uiContext.getPixelRoundMode().valueOf());
+      });
+    }
+}
+```
+
 ## getPromptAction
 
 ```TypeScript
@@ -1247,6 +2541,10 @@ get object PromptAction.
 | 类型 | 说明 |
 | --- | --- |
 | [PromptAction](arkts-arkui-arkui-uicontext-promptaction-c.md) | PromptAction object. |
+
+**示例**
+
+完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
 
 ## getRouter
 
@@ -1270,6 +2568,10 @@ Obtains a Router object.
 | --- | --- |
 | [Router](arkts-arkui-arkui-uicontext-router-c.md) | Router object. |
 
+**示例**
+
+完整示例请参考pushUrl。
+
 ## getSharedLocalStorage
 
 ```TypeScript
@@ -1291,6 +2593,49 @@ getSharedLocalStorage(): LocalStorage | undefined
 | 类型 | 说明 |
 | --- | --- |
 | [LocalStorage](arkts-arkui-localstorage-c.md) &#124; undefined | **LocalStorage** instance if it exists; **undefined** if it does not exist. |
+
+**示例**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  storage: LocalStorage = new LocalStorage();
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', this.storage);
+  }
+}
+```
+
+```TypeScript
+// Index.ets
+
+@Entry
+@Component
+struct SharedLocalStorage {
+  localStorage = this.getUIContext().getSharedLocalStorage();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Change Local Storage to 47")
+          .onClick(() => {
+            this.localStorage?.setOrCreate("propA", 47);
+          })
+        Button("Get Local Storage")
+          .onClick(() => {
+            console.info(`localStorage: ${this.localStorage?.get("propA")}`);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getSmartGestureController
 
@@ -1314,6 +2659,10 @@ getSmartGestureController(): SmartGestureController
 | --- | --- |
 | [SmartGestureController](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md) | 智能手势控制器对象。 |
 
+**示例**
+
+参考智慧手势控制器示例1（启用智慧手势并自定义动作处理）。
+
 ## getTextMenuController
 
 ```TypeScript
@@ -1335,6 +2684,10 @@ getTextMenuController(): TextMenuController
 | 类型 | 说明 |
 | --- | --- |
 | [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.md) | TextMenuController对象。 |
+
+**示例**
+
+参考[TextMenuController](arkts-apis-uicontext-textmenucontroller.md)接口示例。
 
 ## getUIInspector
 
@@ -1358,6 +2711,10 @@ getUIInspector(): UIInspector
 | --- | --- |
 | [UIInspector](arkts-arkui-arkui-uicontext-uiinspector-c.md) | 返回UIInspector实例对象。 |
 
+**示例**
+
+完整示例请参考[UIInspector](./arkts-apis-uicontext-uiinspector.md)中的示例。
+
 ## getUIObserver
 
 ```TypeScript
@@ -1380,6 +2737,54 @@ getUIObserver(): UIObserver
 | --- | --- |
 | [UIObserver](arkts-arkui-arkui-uicontext-uiobserver-c.md) | 返回UIObserver实例对象。 |
 
+**示例**
+
+```TypeScript
+@Component
+struct PageOne {
+  build() {
+    NavDestination() {
+      Text("pageOne")
+    }.title("pageOne")
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageBuilder(name: string) {
+    PageOne()
+  }
+
+  aboutToAppear() {
+    this.getUIContext().getUIObserver().on('navDestinationUpdate', (info) => {
+      console.info('NavDestination state update', JSON.stringify(info));
+    });
+  }
+
+  aboutToDisappear() {
+    this.getUIContext().getUIObserver().off('navDestinationUpdate');
+  }
+
+  build() {
+    Column() {
+      Navigation(this.stack) {
+        Button("push").onClick(() => {
+          this.stack.pushPath({ name: "pageOne" });
+        })
+      }
+      .title("Navigation")
+      .navDestination(this.PageBuilder)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## getWindowHeightBreakpoint
 
 ```TypeScript
@@ -1401,6 +2806,40 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 | 类型 | 说明 |
 | --- | --- |
 | [HeightBreakpoint](arkts-arkui-heightbreakpoint-e.md) | 当前实例所在窗口的高宽比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
+
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+        Button() {
+          Text('test')
+            .fontSize(30)
+        }
+        .onClick(() => {
+          let uiContext: UIContext = this.getUIContext();
+          let heightBp: HeightBreakpoint = uiContext.getWindowHeightBreakpoint();
+          let widthBp: WidthBreakpoint = uiContext.getWindowWidthBreakpoint();
+          console.info(`Window heightBP: ${heightBp}, widthBp: ${widthBp}`);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getWindowId
 
@@ -1429,6 +2868,35 @@ getWindowId(): number | undefined
 | --- | --- |
 | number &#124; undefined | ID of the window to which the current application instance belongs. If the window does not exist, **undefined** is returned. |
 
+**示例**
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    const windowId = this.getUIContext().getWindowId();
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId ?? -1);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## getWindowName
 
 ```TypeScript
@@ -1450,6 +2918,40 @@ getWindowName(): string | undefined
 | 类型 | 说明 |
 | --- | --- |
 | string &#124; undefined | Name of the window where the current instance is located. If the window does not exist, **undefined** is returned. |
+
+**示例**
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    const windowName = this.getUIContext().getWindowName();
+    console.info('WindowName ' + windowName);
+    if (windowName) {
+      const currWindow = window.findWindow(windowName);
+      const windowProperties = currWindow.getWindowProperties();
+      console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getWindowWidthBreakpoint
 
@@ -1473,6 +2975,39 @@ getWindowWidthBreakpoint(): WidthBreakpoint
 | --- | --- |
 | [WidthBreakpoint](arkts-arkui-widthbreakpoint-e.md) | 当前实例所在窗口的宽度断点枚举值。若窗口宽度为 0vp，则返回WIDTH_XS。 |
 
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+        Button() {
+          Text('test')
+            .fontSize(30)
+        }
+        .onClick(() => {
+          let uiContext: UIContext = this.getUIContext();
+          let widthBp: WidthBreakpoint = uiContext.getWindowWidthBreakpoint();
+          console.info(`Window widthBp: ${widthBp}`);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## isAvailable
 
 ```TypeScript
@@ -1494,6 +3029,66 @@ isAvailable(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回UIContext对象对应的UI实例是否有效。true表示有效，false表示无效。 |
+
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct UIContextCompare {
+  @State result1: string = '';
+  @State result2: string = '';
+
+  build() {
+    Column() {
+      Text('getUIContext() 结果: ' + this.result1)
+        .fontSize(20)
+        .margin(10)
+
+      Text('new UIContext() 结果: ' + this.result2)
+        .fontSize(20)
+        .margin(10)
+
+      Divider().margin(20)
+
+      Button('getUIContext()')
+        .width('70%')
+        .height(50)
+        .margin(10)
+        .onClick(() => {
+          try {
+            const ctx: UIContext = this.getUIContext();
+            const available: boolean = ctx.isAvailable();
+            this.result1 = `可用状态: ${available} UI实例有效 `;
+            console.info('getUIContext测试:', available);
+          } catch (error) {
+            this.result1 = '错误: ' + (error instanceof Error ? error.message : String(error));
+          }
+        })
+
+      Button('new UIContext()')
+        .width('70%')
+        .height(50)
+        .margin(10)
+        .onClick(() => {
+          try {
+            const ctx: UIContext = new UIContext();
+            const available: boolean = ctx.isAvailable();
+            this.result2 = `可用状态: ${available} UI实例无效`;
+            console.info('new UIContext测试:', available);
+          } catch (error) {
+            this.result2 = '错误: ' + (error instanceof Error ? error.message : String(error));
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
 
 ## isEasySplit
 
@@ -1517,6 +3112,30 @@ isEasySplit(): boolean
 | --- | --- |
 | boolean | 返回当前UI实例是否处于分栏模式。true表示处于分栏模式，false表示未处于分栏模式。 |
 
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  @State isEasySplit: boolean = false;
+
+  build() {
+    Column() {
+      Text(`${this.isEasySplit ? 'current is easy split mode' : 'current is not easy split mode'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Check EasySplit')
+        .onClick(() => {
+          this.isEasySplit = this.getUIContext()?.isEasySplit();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## isFollowingSystemFontScale
 
 ```TypeScript
@@ -1539,6 +3158,24 @@ Checks whether current font scale follows the system.
 | --- | --- |
 | boolean | Returns true if current font scale follows the system; returns false otherwise. |
 
+**示例**
+
+参考[configuration标签](../../../quick-start/app-configuration-file.md#configuration标签)，配置fontSizeScale的值为“followSystem”。
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('isFollowingSystemFontScale').onClick(() => {
+        console.info('isFollowingSystemFontScale', this.getUIContext().isFollowingSystemFontScale());
+      });
+    }
+  }
+}
+```
+
 ## keyframeAnimateTo
 
 ```TypeScript
@@ -1559,8 +3196,68 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | [KeyframeAnimateParam](../arkts-components/arkts-arkui-keyframeanimateparam-i.md) | 是 | 关键帧动画的整体动画参数。 |
-| keyframes | Array&lt;[KeyframeState](../arkts-components/arkts-arkui-keyframestate-i.md)&gt; | 是 | 所有的关键帧状态的列表。 |
+| param | [KeyframeAnimateParam](../arkts-components/arkts-arkui-common-comp-keyframeanimateparam-i.md) | 是 | 关键帧动画的整体动画参数。 |
+| keyframes | Array&lt;[KeyframeState](../arkts-components/arkts-arkui-common-comp-keyframestate-i.md)&gt; | 是 | 所有的关键帧状态的列表。 |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct KeyframeDemo {
+  @State myScale: number = 1.0;
+  uiContext: UIContext | undefined = undefined;
+
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+  }
+
+  build() {
+    Column() {
+      Circle()
+        .width(100)
+        .height(100)
+        .fill("#46B1E3")
+        .margin(100)
+        .scale({ x: this.myScale, y: this.myScale })
+        .onClick(() => {
+          if (!this.uiContext) {
+            console.error("no uiContext, keyframe failed");
+            return;
+          }
+          this.myScale = 1;
+          // 设置关键帧动画整体播放3次
+          this.uiContext.keyframeAnimateTo({
+              iterations: 3,
+              expectedFrameRateRange: {
+                min: 10,
+                max: 120,
+                expected: 60,
+              }
+            }, [
+            {
+              // 第一段关键帧动画时长为800ms，scale属性做从1到1.5的动画
+              duration: 800,
+              event: () => {
+                this.myScale = 1.5;
+              }
+            },
+            {
+              // 第二段关键帧动画时长为500ms，scale属性做从1.5到1的动画
+              duration: 500,
+              event: () => {
+                this.myScale = 1;
+              }
+            }
+          ]);
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
 
 ## lpx2px
 
@@ -1596,6 +3293,32 @@ lpx2px(value: number): number
 | --- | --- |
 | number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().lpx2px(50),
+          centerY: this.getUIContext().lpx2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## openBindSheet
 
 ```TypeScript
@@ -1625,7 +3348,7 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bindSheetContent | [ComponentContent](arkts-arkui-componentcontent-c.md)&lt;T&gt; | 是 | 半模态页面中显示的组件内容。 |
-| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-sheetoptions-i.md) | 否 | 半模态页面样式。<br>**说明：** <br>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br>4. 其余属性的默认值参考[SheetOptions](../arkts-components/arkts-arkui-sheetoptions-i.md)文档。 |
+| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md) | 否 | 半模态页面样式。<br>**说明：** <br>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br>4. 其余属性的默认值参考[SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md)文档。 |
 | targetId | number | 否 | 需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。在传入undefined时返回错误码401。 |
 
 **返回值：**
@@ -1644,6 +3367,95 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 | [120004](../errorcode-bindSheet.md#120004-指定的targetid不存在) | The targetId does not exist. |
 | [120005](../errorcode-bindSheet.md#120005-指定的targetid对应的节点未挂载在组件树上) | The node of targetId is not in the component tree. |
 | [120006](../errorcode-bindSheet.md#120006-指定的targetid对应的节点并不是page节点或navdestination节点的子节点) | The node of targetId is not a child of the page node or NavDestination node. |
+
+**示例**
+
+```TypeScript
+import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+let contentNode: ComponentContent<Params>;
+let gUIContext: UIContext;
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+    Button('Update BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.updateBindSheet(contentNode, {
+          backgroundColor: Color.Pink,
+        }, true)
+          .then(() => {
+            console.info('updateBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+
+    Button('Close BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.closeBindSheet(contentNode)
+          .then(() => {
+            console.info('closeBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+  }
+}
+
+@Entry
+@Component
+struct UIContextBindSheet {
+  @State message: string = 'BindSheet';
+
+  aboutToAppear() {
+    gUIContext = this.getUIContext();
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message));
+  }
+
+  build() {
+    RelativeContainer() {
+      Column() {
+        Button('Open BindSheet')
+          .fontSize(20)
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let uniqueId = this.getUniqueId();
+            let frameNode: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
+            let targetId = frameNode?.getFirstChild()?.getUniqueId();
+            uiContext.openBindSheet(contentNode, {
+              height: SheetSize.MEDIUM,
+              backgroundColor: Color.Green,
+              title: { title: "Title", subtitle: "subtitle" }
+            }, targetId)
+              .then(() => {
+                console.info('openBindSheet success');
+              })
+              .catch((err: BusinessError) => {
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
+              })
+          })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## postDelayedFrameCallback
 
@@ -1668,6 +3480,38 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 | frameCallback | [FrameCallback](arkts-arkui-arkui-uicontext-framecallback-c.md) | 是 | 下一帧需要执行的回调。 |
 | delayTime | number | 是 | 延迟的时间，以毫秒为单位。传入null、undefined或小于0的值，会按0处理。 |
 
+**示例**
+
+```TypeScript
+import { FrameCallback } from '@kit.ArkUI';
+
+class MyFrameCallback extends FrameCallback {
+  private tag: string;
+
+  constructor(tag: string) {
+    super();
+    this.tag = tag;
+  }
+
+  onFrame(frameTimeNanos: number) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeNanos.toString());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button('点击触发postDelayedFrameCallback')
+        .onClick(() => {
+          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback('delayTask'), 5);
+        })
+    }
+  }
+}
+```
+
 ## postFrameCallback
 
 ```TypeScript
@@ -1690,6 +3534,38 @@ postFrameCallback(frameCallback: FrameCallback): void
 | --- | --- | --- | --- |
 | frameCallback | [FrameCallback](arkts-arkui-arkui-uicontext-framecallback-c.md) | 是 | 下一帧需要执行的回调。 |
 
+**示例**
+
+```TypeScript
+import { FrameCallback } from '@kit.ArkUI';
+
+class MyFrameCallback extends FrameCallback {
+  private tag: string;
+
+  constructor(tag: string) {
+    super();
+    this.tag = tag;
+  }
+
+  onFrame(frameTimeNanos: number) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeNanos.toString());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button('点击触发postFrameCallback')
+        .onClick(() => {
+          this.getUIContext().postFrameCallback(new MyFrameCallback('normTask'));
+        })
+    }
+  }
+}
+```
+
 ## px2fp
 
 ```TypeScript
@@ -1702,7 +3578,7 @@ px2fp(value: number): number
 
 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md).density。
 
-字体缩放比例：系统设置的字体缩放系数，对应 Configuration.fontScale。
+字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../arkts-components/arkts-arkui-common-comp-configuration-i.md#fontscale)。
 
 > **说明：** 
 > 
@@ -1727,6 +3603,32 @@ px2fp(value: number): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 转换后的数值。<br>取值范围：(-∞, +∞) |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2fp(50),
+          centerY: this.getUIContext().px2fp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## px2lpx
 
@@ -1761,6 +3663,32 @@ px2lpx(value: number): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 转换后的数值。<br>取值范围：(-∞, +∞) |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2lpx(50),
+          centerY: this.getUIContext().px2lpx(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## px2vp
 
@@ -1798,6 +3726,32 @@ px2vp(value: number): number
 | --- | --- |
 | number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2vp(50),
+          centerY: this.getUIContext().px2vp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## removeLocalInputEventMonitor
 
 ```TypeScript
@@ -1820,7 +3774,46 @@ removeLocalInputEventMonitor(monitor: InputEventMonitor): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitor | [InputEventMonitor](../arkts-components/arkts-arkui-inputeventmonitor-i.md) | 是 | 监控标识对象（由addLocalInputEventMonitor返回）。 |
+| monitor | [InputEventMonitor](../arkts-components/arkts-arkui-common-comp-inputeventmonitor-i.md) | 是 | 监控标识对象（由addLocalInputEventMonitor返回）。 |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct RemoveMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        return { action: InputEventInterceptAction.CONTINUE };
+      }
+    );
+  }
+  aboutToDisappear() {
+    // 组件销毁时移除监听器
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Button('Remove Monitor')
+        .onClick(() => {
+          if (this.monitor && this.uiContext) {
+            this.uiContext.removeLocalInputEventMonitor(this.monitor);
+            this.monitor = null;
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## requireDynamicSyncScene
 
@@ -1849,6 +3842,56 @@ requireDynamicSyncScene(id: string): Array<DynamicSyncScene>
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;[DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)&gt; | The instance of SwiperDynamicSyncScene. |
+
+**示例**
+
+```TypeScript
+import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Frame {
+  @State animationFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State gestureFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
+  private scenes: SwiperDynamicSyncScene[] = [];
+
+  build() {
+    Column() {
+      Text("动画" + JSON.stringify(this.animationFrameRateRange))
+      Text("跟手" + JSON.stringify(this.gestureFrameRateRange))
+      Row() {
+        Swiper() {
+          Text("one")
+          Text("two")
+          Text("three")
+        }
+        .width('100%')
+        .height('300vp')
+        .id("dynamicSwiper")
+        .backgroundColor(Color.Blue)
+        .autoPlay(true)
+        .onAppear(() => {
+          this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
+        })
+      }
+
+      Button("set frame")
+        .onClick(() => {
+          this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
+
+            if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
+              scenes.setFrameRateRange(this.animationFrameRateRange);
+            }
+
+            if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
+              scenes.setFrameRateRange(this.gestureFrameRateRange);
+            }
+          });
+        })
+    }
+  }
+}
+```
 
 ## resolveUIContext
 
@@ -1890,6 +3933,28 @@ static resolveUIContext(): ResolvedUIContext
 | --- | --- |
 | [ResolvedUIContext](arkts-arkui-arkui-uicontext-resolveduicontext-c.md) | 返回带有解析策略的UIContext实例对象。 |
 
+**示例**
+
+```TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('click').onClick(() => {
+        let resolvedUIContext = UIContext.resolveUIContext();
+        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}`);
+      })
+    }
+    .width(UIContext.resolveUIContext().px2vp(100))
+    .height('100%')
+  }
+}
+```
+
 ## runScopedTask
 
 ```TypeScript
@@ -1911,6 +3976,28 @@ runScopedTask(callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | () =&gt; void | 是 | 需要在当前UIContext对应的UI实例作用域内执行的回调函数。 |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  private selectedDate: Date = new Date('2025-10-01');
+
+  build() {
+    Button('Show CalendarPicker Dialog')
+      .onClick(() => {
+        const uiContext = this.getUIContext();
+        uiContext.runScopedTask(() => {
+          CalendarPickerDialog.show({
+            selected: this.selectedDate
+          });
+        });
+      });
+  }
+}
+```
 
 ## setCustomKeyboardContinueFeature
 
@@ -1934,6 +4021,113 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 | --- | --- | --- | --- |
 | feature | [CustomKeyboardContinueFeature](arkts-arkui-arkui-uicontext-customkeyboardcontinuefeature-e.md) | 是 | 自定义键盘接续特性。 |
 
+**示例**
+
+```TypeScript
+// xxx.ets
+import { CustomKeyboardContinueFeature } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  controller: TextInputController = new TextInputController();
+  controller2: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+  @State inputValue2: string = '';
+  @State supportAvoidance: boolean = true;
+  @State isValue: CustomKeyboardContinueFeature = CustomKeyboardContinueFeature.DISABLED;
+  @State str: string = '否';
+
+  // 自定义键盘组件
+  @Builder
+  CustomKeyboardBuilder() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue = this.inputValue.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(213, 213, 213)').height(300)
+  }
+
+  // 自定义键盘组件
+  @Builder
+  CustomKeyboardBuilder2() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller2.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue2 = this.inputValue2.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue2 += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(227, 248, 249)').height(150)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Button('是否接续：' + this.str).onClick(() => {
+          if (this.isValue == CustomKeyboardContinueFeature.ENABLED) {
+            this.isValue = CustomKeyboardContinueFeature.DISABLED
+            this.str = '否'
+          } else {
+            this.isValue = CustomKeyboardContinueFeature.ENABLED
+            this.str = '是'
+          }
+          this.getUIContext().setCustomKeyboardContinueFeature(this.isValue);
+        }).fontSize(20).width('80%').key('button')
+
+        TextInput({
+          placeholder: 'TextInput1 bind CustomKeyboardBuilder',
+          controller: this.controller,
+          text: this.inputValue
+        }) // 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+        TextInput({
+          placeholder: 'TextInput2 bind CustomKeyboardBuilder2',
+          controller: this.controller2,
+          text: this.inputValue2
+        }) // 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder2(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+      }
+    }
+  }
+}
+```
+
 ## setImageCacheCount
 
 ```TypeScript
@@ -1956,6 +4150,32 @@ setImageCacheCount(value: number): void
 | --- | --- | --- | --- |
 | value | number | 是 | 内存中缓存解码后图片的数量上限 |
 
+**示例**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码后图片内存缓存上限为100张
+    this.getUIContext().setImageCacheCount(100);
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
 ## setImageRawDataCacheSize
 
 ```TypeScript
@@ -1977,6 +4197,32 @@ setImageRawDataCacheSize(value: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | capacity of raw image data size in bytes. |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码前图片数据内存缓存上限为100MB (100MB=100*1024*1024B=104857600B)
+    this.getUIContext().setImageRawDataCacheSize(104857600); 
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
 
 ## setKeyboardAvoidMode
 
@@ -2008,6 +4254,25 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 | --- | --- | --- | --- |
 | value | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | 是 | 配置虚拟键盘抬起时页面的避让模式。<br>默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br>setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
 
+**示例**
+
+完整示例请参考[示例4（设置键盘避让模式为压缩）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
+
+```TypeScript
+// EntryAbility.ets
+import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+      windowStage.loadContent('pages/Index', (err, data) => {
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      });
+    }
+}
+```
+
 ## setOverlayManagerOptions
 
 ```TypeScript
@@ -2036,13 +4301,17 @@ Init OverlayManager.
 | --- | --- |
 | boolean | Returns true if it is called first and before getting an OverlayManager instance; returns false otherwise. |
 
+**示例**
+
+完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
+
 ## setPixelRoundMode
 
 ```TypeScript
 setPixelRoundMode(mode: PixelRoundMode): void
 ```
 
-设置当前页面的像素取整模式，影响整个页面的像素取整时机。通常在使用[组件级像素取整](../arkts-components/arkts-arkui-commonmethod-c.md#pixelround)无法解决像素取整问题时，可尝试采用PIXEL_ROUND_AFTER_MEASURE模式。
+设置当前页面的像素取整模式，影响整个页面的像素取整时机。通常在使用[组件级像素取整](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#pixelround)无法解决像素取整问题时，可尝试采用PIXEL_ROUND_AFTER_MEASURE模式。
 
 **起始版本：** 18
 
@@ -2057,6 +4326,23 @@ setPixelRoundMode(mode: PixelRoundMode): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | [PixelRoundMode](arkts-arkui-pixelroundmode-e.md) | 是 | 像素取整模式，可选值：<br>- PIXEL_ROUND_ON_LAYOUT_FINISH：在布局完成后进行像素取整，适合大多数场景。<br>- PIXEL_ROUND_AFTER_MEASURE：在组件测量大小结束后进行像素取整，适用于使用组件级像素取整无法解决的像素取整问题场景，但最终大小相比PIXEL_ROUND_ON_LAYOUT_FINISH模式可能扩大1px。<br>设置异常值时，按PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH模式处理。 |
+
+**示例**
+
+```TypeScript
+// EntryAbility.ets
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
+    });
+  }
+}
+```
 
 ## setResourceManagerCacheMaxCountForHSP
 
@@ -2090,6 +4376,31 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 | [100102](../errorcode-uicontext.md#100102-参数类型错误) | The parameter value cannot be a floating point number. |
 | [100103](../errorcode-uicontext.md#100103-调用线程错误) | The function cannot be called from a non main thread. |
 
+**示例**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      UIContext.setResourceManagerCacheMaxCountForHSP(5);
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+}
+```
+
 ## setTextSelectionClearPolicy
 
 ```TypeScript
@@ -2111,6 +4422,8 @@ setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | policy | [TextSelectionClearPolicy](arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md) | 是 | 文本选择清除策略。 |
+
+**示例**
 
 ## showActionSheet
 
@@ -2134,6 +4447,60 @@ Shows an action sheet in the given settings.
 | --- | --- | --- | --- |
 | value | [ActionSheetOptions](arkts-arkui-actionsheetoptions-i.md) | 是 | Parameters of the action sheet. |
 
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  uiContext: UIContext = this.getUIContext()
+
+  build() {
+    Column() {
+      Button('showActionSheet')
+        .onClick(() => {
+          this.uiContext.showActionSheet({
+            title: 'ActionSheet title',
+            message: 'message',
+            autoCancel: true,
+            confirm: {
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          });
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ## showAlertDialog
 
 ```TypeScript
@@ -2156,6 +4523,43 @@ alertDialog display.
 | --- | --- | --- | --- |
 | options | [AlertDialogParamWithConfirm](arkts-arkui-alertdialogparamwithconfirm-i.md) &#124; [AlertDialogParamWithButtons](arkts-arkui-alertdialogparamwithbuttons-i.md) &#124; [AlertDialogParamWithOptions](arkts-arkui-alertdialogparamwithoptions-i.md) | 是 | Shows an AlertDialog component in the given settings. |
 
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  uiContext: UIContext = this.getUIContext()
+
+  build() {
+    Column() {
+      Button('showAlertDialog')
+        .onClick(() => {
+          this.uiContext.showAlertDialog(
+            {
+              title: 'title',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 3,
+              confirm: {
+                value: 'button',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              }
+            }
+          );
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ## showDatePickerDialog
 
 ```TypeScript
@@ -2176,7 +4580,60 @@ datePickerDialog display.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [DatePickerDialogOptions](../arkts-components/arkts-arkui-datepickerdialogoptions-i.md) | 是 | Options. |
+| options | [DatePickerDialogOptions](../arkts-components/arkts-arkui-datepicker-comp-datepickerdialogoptions-i.md) | 是 | Options. |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct DatePickerDialogExample {
+  selectedDate: Date = new Date("2010-1-1");
+
+  build() {
+    Row(){
+      Column() {
+        Button("DatePickerDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showDatePickerDialog({
+              start: new Date("2000-1-1"),
+              end: new Date("2100-12-31"),
+              selected: this.selectedDate,
+              showTime: true,
+              useMilitaryTime: false,
+              dateTimeOptions: { hour: "numeric", minute: "2-digit" },
+              onDateAccept: (value: Date) => {
+                // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
+                this.selectedDate = value;
+                console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              },
+              onCancel: () => {
+                console.info("DatePickerDialog:onCancel()");
+              },
+              onDateChange: (value: Date) => {
+                console.info("DatePickerDialog:onDateChange()" + value.toString());
+              },
+              onDidAppear: () => {
+                console.info("DatePickerDialog:onDidAppear()");
+              },
+              onDidDisappear: () => {
+                console.info("DatePickerDialog:onDidDisappear()");
+              },
+              onWillAppear: () => {
+                console.info("DatePickerDialog:onWillAppear()");
+              },
+              onWillDisappear: () => {
+                console.info("DatePickerDialog:onWillDisappear()");
+              }
+            })
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
 
 ## showTextPickerDialog
 
@@ -2198,7 +4655,64 @@ textPickerDialog display.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpickerdialogoptions-i.md) | 是 | Options. |
+| options | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpicker-comp-textpickerdialogoptions-i.md) | 是 | Options. |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+
+class SelectedValue{
+  select: number = 2;
+  set(val: number){
+    this.select = val;
+  }
+}
+class SelectedArray{
+  select: number[] = [];
+  set(val: number[]){
+    this.select = val;
+  }
+}
+@Entry
+@Component
+struct TextPickerDialogExample {
+  @State selectTime: Date = new Date('2023-12-25T08:30:00');
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
+  private select: number  = 0;
+  build() {
+    Row(){
+      Column() {
+        Button('showTextPickerDialog')
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              onAccept: (value: TextPickerResult) => {
+                // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
+                let selectedVal = new SelectedValue();
+                let selectedArr = new SelectedArray();
+                if (value.index){
+                  value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+                }
+                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+              },
+              onCancel: () => {
+                console.info("TextPickerDialog:onCancel()");
+              },
+              onChange: (value: TextPickerResult) => {
+                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+              }
+            });
+          })
+      }.width('100%').margin({ top: 5 })
+    }.height('100%')
+  }
+}
+```
+
+<a id="showtextpickerdialog-1"></a>
 
 ## showTextPickerDialog
 
@@ -2220,7 +4734,11 @@ textPickerDialog display.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpickerdialogoptions-i.md) &#124; [TextPickerDialogOptionsExt](../arkts-components/arkts-arkui-textpickerdialogoptionsext-i.md) | 是 | Dialog style. |
+| style | [TextPickerDialogOptions](../arkts-components/arkts-arkui-textpicker-comp-textpickerdialogoptions-i.md) &#124; [TextPickerDialogOptionsExt](../arkts-components/arkts-arkui-textpicker-comp-textpickerdialogoptionsext-i.md) | 是 | Dialog style. |
+
+**示例**
+
+参见 [showTextPickerDialog](#showtextpickerdialog)
 
 ## showTimePickerDialog
 
@@ -2242,7 +4760,52 @@ timePickerDialog display.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [TimePickerDialogOptions](../arkts-components/arkts-arkui-timepickerdialogoptions-i.md) | 是 | Options. |
+| options | [TimePickerDialogOptions](../arkts-components/arkts-arkui-timepicker-comp-timepickerdialogoptions-i.md) | 是 | Options. |
+
+**示例**
+
+```TypeScript
+// xxx.ets
+
+class SelectTime{
+  selectTime: Date = new Date('2020-12-25T08:30:00');
+  hours(h:number,m:number){
+    this.selectTime.setHours(h, m);
+  }
+}
+
+@Entry
+@Component
+struct TimePickerDialogExample {
+  @State selectTime: Date = new Date('2023-12-25T08:30:00');
+
+  build() {
+    Column() {
+      Button('showTimePickerDialog')
+        .margin(30)
+        .onClick(() => {
+          this.getUIContext().showTimePickerDialog({
+            selected: this.selectTime,
+            onAccept: (value: TimePickerResult) => {
+              // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
+              let time = new SelectTime();
+              if(value.hour && value.minute){
+                time.hours(value.hour, value.minute);
+              }
+              console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+            },
+            onCancel: () => {
+              console.info("TimePickerDialog:onCancel()");
+            },
+            onChange: (value: TimePickerResult) => {
+              console.info("TimePickerDialog:onChange()" + JSON.stringify(value));
+            }
+          });
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
 
 ## unbindTabsFromNestedScrollable
 
@@ -2264,9 +4827,13 @@ Unbind tabs from nested scrollable container components.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | 是 | The controller of the tabs. |
-| parentScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the parent scrollable container component. |
-| childScroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the child scrollable container component. |
+| tabsController | [TabsController](../arkts-components/arkts-arkui-tabs-comp-tabscontroller-c.md) | 是 | The controller of the tabs. |
+| parentScroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | 是 | The controller of the parent scrollable container component. |
+| childScroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | 是 | The controller of the child scrollable container component. |
+
+**示例**
+
+参考[bindTabsToScrollable](#bindtabstoscrollable)接口示例。
 
 ## unbindTabsFromScrollable
 
@@ -2288,8 +4855,12 @@ Unbind tabs from scrollable container component.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tabsController | [TabsController](../arkts-components/arkts-arkui-tabscontroller-c.md) | 是 | The controller of the tabs. |
-| scroller | [Scroller](../arkts-components/arkts-arkui-scroller-c.md) | 是 | The controller of the scrollable container component. |
+| tabsController | [TabsController](../arkts-components/arkts-arkui-tabs-comp-tabscontroller-c.md) | 是 | The controller of the tabs. |
+| scroller | [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) | 是 | The controller of the scrollable container component. |
+
+**示例**
+
+参考[bindTabsToScrollable](#bindtabstoscrollable)接口示例。
 
 ## updateBindSheet
 
@@ -2316,7 +4887,7 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bindSheetContent | [ComponentContent](arkts-arkui-componentcontent-c.md)&lt;T&gt; | 是 | 半模态页面中显示的组件内容。 |
-| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-sheetoptions-i.md) | 是 | 半模态页面样式。<br>**说明：** <br>不支持更新SheetOptions.uiContext、SheetOptions.mode、回调函数。 |
+| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md) | 是 | 半模态页面样式。<br>**说明：** <br>不支持更新SheetOptions.uiContext、SheetOptions.mode、回调函数。 |
 | partialUpdate | boolean | 否 | 半模态页面更新方式, 默认值为false。<br>**说明：** <br>1. true为增量更新，保留当前值，更新SheetOptions中的指定属性。<br>2. false为全量更新，除SheetOptions中的指定属性，其他属性恢复默认值。 |
 
 **返回值：**
@@ -2332,6 +4903,95 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
 | [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
+
+**示例**
+
+```TypeScript
+import { FrameNode, ComponentContent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+let contentNode: ComponentContent<Params>;
+let gUIContext: UIContext;
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+    Button('Update BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.updateBindSheet(contentNode, {
+          backgroundColor: Color.Pink,
+        }, true)
+          .then(() => {
+            console.info('updateBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('updateBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+
+    Button('Close BindSheet')
+      .fontSize(20)
+      .onClick(() => {
+        gUIContext.closeBindSheet(contentNode)
+          .then(() => {
+            console.info('closeBindSheet success');
+          })
+          .catch((err: BusinessError) => {
+            console.error('closeBindSheet error: ' + err.code + ' ' + err.message);
+          })
+      })
+  }
+}
+
+@Entry
+@Component
+struct UIContextBindSheet {
+  @State message: string = 'BindSheet';
+
+  aboutToAppear() {
+    gUIContext = this.getUIContext();
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message));
+  }
+
+  build() {
+    RelativeContainer() {
+      Column() {
+        Button('Open BindSheet')
+          .fontSize(20)
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let uniqueId = this.getUniqueId();
+            let frameNode: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
+            let targetId = frameNode?.getFirstChild()?.getUniqueId();
+            uiContext.openBindSheet(contentNode, {
+              height: SheetSize.MEDIUM,
+              backgroundColor: Color.Green,
+              title: { title: "Title", subtitle: "subtitle" }
+            }, targetId)
+              .then(() => {
+                console.info('openBindSheet success');
+              })
+              .catch((err: BusinessError) => {
+                console.error('openBindSheet error: ' + err.code + ' ' + err.message);
+              })
+          })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## vp2px
 
@@ -2368,3 +5028,29 @@ vp2px(value: number): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 转换后的数值。<br>取值范围：(-∞, +∞) |
+
+**示例**
+
+```TypeScript
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().vp2px(50),
+          centerY: this.getUIContext().vp2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```

@@ -1,5 +1,9 @@
 # ErrorCode
 
+```TypeScript
+export enum ErrorCode
+```
+
 ErrorCode
 
 **Since:** 7

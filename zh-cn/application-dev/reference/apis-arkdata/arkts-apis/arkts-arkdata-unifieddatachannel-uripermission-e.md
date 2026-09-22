@@ -1,5 +1,9 @@
 # UriPermission
 
+```TypeScript
+export const enum UriPermission
+```
+
 拖拽场景下的URI授权策略。
 
 > **说明：** 

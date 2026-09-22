@@ -1,5 +1,9 @@
 # AuthUser
 
+```TypeScript
+export interface AuthUser
+```
+
 Represents the user authorization information.
 
 **Since:** 21

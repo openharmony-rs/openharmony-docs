@@ -1,8 +1,12 @@
 # SearchResult
 
+```TypeScript
+interface SearchResult
+```
+
 定义解密后的最终搜索结果，指示是否找到匹配项以及与匹配元素关联的可选附加值。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -21,9 +25,11 @@ attachedValues?: Uint8Array[]
 
 **类型：** Uint8Array[]
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -37,8 +43,10 @@ matchedResult: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Asset

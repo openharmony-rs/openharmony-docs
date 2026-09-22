@@ -1,5 +1,9 @@
 # PerformanceInfo
 
+```TypeScript
+interface PerformanceInfo
+```
+
 预下载的性能信息。
 
 **起始版本：** 20

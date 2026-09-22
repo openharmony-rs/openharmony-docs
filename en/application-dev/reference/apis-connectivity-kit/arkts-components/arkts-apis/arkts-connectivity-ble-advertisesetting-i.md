@@ -1,5 +1,9 @@
 # AdvertiseSetting
 
+```TypeScript
+interface AdvertiseSetting
+```
+
 Describes the settings for BLE advertising.
 
 **Since:** 10

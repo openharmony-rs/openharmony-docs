@@ -1,5 +1,9 @@
 # DisconnectCause
 
+```TypeScript
+enum DisconnectCause
+```
+
 枚举，Profile断开连接的原因。
 
 **起始版本：** 12

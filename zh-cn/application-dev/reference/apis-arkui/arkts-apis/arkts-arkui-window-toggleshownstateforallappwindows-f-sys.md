@@ -49,17 +49,8 @@ window.toggleShownStateForAllAppWindows((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = window.toggleShownStateForAllAppWindows();
-promise.then(() => {
-  console.info('Succeeded in toggling shown state for all app windows.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to toggle shown state for all app windows. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="toggleshownstateforallappwindows-1"></a>
 
 ## toggleShownStateForAllAppWindows
 
@@ -91,4 +82,13 @@ function toggleShownStateForAllAppWindows(): Promise<void>
 
 **示例**
 
-参见 [toggleShownStateForAllAppWindows](#toggleshownstateforallappwindows)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = window.toggleShownStateForAllAppWindows();
+promise.then(() => {
+  console.info('Succeeded in toggling shown state for all app windows.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to toggle shown state for all app windows. Cause code: ${err.code}, message: ${err.message}`);
+});
+```

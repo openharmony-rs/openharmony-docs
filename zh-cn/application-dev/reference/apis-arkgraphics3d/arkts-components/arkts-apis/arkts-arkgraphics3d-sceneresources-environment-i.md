@@ -1,5 +1,9 @@
 # Environment
 
+```TypeScript
+export interface Environment extends SceneResource
+```
+
 环境类型，继承自SceneResource。
 
 @extends SceneResource @interface Environment

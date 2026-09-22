@@ -1,5 +1,9 @@
 # UsbDeviceId
 
+```TypeScript
+export interface UsbDeviceId
+```
+
 USB设备ID信息。
 
 **起始版本：** 12

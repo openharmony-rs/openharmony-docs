@@ -1,5 +1,9 @@
 # RuleType（系统接口）
 
+```TypeScript
+enum RuleType
+```
+
 匹配规则类型枚举。
 
 **起始版本：** 9

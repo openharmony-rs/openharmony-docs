@@ -1,5 +1,9 @@
 # ApplicationContext
 
+```TypeScript
+declare class ApplicationContext extends Context
+```
+
 ApplicationContext作为应用上下文，继承自Context，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
 
 > **说明：** 
@@ -64,23 +68,7 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-
-export default class MyAbility extends UIAbility {
-  onForeground() {
-    // 获取ApplicationContext实例
-    let applicationContext = this.context.getApplicationContext();
-    applicationContext.getProcessRunningInformation((err, data) => {
-      if (err) {
-        console.error(`getProcessRunningInformation failed, err: ${JSON.stringify(err)}`);
-      } else {
-        console.info(`The process running information is: ${JSON.stringify(data)}`);
-      }
-    })
-  }
-}
-```
+<a id="getprocessrunninginformation-1"></a>
 
 ## getProcessRunningInformation
 
@@ -117,7 +105,23 @@ getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>)
 
 **示例**
 
-参见 [getProcessRunningInformation](#getprocessrunninginformation)
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class MyAbility extends UIAbility {
+  onForeground() {
+    // 获取ApplicationContext实例
+    let applicationContext = this.context.getApplicationContext();
+    applicationContext.getProcessRunningInformation((err, data) => {
+      if (err) {
+        console.error(`getProcessRunningInformation failed, err: ${JSON.stringify(err)}`);
+      } else {
+        console.info(`The process running information is: ${JSON.stringify(data)}`);
+      }
+    })
+  }
+}
+```
 
 ## preloadUIExtensionAbility
 
@@ -423,25 +427,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let lifecycleId: number;
-
-export default class MyAbility extends UIAbility {
-  onDestroy() {
-    // 获取ApplicationContext实例
-    let applicationContext = this.context.getApplicationContext();
-    console.info(`stage applicationContext: ${applicationContext}`);
-    try {
-      applicationContext.unregisterAbilityLifecycleCallback(lifecycleId);
-    } catch (paramError) {
-      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
-    }
-  }
-}
-```
+<a id="unregisterabilitylifecyclecallback-1"></a>
 
 ## unregisterAbilityLifecycleCallback
 
@@ -485,7 +471,25 @@ unregisterAbilityLifecycleCallback(callbackId: number): Promise<void>
 
 **示例**
 
-参见 [unregisterAbilityLifecycleCallback](#unregisterabilitylifecyclecallback)
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let lifecycleId: number;
+
+export default class MyAbility extends UIAbility {
+  onDestroy() {
+    // 获取ApplicationContext实例
+    let applicationContext = this.context.getApplicationContext();
+    console.info(`stage applicationContext: ${applicationContext}`);
+    try {
+      applicationContext.unregisterAbilityLifecycleCallback(lifecycleId);
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ## unregisterEnvironmentCallback
 
@@ -543,24 +547,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let callbackId: number;
-
-export default class MyAbility extends UIAbility {
-  onDestroy() {
-    // 获取ApplicationContext实例
-    let applicationContext = this.context.getApplicationContext();
-    try {
-      applicationContext.unregisterEnvironmentCallback(callbackId);
-    } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-    }
-  }
-}
-```
+<a id="unregisterenvironmentcallback-1"></a>
 
 ## unregisterEnvironmentCallback
 
@@ -602,4 +589,21 @@ unregisterEnvironmentCallback(callbackId: number): Promise<void>
 
 **示例**
 
-参见 [unregisterEnvironmentCallback](#unregisterenvironmentcallback)
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callbackId: number;
+
+export default class MyAbility extends UIAbility {
+  onDestroy() {
+    // 获取ApplicationContext实例
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.unregisterEnvironmentCallback(callbackId);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```

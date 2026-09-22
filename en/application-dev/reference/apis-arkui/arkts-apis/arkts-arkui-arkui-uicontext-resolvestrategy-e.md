@@ -1,5 +1,9 @@
 # ResolveStrategy
 
+```TypeScript
+export const enum ResolveStrategy
+```
+
 Enumerates resolution strategies for **UIContext** objects.
 
 **Since:** 22

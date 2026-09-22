@@ -1,5 +1,9 @@
 # RelativeTimeFormatResolvedOptions
 
+```TypeScript
+export interface RelativeTimeFormatResolvedOptions
+```
+
 相对时间格式化对象的格式化配置项。
 
 **起始版本：** 8
@@ -66,7 +70,7 @@ numeric: string
 
 输出消息的格式，表示格式化结果中是否使用数字表示相对日期或时间。取值包括："always", "auto"。
 
-不同取值的显示效果请参考附录表23。
+不同取值的显示效果请参考[附录表23](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -88,7 +92,7 @@ style: string
 
 国际化消息的长度，取值包括："long", "short", "narrow"。
 
-不同取值的显示效果请参考附录表24。
+不同取值的显示效果请参考[附录表24](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 

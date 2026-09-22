@@ -40,14 +40,49 @@ function deleteRdbStore(context: Context, name: string, callback: AsyncCallback<
 
 **示例**
 
-```TypeScript
 FA模型示例：
-```
 
 ```TypeScript
-Stage模型示例：
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+relationalStore.deleteRdbStore(context, "RdbTest.db", (err: BusinessError) => {
+  if (err) {
+    console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    return;
+  }
+  // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
+  // 及时将相关变量置空以释放资源。
+  console.info('Delete RdbStore successfully.');
+});
 ```
 
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    relationalStore.deleteRdbStore(this.context, "RdbTest.db", (err: BusinessError) => {
+      if (err) {
+        console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+        return;
+      }
+      // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
+      // 及时将相关变量置空以释放资源。
+      console.info('Delete RdbStore successfully.');
+    });
+  }
+}
+```
+
+
+<a id="deleterdbstore-1"></a>
 
 ## deleteRdbStore
 
@@ -85,8 +120,58 @@ function deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCa
 
 **示例**
 
-参见 deleteRdbStore
+FA模型示例：
 
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: "RdbTest.db",
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+
+relationalStore.deleteRdbStore(context, STORE_CONFIG, (err: BusinessError) => {
+  if (err) {
+    console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    return;
+  }
+  // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
+  // 及时将相关变量置空以释放资源。
+  console.info('Delete RdbStore successfully.');
+});
+```
+
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    relationalStore.deleteRdbStore(this.context, STORE_CONFIG, (err: BusinessError) => {
+      if (err) {
+        console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+        return;
+      }
+      // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
+      // 及时将相关变量置空以释放资源。
+      console.info('Delete RdbStore successfully.');
+    });
+  }
+}
+```
+
+
+<a id="deleterdbstore-2"></a>
 
 ## deleteRdbStore
 
@@ -127,8 +212,45 @@ function deleteRdbStore(context: Context, name: string): Promise<void>
 
 **示例**
 
-参见 deleteRdbStore
+FA模型示例：
 
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+relationalStore.deleteRdbStore(context, "RdbTest.db").then(() => {
+  // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
+  // 及时将相关变量置空以释放资源。
+  console.info('Delete RdbStore successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+});
+```
+
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    relationalStore.deleteRdbStore(this.context, "RdbTest.db").then(() => {
+      // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
+      // 及时将相关变量置空以释放资源。
+      console.info('Delete RdbStore successfully.');
+    }).catch((err: BusinessError) => {
+      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
+}
+```
+
+
+<a id="deleterdbstore-3"></a>
 
 ## deleteRdbStore
 
@@ -172,4 +294,48 @@ function deleteRdbStore(context: Context, config: StoreConfig): Promise<void>
 
 **示例**
 
-参见 deleteRdbStore
+FA模型示例：
+
+```TypeScript
+import { featureAbility } from "@kit.AbilityKit";
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: "RdbTest.db",
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+
+relationalStore.deleteRdbStore(context, STORE_CONFIG).then(() => {
+  // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
+  // 及时将相关变量置空以释放资源。
+  console.info('Delete RdbStore successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+});
+```
+
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    relationalStore.deleteRdbStore(this.context, STORE_CONFIG).then(() => {
+      // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
+      // 及时将相关变量置空以释放资源。
+      console.info('Delete RdbStore successfully.');
+    }).catch((err: BusinessError) => {
+      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
+}
+```

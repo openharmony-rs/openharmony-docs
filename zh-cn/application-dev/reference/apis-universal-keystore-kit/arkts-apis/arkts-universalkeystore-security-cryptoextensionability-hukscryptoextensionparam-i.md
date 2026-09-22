@@ -1,5 +1,9 @@
 # HuksCryptoExtensionParam
 
+```TypeScript
+export interface HuksCryptoExtensionParam
+```
+
 定义调用接口的param类型。
 
 **起始版本：** 26.0.0

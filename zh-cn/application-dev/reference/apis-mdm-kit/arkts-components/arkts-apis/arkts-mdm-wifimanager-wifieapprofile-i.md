@@ -1,5 +1,9 @@
 # WifiEapProfile
 
+```TypeScript
+interface WifiEapProfile
+```
+
 可扩展身份验证协议配置信息。
 
 **起始版本：** 12

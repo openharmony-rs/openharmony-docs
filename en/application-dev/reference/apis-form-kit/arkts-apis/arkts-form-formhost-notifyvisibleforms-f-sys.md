@@ -41,6 +41,8 @@ Instructs the widget framework to make a widget visible. After this API is calle
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
 
+<a id="notifyvisibleforms-1"></a>
+
 ## notifyVisibleForms
 
 ```TypeScript

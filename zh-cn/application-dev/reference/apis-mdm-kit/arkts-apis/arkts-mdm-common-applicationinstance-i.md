@@ -1,5 +1,9 @@
 # ApplicationInstance
 
+```TypeScript
+export interface ApplicationInstance
+```
+
 应用的实例数据。
 
 该接口目前在[addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md)、[removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md)、[addFreezeExemptedApps](arkts-mdm-applicationmanager-addfreezeexemptedapps-f.md)、[removeFreezeExemptedApps](arkts-mdm-applicationmanager-removefreezeexemptedapps-f.md)接口中作为入参使用。

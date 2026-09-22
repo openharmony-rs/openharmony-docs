@@ -1,5 +1,9 @@
 # SnapshotInfo
 
+```TypeScript
+interface SnapshotInfo
+```
+
 获取全量绘制结果入参。
 
 **起始版本：** 12

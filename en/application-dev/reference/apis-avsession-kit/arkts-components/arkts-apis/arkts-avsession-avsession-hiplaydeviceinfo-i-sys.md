@@ -1,5 +1,9 @@
 # HiPlayDeviceInfo (System API)
 
+```TypeScript
+interface HiPlayDeviceInfo
+```
+
 HiPlay Device Information Definition
 
 **Since:** 24

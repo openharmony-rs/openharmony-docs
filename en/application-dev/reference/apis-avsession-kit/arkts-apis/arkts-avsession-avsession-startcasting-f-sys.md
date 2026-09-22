@@ -59,23 +59,8 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 });
 ```
 
-```TypeScript
-let sessionId = 'xxx'; // Obtain the session ID after creating a session using avSession.createAVSession.
-let myToken: avSession.SessionToken = {
-  sessionId: sessionId,
-}
-let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
-avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
-  castDevice = device;
-  console.info(`on deviceAvailable  : ${device} `);
-  if (castDevice !== undefined) {
-    avSession.startCasting(myToken, castDevice).then(() => {
-      console.info('Succeeded in starting casting.');
-    });
-  }
-});
-```
 
+<a id="startcasting-1"></a>
 
 ## startCasting
 
@@ -118,4 +103,19 @@ Cast resource to remote device.
 
 **Examples**
 
-See [startCasting](#startcasting)
+```TypeScript
+let sessionId = 'xxx'; // Obtain the session ID after creating a session using avSession.createAVSession.
+let myToken: avSession.SessionToken = {
+  sessionId: sessionId,
+}
+let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
+avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
+  castDevice = device;
+  console.info(`on deviceAvailable  : ${device} `);
+  if (castDevice !== undefined) {
+    avSession.startCasting(myToken, castDevice).then(() => {
+      console.info('Succeeded in starting casting.');
+    });
+  }
+});
+```

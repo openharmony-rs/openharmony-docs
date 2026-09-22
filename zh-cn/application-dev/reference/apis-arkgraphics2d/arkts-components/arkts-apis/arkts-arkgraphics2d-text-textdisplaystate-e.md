@@ -1,5 +1,9 @@
 # TextDisplayState
 
+```TypeScript
+enum TextDisplayState
+```
+
 文本显示状态的枚举。表示文本排版后的原生结果，与外部画布裁切、溢出屏幕等外部显示因素无关。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # SearchDirection (System API)
 
+```TypeScript
+export enum SearchDirection
+```
+
 Search direction.
 
 @enum { int }

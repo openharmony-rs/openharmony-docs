@@ -1,5 +1,9 @@
 # AudioDeviceEnhanceManager
 
+```TypeScript
+interface AudioDeviceEnhanceManager
+```
+
 Provides enhanced audio device management capabilities.
 
 **Since:** 26.0.0

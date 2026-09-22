@@ -1,8 +1,12 @@
 # ShareAlbumMemberInfo (System API)
 
+```TypeScript
+export class ShareAlbumMemberInfo
+```
+
 Member information of shared album
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,7 +28,7 @@ Member information.
 
 **Type:** [MemberInfo](arkts-medialibrary-photoaccesshelper-memberinfo-c-sys.md)[]
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +46,7 @@ Share album owner.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -1,5 +1,9 @@
 # WeekDay
 
+```TypeScript
+export enum WeekDay
+```
+
 周起始日的枚举，取值范围为周一至周日。
 
 **起始版本：** 18

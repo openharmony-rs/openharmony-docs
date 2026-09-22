@@ -1,5 +1,9 @@
 # FieldNode
 
+```TypeScript
+class FieldNode
+```
+
 表示 Schema 实例的节点，提供定义存储在数据库中的值的方法。
 
 **起始版本：** 9

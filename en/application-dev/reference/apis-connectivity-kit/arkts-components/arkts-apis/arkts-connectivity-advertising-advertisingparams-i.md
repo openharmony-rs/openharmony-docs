@@ -1,5 +1,9 @@
 # AdvertisingParams
 
+```TypeScript
+interface AdvertisingParams
+```
+
 Enumerates the advertising parameters.
 
 **Since:** 26.0.0

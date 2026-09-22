@@ -1,5 +1,9 @@
 # GetDownloadableProfileMetadataResult (System API)
 
+```TypeScript
+export interface GetDownloadableProfileMetadataResult
+```
+
 Obtains the metadata of the downloadable profile.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # CloudAssetDownloadProgressInfo (System API)
 
+```TypeScript
+interface CloudAssetDownloadProgressInfo
+```
+
 Describes the progress information about a batch download.
 
 **Since:** 21

@@ -1,5 +1,9 @@
 # WriteStreamOptions
 
+```TypeScript
+export interface WriteStreamOptions
+```
+
 Defines the options used in **createWriteStream()**.
 
 **Since:** 12

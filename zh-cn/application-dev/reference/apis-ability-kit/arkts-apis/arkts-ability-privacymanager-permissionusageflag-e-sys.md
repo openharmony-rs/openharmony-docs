@@ -1,5 +1,9 @@
 # PermissionUsageFlag（系统接口）
 
+```TypeScript
+enum PermissionUsageFlag
+```
+
 表示使用记录的查询方式的枚举。
 
 **起始版本：** 9
@@ -18,6 +22,8 @@ FLAG_PERMISSION_USAGE_SUMMARY = 0
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -31,6 +37,8 @@ FLAG_PERMISSION_USAGE_DETAIL = 1
 表示查询详细数据。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 

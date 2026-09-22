@@ -1,5 +1,9 @@
 # TCPConnectOptions
 
+```TypeScript
+export interface TCPConnectOptions
+```
+
 TCPSocket连接的参数。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # CellFence（系统接口）
 
+```TypeScript
+export interface CellFence
+```
+
 CELL围栏信息。
 
 **起始版本：** 26.0.0

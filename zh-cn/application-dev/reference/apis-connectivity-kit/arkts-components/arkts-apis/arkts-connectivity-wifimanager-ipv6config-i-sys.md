@@ -1,5 +1,9 @@
 # Ipv6Config（系统接口）
 
+```TypeScript
+interface Ipv6Config
+```
+
 Wi-Fi IPv6配置信息。
 
 **起始版本：** 20

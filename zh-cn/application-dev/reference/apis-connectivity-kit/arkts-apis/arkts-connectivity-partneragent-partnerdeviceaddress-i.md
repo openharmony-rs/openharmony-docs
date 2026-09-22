@@ -1,5 +1,9 @@
 # PartnerDeviceAddress
 
+```TypeScript
+export interface PartnerDeviceAddress
+```
+
 描述设备地址信息。
 
 **起始版本：** 23

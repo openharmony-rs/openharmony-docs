@@ -1,5 +1,9 @@
 # WebDownloadState
 
+```TypeScript
+enum WebDownloadState
+```
+
 下载任务的状态。
 
 **起始版本：** 11

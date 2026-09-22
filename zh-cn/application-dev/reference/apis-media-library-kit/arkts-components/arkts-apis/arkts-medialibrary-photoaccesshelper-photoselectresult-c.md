@@ -1,5 +1,9 @@
 # PhotoSelectResult
 
+```TypeScript
+class PhotoSelectResult
+```
+
 返回图库选择后的结果集。
 
 **起始版本：** 10

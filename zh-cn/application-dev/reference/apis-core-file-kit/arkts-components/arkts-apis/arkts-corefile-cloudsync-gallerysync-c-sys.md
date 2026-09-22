@@ -1,5 +1,9 @@
 # GallerySync（系统接口）
 
+```TypeScript
+class GallerySync
+```
+
 云图同步对象，用来支撑图库应用媒体资源端云同步流程。在使用前，需要先创建GallerySync实例。
 
 **起始版本：** 10
@@ -66,6 +70,22 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
+**示例**
+
+```TypeScript
+let gallerySync = new cloudSync.GallerySync();
+
+let callback = (pg: cloudSync.SyncProgress) => {
+  console.info("gallery sync state: " + pg.state + "error type: " + pg.error);
+}
+
+gallerySync.on('progress', callback);
+
+gallerySync.off('progress', callback);
+```
+
+<a id="off-1"></a>
+
 ## off
 
 ```TypeScript
@@ -96,6 +116,18 @@ off(evt: 'progress'): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
+
+**示例**
+
+```TypeScript
+let gallerySync = new cloudSync.GallerySync();
+
+gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
+    console.info("syncState: " + pg.state);
+});
+
+gallerySync.off('progress');
+```
 
 ## on
 
@@ -128,6 +160,16 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
+
+**示例**
+
+```TypeScript
+let gallerySync = new cloudSync.GallerySync();
+
+gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
+  console.info("syncState: " + pg.state);
+});
+```
 
 ## start
 
@@ -180,19 +222,7 @@ gallerySync.start().then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let gallerySync = new cloudSync.GallerySync();
-
-gallerySync.start((err: BusinessError) => {
-  if (err) {
-    console.error(`start sync failed with error message: ${err.message}, error code: ${err.code}`);
-  } else {
-    console.info("start sync successfully");
-  }
-});
-```
+<a id="start-1"></a>
 
 ## start
 
@@ -228,22 +258,6 @@ start(callback: AsyncCallback<void>): void
 | 22400003 | Low battery level. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let gallerySync = new cloudSync.GallerySync();
-
-gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-  console.info("syncState: " + pg.state);
-});
-
-gallerySync.start().then(() => {
-  console.info("start sync successfully");
-}).catch((err: BusinessError) => {
-  console.error(`start sync failed with error message: ${err.message}, error code: ${err.code}`);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -307,19 +321,7 @@ gallerySync.stop().then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let gallerySync = new cloudSync.GallerySync();
-
-gallerySync.stop((err: BusinessError) => {
-  if (err) {
-    console.error(`stop sync failed with error message: ${err.message}, error code: ${err.code}`);
-  } else {
-    console.info("stop sync successfully");
-  }
-});
-```
+<a id="stop-1"></a>
 
 ## stop
 
@@ -356,18 +358,6 @@ stop(callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let gallerySync = new cloudSync.GallerySync();
-
-gallerySync.stop().then(() => {
-  console.info("stop sync successfully");
-}).catch((err: BusinessError) => {
-  console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

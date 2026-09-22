@@ -1,5 +1,9 @@
 # SaveRequestCallback (System API)
 
+```TypeScript
+export interface SaveRequestCallback
+```
+
 Implements callbacks for an automatic or a manual saving request.
 
 **Since:** 11

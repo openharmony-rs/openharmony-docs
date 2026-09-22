@@ -1,5 +1,9 @@
 # VoipCallAttribute (System API)
 
+```TypeScript
+export interface VoipCallAttribute
+```
+
 Defines the VoIP call information.
 
 **Since:** 11

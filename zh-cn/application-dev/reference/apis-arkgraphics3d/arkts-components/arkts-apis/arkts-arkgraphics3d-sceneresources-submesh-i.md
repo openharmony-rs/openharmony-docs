@@ -1,5 +1,9 @@
 # SubMesh
 
+```TypeScript
+export interface SubMesh
+```
+
 子网格类型。
 
 @interface SubMesh

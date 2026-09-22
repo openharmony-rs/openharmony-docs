@@ -1,5 +1,9 @@
 # AuthSubType (System API)
 
+```TypeScript
+enum AuthSubType
+```
+
 Enumerates the authentication credential subtypes.
 
 **Since:** 8

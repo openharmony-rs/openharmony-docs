@@ -1,5 +1,9 @@
 # MajorClass
 
+```TypeScript
+export enum MajorClass
+```
+
 枚举，蓝牙设备的主要类型。蓝牙标准协议字段。
 
 **起始版本：** 10

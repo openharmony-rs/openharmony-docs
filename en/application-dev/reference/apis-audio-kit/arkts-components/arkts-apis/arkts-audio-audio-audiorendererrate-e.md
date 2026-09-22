@@ -1,5 +1,9 @@
 # AudioRendererRate
 
+```TypeScript
+enum AudioRendererRate
+```
+
 Enumerates the audio renderer rates.
 
 **Since:** 8

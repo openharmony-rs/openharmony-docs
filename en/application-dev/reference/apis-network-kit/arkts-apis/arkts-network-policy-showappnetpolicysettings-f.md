@@ -34,8 +34,19 @@ Sets whether the current application can connect to the Wi-Fi or cellular networ
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { policy } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+policy.showAppNetPolicySettings(context).then(() => {
+    console.info("showAppNetPolicySettings success");
+}).catch(() => {
+    console.error("showAppNetPolicySettings failed");
+    }
+)
 ```

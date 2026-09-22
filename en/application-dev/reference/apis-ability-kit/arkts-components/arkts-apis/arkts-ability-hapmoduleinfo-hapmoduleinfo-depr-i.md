@@ -1,6 +1,10 @@
 # HapModuleInfo
 
-The HapModuleInfo module provides information about an HAP module. Unless otherwise specified, the information is obtained through [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md).
+```TypeScript
+export interface HapModuleInfo
+```
+
+The HapModuleInfo module provides information about an HAP module. Unless otherwise specified, the information is obtained through [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-2).
 
 > **NOTE:** 
 > 

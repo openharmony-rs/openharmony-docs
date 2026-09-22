@@ -1,5 +1,9 @@
 # FillRequest（系统接口）
 
+```TypeScript
+export interface FillRequest
+```
+
 自动填充的填充请求。
 
 **起始版本：** 11

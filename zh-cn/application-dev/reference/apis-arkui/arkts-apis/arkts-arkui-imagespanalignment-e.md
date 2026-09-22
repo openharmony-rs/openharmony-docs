@@ -1,5 +1,9 @@
 # ImageSpanAlignment
 
+```TypeScript
+declare enum ImageSpanAlignment
+```
+
 The alignment of ImageSpan
 
 **起始版本：** 10

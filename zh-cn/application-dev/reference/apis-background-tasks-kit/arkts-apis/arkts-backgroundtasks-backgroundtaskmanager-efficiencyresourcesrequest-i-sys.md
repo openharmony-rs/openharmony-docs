@@ -1,5 +1,9 @@
 # EfficiencyResourcesRequest（系统接口）
 
+```TypeScript
+export interface EfficiencyResourcesRequest
+```
+
 能效资源申请参数。
 
 **起始版本：** 9

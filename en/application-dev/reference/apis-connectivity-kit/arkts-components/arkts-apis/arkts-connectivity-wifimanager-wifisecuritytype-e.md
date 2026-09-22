@@ -1,5 +1,9 @@
 # WifiSecurityType
 
+```TypeScript
+enum WifiSecurityType
+```
+
 Describes the wifi security type. @enum { int }
 
 **Since:** 12

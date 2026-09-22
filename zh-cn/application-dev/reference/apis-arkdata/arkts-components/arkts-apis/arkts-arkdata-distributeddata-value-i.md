@@ -1,5 +1,9 @@
 # Value
 
+```TypeScript
+interface Value
+```
+
 存储在数据库中的值对象。
 
 **起始版本：** 7

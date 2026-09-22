@@ -1,5 +1,9 @@
 # SoundInterruptMode
 
+```TypeScript
+enum SoundInterruptMode
+```
+
 Enumerates the interruption modes of the audio files with the same ID in SoundPool.
 
 **Since:** 23

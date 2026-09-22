@@ -1,5 +1,9 @@
 # OsAccountSwitchEventData（系统接口）
 
+```TypeScript
+interface OsAccountSwitchEventData
+```
+
 表示系统账号前后台开始切换和结束切换事件的数据结构。
 
 **起始版本：** 12

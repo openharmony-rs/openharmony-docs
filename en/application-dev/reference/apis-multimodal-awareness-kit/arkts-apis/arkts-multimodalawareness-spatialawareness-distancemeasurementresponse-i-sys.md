@@ -1,5 +1,9 @@
 # DistanceMeasurementResponse (System API)
 
+```TypeScript
+export interface DistanceMeasurementResponse
+```
+
 Interface for distance measurement result @interface DistanceMeasurementResponse
 
 **Since:** 23

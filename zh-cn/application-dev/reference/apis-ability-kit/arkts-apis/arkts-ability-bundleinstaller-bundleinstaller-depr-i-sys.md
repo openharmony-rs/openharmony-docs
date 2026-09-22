@@ -1,5 +1,9 @@
 # BundleInstaller（系统接口）
 
+```TypeScript
+export interface BundleInstaller
+```
+
 本模块提供设备上安装、升级和卸载应用的能力。
 
 **起始版本：** 7

@@ -63,21 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { browser } from '@kit.MDMKit';
 
-// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
-let appId: string = 'com.example.******_******/******5t5CoBM=';
-
-try {
-  // 参数需根据实际情况进行替换
-  let result: string = browser.getPoliciesSync(null, appId);
-  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
-} catch(err) {
-  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getpoliciessync-1"></a>
 
 ## getPoliciesSync
 
@@ -115,4 +102,17 @@ function getPoliciesSync(admin: Want | null, appId: string): string
 
 **示例**
 
-参见 getPoliciesSync
+```TypeScript
+import { browser } from '@kit.MDMKit';
+
+// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
+let appId: string = 'com.example.******_******/******5t5CoBM=';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: string = browser.getPoliciesSync(null, appId);
+  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
+}
+```

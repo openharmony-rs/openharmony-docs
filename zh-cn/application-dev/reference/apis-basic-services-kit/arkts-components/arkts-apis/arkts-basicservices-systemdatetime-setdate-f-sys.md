@@ -61,22 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let date = new Date(); 
-try {
-  systemDateTime.setDate(date).then(() => {
-    console.info(`Succeeded in setting date.`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to set date. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to set date. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="setdate-1"></a>
 
 ## setDate
 
@@ -120,4 +106,18 @@ function setDate(date: Date): Promise<void>
 
 **示例**
 
-参见 [setDate](#setdate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let date = new Date(); 
+try {
+  systemDateTime.setDate(date).then(() => {
+    console.info(`Succeeded in setting date.`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to set date. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to set date. Code: ${error.code}, message: ${error.message}`);
+}
+```

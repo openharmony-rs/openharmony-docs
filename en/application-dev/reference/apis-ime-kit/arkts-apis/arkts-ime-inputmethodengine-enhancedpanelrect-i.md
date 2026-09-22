@@ -1,5 +1,9 @@
 # EnhancedPanelRect
 
+```TypeScript
+export interface EnhancedPanelRect
+```
+
 Indicates the size of the enhanced input method panel, including the custom avoid area and touch area.
 
 **Since:** 15

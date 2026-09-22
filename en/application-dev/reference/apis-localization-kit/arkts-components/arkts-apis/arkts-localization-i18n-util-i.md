@@ -1,5 +1,9 @@
 # Util
 
+```TypeScript
+export interface Util
+```
+
 Provides util functions.
 
 **Since:** 8

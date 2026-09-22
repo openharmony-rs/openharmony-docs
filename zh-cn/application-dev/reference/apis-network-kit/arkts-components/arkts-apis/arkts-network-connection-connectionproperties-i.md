@@ -1,5 +1,9 @@
 # ConnectionProperties
 
+```TypeScript
+export interface ConnectionProperties
+```
+
 网络连接信息。
 
 > **注意：**

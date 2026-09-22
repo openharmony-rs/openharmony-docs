@@ -1,5 +1,9 @@
 # SessionRestore (System API)
 
+```TypeScript
+class SessionRestore
+```
+
 Control class for restore procedure.
 
 **Since:** 10
@@ -113,77 +117,6 @@ async function appendBundles() {
     let restoreApps: Array<string> = [
       "com.example.hiworld",
     ];
-    sessionRestore.appendBundles(fileData.fd, restoreApps, (err: BusinessError) => {
-      if (err) {
-        console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('appendBundles success');
-    });
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-  } finally {
-    fileIo.closeSync(fileData.fd);
-  }
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
-async function appendBundles() {
-  let fileData : backup.FileData = {
-    fd : -1
-  }
-  try {
-    fileData = await backup.getLocalCapabilities();
-    console.info('getLocalCapabilities success');
-    let restoreApps: Array<string> = [
-      "com.example.hiworld",
-    ];
     await sessionRestore.appendBundles(fileData.fd, restoreApps);
     console.info('appendBundles success');
     // Information of the applications to restore.
@@ -219,6 +152,8 @@ async function appendBundles() {
   }
 }
 ```
+
+<a id="appendbundles-1"></a>
 
 ## appendBundles
 
@@ -320,97 +255,6 @@ async function appendBundles() {
       }
       console.info('appendBundles success');
     });
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-  } finally {
-    fileIo.closeSync(fileData.fd);
-  }
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo, backup } from '@kit.CoreFileKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
-async function appendBundles() {
-  let fileData : backup.FileData = {
-    fd : -1
-  }
-  try {
-    fileData = await backup.getLocalCapabilities();
-    console.info('getLocalCapabilities success');
-    let restoreApps: Array<string> = [
-      "com.example.hiworld",
-    ];
-    await sessionRestore.appendBundles(fileData.fd, restoreApps);
-    console.info('appendBundles success');
-    // Information of the applications to restore.
-    let infos: Array<string> = [
-      `
-       {
-        "infos":[
-          {
-            "details": [
-              {
-                "detail": [
-                  {
-                    "source": "com.example.hiworld", // Old bundle name of the application.
-                    "target": "com.example.helloworld" // New bundle name of the application.
-                  }
-                ],
-                "type": "app_mapping_relation"
-              }
-            ],
-            "type":"broadcast"
-          }
-        ]
-       }
-      `
-    ]
-    await sessionRestore.appendBundles(fileData.fd, restoreApps, infos);
-    console.info('appendBundles success');
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
@@ -914,17 +758,56 @@ let generalCallbacks: backup.GeneralCallbacks = {
   }
 };
 let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
-let fileMeta: backup.FileMeta = {
-  bundleName: "com.example.hiworld",
-  uri: "test.txt"
-}
-sessionRestore.getFileHandle(fileMeta, (err: BusinessError) => {
-  if (err) {
+async function getFileHandle() {
+  try {
+    let fileMeta: backup.FileMeta = {
+      bundleName: "com.example.hiworld",
+      uri: "test.txt"
+    }
+    await sessionRestore.getFileHandle(fileMeta);
+    console.info('getFileHandle success');
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`getFileHandle failed. Code: ${err.code}, message: ${err.message}`);
   }
-  console.info('getFileHandle success');
-});
+}
 ```
+
+<a id="getfilehandle-1"></a>
+
+## getFileHandle
+
+```TypeScript
+getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void
+```
+
+Request to get a shared file from the service. This interface is part of the zero-copy feature. Developers could get the file through onFileReady callback. When the client accomplished the file, use publishFile to publish.
+
+**Since:** 10
+
+**Required permissions:** ohos.permission.BACKUP
+
+**System capability:** SystemCapability.FileManagement.StorageService.Backup
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | Yes | Metadata of the file to be sent. Note that all the files should come from the backup procedure or the getLocalCapabilities method. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Asynchronous callback to be called when getFileHandle has finished. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
+
+**Examples**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -971,56 +854,17 @@ let generalCallbacks: backup.GeneralCallbacks = {
   }
 };
 let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
-async function getFileHandle() {
-  try {
-    let fileMeta: backup.FileMeta = {
-      bundleName: "com.example.hiworld",
-      uri: "test.txt"
-    }
-    await sessionRestore.getFileHandle(fileMeta);
-    console.info('getFileHandle success');
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
+let fileMeta: backup.FileMeta = {
+  bundleName: "com.example.hiworld",
+  uri: "test.txt"
+}
+sessionRestore.getFileHandle(fileMeta, (err: BusinessError) => {
+  if (err) {
     console.error(`getFileHandle failed. Code: ${err.code}, message: ${err.message}`);
   }
-}
+  console.info('getFileHandle success');
+});
 ```
-
-## getFileHandle
-
-```TypeScript
-getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void
-```
-
-Request to get a shared file from the service. This interface is part of the zero-copy feature. Developers could get the file through onFileReady callback. When the client accomplished the file, use publishFile to publish.
-
-**Since:** 10
-
-**Required permissions:** ohos.permission.BACKUP
-
-**System capability:** SystemCapability.FileManagement.StorageService.Backup
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | Yes | Metadata of the file to be sent. Note that all the files should come from the backup procedure or the getLocalCapabilities method. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Asynchronous callback to be called when getFileHandle has finished. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| 13600001 | IPC error |
-| 13900001 | Operation not permitted |
-| 13900020 | Invalid argument |
-| 13900042 | Unknown error |
-
-**Examples**
-
-See [getFileHandle](#getfilehandle)
 
 ## getFileHandles
 
@@ -1203,8 +1047,23 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
-```TypeScript
 The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](arkts-corefile-fileio-n.md) module. The following is an example of the capability file.
+
+```TypeScript
+{
+ "backupVersion" : "16.0",
+ "bundleInfos" :[{
+   "allToBackup" : true,
+   "extensionName" : "BackupExtensionAbility",
+   "name" : "com.example.hiworld",
+   "needToInstall" : false,
+   "spaceOccupied" : 0,
+   "versionCode" : 1000000,
+   "versionName" : "1.0.0"
+   }],
+ "deviceType" : "default",
+ "systemFullName" : "OpenHarmony-4.0.0.0"
+}
 ```
 
 ## migrateFile
@@ -1298,6 +1157,114 @@ let testBundleName = 'com.example.myapplication'; // Test bundle name.
 initMap.set(testBundleName, testFileNum);
 let countMap = new Map<string, number>();
 countMap.set(testBundleName, 0); // Initialize the number of files written.
+async function publishFile(file: backup.FileMeta) {
+  let fileMeta: backup.FileMeta = {
+    bundleName: file.bundleName,
+    uri: ''
+  }
+  await g_session.publishFile(fileMeta);
+}
+function createSessionRestore() {
+  let generalCallbacks: backup.GeneralCallbacks = {
+    onFileReady: (err: BusinessError, file: backup.File) => {
+      if (err) {
+        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onFileReady success');
+      fileIo.closeSync(file.fd);
+      let cnt = countMap.get(file.bundleName) || 0;
+      countMap.set(file.bundleName, cnt + 1); // Update the number of written files.
+      // Called only when the number of files to be restored is the same as the number of files actually written. This ensures data consistency and integrity.
+      if (countMap.get(file.bundleName) == initMap.get(file.bundleName)) { // Trigger publishFile after all files are received.
+        publishFile(file);
+      }
+      console.info('publishFile success');
+    },
+    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      if (err) {
+        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onBundleBegin success');
+    },
+    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+      if (err) {
+        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onBundleEnd success');
+    },
+    onAllBundlesEnd: (err: BusinessError) => {
+      if (err) {
+        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onAllBundlesEnd success');
+    },
+    onBackupServiceDied: () => {
+      console.info('service died');
+    },
+    onResultReport: (bundleName: string, result: string) => {
+      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+    },
+    onProcess: (bundleName: string, process: string) => {
+      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+    }
+  };
+  let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
+  return sessionRestore;
+}
+g_session = createSessionRestore();
+```
+
+<a id="publishfile-1"></a>
+
+## publishFile
+
+```TypeScript
+publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void
+```
+
+Publish the file handle to the backup service to make the service aware that the file's content is ready. This interface is part of the zero-copy feature.
+
+**Since:** 10
+
+**Required permissions:** ohos.permission.BACKUP
+
+**System capability:** SystemCapability.FileManagement.StorageService.Backup
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | Yes | Metadata of the file to be sent. Make sure that the backup framework holds this file by calling getFileHandle. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Asynchronous callback to be called when publishFile has finished. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| 13600001 | IPC error |
+| 13900001 | Operation not permitted |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
+
+**Examples**
+
+```TypeScript
+import { fileIo, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let g_session: backup.SessionRestore;
+let initMap = new Map<string, number>();
+let testFileNum = 123; // Number of files required for the restore.
+let testBundleName = 'com.example.myapplication'; // Test bundle name.
+initMap.set(testBundleName, testFileNum);
+let countMap = new Map<string, number>();
+countMap.set(testBundleName, 0); // Initialize the number of files written.
 function createSessionRestore() {
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -1360,114 +1327,6 @@ function createSessionRestore() {
 }
 g_session = createSessionRestore();
 ```
-
-```TypeScript
-import { fileIo, backup} from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let g_session: backup.SessionRestore;
-let initMap = new Map<string, number>();
-let testFileNum = 123; // Number of files required for the restore.
-let testBundleName = 'com.example.myapplication'; // Test bundle name.
-initMap.set(testBundleName, testFileNum);
-let countMap = new Map<string, number>();
-countMap.set(testBundleName, 0); // Initialize the number of files written.
-async function publishFile(file: backup.FileMeta) {
-  let fileMeta: backup.FileMeta = {
-    bundleName: file.bundleName,
-    uri: ''
-  }
-  await g_session.publishFile(fileMeta);
-}
-function createSessionRestore() {
-  let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => {
-      if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('onFileReady success');
-      fileIo.closeSync(file.fd);
-      let cnt = countMap.get(file.bundleName) || 0;
-      countMap.set(file.bundleName, cnt + 1); // Update the number of written files.
-      // Called only when the number of files to be restored is the same as the number of files actually written. This ensures data consistency and integrity.
-      if (countMap.get(file.bundleName) == initMap.get(file.bundleName)) { // Trigger publishFile after all files are received.
-        publishFile(file);
-      }
-      console.info('publishFile success');
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('onBundleBegin success');
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('onBundleEnd success');
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
-      if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('onAllBundlesEnd success');
-    },
-    onBackupServiceDied: () => {
-      console.info('service died');
-    },
-    onResultReport: (bundleName: string, result: string) => {
-      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
-      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    }
-  };
-  let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
-  return sessionRestore;
-}
-g_session = createSessionRestore();
-```
-
-## publishFile
-
-```TypeScript
-publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void
-```
-
-Publish the file handle to the backup service to make the service aware that the file's content is ready. This interface is part of the zero-copy feature.
-
-**Since:** 10
-
-**Required permissions:** ohos.permission.BACKUP
-
-**System capability:** SystemCapability.FileManagement.StorageService.Backup
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | Yes | Metadata of the file to be sent. Make sure that the backup framework holds this file by calling getFileHandle. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Asynchronous callback to be called when publishFile has finished. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| 13600001 | IPC error |
-| 13900001 | Operation not permitted |
-| 13900020 | Invalid argument |
-| 13900042 | Unknown error |
-
-**Examples**
-
-See [publishFile](#publishfile)
 
 ## release
 

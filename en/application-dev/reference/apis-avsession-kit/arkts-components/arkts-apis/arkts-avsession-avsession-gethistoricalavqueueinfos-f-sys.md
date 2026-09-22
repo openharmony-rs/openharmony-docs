@@ -42,17 +42,13 @@ Get history play list information records.
 **Examples**
 
 ```TypeScript
-avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueInfo[]) => {
-  console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`);
-});
-```
-
-```TypeScript
 avSession.getHistoricalAVQueueInfos(3, 5, (avQueueInfos: avSession.AVQueueInfo[]) => { 
     console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`); 
 });
 ```
 
+
+<a id="gethistoricalavqueueinfos-1"></a>
 
 ## getHistoricalAVQueueInfos
 
@@ -92,4 +88,8 @@ Get history play list information records.
 
 **Examples**
 
-See [getHistoricalAVQueueInfos](#gethistoricalavqueueinfos)
+```TypeScript
+avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueInfo[]) => {
+  console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`);
+});
+```

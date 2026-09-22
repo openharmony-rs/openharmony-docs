@@ -1,10 +1,10 @@
 # SystemSoundPlayer
 
-音效播放器提供了加载、卸载和播放系统声音的功能。
+```TypeScript
+export interface SystemSoundPlayer
+```
 
-SystemSoundPlayer需要和[@ohos.multimedia.systemSoundManager](arkts-audio-multimedia-systemsoundmanager.md)配合使用，才能完成管理系统音效的功能。
-
-@typedef SystemSoundPlayer
+音效播放器提供了加载、卸载和播放系统音效的功能。SystemSoundPlayer需要和[@ohos.multimedia.systemSoundManager](arkts-audio-multimedia-systemsoundmanager.md)配合使用，才能完成管理系统音效的功能。
 
 **起始版本：** 23
 

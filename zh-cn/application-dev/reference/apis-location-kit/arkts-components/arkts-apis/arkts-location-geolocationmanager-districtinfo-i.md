@@ -1,5 +1,9 @@
 # DistrictInfo
 
+```TypeScript
+interface DistrictInfo
+```
+
 表示区域信息。
 
 **起始版本：** 26.0.0

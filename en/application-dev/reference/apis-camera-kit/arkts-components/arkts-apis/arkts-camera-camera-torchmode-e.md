@@ -1,5 +1,9 @@
 # TorchMode
 
+```TypeScript
+enum TorchMode
+```
+
 Enumerates the flashlight modes.
 
 **Since:** 11

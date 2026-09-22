@@ -1,5 +1,9 @@
 # EnterKeyType
 
+```TypeScript
+export enum EnterKeyType
+```
+
 Enter键的功能类型。
 
 **起始版本：** 10

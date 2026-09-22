@@ -51,17 +51,8 @@ sim.getISOCountryCodeForSim(0, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getISOCountryCodeForSim(0).then((data: string) => {
-    console.info(`getISOCountryCodeForSim success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getISOCountryCodeForSim failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getisocountrycodeforsim-1"></a>
 
 ## getISOCountryCodeForSim
 
@@ -100,4 +91,13 @@ function getISOCountryCodeForSim(slotId: number): Promise<string>
 
 **示例**
 
-参见 getISOCountryCodeForSim
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getISOCountryCodeForSim(0).then((data: string) => {
+    console.info(`getISOCountryCodeForSim success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getISOCountryCodeForSim failed, promise: err->${JSON.stringify(err)}`);
+});
+```

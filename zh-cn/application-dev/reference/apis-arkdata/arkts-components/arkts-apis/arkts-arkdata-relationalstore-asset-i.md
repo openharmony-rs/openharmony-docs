@@ -1,5 +1,9 @@
 # Asset
 
+```TypeScript
+interface Asset
+```
+
 记录资产附件（文件、图片、视频等类型文件）的相关信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # PrintJobSubState
 
+```TypeScript
+enum PrintJobSubState
+```
+
 Enumerates the print job substates.
 
 **Since:** 14

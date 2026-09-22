@@ -1,5 +1,9 @@
 # PreDefinedConfigName
 
+```TypeScript
+enum PreDefinedConfigName
+```
+
 枚举，预定义的配置属性。
 
 **起始版本：** 11

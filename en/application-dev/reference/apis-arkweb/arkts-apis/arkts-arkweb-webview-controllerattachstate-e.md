@@ -1,5 +1,9 @@
 # ControllerAttachState
 
+```TypeScript
+enum ControllerAttachState
+```
+
 Binding state between WebviewController and the Web component.
 
 **Since:** 20

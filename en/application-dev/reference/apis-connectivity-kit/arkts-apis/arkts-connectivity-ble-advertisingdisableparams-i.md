@@ -1,5 +1,9 @@
 # AdvertisingDisableParams
 
+```TypeScript
+interface AdvertisingDisableParams
+```
+
 Parameter for dynamically disable advertising.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # DistributedField（系统接口）
 
+```TypeScript
+enum DistributedField
+```
+
 用于谓词查询条件的特殊字段。请使用枚举名称而非枚举值。
 
 **起始版本：** 24

@@ -1,5 +1,9 @@
 # USBEndpoint
 
+```TypeScript
+interface USBEndpoint
+```
+
 USB端点，用于主机与设备之间数据传输的通信端点。通过[USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md)获取。
 
 > **说明：** 

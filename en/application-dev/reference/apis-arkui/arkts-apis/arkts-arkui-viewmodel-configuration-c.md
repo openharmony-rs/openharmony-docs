@@ -1,5 +1,9 @@
 # Configuration
 
+```TypeScript
+export declare class Configuration
+```
+
 **Since:** 6
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -1,5 +1,9 @@
 # FileMeta (System API)
 
+```TypeScript
+interface FileMeta
+```
+
 Corresponding to a file's metadata. FileMeta is useful when doing IPC with the backup service.
 
 @interface FileMeta

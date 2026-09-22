@@ -1,5 +1,9 @@
 # WatermarkType（系统接口）
 
+```TypeScript
+enum WatermarkType
+```
+
 枚举，水印可编辑标识。
 
 **起始版本：** 14

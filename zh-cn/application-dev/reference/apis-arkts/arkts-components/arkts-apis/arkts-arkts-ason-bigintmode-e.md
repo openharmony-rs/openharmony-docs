@@ -1,5 +1,9 @@
 # BigIntMode
 
+```TypeScript
+const enum BigIntMode
+```
+
 定义处理BigInt的模式。
 
 **起始版本：** 12

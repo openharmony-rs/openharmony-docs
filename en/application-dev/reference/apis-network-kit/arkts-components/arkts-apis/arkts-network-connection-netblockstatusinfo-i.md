@@ -1,5 +1,9 @@
 # NetBlockStatusInfo
 
+```TypeScript
+export interface NetBlockStatusInfo
+```
+
 Obtains the network block status information.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # FileRmdirOption
 
+```TypeScript
+export interface FileRmdirOption
+```
+
 可选项类型，支持rmdir接口使用。
 
 **起始版本：** 3

@@ -1,5 +1,9 @@
 # PolicyType
 
+```TypeScript
+export enum PolicyType
+```
+
 Indicates the policy type of the path.
 
 @enum { int } policyType

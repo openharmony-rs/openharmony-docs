@@ -1,5 +1,9 @@
 # PerformanceTiming
 
+```TypeScript
+export interface PerformanceTiming
+```
+
 性能打点(单位：ms)。
 
 **起始版本：** 11

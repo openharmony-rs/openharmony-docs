@@ -1,5 +1,9 @@
 # OsAccountSubProfileManager (System API)
 
+```TypeScript
+interface OsAccountSubProfileManager
+```
+
 Defines an OS account sub-profile manager.
 
 **Since:** 26.0.0
@@ -58,8 +62,23 @@ Creates an OS account sub-profile. This API uses a promise to return the result.
 
 **Examples**
 
-```TypeScript
 Create an OS account sub-profile whose ID is 100.
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.createOsAccountSubProfile(osAccountLocalId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('createOsAccountSubProfile successfully, subProfileId: ' + subProfile.id);
+  }).catch((err: BusinessError) => {
+    console.error(`createOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`createOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## deleteOsAccountSubProfile
@@ -107,8 +126,24 @@ Deletes an OS account sub-profile. This API uses a promise to return the result.
 
 **Examples**
 
-```TypeScript
 Delete the sub-profile whose ID is 100001 from OS account 100.
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.deleteOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('deleteOsAccountSubProfile successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`deleteOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`deleteOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## getOsAccountForegroundSubProfileId
@@ -159,9 +194,7 @@ try {
 }
 ```
 
-```TypeScript
-Obtain the foreground sub-profile ID of OS account 100.
-```
+<a id="getosaccountforegroundsubprofileid-1"></a>
 
 ## getOsAccountForegroundSubProfileId
 
@@ -202,7 +235,24 @@ Obtains the foreground sub-profile ID of the specified OS account. This API uses
 
 **Examples**
 
-See [getOsAccountForegroundSubProfileId](#getosaccountforegroundsubprofileid)
+Obtain the foreground sub-profile ID of OS account 100.
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.getOsAccountForegroundSubProfileId(osAccountLocalId).then((subProfileId: number) => {
+    console.info('getOsAccountForegroundSubProfileId successfully, subProfileId: ' + subProfileId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountForegroundSubProfileId failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountForegroundSubProfileId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getOsAccountLocalIdForSubProfile
 
@@ -242,8 +292,23 @@ Obtains the local ID of the OS account of a sub-profile. This API uses a promise
 
 **Examples**
 
-```TypeScript
 Obtains the local ID of the OS account of the sub-profile whose ID is 100001.
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountLocalIdForSubProfile(subProfileId).then((osAccountLocalId: number) => {
+    console.info('getOsAccountLocalIdForSubProfile successfully, osAccountLocalId: ' + osAccountLocalId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountLocalIdForSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIdForSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## getOsAccountSubProfile
@@ -287,13 +352,26 @@ Obtains the sub-profile of the OS account of the caller. This API uses a promise
 
 **Examples**
 
-```TypeScript
 Obtains the sub-profile whose ID is 100001.
-```
 
 ```TypeScript
-Obtain the sub-profile whose ID is 100001 of OS account 100.
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```
+
+<a id="getosaccountsubprofile-1"></a>
 
 ## getOsAccountSubProfile
 
@@ -337,7 +415,25 @@ Obtains the sub-profile of the specified OS account. This API uses a promise to 
 
 **Examples**
 
-See [getOsAccountSubProfile](#getosaccountsubprofile)
+Obtain the sub-profile whose ID is 100001 of OS account 100.
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(osAccountLocalId, subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getOsAccountSubProfileIds
 
@@ -389,9 +485,7 @@ try {
 }
 ```
 
-```TypeScript
-Obtain the sub-profile IDs of OS account 100.
-```
+<a id="getosaccountsubprofileids-1"></a>
 
 ## getOsAccountSubProfileIds
 
@@ -434,7 +528,24 @@ Obtains the sub-profile IDs of the specified OS account. This API uses a promise
 
 **Examples**
 
-See [getOsAccountSubProfileIds](#getosaccountsubprofileids)
+Obtain the sub-profile IDs of OS account 100.
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.getOsAccountSubProfileIds(osAccountLocalId).then((subProfileIds: number[]) => {
+    console.info('getOsAccountSubProfileIds successfully, subProfileIds: ' + subProfileIds);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfileIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfileIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## offOsAccountSubProfileEvent
 
@@ -514,8 +625,21 @@ Subscribes to OS account sub-profile events. This API uses an asynchronous callb
 
 **Examples**
 
-```TypeScript
 Subscribe to an OS account sub-profile creation event.
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let events: osAccount.OsAccountSubProfileEvent[] = [osAccount.OsAccountSubProfileEvent.CREATED];
+try {
+  subProfileManager.onOsAccountSubProfileEvent(events, (data: osAccount.OsAccountSubProfileEventData) => {
+    console.info('onOsAccountSubProfileEvent, event: ' + data.event + ', localId: ' + data.osAccountLocalId);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## switchOsAccountSubProfile
@@ -563,6 +687,22 @@ Switches to an OS account sub-profile. This API uses a promise to return the res
 
 **Examples**
 
-```TypeScript
 Switch from the current sub-profile of OS account 100 to the sub-profile whose ID is 100001.
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.switchOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('switchOsAccountSubProfile successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`switchOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`switchOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```

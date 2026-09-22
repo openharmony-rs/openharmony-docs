@@ -1,5 +1,9 @@
 # AVMimeTypes
 
+```TypeScript
+enum AVMimeTypes
+```
+
 Enumerates the MIME type, which is set by using [setMimeType](arkts-media-media-mediasource-i.md#setmimetype).
 
 **Since:** 12

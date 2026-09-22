@@ -1,5 +1,9 @@
 # TorchStatusInfo
 
+```TypeScript
+interface TorchStatusInfo
+```
+
 Describes the flashlight status information.
 
 **Since:** 11

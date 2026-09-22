@@ -1,5 +1,9 @@
 # DatePickerComponentOptions
 
+```TypeScript
+export declare class DatePickerComponentOptions
+```
+
 DatePickerComponentOptions定义日期时间选择器组件的选项。
 
 **起始版本：** 26.0.0

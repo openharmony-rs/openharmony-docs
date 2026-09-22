@@ -1,5 +1,9 @@
 # PlaybackSpeed
 
+```TypeScript
+enum PlaybackSpeed
+```
+
 Enumerates the video playback speeds, which can be passed in the **setSpeed** API.
 
 **Since:** 8

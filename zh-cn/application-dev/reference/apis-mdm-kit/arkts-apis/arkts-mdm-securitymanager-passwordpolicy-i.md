@@ -1,5 +1,9 @@
 # PasswordPolicy
 
+```TypeScript
+export interface PasswordPolicy
+```
+
 设备锁屏口令策略。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # CloudAssetDownloadStatus（系统接口）
 
+```TypeScript
+interface CloudAssetDownloadStatus
+```
+
 批量下载任务信息。
 
 **起始版本：** 21

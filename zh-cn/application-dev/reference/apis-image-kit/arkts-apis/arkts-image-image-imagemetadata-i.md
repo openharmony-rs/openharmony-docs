@@ -1,5 +1,9 @@
 # ImageMetadata
 
+```TypeScript
+interface ImageMetadata
+```
+
 图像的元数据集。
 
 **起始版本：** 23

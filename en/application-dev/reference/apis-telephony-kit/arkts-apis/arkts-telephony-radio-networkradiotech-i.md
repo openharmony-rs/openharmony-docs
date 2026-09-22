@@ -1,5 +1,9 @@
 # NetworkRadioTech
 
+```TypeScript
+export interface NetworkRadioTech
+```
+
 Defines the radio access technology for the packet switched (PS) or circuit switched (CS) network.
 
 **Since:** 11

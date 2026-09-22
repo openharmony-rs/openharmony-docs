@@ -53,6 +53,8 @@ declare function accessSync(path: string, mode?: AccessModeType): boolean
 | 13900042 | Unknown error |
 
 
+<a id="accesssync-1"></a>
+
 ## accessSync
 
 ```TypeScript

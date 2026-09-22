@@ -1,5 +1,9 @@
 # Group
 
+```TypeScript
+class Group
+```
+
 联系人的群组类。
 
 **起始版本：** 7

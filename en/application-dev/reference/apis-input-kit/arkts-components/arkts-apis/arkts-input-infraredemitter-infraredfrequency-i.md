@@ -1,5 +1,9 @@
 # InfraredFrequency
 
+```TypeScript
+interface InfraredFrequency
+```
+
 Defines the frequency range of IR signals.
 
 **Since:** 15

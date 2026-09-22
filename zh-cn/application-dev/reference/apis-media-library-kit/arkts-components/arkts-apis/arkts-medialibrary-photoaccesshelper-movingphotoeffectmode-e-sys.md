@@ -1,5 +1,9 @@
 # MovingPhotoEffectMode（系统接口）
 
+```TypeScript
+enum MovingPhotoEffectMode
+```
+
 枚举，动态照片效果模式。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # ChildrenCountMode
 
+```TypeScript
+export enum ChildrenCountMode
+```
+
 子节点计数模式枚举。用于指定获取子节点数量时的计数方式。
 
 **起始版本：** 26.0.0
@@ -12,7 +16,7 @@
 ALL_EXPAND = 0
 ```
 
-计数展开模式。当遇到懒加载节点（如LazyForEach）时，展开节点并返回所有子节点数量。
+计数展开模式。当遇到懒加载节点（如[LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md#lazy_for_each)）时，展开节点并返回所有子节点数量。
 
 是否展开懒加载节点：是
 

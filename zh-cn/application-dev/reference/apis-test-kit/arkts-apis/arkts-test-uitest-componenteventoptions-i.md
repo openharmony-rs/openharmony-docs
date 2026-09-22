@@ -1,5 +1,9 @@
 # ComponentEventOptions
 
+```TypeScript
+declare interface ComponentEventOptions
+```
+
 控件操作事件监听的扩展配置，用于指定监听过程配置及事件筛选条件。
 
 **起始版本：** 22

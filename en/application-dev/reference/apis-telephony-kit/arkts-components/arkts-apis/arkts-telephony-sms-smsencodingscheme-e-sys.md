@@ -1,5 +1,9 @@
 # SmsEncodingScheme (System API)
 
+```TypeScript
+export enum SmsEncodingScheme
+```
+
 Enumerates SMS encoding schemes.
 
 **Since:** 8

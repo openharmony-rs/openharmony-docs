@@ -1,5 +1,9 @@
 # DoNotDisturbProfile（系统接口）
 
+```TypeScript
+export interface DoNotDisturbProfile
+```
+
 勿扰模式的配置信息。
 
 **起始版本：** 12

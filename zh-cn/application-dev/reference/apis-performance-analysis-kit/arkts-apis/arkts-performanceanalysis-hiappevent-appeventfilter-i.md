@@ -1,5 +1,9 @@
 # AppEventFilter
 
+```TypeScript
+interface AppEventFilter
+```
+
 提供设置[Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md)的订阅过滤条件的参数选项。用于在事件观察者中设置事件过滤条件，确保只有满足过滤条件的事件才会被监听处理。
 
 > **说明：** 

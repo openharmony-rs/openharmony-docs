@@ -1,5 +1,9 @@
 # RemoteAuthOptions（系统接口）
 
+```TypeScript
+interface RemoteAuthOptions
+```
+
 表示远程认证的可选参数集合。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # SimMessageOptions（系统接口）
 
+```TypeScript
+export interface SimMessageOptions
+```
+
 SIM卡消息选项。
 
 **起始版本：** 7

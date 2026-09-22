@@ -14,6 +14,8 @@ Called when the panel slidable panel pops up.
 
 **Deprecated since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -30,9 +32,9 @@ Called when the panel slidable panel pops up.
 
 | Name | Description |
 | --- | --- |
-| [PanelHeight](arkts-arkui-panelheight-e.md) | Enum for custom content display area. |
-| [PanelMode](arkts-arkui-panelmode-e.md) | Sets the initial state of the slidable panel. |
-| [PanelType](arkts-arkui-paneltype-e.md) | Sets the type of sliding panel. |
+| [PanelHeight](arkts-arkui-panel-comp-panelheight-e.md) | Enum for custom content display area. |
+| [PanelMode](arkts-arkui-panel-comp-panelmode-e.md) | Sets the initial state of the slidable panel. |
+| [PanelType](arkts-arkui-panel-comp-paneltype-e.md) | Sets the type of sliding panel. |
 
 ## Examples
 

@@ -1,5 +1,9 @@
 # Location
 
+```TypeScript
+interface Location
+```
+
 Describes the geolocation information.
 
 **Since:** 10

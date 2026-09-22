@@ -1,5 +1,9 @@
 # MaterialProperty
 
+```TypeScript
+export interface MaterialProperty
+```
+
 Defines the textures, property factors, and texture samplers used by a material.
 
 @interface MaterialProperty

@@ -1,5 +1,9 @@
 # AuthType（系统接口）
 
+```TypeScript
+export enum AuthType
+```
+
 Indicates the Authentication type
 
 **起始版本：** 14

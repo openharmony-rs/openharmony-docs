@@ -31,8 +31,8 @@ import { uiAppearance } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md) | 设置系统深浅色模式，修改系统级配色方案配置。设置后，所有跟随系统配色方案的应用将自动切换至对应模式。使用callback异步回调。 |
-| [setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md) | 设置系统深浅色模式，修改系统级配色方案配置。设置后，所有跟随系统配色方案的应用将自动切换至对应模式。使用Promise异步回调。 |
+| [setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md#setdarkmode) | 设置系统深浅色模式，修改系统级配色方案配置。设置后，所有跟随系统配色方案的应用将自动切换至对应模式。使用callback异步回调。 |
+| [setDarkMode](arkts-arkui-uiappearance-setdarkmode-f-sys.md#setdarkmode-1) | 设置系统深浅色模式，修改系统级配色方案配置。设置后，所有跟随系统配色方案的应用将自动切换至对应模式。使用Promise异步回调。 |
 | [setFontScale](arkts-arkui-uiappearance-setfontscale-f-sys.md) | 设置系统字体大小。 |
 | [setFontWeightScale](arkts-arkui-uiappearance-setfontweightscale-f-sys.md) | 设置系统字体粗细。 |
 <!--DelEnd-->

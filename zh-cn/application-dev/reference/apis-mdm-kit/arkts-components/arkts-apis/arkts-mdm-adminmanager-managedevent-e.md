@@ -1,5 +1,9 @@
 # ManagedEvent
 
+```TypeScript
+export enum ManagedEvent
+```
+
 可订阅的系统管理事件。
 
 **起始版本：** 12

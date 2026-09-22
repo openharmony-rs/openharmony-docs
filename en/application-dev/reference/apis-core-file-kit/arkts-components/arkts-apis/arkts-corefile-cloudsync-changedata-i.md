@@ -1,5 +1,9 @@
 # ChangeData
 
+```TypeScript
+interface ChangeData
+```
+
 Represents the data change information.
 
 **Since:** 12

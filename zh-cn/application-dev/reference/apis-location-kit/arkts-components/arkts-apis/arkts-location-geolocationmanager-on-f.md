@@ -37,10 +37,47 @@ function on(type: 'locationChange', request: LocationRequest | ContinuousLocatio
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.on('locationChange')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.on('locationChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301100](../errorcode-geoLocationManager.md#3301100-位置功能的开关未开启导致功能失败) | The location switch is off. |
 | [3301200](../errorcode-geoLocationManager.md#3301200-定位失败未获取到定位结果) | Failed to obtain the geographical location.<br>**适用版本：** 9 - 17 |
+
+**示例**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+// 方式一：使用LocationRequest作为入参
+let requestInfo: geoLocationManager.LocationRequest = {
+  'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+  'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+  'timeInterval': 1,
+  'distanceInterval': 0,
+  'maxAccuracy': 0
+};
+let locationChange = (location: geoLocationManager.Location): void => {
+  console.info('locationChange: data: ' + JSON.stringify(location));
+};
+try {
+  geoLocationManager.on('locationChange', requestInfo, locationChange);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+
+// 方式二：使用ContinuousLocationRequest作为入参
+let request: geoLocationManager.ContinuousLocationRequest = {
+  'interval': 1,
+  'locationScenario': geoLocationManager.UserActivityScenario.NAVIGATION
+};
+let locationCallback = (location: geoLocationManager.Location): void => {
+  console.info('locationCallback: data: ' + JSON.stringify(location));
+};
+try {
+  geoLocationManager.on('locationChange', request, locationCallback);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 
 ## on('locationError')
@@ -72,8 +109,39 @@ function on(type: 'locationError', callback: Callback<LocationError>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.on('locationError')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.on('locationError')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
+
+**示例**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+let requestInfo: geoLocationManager.LocationRequest = {
+  'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+  'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+  'timeInterval': 1,
+  'distanceInterval': 0,
+  'maxAccuracy': 0
+};
+let locationChange = (location: geoLocationManager.Location): void => {
+  console.info('locationChange: data: ' + JSON.stringify(location));
+};
+try {
+  geoLocationManager.on('locationChange', requestInfo, locationChange);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+
+let locationErrorChange = (errcode: geoLocationManager.LocationError): void => {
+  console.error('locationErrorChange: data: ' + JSON.stringify(errcode));
+};
+try {
+  geoLocationManager.on('locationError', locationErrorChange);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 
 ## on('locationEnabledChange')
@@ -100,8 +168,23 @@ function on(type: 'locationEnabledChange', callback: Callback<boolean>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.on('locationEnabledChange')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.on('locationEnabledChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
+
+**示例**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+let locationEnabledChange = (state: boolean): void => {
+    console.info('locationEnabledChange: ' + JSON.stringify(state));
+}
+try {
+    geoLocationManager.on('locationEnabledChange', locationEnabledChange);
+} catch (err) {
+    console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 
 ## on('cachedGnssLocationsChange')
@@ -133,10 +216,31 @@ function on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsReque
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.on('cachedGnssLocationsChange')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.on('cachedGnssLocationsChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301100](../errorcode-geoLocationManager.md#3301100-位置功能的开关未开启导致功能失败) | The location switch is off. |
 | [3301200](../errorcode-geoLocationManager.md#3301200-定位失败未获取到定位结果) | Failed to obtain the geographical location.<br>**适用版本：** 9 - 17 |
+
+**示例**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+let cachedLocationsCb = (locations: Array<geoLocationManager.Location>): void => {
+  console.info('cachedGnssLocationsChange: locations: ' + JSON.stringify(locations));
+}
+let requestInfo: geoLocationManager.CachedGnssLocationsRequest = {
+  'reportingPeriodSec': 10,
+  'wakeUpCacheQueueFull': true
+};
+try {
+  if (geoLocationManager.isCachedGnssServiceSupported()) {
+    geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
+  }
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 
 ## on('satelliteStatusChange')
@@ -166,9 +270,56 @@ function on(type: 'satelliteStatusChange', callback: Callback<SatelliteStatusInf
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.on('satelliteStatusChange')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.on('satelliteStatusChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301100](../errorcode-geoLocationManager.md#3301100-位置功能的开关未开启导致功能失败) | The location switch is off. |
+
+**示例**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+let gnssStatusCb = (satelliteStatusInfo: geoLocationManager.SatelliteStatusInfo): void => {
+  console.info('satelliteStatusChange: ' + JSON.stringify(satelliteStatusInfo));
+  // 表示卫星个数
+  let totalNumber: number = satelliteStatusInfo.satellitesNumber;
+  let satelliteIds: Array<number> = satelliteStatusInfo.satelliteIds;
+  let carrierToNoiseDensitys: Array<number> = satelliteStatusInfo.carrierToNoiseDensitys;
+  let altitudes: Array<number> = satelliteStatusInfo.altitudes;
+  let azimuths: Array<number> = satelliteStatusInfo.azimuths;
+  let carrierFrequencies: Array<number> = satelliteStatusInfo.carrierFrequencies;
+  let satelliteConstellations: Array<geoLocationManager.SatelliteConstellationCategory> | undefined = satelliteStatusInfo.satelliteConstellation;
+  let satelliteAdditionalInfos: Array<number> | undefined = satelliteStatusInfo.satelliteAdditionalInfo;
+  for (let i = 0;i < totalNumber; i++) {
+    // 卫星的ID
+    let satelliteId: number = satelliteIds[i];
+    // 表示卫星的ID为 ${satelliteId} 的卫星的载波噪声功率谱密度比
+    let carrierToNoiseDensity: number = carrierToNoiseDensitys[i];
+    // 表示卫星的ID为 ${satelliteId} 的卫星的高度角信息
+    let altitude: number = altitudes[i];
+    // 表示卫星的ID为 ${satelliteId} 的卫星的方位角
+    let azimuth: number = azimuths[i];
+    // 表示卫星的ID为 ${satelliteId} 的卫星的载波频率
+    let carrierFrequency: number = carrierFrequencies[i];
+    if (satelliteConstellations != undefined) {
+      // 表示卫星的ID为 ${satelliteId} 的卫星的星座类型
+      let satelliteConstellation: geoLocationManager.SatelliteConstellationCategory = satelliteConstellations[i];
+    }
+    if (satelliteAdditionalInfos != undefined) {
+      // 表示卫星的ID为 ${satelliteId} 的卫星的附加信息；表示是否在最新的位置解算中使用了本卫星，是否具有星历数据，是否具有年历数据，是否具有载波频率信息等。
+      let satelliteAdditionalInfo: number = satelliteAdditionalInfos[i];
+    }
+  }
+}
+
+try {
+  if (geoLocationManager.isGnssServiceSupported()) {
+    geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
+  }
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 
 ## on('nmeaMessage')
@@ -198,9 +349,27 @@ function on(type: 'nmeaMessage', callback: Callback<string>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.on('nmeaMessage')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.on('nmeaMessage')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301100](../errorcode-geoLocationManager.md#3301100-位置功能的开关未开启导致功能失败) | The location switch is off. |
+
+**示例**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+let nmeaCb = (str: string): void => {
+  console.info('nmeaMessage: ' + JSON.stringify(str));
+}
+
+try {
+  if (geoLocationManager.isGnssServiceSupported()) {
+    geoLocationManager.on('nmeaMessage', nmeaCb);
+  }
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 
 ## on('gnssFenceStatusChange')
@@ -231,10 +400,45 @@ function on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantA
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.on('gnssFenceStatusChange')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.on('gnssFenceStatusChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301100](../errorcode-geoLocationManager.md#3301100-位置功能的开关未开启导致功能失败) | The location switch is off. |
 | [3301600](../errorcode-geoLocationManager.md#3301600-地理围栏操作失败) | Failed to operate the geofence. |
+
+**示例**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+import { wantAgent } from '@kit.AbilityKit';
+
+
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      bundleName: "com.example.myapplication",
+      abilityName: "EntryAbility",
+      action: "action1"
+    }
+  ],
+  actionType: wantAgent.OperationType.START_ABILITY,
+  requestCode: 0,
+  wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+};
+
+wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj) => {
+  let requestInfo: geoLocationManager.GeofenceRequest = {
+    'scenario': 0x301,
+    "geofence": { "latitude": 31.12, "longitude": 121.11, "radius": 100, "expiration": 10000 }
+  };
+  try {
+    if (geoLocationManager.isGnssFenceServiceSupported()) {
+      geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
+    }
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:" + err.message);
+  }
+});
+```
 
 
 ## on('countryCodeChange')
@@ -261,9 +465,25 @@ function on(type: 'countryCodeChange', callback: Callback<CountryCode>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.on('countryCodeChange')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.on('countryCodeChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301500](../errorcode-geoLocationManager.md#3301500-区域信息包含国家码查询失败) | Failed to query the area information. |
+
+**示例**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+let callback = (code: geoLocationManager.CountryCode): void => {
+  console.info('countryCodeChange: ' + JSON.stringify(code));
+}
+
+try {
+  geoLocationManager.on('countryCodeChange', callback);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 
 ## on('bluetoothScanResultChange')
@@ -297,6 +517,22 @@ function on(type: 'bluetoothScanResultChange', callback: Callback<BluetoothScanR
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call &#36;{geoLocationManager.on('bluetoothScanResultChange')} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.on('bluetoothScanResultChange')} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 | [3301100](../errorcode-geoLocationManager.md#3301100-位置功能的开关未开启导致功能失败) | The location switch is off. |
+
+**示例**
+
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+
+
+let callback = (result: geoLocationManager.BluetoothScanResult): void => {
+  console.info('bluetoothScanResultChange: ' + JSON.stringify(result));
+};
+try {
+  geoLocationManager.on('bluetoothScanResultChange', callback);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```

@@ -1,5 +1,9 @@
 # HandsFreeAudioGatewayProfile
 
+```TypeScript
+interface HandsFreeAudioGatewayProfile extends BaseProfile
+```
+
 Manager handsfree AG profile.
 
 **Inheritance/Implementation:** HandsFreeAudioGatewayProfile extends [BaseProfile](arkts-connectivity-bluetooth-baseprofile-i.md)

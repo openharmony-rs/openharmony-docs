@@ -1,5 +1,9 @@
 # PictureComplexityDegree (System API)
 
+```TypeScript
+enum PictureComplexityDegree
+```
+
 Enumerates the complexity degree of the image.
 
 **Since:** 22

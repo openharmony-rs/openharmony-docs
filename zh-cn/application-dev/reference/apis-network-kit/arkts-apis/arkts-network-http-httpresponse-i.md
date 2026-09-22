@@ -1,5 +1,9 @@
 # HttpResponse
 
+```TypeScript
+export interface HttpResponse
+```
+
 request方法回调函数的返回值类型。
 
 **起始版本：** 6

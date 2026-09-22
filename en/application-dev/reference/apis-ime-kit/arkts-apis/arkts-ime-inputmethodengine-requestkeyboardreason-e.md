@@ -1,5 +1,9 @@
 # RequestKeyboardReason
 
+```TypeScript
+export enum RequestKeyboardReason
+```
+
 Enumerates the reasons for requesting keyboard input.<br> <br>
 
 | Name | Value| Description |  

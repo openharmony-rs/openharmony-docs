@@ -1,5 +1,9 @@
 # UserStatusData (System API)
 
+```TypeScript
+export interface UserStatusData
+```
+
 Defines user status data.
 
 **Since:** 26.0.0

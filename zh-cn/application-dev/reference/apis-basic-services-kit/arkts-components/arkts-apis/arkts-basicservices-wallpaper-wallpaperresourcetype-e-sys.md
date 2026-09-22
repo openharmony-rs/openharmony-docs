@@ -1,5 +1,9 @@
 # WallpaperResourceType（系统接口）
 
+```TypeScript
+enum WallpaperResourceType
+```
+
 定义壁纸资源的枚举类型。
 
 **起始版本：** 10

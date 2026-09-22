@@ -1,5 +1,9 @@
 # WebPPropertyKey
 
+```TypeScript
+enum WebPPropertyKey
+```
+
 Enumerates the properties available for the metadata of a WebP image.
 
 **Since:** 24

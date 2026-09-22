@@ -1,5 +1,9 @@
 # RecurrenceRule
 
+```TypeScript
+export interface RecurrenceRule
+```
+
 重复日程重复规则。
 
 **起始版本：** 10

@@ -25,7 +25,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 | Name | Description |
 | --- | --- |
-| [getPhotoAccessHelper](arkts-medialibrary-photoaccesshelper-getphotoaccesshelper-f-sys.md) | Obtains a PhotoAccessHelper instance for the specified user, letting you access and modify media files in an album. |
+| [getPhotoAccessHelper](arkts-medialibrary-photoaccesshelper-getphotoaccesshelper-f-sys.md#getphotoaccesshelper-2) | Obtains a PhotoAccessHelper instance for the specified user, letting you access and modify media files in an album. |
 <!--DelEnd-->
 
 ### Classes
@@ -152,6 +152,8 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [RequestOptions](arkts-medialibrary-photoaccesshelper-requestoptions-i-sys.md) | Represents request options. |
 | [RequestPhotoOptions](arkts-medialibrary-photoaccesshelper-requestphotooptions-i-sys.md) | Defines the options for obtaining the thumbnail of an image or video. |
 | [ResultInfo](arkts-medialibrary-photoaccesshelper-resultinfo-i-sys.md) | ResultInfo info of batch operations. |
+| [SearchQuery](arkts-medialibrary-photoaccesshelper-searchquery-i-sys.md) | Query configuration for searching media assets. |
+| [SearchResult](arkts-medialibrary-photoaccesshelper-searchresult-i-sys.md) | Result of a search query. |
 | [SearchSuggestionResult](arkts-medialibrary-photoaccesshelper-searchsuggestionresult-i-sys.md) | Search suggestion result. |
 | [SharedAlbumAsset](arkts-medialibrary-photoaccesshelper-sharedalbumasset-i-sys.md) | Defines the shared album asset |
 | [SharedPhotoAsset](arkts-medialibrary-photoaccesshelper-sharedphotoasset-i-sys.md) | Describes the information about a shared media asset. |

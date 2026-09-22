@@ -1,5 +1,9 @@
 # PrintDocumentAdapter
 
+```TypeScript
+interface PrintDocumentAdapter
+```
+
 Provides information about the document to print. This API must be implemented by a third-party application.
 
 **Since:** 11

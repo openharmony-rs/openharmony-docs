@@ -1,5 +1,9 @@
 # InputerManager（系统接口）
 
+```TypeScript
+class InputerManager
+```
+
 凭据输入管理器。
 
 **起始版本：** 9

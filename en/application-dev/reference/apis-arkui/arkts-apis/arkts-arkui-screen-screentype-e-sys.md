@@ -1,5 +1,9 @@
 # ScreenType (System API)
 
+```TypeScript
+enum ScreenType
+```
+
 Enumerates the types of screens.
 
 **Since:** 26.0.0

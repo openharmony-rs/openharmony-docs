@@ -1,5 +1,9 @@
 # UDPSendOptions
 
+```TypeScript
+export interface UDPSendOptions
+```
+
 UDPSocket发送参数。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # Pen
 
+```TypeScript
+class Pen
+```
+
 Defines a pen, which is used to describe the style and color to outline a shape.
 
 > **NOTE:** 
@@ -30,6 +34,16 @@ A constructor used to create a **Pen** object.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+```
+
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -54,6 +68,18 @@ Copies a **Pen** object to create a new one.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+const penColor: common2D.Color = { alpha: 255, red: 0, green: 255, blue: 0 };
+pen.setColor(penColor);
+pen.setStrokeWidth(10);
+const newPen = new drawing.Pen(pen);
+```
+
 ## getAlpha
 
 ```TypeScript
@@ -71,6 +97,15 @@ Obtains the alpha value of this pen.
 | Type | Description |
 | --- | --- |
 | number | Alpha value of the pen. The return value is an integer ranging from 0 to 255. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+let alpha = pen.getAlpha();
+```
 
 ## getCapStyle
 
@@ -90,6 +125,24 @@ Obtains the cap style of this pen.
 | --- | --- |
 | [CapStyle](arkts-arkgraphics2d-drawing-capstyle-e.md) | Cap style. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    pen.setCapStyle(drawing.CapStyle.SQUARE_CAP);
+    pen.getCapStyle();
+  }
+}
+```
+
 ## getColor
 
 ```TypeScript
@@ -107,6 +160,17 @@ Obtains the color of this pen.
 | Type | Description |
 | --- | --- |
 | [common2D.Color](arkts-arkgraphics2d-common2d-color-i.md) | Color of the pen. |
+
+**Examples**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+const pen = new drawing.Pen();
+pen.setColor(color);
+let colorGet = pen.getColor();
+```
 
 ## getColor4f
 
@@ -126,6 +190,18 @@ Obtains the pen color. The difference between this method and [getColor](#getcol
 | --- | --- |
 | [common2D.Color4f](arkts-arkgraphics2d-common2d-color4f-i.md) | Color of the pen. |
 
+**Examples**
+
+```TypeScript
+import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+
+const pen = new drawing.Pen();
+let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
+let color4f: common2D.Color4f = {alpha: 1, red: 0.5, green: 0.4, blue: 0.7};
+pen.setColor4f(color4f, colorSpace);
+let color = pen.getColor4f();
+```
+
 ## getColorFilter
 
 ```TypeScript
@@ -143,6 +219,17 @@ Obtains the color filter of this pen.
 | Type | Description |
 | --- | --- |
 | [ColorFilter](arkts-arkgraphics2d-drawing-colorfilter-c.md) | Color filter. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let pen = new drawing.Pen();
+let colorFilter = drawing.ColorFilter.createLumaColorFilter();
+pen.setColorFilter(colorFilter);
+let filter = pen.getColorFilter();
+```
 
 ## getFillPath
 
@@ -175,6 +262,19 @@ Obtains the source path outline drawn using this pen and represents it using a d
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let pen = new drawing.Pen();
+let pathSrc: drawing.Path = new drawing.Path();
+let pathDst: drawing.Path = new drawing.Path();
+pathSrc.moveTo(0, 0);
+pathSrc.lineTo(700, 700);
+let value = pen.getFillPath(pathSrc, pathDst);
+```
+
 ## getHexColor
 
 ```TypeScript
@@ -192,6 +292,18 @@ Obtains the color of this pen.
 | Type | Description |
 | --- | --- |
 | number | Color, represented as a 32-bit unsigned integer in hexadecimal ARGB format. |
+
+**Examples**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+let pen = new drawing.Pen();
+pen.setColor(color);
+let hexColor: number = pen.getHexColor();
+console.info('getHexColor: ', hexColor.toString(16));
+```
 
 ## getJoinStyle
 
@@ -211,6 +323,24 @@ Obtains the join style of this pen.
 | --- | --- |
 | [JoinStyle](arkts-arkgraphics2d-drawing-joinstyle-e.md) | Join style. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    pen.setJoinStyle(drawing.JoinStyle.ROUND_JOIN);
+    pen.getJoinStyle();
+  }
+}
+```
+
 ## getMiterLimit
 
 ```TypeScript
@@ -228,6 +358,15 @@ Obtains the maximum ratio allowed between the sharp corner length of a polyline 
 | Type | Description |
 | --- | --- |
 | number | Maximum ratio obtained. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+let miter = pen.getMiterLimit();
+```
 
 ## getWidth
 
@@ -247,6 +386,15 @@ Obtains the stroke width of this pen. The width describes the thickness of the o
 | --- | --- |
 | number | Stroke width for the pen, in px. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+let width = pen.getWidth();
+```
+
 ## isAntiAlias
 
 ```TypeScript
@@ -265,6 +413,15 @@ Checks whether anti-aliasing is enabled for this pen.
 | --- | --- |
 | boolean | Check result. The value **true** means that anti-aliasing is enabled, and **false** means the opposite. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+let isAntiAlias = pen.isAntiAlias();
+```
+
 ## reset
 
 ```TypeScript
@@ -276,6 +433,15 @@ Resets this pen to the initial state.
 **Since:** 12
 
 **System capability:** SystemCapability.Graphics.Drawing
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.reset();
+```
 
 ## setAlpha
 
@@ -301,6 +467,15 @@ Sets an alpha value for this pen.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.setAlpha(128);
+```
+
 ## setAntiAlias
 
 ```TypeScript
@@ -324,6 +499,15 @@ Enables anti-aliasing for this pen. Anti-aliasing makes the edges of the content
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.setAntiAlias(true);
+```
 
 ## setBlendMode
 
@@ -349,6 +533,15 @@ Sets a blend mode for this pen.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.setBlendMode(drawing.BlendMode.SRC);
+```
+
 ## setCapStyle
 
 ```TypeScript
@@ -373,6 +566,23 @@ Sets the cap style for this pen. If this API is not called, the default cap styl
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    pen.setCapStyle(drawing.CapStyle.SQUARE_CAP);
+  }
+}
+```
+
 ## setColor
 
 ```TypeScript
@@ -396,6 +606,18 @@ Sets a color for this pen.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+const pen = new drawing.Pen();
+pen.setColor(color);
+```
+
+<a id="setcolor-1"></a>
 
 ## setColor
 
@@ -424,6 +646,17 @@ Sets a color for this pen. This API provides better performance than [setColor](
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.setColor(255, 255, 0, 0);
+```
+
+<a id="setcolor-2"></a>
+
 ## setColor
 
 ```TypeScript
@@ -441,6 +674,15 @@ Sets a color for this pen.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | color | number | Yes | Color in hexadecimal ARGB format. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.setColor(0xffff0000);
+```
 
 ## setColor4f
 
@@ -460,6 +702,17 @@ Sets the color and standard color gamut for this pen. The difference between thi
 | --- | --- | --- | --- |
 | color4f | [common2D.Color4f](arkts-arkgraphics2d-common2d-color4f-i.md) | Yes | Color in the ARGB format. The value of each color channel is a floating point number ranging from 0.0 to 1.0. Values above 1.0 default to **1.0**, and values below 0.0 default to **0.0**. |
 | colorSpace | [colorSpaceManager.ColorSpaceManager](arkts-arkgraphics2d-colorspacemanager-colorspacemanager-i.md) &#124; null | Yes | Standard color gamut object. **null** indicates SRGB. |
+
+**Examples**
+
+```TypeScript
+import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+
+const pen = new drawing.Pen();
+let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
+let color4f: common2D.Color4f = {alpha: 1, red: 0.5, green: 0.4, blue: 0.7};
+pen.setColor4f(color4f, colorSpace);
+```
 
 ## setColorFilter
 
@@ -485,6 +738,16 @@ Sets a color filter for this pen.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+let colorFilter = drawing.ColorFilter.createLinearToSRGBGamma();
+pen.setColorFilter(colorFilter);
+```
+
 ## setDither
 
 ```TypeScript
@@ -508,6 +771,15 @@ Enables dithering for this pen. Dithering make the drawn color more realistic.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.setDither(true);
+```
 
 ## setImageFilter
 
@@ -533,6 +805,18 @@ Sets an image filter for this pen.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let colorfilter = drawing.ColorFilter.createSRGBGammaToLinear();
+let imgFilter = drawing.ImageFilter.createFromColorFilter(colorfilter);
+let pen = new drawing.Pen();
+pen.setImageFilter(imgFilter);
+pen.setImageFilter(null);
+```
+
 ## setJoinStyle
 
 ```TypeScript
@@ -556,6 +840,23 @@ Sets the join style for this pen. If this API is not called, the default join st
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    pen.setJoinStyle(drawing.JoinStyle.ROUND_JOIN);
+  }
+}
+```
 
 ## setMaskFilter
 
@@ -581,6 +882,23 @@ Adds a mask filter for this pen.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    let maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
+    pen.setMaskFilter(maskFilter);
+  }
+}
+```
+
 ## setMiterLimit
 
 ```TypeScript
@@ -604,6 +922,15 @@ Sets the maximum ratio allowed between the sharp corner length of a polyline and
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.setMiterLimit(5);
+```
 
 ## setPathEffect
 
@@ -629,6 +956,24 @@ Sets the path effect for this pen.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    let pathEffect = drawing.PathEffect.createDashPathEffect([30, 10], 0);
+    pen.setPathEffect(pathEffect);
+  }
+}
+```
+
 ## setShaderEffect
 
 ```TypeScript
@@ -652,6 +997,16 @@ Sets the shader effect for this pen.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100, y: 100}, {x: 300, y: 300}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
+pen.setShaderEffect(shaderEffect);
+```
 
 ## setShadowLayer
 
@@ -677,6 +1032,35 @@ Sets a shadow layer for this pen. The shadow layer effect takes effect only when
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    font.setSize(60);
+    let textBlob = drawing.TextBlob.makeFromString("hello", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    let pen = new drawing.Pen();
+    pen.setStrokeWidth(2.0);
+    let pen_color : common2D.Color = {alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00};
+    pen.setColor(pen_color);
+    canvas.attachPen(pen);
+    canvas.drawTextBlob(textBlob, 100, 100);
+    canvas.detachPen();
+    let color : common2D.Color = {alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00};
+    let shadowLayer = drawing.ShadowLayer.create(3, -3, 3, color);
+    pen.setShadowLayer(shadowLayer);
+    canvas.attachPen(pen);
+    canvas.drawTextBlob(textBlob, 100, 200);
+    canvas.detachPen();
+  }
+}
+```
+
 ## setStrokeWidth
 
 ```TypeScript
@@ -700,3 +1084,12 @@ Sets the stroke width for this pen. The value **0** is treated as an unusually t
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+const pen = new drawing.Pen();
+pen.setStrokeWidth(5);
+```

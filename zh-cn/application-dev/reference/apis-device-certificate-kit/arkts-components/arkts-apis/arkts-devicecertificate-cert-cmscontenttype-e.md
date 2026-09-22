@@ -1,5 +1,9 @@
 # CmsContentType
 
+```TypeScript
+enum CmsContentType
+```
+
 表示Cms内容类型的枚举。
 
 **起始版本：** 18

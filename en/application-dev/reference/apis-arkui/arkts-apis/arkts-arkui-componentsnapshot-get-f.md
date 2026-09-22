@@ -90,46 +90,8 @@ struct SnapshotExample {
 }
 ```
 
-```TypeScript
-import { componentSnapshot } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
 
-@Entry
-@Component
-struct SnapshotExample {
-  @State pixmap: image.PixelMap | undefined = undefined
-
-  build() {
-    Column() {
-      Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        // Replace $r('app.media.img') with the image resource file you use.
-        Image($r('app.media.img'))
-          .autoResize(true)
-          .width(200)
-          .height(200)
-          .margin(5)
-          .id("root")
-      }
-
-      Button("click to generate UI snapshot")
-        .onClick(() => {
-          // You are advised to use this.getUIContext().getComponentSnapshot().get().
-          componentSnapshot.get("root", { scale: 2, waitUntilRenderFinished: true })
-            .then((pixmap: image.PixelMap) => {
-              this.pixmap = pixmap
-            }).catch((err: Error) => {
-            console.error(`error:${err}`)
-          })
-        }).margin(10)
-    }
-    .width('100%')
-    .height('100%')
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-```
-
+<a id="get-1"></a>
 
 ## get
 
@@ -179,4 +141,42 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 
 **Examples**
 
-See [get](#get)
+```TypeScript
+import { componentSnapshot } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct SnapshotExample {
+  @State pixmap: image.PixelMap | undefined = undefined
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.img') with the image resource file you use.
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
+      }
+
+      Button("click to generate UI snapshot")
+        .onClick(() => {
+          // You are advised to use this.getUIContext().getComponentSnapshot().get().
+          componentSnapshot.get("root", { scale: 2, waitUntilRenderFinished: true })
+            .then((pixmap: image.PixelMap) => {
+              this.pixmap = pixmap
+            }).catch((err: Error) => {
+            console.error(`error:${err}`)
+          })
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```

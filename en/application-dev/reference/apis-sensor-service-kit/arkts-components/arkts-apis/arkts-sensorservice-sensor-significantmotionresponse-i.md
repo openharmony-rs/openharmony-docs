@@ -1,5 +1,9 @@
 # SignificantMotionResponse
 
+```TypeScript
+interface SignificantMotionResponse extends Response
+```
+
 Describes the significant motion sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** SignificantMotionResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

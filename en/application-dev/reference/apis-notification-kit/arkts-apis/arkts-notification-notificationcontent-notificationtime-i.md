@@ -1,5 +1,9 @@
 # NotificationTime
 
+```TypeScript
+export interface NotificationTime
+```
+
 Describes the notification timing information.
 
 > **NOTE:** 

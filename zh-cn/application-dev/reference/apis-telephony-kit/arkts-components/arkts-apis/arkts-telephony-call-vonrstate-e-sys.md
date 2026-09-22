@@ -1,5 +1,9 @@
 # VoNRState（系统接口）
 
+```TypeScript
+export enum VoNRState
+```
+
 5G语音开关状态。
 
 **起始版本：** 10

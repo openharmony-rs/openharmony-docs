@@ -19,32 +19,32 @@ import { sharing } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getSharableRegexes](arkts-network-sharing-getsharableregexes-f-sys.md) | 获取指定类型网卡名称正则表达式列表，使用 callback 异步回调。 |
-| [getSharableRegexes](arkts-network-sharing-getsharableregexes-f-sys.md) | 获取指定类型网卡名称正则表达式列表，使用 Promise 异步回调。 |
-| [getSharingIfaces](arkts-network-sharing-getsharingifaces-f-sys.md) | 获取指定状态的网卡名称列表，使用 callback 异步回调。 |
-| [getSharingIfaces](arkts-network-sharing-getsharingifaces-f-sys.md) | 获取指定状态的网卡名称列表，使用 Promise 异步回调。 |
-| [getSharingState](arkts-network-sharing-getsharingstate-f-sys.md) | 获取指定类型网络共享状态，使用 callback 异步回调。 |
-| [getSharingState](arkts-network-sharing-getsharingstate-f-sys.md) | 获取指定类型网络共享状态，使用 Promise 异步回调。 |
-| [getStatsRxBytes](arkts-network-sharing-getstatsrxbytes-f-sys.md) | 获取共享网络接收数据量，使用 callback 异步回调。 |
-| [getStatsRxBytes](arkts-network-sharing-getstatsrxbytes-f-sys.md) | 获取共享网络接收数据量，使用 Promise 异步回调。 |
-| [getStatsTotalBytes](arkts-network-sharing-getstatstotalbytes-f-sys.md) | 获取共享网络总数据量，使用 callback 异步回调。 |
-| [getStatsTotalBytes](arkts-network-sharing-getstatstotalbytes-f-sys.md) | 获取共享网络总数据量，使用 Promise 异步回调。 |
-| [getStatsTxBytes](arkts-network-sharing-getstatstxbytes-f-sys.md) | 获取共享网络发送数据量，使用 callback 异步回调。 |
-| [getStatsTxBytes](arkts-network-sharing-getstatstxbytes-f-sys.md) | 获取共享网络发送数据量，使用 Promise 异步回调。 |
-| [isSharing](arkts-network-sharing-issharing-f-sys.md) | 获取当前网络共享状态，使用 callback 异步回调。 |
-| [isSharing](arkts-network-sharing-issharing-f-sys.md) | 获取当前网络共享状态，使用 Promise 异步回调。 |
-| [isSharingSupported](arkts-network-sharing-issharingsupported-f-sys.md) | 判断是否支持网络共享，使用 callback 异步回调。 |
-| [isSharingSupported](arkts-network-sharing-issharingsupported-f-sys.md) | 判断是否支持网络共享，使用 Promise 异步回调。 |
+| [getSharableRegexes](arkts-network-sharing-getsharableregexes-f-sys.md#getsharableregexes) | 获取指定类型网卡名称正则表达式列表，使用 callback 异步回调。 |
+| [getSharableRegexes](arkts-network-sharing-getsharableregexes-f-sys.md#getsharableregexes-1) | 获取指定类型网卡名称正则表达式列表，使用 Promise 异步回调。 |
+| [getSharingIfaces](arkts-network-sharing-getsharingifaces-f-sys.md#getsharingifaces) | 获取指定状态的网卡名称列表，使用 callback 异步回调。 |
+| [getSharingIfaces](arkts-network-sharing-getsharingifaces-f-sys.md#getsharingifaces-1) | 获取指定状态的网卡名称列表，使用 Promise 异步回调。 |
+| [getSharingState](arkts-network-sharing-getsharingstate-f-sys.md#getsharingstate) | 获取指定类型网络共享状态，使用 callback 异步回调。 |
+| [getSharingState](arkts-network-sharing-getsharingstate-f-sys.md#getsharingstate-1) | 获取指定类型网络共享状态，使用 Promise 异步回调。 |
+| [getStatsRxBytes](arkts-network-sharing-getstatsrxbytes-f-sys.md#getstatsrxbytes) | 获取共享网络接收数据量，使用 callback 异步回调。 |
+| [getStatsRxBytes](arkts-network-sharing-getstatsrxbytes-f-sys.md#getstatsrxbytes-1) | 获取共享网络接收数据量，使用 Promise 异步回调。 |
+| [getStatsTotalBytes](arkts-network-sharing-getstatstotalbytes-f-sys.md#getstatstotalbytes) | 获取共享网络总数据量，使用 callback 异步回调。 |
+| [getStatsTotalBytes](arkts-network-sharing-getstatstotalbytes-f-sys.md#getstatstotalbytes-1) | 获取共享网络总数据量，使用 Promise 异步回调。 |
+| [getStatsTxBytes](arkts-network-sharing-getstatstxbytes-f-sys.md#getstatstxbytes) | 获取共享网络发送数据量，使用 callback 异步回调。 |
+| [getStatsTxBytes](arkts-network-sharing-getstatstxbytes-f-sys.md#getstatstxbytes-1) | 获取共享网络发送数据量，使用 Promise 异步回调。 |
+| [isSharing](arkts-network-sharing-issharing-f-sys.md#issharing) | 获取当前网络共享状态，使用 callback 异步回调。 |
+| [isSharing](arkts-network-sharing-issharing-f-sys.md#issharing-1) | 获取当前网络共享状态，使用 Promise 异步回调。 |
+| [isSharingSupported](arkts-network-sharing-issharingsupported-f-sys.md#issharingsupported) | 判断是否支持网络共享，使用 callback 异步回调。 |
+| [isSharingSupported](arkts-network-sharing-issharingsupported-f-sys.md#issharingsupported-1) | 判断是否支持网络共享，使用 Promise 异步回调。 |
 | [off](arkts-network-sharing-off-f-sys.md#offsharingstatechange) | 注销网络共享状态变化事件，使用 callback 异步回调。 |
 | [off](arkts-network-sharing-off-f-sys.md#offinterfacesharingstatechange) | 注销网卡网络共享状态变化事件，使用 callback 异步回调。 |
 | [off](arkts-network-sharing-off-f-sys.md#offsharingupstreamchange) | 注销上行网络变化事件，使用 callback 异步回调。 |
 | [on](arkts-network-sharing-on-f-sys.md#onsharingstatechange) | 注册网络共享状态变化事件，使用 callback 异步回调。 |
 | [on](arkts-network-sharing-on-f-sys.md#oninterfacesharingstatechange) | 注册网卡网络共享状态变化事件，使用 callback 异步回调。 |
 | [on](arkts-network-sharing-on-f-sys.md#onsharingupstreamchange) | 注册上行网络变化事件，使用 callback 异步回调。 |
-| [startSharing](arkts-network-sharing-startsharing-f-sys.md) | 开启指定类型共享，使用 callback 异步回调。 |
-| [startSharing](arkts-network-sharing-startsharing-f-sys.md) | 开启指定类型共享，使用 Promise 异步回调。 |
-| [stopSharing](arkts-network-sharing-stopsharing-f-sys.md) | 关闭指定类型共享，使用 callback 异步回调。 |
-| [stopSharing](arkts-network-sharing-stopsharing-f-sys.md) | 关闭指定类型共享，使用 Promise 异步回调。 |
+| [startSharing](arkts-network-sharing-startsharing-f-sys.md#startsharing) | 开启指定类型共享，使用 callback 异步回调。 |
+| [startSharing](arkts-network-sharing-startsharing-f-sys.md#startsharing-1) | 开启指定类型共享，使用 Promise 异步回调。 |
+| [stopSharing](arkts-network-sharing-stopsharing-f-sys.md#stopsharing) | 关闭指定类型共享，使用 callback 异步回调。 |
+| [stopSharing](arkts-network-sharing-stopsharing-f-sys.md#stopsharing-1) | 关闭指定类型共享，使用 Promise 异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

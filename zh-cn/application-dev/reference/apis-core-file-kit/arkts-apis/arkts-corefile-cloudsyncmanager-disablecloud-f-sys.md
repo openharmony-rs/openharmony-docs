@@ -55,19 +55,8 @@ cloudSyncManager.disableCloud(accountId).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let accountId: string = "testAccount";
-cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
-  if (err) {
-    console.error(`disableCloud failed with error message: ${err.message}, error code: ${err.code}`);
-  } else {
-    console.info("disableCloud successfully");
-  }
-});
-```
-
+<a id="disablecloud-1"></a>
 
 ## disableCloud
 
@@ -102,4 +91,15 @@ function disableCloud(accountId: string, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [disableCloud](#disablecloud)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
+  if (err) {
+    console.error(`disableCloud failed with error message: ${err.message}, error code: ${err.code}`);
+  } else {
+    console.info("disableCloud successfully");
+  }
+});
+```

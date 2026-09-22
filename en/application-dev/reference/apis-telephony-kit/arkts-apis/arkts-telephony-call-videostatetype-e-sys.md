@@ -1,5 +1,9 @@
 # VideoStateType (System API)
 
+```TypeScript
+export enum VideoStateType
+```
+
 Video state type.
 
 **Since:** 7

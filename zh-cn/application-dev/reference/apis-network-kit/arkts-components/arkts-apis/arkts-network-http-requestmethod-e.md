@@ -1,5 +1,9 @@
 # RequestMethod
 
+```TypeScript
+export enum RequestMethod
+```
+
 HTTP 请求方法。
 
 **起始版本：** 6

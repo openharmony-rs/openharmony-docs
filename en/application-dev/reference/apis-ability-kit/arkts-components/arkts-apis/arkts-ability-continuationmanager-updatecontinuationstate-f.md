@@ -69,25 +69,8 @@ try {
 }
 ```
 
-```TypeScript
-import { continuationManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let token: number = 1;
-let deviceId: string = "test deviceId";
-try {
-  continuationManager.updateContinuationState(token, deviceId, continuationManager.DeviceConnectState.CONNECTED)
-    .then(() => {
-      console.info('updateContinuationState finished. ');
-    })
-    .catch((err: BusinessError) => {
-      console.error('updateContinuationState failed, cause: ' + JSON.stringify(err));
-    });
-} catch (err) {
-  console.error('updateContinuationState failed, cause: ' + JSON.stringify(err));
-}
-```
-
+<a id="updatecontinuationstate-1"></a>
 
 ## updateContinuationState
 
@@ -134,4 +117,21 @@ Instructs the device selection module to update the device connection state. Thi
 
 **Examples**
 
-See [updateContinuationState](#updatecontinuationstate)
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let token: number = 1;
+let deviceId: string = "test deviceId";
+try {
+  continuationManager.updateContinuationState(token, deviceId, continuationManager.DeviceConnectState.CONNECTED)
+    .then(() => {
+      console.info('updateContinuationState finished. ');
+    })
+    .catch((err: BusinessError) => {
+      console.error('updateContinuationState failed, cause: ' + JSON.stringify(err));
+    });
+} catch (err) {
+  console.error('updateContinuationState failed, cause: ' + JSON.stringify(err));
+}
+```

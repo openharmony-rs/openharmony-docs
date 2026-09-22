@@ -1,5 +1,9 @@
 # MajorClass
 
+```TypeScript
+enum MajorClass
+```
+
 枚举，蓝牙设备主要类别。
 
 从API version 9开始支持，从API version 10开始废弃。

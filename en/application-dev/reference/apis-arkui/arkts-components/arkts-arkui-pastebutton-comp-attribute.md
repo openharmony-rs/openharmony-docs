@@ -1,6 +1,10 @@
 # PasteButton properties/events
 
-This component can only inherit the universal attributes of security components.
+```TypeScript
+declare class PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>
+```
+
+This component can only inherit the [universal attributes of security components](../arkts-apis/arkts-arkui-security_component.md).
 
 <br>Only the following events are supported.
 
@@ -33,4 +37,4 @@ Triggered when the paste button is clicked, returning the authorization result. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [PasteButtonCallback](arkts-arkui-pastebuttoncallback-t.md) | Yes | Callback for the click event, used to handle the authorization result after the paste button is clicked.<br>Starting from API version 18, **PasteButtonCallback** is adopted uniformly, which additionally provides error information.<br>**Since:** 18 |
+| event | [PasteButtonCallback](arkts-arkui-pastebutton-comp-pastebuttoncallback-t.md) | Yes | Callback for the click event, used to handle the authorization result after the paste button is clicked.<br>Starting from API version 18, **PasteButtonCallback** is adopted uniformly, which additionally provides error information.<br>**Since:** 18 |

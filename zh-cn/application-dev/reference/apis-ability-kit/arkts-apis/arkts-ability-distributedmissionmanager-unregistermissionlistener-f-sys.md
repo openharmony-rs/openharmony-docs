@@ -60,21 +60,8 @@ try {
 }
 ```
 
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  distributedMissionManager.unRegisterMissionListener({deviceId: ""}).then(() => {
-    console.info('unRegisterMissionListener finished successfully');
-  }).catch((error: BusinessError) => {
-      console.error(`unRegisterMissionListener failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-    console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
-}
-```
-
+<a id="unregistermissionlistener-1"></a>
 
 ## unRegisterMissionListener
 
@@ -115,4 +102,17 @@ function unRegisterMissionListener(parameter: MissionDeviceInfo): Promise<void>
 
 **示例**
 
-参见 [unRegisterMissionListener](#unregistermissionlistener)
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.unRegisterMissionListener({deviceId: ""}).then(() => {
+    console.info('unRegisterMissionListener finished successfully');
+  }).catch((error: BusinessError) => {
+      console.error(`unRegisterMissionListener failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+    console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```

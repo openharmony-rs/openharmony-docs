@@ -1,5 +1,9 @@
 # MmsCharSets（系统接口）
 
+```TypeScript
+export enum MmsCharSets
+```
+
 彩信字符集。
 
 **起始版本：** 8

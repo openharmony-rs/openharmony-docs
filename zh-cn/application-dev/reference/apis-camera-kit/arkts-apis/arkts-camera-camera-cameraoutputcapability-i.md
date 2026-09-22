@@ -1,5 +1,9 @@
 # CameraOutputCapability
 
+```TypeScript
+interface CameraOutputCapability
+```
+
 相机输出能力项。
 
 **起始版本：** 10

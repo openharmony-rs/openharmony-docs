@@ -155,6 +155,22 @@ function on(type: 'hotspotStateChange', callback: Callback<number>): void
 | type | 'hotspotStateChange' | 是 | 固定填"hotspotStateChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 状态改变回调函数。返回状态值枚举：<br>- 0: 未激活。<br>- 1: 已激活。<br>- 2: 激活中。<br>- 3: 去激活中。 |
 
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvHotspotStateChangeFunc = (result:number) => {
+    console.info("Receive hotspot state change event: " + result);
+}
+
+// Register event
+wifi.on("hotspotStateChange", recvHotspotStateChangeFunc);
+
+// Unregister event
+wifi.off("hotspotStateChange", recvHotspotStateChangeFunc);
+```
+
 
 ## on('p2pStateChange')
 

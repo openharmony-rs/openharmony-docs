@@ -1,5 +1,9 @@
 # ConfigOption
 
+```TypeScript
+interface ConfigOption
+```
+
 Provides configuration options for application event logging.
 
 **Since:** 9

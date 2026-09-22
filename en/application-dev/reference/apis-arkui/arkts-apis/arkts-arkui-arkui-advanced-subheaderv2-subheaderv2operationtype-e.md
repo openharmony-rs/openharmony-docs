@@ -1,5 +1,9 @@
 # SubHeaderV2OperationType
 
+```TypeScript
+export declare enum SubHeaderV2OperationType
+```
+
 Defines the style of elements in the operation area.
 
 **Since:** 18

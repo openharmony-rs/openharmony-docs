@@ -1,5 +1,9 @@
 # DistributedInfo（系统接口）
 
+```TypeScript
+interface DistributedInfo
+```
+
 记录分布式信息。
 
 **起始版本：** 24

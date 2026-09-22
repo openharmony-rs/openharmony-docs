@@ -1,5 +1,9 @@
 # CmsRecipientInfo
 
+```TypeScript
+interface CmsRecipientInfo
+```
+
 CMS封装数据的接收者信息。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # DeferredDeliveryImageType (System API)
 
+```TypeScript
+enum DeferredDeliveryImageType
+```
+
 Enumerates the deferred delivery image types. In deferred delivery, photo and video capture are divided into two phases. In the first phase, an image or video is output to users at a relatively fast speed. In the second phase, a higher-resolution image or video is output again after optimization processing.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # ICurve
 
+```TypeScript
+interface ICurve
+```
+
 Represents a curve object. Different types of curve objects can be created using APIs in this module, including [curves.cubicBezierCurve](arkts-arkui-curves-cubicbeziercurve-f.md) and [curves.interpolatingSpring](arkts-arkui-curves-interpolatingspring-f.md). The curve object provides interpolation functionality through its member method [interpolate](#interpolate).
 
 **Since:** 9

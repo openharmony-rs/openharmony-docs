@@ -1,5 +1,9 @@
 # HighlightAlbumChangeAttribute（系统接口）
 
+```TypeScript
+enum HighlightAlbumChangeAttribute
+```
+
 枚举，时刻相册属性。
 
 **起始版本：** 21

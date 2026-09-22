@@ -1,5 +1,9 @@
 # DirectionalEdgesT
 
+```TypeScript
+declare interface DirectionalEdgesT<T>
+```
+
 边缘宽度类型，用于描述组件边缘不同方向的宽度。支持全球化。
 
 **起始版本：** 12

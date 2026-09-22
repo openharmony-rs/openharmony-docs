@@ -14,6 +14,8 @@ function createTonePlayer(options: AudioRendererInfo, callback: AsyncCallback<To
 
 创建DTMF播放器。使用callback异步回调。
 
+使用场景包括系统电话应用拨号界面的按键音，以及电话呼叫的回铃音。
+
 **起始版本：** 9
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -49,19 +51,8 @@ audio.createTonePlayer(audioRendererInfo, (err, data) => {
 });
 ```
 
-```TypeScript
-import { audio } from '@kit.AudioKit';
 
-let tonePlayer: audio.TonePlayer;
-async function createTonePlayerBefore(){
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage : audio.StreamUsage.STREAM_USAGE_DTMF,
-    rendererFlags : 0
-  };
-  tonePlayer = await audio.createTonePlayer(audioRendererInfo);
-}
-```
-
+<a id="createtoneplayer-2"></a>
 
 ## createTonePlayer
 
@@ -91,4 +82,15 @@ function createTonePlayer(options: AudioRendererInfo): Promise<TonePlayer>
 
 **示例**
 
-参见 [createTonePlayer](#createtoneplayer)
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let tonePlayer: audio.TonePlayer;
+async function createTonePlayerBefore(){
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage : audio.StreamUsage.STREAM_USAGE_DTMF,
+    rendererFlags : 0
+  };
+  tonePlayer = await audio.createTonePlayer(audioRendererInfo);
+}
+```

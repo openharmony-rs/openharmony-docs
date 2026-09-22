@@ -1,5 +1,9 @@
 # GattServer
 
+```TypeScript
+interface GattServer
+```
+
 server端类，使用server端方法之前需要创建该类的实例进行操作，通过createGattServer()方法构造此实例。
 
 **起始版本：** 7
@@ -192,6 +196,13 @@ server端取消订阅特征值读请求事件。
 | type | 'characteristicRead' | 是 | 填写"characteristicRead"字符串，表示特征值读请求事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CharacteristicReadReq](arkts-connectivity-bluetooth-characteristicreadreq-i.md)&gt; | 否 | 表示取消订阅特征值读请求事件上报。不填该参数则取消订阅该type对应的所有回调。 |
 
+**示例**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("characteristicRead");
+```
+
 ## off('characteristicWrite')
 
 ```TypeScript
@@ -218,6 +229,13 @@ server端取消订阅特征值写请求事件。
 | --- | --- | --- | --- |
 | type | 'characteristicWrite' | 是 | 填写"characteristicWrite"字符串，表示特征值写请求事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CharacteristicWriteReq](arkts-connectivity-bluetooth-characteristicwritereq-i.md)&gt; | 否 | 表示取消订阅特征值写请求事件上报。不填该参数则取消订阅该type对应的所有回调。 |
+
+**示例**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("characteristicWrite");
+```
 
 ## off('descriptorRead')
 
@@ -246,6 +264,13 @@ server端取消订阅描述符读请求事件。
 | type | 'descriptorRead' | 是 | 填写"descriptorRead"字符串，表示描述符读请求事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DescriptorReadReq](arkts-connectivity-bluetooth-descriptorreadreq-i.md)&gt; | 否 | 表示取消订阅描述符读请求事件上报。不填该参数则取消订阅该type对应的所有回调。 |
 
+**示例**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("descriptorRead");
+```
+
 ## off('descriptorWrite')
 
 ```TypeScript
@@ -272,6 +297,13 @@ server端取消订阅描述符写请求事件。
 | --- | --- | --- | --- |
 | type | 'descriptorWrite' | 是 | 填写"descriptorWrite"字符串，表示描述符写请求事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DescriptorWriteReq](arkts-connectivity-bluetooth-descriptorwritereq-i.md)&gt; | 否 | 表示取消订阅描述符写请求事件上报。不填该参数则取消订阅该type对应的所有回调。 |
+
+**示例**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("descriptorWrite");
+```
 
 ## off('connectStateChange')
 
@@ -300,6 +332,13 @@ server端取消订阅BLE连接状态变化事件。
 | type | 'connectStateChange' | 是 | 填写"connectStateChange"字符串，表示BLE连接状态变化事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BLEConnectChangedState](arkts-connectivity-bluetooth-bleconnectchangedstate-i.md)&gt; | 否 | 表示取消订阅BLE连接状态变化事件。不填该参数则取消订阅该type对应的所有回调。 |
 
+**示例**
+
+```TypeScript
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.off("connectStateChange");
+```
+
 ## on('characteristicRead')
 
 ```TypeScript
@@ -326,6 +365,33 @@ server端订阅特征值读请求事件。
 | --- | --- | --- | --- |
 | type | 'characteristicRead' | 是 | 填写"characteristicRead"字符串，表示特征值读请求事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CharacteristicReadReq](arkts-connectivity-bluetooth-characteristicreadreq-i.md)&gt; | 是 | 表示回调函数的入参，client端发送的读请求数据。 |
+
+**示例**
+
+```TypeScript
+let arrayBufferCCC = new ArrayBuffer(8);
+let cccValue = new Uint8Array(arrayBufferCCC);
+cccValue[0] = 1;
+function ReadCharacteristicReq(CharacteristicReadReq : bluetooth.CharacteristicReadReq) {
+  let deviceId : string = CharacteristicReadReq.deviceId;
+  let transId : number = CharacteristicReadReq.transId;
+  let offset : number = CharacteristicReadReq.offset;
+  let characteristicUuid : string = CharacteristicReadReq.characteristicUuid;
+
+  let serverResponse : bluetooth.ServerResponse = {deviceId: deviceId, transId: transId, status: 0,
+  offset: offset, value:arrayBufferCCC};
+
+  let ret : boolean = gattServer.sendResponse(serverResponse);
+  if (ret) {
+    console.info('bluetooth sendResponse successfully');
+  } else {
+    console.error('bluetooth sendResponse failed');
+  }
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("characteristicRead", ReadCharacteristicReq);
+```
 
 ## on('characteristicWrite')
 
@@ -354,6 +420,36 @@ server端订阅特征值写请求事件。
 | type | 'characteristicWrite' | 是 | 填写"characteristicWrite"字符串，表示特征值写请求事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CharacteristicWriteReq](arkts-connectivity-bluetooth-characteristicwritereq-i.md)&gt; | 是 | 表示回调函数的入参，client端发送的写请求数据。 |
 
+**示例**
+
+```TypeScript
+let arrayBufferCCC = new ArrayBuffer(8);
+let cccValue = new Uint8Array(arrayBufferCCC);
+function WriteCharacteristicReq(CharacteristicWriteReq : bluetooth.CharacteristicWriteReq) {
+  let deviceId : string = CharacteristicWriteReq.deviceId;
+  let transId : number = CharacteristicWriteReq.transId;
+  let offset : number = CharacteristicWriteReq.offset;
+  let isPrep : boolean = CharacteristicWriteReq.isPrep;
+  let needRsp : boolean = CharacteristicWriteReq.needRsp;
+  let value =  new Uint8Array(arrayBufferCCC);
+  let characteristicUuid : string = CharacteristicWriteReq.characteristicUuid;
+
+  cccValue.set(new Uint8Array(value));
+  let serverResponse : bluetooth.ServerResponse = {deviceId: deviceId, transId: transId, status: 0,
+  offset: offset, value:arrayBufferCCC};
+
+  let ret : boolean = gattServer.sendResponse(serverResponse);
+  if (ret) {
+    console.info('bluetooth sendResponse successfully');
+  } else {
+    console.error('bluetooth sendResponse failed');
+  }
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("characteristicWrite", WriteCharacteristicReq);
+```
+
 ## on('descriptorRead')
 
 ```TypeScript
@@ -380,6 +476,33 @@ server端订阅描述符读请求事件。
 | --- | --- | --- | --- |
 | type | 'descriptorRead' | 是 | 填写"descriptorRead"字符串，表示描述符读请求事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DescriptorReadReq](arkts-connectivity-bluetooth-descriptorreadreq-i.md)&gt; | 是 | 表示回调函数的入参，client端发送的读请求数据。 |
+
+**示例**
+
+```TypeScript
+let arrayBufferDesc = new ArrayBuffer(8);
+let descValue = new Uint8Array(arrayBufferDesc);
+descValue[0] = 1;
+function ReadDescriptorReq(DescriptorReadReq : bluetooth.DescriptorReadReq) {
+  let deviceId : string = DescriptorReadReq.deviceId;
+  let transId : number = DescriptorReadReq.transId;
+  let offset : number = DescriptorReadReq.offset;
+  let descriptorUuid : string = DescriptorReadReq.descriptorUuid;
+
+  let serverResponse : bluetooth.ServerResponse = {deviceId: deviceId, transId: transId, status: 0,
+  offset: offset, value:arrayBufferDesc};
+
+  let ret : boolean = gattServer.sendResponse(serverResponse);
+  if (ret) {
+    console.info('bluetooth sendResponse successfully');
+  } else {
+    console.error('bluetooth sendResponse failed');
+  }
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("descriptorRead", ReadDescriptorReq);
+```
 
 ## on('descriptorWrite')
 
@@ -408,6 +531,35 @@ server端订阅描述符写请求事件。
 | type | 'descriptorWrite' | 是 | 填写"descriptorWrite"字符串，表示描述符写请求事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DescriptorWriteReq](arkts-connectivity-bluetooth-descriptorwritereq-i.md)&gt; | 是 | 表示回调函数的入参，client端发送的写请求数据。 |
 
+**示例**
+
+```TypeScript
+let arrayBufferDesc = new ArrayBuffer(8);
+let descValue = new Uint8Array(arrayBufferDesc);
+function WriteDescriptorReq(DescriptorWriteReq : bluetooth.DescriptorWriteReq) {
+  let deviceId : string = DescriptorWriteReq.deviceId;
+  let transId : number = DescriptorWriteReq.transId;
+  let offset : number = DescriptorWriteReq.offset;
+  let isPrep : boolean = DescriptorWriteReq.isPrep;
+  let needRsp : boolean = DescriptorWriteReq.needRsp;
+  let value = new Uint8Array(arrayBufferDesc);
+  let descriptorUuid : string = DescriptorWriteReq.descriptorUuid;
+
+  descValue.set(new Uint8Array(value));
+  let serverResponse : bluetooth.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, offset: offset, value:arrayBufferDesc};
+
+  let ret : boolean = gattServer.sendResponse(serverResponse);
+  if (ret) {
+    console.info('bluetooth sendResponse successfully');
+  } else {
+    console.error('bluetooth sendResponse failed');
+  }
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("descriptorWrite", WriteDescriptorReq);
+```
+
 ## on('connectStateChange')
 
 ```TypeScript
@@ -434,6 +586,18 @@ server端订阅BLE连接状态变化事件。
 | --- | --- | --- | --- |
 | type | 'connectStateChange' | 是 | 填写"connectStateChange"字符串，表示BLE连接状态变化事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BLEConnectChangedState](arkts-connectivity-bluetooth-bleconnectchangedstate-i.md)&gt; | 是 | 表示回调函数的入参，连接状态。 |
+
+**示例**
+
+```TypeScript
+function Connected(BLEConnectChangedState : bluetooth.BLEConnectChangedState) {
+  let deviceId : string = BLEConnectChangedState.deviceId;
+  let status : bluetooth.ProfileConnectionState = BLEConnectChangedState.state;
+}
+
+let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
+gattServer.on("connectStateChange", Connected);
+```
 
 ## removeService
 

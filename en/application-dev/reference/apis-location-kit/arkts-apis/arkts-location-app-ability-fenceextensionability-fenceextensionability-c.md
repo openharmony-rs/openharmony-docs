@@ -1,5 +1,9 @@
 # FenceExtensionAbility
 
+```TypeScript
+export default class FenceExtensionAbility
+```
+
 Class of fence extension ability.
 
 **Since:** 14

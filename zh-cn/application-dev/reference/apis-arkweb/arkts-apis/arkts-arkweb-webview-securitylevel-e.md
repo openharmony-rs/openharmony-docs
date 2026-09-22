@@ -1,5 +1,9 @@
 # SecurityLevel
 
+```TypeScript
+enum SecurityLevel
+```
+
 当前网页的安全级别。
 
 **起始版本：** 11

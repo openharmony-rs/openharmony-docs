@@ -1,5 +1,9 @@
 # KeyboardStatus
 
+```TypeScript
+export enum KeyboardStatus
+```
+
 输入法软键盘状态。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # WindowAnimationFinishedCallback (System API)
 
+```TypeScript
+export interface WindowAnimationFinishedCallback
+```
+
 Window animation finished callback.
 
 @interface WindowAnimationFinishedCallback
@@ -32,6 +36,4 @@ The function of window animation finished callback.
 
 **Examples**
 
-```TypeScript
 For details, see the sample code under windowAnimationManager.setController.
-```

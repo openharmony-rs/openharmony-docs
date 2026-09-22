@@ -1,5 +1,9 @@
 # Screen properties/events
 
+```TypeScript
+declare class ScreenAttribute extends CommonMethod<ScreenAttribute>
+```
+
 Defines the attribute functions of Screen.
 
 @extends CommonMethod&lt;ScreenAttribute&gt;

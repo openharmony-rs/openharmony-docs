@@ -1,5 +1,9 @@
 # MmsRespInd (System API)
 
+```TypeScript
+export interface MmsRespInd
+```
+
 Defines an MMS response index.
 
 **Since:** 8

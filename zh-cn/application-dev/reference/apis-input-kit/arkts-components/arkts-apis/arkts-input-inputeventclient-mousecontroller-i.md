@@ -1,5 +1,9 @@
 # MouseController
 
+```TypeScript
+interface MouseController
+```
+
 提供模拟鼠标操作的功能。模拟鼠标操作序列必须满足以下要求：<br>1. 鼠标按键只能在抬起状态下被按下。<br>2. 鼠标按键只能在被按下后才能抬起。<br>3. 有效的轴事件序列必须先调用beginAxis开始事件，然后调用零次或多次updateAxis更新事件，最后调用endAxis结束事件。<br>
 4. 同一时间只能有一个进行中的轴事件序列。
 
@@ -125,9 +129,7 @@ endAxis(axis: Axis): Promise<void>
 
 **示例**
 
-```TypeScript
 参见[beginAxis](#beginaxis)示例。
-```
 
 ## moveTo
 
@@ -303,9 +305,7 @@ releaseButton(button: Button): Promise<void>
 
 **示例**
 
-```TypeScript
 参见[pressButton](#pressbutton)示例。
-```
 
 ## updateAxis
 
@@ -346,6 +346,4 @@ updateAxis(axis: Axis, value: number): Promise<void>
 
 **示例**
 
-```TypeScript
 参见[beginAxis](#beginaxis)示例。
-```

@@ -1,5 +1,9 @@
 # OnSaveResult
 
+```TypeScript
+export enum OnSaveResult
+```
+
 Enumerates the result types for the operation of saving application data. You can use it in [onSaveState()](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate) of the UIAbility to complete [UIAbility backup and restore](../../../application-models/ability-recover-guideline.md).
 
 **Since:** 9

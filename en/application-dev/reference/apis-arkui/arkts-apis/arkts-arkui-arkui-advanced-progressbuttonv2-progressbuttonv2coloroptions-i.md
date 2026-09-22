@@ -1,5 +1,9 @@
 # ProgressButtonV2ColorOptions
 
+```TypeScript
+export declare interface ProgressButtonV2ColorOptions
+```
+
 Declare Color options interface of the ProgressButtonV2.
 
 @interface ProgressButtonV2ColorOptions

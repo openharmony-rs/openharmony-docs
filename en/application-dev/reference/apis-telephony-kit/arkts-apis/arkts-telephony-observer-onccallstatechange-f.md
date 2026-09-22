@@ -18,6 +18,8 @@ Subscribes to the carrier call state changes and obtains the call number. This m
 
 **Required permissions:** ohos.permission.MANAGE_CALL_FOR_DEVICES
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**

@@ -1,5 +1,9 @@
 # ProgressInfo
 
+```TypeScript
+interface ProgressInfo
+```
+
 定义进度上报的数据结构，且仅当进度指示选项[ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md)设置为NONE时才会上报此信息。
 
 **起始版本：** 15

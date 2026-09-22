@@ -1,5 +1,9 @@
 # ConnectErrorCode
 
+```TypeScript
+export enum ConnectErrorCode
+```
+
 连接的错误码。
 
 **起始版本：** 18

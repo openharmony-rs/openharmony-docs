@@ -1,5 +1,9 @@
 # OsAccountSubProfile (System API)
 
+```TypeScript
+interface OsAccountSubProfile
+```
+
 Defines an OS account sub-profile.
 
 **Since:** 26.0.0

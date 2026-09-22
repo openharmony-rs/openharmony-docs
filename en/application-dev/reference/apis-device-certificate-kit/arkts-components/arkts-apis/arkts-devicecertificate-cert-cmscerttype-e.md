@@ -1,5 +1,9 @@
 # CmsCertType
 
+```TypeScript
+enum CmsCertType
+```
+
 Enumerates certificate types obtained from CMS.
 
 **Since:** 22

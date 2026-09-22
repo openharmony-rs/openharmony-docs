@@ -1,5 +1,9 @@
 # FillResponse（系统接口）
 
+```TypeScript
+export interface FillResponse
+```
+
 自动填充响应。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # SubscribeMessageResponse
 
+```TypeScript
+export interface SubscribeMessageResponse
+```
+
 @typedef SubscribeMessageResponse
 
 **Since:** 5

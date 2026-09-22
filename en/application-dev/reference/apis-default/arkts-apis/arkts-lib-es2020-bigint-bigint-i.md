@@ -1,5 +1,9 @@
 # BigInt
 
+```TypeScript
+interface BigInt
+```
+
 ## Modules to Import
 
 ```TypeScript

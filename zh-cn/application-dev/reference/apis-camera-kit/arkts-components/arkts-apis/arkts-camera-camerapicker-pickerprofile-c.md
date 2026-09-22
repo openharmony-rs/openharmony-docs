@@ -1,5 +1,9 @@
 # PickerProfile
 
+```TypeScript
+class PickerProfile
+```
+
 相机选择器的配置信息。
 
 **起始版本：** 11

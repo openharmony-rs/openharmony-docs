@@ -1,5 +1,9 @@
 # AudioRenderer
 
+```TypeScript
+interface AudioRenderer
+```
+
 This interface provides APIs for audio rendering.
 
 Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md) to create an AudioRenderer instance.
@@ -116,6 +120,8 @@ audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE
   console.error(`Failed to set target. code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="settarget-1"></a>
 
 ## setTarget
 

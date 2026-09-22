@@ -1,5 +1,9 @@
 # CameraStatusInfo
 
+```TypeScript
+interface CameraStatusInfo
+```
+
 Describes the camera status information.
 
 **Since:** 10

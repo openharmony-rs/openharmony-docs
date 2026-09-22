@@ -1,5 +1,9 @@
 # ScaleResult
 
+```TypeScript
+interface ScaleResult
+```
+
 缩放信息。
 
 **起始版本：** 10

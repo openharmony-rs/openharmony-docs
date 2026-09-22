@@ -1,5 +1,9 @@
 # OrientationResult
 
+```TypeScript
+interface OrientationResult
+```
+
 Result of setting preferred orientation
 
 **Since:** 26.0.0

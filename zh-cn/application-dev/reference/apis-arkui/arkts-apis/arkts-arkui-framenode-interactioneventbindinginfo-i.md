@@ -1,5 +1,9 @@
 # InteractionEventBindingInfo
 
+```TypeScript
+declare interface InteractionEventBindingInfo
+```
+
 组件的交互事件绑定状态信息。如果当前节点上绑定了所要查询的交互事件，调用查询接口时返回一个InteractionEventBindingInfo对象，指示事件绑定详细信息。
 
 **起始版本：** 19
@@ -52,7 +56,7 @@ true表示组件绑定内置事件，false表示组件没有绑定内置事件�
 nativeEventRegistered: boolean
 ```
 
-是否以注册节点事件（registerNodeEvent）的方式绑定事件。
+是否以注册节点事件（[registerNodeEvent](../../../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)）的方式绑定事件。
 
 true表示以注册节点事件的方式绑定事件，false表示没有以注册节点事件的方式绑定事件。
 
@@ -72,7 +76,7 @@ true表示以注册节点事件的方式绑定事件，false表示没有以注�
 nodeEventRegistered: boolean
 ```
 
-是否以自定义组件节点的方式绑定事件，请参考基础事件示例。
+是否以自定义组件节点的方式绑定事件，请参考[基础事件示例](../../../reference/apis-arkui/js-apis-arkui-frameNode.md#基础事件示例)。
 
 true表示以自定义组件节点的方式绑定事件，false表示没有以自定义组件节点的方式绑定事件。
 

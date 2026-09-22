@@ -1,5 +1,9 @@
 # WifiFingerprintType（系统接口）
 
+```TypeScript
+export enum WifiFingerprintType
+```
+
 Wi-Fi指纹算法类型。
 
 **起始版本：** 26.0.0

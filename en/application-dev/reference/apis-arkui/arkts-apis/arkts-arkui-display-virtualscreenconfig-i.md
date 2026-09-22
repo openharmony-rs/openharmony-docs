@@ -1,5 +1,9 @@
 # VirtualScreenConfig
 
+```TypeScript
+interface VirtualScreenConfig
+```
+
 Describes the virtual screen parameters.
 
 **Since:** 16

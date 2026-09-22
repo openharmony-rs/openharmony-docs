@@ -49,41 +49,8 @@ storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.St
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
-  if (error) {
-    console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
-  } else {
-    // Do something.
-    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-  }
-});
-```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-let userId: number = 100;
-storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
-  console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-}).catch((err: BusinessError) => {
-  console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-let userId: number = 100;
-storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
-  if (error) {
-    console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
-  } else {
-    // Do something.
-    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-  }
-});
-```
-
+<a id="getuserstoragestats-1"></a>
 
 ## getUserStorageStats
 
@@ -119,8 +86,20 @@ Obtains the storage statistics of this user, in bytes. This API uses an asynchro
 
 **Examples**
 
-See [getUserStorageStats](#getuserstoragestats)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
+  if (error) {
+    console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
+  } else {
+    // Do something.
+    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+  }
+});
+```
 
+
+<a id="getuserstoragestats-2"></a>
 
 ## getUserStorageStats
 
@@ -163,8 +142,18 @@ Obtains the storage statistics of the specified user, in bytes. This API uses a 
 
 **Examples**
 
-See [getUserStorageStats](#getuserstoragestats)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let userId: number = 100;
+storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
+  console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+}).catch((err: BusinessError) => {
+  console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
+});
+```
 
+
+<a id="getuserstoragestats-3"></a>
 
 ## getUserStorageStats
 
@@ -202,4 +191,15 @@ Obtains the storage statistics of the specified user, in bytes. This API uses an
 
 **Examples**
 
-See [getUserStorageStats](#getuserstoragestats)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let userId: number = 100;
+storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
+  if (error) {
+    console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
+  } else {
+    // Do something.
+    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+  }
+});
+```

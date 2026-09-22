@@ -1,5 +1,9 @@
 # QualityLevel
 
+```TypeScript
+enum QualityLevel
+```
+
 Enumerates the image quality levels.
 
 **Since:** 10

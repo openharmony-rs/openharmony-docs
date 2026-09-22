@@ -1,5 +1,9 @@
 # VersionDownloadProgress
 
+```TypeScript
+interface VersionDownloadProgress
+```
+
 Represents the download state and progress information of historical version files when the [downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadhistoryversion) method of the [FileVersion](arkts-corefile-cloudsync-fileversion-c.md) class is called.
 
 **Since:** 20

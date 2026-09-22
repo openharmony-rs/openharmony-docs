@@ -1,5 +1,9 @@
 # TemplateFormDetailInfo (System API)
 
+```TypeScript
+interface TemplateFormDetailInfo
+```
+
 TemplateFormDetailInfo
 
 @typedef TemplateFormDetailInfo

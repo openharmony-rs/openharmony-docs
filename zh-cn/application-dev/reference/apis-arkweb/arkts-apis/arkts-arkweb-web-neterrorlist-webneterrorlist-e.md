@@ -1,5 +1,9 @@
 # WebNetErrorList
 
+```TypeScript
+export declare enum WebNetErrorList
+```
+
 ArkWeb的网络协议栈错误列表。
 
 **起始版本：** 12

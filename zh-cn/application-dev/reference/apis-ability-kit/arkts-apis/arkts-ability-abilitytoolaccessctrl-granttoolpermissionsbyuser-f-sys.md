@@ -17,6 +17,8 @@ export function grantToolPermissionsByUser(userAuthResult: UserAuthResult[]): Pr
 
 **需要权限：** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -31,7 +33,7 @@ export function grantToolPermissionsByUser(userAuthResult: UserAuthResult[]): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[TicketInfo](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)[]&gt; | Promise用于返回&#36;{TicketInfo[]}。 |
+| Promise&lt;[TicketInfo](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)[]&gt; | Promise用于返回${TicketInfo[]}。 |
 
 **错误码：**
 

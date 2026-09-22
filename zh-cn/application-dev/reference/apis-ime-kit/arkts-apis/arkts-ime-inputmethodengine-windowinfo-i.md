@@ -1,5 +1,9 @@
 # WindowInfo
 
+```TypeScript
+export interface WindowInfo
+```
+
 窗口信息。
 
 **起始版本：** 12

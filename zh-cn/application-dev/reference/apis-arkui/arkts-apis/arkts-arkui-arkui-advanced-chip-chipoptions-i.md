@@ -1,5 +1,9 @@
 # ChipOptions
 
+```TypeScript
+export interface ChipOptions
+```
+
 ChipOptions定义Chip的样式及具体样式参数。
 
 > **说明：** 
@@ -8,11 +12,11 @@ ChipOptions定义Chip的样式及具体样式参数。
 > 
 > 2. `backgroundColor`和`activatedBackgroundColor`赋值为`undefined`时，显示默认背景颜色；赋值为非法值时，背景颜色透明。
 > 
-> 3. 当prefixSymbol或suffixSymbol设置了图标时，若Chip为非激活状态，图标颜色fontColor为`[&#36;r('sys.color.ohos_id_color_secondary')]`，若Chip为激活状态，图标颜色fontColor为`[&#36;r('sys.color.ohos_id_color_text_primary_contrary')]`。此外，当size为ChipSize.SMALL时，图标的默认字体大小fontSize为`&#36;r('sys.float.chip_small_icon_size')`；当size为ChipSize.NORMAL或自定义大小时，图标的默认字体大小fontSize为`&#36;r('sys.float.chip_normal_icon_size')`。
+> 3. 当prefixSymbol或suffixSymbol设置了图标时，若Chip为非激活状态，图标颜色fontColor为`[$r('sys.color.ohos_id_color_secondary')]`，若Chip为激活状态，图标颜色fontColor为`[$r('sys.color.ohos_id_color_text_primary_contrary')]`。此外，当size为ChipSize.SMALL时，图标的默认字体大小fontSize为`$r('sys.float.chip_small_icon_size')`；当size为ChipSize.NORMAL或自定义大小时，图标的默认字体大小fontSize为`$r('sys.float.chip_normal_icon_size')`。
 > 
-> 4. 当prefixIcon和suffixIcon设置了图标时，fillColor默认值均为：`&#36;r('sys.color.chip_usually_icon_color')`。fillColor对颜色的解析与Image组件保持一致。
+> 4. 当prefixIcon和suffixIcon设置了图标时，fillColor默认值均为：`$r('sys.color.chip_usually_icon_color')`。fillColor对颜色的解析与Image组件保持一致。
 > 
-> 5. 当prefixIcon和suffixIcon设置了图标时，activatedFillColor默认值均为：`&#36;r('sys.color.chip_active_icon_color')`。activatedFillColor 对颜色的解析与Image组件保持一致。
+> 5. 当prefixIcon和suffixIcon设置了图标时，activatedFillColor默认值均为：`$r('sys.color.chip_active_icon_color')`。activatedFillColor 对颜色的解析与Image组件保持一致。
 > 
 > 6. 从API版本26.0.0开始，当配置backgroundSystemMaterial为自动反色材质时，prefixIcon和suffixIcon的填充色以及prefixSymbol和suffixSymbol在非激活状态下的文字颜色会使用支持反色的系统资源，这些颜色会根据背景材质自动匹配反色效果。当设置activatedBackgroundSystemMaterial为自动反色材质时，prefixIcon和suffixIcon的激活态填充色以及prefixSymbol和suffixSymbol在激活状态下的文字颜色同样采用支持反色的系统资源，实现与背景材质反色的自动适配。
 
@@ -158,7 +162,7 @@ activatedBackgroundColor?: ResourceColor
 
 Chip激活态的背景颜色。
 
-默认值：&#36;r('sys.color.ohos_id_color_emphasize')。
+默认值：$r('sys.color.ohos_id_color_emphasize')。
 
 值为undefined时，按默认值处理。赋值为非法值时，背景颜色透明。
 
@@ -178,7 +182,7 @@ Chip激活态的背景颜色。
 activatedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的backgroundColor、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border)、shadow等视觉属性。
+设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)等视觉属性。
 
 默认值：undefined
 
@@ -230,7 +234,7 @@ backgroundColor?: ResourceColor
 
 Chip背景颜色。
 
-默认值：&#36;r('sys.color.ohos_id_color_button_normal')。
+默认值：$r('sys.color.ohos_id_color_button_normal')。
 
 值为undefined时，按默认值处理。赋值为非法值时，背景颜色透明。
 
@@ -250,7 +254,7 @@ Chip背景颜色。
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的backgroundColor、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border)、shadow等视觉属性。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)等视觉属性。
 
 默认值：undefined
 
@@ -278,7 +282,7 @@ Chip背景圆角半径大小，不支持百分比，传入百分比时按默认�
 
 取值范围：[0, +∞)
 
-默认值：&#36;r('sys.float.ohos_id_corner_radius_button')。
+默认值：$r('sys.float.ohos_id_corner_radius_button')。
 
 单位：vp
 
@@ -376,8 +380,8 @@ fontSize?: Dimension
 
 默认值：
 
-- size为ChipSize.SMALL时，文本：`&#36;r('sys.float.chip_small_font_size')`；图标：`&#36;r('sys.float.chip_small_icon_size')`  
-- 其他情况下，文本：`&#36;r('sys.float.chip_normal_font_size')`；图标：`&#36;r('sys.float.chip_normal_icon_size')`
+- size为ChipSize.SMALL时，文本：`$r('sys.float.chip_small_font_size')`；图标：`$r('sys.float.chip_small_icon_size')`  
+- 其他情况下，文本：`$r('sys.float.chip_normal_font_size')`；图标：`$r('sys.float.chip_normal_icon_size')`
 
 单位：fp
 

@@ -1,5 +1,9 @@
 # DestroyAppCloneParam (System API)
 
+```TypeScript
+export interface DestroyAppCloneParam
+```
+
 Describes the parameters used for destroying an application clone.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # AudioOutputFormat
 
+```TypeScript
+enum AudioOutputFormat
+```
+
 Enumerates the audio output formats.
 
 **Since:** 6

@@ -1,5 +1,9 @@
 # ResultCode
 
+```TypeScript
+export enum ResultCode
+```
+
 Enumerates the result codes of the request for the modal dialog box.
 
 **Since:** 9
@@ -12,7 +16,7 @@ Enumerates the result codes of the request for the modal dialog box.
 RESULT_OK = 0
 ```
 
-The request succeeds.
+Indicates success.
 
 **Since:** 9
 
@@ -24,7 +28,7 @@ The request succeeds.
 RESULT_CANCEL = 1
 ```
 
-The request fails.
+Indicates failure.
 
 **Since:** 9
 

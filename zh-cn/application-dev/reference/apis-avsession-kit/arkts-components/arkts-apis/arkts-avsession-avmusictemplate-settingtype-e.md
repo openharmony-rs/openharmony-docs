@@ -1,5 +1,9 @@
 # SettingType
 
+```TypeScript
+enum SettingType
+```
+
 表示设置类型的枚举。
 
 @enum { int }

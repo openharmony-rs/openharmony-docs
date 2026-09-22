@@ -1,5 +1,9 @@
 # NativeMemInfo
 
+```TypeScript
+interface NativeMemInfo
+```
+
 Describes memory information of the application process.
 
 **Since:** 12

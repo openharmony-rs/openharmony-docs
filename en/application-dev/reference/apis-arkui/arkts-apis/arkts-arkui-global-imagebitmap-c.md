@@ -1,5 +1,9 @@
 # ImageBitmap
 
+```TypeScript
+export declare class ImageBitmap
+```
+
 Defines the ImageBitmap.
 
 **Since:** 11

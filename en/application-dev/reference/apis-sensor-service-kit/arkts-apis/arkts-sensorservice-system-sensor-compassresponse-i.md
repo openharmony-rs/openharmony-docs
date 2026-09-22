@@ -1,5 +1,9 @@
 # CompassResponse
 
+```TypeScript
+export interface CompassResponse
+```
+
 Defines a **CompassResponse** object.
 
 **Since:** 3

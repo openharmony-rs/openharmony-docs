@@ -1,5 +1,9 @@
 # HdrType
 
+```TypeScript
+enum HdrType
+```
+
 表示视频HDR类型的枚举。
 
 **起始版本：** 12

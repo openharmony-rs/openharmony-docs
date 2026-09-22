@@ -52,16 +52,8 @@ call.getCallIdListForConference(1, (err: BusinessError, data: Array<string>) => 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.getCallIdListForConference(1).then((data: Array<string>) => {
-    console.info(`getCallIdListForConference success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCallIdListForConference fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getcallidlistforconference-1"></a>
 
 ## getCallIdListForConference
 
@@ -102,4 +94,12 @@ Obtains the list of call IDs in a conference. This API uses a promise to return 
 
 **Examples**
 
-See [getCallIdListForConference](#getcallidlistforconference)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.getCallIdListForConference(1).then((data: Array<string>) => {
+    console.info(`getCallIdListForConference success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCallIdListForConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```

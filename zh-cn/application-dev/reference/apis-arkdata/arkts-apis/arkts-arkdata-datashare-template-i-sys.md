@@ -1,5 +1,9 @@
 # Template（系统接口）
 
+```TypeScript
+interface Template
+```
+
 指定订阅中的模板结构。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # SysEventInfo (System API)
 
+```TypeScript
+interface SysEventInfo
+```
+
 Defines a system event.
 
 **Since:** 9

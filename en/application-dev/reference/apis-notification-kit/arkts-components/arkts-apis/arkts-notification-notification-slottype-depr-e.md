@@ -1,5 +1,9 @@
 # SlotType
 
+```TypeScript
+export enum SlotType
+```
+
 Enumerates the notification slot types.
 
 **Since:** 7

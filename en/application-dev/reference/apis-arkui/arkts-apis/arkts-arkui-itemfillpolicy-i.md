@@ -1,5 +1,9 @@
 # ItemFillPolicy
 
+```TypeScript
+declare interface ItemFillPolicy
+```
+
 Defines a responsive layout policy applicable to the WaterFlow, Grid, List, Swiper, and LazyVWaterFlowLayout components. The LazyVWaterFlowLayout component is supported since API version 26.0.0.
 
 **Since:** 22

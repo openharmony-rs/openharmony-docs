@@ -1,5 +1,9 @@
 # TextChangeReason (System API)
 
+```TypeScript
+declare enum TextChangeReason
+```
+
 Enumerates the reasons for component content changes.
 
 **Since:** 20

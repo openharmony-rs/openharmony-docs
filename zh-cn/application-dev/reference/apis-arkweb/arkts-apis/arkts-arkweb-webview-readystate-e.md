@@ -1,5 +1,9 @@
 # ReadyState
 
+```TypeScript
+enum ReadyState
+```
+
 播放器的缓存状态。
 
 **起始版本：** 12

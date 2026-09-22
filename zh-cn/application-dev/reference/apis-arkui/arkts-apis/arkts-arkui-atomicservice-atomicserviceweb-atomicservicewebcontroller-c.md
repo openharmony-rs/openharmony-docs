@@ -1,5 +1,9 @@
 # AtomicServiceWebController
 
+```TypeScript
+export declare class AtomicServiceWebController
+```
+
 通过AtomicServiceWebController可以控制AtomicServiceWeb组件各种行为。一个AtomicServiceWebController对象只能控制一个AtomicServiceWeb组件，且必须在AtomicServiceWeb组件和AtomicServiceWebController绑定后，才能调用AtomicServiceWebController上的方法。
 
 **起始版本：** 12

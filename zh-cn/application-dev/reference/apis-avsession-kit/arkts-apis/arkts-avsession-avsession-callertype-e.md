@@ -1,5 +1,9 @@
 # CallerType
 
+```TypeScript
+enum CallerType
+```
+
 表示调用方来源类型的枚举。
 
 **起始版本：** 22

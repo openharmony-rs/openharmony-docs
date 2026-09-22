@@ -1,5 +1,9 @@
 # FocusTrackingInfo（系统接口）
 
+```TypeScript
+interface FocusTrackingInfo
+```
+
 Describes the focus tracking information, which is obtained by calling VideoSessionForSys. [on('focusTrackingInfoAvailable')](arkts-camera-camera-videosession-i-sys.md#onfocustrackinginfoavailable).
 
 **起始版本：** 15

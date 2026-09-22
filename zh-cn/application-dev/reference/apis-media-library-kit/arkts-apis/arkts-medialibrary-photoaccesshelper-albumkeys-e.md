@@ -1,5 +1,9 @@
 # AlbumKeys
 
+```TypeScript
+enum AlbumKeys
+```
+
 枚举，相册关键信息。
 
 **起始版本：** 10

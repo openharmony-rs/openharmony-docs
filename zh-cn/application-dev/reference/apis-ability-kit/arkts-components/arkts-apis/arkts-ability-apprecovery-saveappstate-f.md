@@ -48,25 +48,8 @@ try {
 }
 ```
 
-```TypeScript
-import { appRecovery, errorManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let observer: errorManager.ErrorObserver = {
-  onUnhandledException(errorMsg) {
-    console.error('onUnhandledException, errorMsg: ', errorMsg);
-    // context为UIAbility实例的context，需使用箭头函数或在回调外预先保存。
-    appRecovery.saveAppState(this.context);
-  }
-};
-
-try {
-  errorManager.on('error', observer);
-} catch (paramError) {
-  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-}
-```
-
+<a id="saveappstate-1"></a>
 
 ## saveAppState
 
@@ -98,4 +81,21 @@ function saveAppState(context?: UIAbilityContext): boolean
 
 **示例**
 
-参见 [saveAppState](#saveappstate)
+```TypeScript
+import { appRecovery, errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer: errorManager.ErrorObserver = {
+  onUnhandledException(errorMsg) {
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
+    // context为UIAbility实例的context，需使用箭头函数或在回调外预先保存。
+    appRecovery.saveAppState(this.context);
+  }
+};
+
+try {
+  errorManager.on('error', observer);
+} catch (paramError) {
+  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+}
+```

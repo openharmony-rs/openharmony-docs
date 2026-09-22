@@ -1,5 +1,9 @@
 # Result
 
+```TypeScript
+export interface Result
+```
+
 @typedef Result
 
 **Since:** 5

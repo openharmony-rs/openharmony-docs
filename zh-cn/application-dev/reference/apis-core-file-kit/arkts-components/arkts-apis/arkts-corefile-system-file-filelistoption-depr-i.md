@@ -1,5 +1,9 @@
 # FileListOption
 
+```TypeScript
+export interface FileListOption
+```
+
 可选项类型，支持list接口使用。
 
 **起始版本：** 3

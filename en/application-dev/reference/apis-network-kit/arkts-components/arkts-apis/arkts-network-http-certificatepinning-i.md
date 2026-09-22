@@ -1,5 +1,9 @@
 # CertificatePinning
 
+```TypeScript
+interface CertificatePinning
+```
+
 Defines the dynamic configuration of certificate pinning.
 
 **Since:** 12

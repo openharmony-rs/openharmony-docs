@@ -1,5 +1,9 @@
 # TypeConstructorWithArgs
 
+```TypeScript
+export interface TypeConstructorWithArgs<T>
+```
+
 Represents a class constructor that accepts arbitrary arguments.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # OperationInfo（系统接口）
 
+```TypeScript
+interface OperationInfo
+```
+
 操作信息。
 
 **起始版本：** 26.0.0
@@ -25,6 +29,8 @@ info: CliCmdInfo | Permissions
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
@@ -40,6 +46,8 @@ operationType: OperationType
 **类型：** OperationType
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

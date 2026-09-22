@@ -1,5 +1,9 @@
 # CallType (System API)
 
+```TypeScript
+export enum CallType
+```
+
 Enumerates call types.
 
 **Since:** 7
@@ -87,6 +91,8 @@ TYPE_XCALL = 5
 X-Call.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Telephony.CallManager
 

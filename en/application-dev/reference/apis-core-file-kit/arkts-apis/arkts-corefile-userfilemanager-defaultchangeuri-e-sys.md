@@ -1,5 +1,9 @@
 # DefaultChangeUri (System API)
 
+```TypeScript
+enum DefaultChangeUri
+```
+
 Enumerates the **DefaultChangeUri** subtypes.
 
 **Since:** 10

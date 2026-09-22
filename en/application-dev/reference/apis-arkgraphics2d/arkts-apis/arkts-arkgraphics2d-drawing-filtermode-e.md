@@ -1,5 +1,9 @@
 # FilterMode
 
+```TypeScript
+enum FilterMode
+```
+
 Enumerates the filter modes.
 
 **Since:** 12

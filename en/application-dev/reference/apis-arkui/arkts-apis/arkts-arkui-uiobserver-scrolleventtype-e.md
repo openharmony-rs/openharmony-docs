@@ -1,5 +1,9 @@
 # ScrollEventType
 
+```TypeScript
+export enum ScrollEventType
+```
+
 ScrollEvent type.
 
 @enum { number }

@@ -1,5 +1,9 @@
 # ScanEnhanceMode (System API)
 
+```TypeScript
+interface ScanEnhanceMode
+```
+
 Describes the configuration of scan enhance mode.
 
 **Since:** 26.0.0

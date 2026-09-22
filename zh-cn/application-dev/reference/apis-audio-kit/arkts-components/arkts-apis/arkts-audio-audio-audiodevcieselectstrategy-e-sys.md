@@ -1,5 +1,9 @@
 # AudioDevcieSelectStrategy（系统接口）
 
+```TypeScript
+enum AudioDevcieSelectStrategy
+```
+
 表示设备选择策略的枚举。
 
 **起始版本：** 21

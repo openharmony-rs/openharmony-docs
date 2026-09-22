@@ -1,5 +1,9 @@
 # FusionFenceScene (System API)
 
+```TypeScript
+export enum FusionFenceScene
+```
+
 Enum for fusion fence scene.
 
 **Since:** 26.0.0

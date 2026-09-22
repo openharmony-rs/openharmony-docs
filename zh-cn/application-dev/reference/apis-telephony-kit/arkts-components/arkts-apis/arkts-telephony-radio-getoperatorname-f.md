@@ -50,17 +50,8 @@ radio.getOperatorName(slotId, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.getOperatorName(slotId).then((data: string) => {
-    console.info(`getOperatorName success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getOperatorName failed, promise: err code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getoperatorname-1"></a>
 
 ## getOperatorName
 
@@ -98,4 +89,13 @@ function getOperatorName(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getOperatorName](#getoperatorname)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+radio.getOperatorName(slotId).then((data: string) => {
+    console.info(`getOperatorName success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getOperatorName failed, promise: err code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # DrawableDescriptor
 
+```TypeScript
+export class DrawableDescriptor
+```
+
 Represents the base class providing overridable methods for [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) acquisition and image resource loading.
 
 **Since:** 10
@@ -36,7 +40,7 @@ setSVGResourceLimitLevel(limit: image.SVGResourceLimitLevel): void
 
 set svg resource limit level.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -1,5 +1,9 @@
 # Color
 
+```TypeScript
+interface Color
+```
+
 A color class used to store the color picking result. It is suitable for scenarios such as obtaining the main color, the color with the largest proportion, and the color with the highest saturation from an image in conjunction with ColorPicker, helping developers conveniently obtain and pass image color picking results.
 
 **Since:** 9

@@ -6,8 +6,6 @@ type ToneAttrsArray = Array<ToneAttrs>
 
 铃音属性数组。
 
-@typedef {Array&lt;ToneAttrs&gt;} ToneAttrsArray
-
 **起始版本：** 12
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core

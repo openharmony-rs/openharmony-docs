@@ -1,5 +1,9 @@
 # SurfaceParam（系统接口）
 
+```TypeScript
+interface SurfaceParam
+```
+
 Surface配置参数。
 
 @interface SurfaceParam

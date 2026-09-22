@@ -1,5 +1,9 @@
 # FunctionType (System API)
 
+```TypeScript
+export enum FunctionType
+```
+
 Enumerates USB device function types.
 
 **Since:** 9

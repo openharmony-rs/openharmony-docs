@@ -1,8 +1,12 @@
 # WarpedRingParam（系统接口）
 
+```TypeScript
+interface WarpedRingParam
+```
+
 WarpedRingParam 用于指定光环的半径、宽度、变化量、旋转、3D 朝向和噪声演化。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,7 +28,7 @@ baseHalfWidth: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +46,7 @@ noiseEvolution: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,7 +64,7 @@ radius: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,7 +82,7 @@ rotate3DProgress: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,7 +100,7 @@ rotateAngle: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -114,7 +118,7 @@ widthVariation: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

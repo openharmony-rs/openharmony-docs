@@ -1,5 +1,9 @@
 # RenderingPipelineType
 
+```TypeScript
+export enum RenderingPipelineType
+```
+
 Enumerates the rendering pipeline types.
 
 @enum { int }

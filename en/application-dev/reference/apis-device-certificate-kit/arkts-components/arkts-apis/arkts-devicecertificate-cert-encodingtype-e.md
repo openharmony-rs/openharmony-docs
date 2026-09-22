@@ -1,5 +1,9 @@
 # EncodingType
 
+```TypeScript
+enum EncodingType
+```
+
 Enumerates the encoding formats.
 
 **Since:** 12

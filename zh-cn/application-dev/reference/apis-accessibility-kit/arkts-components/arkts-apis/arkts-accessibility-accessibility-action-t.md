@@ -1,10 +1,7 @@
 # Action
 
 ```TypeScript
-type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection' |
-  'click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete' |
-  'scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home' |
-  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'
+type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection''click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete''scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home''back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'
 ```
 
 应用所支持的目标动作，需要配置参数的目标动作已在下表各动作的说明列中标明。

@@ -1,5 +1,9 @@
 # HmacAlgo
 
+```TypeScript
+enum HmacAlgo
+```
+
 数据库的HMAC算法枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 14

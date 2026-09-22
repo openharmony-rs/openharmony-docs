@@ -1,5 +1,9 @@
 # DistributedOptions
 
+```TypeScript
+export interface DistributedOptions
+```
+
 描述跨设备协同选项。预留能力，暂未支持。
 
 **起始版本：** 8

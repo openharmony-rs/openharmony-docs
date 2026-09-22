@@ -1,5 +1,9 @@
 # StreamParam (System API)
 
+```TypeScript
+interface StreamParam
+```
+
 Streaming configuration parameters.
 
 @interface StreamParam

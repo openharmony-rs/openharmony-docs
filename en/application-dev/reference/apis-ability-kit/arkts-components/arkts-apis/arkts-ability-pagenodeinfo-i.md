@@ -1,5 +1,9 @@
 # PageNodeInfo
 
+```TypeScript
+export default interface PageNodeInfo
+```
+
 PageNodeInfo defines the page node information used for auto-fill.
 
 **Since:** 26.0.0

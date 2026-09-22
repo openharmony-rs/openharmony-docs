@@ -1,5 +1,9 @@
 # SubHeaderV2OperationType
 
+```TypeScript
+export declare enum SubHeaderV2OperationType
+```
+
 操作区元素样式。
 
 **起始版本：** 18

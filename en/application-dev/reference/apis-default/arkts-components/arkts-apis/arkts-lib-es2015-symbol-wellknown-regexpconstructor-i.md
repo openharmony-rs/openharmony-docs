@@ -1,5 +1,9 @@
 # RegExpConstructor
 
+```TypeScript
+interface RegExpConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # NetConnection
 
+```TypeScript
+export interface NetConnection
+```
+
 Represents the network connection object type.
 
 > **NOTE:** 
@@ -47,6 +51,31 @@ Registers a listener for **netAvailable** events. Before you call this API, make
 | type | 'netAvailable' | Yes | Event type. This field has a fixed value of **netAvailable**.<br>**netAvailable**: event indicating that the data network is available. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetHandle](arkts-network-connection-nethandle-i.md)&gt; | Yes | Callback used to return the network handle. |
 
+**Examples**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Create a NetConnection object.
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// Use the on API to enable listening for netAvailable events.
+netCon.on('netAvailable', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+// Use the unregister API to unsubscribe from netAvailable events.
+netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
 ## on('netBlockStatusChange')
 
 ```TypeScript
@@ -65,6 +94,31 @@ Registers a listener for **netBlockStatusChange** events. Before you call this A
 | --- | --- | --- | --- |
 | type | 'netBlockStatusChange' | Yes | Event type. This field has a fixed value of **netBlockStatusChange**.<br>**netBlockStatusChange**: event indicating a change in the network blocking status. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetBlockStatusInfo](arkts-network-connection-netblockstatusinfo-i.md)&gt; | Yes | Callback used to return the result.<br>**Since:** 11 |
+
+**Examples**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Create a NetConnection object.
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// Use the on API to enable listening for netBlockStatusChange events.
+netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+// Use the unregister API to remove the listener for netBlockStatusChange events.
+netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
 
 ## on('netCapabilitiesChange')
 
@@ -87,6 +141,31 @@ Registers a listener for **netCapabilitiesChange** events. Before you call this 
 | type | 'netCapabilitiesChange' | Yes | Event type. This field has a fixed value of **netCapabilitiesChange**.<br>**netCapabilitiesChange**: event indicating that the network capabilities have changed. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetCapabilityInfo](arkts-network-connection-netcapabilityinfo-i.md)&gt; | Yes | Callback used to return the network handle (**netHandle**) and capability information (**netCap**). |
 
+**Examples**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Create a NetConnection object.
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// Use the on API to enable listening for netCapChange events.
+netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+// Unsubscribe from netCapabilitiesChange events.
+netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
 ## on('netConnectionPropertiesChange')
 
 ```TypeScript
@@ -105,6 +184,31 @@ Registers a listener for **netConnectionPropertiesChange** events. Before you ca
 | --- | --- | --- | --- |
 | type | 'netConnectionPropertiesChange' | Yes | Event type. This field has a fixed value of **netConnectionPropertiesChange**.<br>**netConnectionPropertiesChange**: event indicating that network connection properties have changed. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetConnectionPropertyInfo](arkts-network-connection-netconnectionpropertyinfo-i.md)&gt; | Yes | Callback used to return the result.<br>**Since:** 11 |
+
+**Examples**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Create a NetConnection object.
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// Use the on API to enable listening for netConnectionChange events.
+netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+// Use the unregister API to remove the listener for netConnectionPropertiesChange events.
+netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
 
 ## on('netLost')
 
@@ -127,6 +231,31 @@ Registers a listener for **netLost** events. Before you call this API, make sure
 | type | 'netLost' | Yes | Event type. This field has a fixed value of **netLost**.<br>**netLost**: event indicating that the network is interrupted or normally disconnected. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetHandle](arkts-network-connection-nethandle-i.md)&gt; | Yes | Callback used to return the result, which is a **netHandle** object. |
 
+**Examples**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Create a NetConnection object.
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// Use the on API to enable listening for netLost events.
+netCon.on('netLost', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+// Use the unregister API to remove the listener for netLost events.
+netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
 ## on('netUnavailable')
 
 ```TypeScript
@@ -147,6 +276,31 @@ Registers a listener for **netUnavailable** events. Before you call this API, ma
 | --- | --- | --- | --- |
 | type | 'netUnavailable' | Yes | Event type. This field has a fixed value of **netUnavailable**.<br>**netUnavailable**: event indicating that the network is unavailable. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback used to return the result, which is empty. |
+
+**Examples**
+
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Create a NetConnection object.
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// Use the on API to enable listening for netUnavailable events.
+netCon.on('netUnavailable', () => {
+  console.info("Succeeded to get unavailable net event");
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+// Use the unregister API to remove the listener for netUnavailable events.
+netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
 
 ## register
 

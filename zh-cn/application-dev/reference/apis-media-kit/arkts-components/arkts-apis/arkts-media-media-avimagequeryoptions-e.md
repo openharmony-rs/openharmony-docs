@@ -1,5 +1,9 @@
 # AVImageQueryOptions
 
+```TypeScript
+enum AVImageQueryOptions
+```
+
 需要获取的缩略图时间点与视频帧的对应关系。
 
 在获取视频缩略图时，传入的时间点与实际取得的视频帧所在时间点不一定相等，需要指定传入的时间点与实际取得的视频帧的时间关系。

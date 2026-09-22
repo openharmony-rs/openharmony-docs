@@ -1,5 +1,9 @@
 # BaudRates
 
+```TypeScript
+enum BaudRates
+```
+
 Enumerates the baud rates, in bit/s.
 
 **Since:** 19

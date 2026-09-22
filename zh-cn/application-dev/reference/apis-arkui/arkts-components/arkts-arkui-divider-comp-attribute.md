@@ -1,10 +1,14 @@
 # Divider属性/事件
 
-支持[通用属性](arkts-arkui-commonmethod-c.md)。
+```TypeScript
+declare class DividerAttribute extends CommonMethod<DividerAttribute>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** DividerAttribute extends CommonMethod&lt;DividerAttribute&gt;
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+
+**继承/实现关系：** DividerAttribute extends CommonMethod<DividerAttribute>
 
 **起始版本：** 7
 
@@ -16,7 +20,7 @@
 color(value: ResourceColor)
 ```
 
-设置分割线的颜色，支持attributeModifier动态设置属性方法。
+设置分割线的颜色，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -38,7 +42,7 @@ color(value: ResourceColor)
 lineCap(value: LineCapStyle)
 ```
 
-设置分割线的端点样式，支持attributeModifier动态设置属性方法。
+设置分割线的端点样式，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -60,13 +64,13 @@ lineCap(value: LineCapStyle)
 strokeWidth(value: number | string)
 ```
 
-设置分割线的宽度，支持attributeModifier动态设置属性方法。
+设置分割线的宽度，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 > **说明：** 
 > 
 > - 分割线的宽度不支持百分比设置。
 > 
-> - 使用水平分割线时，strokeWidth控制高度，优先级低于通用属性height； 使用垂直分割线时，strokeWidth控制宽度，优先级低于通用属性width。
+> - 使用水平分割线时，strokeWidth控制高度，优先级低于通用属性[height](arkts-arkui-common-comp-commonmethod-c.md#height)； 使用垂直分割线时，strokeWidth控制宽度，优先级低于通用属性[width](arkts-arkui-common-comp-commonmethod-c.md#width)。
 > 
 > - 超过通用属性设置大小时，按照通用属性进行裁切。
 > 
@@ -92,7 +96,7 @@ strokeWidth(value: number | string)
 vertical(value: boolean)
 ```
 
-设置分割线的方向，支持attributeModifier动态设置属性方法。
+设置分割线的方向，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
 

@@ -1,5 +1,9 @@
 # ServerResponse
 
+```TypeScript
+interface ServerResponse
+```
+
 表示回复客户端请求的响应。
 
 **起始版本：** 26.0.0

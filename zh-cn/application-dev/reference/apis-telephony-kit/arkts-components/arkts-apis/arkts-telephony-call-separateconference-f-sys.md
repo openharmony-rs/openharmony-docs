@@ -56,16 +56,8 @@ call.separateConference(1, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.separateConference(1).then(() => {
-    console.info(`separateConference success.`);
-}).catch((err: BusinessError) => {
-    console.error(`separateConference fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="separateconference-1"></a>
 
 ## separateConference
 
@@ -110,4 +102,12 @@ function separateConference(callId: number): Promise<void>
 
 **示例**
 
-参见 [separateConference](#separateconference)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.separateConference(1).then(() => {
+    console.info(`separateConference success.`);
+}).catch((err: BusinessError) => {
+    console.error(`separateConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```

@@ -44,6 +44,8 @@ Reads data from a file. This API uses a promise to return the result.
 | Promise&lt;[ReadOut](arkts-corefile-fileio-readout-depr-i.md)&gt; | Promise that returns the data read. |
 
 
+<a id="read-1"></a>
+
 ## read
 
 ```TypeScript
@@ -68,6 +70,8 @@ Reads data from a file. This API uses an asynchronous callback to return the res
 | buffer | ArrayBuffer | Yes | Buffer used to store the file data read. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ReadOut](arkts-corefile-fileio-readout-depr-i.md)&gt; | Yes | Callback invoked when the data is read asynchronously. |
 
+
+<a id="read-2"></a>
 
 ## read
 

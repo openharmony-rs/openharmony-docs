@@ -51,18 +51,8 @@ bundleState.queryBundleStateInfos(0, 20000000000000, (err: BusinessError ,
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { bundleState } from '@kit.BackgroundTasksKit';
 
-bundleState.queryBundleStateInfos(0, 20000000000000).then((res: bundleState.BundleActiveInfoResponse) => {
-  console.info('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
-  console.info('BUNDLE_ACTIVE queryBundleStateInfos promise result ' + JSON.stringify(res));
-}).catch((err: BusinessError) => {
-  console.error('BUNDLE_ACTIVE queryBundleStateInfos promise failed, because: ' + err.code);
-});
-```
-
+<a id="querybundlestateinfos-1"></a>
 
 ## queryBundleStateInfos
 
@@ -99,4 +89,14 @@ This method queries usage information at the BY_OPTIMIZED interval by default.
 
 **Examples**
 
-See [queryBundleStateInfos](#querybundlestateinfos)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
+
+bundleState.queryBundleStateInfos(0, 20000000000000).then((res: bundleState.BundleActiveInfoResponse) => {
+  console.info('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleStateInfos promise result ' + JSON.stringify(res));
+}).catch((err: BusinessError) => {
+  console.error('BUNDLE_ACTIVE queryBundleStateInfos promise failed, because: ' + err.code);
+});
+```

@@ -1,5 +1,9 @@
 # AlbumType
 
+```TypeScript
+enum AlbumType
+```
+
 Enumerates the album types,
 
 **Since:** 10

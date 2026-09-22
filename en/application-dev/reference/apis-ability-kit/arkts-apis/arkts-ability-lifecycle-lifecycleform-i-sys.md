@@ -1,5 +1,9 @@
 # LifecycleForm
 
+```TypeScript
+export declare interface LifecycleForm
+```
+
 interface of form lifecycle.
 
 @interface LifecycleForm

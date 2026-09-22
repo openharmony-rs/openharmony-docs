@@ -1,5 +1,9 @@
 # LcdFlashStatus (System API)
 
+```TypeScript
+interface LcdFlashStatus
+```
+
 Describes the LCD flash information.
 
 **Since:** 12

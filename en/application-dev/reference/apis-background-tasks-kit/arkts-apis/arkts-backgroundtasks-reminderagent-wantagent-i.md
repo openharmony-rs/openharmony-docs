@@ -1,5 +1,9 @@
 # WantAgent
 
+```TypeScript
+interface WantAgent
+```
+
 Sets the package and ability that are redirected to when the reminder notification is clicked.
 
 **Since:** 7
@@ -30,7 +34,7 @@ Name of the ability that is redirected to when the reminder notification is clic
 
 **Deprecated since:** 9
 
-**Substitutes:** abilityName
+**Substitutes:** [abilityName](arkts-backgroundtasks-reminderagentmanager-wantagent-i.md#abilityname)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -48,6 +52,6 @@ Name of the HAP that is redirected to when the reminder notification is clicked.
 
 **Deprecated since:** 9
 
-**Substitutes:** pkgName
+**Substitutes:** [pkgName](arkts-backgroundtasks-reminderagentmanager-wantagent-i.md#pkgname)
 
 **System capability:** SystemCapability.Notification.ReminderAgent

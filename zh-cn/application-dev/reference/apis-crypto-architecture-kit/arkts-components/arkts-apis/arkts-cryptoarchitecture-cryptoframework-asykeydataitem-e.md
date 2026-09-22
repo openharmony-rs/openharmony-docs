@@ -1,5 +1,9 @@
 # AsyKeyDataItem
 
+```TypeScript
+enum AsyKeyDataItem
+```
+
 表示非对称密钥数据项类型的枚举。
 
 **起始版本：** 26.0.0

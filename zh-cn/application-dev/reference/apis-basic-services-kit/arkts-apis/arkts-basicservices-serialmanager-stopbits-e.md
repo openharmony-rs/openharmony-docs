@@ -1,5 +1,9 @@
 # StopBits
 
+```TypeScript
+enum StopBits
+```
+
 表示停止位宽的枚举，单位：比特。
 
 **起始版本：** 19

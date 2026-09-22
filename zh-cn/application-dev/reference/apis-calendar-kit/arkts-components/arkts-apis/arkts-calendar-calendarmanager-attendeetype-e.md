@@ -1,5 +1,9 @@
 # AttendeeType
 
+```TypeScript
+export enum AttendeeType
+```
+
 会议日程参与者受邀类型枚举。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # ShadowFlag
 
+```TypeScript
+enum ShadowFlag
+```
+
 控制阴影绘制行为的枚举。
 
 **起始版本：** 12

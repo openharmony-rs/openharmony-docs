@@ -1,5 +1,9 @@
 # KeyStatus
 
+```TypeScript
+export enum KeyStatus
+```
+
 表示锁屏下敏感数据密钥状态的枚举。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # QueryRule（系统接口）
 
+```TypeScript
+interface QueryRule
+```
+
 系统事件查询规则对象接口。
 
 **起始版本：** 9

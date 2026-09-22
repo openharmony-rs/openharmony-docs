@@ -1,5 +1,9 @@
 # CallMetadata
 
+```TypeScript
+interface CallMetadata
+```
+
 The metadata of the current call.
 
 @interface CallMetadata [since 11 - 11]

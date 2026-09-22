@@ -66,43 +66,8 @@ applicationManager.getDisallowedRunningBundles(wantTemp, (err, result) => {
 });
 ```
 
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-applicationManager.getDisallowedRunningBundles(wantTemp, 100, (err, result) => {
-  if (err) {
-    console.error(`Failed to get disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in getting disallowed running bundles, result : ${JSON.stringify(result)}`);
-});
-```
-
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-applicationManager.getDisallowedRunningBundles(wantTemp, 100).then((result) => {
-  console.info(`Succeeded in getting disallowed running bundles, result : ${JSON.stringify(result)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getdisallowedrunningbundles-1"></a>
 
 ## getDisallowedRunningBundles
 
@@ -146,8 +111,27 @@ function getDisallowedRunningBundles(admin: Want, userId: number, callback: Asyn
 
 **示例**
 
-参见 [getDisallowedRunningBundles](#getdisallowedrunningbundles)
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+applicationManager.getDisallowedRunningBundles(wantTemp, 100, (err, result) => {
+  if (err) {
+    console.error(`Failed to get disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting disallowed running bundles, result : ${JSON.stringify(result)}`);
+});
+```
+
+
+<a id="getdisallowedrunningbundles-2"></a>
 
 ## getDisallowedRunningBundles
 
@@ -196,4 +180,20 @@ function getDisallowedRunningBundles(admin: Want, userId?: number): Promise<Arra
 
 **示例**
 
-参见 [getDisallowedRunningBundles](#getdisallowedrunningbundles)
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+applicationManager.getDisallowedRunningBundles(wantTemp, 100).then((result) => {
+  console.info(`Succeeded in getting disallowed running bundles, result : ${JSON.stringify(result)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
+});
+```

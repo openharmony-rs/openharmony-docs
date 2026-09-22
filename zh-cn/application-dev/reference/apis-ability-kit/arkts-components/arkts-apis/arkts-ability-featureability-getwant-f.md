@@ -41,15 +41,8 @@ featureAbility.getWant((error, data) => {
 });
 ```
 
-```TypeScript
-import { featureAbility } from '@kit.AbilityKit';
 
-// 获取要拉起的Ability对应的Want
-featureAbility.getWant().then((data) => {
-  console.info(`getWant data: ${JSON.stringify(data)}`);
-});
-```
-
+<a id="getwant-1"></a>
 
 ## getWant
 
@@ -73,4 +66,11 @@ function getWant(): Promise<Want>
 
 **示例**
 
-参见 [getWant](#getwant)
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+
+// 获取要拉起的Ability对应的Want
+featureAbility.getWant().then((data) => {
+  console.info(`getWant data: ${JSON.stringify(data)}`);
+});
+```

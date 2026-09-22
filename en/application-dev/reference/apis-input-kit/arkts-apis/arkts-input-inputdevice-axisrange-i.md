@@ -1,5 +1,9 @@
 # AxisRange
 
+```TypeScript
+interface AxisRange
+```
+
 Defines the axis range of an input device.
 
 **Since:** 8

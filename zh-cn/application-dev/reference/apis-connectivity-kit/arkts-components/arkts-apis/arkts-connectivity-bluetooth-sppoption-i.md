@@ -1,5 +1,9 @@
 # SppOption
 
+```TypeScript
+interface SppOption
+```
+
 描述spp的配置参数。
 
 从API version 8开始支持，从API version 9开始废弃。

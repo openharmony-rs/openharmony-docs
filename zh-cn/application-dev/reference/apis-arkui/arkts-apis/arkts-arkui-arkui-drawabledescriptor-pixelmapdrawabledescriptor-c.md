@@ -1,5 +1,9 @@
 # PixelMapDrawableDescriptor
 
+```TypeScript
+export class PixelMapDrawableDescriptor extends DrawableDescriptor
+```
+
 支持通过传入PixelMap创建PixelMapDrawableDescriptor对象。继承自[DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptorloadedresult-i.md)。
 
 **继承/实现关系：** PixelMapDrawableDescriptor extends [DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md)
@@ -38,9 +42,31 @@ PixelMapDrawableDescriptor的构造函数。
 
 **示例**
 
-```TypeScript
 通过ResourceStr创建PixelMapDrawableDescriptor，示例代码如下。
+
+```TypeScript
+// xxx.ets
+import { DrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PixelMapDrawableDescriptorExample {
+  // 使用Resource创建PixelMapDrawableDescriptor
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  @State drawable: DrawableDescriptor = new PixelMapDrawableDescriptor($r('app.media.icon'))
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+        .margin({ bottom: 20 })
+    }
+  }
+}
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -66,6 +92,26 @@ PixelMapDrawableDescriptor的构造函数，通过PixelMap类型或者ResourceSt
 
 **示例**
 
-```TypeScript
 通过ResourceStr创建PixelMapDrawableDescriptor，示例代码如下。
+
+```TypeScript
+// xxx.ets
+import { DrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PixelMapDrawableDescriptorExample {
+  // 使用Resource创建PixelMapDrawableDescriptor
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  @State drawable: DrawableDescriptor = new PixelMapDrawableDescriptor($r('app.media.icon'))
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+        .margin({ bottom: 20 })
+    }
+  }
+}
 ```

@@ -1,5 +1,9 @@
 # SaveModeFlag
 
+```TypeScript
+enum SaveModeFlag
+```
+
 状态保存标志，[enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md)接口状态保存方式的参数，该类型为枚举。
 
 **起始版本：** 9

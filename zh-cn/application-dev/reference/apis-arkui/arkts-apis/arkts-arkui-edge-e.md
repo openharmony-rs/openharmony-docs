@@ -1,5 +1,9 @@
 # Edge
 
+```TypeScript
+declare enum Edge
+```
+
 Edge.
 
 @enum { number }

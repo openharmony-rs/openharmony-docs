@@ -1,5 +1,9 @@
 # NotificationButton
 
+```TypeScript
+export interface NotificationButton
+```
+
 Describes the notification button, which is used to display an interactive button in the live view.
 
 > **NOTE:** 

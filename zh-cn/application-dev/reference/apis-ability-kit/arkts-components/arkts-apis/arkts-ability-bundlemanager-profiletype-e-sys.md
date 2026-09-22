@@ -1,5 +1,9 @@
 # ProfileType（系统接口）
 
+```TypeScript
+export enum ProfileType
+```
+
 标识配置文件类型。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # ClipOp
 
+```TypeScript
+enum ClipOp
+```
+
 画布裁剪方式的枚举。
 
 > **说明：** 

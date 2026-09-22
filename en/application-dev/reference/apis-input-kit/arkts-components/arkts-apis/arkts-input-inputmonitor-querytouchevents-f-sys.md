@@ -40,3 +40,25 @@ Queries recent touchscreen input events. A maximum of 100 events can be queried.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
+
+**Examples**
+
+```TypeScript
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // Querying the Number of Touchscreen Events
+  inputMonitor.queryTouchEvents(10).then((events: Array<TouchEvent>) => {
+    events.forEach((event, index) => {
+      console.info(`Succeeded in querying touch event ${index}, actionTime=${event.actionTime}, sourceType=${event.sourceType}.`);
+    });
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to query touch events promise, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+  });
+} catch (error) {
+  const code = (error as BusinessError).code;
+  const message = (error as BusinessError).message;
+  console.error(`Failed to query touch events, Code: ${code}, message: ${message}.`);
+}
+```

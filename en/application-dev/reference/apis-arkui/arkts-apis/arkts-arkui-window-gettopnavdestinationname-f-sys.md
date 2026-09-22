@@ -12,7 +12,7 @@ import { window } from '@kit.ArkUI';
 function getTopNavDestinationName(windowId: number): Promise<string>
 ```
 
-Obtains the name of NavDestination in the current top-level Navigation component of the specified foreground window. This API uses a promise to return the result.
+Obtains the name of [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#navdestination) in the current top-level [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component of the specified foreground window. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -30,7 +30,7 @@ Obtains the name of NavDestination in the current top-level Navigation component
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the NavDestination name obtained.<br>If there are nested Navigation components or multiple Navigation components on the current page, the information of the most recently created Navigation component is queried. <br>If the page does not have the Navigation component or the Navigation component does not have NavDestination, an empty string is returned. |
+| Promise&lt;string&gt; | Promise used to return the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#navdestination) name obtained. <br>If there are nested [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) components or multiple [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) components on the current page, the information of the most recently created [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component is queried. <br>If the page does not have the [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component or the [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component does not have [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#navdestination), an empty string is returned. |
 
 **Error codes:**
 

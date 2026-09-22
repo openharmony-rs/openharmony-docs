@@ -1,5 +1,9 @@
 # AuxiliaryType（系统接口）
 
+```TypeScript
+enum AuxiliaryType
+```
+
 Enum for auxiliary type.
 
 **起始版本：** 18

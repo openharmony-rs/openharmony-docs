@@ -1,5 +1,9 @@
 # BundleStorageStats
 
+```TypeScript
+interface BundleStorageStats
+```
+
 应用的存储占用信息。
 
 **起始版本：** 26.0.0
@@ -58,7 +62,7 @@ dataSize: number
 
 本地文件保存在以下目录（注意缓存文件目录为以下目录的子目录）：
 
-/data/storage/&#36;{el1-el5}/base
+/data/storage/${el1-el5}/base
 
 分布式文件保存在以下目录：
 
@@ -66,9 +70,9 @@ dataSize: number
 
 数据库文件保存在以下目录：
 
-/data/storage/&#36;{el1-el5}/database
+/data/storage/${el1-el5}/database
 
-**说明：** &#36;{el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。
+**说明：** ${el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。
 
 **类型：** number
 

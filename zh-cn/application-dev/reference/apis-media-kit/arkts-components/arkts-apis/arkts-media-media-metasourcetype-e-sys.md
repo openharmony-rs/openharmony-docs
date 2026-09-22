@@ -1,5 +1,9 @@
 # MetaSourceType（系统接口）
 
+```TypeScript
+enum MetaSourceType
+```
+
 录制的元数据源类型枚举。
 
 **起始版本：** 12

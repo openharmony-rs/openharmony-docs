@@ -1,5 +1,9 @@
 # ControlType (System API)
 
+```TypeScript
+enum ControlType
+```
+
 Describes the control type.
 
 **Since:** 15

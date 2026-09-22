@@ -1,5 +1,9 @@
 # FloatViewConfiguration
 
+```TypeScript
+interface FloatViewConfiguration
+```
+
 Provides parameter configuration required for creating a float view controller.
 
 **Since:** 26.0.0

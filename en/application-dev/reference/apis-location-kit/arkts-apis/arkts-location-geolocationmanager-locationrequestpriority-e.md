@@ -1,5 +1,9 @@
 # LocationRequestPriority
 
+```TypeScript
+export enum LocationRequestPriority
+```
+
 Enum for location priority.
 
 **Since:** 9

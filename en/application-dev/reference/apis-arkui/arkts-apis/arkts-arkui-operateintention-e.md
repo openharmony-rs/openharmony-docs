@@ -1,5 +1,9 @@
 # OperateIntention
 
+```TypeScript
+declare enum OperateIntention
+```
+
 Define the smart gesture's operation intention.
 
 **Since:** 26.0.0

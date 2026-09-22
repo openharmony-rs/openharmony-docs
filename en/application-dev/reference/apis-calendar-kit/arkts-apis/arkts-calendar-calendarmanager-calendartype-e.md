@@ -1,5 +1,9 @@
 # CalendarType
 
+```TypeScript
+enum CalendarType
+```
+
 Enumerates the account types.
 
 **Since:** 10

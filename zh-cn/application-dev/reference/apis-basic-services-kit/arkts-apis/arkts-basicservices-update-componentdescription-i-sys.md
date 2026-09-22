@@ -1,5 +1,9 @@
 # ComponentDescription（系统接口）
 
+```TypeScript
+export interface ComponentDescription
+```
+
 组件描述文件。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # MediaDescription
 
+```TypeScript
+interface MediaDescription
+```
+
 Provides the container definition for media description key-value pairs.
 
 **起始版本：** 8

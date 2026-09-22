@@ -1,5 +1,9 @@
 # IArguments
 
+```TypeScript
+interface IArguments
+```
+
 ## Modules to Import
 
 ```TypeScript

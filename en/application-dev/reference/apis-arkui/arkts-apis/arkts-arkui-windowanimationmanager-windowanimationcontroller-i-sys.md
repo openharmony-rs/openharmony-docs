@@ -1,5 +1,9 @@
 # WindowAnimationController (System API)
 
+```TypeScript
+export interface WindowAnimationController
+```
+
 Window animation controller.
 
 @interface WindowAnimationController
@@ -43,9 +47,7 @@ Called on application transition.
 
 **Examples**
 
-```TypeScript
 For details, see the sample code under windowAnimationManager.setController.
-```
 
 ## onCloseWindow
 
@@ -72,9 +74,7 @@ Called on closing a window.
 
 **Examples**
 
-```TypeScript
 For details, see the sample code under windowAnimationManager.setController.
-```
 
 ## onMinimizeWindow
 
@@ -102,9 +102,7 @@ Called on minimizing a window.
 
 **Examples**
 
-```TypeScript
 For details, see the sample code under windowAnimationManager.setController.
-```
 
 ## onScreenUnlock
 
@@ -130,9 +128,7 @@ Called on unlocking the screen.
 
 **Examples**
 
-```TypeScript
 For details, see the sample code under windowAnimationManager.setController.
-```
 
 ## onStartAppFromLauncher
 
@@ -160,9 +156,7 @@ Called on starting an application form launcher.
 
 **Examples**
 
-```TypeScript
 For details, see the sample code under windowAnimationManager.setController.
-```
 
 ## onStartAppFromOther
 
@@ -190,9 +184,7 @@ Called on starting an application form other.
 
 **Examples**
 
-```TypeScript
 For details, see the sample code under windowAnimationManager.setController.
-```
 
 ## onStartAppFromRecent
 
@@ -220,9 +212,7 @@ Called on starting an application form recent.
 
 **Examples**
 
-```TypeScript
 For details, see the sample code under windowAnimationManager.setController.
-```
 
 ## onWindowAnimationTargetsUpdate
 
@@ -250,6 +240,4 @@ Called on window animation targets update.
 
 **Examples**
 
-```TypeScript
 For details, see the sample code under windowAnimationManager.setController.
-```

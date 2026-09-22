@@ -1,6 +1,10 @@
 # AudioDebuggingManager
 
-音频调试管理器，用于音频运行时调试，包括获取快照信息等功能，用于定位音频播放、录音、耳返、会话等场景中的异常问题。**起始版本：** 26.0.0
+```TypeScript
+interface AudioDebuggingManager
+```
+
+AudioDebuggingManager（音频快照）提供音频运行时调试功能，用于获取音频快照信息，帮助开发者定位音频播放、录音、耳返、会话等场景中的异常问题。AudioDebuggingManager是对当前进程中音频各模块运行状态的瞬时记录，涵盖音频流参数、通路状态、音量信息、焦点状态、错误记录等关键数据。开发者可通过快照在不影响业务逻辑的前提下，快速了解音频系统的内部运行情况，用于排查无声、音量异常、焦点丢失、录音卡顿等问题。使用调试接口时，需先通过[getDebuggingManager](arkts-audio-audio-audiomanager-i.md#getdebuggingmanager)获取AudioDebuggingManager实例（单例），再通过该实例调用应用快照、播放快照、录音快照、耳返快照、会话快照等接口，将快照信息输出到指定文件描述符或运行日志。
 
 > **说明：** 
 > 

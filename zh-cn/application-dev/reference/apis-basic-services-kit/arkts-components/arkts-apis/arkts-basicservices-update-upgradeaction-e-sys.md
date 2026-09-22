@@ -1,5 +1,9 @@
 # UpgradeAction（系统接口）
 
+```TypeScript
+export enum UpgradeAction
+```
+
 升级方式。
 
 **起始版本：** 9

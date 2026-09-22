@@ -1,5 +1,9 @@
 # InterruptResult（系统接口）
 
+```TypeScript
+interface InterruptResult
+```
+
 音频中断结果。
 
 **起始版本：** 9

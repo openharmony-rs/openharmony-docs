@@ -1,5 +1,9 @@
 # RouterMode
 
+```TypeScript
+export enum RouterMode
+```
+
 路由跳转模式。
 
 **起始版本：** 9

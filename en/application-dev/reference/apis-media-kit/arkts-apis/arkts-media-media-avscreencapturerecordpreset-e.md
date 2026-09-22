@@ -1,5 +1,9 @@
 # AVScreenCaptureRecordPreset
 
+```TypeScript
+enum AVScreenCaptureRecordPreset
+```
+
 Enumerates the encoding and container formats used during screen capture.
 
 **Since:** 12

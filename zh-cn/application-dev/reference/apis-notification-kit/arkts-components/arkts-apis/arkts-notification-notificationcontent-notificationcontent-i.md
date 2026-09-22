@@ -1,5 +1,9 @@
 # NotificationContent
 
+```TypeScript
+export interface NotificationContent
+```
+
 通知内容。
 
 **起始版本：** 7

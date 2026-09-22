@@ -1,5 +1,9 @@
 # CloudMediaDownloadType (System API)
 
+```TypeScript
+enum CloudMediaDownloadType
+```
+
 Enumerates the types of download tasks.
 
 **Since:** 14

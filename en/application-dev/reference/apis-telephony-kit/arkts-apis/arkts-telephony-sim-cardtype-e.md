@@ -1,5 +1,9 @@
 # CardType
 
+```TypeScript
+export enum CardType
+```
+
 Enumerates SIM card types.
 
 **Since:** 7

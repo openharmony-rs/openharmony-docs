@@ -1,5 +1,9 @@
 # ServiceExtensionIntentInfo (System API)
 
+```TypeScript
+interface ServiceExtensionIntentInfo
+```
+
 Describes the information of the ServiceExtensionAbility bound to the [intent developed using a configuration file](../../../application-models/insight-intent-config-development.md).
 
 **Since:** 23

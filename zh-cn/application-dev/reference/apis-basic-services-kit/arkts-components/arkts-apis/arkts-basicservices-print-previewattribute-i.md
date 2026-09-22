@@ -1,5 +1,9 @@
 # PreviewAttribute
 
+```TypeScript
+interface PreviewAttribute
+```
+
 定义打印预览属性的接口。
 
 **起始版本：** 24

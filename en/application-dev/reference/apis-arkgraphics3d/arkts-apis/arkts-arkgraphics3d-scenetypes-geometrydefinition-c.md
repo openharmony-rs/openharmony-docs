@@ -1,5 +1,9 @@
 # GeometryDefinition
 
+```TypeScript
+export declare abstract class GeometryDefinition
+```
+
 An abstract class used to define the properties of specific geometry types.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # WatchRule（系统接口）
 
+```TypeScript
+interface WatchRule
+```
+
 系统事件订阅规则对象接口。
 
 **起始版本：** 9

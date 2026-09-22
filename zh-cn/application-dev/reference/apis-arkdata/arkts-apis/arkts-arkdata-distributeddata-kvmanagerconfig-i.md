@@ -1,5 +1,9 @@
 # KVManagerConfig
 
+```TypeScript
+interface KVManagerConfig
+```
+
 提供KVManager实例的配置信息，包括调用方的Bundle名称和用户信息。
 
 **起始版本：** 7

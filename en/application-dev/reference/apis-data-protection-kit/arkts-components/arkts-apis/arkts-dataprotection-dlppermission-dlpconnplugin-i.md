@@ -1,5 +1,9 @@
 # DlpConnPlugin
 
+```TypeScript
+export interface DlpConnPlugin
+```
+
 Registers the callback capability with the system ability (SA). This API is used in the **registerPlugin** API.
 
 > **NOTE:** 
@@ -54,7 +58,7 @@ This API can be used in enterprise account authentication and cloud permission v
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
 **Examples**

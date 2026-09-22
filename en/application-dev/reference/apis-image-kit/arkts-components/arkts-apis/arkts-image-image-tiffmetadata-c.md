@@ -1,5 +1,9 @@
 # TiffMetadata
 
+```TypeScript
+class TiffMetadata
+```
+
 TIFF metadata.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # StatusInfoResult (System API)
 
+```TypeScript
+export interface StatusInfoResult
+```
+
 Describes the DLP settings.
 
 **Since:** 26.0.0

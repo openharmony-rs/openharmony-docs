@@ -1,5 +1,9 @@
 # UsbDataTransferParams
 
+```TypeScript
+interface UsbDataTransferParams
+```
+
 USB数据传输参数对象，包含USB数据传输所需的所有参数，用于usbSubmitTransfer和usbCancelTransfer接口发起传输请求。
 
 **起始版本：** 18

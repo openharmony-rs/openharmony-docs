@@ -1,5 +1,9 @@
 # GetInputDataOptions（系统接口）
 
+```TypeScript
+interface GetInputDataOptions
+```
+
 表示通知调用者获取数据[onGetData](arkts-basicservices-osaccount-iinputer-i-sys.md#ongetdata)的可选参数集合。
 
 **起始版本：** 12

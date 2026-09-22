@@ -71,25 +71,8 @@ try {
 }
 ```
 
-```TypeScript
-import { deviceManager } from '@kit.DriverDevelopmentKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.bindDevice(12345678, (error: BusinessError, data: number) => {
-    console.error(`Device is disconnected`);
-  }).then(data => {
-    console.info(`bindDevice success, Device_Id is ${data.deviceId}.
-    remote is ${data.remote != null ? data.remote.getDescriptor(): "null"}`);
-  }, (error: BusinessError) => {
-    console.error(`bindDevice async fail. Code is ${error.code}, message is ${error.message}`);
-  });
-} catch (error) {
-  console.error(`bindDevice fail. Code is ${error.code}, message is ${error.message}`);
-}
-```
-
+<a id="binddevice-1"></a>
 
 ## bindDevice
 
@@ -135,4 +118,21 @@ function bindDevice(deviceId: number, onDisconnect: AsyncCallback<number>): Prom
 
 **示例**
 
-参见 [bindDevice](#binddevice)
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
+  deviceManager.bindDevice(12345678, (error: BusinessError, data: number) => {
+    console.error(`Device is disconnected`);
+  }).then(data => {
+    console.info(`bindDevice success, Device_Id is ${data.deviceId}.
+    remote is ${data.remote != null ? data.remote.getDescriptor(): "null"}`);
+  }, (error: BusinessError) => {
+    console.error(`bindDevice async fail. Code is ${error.code}, message is ${error.message}`);
+  });
+} catch (error) {
+  console.error(`bindDevice fail. Code is ${error.code}, message is ${error.message}`);
+}
+```

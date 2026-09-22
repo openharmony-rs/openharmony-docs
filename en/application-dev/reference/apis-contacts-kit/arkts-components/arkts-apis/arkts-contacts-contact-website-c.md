@@ -1,5 +1,9 @@
 # Website
 
+```TypeScript
+class Website
+```
+
 Defines a contact's website.
 
 **Since:** 7

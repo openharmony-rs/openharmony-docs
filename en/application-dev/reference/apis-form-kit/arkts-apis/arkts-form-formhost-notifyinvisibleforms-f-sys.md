@@ -41,6 +41,8 @@ Instructs the widget framework to make a widget invisible. After this API is cal
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
 
+<a id="notifyinvisibleforms-1"></a>
+
 ## notifyInvisibleForms
 
 ```TypeScript

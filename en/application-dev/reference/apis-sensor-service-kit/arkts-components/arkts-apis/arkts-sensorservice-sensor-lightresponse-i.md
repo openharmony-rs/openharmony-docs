@@ -1,5 +1,9 @@
 # LightResponse
 
+```TypeScript
+interface LightResponse extends Response
+```
+
 Describes the ambient light sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** LightResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

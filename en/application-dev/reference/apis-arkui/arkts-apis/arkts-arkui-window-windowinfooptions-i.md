@@ -1,5 +1,9 @@
 # WindowInfoOptions
 
+```TypeScript
+interface WindowInfoOptions
+```
+
 Filter criteria for window information.
 
 **Since:** 26.0.0

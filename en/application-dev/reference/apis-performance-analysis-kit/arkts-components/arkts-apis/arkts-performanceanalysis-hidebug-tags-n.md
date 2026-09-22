@@ -1,5 +1,9 @@
 # tags
 
+```TypeScript
+namespace tags
+```
+
 Provide trace tags
 
 **Since:** 12

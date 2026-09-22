@@ -1,5 +1,9 @@
 # PacketsType
 
+```TypeScript
+export enum PacketsType
+```
+
 Defines the type of network probe data packets.
 
 **Since:** 26.0.0

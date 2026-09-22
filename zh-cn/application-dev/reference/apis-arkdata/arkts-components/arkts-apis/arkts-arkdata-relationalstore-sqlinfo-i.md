@@ -1,5 +1,9 @@
 # SqlInfo
 
+```TypeScript
+interface SqlInfo
+```
+
 描述数据库执行的SQL语句的详细信息。
 
 **起始版本：** 20

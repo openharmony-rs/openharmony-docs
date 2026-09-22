@@ -1,5 +1,9 @@
 # BaseSelectOptions
 
+```TypeScript
+export class BaseSelectOptions
+```
+
 图库选择选项基类。
 
 **起始版本：** 12

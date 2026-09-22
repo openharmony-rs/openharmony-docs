@@ -1,5 +1,9 @@
 # PackageConfig (System API)
 
+```TypeScript
+export interface PackageConfig
+```
+
 PackageConfig: the package info class.
 
 **Since:** 9

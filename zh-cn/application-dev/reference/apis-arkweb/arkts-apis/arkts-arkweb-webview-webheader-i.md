@@ -1,5 +1,9 @@
 # WebHeader
 
+```TypeScript
+interface WebHeader
+```
+
 Web组件返回的请求/响应头对象。
 
 @interface WebHeader [since 9 - 11]

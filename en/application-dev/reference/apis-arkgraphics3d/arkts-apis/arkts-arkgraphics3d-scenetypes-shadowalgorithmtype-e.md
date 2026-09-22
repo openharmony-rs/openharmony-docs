@@ -1,5 +1,9 @@
 # ShadowAlgorithmType
 
+```TypeScript
+export enum ShadowAlgorithmType
+```
+
 Enumerates the types of shadow algorithms.
 
 **Since:** 26.0.0

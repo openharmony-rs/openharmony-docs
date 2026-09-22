@@ -1,5 +1,9 @@
 # SubWindowAttachOptions (System API)
 
+```TypeScript
+interface SubWindowAttachOptions
+```
+
 Describes the parameters used to maintain the relative position between the child window and the main window.
 
 **Since:** 24

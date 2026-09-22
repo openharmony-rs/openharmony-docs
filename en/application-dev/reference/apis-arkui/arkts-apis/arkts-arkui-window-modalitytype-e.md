@@ -1,5 +1,9 @@
 # ModalityType
 
+```TypeScript
+enum ModalityType
+```
+
 Enumerates the modality types of the child window.
 
 **Since:** 14

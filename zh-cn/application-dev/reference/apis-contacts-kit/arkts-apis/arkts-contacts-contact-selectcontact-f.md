@@ -44,16 +44,8 @@ contact.selectContact((err: BusinessError, data) => {
 });
 ```
 
-```TypeScript
-import { contact } from '@kit.ContactsKit';
 
-// 打开选择联系人UI界面
-let promise = contact.selectContact();
-promise.then((data) => {
-  console.info(`Succeeded in selecting Contact. data->${JSON.stringify(data)}`);
-});
-```
-
+<a id="selectcontact-1"></a>
 
 ## selectContact
 
@@ -79,4 +71,12 @@ function selectContact(): Promise<Array<Contact>>
 
 **示例**
 
-参见 selectContact
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+
+// 打开选择联系人UI界面
+let promise = contact.selectContact();
+promise.then((data) => {
+  console.info(`Succeeded in selecting Contact. data->${JSON.stringify(data)}`);
+});
+```

@@ -1,5 +1,9 @@
 # InputerManager (System API)
 
+```TypeScript
+class InputerManager
+```
+
 Provides APIs for managing credential inputers.
 
 **Since:** 9

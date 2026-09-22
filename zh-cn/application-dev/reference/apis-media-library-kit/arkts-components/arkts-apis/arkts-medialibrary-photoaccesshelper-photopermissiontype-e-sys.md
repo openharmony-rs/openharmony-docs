@@ -1,5 +1,9 @@
 # PhotoPermissionType（系统接口）
 
+```TypeScript
+enum PhotoPermissionType
+```
+
 枚举，应用对媒体资源不同访问权限的类型。
 
 包括临时读权限和永久读权限，临时读权限会随着应用的死亡而删除，永久读权限不会。

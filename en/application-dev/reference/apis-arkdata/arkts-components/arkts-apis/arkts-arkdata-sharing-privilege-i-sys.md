@@ -1,5 +1,9 @@
 # Privilege (System API)
 
+```TypeScript
+interface Privilege
+```
+
 Defines the privilege (permissions) on the shared data.
 
 **Since:** 11

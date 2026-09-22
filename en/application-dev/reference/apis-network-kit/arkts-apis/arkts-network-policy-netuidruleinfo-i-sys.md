@@ -1,5 +1,9 @@
 # NetUidRuleInfo (System API)
 
+```TypeScript
+export interface NetUidRuleInfo
+```
+
 Defines a unique network ID.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # OppServerProfile
 
+```TypeScript
+interface OppServerProfile
+```
+
 Manager OPP server profile.
 
 **Since:** 16
@@ -159,6 +163,21 @@ Unsubscribe the event reported when the file transfer status changes.
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { opp } from '@kit.ConnectivityKit';
+// Create fileHolders.
+try {
+    let oppProfile = opp.createOppServerProfile();
+    oppProfile.off("transferStateChange");
+} catch (err) {
+      console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 ## off('receiveIncomingFile')
 
 ```TypeScript
@@ -196,6 +215,20 @@ Unsubscribe to the event of receiving a file transfer request.
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { opp } from '@kit.ConnectivityKit';
+// Create fileHolders.
+try {
+    let oppProfile = opp.createOppServerProfile();
+    oppProfile.off("receiveIncomingFile");
+} catch (err) {
+      console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## on('transferStateChange')
 
@@ -238,6 +271,29 @@ Subscribe the event reported when the file transfer status changes. On API 26.0.
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { opp } from '@kit.ConnectivityKit';
+// Create fileHolders.
+try {
+    let oppProfile = opp.createOppServerProfile();
+    oppProfile.on("transferStateChange", (data: opp.OppTransferInformation) => {
+        if (data.status == opp.TransferStatus.PENDING) {
+          console.info("[opp_js] waiting to transfer : " + data.remoteDeviceName);
+        } else if (data.status == opp.TransferStatus.RUNNING){
+          console.info("[opp_js] running data.currentBytes " + data.currentBytes + " data.totalBytes" + data.totalBytes);
+        } else if (data.status == opp.TransferStatus.FINISH){
+          console.info("[opp_js] transfer finished, result is " + data.result);
+        }
+      });
+} catch (err) {
+      console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 ## on('receiveIncomingFile')
 
 ```TypeScript
@@ -278,6 +334,29 @@ Subscribe to the event of receiving a file transfer request. On API 26.0.0 and a
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { opp } from '@kit.ConnectivityKit';
+// Create fileHolders.
+try {
+    let oppProfile = opp.createOppServerProfile();
+    oppProfile.on("receiveIncomingFile", (data: opp.OppTransferInformation) => {
+        if (data.status == opp.TransferStatus.PENDING) {
+          console.info("[opp_js] received file waiting to confirm : " + data.remoteDeviceName);
+        } else if (data.status == opp.TransferStatus.RUNNING){
+          console.info("[opp_js] running data.currentBytes " + data.currentBytes + " data.totalBytes" + data.totalBytes);
+        } else if (data.status == opp.TransferStatus.FINISH){
+          console.info("[opp_js] transfer finished, result is " + data.result);
+        }
+      });
+} catch (err) {
+      console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## sendFile
 

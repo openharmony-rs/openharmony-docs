@@ -1,5 +1,9 @@
 # StatisticInfo（系统接口）
 
+```TypeScript
+interface StatisticInfo
+```
+
 端云同步的统计信息。
 
 **起始版本：** 12

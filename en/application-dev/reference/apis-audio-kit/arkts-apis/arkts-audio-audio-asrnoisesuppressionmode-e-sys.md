@@ -1,5 +1,9 @@
 # AsrNoiseSuppressionMode (System API)
 
+```TypeScript
+enum AsrNoiseSuppressionMode
+```
+
 ASR noise suppression mode.
 
 **Since:** 12

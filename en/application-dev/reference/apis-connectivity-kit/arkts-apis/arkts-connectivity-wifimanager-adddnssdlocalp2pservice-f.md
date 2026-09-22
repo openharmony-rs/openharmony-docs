@@ -15,7 +15,7 @@ function addDnsSdLocalP2pService(instanceName: string, serviceType: string,
 
 Add a Bonjour (DNS-SD) local P2P service description and register it.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO_INTERNAL
 

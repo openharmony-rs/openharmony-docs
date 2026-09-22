@@ -1,5 +1,9 @@
 # HashSet
 
+```TypeScript
+declare class HashSet<T>
+```
+
 HashSet is implemented based on HashMap. In HashSet, only the value object is processed.
 
 **Since:** 8

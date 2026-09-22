@@ -1,5 +1,9 @@
 # Scenario
 
+```TypeScript
+export enum Scenario
+```
+
 定义屏上内容的场景类型。
 
 **起始版本：** 20

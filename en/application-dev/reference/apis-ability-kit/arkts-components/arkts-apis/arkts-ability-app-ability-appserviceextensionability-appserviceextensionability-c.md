@@ -1,5 +1,9 @@
 # AppServiceExtensionAbility
 
+```TypeScript
+declare class AppServiceExtensionAbility extends ExtensionAbility
+```
+
 The AppServiceExtensionAbility module provides extended capabilities for background services, including lifecycle callbacks for creating, destroying, connecting, and disconnecting background services.
 
 **Inheritance/Implementation:** AppServiceExtensionAbility extends [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)

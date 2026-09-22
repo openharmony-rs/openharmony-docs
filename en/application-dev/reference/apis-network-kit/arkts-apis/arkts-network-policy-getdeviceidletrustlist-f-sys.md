@@ -50,19 +50,8 @@ policy.getDeviceIdleTrustlist((error: BusinessError, data: number[]) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .getDeviceIdleTrustlist()
-  .then((data: number[]) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="getdeviceidletrustlist-1"></a>
 
 ## getDeviceIdleTrustlist
 
@@ -98,4 +87,15 @@ Obtains the UID of applications that are on the device idle allowlist. This API 
 
 **Examples**
 
-See [getDeviceIdleTrustlist](#getdeviceidletrustlist)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy
+  .getDeviceIdleTrustlist()
+  .then((data: number[]) => {
+    console.info(JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

@@ -1,5 +1,9 @@
 # FontEdging
 
+```TypeScript
+enum FontEdging
+```
+
 Enumerates the font edging types.
 
 **Since:** 12

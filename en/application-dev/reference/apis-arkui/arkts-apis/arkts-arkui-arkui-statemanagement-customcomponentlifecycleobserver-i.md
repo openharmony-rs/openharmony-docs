@@ -1,5 +1,9 @@
 # CustomComponentLifecycleObserver
 
+```TypeScript
+export declare interface CustomComponentLifecycleObserver
+```
+
 Observes lifecycle status changes of a custom component, and triggers the lifecycle callback in the listener when detecting lifecycle status changes.
 
 **Since:** 23
@@ -18,7 +22,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 aboutToAppear?(): void
 ```
 
-Called after a new instance of the custom component is created and before its **build()** function is executed. You can modify the status variables in this phase. Its function is similar to that of aboutToAppear, but it is triggered under the constraints of the custom component state machine.
+Called after a new instance of the custom component is created and before its **build()** function is executed. You can modify the status variables in this phase. Its function is similar to that of [aboutToAppear](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear), but it is triggered under the constraints of the custom component state machine.
 
 **Since:** 23
 

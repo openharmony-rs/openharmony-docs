@@ -1,5 +1,9 @@
 # KeyEncodingConfig
 
+```TypeScript
+interface KeyEncodingConfig
+```
+
 RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数，生成指定算法、密码的编码后的私钥字符串。
 
 > **说明：** 

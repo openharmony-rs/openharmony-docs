@@ -33,3 +33,19 @@ Subscribes to privacy mode changes of this display. When there is a privacy wind
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<boolean> = (data: boolean) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+try {
+  // Register the callback for listening to privacy mode changes.
+  display.on('privateModeChange', callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```

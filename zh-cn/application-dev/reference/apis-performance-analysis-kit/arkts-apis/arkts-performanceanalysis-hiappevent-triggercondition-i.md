@@ -1,5 +1,9 @@
 # TriggerCondition
 
+```TypeScript
+interface TriggerCondition
+```
+
 提供设置[Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md)的onTrigger回调触发条件的参数选项。
 
 **起始版本：** 9

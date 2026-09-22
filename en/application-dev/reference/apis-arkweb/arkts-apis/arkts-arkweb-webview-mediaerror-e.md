@@ -1,5 +1,9 @@
 # MediaError
 
+```TypeScript
+enum MediaError
+```
+
 Enumerates the error types of the player.
 
 **Since:** 12

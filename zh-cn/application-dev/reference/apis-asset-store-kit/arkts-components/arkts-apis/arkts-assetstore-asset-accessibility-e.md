@@ -1,5 +1,9 @@
 # Accessibility
 
+```TypeScript
+enum Accessibility
+```
+
 枚举，关键资产基于锁屏状态的访问控制类型。
 
 **起始版本：** 11

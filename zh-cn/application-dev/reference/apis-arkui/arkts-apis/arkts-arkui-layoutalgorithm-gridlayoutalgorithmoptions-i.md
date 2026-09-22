@@ -1,5 +1,9 @@
 # GridLayoutAlgorithmOptions
 
+```TypeScript
+interface GridLayoutAlgorithmOptions
+```
+
 设置网格布局算法的列数模板、列间距、行间距。
 
 **起始版本：** 24

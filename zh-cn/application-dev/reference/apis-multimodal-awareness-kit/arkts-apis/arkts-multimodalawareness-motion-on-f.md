@@ -41,6 +41,25 @@ function on(type: 'operatingHandChanged', callback: Callback<OperatingHandStatus
 | [31500001](../errorcode-motion.md#31500001-服务异常) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
 | [31500002](../errorcode-motion.md#31500002-订阅失败) | Subscription failed. Possible causes: 1. Callback registration failure;<br> 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
 
+**示例**
+
+```TypeScript
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+import { motion } from '@kit.MultimodalAwarenessKit';
+
+let callback:Callback<motion.OperatingHandStatus> = (data:motion.OperatingHandStatus) => {
+    console.info('operatingHandStatus: ' + data);
+};
+
+try {
+    motion.on('operatingHandChanged', callback);  
+    console.info('on succeeded');
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to subscribe operatingHandChanged. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 
 ## on('holdingHandChanged')
 
@@ -71,3 +90,21 @@ function on(type: 'holdingHandChanged', callback: Callback<HoldingHandStatus>): 
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [31500001](../errorcode-motion.md#31500001-服务异常) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
 | [31500002](../errorcode-motion.md#31500002-订阅失败) | Subscription failed. Possible causes: 1. Callback registration failure;<br> 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
+  console.info('holdingHandStatus: ' + data);
+};
+
+try {
+  motion.on('holdingHandChanged', callback);
+  console.info('on succeeded');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to subscribe holdingHandChanged. Code: ${error.code}, message: ${error.message}`);
+}
+```

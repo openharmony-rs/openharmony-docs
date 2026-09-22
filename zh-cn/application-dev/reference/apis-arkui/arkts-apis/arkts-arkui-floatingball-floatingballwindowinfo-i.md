@@ -1,5 +1,9 @@
 # FloatingBallWindowInfo
 
+```TypeScript
+interface FloatingBallWindowInfo
+```
+
 闪控球窗口信息。
 
 **起始版本：** 20

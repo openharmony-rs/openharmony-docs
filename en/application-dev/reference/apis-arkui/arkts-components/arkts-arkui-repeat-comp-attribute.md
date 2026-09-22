@@ -1,5 +1,9 @@
 # Repeat properties/events
 
+```TypeScript
+declare class RepeatAttribute<T> extends DynamicNode<RepeatAttribute<T>>
+```
+
 In addition to the drag-and-drop sorting attribute, the following attributes are supported.
 
 **Inheritance/Implementation:** RepeatAttribute extends DynamicNode<RepeatAttribute<T>>
@@ -22,7 +26,7 @@ Component generator. When the return value of [.templateId()](#templateid) does 
 > 
 > - The **itemGenerator** parameter is of the **RepeatItem** type, which combines **item** and **index**. Do not destructure **RepeatItem**.
 > 
-> - This API cannot be called within attributeModifier.
+> - This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 12
 
@@ -50,7 +54,7 @@ Key generator.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 12
 
@@ -78,7 +82,7 @@ Renders the corresponding template child component based on the template type.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 12
 
@@ -93,8 +97,8 @@ Renders the corresponding template child component based on the template type.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | string | Yes | Current template type. |
-| itemBuilder | [RepeatItemBuilder](arkts-arkui-repeatitembuilder-t.md)&lt;T&gt; | Yes | Component generator. |
-| templateOptions | [TemplateOptions](arkts-arkui-templateoptions-i.md) | No | Current template configuration. |
+| itemBuilder | [RepeatItemBuilder](arkts-arkui-repeat-comp-repeatitembuilder-t.md)&lt;T&gt; | Yes | Component generator. |
+| templateOptions | [TemplateOptions](arkts-arkui-repeat-comp-templateoptions-i.md) | No | Current template configuration. |
 
 ## templateId
 
@@ -106,7 +110,7 @@ Assigns a template type for this data item.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 12
 
@@ -120,7 +124,7 @@ Assigns a template type for this data item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| typedFunc | [TemplateTypedFunc](arkts-arkui-templatetypedfunc-t.md)&lt;T&gt; | Yes | Function that generates a template type for each data item. |
+| typedFunc | [TemplateTypedFunc](arkts-arkui-repeat-comp-templatetypedfunc-t.md)&lt;T&gt; | Yes | Function that generates a template type for each data item. |
 
 ## virtualScroll
 
@@ -132,7 +136,7 @@ Enables virtual scrolling for **Repeat**.
 
 > **NOTE:** 
 > 
-> This API cannot be called within attributeModifier.
+> This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 12
 
@@ -146,4 +150,4 @@ Enables virtual scrolling for **Repeat**.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| virtualScrollOptions | [VirtualScrollOptions](arkts-arkui-virtualscrolloptions-i.md) | No | Virtual scrolling configuration. |
+| virtualScrollOptions | [VirtualScrollOptions](arkts-arkui-repeat-comp-virtualscrolloptions-i.md) | No | Virtual scrolling configuration. |

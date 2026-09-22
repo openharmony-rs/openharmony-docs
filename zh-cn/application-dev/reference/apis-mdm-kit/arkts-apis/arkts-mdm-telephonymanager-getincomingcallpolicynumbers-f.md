@@ -67,22 +67,8 @@ try {
 }
 ```
 
-```TypeScript
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
 
-try {
-  // 设置策略类型为禁用名单
-  // 参数需根据实际情况进行替换
-  let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
-  // 获取通话呼入禁用名单
-  let numbers: Array<string> = telephonyManager.getIncomingCallPolicyNumbers(null, policy);
-  console.info(`Succeeded in getting incoming call policy. result: ${JSON.stringify(numbers)}`);
-} catch (err) {
-  console.error(`Failed to get incoming call policy. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getincomingcallpolicynumbers-1"></a>
 
 ## getIncomingCallPolicyNumbers
 
@@ -124,4 +110,18 @@ function getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.P
 
 **示例**
 
-参见 getIncomingCallPolicyNumbers
+```TypeScript
+import { telephonyManager } from '@kit.MDMKit';
+import { adminManager } from '@kit.MDMKit';
+
+try {
+  // 设置策略类型为禁用名单
+  // 参数需根据实际情况进行替换
+  let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
+  // 获取通话呼入禁用名单
+  let numbers: Array<string> = telephonyManager.getIncomingCallPolicyNumbers(null, policy);
+  console.info(`Succeeded in getting incoming call policy. result: ${JSON.stringify(numbers)}`);
+} catch (err) {
+  console.error(`Failed to get incoming call policy. Code: ${err.code}, message: ${err.message}`);
+}
+```

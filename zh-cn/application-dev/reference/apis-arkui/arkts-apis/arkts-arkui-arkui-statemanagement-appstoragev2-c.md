@@ -1,5 +1,9 @@
 # AppStorageV2
 
+```TypeScript
+export declare class AppStorageV2
+```
+
 AppStorageV2提供应用级全局共享状态变量的能力，开发者可以通过connect绑定同一个key，进行跨Ability的数据共享。具体UI使用说明，详见[AppStorageV2(应用全局的UI状态存储)](../../../ui/state-management/arkts-new-appstoragev2.md)。
 
 **起始版本：** 12

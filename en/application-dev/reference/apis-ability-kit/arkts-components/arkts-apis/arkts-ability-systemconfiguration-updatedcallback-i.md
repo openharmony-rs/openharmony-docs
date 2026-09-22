@@ -1,5 +1,9 @@
 # UpdatedCallback
 
+```TypeScript
+interface UpdatedCallback
+```
+
 System configuration updated callback.
 
 @typedef UpdatedCallback

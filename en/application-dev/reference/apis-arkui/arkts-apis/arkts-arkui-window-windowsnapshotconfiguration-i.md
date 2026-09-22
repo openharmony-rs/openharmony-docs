@@ -1,5 +1,9 @@
 # WindowSnapshotConfiguration
 
+```TypeScript
+interface WindowSnapshotConfiguration
+```
+
 Describes the configuration of the main window screenshot.
 
 **Since:** 21

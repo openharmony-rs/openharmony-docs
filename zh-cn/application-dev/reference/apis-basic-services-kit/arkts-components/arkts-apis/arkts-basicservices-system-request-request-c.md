@@ -1,5 +1,9 @@
 # Request
 
+```TypeScript
+export default class Request
+```
+
 **起始版本：** 3
 
 **废弃版本：** 9
@@ -26,7 +30,7 @@ static download(options: DownloadRequestOptions): void
 
 **废弃版本：** 9
 
-**替代接口：** [downloadFile](arkts-basicservices-request-downloadfile-f.md)(context: BaseContext, config: DownloadConfig)
+**替代接口：** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)(context: BaseContext, config: DownloadConfig)
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -70,7 +74,7 @@ static upload(options: UploadRequestOptions): void
 
 **废弃版本：** 9
 
-**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md)(context: BaseContext, config: UploadConfig)
+**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)(context: BaseContext, config: UploadConfig)
 
 **系统能力：** SystemCapability.MiscServices.Upload
 

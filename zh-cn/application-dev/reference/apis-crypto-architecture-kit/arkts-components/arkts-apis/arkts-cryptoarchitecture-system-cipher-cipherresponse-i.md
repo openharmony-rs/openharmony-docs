@@ -1,5 +1,9 @@
 # CipherResponse
 
+```TypeScript
+export interface CipherResponse
+```
+
 调用cipher接口后，返回的内容。
 
 **起始版本：** 3

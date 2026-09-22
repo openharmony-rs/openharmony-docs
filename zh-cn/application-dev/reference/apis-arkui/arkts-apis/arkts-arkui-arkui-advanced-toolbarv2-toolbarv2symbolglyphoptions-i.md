@@ -1,5 +1,9 @@
 # ToolBarV2SymbolGlyphOptions
 
+```TypeScript
+export interface ToolBarV2SymbolGlyphOptions
+```
+
 Declare the options of ToolBarV2SymbolGlyph
 
 **起始版本：** 18
@@ -20,7 +24,7 @@ activated?: SymbolGlyphModifier
 
 Modifier of toolbarV2's activated symbol.
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
@@ -38,7 +42,7 @@ normal: SymbolGlyphModifier
 
 Modifier of toolbarV2's normal symbol.
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 

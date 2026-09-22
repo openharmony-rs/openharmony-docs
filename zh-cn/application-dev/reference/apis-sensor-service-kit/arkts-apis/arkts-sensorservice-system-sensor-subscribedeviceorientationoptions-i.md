@@ -1,5 +1,9 @@
 # SubscribeDeviceOrientationOptions
 
+```TypeScript
+export interface SubscribeDeviceOrientationOptions
+```
+
 用于设置设备方向传感器订阅的参数，包括回调频率和回调函数。
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。

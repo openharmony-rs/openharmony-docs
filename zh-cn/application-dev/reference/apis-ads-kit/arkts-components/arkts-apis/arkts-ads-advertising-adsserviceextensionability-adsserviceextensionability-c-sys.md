@@ -1,5 +1,9 @@
 # AdsServiceExtensionAbility（系统接口）
 
+```TypeScript
+export default class AdsServiceExtensionAbility
+```
+
 本模块为设备厂商提供广告扩展能力，设备厂商可自主实现单广告位请求和多广告位请求的业务逻辑。
 
 **起始版本：** 11

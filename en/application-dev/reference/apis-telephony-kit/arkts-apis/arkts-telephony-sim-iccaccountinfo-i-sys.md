@@ -1,5 +1,9 @@
 # IccAccountInfo
 
+```TypeScript
+export interface IccAccountInfo
+```
+
 Defines the ICC account information.
 
 **Since:** 10

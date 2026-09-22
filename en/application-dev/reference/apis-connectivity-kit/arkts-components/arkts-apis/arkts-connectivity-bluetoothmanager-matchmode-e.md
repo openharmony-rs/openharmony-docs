@@ -1,5 +1,9 @@
 # MatchMode
 
+```TypeScript
+enum MatchMode
+```
+
 The enum of BLE match mode.
 
 **Since:** 9

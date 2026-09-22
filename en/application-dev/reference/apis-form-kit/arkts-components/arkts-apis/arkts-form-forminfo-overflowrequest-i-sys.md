@@ -1,5 +1,9 @@
 # OverflowRequest (System API)
 
+```TypeScript
+interface OverflowRequest
+```
+
 Provides OverflowRequest about request/cancel form's overflow
 
 @typedef { OverflowRequest }

@@ -1,5 +1,9 @@
 # PlaybackInfoKey
 
+```TypeScript
+enum PlaybackInfoKey
+```
+
 Enumerates the playback description keys.
 
 **Since:** 12

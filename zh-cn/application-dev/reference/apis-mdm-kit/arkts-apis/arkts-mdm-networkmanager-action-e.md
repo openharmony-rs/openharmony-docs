@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+enum Action
+```
+
 数据包的行为。
 
 **起始版本：** 12

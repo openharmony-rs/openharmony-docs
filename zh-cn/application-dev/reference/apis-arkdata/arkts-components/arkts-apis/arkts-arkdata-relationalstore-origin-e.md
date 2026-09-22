@@ -1,5 +1,9 @@
 # Origin
 
+```TypeScript
+enum Origin
+```
+
 表示数据来源。请使用枚举名称而非枚举值。
 
 **起始版本：** 11

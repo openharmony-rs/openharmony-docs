@@ -1,5 +1,9 @@
 # GenerateTextTaskResult (System API)
 
+```TypeScript
+interface GenerateTextTaskResult
+```
+
 Configuration result for AI-generated text tasks.
 
 @interface GenerateTextTaskResult

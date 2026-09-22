@@ -1,5 +1,9 @@
 # Poi
 
+```TypeScript
+export interface Poi
+```
+
 POI(Point of Interest, 兴趣点)信息。
 
 **起始版本：** 19

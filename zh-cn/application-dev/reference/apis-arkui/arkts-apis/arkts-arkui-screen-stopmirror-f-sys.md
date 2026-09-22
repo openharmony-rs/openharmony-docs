@@ -53,19 +53,8 @@ screen.stopMirror(mirrorScreenIds, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 屏幕ID需通过getAllScreens()获取
-let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
-// 停止屏幕镜像模式
-screen.stopMirror(mirrorScreenIds).then(() => {
-  console.info('Succeeded in stopping mirror screens.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to stop mirror screens. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="stopmirror-1"></a>
 
 ## stopMirror
 
@@ -103,4 +92,15 @@ function stopMirror(mirrorScreen:Array<number>): Promise<void>
 
 **示例**
 
-参见 [stopMirror](#stopmirror)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 屏幕ID需通过getAllScreens()获取
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
+// 停止屏幕镜像模式
+screen.stopMirror(mirrorScreenIds).then(() => {
+  console.info('Succeeded in stopping mirror screens.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop mirror screens. Code: ${err.code}, message: ${err.message}`);
+});
+```

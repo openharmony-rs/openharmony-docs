@@ -1,5 +1,9 @@
 # CompressMethod
 
+```TypeScript
+export enum CompressMethod
+```
+
 压缩模式。
 
 **起始版本：** 12

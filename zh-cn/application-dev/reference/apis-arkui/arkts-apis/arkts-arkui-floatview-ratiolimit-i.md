@@ -1,5 +1,9 @@
 # RatioLimit
 
+```TypeScript
+interface RatioLimit
+```
+
 标准悬浮窗的宽高比限制范围。宽高比比值由窗口矩形区域的宽除以高获得。
 
 **起始版本：** 26.0.0

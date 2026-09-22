@@ -1,5 +1,9 @@
 # DataType
 
+```TypeScript
+export enum DataType
+```
+
 Enum for provides MSTensor data type
 
 **Since:** 10

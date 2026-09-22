@@ -20,9 +20,7 @@ function setBadgeNumber(badgeNumber: number, callback: AsyncCallback<void>): voi
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：**
-
-[getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md) 获取当前应用的通知数量。
+**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md) 获取当前应用的通知数量。
 
 **参数：**
 
@@ -47,17 +45,6 @@ function setBadgeNumber(badgeNumber: number, callback: AsyncCallback<void>): voi
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let badgeNumber: number = 10;
-notificationManager.setBadgeNumber(badgeNumber).then(() => {
-  console.info(`Succeeded in setting badge number.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let setBadgeNumberCallback = (err: BusinessError): void => {
   if (err) {
     console.error(`Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
@@ -69,6 +56,8 @@ let badgeNumber: number = 10;
 notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
+
+<a id="setbadgenumber-1"></a>
 
 ## setBadgeNumber
 
@@ -84,9 +73,7 @@ function setBadgeNumber(badgeNumber: number): Promise<void>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：**
-
-[getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md) 获取当前应用的通知数量。
+**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md) 获取当前应用的通知数量。
 
 **参数：**
 
@@ -113,4 +100,13 @@ function setBadgeNumber(badgeNumber: number): Promise<void>
 
 **示例**
 
-参见 setBadgeNumber
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let badgeNumber: number = 10;
+notificationManager.setBadgeNumber(badgeNumber).then(() => {
+  console.info(`Succeeded in setting badge number.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+});
+```

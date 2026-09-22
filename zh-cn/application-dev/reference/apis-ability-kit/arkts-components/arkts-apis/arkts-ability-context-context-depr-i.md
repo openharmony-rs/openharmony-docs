@@ -1,5 +1,9 @@
 # Context
 
+```TypeScript
+export interface Context extends BaseContext
+```
+
 Context模块提供了Ability或Application的上下文的基础能力，包括允许访问特定于应用程序的资源、请求和验证权限等。
 
 **继承/实现关系：** Context extends [BaseContext](arkts-ability-basecontext-c.md)
@@ -27,6 +31,8 @@ getAbilityInfo(callback: AsyncCallback<AbilityInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | 是 | 回调函数，返回true表示该Ability的配置正在更改，否则返回false。 |
+
+<a id="getabilityinfo-1"></a>
 
 ## getAbilityInfo
 
@@ -88,6 +94,8 @@ getApplicationInfo(callback: AsyncCallback<ApplicationInfo>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | 是 | 回调函数，返回当前应用程序的信息。 |
 
+<a id="getapplicationinfo-1"></a>
+
 ## getApplicationInfo
 
 ```TypeScript
@@ -127,6 +135,8 @@ getAppType(callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回此应用程序的类型。 |
+
+<a id="getapptype-1"></a>
 
 ## getAppType
 
@@ -168,6 +178,8 @@ getAppVersionInfo(callback: AsyncCallback<AppVersionInfo>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)&gt; | 是 | 回调函数，返回应用版本信息。 |
 
+<a id="getappversioninfo-1"></a>
+
 ## getAppVersionInfo
 
 ```TypeScript
@@ -207,6 +219,8 @@ getBundleName(callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回当前ability的Bundle名称。 |
+
+<a id="getbundlename-1"></a>
 
 ## getBundleName
 
@@ -248,6 +262,8 @@ getCacheDir(callback: AsyncCallback<string>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回该应用程序的内部存储目录。 |
 
+<a id="getcachedir-1"></a>
+
 ## getCacheDir
 
 ```TypeScript
@@ -287,6 +303,8 @@ getCallingBundle(callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回ability调用方的Bundle名称。 |
+
+<a id="getcallingbundle-1"></a>
 
 ## getCallingBundle
 
@@ -328,6 +346,8 @@ getDisplayOrientation(callback: AsyncCallback<bundle.DisplayOrientation>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[bundle.DisplayOrientation](arkts-ability-bundle-displayorientation-e.md)&gt; | 是 | 回调函数，返回屏幕显示方向。 |
 
+<a id="getdisplayorientation-1"></a>
+
 ## getDisplayOrientation
 
 ```TypeScript
@@ -367,6 +387,8 @@ getElementName(callback: AsyncCallback<ElementName>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ElementName](arkts-ability-elementname-elementname-depr-i.md)&gt; | 是 | 回调函数，返回当前ability的ohos.bundleManager.ElementName对象。 |
+
+<a id="getelementname-1"></a>
 
 ## getElementName
 
@@ -410,6 +432,8 @@ getExternalCacheDir(callback: AsyncCallback<string>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回应用程序的缓存目录的绝对路径。 |
 
+<a id="getexternalcachedir-1"></a>
+
 ## getExternalCacheDir
 
 ```TypeScript
@@ -452,6 +476,8 @@ getFilesDir(callback: AsyncCallback<string>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回内部存储器上此应用程序的文件目录。 |
 
+<a id="getfilesdir-1"></a>
+
 ## getFilesDir
 
 ```TypeScript
@@ -491,6 +517,8 @@ getHapModuleInfo(callback: AsyncCallback<HapModuleInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)&gt; | 是 | 回调函数，返回应用的ModuleInfo对象。 |
+
+<a id="gethapmoduleinfo-1"></a>
 
 ## getHapModuleInfo
 
@@ -532,6 +560,8 @@ getOrCreateDistributedDir(): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | 回调函数，返回Ability或应用的分布式文件路径。若路径不存在，系统将创建一个路径并返回创建的路径。 |
 
+<a id="getorcreatedistributeddir-1"></a>
+
 ## getOrCreateDistributedDir
 
 ```TypeScript
@@ -571,6 +601,8 @@ getOrCreateLocalDir(): Promise<string>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回应用程序的本地根目录。 |
+
+<a id="getorcreatelocaldir-1"></a>
 
 ## getOrCreateLocalDir
 
@@ -612,6 +644,8 @@ getProcessInfo(callback: AsyncCallback<ProcessInfo>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ProcessInfo](arkts-ability-processinfo-processinfo-depr-i.md)&gt; | 是 | 回调函数，返回当前进程的信息。 |
 
+<a id="getprocessinfo-1"></a>
+
 ## getProcessInfo
 
 ```TypeScript
@@ -651,6 +685,8 @@ getProcessName(callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回当前进程的名称。 |
+
+<a id="getprocessname-1"></a>
 
 ## getProcessName
 
@@ -692,6 +728,8 @@ isUpdatingConfigurations(callback: AsyncCallback<boolean>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，返回true表示该Ability的配置正在更改，否则返回false。 |
 
+<a id="isupdatingconfigurations-1"></a>
+
 ## isUpdatingConfigurations
 
 ```TypeScript
@@ -731,6 +769,8 @@ printDrawnCompleted(callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通知系统绘制此页面功能所需的时间成功，err为undefined，否则为错误对象。 |
+
+<a id="printdrawncompleted-1"></a>
 
 ## printDrawnCompleted
 
@@ -777,6 +817,8 @@ requestPermissionsFromUser(
 | permissions | Array&lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
 | requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md#permissionrequestresult)的请求代码。 |
 | resultCallback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)&gt; | 是 | 回调函数，返回授权结果信息。 |
+
+<a id="requestpermissionsfromuser-1"></a>
 
 ## requestPermissionsFromUser
 
@@ -826,6 +868,8 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation, callback: AsyncCal
 | orientation | [bundle.DisplayOrientation](arkts-ability-bundle-displayorientation-e.md) | 是 | 指示当前能力的新方向。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置当前Ability的显示方向成功，err为undefined，否则为错误对象。 |
 
+<a id="setdisplayorientation-1"></a>
+
 ## setDisplayOrientation
 
 ```TypeScript
@@ -874,6 +918,8 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | show | boolean | 是 | 指定是否在锁屏顶部显示此功能。值true表示在锁屏上显示，值false表示不显示。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置每当显示锁屏时是否在锁屏顶部显示此功能并使该功能保持激活状态的操作成功，err为undefined，否则为错误对象。 |
+
+<a id="setshowonlockscreen-1"></a>
 
 ## setShowOnLockScreen
 
@@ -927,6 +973,8 @@ setWakeUpScreen(wakeUp: boolean, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | wakeUp | boolean | 是 | 指定是否唤醒屏幕。值true表示唤醒它，值false表示不唤醒它。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置恢复此功能时是否唤醒屏幕成功，err为undefined，否则为错误对象。 |
+
+<a id="setwakeupscreen-1"></a>
 
 ## setWakeUpScreen
 
@@ -985,6 +1033,8 @@ verifyPermission(permission: string, options?: PermissionOptions): Promise<numbe
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，如果pid和uid具有权限，则使用0进行异步回调；否则使用-1回调。 |
 
+<a id="verifypermission-1"></a>
+
 ## verifyPermission
 
 ```TypeScript
@@ -1006,6 +1056,8 @@ verifyPermission(permission: string, options: PermissionOptions, callback: Async
 | permission | string | 是 | 指定权限的名称。 |
 | options | [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md) | 是 | 权限选项。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回权限验证结果，0有权限，-1无权限。 |
+
+<a id="verifypermission-2"></a>
 
 ## verifyPermission
 

@@ -1,5 +1,9 @@
 # NetworkMatchRule (System API)
 
+```TypeScript
+export interface NetworkMatchRule
+```
+
 Defines the network for which the quota policy is set.
 
 **Since:** 10

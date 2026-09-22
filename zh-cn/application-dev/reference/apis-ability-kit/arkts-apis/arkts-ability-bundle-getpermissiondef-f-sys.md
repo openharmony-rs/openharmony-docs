@@ -61,6 +61,8 @@ bundle.getPermissionDef(permissionName).then((data) => {
 ```
 
 
+<a id="getpermissiondef-1"></a>
+
 ## getPermissionDef
 
 ```TypeScript

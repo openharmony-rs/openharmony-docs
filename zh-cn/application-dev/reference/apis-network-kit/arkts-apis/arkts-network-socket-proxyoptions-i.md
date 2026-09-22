@@ -1,5 +1,9 @@
 # ProxyOptions
 
+```TypeScript
+export interface ProxyOptions
+```
+
 Socket代理信息。
 
 **起始版本：** 18

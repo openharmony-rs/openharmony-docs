@@ -70,26 +70,8 @@ browser.setPolicies(wantTemp, appId, policies, (err) => {
 });
 ```
 
-```TypeScript
-import { browser } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
-let appId: string = 'com.example.******_******/******5t5CoBM=';
-let policies: string = '{"InsecurePrivateNetworkRequestsAllowed":{"level":"mandatory","scope":"machine","source":"platform","value":true},"LegacySameSiteCookieBehaviorEnabledForDomainList":{"level":"mandatory","scope":"machine","source":"platform","value":["[*.]"]}}';
-browser.setPolicies(wantTemp, appId, policies).then(() => {
-  console.info('Succeeded in setting browser policies.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set browser policies. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="setpolicies-1"></a>
 
 ## setPolicies
 
@@ -139,4 +121,22 @@ function setPolicies(admin: Want, appId: string, policies: string): Promise<void
 
 **示例**
 
-参见 [setPolicies](#setpolicies)
+```TypeScript
+import { browser } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
+let appId: string = 'com.example.******_******/******5t5CoBM=';
+let policies: string = '{"InsecurePrivateNetworkRequestsAllowed":{"level":"mandatory","scope":"machine","source":"platform","value":true},"LegacySameSiteCookieBehaviorEnabledForDomainList":{"level":"mandatory","scope":"machine","source":"platform","value":["[*.]"]}}';
+browser.setPolicies(wantTemp, appId, policies).then(() => {
+  console.info('Succeeded in setting browser policies.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set browser policies. Code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -55,22 +55,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formIds: string[] = ['12400633174999288'];
-  formHost.recoverForms(formIds, (err: BusinessError) => {
-    if (err) {
-      console.error(`recoverForms error, code: ${err.code}, message: ${err.message}`);
-    }
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
-```TypeScript
-import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let formIds: string[] = ['12400633174999288'];
   formHost.recoverForms(formIds).then(() => {
     console.info('formHost recoverForms success');
   }).catch((err: BusinessError) => {
@@ -81,6 +65,8 @@ try {
 }
 ```
 
+
+<a id="recoverforms-1"></a>
 
 ## recoverForms
 
@@ -120,4 +106,18 @@ function recoverForms(formIds: Array<string>, callback: AsyncCallback<void>): vo
 
 **示例**
 
-参见 [recoverForms](#recoverforms)
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.recoverForms(formIds, (err: BusinessError) => {
+    if (err) {
+      console.error(`recoverForms error, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

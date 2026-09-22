@@ -1,5 +1,9 @@
 # TranslateResult
 
+```TypeScript
+interface TranslateResult
+```
+
 平移信息。
 
 **起始版本：** 10

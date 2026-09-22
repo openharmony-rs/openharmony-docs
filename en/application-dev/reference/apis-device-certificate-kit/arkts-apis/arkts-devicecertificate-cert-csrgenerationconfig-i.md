@@ -1,5 +1,9 @@
 # CsrGenerationConfig
 
+```TypeScript
+interface CsrGenerationConfig
+```
+
 Configuration parameters for generating a CSR, including the subject name, digest algorithm, attribute, and output format.
 
 > **NOTE:** 

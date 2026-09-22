@@ -1,5 +1,9 @@
 # ScrollType
 
+```TypeScript
+enum ScrollType
+```
+
 Scroll滚动类型，用于[setScrollable](arkts-arkweb-webview-webviewcontroller-c.md#setscrollable)。
 
 **起始版本：** 12

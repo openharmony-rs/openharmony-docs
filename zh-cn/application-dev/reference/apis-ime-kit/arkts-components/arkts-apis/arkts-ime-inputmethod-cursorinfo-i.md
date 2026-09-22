@@ -1,5 +1,9 @@
 # CursorInfo
 
+```TypeScript
+export interface CursorInfo
+```
+
 光标信息。
 
 **起始版本：** 10

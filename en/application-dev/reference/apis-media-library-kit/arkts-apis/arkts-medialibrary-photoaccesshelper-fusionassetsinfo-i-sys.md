@@ -1,5 +1,9 @@
 # FusionAssetsInfo (System API)
 
+```TypeScript
+interface FusionAssetsInfo
+```
+
 Fusion assets information.
 
 **Since:** 22

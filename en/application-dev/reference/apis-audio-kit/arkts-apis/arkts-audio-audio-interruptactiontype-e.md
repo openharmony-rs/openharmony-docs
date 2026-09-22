@@ -1,5 +1,9 @@
 # InterruptActionType
 
+```TypeScript
+enum InterruptActionType
+```
+
 Enumerates the returned event types for audio interruption events.
 
 **Since:** 7

@@ -20,43 +20,43 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [abort](arkts-devicecertificate-certificatemanager-abort-f.md) | 中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Callback异步回调。 |
-| [abort](arkts-devicecertificate-certificatemanager-abort-f.md) | 中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Promise异步回调。 |
-| [finish](arkts-devicecertificate-certificatemanager-finish-f.md) | 完成签名的操作，是签名流程的最后一步，需要先调用init和update接口。使用Callback异步回调。 |
-| [finish](arkts-devicecertificate-certificatemanager-finish-f.md) | 完成验签的操作，是验签流程的最后一步，需要先调用init和update接口。使用Callback异步回调。 |
-| [finish](arkts-devicecertificate-certificatemanager-finish-f.md) | 完成签名、验签的操作。使用Promise异步回调。 |
-| [getAllUserTrustedCertificates](arkts-devicecertificate-certificatemanager-getallusertrustedcertificates-f.md) | 表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。 |
-| [getAllUserTrustedCertificates](arkts-devicecertificate-certificatemanager-getallusertrustedcertificates-f.md) | 表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。 |
+| [abort](arkts-devicecertificate-certificatemanager-abort-f.md#abort) | 中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Callback异步回调。 |
+| [abort](arkts-devicecertificate-certificatemanager-abort-f.md#abort-1) | 中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Promise异步回调。 |
+| [finish](arkts-devicecertificate-certificatemanager-finish-f.md#finish) | 完成签名的操作，是签名流程的最后一步，需要先调用init和update接口。使用Callback异步回调。 |
+| [finish](arkts-devicecertificate-certificatemanager-finish-f.md#finish-1) | 完成验签的操作，是验签流程的最后一步，需要先调用init和update接口。使用Callback异步回调。 |
+| [finish](arkts-devicecertificate-certificatemanager-finish-f.md#finish-2) | 完成签名、验签的操作。使用Promise异步回调。 |
+| [getAllUserTrustedCertificates](arkts-devicecertificate-certificatemanager-getallusertrustedcertificates-f.md#getallusertrustedcertificates) | 表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。 |
+| [getAllUserTrustedCertificates](arkts-devicecertificate-certificatemanager-getallusertrustedcertificates-f.md#getallusertrustedcertificates-1) | 表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。 |
 | [getCertificateStorePath](arkts-devicecertificate-certificatemanager-getcertificatestorepath-f.md) | 表示获取证书的存储路径。 |
-| [getPrivateCertificate](arkts-devicecertificate-certificatemanager-getprivatecertificate-f.md) | 获取私有凭据的详细信息，使用Callback异步回调。 |
-| [getPrivateCertificate](arkts-devicecertificate-certificatemanager-getprivatecertificate-f.md) | 获取私有凭据详情。使用Promise异步回调。 |
+| [getPrivateCertificate](arkts-devicecertificate-certificatemanager-getprivatecertificate-f.md#getprivatecertificate) | 获取私有凭据的详细信息，使用Callback异步回调。 |
+| [getPrivateCertificate](arkts-devicecertificate-certificatemanager-getprivatecertificate-f.md#getprivatecertificate-1) | 获取私有凭据详情。使用Promise异步回调。 |
 | [getPrivateCertificates](arkts-devicecertificate-certificatemanager-getprivatecertificates-f.md) | 表示获取应用安装的凭据列表。使用Promise异步回调。 |
 | [getPublicCertificate](arkts-devicecertificate-certificatemanager-getpubliccertificate-f.md) | 表示获取用户公共凭据的详细信息。使用Promise异步回调。 |
 | [getUkeyCertificate](arkts-devicecertificate-certificatemanager-getukeycertificate-f.md) | 获取USB Key证书凭据详细信息。使用Promise异步回调。 |
 | [getUkeyCertificateList](arkts-devicecertificate-certificatemanager-getukeycertificatelist-f.md) | 获取USB Key证书凭据列表。使用Promise异步回调。 |
 | [getUserTrustedCertificate](arkts-devicecertificate-certificatemanager-getusertrustedcertificate-f.md) | 表示获取用户根CA证书的详细信息。使用Promise异步回调。 |
 | [importUkeyCertificate](arkts-devicecertificate-certificatemanager-importukeycertificate-f.md) | 导入证书到USB Key |
-| [init](arkts-devicecertificate-certificatemanager-init-f.md) | 使用凭据进行签名、验签的初始化操作，是签名验签流程的第一步，后续需依次调用update和finish接口完成操作。使用Callback异步回调。 |
-| [init](arkts-devicecertificate-certificatemanager-init-f.md) | 使用凭据进行签名、验签的初始化操作。使用Promise异步回调。 |
-| [installPrivateCertificate](arkts-devicecertificate-certificatemanager-installprivatecertificate-f.md) | 安装私有凭据。使用Callback异步回调。 |
-| [installPrivateCertificate](arkts-devicecertificate-certificatemanager-installprivatecertificate-f.md) | 安装私有凭据。使用Promise异步回调。 |
-| [installPrivateCertificate](arkts-devicecertificate-certificatemanager-installprivatecertificate-f.md) | 表示安装私有凭据并指定凭据的存储级别。使用Promise异步回调。 |
+| [init](arkts-devicecertificate-certificatemanager-init-f.md#init) | 使用凭据进行签名、验签的初始化操作，是签名验签流程的第一步，后续需依次调用update和finish接口完成操作。使用Callback异步回调。 |
+| [init](arkts-devicecertificate-certificatemanager-init-f.md#init-1) | 使用凭据进行签名、验签的初始化操作。使用Promise异步回调。 |
+| [installPrivateCertificate](arkts-devicecertificate-certificatemanager-installprivatecertificate-f.md#installprivatecertificate) | 安装私有凭据。使用Callback异步回调。 |
+| [installPrivateCertificate](arkts-devicecertificate-certificatemanager-installprivatecertificate-f.md#installprivatecertificate-1) | 安装私有凭据。使用Promise异步回调。 |
+| [installPrivateCertificate](arkts-devicecertificate-certificatemanager-installprivatecertificate-f.md#installprivatecertificate-2) | 表示安装私有凭据并指定凭据的存储级别。使用Promise异步回调。 |
 | [installUserTrustedCertificate](arkts-devicecertificate-certificatemanager-installusertrustedcertificate-f.md) | 安装用户CA证书。使用Promise异步回调。 |
 | [installUserTrustedCertificateSync](arkts-devicecertificate-certificatemanager-installusertrustedcertificatesync-f.md) | 安装用户CA证书。 |
 | [isAuthorizedApp](arkts-devicecertificate-certificatemanager-isauthorizedapp-f.md) | 表示当前应用是否由指定的用户凭据授权。使用Promise异步回调。 |
-| [uninstallPrivateCertificate](arkts-devicecertificate-certificatemanager-uninstallprivatecertificate-f.md) | 卸载指定的私有凭据，使用Callback异步回调。 |
-| [uninstallPrivateCertificate](arkts-devicecertificate-certificatemanager-uninstallprivatecertificate-f.md) | 表示卸载指定的私有凭据。使用Promise异步回调。 |
+| [uninstallPrivateCertificate](arkts-devicecertificate-certificatemanager-uninstallprivatecertificate-f.md#uninstallprivatecertificate) | 卸载指定的私有凭据，使用Callback异步回调。 |
+| [uninstallPrivateCertificate](arkts-devicecertificate-certificatemanager-uninstallprivatecertificate-f.md#uninstallprivatecertificate-1) | 表示卸载指定的私有凭据。使用Promise异步回调。 |
 | [uninstallUserTrustedCertificateSync](arkts-devicecertificate-certificatemanager-uninstallusertrustedcertificatesync-f.md) | 卸载用户CA证书。 |
-| [update](arkts-devicecertificate-certificatemanager-update-f.md) | 签名、验签的数据更新操作，需要在init操作之后调用，用于传入待签名、验签的数据。使用Callback异步回调。 |
-| [update](arkts-devicecertificate-certificatemanager-update-f.md) | 签名、验签的数据更新操作。使用Promise异步回调。 |
+| [update](arkts-devicecertificate-certificatemanager-update-f.md#update) | 签名、验签的数据更新操作，需要在init操作之后调用，用于传入待签名、验签的数据。使用Callback异步回调。 |
+| [update](arkts-devicecertificate-certificatemanager-update-f.md#update-1) | 签名、验签的数据更新操作。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAllAppPrivateCertificates](arkts-devicecertificate-certificatemanager-getallappprivatecertificates-f-sys.md) | 表示获取所有私有凭据列表，使用Callback异步回调。 |
-| [getAllAppPrivateCertificates](arkts-devicecertificate-certificatemanager-getallappprivatecertificates-f-sys.md) | 表示获取所有私有凭据列表。使用Promise异步回调。 |
+| [getAllAppPrivateCertificates](arkts-devicecertificate-certificatemanager-getallappprivatecertificates-f-sys.md#getallappprivatecertificates) | 表示获取所有私有凭据列表，使用Callback异步回调。 |
+| [getAllAppPrivateCertificates](arkts-devicecertificate-certificatemanager-getallappprivatecertificates-f-sys.md#getallappprivatecertificates-1) | 表示获取所有私有凭据列表。使用Promise异步回调。 |
 | [getAllAppPrivateCertificatesByUid](arkts-devicecertificate-certificatemanager-getallappprivatecertificatesbyuid-f-sys.md) | 获取指定应用的所有私有凭据，仅证书管理应用调用。使用Promise异步回调。 |
 | [getAllPublicCertificates](arkts-devicecertificate-certificatemanager-getallpubliccertificates-f-sys.md) | 获取所有用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。 |
 | [getAllSystemAppCertificates](arkts-devicecertificate-certificatemanager-getallsystemappcertificates-f-sys.md) | 表示获取所有系统凭据列表。使用Promise异步回调。 |

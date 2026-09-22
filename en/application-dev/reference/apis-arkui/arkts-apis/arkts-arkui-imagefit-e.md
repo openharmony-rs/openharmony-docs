@@ -1,5 +1,9 @@
 # ImageFit
 
+```TypeScript
+declare enum ImageFit
+```
+
 Image display mode.
 
 **Since:** 7
@@ -15,6 +19,8 @@ Contain
 Keep the aspect ratio to zoom out or zoom in so that the image is completely displayed within the display boundary.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -32,6 +38,8 @@ Keep the aspect ratio to zoom out or zoom in so that both sides of the image are
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -47,6 +55,8 @@ Auto
 Adaptive display
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -64,6 +74,8 @@ Zoom in or out without maintaining the aspect ratio so that the image fills the 
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -80,6 +92,8 @@ Keep the aspect ratio displayed, and the image zooms out or remains unchanged.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -95,6 +109,8 @@ None
 Keep the original size and display it in the center.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

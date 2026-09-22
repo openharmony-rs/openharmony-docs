@@ -1,5 +1,9 @@
 # KeyboardAppearance
 
+```TypeScript
+declare enum KeyboardAppearance
+```
+
 Enumerates the appearance modes of the keyboard.
 
 **Since:** 15

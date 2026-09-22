@@ -1,5 +1,9 @@
 # EnabledPriorityNotificationByBundleCallbackData (System API)
 
+```TypeScript
+export interface EnabledPriorityNotificationByBundleCallbackData
+```
+
 Returns the notification priority switch state.
 
 **Since:** 23

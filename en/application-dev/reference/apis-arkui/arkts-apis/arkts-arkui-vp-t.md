@@ -18,5 +18,5 @@ Defines a length in vp.
 
 | Type | Description |
 | --- | --- |
-| `&#36;{number}vp` | Viewport pixel unit. The unit vp can be included, for example, **'10vp'**. |
+| `${number}vp` | Viewport pixel unit. The unit vp can be included, for example, **'10vp'**. |
 | number | Viewport pixel unit. The unit vp can be omitted, for example, **10**. |

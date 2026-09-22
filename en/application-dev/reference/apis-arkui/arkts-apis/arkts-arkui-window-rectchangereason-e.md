@@ -1,5 +1,9 @@
 # RectChangeReason
 
+```TypeScript
+enum RectChangeReason
+```
+
 Enumerates the reasons for window rectangle (position and size) changes.
 
 **Since:** 12

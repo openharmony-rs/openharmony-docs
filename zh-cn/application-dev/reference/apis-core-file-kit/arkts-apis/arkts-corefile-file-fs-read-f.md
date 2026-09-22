@@ -54,6 +54,8 @@ declare function read(
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
+<a id="read-1"></a>
+
 ## read
 
 ```TypeScript
@@ -90,6 +92,8 @@ declare function read(fd: number, buffer: ArrayBuffer, callback: AsyncCallback<n
 | 13900034 | Operation would block |
 | 13900042 | Unknown error |
 
+
+<a id="read-2"></a>
 
 ## read
 

@@ -1,5 +1,9 @@
 # ApiVersion (System API)
 
+```TypeScript
+export interface ApiVersion
+```
+
 ApiVersion: the bundle Api version class.
 
 **Since:** 9

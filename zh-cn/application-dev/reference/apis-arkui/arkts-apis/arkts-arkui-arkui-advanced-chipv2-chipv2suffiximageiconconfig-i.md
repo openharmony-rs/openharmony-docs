@@ -1,5 +1,9 @@
 # ChipV2SuffixImageIconConfig
 
+```TypeScript
+export interface ChipV2SuffixImageIconConfig extends ChipV2ImageIconConfig, ChipV2AccessibilityConfig
+```
+
 ChipV2SuffixImageIconConfig定义后缀图标的属性配置。
 
 继承自[ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md)和[ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md)。

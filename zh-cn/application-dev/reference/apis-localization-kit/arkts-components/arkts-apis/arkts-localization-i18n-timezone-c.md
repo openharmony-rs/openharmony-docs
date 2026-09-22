@@ -1,5 +1,9 @@
 # TimeZone
 
+```TypeScript
+export class TimeZone
+```
+
 提供时区相关的能力，包括时区名称翻译、偏移量获取和跳变规则获取等。
 
 **起始版本：** 7

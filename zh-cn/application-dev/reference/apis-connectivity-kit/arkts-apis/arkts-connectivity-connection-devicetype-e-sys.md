@@ -1,5 +1,9 @@
 # DeviceType（系统接口）
 
+```TypeScript
+enum DeviceType
+```
+
 枚举，蓝牙远程设备的自定义类型。
 
 **起始版本：** 12

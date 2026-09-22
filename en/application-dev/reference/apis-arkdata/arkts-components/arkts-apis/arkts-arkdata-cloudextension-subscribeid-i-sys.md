@@ -1,5 +1,9 @@
 # SubscribeId (System API)
 
+```TypeScript
+export interface SubscribeId
+```
+
 Represents the subscription ID information.
 
 **Since:** 11

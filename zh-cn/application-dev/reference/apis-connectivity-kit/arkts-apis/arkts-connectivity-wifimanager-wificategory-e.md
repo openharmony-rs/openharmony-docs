@@ -1,5 +1,9 @@
 # WifiCategory
 
+```TypeScript
+enum WifiCategory
+```
+
 表示热点支持的最高Wi-Fi类别。可以用于识别和区分不同Wi-Fi技术标准的热点。
 
 **起始版本：** 12

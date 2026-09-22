@@ -1,5 +1,9 @@
 # DataType
 
+```TypeScript
+export declare enum DataType
+```
+
 Enumerates the types of data sent from **PickerController** to the **PhotoPickerComponent**.
 
 **Since:** 12

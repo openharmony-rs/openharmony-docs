@@ -1,5 +1,9 @@
 # DistributedField (System API)
 
+```TypeScript
+enum DistributedField
+```
+
 Enumerates the DistributedField.
 
 **Since:** 24

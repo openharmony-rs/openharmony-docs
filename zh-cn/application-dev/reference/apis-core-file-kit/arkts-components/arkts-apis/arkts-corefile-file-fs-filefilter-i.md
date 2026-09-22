@@ -1,5 +1,9 @@
 # FileFilter
 
+```TypeScript
+export interface FileFilter
+```
+
 文件名过滤器接口，可通过该接口自定义文件名过滤规则。
 
 **起始版本：** 26.0.0

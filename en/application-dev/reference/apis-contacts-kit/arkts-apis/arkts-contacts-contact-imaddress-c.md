@@ -1,5 +1,9 @@
 # ImAddress
 
+```TypeScript
+class ImAddress
+```
+
 Enumerates IM addresses.
 
 **Since:** 7

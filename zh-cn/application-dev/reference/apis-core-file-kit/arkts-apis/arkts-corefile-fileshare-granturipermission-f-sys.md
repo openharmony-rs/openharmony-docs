@@ -70,50 +70,8 @@ try {
 }
 ```
 
-```TypeScript
-import { wantConstant } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileShare } from '@kit.CoreFileKit';
 
-let uri: string =
-  'file://docs/storage/Users/currentUser/Document/1.txt'; // 推荐使用系统接口生成URI。fileUri.getUriFromPath('沙箱路径');
-let bundleName: string = 'com.demo.test';
-try {
-  fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
-    wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION).then(() => {
-    console.info('grantUriPermission success!');
-  }).catch((error: BusinessError) => {
-    console.error(`grantUriPermission failed with error: ${JSON.stringify(error)}`);
-  });
-} catch (err) {
-  let error: BusinessError = err as BusinessError;
-  console.error(`grantUriPermission failed with error: ${JSON.stringify(error)}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileShare } from '@kit.CoreFileKit';
-
-async function grantUriPermissionExample() {
-  try {
-    let uri = 'file://docs/storage/Users/currentUser/Documents/1.txt';
-    let policyInfo: fileShare.PolicyInfo = {
-      uri: uri,
-      operationMode: fileShare.OperationMode.CREATE_MODE | fileShare.OperationMode.READ_MODE,
-    };
-    let policies: Array<fileShare.PolicyInfo> = [policyInfo];
-
-    fileShare.grantUriPermission(policies, 'com.example.myapplicationtest', 0).then(() => {
-    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-      console.error(`grantUriPermission failed. Code: ${err.code}, message: ${err.message}`);
-    });
-  } catch (error) {
-    console.info(`grantUriPermission error, Code: ${error.code}, message: ${error.message}`);
-  }
-}
-```
-
+<a id="granturipermission-1"></a>
 
 ## grantUriPermission
 
@@ -156,8 +114,29 @@ function grantUriPermission(uri: string, bundleName: string, flag: wantConstant.
 
 **示例**
 
-参见 [grantUriPermission](#granturipermission)
+```TypeScript
+import { wantConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
 
+let uri: string =
+  'file://docs/storage/Users/currentUser/Document/1.txt'; // 推荐使用系统接口生成URI。fileUri.getUriFromPath('沙箱路径');
+let bundleName: string = 'com.demo.test';
+try {
+  fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
+    wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION).then(() => {
+    console.info('grantUriPermission success!');
+  }).catch((error: BusinessError) => {
+    console.error(`grantUriPermission failed with error: ${JSON.stringify(error)}`);
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`grantUriPermission failed with error: ${JSON.stringify(error)}`);
+}
+```
+
+
+<a id="granturipermission-2"></a>
 
 ## grantUriPermission
 
@@ -201,4 +180,25 @@ function grantUriPermission(policies: Array<PolicyInfo>, targetBundleName: strin
 
 **示例**
 
-参见 [grantUriPermission](#granturipermission)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function grantUriPermissionExample() {
+  try {
+    let uri = 'file://docs/storage/Users/currentUser/Documents/1.txt';
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: uri,
+      operationMode: fileShare.OperationMode.CREATE_MODE | fileShare.OperationMode.READ_MODE,
+    };
+    let policies: Array<fileShare.PolicyInfo> = [policyInfo];
+
+    fileShare.grantUriPermission(policies, 'com.example.myapplicationtest', 0).then(() => {
+    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+      console.error(`grantUriPermission failed. Code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (error) {
+    console.info(`grantUriPermission error, Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```

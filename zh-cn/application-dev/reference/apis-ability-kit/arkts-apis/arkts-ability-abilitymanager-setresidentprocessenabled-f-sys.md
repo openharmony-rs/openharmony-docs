@@ -14,6 +14,10 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 
 常驻进程支持按需启停。
 
+> **说明：** 
+> 
+> 该接口不支持设置或移除分身应用（指定包名）的进程保活状态。
+
 **起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

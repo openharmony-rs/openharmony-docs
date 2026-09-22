@@ -1,5 +1,9 @@
 # PortraitEffect (System API)
 
+```TypeScript
+enum PortraitEffect
+```
+
 Enumerates the portrait effects.
 
 **Since:** 10

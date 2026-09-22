@@ -41,6 +41,21 @@ Unsubscribe the event reported when a remote Bluetooth device is discovered. On 
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+function onReceiveEvent(data: Array<string>) {
+    console.info('bluetooth device find = '+ JSON.stringify(data));
+}
+try {
+    bluetoothManager.on('bluetoothDeviceFind', onReceiveEvent);
+    bluetoothManager.off('bluetoothDeviceFind', onReceiveEvent);
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
+
 
 ## off('bondStateChange')
 
@@ -77,6 +92,21 @@ Unsubscribe the event reported when a remote Bluetooth device is bonded. On API 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+function onReceiveEvent(data: bluetoothManager.BondStateParam) {
+    console.info('bond state = '+ JSON.stringify(data));
+}
+try {
+    bluetoothManager.on('bondStateChange', onReceiveEvent);
+    bluetoothManager.off('bondStateChange', onReceiveEvent);
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
 
 
 ## off('pinRequired')
@@ -115,6 +145,21 @@ Unsubscribe the event of a pairing request from a remote Bluetooth device. On AP
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+function onReceiveEvent(data: bluetoothManager.PinRequiredParam) {
+    console.info('pin required = '+ JSON.stringify(data));
+}
+try {
+    bluetoothManager.on('pinRequired', onReceiveEvent);
+    bluetoothManager.off('pinRequired', onReceiveEvent);
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
+
 
 ## off('stateChange')
 
@@ -152,6 +197,21 @@ Unsubscribe the event reported when the Bluetooth state changes. On API 10 and a
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900099 | Operation failed. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+function onReceiveEvent(data: bluetoothManager.BluetoothState) {
+    console.info('bluetooth state = '+ JSON.stringify(data));
+}
+try {
+    bluetoothManager.on('stateChange', onReceiveEvent);
+    bluetoothManager.off('stateChange', onReceiveEvent);
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
+
 
 ## off('sppRead')
 
@@ -183,3 +243,23 @@ Unsubscribe the event reported when data is read from the socket.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let clientNumber = -1;
+function clientSocket(code: BusinessError, number: number) {
+  if (code == null || code.code != 0) {
+    return;
+  }
+  console.info(`bluetooth serverSocket Number: ${number}`);
+  // The obtained clientNumber is used as the socket ID for subsequent read/write operations on the client.
+  clientNumber = number;
+}
+try {
+    bluetoothManager.off('sppRead', clientNumber);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```

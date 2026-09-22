@@ -1,5 +1,9 @@
 # PoiInfo
 
+```TypeScript
+export interface PoiInfo
+```
+
 POI信息结构体。
 
 **起始版本：** 19

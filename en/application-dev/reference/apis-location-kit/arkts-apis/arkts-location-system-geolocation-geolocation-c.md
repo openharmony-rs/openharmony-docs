@@ -1,5 +1,9 @@
 # Geolocation
 
+```TypeScript
+export default class Geolocation
+```
+
 **Since:** 3
 
 **Deprecated since:** 9

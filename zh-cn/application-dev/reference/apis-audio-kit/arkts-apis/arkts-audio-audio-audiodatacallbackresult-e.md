@@ -1,8 +1,10 @@
 # AudioDataCallbackResult
 
-表示音频数据回调结果的枚举。
+```TypeScript
+enum AudioDataCallbackResult
+```
 
-@enum { int }
+表示音频数据回调结果的枚举。
 
 **起始版本：** 12
 

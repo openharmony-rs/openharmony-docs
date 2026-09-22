@@ -1,5 +1,9 @@
 # SwiperContentAnimatedTransition
 
+```TypeScript
+declare interface SwiperContentAnimatedTransition
+```
+
 ArcSwiper自定义切换动画相关信息。
 
 **起始版本：** 18

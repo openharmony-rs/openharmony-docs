@@ -34,6 +34,8 @@ function getCfgFiles(relPath: string, callback: AsyncCallback<Array<string>>): v
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
+<a id="getcfgfiles-1"></a>
+
 ## getCfgFiles
 
 ```TypeScript
@@ -63,13 +65,15 @@ function getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCa
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
+<a id="getcfgfiles-2"></a>
+
 ## getCfgFiles
 
 ```TypeScript
 function getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用callback异步回调。例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/&#36;{telephony.sim.opkey0}"。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
+根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用callback异步回调。例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
 
 **起始版本：** 11
 
@@ -92,6 +96,8 @@ function getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, ca
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
+
+<a id="getcfgfiles-3"></a>
 
 ## getCfgFiles
 
@@ -125,6 +131,8 @@ function getCfgFiles(relPath: string): Promise<Array<string>>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
+
+<a id="getcfgfiles-4"></a>
 
 ## getCfgFiles
 

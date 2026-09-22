@@ -1,6 +1,10 @@
 # FunctionInfo (System API)
 
-FunctionInfo describes the basic information of a CLI function.
+```TypeScript
+export interface FunctionInfo
+```
+
+FunctionInfo describes the basic information of a [Function](arkts-ability-app-function-functionmanager.md), including the Function namespace, name, version, description, and input/output schema.
 
 **Since:** 26.0.0
 
@@ -14,7 +18,7 @@ FunctionInfo describes the basic information of a CLI function.
 readonly description: string
 ```
 
-Human-readable function description, used for AI Agent decision-making.
+Functional description of the Function. The description should clearly explain the core function and purpose of the Function, helping users and AI Agents understand what the Function can do, used for assisting in decision-making.
 
 **Type:** string
 
@@ -32,7 +36,7 @@ Human-readable function description, used for AI Agent decision-making.
 readonly functionName: string
 ```
 
-The name of the function.
+Name of the Function, used to uniquely identify a Function within the functionNamespace.
 
 **Type:** string
 
@@ -50,7 +54,7 @@ The name of the function.
 readonly functionNamespace: string
 ```
 
-The namespace of the function.
+Namespace of the Function, used to classify and manage Functions in the system. The namespace helps organize and identify Functions in different functional domains.
 
 **Type:** string
 
@@ -68,7 +72,7 @@ The namespace of the function.
 readonly inputSchema?: string
 ```
 
-Input parameter JSON Schema, describes the structure of parameters accepted by the function.
+Input parameter JSON Schema definition of the Function, describing the structure and type of input parameters accepted by the Function. It must conform to the JSON Schema format definition.
 
 **Type:** string
 
@@ -86,7 +90,7 @@ Input parameter JSON Schema, describes the structure of parameters accepted by t
 readonly outputSchema?: string
 ```
 
-Output result JSON Schema (optional), describes the structure of the function return value.
+Output result JSON Schema definition of the Function, describing the structure and type of the Function return value. It must conform to the JSON Schema format definition.
 
 **Type:** string
 
@@ -104,7 +108,7 @@ Output result JSON Schema (optional), describes the structure of the function re
 readonly version: string
 ```
 
-The version of the function (format defined by provider, e.g., "1.0.0").
+Version number of the Function. It follows semantic versioning (e.g., "1.0.0"), and the format is defined by the provider. The version number is used to identify the function iteration and compatibility changes of the Function.
 
 **Type:** string
 

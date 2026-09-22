@@ -69,6 +69,8 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | [QueryMediaEntityParam](arkts-avsession-avmusictemplate-querymediaentityparam-i.md) | The definition of QueryMediaEntityParam. |
 | [Ranking](arkts-avsession-avmusictemplate-ranking-i.md) | The definition of Ranking. |
 | [SearchPlayInfo](arkts-avsession-avmusictemplate-searchplayinfo-i.md) | The definition of SearchPlayInfo. |
+| [SearchPlayKaraokeInfo](arkts-avsession-avmusictemplate-searchplaykaraokeinfo-i.md) | The definition of SearchPlayKaraokeInfo. |
+| [SearchPlayKaraokeItem](arkts-avsession-avmusictemplate-searchplaykaraokeitem-i.md) | The definition of SearchPlayKaraokeItem. |
 | [SearchPlayMusicInfo](arkts-avsession-avmusictemplate-searchplaymusicinfo-i.md) | The definition of SearchPlayMusicInfo. |
 | [SearchPlayMusicItem](arkts-avsession-avmusictemplate-searchplaymusicitem-i.md) | The definition of SearchPlayMusicItem. |
 | [SearchPlayVideoInfo](arkts-avsession-avmusictemplate-searchplayvideoinfo-i.md) | The definition of SearchPlayVideoInfo. |

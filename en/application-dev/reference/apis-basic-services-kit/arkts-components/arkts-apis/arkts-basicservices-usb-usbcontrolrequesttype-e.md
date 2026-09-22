@@ -1,5 +1,9 @@
 # USBControlRequestType
 
+```TypeScript
+export enum USBControlRequestType
+```
+
 Enumerates control request types.
 
 **Since:** 8

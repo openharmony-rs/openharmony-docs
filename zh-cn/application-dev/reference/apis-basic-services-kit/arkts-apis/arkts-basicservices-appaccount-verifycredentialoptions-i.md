@@ -1,5 +1,9 @@
 # VerifyCredentialOptions
 
+```TypeScript
+interface VerifyCredentialOptions
+```
+
 表示用于验证凭据的选项。
 
 **起始版本：** 9

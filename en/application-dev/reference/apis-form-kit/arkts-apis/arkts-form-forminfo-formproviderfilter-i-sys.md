@@ -1,5 +1,9 @@
 # FormProviderFilter (System API)
 
+```TypeScript
+interface FormProviderFilter
+```
+
 Information about a running form.
 
 @typedef FormProviderFilter

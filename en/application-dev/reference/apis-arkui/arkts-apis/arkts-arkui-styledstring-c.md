@@ -1,5 +1,9 @@
 # StyledString
 
+```TypeScript
+declare class StyledString
+```
+
 StyledString
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # FillFailureResult
 
+```TypeScript
+export interface FillFailureResult
+```
+
 Fill fail result.
 
 **Since:** 26.0.0
@@ -12,7 +16,7 @@ Fill fail result.
 errCode: number
 ```
 
-errcode. The value should be an integer.
+Error code of the auto-fill failure. The value should be an integer.
 
 **Type:** number
 

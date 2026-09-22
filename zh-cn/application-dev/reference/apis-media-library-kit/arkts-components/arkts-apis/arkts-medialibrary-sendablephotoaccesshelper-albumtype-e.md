@@ -1,5 +1,9 @@
 # AlbumType
 
+```TypeScript
+const enum AlbumType
+```
+
 枚举，相册类型，表示是用户相册还是系统预置相册。
 
 **起始版本：** 12

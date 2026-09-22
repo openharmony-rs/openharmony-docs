@@ -1,5 +1,9 @@
 # CachedGnssLocationsRequest
 
+```TypeScript
+export interface CachedGnssLocationsRequest
+```
+
 Parameters for requesting to report cache location information
 
 @interface CachedGnssLocationsRequest

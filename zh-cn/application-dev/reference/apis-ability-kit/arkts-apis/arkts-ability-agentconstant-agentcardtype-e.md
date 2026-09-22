@@ -1,5 +1,9 @@
 # AgentCardType
 
+```TypeScript
+export enum AgentCardType
+```
+
 Agent卡片的类型。
 
 **起始版本：** 26.0.0

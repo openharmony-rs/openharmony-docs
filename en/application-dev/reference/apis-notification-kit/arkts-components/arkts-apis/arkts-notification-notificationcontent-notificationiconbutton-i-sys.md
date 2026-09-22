@@ -1,5 +1,9 @@
 # NotificationIconButton (System API)
 
+```TypeScript
+export interface NotificationIconButton
+```
+
 Describes the system notification button.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # TaskBody (System API)
 
+```TypeScript
+export interface TaskBody
+```
+
 Represents task data.
 
 **Since:** 9

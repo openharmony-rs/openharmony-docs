@@ -40,3 +40,19 @@ When the function is enabled, the application can recommend content based on the
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [33900001](../errorcode-userStatus.md#33900001-service-exception) | Service exception. Possible causes:<br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 | [33900002](../errorcode-userStatus.md#33900002-subscription-failed) | Subscription failed. Possible causes:<br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    userStatus.on('userAgeGroupDetected', (data: userStatus.UserClassification) => {
+        console.info('callback succeeded, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
+    });
+    console.info("on succeeded");
+} catch (err) {
+    let error = err as BusinessError;
+    console.error("Failed on and err code is " + error.code);
+}
+```

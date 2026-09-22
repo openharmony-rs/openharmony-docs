@@ -1,5 +1,9 @@
 # PhotoPermissionType (System API)
 
+```TypeScript
+enum PhotoPermissionType
+```
+
 Enumerates the types of permissions for accessing media assets.
 
 The permissions include temporary read permission and persistent read permission. The temporary read permission will be removed when the application is dead, while the persistent read permission will not.

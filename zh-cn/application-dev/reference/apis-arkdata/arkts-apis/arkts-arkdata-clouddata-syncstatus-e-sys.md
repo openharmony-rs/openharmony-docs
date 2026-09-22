@@ -1,5 +1,9 @@
 # SyncStatus（系统接口）
 
+```TypeScript
+enum SyncStatus
+```
+
 端云同步任务的状态。
 
 **起始版本：** 18

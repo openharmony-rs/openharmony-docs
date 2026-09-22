@@ -1,5 +1,9 @@
 # DataReceiveProgressInfo
 
+```TypeScript
+export interface DataReceiveProgressInfo
+```
+
 数据接收信息。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # FailedFileInfo
 
+```TypeScript
+interface FailedFileInfo
+```
+
 Represents a list of files that fail to be downloaded from the Drive Kit and failure causes.
 
 **Since:** 20

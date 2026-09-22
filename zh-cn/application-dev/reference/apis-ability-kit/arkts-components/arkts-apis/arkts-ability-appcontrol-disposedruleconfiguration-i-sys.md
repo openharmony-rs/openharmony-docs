@@ -1,5 +1,9 @@
 # DisposedRuleConfiguration（系统接口）
 
+```TypeScript
+export interface DisposedRuleConfiguration
+```
+
 标识批量设置拦截规则的配置。
 
 **起始版本：** 20

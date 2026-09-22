@@ -11,3 +11,11 @@ export type Rect = _Rect
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **类型：** _Rect
+
+**示例**
+
+```TypeScript
+import { Rect } from '@kit.AccessibilityKit';
+
+let rect: Rect;
+```

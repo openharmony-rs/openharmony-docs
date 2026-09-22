@@ -1,5 +1,9 @@
 # URL
 
+```TypeScript
+class URL
+```
+
 用于解析和构造完整URL。
 
 **起始版本：** 7
@@ -51,6 +55,8 @@ new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is 
 new url.URL('https://www.example.com', ); // Output https://www.example.com/
 new url.URL('https://www.example.com', absoluteUrl); // Output https://www.example.com/
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 

@@ -1,5 +1,9 @@
 # EncodingBaseFormat
 
+```TypeScript
+enum EncodingBaseFormat
+```
+
 Enumerates the encoding formats for certificate-related data.
 
 **Since:** 18

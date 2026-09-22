@@ -23,8 +23,8 @@ import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md) | 获取进入待机模式的应用名单，使用Callback异步回调。 |
-| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md) | 获取进入待机模式的应用名单，使用Promise异步回调。 |
+| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md#getexemptedapps) | 获取进入待机模式的应用名单，使用Callback异步回调。 |
+| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md#getexemptedapps-1) | 获取进入待机模式的应用名单，使用Promise异步回调。 |
 | [releaseExemptionResource](arkts-backgroundtasks-devicestandby-releaseexemptionresource-f-sys.md) | 取消应用订阅申请豁免。 |
 | [requestExemptionResource](arkts-backgroundtasks-devicestandby-requestexemptionresource-f-sys.md) | 应用订阅申请豁免，使应用临时不进入待机管控。 |
 <!--DelEnd-->

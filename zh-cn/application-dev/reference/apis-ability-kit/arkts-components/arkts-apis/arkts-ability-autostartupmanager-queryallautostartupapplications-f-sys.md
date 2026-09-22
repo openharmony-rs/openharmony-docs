@@ -40,6 +40,8 @@ function queryAllAutoStartupApplications(callback: AsyncCallback<Array<AutoStart
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
 
 
+<a id="queryallautostartupapplications-1"></a>
+
 ## queryAllAutoStartupApplications
 
 ```TypeScript

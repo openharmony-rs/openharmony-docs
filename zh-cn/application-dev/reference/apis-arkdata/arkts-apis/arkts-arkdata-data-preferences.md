@@ -26,22 +26,22 @@ import { preferences } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过name进行参数设置，使用callback异步回调。 |
-| [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过Options进行参数设置，使用callback异步回调。 |
-| [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过name进行参数设置，使用Promise异步回调。 |
-| [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过Options进行参数设置，使用Promise异步回调。 |
-| [getPreferences](arkts-arkdata-preferences-getpreferences-f.md) | 获取Preferences实例，通过name进行参数设置，使用callback异步回调。 |
-| [getPreferences](arkts-arkdata-preferences-getpreferences-f.md) | 获取Preferences实例，通过Options进行参数设置，使用callback异步回调。 |
-| [getPreferences](arkts-arkdata-preferences-getpreferences-f.md) | 获取Preferences实例，通过name进行参数设置，使用Promise异步回调。 |
-| [getPreferences](arkts-arkdata-preferences-getpreferences-f.md) | 获取Preferences实例，通过Options进行参数设置，使用Promise异步回调。 |
+| [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过name进行参数设置，使用callback异步回调。 |
+| [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences-1) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过Options进行参数设置，使用callback异步回调。 |
+| [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences-2) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过name进行参数设置，使用Promise异步回调。 |
+| [deletePreferences](arkts-arkdata-preferences-deletepreferences-f.md#deletepreferences-3) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过Options进行参数设置，使用Promise异步回调。 |
+| [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences) | 获取Preferences实例，通过name进行参数设置，使用callback异步回调。 |
+| [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences-1) | 获取Preferences实例，通过Options进行参数设置，使用callback异步回调。 |
+| [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences-2) | 获取Preferences实例，通过name进行参数设置，使用Promise异步回调。 |
+| [getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences-3) | 获取Preferences实例，通过Options进行参数设置，使用Promise异步回调。 |
 | [getPreferencesSync](arkts-arkdata-preferences-getpreferencessync-f.md) | 获取Preferences实例，此为同步接口。 |
 | [isStorageTypeSupported](arkts-arkdata-preferences-isstoragetypesupported-f.md) | 判断当前平台是否支持传入的存储模式，此为同步接口。如果当前平台支持传入的存储模式时，该接口返回true；反之，返回false。 |
-| [removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md) | 从缓存中移除指定的Preferences实例，通过name进行参数设置，使用callback异步回调。 |
-| [removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md) | 从缓存中移除指定的Preferences实例，通过Options进行参数设置，使用callback异步回调。 |
-| [removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md) | 从缓存中移除指定的Preferences实例，通过name进行参数设置，使用Promise异步回调。 |
-| [removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md) | 从缓存中移除指定的Preferences实例，通过Options进行参数设置，使用Promise异步回调。 |
-| [removePreferencesFromCacheSync](arkts-arkdata-preferences-removepreferencesfromcachesync-f.md) | 从缓存中移除指定的Preferences实例，通过name进行参数设置，此为同步接口。 |
-| [removePreferencesFromCacheSync](arkts-arkdata-preferences-removepreferencesfromcachesync-f.md) | 从缓存中移除指定的Preferences实例，通过Options进行参数设置，此为同步接口。 |
+| [removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache) | 从缓存中移除指定的Preferences实例，通过name进行参数设置，使用callback异步回调。 |
+| [removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache-1) | 从缓存中移除指定的Preferences实例，通过Options进行参数设置，使用callback异步回调。 |
+| [removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache-2) | 从缓存中移除指定的Preferences实例，通过name进行参数设置，使用Promise异步回调。 |
+| [removePreferencesFromCache](arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache-3) | 从缓存中移除指定的Preferences实例，通过Options进行参数设置，使用Promise异步回调。 |
+| [removePreferencesFromCacheSync](arkts-arkdata-preferences-removepreferencesfromcachesync-f.md#removepreferencesfromcachesync) | 从缓存中移除指定的Preferences实例，通过name进行参数设置，此为同步接口。 |
+| [removePreferencesFromCacheSync](arkts-arkdata-preferences-removepreferencesfromcachesync-f.md#removepreferencesfromcachesync-1) | 从缓存中移除指定的Preferences实例，通过Options进行参数设置，此为同步接口。 |
 
 ### 接口
 

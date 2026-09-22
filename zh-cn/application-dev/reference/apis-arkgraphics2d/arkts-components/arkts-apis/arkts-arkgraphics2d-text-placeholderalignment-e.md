@@ -1,5 +1,9 @@
 # PlaceholderAlignment
 
+```TypeScript
+enum PlaceholderAlignment
+```
+
 占位符相对于周围文本的纵向对齐方式。
 
 ![PlaceholderAlignment.png](../../../reference/apis-arkgraphics2d/figures/PlaceholderAlignment.png)

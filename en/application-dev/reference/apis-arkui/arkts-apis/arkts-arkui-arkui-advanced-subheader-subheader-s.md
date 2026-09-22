@@ -1,12 +1,16 @@
 # SubHeader
 
+```TypeScript
+export declare struct SubHeader
+```
+
 The **SubHeader** component is positioned at the top of list items or content sections, organizing lists or content into distinct groups. The subheader text summarizes the content within each respective section.
 
 > **NOTE:** 
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **SubHeader** component has universal attributes and universal events configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeader** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeader** component.
+> - If the **SubHeader** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) and [universal events](../arkts-components/arkts-arkui-common-comp.md#common) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeader** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeader** component.
 
 **Since:** 10
 
@@ -52,11 +56,11 @@ Default value:
 
 `{start: LengthMetrics.resource(`
 
-`&#36;r('sys.float.margin_left'))`,
+`$r('sys.float.margin_left'))`,
 
 `end: LengthMetrics.resource(`
 
-`&#36;r('sys.float.margin_right'))}`
+`$r('sys.float.margin_right'))}`
 
 **Type:** [LocalizedMargin](arkts-arkui-localizedmargin-t.md)
 
@@ -100,6 +104,46 @@ If a secondary title, with or without an icon, is displayed on the left:
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## endIcon
+
+```TypeScript
+endIcon?: ResourceStr
+```
+
+End icon of the title. The **endIcon** attribute takes effect only when the **primaryTitle** or **secondaryTitle** attribute is used. Default value: **undefined**, indicating that no end icon is displayed.
+
+**Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
+
+**Since:** 26.0.1
+
+**Decorator:** @Prop
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## endIconSymbolOptions
+
+```TypeScript
+endIconSymbolOptions?: SymbolOptions
+```
+
+End icon symbol options. This parameter is available when **endIcon** is set to a [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
+
+Default value: **undefined**, indicating that no end icon symbol style is set.
+
+**Type:** [SymbolOptions](arkts-arkui-arkui-advanced-subheader-symboloptions-c.md)
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## icon
 
 ```TypeScript
@@ -130,7 +174,7 @@ The **icon** attribute takes effect only when the **secondaryTitle** attribute i
 iconSymbolOptions?: SymbolOptions
 ```
 
-Icon symbol options. This parameter is available when **icon** is set to a symbol glyph.
+Icon symbol options. This parameter is available when **icon** is set to a [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
 
 Default value: **undefined**, indicating that no icon is displayed.
 
@@ -172,7 +216,7 @@ operationSymbolOptions?: Array<SymbolOptions>
 
 Icon symbol options.
 
-This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of symbol glyphs.
+This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of [symbol glyphs](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
 
 Default value: **undefined**, indicating that no symbol icon is set.
 

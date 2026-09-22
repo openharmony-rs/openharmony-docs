@@ -1,5 +1,9 @@
 # AlternateIconInfo
 
+```TypeScript
+export interface AlternateIconInfo
+```
+
 描述应用备用图标信息。
 
 **起始版本：** 26.0.0

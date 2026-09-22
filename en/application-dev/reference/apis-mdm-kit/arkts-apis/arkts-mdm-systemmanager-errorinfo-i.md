@@ -1,5 +1,9 @@
 # ErrorInfo
 
+```TypeScript
+interface ErrorInfo
+```
+
 Represents the update error information.
 
 **Since:** 12

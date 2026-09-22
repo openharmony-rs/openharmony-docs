@@ -1,5 +1,9 @@
 # SqlExecutionInfo
 
+```TypeScript
+interface SqlExecutionInfo
+```
+
 描述数据库执行的SQL语句的统计信息。
 
 **起始版本：** 12

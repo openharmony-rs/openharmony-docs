@@ -42,36 +42,6 @@ function createAVSession(context: Context, tag: string, type: AVSessionType, cal
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-            let sessionId: string;  // 供后续函数入参使用。
-
-            avSession.createAVSession(context, tag, "audio").then(async (data: avSession.AVSession) => {
-            currentAVSession = data;
-            sessionId = currentAVSession.sessionId;
-            console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-```TypeScript
-import { avSession } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -105,6 +75,8 @@ struct Index {
 }
 ```
 
+
+<a id="createavsession-1"></a>
 
 ## createAVSession
 
@@ -147,4 +119,32 @@ function createAVSession(context: Context, tag: string, type: AVSessionType): Pr
 
 **示例**
 
-参见 [createAVSession](#createavsession)
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let sessionId: string;  // 供后续函数入参使用。
+
+            avSession.createAVSession(context, tag, "audio").then(async (data: avSession.AVSession) => {
+            currentAVSession = data;
+            sessionId = currentAVSession.sessionId;
+            console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

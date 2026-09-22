@@ -30,10 +30,10 @@ import { fileAccess } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md) | 以同步方法创建连接当前系统内所有文件管理服务的helper对象。 |
-| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md) | 以同步方法创建连接指定wants的helper对象。 |
-| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用callback异步回调。 |
-| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用Promise异步回调。 |
+| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createfileaccesshelper) | 以同步方法创建连接当前系统内所有文件管理服务的helper对象。 |
+| [createFileAccessHelper](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md#createfileaccesshelper-1) | 以同步方法创建连接指定wants的helper对象。 |
+| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getfileaccessabilityinfo) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用callback异步回调。 |
+| [getFileAccessAbilityInfo](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md#getfileaccessabilityinfo-1) | 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

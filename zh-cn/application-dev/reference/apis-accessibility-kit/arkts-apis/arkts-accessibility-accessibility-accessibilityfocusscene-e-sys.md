@@ -1,5 +1,9 @@
 # AccessibilityFocusScene（系统接口）
 
+```TypeScript
+export enum AccessibilityFocusScene
+```
+
 表示无障碍聚焦的场景参数的枚举。
 
 **起始版本：** 26.0.0

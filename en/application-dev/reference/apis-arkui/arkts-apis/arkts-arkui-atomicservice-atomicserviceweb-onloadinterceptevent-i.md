@@ -1,5 +1,9 @@
 # OnLoadInterceptEvent
 
+```TypeScript
+export declare interface OnLoadInterceptEvent
+```
+
 Represents the event triggered when resource loading is intercepted.
 
 **Since:** 12
@@ -20,7 +24,7 @@ data: WebResourceRequest
 
 Web resource request of event.
 
-**Type:** [WebResourceRequest](../../apis-arkweb/arkts-components/arkts-arkweb-webresourcerequest-c.md)
+**Type:** [WebResourceRequest](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-webresourcerequest-c.md)
 
 **Since:** 12
 

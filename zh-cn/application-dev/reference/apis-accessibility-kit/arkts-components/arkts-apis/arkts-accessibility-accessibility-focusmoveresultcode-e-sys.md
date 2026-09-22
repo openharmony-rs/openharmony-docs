@@ -1,5 +1,9 @@
 # FocusMoveResultCode（系统接口）
 
+```TypeScript
+export enum FocusMoveResultCode
+```
+
 表示查询无障碍节点返回结果类型的枚举。
 
 **起始版本：** 23

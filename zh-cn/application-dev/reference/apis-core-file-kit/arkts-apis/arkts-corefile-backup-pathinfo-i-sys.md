@@ -1,5 +1,9 @@
 # PathInfo（系统接口）
 
+```TypeScript
+interface PathInfo
+```
+
 文件迁移的路径信息。
 
 **起始版本：** 26.0.0

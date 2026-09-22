@@ -1,5 +1,9 @@
 # MoveResult (System API)
 
+```TypeScript
+interface MoveResult
+```
+
 Represents the information returned when the move operation fails. If the operation is successful, no information is returned.
 
 **Since:** 11

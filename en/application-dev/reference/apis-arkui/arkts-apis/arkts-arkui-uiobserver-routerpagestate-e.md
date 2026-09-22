@@ -1,5 +1,9 @@
 # RouterPageState
 
+```TypeScript
+export enum RouterPageState
+```
+
 Enumerates the states of a page during routing. **RouterPageState** is used in [RouterPageInfo](arkts-arkui-uiobserver-routerpageinfo-c.md) as the callback parameter for passive observation via [routerPageUpdate](arkts-arkui-uiobserver-on-f.md#onrouterpageupdate).
 
 **Since:** 11

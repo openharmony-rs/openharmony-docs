@@ -61,18 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { wifiManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(null);
-  console.info(`Succeeded in getting allowed Wi-Fi list. Result: ${JSON.stringify(result)}`);
-} catch (err) {
-  console.error(`Failed to get allowed Wi-Fi list. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getallowedwifilist-1"></a>
 
 ## getAllowedWifiList
 
@@ -112,4 +102,14 @@ function getAllowedWifiList(admin: Want | null): Array<WifiAccessInfo>
 
 **示例**
 
-参见 [getAllowedWifiList](#getallowedwifilist)
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(null);
+  console.info(`Succeeded in getting allowed Wi-Fi list. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed Wi-Fi list. Code: ${err.code}, message: ${err.message}`);
+}
+```

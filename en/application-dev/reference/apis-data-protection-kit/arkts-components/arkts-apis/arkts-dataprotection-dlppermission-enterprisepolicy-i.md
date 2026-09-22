@@ -1,5 +1,9 @@
 # EnterprisePolicy
 
+```TypeScript
+export interface EnterprisePolicy
+```
+
 Represents an enterprise custom policy.
 
 **Since:** 21

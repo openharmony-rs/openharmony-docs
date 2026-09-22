@@ -1,5 +1,9 @@
 # PictureScanProgress
 
+```TypeScript
+interface PictureScanProgress
+```
+
 定义图片扫描进度的接口。
 
 **起始版本：** 20

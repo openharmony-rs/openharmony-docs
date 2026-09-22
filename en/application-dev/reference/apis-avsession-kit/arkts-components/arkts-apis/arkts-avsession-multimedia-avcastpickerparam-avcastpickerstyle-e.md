@@ -1,5 +1,9 @@
 # AVCastPickerStyle
 
+```TypeScript
+export declare enum AVCastPickerStyle
+```
+
 Definition of av cast picker style @enum { int }
 
 **Since:** 12

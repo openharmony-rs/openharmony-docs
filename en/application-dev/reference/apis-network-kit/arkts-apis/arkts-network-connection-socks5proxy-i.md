@@ -1,5 +1,9 @@
 # Socks5Proxy
 
+```TypeScript
+export interface Socks5Proxy
+```
+
 Socks5 Proxy Configuration Information.
 
 **Since:** 26.0.0

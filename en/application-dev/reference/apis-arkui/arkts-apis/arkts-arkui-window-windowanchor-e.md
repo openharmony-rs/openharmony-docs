@@ -1,5 +1,9 @@
 # WindowAnchor
 
+```TypeScript
+enum WindowAnchor
+```
+
 Enumerates the window anchor points.
 
 **Since:** 20

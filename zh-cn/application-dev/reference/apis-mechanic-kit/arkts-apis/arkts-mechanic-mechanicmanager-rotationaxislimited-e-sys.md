@@ -1,5 +1,9 @@
 # RotationAxisLimited（系统接口）
 
+```TypeScript
+export enum RotationAxisLimited
+```
+
 旋转轴限位状态
 
 @enum { int }

@@ -1,5 +1,9 @@
 # SettingParam（系统接口）
 
+```TypeScript
+interface SettingParam
+```
+
 Defines the effect parameters used to preheat an image.
 
 **起始版本：** 11

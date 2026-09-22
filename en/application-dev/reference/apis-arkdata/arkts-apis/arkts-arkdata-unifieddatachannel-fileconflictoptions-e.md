@@ -1,5 +1,9 @@
 # FileConflictOptions
 
+```TypeScript
+enum FileConflictOptions
+```
+
 Enumerates the options for resolving file copy conflicts.
 
 **Since:** 15

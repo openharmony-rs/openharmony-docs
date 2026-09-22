@@ -1,5 +1,9 @@
 # BaudRates
 
+```TypeScript
+enum BaudRates
+```
+
 表示波特率的枚举，单位：比特/秒。
 
 **起始版本：** 19

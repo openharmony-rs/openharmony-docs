@@ -1,5 +1,9 @@
 # ScaleMode
 
+```TypeScript
+enum ScaleMode
+```
+
 表示图像的缩放模式的枚举。
 
 **起始版本：** 9

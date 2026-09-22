@@ -1,5 +1,9 @@
 # SourceType
 
+```TypeScript
+export declare enum SourceType
+```
+
 Enumerates touch sources. Currently, only the touchscreen and touchpad are supported.
 
 **Since:** 9

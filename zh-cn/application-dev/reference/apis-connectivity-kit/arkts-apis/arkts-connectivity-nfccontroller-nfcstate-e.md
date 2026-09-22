@@ -1,5 +1,9 @@
 # NfcState
 
+```TypeScript
+enum NfcState
+```
+
 定义不同的NFC状态值。
 
 **起始版本：** 7

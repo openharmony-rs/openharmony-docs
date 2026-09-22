@@ -1,5 +1,9 @@
 # DataShareResultSet（系统接口）
 
+```TypeScript
+export default interface DataShareResultSet
+```
+
 提供通过查询数据库生成的结果集的相关访问方法。<br> <br>列或键名称作为字符串数组返回，其中字符串的顺序与结果集中的列或键的顺序相同。
 
 **起始版本：** 9

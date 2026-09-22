@@ -40,14 +40,8 @@ particleAbility.terminateSelf(
 );
 ```
 
-```TypeScript
-import { particleAbility } from '@kit.AbilityKit';
 
-particleAbility.terminateSelf().then(() => {
-  console.info('particleAbility terminateSelf');
-});
-```
-
+<a id="terminateself-1"></a>
 
 ## terminateSelf
 
@@ -71,4 +65,10 @@ function terminateSelf(): Promise<void>
 
 **示例**
 
-参见 [terminateSelf](#terminateself)
+```TypeScript
+import { particleAbility } from '@kit.AbilityKit';
+
+particleAbility.terminateSelf().then(() => {
+  console.info('particleAbility terminateSelf');
+});
+```

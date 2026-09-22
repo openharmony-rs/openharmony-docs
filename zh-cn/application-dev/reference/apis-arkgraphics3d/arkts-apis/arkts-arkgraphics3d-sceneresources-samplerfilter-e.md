@@ -1,5 +1,9 @@
 # SamplerFilter
 
+```TypeScript
+export enum SamplerFilter
+```
+
 采样器过滤模式枚举，定义纹理采样时的插值方法，用于控制纹理在缩放或变形时如何计算最终像素的颜色值。
 
 @enum { int }

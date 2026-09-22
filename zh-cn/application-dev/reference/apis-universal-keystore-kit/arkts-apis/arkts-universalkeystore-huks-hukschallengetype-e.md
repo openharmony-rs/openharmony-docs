@@ -1,5 +1,9 @@
 # HuksChallengeType
 
+```TypeScript
+export enum HuksChallengeType
+```
+
 表示密钥使用时生成challenge的类型。
 
 **起始版本：** 9

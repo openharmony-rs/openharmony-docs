@@ -32,7 +32,7 @@ cache type's size limit in **cacheDownload**. By default, the LRU mode is used t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| url | string | Yes | URL of the target resource. HTTP and HTTPS are supported. The URL length cannot exceed 81 92 bytes. |
+| url | string | Yes | URL of the target resource. HTTP and HTTPS are supported. The URL length cannot exceed 8192 bytes. |
 | options | [CacheDownloadOptions](arkts-basicservices-cachedownload-cachedownloadoptions-i.md) | Yes | Cache download options for the target resource. |
 
 **Error codes:**

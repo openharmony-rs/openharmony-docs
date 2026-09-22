@@ -1,5 +1,9 @@
 # ChangeInfo (System API)
 
+```TypeScript
+interface ChangeInfo
+```
+
 Represents the data change information, including the data change type, URI of the data changed, and changed data content.
 
 **Since:** 12

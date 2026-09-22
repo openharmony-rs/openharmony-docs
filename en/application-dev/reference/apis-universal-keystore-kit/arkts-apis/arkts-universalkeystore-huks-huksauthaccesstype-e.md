@@ -1,5 +1,9 @@
 # HuksAuthAccessType
 
+```TypeScript
+export enum HuksAuthAccessType
+```
+
 Enumerates the access control types.
 
 **Since:** 9

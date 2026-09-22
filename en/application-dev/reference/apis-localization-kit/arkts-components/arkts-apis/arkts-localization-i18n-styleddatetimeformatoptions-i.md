@@ -1,5 +1,9 @@
 # StyledDateTimeFormatOptions
 
+```TypeScript
+export interface StyledDateTimeFormatOptions
+```
+
 Optional configuration items for creating the time and date formatting object for rich text display.
 
 **Since:** 23

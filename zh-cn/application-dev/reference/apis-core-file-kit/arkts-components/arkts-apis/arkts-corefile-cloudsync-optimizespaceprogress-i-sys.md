@@ -1,5 +1,9 @@
 # OptimizeSpaceProgress（系统接口）
 
+```TypeScript
+interface OptimizeSpaceProgress
+```
+
 立即优化空间状态和当前进度。
 
 **起始版本：** 17

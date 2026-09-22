@@ -1,5 +1,9 @@
 # Folder
 
+```TypeScript
+class Folder extends File
+```
+
 Represents the folder data. It is a child class of [File](arkts-arkdata-unifieddatachannel-file-c.md) and is used to describe a folder.
 
 **Inheritance/Implementation:** Folder extends [File](arkts-arkdata-unifieddatachannel-file-c.md)

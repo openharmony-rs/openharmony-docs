@@ -1,5 +1,9 @@
 # Checksum
 
+```TypeScript
+interface Checksum
+```
+
 校验对象。
 
 **起始版本：** 12

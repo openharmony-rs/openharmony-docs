@@ -1,5 +1,9 @@
 # PrinterInfo
 
+```TypeScript
+interface PrinterInfo
+```
+
 Provides the printer information.
 
 **Since:** 24

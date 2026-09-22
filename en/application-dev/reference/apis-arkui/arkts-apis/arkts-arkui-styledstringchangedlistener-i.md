@@ -1,5 +1,9 @@
 # StyledStringChangedListener
 
+```TypeScript
+declare interface StyledStringChangedListener
+```
+
 Defines the listener for changes of the styled string text content.
 
 **Since:** 12
@@ -30,7 +34,7 @@ onWillChange?: Callback<StyledStringChangeValue, boolean>
 
 Callback invoked when text is about to change.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[StyledStringChangeValue](arkts-arkui-styledstringchangevalue-i.md), boolean&gt;
+**Type:** Callback&lt;[StyledStringChangeValue](arkts-arkui-styledstringchangevalue-i.md), boolean&gt;
 
 **Since:** 12
 

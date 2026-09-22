@@ -1,5 +1,9 @@
 # EffectId
 
+```TypeScript
+enum EffectId
+```
+
 预置的振动效果。在调用[vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md)或[vibrator.stopVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md)接口下发[VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md)形式振动的时候需要使用此参数类型。此参数值种类多样，'haptic.clock.timer'为其中一种。[HapticFeedback&lt;sup&gt;12+&lt;/sup&gt;](arkts-sensorservice-vibrator-hapticfeedback-e.md)展示了几种常用的EffectId值。
 
 > **说明：** 

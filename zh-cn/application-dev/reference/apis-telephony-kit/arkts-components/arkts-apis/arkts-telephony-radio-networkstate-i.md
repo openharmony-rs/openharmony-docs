@@ -1,5 +1,9 @@
 # NetworkState
 
+```TypeScript
+export interface NetworkState
+```
+
 网络注册状态。
 
 **起始版本：** 6

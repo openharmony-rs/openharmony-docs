@@ -1,5 +1,9 @@
 # PartitionTableInfo (System API)
 
+```TypeScript
+export interface PartitionTableInfo
+```
+
 Partition table information.
 
 **Since:** 26.0.0

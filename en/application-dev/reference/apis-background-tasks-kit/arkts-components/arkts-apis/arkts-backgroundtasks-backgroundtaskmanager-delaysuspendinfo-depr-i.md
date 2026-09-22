@@ -1,5 +1,9 @@
 # DelaySuspendInfo
 
+```TypeScript
+interface DelaySuspendInfo
+```
+
 Provides the information about the suspension delay.
 
 **Since:** 7

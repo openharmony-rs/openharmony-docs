@@ -1,5 +1,9 @@
 # CommonEventBatteryChangedKey
 
+```TypeScript
+export enum CommonEventBatteryChangedKey
+```
+
 表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。开发者需先订阅[COMMON_EVENT_BATTERY_CHANGED](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_battery_changed)，在事件回调中通过这些查询键从事件附加数据中提取对应的电池状态信息。详细使用方法请参见[@ohos.commonEventManager (公共事件模块)](../../../reference/api-basic-services/js-apis-commonEventManager.md)。
 
 **起始版本：** 9

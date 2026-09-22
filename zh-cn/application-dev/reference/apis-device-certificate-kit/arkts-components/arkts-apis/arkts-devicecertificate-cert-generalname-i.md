@@ -1,5 +1,9 @@
 # GeneralName
 
+```TypeScript
+interface GeneralName
+```
+
 表示X.509 GeneralName，定义在RFC 5280中，可出现在Subject Alternative Name等扩展中。
 
 **起始版本：** 12

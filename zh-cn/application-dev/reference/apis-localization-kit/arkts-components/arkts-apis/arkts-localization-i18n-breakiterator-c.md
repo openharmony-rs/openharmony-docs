@@ -1,5 +1,9 @@
 # BreakIterator
 
+```TypeScript
+export class BreakIterator
+```
+
 提供文本换行相关的能力，包括可换行点的获取、移动和识别等。
 
 **起始版本：** 8

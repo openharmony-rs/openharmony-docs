@@ -1,5 +1,9 @@
 # RankingMethod（系统接口）
 
+```TypeScript
+enum RankingMethod
+```
+
 随机类型
 
 **起始版本：** 23

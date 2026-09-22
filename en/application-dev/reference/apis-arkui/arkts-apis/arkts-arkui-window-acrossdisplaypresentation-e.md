@@ -1,5 +1,9 @@
 # AcrossDisplayPresentation
 
+```TypeScript
+enum AcrossDisplayPresentation
+```
+
 Enum for across-display policy used when maximizing in the half-folded state of a foldable 2-in-1 device.
 
 **Since:** 26.0.0

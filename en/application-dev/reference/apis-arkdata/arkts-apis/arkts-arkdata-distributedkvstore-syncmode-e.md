@@ -1,5 +1,9 @@
 # SyncMode
 
+```TypeScript
+enum SyncMode
+```
+
 Enumerates the sync modes.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # RunningLock
 
+```TypeScript
+class RunningLock
+```
+
 Defines a **RunningLock** object.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # RangeErrorConstructor
 
+```TypeScript
+interface RangeErrorConstructor extends ErrorConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

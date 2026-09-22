@@ -1,5 +1,9 @@
 # InjectActionType（系统接口）
 
+```TypeScript
+export enum InjectActionType
+```
+
 表示注入动作的枚举。
 
 **起始版本：** 26.0.0

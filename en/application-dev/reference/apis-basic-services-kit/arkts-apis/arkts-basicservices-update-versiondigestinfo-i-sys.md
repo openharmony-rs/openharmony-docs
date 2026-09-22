@@ -1,5 +1,9 @@
 # VersionDigestInfo (System API)
 
+```TypeScript
+export interface VersionDigestInfo
+```
+
 Represents version digest information.
 
 **Since:** 9

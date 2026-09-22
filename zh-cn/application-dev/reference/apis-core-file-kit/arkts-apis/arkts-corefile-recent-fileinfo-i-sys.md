@@ -1,5 +1,9 @@
 # FileInfo（系统接口）
 
+```TypeScript
+interface FileInfo
+```
+
 最近访问列表文件信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # ConnectionState
 
+```TypeScript
+export enum ConnectionState
+```
+
 Enumerates the connection states with a remote device.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # LoadingDialog
 
+```TypeScript
+export declare struct LoadingDialog
+```
+
 进度加载类弹出框，用于显示操作执行中的提示信息。
 
 **起始版本：** 10
@@ -82,7 +86,7 @@ themeColorMode?: ThemeColorMode
 
 默认值：ThemeColorMode.SYSTEM
 
-**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-themecolormode-e.md)
+**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-common-comp-themecolormode-e.md)
 
 **起始版本：** 12
 

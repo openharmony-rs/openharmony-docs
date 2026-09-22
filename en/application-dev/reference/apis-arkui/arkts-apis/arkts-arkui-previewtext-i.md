@@ -1,5 +1,9 @@
 # PreviewText
 
+```TypeScript
+declare interface PreviewText
+```
+
 Preview text.
 
 **Since:** 12

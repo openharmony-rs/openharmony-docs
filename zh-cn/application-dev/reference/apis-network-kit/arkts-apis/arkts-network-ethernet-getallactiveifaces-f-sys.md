@@ -55,20 +55,8 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 });
 ```
 
-```TypeScript
-import { ethernet } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-ethernet.getAllActiveIfaces().then((data: string[]) => {
-  console.info("getAllActiveIfaces promise data.length = " + JSON.stringify(data.length));
-  for (let i = 0; i < data.length; i++) {
-    console.info("getAllActiveIfaces promise  = " + JSON.stringify(data[i]));
-  }
-}).catch((error:BusinessError) => {
-  console.error("getAllActiveIfaces promise error = " + JSON.stringify(error));
-});
-```
-
+<a id="getallactiveifaces-1"></a>
 
 ## getAllActiveIfaces
 
@@ -103,4 +91,16 @@ function getAllActiveIfaces(): Promise<Array<string>>
 
 **示例**
 
-参见 [getAllActiveIfaces](#getallactiveifaces)
+```TypeScript
+import { ethernet } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+ethernet.getAllActiveIfaces().then((data: string[]) => {
+  console.info("getAllActiveIfaces promise data.length = " + JSON.stringify(data.length));
+  for (let i = 0; i < data.length; i++) {
+    console.info("getAllActiveIfaces promise  = " + JSON.stringify(data[i]));
+  }
+}).catch((error:BusinessError) => {
+  console.error("getAllActiveIfaces promise error = " + JSON.stringify(error));
+});
+```

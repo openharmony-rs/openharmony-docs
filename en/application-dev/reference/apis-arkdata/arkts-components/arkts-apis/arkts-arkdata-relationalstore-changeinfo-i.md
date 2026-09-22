@@ -1,5 +1,9 @@
 # ChangeInfo
 
+```TypeScript
+interface ChangeInfo
+```
+
 Defines a struct for the details about the device-cloud sync process.
 
 **Since:** 10

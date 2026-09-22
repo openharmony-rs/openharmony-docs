@@ -1,5 +1,9 @@
 # FileMoveOption
 
+```TypeScript
+export interface FileMoveOption
+```
+
 可选项类型，支持move接口使用。
 
 **起始版本：** 3

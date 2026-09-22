@@ -1,5 +1,9 @@
 # AudioConcurrencyMode
 
+```TypeScript
+enum AudioConcurrencyMode
+```
+
 表示音频并发模式的枚举。
 
 **起始版本：** 12

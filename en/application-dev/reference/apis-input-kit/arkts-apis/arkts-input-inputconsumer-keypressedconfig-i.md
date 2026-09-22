@@ -1,5 +1,9 @@
 # KeyPressedConfig
 
+```TypeScript
+interface KeyPressedConfig
+```
+
 Sets the key event consumption configuration.
 
 **Since:** 16

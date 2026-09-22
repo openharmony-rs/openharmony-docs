@@ -1,5 +1,9 @@
 # FocusPriority
 
+```TypeScript
+declare enum FocusPriority
+```
+
 Sets the focus priority of a component.
 
 **Since:** 12

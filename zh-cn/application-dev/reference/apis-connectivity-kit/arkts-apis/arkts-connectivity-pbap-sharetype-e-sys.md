@@ -1,5 +1,9 @@
 # ShareType（系统接口）
 
+```TypeScript
+enum ShareType
+```
+
 枚举，共享类型。
 
 **起始版本：** 11

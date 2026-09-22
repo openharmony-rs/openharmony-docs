@@ -37,7 +37,7 @@ function isDLPFile(fd: number): Promise<boolean>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
@@ -61,23 +61,8 @@ dlpPermission.isDLPFile(file).then((isDLPFile: boolean) => {
 });
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
 
-let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-let file: number | undefined = undefined;
-file = fileIo.openSync(uri).fd;
-dlpPermission.isDLPFile(file, (err, isDLPFile) => {
- if (err) {
-    console.error(`Failed to check if file is DLP file. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('isDLPFile:', isDLPFile);
-  }
-  fileIo.closeSync(file);
-});
-```
-
+<a id="isdlpfile-1"></a>
 
 ## isDLPFile
 
@@ -105,10 +90,25 @@ function isDLPFile(fd: number, callback: AsyncCallback<boolean>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 isDLPFile
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
+let file: number | undefined = undefined;
+file = fileIo.openSync(uri).fd;
+dlpPermission.isDLPFile(file, (err, isDLPFile) => {
+ if (err) {
+    console.error(`Failed to check if file is DLP file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('isDLPFile:', isDLPFile);
+  }
+  fileIo.closeSync(file);
+});
+```

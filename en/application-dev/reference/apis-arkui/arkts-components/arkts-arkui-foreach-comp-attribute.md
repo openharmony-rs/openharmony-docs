@@ -1,6 +1,10 @@
 # ForEach properties/events
 
-The drag-and-drop sorting attribute is supported.
+```TypeScript
+declare class ForEachAttribute extends DynamicNode<ForEachAttribute>
+```
+
+The [drag-and-drop sorting](arkts-arkui-common-comp.md#common) attribute is supported.
 
 **Inheritance/Implementation:** ForEachAttribute extends DynamicNode<ForEachAttribute>
 

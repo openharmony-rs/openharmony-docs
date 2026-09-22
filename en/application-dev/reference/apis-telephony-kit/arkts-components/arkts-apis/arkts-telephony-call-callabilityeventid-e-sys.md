@@ -1,5 +1,9 @@
 # CallAbilityEventId (System API)
 
+```TypeScript
+export enum CallAbilityEventId
+```
+
 Enumerates call ability event IDs.
 
 **Since:** 8

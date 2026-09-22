@@ -1,5 +1,9 @@
 # ImsRegTech（系统接口）
 
+```TypeScript
+export enum ImsRegTech
+```
+
 Indicates IMS registration technology.
 
 **起始版本：** 9

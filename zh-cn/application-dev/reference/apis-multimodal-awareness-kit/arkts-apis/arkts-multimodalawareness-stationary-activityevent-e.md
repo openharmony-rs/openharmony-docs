@@ -1,5 +1,9 @@
 # ActivityEvent
 
+```TypeScript
+enum ActivityEvent
+```
+
 设备状态事件。
 
 **起始版本：** 9

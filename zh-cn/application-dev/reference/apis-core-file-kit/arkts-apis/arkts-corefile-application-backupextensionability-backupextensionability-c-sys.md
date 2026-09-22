@@ -1,5 +1,9 @@
 # BackupExtensionAbility
 
+```TypeScript
+declare class BackupExtensionAbility
+```
+
 备份恢复扩展能力。应用可通过该类实现自定义备份、恢复、进度上报和安全退出逻辑。
 
 **起始版本：** 10

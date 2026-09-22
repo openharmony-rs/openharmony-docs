@@ -1,5 +1,9 @@
 # ImmersiveOptions
 
+```TypeScript
+interface ImmersiveOptions
+```
+
 沉浸式材质参数。
 
 **起始版本：** 26.0.0
@@ -20,7 +24,7 @@ applyShadow?: boolean
 
 是否添加材质的阴影效果。
 
-当该参数为true时，材质中的阴影效果固定生效，优先于shadow通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。
+当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。
 
 **说明：** 该参数对支持沉浸式材质的所有档位的算力设备的显示效果生效。
 
@@ -52,29 +56,29 @@ colorInvert?: boolean
 
 自动反色能力仅对部分属性接口设置特殊资源（见下表1）值时生效，生效的属性接口包括：
 
-Text组件的fontColor，
+Text组件的[fontColor](../arkts-components/arkts-arkui-text-comp-attribute.md#fontcolor)，
 
-Button组件的fontColor，
+Button组件的[fontColor](../arkts-components/arkts-arkui-button-comp-attribute.md#fontcolor)，
 
-SymbolGlyph组件的fontColor，
+SymbolGlyph组件的[fontColor](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontcolor)，
 
-Image组件的fillColor，
+Image组件的[fillColor](../arkts-components/arkts-arkui-image-comp-attribute.md#fillcolor)，
 
-Search组件的placeholderColor、fontColor，searchIcon中的图标颜色、cancelButton中的图标颜色、caretStyle中的光标颜色，searchButton 中的按钮颜色，
+Search组件的[placeholderColor](../arkts-components/arkts-arkui-search-comp-attribute.md#placeholdercolor)、[fontColor](../arkts-components/arkts-arkui-search-comp-attribute.md#fontcolor)，[searchIcon](../arkts-components/arkts-arkui-search-comp-attribute.md#searchicon)中的图标颜色、[cancelButton](../arkts-components/arkts-arkui-search-comp-attribute.md#cancelbutton)中的图标颜色、[caretStyle](../arkts-components/arkts-arkui-search-comp-attribute.md#caretstyle)中的光标颜色，[searchButton](../arkts-components/arkts-arkui-search-comp-attribute.md#searchbutton) 中的按钮颜色，
 
-TabContent组件的[tabBar](../arkts-components/arkts-arkui-tabcontent-comp-attribute.md#tabbar)属性使用[BottomTabBarStyle](../arkts-components/arkts-arkui-bottomtabbarstyle-c.md)，
+TabContent组件的[tabBar](../arkts-components/arkts-arkui-tabcontent-comp-attribute.md#tabbar)属性使用[BottomTabBarStyle](../arkts-components/arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md)，
 
 Chip组件的[prefixIcon](arkts-arkui-arkui-advanced-chip-prefixiconoptions-i.md)、suffixIcon属性的[fillColor](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md)，[label](arkts-arkui-arkui-advanced-chip-labeloptions-i.md)属性的[fontColor](arkts-arkui-arkui-advanced-chip-labeloptions-i.md)，
 
 ChipGroup组件的[itemStyle](arkts-arkui-arkui-advanced-chipgroup-chipitemstyle-i.md)的[fontColor](arkts-arkui-arkui-advanced-chipgroup-chipitemstyle-i.md)，
 
-TextArea组件的fontColor、placeholderColor，
+TextArea组件的[fontColor](../arkts-components/arkts-arkui-textarea-comp-attribute.md#fontcolor)、[placeholderColor](../arkts-components/arkts-arkui-textarea-comp-attribute.md#placeholdercolor)，
 
-TextInput组件的fontColor、placeholderColor，
+TextInput组件的[fontColor](../arkts-components/arkts-arkui-textinput-comp-attribute.md#fontcolor)、[placeholderColor](../arkts-components/arkts-arkui-textinput-comp-attribute.md#placeholdercolor)，
 
 SegmentButton组件的[fontColor](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md#fontcolor)，
 
-Swiper组件的fontColor，
+Swiper组件的[fontColor](../arkts-components/arkts-arkui-swiper-comp-digitindicator-c.md#fontcolor)，
 
 使用以上接口时，其中的文本和图标颜色会自动反色。
 
@@ -146,7 +150,7 @@ lightEffect?: LightEffectOptions | null
 materialColor?: ResourceColor
 ```
 
-材质层赋色。对于支持沉浸式材质的高算力和中算力设备，若不设置该参数或该参数为undefined，不额外混合纯色效果；若设置该参数为有效颜色值，该参数会为材质层滤镜再混合一层纯色效果，若该颜色为纯不透明的颜色，会遮挡材质层滤镜效果。对于支持沉浸式材质的低算力设备，若不设置该参数或该参数为undefined，生效低算力设备材质自带的背景色效果；若设置该参数为有效颜色值，该参数作为背景色backgroundColor属性值。
+材质层赋色。对于支持沉浸式材质的高算力和中算力设备，若不设置该参数或该参数为undefined，不额外混合纯色效果；若设置该参数为有效颜色值，该参数会为材质层滤镜再混合一层纯色效果，若该颜色为纯不透明的颜色，会遮挡材质层滤镜效果。对于支持沉浸式材质的低算力设备，若不设置该参数或该参数为undefined，生效低算力设备材质自带的背景色效果；若设置该参数为有效颜色值，该参数作为背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)属性值。
 
 **说明：** 该参数对支持沉浸式材质的所有档位的算力设备的显示效果生效。
 

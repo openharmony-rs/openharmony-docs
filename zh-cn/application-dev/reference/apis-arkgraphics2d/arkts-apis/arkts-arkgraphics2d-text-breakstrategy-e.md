@@ -1,5 +1,9 @@
 # BreakStrategy
 
+```TypeScript
+enum BreakStrategy
+```
+
 断行策略枚举。
 
 **起始版本：** 12

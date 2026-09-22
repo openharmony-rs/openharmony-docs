@@ -1,5 +1,9 @@
 # DeviceOrientationResponse
 
+```TypeScript
+export interface DeviceOrientationResponse
+```
+
 Defines a **DeviceOrientationResponse** object.
 
 **Since:** 6

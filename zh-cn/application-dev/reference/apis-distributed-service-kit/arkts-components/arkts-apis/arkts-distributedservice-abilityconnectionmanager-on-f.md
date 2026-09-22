@@ -35,6 +35,19 @@ function on(type: 'connect', sessionId: number,
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+let sessionId = 100;
+abilityConnectionManager.on("connect", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
+});
+```
+
 
 ## on('disconnect')
 
@@ -64,6 +77,19 @@ function on(type: 'disconnect', sessionId: number,
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+let sessionId = 100;
+abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
+});
+```
 
 
 ## on('receiveMessage')
@@ -95,6 +121,19 @@ function on(type: 'receiveMessage', sessionId: number,
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+let sessionId = 100;
+abilityConnectionManager.on("receiveMessage", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveMessage, sessionId is', callbackInfo.sessionId);
+});
+```
+
 
 ## on('receiveData')
 
@@ -124,3 +163,16 @@ function on(type: 'receiveData', sessionId: number,
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+let sessionId = 100;
+abilityConnectionManager.on("receiveData", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
+});
+```

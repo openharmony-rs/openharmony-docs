@@ -38,10 +38,3 @@ function getQuerySqlInfo(predicates: RdbPredicates, columns?: Array<string>):Sql
 | [14800001](../errorcode-data-rdb.md#14800001-无效的参数) | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 
 **示例**
-
-```TypeScript
-const predicates = new relationalStore.RdbPredicates("users");
-predicates.notEqualTo("age", 18);
-predicates.equalTo("name", "zhangsan");
-const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
-```

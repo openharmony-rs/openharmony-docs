@@ -1,5 +1,9 @@
 # DownloadInfo
 
+```TypeScript
+interface DownloadInfo
+```
+
 Describes the pre-downloaded download information.
 
 **Since:** 20

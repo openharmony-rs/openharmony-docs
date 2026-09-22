@@ -1,5 +1,9 @@
 # SizeT
 
+```TypeScript
+export interface SizeT<T>
+```
+
 用于设置宽高的属性。
 
 **起始版本：** 12

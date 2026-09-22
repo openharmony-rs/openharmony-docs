@@ -1,5 +1,9 @@
 # OverflowInfo
 
+```TypeScript
+interface OverflowInfo
+```
+
 Provides OverflowInfo about funInteraction or sceneAnimation form
 
 @typedef { OverflowInfo }

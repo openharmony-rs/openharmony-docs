@@ -1,5 +1,9 @@
 # BatteryStatsInfo（系统接口）
 
+```TypeScript
+interface BatteryStatsInfo
+```
+
 设备软硬件的耗电信息。
 
 **起始版本：** 8

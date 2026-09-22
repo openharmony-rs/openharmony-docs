@@ -1,5 +1,9 @@
 # AttachOptions
 
+```TypeScript
+export interface AttachOptions
+```
+
 绑定输入法时的附加选项。
 
 **起始版本：** 19

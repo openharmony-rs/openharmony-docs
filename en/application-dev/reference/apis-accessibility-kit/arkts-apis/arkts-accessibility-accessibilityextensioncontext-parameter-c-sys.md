@@ -1,5 +1,9 @@
 # Parameter (System API)
 
+```TypeScript
+export declare class Parameter
+```
+
 Provides parameter values for specific settings when an accessibility node element performs a specific action. Different action types require different parameter fields. For details about the mapping between action types and parameter fields, see [AccessibilityAction](arkts-accessibility-accessibility-accessibilityaction-e-sys.md) (actions that can be performed by an accessibility node element).
 
 **Since:** 20
@@ -173,3 +177,13 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
+
+**Examples**
+
+When selecting characters from index 0 to 7 in the text input box, the parameters set by the executeAction(AccessibilityAction.SET_SELECTION, parameter) method are as follows:
+
+```TypeScript
+import { Parameter } from '@kit.AccessibilityKit';
+
+let parameter : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true };
+```

@@ -1,6 +1,10 @@
 # TextDataDetectorConfig
 
-该配置只支持Text组件和RichEditor组件。
+```TypeScript
+declare interface TextDataDetectorConfig
+```
+
+该配置只支持[Text](../arkts-components/arkts-arkui-text-comp.md#text)组件和[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)组件。
 
 **起始版本：** 11
 
@@ -66,7 +70,7 @@ enablePreviewMenu?: boolean
 
 默认值：false
 
-当copyOptions设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。
+当[copyOptions](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。
 
 本接口实际支持的设备类型范围（Phone、Tablet）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car、Wearable）。因硬件形态限制，该接口在PC/2in1、TV、Car、Wearable设备中调用功能不生效。
 
@@ -90,7 +94,7 @@ onDetectResultUpdate?: Callback<string>
 
 默认值：undefined，不触发回调。
 
-**类型：** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;string&gt;
+**类型：** Callback&lt;string&gt;
 
 **起始版本：** 11
 

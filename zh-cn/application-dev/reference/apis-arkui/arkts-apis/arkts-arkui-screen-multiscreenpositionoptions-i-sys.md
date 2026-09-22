@@ -1,5 +1,9 @@
 # MultiScreenPositionOptions（系统接口）
 
+```TypeScript
+interface MultiScreenPositionOptions
+```
+
 屏幕位置信息。
 
 **起始版本：** 13

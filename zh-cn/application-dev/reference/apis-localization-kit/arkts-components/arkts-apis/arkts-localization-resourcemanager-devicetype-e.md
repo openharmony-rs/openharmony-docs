@@ -1,5 +1,9 @@
 # DeviceType
 
+```TypeScript
+export enum DeviceType
+```
+
 用于表示当前设备类型。
 
 &lt;!--RP1--&gt;

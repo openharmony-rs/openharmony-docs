@@ -1,5 +1,9 @@
 # BoidsSimRepulsionParameters（系统接口）
 
+```TypeScript
+export interface BoidsSimRepulsionParameters
+```
+
 斥力场参数，用于配置场景中的斥力场。
 
 **起始版本：** 26.0.0

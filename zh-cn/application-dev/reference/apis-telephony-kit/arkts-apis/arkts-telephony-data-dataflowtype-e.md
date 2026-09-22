@@ -1,5 +1,9 @@
 # DataFlowType
 
+```TypeScript
+export enum DataFlowType
+```
+
 描述蜂窝数据流类型。
 
 **起始版本：** 7

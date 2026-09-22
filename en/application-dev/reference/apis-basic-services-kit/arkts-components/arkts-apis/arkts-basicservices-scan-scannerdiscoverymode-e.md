@@ -1,5 +1,9 @@
 # ScannerDiscoveryMode
 
+```TypeScript
+enum ScannerDiscoveryMode
+```
+
 Enumerates the scanner discovery modes.
 
 **Since:** 20

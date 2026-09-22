@@ -1,5 +1,9 @@
 # SupportedImageFormat (System API)
 
+```TypeScript
+enum SupportedImageFormat
+```
+
 Enumerates the supported image formats.
 
 **Since:** 20

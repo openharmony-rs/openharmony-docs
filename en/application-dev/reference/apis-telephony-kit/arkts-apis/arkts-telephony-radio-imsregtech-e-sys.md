@@ -1,5 +1,9 @@
 # ImsRegTech (System API)
 
+```TypeScript
+export enum ImsRegTech
+```
+
 Indicates IMS registration technology.
 
 **Since:** 9

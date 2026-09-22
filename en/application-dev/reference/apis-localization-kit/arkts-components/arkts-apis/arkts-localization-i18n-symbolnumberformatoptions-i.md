@@ -1,5 +1,9 @@
 # SymbolNumberFormatOptions
 
+```TypeScript
+export interface SymbolNumberFormatOptions extends Intl.NumberFormatOptions
+```
+
 Represents optional configuration items for the SymbolNumberFormat object. Define the symbol element and value that need to be replaced.
 
 **Inheritance/Implementation:** SymbolNumberFormatOptions extends Intl.NumberFormatOptions

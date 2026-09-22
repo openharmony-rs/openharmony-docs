@@ -1,8 +1,12 @@
 # MultiNavPathStack
 
-MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用NavDestination的onReady等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。
+```TypeScript
+export declare class MultiNavPathStack extends NavPathStack
+```
 
-**继承/实现关系：** MultiNavPathStack extends [NavPathStack](../arkts-components/arkts-arkui-navpathstack-c.md)
+MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用NavDestination的[onReady](../arkts-components/arkts-arkui-navdestination-comp-attribute.md#onready)等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。
+
+**继承/实现关系：** MultiNavPathStack extends [NavPathStack](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md)
 
 **起始版本：** 14
 
@@ -328,7 +332,9 @@ pop(animated?: boolean): NavPathInfo | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) &#124; undefined | 返回栈顶NavDestination页面的信息。栈为空时返回undefined。 |
+| [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | 返回栈顶NavDestination页面的信息。栈为空时返回undefined。 |
+
+<a id="pop-1"></a>
 
 ## pop
 
@@ -361,7 +367,7 @@ pop(result?: Object, animated?: boolean): NavPathInfo | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) &#124; undefined | 返回栈顶NavDestination页面的信息。栈为空时返回undefined。 |
+| [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | 返回栈顶NavDestination页面的信息。栈为空时返回undefined。 |
 
 ## popToIndex
 
@@ -385,6 +391,8 @@ popToIndex(index: number, animated?: boolean): void
 | --- | --- | --- | --- |
 | index | number | 是 | NavDestination页面的位置索引。<br>取值范围：[0, +∞)。超出范围时操作不生效。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
+
+<a id="poptoindex-1"></a>
 
 ## popToIndex
 
@@ -439,6 +447,8 @@ popToName(name: string, animated?: boolean): number
 | --- | --- |
 | number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞). |
 
+<a id="poptoname-1"></a>
+
 ## popToName
 
 ```TypeScript
@@ -489,9 +499,11 @@ pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。<br>默认值：DETAIL_PAGE |
+
+<a id="pushpath-1"></a>
 
 ## pushPath
 
@@ -513,8 +525,8 @@ pushPath(info: NavPathInfo, options?: NavigationOptions, policy?: SplitPolicy): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
-| options | [NavigationOptions](../arkts-components/arkts-arkui-navigationoptions-i.md) | 否 | 页面栈操作选项。仅支持其中的animated字段，使用其他字段将被忽略。省略时使用默认动画配置。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| options | [NavigationOptions](../arkts-components/arkts-arkui-navigation-comp-navigationoptions-i.md) | 否 | 页面栈操作选项。仅支持其中的animated字段，使用其他字段将被忽略。省略时使用默认动画配置。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。<br>默认值：DETAIL_PAGE |
 
 ## pushPathByName
@@ -542,6 +554,8 @@ pushPathByName(name: string, param: Object, animated?: boolean, policy?: SplitPo
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。<br>默认值：DETAIL_PAGE |
 
+<a id="pushpathbyname-1"></a>
+
 ## pushPathByName
 
 ```TypeScript
@@ -565,7 +579,7 @@ pushPathByName(
 | --- | --- | --- | --- |
 | name | string | 是 | NavDestination页面名称。需要与NavDestinationBuildFunction中注册的页面名称一致。 |
 | param | Object | 是 | NavDestination页面详细参数，用于向目标页面传递自定义数据。具体字段规格请参考NavDestination相关文档。 |
-| onPop | [base.Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PopInfo](../arkts-components/arkts-arkui-popinfo-i.md)&gt; | 否 | Callback回调，用于页面出栈时触发该回调处理返回结果。省略时不触发回调处理。可通过pop方法、popToName方法、popToIndex方法的result参数传递数据给此回调。 |
+| onPop | [base.Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PopInfo](../arkts-components/arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 否 | Callback回调，用于页面出栈时触发该回调处理返回结果。省略时不触发回调处理。可通过pop方法、popToName方法、popToIndex方法的result参数传递数据给此回调。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。<br>默认值：DETAIL_PAGE |
 
@@ -645,8 +659,10 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true<br>true：支持转场动画。<br>false：不支持转场动画。 |
+
+<a id="replacepath-1"></a>
 
 ## replacePath
 
@@ -668,8 +684,8 @@ replacePath(info: NavPathInfo, options?: NavigationOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
-| options | [NavigationOptions](../arkts-components/arkts-arkui-navigationoptions-i.md) | 否 | 页面栈操作选项。仅支持其中的animated字段。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| options | [NavigationOptions](../arkts-components/arkts-arkui-navigation-comp-navigationoptions-i.md) | 否 | 页面栈操作选项。仅支持其中的animated字段。 |
 
 ## replacePathByName
 
@@ -746,7 +762,7 @@ setPlaceholderPage(info: NavPathInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | 占位页页面信息，用于设置占位页。占位页在大屏设备上会与主页形成左右分栏效果。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | 占位页页面信息，用于设置占位页。占位页在大屏设备上会与主页形成左右分栏效果。 |
 
 ## size
 

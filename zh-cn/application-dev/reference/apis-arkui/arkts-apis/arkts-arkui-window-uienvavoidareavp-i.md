@@ -1,5 +1,9 @@
 # UIEnvAvoidAreaVP
 
+```TypeScript
+interface UIEnvAvoidAreaVP
+```
+
 以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)适配时需关注。
 
 **起始版本：** 23

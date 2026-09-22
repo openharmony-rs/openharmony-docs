@@ -56,20 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  cooperate.deactivate(false).then(() => {
-    console.info(`Stop Keyboard mouse crossing success.`);
-  }, (error: BusinessError) => {
-    console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-  });
-} catch (error) {
-  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
+<a id="deactivate-1"></a>
 
 ## deactivate
 
@@ -83,7 +71,7 @@ function deactivate(isUnchained: boolean): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md)(isUnchained: boolean)
+**替代接口：** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate-1)(isUnchained: boolean)
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -109,4 +97,16 @@ function deactivate(isUnchained: boolean): Promise<void>
 
 **示例**
 
-参见 [deactivate](#deactivate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  cooperate.deactivate(false).then(() => {
+    console.info(`Stop Keyboard mouse crossing success.`);
+  }, (error: BusinessError) => {
+    console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```

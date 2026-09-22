@@ -55,16 +55,8 @@ try {
 }
 ```
 
-```TypeScript
-try {
-    wearDetection.enableWearDetection('XX:XX:XX:XX:XX:XX').then(() => {
-        console.info("enableWearDetection");
-    });
-} catch (err) {
-    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
-```
 
+<a id="enableweardetection-1"></a>
 
 ## enableWearDetection
 
@@ -108,4 +100,12 @@ function enableWearDetection(deviceId: string): Promise<void>
 
 **示例**
 
-参见 [enableWearDetection](#enableweardetection)
+```TypeScript
+try {
+    wearDetection.enableWearDetection('XX:XX:XX:XX:XX:XX').then(() => {
+        console.info("enableWearDetection");
+    });
+} catch (err) {
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+}
+```

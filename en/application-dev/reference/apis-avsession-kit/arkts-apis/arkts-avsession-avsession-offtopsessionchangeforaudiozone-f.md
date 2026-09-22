@@ -14,7 +14,7 @@ function offTopSessionChangeForAudioZone(userId: number, callback?: Callback<AVS
 
 Unregister top session changed callback for a specific audio zone.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
 

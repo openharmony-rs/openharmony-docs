@@ -1,5 +1,9 @@
 # SwiperContentAnimatedTransition
 
+```TypeScript
+declare interface SwiperContentAnimatedTransition
+```
+
 Provides the information about the custom page transition animation.
 
 **Since:** 18

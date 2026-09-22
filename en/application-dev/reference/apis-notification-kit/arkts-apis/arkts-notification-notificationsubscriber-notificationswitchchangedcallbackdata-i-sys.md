@@ -1,5 +1,9 @@
 # NotificationSwitchChangedCallbackData (System API)
 
+```TypeScript
+export interface NotificationSwitchChangedCallbackData
+```
+
 Returns the changes of the notification switch state.
 
 **Since:** 26.0.0

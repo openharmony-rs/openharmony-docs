@@ -34,6 +34,54 @@ import { ProgressButtonV2, ProgressButtonV2Color, ProgressButtonV2ColorOptions }
 
 ## Examples
 
-```TypeScript
 This example demonstrates how to create a simple download button with a progress indicator that shows the loading status of a text file.
+
+```TypeScript
+import { LengthMetrics, ProgressButtonV2 } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local progressIndex: number = 0;
+  @Local textState: string = 'Download';
+  @Local buttonWidth: LengthMetrics = LengthMetrics.vp(200);
+  @Local isRunning: boolean = false;
+  @Local enableState: boolean = true;
+
+  build() {
+    Column() {
+      Scroll() {
+        Column({ space: 20 }) {
+          ProgressButtonV2({
+            progress: this.progressIndex,
+            progressButtonWidth: this.buttonWidth,
+            content: this.textState,
+            isEnabled: this.enableState,
+            onClicked: () => {
+              if (this.textState && !this.isRunning && this.progressIndex < 100) {
+                this.textState = 'Continue';
+              }
+              this.isRunning = !this.isRunning;
+              let timer = setInterval(() => {
+                if (this.isRunning) {
+                  if (this.progressIndex === 100) {
+                    clearInterval(timer);
+                  } else {
+                    this.progressIndex++;
+                    if (this.progressIndex === 100) {
+                      this.textState = 'Completed';
+                      this.enableState = false;
+                    }
+                  }
+                } else {
+                  clearInterval(timer);
+                }
+              }, 20);
+            }
+          })
+        }.alignItems(HorizontalAlign.Center).width('100%').margin({ top: 20 });
+      }
+    }
+  }
+}
 ```

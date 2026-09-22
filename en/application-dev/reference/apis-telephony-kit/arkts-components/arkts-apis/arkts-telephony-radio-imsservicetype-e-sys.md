@@ -1,5 +1,9 @@
 # ImsServiceType (System API)
 
+```TypeScript
+export enum ImsServiceType
+```
+
 Indicates the type of IMS service.
 
 **Since:** 9

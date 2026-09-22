@@ -1,5 +1,9 @@
 # KvStoreResultSet
 
+```TypeScript
+interface KvStoreResultSet
+```
+
 提供获取KVStore数据库结果集的相关方法，包括查询和移动数据读取位置等。在调用KvStoreResultSet的方法前，需要先通过getKVStore构建一个KVStore实例。
 
 **起始版本：** 7

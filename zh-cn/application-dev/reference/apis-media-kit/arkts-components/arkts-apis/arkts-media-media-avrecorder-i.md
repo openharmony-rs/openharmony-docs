@@ -1,5 +1,9 @@
 # AVRecorder
 
+```TypeScript
+interface AVRecorder
+```
+
 AVRecorder是音视频录制管理类，用于音视频录制的全流程管理，支持音频录制、视频录制及音视频混合录制，可灵活配置编码参数、添加水印、设置元数据、监听录制状态和错误事件等。适用于录制音视频并保存到文件的场景，包括需要在音频流打断期间保持录制连续性、实时监控音频振幅等场景。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-media-media-createavrecorder-f.md)接口构建一个AVRecorder实例。典型录制流程：[createAVRecorder](arkts-media-media-createavrecorder-f.md) → [prepare](#prepare-1) → [getInputSurface](#getinputsurface)（纯视频/音视频录制时） → [start](#start) → [pause](#pause)/[resume](#resume) → [stop](#stop) → [release](#release)。
 
 音视频录制示例可参考：[音频录制开发指导](../../../media/media/using-avrecorder-for-recording.md)、[视频录制开发指导](../../../media/media/video-recording.md)。
@@ -58,6 +62,26 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The parameter check failed, parameter value out of range. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let watermark: image.PixelMap | undefined = undefined; // 通过image.createImageSource创建ImageSource对象后调用createPixelMap接口（@kit.ImageKit）获取PixelMap。水印图像不能为空。
+let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+if (watermark) {
+    avRecorder.addWatermark(watermark, watermarkConfig).then((num: number) => {
+      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+    });
+}
+```
+
 ## getAudioCapturerMaxAmplitude
 
 ```TypeScript
@@ -82,6 +106,25 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback<number>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let maxAmplitude: number;
+
+avRecorder.getAudioCapturerMaxAmplitude((err: BusinessError, amplitude: number) => {
+  if (err) {
+    console.error(`Failed to get AudioCapturerMaxAmplitude and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in getting AudioCapturerMaxAmplitude');
+    maxAmplitude = amplitude;
+  }
+});
+```
+
+<a id="getaudiocapturermaxamplitude-1"></a>
 
 ## getAudioCapturerMaxAmplitude
 
@@ -108,6 +151,22 @@ getAudioCapturerMaxAmplitude(): Promise<number>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let maxAmplitude: number;
+
+avRecorder.getAudioCapturerMaxAmplitude().then((amplitude: number) => {
+  console.info('Succeeded in getting AudioCapturerMaxAmplitude');
+  maxAmplitude = amplitude;
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get AudioCapturerMaxAmplitude and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## getAvailableEncoder
 
 ```TypeScript
@@ -133,6 +192,29 @@ getAvailableEncoder(callback: AsyncCallback<Array<EncoderInfo>>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let encoderInfo: media.EncoderInfo;
+
+avRecorder.getAvailableEncoder((err: BusinessError, info: media.EncoderInfo[]) => {
+  if (err) {
+    console.error(`Failed to get AvailableEncoder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in getting AvailableEncoder');
+    if (info.length > 0) {
+      encoderInfo = info[0];
+    } else {
+      console.error('No available encoder');
+    }
+  }
+});
+```
+
+<a id="getavailableencoder-1"></a>
+
 ## getAvailableEncoder
 
 ```TypeScript
@@ -157,6 +239,26 @@ getAvailableEncoder(): Promise<Array<EncoderInfo>>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let encoderInfo: media.EncoderInfo;
+
+avRecorder.getAvailableEncoder().then((info: media.EncoderInfo[]) => {
+  console.info('Succeeded in getting AvailableEncoder');
+    if (info.length > 0) {
+      encoderInfo = info[0];
+    } else {
+      console.error('No available encoder');
+    }
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get AvailableEncoder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
 
 ## getAVRecorderConfig
 
@@ -186,6 +288,25 @@ getAVRecorderConfig(callback: AsyncCallback<AVRecorderConfig>): void
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avRecorderConfig: media.AVRecorderConfig;
+
+avRecorder.getAVRecorderConfig((err: BusinessError, config: media.AVRecorderConfig) => {
+  if (err) {
+    console.error(`Failed to get avRecorderConfig and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in getting AVRecorderConfig');
+    avRecorderConfig = config;
+  }
+});
+```
+
+<a id="getavrecorderconfig-2"></a>
+
 ## getAVRecorderConfig
 
 ```TypeScript
@@ -214,6 +335,22 @@ getAVRecorderConfig(): Promise<AVRecorderConfig>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avRecorderConfig: media.AVRecorderConfig;
+
+avRecorder.getAVRecorderConfig().then((config: media.AVRecorderConfig) => {
+  console.info('Succeeded in getting AVRecorderConfig');
+  avRecorderConfig = config;
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get AVRecorderConfig and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## getCurrentAudioCapturerInfo
 
 ```TypeScript
@@ -239,6 +376,26 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback<audio.AudioCapturerChangeInf
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { audio } from '@kit.AudioKit';
+
+let currentCapturerInfo: audio.AudioCapturerChangeInfo;
+
+avRecorder.getCurrentAudioCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapturerChangeInfo) => {
+  if (err) {
+    console.error(`Failed to get CurrentAudioCapturerInfo and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in getting CurrentAudioCapturerInfo');
+    currentCapturerInfo = capturerInfo;
+  }
+});
+```
+
+<a id="getcurrentaudiocapturerinfo-2"></a>
 
 ## getCurrentAudioCapturerInfo
 
@@ -266,6 +423,23 @@ getCurrentAudioCapturerInfo(): Promise<audio.AudioCapturerChangeInfo>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { audio } from '@kit.AudioKit';
+
+let currentCapturerInfo: audio.AudioCapturerChangeInfo;
+
+avRecorder.getCurrentAudioCapturerInfo().then((capturerInfo: audio.AudioCapturerChangeInfo) => {
+  console.info('Succeeded in getting CurrentAudioCapturerInfo');
+  currentCapturerInfo = capturerInfo;
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get CurrentAudioCapturerInfo and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## getInputSurface
 
 ```TypeScript
@@ -291,6 +465,25 @@ getInputSurface(callback: AsyncCallback<string>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let inputSurfaceId: string; // 该inputSurfaceId用于传递给相机接口创建videoOutput。
+
+avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
+  if (err) {
+    console.error(`Failed to do getInputSurface and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in doing getInputSurface');
+    inputSurfaceId = surfaceId;
+  }
+});
+```
+
+<a id="getinputsurface-2"></a>
 
 ## getInputSurface
 
@@ -318,6 +511,22 @@ getInputSurface(): Promise<string>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let inputSurfaceId: string; // 该inputSurfaceId用于传递给相机接口创建videoOutput。
+
+avRecorder.getInputSurface().then((surfaceId: string) => {
+  console.info('Succeeded in getting InputSurface');
+  inputSurfaceId = surfaceId;
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get InputSurface and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## off('stateChange')
 
 ```TypeScript
@@ -338,6 +547,12 @@ off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 录制状态机切换的回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
 | callback | [OnAVRecorderStateChangeHandler](arkts-media-media-onavrecorderstatechangehandler-t.md) | 否 | 回调函数，用于接收录制状态机切换事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br>从API version 12开始支持此参数。 |
+
+**示例**
+
+```TypeScript
+avRecorder.off('stateChange');
+```
 
 ## off('error')
 
@@ -360,6 +575,12 @@ off(type: 'error', callback?: ErrorCallback): void
 | type | 'error' | 是 | 录制错误的回调类型，支持的事件：'error'。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数，用于接收录制错误事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br>从API version 12开始支持此参数。 |
 
+**示例**
+
+```TypeScript
+avRecorder.off('error');
+```
+
 ## off('audioCapturerChange')
 
 ```TypeScript
@@ -379,6 +600,12 @@ off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeIn
 | type | 'audioCapturerChange' | 是 | 录音配置变化的回调类型，支持的事件：'audioCapturerChange'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.AudioCapturerChangeInfo](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturerchangeinfo-i.md)&gt; | 否 | 回调函数，用于接收变化后的录音配置全量信息。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br>从API version 12开始支持此参数。 |
 
+**示例**
+
+```TypeScript
+avRecorder.off('audioCapturerChange');
+```
+
 ## off('photoAssetAvailable')
 
 ```TypeScript
@@ -397,6 +624,12 @@ off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsse
 | --- | --- | --- | --- |
 | type | 'photoAssetAvailable' | 是 | 媒体资源创建完成的回调类型，支持的事件：'photoAssetAvailable'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[photoAccessHelper.PhotoAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md)&gt; | 否 | 回调函数，用于接收系统创建的资源文件对应的PhotoAsset对象。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。 |
+
+**示例**
+
+```TypeScript
+avRecorder.off('photoAssetAvailable');
+```
 
 ## on('audioCapturerChange')
 
@@ -423,6 +656,19 @@ on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let capturerChangeInfo: audio.AudioCapturerChangeInfo;
+
+avRecorder.on('audioCapturerChange', (audioCapturerChangeInfo: audio.AudioCapturerChangeInfo) => {
+  console.info('audioCapturerChange called');
+  capturerChangeInfo = audioCapturerChangeInfo;
+});
+```
+
 ## on('photoAssetAvailable')
 
 ```TypeScript
@@ -448,6 +694,40 @@ on(type: 'photoAssetAvailable', callback: Callback<photoAccessHelper.PhotoAsset>
 | --- | --- |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+let photoAsset: photoAccessHelper.PhotoAsset;
+
+// 例：处理photoAsset回调，保存video。
+async function saveVideo(context: Context, asset: photoAccessHelper.PhotoAsset) {
+  console.info('saveVideo called');
+  try {
+    let photoHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+    assetChangeRequest.saveCameraPhoto();
+    await photoHelper.applyChanges(assetChangeRequest);
+    console.info('apply saveVideo successfully');
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error(`Failed to apply saveVideo. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+// 注册photoAsset监听。
+avRecorder.on('photoAssetAvailable', (asset: photoAccessHelper.PhotoAsset) => {
+  console.info('photoAssetAvailable called');
+  if (asset != undefined) {
+    photoAsset = asset;
+    // 处理photoAsset回调。
+    // 例：this.saveVideo(context, asset);
+  } else {
+    console.error('photoAsset is undefined');
+  }
+});
+```
 
 ## on('stateChange')
 
@@ -476,6 +756,14 @@ on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 | --- | --- |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+avRecorder.on('stateChange', (state: media.AVRecorderState, reason: media.StateChangeReason) => {
+  console.info('case state has changed, new state is: ' + state + ', and reason is: ' + reason);
+});
+```
 
 ## on('error')
 
@@ -513,6 +801,16 @@ on(type: 'error', callback: ErrorCallback): void
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. |
 | [5400107](../errorcode-media.md#5400107-音频焦点冲突) | Audio interrupted.<br>**适用版本：** 11+ |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.on('error', (err: BusinessError) => {
+  console.error(`Failed to record. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## pause
 
 ```TypeScript
@@ -538,6 +836,22 @@ pause(callback: AsyncCallback<void>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.pause((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to pause AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in pausing');
+  }
+});
+```
+
+<a id="pause-1"></a>
 
 ## pause
 
@@ -566,6 +880,19 @@ pause(): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.pause().then(() => {
+  console.info('Succeeded in pausing');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to pause AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
 
 ## prepare
 
@@ -596,6 +923,47 @@ prepare(config: AVRecorderConfig, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 配置参数以实际硬件设备支持的范围为准。
+let avRecorderProfile: media.AVRecorderProfile = {
+  audioBitrate : 48000,
+  audioChannels : 2,
+  audioCodec : media.CodecMimeType.AUDIO_AAC,
+  audioSampleRate : 48000,
+  fileFormat : media.ContainerFormatType.CFT_MPEG_4,
+  videoBitrate : 2000000,
+  videoCodec : media.CodecMimeType.VIDEO_AVC,
+  videoFrameWidth : 640,
+  videoFrameHeight : 480,
+  videoFrameRate : 30
+};
+let videoMetaData: media.AVMetadata = {
+  videoOrientation: '0' // 合理值0、90、180、270，非合理值prepare接口报错。
+};
+let avRecorderConfig: media.AVRecorderConfig = {
+  audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+  videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
+  profile : avRecorderProfile,
+  url : 'fd://', // 文件需先通过fs.open接口（@kit.FileKit）打开获取文件描述符fd，赋予读写权限，将fd传给此参数，详见文件管理开发指导。
+  metadata: videoMetaData,
+  location : { latitude : 30, longitude : 130 }
+};
+
+avRecorder.prepare(avRecorderConfig, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to prepare and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in preparing');
+  }
+});
+```
+
+<a id="prepare-1"></a>
 
 ## prepare
 
@@ -634,6 +1002,44 @@ prepare(config: AVRecorderConfig): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 配置参数以实际硬件设备支持的范围为准。
+let avRecorderProfile: media.AVRecorderProfile = {
+  audioBitrate : 48000,
+  audioChannels : 2,
+  audioCodec : media.CodecMimeType.AUDIO_AAC,
+  audioSampleRate : 48000,
+  fileFormat : media.ContainerFormatType.CFT_MPEG_4,
+  videoBitrate : 2000000,
+  videoCodec : media.CodecMimeType.VIDEO_AVC,
+  videoFrameWidth : 640,
+  videoFrameHeight : 480,
+  videoFrameRate : 30
+};
+let videoMetaData: media.AVMetadata = {
+  videoOrientation: '0' // 合理值0、90、180、270，非合理值prepare接口报错。
+};
+let avRecorderConfig: media.AVRecorderConfig = {
+  audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+  videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
+  profile : avRecorderProfile,
+  url : 'fd://',  // 文件需先通过fileIo.open接口（@kit.CoreFileKit）打开获取文件描述符fd，赋予读写权限，将fd传给此参数。
+  metadata : videoMetaData,
+  location : { latitude : 30, longitude : 130 }
+};
+
+avRecorder.prepare(avRecorderConfig).then(() => {
+  console.info('Succeeded in preparing');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to prepare and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## release
 
 ```TypeScript
@@ -657,6 +1063,22 @@ release(callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.release((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to release AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in releasing AVRecorder');
+  }
+});
+```
+
+<a id="release-1"></a>
 
 ## release
 
@@ -684,6 +1106,19 @@ release(): Promise<void>
 | --- | --- |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.release().then(() => {
+  console.info('Succeeded in releasing AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to release AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## reset
 
 ```TypeScript
@@ -708,6 +1143,22 @@ reset(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.reset((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to reset AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in resetting AVRecorder');
+  }
+});
+```
+
+<a id="reset-1"></a>
 
 ## reset
 
@@ -734,6 +1185,19 @@ reset(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.reset().then(() => {
+  console.info('Succeeded in resetting AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to reset AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## resume
 
 ```TypeScript
@@ -759,6 +1223,22 @@ resume(callback: AsyncCallback<void>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.resume((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to resume AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in resuming AVRecorder');
+  }
+});
+```
+
+<a id="resume-1"></a>
 
 ## resume
 
@@ -788,6 +1268,19 @@ resume(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.resume().then(() => {
+  console.info('Succeeded in resuming AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to resume AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## setMetadata
 
 ```TypeScript
@@ -814,6 +1307,25 @@ setMetadata(metadata: Record<string, string>): void
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory.<br>**适用版本：** 26.0.0+ |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed.<br>**适用版本：** 26.0.0+ |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let metadata: Record<string, string> = {
+  'com.openharmony.userdefine': '10',
+  'com.openharmony.userdefine2': '20'
+};
+
+try {
+  avRecorder.setMetadata(metadata);
+  console.info('set metadata successfully');
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set metadata. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## setWillMuteWhenInterrupted
 
@@ -846,6 +1358,19 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.setWillMuteWhenInterrupted(true).then(() => {
+  console.info('Succeeded in doing setWillMuteWhenInterrupted');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to do setWillMuteWhenInterrupted and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## start
 
 ```TypeScript
@@ -871,6 +1396,22 @@ start(callback: AsyncCallback<void>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.start((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to start AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in starting AVRecorder');
+  }
+});
+```
+
+<a id="start-1"></a>
 
 ## start
 
@@ -900,6 +1441,19 @@ start(): Promise<void>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.start().then(() => {
+  console.info('Succeeded in starting AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to start AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ## stop
 
 ```TypeScript
@@ -925,6 +1479,22 @@ stop(callback: AsyncCallback<void>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by callback. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.stop((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to stop AVRecorder and error is: Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in stopping AVRecorder');
+  }
+});
+```
+
+<a id="stop-1"></a>
 
 ## stop
 
@@ -953,6 +1523,19 @@ stop(): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avRecorder.stop().then(() => {
+  console.info('Succeeded in stopping AVRecorder');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to stop AVRecorder and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
 
 ## updateRotation
 
@@ -986,6 +1569,21 @@ updateRotation(rotation: number): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rotation = 90;
+
+avRecorder.updateRotation(rotation).then(() => {
+  console.info('Succeeded in doing updateRotation');
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to do updateRotation and error is: Code: ${error.code}, message: ${error.message}`);
+});
+```
 
 ## state
 

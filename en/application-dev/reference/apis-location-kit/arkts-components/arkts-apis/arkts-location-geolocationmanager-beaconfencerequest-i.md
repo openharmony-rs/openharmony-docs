@@ -1,5 +1,9 @@
 # BeaconFenceRequest
 
+```TypeScript
+export interface BeaconFenceRequest
+```
+
 Configuring parameters in BeaconFence request.
 
 **Since:** 20

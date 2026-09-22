@@ -42,13 +42,8 @@ geolocation.requestEnableLocation((err, data) => {
 });
 ```
 
-```TypeScript
-import geolocation from '@ohos.geolocation';
-geolocation.requestEnableLocation().then((result) => {
-    console.info('promise, requestEnableLocation: ' + JSON.stringify(result));
-});
-```
 
+<a id="requestenablelocation-1"></a>
 
 ## requestEnableLocation
 
@@ -74,4 +69,9 @@ function requestEnableLocation(): Promise<boolean>
 
 **示例**
 
-参见 requestEnableLocation
+```TypeScript
+import geolocation from '@ohos.geolocation';
+geolocation.requestEnableLocation().then((result) => {
+    console.info('promise, requestEnableLocation: ' + JSON.stringify(result));
+});
+```

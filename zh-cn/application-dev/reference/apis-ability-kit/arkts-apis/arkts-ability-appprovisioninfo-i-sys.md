@@ -1,5 +1,9 @@
 # AppProvisionInfo（系统接口）
 
+```TypeScript
+export interface AppProvisionInfo
+```
+
 应用[HarmonyAppProvision配置文件](../../../security/app-provision-structure.md)中的信息。
 
 **起始版本：** 10

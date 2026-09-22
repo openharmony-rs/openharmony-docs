@@ -1,5 +1,9 @@
 # AttendeeRole
 
+```TypeScript
+export enum AttendeeRole
+```
+
 会议日程参与者角色类型枚举。
 
 **起始版本：** 12

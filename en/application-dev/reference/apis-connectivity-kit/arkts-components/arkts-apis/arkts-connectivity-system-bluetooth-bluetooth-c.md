@@ -1,5 +1,9 @@
 # Bluetooth
 
+```TypeScript
+export default class Bluetooth
+```
+
 Provides methods to manage BLE scan.
 
 **Since:** 6

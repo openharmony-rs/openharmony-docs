@@ -1,5 +1,9 @@
 # RectChangeReason
 
+```TypeScript
+enum RectChangeReason
+```
+
 窗口矩形（窗口位置及窗口大小）变化的原因。
 
 **起始版本：** 12

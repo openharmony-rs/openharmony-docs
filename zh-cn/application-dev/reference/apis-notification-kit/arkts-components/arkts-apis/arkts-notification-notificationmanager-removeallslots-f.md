@@ -58,16 +58,8 @@ let removeAllSlotsCallback = (err: BusinessError): void => {
 notificationManager.removeAllSlots(removeAllSlotsCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.removeAllSlots().then(() => {
-  console.info(`Succeeded in removing all slots.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to remove all slots. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="removeallslots-1"></a>
 
 ## removeAllSlots
 
@@ -87,9 +79,9 @@ function removeAllSlots(): Promise<void>
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) 创建通知频道。
 
-[getSlot](arkts-notification-notificationmanager-getslot-f.md) 获取指定类型的通知渠道。
+[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-2) 获取指定类型的通知渠道。
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md) 删除指定类型的通知渠道。
+[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) 删除指定类型的通知渠道。
 
 **返回值：**
 
@@ -107,4 +99,12 @@ function removeAllSlots(): Promise<void>
 
 **示例**
 
-参见 [removeAllSlots](#removeallslots)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.removeAllSlots().then(() => {
+  console.info(`Succeeded in removing all slots.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to remove all slots. Code is ${err.code}, message is ${err.message}`);
+});
+```

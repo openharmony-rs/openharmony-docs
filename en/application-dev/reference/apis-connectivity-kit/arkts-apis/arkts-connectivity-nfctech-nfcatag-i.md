@@ -1,5 +1,9 @@
 # NfcATag
 
+```TypeScript
+export interface NfcATag extends TagSession
+```
+
 Provides APIs to access NFC-A (ISO 14443-3A) properties and perform I/O operations on a tag. This class inherits from **[TagSession](arkts-connectivity-tagsession-tagsession-i.md)**.
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).

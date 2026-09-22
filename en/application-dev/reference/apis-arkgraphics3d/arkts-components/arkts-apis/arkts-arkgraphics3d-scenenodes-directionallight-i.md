@@ -1,5 +1,9 @@
 # DirectionalLight
 
+```TypeScript
+export interface DirectionalLight extends Light
+```
+
 Directional light, which inherits from Light.
 
 @extends Light @interface DirectionalLight

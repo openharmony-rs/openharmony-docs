@@ -1,5 +1,9 @@
 # DecompressionOutputInfo
 
+```TypeScript
+interface DecompressionOutputInfo
+```
+
 解压缩返回信息。
 
 **起始版本：** 12

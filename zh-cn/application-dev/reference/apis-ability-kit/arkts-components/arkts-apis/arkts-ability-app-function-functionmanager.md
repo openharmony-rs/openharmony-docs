@@ -17,7 +17,7 @@ Function是定义在应用包中的一个业务逻辑单元，可以接收大模
 ## 导入模块
 
 ```TypeScript
-import { functionManager } from '@kit.AbilityKit';
+import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap } from '@kit.AbilityKit';
 ```
 
 ## 汇总

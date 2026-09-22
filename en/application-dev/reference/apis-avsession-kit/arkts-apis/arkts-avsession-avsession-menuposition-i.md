@@ -1,5 +1,9 @@
 # MenuPosition
 
+```TypeScript
+interface MenuPosition
+```
+
 Position definition of one component on which the menu will bind and popup.
 
 **Since:** 22

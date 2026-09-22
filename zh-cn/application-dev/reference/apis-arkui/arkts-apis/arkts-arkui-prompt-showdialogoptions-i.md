@@ -1,5 +1,9 @@
 # ShowDialogOptions
 
+```TypeScript
+interface ShowDialogOptions
+```
+
 对话框的选项。
 
 **起始版本：** 8
@@ -32,6 +36,8 @@ buttons?: [Button, Button?, Button?]
 
 **替代接口：** [buttons](arkts-arkui-promptaction-showdialogoptions-i.md#buttons)
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -50,6 +56,8 @@ message?: string
 
 **替代接口：** [message](arkts-arkui-promptaction-showdialogoptions-i.md#message)
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -67,5 +75,7 @@ title?: string
 **废弃版本：** 9
 
 **替代接口：** [title](arkts-arkui-promptaction-showdialogoptions-i.md#title)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

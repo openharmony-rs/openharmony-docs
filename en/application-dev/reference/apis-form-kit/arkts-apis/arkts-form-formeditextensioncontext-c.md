@@ -1,5 +1,9 @@
 # FormEditExtensionContext
 
+```TypeScript
+declare class FormEditExtensionContext extends UIExtensionContext
+```
+
 **FormEditExtensionContext**, inherited from [UIExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md), is the context of [FormEditExtensionAbility](arkts-form-app-form-formeditextensionability-formeditextensionability-c.md).
 
 > **NOTE:** 

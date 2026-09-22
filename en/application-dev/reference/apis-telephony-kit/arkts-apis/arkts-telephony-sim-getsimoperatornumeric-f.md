@@ -47,17 +47,8 @@ sim.getSimOperatorNumeric(0, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getSimOperatorNumeric(0).then((data: string) => {
-    console.info(`getSimOperatorNumeric success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getSimOperatorNumeric failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getsimoperatornumeric-1"></a>
 
 ## getSimOperatorNumeric
 
@@ -96,4 +87,13 @@ Obtains the home PLMN ID of the SIM card in the specified slot. This API uses a 
 
 **Examples**
 
-See [getSimOperatorNumeric](#getsimoperatornumeric)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimOperatorNumeric(0).then((data: string) => {
+    console.info(`getSimOperatorNumeric success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSimOperatorNumeric failed, promise: err->${JSON.stringify(err)}`);
+});
+```

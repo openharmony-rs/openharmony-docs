@@ -1,5 +1,9 @@
 # CertInfo
 
+```TypeScript
+export interface CertInfo
+```
+
 Represents detailed information about a certificate.
 
 **Since:** 11

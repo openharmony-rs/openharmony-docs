@@ -1,5 +1,9 @@
 # OtaUpdatePolicy
 
+```TypeScript
+export interface OtaUpdatePolicy
+```
+
 Represents an OTA update policy.
 
 **Since:** 12

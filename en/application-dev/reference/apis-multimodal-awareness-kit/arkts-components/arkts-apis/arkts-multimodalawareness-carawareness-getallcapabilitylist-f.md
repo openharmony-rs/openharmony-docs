@@ -14,7 +14,7 @@ function getAllCapabilityList(): Promise<Capability[]>
 
 Returns the list of all capabilities.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

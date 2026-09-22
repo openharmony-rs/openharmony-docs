@@ -1,5 +1,9 @@
 # BufferingInfoType
 
+```TypeScript
+enum BufferingInfoType
+```
+
 Enumerates the buffering event types.
 
 **Since:** 8

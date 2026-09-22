@@ -20,7 +20,7 @@ function registerConversationListener(
 
 **配对调用**：需与注销监听器[unregisterConversationListener](arkts-distributedservice-conversation-unregisterconversationlistener-f-sys.md)配对使用，不再需要接收消息时应调用注销监听器以释放资源，未注销会导致资源持续占用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.sec.ACCESS_UDID
 

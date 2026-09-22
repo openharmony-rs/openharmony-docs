@@ -1,5 +1,9 @@
 # LocationType
 
+```TypeScript
+declare enum LocationType
+```
+
 Enumerates the file locations.
 
 **Since:** 11

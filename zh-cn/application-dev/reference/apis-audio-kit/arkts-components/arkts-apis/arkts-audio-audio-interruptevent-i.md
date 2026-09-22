@@ -1,5 +1,9 @@
 # InterruptEvent
 
+```TypeScript
+interface InterruptEvent
+```
+
 音频中断时，应用接收的中断事件。
 
 **起始版本：** 9

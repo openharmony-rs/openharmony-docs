@@ -1,5 +1,9 @@
 # Metadata
 
+```TypeScript
+interface Metadata
+```
+
 Metadata类，用于存储图像的元数据。目前支持的元数据类型可参考[MetadataType](arkts-image-image-metadatatype-e.md)。
 
 > **说明：** 
@@ -34,6 +38,35 @@ clone(): Promise<Metadata>
 | --- | --- |
 | Promise&lt;[Metadata](arkts-image-image-metadata-i.md)&gt; | Promise对象，成功返回元数据实例。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Clone(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // 图片包含exif metadata。
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let new_metadata: image.Metadata = await metaData.clone();
+    new_metadata.getProperties(["ImageWidth"]).then((data1) => {
+      console.info(`Clone new_metadata and get Properties: ${data1}`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to clone new_metadata, error : ${err}`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## getAllProperties
 
 ```TypeScript
@@ -54,6 +87,36 @@ getAllProperties(): Promise<Record<string, string | null>>
 | --- | --- |
 | Promise&lt;Record&lt;string, string &#124; null&gt;&gt; | Promise对象，返回元数据拥有的所有属性的值。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetAllProperties(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // 图片包含exif metadata。
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    await metaData.getAllProperties().then((data2) => {
+      const count = Object.keys(data2).length;
+      console.info('Metadata have ', count, ' properties');
+      console.info(`Get metadata all properties: ${data2}`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## getBlob
 
 ```TypeScript
@@ -73,6 +136,33 @@ getBlob(): Promise<ArrayBuffer>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise对象，返回元数据的二进制数据。 |
+
+**示例**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function GetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
 
 ## getProperties
 
@@ -107,6 +197,34 @@ getProperties(key: Array<string>): Promise<Record<string, string | null>>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7600202](../errorcode-image.md#7600202-不支持的元数据读写) | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetProperties(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // 图片包含exif metadata。
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    await metaData.getProperties(["ImageWidth", "ImageLength"]).then((data2) => {
+      console.info('Get properties ',JSON.stringify(data2));
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## setBlob
 
 ```TypeScript
@@ -138,6 +256,38 @@ setBlob(blob: ArrayBuffer): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**示例**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function setBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.setBlob(blob);
+    }
+    let new_blob = metaData.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```
 
 ## setProperties
 
@@ -171,3 +321,35 @@ setProperties(records: Record<string, string | null>): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7600202](../errorcode-image.md#7600202-不支持的元数据读写) | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function SetProperties(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // 图片包含exif metadata。
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let setkey: Record<string, string | null> = {
+      "ImageWidth": "200",
+      "ImageLength": "300"
+    };
+    await metaData.setProperties(setkey).then(async () => {
+      console.info('Succeeded in setting AuxPictureObj properties.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
+    })
+  } else {
+    console.error('AuxPictureObj metadata is null. ');
+  }
+}
+```

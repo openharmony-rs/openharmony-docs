@@ -1,5 +1,9 @@
 # AVScreenCaptureFillMode
 
+```TypeScript
+enum AVScreenCaptureFillMode
+```
+
 Enumerates the video fill modes during screen capture.
 
 **Since:** 18

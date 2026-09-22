@@ -1,5 +1,9 @@
 # Location
 
+```TypeScript
+interface Location
+```
+
 Describes the event location.
 
 **Since:** 10

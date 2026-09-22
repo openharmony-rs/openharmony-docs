@@ -18,7 +18,7 @@ function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: b
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number)
+**替代接口：** [setDisallowedPolicyForAccount](#setdisallowedpolicyforaccount-1)(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
@@ -65,25 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  // 参数需根据实际情况进行替换
-  restrictions.setDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.SUPER_HUB, true, 100);
-  console.info('Succeeded in setting super hub disabled');
-} catch (err) {
-  console.error(`Failed to set super hub disabled. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="setdisallowedpolicyforaccount-1"></a>
 
 ## setDisallowedPolicyForAccount
 
@@ -123,4 +106,21 @@ function setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, 
 
 **示例**
 
-参见 setDisallowedPolicyForAccount
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 参数需根据实际情况进行替换
+  restrictions.setDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.SUPER_HUB, true, 100);
+  console.info('Succeeded in setting super hub disabled');
+} catch (err) {
+  console.error(`Failed to set super hub disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```

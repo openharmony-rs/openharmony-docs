@@ -1,5 +1,9 @@
 # Photo
 
+```TypeScript
+interface Photo
+```
+
 Photo defines a full-quality image object.
 
 **Since:** 11
@@ -31,6 +35,14 @@ Releases output resources. This API uses a promise to return the result.
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+async function releasePhoto(photo: camera.Photo): Promise<void> {
+  await photo.release();
+}
+```
 
 ## main
 

@@ -1,5 +1,9 @@
 # RaycastResult
 
+```TypeScript
+export interface RaycastResult
+```
+
 射线检测命中结果对象，包含被射线击中的3D物体详细信息。
 
 @typedef RaycastResult

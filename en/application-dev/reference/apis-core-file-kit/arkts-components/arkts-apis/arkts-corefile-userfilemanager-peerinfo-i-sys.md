@@ -1,5 +1,9 @@
 # PeerInfo (System API)
 
+```TypeScript
+interface PeerInfo
+```
+
 Defines information about a registered device.
 
 **Since:** 9

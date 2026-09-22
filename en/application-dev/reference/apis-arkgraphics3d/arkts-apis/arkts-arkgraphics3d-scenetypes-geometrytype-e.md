@@ -1,5 +1,9 @@
 # GeometryType
 
+```TypeScript
+export enum GeometryType
+```
+
 Enumerates the geometry types.
 
 @enum { int }

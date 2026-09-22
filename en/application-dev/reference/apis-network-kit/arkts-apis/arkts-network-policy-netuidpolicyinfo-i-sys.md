@@ -1,5 +1,9 @@
 # NetUidPolicyInfo (System API)
 
+```TypeScript
+export interface NetUidPolicyInfo
+```
+
 Defines the network policy information for an application.
 
 **Since:** 11

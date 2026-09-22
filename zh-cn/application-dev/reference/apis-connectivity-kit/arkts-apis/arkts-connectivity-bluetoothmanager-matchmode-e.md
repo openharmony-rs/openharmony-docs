@@ -1,5 +1,9 @@
 # MatchMode
 
+```TypeScript
+enum MatchMode
+```
+
 枚举，硬件过滤匹配模式。
 
 从API version 9开始支持，从API version 10开始废弃。

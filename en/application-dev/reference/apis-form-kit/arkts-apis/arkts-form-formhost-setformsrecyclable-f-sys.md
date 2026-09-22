@@ -48,6 +48,8 @@ Sets widgets to be recyclable. This API uses a promise to return the result.
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
 
+<a id="setformsrecyclable-1"></a>
+
 ## setFormsRecyclable
 
 ```TypeScript

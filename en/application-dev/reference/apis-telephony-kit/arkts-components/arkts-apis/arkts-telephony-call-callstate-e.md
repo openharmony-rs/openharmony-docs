@@ -1,5 +1,9 @@
 # CallState
 
+```TypeScript
+export enum CallState
+```
+
 Enumerates call states.
 
 **Since:** 6

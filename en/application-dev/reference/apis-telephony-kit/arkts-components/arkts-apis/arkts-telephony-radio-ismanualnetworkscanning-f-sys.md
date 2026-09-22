@@ -18,6 +18,8 @@ Determine whether the current manual network scan is in progress.
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.

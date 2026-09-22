@@ -1,5 +1,9 @@
 # AVErrorCode
 
+```TypeScript
+enum AVErrorCode
+```
+
 Enumerates the types of [Media error codes](../../../reference/apis-media-kit/errorcode-media.md).
 
 **Since:** 9

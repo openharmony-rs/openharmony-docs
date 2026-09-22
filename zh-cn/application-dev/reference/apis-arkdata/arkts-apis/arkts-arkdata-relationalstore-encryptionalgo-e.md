@@ -1,5 +1,9 @@
 # EncryptionAlgo
 
+```TypeScript
+enum EncryptionAlgo
+```
+
 数据库的加密方式枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 14

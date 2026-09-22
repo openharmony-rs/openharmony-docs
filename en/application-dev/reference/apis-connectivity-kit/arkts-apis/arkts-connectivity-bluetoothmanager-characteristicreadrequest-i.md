@@ -1,5 +1,9 @@
 # CharacteristicReadRequest
 
+```TypeScript
+interface CharacteristicReadRequest
+```
+
 Describes the parameters of the Gatt client's characteristic read request.
 
 **Since:** 9

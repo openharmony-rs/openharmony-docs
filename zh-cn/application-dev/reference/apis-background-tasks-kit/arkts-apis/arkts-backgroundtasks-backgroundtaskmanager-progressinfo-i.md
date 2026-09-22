@@ -1,8 +1,12 @@
 # ProgressInfo
 
+```TypeScript
+export interface ProgressInfo
+```
+
 通知进度信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -22,7 +26,7 @@ fileName: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +44,7 @@ isMute?: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,7 +62,7 @@ progressValue?: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,7 +78,7 @@ title: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

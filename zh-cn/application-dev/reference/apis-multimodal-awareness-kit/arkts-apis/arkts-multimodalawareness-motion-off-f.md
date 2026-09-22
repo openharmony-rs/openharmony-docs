@@ -39,6 +39,20 @@ function off(type: 'operatingHandChanged', callback?: Callback<OperatingHandStat
 | [31500001](../errorcode-motion.md#31500001-服务异常) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
 | [31500003](../errorcode-motion.md#31500003-取消订阅失败) | Unsubscription failed. Possible causes: 1. Callback failure;<br> 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    motion.off('operatingHandChanged');
+    console.info('off succeeded');
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to unsubscribe operatingHandChanged. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 
 ## off('holdingHandChanged')
 
@@ -69,3 +83,17 @@ function off(type: 'holdingHandChanged', callback?: Callback<HoldingHandStatus>)
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [31500001](../errorcode-motion.md#31500001-服务异常) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
 | [31500003](../errorcode-motion.md#31500003-取消订阅失败) | Unsubscription failed. Possible causes: 1. Callback failure;<br> 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  motion.off('holdingHandChanged'); // 移除所有同类订阅
+  console.info('off succeeded');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to unsubscribe holdingHandChanged. Code: ${error.code}, message: ${error.message}`);
+}
+```

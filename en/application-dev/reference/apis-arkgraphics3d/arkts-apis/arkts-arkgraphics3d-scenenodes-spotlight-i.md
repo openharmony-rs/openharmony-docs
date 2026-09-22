@@ -1,5 +1,9 @@
 # SpotLight
 
+```TypeScript
+export interface SpotLight extends Light
+```
+
 Spotlight, which inherits from Light.
 
 A spotlight emits a conical beam of light in a specific direction, with the intensity of the light decaying according to the angles defined by the innerAngle and outerAngle parameters. Like a point light, a spotlight's intensity also diminishes with distance from the source.

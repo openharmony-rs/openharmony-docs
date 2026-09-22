@@ -50,22 +50,8 @@ huks.deleteKey(keyAlias, emptyOptions, (err, data) => {
 });
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-/* 此处options选择emptyOptions传空 */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
-  console.info('delete key success');
-}).catch((err: BusinessError) => {
-  console.error(`密钥删除失败，错误码是：${err.code} 错误码信息：${err.message}`);
-});
-```
-
+<a id="deletekey-1"></a>
 
 ## deleteKey
 
@@ -78,13 +64,13 @@ function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.deleteKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-deletekeyitem-f.md)替代。
+> [huks.deleteKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md)(keyAlias: string, options: HuksOptions)
+**替代接口：** [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)(keyAlias: string, options: HuksOptions)
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -103,4 +89,18 @@ function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 
 **示例**
 
-参见 [deleteKey](#deletekey)
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* 此处options选择emptyOptions传空 */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
+  console.info('delete key success');
+}).catch((err: BusinessError) => {
+  console.error(`密钥删除失败，错误码是：${err.code} 错误码信息：${err.message}`);
+});
+```

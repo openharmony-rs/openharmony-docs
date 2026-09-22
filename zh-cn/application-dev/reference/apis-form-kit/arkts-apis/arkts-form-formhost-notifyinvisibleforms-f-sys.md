@@ -58,22 +58,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let formId: string[] = ['12400633174999288'];
-  formHost.notifyInvisibleForms(formId).then(() => {
-    console.info('formHost notifyInvisibleForms success');
-  }).catch((error: BusinessError) => {
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="notifyinvisibleforms-1"></a>
 
 ## notifyInvisibleForms
 
@@ -116,4 +102,18 @@ function notifyInvisibleForms(formIds: Array<string>): Promise<void>
 
 **示例**
 
-参见 [notifyInvisibleForms](#notifyinvisibleforms)
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.notifyInvisibleForms(formId).then(() => {
+    console.info('formHost notifyInvisibleForms success');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

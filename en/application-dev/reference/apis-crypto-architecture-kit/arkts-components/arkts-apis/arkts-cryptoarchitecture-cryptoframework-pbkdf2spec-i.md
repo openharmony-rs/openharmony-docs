@@ -1,5 +1,9 @@
 # PBKDF2Spec
 
+```TypeScript
+interface PBKDF2Spec extends KdfSpec
+```
+
 Defines the child class of [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md). It is used as a parameter for PBKDF2 key derivation.
 
 > **NOTE:** 

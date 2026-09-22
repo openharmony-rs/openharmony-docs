@@ -1,5 +1,9 @@
 # DoNotDisturbDate（系统接口）
 
+```TypeScript
+export interface DoNotDisturbDate
+```
+
 免打扰时间选项。
 
 **起始版本：** 8

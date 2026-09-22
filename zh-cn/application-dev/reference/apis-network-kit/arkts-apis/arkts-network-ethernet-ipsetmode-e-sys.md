@@ -1,5 +1,9 @@
 # IPSetMode（系统接口）
 
+```TypeScript
+export enum IPSetMode
+```
+
 以太网连接模式。
 
 **起始版本：** 9

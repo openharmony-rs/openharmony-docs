@@ -1,5 +1,9 @@
 # ToolBarV2SymbolGlyphOptions
 
+```TypeScript
+export interface ToolBarV2SymbolGlyphOptions
+```
+
 Declare the options of ToolBarV2SymbolGlyph
 
 **Since:** 18

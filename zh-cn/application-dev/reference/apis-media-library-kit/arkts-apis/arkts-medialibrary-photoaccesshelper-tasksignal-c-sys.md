@@ -1,5 +1,9 @@
 # TaskSignal（系统接口）
 
+```TypeScript
+export class TaskSignal
+```
+
 用于中断复制操作的信号。
 
 **起始版本：** 26.0.0

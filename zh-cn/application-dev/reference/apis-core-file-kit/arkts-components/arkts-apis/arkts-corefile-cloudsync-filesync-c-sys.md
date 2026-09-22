@@ -1,5 +1,9 @@
 # FileSync
 
+```TypeScript
+class FileSync
+```
+
 云盘同步对象，用于支撑文件管理器应用完成云盘文件的端云同步流程。在使用前，需要先创建FileSync实例。
 
 **起始版本：** 12
@@ -11,6 +15,8 @@
 ```TypeScript
 import { cloudSync } from '@kit.CoreFileKit';
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -40,10 +46,6 @@ constructor(bundleName: string)
 | [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 **示例**
-
-```TypeScript
-let fileSync = new cloudSync.FileSync()
-```
 
 ```TypeScript
 let fileSync = new cloudSync.FileSync("com.ohos.demo")

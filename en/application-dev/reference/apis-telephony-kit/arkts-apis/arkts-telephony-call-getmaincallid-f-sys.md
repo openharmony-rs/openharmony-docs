@@ -52,16 +52,8 @@ call.getMainCallId(1, (err: BusinessError, data: number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.getMainCallId(1).then((data: number) => {
-    console.info(`getMainCallId success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getMainCallId fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getmaincallid-1"></a>
 
 ## getMainCallId
 
@@ -102,4 +94,12 @@ Obtains the main call ID. This API uses a promise to return the result.
 
 **Examples**
 
-See [getMainCallId](#getmaincallid)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.getMainCallId(1).then((data: number) => {
+    console.info(`getMainCallId success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getMainCallId fail, promise: err->${JSON.stringify(err)}`);
+});
+```

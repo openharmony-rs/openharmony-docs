@@ -1,5 +1,9 @@
 # WindowSnapshotAnimationConfig
 
+```TypeScript
+interface WindowSnapshotAnimationConfig
+```
+
 Configuration for window snapshot animation.
 
 **Since:** 26.0.0

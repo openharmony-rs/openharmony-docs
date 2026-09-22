@@ -16,7 +16,7 @@ function getProfileByAbility(moduleName: string, abilityName: string, metadataNa
 
 > 说明：
 > 
-> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 &#36;string:res_id），开发者可以通过[资源管理](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)的相
+> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)的相
 > 关接口，来获取引用的资源。
 
 **起始版本：** 9
@@ -69,6 +69,54 @@ try {
 }
 ```
 
+
+<a id="getprofilebyability-1"></a>
+
+## getProfileByAbility
+
+```TypeScript
+function getProfileByAbility(moduleName: string, abilityName: string, metadataName?: string): Promise<Array<string>>
+```
+
+根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
+
+> 说明：
+> 
+> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)的相
+> 关接口，来获取引用的资源。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| moduleName | string | 是 | 表示Module名称。 |
+| abilityName | string | 是 | 表示UIAbility组件的名称。 |
+| metadataName | string | 否 | 表示UIAbility组件的元信息名称，即module.json5配置文件中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name，默认值为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回Array&lt;string&gt;。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not existed. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not existed. |
+| [17700024](../errorcode-bundle.md#17700024-没有相应的配置文件) | Failed to get the profile because there is no profile in the HAP. |
+| [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
+
+**示例**
+
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -111,51 +159,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getProfileByAbility failed. Cause: %{public}s', message);
 }
 ```
-
-
-## getProfileByAbility
-
-```TypeScript
-function getProfileByAbility(moduleName: string, abilityName: string, metadataName?: string): Promise<Array<string>>
-```
-
-根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
-
-> 说明：
-> 
-> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 &#36;string:res_id），开发者可以通过[资源管理](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)的相
-> 关接口，来获取引用的资源。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| moduleName | string | 是 | 表示Module名称。 |
-| abilityName | string | 是 | 表示UIAbility组件的名称。 |
-| metadataName | string | 否 | 表示UIAbility组件的元信息名称，即module.json5配置文件中[abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name，默认值为空。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回Array&lt;string&gt;。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not existed. |
-| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not existed. |
-| [17700024](../errorcode-bundle.md#17700024-没有相应的配置文件) | Failed to get the profile because there is no profile in the HAP. |
-| [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
-
-**示例**
-
-参见 [getProfileByAbility](#getprofilebyability)

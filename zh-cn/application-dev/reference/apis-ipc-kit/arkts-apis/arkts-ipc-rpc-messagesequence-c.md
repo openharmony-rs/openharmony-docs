@@ -1,5 +1,9 @@
 # MessageSequence
 
+```TypeScript
+class MessageSequence
+```
+
 在RPC或IPC过程中，发送方可以使用MessageSequence提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageSequence提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。读取顺序必须与写入顺序一致，否则会导致数据解析错误。
 
 **起始版本：** 9
@@ -681,22 +685,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeBooleanArray([false, true, false]);
-  let array = data.readBooleanArray();
-  hilog.info(0x0000, 'testTag', 'readBooleanArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readbooleanarray-1"></a>
 
 ## readBooleanArray
 
@@ -726,24 +715,6 @@ readBooleanArray(): boolean[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeBooleanArray([false, true, false]);
-  let array: Array<boolean> = new Array(3);
-  data.readBooleanArray(array);
-  hilog.info(0x0000, 'testTag', 'readBooleanArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -855,24 +826,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  let byteArrayVar = [1, 2, 3, 4, 5];
-  // 将字节数组写入MessageSequence对象
-  data.writeByteArray(byteArrayVar);
-  let array = data.readByteArray();
-  hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readbytearray-1"></a>
 
 ## readByteArray
 
@@ -899,26 +853,6 @@ readByteArray(): number[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  let byteArrayVar = [1, 2, 3, 4, 5];
-  // 将字节数组写入MessageSequence对象
-  data.writeByteArray(byteArrayVar);
-  let array: Array<number> = new Array(5);
-  data.readByteArray(array);
-  hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1027,22 +961,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeCharArray([97, 98, 88]);
-  let array = data.readCharArray();
-  hilog.info(0x0000, 'testTag', 'readCharArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readchararray-1"></a>
 
 ## readCharArray
 
@@ -1072,24 +991,6 @@ readCharArray(): number[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeCharArray([97, 98, 88]);
-  let array: Array<number> = new Array(3);
-  data.readCharArray(array);
-  hilog.info(0x0000, 'testTag', 'readCharArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1199,22 +1100,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeDoubleArray([11.1, 12.2, 13.3]);
-  let array = data.readDoubleArray();
-  hilog.info(0x0000, 'testTag', 'readDoubleArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readdoublearray-1"></a>
 
 ## readDoubleArray
 
@@ -1241,24 +1127,6 @@ readDoubleArray(): number[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeDoubleArray([11.1, 12.2, 13.3]);
-  let array: Array<number> = new Array(3);
-  data.readDoubleArray(array);
-  hilog.info(0x0000, 'testTag', 'readDoubleArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1304,14 +1172,82 @@ readException(): void
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
-```
 
 ```TypeScript
+// FA模型需要从@kit.AbilityKit导入featureAbility
+// import { featureAbility } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { Want, common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let proxy: rpc.IRemoteObject | undefined;
+let connect: common.ConnectOptions = {
+  onConnect: (elementName, remoteProxy) => {
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
+    proxy = remoteProxy;
+  },
+  onDisconnect: (elementName) => {
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
+  },
+  onFailed: () => {
+    hilog.error(0x0000, 'testTag', 'connection failed');
+  }
+};
+let want: Want = {
+  // 获取服务端包名和ability名称
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
+};
+
+// FA模型使用此方法连接服务
+// FA.connectAbility(want,connect);
+
+// 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
+let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
+// 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
+let connectionId = context.connectServiceExtensionAbility(want, connect);
+```
+
 上述onConnect回调函数中的proxy对象需要等ability异步连接成功后才会被赋值，然后才可调用proxy对象的sendMessageRequest接口方法发送消息
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  let option = new rpc.MessageOption();
+  let data = rpc.MessageSequence.create();
+  let reply = rpc.MessageSequence.create();
+  data.writeNoException();
+  data.writeInt(6);
+  if (proxy != undefined) {
+    proxy.sendMessageRequest(1, data, reply, option)
+      .then((result: rpc.RequestResult) => {
+        if (result.errCode === 0) {
+          hilog.info(0x0000, 'testTag', 'sendMessageRequest got result');
+          result.reply.readException();
+          let num = result.reply.readInt();
+          hilog.info(0x0000, 'testTag', 'reply num: ' + num);
+        } else {
+          hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
+        }
+      }).catch((e: Error) => {
+        hilog.error(0x0000, 'testTag', 'sendMessageRequest got exception: ' + JSON.stringify(e));
+      }).finally(() => {
+        hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
+        data.reclaim();
+        reply.reclaim();
+      });
+  }
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
+  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
+}
 ```
 
 ## readFileDescriptor
@@ -1454,22 +1390,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeFloatArray([1.2, 1.3, 1.4]);
-  let array = data.readFloatArray();
-  hilog.info(0x0000, 'testTag', 'readFloatArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readfloatarray-1"></a>
 
 ## readFloatArray
 
@@ -1496,24 +1417,6 @@ readFloatArray(): number[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeFloatArray([1.2, 1.3, 1.4]);
-  let array: Array<number> = new Array(3);
-  data.readFloatArray(array);
-  hilog.info(0x0000, 'testTag', 'readFloatArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1629,22 +1532,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeIntArray([100, 111, 112]);
-  let array = data.readIntArray();
-  hilog.info(0x0000, 'testTag', 'readIntArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readintarray-1"></a>
 
 ## readIntArray
 
@@ -1671,24 +1559,6 @@ readIntArray(): number[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeIntArray([100, 111, 112]);
-  let array: Array<number> = new Array(3);
-  data.readIntArray(array);
-  hilog.info(0x0000, 'testTag', 'readIntArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1845,22 +1715,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeLongArray([1111, 1112, 1113]);
-  let array = data.readLongArray();
-  hilog.info(0x0000, 'testTag', 'readLongArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readlongarray-1"></a>
 
 ## readLongArray
 
@@ -1887,24 +1742,6 @@ readLongArray(): number[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeLongArray([1111, 1112, 1113]);
-  let array: Array<number> = new Array(3);
-  data.readLongArray(array);
-  hilog.info(0x0000, 'testTag', 'readLongArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2299,33 +2136,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
-    // 根据业务实际逻辑，进行相应处理
-    return true;
-  }
-}
-
-try {
-  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
-  let data = rpc.MessageSequence.create();
-  let b = data.readRemoteObjectArray();
-  hilog.info(0x0000, 'testTag', 'readRemoteObjectArray is ' + b);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readremoteobjectarray-1"></a>
 
 ## readRemoteObjectArray
 
@@ -2352,36 +2163,6 @@ readRemoteObjectArray(): IRemoteObject[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
-    // 根据业务实际逻辑，进行相应处理
-    return true;
-  }
-}
-
-try {
-  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
-  let data = rpc.MessageSequence.create();
-  data.writeRemoteObjectArray(a);
-  let b: Array<rpc.IRemoteObject> = new Array(3);
-  data.readRemoteObjectArray(b);
-  hilog.info(0x0000, 'testTag', 'readRemoteObjectArray is ' + b);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2502,22 +2283,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeShortArray([11, 12, 13]);
-  let array = data.readShortArray();
-  hilog.info(0x0000, 'testTag', 'readShortArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readshortarray-1"></a>
 
 ## readShortArray
 
@@ -2544,24 +2310,6 @@ readShortArray(): number[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeShortArray([11, 12, 13]);
-  let array: Array<number> = new Array(3);
-  data.readShortArray(array);
-  hilog.info(0x0000, 'testTag', 'readShortArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2677,22 +2425,7 @@ try {
 }
 ```
 
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeStringArray(['abc', 'def']);
-  let array = data.readStringArray();
-  hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
+<a id="readstringarray-1"></a>
 
 ## readStringArray
 
@@ -2722,24 +2455,6 @@ readStringArray(): string[]
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = rpc.MessageSequence.create();
-  data.writeStringArray(['abc', 'def']);
-  let array: Array<string> = new Array(2);
-  data.readStringArray(array);
-  hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
-}
-```
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';

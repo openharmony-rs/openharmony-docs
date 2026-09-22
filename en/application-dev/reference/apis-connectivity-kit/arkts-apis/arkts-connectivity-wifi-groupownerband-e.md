@@ -1,5 +1,9 @@
 # GroupOwnerBand
 
+```TypeScript
+enum GroupOwnerBand
+```
+
 P2P group owner band.
 
 @enum { number } GroupOwnerBand

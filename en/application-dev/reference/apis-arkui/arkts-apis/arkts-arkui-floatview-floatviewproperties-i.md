@@ -1,5 +1,9 @@
 # FloatViewProperties
 
+```TypeScript
+interface FloatViewProperties
+```
+
 Provides the properties of the float view.
 
 **Since:** 26.0.0

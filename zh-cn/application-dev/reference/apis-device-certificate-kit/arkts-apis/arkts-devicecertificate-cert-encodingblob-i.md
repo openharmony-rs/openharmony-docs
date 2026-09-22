@@ -1,5 +1,9 @@
 # EncodingBlob
 
+```TypeScript
+interface EncodingBlob
+```
+
 表示一个编码后的二进制数据块。
 
 **起始版本：** 9

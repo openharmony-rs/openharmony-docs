@@ -1,5 +1,9 @@
 # DialogButtonStyle
 
+```TypeScript
+declare enum DialogButtonStyle
+```
+
 The Button Style of dialog,
 
 **Since:** 10

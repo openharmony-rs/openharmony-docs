@@ -1,5 +1,9 @@
 # NetStatsInfo
 
+```TypeScript
+export interface NetStatsInfo
+```
+
 获取的历史流量信息。
 
 **起始版本：** 22

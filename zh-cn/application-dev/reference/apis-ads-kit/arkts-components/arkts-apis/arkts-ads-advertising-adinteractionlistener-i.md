@@ -1,5 +1,9 @@
 # AdInteractionListener
 
+```TypeScript
+export interface AdInteractionListener
+```
+
 广告状态变化回调。
 
 **起始版本：** 11

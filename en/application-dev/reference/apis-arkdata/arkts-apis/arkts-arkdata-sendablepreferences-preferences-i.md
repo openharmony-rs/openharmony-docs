@@ -1,8 +1,12 @@
 # Preferences
 
+```TypeScript
+interface Preferences extends lang.ISendable
+```
+
 Provides APIs for obtaining and modifying **Preferences** instances. **Preferences** inherits from [ISendable](../../../arkts-utils/arkts-sendable.md#isendable) and can be passed between concurrent ArkTS instances (including the main thread and the TaskPool or Worker threads) by reference. Before calling any API of **Preferences**, obtain a **Preferences** instance by using [sendablePreferences.getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md).
 
-**Inheritance/Implementation:** Preferences extends lang.ISendable
+**Inheritance/Implementation:** Preferences extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
 **Since:** 12
 
@@ -515,6 +519,24 @@ Unsubscribes from data changes.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+};
+preferences.on('change', observer);
+preferences.putSync('startup', 'auto');
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+  preferences.off('change', observer);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## off('multiProcessChange')
 
 ```TypeScript
@@ -542,6 +564,24 @@ Unsubscribes from inter-process data changes. This API is provided for applicati
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+};
+preferences.on('multiProcessChange', observer);
+preferences.putSync('startup', 'auto');
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+  preferences.off('multiProcessChange', observer);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## off('dataChange')
 
@@ -572,6 +612,27 @@ Unsubscribes from changes of specific data.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { lang } from '@kit.ArkTS';
+
+let observer = (data: lang.ISendable) => {
+  console.info(`observer : ${data}`);
+};
+let keys = ['name', 'age'];
+preferences.on('dataChange', keys, observer);
+preferences.putSync('name', 'xiaohong');
+preferences.putSync('weight', 125);
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+  preferences.off('dataChange', keys, observer);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## on('change')
 
 ```TypeScript
@@ -599,6 +660,23 @@ Subscribes to data changes. The registered callback will be invoked to return th
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+};
+preferences.on('change', observer);
+preferences.putSync('startup', 'manual');
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## on('multiProcessChange')
 
@@ -629,6 +707,23 @@ Subscribes to data changes between processes. When multiple processes hold the s
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error. |
 | [15500019](../errorcode-preferences.md#15500019-failed-to-obtain-the-subscription-service) | Failed to obtain the subscription service. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+};
+preferences.on('multiProcessChange', observer);
+preferences.putSync('startup', 'manual');
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## on('dataChange')
 
 ```TypeScript
@@ -657,6 +752,26 @@ Subscribes to changes of specific data. The registered callback will be invoked 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { lang } from '@kit.ArkTS';
+
+let observer = (data: lang.ISendable) => {
+  console.info(`observer : ${data}`);
+};
+let keys = ['name', 'age'];
+preferences.on('dataChange', keys, observer);
+preferences.putSync('name', 'xiaohong');
+preferences.putSync('weight', 125);
+preferences.flush().then(() => {
+  console.info("Succeeded in flushing.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## put
 

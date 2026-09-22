@@ -1,5 +1,9 @@
 # CertChainValidationParameters
 
+```TypeScript
+interface CertChainValidationParameters
+```
+
 表示证书链校验的参数。
 
 **起始版本：** 11

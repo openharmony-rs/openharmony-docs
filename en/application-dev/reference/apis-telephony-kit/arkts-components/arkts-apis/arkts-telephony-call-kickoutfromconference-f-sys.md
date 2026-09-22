@@ -55,16 +55,8 @@ call.kickOutFromConference(1, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.kickOutFromConference(1).then(() => {
-    console.info(`kickOutFromConference success.`);
-}).catch((err: BusinessError) => {
-    console.error(`kickOutFromConference fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="kickoutfromconference-1"></a>
 
 ## kickOutFromConference
 
@@ -108,4 +100,12 @@ Removes a specified call from a conference call. This API uses a promise to retu
 
 **Examples**
 
-See [kickOutFromConference](#kickoutfromconference)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.kickOutFromConference(1).then(() => {
+    console.info(`kickOutFromConference success.`);
+}).catch((err: BusinessError) => {
+    console.error(`kickOutFromConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```

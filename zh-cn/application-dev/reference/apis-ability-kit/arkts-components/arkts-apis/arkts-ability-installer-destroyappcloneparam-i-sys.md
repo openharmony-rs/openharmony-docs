@@ -1,5 +1,9 @@
 # DestroyAppCloneParam（系统接口）
 
+```TypeScript
+export interface DestroyAppCloneParam
+```
+
 删除分身应用可指定的参数信息。
 
 **起始版本：** 15

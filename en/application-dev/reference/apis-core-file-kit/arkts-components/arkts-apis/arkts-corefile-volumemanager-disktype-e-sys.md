@@ -1,5 +1,9 @@
 # DiskType (System API)
 
+```TypeScript
+export enum DiskType
+```
+
 Disk type.
 
 **Since:** 26.0.0

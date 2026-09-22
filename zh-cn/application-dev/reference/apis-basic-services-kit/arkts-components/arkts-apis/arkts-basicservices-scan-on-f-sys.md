@@ -41,32 +41,8 @@ function on(type: 'scanDeviceAdd', callback: Callback<ScannerDevice>): void
 ```TypeScript
 import { scan } from '@kit.BasicServicesKit';
 
-scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
-    console.info('scan device found: ' + JSON.stringify(device));
-});
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
-    console.info('scan device sync: ' + JSON.stringify(device));
-});
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
 scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
     console.info('scan device add: ' + JSON.stringify(device));
-});
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
-    console.info('scan device delete: ' + JSON.stringify(device));
 });
 ```
 
@@ -103,4 +79,10 @@ function on(type: 'scanDeviceDel', callback: Callback<ScannerDevice>): void
 
 **示例**
 
-参见 on
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+
+scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
+    console.info('scan device delete: ' + JSON.stringify(device));
+});
+```

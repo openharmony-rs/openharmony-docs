@@ -1,5 +1,9 @@
 # SecurityEventRule (System API)
 
+```TypeScript
+interface SecurityEventRule
+```
+
 Provides the conditions of querySecurityEvent.
 
 @interface SecurityEventRule

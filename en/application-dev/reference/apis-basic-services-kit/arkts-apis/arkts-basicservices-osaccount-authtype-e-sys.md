@@ -1,5 +1,9 @@
 # AuthType (System API)
 
+```TypeScript
+enum AuthType
+```
+
 Enumerates the authentication credential types.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # HapFormInfo (System API)
 
+```TypeScript
+interface HapFormInfo
+```
+
 **Since:** 9
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App

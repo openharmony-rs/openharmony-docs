@@ -1,5 +1,9 @@
 # BatchOperationOptions（系统接口）
 
+```TypeScript
+interface BatchOperationOptions
+```
+
 批量复制操作选项。
 
 **起始版本：** 26.0.0

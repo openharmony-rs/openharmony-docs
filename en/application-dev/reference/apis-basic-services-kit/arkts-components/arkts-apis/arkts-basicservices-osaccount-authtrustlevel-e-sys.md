@@ -1,5 +1,9 @@
 # AuthTrustLevel (System API)
 
+```TypeScript
+enum AuthTrustLevel
+```
+
 Enumerates the trust levels of the authentication result.
 
 **Since:** 8

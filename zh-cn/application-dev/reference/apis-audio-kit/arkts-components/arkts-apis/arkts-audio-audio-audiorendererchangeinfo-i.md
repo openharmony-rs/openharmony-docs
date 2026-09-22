@@ -1,5 +1,9 @@
 # AudioRendererChangeInfo
 
+```TypeScript
+interface AudioRendererChangeInfo
+```
+
 描述音频渲染器更改信息。
 
 **起始版本：** 9
@@ -46,7 +50,7 @@ readonly rendererInfo: AudioRendererInfo
 readonly streamId: number
 ```
 
-音频流唯一id。
+音频流唯一ID。
 
 **类型：** number
 

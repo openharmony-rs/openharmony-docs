@@ -1,5 +1,9 @@
 # BigInt64Array
 
+```TypeScript
+interface BigInt64Array
+```
+
 A typed array of 64-bit signed integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated, an exception is raised.
 
 ## Modules to Import
@@ -226,6 +230,8 @@ Calls the specified callback function for all the elements in an array. The retu
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: bigint, currentValue: bigint, currentIndex: number, array: BigInt64Array) =&gt; bigint | Yes |  |
 
+<a id="reduce-1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -254,6 +260,8 @@ Calls the specified callback function for all the elements in an array, in desce
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: bigint, currentValue: bigint, currentIndex: number, array: BigInt64Array) =&gt; bigint | Yes |  |
+
+<a id="reduceright-1"></a>
 
 ## reduceRight
 

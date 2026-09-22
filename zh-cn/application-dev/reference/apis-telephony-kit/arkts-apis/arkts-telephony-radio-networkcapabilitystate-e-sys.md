@@ -1,5 +1,9 @@
 # NetworkCapabilityState（系统接口）
 
+```TypeScript
+export enum NetworkCapabilityState
+```
+
 Enum for network capability state.
 
 **起始版本：** 10

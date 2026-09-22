@@ -1,5 +1,9 @@
 # DataAbilityOperationType
 
+```TypeScript
+export enum DataAbilityOperationType
+```
+
 表示数据的操作类型。DataAbility批量操作数据时可以通过该枚举值指定操作类型。
 
 **起始版本：** 7

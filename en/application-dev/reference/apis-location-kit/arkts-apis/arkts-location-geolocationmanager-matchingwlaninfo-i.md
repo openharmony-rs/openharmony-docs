@@ -1,5 +1,9 @@
 # MatchingWlanInfo
 
+```TypeScript
+export interface MatchingWlanInfo
+```
+
 Matching WLAN information structure.
 
 **Since:** 26.0.0

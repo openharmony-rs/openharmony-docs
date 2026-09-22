@@ -1,5 +1,9 @@
 # ScanEnhanceMode（系统接口）
 
+```TypeScript
+interface ScanEnhanceMode
+```
+
 The enum of gatt characteristic write type
 
 **起始版本：** 26.0.0

@@ -14,7 +14,7 @@ function updateDataTransferProgress(context: Context, progressInfo: DataTransfer
 
 更新长时任务通知。仅支持更新包含数据传输类型的长时任务通知。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

@@ -1,5 +1,9 @@
 # BackupConfig
 
+```TypeScript
+interface BackupConfig
+```
+
 用于备份数据库的配置信息。
 
 **起始版本：** 24

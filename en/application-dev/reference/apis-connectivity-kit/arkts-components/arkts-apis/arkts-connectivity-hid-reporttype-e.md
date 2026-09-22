@@ -1,5 +1,9 @@
 # ReportType
 
+```TypeScript
+enum ReportType
+```
+
 Describe the report type.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # MovingPhotoBadgeStateType
 
+```TypeScript
+export enum MovingPhotoBadgeStateType
+```
+
 Enumerates the types of the moving photo badge.
 
 @enum { int } MovingPhotoBadgeStateType

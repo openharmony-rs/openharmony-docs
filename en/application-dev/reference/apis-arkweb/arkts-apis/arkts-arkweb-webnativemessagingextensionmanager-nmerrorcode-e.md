@@ -1,5 +1,9 @@
 # NmErrorCode
 
+```TypeScript
+export enum NmErrorCode
+```
+
 Provides the native messaging error codes.
 
 **Since:** 21

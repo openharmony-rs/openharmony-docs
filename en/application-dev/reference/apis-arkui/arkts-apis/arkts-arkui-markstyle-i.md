@@ -1,5 +1,9 @@
 # MarkStyle
 
+```TypeScript
+declare interface MarkStyle
+```
+
 Define the style of checkbox mark.
 
 **Since:** 10

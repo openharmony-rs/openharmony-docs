@@ -1,5 +1,9 @@
 # Lattice
 
+```TypeScript
+class Lattice
+```
+
 Lattice object. which is used to divide an image by lattice.
 
 > **NOTE:** 
@@ -57,6 +61,23 @@ Divides the image into lattices. The lattices on both even columns and even rows
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    let xDivs: Array<number> = [1, 2, 4];
+    let yDivs: Array<number> = [1, 2, 4];
+    let lattice = drawing.Lattice.createImageLattice(xDivs, yDivs, 3, 3); // The image is divided into lattices of (3 + 1) x (3 + 1). The blue rectangles in the figure below are fixed lattices.
+  }
+}
+```
+
+<a id="createimagelattice-2"></a>
+
 ## createImageLattice
 
 ```TypeScript
@@ -93,3 +114,19 @@ Divides the image into lattices. The lattices on both even columns and even rows
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    let xDivs: Array<number> = [1, 2, 4];
+    let yDivs: Array<number> = [1, 2, 4];
+    let colorArray: Array<number> = [0xffffffff, 0x44444444, 0x99999999, 0xffffffff, 0x44444444, 0x99999999, 0xffffffff, 0x44444444, 0x99999999, 0x44444444, 0x99999999, 0xffffffff, 0x44444444, 0x99999999, 0xffffffff, 0x44444444];
+    let lattice = drawing.Lattice.createImageLattice(xDivs, yDivs, 3, 3, null, null, colorArray);
+  }
+}
+```

@@ -1,5 +1,9 @@
 # ReminderRequestAlarm
 
+```TypeScript
+interface ReminderRequestAlarm extends ReminderRequest
+```
+
 ReminderRequestAlarm extends ReminderRequest
 
 Defines a reminder for an alarm.

@@ -1,5 +1,9 @@
 # MmiCodeResult（系统接口）
 
+```TypeScript
+export enum MmiCodeResult
+```
+
 MMI码结果。
 
 **起始版本：** 9

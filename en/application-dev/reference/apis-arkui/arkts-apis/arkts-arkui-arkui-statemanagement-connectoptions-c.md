@@ -1,5 +1,9 @@
 # ConnectOptions
 
+```TypeScript
+export class ConnectOptions<T extends object>
+```
+
 Defines the parameter type for **globalConnect**.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # ViewData
 
+```TypeScript
+export default interface ViewData
+```
+
 The module defines the view data used for auto-fill.
 
 **Since:** 26.0.0
@@ -12,7 +16,7 @@ The module defines the view data used for auto-fill.
 bundleName: string
 ```
 
-Bundle name.The value cannot exceed 512 characters.
+Bundle name. The value cannot exceed 512 characters.
 
 **Type:** string
 
@@ -30,7 +34,7 @@ Bundle name.The value cannot exceed 512 characters.
 pageNodeInfos: Array<PageNodeInfo>
 ```
 
-Page node information.
+Information of the page nodes.
 
 **Type:** Array&lt;[PageNodeInfo](arkts-ability-pagenodeinfo-i.md)&gt;
 
@@ -48,7 +52,7 @@ Page node information.
 pageRect: AutoFillRect
 ```
 
-Coordinates, width, and height of the page.
+Coordinates, width, and height of the page. On PC/2-in-1 devices, the password vault is displayed as a pop-up. To ensure the pop-up position follows the input box, left and top must be set to 0.
 
 **Type:** [AutoFillRect](arkts-ability-autofillrect-i.md)
 

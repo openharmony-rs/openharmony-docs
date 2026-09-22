@@ -1,5 +1,9 @@
 # RangingStoppedCause
 
+```TypeScript
+enum RangingStoppedCause
+```
+
 枚举，测距停止原因。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # ContentType
 
+```TypeScript
+export enum ContentType
+```
+
 通知内容类型。
 
 **起始版本：** 9

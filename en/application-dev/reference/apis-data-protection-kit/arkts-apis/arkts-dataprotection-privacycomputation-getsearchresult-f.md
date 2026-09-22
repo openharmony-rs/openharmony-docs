@@ -14,9 +14,11 @@ function getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtoc
 
 Get the privacy search result and the final search outcome. Decrypts the search result ciphertexts returned by privacySearch to obtain the final match result and optional attached value. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Security.Asset
 

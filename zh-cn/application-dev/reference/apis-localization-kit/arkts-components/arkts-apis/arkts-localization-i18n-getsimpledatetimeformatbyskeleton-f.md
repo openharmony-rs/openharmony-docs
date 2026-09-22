@@ -54,19 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { i18n, intl } from '@kit.LocalizationKit';
 
-try {
-  let locale: intl.Locale = new intl.Locale('zh-Hans-CN');
-  let formatter: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('yMd', locale);
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`call i18n.getSimpleDateTimeFormatBySkeleton failed, error code: ${err.code}, message: ${err.message}.`);
-}
-```
-
+<a id="getsimpledatetimeformatbyskeleton-1"></a>
 
 ## getSimpleDateTimeFormatBySkeleton
 
@@ -107,4 +96,15 @@ export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: int
 
 **示例**
 
-参见 [getSimpleDateTimeFormatBySkeleton](#getsimpledatetimeformatbyskeleton)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n, intl } from '@kit.LocalizationKit';
+
+try {
+  let locale: intl.Locale = new intl.Locale('zh-Hans-CN');
+  let formatter: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('yMd', locale);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call i18n.getSimpleDateTimeFormatBySkeleton failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```

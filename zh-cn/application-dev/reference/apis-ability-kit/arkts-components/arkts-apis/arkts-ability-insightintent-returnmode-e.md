@@ -1,5 +1,9 @@
 # ReturnMode
 
+```TypeScript
+enum ReturnMode
+```
+
 意图执行结果返回给意图拉起方的返回形式。
 
 **起始版本：** 23

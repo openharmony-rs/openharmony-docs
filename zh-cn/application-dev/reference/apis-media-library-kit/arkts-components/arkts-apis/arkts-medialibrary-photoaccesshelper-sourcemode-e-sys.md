@@ -1,5 +1,9 @@
 # SourceMode（系统接口）
 
+```TypeScript
+enum SourceMode
+```
+
 枚举，资源文件的读取类型。
 
 **起始版本：** 11

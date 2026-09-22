@@ -66,6 +66,8 @@ print.queryAllPrintJobs().then(() => {
 ```
 
 
+<a id="queryallprintjobs-1"></a>
+
 ## queryAllPrintJobs
 
 ```TypeScript

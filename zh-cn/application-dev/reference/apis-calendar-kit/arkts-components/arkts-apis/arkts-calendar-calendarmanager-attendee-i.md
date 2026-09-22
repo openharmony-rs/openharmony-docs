@@ -1,5 +1,9 @@
 # Attendee
 
+```TypeScript
+export interface Attendee
+```
+
 会议日程参与者。
 
 **起始版本：** 10

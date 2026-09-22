@@ -1,5 +1,9 @@
 # DialCallOptions（系统接口）
 
+```TypeScript
+export interface DialCallOptions
+```
+
 拨打电话的可选参数。
 
 **起始版本：** 9
@@ -110,6 +114,8 @@ XCALL类型。
 **类型：** [XCallType](arkts-telephony-call-xcalltype-e-sys.md)
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

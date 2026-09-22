@@ -1,5 +1,9 @@
 # MediaSource
 
+```TypeScript
+interface MediaSource
+```
+
 The MediaSource class defines the media data information, which is from [createMediaSourceWithUrl](arkts-media-media-createmediasourcewithurl-f.md).
 
 **Since:** 12
@@ -71,6 +75,46 @@ Sets a MediaSourceLoader object, which is used to help the player request media 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | resourceLoader | [MediaSourceLoader](arkts-media-media-mediasourceloader-i.md) | Yes | **MediaSourceLoader** object used to obtain media data for the player. |
+
+**Examples**
+
+```TypeScript
+import { HashMap } from '@kit.ArkTS';
+import { media } from '@kit.MediaKit';
+
+let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
+let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx",  headers);
+let uuid: number = 1;
+let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
+
+let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLoadingRequest) => {
+  console.info(`Opening resource: ${request.url}`);
+  // Open the resource and return a unique handle, ensuring the mapping between the UUID and request.
+  uuid += 1;
+  requests.set(uuid, request);
+  return uuid;
+};
+
+let sourceReadCallback: media.SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => {
+  console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+  // Check whether the UUID is valid and store the read request. Avoid blocking the request while pushing data and header information.
+};
+
+let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
+  console.info(`Closing resource with handle ${uuid}`);
+  // Clear resources related to the current UUID.
+  requests.remove(uuid);
+};
+
+// Implemented by applications as required.
+let resourceLoader: media.MediaSourceLoader = {
+  open: sourceOpenCallback,
+  read: sourceReadCallback,
+  close: sourceCloseCallback
+};
+
+mediaSource.setMediaResourceLoaderDelegate(resourceLoader);
+```
 
 ## setMimeType
 

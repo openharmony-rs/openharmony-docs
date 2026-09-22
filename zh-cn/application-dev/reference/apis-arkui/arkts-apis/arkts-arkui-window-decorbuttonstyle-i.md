@@ -1,5 +1,9 @@
 # DecorButtonStyle
 
+```TypeScript
+interface DecorButtonStyle
+```
+
 系统装饰栏按钮样式。
 
 **起始版本：** 14

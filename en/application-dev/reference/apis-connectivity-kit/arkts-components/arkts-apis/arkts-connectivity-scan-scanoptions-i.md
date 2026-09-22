@@ -1,5 +1,9 @@
 # ScanOptions
 
+```TypeScript
+interface ScanOptions
+```
+
 Represents the scan options.
 
 **Since:** 26.0.0

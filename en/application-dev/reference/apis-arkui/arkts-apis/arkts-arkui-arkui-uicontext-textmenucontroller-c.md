@@ -1,5 +1,9 @@
 # TextMenuController
 
+```TypeScript
+export class TextMenuController
+```
+
 Provides the capability to control text menus.
 
 > **NOTE:** 
@@ -34,9 +38,9 @@ Disables specified system service menu items in the text selection menu.
 > 
 > - This API can be used in [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md).
 > 
-> - After this API is called, the editMenuOptions API of text components will be affected. The parameter list of its onCreateMenu callback will not include the disabled menu options.
+> - After this API is called, the [editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions) API of text components will be affected. The parameter list of its [onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu) callback will not include the disabled menu options.
 > 
-> - Components involving text selection menus include the following: Text,TextArea, TextInput,Search, RichEditor, and Web.
+> - Components involving text selection menus include the following: [Text](../arkts-components/arkts-arkui-text-comp.md#text),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md#text_area), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input),[Search](../arkts-components/arkts-arkui-search-comp.md#search), [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md#web).
 > 
 > - System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](arkts-arkui-textmenuitemid-c.md).
 > 
@@ -71,6 +75,51 @@ Disables specified system service menu items in the text selection menu.
 | --- | --- | --- | --- |
 | items | Array&lt;[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)&gt; | Yes | List of menu items to disable. |
 
+**Examples**
+
+```TypeScript
+import { TextMenuController } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    // Disable search and translate menu items.
+    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE]);
+  }
+
+  aboutToDisappear(): void {
+    // Restore system service menu items.
+    TextMenuController.disableMenuItems([]);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        TextInput({ text: 'This is a TextInput. Long press to show the text selection menu.' })
+          .height(60)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .caretStyle({ width: '4vp' })
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+              // The menuItems array does not include search and translate.
+              return menuItems;
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+              // The onMenuItemClick callback returns a boolean value.
+              return false;
+            }
+          })
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## disableSystemServiceMenuItems
 
 ```TypeScript
@@ -85,9 +134,9 @@ Disables all system service menu items in the text selection menu.
 > 
 > - This API can be used in [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md).
 > 
-> - After this API is called, the editMenuOptions API of text components will be affected. The parameter list of its onCreateMenu callback will not include the disabled menu options.
+> - After this API is called, the [editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions) API of text components will be affected. The parameter list of its [onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu) callback will not include the disabled menu options.
 > 
-> - Components involving text selection menus include the following: Text,TextArea, TextInput,Search, RichEditor, and Web.
+> - Components involving text selection menus include the following: [Text](../arkts-components/arkts-arkui-text-comp.md#text),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md#text_area), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input),[Search](../arkts-components/arkts-arkui-search-comp.md#search), [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md#web).
 > 
 > - System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](arkts-arkui-textmenuitemid-c.md).
 > 
@@ -118,6 +167,51 @@ Disables all system service menu items in the text selection menu.
 | --- | --- | --- | --- |
 | disable | boolean | Yes | Whether to disable system service menu items. The value **true** means to disable system service menu items, and **false** means the opposite. |
 
+**Examples**
+
+```TypeScript
+import { TextMenuController } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    // Disable all system service menu items.
+    TextMenuController.disableSystemServiceMenuItems(true);
+  }
+
+  aboutToDisappear(): void {
+    // Restore system service menu items when the page disappears.
+    TextMenuController.disableSystemServiceMenuItems(false);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        TextInput({ text: 'This is a TextInput. Long press to show the text selection menu.' })
+          .height(60)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .caretStyle({ width: '4vp' })
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                // menuItems does not contain the disabled system menu items.
+                return menuItems;
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                // The onMenuItemClick callback returns a boolean value.
+                return false;
+            }
+          })
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## setMenuOptions
 
 ```TypeScript
@@ -139,3 +233,44 @@ Sets menu options.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [TextMenuOptions](arkts-arkui-textmenuoptions-i.md) | Yes | Menu options.<br>Default value: {showMode: TextMenuShowMode.DEFAULT}. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    // Set the UIContext to preferentially display the context menu on selection in a separate window.
+    this.getUIContext()
+      .getTextMenuController()
+      .setMenuOptions(
+        {
+          showMode: TextMenuShowMode.PREFER_WINDOW
+        }
+      );
+  }
+
+  build() {
+    Row() {
+      Column() {
+        TextInput({ text: 'This is a TextInput. Long press to display the text selection menu.' })
+          .height(60)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .caretStyle({ width: '4vp' })
+
+        Text('This is a Text. Long press to display the text selection menu.')
+          .height(60)
+          .copyOption(CopyOptions.InApp)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```

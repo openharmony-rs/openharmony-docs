@@ -1,5 +1,9 @@
 # ImsCallModeInfo（系统接口）
 
+```TypeScript
+export interface ImsCallModeInfo
+```
+
 视频通话模式信息。
 
 **起始版本：** 11

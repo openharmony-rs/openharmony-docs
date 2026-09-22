@@ -1,5 +1,9 @@
 # ModuleDistroInfo（系统接口）
 
+```TypeScript
+export interface ModuleDistroInfo
+```
+
 module发行版信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # NetworkPolicy
 
+```TypeScript
+enum NetworkPolicy
+```
+
 下载云侧模型的网络策略枚举。
 
 **起始版本：** 26.0.0

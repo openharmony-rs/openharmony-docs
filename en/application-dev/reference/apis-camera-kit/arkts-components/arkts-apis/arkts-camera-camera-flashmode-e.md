@@ -1,5 +1,9 @@
 # FlashMode
 
+```TypeScript
+enum FlashMode
+```
+
 Enumerates the flash modes.
 
 **Since:** 10

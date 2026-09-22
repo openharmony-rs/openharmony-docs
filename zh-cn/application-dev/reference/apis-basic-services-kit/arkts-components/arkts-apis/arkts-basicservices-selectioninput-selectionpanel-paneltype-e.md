@@ -1,5 +1,9 @@
 # PanelType
 
+```TypeScript
+export enum PanelType
+```
+
 划词面板类型枚举，定义面板的两级架构：菜单面板（一级）和主面板（二级）。
 
 **起始版本：** 24

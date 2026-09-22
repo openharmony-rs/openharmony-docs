@@ -1,5 +1,9 @@
 # ScannerDevice
 
+```TypeScript
+interface ScannerDevice
+```
+
 定义扫描仪设备的接口。
 
 **起始版本：** 20

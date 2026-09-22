@@ -1,5 +1,9 @@
 # DateTimeOptions
 
+```TypeScript
+export interface DateTimeOptions
+```
+
 Defines the options for a **DateTimeOptions** object. Since API version 9, the **DateTimeOptions** attribute is changed from mandatory to optional.
 
 **Since:** 6

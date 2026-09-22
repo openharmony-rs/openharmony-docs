@@ -1,5 +1,9 @@
 # AddressInfo (System API)
 
+```TypeScript
+export interface AddressInfo
+```
+
 Definition of device adress information.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # CmsGenerator
 
+```TypeScript
+interface CmsGenerator
+```
+
 Provides APIs for generating the messages in CMS format.
 
 > **NOTE:** 

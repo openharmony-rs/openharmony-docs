@@ -1,5 +1,9 @@
 # Socks5Proxy
 
+```TypeScript
+export interface Socks5Proxy
+```
+
 SOCKS5代理配置信息。
 
 **起始版本：** 26.0.0

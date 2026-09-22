@@ -56,48 +56,8 @@ window.create('test', window.WindowType.TYPE_APP, (err: BusinessError, data) => 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowClass: window.Window | undefined = undefined;
-let promise = window.create('test', window.WindowType.TYPE_APP);
-promise.then((data) => {
-  windowClass = data;
-  console.info('Succeeded in creating the subWindow. Data: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create the subWindow. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let windowClass: window.Window | undefined = undefined;
-window.create(globalThis.getContext(), 'test', window.WindowType.TYPE_SYSTEM_ALERT, (err: BusinessError, data) => {
-  const errCode: number = err.code;
-  if (errCode) {
-    console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  windowClass = data;
-  console.info('Succeeded in creating the window. Data: ' + JSON.stringify(data));
-  windowClass.resetSize(500, 1000);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let windowClass: window.Window | undefined = undefined;
-let promise = window.create(globalThis.getContext(), 'test', window.WindowType.TYPE_SYSTEM_ALERT);
-promise.then((data) => {
-  windowClass = data;
-  console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="create-1"></a>
 
 ## create
 
@@ -111,13 +71,13 @@ function create(id: string, type: WindowType): Promise<Window>
 
 > **说明：** 
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](arkts-arkui-window-createwindow-f.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md)(config: Configuration)
+**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1)(config: Configuration)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -138,8 +98,21 @@ function create(id: string, type: WindowType): Promise<Window>
 
 **示例**
 
-参见 create
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let windowClass: window.Window | undefined = undefined;
+let promise = window.create('test', window.WindowType.TYPE_APP);
+promise.then((data) => {
+  windowClass = data;
+  console.info('Succeeded in creating the subWindow. Data: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create the subWindow. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+<a id="create-2"></a>
 
 ## create
 
@@ -151,13 +124,13 @@ function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](arkts-arkui-window-createwindow-f.md)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md)(config: Configuration)
+**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1)(config: Configuration)
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -177,8 +150,21 @@ function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>
 
 **示例**
 
-参见 create
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let windowClass: window.Window | undefined = undefined;
+let promise = window.create(globalThis.getContext(), 'test', window.WindowType.TYPE_SYSTEM_ALERT);
+promise.then((data) => {
+  windowClass = data;
+  console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+<a id="create-3"></a>
 
 ## create
 
@@ -212,4 +198,18 @@ function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncC
 
 **示例**
 
-参见 create
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let windowClass: window.Window | undefined = undefined;
+window.create(globalThis.getContext(), 'test', window.WindowType.TYPE_SYSTEM_ALERT, (err: BusinessError, data) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  windowClass = data;
+  console.info('Succeeded in creating the window. Data: ' + JSON.stringify(data));
+  windowClass.resetSize(500, 1000);
+});
+```

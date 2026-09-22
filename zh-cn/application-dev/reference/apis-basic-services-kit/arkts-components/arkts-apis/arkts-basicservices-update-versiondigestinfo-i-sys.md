@@ -1,5 +1,9 @@
 # VersionDigestInfo（系统接口）
 
+```TypeScript
+export interface VersionDigestInfo
+```
+
 版本摘要。
 
 **起始版本：** 9

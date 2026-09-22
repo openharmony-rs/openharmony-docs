@@ -34,6 +34,8 @@ Sets the notification slot for a specified application. This API uses an asynchr
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="setslotbybundle-1"></a>
+
 ## setSlotByBundle
 
 ```TypeScript

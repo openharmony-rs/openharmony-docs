@@ -1,5 +1,9 @@
 # PictureLightDegree（系统接口）
 
+```TypeScript
+enum PictureLightDegree
+```
+
 图片颜色明亮度的枚举。
 
 **起始版本：** 26.0.0

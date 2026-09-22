@@ -1,5 +1,9 @@
 # PixelMapParams
 
+```TypeScript
+interface PixelMapParams
+```
+
 获取视频缩略图时，输出缩略图的格式参数。
 
 **起始版本：** 12

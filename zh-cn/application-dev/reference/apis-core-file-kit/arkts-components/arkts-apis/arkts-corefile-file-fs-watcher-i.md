@@ -1,5 +1,9 @@
 # Watcher
 
+```TypeScript
+export interface Watcher
+```
+
 文件目录变化监听对象。由createWatcher接口获得。
 
 **起始版本：** 10

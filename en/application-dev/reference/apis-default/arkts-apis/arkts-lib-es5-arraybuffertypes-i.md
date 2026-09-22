@@ -1,5 +1,9 @@
 # ArrayBufferTypes
 
+```TypeScript
+interface ArrayBufferTypes
+```
+
 Allowed ArrayBuffer types for the buffer of an ArrayBufferView and related Typed Arrays.
 
 ## Modules to Import

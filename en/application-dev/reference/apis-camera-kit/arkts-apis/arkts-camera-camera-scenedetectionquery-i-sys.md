@@ -1,5 +1,9 @@
 # SceneDetectionQuery (System API)
 
+```TypeScript
+interface SceneDetectionQuery
+```
+
 Provides the scene detection and query capabilities.
 
 **Since:** 12

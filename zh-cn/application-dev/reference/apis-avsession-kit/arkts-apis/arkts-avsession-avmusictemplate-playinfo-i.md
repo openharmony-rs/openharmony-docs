@@ -1,5 +1,9 @@
 # PlayInfo
 
+```TypeScript
+interface PlayInfo
+```
+
 播放信息的定义。
 
 @interface MediaElement

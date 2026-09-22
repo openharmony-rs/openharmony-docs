@@ -1,5 +1,9 @@
 # ApplicationStateObserver
 
+```TypeScript
+export default class ApplicationStateObserver
+```
+
 应用状态监听器，可以作为入参传入 on('applicationState') 方法，监听应用的生命周期变化。  
 > **说明：** 
 > 

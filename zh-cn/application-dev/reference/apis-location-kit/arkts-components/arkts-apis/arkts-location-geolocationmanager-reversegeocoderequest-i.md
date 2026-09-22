@@ -1,5 +1,9 @@
 # ReverseGeoCodeRequest
 
+```TypeScript
+export interface ReverseGeoCodeRequest
+```
+
 逆地理编码请求参数。
 
 **起始版本：** 9

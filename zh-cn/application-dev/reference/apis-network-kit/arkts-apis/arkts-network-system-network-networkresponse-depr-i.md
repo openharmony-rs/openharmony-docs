@@ -1,5 +1,9 @@
 # NetworkResponse
 
+```TypeScript
+export interface NetworkResponse
+```
+
 This module provides the Network Response.
 
 **起始版本：** 3

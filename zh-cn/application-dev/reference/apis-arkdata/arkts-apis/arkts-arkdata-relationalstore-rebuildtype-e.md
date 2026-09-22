@@ -1,5 +1,9 @@
 # RebuildType
 
+```TypeScript
+enum RebuildType
+```
+
 描述数据库重建类型的枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 12

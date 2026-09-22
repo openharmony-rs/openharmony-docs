@@ -47,30 +47,6 @@ function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boo
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void => {
-  if (err) {
-    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info(`isNotificationEnabled success, data is ${JSON.stringify(data)}`);
-  }
-}
-
-notificationManager.isNotificationEnabled(isNotificationEnabledCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.isNotificationEnabled().then((data: boolean) => {
-  console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void => {
     if (err) {
         console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -85,49 +61,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundle: notificationManager.BundleOption = {
-    bundle: 'bundleName1',
-};
-notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
-    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void => {
-    if (err) {
-        console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info(`isNotificationEnabled success, data is ${JSON.stringify(data)}`);
-    }
-}
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.isNotificationEnabled(userId, isNotificationEnabledCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
-    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="isnotificationenabled-1"></a>
 
 ## isNotificationEnabled
 
@@ -171,8 +106,21 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 
 **示例**
 
-参见 [isNotificationEnabled](#isnotificationenabled)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let bundle: notificationManager.BundleOption = {
+    bundle: 'bundleName1',
+};
+notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
+    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+<a id="isnotificationenabled-4"></a>
 
 ## isNotificationEnabled
 
@@ -211,8 +159,25 @@ function isNotificationEnabled(userId: number, callback: AsyncCallback<boolean>)
 
 **示例**
 
-参见 [isNotificationEnabled](#isnotificationenabled)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void => {
+    if (err) {
+        console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`isNotificationEnabled success, data is ${JSON.stringify(data)}`);
+    }
+}
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+
+notificationManager.isNotificationEnabled(userId, isNotificationEnabledCallback);
+```
+
+
+<a id="isnotificationenabled-5"></a>
 
 ## isNotificationEnabled
 
@@ -256,4 +221,15 @@ function isNotificationEnabled(userId: number): Promise<boolean>
 
 **示例**
 
-参见 [isNotificationEnabled](#isnotificationenabled)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+
+notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
+    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```

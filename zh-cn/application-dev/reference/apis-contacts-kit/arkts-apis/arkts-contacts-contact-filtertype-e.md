@@ -1,5 +1,9 @@
 # FilterType
 
+```TypeScript
+enum FilterType
+```
+
 枚举，联系人过滤类型。
 
 **起始版本：** 15

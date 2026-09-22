@@ -1,5 +1,9 @@
 # FlashMode
 
+```TypeScript
+enum FlashMode
+```
+
 枚举，闪光灯模式。
 
 **起始版本：** 10

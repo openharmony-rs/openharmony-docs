@@ -1,5 +1,9 @@
 # PhotoSelectOptions
 
+```TypeScript
+class PhotoSelectOptions
+```
+
 Defines the options for selecting images or videos.
 
 **Since:** 9

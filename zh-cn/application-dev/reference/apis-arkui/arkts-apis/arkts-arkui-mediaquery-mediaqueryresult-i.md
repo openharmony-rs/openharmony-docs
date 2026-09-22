@@ -1,5 +1,9 @@
 # MediaQueryResult
 
+```TypeScript
+interface MediaQueryResult
+```
+
 用于执行媒体查询操作。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # WantAgentInfo
 
+```TypeScript
+export interface WantAgentInfo
+```
+
 WantAgentInfo用于定义触发WantAgent所需要的信息，可以作为[getWantAgent](../../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)的入参创建指定的WantAgent对象。适用于需要延迟执行Ability启动、发送公共事件等场景，支持自定义请求码和动作执行属性，帮助开发者灵活控制WantAgent的行为。
 
 **起始版本：** 7

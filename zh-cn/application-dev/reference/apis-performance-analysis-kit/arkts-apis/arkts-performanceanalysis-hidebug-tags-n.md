@@ -1,5 +1,9 @@
 # tags
 
+```TypeScript
+namespace tags
+```
+
 **起始版本：** 12
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug

@@ -1,5 +1,9 @@
 # param(Application Event Logging)
 
+```TypeScript
+namespace param
+```
+
 Provides parameter name constants.
 
 | Name | Type | Read Only | Description |  

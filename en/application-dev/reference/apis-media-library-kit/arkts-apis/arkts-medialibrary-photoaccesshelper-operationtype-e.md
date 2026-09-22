@@ -1,5 +1,9 @@
 # OperationType
 
+```TypeScript
+export enum OperationType
+```
+
 Enumerates the predicates.
 
 **Since:** 22

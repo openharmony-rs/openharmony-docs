@@ -33,6 +33,8 @@ Subscribes to notifications of all applications under this user. This API uses a
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="subscribe-1"></a>
+
 ## subscribe
 
 ```TypeScript
@@ -65,6 +67,8 @@ Subscribes to a notification with the subscription information specified. This A
 | info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-notificationsubscribeinfo-i-sys.md) | Yes | Notification subscription information. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+
+<a id="subscribe-2"></a>
 
 ## subscribe
 

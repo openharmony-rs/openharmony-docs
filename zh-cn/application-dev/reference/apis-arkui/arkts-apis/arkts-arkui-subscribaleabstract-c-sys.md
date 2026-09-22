@@ -1,5 +1,9 @@
 # SubscribaleAbstract（系统接口）
 
+```TypeScript
+declare abstract class SubscribaleAbstract
+```
+
 可订阅抽象类，用于管理所持有的属性集合，提供属性的添加、删除和变更通知能力。
 
 **起始版本：** 7
@@ -17,6 +21,8 @@ public addOwningProperty(subscriber: IPropertySubscriber): void
 添加持有的属性。属性不再使用时，应调用[removeOwningProperty](#removeowningproperty)或[removeOwningPropertyById](#removeowningpropertybyid)移除。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,6 +44,8 @@ constructor()
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +59,8 @@ protected notifyPropertyHasChanged(propName: string, newValue: any): void
 通知属性更改时调用。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,6 +83,8 @@ public removeOwningProperty(property: IPropertySubscriber): void
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -92,6 +104,8 @@ public removeOwningPropertyById(subscriberId: number): void
 使用ID删除持有的属性时调用。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +128,8 @@ private owningProperties_: Set<number>
 **类型：** Set&lt;number&gt;
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

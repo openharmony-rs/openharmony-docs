@@ -14,7 +14,7 @@ function getCarAwareness(capability: Capability, options?: CarAwarenessOptions):
 
 /** Disables vehicle awareness and subscribes to vehicle awareness results.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

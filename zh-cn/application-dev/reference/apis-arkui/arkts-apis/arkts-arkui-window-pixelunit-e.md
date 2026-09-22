@@ -1,5 +1,9 @@
 # PixelUnit
 
+```TypeScript
+enum PixelUnit
+```
+
 像素单位枚举。
 
 物理像素单位和虚拟像素单位换算可使用px2vp和vp2px。

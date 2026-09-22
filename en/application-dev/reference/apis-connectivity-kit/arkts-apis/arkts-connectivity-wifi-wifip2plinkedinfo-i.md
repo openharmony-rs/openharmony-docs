@@ -1,5 +1,9 @@
 # WifiP2pLinkedInfo
 
+```TypeScript
+interface WifiP2pLinkedInfo
+```
+
 P2P linked information. @typedef WifiP2pLinkedInfo
 
 **Since:** 8

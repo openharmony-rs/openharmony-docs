@@ -1,5 +1,9 @@
 # ImageAttachmentInterface
 
+```TypeScript
+declare interface ImageAttachmentInterface
+```
+
 Defines the ImageAttachmentInterface.
 
 **Since:** 12
@@ -70,13 +74,13 @@ resizable?: ResizableOptions
 
 Resizable image options of the styled string.
 
-**Type:** [ResizableOptions](../arkts-components/arkts-arkui-resizableoptions-i.md)
+**Type:** [ResizableOptions](../arkts-components/arkts-arkui-image-comp-resizableoptions-i.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +112,7 @@ value: PixelMap
 
 Image data source.
 
-**Type:** [PixelMap](../arkts-components/arkts-arkui-pixelmap-t.md)
+**Type:** [PixelMap](../arkts-components/arkts-arkui-common-comp-pixelmap-t.md)
 
 **Since:** 12
 

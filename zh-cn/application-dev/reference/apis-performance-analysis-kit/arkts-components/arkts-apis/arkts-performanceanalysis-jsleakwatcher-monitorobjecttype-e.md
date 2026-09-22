@@ -1,5 +1,9 @@
 # MonitorObjectType
 
+```TypeScript
+export enum MonitorObjectType
+```
+
 需要监控的组件对象类型枚举。
 
 **起始版本：** 24
@@ -16,6 +20,8 @@ ALL = -1
 
 **起始版本：** 24
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
 ## CUSTOM_COMPONENT
@@ -27,6 +33,8 @@ CUSTOM_COMPONENT = 1 << 0
 监测自定义组件类型。
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -40,6 +48,8 @@ WINDOW = 1 << 1
 
 **起始版本：** 24
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
 ## NODE_CONTAINER
@@ -51,6 +61,8 @@ NODE_CONTAINER = 1 << 2
 监测NodeContainer组件类型。
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -64,6 +76,8 @@ X_COMPONENT = 1 << 3
 
 **起始版本：** 24
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
 ## ABILITY
@@ -75,5 +89,7 @@ ABILITY = 1 << 4
 监测Ability组件类型。
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker

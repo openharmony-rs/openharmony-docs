@@ -1,5 +1,9 @@
 # PermissionDef (System API)
 
+```TypeScript
+export interface PermissionDef
+```
+
 The module provides permission details defined in the configuration file.
 
 > **NOTE:** 

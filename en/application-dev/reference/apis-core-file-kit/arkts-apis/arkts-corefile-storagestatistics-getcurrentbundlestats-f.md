@@ -36,15 +36,6 @@ Obtains the storage space (in bytes) of this application. This API uses an async
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
-  console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
-}).catch((err: BusinessError) => {
-  console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: storageStatistics.BundleStats) => {
   if (error) {
     console.error("getCurrentBundleStats failed with error:" + JSON.stringify(error));
@@ -55,6 +46,8 @@ storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: stor
 });
 ```
 
+
+<a id="getcurrentbundlestats-1"></a>
 
 ## getCurrentBundleStats
 
@@ -84,4 +77,11 @@ Obtains the storage space (in bytes) of this application. This API uses a promis
 
 **Examples**
 
-See [getCurrentBundleStats](#getcurrentbundlestats)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
+  console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
+}).catch((err: BusinessError) => {
+  console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
+});
+```

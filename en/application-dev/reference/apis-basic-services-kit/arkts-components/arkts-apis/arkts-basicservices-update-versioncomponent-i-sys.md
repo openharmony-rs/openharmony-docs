@@ -1,5 +1,9 @@
 # VersionComponent (System API)
 
+```TypeScript
+export interface VersionComponent
+```
+
 Represents a version component.
 
 **Since:** 9

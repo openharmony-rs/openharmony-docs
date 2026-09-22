@@ -1,5 +1,9 @@
 # WindowCreateParams
 
+```TypeScript
+interface WindowCreateParams
+```
+
 应用启动时的窗口参数配置。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # GetImagePropertyOptions
 
+```TypeScript
+interface GetImagePropertyOptions
+```
+
 表示查询图片属性的索引。
 
 > **说明：** 

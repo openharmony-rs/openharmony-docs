@@ -1,8 +1,10 @@
 # AudioLoopbackReverbPreset
 
-表示返听混响模式的枚举。
+```TypeScript
+enum AudioLoopbackReverbPreset
+```
 
-@enum { int }
+表示返听混响模式的枚举。
 
 **起始版本：** 21
 

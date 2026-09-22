@@ -1,10 +1,14 @@
 # RelativeContainer属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持如下属性：
+```TypeScript
+declare class RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持如下属性：
 
-**继承/实现关系：** RelativeContainerAttribute extends CommonMethod&lt;RelativeContainerAttribute&gt;
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+
+**继承/实现关系：** RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>
 
 **起始版本：** 9
 
@@ -30,7 +34,9 @@ barrier(value: Array<BarrierStyle>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[BarrierStyle](arkts-arkui-barrierstyle-i.md)&gt; | 是 | RelativeContainer容器内的屏障，用于定义屏障的id、方向和依赖组件，子组件可以以屏障为锚点进行对齐定位。 |
+| value | Array&lt;[BarrierStyle](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)&gt; | 是 | RelativeContainer容器内的屏障，用于定义屏障的id、方向和依赖组件，子组件可以以屏障为锚点进行对齐定位。 |
+
+<a id="barrier-1"></a>
 
 ## barrier
 
@@ -52,7 +58,7 @@ barrier(barrierStyle: Array<LocalizedBarrierStyle>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| barrierStyle | Array&lt;[LocalizedBarrierStyle](arkts-arkui-localizedbarrierstyle-i.md)&gt; | 是 | RelativeContainer容器内的屏障，支持定义镜像模式的屏障线。 |
+| barrierStyle | Array&lt;[LocalizedBarrierStyle](arkts-arkui-relativecontainer-comp-localizedbarrierstyle-i.md)&gt; | 是 | RelativeContainer容器内的屏障，支持定义镜像模式的屏障线。 |
 
 ## guideLine
 
@@ -74,4 +80,4 @@ guideLine(value: Array<GuideLineStyle>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[GuideLineStyle](arkts-arkui-guidelinestyle-i.md)&gt; | 是 | RelativeContainer容器内的辅助线，定义guideLine的id、方向和位置，用于辅助定位子组件。 |
+| value | Array&lt;[GuideLineStyle](arkts-arkui-relativecontainer-comp-guidelinestyle-i.md)&gt; | 是 | RelativeContainer容器内的辅助线，定义guideLine的id、方向和位置，用于辅助定位子组件。 |

@@ -22,9 +22,9 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 
 **参见：**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md) 获取指定应用的通知使能状态。
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-2) 获取指定应用的通知使能状态。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md) 根据通知ID和标签label取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-1) 根据通知ID和标签label取消已发布的通知。
 
 [cancelAll](arkts-notification-notificationmanager-cancelall-f.md) 取消当前应用所有已发布的通知。
 
@@ -83,81 +83,8 @@ let notificationRequest: notificationManager.NotificationRequest = {
 notificationManager.publish(notificationRequest, publishCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 通知Request对象
-let notificationRequest: notificationManager.NotificationRequest = {
-  id: 1,
-  content: {
-    notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-    normal: {
-      title: 'test_title',
-      text: 'test_text',
-      additionalText: 'test_additionalText'
-    }
-  }
-};
-notificationManager.publish(notificationRequest).then(() => {
-  console.info(`Succeeded in publishing notification.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// publish回调
-let publishCallback = (err: BusinessError): void => {
-    if (err) {
-        console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info('publish success');
-    }
-}
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-// 通知Request对象
-let notificationRequest: notificationManager.NotificationRequest = {
-    id: 1,
-    content: {
-        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-        normal: {
-            title: 'test_title',
-            text: 'test_text',
-            additionalText: 'test_additionalText'
-        }
-    }
-};
-notificationManager.publish(notificationRequest, userId, publishCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let notificationRequest: notificationManager.NotificationRequest = {
-    id: 1,
-    content: {
-        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-        normal: {
-            title: 'test_title',
-            text: 'test_text',
-            additionalText: 'test_additionalText'
-        }
-    }
-};
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.publish(notificationRequest, userId).then(() => {
-    console.info('publish success');
-}).catch((err: BusinessError) => {
-    console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="publish-1"></a>
 
 ## publish
 
@@ -177,7 +104,7 @@ function publish(request: NotificationRequest): Promise<void>
 
 [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md) 查询当前应用通知授权状态。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md) 根据通知ID和标签label取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) 根据通知ID和标签label取消已发布的通知。
 
 [cancelAll](arkts-notification-notificationmanager-cancelall-f.md) 取消当前应用所有已发布的通知。
 
@@ -215,4 +142,24 @@ function publish(request: NotificationRequest): Promise<void>
 
 **示例**
 
-参见 publish
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 通知Request对象
+let notificationRequest: notificationManager.NotificationRequest = {
+  id: 1,
+  content: {
+    notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+    normal: {
+      title: 'test_title',
+      text: 'test_text',
+      additionalText: 'test_additionalText'
+    }
+  }
+};
+notificationManager.publish(notificationRequest).then(() => {
+  console.info(`Succeeded in publishing notification.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+});
+```

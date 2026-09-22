@@ -1,5 +1,9 @@
 # Skill
 
+```TypeScript
+export interface Skill
+```
+
 skill标签对象。
 
 **起始版本：** 12
@@ -12,7 +16,7 @@ skill标签对象。
 readonly actions: Array<string>
 ```
 
-Skill接收的Action集合。
+Skill接收的[Action集合](arkts-ability-wantconstant-action-depr-e.md#action)。
 
 **类型：** Array&lt;string&gt;
 
@@ -44,7 +48,7 @@ Skill接收的DomainVerify值，仅在AbilityInfo中存在，表示是否开启�
 readonly entities: Array<string>
 ```
 
-Skill接收的Entity集合。
+Skill接收的[Entity集合](arkts-ability-wantconstant-entity-depr-e.md#entity)。
 
 **类型：** Array&lt;string&gt;
 

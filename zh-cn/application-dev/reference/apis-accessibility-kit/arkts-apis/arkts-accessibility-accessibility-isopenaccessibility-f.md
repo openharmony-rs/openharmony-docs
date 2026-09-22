@@ -35,17 +35,6 @@ function isOpenAccessibility(callback: AsyncCallback<boolean>): void
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-accessibility.isOpenAccessibility().then((data: boolean) => {
-  console.info(`success data:isOpenAccessibility : ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to isOpenAccessibility. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 accessibility.isOpenAccessibility((err: BusinessError, data: boolean) => {
   if (err) {
     console.error(`Failed to isOpenAccessibility. Code:${err.code}, message:${err.message}`);
@@ -55,6 +44,8 @@ accessibility.isOpenAccessibility((err: BusinessError, data: boolean) => {
 });
 ```
 
+
+<a id="isopenaccessibility-1"></a>
 
 ## isOpenAccessibility
 
@@ -80,4 +71,13 @@ function isOpenAccessibility(): Promise<boolean>
 
 **示例**
 
-参见 isOpenAccessibility
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+accessibility.isOpenAccessibility().then((data: boolean) => {
+  console.info(`success data:isOpenAccessibility : ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to isOpenAccessibility. Code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # ExtensionAbilityType
 
+```TypeScript
+export enum ExtensionAbilityType
+```
+
 扩展组件的类型。
 
 <!--Table: 30%; 10%; 60%-->

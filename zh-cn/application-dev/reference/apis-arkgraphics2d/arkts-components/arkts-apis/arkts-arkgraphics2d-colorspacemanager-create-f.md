@@ -48,28 +48,8 @@ try {
 }
 ```
 
-```TypeScript
-try {
-  // 定义色域标准三原色参数
-  let primaries: colorSpaceManager.ColorSpacePrimaries = {
-    redX: 0.1,
-    redY: 0.1,
-    greenX: 0.2,
-    greenY: 0.2,
-    blueX: 0.3,
-    blueY: 0.3,
-    whitePointX: 0.4,
-    whitePointY: 0.4
-  };
-  // 定义色域gamma值
-  let gamma = 2.2;
-  // 创建自定义色域对象
-  let colorSpace = colorSpaceManager.create(primaries, gamma);
-} catch (err) {
-  console.error(`Failed to create colorSpace with customized primaries and gamma. Code: ${err.code}, message: ${err.message}`);
-}
-```
 
+<a id="create-1"></a>
 
 ## create
 
@@ -105,4 +85,24 @@ function create(primaries: ColorSpacePrimaries, gamma: number): ColorSpaceManage
 
 **示例**
 
-参见 [create](#create)
+```TypeScript
+try {
+  // 定义色域标准三原色参数
+  let primaries: colorSpaceManager.ColorSpacePrimaries = {
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+  };
+  // 定义色域gamma值
+  let gamma = 2.2;
+  // 创建自定义色域对象
+  let colorSpace = colorSpaceManager.create(primaries, gamma);
+} catch (err) {
+  console.error(`Failed to create colorSpace with customized primaries and gamma. Code: ${err.code}, message: ${err.message}`);
+}
+```

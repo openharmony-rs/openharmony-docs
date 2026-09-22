@@ -1,10 +1,16 @@
 # Scene
 
+```TypeScript
+export declare class Scene
+```
+
 用于设置场景。Scene采用树状层次结构组织场景节点，根节点（root）作为场景的入口。
 
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+<a id="load-1"></a>
 
 ## load
 
@@ -36,14 +42,6 @@ static load(uri: ResourceStr, param: SceneLoadParams):Promise<Scene>
 | Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | Promise对象，返回场景对象。 |
 
 **示例**
-
-```TypeScript
-示例1：通过rawfile加载（相对路径）
-```
-
-```TypeScript
-示例2：通过绝对路径加载（从应用沙盒目录/data/storage/el2/base/files加载模型）
-```
 
 ```TypeScript
 import { Scene, SceneLoadParams } from '@kit.ArkGraphics3D';

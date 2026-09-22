@@ -21,7 +21,7 @@ StepperItem()
 > **说明：** 
 
 > 从API version 8开始支持，从API version 22开始废弃，建议使用
-> Swiper替代。
+> [Swiper](arkts-arkui-swiper-comp.md#swiper)替代。
 
 **起始版本：** 8
 
@@ -39,4 +39,4 @@ StepperItem()
 
 | 名称 | 说明 |
 | --- | --- |
-| [ItemState](arkts-arkui-itemstate-e.md) | 步骤导航器nextLabel的显示状态。 |
+| [ItemState](arkts-arkui-stepperitem-comp-itemstate-e.md) | 步骤导航器nextLabel的显示状态。 |

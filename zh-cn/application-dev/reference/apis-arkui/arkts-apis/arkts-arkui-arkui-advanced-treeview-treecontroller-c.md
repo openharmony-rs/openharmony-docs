@@ -1,5 +1,9 @@
 # TreeController
 
+```TypeScript
+export declare class TreeController
+```
+
 树视图组件的控制器，用于控制树的节点信息。同一控制器实例不能同时控制多个树视图组件。
 
 **起始版本：** 10

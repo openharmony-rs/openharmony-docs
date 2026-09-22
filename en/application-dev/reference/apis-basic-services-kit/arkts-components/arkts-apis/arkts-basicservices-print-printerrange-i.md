@@ -1,5 +1,9 @@
 # PrinterRange
 
+```TypeScript
+interface PrinterRange
+```
+
 Defines the print range.
 
 **Since:** 24

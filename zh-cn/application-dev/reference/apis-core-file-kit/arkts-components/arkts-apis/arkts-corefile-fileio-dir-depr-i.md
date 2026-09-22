@@ -1,5 +1,9 @@
 # Dir
 
+```TypeScript
+declare interface Dir
+```
+
 管理目录，在调用Dir的方法前，需要先通过opendir方法（同步或异步）来构建一个Dir实例。
 
 **起始版本：** 6
@@ -46,12 +50,7 @@ dir.close().then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@ohos.base';
-dir.close((err: BusinessError) => {
-  console.info("close dir successfully");
-});
-```
+<a id="close-1"></a>
 
 ## close
 
@@ -76,13 +75,6 @@ close(callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@ohos.base';
-dir.close().then(() => {
-  console.info("close dir successfully");
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -146,15 +138,7 @@ dir.read().then((dirent: fileio.Dirent) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@ohos.base';
-dir.read((err: BusinessError, dirent: fileio.Dirent) => {
-  if (dirent) {
-    // do something
-    console.info("read succeed, the name of file is " + dirent.name);
-  }
-});
-```
+<a id="read-1"></a>
 
 ## read
 
@@ -179,15 +163,6 @@ read(callback: AsyncCallback<Dirent>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Dirent](arkts-corefile-fileio-dirent-depr-i.md)&gt; | 是 | 异步读取下一个目录项之后的回调。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@ohos.base';
-dir.read().then((dirent: fileio.Dirent) => {
-  console.info("read succeed, the name of dirent is " + dirent.name);
-}).catch((err: BusinessError) => {
-  console.error("read failed with error:" + err);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';

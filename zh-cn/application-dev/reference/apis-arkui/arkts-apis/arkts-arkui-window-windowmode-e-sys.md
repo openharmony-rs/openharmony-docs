@@ -1,5 +1,9 @@
 # WindowMode（系统接口）
 
+```TypeScript
+enum WindowMode
+```
+
 窗口模式枚举。
 
 **起始版本：** 7

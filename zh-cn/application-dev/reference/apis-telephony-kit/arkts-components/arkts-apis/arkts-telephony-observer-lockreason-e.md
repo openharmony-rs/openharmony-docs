@@ -1,5 +1,9 @@
 # LockReason
 
+```TypeScript
+export enum LockReason
+```
+
 SIM卡锁类型。
 
 **起始版本：** 8

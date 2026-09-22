@@ -40,6 +40,8 @@ Obtains an array of the shortcut information based on a given bundle name. This 
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ShortcutInfo](arkts-ability-shortcutinfo-shortcutinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return an array of the shortcut information. |
 
 
+<a id="getshortcutinfos-1"></a>
+
 ## getShortcutInfos
 
 ```TypeScript

@@ -40,3 +40,39 @@ Enables listening for system hotkey change events. This API uses an asynchronous
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 12 and later |
+
+**Examples**
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftAltKey = 2045;
+          let tabKey = 2049;
+          let keyOptions: inputConsumer.KeyOptions = {
+            preKeys: [ leftAltKey ],
+            finalKey: tabKey,
+            isFinalKeyDown: true,
+            finalKeyDownDuration: 0
+          };
+          let callback = (keyOptions: inputConsumer.KeyOptions) => {
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
+          };
+          try {
+            // Subscribe to the key event.
+            inputConsumer.on('key', keyOptions, callback);
+          } catch (error) {
+            console.error(`Failed to subscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

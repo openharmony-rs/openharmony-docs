@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+enum ColorMode
+```
+
 卡片主题样式统一跟随系统的颜色模式，卡片支持的颜色模式枚举。
 
 > **说明：** 

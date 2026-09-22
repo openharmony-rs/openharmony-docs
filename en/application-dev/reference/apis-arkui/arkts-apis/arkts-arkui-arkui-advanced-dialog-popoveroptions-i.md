@@ -1,10 +1,14 @@
 # PopoverOptions
 
+```TypeScript
+export declare interface PopoverOptions extends CustomPopupOptions
+```
+
 Defines PopoverDialog Options
 
 @typedef PopoverOptions @extends CustomPopupOptions
 
-**Inheritance/Implementation:** PopoverOptions extends [CustomPopupOptions](../arkts-components/arkts-arkui-custompopupoptions-i.md)
+**Inheritance/Implementation:** PopoverOptions extends [CustomPopupOptions](../arkts-components/arkts-arkui-common-comp-custompopupoptions-i.md)
 
 **Since:** 14
 

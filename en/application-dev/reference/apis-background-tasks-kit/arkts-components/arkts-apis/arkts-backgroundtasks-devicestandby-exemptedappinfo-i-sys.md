@@ -1,5 +1,9 @@
 # ExemptedAppInfo (System API)
 
+```TypeScript
+export interface ExemptedAppInfo
+```
+
 Information about an exempted application.
 
 @interface ExemptedAppInfo

@@ -1,5 +1,9 @@
 # DepthDataOutput (System API)
 
+```TypeScript
+interface DepthDataOutput extends CameraOutput
+```
+
 Implements depth data output. It inherits from [CameraOutput](arkts-camera-camera-cameraoutput-i.md).
 
 **Inheritance/Implementation:** DepthDataOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
@@ -43,6 +47,23 @@ Unsubscribes from depth data availability events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, depthData: camera.DepthData): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+}
+
+function unRegisterDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.off('depthDataAvailable', callback);
+}
+```
+
 ## off('error')
 
 ```TypeScript
@@ -69,6 +90,14 @@ Unsubscribes from DepthDataOutput error events.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
+
+**Examples**
+
+```TypeScript
+function unregisterDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.off('error');
+}
+```
 
 ## on('depthDataAvailable')
 
@@ -101,6 +130,23 @@ Subscribes to depth data availability events. This API uses an asynchronous call
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, depthData: camera.DepthData): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+}
+
+function registerDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.on('depthDataAvailable', callback);
+}
+```
+
 ## on('error')
 
 ```TypeScript
@@ -131,6 +177,20 @@ Subscribes to DepthDataOutput error events. This API uses an asynchronous callba
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(depthDataOutputError: BusinessError): void {
+  console.error(`Depth data output error code: ${depthDataOutputError.code}`);
+}
+
+function registerDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.on('error', callback);
+}
+```
 
 ## start
 

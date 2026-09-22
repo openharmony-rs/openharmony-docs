@@ -1,5 +1,9 @@
 # DragInfo
 
+```TypeScript
+interface DragInfo
+```
+
 发起拖拽所需要的属性和拖拽时携带的信息。
 
 **起始版本：** 10
@@ -15,7 +19,7 @@ import { dragController } from '@kit.ArkUI';
 ## autoHideComponentUniqueIds
 
 ```TypeScript
-autoHideComponentUniqueIds?: number | number[]
+autoHideComponentUniqueIds?: number[]
 ```
 
 设置在主动拖拽过程中由系统自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。
@@ -28,7 +32,7 @@ autoHideComponentUniqueIds?: number | number[]
 
 开发者需要在拖拽结束回调中按需恢复组件显示状态。
 
-**类型：** number &#124; number[]
+**类型：** number[]
 
 **起始版本：** 26.0.0
 
@@ -124,7 +128,7 @@ previewOptions?: DragPreviewOptions
 
 设置拖拽过程中背板图处理模式及数量角标的显示。
 
-**类型：** [DragPreviewOptions](../arkts-components/arkts-arkui-dragpreviewoptions-i.md)
+**类型：** [DragPreviewOptions](../arkts-components/arkts-arkui-common-comp-dragpreviewoptions-i.md)
 
 **起始版本：** 11
 

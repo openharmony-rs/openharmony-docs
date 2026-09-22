@@ -1,5 +1,9 @@
 # HeapMemoryInfo
 
+```TypeScript
+interface HeapMemoryInfo
+```
+
 描述 ArkTS-VM 的堆内存信息，或当前进程的共享堆内存信息。
 
 **起始版本：** 24

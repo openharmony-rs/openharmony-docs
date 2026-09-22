@@ -47,17 +47,8 @@ sim.getISOCountryCodeForSim(0, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getISOCountryCodeForSim(0).then((data: string) => {
-    console.info(`getISOCountryCodeForSim success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getISOCountryCodeForSim failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getisocountrycodeforsim-1"></a>
 
 ## getISOCountryCodeForSim
 
@@ -96,4 +87,13 @@ Obtains the ISO country code of the SIM card in the specified slot. This API use
 
 **Examples**
 
-See [getISOCountryCodeForSim](#getisocountrycodeforsim)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getISOCountryCodeForSim(0).then((data: string) => {
+    console.info(`getISOCountryCodeForSim success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getISOCountryCodeForSim failed, promise: err->${JSON.stringify(err)}`);
+});
+```

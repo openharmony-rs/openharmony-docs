@@ -1,5 +1,9 @@
 # AdvertisingData
 
+```TypeScript
+interface AdvertisingData
+```
+
 表示广播数据包。
 
 **起始版本：** 26.0.0

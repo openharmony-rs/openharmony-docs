@@ -1,5 +1,9 @@
 # ConsumptionType（系统接口）
 
+```TypeScript
+export enum ConsumptionType
+```
+
 表示电量消耗类型的枚举值。
 
 **起始版本：** 8

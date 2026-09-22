@@ -1,5 +1,9 @@
 # SystemLiveViewSubscriber（系统接口）
 
+```TypeScript
+export interface SystemLiveViewSubscriber
+```
+
 系统实况窗订阅者。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # RingChannel
 
+```TypeScript
+export enum RingChannel
+```
+
 自定义提示音的音频播放通道。
 
 **起始版本：** 20

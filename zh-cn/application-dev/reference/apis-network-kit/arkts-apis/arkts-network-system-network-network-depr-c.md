@@ -1,5 +1,9 @@
 # Network
 
+```TypeScript
+export default class Network
+```
+
 **起始版本：** 3
 
 **系统能力：** SystemCapability.Communication.NetManager.Core

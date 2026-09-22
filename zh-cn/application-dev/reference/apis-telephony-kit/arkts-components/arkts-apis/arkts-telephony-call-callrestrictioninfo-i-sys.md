@@ -1,5 +1,9 @@
 # CallRestrictionInfo（系统接口）
 
+```TypeScript
+export interface CallRestrictionInfo
+```
+
 呼叫限制信息。
 
 **起始版本：** 8

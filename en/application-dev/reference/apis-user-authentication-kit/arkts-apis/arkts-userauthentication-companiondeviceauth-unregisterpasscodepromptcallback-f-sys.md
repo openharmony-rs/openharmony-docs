@@ -14,7 +14,7 @@ function unregisterPasscodePromptCallback(): void
 
 Unregisters the callback used to prompt for a companion device passcode.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 

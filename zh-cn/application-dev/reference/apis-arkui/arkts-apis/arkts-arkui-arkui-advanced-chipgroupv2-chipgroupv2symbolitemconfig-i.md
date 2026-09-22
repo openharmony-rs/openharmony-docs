@@ -1,5 +1,9 @@
 # ChipGroupV2SymbolItemConfig
 
+```TypeScript
+export interface ChipGroupV2SymbolItemConfig
+```
+
 ChipGroupV2SymbolItemConfig定义了尾部Symbol图标的配置类型。
 
 **起始版本：** 26.0.0
@@ -116,9 +120,9 @@ symbol: SymbolGlyphModifier
 
 尾部图标的SymbolGlyphModifier配置对象，设置后会在ChipGroupV2尾部区域显示指定的Symbol图标，支持配置显示样式、渲染模式、颜色等属性。
 
-**说明：** 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和effectStrategy设置动效。
+**说明：** 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 

@@ -1,5 +1,9 @@
 # SearchSuggestionType（系统接口）
 
+```TypeScript
+enum SearchSuggestionType
+```
+
 搜索推荐词类型
 
 **起始版本：** 26.0.0

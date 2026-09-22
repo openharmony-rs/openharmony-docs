@@ -1,5 +1,9 @@
 # DataFilter
 
+```TypeScript
+interface DataFilter
+```
+
 Defines the contact data filter item.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # ToneType（系统接口）
 
+```TypeScript
+enum ToneType
+```
+
 枚举，播放器的音调类型。
 
 **起始版本：** 9

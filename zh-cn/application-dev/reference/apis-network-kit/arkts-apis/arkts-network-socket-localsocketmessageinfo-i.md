@@ -1,5 +1,9 @@
 # LocalSocketMessageInfo
 
+```TypeScript
+export interface LocalSocketMessageInfo
+```
+
 LocalSocket客户端与服务端通信时接收的数据。
 
 **起始版本：** 11

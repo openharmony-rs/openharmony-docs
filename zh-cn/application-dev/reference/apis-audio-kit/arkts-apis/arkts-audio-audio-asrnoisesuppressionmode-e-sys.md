@@ -1,8 +1,10 @@
 # AsrNoiseSuppressionMode（系统接口）
 
-枚举，自动语音识别（ASR）的噪音抑制模式。
+```TypeScript
+enum AsrNoiseSuppressionMode
+```
 
-@enum { int }
+枚举，自动语音识别（ASR）的噪音抑制模式。
 
 **起始版本：** 12
 

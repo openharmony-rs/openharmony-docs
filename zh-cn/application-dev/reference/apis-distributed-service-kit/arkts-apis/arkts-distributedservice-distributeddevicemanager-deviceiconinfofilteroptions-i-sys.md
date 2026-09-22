@@ -1,5 +1,9 @@
 # DeviceIconInfoFilterOptions（系统接口）
 
+```TypeScript
+interface DeviceIconInfoFilterOptions
+```
+
 设备图标信息过滤选项。
 
 **起始版本：** 18

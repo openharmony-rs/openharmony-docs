@@ -61,21 +61,8 @@ deviceStandby.getExemptedApps(resourceTypes, (err: BusinessError, res: Array<dev
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { deviceStandby } from '@kit.BackgroundTasksKit';
 
-let resourceTypes: deviceStandby.ResourceType = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
-deviceStandby.getExemptedApps(resourceTypes).then( (res: Array<deviceStandby.ExemptedAppInfo>) => {
-  console.info('DEVICE_STANDBY getExemptedApps promise success.');
-  for (let i = 0; i < res.length; i++) {
-    console.info('DEVICE_STANDBY getExemptedApps promise result ' + JSON.stringify(res[i]));
-  }
-}).catch( (err: BusinessError) => {
-  console.error('DEVICE_STANDBY getExemptedApps promise failed. code is: ' + err.code + ',message is: ' + err.message);
-});
-```
-
+<a id="getexemptedapps-1"></a>
 
 ## getExemptedApps
 
@@ -120,4 +107,17 @@ function getExemptedApps(resourceTypes: number): Promise<Array<ExemptedAppInfo>>
 
 **示例**
 
-参见 [getExemptedApps](#getexemptedapps)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+
+let resourceTypes: deviceStandby.ResourceType = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
+deviceStandby.getExemptedApps(resourceTypes).then( (res: Array<deviceStandby.ExemptedAppInfo>) => {
+  console.info('DEVICE_STANDBY getExemptedApps promise success.');
+  for (let i = 0; i < res.length; i++) {
+    console.info('DEVICE_STANDBY getExemptedApps promise result ' + JSON.stringify(res[i]));
+  }
+}).catch( (err: BusinessError) => {
+  console.error('DEVICE_STANDBY getExemptedApps promise failed. code is: ' + err.code + ',message is: ' + err.message);
+});
+```

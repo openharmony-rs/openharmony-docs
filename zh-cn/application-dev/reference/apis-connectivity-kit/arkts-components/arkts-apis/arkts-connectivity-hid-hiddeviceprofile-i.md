@@ -1,5 +1,9 @@
 # HidDeviceProfile
 
+```TypeScript
+interface HidDeviceProfile extends BaseProfile
+```
+
 该实例表示蓝牙HID通信中的HID Device角色。
 
 该类继承于[BaseProfile](arkts-connectivity-hid-baseprofile-t.md)，因此可以使用其父类中的方法。使用该类的方法前，需通过[createHidDeviceProfile](arkts-connectivity-hid-createhiddeviceprofile-f.md)方法构造该类的实例。通过该实例可以操作设备端的行为，如注册HID设备（[registerHidDevice](#registerhiddevice)），发送报告（[sendReport](#sendreport)）等。和该实例角色相对应的是HID Host。

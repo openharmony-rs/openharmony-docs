@@ -1,5 +1,9 @@
 # CustomComponentLifecycleState
 
+```TypeScript
+export declare enum CustomComponentLifecycleState
+```
+
 自定义组件当前的生命周期状态。
 
 **起始版本：** 23

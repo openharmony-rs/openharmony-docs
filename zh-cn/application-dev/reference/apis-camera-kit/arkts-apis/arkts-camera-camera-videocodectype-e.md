@@ -1,5 +1,9 @@
 # VideoCodecType
 
+```TypeScript
+enum VideoCodecType
+```
+
 枚举，视频编码类型。
 
 **起始版本：** 13

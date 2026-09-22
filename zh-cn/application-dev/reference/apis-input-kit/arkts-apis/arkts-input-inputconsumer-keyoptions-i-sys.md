@@ -1,5 +1,9 @@
 # KeyOptions（系统接口）
 
+```TypeScript
+interface KeyOptions
+```
+
 组合键选项。
 
 **起始版本：** 8

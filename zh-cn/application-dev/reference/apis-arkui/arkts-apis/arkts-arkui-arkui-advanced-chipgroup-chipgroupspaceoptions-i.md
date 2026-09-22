@@ -1,5 +1,9 @@
 # ChipGroupSpaceOptions
 
+```TypeScript
+export interface ChipGroupSpaceOptions
+```
+
 ChipGroupSpaceOptions 定义了ChipGroup左右内边距，以及Chip与Chip之间的间距。
 
 **起始版本：** 12

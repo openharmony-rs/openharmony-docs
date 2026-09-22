@@ -37,7 +37,7 @@ function cancelRetentionState(docUris: Array<string>): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
@@ -54,19 +54,8 @@ dlpPermission.cancelRetentionState([uri]).then(() => { // 取消沙箱保留。
 });
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
 
-let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-dlpPermission.cancelRetentionState([uri], (err, res) => {
-  if (err) {
-    console.error(`Failed to cancel retention state. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('cancelRetentionState success');
-  }
-}); // 取消沙箱保留。
-```
-
+<a id="cancelretentionstate-1"></a>
 
 ## cancelRetentionState
 
@@ -94,10 +83,21 @@ function cancelRetentionState(docUris: Array<string>, callback: AsyncCallback<vo
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 [cancelRetentionState](#cancelretentionstate)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
+dlpPermission.cancelRetentionState([uri], (err, res) => {
+  if (err) {
+    console.error(`Failed to cancel retention state. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('cancelRetentionState success');
+  }
+}); // 取消沙箱保留。
+```

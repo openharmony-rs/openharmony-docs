@@ -1,5 +1,9 @@
 # FlipDirection
 
+```TypeScript
+declare enum FlipDirection
+```
+
 Enumerates the directions of the flip animation. The default value is **DOWN**.
 
 **Since:** 20

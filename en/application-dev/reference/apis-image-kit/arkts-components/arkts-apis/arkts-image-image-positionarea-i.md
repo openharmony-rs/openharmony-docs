@@ -1,5 +1,9 @@
 # PositionArea
 
+```TypeScript
+interface PositionArea
+```
+
 Describes area information in an image.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # ScreenShape
 
+```TypeScript
+enum ScreenShape
+```
+
 Enumerates the screen shapes of a display.
 
 **Since:** 18

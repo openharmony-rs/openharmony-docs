@@ -1,5 +1,9 @@
 # LengthMetricsUnit
 
+```TypeScript
+export enum LengthMetricsUnit
+```
+
 长度属性单位枚举。
 
 **起始版本：** 12

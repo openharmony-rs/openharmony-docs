@@ -1,5 +1,9 @@
 # ResumeDownloadOptions（系统接口）
 
+```TypeScript
+export interface ResumeDownloadOptions
+```
+
 恢复下载选项，用于指定恢复下载的网络类型。对象包含allowNetwork字段，用于设置允许下载的网络类型。
 
 **起始版本：** 9

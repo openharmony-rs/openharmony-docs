@@ -89,32 +89,8 @@ import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
   }
 ```
 
-```TypeScript
-import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  async function executeSearchMusicIntentPromise() {
-    let param: insightIntentDriver.ExecuteParam = {
-      bundleName: 'com.ohos.intentexecutedemo',
-      moduleName: 'entry',
-      abilityName: 'EntryAbility',
-      insightIntentName: 'PlayMusic',
-      insightIntentParam: {
-        songName: 'City Of Stars',
-      },
-      executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
-    };
-
-    try {
-      let resultData: insightIntent.ExecuteResult = await insightIntentDriver.execute(param);
-      hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', resultData.code);
-      hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', JSON.stringify(resultData.result));
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', JSON.stringify(error));
-    }
-  }
-```
-
+<a id="execute-1"></a>
 
 ## execute
 
@@ -172,4 +148,28 @@ function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 
 **示例**
 
-参见 [execute](#execute)
+```TypeScript
+import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  async function executeSearchMusicIntentPromise() {
+    let param: insightIntentDriver.ExecuteParam = {
+      bundleName: 'com.ohos.intentexecutedemo',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      insightIntentName: 'PlayMusic',
+      insightIntentParam: {
+        songName: 'City Of Stars',
+      },
+      executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
+    };
+
+    try {
+      let resultData: insightIntent.ExecuteResult = await insightIntentDriver.execute(param);
+      hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', resultData.code);
+      hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', JSON.stringify(resultData.result));
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', JSON.stringify(error));
+    }
+  }
+```

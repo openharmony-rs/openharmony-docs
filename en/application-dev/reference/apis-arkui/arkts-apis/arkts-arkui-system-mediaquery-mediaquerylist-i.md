@@ -1,5 +1,9 @@
 # MediaQueryList
 
+```TypeScript
+export interface MediaQueryList
+```
+
 Represents media query list information.
 
 **Since:** 3

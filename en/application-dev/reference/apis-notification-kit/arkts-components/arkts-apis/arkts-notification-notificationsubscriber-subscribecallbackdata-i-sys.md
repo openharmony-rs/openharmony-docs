@@ -1,5 +1,9 @@
 # SubscribeCallbackData (System API)
 
+```TypeScript
+export interface SubscribeCallbackData
+```
+
 Returns notification information carrying system property values.
 
 **Since:** 7

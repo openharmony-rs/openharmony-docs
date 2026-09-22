@@ -1,6 +1,12 @@
 # ChipV2SuffixSymbolIcon
 
-Defines accessibility of suffix symbol.
+```TypeScript
+export declare class ChipV2SuffixSymbolIcon extends ChipV2SymbolIcon
+```
+
+Defines the suffix symbol icon class.
+
+This API inherits from [ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md).
 
 **Inheritance/Implementation:** ChipV2SuffixSymbolIcon extends [ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md)
 
@@ -22,7 +28,13 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 public action?: VoidCallback
 ```
 
-Called when suffix symbol is clicked.
+Callback for the suffix icon tap event, which is triggered when the suffix icon is tapped.
+
+Default value: no suffix icon event is set.
+
+When the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Since:** 26.0.0
 
@@ -40,7 +52,7 @@ Called when suffix symbol is clicked.
 constructor(config: ChipV2SuffixSymbolIconConfig)
 ```
 
-The constructor of ChipV2SuffixSymbolIcon
+A constructor used to create a **ChipV2SuffixSymbolIcon** object.
 
 **Since:** 26.0.0
 
@@ -54,7 +66,7 @@ The constructor of ChipV2SuffixSymbolIcon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ChipV2SuffixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2suffixsymboliconconfig-i.md) | Yes | config of suffix symbol |
+| config | [ChipV2SuffixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2suffixsymboliconconfig-i.md) | Yes | Attribute configuration of the suffix symbol icon, which is used to set the display attributes and accessibility features of the suffix symbol icon. This parameter inherits from **ChipV2SymbolIconConfig** and includes configuration options such as **normal**, **activated**, **normalAccessibility**, **activatedAccessibility**, and **action**. |
 
 ## activatedAccessibility
 
@@ -62,7 +74,11 @@ The constructor of ChipV2SuffixSymbolIcon
 public activatedAccessibility?: ChipV2Accessibility
 ```
 
-Set activated accessibility config for suffix symbol.
+Accessibility attribute in the active state.
+
+Default value: **undefined**, meaning no content is read aloud.
+
+**Decorator:** @Trace
 
 **Type:** [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md)
 
@@ -82,7 +98,11 @@ Set activated accessibility config for suffix symbol.
 public normalAccessibility?: ChipV2Accessibility
 ```
 
-Set normal accessibility config for suffix symbol.
+Accessibility attribute in the inactive state.
+
+Default value: **undefined**, meaning no content is read aloud.
+
+**Decorator:** @Trace
 
 **Type:** [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md)
 

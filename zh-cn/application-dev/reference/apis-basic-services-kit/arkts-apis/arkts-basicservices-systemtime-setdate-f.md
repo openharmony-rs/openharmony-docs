@@ -18,7 +18,7 @@ function setDate(date: Date, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** setDate
+**替代接口：** [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md)
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -57,22 +57,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let date = new Date(); 
-try {
-  systemTime.setDate(date).then(() => {
-    console.info(`Succeeded in setting date.`);
-  }).catch((error: BusinessError) => {
-    console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
-}
-```
-
+<a id="setdate-1"></a>
 
 ## setDate
 
@@ -86,7 +72,7 @@ function setDate(date: Date): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** setDate
+**替代接口：** [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md)
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -112,4 +98,18 @@ function setDate(date: Date): Promise<void>
 
 **示例**
 
-参见 setDate
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let date = new Date(); 
+try {
+  systemTime.setDate(date).then(() => {
+    console.info(`Succeeded in setting date.`);
+  }).catch((error: BusinessError) => {
+    console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
+}
+```

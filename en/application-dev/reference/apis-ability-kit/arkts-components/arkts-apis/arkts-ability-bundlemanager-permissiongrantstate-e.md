@@ -1,5 +1,9 @@
 # PermissionGrantState
 
+```TypeScript
+export enum PermissionGrantState
+```
+
 Enumerates the permission grant states.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # DateStyleOptions
 
+```TypeScript
+declare class DateStyleOptions extends CommonOptions
+```
+
 DateStyleOptions定义了日期内联型Counter的属性和事件。
 
 继承于[CommonOptions](arkts-arkui-arkui-advanced-counter-commonoptions-c.md)。

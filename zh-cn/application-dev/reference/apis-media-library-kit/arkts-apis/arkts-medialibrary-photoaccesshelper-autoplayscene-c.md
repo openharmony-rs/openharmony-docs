@@ -1,5 +1,9 @@
 # AutoPlayScene
 
+```TypeScript
+export class AutoPlayScene
+```
+
 动态照片在不同场景中的播放模式。
 
 **起始版本：** 23

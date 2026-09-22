@@ -1,5 +1,9 @@
 # FrameShutterInfo
 
+```TypeScript
+interface FrameShutterInfo
+```
+
 拍照帧输出信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # TextMenuOptions
 
+```TypeScript
+declare interface TextMenuOptions
+```
+
 菜单选项。
 
 **起始版本：** 16

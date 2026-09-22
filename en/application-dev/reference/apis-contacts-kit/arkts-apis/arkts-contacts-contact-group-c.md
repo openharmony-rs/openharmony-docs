@@ -1,5 +1,9 @@
 # Group
 
+```TypeScript
+class Group
+```
+
 Defines a contact group.
 
 **Since:** 7

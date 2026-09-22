@@ -1,5 +1,9 @@
 # CompressFlushMode
 
+```TypeScript
+export enum CompressFlushMode
+```
+
 CompressFlushMode
 
 **Since:** 12

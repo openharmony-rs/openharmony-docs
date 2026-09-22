@@ -1,5 +1,9 @@
 # EditableTitleBarMenuItemV2Options
 
+```TypeScript
+export declare interface EditableTitleBarMenuItemV2Options
+```
+
 Indicates the options of the menu item.
 
 **Since:** 26.0.0
@@ -150,7 +154,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol icon style modifier.
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 26.0.0
 

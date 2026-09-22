@@ -1,5 +1,9 @@
 # IReusePool
 
+```TypeScript
+export declare interface IReusePool
+```
+
 The **IReusePool** API provides the features related to the global reuse pool of a custom component.
 
 **Since:** 26.0.0
@@ -16,7 +20,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 
 ```TypeScript
 getReusableInfo(constructor: ReusableComponentConstructor,
-    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
+    reuseId?: string): IReusableInfo[]  | IReusableInfo | undefined
 ```
 
 Obtains the information about the recycling instance of a given reusable component type in this reuse pool.
@@ -129,7 +133,7 @@ Pre-creates @Reusable/@ReusableV2 decorated components and places them in this r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;[]&gt; | Yes | **WrappedBuilder** that contains the @Builder decorated function to be executed *n* times. Each execution should create one or more @Reusable/@ReusableV2 decorated components. |
+| builder | [WrappedBuilder](../arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;[]&gt; | Yes | **WrappedBuilder** that contains the @Builder decorated function to be executed *n* times. Each execution should create one or more @Reusable/@ReusableV2 decorated components. |
 | times | number | Yes | Number of times the @Builder decorated function is executed. |
 
 **Return value:**

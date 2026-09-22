@@ -14,7 +14,7 @@ function getLocalHotaDomain(admin: Want): string
 
 Get local HOTA domain for device.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 

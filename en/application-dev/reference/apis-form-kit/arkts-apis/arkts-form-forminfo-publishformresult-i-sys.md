@@ -1,5 +1,9 @@
 # PublishFormResult (System API)
 
+```TypeScript
+interface PublishFormResult
+```
+
 The result of publish form.
 
 @typedef PublishFormResult

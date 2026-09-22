@@ -1,5 +1,9 @@
 # OperationType
 
+```TypeScript
+enum OperationType
+```
+
 枚举，附属的操作类型。
 
 **起始版本：** 12

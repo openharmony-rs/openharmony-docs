@@ -1,5 +1,9 @@
 # CertificateDialogErrorCode
 
+```TypeScript
+export enum CertificateDialogErrorCode
+```
+
 表示调用证书管理对话框相关API的错误码。
 
 **起始版本：** 13
@@ -101,6 +105,34 @@ ERROR_NO_AVAILABLE_CERTIFICATE = 29700007
 表示没有可用证书。
 
 **起始版本：** 22
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## ERROR_OPERATION_TIMEOUT
+
+```TypeScript
+ERROR_OPERATION_TIMEOUT = 29700009
+```
+
+证书管理对话框操作超时。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## ERROR_NOT_CONCURRENT_SUPPORT
+
+```TypeScript
+ERROR_NOT_CONCURRENT_SUPPORT = 29700010
+```
+
+API不支持并发调用。
+
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

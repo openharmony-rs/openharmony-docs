@@ -1,5 +1,9 @@
 # ResultSet
 
+```TypeScript
+interface ResultSet
+```
+
 Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
 
 The **ResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data.

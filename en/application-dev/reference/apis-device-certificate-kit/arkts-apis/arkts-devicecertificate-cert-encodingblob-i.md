@@ -1,5 +1,9 @@
 # EncodingBlob
 
+```TypeScript
+interface EncodingBlob
+```
+
 Represents an encoded binary data block.
 
 **Since:** 9

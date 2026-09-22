@@ -55,46 +55,8 @@ cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let accountId: string = "testAccount";
-let bundleName: string = "com.example.bundle";
-cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
-  if (err) {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-  } else {
-    console.info("notifyDataChange successfully");
-  }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userId: number = 100;
-let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
-cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
-  console.info("notifyDataChange successfully");
-}).catch((err: BusinessError) => {
-  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userId: number = 100;
-let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
-cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
-  if (err) {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-  } else {
-    console.info("notifyDataChange successfully");
-  }
-});
-```
-
+<a id="notifydatachange-1"></a>
 
 ## notifyDataChange
 
@@ -128,8 +90,22 @@ Notifies the device-cloud service that the cloud data of a specific application 
 
 **Examples**
 
-See [notifyDataChange](#notifydatachange)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
+  if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```
+
+
+<a id="notifydatachange-2"></a>
 
 ## notifyDataChange
 
@@ -171,8 +147,20 @@ Notifies the device-cloud service of the cloud data change information of a spec
 
 **Examples**
 
-See [notifyDataChange](#notifydatachange)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let userId: number = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
+  console.info("notifyDataChange successfully");
+}).catch((err: BusinessError) => {
+  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+
+<a id="notifydatachange-3"></a>
 
 ## notifyDataChange
 
@@ -209,4 +197,16 @@ Notifies the device-cloud service of the cloud data change information of a spec
 
 **Examples**
 
-See [notifyDataChange](#notifydatachange)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: number = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
+  if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```

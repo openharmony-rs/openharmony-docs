@@ -1,5 +1,9 @@
 # WearDetectionResponse
 
+```TypeScript
+interface WearDetectionResponse extends Response
+```
+
 佩戴检测传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
 **继承/实现关系：** WearDetectionResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

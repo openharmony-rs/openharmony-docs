@@ -37,7 +37,7 @@ function updateReminder(reminderId: number, reminderReq: ReminderRequest): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [1700003](../errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
 | [1700007](../errorcode-reminderAgentManager.md#1700007-参数错误) | If the input parameter is not valid parameter. |
 

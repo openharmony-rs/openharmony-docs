@@ -1,5 +1,9 @@
 # NetworkSearchRealTimeResult（系统接口）
 
+```TypeScript
+export interface NetworkSearchRealTimeResult
+```
+
 表示手动网络扫描的结果
 
 **起始版本：** 23
@@ -26,6 +30,8 @@ isFinish: boolean
 
 **起始版本：** 23
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Telephony.CoreService
 
 **系统接口：** 此接口为系统接口。
@@ -41,6 +47,8 @@ networkInfos: Array<NetworkInformation>
 **类型：** Array&lt;[NetworkInformation](arkts-telephony-radio-networkinformation-i-sys.md)&gt;
 
 **起始版本：** 23
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

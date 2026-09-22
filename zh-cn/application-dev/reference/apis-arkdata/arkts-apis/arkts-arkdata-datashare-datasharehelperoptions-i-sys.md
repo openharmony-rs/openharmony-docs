@@ -1,5 +1,9 @@
 # DataShareHelperOptions（系统接口）
 
+```TypeScript
+interface DataShareHelperOptions
+```
+
 指定[DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md)的可选参数，包含是否在代理模式下，以及非静默访问的启动等待时间。
 
 **起始版本：** 10

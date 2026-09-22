@@ -1,5 +1,9 @@
 # OperateVirtualNodeResult (System API)
 
+```TypeScript
+export enum OperateVirtualNodeResult
+```
+
 Enumerates the result types of operating virtual nodes for accessibility.
 
 **Since:** 26.0.0

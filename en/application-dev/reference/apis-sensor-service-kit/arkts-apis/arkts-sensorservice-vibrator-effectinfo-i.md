@@ -1,5 +1,9 @@
 # EffectInfo
 
+```TypeScript
+interface EffectInfo
+```
+
 Defines the preset effect.
 
 **Since:** 19

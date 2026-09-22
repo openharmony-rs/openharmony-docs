@@ -1,5 +1,9 @@
 # FoldCreaseRegion
 
+```TypeScript
+interface FoldCreaseRegion
+```
+
 Describes the crease region of a foldable device.
 
 **Since:** 10

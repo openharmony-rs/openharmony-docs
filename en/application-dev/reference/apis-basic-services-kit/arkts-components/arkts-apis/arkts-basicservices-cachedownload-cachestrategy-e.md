@@ -1,5 +1,9 @@
 # CacheStrategy
 
+```TypeScript
+enum CacheStrategy
+```
+
 Enumerates cache update strategies.
 
 **Since:** 23

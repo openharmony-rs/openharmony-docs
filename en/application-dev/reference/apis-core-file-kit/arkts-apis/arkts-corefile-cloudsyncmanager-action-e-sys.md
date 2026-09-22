@@ -1,5 +1,9 @@
 # Action (System API)
 
+```TypeScript
+enum Action
+```
+
 Enumerates the actions that can be taken to clear local cloud data.
 
 **Since:** 10

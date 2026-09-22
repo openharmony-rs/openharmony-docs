@@ -1,5 +1,9 @@
 # WifiP2pLinkedInfo
 
+```TypeScript
+interface WifiP2pLinkedInfo
+```
+
 提供P2P连接的相关信息。
 
 > **说明：** 

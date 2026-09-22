@@ -66,43 +66,8 @@ bundleManager.getAllowedInstallBundles(wantTemp, (err, result) => {
 });
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-bundleManager.getAllowedInstallBundles(wantTemp, 100, (err, result) => {
-  if (err) {
-    console.error(`Failed to get allowed install bundles. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in getting allowed install bundles, result : ${JSON.stringify(result)}`);
-});
-```
-
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-bundleManager.getAllowedInstallBundles(wantTemp, 100).then((result) => {
-  console.info(`Succeeded in getting allowed install bundles, result : ${JSON.stringify(result)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get allowed install bundles. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getallowedinstallbundles-1"></a>
 
 ## getAllowedInstallBundles
 
@@ -146,8 +111,27 @@ Obtains the applications that can be installed by the user specified by **userId
 
 **Examples**
 
-See [getAllowedInstallBundles](#getallowedinstallbundles)
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+bundleManager.getAllowedInstallBundles(wantTemp, 100, (err, result) => {
+  if (err) {
+    console.error(`Failed to get allowed install bundles. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting allowed install bundles, result : ${JSON.stringify(result)}`);
+});
+```
+
+
+<a id="getallowedinstallbundles-2"></a>
 
 ## getAllowedInstallBundles
 
@@ -196,4 +180,20 @@ Obtains the list of applications that are allowed to be installed by the current
 
 **Examples**
 
-See [getAllowedInstallBundles](#getallowedinstallbundles)
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+bundleManager.getAllowedInstallBundles(wantTemp, 100).then((result) => {
+  console.info(`Succeeded in getting allowed install bundles, result : ${JSON.stringify(result)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get allowed install bundles. Code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # FrameCallback
 
+```TypeScript
+export abstract class FrameCallback
+```
+
 Implements the API for setting the task that needs to be executed during the next frame rendering.
 
 > **NOTE:** 
@@ -41,6 +45,46 @@ Called when the next frame is rendered.
 | --- | --- | --- | --- |
 | frameTimeInNano | number | Yes | Time when the rendering of the next frame starts, in nanoseconds.<br>Value range: [0, +∞) |
 
+**Examples**
+
+```TypeScript
+import { FrameCallback } from '@kit.ArkUI';
+
+class MyFrameCallback extends FrameCallback {
+  private tag: string;
+
+  constructor(tag: string) {
+    super();
+    this.tag = tag;
+  }
+
+  onFrame(frameTimeInNano: number) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeInNano.toString());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Button('Invoke postFrameCallback')
+          .onClick(() => {
+            this.getUIContext().postFrameCallback(new MyFrameCallback('normTask'));
+          })
+        Button('Invoke postDelayedFrameCallback')
+          .onClick(() => {
+            this.getUIContext().postDelayedFrameCallback(new MyFrameCallback('delayTask'), 5);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## onIdle
 
 ```TypeScript
@@ -62,3 +106,43 @@ Called after the rendering of the subsequent frame has finished and there is mor
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | timeLeftInNano | number | Yes | Remaining idle time for the current frame, in nanoseconds.<br>Value range: [0, +∞) |
+
+**Examples**
+
+```TypeScript
+import { FrameCallback } from '@kit.ArkUI';
+
+class MyIdleCallback extends FrameCallback {
+  private tag: string;
+
+  constructor(tag: string) {
+    super();
+    this.tag = tag;
+  }
+
+  onIdle(timeLeftInNano: number) {
+    console.info('MyIdleCallback ' + this.tag + ' ' + timeLeftInNano.toString());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Button('Invoke postFrameCallback')
+          .onClick(() => {
+            this.getUIContext().postFrameCallback(new MyIdleCallback('normTask'));
+          })
+        Button('Invoke postDelayedFrameCallback')
+          .onClick(() => {
+            this.getUIContext().postDelayedFrameCallback(new MyIdleCallback('delayTask'), 5);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```

@@ -1,5 +1,9 @@
 # BondStateParam
 
+```TypeScript
+interface BondStateParam
+```
+
 Describes the class of a bluetooth device.
 
 **Since:** 9

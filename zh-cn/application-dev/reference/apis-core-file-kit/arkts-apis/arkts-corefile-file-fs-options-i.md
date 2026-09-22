@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+export interface Options
+```
+
 可选项类型，支持readLines接口使用。
 
 **起始版本：** 11

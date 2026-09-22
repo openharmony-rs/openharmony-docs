@@ -1,10 +1,14 @@
 # FormLink属性/事件
 
-支持通用属性。
+```TypeScript
+declare class FormLinkAttribute extends CommonMethod<FormLinkAttribute>
+```
 
-不支持通用事件。
+支持[通用属性](arkts-arkui-common-comp.md#common)。
 
-**继承/实现关系：** FormLinkAttribute extends CommonMethod&lt;FormLinkAttribute&gt;
+不支持[通用事件](arkts-arkui-common-comp.md#common)。
+
+**继承/实现关系：** FormLinkAttribute extends CommonMethod<FormLinkAttribute>
 
 **起始版本：** 10
 

@@ -1,5 +1,9 @@
 # TargetInfo (System API)
 
+```TypeScript
+export interface TargetInfo
+```
+
 Target information.
 
 @typedef TargetInfo

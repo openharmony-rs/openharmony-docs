@@ -1,5 +1,9 @@
 # DecodingOptionsForThumbnail
 
+```TypeScript
+interface DecodingOptionsForThumbnail
+```
+
 缩略图解码参数选项。
 
 **起始版本：** 26.0.0

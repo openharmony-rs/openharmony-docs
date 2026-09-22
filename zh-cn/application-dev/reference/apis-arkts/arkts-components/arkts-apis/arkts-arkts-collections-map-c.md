@@ -1,5 +1,9 @@
 # Map
 
+```TypeScript
+class Map<K, V>
+```
+
 一种基于键值对存储的非线性数据结构，能够高效地通过唯一键来存取对应的值。
 
 > **说明：** 
@@ -95,6 +99,8 @@ constructor(entries?: readonly (readonly [K, V])[] | null)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The ArkTS Map's constructor cannot be directly invoked. |
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -129,11 +135,11 @@ containsValue(value: V): boolean
 
 判断该Map中是否存在一个或多个键映射到指定值。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -349,11 +355,11 @@ put(key: K, value: V): V | undefined
 > - 返回**undefined**时无法直接区分是键不存在还是键存在但值为**undefined**，可在使用本接口前先使用
 > **has**接口判断键是否存在，进而区分返回的**undefined**所属情况。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -385,11 +391,11 @@ putAll(from: Map<K, V>): void
 
 使用指定ArkTS Map中的键值对更新该Map。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -406,6 +412,8 @@ putAll(from: Map<K, V>): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The putAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
 
+<a id="putall-1"></a>
+
 ## putAll
 
 ```TypeScript
@@ -414,11 +422,11 @@ putAll(from: ReadonlyMap<K, V>): void
 
 使用指定JavaScript内建Map中的键值对更新该Map。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -448,11 +456,11 @@ remove(key: K): V | undefined
 > - 返回**undefined**时无法直接区分是键不存在还是键存在但值为**undefined**，可在使用本接口前先使用
 > **has**接口判断键是否存在，进而区分返回的**undefined**所属情况。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

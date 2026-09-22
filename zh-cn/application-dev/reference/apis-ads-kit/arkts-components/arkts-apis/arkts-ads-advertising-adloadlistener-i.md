@@ -1,5 +1,9 @@
 # AdLoadListener
 
+```TypeScript
+export interface AdLoadListener
+```
+
 单广告位广告请求回调。
 
 **起始版本：** 11

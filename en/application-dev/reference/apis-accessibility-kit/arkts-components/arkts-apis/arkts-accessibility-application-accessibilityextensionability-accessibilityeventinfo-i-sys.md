@@ -1,5 +1,9 @@
 # AccessibilityEventInfo (System API)
 
+```TypeScript
+export declare interface AccessibilityEventInfo
+```
+
 Describes the accessibility event information.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # OsAccountSubProfileEventData（系统接口）
 
+```TypeScript
+interface OsAccountSubProfileEventData
+```
+
 系统账号子身份资料事件数据。
 
 **起始版本：** 26.0.0

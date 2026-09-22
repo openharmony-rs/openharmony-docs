@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+export interface Filter
+```
+
 Defines the file filtering configuration used by **listFile()**.
 
 **Since:** 10

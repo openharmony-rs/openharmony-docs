@@ -1,5 +1,9 @@
 # Channel
 
+```TypeScript
+export interface Channel
+```
+
 A **Channel** instance indicates a channel set up by a **Session** instance. The channel can be a basic channel or a logical channel. You can use [Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel) or [Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel) to obtain a channel instance.
 
 **Since:** 10
@@ -267,27 +271,7 @@ try {
 }
 ```
 
-```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { omapi } from '@kit.ConnectivityKit';
-
-let seChannel : omapi.Channel;
-
-// Initialize seChannel before using it.
-let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
-try {
-    seChannel.transmit(cmdData, (error, response) => {
-        if (error) {
-            hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
-        } else {
-            // If the chip captures an exception, an all zero value is returned for response.
-            hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
-        }
-    });
-} catch (exception) {
-    hilog.error(0x0000, 'testTag', 'transmit exception %{public}s', JSON.stringify(exception));
-}
-```
+<a id="transmit-1"></a>
 
 ## transmit
 
@@ -320,4 +304,24 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses an asynchrono
 
 **Examples**
 
-See [transmit](#transmit)
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { omapi } from '@kit.ConnectivityKit';
+
+let seChannel : omapi.Channel;
+
+// Initialize seChannel before using it.
+let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
+try {
+    seChannel.transmit(cmdData, (error, response) => {
+        if (error) {
+            hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
+        } else {
+            // If the chip captures an exception, an all zero value is returned for response.
+            hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
+        }
+    });
+} catch (exception) {
+    hilog.error(0x0000, 'testTag', 'transmit exception %{public}s', JSON.stringify(exception));
+}
+```

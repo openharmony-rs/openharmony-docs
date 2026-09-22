@@ -1,5 +1,9 @@
 # OperatorSimCard (System API)
 
+```TypeScript
+export enum OperatorSimCard
+```
+
 Indicates the operator of SIM.
 
 **Since:** 11

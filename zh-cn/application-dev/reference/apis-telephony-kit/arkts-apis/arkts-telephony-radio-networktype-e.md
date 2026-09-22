@@ -1,5 +1,9 @@
 # NetworkType
 
+```TypeScript
+export enum NetworkType
+```
+
 网络类型。
 
 **起始版本：** 6

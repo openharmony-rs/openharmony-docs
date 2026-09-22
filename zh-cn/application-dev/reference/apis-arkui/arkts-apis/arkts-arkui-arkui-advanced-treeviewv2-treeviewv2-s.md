@@ -1,5 +1,9 @@
 # TreeViewV2
 
+```TypeScript
+export declare struct TreeViewV2
+```
+
 树视图V2组件。树视图作为一种分层显示的列表，适合显示嵌套结构。拥有父列表项和子列表项，可展开或折叠。
 
 用于效率型应用，如备忘录、电子邮件、图库中的侧边导航栏。
@@ -8,7 +12,7 @@
 
 > **说明：** 
 > 
-> - 如果TreeViewV2设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到TreeViewV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议TreeViewV2设置通用属性和通用事件。
+> - 如果TreeViewV2设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到TreeViewV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议TreeViewV2设置通用属性和通用事件。
 
 ## 子组件
 

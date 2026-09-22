@@ -1,5 +1,9 @@
 # PasswordAlgs
 
+```TypeScript
+export enum PasswordAlgs
+```
+
 处理口令数据使用的加密算法。
 
 **起始版本：** 26.0.0

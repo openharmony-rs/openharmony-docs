@@ -1,5 +1,9 @@
 # Audio
 
+```TypeScript
+class Audio extends File
+```
+
 音频类型数据，是[File](arkts-arkdata-unifieddatachannel-file-c.md)的子类，用于描述音频文件。
 
 **继承/实现关系：** Audio extends [File](arkts-arkdata-unifieddatachannel-file-c.md)

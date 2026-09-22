@@ -1,5 +1,9 @@
 # SystemBarProperties
 
+```TypeScript
+interface SystemBarProperties
+```
+
 Describes the properties of the status bar<!--Del--> and three-button navigation bar<!--DelEnd-->.
 
 **Since:** 6

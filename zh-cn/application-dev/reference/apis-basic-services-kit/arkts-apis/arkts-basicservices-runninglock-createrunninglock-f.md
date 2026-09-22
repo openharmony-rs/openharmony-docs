@@ -44,16 +44,8 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 });
 ```
 
-```TypeScript
-runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
-.then((lock: runningLock.RunningLock) => {
-    console.info('created running lock: ' + lock);
-})
-.catch((err: BusinessError) => {
-    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
-});
-```
 
+<a id="createrunninglock-1"></a>
 
 ## createRunningLock
 
@@ -88,4 +80,12 @@ function createRunningLock(name: string, type: RunningLockType): Promise<Running
 
 **示例**
 
-参见 createRunningLock
+```TypeScript
+runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
+.then((lock: runningLock.RunningLock) => {
+    console.info('created running lock: ' + lock);
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
+});
+```

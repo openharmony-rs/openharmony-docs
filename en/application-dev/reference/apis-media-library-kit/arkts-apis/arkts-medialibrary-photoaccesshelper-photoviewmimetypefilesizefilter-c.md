@@ -1,5 +1,9 @@
 # PhotoViewMimeTypeFileSizeFilter
 
+```TypeScript
+class PhotoViewMimeTypeFileSizeFilter
+```
+
 Describes the settings for filtering media files by type and size.
 
 **Since:** 20

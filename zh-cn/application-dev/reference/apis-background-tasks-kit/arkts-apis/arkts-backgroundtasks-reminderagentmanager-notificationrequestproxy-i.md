@@ -1,5 +1,9 @@
 # NotificationRequestProxy
 
+```TypeScript
+interface NotificationRequestProxy
+```
+
 通知请求信息。
 
 **起始版本：** 26.0.0

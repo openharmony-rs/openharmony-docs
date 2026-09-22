@@ -1,5 +1,9 @@
 # NotificationSwitchChangedCallbackData（系统接口）
 
+```TypeScript
+export interface NotificationSwitchChangedCallbackData
+```
+
 通知开关状态变化的回调函数类型。
 
 **起始版本：** 26.0.0

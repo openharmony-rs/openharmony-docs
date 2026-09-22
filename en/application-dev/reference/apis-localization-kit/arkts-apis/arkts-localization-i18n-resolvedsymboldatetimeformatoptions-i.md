@@ -1,5 +1,9 @@
 # ResolvedSymbolDateTimeFormatOptions
 
+```TypeScript
+export interface ResolvedSymbolDateTimeFormatOptions extends Intl.ResolvedDateTimeFormatOptions
+```
+
 Represents optional element for the ResolvedSymbolDateTimeFormatOptions object. Define the resolved symbol element and value that need to get.
 
 **Inheritance/Implementation:** ResolvedSymbolDateTimeFormatOptions extends Intl.ResolvedDateTimeFormatOptions

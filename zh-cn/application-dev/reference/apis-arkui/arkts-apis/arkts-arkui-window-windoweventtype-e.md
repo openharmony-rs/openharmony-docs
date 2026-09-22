@@ -1,5 +1,9 @@
 # WindowEventType
 
+```TypeScript
+enum WindowEventType
+```
+
 窗口生命周期。
 
 **起始版本：** 10

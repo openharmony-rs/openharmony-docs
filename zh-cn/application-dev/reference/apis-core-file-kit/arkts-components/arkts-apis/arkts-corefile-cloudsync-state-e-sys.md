@@ -1,5 +1,9 @@
 # State
 
+```TypeScript
+enum State
+```
+
 云文件下载状态，为枚举类型。
 
 **起始版本：** 11

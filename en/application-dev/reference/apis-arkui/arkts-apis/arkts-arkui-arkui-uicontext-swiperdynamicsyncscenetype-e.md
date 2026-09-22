@@ -1,5 +1,9 @@
 # SwiperDynamicSyncSceneType
 
+```TypeScript
+export const enum SwiperDynamicSyncSceneType
+```
+
 Enum of SwiperDynamicSyncSceneType
 
 **Since:** 12

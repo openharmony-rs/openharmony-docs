@@ -1,5 +1,9 @@
 # SubscriptionType（系统接口）
 
+```TypeScript
+enum SubscriptionType
+```
+
 数据订阅类型枚举。
 
 **起始版本：** 12

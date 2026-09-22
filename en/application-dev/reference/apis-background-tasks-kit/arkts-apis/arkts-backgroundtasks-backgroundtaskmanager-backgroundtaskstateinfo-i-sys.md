@@ -1,5 +1,9 @@
 # BackgroundTaskStateInfo (System API)
 
+```TypeScript
+interface BackgroundTaskStateInfo
+```
+
 Defines the authorization information of a continuous task.
 
 **Since:** 22

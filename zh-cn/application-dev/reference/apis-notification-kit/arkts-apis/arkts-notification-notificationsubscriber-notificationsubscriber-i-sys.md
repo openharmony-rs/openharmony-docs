@@ -1,5 +1,9 @@
 # NotificationSubscriber（系统接口）
 
+```TypeScript
+export interface NotificationSubscriber
+```
+
 提供订阅者接收到新通知、取消通知等的回调方法。
 
 **起始版本：** 7

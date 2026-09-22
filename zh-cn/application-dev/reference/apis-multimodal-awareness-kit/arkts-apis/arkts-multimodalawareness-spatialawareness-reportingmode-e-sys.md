@@ -1,5 +1,9 @@
 # ReportingMode（系统接口）
 
+```TypeScript
+export enum ReportingMode
+```
+
 测距接口执行完成后结果的上报模式。
 
 @enum { int } 测距结果上报方式

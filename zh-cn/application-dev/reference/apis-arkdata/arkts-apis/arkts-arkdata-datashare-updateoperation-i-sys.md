@@ -1,5 +1,9 @@
 # UpdateOperation（系统接口）
 
+```TypeScript
+interface UpdateOperation
+```
+
 批量更新操作的参数结构。
 
 **起始版本：** 12

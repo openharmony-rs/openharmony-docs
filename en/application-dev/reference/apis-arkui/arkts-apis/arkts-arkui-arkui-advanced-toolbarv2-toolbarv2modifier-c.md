@@ -1,5 +1,9 @@
 # ToolBarV2Modifier
 
+```TypeScript
+export declare class ToolBarV2Modifier
+```
+
 Declare ToolBarV2Modifier used in ToolBar
 
 **Since:** 18

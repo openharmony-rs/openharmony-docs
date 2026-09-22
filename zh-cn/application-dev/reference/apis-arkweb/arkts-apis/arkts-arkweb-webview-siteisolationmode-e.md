@@ -1,5 +1,9 @@
 # SiteIsolationMode
 
+```TypeScript
+enum SiteIsolationMode
+```
+
 站点隔离机制将不同源的网站隔离在不同的渲染子进程中，减少跨域攻击面。例如，PC上原有进程模型是每一个Tab对应一个渲染子进程，站点隔离打开后，让不同源的Iframe运行在独立的渲染子进程中。
 
 **起始版本：** 21

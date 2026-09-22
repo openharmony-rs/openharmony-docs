@@ -1,5 +1,9 @@
 # ConnectionChangeState
 
+```TypeScript
+interface ConnectionChangeState
+```
+
 表示连接状态上报参数。
 
 **起始版本：** 26.0.0

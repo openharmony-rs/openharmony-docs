@@ -1,5 +1,9 @@
 # TnfType
 
+```TypeScript
+enum TnfType
+```
+
 Enumerates the TNF types. For details, see *NFCForum-TS-NDEF_1.0*.
 
 **Since:** 9

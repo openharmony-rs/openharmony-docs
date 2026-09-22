@@ -1,5 +1,9 @@
 # SlotLevel
 
+```TypeScript
+export enum SlotLevel
+```
+
 Enumerates the notification level.
 
 **Since:** 7

@@ -41,10 +41,25 @@ Creates a VPN connection.
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
+
+```TypeScript
+import { vpn } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
+  functiontest()
+  {
+    console.info("vpn createVpnConnection: " + JSON.stringify(this.VpnConnection));
+  }
+  build() {  }
+}
 ```

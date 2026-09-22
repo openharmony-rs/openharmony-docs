@@ -1,5 +1,9 @@
 # RelativePosition
 
+```TypeScript
+interface RelativePosition
+```
+
 Describes a coordinate position in the relative coordinate system, with the origin in the top-left corner of the screen specified by **displayId**.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # DataItem
 
+```TypeScript
+export interface DataItem
+```
+
 Describes the user-defined data in the routing table configuration of the module.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # CertificateScope
 
+```TypeScript
+export enum CertificateScope
+```
+
 表示安装证书的使用范围。
 
 **起始版本：** 14

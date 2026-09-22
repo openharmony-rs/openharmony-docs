@@ -1,4 +1,4 @@
-# @ohos.systemParameterEnhance
+# @ohos.systemParameterEnhance(系统参数)
 
 系统参数（SystemParameter）是为各系统服务提供的简单易用的键值对访问接口，各个系统服务可以定义系统参数来描述该服务的状态信息，或者通过系统参数来改变系统服务的行为。其基本操作原语为get和set，通过get可以查询系统参数的值，通过set可以修改系统参数的值。详细的系统参数设计原理及定义可参考[系统参数](../../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
@@ -26,11 +26,11 @@ import { systemParameterEnhance } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md) | 获取系统参数key对应的值，使用callback异步回调。 |
-| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md) | 获取系统参数key对应的值，使用callback异步回调。 |
-| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md) | 获取系统参数key对应的值，使用Promise异步回调。 |
+| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md#get) | 获取系统参数key对应的值，使用callback异步回调。 |
+| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md#get-1) | 获取系统参数key对应的值，使用callback异步回调。 |
+| [get](arkts-basicservices-systemparameterenhance-get-f-sys.md#get-2) | 获取系统参数key对应的值，使用Promise异步回调。 |
 | [getSync](arkts-basicservices-systemparameterenhance-getsync-f-sys.md) | 获取系统参数key对应的值。 |
-| [set](arkts-basicservices-systemparameterenhance-set-f-sys.md) | 设置系统参数key对应的值，使用callback异步回调。 |
-| [set](arkts-basicservices-systemparameterenhance-set-f-sys.md) | 设置系统参数key对应的值，使用Promise异步回调。 |
+| [set](arkts-basicservices-systemparameterenhance-set-f-sys.md#set) | 设置系统参数key对应的值，使用callback异步回调。 |
+| [set](arkts-basicservices-systemparameterenhance-set-f-sys.md#set-1) | 设置系统参数key对应的值，使用Promise异步回调。 |
 | [setSync](arkts-basicservices-systemparameterenhance-setsync-f-sys.md) | 设置系统参数key对应的值。 |
 <!--DelEnd-->

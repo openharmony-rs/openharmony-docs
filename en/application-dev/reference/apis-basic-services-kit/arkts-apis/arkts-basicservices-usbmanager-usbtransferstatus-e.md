@@ -1,5 +1,9 @@
 # UsbTransferStatus
 
+```TypeScript
+export enum UsbTransferStatus
+```
+
 Enumerates the status code returned after data processing is complete.
 
 **Since:** 18

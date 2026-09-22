@@ -1,5 +1,9 @@
 # TitleButtonRect
 
+```TypeScript
+interface TitleButtonRect
+```
+
 标题栏上的最小化、最大化、关闭按钮矩形区域，该区域位置坐标相对窗口右上角。
 
 **起始版本：** 11

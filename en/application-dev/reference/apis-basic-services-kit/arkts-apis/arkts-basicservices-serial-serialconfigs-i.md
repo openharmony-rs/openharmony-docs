@@ -1,5 +1,9 @@
 # SerialConfigs
 
+```TypeScript
+interface SerialConfigs
+```
+
 Defines the communication parameters of the serial port.
 
 **Since:** 26.0.0

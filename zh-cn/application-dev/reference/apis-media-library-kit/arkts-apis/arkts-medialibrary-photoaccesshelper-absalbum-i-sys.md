@@ -1,5 +1,9 @@
 # AbsAlbum
 
+```TypeScript
+interface AbsAlbum
+```
+
 定义相册的抽象接口。
 
 **起始版本：** 10

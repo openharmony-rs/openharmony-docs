@@ -1,5 +1,9 @@
 # NotificationIconButton（系统接口）
 
+```TypeScript
+export interface NotificationIconButton
+```
+
 描述系统通知按钮。
 
 **起始版本：** 18

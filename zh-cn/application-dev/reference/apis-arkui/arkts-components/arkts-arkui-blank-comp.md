@@ -39,7 +39,6 @@ Blank(min?: number | string)
 
 ## 示例
 
-```TypeScript
 ### 示例1（占满空余空间）
 
 Blank组件在横竖屏占满空余空间效果。
@@ -51,10 +50,50 @@ Blank组件在横竖屏占满空余空间效果。
 横屏状态
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BlankExample {
+  build() {
+    Column() {
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        Blank()
+        Toggle({ type: ToggleType.Switch }).margin({ top: 14, bottom: 14, left: 6, right: 6 })
+      }.width('100%').backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 })
+    }.backgroundColor(0xEFEFEF).padding(20)
+  }
+}
+```
+
 ### 示例2（填充固定宽度）
 
 Blank组件的父组件未设置宽度时，min参数的使用效果。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BlankExample {
+  build() {
+    Column({ space: 20 }) {
+      // Blank父组件不设置宽度时，Blank失效，可以通过设置min最小宽度填充固定宽度
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        Blank().color(Color.Yellow)
+        Toggle({ type: ToggleType.Switch }).margin({ top: 14, bottom: 14, left: 6, right: 6 })
+      }.backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 })
+
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        // 设置最小宽度为160
+        Blank('160').color(Color.Yellow)
+        Toggle({ type: ToggleType.Switch }).margin({ top: 14, bottom: 14, left: 6, right: 6 })
+      }.backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 })
+
+    }.backgroundColor(0xEFEFEF).padding(20).width('100%')
+  }
+}
 ```

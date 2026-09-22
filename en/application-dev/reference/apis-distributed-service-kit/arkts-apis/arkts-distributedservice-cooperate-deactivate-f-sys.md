@@ -56,20 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  cooperate.deactivate(false).then(() => {
-    console.info(`Stop Keyboard mouse crossing success.`);
-  }, (error: BusinessError) => {
-    console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-  });
-} catch (error) {
-  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
+<a id="deactivate-1"></a>
 
 ## deactivate
 
@@ -83,7 +71,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 **Deprecated since:** 11
 
-**Substitutes:** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md)(isUnchained: boolean)
+**Substitutes:** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate-1)(isUnchained: boolean)
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -109,4 +97,16 @@ Stops screen hopping. This API uses a promise to return the result.
 
 **Examples**
 
-See [deactivate](#deactivate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  cooperate.deactivate(false).then(() => {
+    console.info(`Stop Keyboard mouse crossing success.`);
+  }, (error: BusinessError) => {
+    console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```

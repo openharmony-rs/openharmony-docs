@@ -1,5 +1,9 @@
 # BundleOptions
 
+```TypeScript
+export interface BundleOptions
+```
+
 
 > **说明：** 
 > 

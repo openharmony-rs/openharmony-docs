@@ -1,5 +1,9 @@
 # TransitionContext（系统接口）
 
+```TypeScript
+interface TransitionContext
+```
+
 属性转换的上下文信息。
 
 **起始版本：** 9
@@ -20,7 +24,7 @@ import { window } from '@kit.ArkUI';
 completeTransition(isCompleted: boolean): void
 ```
 
-设置属性转换的最终完成状态。该函数需要在动画函数animateTo()执行后设置。
+设置属性转换的最终完成状态。该函数需要在动画函数[animateTo()](../arkts-components/arkts-arkui-common-comp.md#common)执行后设置。
 
 **起始版本：** 9
 

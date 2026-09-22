@@ -1,5 +1,9 @@
 # Image
 
+```TypeScript
+class Image extends File
+```
+
 图片类型数据，是[File](arkts-arkdata-unifieddatachannel-file-c.md)的子类，用于描述图片文件。
 
 **继承/实现关系：** Image extends [File](arkts-arkdata-unifieddatachannel-file-c.md)

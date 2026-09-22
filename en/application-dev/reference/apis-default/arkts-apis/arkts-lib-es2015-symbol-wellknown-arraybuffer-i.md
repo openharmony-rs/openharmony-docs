@@ -1,5 +1,9 @@
 # ArrayBuffer
 
+```TypeScript
+interface ArrayBuffer
+```
+
 ## Modules to Import
 
 ```TypeScript

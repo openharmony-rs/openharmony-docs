@@ -1,5 +1,9 @@
 # Orientation（系统接口）
 
+```TypeScript
+enum Orientation
+```
+
 屏幕方向枚举。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # Visibility
 
+```TypeScript
+enum Visibility
+```
+
 表示数据的可见性等级枚举。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # ApiVersion（系统接口）
 
+```TypeScript
+export interface ApiVersion
+```
+
 module的api版本。
 
 **起始版本：** 9

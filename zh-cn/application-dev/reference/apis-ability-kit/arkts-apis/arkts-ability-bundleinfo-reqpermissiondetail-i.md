@@ -1,5 +1,9 @@
 # ReqPermissionDetail
 
+```TypeScript
+export interface ReqPermissionDetail
+```
+
 应用运行时需向系统申请的权限集合的详细信息。
 
 > **说明：** 

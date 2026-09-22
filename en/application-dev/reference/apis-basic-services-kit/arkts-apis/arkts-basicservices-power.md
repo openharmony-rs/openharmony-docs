@@ -20,8 +20,8 @@ import { power } from '@kit.BasicServicesKit';
 | --- | --- |
 | [getPowerMode](arkts-basicservices-power-getpowermode-f.md) | Obtains the power mode of this device. |
 | [isActive](arkts-basicservices-power-isactive-f.md) | Checks whether the current device is active. |
-| [isScreenOn](arkts-basicservices-power-isscreenon-f.md) | Checks the screen status of the current device. This API uses an asynchronous callback to return the result. |
-| [isScreenOn](arkts-basicservices-power-isscreenon-f.md) | Checks the screen status of the current device. This API uses a promise to return the result. |
+| [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isscreenon) | Checks the screen status of the current device. This API uses an asynchronous callback to return the result. |
+| [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isscreenon-1) | Checks the screen status of the current device. This API uses a promise to return the result. |
 | [isStandby](arkts-basicservices-power-isstandby-f.md) | Checks whether the device is in standby mode. |
 | [rebootDevice](arkts-basicservices-power-rebootdevice-f.md) | Restarts the system. |
 
@@ -37,8 +37,8 @@ import { power } from '@kit.BasicServicesKit';
 | [registerShutdownCallback](arkts-basicservices-power-registershutdowncallback-f-sys.md) | Registers a callback to be invoked when the device is shut down or rebooted. This API uses an asynchronous callback to return the result. |
 | [setPowerConfig](arkts-basicservices-power-setpowerconfig-f-sys.md) | Update the power configuration value for a given scene name. |
 | [setPowerKeyFilteringStrategy](arkts-basicservices-power-setpowerkeyfilteringstrategy-f-sys.md) | Sets the power key filtering strategy. After the power service subscribes to the power key event, this API is used to configure the processing mode of this event. |
-| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md) | Sets the power mode of a device. This API uses an asynchronous callback to return the result. |
-| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md) | Sets the power mode of a device. This API uses a promise to return the result. |
+| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode) | Sets the power mode of a device. This API uses an asynchronous callback to return the result. |
+| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-1) | Sets the power mode of a device. This API uses a promise to return the result. |
 | [setScreenOffTime](arkts-basicservices-power-setscreenofftime-f-sys.md) | Sets the screen-off timeout duration, in unit of ms. |
 | [shutdown](arkts-basicservices-power-shutdown-f-sys.md) | Shuts down the system. |
 | [suspend](arkts-basicservices-power-suspend-f-sys.md) | Enables a device to enter the sleep state. |

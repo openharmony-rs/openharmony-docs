@@ -30,7 +30,7 @@ Obtain address info from location.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call &#36;{geoLocationManager.getAddressesFromLocation} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.getAddressesFromLocation} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-location-service-unavailable) | The location service is unavailable. |
 | [3301300](../errorcode-geoLocationManager.md#3301300-query-failed-during-reverse-geocoding) | Reverse geocoding query failed. |
 
@@ -58,27 +58,8 @@ try {
 }
 ```
 
-```TypeScript
-import { geoLocationManager } from '@kit.LocationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let reverseGeocodeRequest: geoLocationManager.ReverseGeoCodeRequest = {
-  "latitude": 31.12,
-  "longitude": 121.11,
-  "maxItems": 1
-};
-try {
-  geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
-    console.info('getAddressesFromLocation: ' + JSON.stringify(data));
-  })
-    .catch((error: BusinessError) => {
-      console.error('promise, getAddressesFromLocation: error=' + JSON.stringify(error));
-    });
-} catch (err) {
-  console.error("errCode:" + err.code + ", message:" + err.message);
-}
-```
-
+<a id="getaddressesfromlocation-1"></a>
 
 ## getAddressesFromLocation
 
@@ -109,10 +90,29 @@ Obtain address info from location.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call &#36;{geoLocationManager.getAddressesFromLocation} due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.getAddressesFromLocation} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-location-service-unavailable) | The location service is unavailable. |
 | [3301300](../errorcode-geoLocationManager.md#3301300-query-failed-during-reverse-geocoding) | Reverse geocoding query failed. |
 
 **Examples**
 
-See [getAddressesFromLocation](#getaddressesfromlocation)
+```TypeScript
+import { geoLocationManager } from '@kit.LocationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let reverseGeocodeRequest: geoLocationManager.ReverseGeoCodeRequest = {
+  "latitude": 31.12,
+  "longitude": 121.11,
+  "maxItems": 1
+};
+try {
+  geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
+    console.info('getAddressesFromLocation: ' + JSON.stringify(data));
+  })
+    .catch((error: BusinessError) => {
+      console.error('promise, getAddressesFromLocation: error=' + JSON.stringify(error));
+    });
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```

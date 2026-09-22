@@ -1,5 +1,9 @@
 # MissionParameter (System API)
 
+```TypeScript
+export interface MissionParameter
+```
+
 Parameters corresponding to mission.
 
 **Since:** 9

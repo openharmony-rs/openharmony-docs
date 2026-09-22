@@ -1,5 +1,9 @@
 # ChangeSceneAnimationStateRequest (System API)
 
+```TypeScript
+interface ChangeSceneAnimationStateRequest
+```
+
 ChangeSceneAnimationStateRequest
 
 @typedef { ChangeSceneAnimationStateRequest }

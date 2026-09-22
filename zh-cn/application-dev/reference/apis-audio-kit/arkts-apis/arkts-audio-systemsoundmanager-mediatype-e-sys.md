@@ -1,5 +1,9 @@
 # MediaType（系统接口）
 
+```TypeScript
+enum MediaType
+```
+
 枚举，媒体类型。
 
 **起始版本：** 20

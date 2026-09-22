@@ -1,5 +1,9 @@
 # HdrDecomposeOptions (System API)
 
+```TypeScript
+interface HdrDecomposeOptions
+```
+
 Describes the options for decomposing an HDR Pixelmap to a Picture containing an SDR PixelMap and a gainmap.
 
 **Since:** 26.0.0

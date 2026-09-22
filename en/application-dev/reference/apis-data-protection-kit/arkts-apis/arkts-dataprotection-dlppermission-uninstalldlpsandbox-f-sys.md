@@ -47,7 +47,7 @@ This API can be called only after a DLP sandbox is installed by calling [install
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
@@ -66,25 +66,8 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 }); // Uninstall the DLP sandbox that has been installed.
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100,
-  uri).then((dlpSandboxInfo: dlpPermission.DLPSandboxInfo) => {
-  console.info('dlpSandboxInfo: ', JSON.stringify(dlpSandboxInfo));
-  dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, dlpSandboxInfo.appIndex, (err, res) => {
-    if (err) {
-      console.error(`Failed to uninstall DLPSandbox. Code: ${err.code}, message: ${err.message}`); 
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
-  }); // Uninstall a DLP sandbox.
-}).catch((error: BusinessError)=> {
-  console.error(`Failed to install or uninstall DLPSandbox. Code: ${error.code}, message: ${error.message}`);
-}); // Uninstall the DLP sandbox that has been installed.
-```
-
+<a id="uninstalldlpsandbox-1"></a>
 
 ## uninstallDLPSandbox
 
@@ -122,10 +105,27 @@ This API can be called only after a DLP sandbox is installed by calling [install
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
 **Examples**
 
-See [uninstallDLPSandbox](#uninstalldlpsandbox)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100,
+  uri).then((dlpSandboxInfo: dlpPermission.DLPSandboxInfo) => {
+  console.info('dlpSandboxInfo: ', JSON.stringify(dlpSandboxInfo));
+  dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, dlpSandboxInfo.appIndex, (err, res) => {
+    if (err) {
+      console.error(`Failed to uninstall DLPSandbox. Code: ${err.code}, message: ${err.message}`); 
+    } else {
+      console.info('res', JSON.stringify(res));
+    }
+  }); // Uninstall a DLP sandbox.
+}).catch((error: BusinessError)=> {
+  console.error(`Failed to install or uninstall DLPSandbox. Code: ${error.code}, message: ${error.message}`);
+}); // Uninstall the DLP sandbox that has been installed.
+```

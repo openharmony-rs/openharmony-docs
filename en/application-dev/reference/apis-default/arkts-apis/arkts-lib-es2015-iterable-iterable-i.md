@@ -1,5 +1,9 @@
 # Iterable
 
+```TypeScript
+interface Iterable<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

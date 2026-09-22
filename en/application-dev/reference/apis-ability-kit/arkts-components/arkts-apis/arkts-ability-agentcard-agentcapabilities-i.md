@@ -1,5 +1,9 @@
 # AgentCapabilities
 
+```TypeScript
+export interface AgentCapabilities
+```
+
 Defines optional capabilities supported by an agent.
 
 @typedef AgentCapabilities

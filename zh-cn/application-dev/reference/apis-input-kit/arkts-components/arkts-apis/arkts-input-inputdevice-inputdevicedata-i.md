@@ -1,5 +1,9 @@
 # InputDeviceData
 
+```TypeScript
+interface InputDeviceData
+```
+
 描述输入设备的信息。
 
 **起始版本：** 8
@@ -43,14 +47,14 @@ bus: number
 ## displayId
 
 ```TypeScript
-displayId?: number
+readonly displayId?: number
 ```
 
 绑定的目标显示器ID。当系统中有绑定关系时存在该字段，未绑定时不存在该字段。
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,9 @@
 # AsyncIterableIterator
 
+```TypeScript
+interface AsyncIterableIterator<T> extends AsyncIterator<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

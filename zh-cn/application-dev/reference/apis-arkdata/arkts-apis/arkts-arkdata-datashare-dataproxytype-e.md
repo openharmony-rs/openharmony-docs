@@ -1,5 +1,9 @@
 # DataProxyType
 
+```TypeScript
+enum DataProxyType
+```
+
 数据代理类型的枚举。
 
 **起始版本：** 20

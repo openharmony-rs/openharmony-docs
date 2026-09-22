@@ -1,5 +1,9 @@
 # TransientTaskInfo
 
+```TypeScript
+interface TransientTaskInfo
+```
+
 所有短时任务信息。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # ContinuousParam
 
+```TypeScript
+interface ContinuousParam
+```
+
 连续振动参数。用于[VibratorPatternBuilder.addContinuousEvent](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#addcontinuousevent)的options参数，指定长振事件的振动强度、频率、振动调节曲线和通道编号。
 
 **起始版本：** 18

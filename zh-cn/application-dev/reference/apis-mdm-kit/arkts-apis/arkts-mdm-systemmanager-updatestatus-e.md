@@ -1,5 +1,9 @@
 # UpdateStatus
 
+```TypeScript
+enum UpdateStatus
+```
+
 系统更新状态。
 
 **起始版本：** 12

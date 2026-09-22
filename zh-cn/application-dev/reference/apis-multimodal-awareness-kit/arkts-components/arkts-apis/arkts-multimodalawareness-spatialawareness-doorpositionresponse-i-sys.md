@@ -1,5 +1,9 @@
 # DoorPositionResponse（系统接口）
 
+```TypeScript
+export interface DoorPositionResponse
+```
+
 门内外识别接口执行完成后的回调结果。@interface DoorPositionResponse
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # CMSignatureSpec
 
+```TypeScript
+export interface CMSignatureSpec
+```
+
 表示签名、验签操作使用的参数集合，包括密钥使用目的、填充方式和摘要算法。
 
 **起始版本：** 11

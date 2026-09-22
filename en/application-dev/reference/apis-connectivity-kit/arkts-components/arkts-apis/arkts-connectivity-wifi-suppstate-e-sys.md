@@ -1,5 +1,9 @@
 # SuppState (System API)
 
+```TypeScript
+export enum SuppState
+```
+
 The state of the supplicant enumeration.
 
 @enum { number } SuppState

@@ -1,5 +1,9 @@
 # AccessibilityEventType（系统接口）
 
+```TypeScript
+export enum AccessibilityEventType
+```
+
 无障碍事件类型。
 
 **起始版本：** 20

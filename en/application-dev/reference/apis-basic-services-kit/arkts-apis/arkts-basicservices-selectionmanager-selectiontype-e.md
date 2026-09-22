@@ -1,5 +1,9 @@
 # SelectionType
 
+```TypeScript
+enum SelectionType
+```
+
 Enumerates the word selection types.
 
 | Name | Value| Description |  

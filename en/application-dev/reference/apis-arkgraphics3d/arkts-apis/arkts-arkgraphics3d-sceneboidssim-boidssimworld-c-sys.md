@@ -1,5 +1,9 @@
 # BoidsSimWorld (System API)
 
+```TypeScript
+export declare class BoidsSimWorld
+```
+
 The Boids simulation world object, used to manage the lifecycle and components of the Boids simulation.
 
 > **NOTE:** 

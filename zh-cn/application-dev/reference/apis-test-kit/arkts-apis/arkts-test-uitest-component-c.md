@@ -1,5 +1,9 @@
 # Component
 
+```TypeScript
+declare class Component
+```
+
 UiTest框架在API9中，Component类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。该类对象可通过[findComponent](arkts-test-uitest-driver-c.md#findcomponent)、[findComponents](arkts-test-uitest-driver-c.md#findcomponents)、[waitForComponent](arkts-test-uitest-driver-c.md#waitforcomponent)等接口获取。该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
 **起始版本：** 9
@@ -456,7 +460,7 @@ async function demo() {
 getOriginalText(): Promise<string>
 ```
 
-获取控件对象的文本信息。使用Promise异步回调。如果控件的无障碍属性accessibilityLevel设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext)获取控件的文本信息。
+获取控件对象的文本信息。使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext)获取控件的文本信息。
 
 **起始版本：** 20
 
@@ -503,7 +507,7 @@ getText(): Promise<string>
 > **说明：** 
 > 
 > 如果控件的无障碍属性
-> accessibilityLevel
+> [accessibilityLevel](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel)
 > 设置为'no'或'no-hide-descendants'，无法使用本接口获取控件的文本信息，可以使用[Component.getOriginalText()](#getoriginaltext)
 > 获取控件的文本信息。
 
@@ -635,16 +639,7 @@ async function demo() {
 }
 ```
 
-```TypeScript
-// xxx.test.ets
-import { Component, Driver, ON } from '@kit.TestKit';
-
-async function mode_demo() {
-  let driver: Driver = Driver.create();
-  let text: Component = await driver.findComponent(ON.text('hello world'));
-  await text.inputText('123', { paste: true, addition: false });
-}
-```
+<a id="inputtext-1"></a>
 
 ## inputText
 
@@ -685,20 +680,6 @@ inputText(text: string, mode: InputTextMode): Promise<void>
 | [17000004](../errorcode-uitest.md#17000004-目标控件窗口不可见或已销毁) | The window or component is invisible or destroyed. |
 
 **示例**
-
-```TypeScript
-// xxx.test.ets
-import { Component, Driver, ON } from '@kit.TestKit';
-
-async function demo() {
-  // 创建Driver对象。
-  let driver: Driver = Driver.create();
-  // 查找text为'hello world'的控件。
-  let text: Component = await driver.findComponent(ON.text('hello world'));
-  // 清空原有文本并输入'123'。
-  await text.inputText('123');
-}
-```
 
 ```TypeScript
 // xxx.test.ets
@@ -1271,16 +1252,7 @@ async function demo() {
 }
 ```
 
-```TypeScript
-// xxx.test.ets
-import { Component, Driver, ON } from '@kit.TestKit';
-
-async function demo() {
-  let driver: Driver = Driver.create();
-  let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
-  let button = await scrollBar.scrollSearch(ON.text('next page'));
-}
-```
+<a id="scrollsearch-1"></a>
 
 ## scrollSearch
 
@@ -1321,20 +1293,6 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise<Component>
 | [17000004](../errorcode-uitest.md#17000004-目标控件窗口不可见或已销毁) | The window or component is invisible or destroyed. |
 
 **示例**
-
-```TypeScript
-// xxx.test.ets
-import { Component, Driver, ON } from '@kit.TestKit';
-
-async function demo() {
-  // 创建Driver对象。
-  let driver: Driver = Driver.create();
-  // 获取可滑动的Scroll控件。
-  let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
-  // 在Scroll控件上滑动查找text为'next page'的控件。
-  let button = await scrollBar.scrollSearch(ON.text('next page'));
-}
-```
 
 ```TypeScript
 // xxx.test.ets

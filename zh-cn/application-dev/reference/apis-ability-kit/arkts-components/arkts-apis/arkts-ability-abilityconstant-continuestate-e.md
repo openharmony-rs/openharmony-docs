@@ -1,6 +1,12 @@
 # ContinueState
 
+```TypeScript
+export enum ContinueState
+```
+
 流转状态枚举值。用于表示当前应用任务流转的状态。可配合[UIAbilityContext](arkts-ability-uiabilitycontext-c.md)的[setMissionContinueState](arkts-ability-uiabilitycontext-c.md#setmissioncontinuestate)方法进行设置。
+
+> **说明：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **起始版本：** 10
 

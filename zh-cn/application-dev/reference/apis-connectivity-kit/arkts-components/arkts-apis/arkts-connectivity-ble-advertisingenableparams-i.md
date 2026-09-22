@@ -1,5 +1,9 @@
 # AdvertisingEnableParams
 
+```TypeScript
+interface AdvertisingEnableParams
+```
+
 启动指定标识的BLE广播时设置的参数。
 
 **起始版本：** 11

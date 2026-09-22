@@ -1,5 +1,9 @@
 # Relation
 
+```TypeScript
+class Relation
+```
+
 Defines a contact's relationship.
 
 **Since:** 7

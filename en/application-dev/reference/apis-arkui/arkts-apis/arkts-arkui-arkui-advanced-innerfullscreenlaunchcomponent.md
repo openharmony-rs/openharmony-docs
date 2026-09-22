@@ -6,11 +6,11 @@ Not supported
 
 ## Attributes
 
-The universal attributes are not supported.
+The [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) are not supported.
 
 ## Events
 
-The universal events are not supported.
+The [universal events](../arkts-components/arkts-arkui-common-comp.md#common) are not supported.
 
 ## Modules to Import
 
@@ -46,7 +46,6 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 
 ## Examples
 
-```TypeScript
 > NOTE
 > 
 > Because the embedded atomic service runs in an independent process, its crash exceptions are not directly exposed in the host's logs. During local debugging, you can view the actual error stack as follows:
@@ -56,4 +55,49 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 > Switch the mode in the upper left corner to User logs of selected app.
 > 
 > In the process list on the right, select the launched atomic service process (the bundle name of the launched atomic service, with the suffix "embeddable").
+
+```TypeScript
+import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+
+  @Builder
+  ColumnChild() {
+    Column() {
+      Text('InnerFullScreenLaunchComponent').fontSize(16).margin({top: 100})
+      Button('Start Sunrise/Sunset')
+        .onClick(() => {
+          let appId1: string = '576****************';
+          this.controller.launchAtomicService(appId1, {});
+        }).height(30).width('50%').margin({top: 50})
+      Button('Start Top-up')
+        .onClick(() => {
+          let appId2: string = '576****************';
+          this.controller.launchAtomicService(appId2, {});
+        }).height(30).width('50%').margin({top: 50})
+    }.backgroundColor(Color.Pink).height('100%').width('100%')
+  }
+  controller: LaunchController = new LaunchController();
+
+  build() {
+    Column() {
+      InnerFullScreenLaunchComponent({
+          content: this.ColumnChild,
+          controller: this.controller,
+          onReceive: (data) => {
+            console.info('onReceive, data: ' + JSON.stringify(data['ohos.atomicService.window']));
+          },
+          onError: (err: BusinessError) => {
+            console.error(`onError, code: ${err.code}, message: ${err.message}`);
+          },
+          onTerminated: (info: TerminationInfo) => {
+            console.info('onTerminated, info: ' + JSON.stringify(info));
+          }
+        })
+    }
+    .width('100%').height('100%')
+  }
+}
 ```

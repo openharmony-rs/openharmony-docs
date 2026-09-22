@@ -1,5 +1,9 @@
 # AuthType
 
+```TypeScript
+enum AuthType
+```
+
 枚举，关键资产支持的用户认证类型。
 
 **起始版本：** 11
@@ -15,6 +19,8 @@ PRIVATE_PIN = 0x100
 隐私PIN码仅支持系统应用
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

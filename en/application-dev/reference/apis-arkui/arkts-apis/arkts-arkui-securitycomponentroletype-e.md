@@ -1,5 +1,9 @@
 # SecurityComponentRoleType
 
+```TypeScript
+declare enum SecurityComponentRoleType
+```
+
 Defines the screen reader role type of the component.
 
 **Since:** 26.0.0

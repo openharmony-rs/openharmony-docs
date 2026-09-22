@@ -1,5 +1,9 @@
 # SysEventInfo（系统接口）
 
+```TypeScript
+interface SysEventInfo
+```
+
 系统事件信息对象接口。
 
 **起始版本：** 9

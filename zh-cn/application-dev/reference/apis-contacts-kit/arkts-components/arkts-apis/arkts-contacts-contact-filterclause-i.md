@@ -1,5 +1,9 @@
 # FilterClause
 
+```TypeScript
+interface FilterClause
+```
+
 联系人过滤条件。多个筛选条件之间是“或者”的关系，如果参数是数组类型，数组最多只能包含3个元素。
 
 **起始版本：** 15

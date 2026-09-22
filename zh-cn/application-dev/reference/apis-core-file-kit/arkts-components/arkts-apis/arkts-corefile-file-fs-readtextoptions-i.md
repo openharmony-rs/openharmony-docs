@@ -1,5 +1,9 @@
 # ReadTextOptions
 
+```TypeScript
+export interface ReadTextOptions extends ReadOptions
+```
+
 可选项类型，支持readText接口使用，ReadTextOptions继承自[ReadOptions](arkts-corefile-file-fs-readoptions-i.md)。
 
 **继承/实现关系：** ReadTextOptions extends [ReadOptions](arkts-corefile-file-fs-readoptions-i.md)

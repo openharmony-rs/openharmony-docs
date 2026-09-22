@@ -1,5 +1,9 @@
 # CameraInput
 
+```TypeScript
+interface CameraInput
+```
+
 相机设备输入对象。
 
 会话中[Session](arkts-camera-camera-session-i.md)使用的相机信息。

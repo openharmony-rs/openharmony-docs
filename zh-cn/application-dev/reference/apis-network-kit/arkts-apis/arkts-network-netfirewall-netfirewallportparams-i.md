@@ -1,5 +1,9 @@
 # NetFirewallPortParams
 
+```TypeScript
+interface NetFirewallPortParams
+```
+
 防火墙规则端口参数。
 
 **起始版本：** 15

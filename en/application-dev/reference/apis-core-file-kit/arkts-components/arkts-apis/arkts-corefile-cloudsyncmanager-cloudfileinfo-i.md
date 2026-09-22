@@ -1,5 +1,9 @@
 # CloudFileInfo
 
+```TypeScript
+interface CloudFileInfo
+```
+
 Represents the number and size of local and cloud files of an application.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+interface Rect
+```
+
 表示截取图像的区域。
 
 **起始版本：** 12

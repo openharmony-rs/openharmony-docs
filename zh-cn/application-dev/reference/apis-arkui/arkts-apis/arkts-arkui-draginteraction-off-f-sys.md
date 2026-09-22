@@ -33,3 +33,33 @@ function off(type: 'drag', callback?: Callback<DragState>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2.Incorrect parameter types.3.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+// 取消注册单个回调函数
+function single_callback(event: dragInteraction.DragState) {
+  console.info(`Drag interaction event: ${event}`);
+  return false;
+}
+try {
+  dragInteraction.on('drag', single_callback);
+  dragInteraction.off("drag", single_callback);
+} catch (error) {
+  console.error(`Execute failed, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+```TypeScript
+// 取消注册所有回调函数
+function all_callback(event: dragInteraction.DragState) {
+  console.info(`Drag interaction event: ${event}`);
+  return false;
+}
+try {
+  dragInteraction.on('drag', all_callback);
+  dragInteraction.off("drag");
+} catch (error) {
+  console.error(`Execute failed, code: ${error.code}, message: ${error.message}`);
+}
+```

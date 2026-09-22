@@ -1,5 +1,9 @@
 # PngPropertyKey
 
+```TypeScript
+enum PngPropertyKey
+```
+
 表示PNG图片信息的枚举。
 
 > **说明：** 

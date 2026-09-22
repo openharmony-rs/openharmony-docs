@@ -1,5 +1,9 @@
 # Date
 
+```TypeScript
+interface Date
+```
+
 ## Modules to Import
 
 ```TypeScript

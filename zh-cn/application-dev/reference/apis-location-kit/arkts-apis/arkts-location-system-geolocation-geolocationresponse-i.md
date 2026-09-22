@@ -1,5 +1,9 @@
 # GeolocationResponse
 
+```TypeScript
+export interface GeolocationResponse
+```
+
 位置信息，包含经度、纬度、定位精度等信息。
 
 **起始版本：** 3

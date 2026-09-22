@@ -1,5 +1,9 @@
 # ECField
 
+```TypeScript
+interface ECField
+```
+
 指定椭圆曲线的域类型。当前只支持Fp域。
 
 **起始版本：** 10

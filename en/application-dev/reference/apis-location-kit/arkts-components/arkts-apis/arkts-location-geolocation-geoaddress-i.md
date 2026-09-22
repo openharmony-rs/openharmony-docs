@@ -1,5 +1,9 @@
 # GeoAddress
 
+```TypeScript
+export interface GeoAddress
+```
+
 Data struct describes geographic locations.
 
 @interface GeoAddress

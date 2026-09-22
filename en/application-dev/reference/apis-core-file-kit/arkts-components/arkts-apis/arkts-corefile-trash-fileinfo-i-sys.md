@@ -1,5 +1,9 @@
 # FileInfo (System API)
 
+```TypeScript
+interface FileInfo
+```
+
 Represents information about a file or directory in the **Recently deleted** list.
 
 **Since:** 10

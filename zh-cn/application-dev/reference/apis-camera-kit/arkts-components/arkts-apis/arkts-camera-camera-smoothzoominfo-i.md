@@ -1,5 +1,9 @@
 # SmoothZoomInfo
 
+```TypeScript
+interface SmoothZoomInfo
+```
+
 平滑变焦参数信息。
 
 **起始版本：** 11

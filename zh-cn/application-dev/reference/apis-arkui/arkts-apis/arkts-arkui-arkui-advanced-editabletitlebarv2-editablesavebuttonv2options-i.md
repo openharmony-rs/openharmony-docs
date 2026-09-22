@@ -1,5 +1,9 @@
 # EditableSaveButtonV2Options
 
+```TypeScript
+export declare interface EditableSaveButtonV2Options
+```
+
 保存按钮配置选项接口。
 
 **起始版本：** 26.0.0

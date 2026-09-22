@@ -14,7 +14,7 @@ function removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array<string>): 
 
 从用户级白名单中移除打印机IP地址
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 

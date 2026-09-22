@@ -1,5 +1,9 @@
 # CancelReason（系统接口）
 
+```TypeScript
+export enum CancelReason
+```
+
 取消会话的原因。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # Uint8Array
 
+```TypeScript
+class Uint8Array
+```
+
 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md)实现。
 
 > **说明：** 
@@ -102,6 +106,8 @@ constructor()
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint8Array's constructor cannot be directly invoked. |
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -127,6 +133,8 @@ constructor(length: number)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint8Array's constructor cannot be directly invoked. |
+
+<a id="constructor-2"></a>
 
 ## constructor
 
@@ -154,6 +162,8 @@ constructor(elements: Iterable<number>)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint8Array's constructor cannot be directly invoked. |
 
+<a id="constructor-3"></a>
+
 ## constructor
 
 ```TypeScript
@@ -179,6 +189,8 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint8Array's constructor cannot be directly invoked. |
+
+<a id="constructor-4"></a>
 
 ## constructor
 
@@ -490,6 +502,8 @@ static from(arrayLike: ArrayLike<number>): Uint8Array
 | --- | --- |
 | Uint8Array | 新创建的ArkTS Uint8Array对象。 |
 
+<a id="from-1"></a>
+
 ## from
 
 ```TypeScript
@@ -516,6 +530,8 @@ static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): 
 | 类型 | 说明 |
 | --- | --- |
 | Uint8Array | 新创建的ArkTS Uint8Array对象。 |
+
+<a id="from-2"></a>
 
 ## from
 
@@ -798,6 +814,8 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint8Array>): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduce-1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -831,6 +849,8 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint8Array>, initial
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
+
+<a id="reduce-2"></a>
 
 ## reduce
 
@@ -899,6 +919,8 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint8Arr
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
+
+<a id="reduceright-1"></a>
 
 ## reduceRight
 

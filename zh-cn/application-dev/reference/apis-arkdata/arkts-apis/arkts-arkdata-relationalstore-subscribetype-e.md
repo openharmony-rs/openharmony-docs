@@ -1,5 +1,9 @@
 # SubscribeType
 
+```TypeScript
+enum SubscribeType
+```
+
 描述订阅类型。请使用枚举名称而非枚举值。
 
 **起始版本：** 9

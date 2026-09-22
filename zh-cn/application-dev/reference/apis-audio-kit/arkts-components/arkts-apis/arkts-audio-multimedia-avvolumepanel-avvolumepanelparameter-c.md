@@ -1,5 +1,9 @@
 # AVVolumePanelParameter
 
+```TypeScript
+export declare class AVVolumePanelParameter
+```
+
 音量面板参数设置。
 
 **起始版本：** 12

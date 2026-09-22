@@ -1,5 +1,9 @@
 # PowerRoleType (System API)
 
+```TypeScript
+export enum PowerRoleType
+```
+
 Enumerates power role types.
 
 **Since:** 9

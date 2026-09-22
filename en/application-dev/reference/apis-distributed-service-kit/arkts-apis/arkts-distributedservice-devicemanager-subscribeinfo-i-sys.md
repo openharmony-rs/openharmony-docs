@@ -1,5 +1,9 @@
 # SubscribeInfo (System API)
 
+```TypeScript
+interface SubscribeInfo
+```
+
 Defines subscription information.
 
 **Since:** 7

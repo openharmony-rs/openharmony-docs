@@ -1,5 +1,9 @@
 # FilterAppStateType (System API)
 
+```TypeScript
+export enum FilterAppStateType
+```
+
 Enumerates the types of application states to filter. It can be used with [AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md) to filter the application state types you want to listen for.
 
 **Since:** 21

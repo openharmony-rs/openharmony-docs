@@ -1,5 +1,9 @@
 # ErrorCode
 
+```TypeScript
+enum ErrorCode
+```
+
 Enumerates the error codes.
 
 **Since:** 11
@@ -305,6 +309,8 @@ INCONSISTENT_ATTRIBUTE = 24000019
 The error code indicates that the attributes required to be consistent are inconsistent.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

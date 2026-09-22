@@ -1,5 +1,9 @@
 # GestureListenerType
 
+```TypeScript
+export const enum GestureListenerType
+```
+
 Enumerates the types of gestures to be listened for.
 
 **Since:** 20

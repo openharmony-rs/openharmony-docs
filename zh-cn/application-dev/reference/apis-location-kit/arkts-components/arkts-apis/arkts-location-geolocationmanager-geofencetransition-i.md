@@ -1,5 +1,9 @@
 # GeofenceTransition
 
+```TypeScript
+export interface GeofenceTransition
+```
+
 地理围栏事件信息；包含地理围栏ID和具体的地理围栏事件。
 
 **起始版本：** 12

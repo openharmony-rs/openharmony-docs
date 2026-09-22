@@ -1,5 +1,9 @@
 # IAuthWidgetCallback（系统接口）
 
+```TypeScript
+interface IAuthWidgetCallback
+```
+
 身份认证组件回调接口。认证组件通过该回调接口获取用户认证框架发送的命令，并根据命令内容执行相应的认证操作。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # LastExitDetailInfo
 
+```TypeScript
+export interface LastExitDetailInfo
+```
+
 记录Ability所在进程上次退出时的关键运行信息。
 
 **起始版本：** 18

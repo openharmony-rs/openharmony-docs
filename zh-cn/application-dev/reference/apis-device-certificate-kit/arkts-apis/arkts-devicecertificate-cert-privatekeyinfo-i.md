@@ -1,5 +1,9 @@
 # PrivateKeyInfo
 
+```TypeScript
+interface PrivateKeyInfo
+```
+
 表示私钥信息。
 
 **起始版本：** 18

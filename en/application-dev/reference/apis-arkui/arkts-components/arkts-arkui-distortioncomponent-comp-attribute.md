@@ -1,5 +1,9 @@
 # DistortionComponent properties/events
 
+```TypeScript
+declare class DistortionComponentAttribute extends CommonMethod<DistortionComponentAttribute>
+```
+
 Defines the DistortionComponent attribute functions
 
 **Inheritance/Implementation:** DistortionComponentAttribute extends CommonMethod<DistortionComponentAttribute>

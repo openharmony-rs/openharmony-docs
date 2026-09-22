@@ -1,5 +1,9 @@
 # AVRecorderProfile
 
+```TypeScript
+interface AVRecorderProfile
+```
+
 音视频录制配置参数。
 
 ## 音频参数配置对照表

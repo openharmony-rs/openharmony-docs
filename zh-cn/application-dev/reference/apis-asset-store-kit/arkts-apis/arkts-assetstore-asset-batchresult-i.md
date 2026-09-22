@@ -1,5 +1,9 @@
 # BatchResult
 
+```TypeScript
+interface BatchResult
+```
+
 [batchAdd](arkts-assetstore-asset-batchadd-f.md)和[batchUpdate](arkts-assetstore-asset-batchupdate-f.md)批量操作的结果。
 
 **起始版本：** 26.0.0
@@ -24,6 +28,8 @@ failedCount: number
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## failedErrorInfos
@@ -37,5 +43,7 @@ failedErrorInfos: Array<BatchErrInfo>
 **类型：** Array&lt;[BatchErrInfo](arkts-assetstore-asset-batcherrinfo-i.md)&gt;
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset

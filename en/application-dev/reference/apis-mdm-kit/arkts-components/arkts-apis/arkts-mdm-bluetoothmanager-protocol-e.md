@@ -1,5 +1,9 @@
 # Protocol
 
+```TypeScript
+export enum Protocol
+```
+
 Represents the Bluetooth protocol type.
 
 **Since:** 20

@@ -14,7 +14,7 @@ function unregisterFormHostService(serviceId: string): Promise<void>
 
 Unregister the form host service info.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

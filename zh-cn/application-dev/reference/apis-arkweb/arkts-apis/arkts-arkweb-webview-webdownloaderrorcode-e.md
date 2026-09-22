@@ -1,5 +1,9 @@
 # WebDownloadErrorCode
 
+```TypeScript
+enum WebDownloadErrorCode
+```
+
 下载任务的错误码。
 
 **起始版本：** 11

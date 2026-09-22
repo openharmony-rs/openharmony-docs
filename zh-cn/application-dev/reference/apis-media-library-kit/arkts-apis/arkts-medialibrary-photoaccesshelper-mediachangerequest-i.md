@@ -1,5 +1,9 @@
 # MediaChangeRequest
 
+```TypeScript
+interface MediaChangeRequest
+```
+
 媒体变更请求，资产变更请求和相册变更请求的父类型。
 
 > **注意**：

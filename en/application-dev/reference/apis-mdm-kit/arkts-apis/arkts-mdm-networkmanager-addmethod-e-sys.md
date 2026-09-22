@@ -1,5 +1,9 @@
 # AddMethod (System API)
 
+```TypeScript
+enum AddMethod
+```
+
 Enumerates the methods used to add the network packets.
 
 **Since:** 10

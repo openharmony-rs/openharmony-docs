@@ -1,5 +1,9 @@
 # EventClassify（系统接口）
 
+```TypeScript
+export enum EventClassify
+```
+
 事件类型。
 
 **起始版本：** 9

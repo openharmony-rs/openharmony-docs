@@ -1,5 +1,9 @@
 # ThermalLevel
 
+```TypeScript
+export enum ThermalLevel
+```
+
 Enumerates thermal levels.
 
 **Since:** 8

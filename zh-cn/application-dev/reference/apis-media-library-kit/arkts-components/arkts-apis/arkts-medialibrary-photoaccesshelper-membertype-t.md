@@ -1,7 +1,7 @@
 # MemberType
 
 ```TypeScript
-type MemberType = number | number | number | string | boolean
+type MemberType = number | number | string | boolean
 ```
 
 PhotoAsset的成员类型。

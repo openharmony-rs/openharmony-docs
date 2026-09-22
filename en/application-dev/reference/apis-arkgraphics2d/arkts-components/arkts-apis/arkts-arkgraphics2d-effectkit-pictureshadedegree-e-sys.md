@@ -1,5 +1,9 @@
 # PictureShadeDegree (System API)
 
+```TypeScript
+enum PictureShadeDegree
+```
+
 Enumerates the shade degrees of image colors.
 
 **Since:** 22

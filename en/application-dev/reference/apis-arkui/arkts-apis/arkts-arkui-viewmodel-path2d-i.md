@@ -1,5 +1,9 @@
 # Path2D
 
+```TypeScript
+export interface Path2D
+```
+
 Path2D
 
 @interface Path2D

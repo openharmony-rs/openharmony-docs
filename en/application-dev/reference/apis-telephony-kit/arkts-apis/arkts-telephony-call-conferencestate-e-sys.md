@@ -1,5 +1,9 @@
 # ConferenceState (System API)
 
+```TypeScript
+export enum ConferenceState
+```
+
 Enumerates conference states.
 
 **Since:** 7

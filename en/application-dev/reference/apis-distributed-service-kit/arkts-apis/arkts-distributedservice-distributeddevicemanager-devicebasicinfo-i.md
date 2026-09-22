@@ -1,5 +1,9 @@
 # DeviceBasicInfo
 
+```TypeScript
+interface DeviceBasicInfo
+```
+
 Represents the basic information about a distributed device.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # SensibilityType (System API)
 
+```TypeScript
+enum SensibilityType
+```
+
 Enumerates sensibility type. @enum {number}
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # MmsRetrieveConf（系统接口）
 
+```TypeScript
+export interface MmsRetrieveConf
+```
+
 彩信检索配置。
 
 **起始版本：** 8

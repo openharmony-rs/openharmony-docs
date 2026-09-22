@@ -1,5 +1,9 @@
 # By
 
+```TypeScript
+declare class By
+```
+
 The UiTest framework provides a wide range of UI component feature description APIs in the **By** class to filter and match components.
 
 The APIs provided by the **By** class exhibit the following features:

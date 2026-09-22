@@ -33,6 +33,8 @@ Sets the DND time. This API uses an asynchronous callback to return the result.
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="setdonotdisturbdate-1"></a>
+
 ## setDoNotDisturbDate
 
 ```TypeScript
@@ -66,6 +68,8 @@ Sets the DND time. This API uses a promise to return the result.
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
+<a id="setdonotdisturbdate-2"></a>
+
 ## setDoNotDisturbDate
 
 ```TypeScript
@@ -94,6 +98,8 @@ Sets the DND time for a specified user. This API uses an asynchronous callback t
 | userId | number | Yes | ID of the user for whom you want to set the DND time. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+
+<a id="setdonotdisturbdate-3"></a>
 
 ## setDoNotDisturbDate
 

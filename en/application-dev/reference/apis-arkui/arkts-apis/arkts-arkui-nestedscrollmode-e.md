@@ -1,5 +1,9 @@
 # NestedScrollMode
 
+```TypeScript
+declare enum NestedScrollMode
+```
+
 Nested scroll nested mode
 
 **Since:** 10

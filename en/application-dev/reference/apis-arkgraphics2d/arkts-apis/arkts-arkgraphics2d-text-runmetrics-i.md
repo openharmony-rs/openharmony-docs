@@ -1,5 +1,9 @@
 # RunMetrics
 
+```TypeScript
+interface RunMetrics
+```
+
 Describes the layout information and measurement information of a run of text in a text line.
 
 **Since:** 12

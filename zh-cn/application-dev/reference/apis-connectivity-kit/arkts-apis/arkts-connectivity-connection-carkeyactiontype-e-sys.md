@@ -1,5 +1,9 @@
 # CarKeyActionType（系统接口）
 
+```TypeScript
+enum CarKeyActionType
+```
+
 枚举，车钥匙执行的操作。
 
 **起始版本：** 26.0.0

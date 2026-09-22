@@ -1,5 +1,9 @@
 # Affinity
 
+```TypeScript
+enum Affinity
+```
+
 位置亲和度枚举。
 
 **起始版本：** 12

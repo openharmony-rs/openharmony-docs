@@ -1,5 +1,9 @@
 # TileMode
 
+```TypeScript
+enum TileMode
+```
+
 着色器效果平铺模式的枚举。
 
 > **说明：** 

@@ -58,28 +58,8 @@ formHost.acquireFormState(want, (error: Base.BusinessError, data: formInfo.FormS
 });
 ```
 
-```TypeScript
-import Want from '@ohos.app.ability.Want';
-import formInfo from '@ohos.app.form.formInfo';
-import Base from '@ohos.base';
 
-let want: Want = {
-  'deviceId': '',
-  'bundleName': 'ohos.samples.FormApplication',
-  'abilityName': 'FormAbility',
-  'parameters': {
-    'ohos.extra.param.key.module_name': 'entry',
-    'ohos.extra.param.key.form_name': 'widget',
-    'ohos.extra.param.key.form_dimension': 2
-  }
-};
-formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-  console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
-}).catch((error: Base.BusinessError) => {
-  console.error(`formHost acquireFormState, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="acquireformstate-1"></a>
 
 ## acquireFormState
 
@@ -115,4 +95,24 @@ function acquireFormState(want: Want): Promise<formInfo.FormStateInfo>
 
 **示例**
 
-参见 [acquireFormState](#acquireformstate)
+```TypeScript
+import Want from '@ohos.app.ability.Want';
+import formInfo from '@ohos.app.form.formInfo';
+import Base from '@ohos.base';
+
+let want: Want = {
+  'deviceId': '',
+  'bundleName': 'ohos.samples.FormApplication',
+  'abilityName': 'FormAbility',
+  'parameters': {
+    'ohos.extra.param.key.module_name': 'entry',
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.form_dimension': 2
+  }
+};
+formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
+  console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost acquireFormState, error: ${JSON.stringify(error)}`);
+});
+```

@@ -1,5 +1,9 @@
 # PointUtils
 
+```TypeScript
+class PointUtils
+```
+
 This class offers a comprehensive set of operations for handling common2D Point objects.
 
 **Since:** 26.0.0

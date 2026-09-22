@@ -1,0 +1,51 @@
+# CheckboxGroupResult
+
+```TypeScript
+declare interface CheckboxGroupResult
+```
+
+多选框群组的名称和状态。
+
+**起始版本：** 8
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## name
+
+```TypeScript
+name: Array<string>
+```
+
+群组内所有被选中的多选框名称。
+
+**类型：** Array&lt;string&gt;
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## status
+
+```TypeScript
+status: SelectStatus
+```
+
+群组多选框的选中状态。
+
+**类型：** [SelectStatus](arkts-arkui-checkboxgroup-comp-selectstatus-e.md)
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

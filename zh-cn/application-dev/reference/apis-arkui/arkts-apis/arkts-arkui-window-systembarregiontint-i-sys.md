@@ -1,5 +1,9 @@
 # SystemBarRegionTint（系统接口）
 
+```TypeScript
+interface SystemBarRegionTint
+```
+
 单个导航栏或状态栏回调信息。
 
 **起始版本：** 8

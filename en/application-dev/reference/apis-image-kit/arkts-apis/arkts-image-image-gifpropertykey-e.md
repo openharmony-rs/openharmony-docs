@@ -1,5 +1,9 @@
 # GifPropertyKey
 
+```TypeScript
+enum GifPropertyKey
+```
+
 Enumerates the GIF image information.
 
 **Since:** 20

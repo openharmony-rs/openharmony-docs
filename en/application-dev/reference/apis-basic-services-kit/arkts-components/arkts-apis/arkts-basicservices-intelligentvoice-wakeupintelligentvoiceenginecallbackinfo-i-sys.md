@@ -1,5 +1,9 @@
 # WakeupIntelligentVoiceEngineCallbackInfo (System API)
 
+```TypeScript
+interface WakeupIntelligentVoiceEngineCallbackInfo
+```
+
 Describes wakeup intelligent voice engine callback information. @typedef WakeupIntelligentVoiceEngineCallbackInfo
 
 **Since:** 10

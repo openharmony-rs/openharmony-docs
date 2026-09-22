@@ -1,5 +1,9 @@
 # ControlEvent（系统接口）
 
+```TypeScript
+export interface ControlEvent
+```
+
 控制事件。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # Paragraph（系统接口）
 
+```TypeScript
+export interface Paragraph
+```
+
 段落信息。
 
 **起始版本：** 20

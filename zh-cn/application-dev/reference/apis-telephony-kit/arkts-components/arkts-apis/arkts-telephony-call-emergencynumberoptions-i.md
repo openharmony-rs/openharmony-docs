@@ -1,5 +1,9 @@
 # EmergencyNumberOptions
 
+```TypeScript
+export interface EmergencyNumberOptions
+```
+
 判断是否是紧急电话号码的可选参数。
 
 **起始版本：** 7

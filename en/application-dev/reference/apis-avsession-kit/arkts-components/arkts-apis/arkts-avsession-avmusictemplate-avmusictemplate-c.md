@@ -1,5 +1,9 @@
 # AVMusicTemplate
 
+```TypeScript
+class AVMusicTemplate
+```
+
 AVMusicTemplate interface
 
 **Since:** 23
@@ -74,7 +78,7 @@ offCustomCommand(callback?: CustomCommandEvent): void
 
 Unregister custom command callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -774,7 +778,7 @@ onCustomCommand(callback: CustomCommandEvent): void
 
 Register custom command callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

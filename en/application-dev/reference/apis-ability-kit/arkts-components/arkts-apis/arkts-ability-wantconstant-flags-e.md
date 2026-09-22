@@ -1,5 +1,9 @@
 # Flags
 
+```TypeScript
+export enum Flags
+```
+
 Enumerates the common preset keywords of the [Want.flags](arkts-ability-app-ability-want-want-c.md) field. You can use these predefined keywords to set or retrieve additional flag information carried in application transitions.
 
 **Since:** 9
@@ -84,7 +88,7 @@ FLAG_START_WITHOUT_TIPS = 0x40000000
 
 Disables the "No available applications" prompt during implicit application launches.
 
-When [launching an application implicitly](../../../application-models/app-startup-overview.md), a prompt saying "No available applications" will appear if no matching application is found. You can use this flag to prevent this prompt from appearing.
+When [launching an application implicitly](../../../application-models/app-startup-overview.md), a prompt saying "No available applications" will appear if no matching application is found. You can use this flag to prevent thisprompt from appearing.
 
 **Since:** 11
 

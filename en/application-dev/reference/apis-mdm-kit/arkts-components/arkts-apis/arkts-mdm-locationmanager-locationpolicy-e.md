@@ -1,5 +1,9 @@
 # LocationPolicy
 
+```TypeScript
+export enum LocationPolicy
+```
+
 Enumerates the location service policies.
 
 **Since:** 12

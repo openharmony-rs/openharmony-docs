@@ -75,6 +75,42 @@ try {
 }
 ```
 
+
+<a id="issupporteffect-1"></a>
+
+## isSupportEffect
+
+```TypeScript
+function isSupportEffect(effectId: string): Promise<boolean>
+```
+
+Checks whether an effect ID is supported. This API uses a promise to return the result.
+
+**Since:** 10
+
+**System capability:** SystemCapability.Sensors.MiscDevice
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| effectId | string | Yes | Effect ID. The value is a string of a maximum of 64 characters. If the length exceeds 64 characters, the first 64 characters are used. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise that returns the result. The value **true** means that the effect ID is supported, and the value **false** means the opposite. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
 ```TypeScript
 import { vibrator } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -110,39 +146,3 @@ try {
   console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-
-## isSupportEffect
-
-```TypeScript
-function isSupportEffect(effectId: string): Promise<boolean>
-```
-
-Checks whether an effect ID is supported. This API uses a promise to return the result.
-
-**Since:** 10
-
-**System capability:** SystemCapability.Sensors.MiscDevice
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| effectId | string | Yes | Effect ID. The value is a string of a maximum of 64 characters. If the length exceeds 64 characters, the first 64 characters are used. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise that returns the result. The value **true** means that the effect ID is supported, and the value **false** means the opposite. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**Examples**
-
-See [isSupportEffect](#issupporteffect)

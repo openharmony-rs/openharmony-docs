@@ -1,5 +1,9 @@
 # VCardBuilderOptions
 
+```TypeScript
+export interface VCardBuilderOptions
+```
+
 Defines the VCard information.
 
 **Since:** 23

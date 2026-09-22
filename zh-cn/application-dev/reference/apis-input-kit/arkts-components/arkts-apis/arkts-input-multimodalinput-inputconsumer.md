@@ -31,9 +31,9 @@ import { inputConsumer } from '@kit.InputKit';
 | --- | --- |
 | [getShieldStatus](arkts-input-inputconsumer-getshieldstatus-f-sys.md) | 获取系统快捷键屏蔽类型。 |
 | [off](arkts-input-inputconsumer-off-f-sys.md#offkey) | 取消订阅系统快捷键。使用callback异步回调。 |
-| [offKey](arkts-input-inputconsumer-offkey-f-sys.md) | 取消订阅系统快捷键。使用callback异步回调。 |
+| [offKey](arkts-input-inputconsumer-offkey-f-sys.md#offkey-1) | 取消订阅系统快捷键。使用callback异步回调。 |
 | [on](arkts-input-inputconsumer-on-f-sys.md#onkey) | 订阅系统快捷键，使用callback异步回调。 |
-| [onKey](arkts-input-inputconsumer-onkey-f-sys.md) | 订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。 |
+| [onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey-1) | 订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。 |
 | [setShieldStatus](arkts-input-inputconsumer-setshieldstatus-f-sys.md) | 设置系统快捷键屏蔽类型。 |
 <!--DelEnd-->
 

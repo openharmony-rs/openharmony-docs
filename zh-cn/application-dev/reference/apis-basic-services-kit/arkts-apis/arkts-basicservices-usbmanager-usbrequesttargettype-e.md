@@ -1,5 +1,9 @@
 # USBRequestTargetType
 
+```TypeScript
+export enum USBRequestTargetType
+```
+
 请求目标类型。
 
 **起始版本：** 9

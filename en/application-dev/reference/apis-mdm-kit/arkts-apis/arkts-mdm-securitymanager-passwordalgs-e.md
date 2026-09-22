@@ -1,5 +1,9 @@
 # PasswordAlgs
 
+```TypeScript
+export enum PasswordAlgs
+```
+
 Enumerates the encryption algorithms used to process password data.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # NfcRfType
 
+```TypeScript
+enum NfcRfType
+```
+
 表示NFC场强状态的枚举。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # AudioLatencyMode
 
+```TypeScript
+enum AudioLatencyMode
+```
+
 Enumerates the audio latency modes.
 
 **Since:** 11

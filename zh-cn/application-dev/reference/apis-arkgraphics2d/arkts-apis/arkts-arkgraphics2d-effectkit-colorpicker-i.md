@@ -1,5 +1,9 @@
 # ColorPicker
 
+```TypeScript
+interface ColorPicker
+```
+
 取色类，用于从一张图像数据中获取它的主要颜色，适用于UI主题色提取、图片配色分析、智能配色推荐等场景，可帮助开发者基于图片内容动态生成和谐的配色方案。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md)创建一个ColorPicker实例。
 
 **起始版本：** 9

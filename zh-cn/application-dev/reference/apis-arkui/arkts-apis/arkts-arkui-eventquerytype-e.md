@@ -1,5 +1,9 @@
 # EventQueryType
 
+```TypeScript
+declare enum EventQueryType
+```
+
 要查询的交互事件类型。
 
 **起始版本：** 19

@@ -1,5 +1,9 @@
 # CardType
 
+```TypeScript
+export enum CardType
+```
+
 卡类型。
 
 **起始版本：** 7

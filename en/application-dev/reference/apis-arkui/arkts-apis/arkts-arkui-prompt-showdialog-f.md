@@ -20,6 +20,8 @@ Displays the dialog box.
 
 **Substitutes:** showDialog
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -30,30 +32,6 @@ Displays the dialog box.
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md)&gt; | Yes |  |
 
 **Examples**
-
-```TypeScript
-import prompt from '@ohos.prompt'
-prompt.showDialog({
-  title: 'Title Info',
-  message: 'Message Info',
-  buttons: [
-    {
-      text: 'button1',
-      color: '#000000'
-    },
-    {
-      text: 'button2',
-      color: '#000000'
-    }
-  ],
-})
-  .then(data => {
-    console.info('showDialog success, click button: ' + data.index);
-  })
-  .catch((err:Error) => {
-    console.info('showDialog error: ' + err);
-  })
-```
 
 ```TypeScript
 import prompt from '@ohos.prompt'
@@ -80,6 +58,8 @@ prompt.showDialog({
 ```
 
 
+<a id="showdialog-1"></a>
+
 ## showDialog
 
 ```TypeScript
@@ -93,6 +73,8 @@ Displays the dialog box.
 **Deprecated since:** 9
 
 **Substitutes:** showDialog
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,4 +92,26 @@ Displays the dialog box.
 
 **Examples**
 
-See [showDialog](#showdialog)
+```TypeScript
+import prompt from '@ohos.prompt'
+prompt.showDialog({
+  title: 'Title Info',
+  message: 'Message Info',
+  buttons: [
+    {
+      text: 'button1',
+      color: '#000000'
+    },
+    {
+      text: 'button2',
+      color: '#000000'
+    }
+  ],
+})
+  .then(data => {
+    console.info('showDialog success, click button: ' + data.index);
+  })
+  .catch((err:Error) => {
+    console.info('showDialog error: ' + err);
+  })
+```

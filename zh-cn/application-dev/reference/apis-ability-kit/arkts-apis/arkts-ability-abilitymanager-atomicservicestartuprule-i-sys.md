@@ -1,5 +1,9 @@
 # AtomicServiceStartupRule（系统接口）
 
+```TypeScript
+export interface AtomicServiceStartupRule
+```
+
 嵌入式拉起原子化服务的规则。
 
 **起始版本：** 18

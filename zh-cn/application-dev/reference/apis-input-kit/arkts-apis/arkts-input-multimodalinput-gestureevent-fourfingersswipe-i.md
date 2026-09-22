@@ -1,5 +1,9 @@
 # FourFingersSwipe
 
+```TypeScript
+export declare interface FourFingersSwipe
+```
+
 四指滑动手势事件。
 
 **起始版本：** 10

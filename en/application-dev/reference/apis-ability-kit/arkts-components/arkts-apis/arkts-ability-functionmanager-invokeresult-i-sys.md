@@ -1,5 +1,9 @@
 # InvokeResult (System API)
 
+```TypeScript
+interface InvokeResult
+```
+
 Encapsulates the success or failure status of function invocation.
 
 **Since:** 26.0.0
@@ -11,7 +15,7 @@ Encapsulates the success or failure status of function invocation.
 ## Modules to Import
 
 ```TypeScript
-import { functionManager } from '@kit.AbilityKit';
+import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap } from '@kit.AbilityKit';
 ```
 
 ## data

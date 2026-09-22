@@ -1,5 +1,9 @@
 # WebDestroyMode
 
+```TypeScript
+enum WebDestroyMode
+```
+
 Web组件的销毁模式，当Web组件销毁时，销毁模式会影响Web内核的资源释放时机，例如JavaScript运行上下文、渲染上下文等等。
 
 **起始版本：** 20

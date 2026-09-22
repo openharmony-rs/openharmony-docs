@@ -54,21 +54,3 @@ try {
     hilog.error(0x0000, 'testTag', 'acquireAccess failed: %{public}s', message);
 }
 ```
-
-```TypeScript
-// 申请锁屏下媒体类型数据的访问权限
-import { screenLockFileManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-    // 申请访问权限
-    let acquireStatus = screenLockFileManager.acquireAccess(screenLockFileManager.DataType.MEDIA_DATA);
-    if (acquireStatus === screenLockFileManager.AccessStatus.ACCESS_GRANTED) {
-        hilog.info(0x0000, 'testTag', 'acquireAccess successfully.');
-    }
-} catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'acquireAccess failed: %{public}s', message);
-}
-```

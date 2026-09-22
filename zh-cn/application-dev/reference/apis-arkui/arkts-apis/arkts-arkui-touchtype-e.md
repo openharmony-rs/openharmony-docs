@@ -1,5 +1,9 @@
 # TouchType
 
+```TypeScript
+declare enum TouchType
+```
+
 定义触摸操作的触发状态类型。
 
 **起始版本：** 7

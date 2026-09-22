@@ -1,5 +1,9 @@
 # GroupInfo（系统接口）
 
+```TypeScript
+export interface GroupInfo
+```
+
 组通知信息。
 
 **起始版本：** 26.0.0

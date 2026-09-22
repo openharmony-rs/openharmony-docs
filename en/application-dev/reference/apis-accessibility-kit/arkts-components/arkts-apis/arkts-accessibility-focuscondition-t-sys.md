@@ -1,8 +1,7 @@
 # FocusCondition (System API)
 
 ```TypeScript
-export type FocusCondition = 'forward' | 'backward' |
-'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'
+export type FocusCondition = 'forward' | 'backward''findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'
 ```
 
 Describes the method for querying focusable nodes.

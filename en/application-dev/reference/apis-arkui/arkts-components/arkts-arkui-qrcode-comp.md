@@ -34,16 +34,60 @@ Creates a **QRCode** component. The displayed QR code can be scanned to obtain t
 
 ## Examples
 
-```TypeScript
 ### Example 1: Setting the Color, Background Color, and Opacity
 
 This example demonstrates the basic usage of the QRCode component. It sets the QR code color using the [color](#color) attribute, the background color using the [backgroundColor](#backgroundcolor) attribute, and the opacity using the [contentOpacity](arkts-arkui-qrcode-comp-attribute.md#contentopacity) attribute.
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct QRCodeExample {
+  private value: string = 'hello world';
+
+  build() {
+    Column({ space: 5 }) {
+      Text('normal').width('90%').fontColor(0xCCCCCC).fontSize(30)
+      QRCode(this.value).width(140).height(140)
+
+      // Set the color of the QR code.
+      Text('color').width('90%').fontColor(0xCCCCCC).fontSize(30)
+      QRCode(this.value).color(0xF7CE00).width(140).height(140)
+
+      // Set the background color of the QR code.
+      Text('backgroundColor').width('90%').fontColor(0xCCCCCC).fontSize(30)
+      QRCode(this.value).width(140).height(140).backgroundColor(Color.Orange)
+
+      // Set the opacity of QR code content.
+      Text('contentOpacity').width('90%').fontColor(0xCCCCCC).fontSize(30)
+      QRCode(this.value).width(140).height(140).color(Color.Black).contentOpacity(0.1)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
 ### Example 2: Setting the Background Color to Transparent
 
 This example shows how to set the QR code background color to transparent using the [backgroundColor](#backgroundcolor) attribute, allowing the QR code content to blend with the background.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct QRCodeExample {
+  private value: string = 'hello world';
+
+  build() {
+    Column({ space: 5 }) {
+      RelativeContainer() {
+        // Replace $r('app.media.ocean') with the image resource file you use.
+        Image($r('app.media.ocean'))
+        // Set the QR code background color to transparent.
+        QRCode(this.value).width(200).height(200).backgroundColor('#00ffffff')
+      }.width(200).height(200)
+    }.width('100%').margin({ top: 5 })
+  }
+}
 ```

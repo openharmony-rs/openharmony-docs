@@ -1,5 +1,9 @@
 # NotifyDescription
 
+```TypeScript
+interface NotifyDescription
+```
+
 Represents the update notification defined by an enterprise.
 
 **Since:** 12

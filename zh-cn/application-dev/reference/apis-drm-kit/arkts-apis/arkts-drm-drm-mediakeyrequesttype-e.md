@@ -1,5 +1,9 @@
 # MediaKeyRequestType
 
+```TypeScript
+enum MediaKeyRequestType
+```
+
 枚举，媒体密钥请求类型。
 
 **起始版本：** 11

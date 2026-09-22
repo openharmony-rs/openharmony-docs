@@ -1,10 +1,14 @@
 # PasscodePromptParams（系统接口）
 
+```TypeScript
+interface PasscodePromptParams
+```
+
 提示输入辅助设备密码时框架携带的选项。
 
 @interface PasscodePromptParams
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -26,7 +30,7 @@ challenge: Uint8Array
 
 **类型：** Uint8Array
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

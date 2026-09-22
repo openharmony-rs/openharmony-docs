@@ -1,5 +1,9 @@
 # PrintJobSubState
 
+```TypeScript
+enum PrintJobSubState
+```
+
 打印任务子状态的枚举。
 
 **起始版本：** 14

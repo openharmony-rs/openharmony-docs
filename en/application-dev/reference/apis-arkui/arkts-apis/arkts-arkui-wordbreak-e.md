@@ -1,5 +1,9 @@
 # WordBreak
 
+```TypeScript
+declare enum WordBreak
+```
+
 The word break rule.
 
 **Since:** 11

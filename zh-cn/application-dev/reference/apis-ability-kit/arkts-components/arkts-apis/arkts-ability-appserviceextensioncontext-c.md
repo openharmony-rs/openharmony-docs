@@ -1,5 +1,9 @@
 # AppServiceExtensionContext
 
+```TypeScript
+declare class AppServiceExtensionContext extends ExtensionContext
+```
+
 AppServiceExtensionContext模块是[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的上下文环境，继承自[ExtensionContext](arkts-ability-extensioncontext-c.md)。
 
 AppServiceExtensionContext提供了连接、断开ServiceExtensionAbility（系统应用后台服务扩展组件）的能力，以及AppServiceExtensionAbility终止自身的能力。这里的ServiceExtensionAbility只能由系统应用开发，支持三方应用连接。
@@ -146,9 +150,7 @@ disconnectServiceExtensionAbility(connection: number): Promise<void>
 
 **示例**
 
-```TypeScript
 参见[connectServiceExtensionAbility](#connectserviceextensionability)。
-```
 
 ## startAbility
 

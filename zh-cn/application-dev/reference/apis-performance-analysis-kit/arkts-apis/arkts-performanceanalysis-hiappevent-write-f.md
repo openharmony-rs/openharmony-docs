@@ -56,30 +56,6 @@ let eventParams: Record<string, number | string> = {
   "str_data": "strValue",
 };
 
-// 应用事件打点，使用callback方式作为异步回调
-hiAppEvent.write({
-  domain: "test_domain",
-  name: "test_event",
-  eventType: hiAppEvent.EventType.FAULT,
-  params: eventParams,
-}, (err: BusinessError) => {
-  if (err) {
-    hilog.error(0x0000, 'hiAppEvent', `code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let eventParams: Record<string, number | string> = {
-  "int_data": 100,
-  "str_data": "strValue",
-};
-
 // 应用事件打点，使用Promise方式作为异步回调
 hiAppEvent.write({
   domain: "test_domain",
@@ -93,6 +69,8 @@ hiAppEvent.write({
 });
 ```
 
+
+<a id="write-1"></a>
 
 ## write
 
@@ -130,4 +108,26 @@ function write(info: AppEventInfo, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 write
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let eventParams: Record<string, number | string> = {
+  "int_data": 100,
+  "str_data": "strValue",
+};
+
+// 应用事件打点，使用callback方式作为异步回调
+hiAppEvent.write({
+  domain: "test_domain",
+  name: "test_event",
+  eventType: hiAppEvent.EventType.FAULT,
+  params: eventParams,
+}, (err: BusinessError) => {
+  if (err) {
+    hilog.error(0x0000, 'hiAppEvent', `code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
+});
+```

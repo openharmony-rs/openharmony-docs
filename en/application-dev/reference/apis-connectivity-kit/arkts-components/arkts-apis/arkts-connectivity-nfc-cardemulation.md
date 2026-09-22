@@ -2,6 +2,8 @@
 
 **Since:** 6
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
 ## HCE and AID Declaration
@@ -39,13 +41,14 @@ Before developing an application related to HCE, you must declare NFC-related at
       {
         "name": "ohos.permission.NFC_CARD_EMULATION",
         // Set reason to card_emulation_reason.
-        "reason": "&#36;string:card_emulation_reason"
+        "reason": "$string:card_emulation_reason"
       }
     ]
   }
 }
 ```
 
+  
 ```json5
 // Applicable to lite wearables
 {
@@ -82,7 +85,7 @@ Before developing an application related to HCE, you must declare NFC-related at
       {
         "name": "ohos.permission.NFC_CARD_EMULATION",
         // Set reason to card_emulation_reason.
-        "reason": "&#36;string:card_emulation_reason",
+        "reason": "$string:card_emulation_reason",
         "usedScene": {
           "ability": [
             "FormAbility"
@@ -93,7 +96,7 @@ Before developing an application related to HCE, you must declare NFC-related at
       {
         "name": "ohos.permission.NFC_TAG",
         // Set reason to card_emulation_reason.
-        "reason": "&#36;string:card_emulation_reason",
+        "reason": "$string:card_emulation_reason",
         "usedScene": {
           "ability": [
             "FormAbility"
@@ -105,6 +108,8 @@ Before developing an application related to HCE, you must declare NFC-related at
   }
 }
 ```
+
+
 
 > **NOTE:** 
 > 

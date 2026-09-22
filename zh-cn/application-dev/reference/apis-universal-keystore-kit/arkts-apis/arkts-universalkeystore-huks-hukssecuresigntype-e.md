@@ -1,5 +1,9 @@
 # HuksSecureSignType
 
+```TypeScript
+export enum HuksSecureSignType
+```
+
 表示生成或导入密钥时，指定该密钥的签名类型。
 
 **起始版本：** 9

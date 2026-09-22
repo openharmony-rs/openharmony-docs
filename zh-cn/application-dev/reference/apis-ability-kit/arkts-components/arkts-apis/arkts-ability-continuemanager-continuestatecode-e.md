@@ -1,5 +1,9 @@
 # ContinueStateCode
 
+```TypeScript
+enum ContinueStateCode
+```
+
 快速拉起的结果状态码的枚举值。模型约束：此接口仅可在Stage模型下使用。
 
 **起始版本：** 18

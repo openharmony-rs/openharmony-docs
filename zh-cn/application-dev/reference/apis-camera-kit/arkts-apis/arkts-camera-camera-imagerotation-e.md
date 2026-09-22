@@ -1,5 +1,9 @@
 # ImageRotation
 
+```TypeScript
+enum ImageRotation
+```
+
 枚举，图片旋转角度。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # DecimalConfig
 
+```TypeScript
+export interface DecimalConfig
+```
+
 Provides configuration for decimal.
 
 **Since:** 12

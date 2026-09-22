@@ -1,5 +1,9 @@
 # WindowAnchorInfo（系统接口）
 
+```TypeScript
+interface WindowAnchorInfo
+```
+
 一级子窗与主窗保持相对位置的窗口锚点参数信息。
 
 **起始版本：** 24

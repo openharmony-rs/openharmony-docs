@@ -35,3 +35,20 @@ function getDeviceRotationRadian(): Promise<DeviceRotationRadian>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system API. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [32500001](../errorcode-deviceStatus.md#32500001-服务异常) | Service exception. |
+
+**示例**
+
+```TypeScript
+import { deviceStatus } from '@kit.MultimodalAwarenessKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+   deviceStatus.getDeviceRotationRadian().then((radian: deviceStatus.DeviceRotationRadian) => {
+      console.info('x:' + radian.x + ' y:' + radian.y + ' z:' + radian.z);
+   }).catch((err: BusinessError) => {
+      console.error(`Failed to get device rotation radians. Code: ${err.code}, message: ${err.message}`);
+   });
+} catch (err) {
+   console.error(`Failed to invoke. Code: ${err.code}, message: ${err.message}`);
+}
+```

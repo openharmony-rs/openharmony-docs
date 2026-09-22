@@ -1,5 +1,9 @@
 # SyncFolderAccessor (System API)
 
+```TypeScript
+class SyncFolderAccessor
+```
+
 A sync root management class that enables the File Manager to access the sync root information registered by third- party cloud disks.
 
 **Since:** 21

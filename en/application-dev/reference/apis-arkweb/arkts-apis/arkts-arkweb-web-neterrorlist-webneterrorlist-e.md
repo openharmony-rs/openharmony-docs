@@ -1,5 +1,9 @@
 # WebNetErrorList
 
+```TypeScript
+export declare enum WebNetErrorList
+```
+
 Web net error list.
 
 **Since:** 12

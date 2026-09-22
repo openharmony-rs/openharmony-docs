@@ -1,5 +1,9 @@
 # AbilityStartCallback
 
+```TypeScript
+export default class AbilityStartCallback
+```
+
 The module describes the callback invoked to return the UIExtensionAbility startup result.
 
 **Since:** 11

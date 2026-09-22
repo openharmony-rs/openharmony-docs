@@ -1,5 +1,9 @@
 # HuksKeyGenerateType
 
+```TypeScript
+export enum HuksKeyGenerateType
+```
+
 表示生成密钥的类型。
 
 **起始版本：** 8
@@ -18,6 +22,8 @@ HUKS_KEY_GENERATE_TYPE_DEFAULT = 0
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -34,6 +40,8 @@ HUKS_KEY_GENERATE_TYPE_DERIVE = 1
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -49,6 +57,8 @@ HUKS_KEY_GENERATE_TYPE_AGREE = 2
 协商生成的密钥。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 

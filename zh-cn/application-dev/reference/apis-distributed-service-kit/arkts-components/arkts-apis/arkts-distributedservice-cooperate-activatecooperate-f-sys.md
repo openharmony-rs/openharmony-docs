@@ -59,22 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let targetNetworkId = "networkId";
-let inputDeviceId = 0;
-try {
-  cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
-    console.info(`Start Keyboard mouse crossing success.`);
-  }, (error: BusinessError) => {
-    console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-  });
-} catch (error) {
-  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
+<a id="activatecooperate-1"></a>
 
 ## activateCooperate
 
@@ -116,4 +102,18 @@ function activateCooperate(targetNetworkId: string, inputDeviceId: number): Prom
 
 **示例**
 
-参见 [activateCooperate](#activatecooperate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetNetworkId = "networkId";
+let inputDeviceId = 0;
+try {
+  cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
+    console.info(`Start Keyboard mouse crossing success.`);
+  }, (error: BusinessError) => {
+    console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```

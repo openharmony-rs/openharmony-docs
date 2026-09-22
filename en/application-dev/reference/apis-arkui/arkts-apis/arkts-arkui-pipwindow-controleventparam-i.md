@@ -1,5 +1,9 @@
 # ControlEventParam
 
+```TypeScript
+interface ControlEventParam
+```
+
 Describes the parameters in the callback of the action event of the PiP controller.
 
 **Since:** 12

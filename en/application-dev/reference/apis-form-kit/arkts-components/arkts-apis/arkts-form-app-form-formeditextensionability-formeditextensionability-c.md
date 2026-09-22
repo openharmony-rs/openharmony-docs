@@ -1,5 +1,9 @@
 # FormEditExtensionAbility
 
+```TypeScript
+declare class FormEditExtensionAbility extends UIExtensionAbility
+```
+
 The **FormEditExtensionAbility** module, inherited from [UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md), provides the widget editing function.
 
 **Inheritance/Implementation:** FormEditExtensionAbility extends [UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)

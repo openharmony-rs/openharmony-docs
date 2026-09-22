@@ -1,5 +1,9 @@
 # Video
 
+```TypeScript
+class Video extends File
+```
+
 Represents video data. It is a child class of [File](arkts-arkdata-unifieddatachannel-file-c.md) and is used to describe a video file.
 
 **Inheritance/Implementation:** Video extends [File](arkts-arkdata-unifieddatachannel-file-c.md)

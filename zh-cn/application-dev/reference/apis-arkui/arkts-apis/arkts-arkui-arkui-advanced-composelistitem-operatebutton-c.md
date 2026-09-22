@@ -1,5 +1,9 @@
 # OperateButton
 
+```TypeScript
+export declare class OperateButton
+```
+
 列表右侧按钮元素的类型。
 
 **起始版本：** 10

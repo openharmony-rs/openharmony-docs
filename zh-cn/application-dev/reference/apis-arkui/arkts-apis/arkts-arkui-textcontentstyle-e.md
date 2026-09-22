@@ -1,5 +1,9 @@
 # TextContentStyle
 
+```TypeScript
+declare enum TextContentStyle
+```
+
 Text content style.
 
 **起始版本：** 10

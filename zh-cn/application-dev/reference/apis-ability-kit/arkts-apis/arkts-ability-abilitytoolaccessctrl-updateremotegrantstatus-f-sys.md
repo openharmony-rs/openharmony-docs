@@ -13,9 +13,11 @@ export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): P
 
 更新远程授权状态。该功能用于开启或关闭远程授权特性。启用时，设备可以向远程设备授予权限；禁用时，不允许远程授权。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

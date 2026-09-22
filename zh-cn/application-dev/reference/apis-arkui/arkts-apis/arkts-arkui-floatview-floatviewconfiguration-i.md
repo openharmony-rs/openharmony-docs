@@ -1,5 +1,9 @@
 # FloatViewConfiguration
 
+```TypeScript
+interface FloatViewConfiguration
+```
+
 创建标准悬浮窗控制器时需要提供的参数配置。
 
 **起始版本：** 26.0.0

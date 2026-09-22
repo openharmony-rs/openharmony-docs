@@ -1,5 +1,9 @@
 # UIServiceExtensionConnectCallback
 
+```TypeScript
+export default interface UIServiceExtensionConnectCallback
+```
+
 UIServiceExtensionConnectCallback是UIServiceExtension连接回调接口类，提供UIServiceExtension连接回调数据能力。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # OperationParams
 
+```TypeScript
+export interface OperationParams
+```
+
 AtomicServiceSearch中“功能区”的初始化参数。
 
 **起始版本：** 18

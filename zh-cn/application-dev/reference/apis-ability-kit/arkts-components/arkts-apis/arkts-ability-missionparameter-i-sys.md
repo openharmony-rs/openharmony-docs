@@ -1,5 +1,9 @@
 # MissionParameter（系统接口）
 
+```TypeScript
+export interface MissionParameter
+```
+
 作为[startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md)的入参，表示同步远端设备任务列表时所需的参数对象，包含deviceId、fixConflict和tag等字段。
 
 **起始版本：** 9

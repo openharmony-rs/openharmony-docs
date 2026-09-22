@@ -1,5 +1,9 @@
 # RelativeTimeFormat
 
+```TypeScript
+interface RelativeTimeFormat
+```
+
 ## Modules to Import
 
 ```TypeScript

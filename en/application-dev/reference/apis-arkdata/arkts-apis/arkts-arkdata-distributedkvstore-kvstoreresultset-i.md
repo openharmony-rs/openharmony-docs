@@ -1,5 +1,9 @@
 # KVStoreResultSet
 
+```TypeScript
+interface KVStoreResultSet
+```
+
 Provides APIs for obtaining the distributed KV store result sets. A maximum of eight result sets can be opened at a time. The **KVStoreResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data. Before calling any API in **KVStoreResultSet**, you must use ** getKVStore ** to construct a **SingleKVStore** or **DeviceKVStore** instance.
 
 > **NOTE:** 

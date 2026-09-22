@@ -1,5 +1,9 @@
 # EventCallbackInfo
 
+```TypeScript
+interface EventCallbackInfo
+```
+
 回调方法的接收信息。
 
 **起始版本：** 18

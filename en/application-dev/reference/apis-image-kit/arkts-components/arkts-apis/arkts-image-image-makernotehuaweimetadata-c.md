@@ -1,5 +1,9 @@
 # MakerNoteHuaweiMetadata
 
+```TypeScript
+class MakerNoteHuaweiMetadata implements Metadata
+```
+
 MakerNoteHuaweiMetadata implements Metadata
 
 Photo metadata from Huawei cameras.
@@ -36,6 +40,36 @@ Clones [MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md)
 | --- | --- |
 | Promise&lt;[MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md)&gt; | Promise used to return the **MakerNoteHuaweiMetadata** metadata instance if metadata is successfully obtained. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiClone(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let new_metadata = await metaData.makerNoteHuaweiMetadata.clone();
+    new_metadata.getProperties(["HwMnoteIsXmageSupported"]).then((data1) => {
+      console.info(`Succeeded in cloning metadata and getting properties. Data: ${JSON.stringify(data1)}.`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to clone metadata and get properties. Code: ${err.code}, message: ${err.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## createInstance
 
 ```TypeScript
@@ -55,6 +89,17 @@ Returns an empty [MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimeta
 | Type | Description |
 | --- | --- |
 | [MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md) | Empty **MakerNoteHuaweiMetadata** instance. |
+
+**Examples**
+
+```TypeScript
+async function makerNoteHuaweiCreateInstance(context: Context) {
+  let makerNoteHuaweiMetadata = image.MakerNoteHuaweiMetadata.createInstance();
+  if (makerNoteHuaweiMetadata != undefined) {
+    console.info("Succeeded in creating a MakerNoteHuaweiMetadata instance.");
+  }
+}
+```
 
 ## getAllProperties
 
@@ -76,6 +121,36 @@ Obtains all properties and their values from the image metadata. This API return
 | --- | --- |
 | Promise&lt;Record&lt;string, string &#124; null&gt;&gt; | Promise used to return the values of all properties. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiGetAllProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    await metaData.makerNoteHuaweiMetadata.getAllProperties().then((data) => {
+      const count = Object.keys(data).length;
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## getBlob
 
 ```TypeScript
@@ -95,6 +170,31 @@ Obtains the metadata in binary format. This API uses a promise to return the res
 | Type | Description |
 | --- | --- |
 | Promise&lt;ArrayBuffer&gt; | Promise that returns the binary data of the metadata. |
+
+**Examples**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiGetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let blob = await metaData.makerNoteHuaweiMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
 
 ## getProperties
 
@@ -128,6 +228,35 @@ Obtains the property values from image metadata. This API returns the result asy
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-unsupported-metadata-readwrite-operation) | Unsupported metadata. Possible causes: unsupported metadata type. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiGetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    await metaData.makerNoteHuaweiMetadata.getProperties(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]).then((data) => {
+      console.info(`Succeeded in getting properties. Data: ${JSON.stringify(data)}.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to get properties. Code: ${error.code}, message: ${error.message}.`);
+    });
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## setBlob
 
 ```TypeScript
@@ -159,6 +288,36 @@ Replaces the current metadata with binary data. This API uses a promise to retur
 | Error Code ID | Error Message |
 | --- | --- |
 | [7600206](../errorcode-image.md#7600206-invalid-parameter) | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**Examples**
+
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiSetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let blob = await metaData.makerNoteHuaweiMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.makerNoteHuaweiMetadata.setBlob(blob);
+    }
+    let new_blob = metaData.makerNoteHuaweiMetadata.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```
 
 ## setProperties
 
@@ -193,6 +352,39 @@ For details about the properties, see [PropertyKey](arkts-image-image-propertyke
 | Error Code ID | Error Message |
 | --- | --- |
 | [7600202](../errorcode-image.md#7600202-unsupported-metadata-readwrite-operation) | Unsupported metadata. Possible causes: unsupported metadata type. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiSetProperties(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    let setkey: Record<string, string | null> = {
+      "HwMnoteIsXmageSupported": "1",
+      "HwMnoteXmageMode": "9"
+    };
+    await metaData.makerNoteHuaweiMetadata.setProperties(setkey).then(async () => {
+      console.info('Succeeded in setting properties.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
+    })
+  } else {
+    console.error('metadata is null. ');
+  }
+}
+```
 
 ## burstNumber
 

@@ -32,6 +32,8 @@ function search(callback: AsyncCallback<Array<string>>): void
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
 
+<a id="search-1"></a>
+
 ## search
 
 ```TypeScript
@@ -58,6 +60,8 @@ function search(filter: Filter, callback: AsyncCallback<Array<string>>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 
+
+<a id="search-2"></a>
 
 ## search
 

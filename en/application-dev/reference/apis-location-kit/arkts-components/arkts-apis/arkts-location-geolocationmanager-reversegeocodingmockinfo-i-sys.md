@@ -1,5 +1,9 @@
 # ReverseGeocodingMockInfo (System API)
 
+```TypeScript
+export interface ReverseGeocodingMockInfo
+```
+
 Configuration parameters for simulating reverse geocoding.
 
 **Since:** 9

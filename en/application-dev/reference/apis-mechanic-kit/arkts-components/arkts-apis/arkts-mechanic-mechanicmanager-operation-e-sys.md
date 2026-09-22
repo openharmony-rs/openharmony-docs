@@ -1,5 +1,9 @@
 # Operation (System API)
 
+```TypeScript
+export enum Operation
+```
+
 Enumerates the user operations. @enum { int }
 
 **Since:** 20

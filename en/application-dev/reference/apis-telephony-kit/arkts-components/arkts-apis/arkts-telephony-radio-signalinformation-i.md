@@ -1,5 +1,9 @@
 # SignalInformation
 
+```TypeScript
+export interface SignalInformation
+```
+
 Defines the signal strength.
 
 **Since:** 6

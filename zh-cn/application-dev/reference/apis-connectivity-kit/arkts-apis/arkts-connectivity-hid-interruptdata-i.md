@@ -1,5 +1,9 @@
 # InterruptData
 
+```TypeScript
+interface InterruptData
+```
+
 描述从主机收到的中断数据。
 
 **起始版本：** 23

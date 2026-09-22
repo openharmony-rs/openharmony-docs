@@ -1,5 +1,9 @@
 # MifareUltralightType
 
+```TypeScript
+enum MifareUltralightType
+```
+
 MIFARE Ultralight标签类型的定义。
 
 **起始版本：** 9

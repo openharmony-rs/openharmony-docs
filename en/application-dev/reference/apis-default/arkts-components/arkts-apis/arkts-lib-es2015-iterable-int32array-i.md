@@ -1,5 +1,9 @@
 # Int32Array
 
+```TypeScript
+interface Int32Array
+```
+
 ## Modules to Import
 
 ```TypeScript

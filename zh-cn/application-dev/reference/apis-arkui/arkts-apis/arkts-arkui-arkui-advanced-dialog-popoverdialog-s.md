@@ -1,5 +1,9 @@
 # PopoverDialog
 
+```TypeScript
+export declare struct PopoverDialog
+```
+
 跟手弹出框，基于目标组件位置弹出，上述的TipsDialog、SelectDialog、ConfirmDialog、AlertDialog、LoadingDialog、CustomContentDialog都可作为弹出框内容。
 
 **起始版本：** 14

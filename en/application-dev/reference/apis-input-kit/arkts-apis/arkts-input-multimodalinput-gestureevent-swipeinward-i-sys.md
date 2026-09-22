@@ -1,5 +1,9 @@
 # SwipeInward (System API)
 
+```TypeScript
+export declare interface SwipeInward
+```
+
 Defines an inward swipe event.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # PolicyErrorResult
 
+```TypeScript
+export interface PolicyErrorResult
+```
+
 Failed policy result on URI.
 
 @interface { object }

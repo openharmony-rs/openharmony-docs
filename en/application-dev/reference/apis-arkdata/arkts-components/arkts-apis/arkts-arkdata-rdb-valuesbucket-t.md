@@ -1,7 +1,7 @@
 # ValuesBucket
 
 ```TypeScript
-type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }
+type ValuesBucket = { [key: string]: ValueType | Uint8Array | null}
 ```
 
 Defines the types of the key and value in a KV pair.
@@ -14,4 +14,4 @@ Defines the types of the key and value in a KV pair.
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Type:** { [key: string]: ValueType | Uint8Array | null }
+**Type:** { [key: string]: ValueType | Uint8Array | null}

@@ -1,5 +1,9 @@
 # ServerAuthentication
 
+```TypeScript
+export interface ServerAuthentication
+```
+
 Defines HTTP server identity verification information.
 
 **Since:** 18

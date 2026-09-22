@@ -1,5 +1,9 @@
 # SubCommandInfo（系统接口）
 
+```TypeScript
+export interface SubCommandInfo
+```
+
 描述CLI工具子命令的信息。
 
 **起始版本：** 26.0.0

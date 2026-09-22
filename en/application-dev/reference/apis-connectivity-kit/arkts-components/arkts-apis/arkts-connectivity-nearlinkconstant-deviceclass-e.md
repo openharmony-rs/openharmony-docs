@@ -1,5 +1,9 @@
 # DeviceClass
 
+```TypeScript
+export enum DeviceClass
+```
+
 Enumerates the device types.
 
 **Since:** 26.0.0

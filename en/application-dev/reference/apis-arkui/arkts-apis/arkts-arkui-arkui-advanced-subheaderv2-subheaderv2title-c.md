@@ -1,5 +1,9 @@
 # SubHeaderV2Title
 
+```TypeScript
+export declare class SubHeaderV2Title
+```
+
 Defines the title settings for the subheader.
 
 **Since:** 18

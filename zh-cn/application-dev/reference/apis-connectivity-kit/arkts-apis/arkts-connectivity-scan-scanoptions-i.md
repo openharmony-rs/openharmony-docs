@@ -1,5 +1,9 @@
 # ScanOptions
 
+```TypeScript
+interface ScanOptions
+```
+
 表示扫描选项。
 
 **起始版本：** 26.0.0

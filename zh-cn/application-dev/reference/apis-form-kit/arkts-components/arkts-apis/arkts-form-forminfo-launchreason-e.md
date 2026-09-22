@@ -1,5 +1,9 @@
 # LaunchReason
 
+```TypeScript
+enum LaunchReason
+```
+
 卡片创建原因枚举。
 
 **起始版本：** 10

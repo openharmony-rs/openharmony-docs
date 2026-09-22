@@ -43,18 +43,6 @@ function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, ca
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
-    if (err) {
-        console.error(`formatPhoneNumber fail, err->Code${err.code}, message:${err.message}`);
-    } else {
-        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let options: call.NumberFormatOptions = {
     countryCode: "CN"
 };
@@ -67,19 +55,8 @@ call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: call.NumberFormatOptions = {
-    countryCode: "CN"
-};
-call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
-    console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`formatPhoneNumber fail, promise: err->Code${err.code}, message:${err.message}`);
-});
-```
-
+<a id="formatphonenumber-1"></a>
 
 ## formatPhoneNumber
 
@@ -120,8 +97,21 @@ function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): 
 
 **示例**
 
-参见 formatPhoneNumber
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let options: call.NumberFormatOptions = {
+    countryCode: "CN"
+};
+call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
+    console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`formatPhoneNumber fail, promise: err->Code${err.code}, message:${err.message}`);
+});
+```
+
+
+<a id="formatphonenumber-2"></a>
 
 ## formatPhoneNumber
 
@@ -156,4 +146,14 @@ function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>)
 
 **示例**
 
-参见 formatPhoneNumber
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
+    if (err) {
+        console.error(`formatPhoneNumber fail, err->Code${err.code}, message:${err.message}`);
+    } else {
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+    }
+});
+```

@@ -1,5 +1,9 @@
 # SensorColorFilterArrangement
 
+```TypeScript
+enum SensorColorFilterArrangement
+```
+
 枚举，传感器颜色滤镜排列方式。
 
 **起始版本：** 24

@@ -62,23 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Use try catch to capture possible exceptions.
-try {
-  sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data: sensor.Sensor) => {
-    console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
-  }, (err: BusinessError) => {
-    console.error(`Failed to get singleSensor . Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getsinglesensor-1"></a>
 
 ## getSingleSensor
 
@@ -114,4 +99,19 @@ Obtains information about the sensor of a specific type. This API uses a promise
 
 **Examples**
 
-See [getSingleSensor](#getsinglesensor)
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Use try catch to capture possible exceptions.
+try {
+  sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data: sensor.Sensor) => {
+    console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
+  }, (err: BusinessError) => {
+    console.error(`Failed to get singleSensor . Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
+}
+```

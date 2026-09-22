@@ -65,32 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
- 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 
-let autoStartApps: Array<Want> = [
-  // 需根据实际情况进行替换
-  {
-    bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
-  }
-];
-
-try {
-  applicationManager.removeAutoStartApps(wantTemp, autoStartApps, 100);
-  console.info('Succeeded in removing auto start applications.');
-} catch (err) {
-  console.error(`Failed to remove auto start applications. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="removeautostartapps-1"></a>
 
 ## removeAutoStartApps
 
@@ -126,4 +102,28 @@ function removeAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId:
 
 **示例**
 
-参见 removeAutoStartApps
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+ 
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let autoStartApps: Array<Want> = [
+  // 需根据实际情况进行替换
+  {
+    bundleName: 'com.example.autoStartApplication',
+    abilityName: 'EntryAbility'
+  }
+];
+
+try {
+  applicationManager.removeAutoStartApps(wantTemp, autoStartApps, 100);
+  console.info('Succeeded in removing auto start applications.');
+} catch (err) {
+  console.error(`Failed to remove auto start applications. Code: ${err.code}, message: ${err.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # PrintJob
 
+```TypeScript
+interface PrintJob
+```
+
 Defines a print job.
 
 **Since:** 24

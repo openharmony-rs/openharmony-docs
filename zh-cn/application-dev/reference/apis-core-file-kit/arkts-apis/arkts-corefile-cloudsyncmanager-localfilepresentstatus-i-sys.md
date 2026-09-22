@@ -1,5 +1,9 @@
 # LocalFilePresentStatus（系统接口）
 
+```TypeScript
+interface LocalFilePresentStatus
+```
+
 检测结果对象，包含应用包名及其在云盘存储空间内是否存在未上云文件的状态信息。
 
 **起始版本：** 23

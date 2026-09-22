@@ -1,5 +1,9 @@
 # LauncherAbilityInfo
 
+```TypeScript
+export interface LauncherAbilityInfo
+```
+
 The module describes the ability information of the launcher application. The information can be obtained by calling [getLauncherAbilityInfoSync](arkts-ability-launcherbundlemanager-getlauncherabilityinfosync-f.md) <!--Del--> or [getLauncherAbilityInfo](arkts-ability-launcherbundlemanager-getlauncherabilityinfo-f-sys.md) <!--DelEnd-->.
 
 **Since:** 18

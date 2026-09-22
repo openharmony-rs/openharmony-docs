@@ -1,5 +1,9 @@
 # UsbPolicy
 
+```TypeScript
+export enum UsbPolicy
+```
+
 Enumerates the USB storage device access policies.
 
 **Since:** 12

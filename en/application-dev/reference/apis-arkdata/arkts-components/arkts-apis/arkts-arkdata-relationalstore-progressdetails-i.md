@@ -1,5 +1,9 @@
 # ProgressDetails
 
+```TypeScript
+interface ProgressDetails
+```
+
 Describes detail of the cloud sync `Progress`.
 
 **Since:** 10

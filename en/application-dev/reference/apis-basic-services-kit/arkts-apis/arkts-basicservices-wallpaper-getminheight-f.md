@@ -40,16 +40,8 @@ wallpaper.getMinHeight((error: BusinessError, data: Number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getMinHeight().then((data: Number) => {
-    console.info(`success to getMinHeight: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
-    console.error(`failed to getMinHeight because: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="getminheight-1"></a>
 
 ## getMinHeight
 
@@ -73,4 +65,12 @@ Obtains the minimum height of the wallpaper. in pixels. returns 0 if no wallpape
 
 **Examples**
 
-See [getMinHeight](#getminheight)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wallpaper.getMinHeight().then((data: Number) => {
+    console.info(`success to getMinHeight: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+    console.error(`failed to getMinHeight because: ${JSON.stringify(error)}`);
+});
+```

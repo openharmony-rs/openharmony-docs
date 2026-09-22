@@ -1,5 +1,9 @@
 # DirectionalLight
 
+```TypeScript
+export interface DirectionalLight extends Light
+```
+
 平行光类型，继承自Light。
 
 @extends Light @interface DirectionalLight

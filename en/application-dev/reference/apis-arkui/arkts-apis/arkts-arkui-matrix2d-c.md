@@ -1,6 +1,24 @@
 # Matrix2D
 
-**Matrix2D** allows you to perform matrix transformation, such as scaling, rotating, and translating.
+```TypeScript
+declare class Matrix2D
+```
+
+A matrix object used for graphic transformation in CanvasRenderingContext2D, OffscreenCanvasRenderingContext2D, CanvasPattern, and Path2D. It can perform scaling, rotation, translation, and other transformations on the matrix.
+
+**Matrix2D** is used in the following scenarios:
+
+1. In CanvasRenderingContext2D and
+OffscreenCanvasRenderingContext2D, call [getTransform](../arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#gettransform) to obtain the canvas graphic transformation **Matrix2D** object, and call setTransform to apply the graphic transformation corresponding to the **Matrix2D** object to subsequent drawing content.
+2. In CanvasPattern, call
+setTransform to apply the graphic transformation corresponding to the **Matrix2D** object to the CanvasPattern object.
+3. In Path2D, call
+addPath to apply the graphic transformation corresponding to the **Matrix2D** object to the Path2D object.
+
+> **NOTE:** 
+> 
+> You can use the [px2vp](arkts-arkui-arkui-uicontext-uicontext-c.md#px2vp) API for unit
+> conversion.
 
 **Since:** 8
 
@@ -24,13 +42,16 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
 constructor(unit: LengthMetricsUnit)
 ```
 
-Constructs a two-dimensional transformation matrix object. The default value is a matrix whose attributes are all 0. The unit mode of the Matrix2D object can be configured.
+Constructs a two-dimensional transformation matrix object. The default value is a matrix whose attributes are all
+0. The unit mode of the Matrix2D object can be configured.
 
 **Since:** 12
 
@@ -46,7 +67,7 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| unit | [LengthMetricsUnit](arkts-arkui-lengthmetricsunit-t.md) | Yes | Unit mode of the **Matrix2D** object. The value cannot be dynamically changed once set. The configuration method is the same as that of CanvasRenderingContext2D.<br>For abnormal values NaN and Infinity, the default values are used.<br>Default value: DEFAULT. |
+| unit | [LengthMetricsUnit](arkts-arkui-lengthmetricsunit-t.md) | Yes | Unit mode of the **Matrix2D** object. The configuration cannot be dynamically changed after being set. The configuration method is the same as that of CanvasRenderingContext2D.<br>Default value: **DEFAULT** <br>If the invalid values **NaN** and **Infinity** are passed in, the default value is used. |
 
 ## identity
 
@@ -54,9 +75,11 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 identity(): Matrix2D
 ```
 
-Transforms the current 2D matrix back to the identity matrix (i.e., without any rotational translation scaling effect)
+Creates an identity matrix. It is commonly used to reset the transformation matrix, clearing all previous transformation operations so that subsequent drawing content is not affected by previous transformations.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -68,7 +91,7 @@ Transforms the current 2D matrix back to the identity matrix (i.e., without any 
 
 | Type | Description |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) | Identity matrix. |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | Identity matrix, which can be used to initialize or reset the graphics transformation state. |
 
 ## invert
 
@@ -76,9 +99,11 @@ Transforms the current 2D matrix back to the identity matrix (i.e., without any 
 invert(): Matrix2D
 ```
 
-Transform the current 2D matrix into an inverse matrix (that is, the transformation effect is the opposite effect of the original)
+Obtains the inverse of the current matrix. It is commonly used to undo previous transformation operations or calculate reverse transformations, enabling reverse mapping of the coordinate system.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -90,7 +115,7 @@ Transform the current 2D matrix into an inverse matrix (that is, the transformat
 
 | Type | Description |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) | Inverse of the current matrix. |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | Inverse matrix result, which can be used for reverse transformation or to undo previous transformation operations. |
 
 ## multiply
 
@@ -98,11 +123,15 @@ Transform the current 2D matrix into an inverse matrix (that is, the transformat
 multiply(other?: Matrix2D): Matrix2D
 ```
 
-The matrix is superimposed in right multiplication mode. When the input parameter is empty, the matrix is superimposed.
+Multiplies the current matrix by the target matrix. This API is an empty API and has no actual effect.
+
+This API is deprecated since API version 10 and has no actual drawing effect, so no example is provided.
 
 **Since:** 8
 
 **Deprecated since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
@@ -112,13 +141,13 @@ The matrix is superimposed in right multiplication mode. When the input paramete
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| other | [Matrix2D](arkts-arkui-matrix2d-c.md) | No | Target matrix.<br>Invalid values **undefined** and **null** are treated as invalid inputs.<br>Default value: **null**. |
+| other | [Matrix2D](arkts-arkui-matrix2d-c.md) | No | Target matrix.<br>Invalid values **undefined** and **null** are treated as invalid inputs. <br>Default value: **null**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) | Matrix of the multiplication result. |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | This API is an empty implementation, and its return value has no practical meaning. |
 
 ## rotate
 
@@ -126,13 +155,15 @@ The matrix is superimposed in right multiplication mode. When the input paramete
 rotate(rx?: number, ry?: number): Matrix2D
 ```
 
-Adds the rotation effect of the X and Y axes to the current matrix.
+Performs a rotation operation on the current matrix. This API is an empty API and has no actual effect.
 
 **Since:** 8
 
 **Deprecated since:** 10
 
 **Substitutes:** [rotate](#rotate)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
@@ -142,14 +173,16 @@ Adds the rotation effect of the X and Y axes to the current matrix.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rx | number | No | Horizontal coordinate of the rotation point. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp. |
-| ry | number | No | Vertical coordinate of the rotation point. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp. |
+| rx | number | No | Horizontal coordinate of the rotation point. The value range is unlimited.<br>Default unit: vp <br>The abnormal values **undefined** and **null** are processed as invalid values, and **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **0** |
+| ry | number | No | Vertical coordinate of the rotation point. The value range is unlimited.<br>Default unit: vp <br>The abnormal values **undefined** and **null** are processed as invalid values, and **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **0** |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | Result matrix object after rotation, which can be used to perform rotation transformation on graphics. |
+
+<a id="rotate-1"></a>
 
 ## rotate
 
@@ -157,7 +190,7 @@ Adds the rotation effect of the X and Y axes to the current matrix.
 rotate(degree: number, rx?: number, ry?: number): Matrix2D
 ```
 
-Adds the rotation effect of the X and Y axes to the current matrix.
+Performs a left-multiply rotation operation on the current matrix, centered at the rotation point. It is commonly used in scenarios such as graphic rotation animation or image rotation processing.
 
 **Since:** 10
 
@@ -173,15 +206,15 @@ Adds the rotation effect of the X and Y axes to the current matrix.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| degree | number | Yes | Rotation angle. The value range is not limited. Positive angles represent clockwise rotation. You can convert the angle to radians using the following formula: degree * Math.PI/180.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: radian. |
-| rx | number | No | Horizontal coordinate of the rotation point. The value range is not limited.<br>Default unit: vp.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **0**. |
-| ry | number | No | Vertical coordinate of the rotation point. The value range is not limited.<br>Default unit: vp.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **0**. |
+| degree | number | Yes | Rotation angle (in radians). The value range is unlimited. A positive value indicates clockwise rotation. You can convert an angle to radians using `angle * Math.PI / 180` and pass it to this API. <br>Invalid values **undefined** and **null** are treated as invalid values. **NaN** and **Infinity** will cause **Matrix2D** exceptions. <br>Default unit: radians |
+| rx | number | No | Horizontal coordinate of the rotation point. The value range is not limited.<br>Default unit: vp. <br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default value: **0**. |
+| ry | number | No | Vertical coordinate of the rotation point. The value range is not limited.<br>Default unit: vp. <br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default value: **0**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | Resulting matrix object after rotation, which can be used to perform rotation transformation on graphics. |
 
 ## scale
 
@@ -189,9 +222,11 @@ Adds the rotation effect of the X and Y axes to the current matrix.
 scale(sx?: number, sy?: number): Matrix2D
 ```
 
-Adds the scaling effect of the X and Y axes to the current matrix.
+Performs a left-multiply scaling operation on the current matrix. It is commonly used in scenarios such as graphic scaling or flipping.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -203,14 +238,14 @@ Adds the scaling effect of the X and Y axes to the current matrix.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sx | number | No | Horizontal scaling ratio coefficient. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **1.0**. |
-| sy | number | No | Vertical scaling ratio coefficient. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **1.0**. |
+| sx | number | No | Horizontal scaling ratio coefficient. The value range is not limited. A value greater than 1 indicates magnification, less than 1 indicates reduction, and a negative value indicates horizontal flipping.<br>Abnormal values **undefined** and **null** are treated as invalid input. **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **1.0** |
+| sy | number | No | Vertical scaling ratio coefficient. The value range is not limited. A value greater than 1 indicates magnification, less than 1 indicates reduction, and a negative value indicates vertical flipping.<br>Abnormal values **undefined** and **null** are treated as invalid input. **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **1.0** |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) |  |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | Scaling result matrix object, which can be used to scale graphics. |
 
 ## translate
 
@@ -218,9 +253,11 @@ Adds the scaling effect of the X and Y axes to the current matrix.
 translate(tx?: number, ty?: number): Matrix2D
 ```
 
-Performs a left multiplication translation operation on this matrix.
+Performs a left-multiply translation operation on the current matrix. It is commonly used in scenarios such as adjusting graphic positions, implementing displacement animations, or offsetting the canvas coordinate system.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -232,14 +269,14 @@ Performs a left multiplication translation operation on this matrix.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| tx | number | No | Horizontal translation distance. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp.<br>Default value: **0**. |
-| ty | number | No | Vertical translation distance. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp.<br>Default value: **0**. |
+| tx | number | No | Horizontal translation distance. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default unit: vp. <br>Default value: **0**. |
+| ty | number | No | Vertical translation distance. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default unit: vp. <br>Default value: **0**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) | Matrix of the translation result. |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | Result matrix object after translation, which can be used to perform translation transformation on graphics. |
 
 ## rotateX
 
@@ -247,11 +284,17 @@ Performs a left multiplication translation operation on this matrix.
 rotateX?: number
 ```
 
-Horizontal skew coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.
+Horizontal skew factor. The value range is unlimited.
+
+Default: **0**
+
+The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting.
 
 **Type:** number
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -265,11 +308,17 @@ Horizontal skew coefficient. The value range is not limited.<br>If the value is 
 rotateY?: number
 ```
 
-Vertical skew coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.
+Vertical skew factor. The value range is unlimited.
+
+Default: **0**
+
+The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting.
 
 **Type:** number
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -283,11 +332,17 @@ Vertical skew coefficient. The value range is not limited.<br>If the value is un
 scaleX?: number
 ```
 
-Horizontal scaling coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.
+Horizontal scale factor. The value range is unlimited. Values greater than 1 enlarge, less than 1 shrink, and negative values flip horizontally.
+
+Default: **1**
+
+The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting.
 
 **Type:** number
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -301,11 +356,17 @@ Horizontal scaling coefficient. The value range is not limited.<br>If the value 
 scaleY?: number
 ```
 
-Vertical scaling coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.
+Vertical scale factor. The value range is unlimited. Values greater than 1 enlarge, less than 1 shrink, and negative values flip vertically.
+
+Default: **1**
+
+The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting.
 
 **Type:** number
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -319,11 +380,19 @@ Vertical scaling coefficient. The value range is not limited.<br>If the value is
 translateX?: number
 ```
 
-Horizontal translation distance. The value range is unlimited. <br>The abnormal value undefined is processed as an invalid value. NaN and Infinity will cause Matrix2D exceptions. After the setting, the drawn content is not displayed. <br>Default unit: vp.
+Horizontal translation distance. The value range is unlimited.
+
+Default: **0**
+
+The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting.
+
+Default unit: vp
 
 **Type:** number
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -337,11 +406,19 @@ Horizontal translation distance. The value range is unlimited. <br>The abnormal 
 translateY?: number
 ```
 
-Vertical translation distance. The value range is unlimited. <br>The abnormal value undefined is processed as an invalid value. NaN and Infinity will cause Matrix2D exceptions. After the setting, the drawn content is not displayed. <br>Default unit: vp.
+Vertical translation distance. The value range is unlimited.
+
+Default: **0**
+
+The value **undefined** is treated as invalid. **NaN** and **Infinity** cause **Matrix2D** to behave abnormally, and drawn content will not be displayed after setting.
+
+Default unit: vp
 
 **Type:** number
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

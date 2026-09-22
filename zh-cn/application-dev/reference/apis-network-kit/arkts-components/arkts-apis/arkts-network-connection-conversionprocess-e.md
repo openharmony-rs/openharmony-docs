@@ -1,5 +1,9 @@
 # ConversionProcess
 
+```TypeScript
+export enum ConversionProcess
+```
+
 ASCII/Unicode转码转换流程参数的枚举。
 
 **起始版本：** 23

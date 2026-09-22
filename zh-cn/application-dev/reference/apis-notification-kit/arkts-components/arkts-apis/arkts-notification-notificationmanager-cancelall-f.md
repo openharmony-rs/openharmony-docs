@@ -24,7 +24,7 @@ function cancelAll(callback: AsyncCallback<void>): void
 
 [publish](arkts-notification-notificationmanager-publish-f.md) 发布通知。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md) 取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-1) 取消已发布的通知。
 
 **参数：**
 
@@ -57,16 +57,8 @@ let cancelAllCallback = (err: BusinessError): void => {
 notificationManager.cancelAll(cancelAllCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.cancelAll().then(() => {
-  console.info(`Succeeded in canceling all notification.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="cancelall-1"></a>
 
 ## cancelAll
 
@@ -84,9 +76,9 @@ function cancelAll(): Promise<void>
 
 **参见：**
 
-[publish](arkts-notification-notificationmanager-publish-f.md) 发布通知。
+[publish](arkts-notification-notificationmanager-publish-f.md#publish-1) 发布通知。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md) 根据指定的通知ID取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) 根据指定的通知ID取消已发布的通知。
 
 **返回值：**
 
@@ -104,4 +96,12 @@ function cancelAll(): Promise<void>
 
 **示例**
 
-参见 [cancelAll](#cancelall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.cancelAll().then(() => {
+  console.info(`Succeeded in canceling all notification.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # MediaKeyStatus
 
+```TypeScript
+interface MediaKeyStatus
+```
+
 Defines a status attribute for a media key.
 
 **Since:** 11

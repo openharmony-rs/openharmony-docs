@@ -24,7 +24,7 @@ Creates a **PluginComponent** to display the UI provided by an external applicat
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [PluginComponentOptions](arkts-arkui-plugincomponentoptions-i-sys.md) | Yes | Configuration options of the **PluginComponent**. |
+| options | [PluginComponentOptions](arkts-arkui-plugincomponent-comp-plugincomponentoptions-i-sys.md) | Yes | Configuration options of the **PluginComponent**. |
 
 ## Summary
 
@@ -32,12 +32,12 @@ Creates a **PluginComponent** to display the UI provided by an external applicat
 
 | Name | Description |
 | --- | --- |
-| [PluginComponentOptions](arkts-arkui-plugincomponentoptions-i-sys.md) | Defines options for constructing a **PluginComponent**. |
-| [PluginComponentTemplate](arkts-arkui-plugincomponenttemplate-i-sys.md) | [PluginComponentTemplate](arkts-arkui-plugincomponenttemplate-i-sys.md) |
-| [PluginErrorData](arkts-arkui-pluginerrordata-i-sys.md) | Data provided when the error occurs. |
+| [PluginComponentOptions](arkts-arkui-plugincomponent-comp-plugincomponentoptions-i-sys.md) | Defines options for constructing a **PluginComponent**. |
+| [PluginComponentTemplate](arkts-arkui-plugincomponent-comp-plugincomponenttemplate-i-sys.md) | [PluginComponentTemplate](arkts-arkui-plugincomponent-comp-plugincomponenttemplate-i-sys.md) |
+| [PluginErrorData](arkts-arkui-plugincomponent-comp-pluginerrordata-i-sys.md) | Data provided when the error occurs. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [PluginErrorCallback](arkts-arkui-pluginerrorcallback-t-sys.md) | Callback invoked when an error occurs. |
+| [PluginErrorCallback](arkts-arkui-plugincomponent-comp-pluginerrorcallback-t-sys.md) | Callback invoked when an error occurs. |

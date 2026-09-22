@@ -1,5 +1,9 @@
 # HuksKeyWrapType
 
+```TypeScript
+export enum HuksKeyWrapType
+```
+
 表示密钥加密类型（加密导出或导入密钥）的枚举。
 
 **起始版本：** 20
@@ -15,6 +19,8 @@ HUKS_KEY_WRAP_TYPE_HUK_BASED = 2
 硬件唯一密钥加密类型。<!--Del-->（暂不支持）<!--DelEnd-->
 
 **起始版本：** 20
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 

@@ -1,5 +1,9 @@
 # ErrorInfo
 
+```TypeScript
+export interface ErrorInfo<T extends Error = BusinessError>
+```
+
 Describes the error information.
 
 **Since:** 20

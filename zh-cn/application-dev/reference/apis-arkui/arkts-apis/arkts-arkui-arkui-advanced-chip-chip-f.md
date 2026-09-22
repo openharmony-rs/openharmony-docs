@@ -16,7 +16,7 @@ Chip组件用于标签展示和交互场景，支持自定义样式、图标、�
 
 > **说明：** 
 > 
-> - 如果Chip设置[通用属性](../arkts-components/arkts-arkui-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Chip本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议Chip设置通用属性和通用事件。
+> - 如果Chip设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Chip本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议Chip设置通用属性和通用事件。
 
 ## 导入模块
 
@@ -24,6 +24,7 @@ Chip组件用于标签展示和交互场景，支持自定义样式、图标、�
 import { Chip, ChipOptions, ChipSize } from '@kit.ArkUI';
 ```
 
+  
 ## 子组件
 
 无

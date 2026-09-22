@@ -1,5 +1,9 @@
 # SegmentButtonTextItem
 
+```TypeScript
+interface SegmentButtonTextItem
+```
+
 文本按钮信息。
 
 **起始版本：** 11

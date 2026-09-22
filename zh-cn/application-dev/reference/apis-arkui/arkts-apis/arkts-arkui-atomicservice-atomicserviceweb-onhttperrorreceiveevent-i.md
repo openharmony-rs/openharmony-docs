@@ -1,5 +1,9 @@
 # OnHttpErrorReceiveEvent
 
+```TypeScript
+export declare interface OnHttpErrorReceiveEvent
+```
+
 定义网页加载资源遇到HTTP错误时触发该回调。
 
 **起始版本：** 12
@@ -20,7 +24,7 @@ request: WebResourceRequest
 
 网页请求的封装信息。
 
-**类型：** WebResourceRequest
+**类型：** [WebResourceRequest](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-webresourcerequest-c.md)
 
 **起始版本：** 12
 
@@ -36,7 +40,7 @@ response: WebResourceResponse
 
 资源响应的封装信息。
 
-**类型：** WebResourceResponse
+**类型：** [WebResourceResponse](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-webresourceresponse-c.md)
 
 **起始版本：** 12
 

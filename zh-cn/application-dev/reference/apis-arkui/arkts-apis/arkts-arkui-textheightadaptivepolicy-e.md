@@ -1,5 +1,9 @@
 # TextHeightAdaptivePolicy
 
+```TypeScript
+declare enum TextHeightAdaptivePolicy
+```
+
 Enum of text height adaptation
 
 **起始版本：** 10

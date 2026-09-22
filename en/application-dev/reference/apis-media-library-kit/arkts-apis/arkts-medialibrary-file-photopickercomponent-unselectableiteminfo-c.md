@@ -1,8 +1,12 @@
 # UnselectableItemInfo
 
+```TypeScript
+export declare class UnselectableItemInfo
+```
+
 UnselectableItemInfo
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -22,11 +26,11 @@ MimeType.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,10 +44,10 @@ PhotoSubtype. Asset subtype, non-special type images default to DEFAULT(0).
 
 **Type:** [photoAccessHelper.PhotoSubtype](arkts-medialibrary-photoaccesshelper-photosubtype-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

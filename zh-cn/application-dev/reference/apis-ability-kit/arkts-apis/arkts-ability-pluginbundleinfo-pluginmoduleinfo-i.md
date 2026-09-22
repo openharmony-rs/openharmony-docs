@@ -1,5 +1,9 @@
 # PluginModuleInfo
 
+```TypeScript
+export interface PluginModuleInfo
+```
+
 插件的模块信息。
 
 **起始版本：** 26.0.0

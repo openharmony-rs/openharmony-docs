@@ -1,5 +1,9 @@
 # LiquidMaterialEffectParam (System API)
 
+```TypeScript
+interface LiquidMaterialEffectParam
+```
+
 Material effect parameters, used to control the display properties of the material such as refraction, reflection, perturbation, and overlay color.
 
 **Since:** 22

@@ -1,5 +1,9 @@
 # PermissionStateChangeType
 
+```TypeScript
+export enum PermissionStateChangeType
+```
+
 程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../../security/AccessToken/app-permission-mgmt-overview.md)。
 
 该模块主要用于以下场景：
@@ -42,6 +46,8 @@ PERMISSION_REVOKED_OPER = 0
 
 **起始版本：** 18
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -55,6 +61,8 @@ PERMISSION_GRANTED_OPER = 1
 表示权限授予操作。
 
 **起始版本：** 18
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 

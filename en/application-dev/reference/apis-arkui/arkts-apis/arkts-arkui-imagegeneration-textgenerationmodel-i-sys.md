@@ -1,5 +1,9 @@
 # TextGenerationModel (System API)
 
+```TypeScript
+export interface TextGenerationModel
+```
+
 AI Text Model Abstract Interface.
 
 @interface TextGenerationModel

@@ -1,5 +1,9 @@
 # EncodingBaseFormat
 
+```TypeScript
+enum EncodingBaseFormat
+```
+
 表示生成证书相关数据的编码格式的枚举。
 
 **起始版本：** 18

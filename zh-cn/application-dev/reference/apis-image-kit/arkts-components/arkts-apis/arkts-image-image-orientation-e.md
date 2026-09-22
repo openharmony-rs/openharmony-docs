@@ -1,5 +1,9 @@
 # Orientation
 
+```TypeScript
+enum Orientation
+```
+
 表示图像方向类型的枚举。
 
 **起始版本：** 23

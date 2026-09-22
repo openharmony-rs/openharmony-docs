@@ -46,14 +46,8 @@ geolocation.getAddressesFromLocationName(geocodeRequest, (err, data) => {
 });
 ```
 
-```TypeScript
-import geolocation from '@ohos.geolocation';
-let geocodeRequest:geolocation.GeoCodeRequest = {"description": "上海市浦东新区xx路xx号", "maxItems": 1};
-geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
-    console.info('getAddressesFromLocationName: ' + JSON.stringify(result));
-});
-```
 
+<a id="getaddressesfromlocationname-1"></a>
 
 ## getAddressesFromLocationName
 
@@ -87,4 +81,10 @@ function getAddressesFromLocationName(request: GeoCodeRequest): Promise<Array<Ge
 
 **示例**
 
-参见 [getAddressesFromLocationName](#getaddressesfromlocationname)
+```TypeScript
+import geolocation from '@ohos.geolocation';
+let geocodeRequest:geolocation.GeoCodeRequest = {"description": "上海市浦东新区xx路xx号", "maxItems": 1};
+geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
+    console.info('getAddressesFromLocationName: ' + JSON.stringify(result));
+});
+```

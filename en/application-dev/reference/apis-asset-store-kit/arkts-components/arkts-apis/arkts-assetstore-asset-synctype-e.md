@@ -1,5 +1,9 @@
 # SyncType
 
+```TypeScript
+enum SyncType
+```
+
 Enumerates the sync types supported by an asset.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # HapModuleInfo（系统接口）
 
+```TypeScript
+interface HapModuleInfo
+```
+
 FA模型的使用信息属性集合。
 
 **起始版本：** 9

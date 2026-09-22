@@ -1,5 +1,9 @@
 # AlbumOperation (System API)
 
+```TypeScript
+interface AlbumOperation
+```
+
 Represents an album operation configuration.
 
 **Since:** 26.0.0

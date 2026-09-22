@@ -1,5 +1,9 @@
 # TreeViewV2
 
+```TypeScript
+export declare struct TreeViewV2
+```
+
 Declare TreeViewV2 Component
 
 **Since:** 26.0.0

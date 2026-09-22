@@ -1,5 +1,9 @@
 # ChipV2LocalizedLabelMarginConfig
 
+```TypeScript
+export interface ChipV2LocalizedLabelMarginConfig
+```
+
 ChipV2LocalizedLabelMarginConfig用于定义本地化文本与左右侧图标之间间距配置。
 
 **起始版本：** 26.0.0
@@ -24,11 +28,11 @@ end?: LengthMetrics
 
 size为ChipV2Size.SMALL时，end默认值：
 
-`LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin'))`。
+`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。
 
 size为ChipV2Size.NORMAL时，end默认值：
 
-`LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin'))`。
+`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。
 
 单位：vp
 
@@ -60,11 +64,11 @@ start?: LengthMetrics
 
 size为ChipV2Size.SMALL时，start默认值：
 
-`LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin'))`。
+`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。
 
 size为ChipV2Size.NORMAL时，start默认值：
 
-`LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin'))`。
+`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。
 
 单位：vp
 

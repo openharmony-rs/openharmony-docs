@@ -1,5 +1,9 @@
 # BlanklessLoadingParam
 
+```TypeScript
+interface BlanklessLoadingParam
+```
+
 Loading parameters of the White-Screen-Free Loading frame interpolation scheme.
 
 **Since:** 23

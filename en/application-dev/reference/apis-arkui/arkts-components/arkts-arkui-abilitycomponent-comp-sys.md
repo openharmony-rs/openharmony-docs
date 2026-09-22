@@ -14,7 +14,7 @@ Construct the ability component. Called when the ability component is used.
 
 **Deprecated since:** 10
 
-**Substitutes:** UIExtensionComponentInterface
+**Substitutes:** [UIExtensionComponentInterface](arkts-arkui-uiextensioncomponent-comp-sys.md#uiextensioncomponentinterface)
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

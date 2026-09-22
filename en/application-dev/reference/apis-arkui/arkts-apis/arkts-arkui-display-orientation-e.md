@@ -1,5 +1,9 @@
 # Orientation
 
+```TypeScript
+enum Orientation
+```
+
 Enumerates the orientations of a display.
 
 **Since:** 10

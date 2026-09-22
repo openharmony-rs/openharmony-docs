@@ -69,34 +69,8 @@ try {
 }
 ```
 
-```TypeScript
-import { FaultLogger } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-async function getLog() {
-  try {
-    let value: Array<FaultLogger.FaultLogInfo> = await FaultLogger.query(FaultLogger.FaultType.JS_CRASH);
-    if (value) {
-      console.info(`value length: ${value.length}`);
-      let len: number = value.length;
-      for (let i = 0; i < len; i++) {
-        console.info(`log: ${i}`);
-        console.info(`Log pid: ${value[i].pid}`);
-        console.info(`Log uid: ${value[i].uid}`);
-        console.info(`Log type: ${value[i].type}`);
-        console.info(`Log timestamp: ${value[i].timestamp}`);
-        console.info(`Log reason: ${value[i].reason}`);
-        console.info(`Log module: ${value[i].module}`);
-        console.info(`Log summary: ${value[i].summary}`);
-        console.info(`Log text: ${value[i].fullLog}`);
-      }
-    }
-  } catch (err) {
-    console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
-  }
-}
-```
-
+<a id="query-1"></a>
 
 ## query
 
@@ -136,4 +110,30 @@ function query(faultType: FaultType): Promise<Array<FaultLogInfo>>
 
 **示例**
 
-参见 [query](#query)
+```TypeScript
+import { FaultLogger } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function getLog() {
+  try {
+    let value: Array<FaultLogger.FaultLogInfo> = await FaultLogger.query(FaultLogger.FaultType.JS_CRASH);
+    if (value) {
+      console.info(`value length: ${value.length}`);
+      let len: number = value.length;
+      for (let i = 0; i < len; i++) {
+        console.info(`log: ${i}`);
+        console.info(`Log pid: ${value[i].pid}`);
+        console.info(`Log uid: ${value[i].uid}`);
+        console.info(`Log type: ${value[i].type}`);
+        console.info(`Log timestamp: ${value[i].timestamp}`);
+        console.info(`Log reason: ${value[i].reason}`);
+        console.info(`Log module: ${value[i].module}`);
+        console.info(`Log summary: ${value[i].summary}`);
+        console.info(`Log text: ${value[i].fullLog}`);
+      }
+    }
+  } catch (err) {
+    console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+  }
+}
+```

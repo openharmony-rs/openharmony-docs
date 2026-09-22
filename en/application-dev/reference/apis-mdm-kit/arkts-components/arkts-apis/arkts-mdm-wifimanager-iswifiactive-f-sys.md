@@ -66,24 +66,8 @@ wifiManager.isWifiActive(wantTemp, (err, result) => {
 });
 ```
 
-```TypeScript
-import { wifiManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-wifiManager.isWifiActive(wantTemp).then((result) => {
-  console.info(`Succeeded in querying whether the wifi is active or not, result : ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query whether the wifi is active or not. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="iswifiactive-1"></a>
 
 ## isWifiActive
 
@@ -131,4 +115,20 @@ Queries the Wi-Fi status of the current device. This API uses a promise to retur
 
 **Examples**
 
-See [isWifiActive](#iswifiactive)
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+wifiManager.isWifiActive(wantTemp).then((result) => {
+  console.info(`Succeeded in querying whether the wifi is active or not, result : ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query whether the wifi is active or not. Code: ${err.code}, message: ${err.message}`);
+});
+```

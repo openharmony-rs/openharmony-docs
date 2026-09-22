@@ -1,5 +1,9 @@
 # ResultInfo（系统接口）
 
+```TypeScript
+interface ResultInfo
+```
+
 复制操作的结果信息。
 
 **起始版本：** 26.0.0

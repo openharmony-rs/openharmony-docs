@@ -1,5 +1,9 @@
 # AuthResult
 
+```TypeScript
+interface AuthResult
+```
+
 表示认证结果信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # ContinueResultInfo
 
+```TypeScript
+interface ContinueResultInfo
+```
+
 注册或注销回调函数返回的快速拉起结果，包含操作状态码和结果说明信息，用于应用获取跨端迁移快速拉起的执行结果。
 
 **起始版本：** 18

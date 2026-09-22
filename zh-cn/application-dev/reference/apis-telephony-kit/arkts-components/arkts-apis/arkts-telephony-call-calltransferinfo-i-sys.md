@@ -1,5 +1,9 @@
 # CallTransferInfo（系统接口）
 
+```TypeScript
+export interface CallTransferInfo
+```
+
 呼叫转移信息。
 
 **起始版本：** 8

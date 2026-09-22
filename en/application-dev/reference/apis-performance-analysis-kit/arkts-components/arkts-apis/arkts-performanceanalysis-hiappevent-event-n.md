@@ -1,5 +1,9 @@
 # event(Application Event Logging)
 
+```TypeScript
+namespace event
+```
+
 Provides event name constants, including system event name constants and application event name constants. <br>The application event name constants are optional custom event names reserved when you call Write for application event logging.
 
 **Since:** 9

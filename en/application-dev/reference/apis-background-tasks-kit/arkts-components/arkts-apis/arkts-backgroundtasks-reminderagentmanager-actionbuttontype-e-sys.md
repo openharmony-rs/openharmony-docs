@@ -1,5 +1,9 @@
 # ActionButtonType
 
+```TypeScript
+export enum ActionButtonType
+```
+
 Enumerates the types of buttons displayed for a reminder.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # Service
 
+```TypeScript
+interface Service
+```
+
 Represents the NearLink service.
 
 **Since:** 26.0.0

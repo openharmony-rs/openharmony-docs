@@ -1,5 +1,9 @@
 # BondState
 
+```TypeScript
+enum BondState
+```
+
 枚举，配对状态。
 
 **起始版本：** 10

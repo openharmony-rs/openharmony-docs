@@ -1,5 +1,9 @@
 # RationalNumber
 
+```TypeScript
+class RationalNumber
+```
+
 Provides APIs to compare rational numbers and obtain numerators and denominators. For example, the **toString()** API can be used to convert a rational number into a string.
 
 **Since:** 8
@@ -112,12 +116,10 @@ A constructor used to create a **RationalNumber** object.
 **Examples**
 
 ```TypeScript
-let rationalNumber = new util.RationalNumber();
-```
-
-```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -137,10 +139,6 @@ A constructor used to create a **RationalNumber** object.
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber();
-```
-
-```TypeScript
-let rationalNumber = new util.RationalNumber(1,2);
 ```
 
 ## createRationalFromString
@@ -217,8 +215,14 @@ console.info("result = " + result);
 // Output: result = false
 ```
 
-```TypeScript
 You are advised to use the following code snippet for API version 9 and later versions:
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let rational = util.RationalNumber.createRationalFromString("3/4");
+let result = rationalNumber.equals(rational);
+console.info("result = " + result);
+// Output: result = false
 ```
 
 ## getCommonDivisor
@@ -319,8 +323,13 @@ console.info("result = " + result);
 // Output: result = 2
 ```
 
-```TypeScript
 You are advised to use the following code snippet for API version 9 and later versions:
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2)
+let result = rationalNumber.getDenominator();
+console.info("result = " + result);
+// Output: result = 2
 ```
 
 ## getNumerator
@@ -352,8 +361,13 @@ console.info("result = " + result);
 // Output: result = 1
 ```
 
-```TypeScript
 You are advised to use the following code snippet for API version 9 and later versions:
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.getNumerator();
+console.info("result = " + result);
+// Output: result = 1
 ```
 
 ## isFinite
@@ -385,8 +399,13 @@ console.info("result = " + result);
 // Output: result = true
 ```
 
-```TypeScript
 You are advised to use the following code snippet for API version 9 and later versions:
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.isFinite();
+console.info("result = " + result);
+// Output: result = true
 ```
 
 ## isNaN
@@ -418,8 +437,13 @@ console.info("result = " + result);
 // Output: result = false
 ```
 
-```TypeScript
 You are advised to use the following code snippet for API version 9 and later versions:
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.isNaN();
+console.info("result = " + result);
+// Output: result = false
 ```
 
 ## isZero
@@ -451,8 +475,13 @@ console.info("result = " + result);
 // Output: result = false
 ```
 
-```TypeScript
 You are advised to use the following code snippet for API version 9 and later versions:
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.isZero();
+console.info("result = " + result);
+// Output: result = false
 ```
 
 ## parseRationalNumber
@@ -523,8 +552,13 @@ console.info("result = " + result);
 // Output: result = 1/2
 ```
 
-```TypeScript
 You are advised to use the following code snippet for API version 9 and later versions:
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.toString();
+console.info("result = " + result);
+// Output: result = 1/2
 ```
 
 ## valueOf
@@ -556,6 +590,11 @@ console.info("result = " + result);
 // Output: result = 0.5
 ```
 
-```TypeScript
 You are advised to use the following code snippet for API version 9 and later versions:
+
+```TypeScript
+let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
+let result = rationalNumber.valueOf();
+console.info("result = " + result);
+// Output: result = 0.5
 ```

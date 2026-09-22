@@ -1,5 +1,9 @@
 # PrinterExtensionInfo (System API)
 
+```TypeScript
+interface PrinterExtensionInfo
+```
+
 Provides the printer extension information.
 
 **Since:** 10

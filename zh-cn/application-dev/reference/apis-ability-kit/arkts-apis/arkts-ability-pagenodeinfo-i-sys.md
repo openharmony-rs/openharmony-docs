@@ -1,5 +1,9 @@
 # PageNodeInfo（系统接口）
 
+```TypeScript
+export default interface PageNodeInfo
+```
+
 自动填充的页面节点信息。
 
 **起始版本：** 11

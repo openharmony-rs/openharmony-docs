@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+interface Filter
+```
+
 Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前，需要先通过[createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md)创建一个Filter实例。
 
 **起始版本：** 12
@@ -575,7 +579,7 @@ haloBloom(tintColor: Color, bloomFactor: number, glowExposure: number): Filter
 > 
 > 建议作为前景滤镜使用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -958,7 +962,7 @@ spinBlur(center: common2D.Point, angle: number, samples: number): Filter
 > 
 > 建议作为前景滤镜使用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

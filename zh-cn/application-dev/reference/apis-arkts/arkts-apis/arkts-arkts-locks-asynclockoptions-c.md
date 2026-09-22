@@ -1,5 +1,9 @@
 # AsyncLockOptions
 
+```TypeScript
+class AsyncLockOptions<T>
+```
+
 表示锁操作选项的类。
 
 **起始版本：** 12

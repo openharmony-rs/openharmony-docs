@@ -1,5 +1,9 @@
 # FlexDirection
 
+```TypeScript
+declare enum FlexDirection
+```
+
 FlexDirection enumeration description
 
 **Since:** 7

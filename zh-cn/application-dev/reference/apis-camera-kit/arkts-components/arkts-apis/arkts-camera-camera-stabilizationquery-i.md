@@ -1,5 +1,9 @@
 # StabilizationQuery
 
+```TypeScript
+interface StabilizationQuery
+```
+
 提供了查询设备在录像模式下是否支持对应的视频防抖模式的能力。
 
 > **说明：** 
@@ -47,3 +51,21 @@ isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isVideoStabilizationModeSupported(videoSession: camera.VideoSession): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = videoSession.isVideoStabilizationModeSupported(camera.VideoStabilizationMode.OFF);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The isVideoStabilizationModeSupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```

@@ -31,6 +31,8 @@ function getWant(agent: WantAgent, callback: AsyncCallback<Want>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | 是 | 获取WantAgent中的Want的回调方法。 |
 
 
+<a id="getwant-1"></a>
+
 ## getWant
 
 ```TypeScript

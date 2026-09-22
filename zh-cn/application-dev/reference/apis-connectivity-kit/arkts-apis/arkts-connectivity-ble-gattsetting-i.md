@@ -1,5 +1,9 @@
 # GattSetting
 
+```TypeScript
+interface GattSetting
+```
+
 描述GATT连接的参数。
 
 **起始版本：** 26.0.0

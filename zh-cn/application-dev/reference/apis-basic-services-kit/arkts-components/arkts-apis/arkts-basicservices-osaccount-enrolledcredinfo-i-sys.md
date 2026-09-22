@@ -1,5 +1,9 @@
 # EnrolledCredInfo（系统接口）
 
+```TypeScript
+interface EnrolledCredInfo
+```
+
 表示已注册凭据的信息。
 
 **起始版本：** 8

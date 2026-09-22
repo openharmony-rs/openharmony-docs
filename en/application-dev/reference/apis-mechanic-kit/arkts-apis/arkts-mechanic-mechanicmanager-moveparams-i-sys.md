@@ -1,5 +1,9 @@
 # MoveParams (System API)
 
+```TypeScript
+export interface MoveParams
+```
+
 Parameters for moving the target.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # MenuType
 
+```TypeScript
+declare enum MenuType
+```
+
 菜单类型。
 
 **起始版本：** 13

@@ -1,5 +1,9 @@
 # ExtensionValue（系统接口）
 
+```TypeScript
+export interface ExtensionValue
+```
+
 当前数据记录的扩展信息。
 
 **起始版本：** 11

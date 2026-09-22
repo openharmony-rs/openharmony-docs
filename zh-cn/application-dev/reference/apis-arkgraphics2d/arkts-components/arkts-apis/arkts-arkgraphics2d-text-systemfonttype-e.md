@@ -1,5 +1,9 @@
 # SystemFontType
 
+```TypeScript
+enum SystemFontType
+```
+
 字体类型枚举，通过位或运算可实现组合类型。
 
 **起始版本：** 14

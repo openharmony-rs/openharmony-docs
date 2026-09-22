@@ -1,5 +1,9 @@
 # GnssGeofenceRequest
 
+```TypeScript
+export interface GnssGeofenceRequest
+```
+
 GNSS地理围栏请求参数。
 
 **起始版本：** 12

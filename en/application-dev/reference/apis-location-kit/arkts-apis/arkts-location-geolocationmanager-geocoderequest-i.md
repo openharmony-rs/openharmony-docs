@@ -1,5 +1,9 @@
 # GeoCodeRequest
 
+```TypeScript
+export interface GeoCodeRequest
+```
+
 Configuring parameters in geocode requests.
 
 **Since:** 9

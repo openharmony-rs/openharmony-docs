@@ -1,5 +1,9 @@
 # FileData（系统接口）
 
+```TypeScript
+interface FileData
+```
+
 文件数据，包含一个已经打开的文件描述符，在与备份服务进行IPC时使用。
 
 @interface FileData

@@ -27,7 +27,7 @@ Obtains the device clipboard policy.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| tokenId | number | No | Application token ID, which can be obtained using bundleManager.getApplicationInfo. |
+| tokenId | number | No | Application token ID, which can be obtained using [bundleManager.getApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md). |
 
 **Return value:**
 
@@ -86,6 +86,8 @@ try {
 ```
 
 
+<a id="getappclipboardpolicy-1"></a>
+
 ## getAppClipboardPolicy
 
 ```TypeScript
@@ -107,7 +109,7 @@ Obtains the device clipboard policy. Enterprises can use this API to query the c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) &#124; null | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the. EnterpriseAdminExtensionAbility and the bundle name of the application.<br>If the device has multiple MDM applications, you can pass **admin** to query the corresponding policies. If **null** is passed, the policies that actually take effect on the device are returned. |
-| tokenId | number | No | Application token ID, which can be obtained using bundleManager.getApplicationInfo. |
+| tokenId | number | No | Application token ID, which can be obtained using [bundleManager.getApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md). |
 
 **Return value:**
 
@@ -126,8 +128,27 @@ Obtains the device clipboard policy. Enterprises can use this API to query the c
 
 **Examples**
 
-See [getAppClipboardPolicy](#getappclipboardpolicy)
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let tokenId: number = 586874394;
+try {
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
+} catch(err) {
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+<a id="getappclipboardpolicy-2"></a>
 
 ## getAppClipboardPolicy
 
@@ -172,6 +193,8 @@ Obtains the device clipboard policy of a specified application for a specified u
 See [getAppClipboardPolicy](#getappclipboardpolicy)
 
 
+<a id="getappclipboardpolicy-3"></a>
+
 ## getAppClipboardPolicy
 
 ```TypeScript
@@ -212,4 +235,22 @@ Obtains the device clipboard policy of a specified application for a specified u
 
 **Examples**
 
-See [getAppClipboardPolicy](#getappclipboardpolicy)
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let bundleName: string = 'com.example.myapplication';
+let accountId: number = 100;
+try {
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
+} catch(err) {
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
+}
+```

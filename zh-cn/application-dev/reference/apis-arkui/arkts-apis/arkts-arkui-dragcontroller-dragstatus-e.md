@@ -1,5 +1,9 @@
 # DragStatus
 
+```TypeScript
+const enum DragStatus
+```
+
 拖拽开始和结束状态。
 
 **起始版本：** 11

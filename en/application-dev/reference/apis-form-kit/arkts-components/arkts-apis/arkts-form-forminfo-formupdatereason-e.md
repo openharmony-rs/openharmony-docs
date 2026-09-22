@@ -1,5 +1,9 @@
 # FormUpdateReason
 
+```TypeScript
+enum FormUpdateReason
+```
+
 Form update reason.
 
 **Since:** 24

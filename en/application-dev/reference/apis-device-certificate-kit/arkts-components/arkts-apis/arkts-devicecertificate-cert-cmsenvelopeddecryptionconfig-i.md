@@ -1,5 +1,9 @@
 # CmsEnvelopedDecryptionConfig
 
+```TypeScript
+interface CmsEnvelopedDecryptionConfig
+```
+
 Configuration used for decrypting CMS enveloped data.
 
 **Since:** 22

@@ -1,5 +1,9 @@
 # Float32ArrayConstructor
 
+```TypeScript
+interface Float32ArrayConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

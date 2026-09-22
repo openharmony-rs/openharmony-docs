@@ -37,6 +37,16 @@ Unregisters the network sharing status change event. This method uses an asynchr
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+**Examples**
+
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+
+sharing.off('sharingStateChange', (data: boolean) => {
+  console.info(JSON.stringify(data));
+});
+```
+
 
 ## off('interfaceSharingStateChange')
 
@@ -69,6 +79,16 @@ Unsubscribes from network sharing state changes of a specified NIC. This API use
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 
+**Examples**
+
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+
+sharing.off('interfaceSharingStateChange', (data: object) => {
+  console.info(JSON.stringify(data));
+});
+```
+
 
 ## off('sharingUpstreamChange')
 
@@ -100,3 +120,13 @@ Unsubscribes from upstream network changes. This API uses an asynchronous callba
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
+
+**Examples**
+
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+
+sharing.off('sharingUpstreamChange', (data: object) => {
+  console.info(JSON.stringify(data));
+});
+```

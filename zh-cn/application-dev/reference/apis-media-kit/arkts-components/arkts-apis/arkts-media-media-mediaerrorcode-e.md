@@ -1,5 +1,9 @@
 # MediaErrorCode
 
+```TypeScript
+enum MediaErrorCode
+```
+
 媒体服务错误类型枚举。
 
 > **说明：** 

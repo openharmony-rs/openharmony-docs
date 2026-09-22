@@ -1,5 +1,9 @@
 # Advertisement
 
+```TypeScript
+export interface Advertisement
+```
+
 This module provides the requested ad content.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # ControlCenterStatusInfo
 
+```TypeScript
+interface ControlCenterStatusInfo
+```
+
 Describes the effect status information of a camera controller.
 
 **Since:** 20

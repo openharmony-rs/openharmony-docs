@@ -1,5 +1,9 @@
 # CaptionsStyle
 
+```TypeScript
+interface CaptionsStyle
+```
+
 字幕风格。
 
 **起始版本：** 8

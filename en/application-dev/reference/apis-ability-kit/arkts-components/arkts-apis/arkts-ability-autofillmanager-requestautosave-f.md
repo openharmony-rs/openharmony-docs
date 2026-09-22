@@ -137,6 +137,41 @@ struct Index {
 }
 ```
 
+
+<a id="requestautosave-1"></a>
+
+## requestAutoSave
+
+```TypeScript
+export function requestAutoSave(context: UIContext, request: SaveRequest, callback?: AutoSaveCallback): void
+```
+
+Trigger an auto save request.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| context | [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | Yes | Indicates the ui context where the save operation will be performed. |
+| request | [SaveRequest](arkts-ability-autofillmanager-saverequest-t.md) | Yes | Indicates the struct of automatic save request. |
+| callback | [AutoSaveCallback](arkts-ability-autofillmanager-autosavecallback-i.md) | No | Indicates the callback that used to receive the result. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
+
+**Examples**
+
 ```TypeScript
 // Index.ets
 import { autoFillManager } from '@kit.AbilityKit';
@@ -215,38 +250,3 @@ struct Index {
   }
 }
 ```
-
-
-## requestAutoSave
-
-```TypeScript
-export function requestAutoSave(context: UIContext, request: SaveRequest, callback?: AutoSaveCallback): void
-```
-
-Trigger an auto save request.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| context | [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | Yes | Indicates the ui context where the save operation will be performed. |
-| request | [SaveRequest](arkts-ability-autofillmanager-saverequest-t.md) | Yes | Indicates the struct of automatic save request. |
-| callback | [AutoSaveCallback](arkts-ability-autofillmanager-autosavecallback-i.md) | No | Indicates the callback that used to receive the result. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
-
-**Examples**
-
-See [requestAutoSave](#requestautosave)

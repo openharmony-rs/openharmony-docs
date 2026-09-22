@@ -59,23 +59,8 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 });
 ```
 
-```TypeScript
-let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
-let myToken: avSession.SessionToken = {
-  sessionId: sessionId,
-}
-let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
-avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
-  castDevice = device;
-  console.info(`on deviceAvailable  : ${device} `);
-  if (castDevice !== undefined) {
-    avSession.startCasting(myToken, castDevice).then(() => {
-      console.info('Succeeded in starting casting.');
-    });
-  }
-});
-```
 
+<a id="startcasting-1"></a>
 
 ## startCasting
 
@@ -118,4 +103,19 @@ function startCasting(session: SessionToken, device: OutputDeviceInfo): Promise<
 
 **示例**
 
-参见 [startCasting](#startcasting)
+```TypeScript
+let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
+let myToken: avSession.SessionToken = {
+  sessionId: sessionId,
+}
+let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
+avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
+  castDevice = device;
+  console.info(`on deviceAvailable  : ${device} `);
+  if (castDevice !== undefined) {
+    avSession.startCasting(myToken, castDevice).then(() => {
+      console.info('Succeeded in starting casting.');
+    });
+  }
+});
+```

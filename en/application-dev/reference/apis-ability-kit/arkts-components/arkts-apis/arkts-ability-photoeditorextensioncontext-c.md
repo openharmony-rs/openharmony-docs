@@ -1,5 +1,9 @@
 # PhotoEditorExtensionContext
 
+```TypeScript
+declare class PhotoEditorExtensionContext extends ExtensionContext
+```
+
 The context of Photo Editor extension. It allows access to PhotoEditorExtension-specific resources.
 
 @extends ExtensionContext

@@ -1,5 +1,9 @@
 # FileAccessOption
 
+```TypeScript
+export interface FileAccessOption
+```
+
 可选项类型，支持access接口使用。
 
 **起始版本：** 3

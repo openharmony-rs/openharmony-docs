@@ -1,5 +1,9 @@
 # TaskInfo (System API)
 
+```TypeScript
+export interface TaskInfo
+```
+
 Represents the task information.
 
 **Since:** 9

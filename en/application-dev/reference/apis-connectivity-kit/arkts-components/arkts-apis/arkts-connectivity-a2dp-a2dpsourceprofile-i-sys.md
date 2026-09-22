@@ -1,5 +1,9 @@
 # A2dpSourceProfile
 
+```TypeScript
+interface A2dpSourceProfile extends BaseProfile
+```
+
 Manager a2dp source profile.
 
 **Inheritance/Implementation:** A2dpSourceProfile extends [BaseProfile](arkts-connectivity-a2dp-baseprofile-t.md)
@@ -88,6 +92,8 @@ Turn off the absolute volume switch.
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
+
+<a id="disableabsolutevolume-1"></a>
 
 ## disableAbsoluteVolume
 
@@ -239,6 +245,8 @@ Turn on the absolute volume switch.
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
+
+<a id="enableabsolutevolume-1"></a>
 
 ## enableAbsoluteVolume
 
@@ -475,6 +483,8 @@ Checks whether the absolute volume is enabled.
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
 
+<a id="isabsolutevolumeenabled-1"></a>
+
 ## isAbsoluteVolumeEnabled
 
 ```TypeScript
@@ -549,6 +559,8 @@ Checks whether the device supports absolute volume.
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
+
+<a id="isabsolutevolumesupported-1"></a>
 
 ## isAbsoluteVolumeSupported
 

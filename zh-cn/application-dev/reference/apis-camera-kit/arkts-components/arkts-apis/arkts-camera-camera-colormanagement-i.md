@@ -1,5 +1,9 @@
 # ColorManagement
 
+```TypeScript
+interface ColorManagement extends ColorManagementQuery
+```
+
 ColorManagement继承自[ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md)。
 
 色彩管理类，用于设置色彩空间参数。
@@ -41,6 +45,24 @@ getActiveColorSpace(): colorSpaceManager.ColorSpace
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function getActiveColorSpace(session: camera.PhotoSession): colorSpaceManager.ColorSpace | undefined {
+  let colorSpace: colorSpaceManager.ColorSpace | undefined = undefined;
+  try {
+    colorSpace = session.getActiveColorSpace();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The getActiveColorSpace call failed. error code: ${err.code}`);
+  }
+  return colorSpace;
+}
+```
 
 ## setColorSpace
 
@@ -105,3 +127,22 @@ CAMERA_FORMAT_YCBCR_P010时，色彩空间默认为BT2020_HLG。
 | [7400102](../errorcode-camera.md#7400102-非法操作) | The colorSpace does not match the format. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function setColorSpace(session: camera.PhotoSession, colorSpaces: Array<colorSpaceManager.ColorSpace>): void {
+  if (colorSpaces === undefined || colorSpaces.length <= 0) {
+    return;
+  }
+  try {
+    session.setColorSpace(colorSpaces[0]);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The setColorSpace call failed, error code: ${err.code}`);
+  }
+}
+```

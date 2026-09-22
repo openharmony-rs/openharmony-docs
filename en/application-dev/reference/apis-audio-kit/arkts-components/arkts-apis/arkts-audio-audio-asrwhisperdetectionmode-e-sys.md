@@ -1,5 +1,9 @@
 # AsrWhisperDetectionMode (System API)
 
+```TypeScript
+enum AsrWhisperDetectionMode
+```
+
 ASR whisper detection mode.
 
 **Since:** 12

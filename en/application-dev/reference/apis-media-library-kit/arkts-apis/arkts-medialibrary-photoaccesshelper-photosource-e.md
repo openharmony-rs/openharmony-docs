@@ -1,5 +1,9 @@
 # PhotoSource
 
+```TypeScript
+export enum PhotoSource
+```
+
 Enumeration of PhotoSource type
 
 @enum { int } PhotoSource

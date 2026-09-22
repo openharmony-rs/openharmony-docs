@@ -1,5 +1,9 @@
 # Context
 
+```TypeScript
+declare class Context extends BaseContext
+```
+
 Context是Stage模型的上下文基类，主要用于访问特定应用程序的资源，以及执行应用级操作的回调。
 
 **继承/实现关系：** Context extends [BaseContext](arkts-ability-basecontext-c.md)
@@ -73,6 +77,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="createmodulecontext-1"></a>
+
 ## createModuleContext
 
 ```TypeScript
@@ -113,24 +119,6 @@ createModuleContext(bundleName: string, moduleName: string): Context
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例**
-
-```TypeScript
-import { common, UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate() {
-    console.info('MyAbility onCreate');
-    let moduleContext: common.Context;
-    try {
-      // 根据模块名创建上下文
-      moduleContext = this.context.createModuleContext('entry');
-    } catch (error) {
-      console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
-    }
-  }
-}
-```
 
 ```TypeScript
 import { common, UIAbility } from '@kit.AbilityKit';

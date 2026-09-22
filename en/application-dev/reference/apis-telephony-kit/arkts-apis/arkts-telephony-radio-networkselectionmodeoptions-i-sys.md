@@ -1,5 +1,9 @@
 # NetworkSelectionModeOptions (System API)
 
+```TypeScript
+export interface NetworkSelectionModeOptions
+```
+
 Obtains the network selection mode option.
 
 **Since:** 6

@@ -1,5 +1,9 @@
 # ToolBarV2ItemState
 
+```TypeScript
+export declare enum ToolBarV2ItemState
+```
+
 Declare enum ToolBarV2ItemState
 
 **Since:** 18

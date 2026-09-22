@@ -1,5 +1,9 @@
 # ResourceImageAttachmentOptions
 
+```TypeScript
+declare interface ResourceImageAttachmentOptions
+```
+
 Defines the settings for images of the ResourceStr type.
 
 **Since:** 15
@@ -70,13 +74,13 @@ resizable?: ResizableOptions
 
 Resizable image options of the styled string.
 
-**Type:** [ResizableOptions](../arkts-components/arkts-arkui-resizableoptions-i.md)
+**Type:** [ResizableOptions](../arkts-components/arkts-arkui-image-comp-resizableoptions-i.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +92,7 @@ resourceValue: Optional<ResourceStr>
 
 Image data source.
 
-**Type:** [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[ResourceStr](arkts-arkui-resourcestr-t.md)&gt;
+**Type:** [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[ResourceStr](arkts-arkui-resourcestr-t.md)&gt;
 
 **Since:** 15
 

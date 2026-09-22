@@ -63,31 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Use try catch to capture possible exceptions.
-try {
-  let preRotationMatrix = [
-    1, 0, 0,
-    0, 0.87, -0.50,
-    0, 0.50, 0.87
-  ];
-  const promise = sensor.getOrientation(preRotationMatrix);
-  promise.then((data: Array<number>) => {
-    for (let i = 0; i < data.length; i++) {
-      console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
-    }
-  }, (err: BusinessError) => {
-    console.error(`Failed to getOrientation. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to getOrientation Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getorientation-1"></a>
 
 ## getOrientation
 
@@ -122,4 +99,27 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 **Examples**
 
-See [getOrientation](#getorientation)
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Use try catch to capture possible exceptions.
+try {
+  let preRotationMatrix = [
+    1, 0, 0,
+    0, 0.87, -0.50,
+    0, 0.50, 0.87
+  ];
+  const promise = sensor.getOrientation(preRotationMatrix);
+  promise.then((data: Array<number>) => {
+    for (let i = 0; i < data.length; i++) {
+      console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+    }
+  }, (err: BusinessError) => {
+    console.error(`Failed to getOrientation. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to getOrientation Code: ${e.code}, message: ${e.message}`);
+}
+```

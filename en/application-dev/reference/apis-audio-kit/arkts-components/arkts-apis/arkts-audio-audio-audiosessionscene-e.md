@@ -1,5 +1,9 @@
 # AudioSessionScene
 
+```TypeScript
+enum AudioSessionScene
+```
+
 Enumerates the audio session scenes.
 
 **Since:** 20

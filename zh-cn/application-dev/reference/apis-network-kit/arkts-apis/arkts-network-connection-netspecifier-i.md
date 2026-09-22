@@ -1,5 +1,9 @@
 # NetSpecifier
 
+```TypeScript
+export interface NetSpecifier
+```
+
 提供承载数据网络能力的实例。
 
 **起始版本：** 8

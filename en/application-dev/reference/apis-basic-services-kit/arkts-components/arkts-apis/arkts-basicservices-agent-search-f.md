@@ -32,6 +32,8 @@ Searches for task IDs based on [Filter](arkts-basicservices-agent-filter-i.md). 
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 
 
+<a id="search-1"></a>
+
 ## search
 
 ```TypeScript
@@ -58,6 +60,8 @@ Searches for task IDs based on [Filter](arkts-basicservices-agent-filter-i.md). 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 
+
+<a id="search-2"></a>
 
 ## search
 

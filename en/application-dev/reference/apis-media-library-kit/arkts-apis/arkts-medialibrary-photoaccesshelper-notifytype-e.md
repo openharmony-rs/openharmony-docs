@@ -1,5 +1,9 @@
 # NotifyType
 
+```TypeScript
+enum NotifyType
+```
+
 Enumerates the notification event types.
 
 **Since:** 10

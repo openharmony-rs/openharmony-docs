@@ -1,5 +1,9 @@
 # BlePhy
 
+```TypeScript
+enum BlePhy
+```
+
 枚举，连接与广播的物理通道类型。
 
 **起始版本：** 23

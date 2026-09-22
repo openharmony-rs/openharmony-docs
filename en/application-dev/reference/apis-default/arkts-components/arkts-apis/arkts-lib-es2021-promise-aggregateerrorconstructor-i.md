@@ -1,5 +1,9 @@
 # AggregateErrorConstructor
 
+```TypeScript
+interface AggregateErrorConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # ChangeNotification
 
+```TypeScript
+interface ChangeNotification
+```
+
 Defines the content of data change notifications, including inserted data, updated data, deleted data, and device ID.
 
 **Since:** 7

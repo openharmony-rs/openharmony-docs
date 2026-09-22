@@ -1,5 +1,9 @@
 # EventMsg (System API)
 
+```TypeScript
+enum EventMsg
+```
+
 Enumerates screen hopping events.
 
 **Since:** 9

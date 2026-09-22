@@ -1,5 +1,9 @@
 # DataShareExtensionAbility (System API)
 
+```TypeScript
+declare class DataShareExtensionAbility
+```
+
 This module provides data sharing and expansion capabilities.
 
 **Since:** 9

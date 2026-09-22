@@ -1,5 +1,9 @@
 # ColorSpaceManager
 
+```TypeScript
+interface ColorSpaceManager extends ISendable
+```
+
 当前可共享的色彩管理实例。ColorSpaceManager是用于管理和操作色域对象的核心类，提供了获取色域类型、白点值、gamma值等功能，并支持在ArkTS并发实例间传递。
 
 下列API示例中都需先使用[create()](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md)获取到ColorSpaceManager实例，再通过此实例调用对应方法。

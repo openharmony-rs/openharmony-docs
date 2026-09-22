@@ -1,5 +1,9 @@
 # SatelliteAdditionalInfo
 
+```TypeScript
+export enum SatelliteAdditionalInfo
+```
+
 卫星附加信息类型。
 
 **起始版本：** 12

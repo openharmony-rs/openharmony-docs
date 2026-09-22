@@ -1,5 +1,9 @@
 # AdvertiseData
 
+```TypeScript
+interface AdvertiseData
+```
+
 Describes the advertising data.
 
 **Since:** 10

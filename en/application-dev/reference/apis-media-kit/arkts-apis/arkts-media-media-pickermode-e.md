@@ -1,5 +1,9 @@
 # PickerMode
 
+```TypeScript
+enum PickerMode
+```
+
 Enumerates the display mode for the screen capture picker.
 
 **Since:** 22

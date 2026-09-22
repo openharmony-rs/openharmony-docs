@@ -1,5 +1,9 @@
 # TextHighContrast
 
+```TypeScript
+enum TextHighContrast
+```
+
 Enumerates the high contrast types for text rendering.
 
 **Since:** 20

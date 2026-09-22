@@ -1,5 +1,9 @@
 # DataConnectionStateInfo
 
+```TypeScript
+export interface DataConnectionStateInfo
+```
+
 Defines information about the data connection status.
 
 **Since:** 11

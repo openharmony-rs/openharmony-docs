@@ -1,5 +1,9 @@
 # GrantedBundleInfo
 
+```TypeScript
+export interface GrantedBundleInfo
+```
+
 Describes the authorized bundle information.
 
 **Since:** 22

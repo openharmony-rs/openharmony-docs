@@ -1,6 +1,10 @@
 # ChipGroupV2ItemStyle
 
-Defines ChipGroupV2 item style.
+```TypeScript
+export declare class ChipGroupV2ItemStyle
+```
+
+Defines the common attribute class of **ChipV2**.
 
 **Since:** 26.0.0
 
@@ -20,7 +24,7 @@ import { ChipGroupV2ItemConfig, ChipGroupV2Item, ChipGroupV2Items, ChipGroupV2It
 constructor(config: ChipGroupV2ItemStyleConfig)
 ```
 
-The constructor of ChipGroupV2ItemStyle
+A constructor used to create a **ChipGroupV2ItemStyle** object.
 
 **Since:** 26.0.0
 
@@ -34,7 +38,7 @@ The constructor of ChipGroupV2ItemStyle
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ChipGroupV2ItemStyleConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md) | Yes | config of ChipGroupV2ItemStyle |
+| config | [ChipGroupV2ItemStyleConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md) | Yes | Style configuration of the **ChipGroupV2** item. |
 
 ## backgroundColor
 
@@ -42,7 +46,13 @@ The constructor of ChipGroupV2ItemStyle
 public backgroundColor?: ColorMetrics
 ```
 
-ChipV2 item background color.
+Background color of **ChipV2**.
+
+Default value: **$r('sys.color.ohos_id_color_button_normal')**
+
+If the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -62,7 +72,11 @@ ChipV2 item background color.
 public backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-Set system-styled materials for the component. Different materials have different effects, which can influence the backgroundColor, border, shadow, and other visual attributes of the component.
+System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
+
+Default value: **undefined**, no material style is applied.
+
+Decorator: **@Trace**
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -82,7 +96,13 @@ Set system-styled materials for the component. Different materials have differen
 public fontColor?: ColorMetrics
 ```
 
-Text font color.
+Font color of **ChipV2**.
+
+Default value: **$r('sys.color.ohos_id_color_text_primary')**
+
+If the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -102,7 +122,13 @@ Text font color.
 public selectedBackgroundColor?: ColorMetrics
 ```
 
-Selected chip item background color.
+Background color of **ChipV2** when selected. After this attribute is set, when the **ChipV2** is selected, the background is filled with this color, replacing the **backgroundColor** in the unselected state.
+
+Default value: **$r('sys.color.ohos_id_color_emphasize')**
+
+If the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -122,7 +148,11 @@ Selected chip item background color.
 public selectedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-Set system-styled materials for the component when selected. Different materials have different effects, which can influence the backgroundColor, border, shadow, and other visual attributes of the component.
+System material style of the component in the selected state. After this attribute is set, when the **ChipV2** is selected, this material style is applied, replacing the **backgroundSystemMaterial** in the unselected state. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
+
+Default value: **undefined**, no material style is applied.
+
+Decorator: **@Trace**
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -142,7 +172,13 @@ Set system-styled materials for the component when selected. Different materials
 public selectedFontColor?: ColorMetrics
 ```
 
-Selected Text font color.
+Font color of **ChipV2** when selected. After this attribute is set, when the **ChipV2** is selected, the label text is displayed in this color, replacing the **fontColor** in the unselected state.
+
+Default value: **$r('sys.color.ohos_id_color_text_primary_contrary')**
+
+If the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -162,7 +198,13 @@ Selected Text font color.
 public size?: ChipV2Size | SizeT<LengthMetrics>
 ```
 
-ChipV2 size.
+Size of **ChipV2**.
+
+Default value: **ChipV2Size.NORMAL**
+
+If the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ChipV2Size](arkts-arkui-arkui-advanced-chipv2-chipv2size-e.md) &#124; [SizeT](arkts-arkui-graphics-sizet-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt;
 

@@ -1,5 +1,9 @@
 # ForegroundBlur
 
+```TypeScript
+export interface ForegroundBlur
+```
+
 设置前景模糊效果，支持通过模糊半径控制模糊程度。
 
 **起始版本：** 26.0.0

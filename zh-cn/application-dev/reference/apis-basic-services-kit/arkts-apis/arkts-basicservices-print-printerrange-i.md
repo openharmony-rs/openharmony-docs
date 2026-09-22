@@ -1,5 +1,9 @@
 # PrinterRange
 
+```TypeScript
+interface PrinterRange
+```
+
 定义打印范围的接口。
 
 **起始版本：** 24

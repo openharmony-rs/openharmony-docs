@@ -1,5 +1,9 @@
 # SystemSoundType
 
+```TypeScript
+enum SystemSoundType
+```
+
 Enumerates the system sound effect types.
 
 **Since:** 23

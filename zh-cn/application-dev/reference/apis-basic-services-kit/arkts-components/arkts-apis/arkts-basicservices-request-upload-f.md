@@ -18,7 +18,7 @@ function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void
 
 **废弃版本：** 9
 
-**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md)(context: BaseContext, config: UploadConfig)
+**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)(context: BaseContext, config: UploadConfig)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -50,22 +50,6 @@ let uploadConfig: request.UploadConfig = {
   files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
   data: [{ name: 'name123', value: '123' }],
 };
-request.upload(uploadConfig).then((data: request.UploadTask) => {
-  uploadTask = data;
-}).catch((err: BusinessError) => {
-  console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-let uploadTask: request.UploadTask;
-let uploadConfig: request.UploadConfig = {
-  url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
-  header: { 'Accept': '*/*' },
-  method: 'POST',
-  files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
-  data: [{ name: 'name123', value: '123' }],
-};
 request.upload(uploadConfig, (err: BusinessError, data: request.UploadTask) => {
   if (err) {
     console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
@@ -75,6 +59,8 @@ request.upload(uploadConfig, (err: BusinessError, data: request.UploadTask) => {
 });
 ```
 
+
+<a id="upload-1"></a>
 
 ## upload
 
@@ -88,7 +74,7 @@ function upload(config: UploadConfig): Promise<UploadTask>
 
 **废弃版本：** 9
 
-**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md)(context: BaseContext, config: UploadConfig)
+**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)(context: BaseContext, config: UploadConfig)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -116,4 +102,18 @@ function upload(config: UploadConfig): Promise<UploadTask>
 
 **示例**
 
-参见 [upload](#upload)
+```TypeScript
+let uploadTask: request.UploadTask;
+let uploadConfig: request.UploadConfig = {
+  url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
+  header: { 'Accept': '*/*' },
+  method: 'POST',
+  files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+  data: [{ name: 'name123', value: '123' }],
+};
+request.upload(uploadConfig).then((data: request.UploadTask) => {
+  uploadTask = data;
+}).catch((err: BusinessError) => {
+  console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
+});
+```

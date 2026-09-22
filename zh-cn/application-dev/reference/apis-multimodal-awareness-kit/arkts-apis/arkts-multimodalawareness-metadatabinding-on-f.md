@@ -34,3 +34,22 @@ function on(type: 'operationSubmitMetadata', bundleName: string, callback: Callb
 | --- | --- |
 | [32100001](../errorcode-metadataBinding.md#32100001-文件创建失败) | Internal handling failed. |
 | [32100004](../errorcode-metadataBinding.md#32100004-订阅失败) | Subscribe Failed. Possible causes:<br>1. Abnormal system capability. <br>2. IPC communication abnormality. <br>3. Algorithm loading exception. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';
+
+let bundleName: string = 'com.example.app';
+try {
+  metadataBinding.on('operationSubmitMetadata', bundleName, (event: number) => {
+    if (event == 1) {
+      console.info('The screenshot request is received and the app link is obtained');
+    }
+  });
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to register operationSubmitMetadata event. Code: ${err.code}, message: ${err.message}`);
+}
+```

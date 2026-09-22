@@ -1,5 +1,9 @@
 # Descriptor
 
+```TypeScript
+enum Descriptor
+```
+
 Enumerates USB descriptors.
 
 **Since:** 14

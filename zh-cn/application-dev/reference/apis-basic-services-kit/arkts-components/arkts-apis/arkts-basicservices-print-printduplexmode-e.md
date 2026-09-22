@@ -1,5 +1,9 @@
 # PrintDuplexMode
 
+```TypeScript
+enum PrintDuplexMode
+```
+
 打印单双面模式的枚举。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # PathIterator
 
+```TypeScript
+class PathIterator
+```
+
 表示路径操作迭代器，可通过遍历迭代器逐段读取路径的操作指令。迭代器按顺序遍历路径中的操作指令，便于实现对路径的细粒度分析与自定义处理。
 
 > **说明：** 
@@ -38,6 +42,16 @@ constructor(path: Path)
 | --- | --- | --- | --- |
 | path | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 迭代器绑定的路径对象，绑定后迭代器将遍历该路径中的操作指令，可通过next、peek、hasNext等方法读取路径的操作类型和坐标数据。 |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+let iter: drawing.PathIterator = new drawing.PathIterator(path);
+console.info('PathIterator created successfully');
+```
+
 ## hasNext
 
 ```TypeScript
@@ -55,6 +69,16 @@ hasNext(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 迭代器是否还有下一个操作可遍历。true表示还有后续路径操作可读取，false表示已遍历至路径末尾，无更多操作。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+let iter: drawing.PathIterator = new drawing.PathIterator(path);
+let res = iter.hasNext();
+```
 
 ## next
 
@@ -87,6 +111,27 @@ next(points: Array<common2D.Point>, offset?: number): PathIteratorVerb
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(10, 20);
+let iter: drawing.PathIterator = new drawing.PathIterator(path);
+let verbStr: Array<string> = ['MOVE', 'LINE', 'QUAD', 'CONIC', 'CUBIC', 'CLOSE', 'DONE'];
+let pointCount: Array<number> = [1, 2, 3, 4, 4, 0, 0];
+let points: Array<common2D.Point> = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
+let offset = 0;
+let verb = iter.next(points, offset);
+let outputMessage: string = 'pathIteratorNext: ';
+outputMessage += 'verb =' + verbStr[verb] + '; has ' + pointCount[verb] + ' pairs: ';
+for (let j = 0; j < pointCount[verb] + offset; j++) {
+  outputMessage += '[' + points[j].x + ', ' + points[j].y + ']';
+}
+console.info(outputMessage);
+```
+
 ## peek
 
 ```TypeScript
@@ -104,3 +149,13 @@ peek(): PathIteratorVerb
 | 类型 | 说明 |
 | --- | --- |
 | [PathIteratorVerb](arkts-arkgraphics2d-drawing-pathiteratorverb-e.md) | 当前路径段的操作类型。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+let iter: drawing.PathIterator = new drawing.PathIterator(path);
+let res = iter.peek();
+```

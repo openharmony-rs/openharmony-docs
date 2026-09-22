@@ -1,5 +1,9 @@
 # AudioCapturerInfo
 
+```TypeScript
+interface AudioCapturerInfo
+```
+
 描述音频采集器信息。
 
 **起始版本：** 8

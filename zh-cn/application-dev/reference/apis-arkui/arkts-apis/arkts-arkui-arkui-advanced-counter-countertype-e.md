@@ -1,5 +1,9 @@
 # CounterType
 
+```TypeScript
+declare enum CounterType
+```
+
 CounterType指定Counter类型。
 
 **起始版本：** 11

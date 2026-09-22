@@ -22,6 +22,31 @@ import { AVVolumePanel, AVVolumePanelParameter } from '@kit.AudioKit';
 
 ## 示例
 
-```TypeScript
 音量面板功能的示例说明参考如下。需要实际修改volume值或者按压音量按键体验调节音量效果。
+
+```TypeScript
+import { AVVolumePanel } from '@kit.AudioKit';
+
+@Entry
+@Component
+struct Index {
+
+  @State volume: number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        AVVolumePanel({
+          volumeLevel: this.volume,
+          volumeParameter: {
+            position: {
+              x: 100,
+              y: 200
+            }
+          }
+        })
+      }
+    }.width('50%').height('50%')
+  }
+}
 ```

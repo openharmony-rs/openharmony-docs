@@ -1,5 +1,9 @@
 # StateChangeParam
 
+```TypeScript
+interface StateChangeParam
+```
+
 描述profile状态改变参数。
 
 从API version 8开始支持，从API version 9开始废弃。

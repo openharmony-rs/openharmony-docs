@@ -1,5 +1,9 @@
 # PickerMediaType
 
+```TypeScript
+enum PickerMediaType
+```
+
 枚举，相机选择器的媒体类型。
 
 **起始版本：** 11

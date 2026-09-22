@@ -1,5 +1,9 @@
 # DeviceListener
 
+```TypeScript
+interface DeviceListener
+```
+
 描述输入设备热插拔的信息。
 
 **起始版本：** 9

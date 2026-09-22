@@ -1,5 +1,9 @@
 # P2pConnectState
 
+```TypeScript
+enum P2pConnectState
+```
+
 P2P connection status.
 
 @enum { number } P2pConnectState

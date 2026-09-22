@@ -36,24 +36,251 @@ import { ItemState, ToolBar, ToolBarOption, ToolBarOptions, ToolBarModifier } fr
 
 ## Examples
 
-```TypeScript
 ### Example 1: Setting Toolbar Items to Different States
 
 This example shows the various display effects when the state property of toolbar items is set to ENABLE, DISABLE, or ACTIVATE.
 
 
-```
 
 ```TypeScript
+import { ToolBar, ToolBarOptions, ItemState } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State toolbarList: ToolBarOptions = new ToolBarOptions();
+
+  aboutToAppear() {
+    this.toolbarList.push({
+      content: 'Long long long long long text',
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: 'Copy',
+      icon: $r('sys.media.ohos_ic_public_copy'),
+      action: () => {
+      },
+      state: ItemState.DISABLE
+    })
+    this.toolbarList.push({
+      content: 'Paste',
+      icon: $r('sys.media.ohos_ic_public_paste'),
+      action: () => {
+      },
+      state: ItemState.ACTIVATE
+    })
+    this.toolbarList.push({
+      content: 'Select all',
+      icon: $r('sys.media.ohos_ic_public_select_all'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: 'Share',
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: 'Share',
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          ToolBar({
+            activateIndex: 2,
+            toolBarList: this.toolbarList,
+          })
+        }
+      }
+      .align(Alignment.Bottom)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
 ### Example 2: Customizing the Toolbar Style
 
 This example demonstrates how to customize the toolbar's height, background color, and other styles using ToolBarModifier. This functionality is supported since API version 13.
 
 
-```
 
 ```TypeScript
+import {
+  SymbolGlyphModifier,
+  DividerModifier,
+  ToolBar,
+  ToolBarOptions,
+  ToolBarModifier,
+  ItemState,
+  LengthMetrics,
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State toolbarList: ToolBarOptions = new ToolBarOptions();
+  // Custom toolbar style
+  private toolBarModifier: ToolBarModifier =
+    new ToolBarModifier().height(LengthMetrics.vp(52)).backgroundColor(Color.Transparent).stateEffect(false);
+  @State dividerModifier: DividerModifier = new DividerModifier().height(0);
+
+  aboutToAppear() {
+    // Add toolbar items.
+    this.toolbarList.push({
+      content: 'Long long long long long long long long text',
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+      state: ItemState.ACTIVATE,
+      toolBarSymbolOptions: {
+        normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontColor([Color.Green]), // Symbol icon in the normal state.
+        activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontColor([Color.Red]), // Symbol icon in the activated state.
+      },
+      activatedTextColor: $r('sys.color.font_primary'),
+    })
+    this.toolbarList.push({
+      content: 'Copy',
+      icon: $r('sys.media.ohos_ic_public_copy'),
+      action: () => {
+      },
+      state: ItemState.DISABLE,
+      iconColor: '#ff18cb53',
+      activatedIconColor: '#ffec5d5d', // Icon fill color of the toolbar item in the activated state.
+      activatedTextColor: '#ffec5d5d', // Font color of the toolbar item in the activated state.
+    })
+    this.toolbarList.push({
+      content: 'Paste',
+      icon: $r('sys.media.ohos_ic_public_paste'),
+      action: () => {
+      },
+      state: ItemState.ACTIVATE,
+      textColor: '#ff18cb53',
+    })
+    this.toolbarList.push({
+      content: 'All',
+      icon: $r('sys.media.ohos_ic_public_select_all'),
+      action: () => {
+      },
+      state: ItemState.ACTIVATE,
+    })
+    this.toolbarList.push({
+      content: 'Share',
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: 'Share',
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          ToolBar({
+            toolBarModifier: this.toolBarModifier,
+            dividerModifier: this.dividerModifier,
+            activateIndex: 0,
+            toolBarList: this.toolbarList,
+          })
+            .height(52)
+        }
+      }
+      .align(Alignment.Bottom)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
 ### Example 3: Implementing Screen Reader Announcement
 
 This example customizes the screen reader announcement text by setting the accessibilityText, accessibilityDescription, and accessibilityLevel properties of the toolbar item. This functionality is supported since API version 18.
+
+```TypeScript
+import { ToolBar, ToolBarOptions, ItemState } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State toolbarList: ToolBarOptions = new ToolBarOptions();
+
+  aboutToAppear() {
+    // Add toolbar items.
+    this.toolbarList.push({
+      content: 'Long long long long long text',
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+      accessibilityText: 'Clip', // Screen reader announcement for the item.
+      accessibilityDescription: 'Double-tap to clip', // Screen reader announcement for the item.
+      accessibilityLevel: 'yes' // Configure this element to be focused by accessibility screen readers.
+    })
+    this.toolbarList.push({
+      content: 'Copy',
+      icon: $r('sys.media.ohos_ic_public_copy'),
+      action: () => {
+      },
+      state: ItemState.DISABLE,
+      accessibilityLevel: 'no' // Configure this button to be not recognizable by screen readers.
+    })
+    this.toolbarList.push({
+      content: 'Paste',
+      icon: $r('sys.media.ohos_ic_public_paste'),
+      action: () => {
+      },
+      state: ItemState.ACTIVATE
+    })
+    this.toolbarList.push({
+      content: 'Select all',
+      icon: $r('sys.media.ohos_ic_public_select_all'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: 'Share',
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: 'Share',
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          ToolBar({
+            activateIndex: 2,
+            toolBarList: this.toolbarList,
+          })
+        }
+      }
+      .align(Alignment.Bottom)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
 ```

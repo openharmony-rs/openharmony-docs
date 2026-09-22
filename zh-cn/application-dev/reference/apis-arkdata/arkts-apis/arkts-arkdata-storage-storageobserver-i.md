@@ -1,5 +1,9 @@
 # StorageObserver
 
+```TypeScript
+interface StorageObserver
+```
+
 **起始版本：** 6
 
 **废弃版本：** 9

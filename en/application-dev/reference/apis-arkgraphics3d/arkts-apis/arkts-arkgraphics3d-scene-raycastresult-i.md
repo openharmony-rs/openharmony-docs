@@ -1,5 +1,9 @@
 # RaycastResult
 
+```TypeScript
+export interface RaycastResult
+```
+
 Describes a result object from raycasting, containing details about the 3D object hit by the ray.
 
 @typedef RaycastResult

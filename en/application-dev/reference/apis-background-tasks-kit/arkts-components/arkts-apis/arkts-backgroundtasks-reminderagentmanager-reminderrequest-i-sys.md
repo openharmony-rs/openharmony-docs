@@ -1,5 +1,9 @@
 # ReminderRequest
 
+```TypeScript
+interface ReminderRequest
+```
+
 Defines the request for publishing a reminder.
 
 **Since:** 9

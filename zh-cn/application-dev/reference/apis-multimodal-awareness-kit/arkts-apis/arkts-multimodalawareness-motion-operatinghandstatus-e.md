@@ -1,5 +1,9 @@
 # OperatingHandStatus
 
+```TypeScript
+export enum OperatingHandStatus
+```
+
 触控操作手状态信息。
 
 **起始版本：** 15

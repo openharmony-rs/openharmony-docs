@@ -1,5 +1,9 @@
 # PrinterExtensionInfo（系统接口）
 
+```TypeScript
+interface PrinterExtensionInfo
+```
+
 定义打印扩展信息的接口。
 
 **起始版本：** 10

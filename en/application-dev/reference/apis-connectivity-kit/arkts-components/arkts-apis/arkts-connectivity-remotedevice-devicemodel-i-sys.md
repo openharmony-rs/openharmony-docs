@@ -1,5 +1,9 @@
 # DeviceModel (System API)
 
+```TypeScript
+interface DeviceModel
+```
+
 Describes the model of a remote device.
 
 **Since:** 26.0.0

@@ -1,8 +1,12 @@
 # GlobalError
 
+```TypeScript
+export interface GlobalError extends Error
+```
+
 有关异常事件名字、消息、错误堆栈信息、异常线程名称和类型的对象。
 
-**继承/实现关系：** GlobalError extends [Error](../../apis-arkweb/arkts-components/arkts-arkweb-messagelevel-e.md#error)
+**继承/实现关系：** GlobalError extends [Error](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-messagelevel-e.md#error)
 
 **起始版本：** 18
 

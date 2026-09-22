@@ -1,5 +1,9 @@
 # TaskInfo
 
+```TypeScript
+interface TaskInfo
+```
+
 查询结果的任务信息数据结构，提供普通查询和系统查询，两种字段的可见范围不同。
 
 **起始版本：** 10
@@ -37,7 +41,7 @@ readonly ctime: number
 
 创建任务的Unix时间戳（毫秒），由当前设备的系统生成。
 
-说明：使用[request.agent.search](arkts-basicservices-agent-search-f.md)进行查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见[Filter](arkts-basicservices-agent-filter-i.md)。
+说明：使用[request.agent.search](arkts-basicservices-agent-search-f.md#search-1)进行查询时，该值需处于[after,before]区间内才可正常查询到任务id，before和after信息详见[Filter](arkts-basicservices-agent-filter-i.md)。
 
 **类型：** number
 
@@ -53,7 +57,7 @@ readonly data?: string | Array<FormItem>
 
 任务值。
 
-- 通过[request.agent.show](arkts-basicservices-agent-show-f.md)、[request.agent.touch](arkts-basicservices-agent-touch-f.md)进行查询。
+- 通过[request.agent.show](arkts-basicservices-agent-show-f.md#show-1)、[request.agent.touch](arkts-basicservices-agent-touch-f.md#touch-1)进行查询。
 
 **类型：** string &#124; Array&lt;[FormItem](arkts-basicservices-agent-formitem-i.md)&gt;
 
@@ -288,7 +292,7 @@ readonly url?: string
 
 任务的url。
 
-- 通过[request.agent.show](arkts-basicservices-agent-show-f.md)、[request.agent.touch](arkts-basicservices-agent-touch-f.md)进行查询。
+- 通过[request.agent.show](arkts-basicservices-agent-show-f.md#show-1)、[request.agent.touch](arkts-basicservices-agent-touch-f.md#touch-1)进行查询。
 
 **类型：** string
 

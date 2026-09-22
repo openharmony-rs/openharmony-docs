@@ -1,5 +1,9 @@
 # NotificationParameters
 
+```TypeScript
+export interface NotificationParameters
+```
+
 Describes part of the **wantAgent** information in NotificationRequest.
 
 **Since:** 24

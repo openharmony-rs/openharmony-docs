@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="getcalltransferinfo-1"></a>
+
 ## getCallTransferInfo
 
 ```TypeScript
@@ -45,22 +47,6 @@ function getCallTransferInfo(slotId: number, type: CallTransferType, callback: A
 **示例**
 
 ```TypeScript
-import { call } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let type: call.CallTransferType = call.CallTransferType.TRANSFER_TYPE_UNCONDITIONAL;
-let number: string = "138xxxxxxxx";
-
-call.getCallTransferInfo(type, number)
-    .then((data: call.CallTransferResult) => {
-        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
-    })
-    .catch((err:BusinessError) => {
-        console.error(`getCallTransferInfo fail, err->Code${err.code}, message:${err.message}`);
-    });
-```
-
-```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY, (err: BusinessError, data: call.CallTransferResult) => {
@@ -72,16 +58,8 @@ call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY, (err: Busi
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY).then((data: call.CallTransferResult) => {
-    console.info(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCallTransferInfo fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getcalltransferinfo-2"></a>
 
 ## getCallTransferInfo
 
@@ -126,4 +104,12 @@ function getCallTransferInfo(slotId: number, type: CallTransferType): Promise<Ca
 
 **示例**
 
-参见 [getCallTransferInfo](#getcalltransferinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY).then((data: call.CallTransferResult) => {
+    console.info(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCallTransferInfo fail, promise: err->${JSON.stringify(err)}`);
+});
+```

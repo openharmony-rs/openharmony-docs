@@ -1,5 +1,9 @@
 # ThreadWorkerGlobalScope
 
+```TypeScript
+export interface ThreadWorkerGlobalScope extends GlobalScope
+```
+
 Implements communication between the Worker thread and the host thread. The postMessage API is used to send messages to the host thread, and the close API is used to terminate the Worker thread. The ThreadWorkerGlobalScope class inherits from GlobalScope9+.
 
 **Inheritance/Implementation:** ThreadWorkerGlobalScope extends [GlobalScope](arkts-arkts-worker-globalscope-i.md)
@@ -250,15 +254,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
 }
 ```
 
-```TypeScript
-// worker.ets
-import { worker, MessageEvents } from '@kit.ArkTS';
-
-const workerPort = worker.workerPort;
-workerPort.onmessage = (e: MessageEvents): void => {
-    workerPort.postMessage("receive data from main thread");
-}
-```
+<a id="postmessage-1"></a>
 
 ## postMessage
 
@@ -298,17 +294,6 @@ const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
 workerInstance.postMessage("hello world");
 workerInstance.onmessage = (e: MessageEvents): void => {
     console.info("receive data from worker.ets");
-}
-```
-
-```TypeScript
-// worker.ets
-import { worker, MessageEvents } from '@kit.ArkTS';
-
-const workerPort = worker.workerPort;
-workerPort.onmessage = (e: MessageEvents): void => {
-    let buffer = new ArrayBuffer(8);
-    workerPort.postMessage(buffer, [buffer]);
 }
 ```
 

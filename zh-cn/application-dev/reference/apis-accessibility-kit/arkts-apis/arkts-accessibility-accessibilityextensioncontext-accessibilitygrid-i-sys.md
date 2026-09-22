@@ -1,5 +1,9 @@
 # AccessibilityGrid（系统接口）
 
+```TypeScript
+export interface AccessibilityGrid
+```
+
 辅助功能网格信息。详见[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)中的属性currentItem。
 
 **起始版本：** 20

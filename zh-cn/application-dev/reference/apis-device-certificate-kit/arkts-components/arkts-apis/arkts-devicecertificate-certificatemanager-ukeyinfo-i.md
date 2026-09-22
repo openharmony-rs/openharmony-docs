@@ -1,5 +1,9 @@
 # UkeyInfo
 
+```TypeScript
+export interface UkeyInfo
+```
+
 提供USB Key证书凭据属性信息。
 
 **起始版本：** 22

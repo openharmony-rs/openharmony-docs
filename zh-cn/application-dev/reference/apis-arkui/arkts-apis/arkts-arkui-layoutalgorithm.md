@@ -1,6 +1,6 @@
 # LayoutAlgorithm
 
-DynamicLayout组件支持的布局算法详细信息。
+[DynamicLayout](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md)组件支持的布局算法详细信息。
 
 > **说明：**
 
@@ -24,6 +24,6 @@ DynamicLayout组件支持的布局算法详细信息。
 | --- | --- |
 | [ColumnLayoutAlgorithmOptions](arkts-arkui-layoutalgorithm-columnlayoutalgorithmoptions-i.md) | 设置垂直方向线性布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。 |
 | [GridLayoutAlgorithmOptions](arkts-arkui-layoutalgorithm-gridlayoutalgorithmoptions-i.md) | 设置网格布局算法的列数模板、列间距、行间距。 |
-| [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md) | 动态布局容器DynamicLayout的布局算法基础类型。 |
+| [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md) | 动态布局容器[DynamicLayout](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md)的布局算法基础类型。 |
 | [RowLayoutAlgorithmOptions](arkts-arkui-layoutalgorithm-rowlayoutalgorithmoptions-i.md) | 设置水平方向线性布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。 |
 | [StackLayoutAlgorithmOptions](arkts-arkui-layoutalgorithm-stacklayoutalgorithmoptions-i.md) | 设置堆叠布局算法的对齐方式。 |

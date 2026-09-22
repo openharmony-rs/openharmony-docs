@@ -1,5 +1,9 @@
 # PrintDirectionMode
 
+```TypeScript
+enum PrintDirectionMode
+```
+
 Enumerates the print direction modes.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # DataParams
 
+```TypeScript
+interface DataParams
+```
+
 Defines the parameters for port data sending and receiving.
 
 **Since:** 26.0.0

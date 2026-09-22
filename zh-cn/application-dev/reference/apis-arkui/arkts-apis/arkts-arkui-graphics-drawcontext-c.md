@@ -1,5 +1,9 @@
 # DrawContext
 
+```TypeScript
+export class DrawContext
+```
+
 图形绘制上下文，提供绘制所需的画布及其宽度和高度。
 
 **起始版本：** 11

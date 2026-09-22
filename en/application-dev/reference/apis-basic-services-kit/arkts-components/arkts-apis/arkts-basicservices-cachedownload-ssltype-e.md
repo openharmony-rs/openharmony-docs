@@ -1,5 +1,9 @@
 # SslType
 
+```TypeScript
+enum SslType
+```
+
 Enumerates secure communication protocols.
 
 **Since:** 21

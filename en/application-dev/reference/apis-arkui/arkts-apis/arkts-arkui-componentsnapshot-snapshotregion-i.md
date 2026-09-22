@@ -1,5 +1,9 @@
 # SnapshotRegion
 
+```TypeScript
+interface SnapshotRegion
+```
+
 Defines the rectangular region for capturing the component snapshot.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+export enum ColorMode
+```
+
 用于表示当前设备颜色模式。
 
 **起始版本：** 12

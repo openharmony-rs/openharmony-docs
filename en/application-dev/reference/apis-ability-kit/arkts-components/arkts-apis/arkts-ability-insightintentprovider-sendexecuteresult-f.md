@@ -44,10 +44,92 @@ Send execute result.
 
 **Examples**
 
-```TypeScript
 Below is an example of setting the return mode of the intent execution result to FUNCTION.
-```
 
 ```TypeScript
+import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class InsightIntentExecutorUI extends InsightIntentExecutor {
+  onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+    pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+    hilog.info(0x0000, 'testTag', 'onExecuteInUIAbilityForegroundMode %{public}s', name);
+    let result: insightIntent.ExecuteResult;
+    result = {
+      code: 0,
+      result: {
+        message: 'Unsupported insight intent.',
+      },
+    };
+    try {
+      // Set the return mode of the intent execution result to FUNCTION.
+      this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let msg = (error as BusinessError).message;
+      console.error(`testTag setReturnModeForUIAbilityForeground fail, error code: ${code}, error msg: ${msg}.`);
+    }
+    // Pass the intent instance ID to the target page through localStorage.
+    let localStorageData: Record<string, number> = {
+      'insightId': this.context.instanceId,
+    };
+    let storage: LocalStorage = new LocalStorage(localStorageData);
+    // Load the page through pageLoader.
+    pageLoader.loadContent('pages/UIAbilityIndex', storage, (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+      } else {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Succeeded in loading the content');
+      }
+    });
+    return result;
+  }
+}
+```
+
 Below is an example of proactively sending the intent execution result.
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { insightIntent, insightIntentProvider } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  insightId: number | undefined = this.storage?.get<number>('insightId');
+
+  build() {
+    Column() {
+      // Return the intent execution result using the sendExecuteResult API.
+      Button('insightIntentProvider sendExecuteResult')
+        .onClick(() => {
+          try {
+            let result: insightIntent.ExecuteResult;
+            result = {
+              code: 0,
+              result: {
+                message: 'Unsupported insight intent.',
+              },
+            };
+            insightIntentProvider.sendExecuteResult(this.insightId, result)
+              .then(() => {
+                console.info('testTag sendExecuteResult success');
+              })
+              .catch((error: BusinessError) => {
+                console.error(`testTag sendExecuteResult fail 1, error code: ${error.code}, error msg: ${error.message}.`);
+              });
+          } catch (e) {
+            let code = (e as BusinessError).code;
+            let msg = (e as BusinessError).message;
+            console.error(`testTag sendExecuteResult fail 2, error code: ${code}, error msg: ${msg}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```

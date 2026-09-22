@@ -1,5 +1,9 @@
 # ArcSwiperController
 
+```TypeScript
+export class ArcSwiperController
+```
+
 Implements the controller of the **ArcSwiper** component. You can bind this object to the **ArcSwiper** component and use it to control page switching.
 
 **Since:** 18

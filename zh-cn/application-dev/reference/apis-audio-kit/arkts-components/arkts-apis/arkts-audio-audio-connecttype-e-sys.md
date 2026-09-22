@@ -1,8 +1,10 @@
 # ConnectType（系统接口）
 
-枚举，设备连接类型。
+```TypeScript
+enum ConnectType
+```
 
-@enum { int }
+枚举，设备连接类型。
 
 **起始版本：** 9
 

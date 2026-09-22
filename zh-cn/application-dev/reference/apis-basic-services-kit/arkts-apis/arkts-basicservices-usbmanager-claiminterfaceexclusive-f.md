@@ -15,7 +15,7 @@ function claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force
 
 独占方式声明USB设备接口。本接口在调用时检查指定的USB接口是否已被其他进程占用，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)声明同一接口；可使用**onConflict**回调接收此类冲突通知。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

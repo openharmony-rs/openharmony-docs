@@ -1,5 +1,9 @@
 # SipAddress
 
+```TypeScript
+class SipAddress
+```
+
 联系人的会话发起协议(SIP)地址类。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # DeviceType (System API)
 
+```TypeScript
+enum DeviceType
+```
+
 Enum for the custom type of remote device.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # MouseAction
 
+```TypeScript
+declare enum MouseAction
+```
+
 Sets the action type of a mouse operation.
 
 **Since:** 8
@@ -16,6 +20,8 @@ The mouse button is pressed.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -30,6 +36,8 @@ The mouse button is released.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -43,6 +51,8 @@ Move
 The mouse cursor moves.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -59,6 +69,8 @@ The mouse pointer is hovered on an element.
 Note: This value has no effect.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

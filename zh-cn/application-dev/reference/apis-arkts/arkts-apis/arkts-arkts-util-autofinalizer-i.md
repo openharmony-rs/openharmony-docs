@@ -1,5 +1,9 @@
 # AutoFinalizer
 
+```TypeScript
+interface AutoFinalizer<T>
+```
+
 提供一个可通过开发者自定义回调释放由开发者管理的资源的接口。
 
 > **说明：** 

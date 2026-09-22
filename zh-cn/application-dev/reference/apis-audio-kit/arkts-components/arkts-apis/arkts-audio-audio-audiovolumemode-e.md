@@ -1,8 +1,10 @@
 # AudioVolumeMode
 
-表示音量模式的枚举。
+```TypeScript
+enum AudioVolumeMode
+```
 
-@enum { int }
+表示音量模式的枚举。
 
 **起始版本：** 19
 

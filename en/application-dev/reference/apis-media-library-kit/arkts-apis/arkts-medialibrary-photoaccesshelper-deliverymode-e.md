@@ -1,5 +1,9 @@
 # DeliveryMode
 
+```TypeScript
+enum DeliveryMode
+```
+
 Enumerates the asset delivery modes.
 
 These modes are used for segmented photo or video delivery. If the device does not support segmentation, the three delivery modes below work the same way and just return the requested image or video directly. The request result is returned through the [onDataPrepared](arkts-medialibrary-photoaccesshelper-mediaassetdatahandler-i.md#ondataprepared) callback.

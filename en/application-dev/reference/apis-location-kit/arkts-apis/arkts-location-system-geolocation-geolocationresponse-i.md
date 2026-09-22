@@ -1,5 +1,9 @@
 # GeolocationResponse
 
+```TypeScript
+export interface GeolocationResponse
+```
+
 **Since:** 3
 
 **Deprecated since:** 9

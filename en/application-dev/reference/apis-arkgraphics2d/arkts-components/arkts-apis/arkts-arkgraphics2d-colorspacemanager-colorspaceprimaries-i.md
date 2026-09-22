@@ -1,5 +1,9 @@
 # ColorSpacePrimaries
 
+```TypeScript
+interface ColorSpacePrimaries
+```
+
 The three primary colors (red, green, blue) and white as defined by the color space standard, whose positions in the color space are represented by (x, y) coordinates based on real-world chromaticity.
 
 **Since:** 9

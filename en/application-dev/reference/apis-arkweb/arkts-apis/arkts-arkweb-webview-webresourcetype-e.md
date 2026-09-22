@@ -1,5 +1,9 @@
 # WebResourceType
 
+```TypeScript
+enum WebResourceType
+```
+
 Enumerates the types of requested resources.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # Faults
 
+```TypeScript
+enum Faults
+```
+
 定义任务失败的原因。
 
 > **说明：** 

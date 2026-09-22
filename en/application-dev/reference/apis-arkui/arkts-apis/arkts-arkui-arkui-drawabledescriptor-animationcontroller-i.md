@@ -1,5 +1,9 @@
 # AnimationController
 
+```TypeScript
+export interface AnimationController
+```
+
 Implements an animation controller object. It provides APIs for playing, stopping, resuming, and pausing animations, as well as querying the status.
 
 **Since:** 21

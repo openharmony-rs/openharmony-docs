@@ -62,31 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Use try catch to capture possible exceptions.
-try {
-  let rotationMatrix = [
-    1, 0, 0,
-    0, 0.87, -0.50,
-    0, 0.50, 0.87
-  ];
-  const promise = sensor.transformRotationMatrix(rotationMatrix, { x: 1, y: 3 });
-  promise.then((data: Array<number>) => {
-    for (let i = 0; i < data.length; i++) {
-      console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
-    }
-  }, (err: BusinessError) => {
-    console.error(`Failed to transform rotationMatrix. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to transform rotationMatrix. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="transformrotationmatrix-1"></a>
 
 ## transformRotationMatrix
 
@@ -122,4 +99,27 @@ Transforms a rotation vector based on the coordinate system. This API uses a pro
 
 **Examples**
 
-See [transformRotationMatrix](#transformrotationmatrix)
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Use try catch to capture possible exceptions.
+try {
+  let rotationMatrix = [
+    1, 0, 0,
+    0, 0.87, -0.50,
+    0, 0.50, 0.87
+  ];
+  const promise = sensor.transformRotationMatrix(rotationMatrix, { x: 1, y: 3 });
+  promise.then((data: Array<number>) => {
+    for (let i = 0; i < data.length; i++) {
+      console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+    }
+  }, (err: BusinessError) => {
+    console.error(`Failed to transform rotationMatrix. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to transform rotationMatrix. Code: ${e.code}, message: ${e.message}`);
+}
+```

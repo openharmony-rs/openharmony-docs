@@ -1,5 +1,9 @@
 # ExtensionWindowAttribute（系统接口）
 
+```TypeScript
+enum ExtensionWindowAttribute
+```
+
 扩展窗口的属性枚举。
 
 **起始版本：** 14

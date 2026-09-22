@@ -1,5 +1,9 @@
 # Volume（系统接口）
 
+```TypeScript
+export interface Volume
+```
+
 获取所有卷。
 
 **起始版本：** 9

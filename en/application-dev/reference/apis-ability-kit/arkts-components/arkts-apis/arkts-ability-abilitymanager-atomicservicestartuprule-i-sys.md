@@ -1,5 +1,9 @@
 # AtomicServiceStartupRule (System API)
 
+```TypeScript
+export interface AtomicServiceStartupRule
+```
+
 Describes the rule for launching an embedded atomic service.
 
 **Since:** 18

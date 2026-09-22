@@ -1,7 +1,7 @@
 # AVMediaCenterControlType
 
 ```TypeScript
-type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' |
+type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode'
     'toggleFavorite'
 ```
 

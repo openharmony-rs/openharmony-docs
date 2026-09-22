@@ -1,5 +1,9 @@
 # FlashQuery
 
+```TypeScript
+interface FlashQuery
+```
+
 FlashQuery provides APIs to query the flash status and mode of a camera device.
 
 > **NOTE:** 

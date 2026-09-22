@@ -40,18 +40,8 @@ appManager.isRamConstrainedDevice().then((data) => {
 });
 ```
 
-```TypeScript
-import appManager from '@ohos.application.appManager';
 
-appManager.isRamConstrainedDevice((error, data) => {
-  if (error && error.code !== 0) {
-    console.error(`isRamConstrainedDevice fail, error: ${JSON.stringify(error)}`);
-  } else {
-    console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
-  }
-});
-```
-
+<a id="isramconstraineddevice-1"></a>
 
 ## isRamConstrainedDevice
 
@@ -77,4 +67,14 @@ function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void
 
 **示例**
 
-参见 isRamConstrainedDevice
+```TypeScript
+import appManager from '@ohos.application.appManager';
+
+appManager.isRamConstrainedDevice((error, data) => {
+  if (error && error.code !== 0) {
+    console.error(`isRamConstrainedDevice fail, error: ${JSON.stringify(error)}`);
+  } else {
+    console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
+  }
+});
+```

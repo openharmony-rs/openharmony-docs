@@ -1,5 +1,9 @@
 # DividerStyleOptions
 
+```TypeScript
+declare interface DividerStyleOptions
+```
+
 Defines divider information.
 
 **Since:** 12

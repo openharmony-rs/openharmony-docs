@@ -1,5 +1,9 @@
 # MmsSendConf（系统接口）
 
+```TypeScript
+export interface MmsSendConf
+```
+
 彩信发送配置。
 
 **起始版本：** 8

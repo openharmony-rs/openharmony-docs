@@ -1,5 +1,9 @@
 # InputMethodExtraConfig
 
+```TypeScript
+export interface InputMethodExtraConfig
+```
+
 Represents the extension information of an input method.
 
 **Since:** 22
@@ -25,3 +29,33 @@ Input method extension information, which is used to store custom key-value pair
 **Since:** 22
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Examples**
+
+```TypeScript
+// The following code must be executed on the page of EntryAbility.
+@Entry
+@Component
+struct Index2 {
+  // 1. Construct the input method extension information.
+  private extraConfig: InputMethodExtraConfig = {
+    customSettings: {
+      'inputMode': 'chat',
+      'showEmojiPanel': true,
+      'themeColor': 'dark',
+      'autoCapitalize': false
+    }
+  };
+
+  build() {
+    Column() {
+      TextInput()
+        .onWillAttachIME((client: IMEClient): void => {
+          client.setExtraConfig(this.extraConfig);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```

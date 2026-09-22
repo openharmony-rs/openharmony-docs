@@ -1,5 +1,9 @@
 # DisconnectReason
 
+```TypeScript
+enum DisconnectReason
+```
+
 当前断连原因的枚举。
 
 **起始版本：** 18

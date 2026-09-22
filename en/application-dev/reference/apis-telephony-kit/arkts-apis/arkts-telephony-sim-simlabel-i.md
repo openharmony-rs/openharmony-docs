@@ -1,5 +1,9 @@
 # SimLabel
 
+```TypeScript
+export interface SimLabel
+```
+
 Defines the SIM card label.
 
 **Since:** 20

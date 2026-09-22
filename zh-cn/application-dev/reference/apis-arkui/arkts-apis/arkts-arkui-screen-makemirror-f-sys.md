@@ -55,20 +55,8 @@ screen.makeMirror(mainScreenId, mirrorScreenIds, (err: BusinessError, data: numb
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 屏幕ID需通过getAllScreens()获取
-let mainScreenId: number = 0; // 主屏ID
-let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
-// 设置屏幕为镜像模式
-screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: number) => {
-  console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set screen mirroring. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="makemirror-1"></a>
 
 ## makeMirror
 
@@ -107,4 +95,16 @@ function makeMirror(mainScreen:number, mirrorScreen:Array<number>): Promise<numb
 
 **示例**
 
-参见 [makeMirror](#makemirror)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 屏幕ID需通过getAllScreens()获取
+let mainScreenId: number = 0; // 主屏ID
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
+// 设置屏幕为镜像模式
+screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: number) => {
+  console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set screen mirroring. Code: ${err.code}, message: ${err.message}`);
+});
+```

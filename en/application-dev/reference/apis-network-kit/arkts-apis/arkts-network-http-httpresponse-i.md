@@ -1,5 +1,9 @@
 # HttpResponse
 
+```TypeScript
+export interface HttpResponse
+```
+
 Defines the response to an HTTP request.
 
 **Since:** 6

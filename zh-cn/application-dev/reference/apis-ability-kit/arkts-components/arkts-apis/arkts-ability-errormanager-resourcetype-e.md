@@ -1,5 +1,9 @@
 # ResourceType
 
+```TypeScript
+export enum ResourceType
+```
+
 应用资源超基线的类型。
 
 **起始版本：** 24

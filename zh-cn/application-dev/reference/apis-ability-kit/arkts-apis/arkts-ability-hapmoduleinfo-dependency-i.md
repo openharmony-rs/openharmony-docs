@@ -1,5 +1,9 @@
 # Dependency
 
+```TypeScript
+export interface Dependency
+```
+
 描述模块所依赖的动态共享库信息。
 
 **起始版本：** 9

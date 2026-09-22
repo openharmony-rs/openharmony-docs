@@ -1,5 +1,9 @@
 # TileMode (System API)
 
+```TypeScript
+enum TileMode
+```
+
 Pixel fill mode enumeration.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # RadioTechnology
 
+```TypeScript
+export enum RadioTechnology
+```
+
 Enumerates radio access technologies.
 
 **Since:** 6

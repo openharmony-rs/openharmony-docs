@@ -1,5 +1,9 @@
 # ConnectionStateParam
 
+```TypeScript
+interface ConnectionStateParam
+```
+
 连接状态参数。
 
 **起始版本：** 26.0.0

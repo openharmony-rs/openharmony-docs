@@ -1,5 +1,9 @@
 # DragState（系统接口）
 
+```TypeScript
+enum DragState
+```
+
 拖拽状态。
 
 **起始版本：** 10

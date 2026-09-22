@@ -1,5 +1,9 @@
 # DiscoverMode (System API)
 
+```TypeScript
+enum DiscoverMode
+```
+
 Enumerates the device discovery modes.
 
 **Since:** 7

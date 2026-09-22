@@ -1,5 +1,9 @@
 # ContactSyncProgress
 
+```TypeScript
+interface ContactSyncProgress
+```
+
 Information about the contact synchronization progress.
 
 Contains the sync ID, current batch, and total batch.

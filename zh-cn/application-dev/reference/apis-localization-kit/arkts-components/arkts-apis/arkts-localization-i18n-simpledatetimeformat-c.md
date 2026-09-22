@@ -1,5 +1,9 @@
 # SimpleDateTimeFormat
 
+```TypeScript
+export class SimpleDateTimeFormat
+```
+
 提供时间日期格式化的能力。
 
 **起始版本：** 18

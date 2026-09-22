@@ -18,6 +18,8 @@ function hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallb
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -68,25 +70,8 @@ huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
 });
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 此处options选择emptyOptions来传空 */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-
-/* 判断密钥是否存在 */
-huks.hasKeyItem(keyAlias, emptyOptions).then((data) => {
-  if (data) {
-    console.info(`keyAlias:${keyAlias} is existed!`);
-  } else {
-    console.info(`find key failed!`);
-  }
-});
-```
-
+<a id="haskeyitem-1"></a>
 
 ## hasKeyItem
 
@@ -132,4 +117,21 @@ function hasKeyItem(keyAlias: string, options: HuksOptions): Promise<boolean>
 
 **示例**
 
-参见 [hasKeyItem](#haskeyitem)
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 此处options选择emptyOptions来传空 */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+
+/* 判断密钥是否存在 */
+huks.hasKeyItem(keyAlias, emptyOptions).then((data) => {
+  if (data) {
+    console.info(`keyAlias:${keyAlias} is existed!`);
+  } else {
+    console.info(`find key failed!`);
+  }
+});
+```

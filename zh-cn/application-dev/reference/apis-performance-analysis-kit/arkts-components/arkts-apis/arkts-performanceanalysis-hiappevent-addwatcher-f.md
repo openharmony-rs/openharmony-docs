@@ -45,20 +45,104 @@ function addWatcher(watcher: Watcher): AppEventPackageHolder
 
 **示例**
 
-```TypeScript
 根据添加的事件观察者类型，目前有如下三种使用方法：
 
 方法一：设置回调条件triggerCondition，实现onTrigger()回调。当满足回调条件时，系统将自动触发回调。
-```
 
 ```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+hiAppEvent.addWatcher({
+  name: "watcher1",
+  // 订阅过滤条件，这里是订阅了系统事件领域的应用崩溃事件
+  appEventFilters: [
+    {
+      domain: hiAppEvent.domain.OS,
+      names: [hiAppEvent.event.APP_CRASH]
+    }
+  ],
+  // 设置触发onTrigger回调的条件，这里是当满足事件总数量达到10个或事件总大小达到1000byte或事件发生超过30s时会触发回调
+  triggerCondition: {
+    row: 10,
+    size: 1000,
+    timeOut: 1
+  },
+  // 实现onTrigger回调，结合triggerCondition使用，满足回调条件触发回调，接收到回调通知后，使用takeNext()查询订阅的事件
+  onTrigger: (curRow: number, curSize: number, holder: hiAppEvent.AppEventPackageHolder) => {
+    if (holder == null) {
+      hilog.error(0x0000, 'hiAppEvent', "holder is null");
+      return;
+    }
+    hilog.info(0x0000, 'hiAppEvent', `curRow=${curRow}, curSize=${curSize}`);
+    let eventPkg: hiAppEvent.AppEventPackage | null = null;
+    while ((eventPkg = holder.takeNext()) != null) {
+      hilog.info(0x0000, 'hiAppEvent', `eventPkg.packageId=${eventPkg.packageId}`);
+      hilog.info(0x0000, 'hiAppEvent', `eventPkg.row=${eventPkg.row}`);
+      hilog.info(0x0000, 'hiAppEvent', `eventPkg.size=${eventPkg.size}`);
+      for (const eventInfo of eventPkg.data) {
+        hilog.info(0x0000, 'hiAppEvent', `eventPkg.data=${eventInfo}`);
+      }
+    }
+  }
+});
+```
+
 方法二：未设置回调条件参数，使用事件订阅返回的holder对象主动获取监听的事件。
 
 针对异常退出时产生的崩溃事件（hiAppEvent.event.APP_CRASH）和应用冻屏事件（hiAppEvent.event.APP_FREEZE），系统捕获维测日志有一定耗时，典型情况下30s内完成，极端情况下2min左右完成。
 
 在手动处理订阅事件的方法中，由于事件可能未生成或日志信息未抓取完成，建议在进程启动后延时重试调用takeNext()获取此类事件。
-```
 
 ```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let holder: hiAppEvent.AppEventPackageHolder = hiAppEvent.addWatcher({
+  name: "watcher2",
+  // 订阅过滤条件，这里是订阅了系统事件领域的应用崩溃事件
+  appEventFilters: [
+    {
+      domain: hiAppEvent.domain.OS,
+      names: [hiAppEvent.event.APP_CRASH]
+    }
+  ],
+});
+// 通过订阅数据持有者holder，主动获取崩溃事件
+if (holder != null) {
+  let eventPkg: hiAppEvent.AppEventPackage | null = null;
+  while ((eventPkg = holder.takeNext()) != null) {
+    hilog.info(0x0000, 'hiAppEvent', `eventPkg.packageId=${eventPkg.packageId}`);
+    hilog.info(0x0000, 'hiAppEvent', `eventPkg.row=${eventPkg.row}`);
+    hilog.info(0x0000, 'hiAppEvent', `eventPkg.size=${eventPkg.size}`);
+    for (const eventInfo of eventPkg.data) {
+      hilog.info(0x0000, 'hiAppEvent', `eventPkg.data=${eventInfo}`);
+    }
+  }
+}
+```
+
 方法三：实现onReceive()回调，当监听的事件发生后实时触发回调。
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+hiAppEvent.addWatcher({
+  name: "watcher3",
+  // 订阅过滤条件，这里是订阅了系统事件领域的应用崩溃事件
+  appEventFilters: [
+    {
+      domain: hiAppEvent.domain.OS,
+      names: [hiAppEvent.event.APP_CRASH]
+    }
+  ],
+  // 实现onReceive回调，监听到事件后实时回调
+  onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+    hilog.info(0x0000, 'hiAppEvent', `domain=${domain}`);
+    for (const eventGroup of appEventGroups) {
+      hilog.info(0x0000, 'hiAppEvent', `eventName=${eventGroup.name}`);
+      for (const eventInfo of eventGroup.appEventInfos) {
+        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`);
+      }
+    }
+  }
+});
 ```

@@ -1,5 +1,9 @@
 # SourceType
 
+```TypeScript
+enum SourceType
+```
+
 枚举，音源类型。
 
 **起始版本：** 8

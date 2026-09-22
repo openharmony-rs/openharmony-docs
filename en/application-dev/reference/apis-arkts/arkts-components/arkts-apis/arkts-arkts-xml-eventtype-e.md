@@ -1,5 +1,9 @@
 # EventType
 
+```TypeScript
+enum EventType
+```
+
 The event types represented by XML elements.
 
 **Since:** 8

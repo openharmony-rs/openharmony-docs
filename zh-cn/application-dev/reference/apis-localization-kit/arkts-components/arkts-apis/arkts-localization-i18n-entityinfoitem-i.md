@@ -1,5 +1,9 @@
 # EntityInfoItem
 
+```TypeScript
+export interface EntityInfoItem
+```
+
 实体信息属性。
 
 **起始版本：** 11

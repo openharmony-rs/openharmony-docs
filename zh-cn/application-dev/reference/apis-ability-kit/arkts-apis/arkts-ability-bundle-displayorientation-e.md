@@ -1,5 +1,9 @@
 # DisplayOrientation
 
+```TypeScript
+export enum DisplayOrientation
+```
+
 
 > **说明：** 
 > 

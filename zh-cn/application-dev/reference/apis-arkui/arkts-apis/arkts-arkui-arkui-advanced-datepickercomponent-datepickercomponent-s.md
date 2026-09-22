@@ -1,5 +1,9 @@
 # DatePickerComponent
 
+```TypeScript
+export declare struct DatePickerComponent
+```
+
 DatePickerComponent组件用于选择日期（年月日）和时间（时分秒）。
 
 ## 子组件

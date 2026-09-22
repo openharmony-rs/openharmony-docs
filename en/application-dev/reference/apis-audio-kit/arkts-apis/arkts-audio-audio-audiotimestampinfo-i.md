@@ -1,5 +1,9 @@
 # AudioTimestampInfo
 
+```TypeScript
+interface AudioTimestampInfo
+```
+
 Describes the information about the audio stream timestamp and the current data frame position.
 
 **Since:** 19

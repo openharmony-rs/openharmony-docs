@@ -1,5 +1,9 @@
 # NotificationSortingMap（系统接口）
 
+```TypeScript
+export interface NotificationSortingMap
+```
+
 提供有关已订阅的所有通知中的活动通知的排序信息。
 
 **起始版本：** 7

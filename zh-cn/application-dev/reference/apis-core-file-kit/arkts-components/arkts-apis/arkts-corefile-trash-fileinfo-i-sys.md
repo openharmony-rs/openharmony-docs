@@ -1,5 +1,9 @@
 # FileInfo（系统接口）
 
+```TypeScript
+interface FileInfo
+```
+
 最近删除（回收站）内文件的FileInfo对象。
 
 **起始版本：** 10

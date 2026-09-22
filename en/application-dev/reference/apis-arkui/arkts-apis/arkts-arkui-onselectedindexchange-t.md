@@ -18,4 +18,4 @@ Defines a callback invoked when the selected segmented button item changes.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectedIndex | number | Yes | Index of the selected segmented button item. |
+| selectedIndex | number | Yes | Index of the segmented button item. The first item is numbered 0, and subsequent items are numbered in ascending order. |

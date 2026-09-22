@@ -22,7 +22,7 @@ function getDefaultCellularDataSimId(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 获取默认移动数据的SIM卡ID。<br>与SIM卡绑定，从1开始递增。<br>- 0：无SIM卡。<br>- 9999：esim场景下，默认移动数据的SIM卡ID为9999。<br>- 9 9999：天际通场景下，默认移动数据的SIM卡ID为99999。 |
+| number | 获取默认移动数据的SIM卡ID。<br>与SIM卡绑定，从1开始递增。<br>- 0：无SIM卡。<br>- 9999：esim场景下，默认移动数据的SIM卡ID为9999。<br>- 99999：天际通场景下，默认移动数据的SIM卡ID为99999。 |
 
 **示例**
 

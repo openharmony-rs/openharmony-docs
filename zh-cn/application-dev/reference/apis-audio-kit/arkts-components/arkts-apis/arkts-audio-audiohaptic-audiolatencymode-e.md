@@ -1,8 +1,10 @@
 # AudioLatencyMode
 
-枚举，音频时延模式。
+```TypeScript
+enum AudioLatencyMode
+```
 
-@enum {int}
+枚举，音频时延模式。
 
 **起始版本：** 11
 

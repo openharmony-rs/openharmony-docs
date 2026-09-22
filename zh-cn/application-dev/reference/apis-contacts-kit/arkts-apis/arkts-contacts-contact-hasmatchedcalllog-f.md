@@ -48,12 +48,27 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+const phoneNumber = '138xxxxxxxx';
+const minDuration = 60;
+// 调用接口查询，默认查询6小时以内的通话记录
+contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:boolean) => {
+  console.info(`Has matched call log: ${hasMatch}`);
+});
 ```
 
+
+<a id="hasmatchedcalllog-1"></a>
 
 ## hasMatchedCallLog
 
@@ -98,4 +113,23 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 **示例**
 
-参见 hasMatchedCallLog
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+const phoneNumber = '138xxxxxxxx';
+const minDuration = 60;
+const withinTime = 2 * 60 *60;
+
+// 调用接口查询
+contact.hasMatchedCallLog(context, phoneNumber, minDuration, withinTime).then((hasMatch:boolean) => {
+  console.info(`Has matched call log: ${hasMatch}`);
+});
+```

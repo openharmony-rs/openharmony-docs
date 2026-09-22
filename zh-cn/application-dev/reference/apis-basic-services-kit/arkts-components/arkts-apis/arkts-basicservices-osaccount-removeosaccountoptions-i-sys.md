@@ -1,5 +1,9 @@
 # RemoveOsAccountOptions（系统接口）
 
+```TypeScript
+interface RemoveOsAccountOptions
+```
+
 表示用于删除系统账号的可选参数。
 
 **起始版本：** 24

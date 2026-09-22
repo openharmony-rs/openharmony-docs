@@ -1,5 +1,9 @@
 # AsyKeySpecType
 
+```TypeScript
+enum AsyKeySpecType
+```
+
 Enumerates the key parameter types.
 
 **Since:** 10

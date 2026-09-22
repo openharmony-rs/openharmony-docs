@@ -1,5 +1,9 @@
 # TonePlayer（系统接口）
 
+```TypeScript
+interface TonePlayer
+```
+
 提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。在调用TonePlayer的接口前，需要先通过[createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md)创建实例。
 
 **起始版本：** 9
@@ -50,13 +54,7 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_1).then(() => {
-  console.info('promise call load ');
-}).catch(() => {
-  console.error('promise call load fail');
-});
-```
+<a id="load-1"></a>
 
 ## load
 
@@ -82,11 +80,17 @@ load(type: ToneType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
-参见 [load](#load)
+```TypeScript
+tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_1).then(() => {
+  console.info('promise call load ');
+}).catch(() => {
+  console.error('promise call load fail');
+});
+```
 
 ## release
 
@@ -123,13 +127,7 @@ tonePlayer.release((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-tonePlayer.release().then(() => {
-  console.info('promise call release');
-}).catch(() => {
-  console.error('promise call release fail');
-});
-```
+<a id="release-1"></a>
 
 ## release
 
@@ -149,22 +147,9 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-tonePlayer.release((err: BusinessError) => {
-  if (err) {
-    console.error(`callback call release failed error: ${err.message}`);
-    return;
-  } else {
-    console.info('callback call release success ');
-  }
-});
-```
 
 ```TypeScript
 tonePlayer.release().then(() => {
@@ -209,13 +194,7 @@ tonePlayer.start((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-tonePlayer.start().then(() => {
-  console.info('promise call start');
-}).catch(() => {
-  console.error('promise call start fail');
-});
-```
+<a id="start-1"></a>
 
 ## start
 
@@ -235,22 +214,9 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-tonePlayer.start((err: BusinessError) => {
-  if (err) {
-    console.error(`callback call start failed error: ${err.message}`);
-    return;
-  } else {
-    console.info('callback call start success');
-  }
-});
-```
 
 ```TypeScript
 tonePlayer.start().then(() => {
@@ -295,13 +261,7 @@ tonePlayer.stop((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-tonePlayer.stop().then(() => {
-  console.info('promise call stop finish');
-}).catch(() => {
-  console.error('promise call stop fail');
-});
-```
+<a id="stop-1"></a>
 
 ## stop
 
@@ -321,22 +281,9 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-tonePlayer.stop((err: BusinessError) => {
-  if (err) {
-    console.error(`callback call stop error: ${err.message}`);
-    return;
-  } else {
-    console.error('callback call stop success ');
-  }
-});
-```
 
 ```TypeScript
 tonePlayer.stop().then(() => {

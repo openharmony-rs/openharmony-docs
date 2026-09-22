@@ -1,5 +1,9 @@
 # FunctionType（系统接口）
 
+```TypeScript
+export enum FunctionType
+```
+
 USB设备侧功能。
 
 **起始版本：** 9

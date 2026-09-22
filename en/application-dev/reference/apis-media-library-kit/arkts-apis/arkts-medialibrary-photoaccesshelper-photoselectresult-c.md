@@ -1,5 +1,9 @@
 # PhotoSelectResult
 
+```TypeScript
+class PhotoSelectResult
+```
+
 Defines information about the images or videos selected.
 
 **Since:** 10

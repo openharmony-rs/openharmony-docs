@@ -1,5 +1,9 @@
 # GattService
 
+```TypeScript
+interface GattService
+```
+
 Describes the Gatt service.
 
 **Since:** 7

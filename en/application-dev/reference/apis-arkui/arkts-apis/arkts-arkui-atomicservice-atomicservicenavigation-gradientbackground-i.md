@@ -1,5 +1,9 @@
 # GradientBackground
 
+```TypeScript
+export interface GradientBackground
+```
+
 Provides options for setting gradient colors for branding.
 
 **Since:** 18

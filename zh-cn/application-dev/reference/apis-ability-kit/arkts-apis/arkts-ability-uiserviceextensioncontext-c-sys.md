@@ -1,5 +1,9 @@
 # UIServiceExtensionContext（系统接口）
 
+```TypeScript
+declare class UIServiceExtensionContext extends ExtensionContext
+```
+
 UIServiceExtensionContext模块是[UIServiceExtension](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)的上下文环境，继承自[ExtensionContext](arkts-ability-extensioncontext-c.md)。
 
 UIServiceExtensionContext模块提供访问[UIServiceExtension](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)特定资源以及具有的能力，包括启动、停止、绑定、解绑Ability。

@@ -1,17 +1,23 @@
 # ArkTS API<!--arkts-localizationkit-->
 
-<!--Del-->
-- [@ohos.fontManager(字体管理)](arkts-localization-fontmanager.md)<!--DelEnd-->
+- [@ohos.fontManager(字体管理)](arkts-localization-fontmanager.md)
   <!--Del-->
   - [dataMigration(系统接口)](arkts-localization-fontmanager-datamigration-f-sys.md)<!--DelEnd-->
+  - [getFontScope](arkts-localization-fontmanager-getfontscope-f.md)
   <!--Del-->
   - [installFont(系统接口)](arkts-localization-fontmanager-installfont-f-sys.md)<!--DelEnd-->
+  - [installScopeFont](arkts-localization-fontmanager-installscopefont-f.md)
+  - [offFontObserver](arkts-localization-fontmanager-offfontobserver-f.md)
+  - [onFontObserver](arkts-localization-fontmanager-onfontobserver-f.md)
   <!--Del-->
   - [uninstallFont(系统接口)](arkts-localization-fontmanager-uninstallfont-f-sys.md)<!--DelEnd-->
+  - [uninstallScopeFont](arkts-localization-fontmanager-uninstallscopefont-f.md)
   <!--Del-->
   - [DataMigrationCallback(系统接口)](arkts-localization-fontmanager-datamigrationcallback-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [DataMigrationProgress(系统接口)](arkts-localization-fontmanager-datamigrationprogress-i-sys.md)<!--DelEnd-->
+  - [FontClientObserver](arkts-localization-fontmanager-fontclientobserver-i.md)
+  - [FontScope](arkts-localization-fontmanager-fontscope-e.md)
 - [@ohos.i18n(国际化-I18n)](arkts-localization-i18n.md)
   - [addPreferredLanguage](arkts-localization-i18n-addpreferredlanguage-f.md)
   - [getCalendar](arkts-localization-i18n-getcalendar-f.md)

@@ -1,5 +1,9 @@
 # TreeControllerV2
 
+```TypeScript
+export declare class TreeControllerV2
+```
+
 树视图组件的控制器，可以将此对象绑定至树视图组件，然后通过它控制树的节点信息，同一个控制器不可以控制多个树视图组件。
 
 **起始版本：** 26.0.0

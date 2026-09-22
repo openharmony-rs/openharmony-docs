@@ -1,5 +1,9 @@
 # PowerConsumptionScenario
 
+```TypeScript
+export enum PowerConsumptionScenario
+```
+
 位置请求中的功耗场景类型。
 
 **起始版本：** 12

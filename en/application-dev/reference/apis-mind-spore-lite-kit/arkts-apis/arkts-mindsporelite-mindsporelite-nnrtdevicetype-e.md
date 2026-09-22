@@ -1,5 +1,9 @@
 # NNRTDeviceType
 
+```TypeScript
+export enum NNRTDeviceType
+```
+
 Enum for nnrt device type
 
 **Since:** 12

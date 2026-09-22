@@ -42,24 +42,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let moduleName = "feature";
 
-(async () => {
-  try {
-    let overlayModuleInfo = await overlay.getOverlayModuleInfo(moduleName);
-    console.info('overlayModuleInfo is ' + JSON.stringify(overlayModuleInfo));
-  } catch (err) {
-    let code = (err as BusinessError).code;
-    let message = (err as BusinessError).message;
-    console.error('getOverlayModuleInfo failed due to err code : ' + code + ' ' + 'message :' + message);
-  }
-})();
-```
-
-```TypeScript
-import { overlay } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let moduleName = "feature";
-
 try {
   overlay.getOverlayModuleInfo(moduleName, (err, data) => {
     if (err) {
@@ -75,6 +57,8 @@ try {
 }
 ```
 
+
+<a id="getoverlaymoduleinfo-1"></a>
 
 ## getOverlayModuleInfo
 
@@ -111,4 +95,20 @@ function getOverlayModuleInfo(moduleName: string): Promise<OverlayModuleInfo>
 
 **示例**
 
-参见 getOverlayModuleInfo
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let moduleName = "feature";
+
+(async () => {
+  try {
+    let overlayModuleInfo = await overlay.getOverlayModuleInfo(moduleName);
+    console.info('overlayModuleInfo is ' + JSON.stringify(overlayModuleInfo));
+  } catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error('getOverlayModuleInfo failed due to err code : ' + code + ' ' + 'message :' + message);
+  }
+})();
+```

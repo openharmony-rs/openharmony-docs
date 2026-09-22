@@ -1,5 +1,9 @@
 # MmsReadOrigInd（系统接口）
 
+```TypeScript
+export interface MmsReadOrigInd
+```
+
 彩信读取原始索引。
 
 **起始版本：** 8

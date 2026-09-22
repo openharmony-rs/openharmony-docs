@@ -59,22 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let formIds: string[] = ['12400633174999288'];
-  formHost.clearRouterProxy(formIds).then(() => {
-    console.info('formHost clear router proxy success');
-  }).catch((err: BusinessError) => {
-    console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="clearrouterproxy-1"></a>
 
 ## clearRouterProxy
 
@@ -118,4 +104,18 @@ function clearRouterProxy(formIds: Array<string>): Promise<void>
 
 **示例**
 
-参见 [clearRouterProxy](#clearrouterproxy)
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.clearRouterProxy(formIds).then(() => {
+    console.info('formHost clear router proxy success');
+  }).catch((err: BusinessError) => {
+    console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

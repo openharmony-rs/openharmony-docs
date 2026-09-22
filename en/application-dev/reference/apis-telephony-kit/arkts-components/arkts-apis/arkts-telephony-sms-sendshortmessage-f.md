@@ -64,33 +64,8 @@ sms.sendShortMessage(options, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-};
-let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-};
-let options: sms.SendMessageOptions = {
-    slotId: 0,
-    content: 'SMS message content',
-    destinationHost: '+861xxxxxxxxxx',
-    serviceCenter: '+861xxxxxxxxxx',
-    destinationPort: 1000,
-    sendCallback: sendCallback,
-    deliveryCallback: deliveryCallback
-};
-let promise = sms.sendShortMessage(options);
-promise.then(() => {
-    console.info(`sendShortMessage success`);
-}).catch((err: BusinessError) => {
-    console.error(`sendShortMessage failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="sendshortmessage-1"></a>
 
 ## sendShortMessage
 
@@ -131,4 +106,29 @@ Sends an SMS message. This API uses a promise to return the result.
 
 **Examples**
 
-See [sendShortMessage](#sendshortmessage)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
+let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
+    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+};
+let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
+    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+};
+let options: sms.SendMessageOptions = {
+    slotId: 0,
+    content: 'SMS message content',
+    destinationHost: '+861xxxxxxxxxx',
+    serviceCenter: '+861xxxxxxxxxx',
+    destinationPort: 1000,
+    sendCallback: sendCallback,
+    deliveryCallback: deliveryCallback
+};
+let promise = sms.sendShortMessage(options);
+promise.then(() => {
+    console.info(`sendShortMessage success`);
+}).catch((err: BusinessError) => {
+    console.error(`sendShortMessage failed, promise: err->${JSON.stringify(err)}`);
+});
+```

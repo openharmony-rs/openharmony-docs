@@ -1,5 +1,9 @@
 # WifiEapConfig
 
+```TypeScript
+interface WifiEapConfig
+```
+
 可扩展身份验证协议配置信息。
 
 - WifiEapConfig是一个用于配置Wi-Fi网络EAP认证的类型。  

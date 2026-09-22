@@ -1,5 +1,9 @@
 # BackRouterOptions
 
+```TypeScript
+export interface BackRouterOptions
+```
+
 Defines the parameters for routing back.
 
 **Since:** 7

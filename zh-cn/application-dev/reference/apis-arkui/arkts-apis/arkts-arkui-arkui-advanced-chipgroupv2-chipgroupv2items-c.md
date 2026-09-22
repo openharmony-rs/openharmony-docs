@@ -1,5 +1,9 @@
 # ChipGroupV2Items
 
+```TypeScript
+export declare class ChipGroupV2Items extends Array<ChipGroupV2Item>
+```
+
 ChipGroupV2Items定义了ChipGroupV2项的数组类，继承自Array&lt;[ChipGroupV2Item](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2item-c.md)&gt;。
 
 **继承/实现关系：** ChipGroupV2Items extends Array<ChipGroupV2Item>

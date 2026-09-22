@@ -1,5 +1,9 @@
 # UpdatablePickerConfigs
 
+```TypeScript
+export declare class UpdatablePickerConfigs
+```
+
 Describes the updatable attributes of the **PhotoPickerComponent**. These attributes are a subset of [PickerOptions](arkts-medialibrary-file-photopickercomponent-pickeroptions-c.md).
 
 **Since:** 22

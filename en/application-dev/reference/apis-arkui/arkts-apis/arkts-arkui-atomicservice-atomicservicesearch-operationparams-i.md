@@ -1,5 +1,9 @@
 # OperationParams
 
+```TypeScript
+export interface OperationParams
+```
+
 Sets initialization parameters of the function area.
 
 **Since:** 18

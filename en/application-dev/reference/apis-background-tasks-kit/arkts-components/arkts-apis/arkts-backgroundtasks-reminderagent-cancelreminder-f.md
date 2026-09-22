@@ -18,7 +18,7 @@ Cancels the reminder with the specified ID. This API uses an asynchronous callba
 
 **Deprecated since:** 9
 
-**Substitutes:** cancelReminder
+**Substitutes:** [cancelReminder](arkts-backgroundtasks-reminderagentmanager-cancelreminder-f.md)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -40,14 +40,8 @@ reminderAgent.cancelReminder(1, (err: BusinessError, data: void) => {
 });
 ```
 
-```TypeScript
-import reminderAgent from '@ohos.reminderAgent';
 
-reminderAgent.cancelReminder(1).then(() => {
-    console.info("cancelReminder promise");
-});
-```
-
+<a id="cancelreminder-1"></a>
 
 ## cancelReminder
 
@@ -61,7 +55,7 @@ Cancels the reminder with the specified ID. This API uses a promise to return th
 
 **Deprecated since:** 9
 
-**Substitutes:** cancelReminder
+**Substitutes:** [cancelReminder](arkts-backgroundtasks-reminderagentmanager-cancelreminder-f.md)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -79,4 +73,10 @@ Cancels the reminder with the specified ID. This API uses a promise to return th
 
 **Examples**
 
-See [cancelReminder](#cancelreminder)
+```TypeScript
+import reminderAgent from '@ohos.reminderAgent';
+
+reminderAgent.cancelReminder(1).then(() => {
+    console.info("cancelReminder promise");
+});
+```

@@ -1,5 +1,9 @@
 # CloseResult
 
+```TypeScript
+export interface CloseResult
+```
+
 Represents the result obtained from the **close** event reported when the WebSocket connection is closed.
 
 **Since:** 10

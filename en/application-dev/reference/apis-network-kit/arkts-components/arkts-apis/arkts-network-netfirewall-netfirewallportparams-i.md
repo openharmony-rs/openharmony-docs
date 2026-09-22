@@ -1,5 +1,9 @@
 # NetFirewallPortParams
 
+```TypeScript
+interface NetFirewallPortParams
+```
+
 Defines the port parameters of a firewall rule.
 
 **Since:** 15

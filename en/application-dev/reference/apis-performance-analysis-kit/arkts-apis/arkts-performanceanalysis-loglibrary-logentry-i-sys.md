@@ -1,5 +1,9 @@
 # LogEntry (System API)
 
+```TypeScript
+interface LogEntry
+```
+
 Defines a **LogEntry** object.
 
 **Since:** 10

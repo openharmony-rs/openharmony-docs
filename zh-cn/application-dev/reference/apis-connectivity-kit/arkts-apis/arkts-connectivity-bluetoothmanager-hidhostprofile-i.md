@@ -1,5 +1,9 @@
 # HidHostProfile
 
+```TypeScript
+interface HidHostProfile extends BaseProfile
+```
+
 使用HidHostProfile方法之前需要创建该类的实例进行操作，通过getProfile()方法构造此实例。
 
 **继承/实现关系：** HidHostProfile extends [BaseProfile](arkts-connectivity-bluetoothmanager-baseprofile-i.md)
@@ -8,7 +12,7 @@
 
 **废弃版本：** 10
 
-**替代接口：** HidHostProfile
+**替代接口：** [HidHostProfile](arkts-connectivity-hid-hidhostprofile-i-sys.md)
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 

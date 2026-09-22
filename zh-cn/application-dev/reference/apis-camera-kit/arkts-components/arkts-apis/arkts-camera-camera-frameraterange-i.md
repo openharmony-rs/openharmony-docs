@@ -1,5 +1,9 @@
 # FrameRateRange
 
+```TypeScript
+interface FrameRateRange
+```
+
 帧率范围。
 
 **起始版本：** 10

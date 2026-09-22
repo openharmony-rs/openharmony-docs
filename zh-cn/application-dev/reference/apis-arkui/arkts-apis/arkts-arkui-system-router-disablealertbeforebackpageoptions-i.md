@@ -1,5 +1,9 @@
 # DisableAlertBeforeBackPageOptions
 
+```TypeScript
+export interface DisableAlertBeforeBackPageOptions
+```
+
 定义DisableAlertBeforeBackPage参数选项。
 
 **起始版本：** 6

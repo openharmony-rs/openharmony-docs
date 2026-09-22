@@ -33,6 +33,8 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback<voi
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
 
+<a id="setdonotdisturbdate-1"></a>
+
 ## setDoNotDisturbDate
 
 ```TypeScript
@@ -66,6 +68,8 @@ function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 
+<a id="setdonotdisturbdate-2"></a>
+
 ## setDoNotDisturbDate
 
 ```TypeScript
@@ -94,6 +98,8 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: A
 | userId | number | 是 | 设置免打扰时间的用户ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
+
+<a id="setdonotdisturbdate-3"></a>
 
 ## setDoNotDisturbDate
 

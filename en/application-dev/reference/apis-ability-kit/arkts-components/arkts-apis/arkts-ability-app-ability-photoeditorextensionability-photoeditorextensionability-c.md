@@ -1,5 +1,9 @@
 # PhotoEditorExtensionAbility
 
+```TypeScript
+declare class PhotoEditorExtensionAbility extends ExtensionAbility
+```
+
 Class of the photo editor ExtensionAbility, which provides APIs for you to edit photos.
 
 @extends ExtensionAbility
@@ -88,12 +92,34 @@ Called back before an UI extension is destroyed.
 
 **Examples**
 
-```TypeScript
 A synchronous callback example is as follows:
-```
 
 ```TypeScript
+import { PhotoEditorExtensionAbility } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ExamplePhotoEditorAbility';
+
+export default class ExamplePhotoEditorAbility extends PhotoEditorExtensionAbility {
+  onDestroy() {
+    console.info(TAG, `onDestroy`);
+    // Call the synchronous function.
+  }
+}
+```
+
 A promise asynchronous callback example is as follows:
+
+```TypeScript
+import { PhotoEditorExtensionAbility } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ExamplePhotoEditorAbility';
+
+export default class ExamplePhotoEditorAbility extends PhotoEditorExtensionAbility {
+  async onDestroy() {
+    console.info(TAG, `onDestroy`);
+    // Call the asynchronous function.
+  }
+}
 ```
 
 ## onForeground

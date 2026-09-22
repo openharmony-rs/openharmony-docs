@@ -1,5 +1,9 @@
 # WriteStream
 
+```TypeScript
+declare class WriteStream extends stream.Writable
+```
+
 Defines a writeable stream. You need to use [fileIo.createWriteStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewritestream12) to create a **WriteStream** instance, which is inherited from [stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md).
 
 **Inheritance/Implementation:** WriteStream extends [stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)

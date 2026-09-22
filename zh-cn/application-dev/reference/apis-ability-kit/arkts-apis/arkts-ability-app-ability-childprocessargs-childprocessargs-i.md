@@ -1,5 +1,9 @@
 # ChildProcessArgs
 
+```TypeScript
+export interface ChildProcessArgs
+```
+
 传递到子进程的参数。[childProcessManager](arkts-ability-app-ability-childprocessmanager.md)启动子进程时，可以通过ChildProcessArgs传递参数到子进程中。
 
 **起始版本：** 12
@@ -48,3 +52,55 @@ fds?: Record<string, number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**示例**
+
+示例中的context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+// 主进程中：
+import { common, ChildProcessArgs, childProcessManager } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let path = context.filesDir + '/test.txt';
+            let file = fileIo.openSync(path, fileIo.OpenMode.READ_ONLY | fileIo.OpenMode.CREATE);
+            let args: ChildProcessArgs = {
+              entryParams: 'testParam',
+              fds: {
+                'key1': file.fd
+              }
+            };
+            childProcessManager.startArkChildProcess('entry/./ets/process/DemoProcess.ets', args);
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+```TypeScript
+// 子进程中：
+import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
+
+export default class DemoProcess extends ChildProcess {
+
+  onStart(args?: ChildProcessArgs) {
+    let entryParams = args?.entryParams;
+    let fd = args?.fds?.key1;
+    // ...
+  }
+}
+```

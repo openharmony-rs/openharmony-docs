@@ -1,5 +1,9 @@
 # SpeedParams (System API)
 
+```TypeScript
+export interface SpeedParams
+```
+
 Parameters for moving or turning at a speed.
 
 **Since:** 26.0.0

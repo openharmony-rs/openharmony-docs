@@ -1,5 +1,9 @@
 # SystemPressureLevel
 
+```TypeScript
+enum SystemPressureLevel
+```
+
 枚举，系统压力等级。
 
 **起始版本：** 20

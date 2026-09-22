@@ -1,5 +1,9 @@
 # SubscribeBarometerOptions
 
+```TypeScript
+export interface SubscribeBarometerOptions
+```
+
 用于设置气压计传感器订阅的参数，包括回调函数。
 
 **起始版本：** 3

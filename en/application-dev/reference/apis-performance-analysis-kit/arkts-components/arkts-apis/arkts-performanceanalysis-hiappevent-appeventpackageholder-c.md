@@ -1,5 +1,9 @@
 # AppEventPackageHolder
 
+```TypeScript
+class AppEventPackageHolder
+```
+
 Defines a subscription data holder for processing event information.
 
 **Since:** 9

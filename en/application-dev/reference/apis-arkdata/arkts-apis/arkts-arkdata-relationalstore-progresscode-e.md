@@ -1,5 +1,9 @@
 # ProgressCode
 
+```TypeScript
+enum ProgressCode
+```
+
 Describes the status of `Progress`.
 
 **Since:** 10

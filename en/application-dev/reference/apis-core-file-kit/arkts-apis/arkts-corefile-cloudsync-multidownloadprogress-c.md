@@ -1,5 +1,9 @@
 # MultiDownloadProgress
 
+```TypeScript
+class MultiDownloadProgress
+```
+
 Represents the batch download progress of a file from the Drive Kit.
 
 **Since:** 20

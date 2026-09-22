@@ -1,5 +1,9 @@
 # PinRequiredParam
 
+```TypeScript
+interface PinRequiredParam
+```
+
 描述配对请求的参数结构。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # DecorationOptions
 
+```TypeScript
+declare interface DecorationOptions
+```
+
 Provides additional configuration options for the text decoration line style.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # NetAddress
 
+```TypeScript
+export interface NetAddress
+```
+
 Defines a network address.
 
 **Since:** 8

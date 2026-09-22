@@ -1,5 +1,9 @@
 # CooperateOptions（系统接口）
 
+```TypeScript
+interface CooperateOptions
+```
+
 键鼠穿越可选控制参数，控制穿出点位置。
 
 **起始版本：** 20

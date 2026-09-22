@@ -1,5 +1,9 @@
 # WifiInfoElem
 
+```TypeScript
+interface WifiInfoElem
+```
+
 Wi-Fi热点信息。
 
 **起始版本：** 9

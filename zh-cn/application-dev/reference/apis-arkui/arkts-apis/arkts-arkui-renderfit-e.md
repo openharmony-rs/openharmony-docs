@@ -1,5 +1,9 @@
 # RenderFit
 
+```TypeScript
+declare enum RenderFit
+```
+
 表示宽高动画过程中组件内容的填充方式。
 
 **起始版本：** 10

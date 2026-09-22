@@ -1,5 +1,9 @@
 # ImmersiveMode
 
+```TypeScript
+export enum ImmersiveMode
+```
+
 Enumerates the immersive modes of the input method.<br> <br>
 
 | Name | Value| Description |  

@@ -1,5 +1,9 @@
 # Axis
 
+```TypeScript
+export declare enum Axis
+```
+
 鼠标轴类型。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # TouchGestureAction（系统接口）
 
+```TypeScript
+export declare enum TouchGestureAction
+```
+
 触摸屏手势类型。
 
 **起始版本：** 18

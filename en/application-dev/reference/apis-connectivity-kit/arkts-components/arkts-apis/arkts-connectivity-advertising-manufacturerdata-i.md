@@ -1,5 +1,9 @@
 # ManufacturerData
 
+```TypeScript
+interface ManufacturerData
+```
+
 Represents the manufacturer data.
 
 **Since:** 26.0.0

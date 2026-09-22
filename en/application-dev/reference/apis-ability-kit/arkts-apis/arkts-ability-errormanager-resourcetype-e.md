@@ -1,5 +1,9 @@
 # ResourceType
 
+```TypeScript
+export enum ResourceType
+```
+
 Define the resource types of the application.
 
 **Since:** 24

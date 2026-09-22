@@ -1,5 +1,9 @@
 # NormalizerMode
 
+```TypeScript
+export enum NormalizerMode
+```
+
 文本标准化范式的枚举。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # BundleChangedInfo（系统接口）
 
+```TypeScript
+interface BundleChangedInfo
+```
+
 应用变更信息。
 
 **起始版本：** 9

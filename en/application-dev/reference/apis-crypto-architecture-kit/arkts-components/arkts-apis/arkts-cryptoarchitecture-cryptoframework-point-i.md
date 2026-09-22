@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+interface Point
+```
+
 Defines a point on the elliptic curve.
 
 **Since:** 10

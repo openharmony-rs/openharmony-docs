@@ -1,5 +1,9 @@
 # CertStoreProperty
 
+```TypeScript
+export interface CertStoreProperty
+```
+
 Represents the storage information about a certificate, including the certificate type and location.
 
 **Since:** 18

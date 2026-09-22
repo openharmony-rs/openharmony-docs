@@ -1,5 +1,9 @@
 # TransferMode
 
+```TypeScript
+enum TransferMode
+```
+
 表示和远端设备的数据传输模式，为枚举值。
 
 **起始版本：** 26.0.0

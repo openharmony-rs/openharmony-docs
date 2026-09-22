@@ -40,6 +40,8 @@ Obtains information about all auto-startup application components. This API uses
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Failed to connect to the system service. |
 
 
+<a id="queryallautostartupapplications-1"></a>
+
 ## queryAllAutoStartupApplications
 
 ```TypeScript

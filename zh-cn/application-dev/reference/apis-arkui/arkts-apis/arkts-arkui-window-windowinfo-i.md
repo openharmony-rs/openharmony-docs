@@ -1,5 +1,9 @@
 # WindowInfo
 
+```TypeScript
+interface WindowInfo
+```
+
 当前窗口的详细信息。
 
 **起始版本：** 18

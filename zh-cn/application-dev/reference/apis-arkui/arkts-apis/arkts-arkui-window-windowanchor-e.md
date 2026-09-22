@@ -1,5 +1,9 @@
 # WindowAnchor
 
+```TypeScript
+enum WindowAnchor
+```
+
 窗口锚点枚举。
 
 **起始版本：** 20

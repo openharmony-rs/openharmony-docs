@@ -1,12 +1,14 @@
 # InterruptAction
 
+```TypeScript
+interface InterruptAction
+```
+
 音频打断/获取焦点事件的回调方法。
 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[InterruptEvent](arkts-audio-audio-interruptevent-i.md)替代。
-
-@typedef InterruptAction
 
 **起始版本：** 7
 

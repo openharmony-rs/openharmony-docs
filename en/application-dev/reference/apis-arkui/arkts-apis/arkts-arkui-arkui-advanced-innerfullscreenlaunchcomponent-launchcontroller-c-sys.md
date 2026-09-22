@@ -1,5 +1,9 @@
 # LaunchController (System API)
 
+```TypeScript
+export declare class LaunchController
+```
+
 Controller for launching the atomic service.
 
 **Since:** 12

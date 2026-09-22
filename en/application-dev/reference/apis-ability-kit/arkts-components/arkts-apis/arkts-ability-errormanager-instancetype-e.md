@@ -1,5 +1,9 @@
 # InstanceType
 
+```TypeScript
+export enum InstanceType
+```
+
 Enumerates the VM instance types.
 
 **Since:** 18

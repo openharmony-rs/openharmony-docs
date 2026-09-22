@@ -1,5 +1,9 @@
 # ContinueCallbackInfo（系统接口）
 
+```TypeScript
+interface ContinueCallbackInfo
+```
+
 任务流转状态监听回调时返回的信息对象，包含state（流转状态）和info（流转详细信息）两个字段。state为ACTIVE表示流转处于激活状态，INACTIVE表示流转处于未激活状态。模型约束：此接口仅可在Stage模型下使用。
 
 **起始版本：** 11

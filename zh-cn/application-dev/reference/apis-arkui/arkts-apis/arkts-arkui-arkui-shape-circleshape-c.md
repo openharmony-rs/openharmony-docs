@@ -1,10 +1,14 @@
 # CircleShape
 
+```TypeScript
+export declare class CircleShape extends BaseShape<CircleShape>
+```
+
 用于clipShape和maskShape接口的圆形形状。
 
 继承自[BaseShape](arkts-arkui-arkui-shape-baseshape-c.md)。
 
-**继承/实现关系：** CircleShape extends BaseShape&lt;CircleShape&gt;
+**继承/实现关系：** CircleShape extends BaseShape<CircleShape>
 
 **起始版本：** 12
 

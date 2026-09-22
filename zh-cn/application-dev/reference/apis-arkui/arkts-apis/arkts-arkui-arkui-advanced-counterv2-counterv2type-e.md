@@ -1,8 +1,12 @@
 # CounterV2Type
 
+```TypeScript
+declare enum CounterV2Type
+```
+
 CounterV2Type指定CounterV2类型。
 
-各类型CounterV2组件的展示效果可参考示例1（列表型CounterV2）、示例2（紧凑型CounterV2）、示例3（数值内联型CounterV2）、示例4（日期内联型CounterV2）。
+各类型CounterV2组件的展示效果可参考[示例1（列表型CounterV2）](arkts-arkui-arkui-advanced-counterv2.md)、[示例2（紧凑型CounterV2）](arkts-arkui-arkui-advanced-counterv2.md)、[示例3（数值内联型CounterV2）](arkts-arkui-arkui-advanced-counterv2.md)、[示例4（日期内联型CounterV2）](arkts-arkui-arkui-advanced-counterv2.md)。
 
 **起始版本：** 26.0.0
 

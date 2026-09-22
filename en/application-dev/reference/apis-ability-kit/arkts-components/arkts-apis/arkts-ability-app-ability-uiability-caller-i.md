@@ -1,5 +1,9 @@
 # Caller
 
+```TypeScript
+export interface Caller
+```
+
 A Caller UIAbility can use the [startAbilityByCall](arkts-ability-uiabilitycontext-c.md#startabilitybycall) API to start the target Callee UIAbility. After the target UIAbility is started successfully, a Caller object is returned to the caller for communication.
 
 **Since:** 9
@@ -232,6 +236,38 @@ Unregisters the listener for disconnection notifications from the Callee UIAbili
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { UIAbility, Caller, OnReleaseCallback } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class MainUIAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    this.context.startAbilityByCall({
+      bundleName: 'com.example.myservice',
+      abilityName: 'MainUIAbility',
+      deviceId: ''
+    }).then((obj) => {
+      let caller: Caller = obj;
+      try {
+        // Define the callback for the disconnect event.
+        let onReleaseCallBack: OnReleaseCallback = (str) => {
+          console.info(`Caller OnRelease CallBack is called ${str}`);
+        };
+        caller.on('release', onReleaseCallBack); // Register the listener for the disconnect event.
+        caller.off('release', onReleaseCallBack); // Unregister the listener for the disconnect event.
+      } catch (error) {
+        console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
+    });
+  }
+}
+```
+
 ## off('release')
 
 ```TypeScript
@@ -257,6 +293,39 @@ Unregisters the listener for disconnection notifications from the Callee UIAbili
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { UIAbility, Caller, OnReleaseCallback } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let caller: Caller;
+
+export default class MainUIAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    this.context.startAbilityByCall({
+      bundleName: 'com.example.myservice',
+      abilityName: 'MainUIAbility',
+      deviceId: ''
+    }).then((obj) => {
+      caller = obj;
+      try {
+        let onReleaseCallBack: OnReleaseCallback = (str) => {
+          console.info(`Caller OnRelease CallBack is called ${str}`);
+        };
+        caller.on('release', onReleaseCallBack);
+        caller.off('release'); // Unregister all disconnection listeners.
+      } catch (error) {
+        console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
+    });
+  }
+}
+```
 
 ## on('release')
 
@@ -285,6 +354,37 @@ Used by the Caller UIAbility to register a listener for disconnection notificati
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200001](../errorcode-ability.md#16200001-caller-released) | The caller has been released. |
+
+**Examples**
+
+```TypeScript
+import { UIAbility, Caller } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class MainUIAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let dstDeviceId: string = 'xxxx';
+    this.context.startAbilityByCall({
+      bundleName: 'com.example.myservice',
+      abilityName: 'MainUIAbility',
+      deviceId: dstDeviceId
+    }).then((obj) => {
+      let caller: Caller = obj;
+      try {
+        // Register the release event listener.
+        caller.on('release', (str) => {
+          console.info(`Caller OnRelease CallBack is called ${str}`);
+        });
+      } catch (error) {
+        console.error(`Caller.on catch error, error.code: ${error.code}, error.message: ${error.message}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
+    });
+  }
+}
+```
 
 ## onRelease
 

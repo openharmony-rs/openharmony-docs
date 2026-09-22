@@ -1,5 +1,9 @@
 # NetFirewallDomainParams
 
+```TypeScript
+interface NetFirewallDomainParams
+```
+
 防火墙规则域名参数，目前不支持中文域名。
 
 **起始版本：** 15

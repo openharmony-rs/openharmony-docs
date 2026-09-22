@@ -1,5 +1,9 @@
 # SkillInfoFlag
 
+```TypeScript
+export enum SkillInfoFlag
+```
+
 技能信息标志，指示需要获取的技能信息的内容。
 
 @enum { int }

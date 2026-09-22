@@ -1,5 +1,9 @@
 # Symbol
 
+```TypeScript
+interface Symbol
+```
+
 ## Modules to Import
 
 ```TypeScript

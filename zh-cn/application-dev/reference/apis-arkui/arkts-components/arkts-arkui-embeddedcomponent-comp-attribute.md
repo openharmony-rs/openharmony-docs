@@ -1,12 +1,16 @@
 # EmbeddedComponent属性/事件
 
-支持通用属性。
+```TypeScript
+declare class EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
+```
+
+支持[通用属性](arkts-arkui-common-comp.md#common)。
 
 与屏幕坐标相关的事件信息，根据**EmbeddedComponent**的位置、宽高进行转换后，传递给EmbeddedUIExtensionAbility处理。
 
-不支持点击事件等通用事件。仅支持以下事件。
+不支持[点击事件](arkts-arkui-common-comp.md#common)等通用事件。仅支持以下事件。
 
-**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod&lt;EmbeddedComponentAttribute&gt;
+**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
 
 **起始版本：** 12
 
@@ -76,4 +80,4 @@ onTerminated(callback: import('../api/@ohos.base').Callback<TerminationInfo>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | import('../api/@ohos.base').Callback&lt;[TerminationInfo](arkts-arkui-terminationinfo-i.md)&gt; | 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为TerminationInfo。 |
+| callback | import('../api/@ohos.base').Callback&lt;[TerminationInfo](arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md)&gt; | 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为TerminationInfo。 |

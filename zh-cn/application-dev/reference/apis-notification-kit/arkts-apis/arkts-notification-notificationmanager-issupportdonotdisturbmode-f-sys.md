@@ -56,16 +56,8 @@ let isSupportDoNotDisturbModeCallback = (err: BusinessError, data: boolean): voi
 notificationManager.isSupportDoNotDisturbMode(isSupportDoNotDisturbModeCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
-    console.info(`isSupportDoNotDisturbMode success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`isSupportDoNotDisturbMode failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="issupportdonotdisturbmode-1"></a>
 
 ## isSupportDoNotDisturbMode
 
@@ -102,4 +94,12 @@ function isSupportDoNotDisturbMode(): Promise<boolean>
 
 **示例**
 
-参见 [isSupportDoNotDisturbMode](#issupportdonotdisturbmode)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
+    console.info(`isSupportDoNotDisturbMode success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isSupportDoNotDisturbMode failed, code is ${err.code}, message is ${err.message}`);
+});
+```

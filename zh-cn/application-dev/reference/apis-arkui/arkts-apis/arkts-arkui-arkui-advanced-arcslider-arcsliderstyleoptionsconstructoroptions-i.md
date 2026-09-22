@@ -1,5 +1,9 @@
 # ArcSliderStyleOptionsConstructorOptions
 
+```TypeScript
+interface ArcSliderStyleOptionsConstructorOptions
+```
+
 ArcSliderStyleOptions的构造信息。
 
 **起始版本：** 18

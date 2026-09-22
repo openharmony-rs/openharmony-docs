@@ -27,7 +27,7 @@ function on(type: 'receiveData', channelId: number, callback: Callback<DataInfo>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'receiveData' | 是 | 设置订阅类型，固定取值为'receiveData'。 |
-| channelId | number | 是 | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32 390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
+| channelId | number | 是 | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DataInfo](arkts-distributedservice-proxychannelmanager-datainfo-i.md)&gt; | 是 | 回调函数，用于接收代理通道的数据。回调参数为[DataInfo](arkts-distributedservice-proxychannelmanager-datainfo-i.md)对象，包含channelId（通道ID）和data（接收到的字节数据）。需先通过openProxyChannel打开代理通道后才能接收数据。多次注册时，仅最后一次注册的生效。 |
 
 **错误码：**
@@ -39,6 +39,35 @@ function on(type: 'receiveData', channelId: number, callback: Callback<DataInfo>
 | [32390006](../errorcode-proxyChannelManager.md#32390006-参数错误) | Parameter error. |
 | [32390100](../errorcode-proxyChannelManager.md#32390100-内部异常) | Internal error. |
 | [32390101](../errorcode-proxyChannelManager.md#32390101-调用受限) | Call is restricted. |
+
+**示例**
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button('测试')
+        .onClick(() => {
+          const receiveDataCallback = (dataInfo: proxyChannelManager.DataInfo) => {
+          };
+          try {
+            proxyChannelManager.on('receiveData', channelId, receiveDataCallback); // channelId通过openProxyChannel接口的Promise返回值获取
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to register receiveData callback. Code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 
 ## on('channelStateChange')
@@ -62,7 +91,7 @@ function on(type: 'channelStateChange', channelId: number, callback: Callback<Ch
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'channelStateChange' | 是 | 设置订阅类型，固定取值为'channelStateChange'。 |
-| channelId | number | 是 | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32 390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
+| channelId | number | 是 | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChannelStateInfo](arkts-distributedservice-proxychannelmanager-channelstateinfo-i.md)&gt; | 是 | 回调函数，用于接收代理通道的状态变更信息。回调参数为[ChannelStateInfo](arkts-distributedservice-proxychannelmanager-channelstateinfo-i.md)对象，包含channelId（通道ID）和state（通道连接状态）。需先通过openProxyChannel打开代理通道后才能接收通道状态。多次注册时，仅最后一次注册的回调函数生效。 |
 
 **错误码：**
@@ -74,3 +103,32 @@ function on(type: 'channelStateChange', channelId: number, callback: Callback<Ch
 | [32390006](../errorcode-proxyChannelManager.md#32390006-参数错误) | Parameter error. |
 | [32390100](../errorcode-proxyChannelManager.md#32390100-内部异常) | Internal error. |
 | [32390101](../errorcode-proxyChannelManager.md#32390101-调用受限) | Call is restricted. |
+
+**示例**
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button('测试')
+        .onClick(() => {
+          const channelStateChangeCallback = (channelStateInfo: proxyChannelManager.ChannelStateInfo) => {
+          };
+          try {
+            proxyChannelManager.on('channelStateChange', channelId, channelStateChangeCallback); // channelId通过openProxyChannel接口的Promise返回值获取
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`Failed to register channelStateChange callback. Code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```

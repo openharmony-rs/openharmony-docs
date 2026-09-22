@@ -1,5 +1,9 @@
 # WebSocketConnection
 
+```TypeScript
+export interface WebSocketConnection
+```
+
 客户端信息，包括客户端的ip地址和端口号port。
 
 **起始版本：** 19

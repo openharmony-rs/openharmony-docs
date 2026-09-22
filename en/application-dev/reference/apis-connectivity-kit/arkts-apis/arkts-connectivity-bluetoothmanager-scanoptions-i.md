@@ -1,5 +1,9 @@
 # ScanOptions
 
+```TypeScript
+interface ScanOptions
+```
+
 Describes the parameters for scan.
 
 **Since:** 9

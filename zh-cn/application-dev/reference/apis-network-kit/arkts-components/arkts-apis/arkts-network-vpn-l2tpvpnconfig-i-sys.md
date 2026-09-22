@@ -1,5 +1,9 @@
 # L2tpVpnConfig（系统接口）
 
+```TypeScript
+export interface L2tpVpnConfig extends SysVpnConfig
+```
+
 定义L2TP VPN网络的配置。
 
 **继承/实现关系：** L2tpVpnConfig extends [SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)

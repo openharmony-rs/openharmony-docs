@@ -1,5 +1,9 @@
 # UserAuthResultCode
 
+```TypeScript
+enum UserAuthResultCode
+```
+
 Enumerates the authentication result codes. They include all success codes and error codes for user authentication operations. The application can determine the authentication result based on the return code and take corresponding measures.
 
 **Since:** 9

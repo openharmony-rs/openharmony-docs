@@ -1,5 +1,9 @@
 # CdsmMemberInfo
 
+```TypeScript
+interface CdsmMemberInfo
+```
+
 Represents the information about member devices in the coordinated devices set.
 
 **Since:** 26.0.0

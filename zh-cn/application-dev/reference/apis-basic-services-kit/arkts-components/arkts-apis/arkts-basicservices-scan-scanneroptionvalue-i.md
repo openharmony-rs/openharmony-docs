@@ -1,5 +1,9 @@
 # ScannerOptionValue
 
+```TypeScript
+interface ScannerOptionValue
+```
+
 定义扫描仪选项值的接口。
 
 **起始版本：** 20

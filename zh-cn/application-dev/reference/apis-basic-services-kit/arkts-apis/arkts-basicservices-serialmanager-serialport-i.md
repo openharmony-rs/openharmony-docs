@@ -1,5 +1,9 @@
 # SerialPort
 
+```TypeScript
+interface SerialPort
+```
+
 串口参数。
 
 **起始版本：** 19

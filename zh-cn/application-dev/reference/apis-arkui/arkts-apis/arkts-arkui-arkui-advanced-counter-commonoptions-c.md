@@ -1,5 +1,9 @@
 # CommonOptions
 
+```TypeScript
+declare class CommonOptions
+```
+
 CommonOptions定义了Counter的通用属性和事件。
 
 **起始版本：** 11

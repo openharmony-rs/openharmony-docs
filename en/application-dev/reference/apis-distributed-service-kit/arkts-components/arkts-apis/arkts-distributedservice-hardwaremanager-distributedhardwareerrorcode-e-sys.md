@@ -1,5 +1,9 @@
 # DistributedHardwareErrorCode (System API)
 
+```TypeScript
+enum DistributedHardwareErrorCode
+```
+
 Enumerates the error codes used for the distributed hardware.
 
 **Since:** 11

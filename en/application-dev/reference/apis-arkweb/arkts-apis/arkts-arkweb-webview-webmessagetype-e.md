@@ -1,5 +1,9 @@
 # WebMessageType
 
+```TypeScript
+enum WebMessageType
+```
+
 Enumerates the data types supported by the [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md) API.
 
 **Since:** 10

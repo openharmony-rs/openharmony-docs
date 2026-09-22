@@ -1,5 +1,9 @@
 # InputElement
 
+```TypeScript
+export interface InputElement extends Element
+```
+
 The &lt;input&gt; component provides an interactive interface to receive user input, which is displayed in a single line by default.
 
 @extends Element @interface InputElement

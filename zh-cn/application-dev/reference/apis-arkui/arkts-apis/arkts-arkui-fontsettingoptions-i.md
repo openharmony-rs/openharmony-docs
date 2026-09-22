@@ -1,5 +1,9 @@
 # FontSettingOptions
 
+```TypeScript
+declare interface FontSettingOptions
+```
+
 字体配置项。
 
 **起始版本：** 12
@@ -12,7 +16,7 @@
 enableVariableFontWeight?: boolean
 ```
 
-是否启用可变字重调节。字体配置项作为fontWeight接口的入参，fontWeight接口中weight取值为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。
+是否启用可变字重调节。字体配置项作为[fontWeight](../arkts-components/arkts-arkui-text-comp-attribute.md#fontweight-1)接口的入参，fontWeight接口中weight取值为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。
 
 默认值：false
 

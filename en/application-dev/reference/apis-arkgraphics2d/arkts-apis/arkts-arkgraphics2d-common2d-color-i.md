@@ -1,5 +1,9 @@
 # Color
 
+```TypeScript
+interface Color
+```
+
 Describes a color in ARGB format.
 
 **Since:** 11

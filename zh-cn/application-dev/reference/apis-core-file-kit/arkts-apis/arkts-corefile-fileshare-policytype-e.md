@@ -1,5 +1,9 @@
 # PolicyType
 
+```TypeScript
+export enum PolicyType
+```
+
 枚举所查询策略信息对应的授权模式。
 
 @enum { int } policyType

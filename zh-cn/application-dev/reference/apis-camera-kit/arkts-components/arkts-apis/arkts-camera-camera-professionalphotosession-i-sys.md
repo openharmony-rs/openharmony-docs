@@ -1,5 +1,10 @@
 # ProfessionalPhotoSession（系统接口）
 
+```TypeScript
+interface ProfessionalPhotoSession extends Session, AutoExposure, ManualExposure, Focus,
+    ManualFocus, WhiteBalance, ManualIso, Flash, Zoom, ColorEffect, Aperture
+```
+
 ProfessionalPhotoSession extends Session, AutoExposure, ManualExposure, Focus, ManualFocus, WhiteBalance, ManualIso, Flash, Zoom, ColorEffect, Aperture Implements a professional photo session, which sets the parameters of the professional photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
 
 **继承/实现关系：** ProfessionalPhotoSession extends [Session](arkts-camera-camera-session-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [Flash](arkts-camera-camera-flash-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->, [Aperture](arkts-camera-camera-aperture-i.md)
@@ -43,6 +48,14 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
+**示例**
+
+```TypeScript
+function unregisterSessionError(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.off('error');
+}
+```
+
 ## off('focusStateChange')
 
 ```TypeScript
@@ -69,6 +82,14 @@ Unsubscribes from focus state change events.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterFocusStateChange(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.off('focusStateChange');
+}
+```
 
 ## off('smoothZoomInfoAvailable')
 
@@ -97,6 +118,14 @@ Unsubscribes from smooth zoom state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
+**示例**
+
+```TypeScript
+function unregisterSmoothZoomInfo(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.off('smoothZoomInfoAvailable');
+}
+```
+
 ## off('isoInfoChange')
 
 ```TypeScript
@@ -123,6 +152,14 @@ Unsubscribes from automatic ISO change events.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterIsoInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.off('isoInfoChange');
+}
+```
 
 ## off('exposureInfoChange')
 
@@ -151,6 +188,14 @@ Unsubscribes from exposure information change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
+**示例**
+
+```TypeScript
+function unregisterExposureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.off('exposureInfoChange');
+}
+```
+
 ## off('apertureInfoChange')
 
 ```TypeScript
@@ -177,6 +222,14 @@ Unsubscribes from aperture change events.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+
+**示例**
+
+```TypeScript
+function unregisterApertureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.off('apertureInfoChange');
+}
+```
 
 ## off('luminationInfoChange')
 
@@ -205,6 +258,14 @@ Unsubscribes from illumination change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
+**示例**
+
+```TypeScript
+function unregisterLuminationInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.off('luminationInfoChange');
+}
+```
+
 ## on('error')
 
 ```TypeScript
@@ -231,6 +292,20 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Professional photo session error code: ${err.code}`);
+}
+
+function registerSessionError(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.on('error', callback);
+}
+```
 
 ## on('focusStateChange')
 
@@ -259,6 +334,24 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, focusState: camera.FocusState): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.on('focusStateChange', callback);
+}
+```
+
 ## on('smoothZoomInfoAvailable')
 
 ```TypeScript
@@ -285,6 +378,24 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, smoothZoomInfo: camera.SmoothZoomInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`The duration of smooth zoom: ${smoothZoomInfo.duration}`);
+}
+
+function registerSmoothZoomInfo(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.on('smoothZoomInfoAvailable', callback);
+}
+```
 
 ## on('isoInfoChange')
 
@@ -313,6 +424,24 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`ISO value: ${info.iso}`);
+}
+
+function registerIsoInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.on('isoInfoChange', isoInfoCallback);
+}
+```
+
 ## on('exposureInfoChange')
 
 ```TypeScript
@@ -339,6 +468,24 @@ Subscribes to exposure information change events to obtain the exposure informat
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
+}
+
+function registerExposureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.on('exposureInfoChange', exposureInfoCallback);
+}
+```
 
 ## on('apertureInfoChange')
 
@@ -367,6 +514,24 @@ Subscribes to aperture change events to obtain the real-time aperture informatio
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function apertureInfoCallback(err: BusinessError, info: camera.ApertureInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Aperture value: ${info.aperture}`);
+}
+
+function registerApertureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.on('apertureInfoChange', apertureInfoCallback);
+}
+```
+
 ## on('luminationInfoChange')
 
 ```TypeScript
@@ -393,3 +558,21 @@ Subscribes to illumination change events to obtain real-time illumination inform
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`Lumination: ${info.lumination}`);
+}
+
+function registerLuminationInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
+  professionalPhotoSession.on('luminationInfoChange', luminationInfoCallback);
+}
+```

@@ -1,5 +1,9 @@
 # ImagingModeQuery（系统接口）
 
+```TypeScript
+interface ImagingModeQuery
+```
+
 Imaging mode query object.
 
 **起始版本：** 26.0.0

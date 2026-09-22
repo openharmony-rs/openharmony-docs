@@ -1,5 +1,9 @@
 # MatchPattern
 
+```TypeScript
+declare enum MatchPattern
+```
+
 控件属性支持的匹配模式。
 
 **起始版本：** 8

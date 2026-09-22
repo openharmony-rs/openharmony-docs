@@ -34,17 +34,6 @@ The priority defined in a priority group restricts the resource usage of an appl
 import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleState } from '@kit.BackgroundTasksKit';
 
-bundleState.queryAppUsagePriorityGroup().then((res: number) => {
-  console.info('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
-}).catch((err: BusinessError) => {
-  console.error('BUNDLE_ACTIVE QueryPackageGroup promise failed. because: ' + err.code);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { bundleState } from '@kit.BackgroundTasksKit';
-
 bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
   if(err) {
     console.error('BUNDLE_ACTIVE QueryPackageGroup callback failed. because: ' + err.code);
@@ -54,6 +43,8 @@ bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
 });
 ```
 
+
+<a id="queryappusageprioritygroup-1"></a>
 
 ## queryAppUsagePriorityGroup
 
@@ -79,4 +70,13 @@ The priority defined in a priority group restricts the resource usage of an appl
 
 **示例**
 
-参见 queryAppUsagePriorityGroup
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
+
+bundleState.queryAppUsagePriorityGroup().then((res: number) => {
+  console.info('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
+}).catch((err: BusinessError) => {
+  console.error('BUNDLE_ACTIVE QueryPackageGroup promise failed. because: ' + err.code);
+});
+```

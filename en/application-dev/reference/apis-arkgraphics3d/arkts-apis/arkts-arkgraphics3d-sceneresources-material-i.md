@@ -1,5 +1,9 @@
 # Material
 
+```TypeScript
+export interface Material extends SceneResource
+```
+
 Material resource, which inherits from SceneResource.
 
 @extends SceneResource @interface Material

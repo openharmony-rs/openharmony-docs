@@ -1,5 +1,9 @@
 # CMResult
 
+```TypeScript
+export interface CMResult
+```
+
 Represents the result returned.
 
 **Since:** 11

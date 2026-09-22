@@ -1,5 +1,9 @@
 # GrantStatus
 
+```TypeScript
+export enum GrantStatus
+```
+
 
 > **NOTE:** 
 > 

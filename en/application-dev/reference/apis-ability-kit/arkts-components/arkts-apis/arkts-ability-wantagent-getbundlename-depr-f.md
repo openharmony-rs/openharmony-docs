@@ -84,6 +84,41 @@ wantAgent.getWantAgent({
 }, getWantAgentCallback);
 ```
 
+
+<a id="getbundlename-1"></a>
+
+## getBundleName
+
+```TypeScript
+function getBundleName(agent: WantAgent): Promise<string>
+```
+
+Obtains the bundle name of a WantAgent.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getBundleName](arkts-ability-wantagent-getbundlename-f.md)
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | whose bundle name to obtain. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Returns the bundle name of the [WantAgent](arkts-ability-wantagent-depr-t.md#wantagent) if any. |
+
+**Examples**
+
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 
@@ -125,38 +160,3 @@ wantAgent.getWantAgent({
     }
 });
 ```
-
-
-## getBundleName
-
-```TypeScript
-function getBundleName(agent: WantAgent): Promise<string>
-```
-
-Obtains the bundle name of a WantAgent.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getBundleName](arkts-ability-wantagent-getbundlename-f.md)
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | whose bundle name to obtain. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Returns the bundle name of the [WantAgent](arkts-ability-wantagent-depr-t.md#wantagent) if any. |
-
-**Examples**
-
-See [getBundleName](#getbundlename)

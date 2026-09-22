@@ -18,25 +18,25 @@ import { inputDevice } from '@kit.InputKit';
 
 | Name | Description |
 | --- | --- |
-| [getDevice](arkts-input-inputdevice-getdevice-f.md) | Obtains the information about the input device with the specified ID. This API uses an asynchronous callback to return the result. |
-| [getDevice](arkts-input-inputdevice-getdevice-f.md) | Obtains the information about the input device with the specified ID. This API uses a promise to return the result. |
-| [getDeviceIds](arkts-input-inputdevice-getdeviceids-f.md) | Obtains the IDs of all input devices. This API uses an asynchronous callback to return the result. |
-| [getDeviceIds](arkts-input-inputdevice-getdeviceids-f.md) | Obtains the IDs of all input devices. This API uses a promise to return the result. |
-| [getDeviceInfo](arkts-input-inputdevice-getdeviceinfo-f.md) | Obtains information about the specified input device. This API uses an asynchronous callback to return the result. |
-| [getDeviceInfo](arkts-input-inputdevice-getdeviceinfo-f.md) | Obtains the information about the input device with the specified ID. This API uses a promise to return the result. |
+| [getDevice](arkts-input-inputdevice-getdevice-f.md#getdevice) | Obtains the information about the input device with the specified ID. This API uses an asynchronous callback to return the result. |
+| [getDevice](arkts-input-inputdevice-getdevice-f.md#getdevice-1) | Obtains the information about the input device with the specified ID. This API uses a promise to return the result. |
+| [getDeviceIds](arkts-input-inputdevice-getdeviceids-f.md#getdeviceids) | Obtains the IDs of all input devices. This API uses an asynchronous callback to return the result. |
+| [getDeviceIds](arkts-input-inputdevice-getdeviceids-f.md#getdeviceids-1) | Obtains the IDs of all input devices. This API uses a promise to return the result. |
+| [getDeviceInfo](arkts-input-inputdevice-getdeviceinfo-f.md#getdeviceinfo) | Obtains information about the specified input device. This API uses an asynchronous callback to return the result. |
+| [getDeviceInfo](arkts-input-inputdevice-getdeviceinfo-f.md#getdeviceinfo-1) | Obtains the information about the input device with the specified ID. This API uses a promise to return the result. |
 | [getDeviceInfoSync](arkts-input-inputdevice-getdeviceinfosync-f.md) | Obtains information about the specified input device. |
-| [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md) | Obtains the IDs of all input devices. This API uses an asynchronous callback to return the result. |
-| [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md) | Obtains the IDs of all input devices. This API uses a promise to return the result. |
+| [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md#getdevicelist) | Obtains the IDs of all input devices. This API uses an asynchronous callback to return the result. |
+| [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md#getdevicelist-1) | Obtains the IDs of all input devices. This API uses a promise to return the result. |
 | [getIntervalSinceLastInput](arkts-input-inputdevice-getintervalsincelastinput-f.md) | Obtains the interval (including the device sleep time) elapsed since the last system input event. This API uses a promise to return the result. |
-| [getKeyboardType](arkts-input-inputdevice-getkeyboardtype-f.md) | Obtains the keyboard type of the input device, such as full keyboard and numeric keypad. The keyboard type of the input device is subject to the result returned by this API. This API uses an asynchronous callback to return the result. |
-| [getKeyboardType](arkts-input-inputdevice-getkeyboardtype-f.md) | Obtains the keyboard type of an input device. This API uses a promise to return the result. |
+| [getKeyboardType](arkts-input-inputdevice-getkeyboardtype-f.md#getkeyboardtype) | Obtains the keyboard type of the input device, such as full keyboard and numeric keypad. The keyboard type of the input device is subject to the result returned by this API. This API uses an asynchronous callback to return the result. |
+| [getKeyboardType](arkts-input-inputdevice-getkeyboardtype-f.md#getkeyboardtype-1) | Obtains the keyboard type of an input device. This API uses a promise to return the result. |
 | [getKeyboardTypeSync](arkts-input-inputdevice-getkeyboardtypesync-f.md) | Obtains the keyboard type of the input device. |
 | [isFunctionKeyEnabled](arkts-input-inputdevice-isfunctionkeyenabled-f.md) | Checks whether the specified function key (for example, **CapsLock**) is enabled. This API uses a promise to return the result. |
-| [off](arkts-input-inputdevice-off-f.md#offchange) | Disables listening for device hot swap events. This API is called before the application exits. This API uses an asynchronous callback to return the result. |
-| [on](arkts-input-inputdevice-on-f.md#onchange) | Enables listening for device hot swap events. When performing this operation, you need to connect to external devices such as a mouse, keyboard, and touchscreen. This API uses an asynchronous callback to return the result. |
+| [off](arkts-input-inputdevice-off-f.md#offchange) | Disables listening for device hot swap events. This API is called before the application exits. This API uses an asynchronous callback to return the result. Listener unregistration must be performed on the same thread used for registration. |
+| [on](arkts-input-inputdevice-on-f.md#onchange) | Registers a listener for input device hot-swap events. This feature requires connecting external devices such as a mouse, keyboard, or touchscreen. This API uses an asynchronous callback to return the result. You are advised to execute this operation on the main application thread and unregister the listener before the thread exits. |
 | [setFunctionKeyEnabled](arkts-input-inputdevice-setfunctionkeyenabled-f.md) | Specifies whether to enable a function key (for example, **CapsLock**). This API uses a promise to return the result. |
-| [supportKeys](arkts-input-inputdevice-supportkeys-f.md) | Queries whether a specified input device supports specified keys. This API uses an asynchronous callback to return the result. |
-| [supportKeys](arkts-input-inputdevice-supportkeys-f.md) | Checks whether the input device supports the specified keys. This API uses a promise to return the result. |
+| [supportKeys](arkts-input-inputdevice-supportkeys-f.md#supportkeys) | Queries whether a specified input device supports specified keys. This API uses an asynchronous callback to return the result. |
+| [supportKeys](arkts-input-inputdevice-supportkeys-f.md#supportkeys-1) | Checks whether the input device supports the specified keys. This API uses a promise to return the result. |
 | [supportKeysSync](arkts-input-inputdevice-supportkeyssync-f.md) | Checks whether the input device supports the specified keys. |
 
 <!--Del-->
@@ -45,15 +45,15 @@ import { inputDevice } from '@kit.InputKit';
 | Name | Description |
 | --- | --- |
 | [bindToDisplay](arkts-input-inputdevice-bindtodisplay-f-sys.md) | Bind input devices to a display group. Only external USB and Bluetooth mice, touchpads, keyboards, and game controllers are supported. After binding, the device will be fixed to operate on the display group where the specified display is located. This API uses a promise to return the result. |
-| [getKeyboardRepeatDelay](arkts-input-inputdevice-getkeyboardrepeatdelay-f-sys.md) | Obtains the keyboard repeat delay. This API uses an asynchronous callback to return the result. |
-| [getKeyboardRepeatDelay](arkts-input-inputdevice-getkeyboardrepeatdelay-f-sys.md) | Obtains the keyboard repeat delay. This API uses a promise to return the result. |
-| [getKeyboardRepeatRate](arkts-input-inputdevice-getkeyboardrepeatrate-f-sys.md) | Obtains the keyboard repeat rate. This API uses an asynchronous callback to return the result. |
-| [getKeyboardRepeatRate](arkts-input-inputdevice-getkeyboardrepeatrate-f-sys.md) | Obtains the keyboard repeat rate. This API uses a promise to return the result. |
+| [getKeyboardRepeatDelay](arkts-input-inputdevice-getkeyboardrepeatdelay-f-sys.md#getkeyboardrepeatdelay) | Obtains the keyboard repeat delay. This API uses an asynchronous callback to return the result. |
+| [getKeyboardRepeatDelay](arkts-input-inputdevice-getkeyboardrepeatdelay-f-sys.md#getkeyboardrepeatdelay-1) | Obtains the keyboard repeat delay. This API uses a promise to return the result. |
+| [getKeyboardRepeatRate](arkts-input-inputdevice-getkeyboardrepeatrate-f-sys.md#getkeyboardrepeatrate) | Obtains the keyboard repeat rate. This API uses an asynchronous callback to return the result. |
+| [getKeyboardRepeatRate](arkts-input-inputdevice-getkeyboardrepeatrate-f-sys.md#getkeyboardrepeatrate-1) | Obtains the keyboard repeat rate. This API uses a promise to return the result. |
 | [setInputDeviceEnabled](arkts-input-inputdevice-setinputdeviceenabled-f-sys.md) | Sets the input switch status of an input device. Take the touchscreen as an example. If the input switch is off, the touchscreen does not respond when being touched. If the input switch is on, the touchscreen wakes up when being touched. This API uses a promise to return the result. |
-| [setKeyboardRepeatDelay](arkts-input-inputdevice-setkeyboardrepeatdelay-f-sys.md) | Sets the keyboard repeat delay. This API uses an asynchronous callback to return the result. |
-| [setKeyboardRepeatDelay](arkts-input-inputdevice-setkeyboardrepeatdelay-f-sys.md) | Sets the keyboard repeat delay. This API uses a promise to return the result. |
-| [setKeyboardRepeatRate](arkts-input-inputdevice-setkeyboardrepeatrate-f-sys.md) | Sets the keyboard repeat rate. This API uses an asynchronous callback to return the result. |
-| [setKeyboardRepeatRate](arkts-input-inputdevice-setkeyboardrepeatrate-f-sys.md) | Sets the keyboard repeat rate. This API uses a promise to return the result. |
+| [setKeyboardRepeatDelay](arkts-input-inputdevice-setkeyboardrepeatdelay-f-sys.md#setkeyboardrepeatdelay) | Sets the keyboard repeat delay. This API uses an asynchronous callback to return the result. |
+| [setKeyboardRepeatDelay](arkts-input-inputdevice-setkeyboardrepeatdelay-f-sys.md#setkeyboardrepeatdelay-1) | Sets the keyboard repeat delay. This API uses a promise to return the result. |
+| [setKeyboardRepeatRate](arkts-input-inputdevice-setkeyboardrepeatrate-f-sys.md#setkeyboardrepeatrate) | Sets the keyboard repeat rate. This API uses an asynchronous callback to return the result. |
+| [setKeyboardRepeatRate](arkts-input-inputdevice-setkeyboardrepeatrate-f-sys.md#setkeyboardrepeatrate-1) | Sets the keyboard repeat rate. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

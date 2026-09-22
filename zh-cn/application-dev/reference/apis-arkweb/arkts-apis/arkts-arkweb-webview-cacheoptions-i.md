@@ -1,5 +1,9 @@
 # CacheOptions
 
+```TypeScript
+interface CacheOptions
+```
+
 Web组件预编译JavaScript生成字节码缓存的配置对象，用于控制字节码缓存更新。
 
 **起始版本：** 12

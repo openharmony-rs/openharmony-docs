@@ -30,10 +30,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md) | 删除数据库，使用callback异步回调。 |
-| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md) | 使用指定的数据库文件配置删除数据库，使用Promise异步回调。 |
-| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md) | 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作，使用callback异步回调。 |
-| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md) | 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作，使用Promise异步回调。 |
+| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md#deleterdbstore) | 删除数据库，使用callback异步回调。 |
+| [deleteRdbStore](arkts-arkdata-rdb-deleterdbstore-f.md#deleterdbstore-1) | 使用指定的数据库文件配置删除数据库，使用Promise异步回调。 |
+| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md#getrdbstore) | 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作，使用callback异步回调。 |
+| [getRdbStore](arkts-arkdata-rdb-getrdbstore-f.md#getrdbstore-1) | 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作，使用Promise异步回调。 |
 
 ### 类
 

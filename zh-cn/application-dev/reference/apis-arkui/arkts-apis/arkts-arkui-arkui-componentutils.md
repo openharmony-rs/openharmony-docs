@@ -1,4 +1,4 @@
-# @ohos.arkui.componentUtils
+# @ohos.arkui.componentUtils(组件工具)
 
 提供获取组件绘制区域坐标和大小的能力。
 
@@ -59,8 +59,52 @@ import { componentUtils } from '@kit.ArkUI';
 
 ## 示例
 
-```TypeScript
 ### 示例1（获取ComponentUtils对象）
 
 推荐使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的ComponentUtils对象。
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Utils {
+  @State translateX: number = 120;
+  @State translateY: number = 10;
+  @State translateZ: number = 100;
+  @State value: string = '';
+  private matrix1 = matrix4.identity().translate({ x: this.translateX, y: this.translateY, z: this.translateZ });
+
+  build() {
+    Column() {
+      // $r("app.media.img")需要替换为开发者所需的图像资源文件
+      Image($r('app.media.img'))
+        .transform(this.matrix1)
+        .translate({ x: 20, y: 20, z: 20 })
+        .scale({ x: 0.5, y: 0.5, z: 1 })
+        .rotate({
+          x: 1,
+          y: 1,
+          z: 1,
+          centerX: '50%',
+          centerY: '50%',
+          angle: 300
+        })
+        .width(300)
+        .height(100)
+        .key('image_01')
+      Button('getRectangleById')
+        .onClick(() => {
+          this.value = JSON.stringify(this.getUIContext()
+            .getComponentUtils()
+            .getRectangleById('image_01')); // 建议使用this.getUIContext().getComponentUtils()接口
+        }).margin(10).id('onClick')
+      Text(this.value)
+        .margin(20)
+        .width(300)
+        .height(300)
+        .borderWidth(2)
+    }.margin({ left: 50 })
+  }
+}
 ```

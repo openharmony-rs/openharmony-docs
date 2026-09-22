@@ -44,8 +44,29 @@ Checks whether the app has the permission to access the serial port device. When
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > The following sample code shows the basic process for calling the hasSerialRight API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+import { serialManager } from '@kit.BasicServicesKit';
+
+// Obtain the serial port list.
+function hasSerialRightExample() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
+
+  // Check whether the device can be accessed by the application.
+  if (serialManager.hasSerialRight(portId)) {
+    console.info('The serial port is accessible');
+  } else {
+    console.error('No permission to access the serial port');
+  }
+}
 ```

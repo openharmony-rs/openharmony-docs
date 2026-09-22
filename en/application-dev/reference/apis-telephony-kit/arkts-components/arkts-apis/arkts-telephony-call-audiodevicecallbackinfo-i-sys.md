@@ -1,5 +1,9 @@
 # AudioDeviceCallbackInfo (System API)
 
+```TypeScript
+export interface AudioDeviceCallbackInfo
+```
+
 Defines the audio device information.
 
 **Since:** 10
@@ -60,6 +64,8 @@ Whether to disable the microphone.
 **Type:** boolean
 
 **Since:** 24
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Telephony.CallManager
 

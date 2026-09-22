@@ -1,5 +1,9 @@
 # Scenario
 
+```TypeScript
+export enum Scenario
+```
+
 Enumerates the scenarios of the onscreen content.
 
 **Since:** 20

@@ -1,8 +1,12 @@
 # Path属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
+```TypeScript
+declare class PathAttribute extends CommonShapeMethod<PathAttribute>
+```
 
-**继承/实现关系：** PathAttribute extends CommonShapeMethod&lt;PathAttribute&gt;
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
+
+**继承/实现关系：** PathAttribute extends CommonShapeMethod<PathAttribute>
 
 **起始版本：** 7
 
@@ -14,7 +18,7 @@
 commands(value: ResourceStr)
 ```
 
-设置符合SVG路径描述规范的命令字符串，单位为px。命令字符串决定了路径的绘制形状和轨迹。支持attributeModifier动态设置属性方法。像素单位转换方法请参考像素单位转换。
+设置符合[SVG路径描述规范](arkts-arkui-path-comp.md#svg路径描述规范)的命令字符串，单位为px。命令字符串决定了路径的绘制形状和轨迹。支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。像素单位转换方法请参考[像素单位转换](arkts-arkui-common-comp.md#common)。
 
 **起始版本：** 7
 
@@ -28,4 +32,4 @@ commands(value: ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 路径绘制的命令字符串，需符合SVG路径描述规范，单位为px。<br>默认值：空字符串<br>异常值undefined和null按照默认值处理。<br>**适用版本：** 20 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 路径绘制的命令字符串，需符合[SVG路径描述规范](arkts-arkui-path-comp.md#svg路径描述规范)，单位为px。<br>默认值：空字符串<br>异常值undefined和null按照默认值处理。<br>**适用版本：** 20 |

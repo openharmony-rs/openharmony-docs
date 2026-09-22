@@ -1,5 +1,9 @@
 # AvoidAreaInfo
 
+```TypeScript
+interface AvoidAreaInfo
+```
+
 Represents the information about the avoidance area of the window.
 
 **Since:** 12

@@ -44,6 +44,8 @@ function setHapModuleUpgradeFlag(bundleName: string,
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 
 
+<a id="sethapmoduleupgradeflag-1"></a>
+
 ## setHapModuleUpgradeFlag
 
 ```TypeScript

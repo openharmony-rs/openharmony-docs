@@ -1,5 +1,9 @@
 # ProtocolType
 
+```TypeScript
+enum ProtocolType
+```
+
 枚举，HID设备与主机的通信协议类型。
 
 **起始版本：** 23

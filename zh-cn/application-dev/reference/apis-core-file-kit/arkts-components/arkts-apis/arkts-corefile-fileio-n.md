@@ -1,5 +1,9 @@
 # fileIo(文件管理)
 
+```TypeScript
+declare namespace fileIo
+```
+
 本模块是Core File Kit的核心模块，提供基础文件操作API，用于对应用沙箱内的文件和目录进行创建、打开、读写、拷贝、移动、删除、查询属性等操作。
 
 模块提供了多种文件访问模式，开发者可根据场景选择：

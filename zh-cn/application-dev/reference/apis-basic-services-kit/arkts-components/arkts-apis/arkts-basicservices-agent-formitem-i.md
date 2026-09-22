@@ -1,5 +1,9 @@
 # FormItem
 
+```TypeScript
+interface FormItem
+```
+
 任务的表单项信息。
 
 **起始版本：** 10

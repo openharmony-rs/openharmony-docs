@@ -1,5 +1,9 @@
 # EntityInfoItem
 
+```TypeScript
+export interface EntityInfoItem
+```
+
 Defines a list of entities.
 
 **Since:** 11

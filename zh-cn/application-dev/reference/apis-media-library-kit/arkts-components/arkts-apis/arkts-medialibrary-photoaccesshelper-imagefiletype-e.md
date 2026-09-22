@@ -1,5 +1,9 @@
 # ImageFileType
 
+```TypeScript
+enum ImageFileType
+```
+
 枚举，图片保存类型。
 
 **起始版本：** 13

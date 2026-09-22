@@ -1,5 +1,9 @@
 # AudioSpatializationSceneType（系统接口）
 
+```TypeScript
+enum AudioSpatializationSceneType
+```
+
 枚举，空间音频渲染场景类型。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # FloatingBallWindowInfo
 
+```TypeScript
+interface FloatingBallWindowInfo
+```
+
 Describes the floating ball window information.
 
 **Since:** 20

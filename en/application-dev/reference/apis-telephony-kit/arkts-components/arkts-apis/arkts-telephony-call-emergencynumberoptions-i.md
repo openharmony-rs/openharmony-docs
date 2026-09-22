@@ -1,5 +1,9 @@
 # EmergencyNumberOptions
 
+```TypeScript
+export interface EmergencyNumberOptions
+```
+
 Provides an option for determining whether a number is an emergency number for the SIM card in the specified slot.
 
 **Since:** 7

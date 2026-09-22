@@ -50,17 +50,8 @@ formHost.notifyFormsEnableUpdate(formIds, true, (error: Base.BusinessError) => {
 });
 ```
 
-```TypeScript
-import Base from '@ohos.base';
 
-let formIds: string[] = new Array('12400633174999288', '12400633174999289');
-formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
-  console.info('formHost notifyFormsEnableUpdate success');
-}).catch((error: Base.BusinessError) => {
-  console.error(`formHost notifyFormsEnableUpdate, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="notifyformsenableupdate-1"></a>
 
 ## notifyFormsEnableUpdate
 
@@ -97,4 +88,13 @@ function notifyFormsEnableUpdate(formIds: Array<string>, isEnableUpdate: boolean
 
 **示例**
 
-参见 [notifyFormsEnableUpdate](#notifyformsenableupdate)
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = new Array('12400633174999288', '12400633174999289');
+formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
+  console.info('formHost notifyFormsEnableUpdate success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost notifyFormsEnableUpdate, error: ${JSON.stringify(error)}`);
+});
+```

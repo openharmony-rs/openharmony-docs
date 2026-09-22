@@ -18,7 +18,7 @@ function isHdcDisabled(admin: Want, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md)(admin: Want | null, feature: FeatureForDevice)
+**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -66,24 +66,8 @@ restrictions.isHdcDisabled(wantTemp, (err, result) => {
 })
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-restrictions.isHdcDisabled(wantTemp).then((result) => {
-  console.info(`Succeeded in querying is hdc disabled : ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query is hdc disabled or not. Code is ${err.code}, message is ${err.message}`);
-})
-```
-
+<a id="ishdcdisabled-1"></a>
 
 ## isHdcDisabled
 
@@ -97,7 +81,7 @@ function isHdcDisabled(admin: Want): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md)(admin: Want | null, feature: FeatureForDevice)
+**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -131,4 +115,20 @@ function isHdcDisabled(admin: Want): Promise<boolean>
 
 **示例**
 
-参见 [isHdcDisabled](#ishdcdisabled)
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+restrictions.isHdcDisabled(wantTemp).then((result) => {
+  console.info(`Succeeded in querying is hdc disabled : ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query is hdc disabled or not. Code is ${err.code}, message is ${err.message}`);
+})
+```

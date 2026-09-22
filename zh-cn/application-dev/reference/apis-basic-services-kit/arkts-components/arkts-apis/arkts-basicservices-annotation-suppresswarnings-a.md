@@ -35,3 +35,105 @@ rules: Array<SuppressWarningsType>
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Base
+
+**示例**
+
+兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
+
+权限告警消除预置条件：module.json5配置文件的requestPermissions标签中没有申请权限。
+
+> 说明：
+> 
+> 用于容器节点时，会屏蔽节点下子节点产生的告警。
+> 
+> 重复规则屏蔽时，仅生效代码位置上距离最近且符合规则的屏蔽类型。当多个不同类型的抑制实例同时存在时，各类型独立生效。
+
+```TypeScript
+import { SuppressWarnings, SuppressWarningsType, systemDateTime } from '@kit.BasicServicesKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { common } from '@kit.AbilityKit';
+// 注解场景
+// 兼容性告警消除部分
+systemDateTime.getAutoTimeStatus();  // 该接口起始版本为21，直接调用会生成兼容性告警。
+// The 'getAutoTimeStatus' API is supported since SDK version 21. However, the current compatible SDK version is 20.
+
+@SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
+function myFunc() {
+  systemDateTime.getAutoTimeStatus(); // 使用@SuppressWarnings注解后，兼容性告警被抑制。用于myFunc()容器节点时，子节点的兼容性告警也被抑制。
+}
+
+@SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
+class MyClass {
+  status = systemDateTime.getAutoTimeStatus(); // 使用@SuppressWarnings注解后，兼容性告警被抑制。
+}
+
+
+// 权限告警消除部分
+async function savePhotoToGallery(context: common.UIAbilityContext) {
+  let helper = photoAccessHelper.getPhotoAccessHelper(context);
+  let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
+  // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
+}
+
+@SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
+async function savePhotoToGallerySuppressCompatibility(context: common.UIAbilityContext) {
+  let helper = photoAccessHelper.getPhotoAccessHelper(context);
+  @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]}) // 如果同时存在两种屏蔽内容，仅生效最近的抑制类型。（兼容性告警被抑制，权限告警仍然存在）
+  let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，兼容性告警被抑制，权限告警仍然存在。
+}
+
+@SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
+async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
+  let helper = photoAccessHelper.getPhotoAccessHelper(context);
+  let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，权限告警被抑制。
+}
+```
+
+// @SuppressWarnings <SuppressWarningsType>
+
+本功能支持以单行注释形式快速抑制告警。在触发告警的代码行上方添加注释后，编译器将根据规则自动屏蔽对应的告警信息。注释中的标识符与SuppressWarningsType枚举值对应（如compatibility对应COMPATIBILITY），仅对紧随其后的代码行生效。
+
+> 说明：
+> 
+> 仅支持单行注释(//)格式，示例：// @SuppressWarnings compatibility
+> 
+> 不支持多行注释(/**/)格式，示例：/* @SuppressWarnings compatibility */
+> 
+> 不支持屏蔽容器节点下的子节点
+
+兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
+
+权限告警消除预置条件：module.json5配置文件的requestPermissions标签中没有申请权限。
+
+```TypeScript
+import { systemDateTime } from '@kit.BasicServicesKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { common } from '@kit.AbilityKit';
+// 注释场景
+// 兼容性告警消除部分
+systemDateTime.getAutoTimeStatus();  // 该接口起始版本为21，直接调用会生成兼容性告警。
+// The 'getAutoTimeStatus' API is supported since SDK version 21. However, the current compatible SDK version is 20.
+
+// @SuppressWarnings compatibility
+systemDateTime.getAutoTimeStatus();  // 使用@SuppressWarnings注释后，兼容性告警被抑制。
+
+
+// 权限告警消除部分
+async function savePhotoToGallery(context: common.UIAbilityContext) {
+  let helper = photoAccessHelper.getPhotoAccessHelper(context);
+  let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
+  // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
+}
+// @SuppressWarnings permission
+async function savePhotoToGallerySuppressNoUse(context: common.UIAbilityContext) {
+  let helper = photoAccessHelper.getPhotoAccessHelper(context);
+  let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用注释后，容器内子节点的告警不支持消除，仍会产生告警
+  // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
+}
+
+async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
+  let helper = photoAccessHelper.getPhotoAccessHelper(context);
+  // @SuppressWarnings permission
+  let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注释后，权限告警被抑制。
+}
+```

@@ -35,6 +35,8 @@ function getRemoteAbilityInfos(elementNames: Array<ElementName>,
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回远程基本能力信息。 |
 
 
+<a id="getremoteabilityinfos-1"></a>
+
 ## getRemoteAbilityInfos
 
 ```TypeScript

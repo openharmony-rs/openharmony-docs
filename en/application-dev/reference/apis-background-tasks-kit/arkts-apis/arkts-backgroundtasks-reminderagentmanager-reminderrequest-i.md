@@ -1,5 +1,9 @@
 # ReminderRequest
 
+```TypeScript
+interface ReminderRequest
+```
+
 Defines the request for publishing a reminder.
 
 **Since:** 9
@@ -66,7 +70,7 @@ Reminder content.
 contentResourceId?: number
 ```
 
-Resource ID of the reminder content, which can be obtained through &#36;r(*resource-name*).id.
+Resource ID of the reminder content, which can be obtained through $r(*resource-name*).id.
 
 **Type:** number
 
@@ -108,7 +112,7 @@ Content to be displayed after the reminder expires.
 expiredContentResourceId?: number
 ```
 
-Resource ID of the content to be displayed after the reminder expires, which can be obtained through &#36;r(*resource -name*).id.
+Resource ID of the content to be displayed after the reminder expires, which can be obtained through $r(*resource -name*).id.
 
 **Type:** number
 
@@ -276,7 +280,7 @@ Content to be displayed when the reminder is snoozing. (It is not applicable to 
 snoozeContentResourceId?: number
 ```
 
-Resource ID of the content to be displayed when the reminder is snoozing, which can be obtained through &#36;r(*resource-name*).id.
+Resource ID of the content to be displayed when the reminder is snoozing, which can be obtained through $r(*resource-name*).id.
 
 **Type:** number
 
@@ -365,7 +369,7 @@ Reminder title.
 titleResourceId?: number
 ```
 
-Resource ID of the reminder title, which can be obtained through &#36;r(*resource-name*).id.
+Resource ID of the reminder title, which can be obtained through $r(*resource-name*).id.
 
 **Type:** number
 

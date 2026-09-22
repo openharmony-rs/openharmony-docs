@@ -81,6 +81,52 @@ cert.createX509Crl(encodingBlob, (error, _x509Crl) => {
 });
 ```
 
+
+<a id="createx509crl-1"></a>
+
+## createX509Crl
+
+```TypeScript
+function createX509Crl(inStream: EncodingBlob): Promise<X509Crl>
+```
+
+表示创建X.509证书吊销列表对象。使用Promise方式返回结果。
+
+> **说明：** 
+> 
+> 从API version 9开始支持，从API version 11开始废弃，建议使用
+> [cert.createX509CRL()](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl-1)替代。
+
+**起始版本：** 9
+
+**废弃版本：** 11
+
+**替代接口：** [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md)
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | 表示证书吊销列表序列化数据。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[X509Crl](arkts-devicecertificate-cert-x509crl-depr-i.md)&gt; | Promise对象，返回创建的X509Crl实例。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+
+**示例**
+
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -116,49 +162,3 @@ cert.createX509Crl(encodingBlob).then(_x509Crl => {
   console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
-
-
-## createX509Crl
-
-```TypeScript
-function createX509Crl(inStream: EncodingBlob): Promise<X509Crl>
-```
-
-表示创建X.509证书吊销列表对象。使用Promise方式返回结果。
-
-> **说明：** 
-> 
-> 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [cert.createX509CRL()](arkts-devicecertificate-cert-createx509crl-f.md)替代。
-
-**起始版本：** 9
-
-**废弃版本：** 11
-
-**替代接口：** [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md)
-
-**系统能力：** SystemCapability.Security.Cert
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | 表示证书吊销列表序列化数据。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[X509Crl](arkts-devicecertificate-cert-x509crl-depr-i.md)&gt; | Promise对象，返回创建的X509Crl实例。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
-
-**示例**
-
-参见 createX509Crl

@@ -1,8 +1,10 @@
 # AudioHapticManager
 
-管理音振协同功能。在调用AudioHapticManager的接口前，需要先通过[getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md)创建实例。
+```TypeScript
+interface AudioHapticManager
+```
 
-@typedef AudioHapticManager
+管理音振协同功能。在调用AudioHapticManager的接口前，需要先通过[getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md)创建实例。
 
 **起始版本：** 11
 

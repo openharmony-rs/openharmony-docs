@@ -61,26 +61,8 @@ print.addPrinters([printerInfo], (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let printerInfo : print.PrinterInfo = {
-    printerId : '3232',
-    printerName : 'hhhhh',
-    printerState : 0,
-    printerIcon : 12,
-    description : 'str',
-    capability : undefined,
-    options : 'opt'
-};
-print.addPrinters([printerInfo]).then(() => {
-    console.info('add printers success.');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to add printers. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="addprinters-1"></a>
 
 ## addPrinters
 
@@ -120,4 +102,22 @@ function addPrinters(printers: Array<PrinterInfo>): Promise<void>
 
 **示例**
 
-参见 [addPrinters](#addprinters)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerInfo : print.PrinterInfo = {
+    printerId : '3232',
+    printerName : 'hhhhh',
+    printerState : 0,
+    printerIcon : 12,
+    description : 'str',
+    capability : undefined,
+    options : 'opt'
+};
+print.addPrinters([printerInfo]).then(() => {
+    console.info('add printers success.');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to add printers. Code: ${error.code}, message: ${error.message}`);
+});
+```

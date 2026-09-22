@@ -1,5 +1,9 @@
 # SecurityComponentRoleType
 
+```TypeScript
+declare enum SecurityComponentRoleType
+```
+
 定义组件的屏幕朗读功能角色类型。
 
 **起始版本：** 26.0.0

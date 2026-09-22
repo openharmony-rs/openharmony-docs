@@ -1,5 +1,9 @@
 # PhotoProxy (System API)
 
+```TypeScript
+interface PhotoProxy
+```
+
 Photo proxy object, which is used by the camera application to write image data.
 
 **Since:** 11

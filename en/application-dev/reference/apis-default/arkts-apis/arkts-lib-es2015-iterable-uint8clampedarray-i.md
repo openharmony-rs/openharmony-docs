@@ -1,5 +1,9 @@
 # Uint8ClampedArray
 
+```TypeScript
+interface Uint8ClampedArray
+```
+
 ## Modules to Import
 
 ```TypeScript

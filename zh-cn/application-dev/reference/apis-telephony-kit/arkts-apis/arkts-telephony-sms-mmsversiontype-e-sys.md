@@ -1,5 +1,9 @@
 # MmsVersionType（系统接口）
 
+```TypeScript
+export enum MmsVersionType
+```
+
 彩信版本类型。
 
 **起始版本：** 8

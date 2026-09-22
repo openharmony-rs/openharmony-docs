@@ -72,6 +72,8 @@ workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
 ```
 
 
+<a id="obtainallworks-1"></a>
+
 ## obtainAllWorks
 
 ```TypeScript
@@ -103,8 +105,21 @@ function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void
 
 **示例**
 
-参见 [obtainAllWorks](#obtainallworks)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
+workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) => {
+  if (error) {
+    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+  }
+});
+```
+
+
+<a id="obtainallworks-2"></a>
 
 ## obtainAllWorks
 
@@ -137,4 +152,13 @@ function obtainAllWorks(): Promise<Array<WorkInfo>>
 
 **示例**
 
-参见 [obtainAllWorks](#obtainallworks)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
+
+workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
+  console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+})
+```

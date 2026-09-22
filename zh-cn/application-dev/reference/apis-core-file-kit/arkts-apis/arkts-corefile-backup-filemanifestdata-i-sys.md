@@ -1,5 +1,9 @@
 # FileManifestData（系统接口）
 
+```TypeScript
+interface FileManifestData
+```
+
 增量数据中的清单文件信息，用于描述应用增量备份、恢复时对应文件的基础信息。
 
 @interface FileManifestData

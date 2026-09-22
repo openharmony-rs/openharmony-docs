@@ -1,5 +1,9 @@
 # StorageStats（系统接口）
 
+```TypeScript
+export interface StorageStats
+```
+
 **起始版本：** 9
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics

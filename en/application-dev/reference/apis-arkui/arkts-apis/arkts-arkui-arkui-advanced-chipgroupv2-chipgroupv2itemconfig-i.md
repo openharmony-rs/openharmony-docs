@@ -1,6 +1,10 @@
 # ChipGroupV2ItemConfig
 
-Defines chip item config.
+```TypeScript
+export interface ChipGroupV2ItemConfig
+```
+
+Defines the non-common attribute configuration of a **ChipV2**.
 
 **Since:** 26.0.0
 
@@ -18,7 +22,11 @@ import { ChipGroupV2ItemConfig, ChipGroupV2Item, ChipGroupV2Items, ChipGroupV2It
 accessibilityDescription?: ResourceStr
 ```
 
-Set accessibility description for ChipGroupV2 item.
+Accessibility description of the **ChipV2** item in **ChipGroupV2**. This description is used to explain the **ChipV2** item in **ChipGroupV2** to users in detail. You should provide a relatively detailed text description for the attributes of the **ChipV2** item in **ChipGroupV2** to help users understand the operation to be performed and its possible results, especially when these results cannot be directly learned from the attributes and accessibility text of the **ChipV2** item in **ChipGroupV2** alone. If the **ChipV2** item in **ChipGroupV2** has both a text attribute and an accessibility description attribute and the item is selected, the system first announces the item's text attribute, and then announces the content of the accessibility description attribute.
+
+Default value: empty string.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -36,7 +44,23 @@ Set accessibility description for ChipGroupV2 item.
 accessibilityLevel?: string
 ```
 
-Set accessibility level for ChipGroupV2 item.
+Accessibility level of the **ChipV2** item in **ChipGroupV2**. This attribute is used to control whether the **ChipV2** item in **ChipGroupV2** can be recognized by accessibility services.
+
+Supported values:
+
+**"auto"**: The attribute value of the **ChipV2** item in **ChipGroupV2** is converted to **"yes"**.
+
+**"yes"**: The **ChipV2** item in **ChipGroupV2** can be recognized by accessibility services.
+
+"no": The **ChipV2** item in **ChipGroupV2** cannot be recognized by accessibility services.
+
+**"no-hide-descendants"**: The **ChipV2** item in **ChipGroupV2** and all its child components cannot be recognized by accessibility services.
+
+If a value outside the supported range is passed in, the default value is used.
+
+Default value: **"auto"**
+
+If the value is **undefined**, the default value is used.
 
 **Type:** string
 
@@ -56,7 +80,13 @@ Set accessibility level for ChipGroupV2 item.
 allowClose?: boolean
 ```
 
-Indicates whether to allow close.
+Whether to display the close icon. Value rules: **true** means to display the close icon, and **false** means the opposite.
+
+When **suffixIcon** or **suffixSymbolIcon** is passed in, **allowClose** does not take effect. When neither **suffixIcon** nor **suffixSymbolIcon** is passed in, **allowClose** determines whether the close icon is displayed.
+
+Default value: **false**
+
+If the value is **undefined**, the default value is used.
 
 **Type:** boolean
 
@@ -74,7 +104,15 @@ Indicates whether to allow close.
 closeIcon?: ChipV2CloseConfig
 ```
 
-Set config for default close icon when 'allowClose' is true.
+Configuration of the close icon, including accessibility attribute configuration. Set this attribute when you need to customize the size or accessibility attributes of the close icon.
+
+Default value:
+
+- **fontSize**: when **size** is **ChipV2Size.SMALL**, the default value is  
+`$r('sys.float.chip_small_font_size')`; in other cases, the default value is `$r('sys.float.chip_normal_font_size')`.  
+- Accessibility: no accessibility description.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ChipV2CloseConfig](arkts-arkui-arkui-advanced-chipv2-chipv2closeconfig-i.md)
 
@@ -92,7 +130,7 @@ Set config for default close icon when 'allowClose' is true.
 label: ChipV2LabelConfig
 ```
 
-ChipV2 label.
+Text attribute.
 
 **Type:** [ChipV2LabelConfig](arkts-arkui-arkui-advanced-chipv2-chipv2labelconfig-i.md)
 
@@ -110,7 +148,11 @@ ChipV2 label.
 prefixIcon?: ChipV2PrefixImageIconConfig
 ```
 
-Prefix icon.
+Prefix image icon, which is used to display an image icon before the **ChipV2** text. Set this attribute when an icon identifier needs to be displayed on the left side of **ChipV2**.
+
+Default value: no prefix image icon.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ChipV2PrefixImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefiximageiconconfig-i.md)
 
@@ -128,7 +170,11 @@ Prefix icon.
 prefixSymbolIcon?: ChipV2PrefixSymbolIconConfig
 ```
 
-Prefix symbol icon.
+Prefix symbol icon, which is used to display a symbol icon before the **ChipV2** text. Set this attribute when a symbol icon identifier needs to be displayed on the left side of **ChipV2**.
+
+Default value: no prefix symbol icon.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ChipV2PrefixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefixsymboliconconfig-i.md)
 
@@ -146,7 +192,11 @@ Prefix symbol icon.
 suffixIcon?: ChipV2SuffixImageIconConfig
 ```
 
-Suffix icon.
+Suffix image icon, which is used to display an image icon after the **ChipV2** text. When this attribute is set, the **allowClose** attribute does not take effect.
+
+Default value: no suffix image icon is displayed.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ChipV2SuffixImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2suffiximageiconconfig-i.md)
 
@@ -164,7 +214,11 @@ Suffix icon.
 suffixSymbolIcon?: ChipV2SuffixSymbolIconConfig
 ```
 
-Suffix symbol icon.
+Suffix symbol icon, which is used to display a symbol icon after the **ChipV2** text. When this attribute is set, the **allowClose** attribute does not take effect.
+
+Default value: no suffix symbol icon is displayed.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ChipV2SuffixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2suffixsymboliconconfig-i.md)
 

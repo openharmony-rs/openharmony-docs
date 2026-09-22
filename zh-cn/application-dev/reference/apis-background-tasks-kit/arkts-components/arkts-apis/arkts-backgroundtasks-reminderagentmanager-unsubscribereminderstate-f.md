@@ -39,18 +39,3 @@ function unsubscribeReminderState(callback?: Callback<Array<ReminderState>>): Pr
 | [1700007](../errorcode-reminderAgentManager.md#1700007-参数错误) | If the input parameter is not valid parameter. |
 
 **示例**
-
-```TypeScript
-import { reminderAgentManager } from '@kit.BackgroundTasksKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
-  console.info('length is : ' + states.length);
-}
-
-reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => {
-  console.info('unsubscribe succeed');
-}).catch((err: BusinessError) => {
-  console.error('promise err code:' + err.code + ' message:' + err.message);
-});
-```

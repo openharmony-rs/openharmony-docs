@@ -1,5 +1,9 @@
 # CounterV2DateData
 
+```TypeScript
+declare class CounterV2DateData
+```
+
 CounterV2DateData定义了日期通用属性和方法，包括年、月、日。
 
 **起始版本：** 26.0.0

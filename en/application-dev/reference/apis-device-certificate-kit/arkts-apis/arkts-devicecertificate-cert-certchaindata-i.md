@@ -1,5 +1,9 @@
 # CertChainData
 
+```TypeScript
+interface CertChainData
+```
+
 Defines the certificate chain data, which is passed in as input parameters during certificate chain verification.
 
 **Since:** 9

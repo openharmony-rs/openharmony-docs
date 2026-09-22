@@ -1,5 +1,9 @@
 # MenuPosition
 
+```TypeScript
+interface MenuPosition
+```
+
 定义可弹出菜单的组件的位置。
 
 @typedef MenuPosition

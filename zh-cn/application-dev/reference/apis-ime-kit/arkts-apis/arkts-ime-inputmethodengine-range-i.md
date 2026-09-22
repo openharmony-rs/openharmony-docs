@@ -1,5 +1,9 @@
 # Range
 
+```TypeScript
+export interface Range
+```
+
 选中的文本范围。
 
 **起始版本：** 10

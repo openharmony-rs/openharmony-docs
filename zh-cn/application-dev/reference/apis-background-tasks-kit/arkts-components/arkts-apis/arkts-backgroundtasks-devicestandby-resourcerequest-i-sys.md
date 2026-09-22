@@ -1,5 +1,9 @@
 # ResourceRequest（系统接口）
 
+```TypeScript
+export interface ResourceRequest
+```
+
 待机资源请求体。
 
 **起始版本：** 10

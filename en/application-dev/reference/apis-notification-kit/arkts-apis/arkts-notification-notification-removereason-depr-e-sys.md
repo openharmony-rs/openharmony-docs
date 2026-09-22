@@ -1,5 +1,9 @@
 # RemoveReason (System API)
 
+```TypeScript
+export enum RemoveReason
+```
+
 Reason for removing the notification.
 
 **Since:** 7

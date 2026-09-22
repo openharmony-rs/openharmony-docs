@@ -2,15 +2,7 @@
 
 ```TypeScript
 type AxisType =
-    'touchmajor'
-    | 'touchminor'
-    | 'orientation'
-    | 'x'
-    | 'y'
-    | 'pressure'
-    | 'toolminor'
-    | 'toolmajor'
-    | 'null'
+    'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'pressure' | 'toolminor' | 'toolmajor' | 'null'
 ```
 
 输入设备的轴类型。

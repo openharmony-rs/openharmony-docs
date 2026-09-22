@@ -1,5 +1,9 @@
 # Vibrator
 
+```TypeScript
+export default class Vibrator
+```
+
 **起始版本：** 3
 
 **废弃版本：** 8

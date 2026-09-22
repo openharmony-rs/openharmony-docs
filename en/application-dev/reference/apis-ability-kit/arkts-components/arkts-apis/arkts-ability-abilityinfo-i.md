@@ -1,5 +1,9 @@
 # AbilityInfo
 
+```TypeScript
+export interface AbilityInfo
+```
+
 The module defines the ability information.
 
 **Since:** 9

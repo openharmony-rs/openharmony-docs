@@ -1,5 +1,9 @@
 # FloatingBallController
 
+```TypeScript
+interface FloatingBallController
+```
+
 闪控球控制器实例，用于启动、更新、停止闪控球以及注册回调等操作。
 
 下列API示例中都需先使用[floatingBall.create()](arkts-arkui-floatingball-create-f.md)方法获取到闪控球控制器实例（即floatingBallController），再通过此实例调用对应方法。
@@ -83,6 +87,21 @@ off(type: 'stateChange', callback?: Callback<FloatingBallState>): void
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
+**示例**
+
+```TypeScript
+// 定义状态变化回调函数（需与注册时的回调一致）
+let onStateChange = (state: floatingBall.FloatingBallState) => {
+  console.info('Floating ball stateChange: ' + state);
+};
+try {
+  // 取消闪控球状态变化监听
+  floatingBallController.off('stateChange', onStateChange);
+} catch (e) {
+  console.error(`Failed to off stateChange floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ## off('click')
 
 ```TypeScript
@@ -109,6 +128,21 @@ off(type: 'click', callback?: Callback<void>): void
 | [1300019](../errorcode-window.md#1300019-闪控球参数校验错误) | Wrong parameters for operating the floating ball. Possible causes:<br>1.Mandatory parameters are left unspecified. <br>2.Callback is null or not callable. |
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
+
+**示例**
+
+```TypeScript
+// 定义点击事件回调函数（需与注册时的回调一致）
+let onClick = () => {
+  console.info('Floating ball onClick');
+};
+try {
+  // 取消闪控球点击监听
+  floatingBallController.off('click', onClick);
+} catch (e) {
+  console.error(`Failed to off click floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
 
 ## offDestroy
 
@@ -187,6 +221,21 @@ on(type: 'stateChange', callback: Callback<FloatingBallState>): void
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
+**示例**
+
+```TypeScript
+// 定义状态变化回调函数
+let onStateChange = (state: floatingBall.FloatingBallState) => {
+  console.info('Floating ball stateChange: ' + state);
+};
+try {
+  // 注册闪控球状态变化监听
+  floatingBallController.on('stateChange', onStateChange);
+} catch (e) {
+  console.error(`Failed to on stateChange floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ## on('click')
 
 ```TypeScript
@@ -214,6 +263,21 @@ on(type: 'click', callback: Callback<void>): void
 | [1300022](../errorcode-window.md#1300022-重复操作闪控球) | Repeated floating ball operation. |
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
+
+**示例**
+
+```TypeScript
+// 定义点击事件回调函数
+let onClick = () => {
+  console.info('Floating ball onClick');
+};
+try {
+  // 注册闪控球点击监听
+  floatingBallController.on('click', onClick);
+} catch (e) {
+  console.error(`Failed to on click floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
 
 ## onDestroy
 

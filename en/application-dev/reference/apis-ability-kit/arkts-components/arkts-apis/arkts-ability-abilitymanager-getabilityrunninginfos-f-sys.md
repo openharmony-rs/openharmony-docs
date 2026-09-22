@@ -6,6 +6,8 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="getabilityrunninginfos-1"></a>
+
 ## getAbilityRunningInfos
 
 ```TypeScript

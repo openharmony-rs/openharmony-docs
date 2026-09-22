@@ -1,5 +1,9 @@
 # FetchResult
 
+```TypeScript
+enum FetchResult
+```
+
 表示批量获取缩略图操作结果的枚举。
 
 **起始版本：** 23

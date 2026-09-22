@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+declare interface Rect
+```
+
 控件的边框信息。
 
 **起始版本：** 9

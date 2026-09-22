@@ -1,7 +1,7 @@
 # CloudType (System API)
 
 ```TypeScript
-type CloudType = null | number | number | string | boolean | Uint8Array | CloudAsset | CloudAssets
+type CloudType = null | number | string | boolean | Uint8Array | CloudAsset | CloudAssets
 ```
 
 Enumerates the types of the cloud data field. The specific type is determined by the parameter function.

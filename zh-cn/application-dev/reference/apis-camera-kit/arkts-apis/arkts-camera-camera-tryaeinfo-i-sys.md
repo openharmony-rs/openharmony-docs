@@ -1,5 +1,9 @@
 # TryAEInfo（系统接口）
 
+```TypeScript
+interface TryAEInfo
+```
+
 Describes the Try AE parameters. Try AE indicates that the hardware reports the status based on the ambient illumination change during time-lapse photographing.
 
 **起始版本：** 12

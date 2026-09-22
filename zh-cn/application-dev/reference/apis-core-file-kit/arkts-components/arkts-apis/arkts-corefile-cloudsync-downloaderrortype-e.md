@@ -1,5 +1,9 @@
 # DownloadErrorType
 
+```TypeScript
+enum DownloadErrorType
+```
+
 端云下载错误类型，为枚举类型。
 
 **起始版本：** 11

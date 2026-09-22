@@ -1,5 +1,9 @@
 # RectType
 
+```TypeScript
+enum RectType
+```
+
 窗口矩形区域坐标系类型。
 
 **起始版本：** 19

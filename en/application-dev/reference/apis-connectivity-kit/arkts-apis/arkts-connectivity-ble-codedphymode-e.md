@@ -1,5 +1,9 @@
 # CodedPhyMode
 
+```TypeScript
+enum CodedPhyMode
+```
+
 Coded phy mode for advertising or connection.
 
 **Since:** 23

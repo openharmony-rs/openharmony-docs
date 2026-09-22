@@ -1,5 +1,9 @@
 # AuthResult
 
+```TypeScript
+interface AuthResult
+```
+
 Defines the authentication result.
 
 **Since:** 9

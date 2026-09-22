@@ -1,5 +1,9 @@
 # AudioSamplingRate
 
+```TypeScript
+enum AudioSamplingRate
+```
+
 Enumerates the audio sampling rates. The sampling rates supported vary according to the device in use.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # PromiseConstructor
 
+```TypeScript
+interface PromiseConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

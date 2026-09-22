@@ -1,5 +1,9 @@
 # TargetType (System API)
 
+```TypeScript
+export enum TargetType
+```
+
 Target type.
 
 @enum { int }

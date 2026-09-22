@@ -1,5 +1,9 @@
 # SettingItem
 
+```TypeScript
+interface SettingItem
+```
+
 设置项的定义。
 
 @interface SettingItem

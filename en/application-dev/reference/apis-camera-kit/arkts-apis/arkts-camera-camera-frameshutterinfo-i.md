@@ -1,5 +1,9 @@
 # FrameShutterInfo
 
+```TypeScript
+interface FrameShutterInfo
+```
+
 Describes the frame shutter information.
 
 **Since:** 10

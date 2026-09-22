@@ -1,5 +1,9 @@
 # AnalysisAlbum（系统接口）
 
+```TypeScript
+class AnalysisAlbum
+```
+
 智慧相册。
 
 **起始版本：** 18

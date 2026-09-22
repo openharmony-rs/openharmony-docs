@@ -1,5 +1,9 @@
 # WatchEventListener
 
+```TypeScript
+export interface WatchEventListener
+```
+
 (event: WatchEvent): void
 
 Provides APIs for observing events.

@@ -27,8 +27,8 @@ import { socket } from '@kit.NetworkKit';
 | [constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md) | 创建一个MulticastSocket对象。 |
 | [constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md) | 创建一个TCPSocket对象。 |
 | [constructTCPSocketServerInstance](arkts-network-socket-constructtcpsocketserverinstance-f.md) | 创建一个TCPSocketServer对象。 |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md) | 创建并返回一个TLSSocket对象。 |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md) | 将TCPSocket升级为TLSSocket，创建并返回一个TLSSocket对象。 |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance) | 创建并返回一个TLSSocket对象。 |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance-1) | 将TCPSocket升级为TLSSocket，创建并返回一个TLSSocket对象。 |
 | [constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md) | 创建并返回一个TLSSocketServer对象。 |
 | [constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md) | 创建一个UDPSocket对象。 |
 

@@ -1,6 +1,10 @@
 # SystemRecordControllerChangeInfo（系统接口）
 
-定义系统记录控制器状态变化时所携带的信息。它包括启用状态、应用程序UID和预期的音频源类型。
+```TypeScript
+interface SystemRecordControllerChangeInfo
+```
+
+系统录音控制面板状态变更时携带的信息，包含使能状态、应用UID和期望的音频源类型。用于[onSystemRecordControllerEnabledChange](../../../reference/apis-audio-kit/js-apis-audio-sys.md#onsystemrecordcontrollerenabledchange)和[offSystemRecordControllerEnabledChange](../../../reference/apis-audio-kit/js-apis-audio-sys.md#offsystemrecordcontrollerenabledchange)的回调参数。
 
 **起始版本：** 26.0.0
 
@@ -20,7 +24,7 @@ import { audio } from '@kit.AudioKit';
 enabled: boolean
 ```
 
-系统记录控制器面板是否启用。
+系统录音控制面板是否启用。true表示启用，false表示禁用。
 
 **类型：** boolean
 
@@ -38,7 +42,7 @@ enabled: boolean
 sourceType?: SourceType
 ```
 
-应用程序在启用录音控制器时配置的预期音频源类型。用于匹配相应的录音场景和降噪模式。
+应用启用录音控制面板时配置的期望音频源类型，用于匹配对应的录音场景和降噪模式。
 
 **类型：** [SourceType](arkts-audio-audio-sourcetype-e.md)
 
@@ -56,7 +60,7 @@ sourceType?: SourceType
 uid?: number
 ```
 
-触发系统记录控制器状态变化的应用程序UID。
+触发系统录音控制面板状态变更的应用UID。取值范围是所有整数。
 
 **类型：** number
 

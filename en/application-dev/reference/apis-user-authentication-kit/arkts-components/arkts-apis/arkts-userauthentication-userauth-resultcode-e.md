@@ -1,5 +1,9 @@
 # ResultCode
 
+```TypeScript
+enum ResultCode
+```
+
 Enumerates the authentication result codes.
 
 **Since:** 8

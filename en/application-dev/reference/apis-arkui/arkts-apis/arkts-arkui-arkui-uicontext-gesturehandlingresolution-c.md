@@ -1,5 +1,9 @@
 # GestureHandlingResolution
 
+```TypeScript
+export class GestureHandlingResolution
+```
+
 Class for declaring the result of smart gesture handling.
 
 **Since:** 26.0.0

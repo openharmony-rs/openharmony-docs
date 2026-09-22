@@ -1,5 +1,9 @@
 # GeoLocationErrorCode
 
+```TypeScript
+export enum GeoLocationErrorCode
+```
+
 位置服务中的错误码信息。
 
 **起始版本：** 7

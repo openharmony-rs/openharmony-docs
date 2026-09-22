@@ -1,5 +1,9 @@
 # ItemInfo
 
+```TypeScript
+export declare class ItemInfo extends BaseItemInfo
+```
+
 It inherits from [BaseItemInfo](arkts-medialibrary-file-photopickercomponent-baseiteminfo-c.md), adding the parameter **itemType**.
 
 Represents basic image and video information.

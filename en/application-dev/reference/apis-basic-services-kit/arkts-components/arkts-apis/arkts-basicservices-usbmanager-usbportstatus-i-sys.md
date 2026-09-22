@@ -1,5 +1,9 @@
 # USBPortStatus (System API)
 
+```TypeScript
+interface USBPortStatus
+```
+
 Enumerates USB port roles. **currentMode** indicates the current USB mode of the port. The value must be within the range of **supportedModes** of the USB port. **currentPowerRole** indicates the current power role, and **currentDataRole** indicates the current data transfer role. These fields are generally set as follows: In DFP mode, **dataRole** is **HOST**, and **powerRole** is **SOURCE**. In UFP mode, **dataRole** is **DEVICE**, and **powerRole** is **SINK**. The port status change is subject to hardware and system constraints. Some mode or role combinations may not be supported.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # WifiChannelWidth
 
+```TypeScript
+enum WifiChannelWidth
+```
+
 表示带宽类型的枚举。
 
 **起始版本：** 9

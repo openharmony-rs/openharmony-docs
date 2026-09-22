@@ -1,5 +1,9 @@
 # ScreenSourceMode（系统接口）
 
+```TypeScript
+enum ScreenSourceMode
+```
+
 屏幕显示内容来源模式枚举。
 
 **起始版本：** 10

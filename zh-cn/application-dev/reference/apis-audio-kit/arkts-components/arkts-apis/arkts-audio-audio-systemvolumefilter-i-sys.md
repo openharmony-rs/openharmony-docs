@@ -1,5 +1,9 @@
 # SystemVolumeFilter（系统接口）
 
+```TypeScript
+interface SystemVolumeFilter
+```
+
 描述系统音量过滤器。
 
 **起始版本：** 26.0.0

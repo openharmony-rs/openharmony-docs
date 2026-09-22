@@ -1,5 +1,9 @@
 # ChipGroupV2PaddingConfig
 
+```TypeScript
+export interface ChipGroupV2PaddingConfig
+```
+
 ChipGroupV2PaddingConfig定义了ChipGroupV2的上下内边距配置，用于控制其整体高度。
 
 **起始版本：** 26.0.0

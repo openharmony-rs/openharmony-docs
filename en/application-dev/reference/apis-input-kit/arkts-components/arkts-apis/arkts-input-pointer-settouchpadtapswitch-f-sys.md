@@ -65,33 +65,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Set the touchpad tap switch.
-            pointer.setTouchpadTapSwitch(false).then(() => {
-              console.info(`Succeeded in setting touchpad tap switch.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="settouchpadtapswitch-1"></a>
 
 ## setTouchpadTapSwitch
 
@@ -128,4 +103,29 @@ Sets the touchpad tap switch. This API uses a promise to return the result.
 
 **Examples**
 
-See [setTouchpadTapSwitch](#settouchpadtapswitch)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // Set the touchpad tap switch.
+            pointer.setTouchpadTapSwitch(false).then(() => {
+              console.info(`Succeeded in setting touchpad tap switch.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

@@ -1,5 +1,9 @@
 # ChangeData
 
+```TypeScript
+interface ChangeData
+```
+
 监听器回调函数的返回值。
 
 **起始版本：** 10

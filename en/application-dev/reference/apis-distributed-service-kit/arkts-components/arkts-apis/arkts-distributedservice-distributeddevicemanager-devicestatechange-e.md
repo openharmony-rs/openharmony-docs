@@ -1,5 +1,9 @@
 # DeviceStateChange
 
+```TypeScript
+enum DeviceStateChange
+```
+
 Enumerates the device states.
 
 **Since:** 10

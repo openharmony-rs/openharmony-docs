@@ -1,5 +1,9 @@
 # CallTransferSettingType (System API)
 
+```TypeScript
+export enum CallTransferSettingType
+```
+
 Enumerates call transfer setting types.
 
 **Since:** 8

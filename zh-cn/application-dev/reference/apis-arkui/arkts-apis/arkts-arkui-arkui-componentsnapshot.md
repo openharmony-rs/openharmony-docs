@@ -1,4 +1,4 @@
-# @ohos.arkui.componentSnapshot
+# @ohos.arkui.componentSnapshot(组件截图)
 
 本模块提供获取组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。组件截图只能够截取组件大小的区域，如果组件的绘制超出了它的区域，或子组件的绘制超出了父组件的区域，这些在组件区域外绘制的内容不会在截图中呈现。兄弟节点堆叠在组件区域内，截图不会显示兄弟组件。
 
@@ -32,10 +32,10 @@ import { componentSnapshot } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md) | 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过回调返回结果并支持在回调中获取离屏组件绘制区域坐标和大小。 |
-| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md) | 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过Promise返回结果，支持获取离屏组件绘制区域的坐标和大小。 |
-| [get](arkts-arkui-componentsnapshot-get-f.md) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过回调返回结果。 |
-| [get](arkts-arkui-componentsnapshot-get-f.md) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过Promise返回结果。 |
+| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder) | 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过回调返回结果并支持在回调中获取离屏组件绘制区域坐标和大小。 |
+| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder-1) | 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过Promise返回结果，支持获取离屏组件绘制区域的坐标和大小。 |
+| [get](arkts-arkui-componentsnapshot-get-f.md#get) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过回调返回结果。 |
+| [get](arkts-arkui-componentsnapshot-get-f.md#get-1) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过Promise返回结果。 |
 | [getSync](arkts-arkui-componentsnapshot-getsync-f.md) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。 |
 
 ### 接口

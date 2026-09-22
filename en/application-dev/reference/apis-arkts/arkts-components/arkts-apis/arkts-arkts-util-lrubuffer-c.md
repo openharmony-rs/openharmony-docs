@@ -1,5 +1,9 @@
 # LruBuffer
 
+```TypeScript
+class LruBuffer<K, V>
+```
+
 The LruBuffer algorithm replaces the least used data with new data when the buffer space is insufficient.
 
 **Since:** 8

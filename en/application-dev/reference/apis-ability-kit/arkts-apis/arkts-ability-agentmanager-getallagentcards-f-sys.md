@@ -12,7 +12,7 @@ import { agentManager } from '@kit.AbilityKit';
 function getAllAgentCards(): Promise<Array<AgentCard>>
 ```
 
-Gets all AgentCards on the device.
+Obtains all AgentCards on the device. This API uses a promise to return the result.
 
 **Since:** 24
 

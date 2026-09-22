@@ -56,16 +56,8 @@ call.startDTMF(1, "0", (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.startDTMF(1, "0").then(() => {
-    console.info(`startDTMF success.`);
-}).catch((err: BusinessError) => {
-    console.error(`startDTMF fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="startdtmf-1"></a>
 
 ## startDTMF
 
@@ -110,4 +102,12 @@ Starts playing DTMF tones. This API uses a promise to return the result.
 
 **Examples**
 
-See [startDTMF](#startdtmf)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.startDTMF(1, "0").then(() => {
+    console.info(`startDTMF success.`);
+}).catch((err: BusinessError) => {
+    console.error(`startDTMF fail, promise: err->${JSON.stringify(err)}`);
+});
+```

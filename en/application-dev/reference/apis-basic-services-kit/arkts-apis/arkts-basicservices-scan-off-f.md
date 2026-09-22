@@ -46,39 +46,6 @@ scan.on('scanDeviceFound', callback);
 scan.off('scanDeviceFound', callback);
 ```
 
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-let callback = (device: scan.ScannerSyncDevice) => {
-    console.info('scan device sync: ' + JSON.stringify(device));
-};
-scan.on('scanDeviceSync', callback);
-// Unregister the callback.
-scan.off('scanDeviceSync', callback);
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-let callback = (device: scan.ScannerDevice) => {
-    console.info('scan device add: ' + JSON.stringify(device));
-};
-scan.on('scanDeviceAdd', callback);
-// Unregister the callback.
-scan.off('scanDeviceAdd', callback);
-```
-
-```TypeScript
-import { scan } from '@kit.BasicServicesKit';
-
-let callback = (device: scan.ScannerDevice) => {
-    console.info('scan device delete: ' + JSON.stringify(device));
-};
-scan.on('scanDeviceDel', callback);
-// Unregister the callback.
-scan.off('scanDeviceDel', callback);
-```
-
 
 ## off('scanDeviceSync')
 
@@ -109,4 +76,13 @@ Unregisters a callback used to listen for the scanner sync event. This API uses 
 
 **Examples**
 
-See off
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+
+let callback = (device: scan.ScannerSyncDevice) => {
+    console.info('scan device sync: ' + JSON.stringify(device));
+};
+scan.on('scanDeviceSync', callback);
+// Unregister the callback.
+scan.off('scanDeviceSync', callback);
+```

@@ -1,5 +1,9 @@
 # RandomAccessFileOptions
 
+```TypeScript
+export interface RandomAccessFileOptions
+```
+
 Defines the options used in **createRandomAccessFile()**.
 
 **Since:** 12

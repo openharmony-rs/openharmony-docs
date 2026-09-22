@@ -1,5 +1,9 @@
 # RecommendationType
 
+```TypeScript
+enum RecommendationType
+```
+
 Enumerates the types of recommended images.
 
 **Since:** 11

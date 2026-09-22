@@ -10,7 +10,7 @@
 
 ## 子组件
 
-可以包含Image子组件。
+可以包含[Image](arkts-arkui-image-comp.md#image)子组件。
 
 ## Hyperlink
 
@@ -35,6 +35,28 @@ Hyperlink(address: string | Resource, content?: string | Resource)
 
 ## 示例
 
-```TypeScript
 该示例展示了超链接图片和文本跳转的效果。
+
+```TypeScript
+@Entry
+@Component
+struct HyperlinkExample {
+  build() {
+    Column() {
+      Column() {
+        Hyperlink('https://example.com/') {
+          // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+          Image($r('app.media.bg'))
+            .width(200)
+            .height(100)
+        }
+      }
+
+      Column() {
+        Hyperlink('https://example.com/', 'Go to the developer website')
+        .color(Color.Blue)
+      }
+    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+  }
+}
 ```

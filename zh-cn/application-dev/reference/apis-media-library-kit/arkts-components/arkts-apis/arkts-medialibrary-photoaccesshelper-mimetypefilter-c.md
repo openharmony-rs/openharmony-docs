@@ -1,5 +1,9 @@
 # MimeTypeFilter
 
+```TypeScript
+class MimeTypeFilter
+```
+
 文件类型的过滤配置。
 
 **起始版本：** 19

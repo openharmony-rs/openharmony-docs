@@ -1,5 +1,9 @@
 # InterruptType
 
+```TypeScript
+enum InterruptType
+```
+
 表示中断类型的枚举。
 
 **起始版本：** 7

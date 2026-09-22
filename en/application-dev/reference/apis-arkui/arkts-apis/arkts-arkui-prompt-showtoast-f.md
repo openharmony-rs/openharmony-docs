@@ -20,6 +20,8 @@ Displays the notification text.
 
 **Substitutes:** showToast
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -1,5 +1,9 @@
 # utils(Defines the utils for ArkTS)
 
+```TypeScript
+declare namespace utils
+```
+
 **起始版本：** 12
 
 **系统能力：** SystemCapability.Utils.Lang

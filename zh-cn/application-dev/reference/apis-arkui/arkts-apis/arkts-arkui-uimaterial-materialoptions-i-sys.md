@@ -1,5 +1,9 @@
 # MaterialOptions（系统接口）
 
+```TypeScript
+interface MaterialOptions
+```
+
 系统材质选项。
 
 **起始版本：** 23

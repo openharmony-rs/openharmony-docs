@@ -1,5 +1,9 @@
 # RemoteDeviceDriver
 
+```TypeScript
+interface RemoteDeviceDriver
+```
+
 远程设备驱动。
 
 **起始版本：** 11

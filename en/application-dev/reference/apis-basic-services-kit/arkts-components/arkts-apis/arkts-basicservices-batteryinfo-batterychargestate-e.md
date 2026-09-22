@@ -1,5 +1,9 @@
 # BatteryChargeState
 
+```TypeScript
+export enum BatteryChargeState
+```
+
 Enumerates charging states.
 
 **Since:** 6

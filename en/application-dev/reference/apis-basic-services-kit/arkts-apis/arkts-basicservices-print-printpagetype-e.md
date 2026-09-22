@@ -1,5 +1,9 @@
 # PrintPageType
 
+```TypeScript
+enum PrintPageType
+```
+
 Enumerates the print page types.
 
 **Since:** 11

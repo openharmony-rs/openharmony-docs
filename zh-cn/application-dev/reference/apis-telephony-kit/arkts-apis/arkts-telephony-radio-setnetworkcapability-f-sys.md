@@ -61,19 +61,8 @@ radio.setNetworkCapability(slotId, type, state, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
-let state: radio.NetworkCapabilityState = radio.NetworkCapabilityState.SERVICE_CAPABILITY_ON;
-radio.setNetworkCapability(slotId, type, state).then(() => {
-    console.info(`setNetworkCapability success`);
-}).catch((err: BusinessError) => {
-    console.error(`setNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="setnetworkcapability-1"></a>
 
 ## setNetworkCapability
 
@@ -119,4 +108,15 @@ Set the type and state for the specified network capability.
 
 **示例**
 
-参见 [setNetworkCapability](#setnetworkcapability)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
+let state: radio.NetworkCapabilityState = radio.NetworkCapabilityState.SERVICE_CAPABILITY_ON;
+radio.setNetworkCapability(slotId, type, state).then(() => {
+    console.info(`setNetworkCapability success`);
+}).catch((err: BusinessError) => {
+    console.error(`setNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
+});
+```

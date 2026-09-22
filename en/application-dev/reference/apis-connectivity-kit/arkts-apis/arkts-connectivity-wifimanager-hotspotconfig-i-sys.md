@@ -1,5 +1,9 @@
 # HotspotConfig (System API)
 
+```TypeScript
+interface HotspotConfig
+```
+
 Wi-Fi hotspot configuration information. @typedef HotspotConfig
 
 **Since:** 9

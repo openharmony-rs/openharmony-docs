@@ -1,0 +1,61 @@
+# ProgressConfiguration
+
+```TypeScript
+declare interface ProgressConfiguration extends CommonConfiguration<ProgressConfiguration>
+```
+
+进度条配置。继承自[CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md)。
+
+**继承/实现关系：** ProgressConfiguration extends CommonConfiguration<ProgressConfiguration>
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## total
+
+```TypeScript
+total: number
+```
+
+进度总长。
+
+取值范围：(0, +∞)
+
+**说明：** 
+
+total小于等于0时，按照100处理。
+
+**类型：** number
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## value
+
+```TypeScript
+value: number
+```
+
+当前进度值。当设置的数值小于0时，将其置为0。当设置的数值大于total时，将其置为total。
+
+默认值：0
+
+取值范围：[0, total]
+
+**说明：** 当Ring类型进度条的status设置为ProgressStatus.LOADING时，设置进度值不生效。
+
+**类型：** number
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

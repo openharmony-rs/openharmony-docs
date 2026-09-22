@@ -41,3 +41,22 @@ function off(type: 'cellInfoChange', callback?: Callback<Array<CellInformation>>
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
+
+**示例**
+
+```TypeScript
+import { observer, radio } from '@kit.TelephonyKit';
+import { radio } from '@kit.TelephonyKit';
+
+let callback: (data: Array<radio.CellInformation>) => void = (data: Array<radio.CellInformation>) => {
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
+}
+try {
+  observer.on('cellInfoChange', callback);
+  // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+  observer.off('cellInfoChange', callback);
+  observer.off('cellInfoChange');
+} catch (err) {
+  console.error(`observer on/off failed, err: ${JSON.stringify(err)}`);
+}
+```

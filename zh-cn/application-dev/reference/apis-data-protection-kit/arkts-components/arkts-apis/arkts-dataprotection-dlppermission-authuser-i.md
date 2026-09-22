@@ -1,5 +1,9 @@
 # AuthUser
 
+```TypeScript
+export interface AuthUser
+```
+
 表示授权用户数据。
 
 **起始版本：** 21

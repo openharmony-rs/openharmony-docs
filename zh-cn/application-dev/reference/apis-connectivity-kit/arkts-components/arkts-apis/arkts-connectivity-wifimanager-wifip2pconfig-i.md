@@ -1,5 +1,9 @@
 # WifiP2PConfig
 
+```TypeScript
+interface WifiP2PConfig
+```
+
 表示P2P配置信息。
 
 **起始版本：** 9

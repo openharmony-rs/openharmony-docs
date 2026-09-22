@@ -27,7 +27,7 @@ function setGlobalProxySync(admin: Want, httpProxy: connection.HttpProxy): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| httpProxy | connection.HttpProxy | 是 | 网络全局Http代理配置信息。 |
+| httpProxy | [connection.HttpProxy](../../apis-network-kit/arkts-apis/arkts-network-connection-httpproxy-i.md) | 是 | 网络全局Http代理配置信息。 |
 
 **错误码：**
 

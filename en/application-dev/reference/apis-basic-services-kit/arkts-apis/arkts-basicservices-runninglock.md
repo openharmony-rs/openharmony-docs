@@ -18,12 +18,12 @@ import { runningLock } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [create](arkts-basicservices-runninglock-create-f.md) | Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses an asynchronous callback to return the result. |
-| [create](arkts-basicservices-runninglock-create-f.md) | Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses a promise to return the result. |
-| [createRunningLock](arkts-basicservices-runninglock-createrunninglock-f.md) | Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses an asynchronous callback to return the result. |
-| [createRunningLock](arkts-basicservices-runninglock-createrunninglock-f.md) | Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses a promise to return the result. |
-| [isRunningLockTypeSupported](arkts-basicservices-runninglock-isrunninglocktypesupported-f.md) | Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) is supported. This API uses an asynchronous callback to return the result. |
-| [isRunningLockTypeSupported](arkts-basicservices-runninglock-isrunninglocktypesupported-f.md) | Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) is supported. This API uses a promise to return the result. |
+| [create](arkts-basicservices-runninglock-create-f.md#create) | Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses an asynchronous callback to return the result. |
+| [create](arkts-basicservices-runninglock-create-f.md#create-1) | Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses a promise to return the result. |
+| [createRunningLock](arkts-basicservices-runninglock-createrunninglock-f.md#createrunninglock) | Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses an asynchronous callback to return the result. |
+| [createRunningLock](arkts-basicservices-runninglock-createrunninglock-f.md#createrunninglock-1) | Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses a promise to return the result. |
+| [isRunningLockTypeSupported](arkts-basicservices-runninglock-isrunninglocktypesupported-f.md#isrunninglocktypesupported) | Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) is supported. This API uses an asynchronous callback to return the result. |
+| [isRunningLockTypeSupported](arkts-basicservices-runninglock-isrunninglocktypesupported-f.md#isrunninglocktypesupported-1) | Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) is supported. This API uses a promise to return the result. |
 | [isSupported](arkts-basicservices-runninglock-issupported-f.md) | Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) is supported. |
 
 ### Classes

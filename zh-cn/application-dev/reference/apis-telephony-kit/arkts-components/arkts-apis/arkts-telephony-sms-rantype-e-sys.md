@@ -1,5 +1,9 @@
 # RanType（系统接口）
 
+```TypeScript
+export enum RanType
+```
+
 设备网络制式。
 
 **起始版本：** 7

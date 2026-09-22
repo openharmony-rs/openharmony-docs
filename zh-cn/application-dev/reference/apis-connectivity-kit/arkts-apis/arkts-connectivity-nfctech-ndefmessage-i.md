@@ -1,5 +1,9 @@
 # NdefMessage
 
+```TypeScript
+export interface NdefMessage
+```
+
 **起始版本：** 9
 
 **系统能力：** SystemCapability.Communication.NFC.Tag

@@ -1,5 +1,9 @@
 # Character
 
+```TypeScript
+export class Character
+```
+
 提供Unicode字符属性相关的接口，例如：判断一个字符是否是数字。
 
 **起始版本：** 8

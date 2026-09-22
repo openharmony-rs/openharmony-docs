@@ -1,5 +1,9 @@
 # ConnectSettings
 
+```TypeScript
+interface ConnectSettings
+```
+
 连接Wi-Fi设置信息。
 
 **起始版本：** 26.0.0

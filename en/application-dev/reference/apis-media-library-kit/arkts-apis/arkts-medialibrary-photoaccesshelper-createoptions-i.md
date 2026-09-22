@@ -1,5 +1,9 @@
 # CreateOptions
 
+```TypeScript
+interface CreateOptions
+```
+
 Options for creating an image or video asset.
 
 The title must meet the following requirements:

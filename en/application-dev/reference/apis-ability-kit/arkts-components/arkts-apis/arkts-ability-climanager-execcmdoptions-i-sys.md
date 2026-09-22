@@ -1,5 +1,9 @@
 # ExecCmdOptions (System API)
 
+```TypeScript
+interface ExecCmdOptions
+```
+
 Options for executing a command.
 
 **Since:** 26.0.0
@@ -11,7 +15,7 @@ Options for executing a command.
 ## Modules to Import
 
 ```TypeScript
-import { cliManager } from '@kit.AbilityKit';
+import { cliManager, CliHook, ExecToolParam, ExecCmdParam, ExecResultWrap } from '@kit.AbilityKit';
 ```
 
 ## background
@@ -64,7 +68,7 @@ Indicates the unique identifier obtained from the access token manager.
 
 **Default:** ""
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -102,7 +106,7 @@ Indicates whether the command is executed as a shell command.
 
 **Default:** true
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

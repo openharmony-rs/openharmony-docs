@@ -1,5 +1,9 @@
 # PlayMode
 
+```TypeScript
+declare enum PlayMode
+```
+
 Animation playback mode.
 
 **Since:** 7
@@ -15,6 +19,8 @@ Normal
 The animation is played forwards.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -32,6 +38,8 @@ The animation is played backwards.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -48,6 +56,8 @@ The animation is played forwards for an odd number of times (1, 3, 5...) and bac
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -63,6 +73,8 @@ AlternateReverse
 The animation is played backwards for an odd number of times (1, 3, 5...) and forwards for an even number of times (2, 4, 6...).
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

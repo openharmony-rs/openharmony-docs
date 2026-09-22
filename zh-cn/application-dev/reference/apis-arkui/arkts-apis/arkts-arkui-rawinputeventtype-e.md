@@ -1,5 +1,9 @@
 # RawInputEventType
 
+```TypeScript
+declare enum RawInputEventType
+```
+
 原始输入事件类型。
 
 **起始版本：** 26.0.0

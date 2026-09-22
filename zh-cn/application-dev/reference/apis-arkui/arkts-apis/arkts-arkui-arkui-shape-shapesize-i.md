@@ -1,5 +1,9 @@
 # ShapeSize
 
+```TypeScript
+interface ShapeSize
+```
+
 形状的大小参数。
 
 **起始版本：** 12

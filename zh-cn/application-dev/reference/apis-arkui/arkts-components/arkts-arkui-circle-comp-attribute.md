@@ -1,8 +1,12 @@
 # Circle属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
+```TypeScript
+declare class CircleAttribute extends CommonShapeMethod<CircleAttribute>
+```
 
-**继承/实现关系：** CircleAttribute extends CommonShapeMethod&lt;CircleAttribute&gt;
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
+
+**继承/实现关系：** CircleAttribute extends CommonShapeMethod<CircleAttribute>
 
 **起始版本：** 7
 
@@ -14,9 +18,11 @@
 fill(value: ResourceColor | ColorMetrics)
 ```
 
-设置填充区域的颜色，支持使用[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)描述颜色，可进行HDR提亮。支持attributeModifier动态设置属性。不设置时，默认填充颜色为Color.Black。异常值undefined、null、NaN和Infinity按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
+设置填充区域的颜色，支持使用[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)描述颜色，可进行HDR提亮。支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性。不设置时，默认填充颜色为Color.Black。异常值undefined、null、NaN和Infinity按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -36,9 +42,11 @@ fill(value: ResourceColor | ColorMetrics)
 stroke(value: ResourceColor | ColorMetrics)
 ```
 
-设置边框颜色，支持使用[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)描述颜色，可进行HDR提亮。支持attributeModifier动态设置属性。不设置时，默认边框颜色为Color.Transparent，即没有边框。异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。
+设置边框颜色，支持使用[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)描述颜色，可进行HDR提亮。支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性。不设置时，默认边框颜色为Color.Transparent，即没有边框。异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 

@@ -1,5 +1,9 @@
 # WebDownloadErrorCode
 
+```TypeScript
+enum WebDownloadErrorCode
+```
+
 Enumerates the download task error codes.
 
 **Since:** 11

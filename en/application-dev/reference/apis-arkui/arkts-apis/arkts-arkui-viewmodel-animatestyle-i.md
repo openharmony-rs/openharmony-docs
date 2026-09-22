@@ -1,5 +1,9 @@
 # AnimateStyle
 
+```TypeScript
+export interface AnimateStyle
+```
+
 AnimateStyle
 
 @interface AnimateStyle

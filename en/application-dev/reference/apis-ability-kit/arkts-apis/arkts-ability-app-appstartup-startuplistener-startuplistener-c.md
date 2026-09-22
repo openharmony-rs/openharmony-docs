@@ -1,5 +1,9 @@
 # StartupListener
 
+```TypeScript
+declare class StartupListener
+```
+
 The module defines the task listener used in [App Startup](../../../application-models/app-startup.md).
 
 **Since:** 12

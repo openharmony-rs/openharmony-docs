@@ -20,7 +20,7 @@ function getChildProcessInfos(): Promise<Array<ChildProcessInformation>>
 > 在返回的列表中不包含在以FORK方式启动的子进程。
 > 如果不存在子进程，则返回空数组。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,16 +1,20 @@
 # AlphabetIndexer属性/事件
 
-width属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽度变化。
+```TypeScript
+declare class AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttribute>
+```
 
-padding属性默认为4vp。
+[width](arkts-arkui-common-comp-commonmethod-c.md#width)属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽度变化。
 
-文本最大的字体缩放倍数maxFontScale和最小的字体缩放倍数minFontScale皆为1，不跟随系统字体大小调节变化。
+[padding](arkts-arkui-common-comp-commonmethod-c.md#padding)属性默认为4vp。
+
+文本最大的字体缩放倍数[maxFontScale](arkts-arkui-text-comp-attribute.md#maxfontscale)和最小的字体缩放倍数[minFontScale](arkts-arkui-text-comp-attribute.md#minfontscale)皆为1，不跟随系统字体大小调节变化。
 
 除支持通用属性外，还支持以下属性：
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** AlphabetIndexerAttribute extends CommonMethod&lt;AlphabetIndexerAttribute&gt;
+**继承/实现关系：** AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttribute>
 
 **起始版本：** 7
 
@@ -34,7 +38,7 @@ alignStyle(value: IndexerAlign, offset?: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [IndexerAlign](arkts-arkui-indexeralign-e.md) | 是 | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br>默认值：IndexerAlign.END |
+| value | [IndexerAlign](arkts-arkui-alphabetindexer-comp-indexeralign-e.md) | 是 | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br>默认值：IndexerAlign.END |
 | offset | [Length](../arkts-apis/arkts-arkui-length-t.md) | 否 | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与[popupPosition](#popupposition)同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生效。<br>**适用版本：** 10 |
 
 ## autoCollapse
@@ -51,7 +55,7 @@ autoCollapse(value: boolean)
 
 > **说明：** 
 
-> 从API version 12开始，该接口支持在attributeModifier中调用。
+> 从API version 12开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 11
 
@@ -169,7 +173,7 @@ itemSize(value: string | number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string &#124; number | 是 | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。<br>实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右padding，索引项高度最大为（组件高度-上下padding）/索引项个数。传入值小于等于0时，按照默认值处理。<br>默认值：16.0<br>单位：vp |
+| value | string &#124; number | 是 | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。<br>实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右[padding](arkts-arkui-common-comp-commonmethod-c.md#padding)，索引项高度最大为（组件高度-上下[padding](arkts-arkui-common-comp-commonmethod-c.md#padding)）/索引项个数。传入值小于等于0时，按照默认值处理。<br>默认值：16.0<br>单位：vp |
 
 ## onPopupSelect
 
@@ -189,7 +193,7 @@ onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnAlphabetIndexerPopupSelectCallback](arkts-arkui-onalphabetindexerpopupselectcallback-t.md) | 是 | 回调函数，用于处理提示弹窗二级索引选中事件。需先设置[usingPopup](#usingpopup)为true。<br>**适用版本：** 18 |
+| callback | [OnAlphabetIndexerPopupSelectCallback](arkts-arkui-alphabetindexer-comp-onalphabetindexerpopupselectcallback-t.md) | 是 | 回调函数，用于处理提示弹窗二级索引选中事件。需先设置[usingPopup](#usingpopup)为true。<br>**适用版本：** 18 |
 
 ## onRequestPopupData
 
@@ -209,7 +213,7 @@ onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnAlphabetIndexerRequestPopupDataCallback](arkts-arkui-onalphabetindexerrequestpopupdatacallback-t.md) | 是 | 回调函数，用于提供提示弹窗二级索引项内容。需先设置[usingPopup](#usingpopup)为true。<br>**适用版本：** 18 |
+| callback | [OnAlphabetIndexerRequestPopupDataCallback](arkts-arkui-alphabetindexer-comp-onalphabetindexerrequestpopupdatacallback-t.md) | 是 | 回调函数，用于提供提示弹窗二级索引项内容。需先设置[usingPopup](#usingpopup)为true。<br>**适用版本：** 18 |
 
 ## onSelect
 
@@ -229,7 +233,7 @@ onSelect(callback: OnAlphabetIndexerSelectCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnAlphabetIndexerSelectCallback](arkts-arkui-onalphabetindexerselectcallback-t.md) | 是 | 回调函数，用于处理索引项选中事件。<br>**适用版本：** 18 |
+| callback | [OnAlphabetIndexerSelectCallback](arkts-arkui-alphabetindexer-comp-onalphabetindexerselectcallback-t.md) | 是 | 回调函数，用于处理索引项选中事件。<br>**适用版本：** 18 |
 
 ## onSelected
 
@@ -305,7 +309,7 @@ popupBackgroundBlurStyle(value: BlurStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BlurStyle](arkts-arkui-blurstyle-e.md) | 是 | 设置提示弹窗的背景模糊材质。<br>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。 |
+| value | [BlurStyle](arkts-arkui-common-comp-blurstyle-e.md) | 是 | 设置提示弹窗的背景模糊材质。<br>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。 |
 
 ## popupColor
 
@@ -505,9 +509,9 @@ popupUnselectedColor(value: ResourceColor)
 selected(index: number)
 ```
 
-设置选中项索引值。与[AlphabetIndexerOptions](arkts-arkui-alphabetindexeroptions-i.md)中的selected同时设置时，该属性的优先级更高。
+设置选中项索引值。与[AlphabetIndexerOptions](arkts-arkui-alphabetindexer-comp-alphabetindexeroptions-i.md)中的selected同时设置时，该属性的优先级更高。
 
-从API version 10开始，该参数支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 **起始版本：** 8
 
@@ -519,7 +523,7 @@ selected(index: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 选中项索引值。<br>取值范围：[0, [arrayValue](arkts-arkui-alphabetindexeroptions-i.md).length-1] <br>若超出索引值范围，则取默认值0。<br>默认值：0 |
+| index | number | 是 | 选中项索引值。<br>取值范围：[0, [arrayValue](arkts-arkui-alphabetindexer-comp-alphabetindexeroptions-i.md).length-1] <br>若超出索引值范围，则取默认值0。<br>默认值：0 |
 
 ## selectedBackgroundColor
 

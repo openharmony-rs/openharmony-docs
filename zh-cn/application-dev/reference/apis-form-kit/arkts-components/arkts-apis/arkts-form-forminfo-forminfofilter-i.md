@@ -1,5 +1,9 @@
 # FormInfoFilter
 
+```TypeScript
+interface FormInfoFilter
+```
+
 卡片信息过滤器，仅将符合过滤器内要求的卡片信息返回。
 
 **起始版本：** 9

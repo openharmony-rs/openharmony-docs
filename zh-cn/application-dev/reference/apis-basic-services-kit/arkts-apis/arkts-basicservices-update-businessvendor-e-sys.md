@@ -1,5 +1,9 @@
 # BusinessVendor（系统接口）
 
+```TypeScript
+export enum BusinessVendor
+```
+
 设备厂家。
 
 **起始版本：** 9

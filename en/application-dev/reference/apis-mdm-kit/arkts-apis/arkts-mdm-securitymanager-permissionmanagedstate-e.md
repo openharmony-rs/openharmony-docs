@@ -1,5 +1,9 @@
 # PermissionManagedState
 
+```TypeScript
+export enum PermissionManagedState
+```
+
 Represents the management status of application permissions.
 
 **Since:** 20

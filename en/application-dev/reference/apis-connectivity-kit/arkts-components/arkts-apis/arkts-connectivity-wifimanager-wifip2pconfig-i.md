@@ -1,5 +1,9 @@
 # WifiP2PConfig
 
+```TypeScript
+interface WifiP2PConfig
+```
+
 P2P config.
 
 @typedef WifiP2PConfig

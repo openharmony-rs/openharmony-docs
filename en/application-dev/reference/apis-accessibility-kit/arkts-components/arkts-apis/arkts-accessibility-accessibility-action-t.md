@@ -1,10 +1,7 @@
 # Action
 
 ```TypeScript
-type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection' |
-  'click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete' |
-  'scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home' |
-  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'
+type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection''click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete''scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home''back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'
 ```
 
 Target actions supported by the app. Target actions that require configuration parameters are indicated in the description column of each action in the table below.

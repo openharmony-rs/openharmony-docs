@@ -1,5 +1,9 @@
 # CastDisplayState
 
+```TypeScript
+enum CastDisplayState
+```
+
 Enumerates the cast display states.
 
 **Since:** 12

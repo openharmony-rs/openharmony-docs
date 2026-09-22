@@ -12,7 +12,7 @@ import { audio } from '@kit.AudioKit';
 function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<AudioCapturer | null>
 ```
 
-获取音频采集器。使用Promise异步回调。
+创建音频采集器。使用Promise异步回调。
 
 > **说明：** 
 > 

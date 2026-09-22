@@ -1,5 +1,9 @@
 # BluetoothState
 
+```TypeScript
+enum BluetoothState
+```
+
 The enum of bluetooth state.
 
 **Since:** 7

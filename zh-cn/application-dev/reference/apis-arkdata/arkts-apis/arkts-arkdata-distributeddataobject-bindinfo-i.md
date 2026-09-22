@@ -1,5 +1,9 @@
 # BindInfo
 
+```TypeScript
+interface BindInfo
+```
+
 数据库的绑定信息。当前版本只支持关系型数据库的绑定。
 
 **起始版本：** 11

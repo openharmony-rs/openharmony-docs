@@ -1,5 +1,9 @@
 # FunctionKey
 
+```TypeScript
+enum FunctionKey
+```
+
 功能键的类型。
 
 **起始版本：** 15

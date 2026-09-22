@@ -1,5 +1,9 @@
 # CopyOptions
 
+```TypeScript
+interface CopyOptions
+```
+
 拷贝进度回调监听
 
 **起始版本：** 11

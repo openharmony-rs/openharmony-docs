@@ -37,8 +37,8 @@ Writes event information to the event file. This API uses a promise to return th
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 11200001 | Invalid event domain. |
-| 11200002 | Invalid event name. |
+| [11200001](../errorcode-hisysevent-sys.md#11200001-illegal-event-domain) | Invalid event domain. |
+| [11200002](../errorcode-hisysevent-sys.md#11200002-illegal-event-name) | Invalid event name. |
 | [11200003](../errorcode-hisysevent-sys.md#11200003-environment-error) | Abnormal environment. |
 | [11200004](../errorcode-hisysevent-sys.md#11200004-invalid-event-length) | The event length exceeds the limit. |
 | [11200051](../errorcode-hisysevent-sys.md#11200051-invalid-event-parameter) | Invalid event parameter. |
@@ -47,32 +47,6 @@ Writes event information to the event file. This API uses a promise to return th
 | [11200054](../errorcode-hisysevent-sys.md#11200054-length-of-event-parameter-values-of-the-array-type-exceeding-the-limit) | The number of event parameters of the array type exceeds the limit. |
 
 **Examples**
-
-```TypeScript
-import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let customizedParams: Record<string, string | number> = {
-    'PID': 487,
-    'UID': 103,
-    'PACKAGE_NAME': "com.ohos.hisysevent.test",
-    'PROCESS_NAME': "syseventservice",
-    'MSG': "no msg."
-  };
-  let eventInfo: hiSysEvent.SysEventInfo = {
-    domain: "RELIABILITY",
-    name: "STACK",
-    eventType: hiSysEvent.EventType.FAULT,
-    params: customizedParams
-  };
-  hiSysEvent.write(eventInfo, (err: BusinessError) => {
-    // do something here.
-  });
-} catch (err) {
-  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
-}
-```
 
 ```TypeScript
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
@@ -107,6 +81,8 @@ try {
 ```
 
 
+<a id="write-1"></a>
+
 ## write
 
 ```TypeScript
@@ -133,8 +109,8 @@ Writes event information to the event file. This API uses an asynchronous callba
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 11200001 | Invalid event domain. |
-| 11200002 | Invalid event name. |
+| [11200001](../errorcode-hisysevent-sys.md#11200001-illegal-event-domain) | Invalid event domain. |
+| [11200002](../errorcode-hisysevent-sys.md#11200002-illegal-event-name) | Invalid event name. |
 | [11200003](../errorcode-hisysevent-sys.md#11200003-environment-error) | Abnormal environment. |
 | [11200004](../errorcode-hisysevent-sys.md#11200004-invalid-event-length) | The event length exceeds the limit. |
 | [11200051](../errorcode-hisysevent-sys.md#11200051-invalid-event-parameter) | Invalid event parameter. |
@@ -144,4 +120,28 @@ Writes event information to the event file. This API uses an asynchronous callba
 
 **Examples**
 
-See [write](#write)
+```TypeScript
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let customizedParams: Record<string, string | number> = {
+    'PID': 487,
+    'UID': 103,
+    'PACKAGE_NAME': "com.ohos.hisysevent.test",
+    'PROCESS_NAME': "syseventservice",
+    'MSG': "no msg."
+  };
+  let eventInfo: hiSysEvent.SysEventInfo = {
+    domain: "RELIABILITY",
+    name: "STACK",
+    eventType: hiSysEvent.EventType.FAULT,
+    params: customizedParams
+  };
+  hiSysEvent.write(eventInfo, (err: BusinessError) => {
+    // do something here.
+  });
+} catch (err) {
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
+```

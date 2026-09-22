@@ -1,5 +1,9 @@
 # ArcSliderValueOptions
 
+```TypeScript
+declare class ArcSliderValueOptions
+```
+
 配置弧形Slider的数值信息。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # ScanReport
 
+```TypeScript
+interface ScanReport
+```
+
 上报的扫描数据。
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # HoverEffect
 
+```TypeScript
+declare enum HoverEffect
+```
+
 Sets the hover effect of the component.
 
 **Since:** 8

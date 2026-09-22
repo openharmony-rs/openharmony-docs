@@ -1,5 +1,9 @@
 # WifiStandard
 
+```TypeScript
+enum WifiStandard
+```
+
 表示WIFI标准的枚举。
 
 **起始版本：** 10

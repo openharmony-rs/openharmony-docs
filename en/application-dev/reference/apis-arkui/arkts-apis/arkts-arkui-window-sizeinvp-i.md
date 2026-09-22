@@ -1,5 +1,9 @@
 # SizeInVP
 
+```TypeScript
+interface SizeInVP
+```
+
 Describes the window size, in vp.
 
 **Since:** 23

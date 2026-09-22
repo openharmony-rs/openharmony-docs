@@ -1,5 +1,9 @@
 # BluetoothTransport
 
+```TypeScript
+enum BluetoothTransport
+```
+
 枚举，表示设备传输类型。
 
 **起始版本：** 10

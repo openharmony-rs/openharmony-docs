@@ -1,10 +1,14 @@
 # StackLayoutAlgorithm
 
+```TypeScript
+export class StackLayoutAlgorithm implements LayoutAlgorithm
+```
+
 堆叠布局算法类。
 
 > **说明：** 
 > 
-> StackLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为DynamicLayout组件的
+> StackLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md)组件的
 > 入参指定布局算法。
 
 **继承/实现关系：** StackLayoutAlgorithm implements [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md)
@@ -41,9 +45,7 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 **示例**
 
-```TypeScript
 请参考DynamicLayout组件[示例2（切换布局算法）](../arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
-```
 
 ## alignContent
 

@@ -57,20 +57,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formHost, formInfo } from '@kit.FormKit';
 
-try {
-  formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.info('formHost getAllFormsInfo success.');
-  }).catch((error: BusinessError) => {
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getallformsinfo-1"></a>
 
 ## getAllFormsInfo
 
@@ -106,4 +94,16 @@ function getAllFormsInfo(): Promise<Array<formInfo.FormInfo>>
 
 **示例**
 
-参见 [getAllFormsInfo](#getallformsinfo)
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+
+try {
+  formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
+    console.info('formHost getAllFormsInfo success.');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # SubscribeCompassOptions
 
+```TypeScript
+export interface SubscribeCompassOptions
+```
+
 Defines the type of data to return for a subscription to data changes of the compass sensor.
 
 **Since:** 3

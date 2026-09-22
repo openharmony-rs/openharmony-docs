@@ -1,5 +1,9 @@
 # ValidationPolicyType
 
+```TypeScript
+enum ValidationPolicyType
+```
+
 Enumerates the types of the online certificate chain validation policy.
 
 **Since:** 12

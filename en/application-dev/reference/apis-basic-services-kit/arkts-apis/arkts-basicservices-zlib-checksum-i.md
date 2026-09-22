@@ -1,5 +1,9 @@
 # Checksum
 
+```TypeScript
+interface Checksum
+```
+
 Checksum object.
 
 **Since:** 12

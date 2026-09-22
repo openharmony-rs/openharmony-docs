@@ -1,5 +1,9 @@
 # CustomImportIcon (System API)
 
+```TypeScript
+interface CustomImportIcon
+```
+
 Customize the import icon, which is used to add images and text from the application side.
 
 **Since:** 26.0.0

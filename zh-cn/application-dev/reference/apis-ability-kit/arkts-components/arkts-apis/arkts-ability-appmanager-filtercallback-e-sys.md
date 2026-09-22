@@ -1,5 +1,9 @@
 # FilterCallback（系统接口）
 
+```TypeScript
+export enum FilterCallback
+```
+
 表示要监听的回调函数，该类型为枚举。可配合[AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md)过滤想要监听的回调函数。
 
 **起始版本：** 21

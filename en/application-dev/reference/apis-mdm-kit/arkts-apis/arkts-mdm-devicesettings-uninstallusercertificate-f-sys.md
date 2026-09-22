@@ -69,25 +69,8 @@ deviceSettings.uninstallUserCertificate(wantTemp, aliasStr, (err) => {
 });
 ```
 
-```TypeScript
-import { deviceSettings } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let aliasStr = "certName"
-deviceSettings.uninstallUserCertificate(wantTemp, aliasStr).then(() => {
-  console.info(`Succeeded in uninstalling user certificate`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to uninstall user certificate. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="uninstallusercertificate-1"></a>
 
 ## uninstallUserCertificate
 
@@ -137,4 +120,21 @@ Uninstalls a user certificate. This API uses a promise to return the result.
 
 **Examples**
 
-See [uninstallUserCertificate](#uninstallusercertificate)
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let aliasStr = "certName"
+deviceSettings.uninstallUserCertificate(wantTemp, aliasStr).then(() => {
+  console.info(`Succeeded in uninstalling user certificate`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to uninstall user certificate. Code is ${err.code}, message is ${err.message}`);
+});
+```

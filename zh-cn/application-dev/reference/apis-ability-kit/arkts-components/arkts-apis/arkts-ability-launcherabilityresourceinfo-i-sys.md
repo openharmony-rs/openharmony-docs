@@ -1,5 +1,9 @@
 # LauncherAbilityResourceInfo（系统接口）
 
+```TypeScript
+export interface LauncherAbilityResourceInfo
+```
+
 应用配置的入口图标和名称信息，可以通过[getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md)获取。
 
 > **说明：** 

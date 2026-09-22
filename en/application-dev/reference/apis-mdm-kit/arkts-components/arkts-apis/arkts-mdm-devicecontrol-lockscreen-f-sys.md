@@ -18,7 +18,7 @@ Locks the device screen immediately.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md)(admin: Want, operation: Operation, addition?: string)
+**Substitutes:** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1)(admin: Want, operation: Operation, addition?: string)
 
 **Required permissions:** ohos.permission.ENTERPRISE_LOCK_DEVICE
 

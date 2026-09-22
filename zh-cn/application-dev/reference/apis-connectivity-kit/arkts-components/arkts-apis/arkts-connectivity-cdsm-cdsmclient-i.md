@@ -1,5 +1,9 @@
 # CdsmClient
 
+```TypeScript
+interface CdsmClient
+```
+
 CDSM客户端类，提供了获取远端设备的合作设备集合信息等操作方法。
 
 - 使用该类的方法前，需通过[cdsm.createCdsmClient](arkts-connectivity-cdsm-createcdsmclient-f.md)方法构造该类的实例。

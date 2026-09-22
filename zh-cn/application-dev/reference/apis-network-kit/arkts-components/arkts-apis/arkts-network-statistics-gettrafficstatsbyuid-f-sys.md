@@ -83,26 +83,8 @@ statistics.getTrafficStatsByUid(
 );
 ```
 
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
 
-let uidInfo: statistics.UidInfo = {
-  uid: 20010037,
-  ifaceInfo: {
-    iface: '',
-    startTime: 1,
-    endTime: 3,
-  }
-}
-
-statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
-  console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
-  console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
-  console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
-  console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
-})
-```
-
+<a id="gettrafficstatsbyuid-1"></a>
 
 ## getTrafficStatsByUid
 
@@ -146,4 +128,22 @@ function getTrafficStatsByUid(uidInfo: UidInfo): Promise<NetStatsInfo>
 
 **示例**
 
-参见 [getTrafficStatsByUid](#gettrafficstatsbyuid)
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+
+let uidInfo: statistics.UidInfo = {
+  uid: 20010037,
+  ifaceInfo: {
+    iface: '',
+    startTime: 1,
+    endTime: 3,
+  }
+}
+
+statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
+  console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+  console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+  console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
+  console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
+})
+```

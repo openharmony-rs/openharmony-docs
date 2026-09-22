@@ -1,5 +1,9 @@
 # Params
 
+```TypeScript
+export enum Params
+```
+
 want的Params操作的常量。
 
 **起始版本：** 9

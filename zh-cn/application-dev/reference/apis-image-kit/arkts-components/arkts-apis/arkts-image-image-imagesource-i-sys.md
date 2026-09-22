@@ -1,5 +1,9 @@
 # ImageSource
 
+```TypeScript
+interface ImageSource
+```
+
 ImageSource类，用于获取图片相关信息。
 
 在调用ImageSource的方法前，需要先通过[image.createImageSource](arkts-image-image-createimagesource-f.md)构建一个ImageSource实例。

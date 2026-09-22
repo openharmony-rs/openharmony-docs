@@ -1,5 +1,9 @@
 # Client
 
+```TypeScript
+interface Client
+```
+
 SSAP客户端类，提供了和服务端进行连接和数据传输等操作方法。
 
 使用该类的方法前，需通过[ssap.createClient](arkts-connectivity-ssap-createclient-f.md)方法构造该类的实例。

@@ -1,5 +1,9 @@
 # PreloadItem
 
+```TypeScript
+export interface PreloadItem
+```
+
 描述原子化服务中模块的预加载模块信息。
 
 **起始版本：** 9

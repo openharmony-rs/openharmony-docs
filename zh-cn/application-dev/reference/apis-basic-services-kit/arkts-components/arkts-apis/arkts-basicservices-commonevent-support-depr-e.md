@@ -1,5 +1,9 @@
 # Support
 
+```TypeScript
+export enum Support
+```
+
 系统公共事件是指由系统服务或系统应用发布的事件，订阅这些系统公共事件需要特定的权限。
 
 **起始版本：** 7

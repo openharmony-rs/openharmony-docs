@@ -40,28 +40,186 @@ function setWifiProfileSync(admin: Want, profile: WifiProfile): void
 
 **示例**
 
-```TypeScript
 适用于公共开放Wi-Fi
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
+  'ssid': 'guest-Wi-Fi',
+  'preSharedKey': '',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_OPEN
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 适用于多个同名Wi-Fi但不同BSSID的场景
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
+  'ssid': 'guest-Wi-Fi',
+  'bssid': 'AA:BB:CC:DD:EE:FF',
+  'preSharedKey': '',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_OPEN
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 适用于老旧的工业设备等场景、安全性低
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
+  'ssid': 'Legacy-Office-Wi-Fi',
+  'bssid': 'AA:BB:CC:DD:EE:FF',
+  'preSharedKey': '',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_WEP
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 适用于家庭网络、小型办公室、消费级路由器等场景
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
+  'ssid': 'home_Wi-Fi',
+  'preSharedKey': 'passwd',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 适用于现代化IoT设备网络
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
+  'ssid': 'iot_Wi-Fi',
+  'preSharedKey': 'passwd',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_SAE
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 适用于公司网络和大学校园网络
+
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// EAP-PEAP 配置示例
+let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
+  'ssid': 'company_Wi-Fi',
+  'preSharedKey': '',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_EAP,
+  'eapProfile': {
+    eapMethod: wifiManager.EapMethod.EAP_PEAP,
+    phase2Method: wifiManager.Phase2Method.PHASE2_MSCHAPV2,
+    identity: 'zhangsan@company.com',
+    password: 'passwd',
+    anonymousIdentity: '',
+    caPath: '/system/etc/security/caCerts/company-ca.pem',
+    caCertAliases: '',
+    clientCertAliases: '',
+    certEntry: new Uint8Array(),
+    certPassword: '',
+    altSubjectMatch: 'CN=radius.company.com,OU=IT Department,O=Company Inc.,C=US',
+    domainSuffixMatch: 'company.com',
+    realm: '',
+    eapSubId: 0,
+    plmn: ''
+  }
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ```TypeScript
@@ -193,6 +351,37 @@ try {
 }
 ```
 
-```TypeScript
 适用于需要固定IP地址供客户端访问等场景
+
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
+  'ssid': 'static_ip_Wi-Fi',
+  'preSharedKey': 'passwd',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK,
+  'ipType': wifiManager.IpType.STATIC,
+  'staticIp': {
+    ipAddress: 3232235778, // 192.168.1.2
+    gateway: 3232235777, // 192.168.1.1
+    prefixLength: 24,
+    dnsServers: [3232235777, 3232235777],
+    domains: []
+  }
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
 ```

@@ -1,5 +1,9 @@
 # Locate
 
+```TypeScript
+export declare class Locate
+```
+
 **Since:** 4
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

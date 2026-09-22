@@ -13,7 +13,7 @@ function isActive(): boolean
 
 Queries whether an assessment session is active.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ASSESSMENT_CONFIGURATION
 

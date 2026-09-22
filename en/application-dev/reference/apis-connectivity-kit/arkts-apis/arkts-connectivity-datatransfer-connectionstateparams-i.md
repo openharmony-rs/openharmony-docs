@@ -1,5 +1,9 @@
 # ConnectionStateParams
 
+```TypeScript
+interface ConnectionStateParams
+```
+
 Defines the parameters for obtaining the port channel connection state.
 
 **Since:** 26.0.0

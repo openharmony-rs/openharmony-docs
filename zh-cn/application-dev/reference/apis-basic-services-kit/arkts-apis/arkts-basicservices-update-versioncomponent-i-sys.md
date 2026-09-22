@@ -1,5 +1,9 @@
 # VersionComponent（系统接口）
 
+```TypeScript
+export interface VersionComponent
+```
+
 版本组件。
 
 **起始版本：** 9

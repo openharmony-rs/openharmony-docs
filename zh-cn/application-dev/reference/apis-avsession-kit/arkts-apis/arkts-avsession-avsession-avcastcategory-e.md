@@ -1,5 +1,9 @@
 # AVCastCategory
 
+```TypeScript
+enum AVCastCategory
+```
+
 投播的类别枚举。
 
 **起始版本：** 10

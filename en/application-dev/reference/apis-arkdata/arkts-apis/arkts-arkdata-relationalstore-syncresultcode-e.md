@@ -1,5 +1,9 @@
 # SyncResultCode
 
+```TypeScript
+enum SyncResultCode
+```
+
 Describes the status of device sync.
 
 **Since:** 26.0.0

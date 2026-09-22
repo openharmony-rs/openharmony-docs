@@ -18,7 +18,7 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 
 **废弃版本：** 9
 
-**替代接口：** addNotificationSlot
+**替代接口：** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -45,19 +45,8 @@ reminderAgent.addNotificationSlot(mySlot, (err: BusinessError, data: void) => {
 });
 ```
 
-```TypeScript
-import notification from '@ohos.notification';
-import reminderAgent from '@ohos.reminderAgent';
-import { NotificationSlot } from './notification/notificationSlot';
 
-let mySlot:NotificationSlot = {
-  type: notification.SlotType.SOCIAL_COMMUNICATION
-}
-reminderAgent.addNotificationSlot(mySlot).then(() => {
-  console.info("addNotificationSlot promise");
-});
-```
-
+<a id="addnotificationslot-1"></a>
 
 ## addNotificationSlot
 
@@ -71,7 +60,7 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** addNotificationSlot
+**替代接口：** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -89,4 +78,15 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 **示例**
 
-参见 addNotificationSlot
+```TypeScript
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
+import { NotificationSlot } from './notification/notificationSlot';
+
+let mySlot:NotificationSlot = {
+  type: notification.SlotType.SOCIAL_COMMUNICATION
+}
+reminderAgent.addNotificationSlot(mySlot).then(() => {
+  console.info("addNotificationSlot promise");
+});
+```

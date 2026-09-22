@@ -1,5 +1,9 @@
 # IndexUtil
 
+```TypeScript
+export class IndexUtil
+```
+
 Provides index management capabilities, such as obtaining the locale index list and text index values.
 
 **Since:** 8

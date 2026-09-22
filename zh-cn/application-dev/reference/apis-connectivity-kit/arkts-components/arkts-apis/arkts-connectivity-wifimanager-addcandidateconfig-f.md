@@ -67,23 +67,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
   }
 ```
 
-```TypeScript
-import { wifiManager } from '@kit.ConnectivityKit';
 
-  try {
-    let config:wifiManager.WifiDeviceConfig = {
-      ssid : "****",
-      preSharedKey : "****",
-      securityType : 0
-    }
-    wifiManager.addCandidateConfig(config,(error,result) => {
-      console.info("result:" + JSON.stringify(result));
-    });  
-  }catch(error){
-    console.error("failed:" + JSON.stringify(error));
-  }
-```
-
+<a id="addcandidateconfig-1"></a>
 
 ## addCandidateConfig
 
@@ -122,4 +107,19 @@ function addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback<nu
 
 **示例**
 
-参见 [addCandidateConfig](#addcandidateconfig)
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let config:wifiManager.WifiDeviceConfig = {
+      ssid : "****",
+      preSharedKey : "****",
+      securityType : 0
+    }
+    wifiManager.addCandidateConfig(config,(error,result) => {
+      console.info("result:" + JSON.stringify(result));
+    });  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+```

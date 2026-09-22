@@ -1,5 +1,9 @@
 # PreconfigRatio
 
+```TypeScript
+enum PreconfigRatio
+```
+
 Enumerates the preconfigured aspect ratios.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # ConvertXML
 
+```TypeScript
+class ConvertXML
+```
+
 ConvertXML representation refers to extensible markup language.
 
 **Since:** 8

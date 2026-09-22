@@ -1,5 +1,9 @@
 # Sensor
 
+```TypeScript
+interface Sensor
+```
+
 指示传感器信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # DecoderType
 
+```TypeScript
+enum DecoderType
+```
+
 The defination of decoder type.
 
 **Since:** 19

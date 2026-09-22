@@ -1,5 +1,9 @@
 # DialogAbilityInfo（系统接口）
 
+```TypeScript
+export interface DialogAbilityInfo
+```
+
 提供会话组件信息，包括包名、模块名、组件名等信息。
 
 **起始版本：** 11
@@ -74,7 +78,7 @@ abilityName: string
 appIndex: number
 ```
 
-表示应用的分身索引。
+表示应用的分身索引。取值从0开始，0表示主应用实例，1及以上表示分身实例。
 
 **类型：** number
 

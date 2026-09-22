@@ -1,5 +1,9 @@
 # SceneAnimationTriggerType（系统接口）
 
+```TypeScript
+enum SceneAnimationTriggerType
+```
+
 场景动效卡片触发类型枚举。
 
 **起始版本：** 26.0.0

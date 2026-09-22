@@ -1,5 +1,9 @@
 # Want
 
+```TypeScript
+export default class Want
+```
+
 Want是对象间信息传递的载体，可以用于应用组件间的信息传递。Want的使用场景之一是作为startAbility的参数，其包含了指定的启动目标，以及启动时需携带的相关数据，如bundleName和abilityName字段分别指明目标Ability所在应用Bundle名称以及对应包内的Ability名称。当Ability A需要启动Ability B并传入一些数据时，可使用Want作为载体将这些数据传递给Ability B。
 
 **起始版本：** 8
@@ -186,3 +190,147 @@ uri?: string
 **替代接口：** [uri](arkts-ability-app-ability-want-want-c.md#uri)
 
 **系统能力：** SystemCapability.Ability.AbilityBase
+
+**示例**
+
+基础用法（在UIAbility对象中调用，其中示例中的context为UIAbility的上下文对象）。
+
+```TypeScript
+import Want from '@ohos.application.Want';
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+
+let want: Want = {
+'deviceId': '', // deviceId为空表示本设备
+'bundleName': 'com.example.myapplication',
+'abilityName': 'EntryAbility',
+};
+class MyAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+      this.context.startAbility(want, (error: BusinessError) => {
+        // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
+        if (error) {
+          console.error(`StartAbility failed, error code: ${error.code}, error msg: ${error.message}.`);
+        }
+      });
+    }
+}
+```
+
+通过自定义字段传递数据，以下为当前支持类型（在UIAbility对象中调用，其中示例中的context为UIAbility的上下文对象）。
+
+字符串（String）
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForString: 'str',
+  },
+};
+```
+
+数字（Number）
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForInt: 100,
+    keyForDouble: 99.99,
+  },
+};
+```
+
+布尔（Boolean）
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForBool: true,
+  },
+};
+```
+
+对象（Object）
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForObject: {
+      keyForObjectString: 'str',
+      keyForObjectInt: -200,
+      keyForObjectDouble: 35.5,
+      keyForObjectBool: false,
+    },
+  },
+};
+```
+
+数组（Array）
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForArrayString: ['str1', 'str2', 'str3'],
+    keyForArrayInt: [100, 200, 300, 400],
+    keyForArrayDouble: [0.1, 0.2],
+    keyForArrayObject: [{obj1: 'aaa'}, {obj2: 100}],
+  },
+};
+```
+
+文件描述符（FD）
+
+```TypeScript
+import fileIo from '@ohos.file.fs';
+import Want from '@ohos.application.Want';
+import { BusinessError } from '@ohos.base';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import UIAbility from '@ohos.app.ability.UIAbility';
+
+let fd: number = 0;
+try {
+  fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
+} catch (e) {
+  console.error(`OpenSync failed, error code: ${e.code}, error msg: ${e.message}.`);
+}
+let want: Want = {
+  deviceId: '', // deviceId为空表示本设备
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    'keyFd': { 'type': 'FD', 'value': fd }
+  }
+};
+
+class MyAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    this.context.startAbility(want, (error: BusinessError) => {
+      // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
+      if (error) {
+        console.error(`StartAbility failed, error code: ${error.code}, error msg: ${error.message}.`);
+      }
+    });
+  }
+}
+```

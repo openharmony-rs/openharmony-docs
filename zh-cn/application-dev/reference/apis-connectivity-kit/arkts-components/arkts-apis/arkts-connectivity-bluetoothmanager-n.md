@@ -1,5 +1,9 @@
 # bluetoothManager(蓝牙)
 
+```TypeScript
+declare namespace bluetoothManager
+```
+
 蓝牙模块提供了基础的传统蓝牙能力以及BLE的扫描、广播等功能。
 
 从API Version 10 开始，该接口不再维护，推荐使用[@ohos.bluetooth.ble (蓝牙ble模块)](arkts-connectivity-bluetooth-ble.md)等相关Profile接口。

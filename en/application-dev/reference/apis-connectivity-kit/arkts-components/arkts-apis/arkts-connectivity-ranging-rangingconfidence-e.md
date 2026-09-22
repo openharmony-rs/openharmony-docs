@@ -1,5 +1,9 @@
 # RangingConfidence
 
+```TypeScript
+enum RangingConfidence
+```
+
 The enum of ranging measurement confidence.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ColorPicker
 
+```TypeScript
+interface ColorPicker
+```
+
 A color picker class used to obtain the main color from image data. It is suitable for scenarios such as UI theme color extraction, image color scheme analysis, and intelligent color scheme recommendation, helping developers dynamically generate harmonious color schemes based on image content. Before calling the methods of ColorPicker, you need to create a ColorPicker instance via createColorPicker.
 
 **Since:** 9

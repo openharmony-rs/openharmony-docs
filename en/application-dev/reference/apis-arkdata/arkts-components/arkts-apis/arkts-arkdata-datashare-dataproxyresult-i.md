@@ -1,5 +1,9 @@
 # DataProxyResult
 
+```TypeScript
+interface DataProxyResult
+```
+
 Defines a struct for the batch operation result of shared configuration.
 
 **Since:** 20

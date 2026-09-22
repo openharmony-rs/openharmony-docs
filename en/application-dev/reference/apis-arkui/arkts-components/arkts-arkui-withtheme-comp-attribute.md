@@ -1,5 +1,9 @@
 # WithTheme properties/events
 
+```TypeScript
+declare class WithThemeAttribute
+```
+
 The universal attributes are not supported.
 
 The universal events are not supported.

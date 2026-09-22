@@ -1,5 +1,9 @@
 # InputMethodListDialog
 
+```TypeScript
+export declare struct InputMethodListDialog
+```
+
 InputMethodListDialog({controller: CustomDialogController, patternOptions?: PatternOptions}) <br> <br>Implements a dialog box showing the input method list.
 
 **Since:** 11

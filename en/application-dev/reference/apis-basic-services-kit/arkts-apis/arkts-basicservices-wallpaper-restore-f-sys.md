@@ -51,16 +51,8 @@ wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
- 
-wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-    console.info(`success to restore.`);
-  }).catch((error: BusinessError) => {
-    console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
-});
-```
 
+<a id="restore-1"></a>
 
 ## restore
 
@@ -100,4 +92,12 @@ Removes a wallpaper of the specified type and restores the default one.
 
 **Examples**
 
-See [restore](#restore)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+ 
+wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+    console.info(`success to restore.`);
+  }).catch((error: BusinessError) => {
+    console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
+});
+```

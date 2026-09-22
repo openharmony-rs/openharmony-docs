@@ -1,5 +1,9 @@
 # CallbackParamV2
 
+```TypeScript
+export interface CallbackParamV2
+```
+
 Declare CallbackParamV2
 
 **Since:** 26.0.0

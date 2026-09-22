@@ -1,5 +1,9 @@
 # MemberPurchaseType
 
+```TypeScript
+enum MemberPurchaseType
+```
+
 Enumeration of MemberPurchaseType.
 
 @enum { string }

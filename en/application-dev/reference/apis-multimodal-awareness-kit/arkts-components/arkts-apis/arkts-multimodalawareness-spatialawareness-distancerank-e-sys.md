@@ -1,5 +1,9 @@
 # DistanceRank (System API)
 
+```TypeScript
+export enum DistanceRank
+```
+
 Enum for distance rank.
 
 @enum { string } DistanceRank

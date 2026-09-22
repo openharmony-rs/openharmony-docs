@@ -1,5 +1,9 @@
 # SignSpecItem
 
+```TypeScript
+enum SignSpecItem
+```
+
 表示签名验签参数的枚举。这些参数支持通过[setSignSpec](arkts-cryptoarchitecture-cryptoframework-sign-i.md#setsignspec)、[setVerifySpec](arkts-cryptoarchitecture-cryptoframework-verify-i.md#setverifyspec)接口设置，通过[getSignSpec](arkts-cryptoarchitecture-cryptoframework-sign-i.md#getsignspec)、[getVerifySpec](arkts-cryptoarchitecture-cryptoframework-verify-i.md#getverifyspec)接口获取。
 
 <br>当前只支持RSA算法和SM2算法。详细规格请参考[签名验签规格](../../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。

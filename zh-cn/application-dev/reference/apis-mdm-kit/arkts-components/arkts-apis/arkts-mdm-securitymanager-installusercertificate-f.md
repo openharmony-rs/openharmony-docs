@@ -76,32 +76,8 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 });
 ```
 
-```TypeScript
-import { securityManager } from '@kit.MDMKit';
-import { common, Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let certFileArray: Uint8Array = new Uint8Array();
-let accountId: number = 100;
-// 变量context需要在MainAbility的onCreate回调函数中进行初始化
-// test.cer需要放置在rawfile目录下
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-context.resourceManager.getRawFileContent("test.cer").then((value) => {
-  certFileArray = value;
-  try {
-    let result: string = securityManager.installUserCertificate(wantTemp, { inData: certFileArray, alias: "cert_alias_xts" }, accountId);
-    console.info(`Succeeded in installing user certificate. result: ${result}`);
-  } catch (err) {
-    console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
-  }
-});
-```
-
+<a id="installusercertificate-1"></a>
 
 ## installUserCertificate
 
@@ -144,4 +120,28 @@ function installUserCertificate(admin: Want, certificate: CertBlob, accountId: n
 
 **示例**
 
-参见 [installUserCertificate](#installusercertificate)
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+import { common, Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let certFileArray: Uint8Array = new Uint8Array();
+let accountId: number = 100;
+// 变量context需要在MainAbility的onCreate回调函数中进行初始化
+// test.cer需要放置在rawfile目录下
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+context.resourceManager.getRawFileContent("test.cer").then((value) => {
+  certFileArray = value;
+  try {
+    let result: string = securityManager.installUserCertificate(wantTemp, { inData: certFileArray, alias: "cert_alias_xts" }, accountId);
+    console.info(`Succeeded in installing user certificate. result: ${result}`);
+  } catch (err) {
+    console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+  }
+});
+```

@@ -1,5 +1,9 @@
 # IpsecVpnConfig（系统接口）
 
+```TypeScript
+export interface IpsecVpnConfig extends SysVpnConfig
+```
+
 定义IPSec VPN网络的配置。
 
 **继承/实现关系：** IpsecVpnConfig extends [SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)

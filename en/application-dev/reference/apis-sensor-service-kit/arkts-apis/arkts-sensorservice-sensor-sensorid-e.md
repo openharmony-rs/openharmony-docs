@@ -1,5 +1,9 @@
 # SensorId
 
+```TypeScript
+enum SensorId
+```
+
 Enumerates the sensor types.
 
 **Since:** 9

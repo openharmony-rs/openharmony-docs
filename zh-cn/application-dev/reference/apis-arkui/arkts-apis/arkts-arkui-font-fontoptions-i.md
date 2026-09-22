@@ -1,12 +1,16 @@
 # FontOptions
 
+```TypeScript
+interface FontOptions
+```
+
 注册的自定义字体信息。
 
 > **说明：** 
 > 
 > 直接使用font可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用
 > [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> getFont方法获取当前UI上下文关联的
+> [getFont](arkts-arkui-arkui-uicontext-uicontext-c.md#getfont)方法获取当前UI上下文关联的
 > [Font](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
 **起始版本：** 9

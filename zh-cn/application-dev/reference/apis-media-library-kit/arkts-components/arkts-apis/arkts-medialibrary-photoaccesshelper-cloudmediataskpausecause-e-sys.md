@@ -1,5 +1,9 @@
 # CloudMediaTaskPauseCause（系统接口）
 
+```TypeScript
+enum CloudMediaTaskPauseCause
+```
+
 枚举，表示云端媒体资产下载任务暂停的类型。
 
 **起始版本：** 14

@@ -59,55 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formHost, formInfo } from '@kit.FormKit';
 
-try {
-  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: BusinessError, data: formInfo.FormInfo[]) => {
-    if (error) {
-      console.error(`error, code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.info('formHost getFormsInfo success.');
-    }
-  });
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { formHost, formInfo } from '@kit.FormKit';
-
-try {
-  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.info('formHost getFormsInfo success.');
-  }).catch((error: BusinessError) => {
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { formHost, formInfo } from '@kit.FormKit';
-
-const filter: formInfo.FormInfoFilter = {
-  bundleName: 'ohos.samples.FormApplication',
-  moduleName: 'entry',
-  supportedDimensions: [FormDimension.Dimension_1_2, FormDimension.Dimension_2_2, FormDimension.Dimension_2_4]
-};
-try {
-  formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.info('formHost getFormsInfo success.');
-  }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getformsinfo-1"></a>
 
 ## getFormsInfo
 
@@ -151,8 +104,24 @@ function getFormsInfo(
 
 **示例**
 
-参见 [getFormsInfo](#getformsinfo)
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
 
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: BusinessError, data: formInfo.FormInfo[]) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('formHost getFormsInfo success.');
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="getformsinfo-2"></a>
 
 ## getFormsInfo
 
@@ -197,8 +166,22 @@ function getFormsInfo(bundleName: string, moduleName?: string): Promise<Array<fo
 
 **示例**
 
-参见 [getFormsInfo](#getformsinfo)
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
 
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
+    console.info('formHost getFormsInfo success.');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="getformsinfo-3"></a>
 
 ## getFormsInfo
 
@@ -242,4 +225,21 @@ function getFormsInfo(filter: formInfo.FormInfoFilter): Promise<Array<formInfo.F
 
 **示例**
 
-参见 [getFormsInfo](#getformsinfo)
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+
+const filter: formInfo.FormInfoFilter = {
+  bundleName: 'ohos.samples.FormApplication',
+  moduleName: 'entry',
+  supportedDimensions: [FormDimension.Dimension_1_2, FormDimension.Dimension_2_2, FormDimension.Dimension_2_4]
+};
+try {
+  formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
+    console.info('formHost getFormsInfo success.');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```

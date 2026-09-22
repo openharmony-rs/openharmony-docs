@@ -1,5 +1,9 @@
 # ArcButtonStatus
 
+```TypeScript
+export declare enum ArcButtonStatus
+```
+
 定义ArcButton可设置的弧形按钮状态。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # DomainPlugin（系统接口）
 
+```TypeScript
+interface DomainPlugin
+```
+
 域插件，提供域账号认证功能。
 
 **起始版本：** 9

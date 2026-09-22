@@ -1,5 +1,9 @@
 # UserFaceAngleData（系统接口）
 
+```TypeScript
+export interface UserFaceAngleData extends UserStatusData
+```
+
 表示用户朝向角度数据。
 
 **继承/实现关系：** UserFaceAngleData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

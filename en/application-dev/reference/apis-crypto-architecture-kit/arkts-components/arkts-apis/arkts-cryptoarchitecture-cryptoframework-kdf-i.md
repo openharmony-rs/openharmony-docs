@@ -1,5 +1,9 @@
 # Kdf
 
+```TypeScript
+interface Kdf
+```
+
 Key derivation function (KDF) interface, defining methods for deriving keys based on key derivation parameters. Before use, you must create a **Kdf** instance by using [createKdf](arkts-cryptoarchitecture-cryptoframework-createkdf-f.md).
 
 **Since:** 11
@@ -48,13 +52,51 @@ Generates a key based on the specified key derivation parameters. This API uses 
 
 **Examples**
 
-```TypeScript
 PBKDF2
-```
 
 ```TypeScript
-HKDF
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+let spec: cryptoFramework.PBKDF2Spec = {
+  algName: 'PBKDF2',
+  password: '123456',
+  salt: new Uint8Array(16),
+  iterations: 10000,
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+kdf.generateSecret(spec, (err, secret) => {
+  if (err) {
+    console.error(`key derivation failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    return;
+  }
+  console.info('key derivation output = ' + secret.data);
+});
 ```
+
+HKDF
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+let spec: cryptoFramework.HKDFSpec = {
+  algName: 'HKDF',
+  key: '123456',
+  salt: new Uint8Array(16),
+  info: new Uint8Array(16),
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+kdf.generateSecret(spec, (err, secret) => {
+  if (err) {
+    console.error(`key derivation failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    return;
+  }
+  console.info('key derivation output = ' + secret.data);
+});
+```
+
+<a id="generatesecret-1"></a>
 
 ## generateSecret
 
@@ -95,7 +137,49 @@ Generates a key based on the specified key derivation parameters. This API uses 
 
 **Examples**
 
-See [generateSecret](#generatesecret)
+PBKDF2
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let spec: cryptoFramework.PBKDF2Spec = {
+  algName: 'PBKDF2',
+  password: '123456',
+  salt: new Uint8Array(16),
+  iterations: 10000,
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+let kdfPromise = kdf.generateSecret(spec);
+kdfPromise.then(secret => {
+  console.info('key derivation output = ' + secret.data);
+}).catch((error: BusinessError) => {
+  console.error(`key derivation failed: errCode: ${error.code}, errMsg: ${error.message}`);
+});
+```
+
+HKDF
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let spec: cryptoFramework.HKDFSpec = {
+  algName: 'HKDF',
+  key: '123456',
+  salt: new Uint8Array(16),
+  info: new Uint8Array(16),
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+let kdfPromise = kdf.generateSecret(spec);
+kdfPromise.then(secret => {
+  console.info('key derivation output = ' + secret.data);
+}).catch((error: BusinessError) => {
+  console.error(`key derivation failed: errCode: ${error.code}, errMsg: ${error.message}`);
+});
+```
 
 ## generateSecretSync
 
@@ -137,12 +221,38 @@ Generates a key based on the specified key derivation parameters. This API retur
 
 **Examples**
 
-```TypeScript
 PBKDF2
-```
 
 ```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+let spec: cryptoFramework.PBKDF2Spec = {
+  algName: 'PBKDF2',
+  password: '123456',
+  salt: new Uint8Array(16),
+  iterations: 10000,
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+let secret = kdf.generateSecretSync(spec);
+console.info('[Sync]key derivation output = ' + secret.data);
+```
+
 HKDF
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+let spec: cryptoFramework.HKDFSpec = {
+  algName: 'HKDF',
+  key: '123456',
+  salt: new Uint8Array(16),
+  info: new Uint8Array(16),
+  keySize: 32
+};
+let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+let secret = kdf.generateSecretSync(spec);
+console.info('[Sync]key derivation output = ' + secret.data);
 ```
 
 ## algName

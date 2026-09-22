@@ -1,5 +1,9 @@
 # BlanklessInfo
 
+```TypeScript
+interface BlanklessInfo
+```
+
 Prediction information about the first screen loading of the page, mainly including the predicted first screen similarity, predicted first screen loading duration, and predicted error code. The app determines whether to enable the White-Screen-Free Loading frame interpolation scheme based on this information.
 
 **Since:** 20

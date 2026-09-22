@@ -1,5 +1,9 @@
 # Corners
 
+```TypeScript
+interface Corners<T>
+```
+
 Describes the four corners.
 
 **Since:** 12

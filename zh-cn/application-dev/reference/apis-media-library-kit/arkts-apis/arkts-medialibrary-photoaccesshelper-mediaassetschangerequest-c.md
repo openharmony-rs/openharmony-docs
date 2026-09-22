@@ -1,5 +1,9 @@
 # MediaAssetsChangeRequest
 
+```TypeScript
+class MediaAssetsChangeRequest implements MediaChangeRequest
+```
+
 批量资产变更请求。
 
 **继承/实现关系：** MediaAssetsChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)

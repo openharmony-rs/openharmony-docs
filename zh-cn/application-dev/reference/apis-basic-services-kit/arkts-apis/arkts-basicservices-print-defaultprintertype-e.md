@@ -1,5 +1,9 @@
 # DefaultPrinterType
 
+```TypeScript
+enum DefaultPrinterType
+```
+
 默认打印类型的枚举。
 
 **起始版本：** 18

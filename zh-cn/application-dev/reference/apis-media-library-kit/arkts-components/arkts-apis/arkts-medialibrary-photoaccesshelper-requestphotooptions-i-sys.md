@@ -1,5 +1,9 @@
 # RequestPhotoOptions（系统接口）
 
+```TypeScript
+interface RequestPhotoOptions
+```
+
 获取图片或视频缩略图的选项。
 
 **起始版本：** 11

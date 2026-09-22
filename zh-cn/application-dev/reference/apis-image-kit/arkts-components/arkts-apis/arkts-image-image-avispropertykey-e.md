@@ -1,5 +1,9 @@
 # AvisPropertyKey
 
+```TypeScript
+enum AvisPropertyKey
+```
+
 表示AVIS图片信息的枚举。
 
 > **说明：** 

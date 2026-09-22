@@ -1,6 +1,10 @@
 # NodeAdapter
 
-NodeAdapter提供FrameNode的数据懒加载能力，通过LazyForEach实现接口功能。适用于长列表等需要按需加载节点数据的场景，可提升渲染性能并降低内存占用。
+```TypeScript
+declare class NodeAdapter
+```
+
+NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md#lazy_for_each)实现接口功能。适用于长列表等需要按需加载节点数据的场景，可提升渲染性能并降低内存占用。
 
 > **说明：** 
 > 
@@ -166,9 +170,7 @@ isDisposed(): boolean
 
 **示例**
 
-```TypeScript
 请参考[检验NodeAdapter是否有效示例。
-```
 
 ## moveItem
 
@@ -207,7 +209,7 @@ FrameNode绑定NodeAdapter时回调。
 > 、宿主节点挂载到主树前完成设置，并在宿主节点挂载到主树时收到该回调。
 > 
 > 从API版本26.0.0开始，该回调会在NodeAdapter绑定到宿主节点时立即触发，而不是在宿主节点挂载到主节点树时触发。此时宿主节点可能尚未挂载到主节点树。如果回调逻辑依赖节点已挂载（例如访问布局信息或执行动画），建议在
-> 该回调中注册onAppear，并将相关逻辑放入onAppear中执行。如果通过动态赋值方式设置该回调，请在调用
+> 该回调中注册[onAppear](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onappear)，并将相关逻辑放入onAppear中执行。如果通过动态赋值方式设置该回调，请在调用
 > [attachNodeAdapter](#attachnodeadapter)前完成设置，否则回调可能无法触发。
 
 **起始版本：** 12
@@ -348,7 +350,7 @@ onUpdateChild?(id: number, node: FrameNode): void
 reloadAllItems(): void
 ```
 
-重新加载全部数据操作。实际调用了LazyForEach中的[onDataReloaded](../arkts-components/arkts-arkui-datachangelistener-i.md#ondatareloaded)接口通知组件重新加载所有数据。
+重新加载全部数据操作。实际调用了LazyForEach中的[onDataReloaded](../arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatareloaded)接口通知组件重新加载所有数据。
 
 **起始版本：** 12
 
@@ -440,6 +442,4 @@ Get the total number of node count.
 
 **示例**
 
-```TypeScript
 请参考[NodeAdapter使用示例。
-```

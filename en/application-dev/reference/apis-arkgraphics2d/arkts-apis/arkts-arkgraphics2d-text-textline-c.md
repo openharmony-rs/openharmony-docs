@@ -1,5 +1,9 @@
 # TextLine
 
+```TypeScript
+class TextLine
+```
+
 Implements a carrier that describes the basic text line structure of a paragraph.
 
 Before calling any of the following APIs, you must use [getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines) of the [Paragraph](arkts-arkgraphics2d-text-paragraph-c.md) class or [createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline) of the [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md) class to create a **TextLine** object.

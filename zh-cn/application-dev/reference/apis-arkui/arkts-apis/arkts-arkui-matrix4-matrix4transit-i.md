@@ -1,5 +1,9 @@
 # Matrix4Transit
 
+```TypeScript
+interface Matrix4Transit
+```
+
 矩阵对象。支持通过链式调用translate、scale、rotate、skew等方法组合多种变换效果。
 
 > **说明：** 

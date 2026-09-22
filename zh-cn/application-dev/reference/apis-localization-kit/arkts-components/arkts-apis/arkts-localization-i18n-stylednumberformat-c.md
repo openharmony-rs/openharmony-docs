@@ -1,5 +1,9 @@
 # StyledNumberFormat
 
+```TypeScript
+export class StyledNumberFormat
+```
+
 提供富文本数字格式化的能力。
 
 **起始版本：** 18
@@ -37,40 +41,6 @@ constructor(numberFormat: Intl.NumberFormat | SimpleNumberFormat, options?: Styl
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { i18n, intl } from '@kit.LocalizationKit';
-
-try {
-  let integerTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
-  let decimalTextStyle: TextStyle = new TextStyle({ fontColor: Color.Brown });
-  let fractionTextStyle: TextStyle = new TextStyle({ fontColor: Color.Blue });
-  let unitTextStyle: TextStyle = new TextStyle({ fontColor: Color.Green });
-
-  // 通过intl.NumberFormat创建StyledNumberFormat对象
-  let numFmt: intl.NumberFormat = new intl.NumberFormat('zh', { style: 'unit', unit: 'percent' });
-  let styledNumFmt: i18n.StyledNumberFormat = new i18n.StyledNumberFormat(numFmt, {
-    integer: integerTextStyle,
-    decimal: decimalTextStyle,
-    fraction: fractionTextStyle,
-    unit: unitTextStyle
-  });
-
-  // 通过SimpleNumberFormat创建StyledNumberFormat对象
-  let locale: intl.Locale = new intl.Locale('zh');
-  let simpleNumFmt: i18n.SimpleNumberFormat = i18n.getSimpleNumberFormatBySkeleton('percent', locale);
-  let styledSimpleNumFmt: i18n.StyledNumberFormat = new i18n.StyledNumberFormat(simpleNumFmt, {
-    integer: integerTextStyle,
-    decimal: decimalTextStyle,
-    fraction: fractionTextStyle,
-    unit: unitTextStyle
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`call i18n.StyledNumberFormat failed, error code: ${err.code}, message: ${err.message}.`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
 
 try {
@@ -102,6 +72,8 @@ try {
   console.error(`call i18n.StyledNumberFormat failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -151,40 +123,6 @@ try {
 
   // 通过SimpleNumberFormat创建StyledNumberFormat对象
   let locale: intl.Locale = new intl.Locale('zh');
-  let simpleNumFmt: i18n.SimpleNumberFormat = i18n.getSimpleNumberFormatBySkeleton('percent', locale);
-  let styledSimpleNumFmt: i18n.StyledNumberFormat = new i18n.StyledNumberFormat(simpleNumFmt, {
-    integer: integerTextStyle,
-    decimal: decimalTextStyle,
-    fraction: fractionTextStyle,
-    unit: unitTextStyle
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`call i18n.StyledNumberFormat failed, error code: ${err.code}, message: ${err.message}.`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { i18n } from '@kit.LocalizationKit';
-
-try {
-  let integerTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
-  let decimalTextStyle: TextStyle = new TextStyle({ fontColor: Color.Brown });
-  let fractionTextStyle: TextStyle = new TextStyle({ fontColor: Color.Blue });
-  let unitTextStyle: TextStyle = new TextStyle({ fontColor: Color.Green });
-
-  // 通过Intl.NumberFormat创建StyledNumberFormat对象
-  let numFmt: Intl.NumberFormat = new Intl.NumberFormat('zh', { style: 'unit', unit: 'percent' });
-  let styledNumFmt: i18n.StyledNumberFormat = new i18n.StyledNumberFormat(numFmt, {
-    integer: integerTextStyle,
-    decimal: decimalTextStyle,
-    fraction: fractionTextStyle,
-    unit: unitTextStyle
-  });
-
-  // 通过SimpleNumberFormat创建StyledNumberFormat对象
-  let locale: Intl.Locale = new Intl.Locale('zh');
   let simpleNumFmt: i18n.SimpleNumberFormat = i18n.getSimpleNumberFormatBySkeleton('percent', locale);
   let styledSimpleNumFmt: i18n.StyledNumberFormat = new i18n.StyledNumberFormat(simpleNumFmt, {
     integer: integerTextStyle,

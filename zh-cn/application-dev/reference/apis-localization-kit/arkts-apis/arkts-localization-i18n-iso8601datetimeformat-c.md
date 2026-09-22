@@ -1,5 +1,9 @@
 # ISO8601DateTimeFormat
 
+```TypeScript
+export class ISO8601DateTimeFormat
+```
+
 符合ISO 8601标准的日期格式化对象。
 
 **起始版本：** 26.0.0

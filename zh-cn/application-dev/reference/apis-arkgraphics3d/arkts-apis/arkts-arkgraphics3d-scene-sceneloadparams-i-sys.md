@@ -1,5 +1,9 @@
 # SceneLoadParams（系统接口）
 
+```TypeScript
+export interface SceneLoadParams
+```
+
 场景加载参数对象，用于指定加载3D模型资源时的额外配置选项。典型使用场景为从MP4容器文件中加载内嵌的glb模型。
 
 **起始版本：** 26.0.0

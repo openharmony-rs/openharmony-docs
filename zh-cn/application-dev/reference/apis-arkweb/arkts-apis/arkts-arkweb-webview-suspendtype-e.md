@@ -1,5 +1,9 @@
 # SuspendType
 
+```TypeScript
+enum SuspendType
+```
+
 表示播放器的挂起类型。
 
 **起始版本：** 12

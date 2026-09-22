@@ -1,5 +1,9 @@
 # OrientationOptions（系统接口）
 
+```TypeScript
+interface OrientationOptions
+```
+
 设置旋转行为的参数
 
 **起始版本：** 26.0.0

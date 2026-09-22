@@ -1,5 +1,9 @@
 # WifiScanInfo（系统接口）
 
+```TypeScript
+export interface WifiScanInfo
+```
+
 WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息。
 
 **起始版本：** 10

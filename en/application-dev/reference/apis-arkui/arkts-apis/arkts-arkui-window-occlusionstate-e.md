@@ -1,5 +1,9 @@
 # OcclusionState
 
+```TypeScript
+enum OcclusionState
+```
+
 Enumerates the window visibility states.
 
 **Since:** 22

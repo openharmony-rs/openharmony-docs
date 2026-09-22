@@ -1,5 +1,9 @@
 # SystemLoadLevel
 
+```TypeScript
+export enum SystemLoadLevel
+```
+
 Enumerates system load levels.
 
 **Since:** 12

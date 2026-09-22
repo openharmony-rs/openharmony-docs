@@ -1,5 +1,9 @@
 # AudioEncodingType
 
+```TypeScript
+enum AudioEncodingType
+```
+
 表示音频编码类型的枚举。
 
 **起始版本：** 8

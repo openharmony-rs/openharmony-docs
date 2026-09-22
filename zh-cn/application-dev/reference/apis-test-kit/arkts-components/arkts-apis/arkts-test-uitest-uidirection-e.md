@@ -1,5 +1,9 @@
 # UiDirection
 
+```TypeScript
+declare enum UiDirection
+```
+
 进行抛滑等UI操作时的方向。
 
 **起始版本：** 10

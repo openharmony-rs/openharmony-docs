@@ -1,5 +1,9 @@
 # IncrementalBackupSession (System API)
 
+```TypeScript
+class IncrementalBackupSession
+```
+
 Control class for incremental backup procedure.
 
 **Since:** 12
@@ -116,104 +120,7 @@ incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
 }); // Appends the applications that require incremental backup.
 ```
 
-```TypeScript
-import { fileIo, backup} from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
-let incrementalBackupData: backup.IncrementalBackupData = {
-  bundleName: "com.example.hiworld",
-  lastIncrementalTime: 1700107870, // Timestamp of the last backup.
-  manifestFd:1 // FD of the manifest file of the last backed.
-}
-    let infos: Array<string> = [
-      `
-      {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.hiworld"
-          }
-      ]
-  },
-  {
-      "infos": [
-          {
-              "details": [
-                  {
-                      "detail": [
-                          {
-                              "key1": "value1",
-                              "key2": "value2"
-                          }
-                      ]
-                  }
-              ],
-              "type": "unicast",
-              "bundleName": "com.example.myApp"
-          }
-      ]
-  }
-    `
-  ]
-let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
-// Appends the applications that require incremental backup.
-incrementalBackupSession.appendBundles(incrementalBackupDataArray, infos).then(() => {
-  console.info('appendBundles success');
-}).catch((err: BusinessError) => {
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="appendbundles-1"></a>
 
 ## appendBundles
 
@@ -259,64 +166,6 @@ Append new bundles to incremental backup.
 | 13900042 | Unknown error |
 
 **Examples**
-
-```TypeScript
-import { fileIo, backup} from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let generalCallbacks: backup.GeneralCallbacks = {
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onFileReady success');
-    fileIo.closeSync(file.fd);
-  },
-  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  },
-  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  },
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  },
-  onBackupServiceDied: () => {
-    console.info('service died');
-  },
-  onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-  },
-  onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-  }
-};
-let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
-let incrementalBackupData: backup.IncrementalBackupData = {
-  bundleName: "com.example.hiworld",
-  lastIncrementalTime: 1700107870, // Timestamp of the last backup.
-  manifestFd:1 // FD of the manifest file of the last backed.
-}
-let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
-incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
-  console.info('appendBundles success');
-}).catch((err: BusinessError) => {
-  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-}); // Appends the applications that require incremental backup.
-```
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -820,8 +669,24 @@ try {
 }
 ```
 
-```TypeScript
 Example of a JSON string returned asynchronously:
+
+```TypeScript
+{
+ "scanned": [ // Scanned application. The result will not be returned in the next callback.
+     {
+         "name": "com.example.hiworld", // Application name.
+         "dataSize": 1006060, // Data size.
+         "incDataSize": 50800 // Incremental data size.
+     },
+     {
+         "name": "com.example.myAPP",
+         "dataSize": 5000027,
+         "incDataSize": 232344
+     }
+ ],
+ "scanning" :"com.example.smartAPP" // Application that is being scanned. This field is empty when the last result is returned.
+}
 ```
 
 ## getCompatibilityInfo
@@ -1066,8 +931,23 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
-```TypeScript
 The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](arkts-corefile-fileio-n.md) module. The following is an example of the capability file.
+
+```TypeScript
+{
+ "backupVersion" : "16.0",
+ "bundleInfos" : [{
+   "allToBackup" : true,
+   "extensionName" : "BackupExtensionAbility",
+   "name" : "com.example.hiworld",
+   "needToInstall" : false,
+   "spaceOccupied" : 0,
+   "versionCode" : 1000000,
+   "versionName" : "1.0.0"
+   }],
+ "deviceType" : "default",
+ "systemFullName" : "OpenHarmony-4.0.0.0"
+}
 ```
 
 ## release

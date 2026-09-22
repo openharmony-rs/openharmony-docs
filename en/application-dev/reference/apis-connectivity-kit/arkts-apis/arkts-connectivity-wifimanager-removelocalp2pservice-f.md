@@ -14,7 +14,7 @@ function removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
 Remove a registered local P2P service added with the [addDnsSdLocalP2pService](arkts-connectivity-wifimanager-adddnssdlocalp2pservice-f.md) or [addUpnpLocalP2pService](arkts-connectivity-wifimanager-addupnplocalp2pservice-f.md).
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO_INTERNAL
 
