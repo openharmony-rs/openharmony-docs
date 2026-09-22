@@ -112,6 +112,68 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## makeFromPosTextWithFallback
+
+static makeFromPosTextWithFallback(text: string, len: number, points: common2D.Point[], font: Font): Array\<TextBlob>
+
+使用文本创建一组TextBlob对象，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体的字形索引；若未找到回退字体，则仍使用当前字型字体的notdef占位字形。每段使用相同字体（当前字体或回退字体）的连续字形片段会创建一个对应的TextBlob对象。每个字形的坐标由points中对应的坐标信息决定。
+
+**ArkTS模式：** 此接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 绘制字形的文本内容。 |
+| len | number | 是 | 字形个数，由[countText](arkts-apis-graphics-drawing-Font.md#counttext12)获取，该参数为整数。传入浮点数，按照向下取整处理。 |
+| points | [common2D.Point](js-apis-graphics-common2D.md#point12)[] | 是 | 点数组，用于指定每个字形的坐标，长度必须为len。 |
+| font | [Font](arkts-apis-graphics-drawing-Font.md) | 是 | 字型对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array\<[TextBlob](arkts-apis-graphics-drawing-TextBlob.md)> | 返回由文本和坐标信息创建的TextBlob对象数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let text : string = 'makeFromPosText';
+    let font : drawing.Font = new drawing.Font();
+    font.setSize(100);
+    let length = font.countText(text);
+    let points : common2D.Point[] = [];
+    for (let i = 0; i !== length; ++i) {
+      points.push({ x: i * 35, y: i * 35 });
+    }
+    let textBlobs : Array<drawing.TextBlob> = drawing.TextBlob.makeFromPosTextWithFallback(text, points.length, points, font);
+    for (let blob of textBlobs) {
+      canvas.drawTextBlob(blob, 100, 100);
+    }
+  }
+}
+```
+
 ## uniqueID<sup>12+</sup>
 
 ArkTS-Dyn: uniqueID(): number
@@ -237,6 +299,56 @@ class DrawingRenderNode extends RenderNode {
     }
     canvas.attachBrush(brush);
     canvas.drawTextBlob(textBlob, 20.0, 20.0);
+    canvas.detachBrush();
+  }
+}
+```
+
+## makeFromStringWithFallback
+
+static makeFromStringWithFallback(text: string, font: Font): Array\<TextBlob>
+
+使用字符串创建一组TextBlob对象，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体的字形索引；若未找到回退字体，则仍使用当前字型字体的notdef占位字形。每段使用相同字体（当前字体或回退字体）的连续字形片段会创建一个对应的TextBlob对象。
+
+**ArkTS模式：** 此接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 绘制字形的文本内容。 |
+| font | [Font](arkts-apis-graphics-drawing-Font.md) | 是 | 字型对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array\<[TextBlob](arkts-apis-graphics-drawing-TextBlob.md)> | 返回创建的TextBlob对象数组。 |
+
+**示例：**
+
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    const font = new drawing.Font();
+    font.setSize(20);
+    const textBlobs = drawing.TextBlob.makeFromStringWithFallback("drawing", font);
+    canvas.attachBrush(brush);
+    for (let blob of textBlobs) {
+      canvas.drawTextBlob(blob, 20, 20);
+    }
     canvas.detachBrush();
   }
 }
