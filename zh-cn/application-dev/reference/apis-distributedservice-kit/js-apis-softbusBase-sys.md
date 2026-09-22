@@ -16,7 +16,7 @@
 
 ## 导入模块
 
-```TypeScript
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 ```
 
@@ -116,7 +116,7 @@ startPerceptionAdv(type:&nbsp;[PerceptionType](#perceptiontype), customData?:&nb
 
 **示例：**
 
-```TypeScript
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -183,7 +183,7 @@ setPerceptionAdvHighFreq(type:&nbsp;[PerceptionType](#perceptiontype), customDat
 
 **示例：**
 
-```TypeScript
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -246,7 +246,7 @@ stopPerceptionAdv(type:&nbsp;[PerceptionType](#perceptiontype)):&nbsp;Promise&lt
 
 **示例：**
 
-```TypeScript
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -308,7 +308,7 @@ startPerceptionScan(type:&nbsp;[PerceptionType](#perceptiontype), cycle:&nbsp;[P
 
 **示例：**
 
-```TypeScript
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -371,7 +371,7 @@ stopPerceptionScan(type:&nbsp;[PerceptionType](#perceptiontype)):&nbsp;Promise&l
 
 **示例：**
 
-```TypeScript
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -433,7 +433,7 @@ getPerceptionDeviceList(type:&nbsp;[PerceptionType](#perceptiontype)):&nbsp;Prom
 
 **示例：**
 
-```TypeScript
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 import { BusinessError } from '@kit.BasicServicesKit';
 
