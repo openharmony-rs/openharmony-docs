@@ -388,7 +388,7 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 
 setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
-设置系统快捷键屏蔽类型。
+设置系统快捷键屏蔽状态。
 
 **需要权限**：ohos.permission.INPUT_CONTROL_DISPATCHING
 
@@ -398,8 +398,8 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
-| shieldMode       | [ShieldMode](#shieldmode11)                     | 是    | 系统快捷键屏蔽类型，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
-| isShield | boolean  | 是    | 屏蔽类型生效状态，true代表屏蔽类型生效，false代表不生效。              |
+| shieldMode       | [ShieldMode](#shieldmode11)                     | 是    | 系统快捷键屏蔽模式，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
+| isShield | boolean  | 是    | 屏蔽是否生效，true代表屏蔽生效，false代表不生效。              |
 
 **错误码**：
 
@@ -442,7 +442,7 @@ struct Index {
 
 getShieldStatus(shieldMode: ShieldMode): boolean
 
-获取系统快捷键屏蔽类型。
+获取系统快捷键屏蔽状态。
 
 **需要权限**：ohos.permission.INPUT_CONTROL_DISPATCHING
 
@@ -452,13 +452,13 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
-| shieldMode       | [ShieldMode](#shieldmode11)                    | 是    | 系统快捷键屏蔽类型，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
+| shieldMode       | [ShieldMode](#shieldmode11)                    | 是    | 系统快捷键屏蔽模式，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
 
 **返回值：** 
 
 | 类型         |  说明                                       |
 | ---------- |  ---------------------------------------- |
-| boolean                    | 屏蔽类型生效状态，true代表屏蔽类型生效，false代表不生效。                       |
+| boolean                    | 屏蔽是否生效，true代表屏蔽生效，false代表不生效。                       |
 
 **错误码**：
 
@@ -513,7 +513,7 @@ struct Index {
 
 ## ShieldMode<sup>11+</sup>
 
-系统快捷键屏蔽类型。
+系统快捷键屏蔽模式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
