@@ -83,9 +83,11 @@ enableTransparentLayer(enabled: boolean)
 <!-- @[enable_transparent_layer_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
 
 ``` TypeScript
-XComponent({ type: XComponentType.SURFACE })
-  .id('XComponentTransparentLayer')
-  .backgroundColor('#80000000') // 半透明背景
-  .enableTransparentLayer(true) // 开启独立图层，避免半透明区域与下方内容混合时出现渲染异常
+// ...
+  XComponent({ type: XComponentType.SURFACE })
+    .id('XComponentTransparentLayer')
+    .backgroundColor('#80000000') // 半透明背景
+    .enableTransparentLayer(true) // 开启独立图层，避免半透明区域与下方内容混合时出现渲染异常
+// ...
 ```
 
