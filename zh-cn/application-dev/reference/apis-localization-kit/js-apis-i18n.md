@@ -1427,7 +1427,7 @@ let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
 | cyclicalYear    | number |   否   |   否   |  农历的干支年。<br>取值范围：[1, 60]。   |
 | month           | number |   否   |   否   |  农历的月。<br>**说明：** <br>月份从0开始计数，0表示一月。   |
 | date            | number |   否   |   否   |  农历的日。   |
-| isLeapMonth     | boolean |   否  |   是   |  是否是闰月。默认值：false。  |
+| isLeapMonth     | boolean |   否  |   是   |  是否是闰月。默认值：false。<br>true表示该月是闰月，false表示该月不是闰月。  |
 | hour            | number |   否   |   是   |  农历的时。默认值：0。   |
 | minute          | number |   否   |   是   |  农历的分。默认值：0。   |
 | second          | number |   否   |   是   |  农历的秒。默认值：0。   |
@@ -1534,10 +1534,10 @@ format(phoneNumber: string): string
   let typingFormatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', option);
   let phoneNumber: string = '130493';
   let formatResult: string = '';
-  for (let i = 0; i < phoneNumber.length; i++) {
-    formatResult += phoneNumber.charAt(i);
+  phoneNumber.split('').forEach((char: string) => {
+    formatResult += char;
     formatResult = typingFormatter.format(formatResult); // formatResult = '130 493'
-  }
+  });
   ```
 
 ### getLocationName<sup>9+</sup>
