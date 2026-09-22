@@ -29,7 +29,7 @@
 
 ### 开发准备
 
-1. 支持Mechanic Kit协议的机械体设备。
+1. 支持Mechanic Kit协议的机械体设备，参考管理设备连接状态第2点。
 2. 若要验证目标跟踪功能，主设备的相机驱动必须支持人脸检测。
 3. 请将SDK更新到API 20或以上版本，具体操作参见[更新指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)。
 4. 请确保机械体设备已通过蓝牙与主设备连接。
@@ -45,7 +45,19 @@
     import { mechanicManager } from '@kit.MechanicKit';
     ```
 
-2. 获取已连接的机械体列表。
+2. 查询设备是否支持机械体设备控制能力。
+   <!-- @[is_control_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+
+    ```ts
+    try {
+      isSupported = mechanicManager.isControlSupported();
+      console.info(`'isSupported:' ${isSupported}`);
+    } catch (err) {
+      console.error('errCode:' + JSON.stringify(err));
+    }
+    ```
+
+3. 获取已连接的机械体列表。
    <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
@@ -75,7 +87,7 @@
     }
     ```
 
-3. 监听设备的连接状态变化，以便及时响应。
+4. 监听设备的连接状态变化，以便及时响应。
    <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
 
     ```ts
@@ -95,7 +107,7 @@
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
 
-4. 处理设备的连接与断开的事件。
+5. 处理设备的连接与断开的事件。
    <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
     ```ts
@@ -112,7 +124,7 @@
     }
     ```
    
-5. 取消连接状态的监听。
+6. 取消连接状态的监听。
    <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
     ```ts
