@@ -56,7 +56,7 @@
 
 1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。推荐使用事务接口保证数据库升级流程原子性。</br>
 
-   本步骤涉及主要接口：调用[getRdbStore](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)获得一个RdbStore，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作；调用[isTokenizerSupported](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoreistokenizersupported18)判断当前平台是否支持传入的分词器（将文本分解为更小单元的工具，这些单元可以是单词、子词、字符或者其他语言片段）；调用[createTransaction](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)创建一个事务对象并开始事务；调用[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)执行包含指定参数的SQL语句。
+   通过[getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)接口获取RdbStore实例，用户可以根据自己的需求配置RdbStore的参数。若需要使用全文检索（FTS）功能，可通过[isTokenizerSupported()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoreistokenizersupported18)接口判断当前平台是否支持所需的分词器。为保证数据库升级流程的原子性，通过[createTransaction()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)接口创建事务对象并开始事务，再通过[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行建表和升降级等SQL语句。
 
    示例代码如下所示：
    
@@ -243,7 +243,7 @@
    > 
    > - 错误码的详细介绍请参见[通用错误码](../reference/errorcode-universal.md)和[关系型数据库错误码](../reference/apis-arkdata/errorcode-data-rdb.md)。
 
-2. 获取到RdbStore，完成数据表创建后，调用[insert](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#insert)()接口向目标表中插入一行数据。示例代码如下所示：
+2. 获取到RdbStore，完成数据表创建后，调用[insert()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#insert)接口插入数据。示例代码如下所示：
    <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
@@ -277,7 +277,7 @@
 
 3. 根据谓词指定的实例对象，对数据进行修改或删除。
 
-   调用[update](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#update)()方法根据predicates的指定实例对象更新数据库中的数据，调用[delete](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#delete)()方法根据predicates的指定实例对象从数据库中删除数据。示例代码如下所示：
+   调用[update()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#update)接口修改数据，调用[delete()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#delete)接口删除数据。示例代码如下所示：
    <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
@@ -324,7 +324,7 @@
 
 4. 根据谓词指定的查询条件查找数据。
 
-   调用[query](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#query)()方法根据指定条件查询数据库中的数据，返回一个ResultSet结果集。示例代码如下所示：
+   调用[query()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#query)接口查询数据，返回一个ResultSet结果集。示例代码如下所示：
    <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
@@ -355,11 +355,11 @@
 
    > **说明：**
    >
-   > 当应用完成查询数据操作，不再使用结果集（ResultSet）时，请及时调用close方法关闭结果集，释放系统为其分配的内存。
+   > 当应用完成查询数据操作，不再使用结果集（ResultSet）时，请及时调用close接口关闭结果集，释放系统为其分配的内存。
 
    当前RDB还支持进行FTS全文检索，可以根据中文或者英文进行文本检索，针对中文分词器支持ICU分词器。
 
-   可通过[querySql](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#querysql)接口根据指定SQL语句查询数据库中的数据。以中文关键字检索为例：
+   可通过[querySql()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#querysql)接口根据指定SQL语句查询数据库中的数据。以中文关键字检索为例：
    <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
@@ -392,7 +392,7 @@
 
 5. 使用事务对象执行数据的插入、删除和更新操作。
    
-   调用[createTransaction](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)创建一个事务对象并开始事务，通过事务对象调用[insert](../reference/apis-arkdata/arkts-apis-data-relationalStore-Transaction.md#insert14)向目标表中插入一行数据、调用[update](../reference/apis-arkdata/arkts-apis-data-relationalStore-Transaction.md#update14)根据predicates的指定实例对象更新数据库中的数据、调用[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-Transaction.md#execute14)执行包含指定参数的SQL语句。
+   调用[createTransaction()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)接口创建事务对象，通过事务对象调用[insert()](../reference/apis-arkdata/arkts-apis-data-relationalStore-Transaction.md#insert14)接口插入数据、[update()](../reference/apis-arkdata/arkts-apis-data-relationalStore-Transaction.md#update14)接口修改数据、[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-Transaction.md#execute14)接口执行SQL语句。
    
    支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
    <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
@@ -456,7 +456,7 @@
 
 6. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见[关系型数据库备份](data-backup-and-restore.md#关系型数据库备份)。
 
-   此处以调用[backup](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup)接口手动备份为例：
+   此处以调用[backup()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup)接口手动备份为例：
    <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
@@ -475,7 +475,7 @@
 
 7. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见[关系型数据库数据恢复](data-backup-and-restore.md#关系型数据库数据恢复)。
 
-   此处以调用[restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore)接口恢复手动备份数据为例：
+   此处以调用[restore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore)接口恢复手动备份数据为例：
    <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
@@ -493,7 +493,7 @@
 
 8. 删除数据库。
 
-   调用[deleteRdbStore](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoredeleterdbstore)()方法删除数据库及数据库相关文件。示例代码如下：
+   调用[deleteRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoredeleterdbstore)接口删除数据库及数据库相关文件。示例代码如下：
 
    Stage模型示例：
    <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
