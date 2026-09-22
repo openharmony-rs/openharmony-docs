@@ -14,14 +14,14 @@ Since API version 12, the multimodal module provides applications with the abili
 
 ## Available APIs
 
-The following table lists the APIs for creating and deleting event interception. For details, see [oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md).
+The following table lists the APIs for creating and deleting event interception. For details, see [input](../../reference/apis-input-kit/capi-input.md).
 
-| API | Description |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) | Adds a key event interceptor. |
-| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) | Adds an interceptor for input events, including mouse, touch, and axis events. |
-| Input_Result OH_Input_RemoveKeyEventInterceptor(void) | Removes the interceptor for key events. |
-| Input_Result OH_Input_RemoveInputEventInterceptor(void) | Removes the interceptor for input events, including mouse, touch, and axis events. |
+| API | Description|
+| ------------------------------------------------------------ | -------------------------- |
+| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) |Creates a key event interceptor. |
+| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) |Creates an input event interceptor. Input events include mouse, touch, and axis events. |
+| Input_Result OH_Input_RemoveKeyEventInterceptor() |Removes a key event interceptor. |
+| Input_Result OH_Input_RemoveInputEventInterceptor() |Removes an input event interceptor. |
 
 ## How to Develop
 
