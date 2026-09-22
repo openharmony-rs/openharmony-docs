@@ -505,7 +505,7 @@ Represents key combination options.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| preKeys    | Array\<number>   | No    | No | Set of preKeys, with the number ranging from [0, 4]. The order of preKeys is not required.<br>For example, in the key combination Ctrl+Alt+A, Ctrl+Alt are the preKeys. |
+| preKeys    | Array\<number>   | No    | No | Set of preKeys, with the number ranging from 0 to 4. The order of preKeys is not required.<br>For example, in the key combination Ctrl+Alt+A, Ctrl+Alt are the preKeys. |
 | finalKey             | number  | No   |  No| Final key. This parameter is mandatory. A callback is triggered by the final key.<br>For example, in the combination keys **Ctrl+Alt+A**, **A** is the final key.|
 | isFinalKeyDown       | boolean | No   |  No| Whether the final key is pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.|
 | finalKeyDownDuration | number  | No    |  No | Duration for which the final key is held down, in microseconds (μs).<br>When finalKeyDownDuration is 0, the callback function is triggered immediately.<br>When finalKeyDownDuration is greater than 0 and isFinalKeyDown is true, the callback function is triggered after the final key is held down for longer than the set duration; when isFinalKeyDown is false, the callback function is triggered when the time from pressing to releasing the final key is shorter than the set duration.   |
