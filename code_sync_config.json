@@ -4334,6 +4334,11 @@
 						"end_line":99,
 						"name":"arkts_independent_shaping_text_drawing",
 						"start_line":78
+					},
+					{
+						"end_line":19,
+						"name":"arkts_independent_shaping_text_import_modules",
+						"start_line":16
 					}
 				]
 			}
