@@ -75,3 +75,17 @@ enableTransparentLayer(enabled: boolean)
   > 仅type为SURFACE时有效。
   >
   > 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
+
+**示例：**
+
+以下示例展示了在带半透明背景的XComponent上开启独立图层，以避免半透明区域与下方内容混合时出现渲染异常。
+
+<!-- @[enable_transparent_layer_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
+
+``` TypeScript
+XComponent({ type: XComponentType.SURFACE })
+  .id('XComponentTransparentLayer')
+  .backgroundColor('#80000000') // 半透明背景
+  .enableTransparentLayer(true) // 开启独立图层，避免半透明区域与下方内容混合时出现渲染异常
+```
+
