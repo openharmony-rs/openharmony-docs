@@ -25,7 +25,7 @@ import { inputDevice } from '@kit.InputKit';
 | ----------- | ------------------------------------------------------------ |
 | getDeviceList(): Promise\<Array\<number>> | 获取所有输入设备的ID列表。 |
 | getKeyboardType(deviceId: number): Promise\<KeyboardType> | 获取输入设备的键盘类型。 |
-| on(type: 'change', listener: Callback\<DeviceListener>): void | 监听输入设备的热插拔事件。 |
+| on(type: 'change', listener: Callback\<DeviceListener>): void | 注册监听输入设备的热插拔事件。 |
 | off(type: 'change', listener?: Callback\<DeviceListener>): void | 取消监听输入设备的热插拔事件。 |
 
 ## 虚拟键盘弹出检测

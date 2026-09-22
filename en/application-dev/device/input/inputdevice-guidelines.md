@@ -26,8 +26,8 @@ The following table lists common APIs for input device management. For details, 
 | ----------- | ------------------------------------------------------------ |
 | getDeviceList(): Promise\<Array\<number>> | Obtains the IDs of all input devices. |
 | getKeyboardType(deviceId: number): Promise\<KeyboardType> | Obtains the keyboard type of the input device. |
-| on(type: 'change', listener: Callback\<DeviceListener>): void | Enables listening for device hot-swap events. |
-| off(type: 'change', listener?: Callback\<DeviceListener>): void | Disables listening for device hot-swap events. |
+| on(type: 'change', listener: Callback\<DeviceListener>): void | Enables listening for device hot swap events. |
+| off(type: 'change', listener?: Callback\<DeviceListener>): void | Disables listening for device hot swap events. |
 
 ## Virtual Keyboard Detection
 

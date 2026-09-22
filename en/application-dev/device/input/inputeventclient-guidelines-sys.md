@@ -26,7 +26,7 @@ The following table lists common APIs for event injection. For details, see [@oh
 | -------------------------------------------- | -------------------------- |
 | injectEvent({KeyEvent: KeyEvent}): void | Injects keys (including single keys and combination keys). |
 | injectMouseEvent(mouseEvent: MouseEventData): void | Injects a mouse/touchpad event. |
-| injectTouchEvent(touchEvent: TouchEventData): void | Injects a touchscreen event. |
+| injectTouchEvent(touchEvent: TouchEventData): void | Injects a touch event. |
 
 ## How to Develop
 

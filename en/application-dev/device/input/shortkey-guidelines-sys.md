@@ -24,7 +24,7 @@ The following table lists common APIs for preset global hotkeys. For details, se
 
 | API | Description |
 | ------------------------------------------------------------ | -------------------------- |
-| setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void | Sets the delay for starting an ability using the hotkey. |
+| setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void | Sets the delay for starting an ability using shortcut keys. |
 
 ## How to Develop
 
