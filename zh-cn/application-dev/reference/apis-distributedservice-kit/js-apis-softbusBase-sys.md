@@ -8,7 +8,7 @@
 
 本模块提供设备感知能力，包括感知广播的启停、高频切换、感知扫描的启停以及已发现设备列表查询等。系统应用可通过自定义负载广播唤醒周边协同设备，并通过扫描发现周边感知设备，适用于近场设备间低功耗、高效的协同唤醒与发现场景。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 感知服务类型枚举。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
 
@@ -40,7 +40,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 感知扫描保活周期档位枚举。档位越高，保活周期越短。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
 
@@ -58,7 +58,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 感知扫描发现的设备信息，包括设备类型、设备ID以及广播携带的自定义数据。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
 
@@ -78,7 +78,7 @@ startPerceptionAdv(type:&nbsp;[PerceptionType](#perceptiontype), customData?:&nb
 
 启动感知广播或更新当前所有者的自定义负载。广播启动后，周边扫描设备可发现本设备。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -145,7 +145,7 @@ setPerceptionAdvHighFreq(type:&nbsp;[PerceptionType](#perceptiontype), customDat
 
 将活跃感知广播切换为高频，持续10秒，到期后自动恢复原频段。切换时可同时更新自定义负载。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -209,7 +209,7 @@ stopPerceptionAdv(type:&nbsp;[PerceptionType](#perceptiontype)):&nbsp;Promise&lt
 
 停止当前所有者的感知广播。广播停止后，周边扫描设备不再发现本设备。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -270,7 +270,7 @@ startPerceptionScan(type:&nbsp;[PerceptionType](#perceptiontype), cycle:&nbsp;[P
 
 以指定保活周期启动当前所有者的感知扫描。扫描启动后，可发现周边广播设备，通过 [getPerceptionDeviceList](#softbusbasegetperceptiondevicelist) 获取已发现设备。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -334,7 +334,7 @@ stopPerceptionScan(type:&nbsp;[PerceptionType](#perceptiontype)):&nbsp;Promise&l
 
 停止感知扫描并清空当前所有者的已发现设备列表。扫描停止后，已发现设备列表被清空，不可再通过 [getPerceptionDeviceList](#softbusbasegetperceptiondevicelist) 获取。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -395,7 +395,7 @@ getPerceptionDeviceList(type:&nbsp;[PerceptionType](#perceptiontype)):&nbsp;Prom
 
 获取感知扫描发现的设备列表。需先调用 [startPerceptionScan](#softbusbasestartperceptionscan) 启动扫描；调用 [stopPerceptionScan](#softbusbasestopperceptionscan) 停止扫描后，已发现设备列表被清空。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 

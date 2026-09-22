@@ -24,7 +24,7 @@
 - 仅系统应用可用。
 - 需开启设备蓝牙（BLE）能力。
 - 自定义负载 `customData` 最大长度 5 字节；设备 ID `deviceId` 最大长度 6 字节，网络字节序（大端）。
-- 该能力从 API 版本 26.0.0 开始支持。
+- 该能力从 API 版本 26.0.1 开始支持。
 
 ## 环境准备
 
@@ -35,7 +35,7 @@
 ### 搭建环境
 
 1. 在开发 PC 上安装 [DevEco Studio](https://developer.huawei.com/cn/download/deveco-studio)，版本要求在 4.1 及以上。
-2. 将 public-SDK 更新到 API 26.0.0 或以上，具体操作参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)。
+2. 将 public-SDK 更新到 API 26.0.1 或以上，具体操作参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)。
 3. 用 USB 线缆将调测设备连接到开发 PC。
 4. 确保设备已开启蓝牙。
 
