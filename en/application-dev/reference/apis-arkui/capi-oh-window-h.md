@@ -5,6 +5,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4e5be674e287f8213e38343ff22d0403ff7ef1a3 translatedAt=2026-08-27T08:50:50.605Z pushedAt=2026-08-28T03:41:58.563Z -->
 
 ## Overview
 
@@ -43,7 +44,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId,WindowManager_Rect** windowLayoutInfoList, size_t* windowLayoutInfoSize)](#oh_windowmanager_getallwindowlayoutinfolist) | - | Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array.|
 | [void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowLayoutInfoList)](#oh_windowmanager_releaseallwindowlayoutinfolist) | - | Releases the memory occupied by a window layout information array.|
 | [int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)](#oh_windowmanager_injecttouchevent) | - | Injects a multimodal touch event into the target window. This function is limited to injecting events into windows that belong to the same process. The injection does not affect window focus or stacking order, nor does it start window dragging. The event is forwarded directly to ArkUI. This function must be called after the target window has completed its UI loading.|
-| [int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)](#oh_windowmanager_getallmainwindowinfo) | - | Obtains the information about all main windows.|
+| [int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)](#oh_windowmanager_getallmainwindowinfo) | - | Obtains all main window information. |
 | [void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* infoList)](#oh_windowmanager_releaseallmainwindowinfo) | - | Releases the memory used by the main window information list.|
 | [typedef void (\*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)](#oh_windowmanager_windowsnapshotcallback) | OH_WindowManager_WindowSnapshotCallback | Defines the callback used for receiving the main window screenshot list.|
 | [int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)](#oh_windowmanager_getmainwindowsnapshot) | - | Obtains the screenshots of one or more main windows specified by **windowId**.|
@@ -137,7 +138,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **Description**
 
-Sets whether the main window displays the three-button navigation bar<!--Del--> or toolbar. Currently, only cars support the toolbar<!--DelEnd-->.<!--RP2--><!--RP2End-->
+Sets whether the main window displays the three-key navigation bar<!--Del-->or the toolbar. Currently, the toolbar is supported only on cars<!--DelEnd-->.<!--RP2--> Except for cars, this API takes effect only on devices where the navigation area can only be displayed as three-key navigation.<!--RP2End-->
 
 **Since**: 15
 
@@ -174,7 +175,7 @@ Obtains the avoid area of a window.
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
 | [WindowManager_AvoidAreaType](capi-oh-window-comm-h.md#windowmanager_avoidareatype) type | Type of the avoid area.|
-| [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md)* avoidArea | Pointer to the avoid area.|
+| [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md)* avoidArea | Pointer to the avoid area. It is used as an output parameter.|
 
 **Return value**
 
@@ -200,7 +201,7 @@ Checks whether a window is displayed.
 | Parameter| Description|
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
-| bool* isShow | Pointer to the check result for whether the window is displayed. **true** if displayed, **false** otherwise.|
+| bool* isShow | Pointer to the check result for whether the window is displayed. **true** if displayed, **false** otherwise. It is used as an output parameter.|
 
 **Return value**
 
@@ -424,7 +425,7 @@ Obtains the properties of a window.
 | Parameter| Description|
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
-| [WindowManager_WindowProperties](capi-windowmanager-windowproperties.md)* windowProperties | Pointer to the properties.|
+| [WindowManager_WindowProperties](capi-windowmanager-windowproperties.md)* windowProperties | Pointer to the property array. It is used as an output parameter.|
 
 **Return value**
 
@@ -450,7 +451,7 @@ Obtains the snapshot of a window.
 | Parameter| Description|
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer.<br>If the window ID is invalid or the window has been destroyed, you cannot obtain the window snapshot. To successfully obtain a snapshot, a valid window ID is required.<br>You can obtain a valid window ID by calling the ArkTS API [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) on the window object|
-| [OH_PixelmapNative](capi-struct.md)* pixelMap | Pointer to the snapshot.|
+| [OH_PixelmapNative](capi-struct.md)* pixelMap | Pointer to the snapshot. It is used as an output parameter.|
 
 **Return value**
 
@@ -538,7 +539,7 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 
 **Description**
 
-Obtains the information about all main windows. After using this API, you are advised to call [OH_WindowManager_ReleaseAllMainWindowInfo()](#oh_windowmanager_releaseallmainwindowinfo) to release the memory to avoid memory leakage.
+Obtains all main window information. After use, you are advised to call [OH_WindowManager_ReleaseAllMainWindowInfo()](#oh_windowmanager_releaseallmainwindowinfo) to release the corresponding memory and avoid memory leaks.
 
 **Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
@@ -575,7 +576,7 @@ Releases the memory used by the main window information list.
 
 | Parameter| Description|
 | -- | -- |
-| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)* infoList | Pointer to the main window information list.|
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)* infoList | Pointer to the main window information list. |
 
 ### OH_WindowManager_WindowSnapshotCallback()
 

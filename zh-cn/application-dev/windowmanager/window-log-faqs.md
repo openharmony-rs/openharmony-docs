@@ -27,7 +27,12 @@ hdc shell hidumper -s WindowManagerService -a '<参数>'
 | `-w {WinId} {ArkUI option}` | 查看指定窗口的ArkUI渲染信息 | `hidumper -s WindowManagerService -a '-w 13 -arkui'` | 需要查看窗口UI节点数量、渲染状态等信息。 |
 | `-p` | 查看窗口父子树结构 | `hidumper -s WindowManagerService -a '-p'` | 排查窗口父子关系、层级树结构等问题。 |
 | `-c` | 查看窗口截图信息 | `hidumper -s WindowManagerService -a '-c'` | 高级调试场景（截图相关信息）。 |
+| `-user all` | 查看所有前台用户的窗口信息 | `hidumper -s WindowManagerService -a '-user all -a'` | 多用户或多屏多用户场景下，需要分用户查看所有前台用户各自的窗口信息。<br>针对搭载<!--RP2-->OpenHarmony 7.1<!--RP2End-->及以上版本的设备，新增支持此参数。 |
+| `-user {userId}` | 查看指定前台用户的窗口信息 | `hidumper -s WindowManagerService -a '-user 100 -a'` | 多用户场景下，已知用户ID，需要查看特定前台用户名下的窗口信息。<br>针对搭载<!--RP2-->OpenHarmony 7.1<!--RP2End-->及以上版本的设备，新增支持此参数。 |
 
+> **说明：**
+>
+> `-user`参数只能打印当前处于前台（活跃状态）用户的窗口信息，若指定的用户不在前台或不存在，会提示用户不在前台或不存在。
 
 ### 查看所有窗口列表
 
@@ -278,7 +283,7 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
         return;
     }
     // 立即加载页面内容
-    windowClass.loadContent('pages/SubWindowPage', (err) => {
+    windowClass.setUIContent('pages/SubWindowPage', (err) => {
         if (err.code) {
             console.error('Failed to load content.');
             return;

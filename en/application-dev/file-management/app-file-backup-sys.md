@@ -1,10 +1,11 @@
 # Triggering Backup and Restore (for System Applications Only)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=df6561cd1fa48d9a9e0010adeaf5f5f945da452e translatedAt=2026-08-26T04:26:53.177Z pushedAt=2026-08-28T02:45:51.268Z -->
 
 The backup and restore framework provides a solution for backing up and restoring data of applications and services on a device. You can follow the procedure below to enable an application to trigger data backup or restoration:
 
@@ -16,7 +17,7 @@ The backup and restore framework provides a solution for backing up and restorin
 
 ## How to Develop
 
-For details about how to use the APIs, see [Backup and Restore](../reference/apis-core-file-kit/js-apis-file-backup-sys.md).
+For details about how to use the backup and restore APIs, see [@ohos.file.backup (Backup and Restore) (System API)](../reference/apis-core-file-kit/js-apis-file-backup-sys.md).
 
 Before using the APIs, you need to:
 
@@ -36,10 +37,10 @@ The capability file of an application contains the device type, device version, 
 
 Call [backup.getLocalCapabilities()](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#backupgetlocalcapabilities) to obtain the capability file.
 
-<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
+<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
 
 ``` TypeScript
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { backup } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
@@ -53,9 +54,9 @@ export async function getLocalCapabilities(): Promise<void> {
     let fileData = await backup.getLocalCapabilities();
     console.info('getLocalCapabilities success');
     let fpath = filesDir + '/localCapabilities.json';
-    fs.copyFileSync(fileData.fd, fpath);
+    fileIo.copyFileSync(fileData.fd, fpath);
     // ...
-    fs.closeSync(fileData.fd);
+    fileIo.closeSync(fileData.fd);
   } catch (error) {
     console.error(`getLocalCapabilities failed with err, code is ${error.code}, message is ${error.message}`);
   }
@@ -103,10 +104,10 @@ You can save the file to a local directory as required.
 
 **Example**
 
-  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
-  
+  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+
   ``` TypeScript
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
@@ -129,12 +130,12 @@ You can save the file to a local directory as required.
         }
         try {
           let bundlePath = filesDir + '/' + file.bundleName;
-          if (!fs.accessSync(bundlePath)) {
-            fs.mkdirSync(bundlePath);
+          if (!fileIo.accessSync(bundlePath)) {
+            fileIo.mkdirSync(bundlePath);
           }
           // Calling copyFileSync causes one more memory copy. To reduce memory consumption, you can use the FD returned by onFileReady for data processing, and close the FD after data is processed.
-          fs.copyFileSync(file.fd, bundlePath + `/${file.uri}`);
-          fs.closeSync(file.fd);
+          fileIo.copyFileSync(file.fd, bundlePath + `/${file.uri}`);
+          fileIo.closeSync(file.fd);
           console.info('onFileReady success');
         } catch (error) {
           let err: BusinessError = error as BusinessError;
@@ -202,10 +203,10 @@ When all the data of the application is ready, the service starts to restore the
 
 **Example**
 
-  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
-  
+  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+
   ``` TypeScript
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
@@ -241,13 +242,13 @@ When all the data of the application is ready, the service starts to restore the
         }
         // Set bundlePath based on the actual situation.
         let bundlePath: string = `${filesDir}/${file.bundleName}/`;
-        if (!fs.accessSync(bundlePath)) {
+        if (!fileIo.accessSync(bundlePath)) {
           console.error('onFileReady bundlePath err : ' + bundlePath);
         }
         console.info('fd : ' + file.fd);
         let targetPath = `${bundlePath}${file.uri}`;
-        fs.copyFileSync(targetPath, file.fd);
-        fs.closeSync(file.fd);
+        fileIo.copyFileSync(targetPath, file.fd);
+        fileIo.closeSync(file.fd);
         let currentCount = countMap.get(file.bundleName) || 0; // If no count is found, the default value 0 is returned.
         countMap.set(file.bundleName, ++currentCount);
         // After the data is transferred, notify the server that the files are ready.
@@ -312,3 +313,4 @@ When all the data of the application is ready, the service starts to restore the
     console.info('getFileHandle success');
   }
   ```
+

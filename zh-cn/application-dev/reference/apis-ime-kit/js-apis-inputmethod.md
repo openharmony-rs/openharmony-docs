@@ -309,7 +309,7 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -372,7 +372,7 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -449,7 +449,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -518,7 +518,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10      |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -603,7 +603,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -664,7 +664,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -923,7 +923,7 @@ Enter键的功能类型。
 | enterKeyType  | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。                                                                                                                                                                                                               |
 | placeholder<sup>20+</sup> | string | 否 | 是 | 编辑框设置的占位符信息。 <br/>- 编辑框设置占位符信息时，长度不超过255个字符（如果超出将会自动截断为255个字符），用于提示或引导用户输入临时性文本或符号。（例如：提示输入项为"必填"或"非必填"的输入结果反馈。）<br/>- 编辑框没有设置占位符信息时，默认为空字符串。<br/>- 该字段在调用[attach](#attach10)时提供给输入法应用。                                   |
 | abilityName<sup>20+</sup> | string | 否 | 是 | 编辑框设置的ability名称。<br/>- 编辑框设置ability名称时，长度不超过127个字符（如果超出将会自动截断为127个字符）。<br/>- 编辑框未设置ability名称时，默认为空字符串。<br/>- 该字段在调用绑定[attach](#attach10)时提供给输入法应用。                                                                        |
-| consumeKeyEvents | boolean | 否 | 是 | 编辑框是否具有完整处理字母、字符、功能等按键的能力。默认值为false。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>- 该字段在调用[attach](#attach10) / [InputAttribute](#inputattribute10)时提供给输入法应用。  <br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+| consumeKeyEvents | boolean | 否 | 是 | 编辑框是否具有完整处理字母、字符、功能等按键的能力。默认值为false。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>- 该字段在调用[attach](#attach10) / [updateAttribute](#updateattribute10)时提供给输入法应用。  <br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 
 ## TextConfig<sup>10+</sup>
 
@@ -2284,7 +2284,7 @@ showSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2328,7 +2328,7 @@ showSoftKeyboard(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2383,7 +2383,7 @@ hideSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2427,7 +2427,7 @@ hideSoftKeyboard(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 

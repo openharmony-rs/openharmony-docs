@@ -101,7 +101,7 @@
 | setAntiAlias(aa: boolean) : void | 用于设置画笔的抗锯齿属性，设置为true则画笔在绘制图形时会对图形的边缘像素进行半透明的模糊处理。 |
 | setCapStyle(style: CapStyle): void | 用于设置画笔线帽样式。 |
 | setJoinStyle(style: JoinStyle): void | 用于设置画笔绘制转角的样式。 |
-| detachPen(): void | 用于去除画布中的画笔，执行后画布将不去绘制图形形状的轮廓，恢复到默认的填充效果。 |
+| detachPen(): void | 用于去除画布中的画笔，执行后画布将不去绘制图形形状的轮廓，恢复到默认的描边效果。 |
 
 
 ### 开发步骤
@@ -175,8 +175,8 @@
       | 转角样式 | 说明 | 示意图 |
       | -------- | -------- | -------- |
       | MITER_JOIN | 转角类型为尖角 | ![MITER-JOIN](figures/MITER-JOIN.png) |
-      | ROUND_JOIN | 转角类型为圆头 | ![ROUND-JOIN](figures/ROUND-JOIN.png) |
-      | BEVEL_JOIN | 转角类型为平头 | ![BEVEL-JOIN](figures/BEVEL-JOIN.png) |
+      | ROUND_JOIN | 转角类型为圆角 | ![ROUND-JOIN](figures/ROUND-JOIN.png) |
+      | BEVEL_JOIN | 转角类型为平角 | ![BEVEL-JOIN](figures/BEVEL-JOIN.png) |
 
 3. 使用attachPen()接口给Canvas画布设置画笔。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 

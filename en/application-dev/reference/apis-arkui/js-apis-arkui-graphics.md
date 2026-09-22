@@ -5,19 +5,20 @@
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=033859cddd4818ba4c62bad26b6ee850b2b31a63 translatedAt=2026-08-29T09:37:03.025Z pushedAt=2026-08-31T11:48:54.203Z -->
 
-The **Graphics** module provides APIs for defining attributes of a custom node.
+Defines the graphics attributes of custom nodes (RenderNode), including geometric transformations (scaling, rotation, and translation), unified representation of colors and lengths, shapes, graphics masking and clipping, and blur effects. It is suitable for scenarios that require refined graphics drawing and visual effect processing on custom nodes.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
 ```ts
-import { DrawContext, Size, Offset, Position, Pivot, Scale, Translation, Matrix4, Rotation, Frame, LengthMetricsUnit } from "@kit.ArkUI";
+import { DrawContext, Size, Offset, Position, Pivot, Scale, Translation, Matrix4, Rotation, Frame, LengthMetricsUnit } from '@kit.ArkUI';
 ```
 
 ## Size
@@ -30,8 +31,8 @@ Returns the width and height of the component. The default unit is vp, but APIs 
 
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| width  | number | No  | No  | Width of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
-| height | number | No  | No  | Height of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
+| width  | number | No   | No   | Width of the component.<br>Unit: vp<br>Value range: [0, +∞)<br>A negative value is treated as the default value. |
+| height | number | No   | No   | Height of the component.<br>Unit: vp<br>Value range: [0, +∞)<br>A negative value is treated as the default value. |
 
 ## Position
 
@@ -45,7 +46,7 @@ Sets or returns the position of the component.
 
 | Type               | Description                               |
 | ------------------- | ----------------------------------- |
-| [Vector2](#vector2) | A vector that contains two values: x and y.<br>Unit: vp.|
+| [Vector2](#vector2) | Vector containing two values: x and y.<br>Unit: vp |
 
 ## PositionT\<T><sup>12+</sup>
 
@@ -59,7 +60,7 @@ Sets or returns the position of the component.
 
 | Type                        | Description                               |
 | ---------------------------- | ----------------------------------- |
-| [Vector2T\<T>](#vector2tt12) | A vector that contains two values: x and y.<br>Unit: vp.|
+| [Vector2T\<T>](#vector2tt12) | Vector containing two values: x and y.<br>Unit: vp |
 
 ## Frame
 
@@ -71,10 +72,10 @@ Sets or returns the layout size and position of the component.
 
 | Name  | Type  | Read-Only| Optional| Description                       |
 | ------ | ------ | ---- | ---- | --------------------------- |
-| x      | number | No  | No  | Horizontal position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
-| y      | number | No  | No  | Vertical position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
-| width  | number | No  | No  | Component width.<br>Unit: vp.<br>Value range: [0, +∞).  |
-| height | number | No  | No  | Component height.<br>Unit: vp.<br>Value range: [0, +∞).  |
+| x      | number | No   | No   | Horizontal position.<br>Unit: vp<br>Value range: (-∞, +∞) |
+| y      | number | No   | No   | Vertical position.<br>Unit: vp<br>Value range: (-∞, +∞) |
+| width  | number | No   | No   | Width of the component.<br>Unit: vp<br>Value range: [0, +∞)<br>A negative value is treated as the default value.   |
+| height | number | No   | No   | Height of the component.<br>Unit: vp<br>Value range: [0, +∞)<br>A negative value is treated as the default value.   |
 
 ## Pivot
 
@@ -88,7 +89,7 @@ Sets the pivot of the component. As the rotation or scaling center of the compon
 
 | Type               | Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| [Vector2](#vector2) | X and Y coordinates of the pivot. The value is a floating point number in the range [0.0, 1.0], and the default value is **0.5**.|
+| [Vector2](#vector2) | X and Y coordinates of the pivot. This parameter is a floating point number. The default value is **0.5**, and the value range is [0.0, 1.0]. A value out of range is treated as the default value **0.5**. |
 
 ## Scale
 
@@ -116,7 +117,7 @@ Sets the translation amount of the component.
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| [Vector2](#vector2) | Translation amount along the x- and y-axis.<br>Unit: px|
+| [Vector2](#vector2) | Translation amount along the x- and y-axis.<br>Unit: px |
 
 ## Rotation
 
@@ -130,7 +131,7 @@ Sets the rotation angle of the component.
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| [Vector3](#vector3) | Rotation angle around the x-, y-, and z-axes.<br>Unit: degree|
+| [Vector3](#vector3) | Rotation angles around the x-, y-, and z-axis.<br>Unit: degree |
 
 ## Offset
 
@@ -144,13 +145,13 @@ Sets the offset of the component or effect.
 
 | Type               | Description                             |
 | ------------------- | --------------------------------- |
-| [Vector2](#vector2) | Offset along the x- and y-axis.<br>Unit: vp.|
+| [Vector2](#vector2) | Offset along the x- and y-axis.<br>Unit: vp |
 
 ## Matrix4
 
 type Matrix4 = [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]
 
-Sets a 4x4 matrix.
+Sets a 4 x 4 matrix.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -158,16 +159,16 @@ Sets a 4x4 matrix.
 
 | Type                                                        | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | A 16-element array representing a 4x4 matrix.<br>Value range of each number: (-∞, +∞)|
+| [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | 16-element array representing a 4 x 4 matrix.<br>Value range of each number: (-∞, +∞) |
 
-The **Matrix4** type is used to set transformation information for components. The following is an example:
+This type is a 4 x 4 matrix represented by `number[]` of length 16, which is used to set transformation information for components. The following is an example:
 ```ts
 const transform: Matrix4 = [
   1, 0, 45, 0,
   0, 1,  0, 0,
   0, 0,  1, 0,
   0, 0,  0, 1
-]
+];
 ```
 
 ## Vector2
@@ -180,8 +181,8 @@ Defines a vector that contains the x and y coordinate values.
 
 | Name| Type  | Read-Only| Optional| Description             |
 | ---- | ------ | ---- | ---- | ----------------- |
-| x    | number | No  | No  | X coordinate value of the vector.<br>Value range: (-∞, +∞).|
-| y    | number | No  | No  | Y coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| x    | number | No   | No   | Value of the vector along the x-axis.<br>Value range: (-∞, +∞) |
+| y    | number | No   | No   | Value of the vector along the y-axis.<br>Value range: (-∞, +∞) |
 
 ## Vector3
 
@@ -191,11 +192,11 @@ Represents a vector including three values: x, y, and z.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Read-Only| Optional| Description               |
+| Name | Type   | Read-Only | Optional | Description                |
 | ---- | ------ | ---- | ---- | ------------------- |
-| x    | number | No  | No  | Rotation angle along the x-axis.<br>Value range: (-∞, +∞).|
-| y    | number | No  | No  | Rotation angle along the y-axis.<br>Value range: (-∞, +∞).|
-| z    | number | No  | No  | Rotation angle along the z-axis.<br>Value range: (-∞, +∞).|
+| x    | number | No   | No   | Value of the vector along the x-axis.<br>Value range: (-∞, +∞) |
+| y    | number | No   | No   | Value of the vector along the y-axis.<br>Value range: (-∞, +∞) |
+| z    | number | No   | No   | Value of the vector along the z-axis.<br>Value range: (-∞, +∞) |
 
 ## Vector4
 
@@ -211,10 +212,10 @@ Defines a vector that contains the x, y, z, and w coordinate values.
 
 | Name| Type  | Read-Only| Optional| Description    |
 | ---- | ------ | ---- | ---- | -------- |
-| x    | number | No | No  | X coordinate value of the vector.<br>Value range: (-∞, +∞).|
-| y    | number | No | No  | Y coordinate value of the vector.<br>Value range: (-∞, +∞).|
-| z    | number | No | No  | Z coordinate value of the vector.<br>Value range: (-∞, +∞).|
-| w    | number | No | No  | W coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| x    | number | No  | No   | Value of the vector along the x-axis.<br>Value range: (-∞, +∞) |
+| y    | number | No  | No   | Value of the vector along the y-axis.<br>Value range: (-∞, +∞) |
+| z    | number | No  | No   | Value of the vector along the z-axis.<br>Value range: (-∞, +∞) |
+| w    | number | No  | No   | Value of the vector along the w-axis.<br>Value range: (-∞, +∞) |
 
 ## Vector2T\<T><sup>12+</sup>
 
@@ -231,7 +232,7 @@ Represents a vector of the T type that contains two values: x and y.
 
 ## DrawContext
 
-Graphics drawing context, which provides the canvas width and height required for drawing.
+Graphics drawing context, which provides the canvas used for drawing and its width and height.
 
 ### size
 
@@ -284,10 +285,9 @@ Obtains the canvas used for drawing.
 **Example**
 
 ```ts
-import { RenderNode, FrameNode, NodeController, DrawContext } from "@kit.ArkUI";
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 class MyRenderNode extends RenderNode {
-  flag: boolean = false;
 
   draw(context: DrawContext) {
     const size = context.size;
@@ -354,11 +354,11 @@ Enumerates length units.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| PX | 0 | Length in px.|
-| VP | 1 | Length in vp.|
-| FP | 2 | Length in fp.|
-| PERCENT | 3 | Length in percentage.|
-| LPX | 4 | Length in lpx.|
+| PX | 0 | Length type used to describe the length in units of px. |
+| VP | 1 | Length type used to describe the length in units of vp. |
+| FP | 2 | Length type used to describe the length in units of fp. |
+| PERCENT | 3 | Length type used to describe the length in units of %. |
+| LPX | 4 | Length type used to describe the length in units of lpx. |
 
 ## SizeT\<T><sup>12+</sup>
 
@@ -383,8 +383,8 @@ Enumerates length units.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| DEFAULT | 0 | Length in vp.|
-| PX | 1 | Length in px.|
+| DEFAULT | 0 | Length type, used to describe the length in units of the default vp. |
+| PX | 1 | Length type, used to describe the length in units of px. |
 
 ## LengthMetrics<sup>12+</sup>
 
@@ -398,7 +398,7 @@ Defines the length attribute. When the length unit is PERCENT, the value **1** i
 
 | Name  | Type| Read-Only| Optional| Description            |
 | ------------ | ---------------------------------------- | ---- | ---- | ------ |
-| value       | number | No  | No  | Value of the length property.  |
+| value       | number | No   | No   | Value of the length property.<br>Value range: (-∞, +∞).<br>When **unit** is set to **PERCENT**, **value** indicates a percentage (1 indicates 100%), and the reference size depends on the specific usage scenario; for other units, **value** indicates the absolute length in the corresponding unit. |
 | unit | [LengthUnit](#lengthunit12)                                   | No  | No  | Unit of the length property. The default value is VP.|
 
 ### constructor<sup>12+</sup>
@@ -415,8 +415,8 @@ A constructor used to create a **LengthMetrics** instance. If the **unit** param
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: [0, +∞).|
-| unit   | [LengthUnit](#lengthunit12) | No  | Unit of the length property.|
+| value   | number | Yes   | Value of the length property.<br>Value range: (-∞, +∞) |
+| unit   | [LengthUnit](#lengthunit12) | No   | Unit of the length property. The default value is vp. |
 
 ### px<sup>12+</sup>
 
@@ -432,13 +432,13 @@ Creates a length property in px.
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: (-∞, +∞).|
+| value   | number | Yes   | Value of the length property.<br>Value range: (-∞, +∞) |
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | Instance of the **LengthMetrics** class.|
+| [LengthMetrics](#lengthmetrics12) | Length property object in units of px. |
 
 ### vp<sup>12+</sup>
 
@@ -454,13 +454,13 @@ Creates a length property in vp.
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: (-∞, +∞).|
+| value   | number | Yes   | Value of the length property.<br>Value range: (-∞, +∞) |
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | Instance of the **LengthMetrics** class.|
+| [LengthMetrics](#lengthmetrics12) | Length property object in units of vp. |
 
 ### fp<sup>12+</sup>
 
@@ -476,13 +476,13 @@ Creates a length property in fp.
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: (-∞, +∞).|
+| value   | number | Yes   | Value of the length property.<br>Value range: (-∞, +∞) |
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | Instance of the **LengthMetrics** class.|
+| [LengthMetrics](#lengthmetrics12) | Length property object in units of fp. |
 
 ### percent<sup>12+</sup>
 
@@ -498,13 +498,13 @@ Creates a length property in percent. The value **1** indicates 100%.
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: [0, 1].|
+| value   | number | Yes   | Value of the length property.<br>Value range: [0, 1]<br>A value out of range is treated as a boundary value. |
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | Instance of the **LengthMetrics** class.|
+| [LengthMetrics](#lengthmetrics12) | Length property object in units of percentage, where a value of **1** indicates 100%. |
 
 ### lpx<sup>12+</sup>
 
@@ -520,13 +520,13 @@ Creates a length property in lpx.
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: (-∞, +∞).|
+| value   | number | Yes   | Value of the length property.<br>Value range: (-∞, +∞) |
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | Instance of the **LengthMetrics** class.|
+| [LengthMetrics](#lengthmetrics12) | Length property object in units of lpx. |
 
 ### resource<sup>12+</sup>
 
@@ -542,13 +542,13 @@ Represents the length of a resource of the Resource type.
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | Resource | Yes  | Value of the length property.|
+| value   | [Resource](arkui-ts/ts-types.md#resource) | Yes   | Value of the length property. |
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | Instance of the **LengthMetrics** class.|
+| [LengthMetrics](#lengthmetrics12) | Length property object of a Resource-type resource. |
 
 **Example**
 
@@ -587,7 +587,7 @@ struct SizeExample {
         })
         .backgroundColor(Color.White)
       }
-      .backgroundColor("#ff2787d9")
+      .backgroundColor('#ff2787d9')
     }
     .width('100%')
     .margin({ top: 5 })
@@ -606,6 +606,8 @@ Sets whether the **LengthMetrics** object automatically updates with system conf
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -618,7 +620,7 @@ Sets whether the **LengthMetrics** object automatically updates with system conf
 
 | Type| Description|
 |------|------|
-| [LengthMetrics](#lengthmetrics12) | **LengthMetrics** object.|
+| [LengthMetrics](#lengthmetrics12) | **LengthMetrics** object after the auto-refresh property is set. |
 
 **Example**
 
@@ -628,7 +630,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Entry
 @Component
 struct MyStateSample {
-  @State lengthMetrics: LengthMetrics = LengthMetrics.resource($r('sys.float.ohos_id_button_min_width')).autoRefresh!(true)
+  @State lengthMetrics: LengthMetrics = LengthMetrics.resource($r('sys.float.ohos_id_button_min_width')).autoRefresh!(true);
 
   build() {
     Column() {
@@ -641,7 +643,7 @@ struct MyStateSample {
 
 ## ColorMetrics<sup>12+</sup>
 
-Used to mix colors.
+Provides a unified representation and encapsulation of colors. It supports color mixing as well as obtaining the color components in the R, G, B, and Alpha channels.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -659,13 +661,13 @@ Instantiates the **ColorMetrics** class using a color in HEX format.
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Color in HEX format.<br>RGB and ARGB color values are supported.|
+| value   | number | Yes   | Color in HEX format. RGB and ARGB color values are supported.<br>Value range: [0, 0xffffffff]<br>A value out of range is treated as a boundary value. |
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | Instance of the **ColorMetrics** class.|
+| [ColorMetrics](#colormetrics12) | Color object corresponding to a color in HEX format. |
 
 ### rgba<sup>12+</sup>
 
@@ -681,22 +683,22 @@ Instantiates the **ColorMetrics** class using colors in RGB or RGBA format.
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| red   | number | Yes  | Red component of the color. The value is an integer ranging from 0 to 255.|
-| green | number | Yes  | Green component of the color. The value is an integer ranging from 0 to 255.|
-| blue  | number | Yes  | Blue component of the color. The value is an integer ranging from 0 to 255.|
-| alpha | number | No  | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.0. The default value is **1.0** (fully opaque).<br> Note: If alpha is less than 0, the color is fully transparent. If alpha is greater than 1, the color is opaque.|
+| red   | number | Yes  | Red component of the color. The value is an integer ranging from 0 to 255. A value out of range is treated as a boundary value. |
+| green | number | Yes  | Green component of the color. The value is an integer ranging from 0 to 255. A value out of range is treated as a boundary value. |
+| blue  | number | Yes  | Blue component of the color. The value is an integer ranging from 0 to 255. A value out of range is treated as a boundary value. |
+| alpha | number | No  | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.0. The default value is 1.0 (fully opaque).<br> **Note:** If alpha is less than 0, the color is fully transparent. If alpha is greater than 1, the color is opaque.|
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | Instance of the **ColorMetrics** class.|
+| [ColorMetrics](#colormetrics12) | Color object corresponding to the color in RGB or RGBA format. |
 
 ### colorWithSpace<sup>20+</sup>
 
 static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
-Creates a **ColorMetrics** instance using specified [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) and RGBA values. Only certain attributes support color configuration in the display-p3 color space.
+Instantiates the **ColorMetrics** class using [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) and RGBA colorS. Only the red, green, and blue attributes support color configuration in the display-p3 color space, and the alpha attribute is not affected by the color space.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -706,23 +708,23 @@ Creates a **ColorMetrics** instance using specified [ColorSpace](./arkui-ts/ts-a
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | Yes  | Color space used to specify the color. If ColorSpace.DISPLAY_P3 is used, the [setWindowColorSpace](./arkts-apis-window-Window.md#setwindowcolorspace9-1) API must be called to set the current window to the wide color gamut mode.|
-| red   | number | Yes  | Red component of the color. The value is a floating point number ranging from 0 to 1.|
-| green | number | Yes  | Green component of the color. The value is a floating point number ranging from 0 to 1.|
-| blue  | number | Yes  | Blue component of the color. The value is a floating point number ranging from 0 to 1.|
-| alpha | number | No  | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.0. The default value is **1.0** (fully opaque).|
+| colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | Yes   | Color space. To use ColorSpace.DISPLAY_P3, call [setWindowColorSpace](./arkts-apis-window-Window.md#setwindowcolorspace9-1) on the corresponding window to set the current window to wide color gamut mode. |
+| red   | number | Yes   | Red component of the color. The value is a floating point number ranging from 0 to 1. A value out of range is treated as a boundary value. |
+| green | number | Yes   | Green component of the color. The value is a floating point number ranging from 0 to 1. A value out of range is treated as a boundary value. |
+| blue  | number | Yes   | Blue component of the color. The value is a floating point number ranging from 0 to 1. A value out of range is treated as a boundary value. |
+| alpha | number | No   | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.0. The default value is 1.0 (fully opaque).<br> **Note:** If alpha is less than 0, the color is fully transparent. If alpha is greater than 1, the color is opaque.|
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | Instance of the **ColorMetrics** class.|
+| [ColorMetrics](#colormetrics12) | color object corresponding to a color in RGBA format in the specified color space.|
 
 ### resourceColor<sup>12+</sup>
 
 static resourceColor(color: ResourceColor): ColorMetrics
 
-Instantiates the **ColorMetrics** class using a color in resource reference format.
+Instantiates the **ColorMetrics** class using a color in Resource format.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -732,13 +734,13 @@ Instantiates the **ColorMetrics** class using a color in resource reference form
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| color | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | Yes| Color in resource reference format.|
+| color | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | Yes| Color in Resource format.|
 
 **Return value**
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | Instance of the **ColorMetrics** class.|
+| [ColorMetrics](#colormetrics12) | Color object corresponding to the color in Resource format. |
 
 **Error codes**
 
@@ -863,7 +865,7 @@ Obtains the alpha component of the ColorMetrics color.
 
 | Type         | Description            |
 | ------------- | ---------------- |
-| number | Alpha component of the color. The value is an integer ranging from 0 to 255.|
+| number | Alpha component (opacity) of the color, which is an integer ranging from 0 to 255. When set through the **rgba()** or **colorWithSpace()** API, the alpha value ranges from 0.0 to 1.0 as a floating point number, and is internally converted to an integer ranging from 0 to 255 for storage. |
 
 **Example**
 
@@ -877,12 +879,11 @@ function getBlendColor(baseColor: ResourceColor): ColorMetrics {
     // When resourceColor and blendColor of ColorMetrics are used, add exception handling.
     // Error codes 401 and 180003 of the ArkUI subsystem may be returned.
     // 61 157 180
-    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#083d9db4"));
+    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor('#083d9db4'));
     console.info(`current color is ${sourceColor.color} r:${sourceColor.red} g:${sourceColor.green} b:${sourceColor.blue} a :${sourceColor.alpha}`);
   } catch (error) {
-    console.error("getBlendColor failed, code = " + (error as BusinessError).code + ", message = " +
-    (error as BusinessError).message);
-    sourceColor = ColorMetrics.resourceColor("#19000000");
+    console.error(`getBlendColor failed. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+    sourceColor = ColorMetrics.resourceColor('#19000000');
   }
   return sourceColor;
 }
@@ -892,25 +893,25 @@ function getBlendColor(baseColor: ResourceColor): ColorMetrics {
 struct ColorMetricsSample {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button("ColorMetrics blendColor")
+      Button('ColorMetrics blendColor')
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(getBlendColor("#ff3d9db4").color)
+        .backgroundColor(getBlendColor('#ff3d9db4').color)
         .margin(10)
-      Button("ColorMetrics numeric")
+      Button('ColorMetrics numeric')
         .width('80%')
         .align(Alignment.Center)
         .height(50)
         .backgroundColor(ColorMetrics.numeric(0xff707070).color)
         .margin(10)
-      Button("ColorMetrics rgba")
+      Button('ColorMetrics rgba')
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(ColorMetrics.rgba(0, 74, 175, 255).color)
+        .backgroundColor(ColorMetrics.rgba(0, 74, 175, 1.0).color)
         .margin(10)
-      Button("ColorMetrics colorWithSpace")
+      Button('ColorMetrics colorWithSpace')
         .width('80%')
         .align(Alignment.Center)
         .height(50)
@@ -934,6 +935,8 @@ Sets whether the **ColorMetrics** object automatically updates with system confi
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -946,7 +949,7 @@ Sets whether the **ColorMetrics** object automatically updates with system confi
 
 | Type| Description|
 |------|------|
-| [ColorMetrics](#colormetrics12) | **ColorMetrics** object.|
+| [ColorMetrics](#colormetrics12) | **ColorMetrics** object after the auto-refresh property is set. |
 
 **Example**
 
@@ -956,7 +959,7 @@ import { ColorMetrics } from '@kit.ArkUI';
 @Entry
 @Component
 struct MyStateSample {
-  @State colorMetrics: ColorMetrics = ColorMetrics.resourceColor($r('sys.color.font_primary')).autoRefresh!(true)
+  @State colorMetrics: ColorMetrics = ColorMetrics.resourceColor($r('sys.color.font_primary')).autoRefresh!(true);
 
   build() {
     Column() {
@@ -996,7 +999,7 @@ Sets the semi-axis lengths for the x-axis and y-axis of the rounded corners.
 
 | Type                                        | Description              |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)\<[Vector2](#vector2)> | Semi-axis lengths for the x-axis and y-axis of the rounded corners.|
+| [Corners](#cornerst12)\<[Vector2](#vector2)> | Semi-axis lengths of the four corners along the x- and y-axis.<br>Unit: px |
 
 ## BorderRadiuses<sup>12+</sup>
 
@@ -1010,7 +1013,7 @@ Sets the uniform radius of the four corners.
 
 | Type                           | Description              |
 | ------------------------------- | ------------------ |
-| [Corners](#cornerst12)\<number> | Uniform radius of the four corners.|
+| [Corners](#cornerst12)\<number> | Corner radius of the four corners.<br>Unit: vp |
 
 ## Rect<sup>12+</sup>
 
@@ -1049,9 +1052,9 @@ Describes a circle.
 
 | Name   | Type  | Read-Only| Optional| Description                     |
 | ------- | ------ | ---- | ---- | ------------------------- |
-| centerX | number | No  | No  | X-coordinate of the center of the circle, in px.|
-| centerY | number | No  | No  | Y-coordinate of the center of the circle, in px.|
-| radius  | number | No  | No  | Radius of the circle, in px.<br> Value range: [0, +∞).  |
+| centerX | number | No  | No  | X-coordinate of the center of the circle, in px.<br>Value range: (-∞, +∞) |
+| centerY | number | No  | No  | Y-coordinate of the center of the circle, in px.<br>Value range: (-∞, +∞) |
+| radius  | number | No  | No  | Radius of the circle, in px.<br>Value range: [0, +∞)<br>A negative value is treated as the default value.  |
 
 ## CommandPath<sup>12+</sup>
 
@@ -1063,11 +1066,11 @@ Describes the command for drawing a path.
 
 | Name                                                        | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------------------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | No  | No  | Commands for drawing a path. For details about how to convert pixel units, see [Pixel Units](./arkui-ts/ts-pixel-units.md).<br>Unit: px|
+| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | No   | No   | Commands for drawing a path. For details about how to convert pixel units, see [Pixel Units](./arkui-ts/ts-pixel-units.md).<br>Unit: px |
 
 ## ShapeMask<sup>12+</sup>
 
-Describes the shape mask.
+Sets a graphics mask, which supports multiple shapes such as rectangles, rounded rectangles, circles, ellipses, and custom paths. It can be applied to a RenderNode to implement a shape mask effect.
 
 ### Attributes
 
@@ -1077,9 +1080,9 @@ Describes the shape mask.
 
 | Name           | Type   | Read-Only| Optional| Description                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> A color with only the transparency is generated based on the transparency and brightness of **fillColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RenderNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
-| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br>  A color with only the transparency is generated based on the transparency and brightness of **strokeColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RenderNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
-| strokeWidth     | number | No  | No  | Sets the stroke width for the mask, in px. The default value is **0**.  |
+| fillColor       | number | No   | No   | Fill color of the mask, in ARGB format. Default value: `0XFF000000`.<br>Value range: [0, 0xffffffff]<br>A value out of range is treated as the default value.<br> A color containing only transparency is generated based on the transparency and brightness of **fillColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of the RenderNode itself using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) to generate the final color. |
+| strokeColor     | number | No   | No   | Stroke color for the mask, in ARGB format. Default value: `0XFF000000`.<br>Value range: [0, 0xffffffff]<br>A value out of range is treated as the default value.<br>  A color containing only transparency is generated based on the transparency and brightness of **strokeColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of the RenderNode itself using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) to generate the final color. |
+| strokeWidth     | number | No   | No   | Stroke width for the mask, in px. Default value: **0**.<br>Value range: [0, +∞)<br>A negative value is treated as the default value.   |
 
 ### constructor<sup>12+</sup>
 
@@ -1179,7 +1182,7 @@ Sets the mask in the shape of a rectangle with rounded corners.
 **Example**
 
 ```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask,RoundRect} from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController, ShapeMask, RoundRect } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -1196,7 +1199,7 @@ class MyNodeController extends NodeController {
         bottomLeft: { x: 32, y: 32 },
         bottomRight: { x: 32, y: 32 }
       }
-    }
+    };
     mask.setRoundRectShape(roundRect);
     mask.fillColor = 0X55FF0000;
 
@@ -1373,7 +1376,7 @@ Sets the command for drawing a path.
 import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
 
 const mask = new ShapeMask();
-mask.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+mask.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 mask.fillColor = 0X55FF0000;
 
 const renderNode = new RenderNode();
@@ -1418,7 +1421,7 @@ struct Index {
 
 ## ShapeClip<sup>12+</sup>
 
-Sets the clipping shape.
+Sets graphics clipping, which supports multiple shapes such as rectangles, rounded rectangles, circles, ellipses, and custom paths. It can clip a RenderNode by shape so that only the content within the clipping area is displayed.
 
 ### constructor<sup>12+</sup>
 
@@ -1426,9 +1429,9 @@ constructor()
 
 A constructor used to create a **ShapeClip** object.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### setRectShape<sup>12+</sup>
 
@@ -1436,9 +1439,9 @@ setRectShape(rect: Rect): void
 
 Sets a rectangle for shape clipping.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -1452,7 +1455,7 @@ Sets a rectangle for shape clipping.
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -1490,7 +1493,7 @@ struct Index {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
         .margin({ bottom: 20 })
-      Button("setRectShape")
+      Button('setRectShape')
         .onClick(() => {
           shapeClip.setRectShape({
             left: 0,
@@ -1512,9 +1515,9 @@ setRoundRectShape(roundRect: RoundRect): void
 
 Sets a rounded rectangle for shape clipping.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -1527,7 +1530,7 @@ Sets a rounded rectangle for shape clipping.
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -1563,7 +1566,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setRoundRectShape")
+      Button('setRoundRectShape')
         .onClick(() => {
           renderNode.shapeClip.setRoundRectShape({
             rect: {
@@ -1591,9 +1594,9 @@ setCircleShape(circle: Circle): void
 
 Sets a circle for shape clipping.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -1607,7 +1610,7 @@ Sets a circle for shape clipping.
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -1643,7 +1646,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setCircleShape")
+      Button('setCircleShape')
         .onClick(() => {
           renderNode.shapeClip.setCircleShape({ centerY: 75, centerX: 75, radius: 75 });
 
@@ -1659,9 +1662,9 @@ setOvalShape(oval: Rect): void
 
 Sets an oval shape for shape clipping.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -1675,7 +1678,7 @@ Sets an oval shape for shape clipping.
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -1711,7 +1714,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setOvalShape")
+      Button('setOvalShape')
         .onClick(() => {
           renderNode.shapeClip.setOvalShape({
             left: 0,
@@ -1731,9 +1734,9 @@ setCommandPath(path: CommandPath): void
 
 Sets the command for drawing a path.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -1747,7 +1750,7 @@ Sets the command for drawing a path.
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -1783,9 +1786,9 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setCommandPath")
+      Button('setCommandPath')
         .onClick(() => {
-          renderNode.shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+          renderNode.shapeClip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
         })
     }
   }
@@ -1806,7 +1809,7 @@ Generates an **edgeColors** object with the specified edge color for all edges.
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| all    | number | Yes  | Edge color, in ARGB format, for example, **0xffff00ff**.<br>Value range: [0, 0xffffffff]|
+| all    | number | Yes   | Edge color, in ARGB format, for example, **0xffff00ff**.<br>Value range: [0, 0xffffffff]<br>A value out of range is treated as a boundary value. |
 
 **Return value**
 
@@ -1869,7 +1872,7 @@ Generates an **edgeWidths** object with the specified edge width for all edges.
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| all    | number | Yes  | Edge width, in vp.<br>Value range: [0, +∞).|
+| all    | number | Yes   | Edge width, in vp.<br>Value range: [0, +∞)<br>A negative value is treated as the default value. |
 
 **Return value**
 
@@ -1948,7 +1951,7 @@ Generates a border style object with the specified border style color for all bo
 
 | Type                                                                       | Description                                  |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-| [Edges](#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | **borderStyles** object whose borders are all in the specified style.|
+| [Edges](#edgest12)\<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | **borderStyles** object whose borders are all in the specified style. |
 
 **Example**
 
@@ -2021,7 +2024,7 @@ Generates a **borderRadiuses** object with the specified radius for all border c
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| all    | number | Yes  | Radius of border corners.<br>Unit: vp.<br>Value range: [0, +∞).|
+| all    | number | Yes   | Radius of the border corners.<br>Unit: vp<br>Value range: [0, +∞)<br>A negative value is treated as the default value. |
 
 **Return value**
 
@@ -2076,7 +2079,7 @@ struct Index {
 
 ## BackgroundBlur
 
-Sets a background blur effect.
+Sets the background blur effect. The blur radius can be used to control the blur degree, and the grayscale parameter can be used to adjust the levels of black and white pixels in the image.
 
 **Since**: 26.0.0
 
@@ -2088,12 +2091,12 @@ Sets a background blur effect.
 
 | Name    | Type    | Read-Only| Optional| Description                                    |
 | -------- | -------- | ---- | ---- | ---------------------------------------- |
-| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious background blur effect. If the value is **0**, the background is not blurred.|
-| grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
+| radius   | number   | No   | No   | Blur radius.<br>Unit: px<br>Value range: [0, +∞). Default value: **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious background blur effect. If the value is **0**, the background is not blurred. |
+| grayscale | [number, number] | No   | Yes   | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0].  A value out of range is treated as the default value. The levels of black and white in the image are adjusted to make them tend toward gray for a softer and more pleasing appearance. It has no effect on the adjustment of colors in the image. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.      |
 
 ## ContentBlur
 
-Sets a content blur effect.
+Sets the content blur effect. The blur radius can be used to control the blur degree, and the grayscale parameter can be used to adjust the levels of black and white pixels in the image.
 
 **Since**: 26.0.0
 
@@ -2105,12 +2108,12 @@ Sets a content blur effect.
 
 | Name    | Type    | Read-Only| Optional| Description                                    |
 | -------- | -------- | ---- | ---- | ---------------------------------------- |
-| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious blur effect. If the value is **0**, the content is not blurred.|
-| grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
+| radius   | number   | No   | No   | Blur radius.<br>Unit: px<br>Value range: [0, +∞). Default value: **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious background blur effect. If the value is **0**, the background is not blurred. |
+| grayscale | [number, number] | No   | Yes   | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0].  A value out of range is treated as the default value. The levels of black and white in the image are adjusted to make them tend toward gray for a softer and more pleasing appearance. It has no effect on the adjustment of colors in the image. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.      |
 
 ## ForegroundBlur
 
-Sets a foreground blur effect.
+Sets the foreground blur effect. The blur radius can be used to control the blur degree.
 
 **Since**: 26.0.0
 
@@ -2122,4 +2125,4 @@ Sets a foreground blur effect.
 
 | Name  | Type  | Read-Only| Optional| Description                               |
 | ------ | ------ | ---- | ---- | ----------------------------------- |
-| radius | number | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious foreground blur effect. If the value is **0**, the foreground is not blurred.|
+| radius | number | No | No | Blur radius.<br>Unit: px<br>Value range: [0, +∞). Default value: **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious background blur effect. If the value is **0**, the background is not blurred. |

@@ -18,7 +18,7 @@
 
 onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | undefined): T
 
-设置组件判断是否需要键盘时触发的回调。主要用于键盘接续场景，当焦点从输入框切换到其他组件时，如果切换后的组件回调函数[OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback)的返回值设置为`true`，则表示该组件需要键盘，此时键盘将不会收起，如果返回值设置为`false`，则表示该组件不需要键盘，此时键盘将收起。
+设置组件判断是否需要键盘时触发的回调。主要用于键盘接续场景。当组件获得焦点时，系统会调用该组件绑定的[OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback)回调函数，根据返回值判断是否需要键盘：如果返回值为`true`，则表示该组件需要键盘，键盘将不会收起；如果返回值为`false`，则表示该组件不需要键盘，键盘将收起。
 
 对于不能获焦的组件，本接口不生效。
 

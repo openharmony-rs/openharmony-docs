@@ -26,8 +26,6 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **参数：**
 
 | 参数名        | 类型                                                      | 必填 | 说明                                                         |
@@ -189,11 +187,11 @@ onDataReloaded(reuseImmediately: boolean): void
 
 配置不允许在更新过程中复用旧的子组件，键值没有变化的数据项会使用原先的子组件，键值发生变化的数据项，若使用了@Reusable/@ReusableV2且复用池中有可用的组件，将复用旧组件，否则将创建新的子组件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -497,7 +495,7 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 | 名称 | 类型                     | 只读 | 可选 | 说明             |
 | ------ | ------------------------ | ---- | ---- | ---------------- |
 | type   | [DataOperationType](#dataoperationtype12).RELOAD | 否 | 否   | 数据全部重载类型。 |
-| reuseImmediately   | boolean | 否 | 是   | 是否允许在更新过程中复用旧的子组件。<br/>true：允许在更新过程中复用旧的子组件。<br/>false：不允许在更新过程中复用旧的子组件。<br/>默认值：false<br/>当值为undefined或null时，取默认值。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| reuseImmediately   | boolean | 否 | 是   | 是否允许在更新过程中复用旧的子组件。<br/>true：允许在更新过程中复用旧的子组件。<br/>false：不允许在更新过程中复用旧的子组件。<br/>默认值：false<br/>当值为undefined或null时，取默认值。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ### DataOperationType<sup>12+</sup>
 

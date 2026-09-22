@@ -6,7 +6,9 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with devices over WLAN.
+<!-- md-trans-meta sourceCommit=8788cc48214c139da8601c2cd957fee98d8eb5be translatedAt=2026-08-27T04:08:42.648Z pushedAt=2026-08-27T12:15:22.816Z -->
+
+This module provides basic Wi-Fi functions, peer-to-peer (P2P) functions, and Wi-Fi message notification services. It allows applications to communicate with devices over Wi-Fi.
 
 > **NOTE**
 >
@@ -24,7 +26,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 enableSemiWifi(): void
 
-Enables WLAN partially, that is, enables P2P and Huawei Magneto Link (HML) while disabling STA. You need to register a callback for the **wifiStateChange** event to return the operation result.
+Enables Wi-Fi partially, that is, enables P2P and Huawei Magneto Link (HML) while disabling STA. You need to register a callback for the **wifiStateChange** event to return the operation result.
 
 **System API**: This is a system API.
 
@@ -62,8 +64,8 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 Sets whether scan is always allowed.
 
-- Sets whether the device can scan for Wi-Fi hotspots when Wi-Fi is disabled.
-- After this function is enabled, the system can scan for nearby Wi-Fi hotspots even if Wi-Fi is disabled.
+- This interface controls whether the device can support hotspot scanning when Wi-Fi is disabled.
+- After this function is enabled, the system can still scan for nearby Wi-Fi hotspots even if Wi-Fi is disabled.
 - This function is mainly used in network discovery and location locating scenarios.
 
 **System API**: This is a system API.
@@ -117,7 +119,7 @@ Obtains whether scan is always allowed.
 
 | Type| Description|
 | -------- | -------- |
-| boolean| Whether scan is always allowed. The value **true** means scan is allowed, and the value **false** means the opposite.|
+| boolean| Whether scan is always allowed. The value **true** means scan is always allowed, and the value **false** means scan is not allowed when Wi-Fi is disabled.|
 
 **Error codes**
 
@@ -145,7 +147,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 
 ## WifiDeviceConfig
 
-Describes the WLAN configuration.
+Represents the Wi-Fi configuration information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -160,8 +162,8 @@ Describes the WLAN configuration.
 | staticIp | [IpConfig](#ipconfig) | No| Yes| Static IP address information.<br> **System API**: This is a system API.|
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | No| Yes| Proxy configuration.<br> **System API**: This is a system API.|
 | configStatus<sup>12+</sup> | number | No| Yes| Status indicating whether the current network can be selected.<br>  **1**: network selection allowed<br>**2**: network selection forbidden<br> **3**: network selection permanently forbidden<br>4: unknown<br> **System API**: This is a system API.|
-| isAutoConnectAllowed<sup>17+</sup> | boolean | No| Yes| Whether automatic connection is allowed. The value **true** indicates that automatic connection is allowed, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
-| isSecureWifi<sup>20+</sup> | boolean | No| Yes| Whether Wi-Fi is secure. The value **true** indicates that Wi-Fi is secure, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
+| **isAutoConnectAllowed**<sup>17+</sup> | boolean | No | Yes | Whether automatic connection is allowed. The value **true** indicates that automatic connection is allowed, and the value **false** indicates the opposite.<br /> **System API:** This interface is a system API.|
+| **isSecureWifi**<sup>20+</sup> | boolean | No | Yes | Whether the Wi-Fi connection is secure. The value **true** indicates that the Wi-Fi connection is secure, and the value **false** indicates the opposite.<br /> **System API:** This interface is a system API.|
 
 ## IpType
 
@@ -206,7 +208,7 @@ Represents the Wi-Fi proxy configuration.
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| proxyMethod | ProxyMethod | No| Yes| Proxy method.|
+| proxyMethod | [ProxyMethod](#proxymethod10) | No | Yes | Proxy method. |
 | pacWebAddress | string | No| Yes| PAC web address of the proxy automatically configured.|
 | serverHostName | string | No| Yes| Server host name of the proxy manually configured.|
 | serverPort | number | No| Yes| Server port of the proxy manually configured.|
@@ -280,7 +282,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 
 connectToDevice(config: WifiDeviceConfig): void
 
-Connects to the specified network. If the device is already connected to a hotspot, use **disconnect()** to disconnect it from the hotspot first.
+Connects to the specified network. If the device is already connected to a hotspot, disconnect it from the hotspot first.
 
 **System API**: This is a system API.
 
@@ -293,7 +295,7 @@ Connects to the specified network. If the device is already connected to a hotsp
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration. The default **bssidType** is random device address.|
+| config | [WifiDeviceConfig](#wifideviceconfig) | Yes | Wi-Fi configuration information. The value of **bssidType** is a random device address by default. |
 
 **Error codes**
 
@@ -306,7 +308,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | WLAN STA disabled.|
+| 2501001  | Wi-Fi STA disabled.|
 
 **Example**
 ```ts
@@ -327,7 +329,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 
 ## WifiLinkedInfo
 
-Represents the WLAN connection information.
+Provides information about a Wi-Fi connection.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -335,7 +337,7 @@ Represents the WLAN connection information.
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | number | No| No| Network configuration ID.<br> **System API**: This is a system API.|
 | chload | number | No| No| Channel load. A larger value indicates a higher load.<br> **System API**: This is a system API.|
-| snr | number | No| No| Signal-to-noise ratio (SNR).<br> **System API**: This is a system API.|
+| **snr** | **number** | No | No | Signal-to-noise ratio (SNR), in dB. <br /> **System API**: This interface is a system API. |
 | suppState | [SuppState](#suppstate) | No| No| Supplicant state.<br> **System API**: This is a system API.|
 | isHiLinkProNetwork<sup>20+</sup> | boolean | No| Yes| Whether the network is a HiLinkPro network. The value **true** indicates that the network is a HiLinkPro network, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
 | wifiTxRxValid | boolean | No| Yes| **Since**: 26.0.0 Whether the Wi-Fi transmitting (Tx) and receiving (Rx) functions are working properly.<br> **System API**: This is a system API.|
@@ -391,7 +393,7 @@ Obtains the features supported by this device.
 | 0x0004 | Generic Advertisement Service (GAS)/Access Network Query Protocol (ANQP) feature|
 | 0x0008 | Wi-Fi Direct.|
 | 0x0010 | SoftAP|
-| 0x0040 | Wi-Fi Aware|
+| 0x0040 | Wi-Fi Aware |
 | 0x8000 | WLAN AP/STA concurrency|
 | 0x8000000 | WPA3 Personal (WPA-3 SAE)|
 | 0x10000000 | WPA3-Enterprise Suite B |
@@ -569,7 +571,7 @@ Updates network configuration.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| New WLAN configuration.|
+  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes | Wi-Fi configuration information. |
 
 **Return value**
 
@@ -611,7 +613,7 @@ try {
 
 disableNetwork(netId: number): void
 
-Disables network configuration.
+Disables the network configuration.
 
 **System API**: This is a system API.
 
@@ -673,7 +675,7 @@ Disables the network connection, disconnects the connected network, and does not
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Codes| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -811,7 +813,7 @@ try {
 
 ## DisconnectedReason <sup>10+</sup>
 
-Enumerates the reasons why the WLAN connection is disconnected. This API is used to diagnose network connection problems and optimize connection policies.
+Enumerates the reasons why the Wi-Fi connection is disconnected. This API is used to diagnose network connection problems and optimize connection policies.
 
 **System API**: This is a system API.
 
@@ -827,7 +829,7 @@ Enumerates the reasons why the WLAN connection is disconnected. This API is used
 
 startPortalCertification(): void
 
-Starts the Portal authentication process, which is used to process public WLAN networks (such as networks in hotels, airports, and cafes) that require web page authentication.
+Starts the Portal authentication process, which is used to process public Wi-Fi networks (such as networks in hotels, airports, and cafes) that require web page authentication.
 
 **System API**: This is a system API.
 
@@ -911,8 +913,8 @@ Enables or disables HiLink.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | isHiLinkEnable | boolean | Yes| Whether to enable hiLink. The value **true** means to enable HiLink, and the value **false** means the opposite.|
-| bssid | string | Yes| MAC address of the hotspot, for example, **00:11:22:33:44:55**.|
-| config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration information. The value of **config.bssid** must be the same as that of the second parameter **bssid**. The default **bssidType** is random device address.|
+| bssid | string | Yes | MAC address of the hotspot, for example, **00:11:22:33:44:55**. |
+| config | [WifiDeviceConfig](#wifideviceconfig) | Yes | Wi-Fi configuration information. The value of **config.bssid** must be the same as that of the second parameter **bssid**. The value of **bssidType** is a random device address by default. |
 
 **Error codes**
 
@@ -1053,7 +1055,7 @@ try {
 
 isHotspotDualBandSupported(): boolean
 
-Checks whether the WLAN hotspot function of the current device supports dual bands (both 2.4 GHz and 5 GHz).
+Checks whether the Wi-Fi hotspot function of the current device supports dual bands (both 2.4 GHz and 5 GHz).
 
 **System API**: This is a system API.
 
@@ -1094,7 +1096,7 @@ try {
 
 isOpenSoftApAllowed(): boolean
 
-Checks whether WLAN hotspot operations are allowed under certain circumstances. When Airplane mode is enabled, if the system does not support the coexistence of SoftAP and STA or signal bridging, the hotspot switch cannot be operated.
+Checks whether Wi-Fi hotspot operations are allowed under certain circumstances. When Airplane mode is enabled, if the system does not support the coexistence of SoftAP and STA or signal bridging, the hotspot switch cannot be operated.
 
 **System API**: This is a system API.
 
@@ -1106,7 +1108,7 @@ Checks whether WLAN hotspot operations are allowed under certain circumstances. 
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Whether WLAN hotspot operations are allowed. The value **true** indicates WLAN hotspot operations are allowed, and the value **false** indicates the opposite.|
+  | boolean | Whether Wi-Fi hotspot operations are allowed. The value **true** indicates Wi-Fi hotspot operations are allowed, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1135,7 +1137,7 @@ try {
 
 setHotspotConfig(config: HotspotConfig): void
 
-Sets the WLAN hotspot configuration information, including the SSID, encryption mode, password, bandwidth, channel, and maximum number of connected STAs.
+Sets the Wi-Fi hotspot configuration information, including the SSID, encryption mode, password, bandwidth, channel, and maximum number of connected STAs.
 
 **System API**: This is a system API.
 
@@ -1203,7 +1205,7 @@ Represents the hotspot configuration.
 
 getHotspotConfig(): HotspotConfig
 
-Obtains the WLAN hotspot configuration information, including the SSID, encryption mode, password, bandwidth, channel, and maximum number of connected STAs.
+Obtains the Wi-Fi hotspot configuration information, including the SSID, encryption mode, password, bandwidth, channel, and maximum number of connected STAs.
 
 **System API**: This is a system API.
 
@@ -1287,7 +1289,7 @@ try {
 
 ## StationInfo
 
-Represents the station information. Contains the details about the device that is connected to the WLAN.
+Represents the station information. This information contains details about the device that is connected to Wi-Fi.
 
 **System API**: This is a system API.
 
@@ -1399,7 +1401,7 @@ try {
 
 getHotspotBlockList(): Array&lt;StationInfo&gt;
 
-Obtains the list of devices that are in the blocklist of the current WLAN hotspot. This API is valid when the device is in hotspot (AP) mode.
+Obtains the list of devices that are in the blocklist of the current Wi-Fi hotspot. This API is valid when the device is in hotspot (AP) mode.
 
 **System API**: This is a system API.
 
@@ -1442,7 +1444,7 @@ try {
 
 deletePersistentGroup(netId: number): void
 
-Deletes the permanent WLAN group configuration of a specified network. This API is used to clear the saved WLAN network configuration information so that the WLAN network cannot be automatically connected.
+Deletes the permanent Wi-Fi group configuration of a specified network. This API is used to clear the saved Wi-Fi network configuration information so that the WLAN network cannot be automatically connected.
 
 - Deletes the permanent group information previously established with the P2P device according to the network ID, and performs P2P negotiation again when establishing a P2P connection with the P2P device subsequently.
 
@@ -1619,7 +1621,7 @@ try {
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to Wi-Fi stream changes. When the service exits, call **off(type: 'streamChange', callback?: Callback&lt;number&gt;)** to unregister the callback registered. This API uses an asynchronous callback to return the result.
+Subscribes to Wi-Fi stream changes. When the service exits, call **off(type: 'streamChange', callback?: Callback&amp;lt;number&amp;gt;)** to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1632,7 +1634,7 @@ Subscribes to Wi-Fi stream changes. When the service exits, call **off(type: 'st
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream<br>- **1**: Downward<br>- **2**: Upward<br>- **3**: Bidirectional|
+| callback | Callback&lt;number&gt; | Yes | Callback used to return the status change. **0**: No stream. **1**: Downward. **2**: Upward. **3**: Bidirectional. |
 
 **Error codes**
 
@@ -1663,7 +1665,7 @@ Unsubscribes from Wi-Fi stream changes. This API uses an asynchronous callback t
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | No| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream<br>- **1**: Downward<br>- **2**: Upward<br>- **3**: Bidirectional|
+| callback | Callback&lt;number&gt; | No | Callback used to return the status change. **0**: No stream. **1**: Downward. **2**: Upward. **3**: Bidirectional. |
 
 **Error codes**
 
@@ -1697,7 +1699,7 @@ wifiManager.off("streamChange", recvStreamChangeFunc);
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to WLAN device configuration changes. When the service exits, call off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+Subscribes to Wi-Fi device configuration changes. When the service exits, call off(type: 'deviceConfigChange', callback?: Callback&amp;lt;number&amp;gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1728,7 +1730,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 
 off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from WLAN device configuration changes. This API uses an asynchronous callback to return the result.
+Unsubscribes from Wi-Fi device configuration changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1775,7 +1777,7 @@ wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
-Subscribes to the event of an STA joining a WLAN hotspot. When the service exits, call off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+Subscribes to the event of an STA joining a Wi-Fi hotspot. When the service exits, call **off(type: 'hotspotStaJoin', callback?: Callback&amp;lt;StationInfo&amp;gt;)** to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1788,7 +1790,7 @@ Subscribes to the event of an STA joining a WLAN hotspot. When the service exits
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
-| callback | Callback&lt;StationInfo&gt; | Yes| Callback used to return the event.|
+| callback | Callback&lt;[StationInfo](#stationinfo)&gt; | Yes | Callback used to return the status change. |
 
 **Error codes**
 
@@ -1806,7 +1808,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
-Unsubscribes from the event of an STA joining a WLAN hotspot. This API uses an asynchronous callback to return the result.
+Unsubscribes from the connection of an STA to a Wi-Fi hotspot. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1819,7 +1821,7 @@ Unsubscribes from the event of an STA joining a WLAN hotspot. This API uses an a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
-| callback | Callback&lt;StationInfo&gt; | No| Callback used to return the event.|
+| callback | Callback&lt;[StationInfo](#stationinfo)&gt; | No | Callback used to return the status change. |
 
 **Error codes**
 
@@ -1853,7 +1855,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
-Subscribes to the event of an STA leaving a WLAN hotspot. When the service exits, call off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
+Subscribes to the event of an STA leaving a Wi-Fi hotspot. When the service exits, call **off(type: 'hotspotStaLeave', callback?: Callback&amp;lt;StationInfo&amp;gt;)** to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1884,7 +1886,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
-Unsubscribes from the event of an STA leaving a WLAN hotspot. This API uses an asynchronous callback to return the result.
+Unsubscribes from the disconnection of a STA from a Wi-Fi hotspot. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1929,7 +1931,7 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ## WifiScanInfo
 
-Represents the WLAN connection information.
+Provides information about Wi-Fi scanning.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -1999,7 +2001,7 @@ Describes the capabilities supported by the Wi-Fi module.
 
 setWifiCapability(capability: WifiCapability, enable: boolean): void
 
-Configures the Wi-Fi capability.
+Sets the Wi-Fi capability.
 
 **Since**: 26.0.0
 
@@ -2016,7 +2018,7 @@ Configures the Wi-Fi capability.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | capability | [WifiCapability](#wificapability) | Yes| Wi-Fi capability.|
-| enable | boolean | Yes| Whether the Wi-Fi capability is enabled. The value **true** indicates it is enabled, and the value **false** indicates the opposite.|
+| **enable** | **boolean** | Yes | Whether to enable the Wi-Fi capability. The value **true** means to enable, and the value **false** means the opposite. |
 
 **Error codes**
 
@@ -2042,7 +2044,7 @@ wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true)
 
 getWifiCapability(capability: WifiCapability): boolean
 
-Obtains the capabilities supported by the Wi-Fi module.
+Obtains the Wi-Fi capabilities.
 
 **Since**: 26.0.0
 

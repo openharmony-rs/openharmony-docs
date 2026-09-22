@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1efa7ed78f9305d7acad45c3901120ab8db7a7d4 translatedAt=2026-09-01T13:14:43.407Z pushedAt=2026-09-07T10:36:38.941Z -->
 
 - ArkTS APIs<!--avsession-arkts-->
   - @ohos.multimedia.avsession (AVSession Management)<!--js-apis-avsession-->
@@ -29,7 +30,7 @@
     - [Functions](arkts-apis-avMusicTemplate-f.md)
     - [Class (AVMusicTemplate)](arkts-apis-avMusicTemplate-AVMusicTemplate.md)
     - [Class (AVMusicTemplateController)](arkts-apis-avMusicTemplate-AVMusicTemplateController.md)
-    - [Interface (Others)](arkts-apis-avMusicTemplate-i.md)
+    - [Interfaces (Others)](arkts-apis-avMusicTemplate-i.md)
     - [Enums](arkts-apis-avMusicTemplate-e.md)
     - [Types](arkts-apis-avMusicTemplate-t.md)
   <!--Del-->

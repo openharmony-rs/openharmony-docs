@@ -10,7 +10,7 @@
 
 已有的[自定义组件生命周期](./arkts-page-custom-components-lifecycle.md)回调函数触发只取决于事件的触发，在某些特定的情况下，会出现自定义组件生命周期回调函数的触发顺序不符合预期。比如：[aboutToDisappear在特定情况下会误调用aboutToAppear、组件未展开被复用时，会误调用aboutToReuse](#生命周期回调函数的区别)。新的自定义组件生命周期回调函数受状态机限制，生命周期回调函数调用时机符合预期。
 
-自定义组件生命周期，即用[@Component](arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件的生命周期，从API version 23开始，提供以下生命周期装饰器：
+自定义组件生命周期，即用[@Component](arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件的生命周期，从API version 23开始，提供以下生命周期装饰器（其中\@ComponentActive和\@ComponentInactive自API版本26.0.0起可用）：
 
 - [\@ComponentInit](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinit)：\@ComponentInit装饰的函数在自定义组件即将构造完毕时执行。可以在此函数中注册监听和修改变量。
 
@@ -28,7 +28,7 @@
 
 - [\@ComponentInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinactive)：当组件从激活状态变为非激活状态时，调用该装饰器装饰的函数。
 
-自定义组件生命周期受状态机限制，每个生命周期回调函数仅在特定的状态转换阶段才会被调用，比如\@ComponentReuse的限制条件是从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发，\@ComponentAppear仅在组件处于CustomComponentLifecycleState.INIT状态时触发，流程如下图所示。
+自定义组件生命周期受状态机限制，除\@ComponentActive和\@ComponentInactive外，每个生命周期回调函数仅在特定的状态转换阶段才会被调用，比如\@ComponentReuse的限制条件是从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发，\@ComponentAppear仅在组件处于CustomComponentLifecycleState.INIT状态时触发，流程如下图所示。
 
 ![custom-component-lifecycle-demo1](figures/customcomponent-lifecycle-new-state.png)
 
@@ -427,7 +427,6 @@ import { MyDataSource } from './BasicDataSource';
 @Component
 struct Index {
   @State dataSource: MyDataSource<string> = new MyDataSource();
-  @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
   @State changeShow: boolean = false;
 
   aboutToAppear(): void {
@@ -635,7 +634,7 @@ struct MyActiveSample {
     return 1 + 2 + 3; // 错误用法，生命周期装饰器装饰get方法不生效
   }
   ```
-- 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)。
+- 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)。当自定义组件没有使用生命周期装饰器时，自定义组件注册监听成功时才开启状态机且当前生命周期状态为INIT。
 
 - 自定义组件创建后默认为激活状态，不会触发`@ComponentActive`装饰的函数回调函数。
 
@@ -1057,7 +1056,7 @@ MyObserver aboutToRecycle
 MyObserver aboutToReuse
 ```
 
-可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
+不建议在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于BUILT状态，所以无法监听组件的aboutToAppear和onDidBuild。
 
 ``` TypeScript
 Column() {

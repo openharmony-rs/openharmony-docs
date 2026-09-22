@@ -810,7 +810,7 @@ getUIAbilityChildProcessInfos(): Promise\<Array\<ChildProcessInformation>>
 
 返回通过[startSelfUIAbilityInChildProcess](js-apis-inner-application-uiAbilityContext.md#startselfuiabilityinchildprocess)接口启动的进程，以及通过[startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2)接口启动且[StartOptions](js-apis-app-ability-startOptions.md)参数中[processMode](js-apis-app-ability-contextConstant.md#processmode12)设置为NEW_PROCESS_ATTACH_TO_PARENT模式启动的子进程。无子进程时返回空数组。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

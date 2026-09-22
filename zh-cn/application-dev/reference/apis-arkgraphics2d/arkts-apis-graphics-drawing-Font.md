@@ -526,7 +526,6 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     const font = new drawing.Font();
     font.setSize(20);
     let width = font.measureSingleCharacter("你");
@@ -979,7 +978,7 @@ getWidths(glyphs: Array\<number>): Array\<number>
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->OpenHarmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
 
 **返回值：**
 
@@ -1065,7 +1064,7 @@ getBounds(glyphs: Array\<number>): Array\<common2D.Rect>
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->OpenHarmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
 
 **返回值：**
 
@@ -1083,7 +1082,7 @@ let text: string = 'hello world';
 let glyphs: number[] = font.textToGlyphs(text);
 let fontBounds: Array<common2D.Rect> = font.getBounds(glyphs);
 for (let index = 0; index < fontBounds.length; index++) {
-  console.info("get fontWidths[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
+  console.info("get fontBounds[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
     " right:", fontBounds[index].right, " bottom:", fontBounds[index].bottom);
 }
 ```

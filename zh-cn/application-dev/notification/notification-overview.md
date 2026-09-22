@@ -29,20 +29,19 @@ Notification Kit支持的能力主要包括：
 
 使用Notification Kit的主要业务流程如下：
 
-1.请求[通知授权](notification-glossary.md#notification-authorization通知授权)。
+1. 请求[通知授权](notification-glossary.md#notification-authorization通知授权)。
 
-2.应用发布通知到通知服务。
+2. 应用发布通知到通知服务。
 
-3.将通知展示到[通知中心](notification-glossary.md#notification-center通知中心)。
+3. 将通知展示到[通知中心](notification-glossary.md#notification-center通知中心)。
 
 
 ## 通知样式
 
 > **说明：**
 >
-> 实际显示效果依赖设备能力和[通知中心](notification-glossary.md#notification-center通知中心)UI设计样式<!--RP5--><!--RP5End-->。
+> 实际显示效果依赖设备能力和[通知中心](notification-glossary.md#notification-center通知中心)UI设计样式。
 
-<!--Del-->
 Notification Kit中常用的通知样式如下：
 | 类型 | 通知样式 | 规格描述 |
 | ---- | --------| ------- |
@@ -50,7 +49,8 @@ Notification Kit中常用的通知样式如下：
 | [多行文本](./text-notification.md)       | ![multiline_notification](figures/multiline_notification.png)   | 最多可显示三行内容，每行内容超长后以“...”截断。 |
 | [通知角标](./notification-badge.md)      | ![notification_badge](figures/notification_badge.png)   | 以数字的形式展示在右上角。 |
 | [进度条](./progress-bar-notification.md) | ![progress_notification](figures/progress_notification.png)    | 进度类通知。 |
-<!--DelEnd-->
+
+<!--RP5--><!--RP5End-->
 
 ## 约束限制
 - 单个应用已发布的通知在[通知中心](notification-glossary.md#notification-center通知中心)等系统入口的留存数量有限（当前规格最多24条）。
@@ -67,7 +67,7 @@ Notification Kit中常用的通知样式如下：
 
 ## 与相关Kit的关系
 - Notification Kit创建的通知会即时显示在[通知中心](notification-glossary.md#notification-center通知中心)等系统入口。如果开发者希望在应用退到后台或进程终止后仍然有一些提醒用户的定时类通知，例如购物类应用抢购提醒等，可通过[`Background Tasks Kit`](../task-management/background-task-overview.md)创建。目前支持基于倒计时、日历、闹钟等类型的通知提醒功能。
-- 对于上传下载等数据传输场景，从API version 26.1.0开始，推荐使用[`Background Tasks Kit`](../task-management/continuous-task.md)提供的[`backgroundTaskManager.updateDataTransferProgress`](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress)接口更新进度通知，无需调用notificationManager.publish。使用该接口前，需先申请数据传输类型的长时任务。
+- 对于上传下载等数据传输场景，从API version 26.0.1开始，推荐使用[`Background Tasks Kit`](../task-management/continuous-task.md)提供的[`backgroundTaskManager.updateDataTransferProgress`](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress)接口更新进度通知，无需调用notificationManager.publish。使用该接口前，需先申请数据传输类型的长时任务。
 - 开发者可通过[`Ability Kit`](../application-models/abilitykit-overview.md)的[`getWantAgent`](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)接口设置用户点击通知后的行为意图。<!--RP2-->
 <!--RP2End-->
 

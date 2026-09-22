@@ -558,11 +558,11 @@ containsValue(value: V): boolean
 
 判断该Map中是否存在一个或多个键映射到指定的值。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -611,11 +611,11 @@ put(key: K, value: V): V | undefined
 >
 > 返回**undefined**时无法直接区分是键不存在还是键存在但值为**undefined**，可在使用本接口前先使用[has](#has)接口判断键是否存在，进而区分返回的**undefined**所属情况。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -664,11 +664,11 @@ putAll(from: Map\<K, V>): void
 
 使用指定ArkTS Map中的键值对更新当前Map。如果指定ArkTS Map中存在与当前Map相同的键，则覆盖当前Map中对应的值；否则新增键值对。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -703,25 +703,21 @@ let putMap = new collections.Map<number, string>([
 myMap.putAll(putMap);
 // myMap内容为：[[1, "_ONE_"], [2, "two"], [3, "three"], [4, "four"]]
 for (const entry of myMap.entries()) {
-  console.info("key = " + entry[0] + ", value = " + entry[1])
+  console.info("key = " + entry[0] + ", value = " + entry[1]);
 }
 ```
 
 ## putAll
 
-putAll(from: BuiltinMap\<K, V>): void
+putAll(from: ReadonlyMap\<K, V>): void
 
-使用指定内建Map中的键值对更新当前Map。如果指定内建Map中存在与当前Map相同的键，则覆盖当前Map中对应的值；否则新增键值对。
+使用指定JavaScript原生容器Map中的键值对更新当前Map。如果指定JavaScript原生容器Map中存在与当前Map相同的键，则覆盖当前Map中对应的值；否则新增键值对。
 
-> **说明：**
->
-> BuiltinMap即JavaScript内建Map，并非ArkTS Map（collections.Map）。
-
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -729,7 +725,7 @@ putAll(from: BuiltinMap\<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明      |
 | ------ | ---- | ---- | --------- |
-| from    | BuiltinMap\<K, V>    | 是   | 提供键值对的内建Map。 |
+| from    | ReadonlyMap\<K, V>    | 是   | 提供键值对的JavaScript原生容器Map。 |
 
 **错误码：**
 
@@ -755,7 +751,7 @@ let builtinMap = new Map<number, string>([
 myMap.putAll(builtinMap);
 // myMap内容为：[[1, "one"], [2, "two"], [3, "_THREE_"], [5, "five"]]
 for (const entry of myMap.entries()) {
-  console.info("key = " + entry[0] + ", value = " + entry[1])
+  console.info("key = " + entry[0] + ", value = " + entry[1]);
 }
 ```
 
@@ -769,11 +765,11 @@ remove(key: K): V | undefined
 >
 > 返回**undefined**时无法直接区分是键不存在还是键存在但值为**undefined**，可在使用本接口前先使用[has](#has)接口判断键是否存在，进而区分返回的**undefined**所属情况。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -809,7 +805,7 @@ let myMap = new collections.Map<number, string>([
 console.info(myMap.remove(1)); // one
 // myMap内容为：[[2, "two"]]
 for (const entry of myMap.entries()) {
-  console.info("key = " + entry[0] + ", value = " + entry[1])
+  console.info("key = " + entry[0] + ", value = " + entry[1]);
 }
 
 let ret = myMap.remove(1);

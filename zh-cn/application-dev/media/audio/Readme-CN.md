@@ -69,7 +69,7 @@
   - [离线编辑(C/C++)](audio-suite-manual-rendering.md)
   - [实时预览(C/C++)](audio-suite-real-time-rendering.md)
   - [音频格式转换(C/C++)](audio-suite-format-converter.md)
-  - [空间渲染(C/C++)](audio-suite-space-render.md)
+  - [空间音频渲染(C/C++)](audio-suite-space-render.md)
   - [音频效果(C/C++)](audio-suite-effects.md)
 - MIDI设备通信<!--midi-->
   - [OH_MIDI概述(C/C++)](midi-overview.md)
@@ -83,4 +83,5 @@
   - [播放无声定位指导](audio-playback-no-sound-troubleshooting.md)
   - [播放卡顿、杂音定位指导](audio-playback-performance-troubleshooting.md)
   - [录音无声定位指导](audio-recording-no-audio-troubleshooting.md)
+  - [音量变化回调类问题定位指导](audio-stream-volume-callback-debugging.md)
 - [Audio Kit术语](audio-glossary.md)

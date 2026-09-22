@@ -58,19 +58,19 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 导入serialManager模块
    import { serialManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit'
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { buffer } from '@kit.ArkTS';
    import { JSON } from '@kit.ArkTS';
    ```
 
 2. 获取设备列表。
 
-   <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 获取连接主设备的USB设备列表
@@ -88,7 +88,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 3. 获取设备操作权限。
 
-   <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.portList_ === undefined || this.portList_.length === 0) {
@@ -115,7 +115,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 4. 根据串口打开设备。
 
-   <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let portId: number = this.portId_;
@@ -131,27 +131,22 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 5. 获取和修改串口配置。
 
-   <!-- @[getSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let portId: number = this.portId_;
    // 获取串口配置
    try {
      let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
-     if (attribute === undefined) {
-       console.error('getAttribute usbSerial error, attribute is undefined');
-       this.logInfo_ += '\n[ERROR] getAttribute usbSerial error, attribute is undefined';
-     } else {
-       console.info(`getAttribute usbSerial success, attribute: ${attribute}`);
-       this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
-     }
+     console.info(`getAttribute usbSerial success, attribute: ${JSON.stringify(attribute)}`);
+     this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
    } catch (error) {
      console.error(`getAttribute usbSerial error: ${error}`);
      this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: ' + JSON.stringify(error);
    }
    ```
 
-   <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let portId: number = this.portId_;
@@ -164,7 +159,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
        stopBits: serialManager.StopBits.STOPBIT_1
      }
      serialManager.setAttribute(portId, attribute);
-     console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
+     console.info(`setAttribute usbSerial success, attribute: ${JSON.stringify(attribute)}`);
      this.logInfo_ += '\n[INFO] setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
    } catch (error) {
      console.error(`setAttribute usbSerial error: ${error}`);

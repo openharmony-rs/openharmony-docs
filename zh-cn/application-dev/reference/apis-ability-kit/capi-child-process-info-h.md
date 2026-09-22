@@ -17,7 +17,7 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
 
@@ -52,7 +52,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_Ability
 
 按索引从子进程信息集合中获取特定子进程信息句柄。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -78,7 +78,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRun
 
 获取子进程的PID。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -103,7 +103,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_Abil
 
 获取子进程的父进程PID。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -128,7 +128,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 
 获取子进程的进程名。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -143,7 +143,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 接口调用成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - processName、info或requiredSize为空指针，或者processNameSize为0。<br>ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL - 缓冲区过小。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 接口调用成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - processName、info或requiredSize为空指针，或者processNameSize为0。<br>ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL - 缓冲区过小。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 字符串拷贝失败。 |
 
 ### OH_AbilityRuntime_ReleaseChildProcessInfos()
 
@@ -155,7 +155,7 @@ void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessIn
 
 释放子进程信息集合。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

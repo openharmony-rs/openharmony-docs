@@ -412,6 +412,7 @@ Failed to install the application.
 2. 安装多个不同包名的应用。
 3. 当安装参数flag为0时再次安装已存在的应用。
 4. 传入无效用户id。
+5. 应用安装包中未包含有效证书。
 
 <!--RP3--><!--RP3End-->
 
@@ -1293,3 +1294,21 @@ The number of signed-in accounts reaches the upper limit.
 **处理步骤**
 
 尝试注销多余的系统账号，并及时移除不再需要保留的系统账号。
+
+## 9201055 获取USB设备序列号失败
+
+**错误信息**
+
+Failed to obtain the USB serial number.
+
+**错误描述**
+
+获取指定USB设备序列号失败。
+
+**可能原因**
+
+USB设备未连接或不支持序列号获取。
+
+**处理步骤**
+
+重新拔插USB设备，再尝试获取序列号。

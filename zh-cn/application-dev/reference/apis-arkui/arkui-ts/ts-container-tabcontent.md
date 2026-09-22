@@ -118,6 +118,34 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 >  - 若TabContent内部有可获焦组件，Tabs组件内TabContent组件和TabBar组件之间的走焦，仅支持通过键盘的方向键控制。
 >  - TabBar的属性动态修改后，会重新进行渲染，更新相关属性并重置所有页签位置。
 
+### tabBarVisibility
+
+tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode)
+
+设置Tab页签的可见性。未通过该接口设置时，Tab页签可见性默认为TabVisibility.VISIBLE。
+
+> **说明：**
+>
+> - 当visibility为TabVisibility.HIDDEN且displayMode为TabBarDisplayMode.SIDEBAR时，该页签在侧边栏中不显示，但在底部TabBar中仍可见。
+> - 当visibility为TabVisibility.HIDDEN且displayMode为TabBarDisplayMode.BOTTOM_TABBAR时，该页签在底部TabBar中不显示，但在侧边栏中仍可见。
+> - 当visibility为TabVisibility.HIDDEN且不设置displayMode时，该页签在两种显示模式中均不显示。
+> - 隐藏的页签内容仍可通过TabsController.changeIndex()或修改index状态变量切换显示。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名  | 类型 | 必填 | 说明 |
+| ------- | ---------- | ---- | ----- |
+| visibility | [TabVisibility](#tabvisibility) | 是   | Tab页签可见性。 |
+| displayMode | [TabBarDisplayMode](./ts-container-tabs.md#tabbardisplaymode) | 否   | 可见性对应的显示模式。<br/>不设置时，visibility同时作用于侧边栏和底部TabBar。<br/>设置为TabBarDisplayMode.SIDEBAR时，visibility仅作用于侧边栏。设置为TabBarDisplayMode.BOTTOM_TABBAR时，visibility仅作用于底部TabBar。 |
+
 ## TabBarOptions<sup>18+</sup>对象说明
 
 设置页签内的图片和文字内容。
@@ -778,6 +806,23 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 | -------------------- | ------------------------------------------ | ------------------ | ---- | ------------------------------------------------------------ |
 | unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
 | selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+
+## TabVisibility
+
+Tab页签可见性枚举。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 值 | 说明 |
+| ----- | ----- | ------- |
+| VISIBLE | 0 | 页签可见。 |
+| HIDDEN | 1 | 页签不可见。 |
 
 ## 事件
 
@@ -2218,3 +2263,63 @@ struct TabsIndicatorExample {
 ```
 
 ![tabContent12](figures/tabContent12.png)
+
+### 示例12（设置页签在不同页签栏中的可见性）
+
+该示例通过[tabBarVisibility](#tabbarvisibility)属性，设置页签在不同样式的页签栏中的可见性。
+
+从API版本26.2.0开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabBarVisibilityExample {
+  @State isBottomType: boolean = true;
+
+  build() {
+    Column() {
+      Row() {
+        Text('barStyle: ').fontSize(25)
+        Button('BOTTOM').onClick(() => {
+          this.isBottomType = true;
+        }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+        Button('SIDEBAR').onClick(() => {
+          this.isBottomType = false;
+        }).fontSize(15).backgroundColor('#ff2787d9')
+      }.width(450)
+      .height('20%')
+      .justifyContent(FlexAlign.Center)
+      Tabs() {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent1').fontSize(25)
+          }.width('100%').height('100%')
+        }
+        // 页签默认在TabBarDisplayMode.BOTTOM_TABBAR和TabBarDisplayMode.SIDEBAR显示模式中都可见
+        .tabBar({icon: $r('app.media.startIcon'), text: 'tab1'})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent2').fontSize(25)
+          }.width('100%').height('100%')
+        }
+        .tabBar({icon: $r('app.media.startIcon'), text: 'tab2'})
+        // 设置该页签在TabBarDisplayMode.BOTTOM_TABBAR显示模式时不可见
+        .tabBarVisibility(TabVisibility.HIDDEN, TabBarDisplayMode.BOTTOM_TABBAR)
+      }
+      .width(450)
+      .height('80%')
+      .border({width: 1, color: '#ffd9d9d9'})
+      .barBackgroundColor('#fff7f7f7')
+      .barStyle(this.isBottomType ? TabBarStyle.BOTTOM : TabBarStyle.SIDEBAR)
+      .barPosition(BarPosition.End)
+      .vertical(false)
+    }.width('100%')
+    .height(350)
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![tabContentTabBarVisibility](figures/tabContentTabBarVisibility.gif)

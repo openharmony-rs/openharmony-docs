@@ -6,9 +6,9 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:23:38.074Z pushedAt=2026-06-12T07:44:08.364Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:00:37.918Z pushedAt=2026-09-11T06:56:20.890Z -->
 
-The **inputEventClient** module provides the capability of injecting key, mouse/touchpad, and touchscreen events.
+The **inputEventClient** module provides the capability of injecting key, mouse/touchpad, and touchscreen input events.
 
 > **NOTE**
 >
@@ -30,7 +30,7 @@ Injects keys (including single keys and combination keys).
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -44,14 +44,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | Permission denied, non-system app called system api.  |
+| 201  | Permission denied.<br/>Applicable version: 12+ |
+| 202  | Permission denied, non-system app called system api.<br/>Applicable version: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -66,7 +67,7 @@ struct Index {
               keyCode: 2,
               keyDownDuration: 0,
               isIntercepted: false
-            }
+            };
             // Inject Event
             inputEventClient.injectEvent({ KeyEvent: backKeyDown });
 
@@ -95,7 +96,7 @@ Injects key events (for both single keys and combination keys).
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -109,7 +110,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission denied.<br/>Applicable version: 12+ |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -117,6 +118,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -163,7 +165,6 @@ struct Index {
   }
 }
 ```
-
 ## inputEventClient.injectMouseEvent<sup>11+</sup>
 
 injectMouseEvent(mouseEvent: MouseEventData): void
@@ -172,7 +173,7 @@ Injects a mouse/touchpad event.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -186,15 +187,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission denied.<br/>Applicable version: 12+ |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputEventClient, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -230,10 +231,10 @@ struct Index {
               numLock: false,
               scrollLock: false,
               toolType: 1,
-            }
+            };
             let mouseButtonUp: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonUpData
-            }
+            };
             // Inject Mouse Event
             inputEventClient.injectMouseEvent(mouseButtonUp);
 
@@ -263,15 +264,13 @@ struct Index {
               numLock: false,
               scrollLock: false,
               toolType: 1,
-            }
+            };
             let mouseButtonDown: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonDownData
             };
             // Inject Mouse Event
             inputEventClient.injectMouseEvent(mouseButtonDown);
-          }
-
-          catch (error) {
+          } catch (error) {
             console.error(`Failed to inject MouseEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
@@ -288,7 +287,7 @@ Injects a touch event.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -302,15 +301,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission denied.<br/>Applicable version: 12+ |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { Touch, TouchEvent } from '@kit.InputKit';
+import { inputEventClient, Touch, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -339,7 +338,7 @@ struct Index {
               rawX: 0,
               rawY: 0,
               toolType: 0,
-            }
+            };
 
             let touchEventUpData: TouchEvent = {
               action: 3,
@@ -351,11 +350,11 @@ struct Index {
               actionTime: 0,
               screenId: 0,
               windowId: 0
-            }
+            };
             ;
             let touchEventUp: inputEventClient.TouchEventData = {
               touchEvent: touchEventUpData
-            }
+            };
             // Inject touch event
             inputEventClient.injectTouchEvent(touchEventUp);
 
@@ -369,7 +368,7 @@ struct Index {
               actionTime: 0,
               screenId: 0,
               windowId: 0
-            }
+            };
             ;
             let touchEventDown: inputEventClient.TouchEventData = {
               touchEvent: touchEventDownData
@@ -393,7 +392,7 @@ Specifies whether to authorize event injection.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-Permission required: ohos.permission.INJECT_INPUT_EVENT
+**Permission required**: ohos.permission.INJECT_INPUT_EVENT
 
 **Parameters**
 
@@ -411,8 +410,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Example**
+
 ```ts
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -426,7 +428,7 @@ struct Index {
             // Authorized Event Injection
             inputEventClient.permitInjection(result);
           }catch(error){
-            console.error(`Failed to get inject permission, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to permit injection, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -483,7 +485,7 @@ Defines the touch event data.
 
 Defines the key event information injected by the user.
 
-**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |

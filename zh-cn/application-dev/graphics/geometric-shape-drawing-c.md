@@ -37,7 +37,7 @@
 | OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | 用于创建一个坐标点对象。 |
 | OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point2D \*point) | 用于画一个点。 |
 | OH_Drawing_Rect\* OH_Drawing_RectCreate(float left, float top, float right, float bottom) | 用于创建一个矩形对象。 |
-| void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, float startAngle, float sweepAngle) | 用于画一个弧。 |
+| void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, float startAngle, float sweepAngle) | 用于画一个圆弧。 |
 | void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point \*point, float radius) | 用于画一个圆形。 |
 | OH_Drawing_Path\* OH_Drawing_PathCreate(void) | 用于创建一个路径对象。 |
 | void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path) | 用于画一个自定义路径。 |

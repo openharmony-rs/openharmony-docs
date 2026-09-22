@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=dbee05cab0d63a0ac6bd8603f262166672b34724 translatedAt=2026-08-29T09:58:12.721Z pushedAt=2026-08-31T01:20:45.674Z -->
 
 ## Overview
 
@@ -41,8 +42,6 @@ Defines the common types for the native module.
 | [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to an ArkUI native component object, which is used to identify and pass component instances in ArkUI native APIs, for example, creating, mounting, removing, or destroying component nodes.|
 | [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md) | ArkUI_NativeDialogHandle | Defines the handle to the custom dialog box controller of ArkUI on the native side.|
 | [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | ArkUI_GestureCollectInterceptInfo | Defines gesture collection interception information.|
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | ArkUI_ListItemSwipeActionItem | Defines the item configuration for **ListItemSwipeActionOption**.|
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | ArkUI_ListItemSwipeActionOption | Defines the configuration for **ListItemSwipeActionOption**.|
 | [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | Defines a context object of the ArkUI native UI, which is used to represent the UI context of the page where the component is located. The pointer type is [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md). You can obtain the context using [OH_ArkUI_GetContextByNode](capi-native-node-h.md#oh_arkui_getcontextbynode) and use it as the context input parameter for APIs such as dragging, animation, and UI task scheduling.|
 | [ArkUI_Context*](capi-arkui-nativemodule-arkui-context8h.md) | ArkUI_ContextHandle | Defines the pointer to the context object of ArkUI on the native side, which is used to represent the UI context of the page where the component is located. You can obtain the pointer through [OH_ArkUI_GetContextByNode](capi-native-node-h.md#oh_arkui_getcontextbynode) or [OH_ArkUI_GetContextFromNapiValue](capi-native-node-napi-h.md#oh_arkui_getcontextfromnapivalue) and use it as the context input parameter for APIs such as UI task scheduling, animation, and focus control.|
 | [ArkUI_NodeContent*](capi-arkui-nativemodule-arkui-nodecontent8h.md) | ArkUI_NodeContentHandle | Defines the pointer to the node content on the native side, which is used to reference and pass the **NodeContent** instance in native APIs.|
@@ -72,9 +71,6 @@ Defines the common types for the native module.
 | [ArkUI_ColorMode](#arkui_colormode)                                 | ArkUI_ColorMode                 | Enumerates the color modes.                         |
 | [ArkUI_SystemColorMode](#arkui_systemcolormode)                     | ArkUI_SystemColorMode           | Enumerates the system color modes.                       |
 | [ArkUI_LengthMetricUnit](#arkui_lengthmetricunit)                   | ArkUI_LengthMetricUnit          | Enumerates the component units.                       |
-| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | Enumerates the item states of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component.|
-| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | Enumerates the item edge effects of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Enumerates the swipe action menu display directions for the **ListItem** component.|
 | [ArkUI_SafeAreaType](#arkui_safeareatype)                           | ArkUI_SafeAreaType              | Enumerates the types of expanded safe areas.                    |
 | [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode)                 | ArkUI_KeyboardAvoidMode         | Enumerates the soft keyboard avoidance modes.                          |
 | [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype)                 | ArkUI_HoverModeAreaType         | Enumerates the types of display areas for the hover mode.                         |
@@ -88,6 +84,7 @@ Defines the common types for the native module.
 | [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | OH_ArkUI_CrossLanguageOperatingStatus | Enumerates the node tree operation states of cross-language configuration options.|
 | [OH_ArkUI_ArcDirection](#oh_arkui_arcdirection) | OH_ArkUI_ArcDirection | Enumerates arc directions.|
 | [OH_ArkUI_NodeMountPolicy](#oh_arkui_nodemountpolicy) | OH_ArkUI_NodeMountPolicy | Enumerates the child node mounting policy types.|
+| [ArkUI_CrownSensitivity](#arkui_crownsensitivity) | ArkUI_CrownSensitivity | Enumerates crown sensitivity levels. |
 
 ### Functions
 
@@ -114,29 +111,6 @@ Defines the common types for the native module.
 | [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontweight) | - | Obtains the font weight of the digit-style navigation indicator of the **Swiper** component.|
 | [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight selectedFontWeight)](#oh_arkui_swiperdigitindicator_setselectedfontweight) | - | Sets the font weight of the selected digit-style navigation indicator for the **Swiper** component.|
 | [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontweight) | - | Obtains the font weight of the selected digit-style navigation indicator of the **Swiper** component.|
-| [ArkUI_ListItemSwipeActionItem* OH_ArkUI_ListItemSwipeActionItem_Create()](#oh_arkui_listitemswipeactionitem_create) | - | Creates a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionItem_Dispose(ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionitem_dispose) | - | Disposes of a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* item, ArkUI_NodeHandle node)](#oh_arkui_listitemswipeactionitem_setcontent) | - | Sets the layout content for a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item, float distance)](#oh_arkui_listitemswipeactionitem_setactionareadistance) | - | Sets the swipe distance threshold for deleting the list item.|
-| [float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionitem_getactionareadistance) | - | Obtains the swipe distance threshold for deleting the list item.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonenteractionarea) | - | Sets the callback invoked each time the list item enters the delete area.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData (ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonenteractionareawithuserdata) | - | Sets the callback invoked each time the list item enters the delete area. User-defined data will be passed to the callback event.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonaction) | - | Sets the callback invoked when the list item is deleted while in the delete area.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonactionwithuserdata) | - | Sets the callback invoked when the list item is deleted while in the delete area. User-defined data will be passed to the callback event.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonexitactionarea) | - | Sets the callback invoked each time the list item exits the delete area.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData (ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonexitactionareawithuserdata) | - | Sets the callback invoked each time the list item exits the delete area. User-defined data will be passed to the callback event.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange (ArkUI_ListItemSwipeActionItem* item,void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState))](#oh_arkui_listitemswipeactionitem_setonstatechange) | - | Sets the callback invoked when the swipe state of the list item changes.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData (ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState, void* userData))](#oh_arkui_listitemswipeactionitem_setonstatechangewithuserdata) | - | Sets the callback invoked when the swipe state of the list item changes. User-defined data will be passed to the callback event.|
-| [ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()](#oh_arkui_listitemswipeactionoption_create) | - | Creates a **ListItemSwipeActionOption** instance.|
-| [void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption* option)](#oh_arkui_listitemswipeactionoption_dispose) | - | Disposes of a **ListItemSwipeActionOption** instance.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionoption_setstart) | - | Sets the layout content for the left edge (for a vertical layout) or top edge (for a horizontal layout) of a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionoption_setend) | - | Sets the layout content for the right edge (for a vertical layout) or bottom edge (for a horizontal layout) of a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeEdgeEffect edgeEffect)](#oh_arkui_listitemswipeactionoption_setedgeeffect) | - | Sets the effect used when the scroll boundary is reached.|
-| [int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActionOption* option)](#oh_arkui_listitemswipeactionoption_getedgeeffect) | - | Obtains the effect used when the scroll boundary is reached.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeActionOption* option, void (\*callback)(float offset))](#oh_arkui_listitemswipeactionoption_setonoffsetchange) | - | Sets the callback invoked when the scroll offset changes.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData (ArkUI_ListItemSwipeActionOption* option, void* userData, void (\*callback)(float offset, void* userData))](#oh_arkui_listitemswipeactionoption_setonoffsetchangewithuserdata) | - | Sets the callback invoked when the scroll offset changes. User-defined data will be passed to the callback event.|
-| [int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListItemSwipeActionDirection direction)](#oh_arkui_listitemswipeaction_expand) | - |  Expands the swipe action menu for the specified list item.|
-| [int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)](#oh_arkui_listitemswipeaction_collapse) | - |  Collapses the swipe action menu for the specified list item.|
 | [ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)](#oh_arkui_accessibilitystate_create) | - | Creates an accessibility state.|
 | [void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_dispose) | - | Disposes of the pointer to an accessibility state.|
 | [void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, int32_t isDisabled)](#oh_arkui_accessibilitystate_setdisabled) | - | Sets whether an accessibility state is disabled.|
@@ -193,29 +167,29 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Erase(ArkUI_TextMenuItemArray* items, int32_t index)](#oh_arkui_textmenuitemarray_erase) | - | Deletes the text menu item at a specified index from the text menu item array.|
 | [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Clear(ArkUI_TextMenuItemArray* items)](#oh_arkui_textmenuitemarray_clear) | - | Clears all text menu items in the text menu item array.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextCreateMenuCallback cb)](#oh_arkui_texteditmenuoptions_registeroncreatemenucallback) | - | Registers the callback for creating text menus.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextPrepareMenuCallback cb)](#oh_arkui_texteditmenuoptions_registeronpreparemenucallback) | - | Registers the callback for preparing text menus.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextMenuItemClickCallback cb)](#oh_arkui_texteditmenuoptions_registeronmenuitemclickcallback) | - | Registers the callback for text menu item clicks.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType textSpanType)](#oh_arkui_textselectionmenuoptions_setspantype) | - | Sets the text recognition type of a custom text selection menu.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType* spanType)](#oh_arkui_textselectionmenuoptions_getspantype) | - | Obtains the text recognition type of a custom text selection menu.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle node)](#oh_arkui_textselectionmenuoptions_setcontentnode) | - | Sets the content node of a custom text selection menu.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle* node)](#oh_arkui_textselectionmenuoptions_getcontentnode) | - | Obtains the content node of a custom text selection menu.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType responseType)](#oh_arkui_textselectionmenuoptions_setresponsetype) | - | Sets the response type of a custom text selection menu.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType* responseType)](#oh_arkui_textselectionmenuoptions_getresponsetype) | - | Obtains the response type of a custom text selection menu.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenushowcallback) | - | Registers the callback for the event of showing a custom text selection menu.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenuhidecallback) | - | Registers the callback for the event of hiding a custom text selection menu.|
-| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | - | Sets the background style. This API takes effect only when the type of the selected item indicator is [ARKUI_PICKER_INDICATOR_BACKGROUND](capi-picker-h.md#arkui_pickerindicatortype).|
-| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)](#oh_arkui_pickerindicatorstyle_configuredivider) | - | Sets the divider style. This API takes effect only when the type of the selected item indicator is [ARKUI_PICKER_INDICATOR_DIVIDER](capi-picker-h.md#arkui_pickerindicatortype).|
-| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType type)](#oh_arkui_decorationstyleoptions_settextdecorationtype) | - | Sets the decoration type of the decorative line style.|
-| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType* type)](#oh_arkui_decorationstyleoptions_gettextdecorationtype) | - | Obtains the decoration type of the decorative line style.|
-| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetColor(OH_ArkUI_DecorationStyleOptions* options, uint32_t color)](#oh_arkui_decorationstyleoptions_setcolor) | - | Sets the color of the decorative line.|
-| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetColor(OH_ArkUI_DecorationStyleOptions* options, uint32_t* color)](#oh_arkui_decorationstyleoptions_getcolor) | - | Obtains the color of the decorative line.|
-| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationStyle(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationStyle style)](#oh_arkui_decorationstyleoptions_settextdecorationstyle) | - | Sets the style of the decorative line.|
-| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationStyle(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationStyle* style)](#oh_arkui_decorationstyleoptions_gettextdecorationstyle) | - | Obtains the style of the decorative line.|
-| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetThicknessScale(OH_ArkUI_DecorationStyleOptions* options, float thicknessScale)](#oh_arkui_decorationstyleoptions_setthicknessscale) | - | Sets the scale factor of the decorative line thickness.|
-| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetThicknessScale(OH_ArkUI_DecorationStyleOptions* options, float* thicknessScale)](#oh_arkui_decorationstyleoptions_getthicknessscale) | - | Obtains the scale factor of the decorative line thickness.|
-| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetTypes(OH_ArkUI_TextDataDetectorConfig* config, const ArkUI_TextDataDetectorType* types, int32_t length)](#oh_arkui_textdatadetectorconfig_settypes) | - | Sets the types of the text entity recognition configuration.|
-| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetTypes(OH_ArkUI_TextDataDetectorConfig* config, ArkUI_TextDataDetectorType* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textdatadetectorconfig_gettypes) | - | Obtains the types of the text entity recognition configuration.|
-| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback(OH_ArkUI_TextDataDetectorConfig* config, void* userData, void (\*callback)(const char* result, int32_t length, void* userData))](#oh_arkui_textdatadetectorconfig_registerondetectresultupdatecallback) | - | Sets the callback for text entity recognition result updates.|
+| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextPrepareMenuCallback cb)](#oh_arkui_texteditmenuoptions_registeronpreparemenucallback) | - | Registers the callback for preparing text menus. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextMenuItemClickCallback cb)](#oh_arkui_texteditmenuoptions_registeronmenuitemclickcallback) | - | Registers the callback for text menu item clicks. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType textSpanType)](#oh_arkui_textselectionmenuoptions_setspantype) | - | Sets the text recognition type of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType* spanType)](#oh_arkui_textselectionmenuoptions_getspantype) | - | Obtains the text recognition type of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle node)](#oh_arkui_textselectionmenuoptions_setcontentnode) | - | Sets the content node of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle* node)](#oh_arkui_textselectionmenuoptions_getcontentnode) | - | Obtains the content node of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType responseType)](#oh_arkui_textselectionmenuoptions_setresponsetype) | - | Sets the response type of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType* responseType)](#oh_arkui_textselectionmenuoptions_getresponsetype) | - | Obtains the response type of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenushowcallback) | - | Registers the callback for the event of showing a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenuhidecallback) | - | Registers the callback for the event of hiding a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | - | Sets the background style. This API takes effect only when the type of the selected item indicator is [ARKUI_PICKER_INDICATOR_BACKGROUND](capi-picker-h.md#arkui_pickerindicatortype). |
+| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)](#oh_arkui_pickerindicatorstyle_configuredivider) | - | Sets the divider style. This API takes effect only when the type of the selected item indicator is [ARKUI_PICKER_INDICATOR_DIVIDER](capi-picker-h.md#arkui_pickerindicatortype). |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType type)](#oh_arkui_decorationstyleoptions_settextdecorationtype) | - | Sets the decoration type of the decorative line style. |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType* type)](#oh_arkui_decorationstyleoptions_gettextdecorationtype) | - | Obtains the decoration type of the decorative line style. |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetColor(OH_ArkUI_DecorationStyleOptions* options, uint32_t color)](#oh_arkui_decorationstyleoptions_setcolor) | - | Sets the color of the decorative line. |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetColor(OH_ArkUI_DecorationStyleOptions* options, uint32_t* color)](#oh_arkui_decorationstyleoptions_getcolor) | - | Obtains the color of the decorative line. |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationStyle(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationStyle style)](#oh_arkui_decorationstyleoptions_settextdecorationstyle) | - | Sets the style of the decorative line. |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationStyle(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationStyle* style)](#oh_arkui_decorationstyleoptions_gettextdecorationstyle) | - | Obtains the style of the decorative line. |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetThicknessScale(OH_ArkUI_DecorationStyleOptions* options, float thicknessScale)](#oh_arkui_decorationstyleoptions_setthicknessscale) | - | Sets the scale factor of the decorative line thickness. |
+| [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetThicknessScale(OH_ArkUI_DecorationStyleOptions* options, float* thicknessScale)](#oh_arkui_decorationstyleoptions_getthicknessscale) | - | Obtains the scale factor of the decorative line thickness. |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetTypes(OH_ArkUI_TextDataDetectorConfig* config, const ArkUI_TextDataDetectorType* types, int32_t length)](#oh_arkui_textdatadetectorconfig_settypes) | - | Sets the types of the text entity recognition configuration. |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetTypes(OH_ArkUI_TextDataDetectorConfig* config, ArkUI_TextDataDetectorType* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textdatadetectorconfig_gettypes) | - | Obtains the types of the text entity recognition configuration. |
+| [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback(OH_ArkUI_TextDataDetectorConfig* config, void* userData, void (\*callback)(const char* result, int32_t length, void* userData))](#oh_arkui_textdatadetectorconfig_registerondetectresultupdatecallback) | - | Sets the callback for text entity recognition result updates. |
 | [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetColor(OH_ArkUI_TextDataDetectorConfig* config, uint32_t color)](#oh_arkui_textdatadetectorconfig_setcolor) | - | Sets the color of the recognized content.|
 | [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetColor(OH_ArkUI_TextDataDetectorConfig* config, uint32_t* color)](#oh_arkui_textdatadetectorconfig_getcolor) | - | Obtains the color of the recognized content.|
 | [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetDecorationStyleOptions(OH_ArkUI_TextDataDetectorConfig* config, OH_ArkUI_DecorationStyleOptions* decoration)](#oh_arkui_textdatadetectorconfig_setdecorationstyleoptions) | - | Sets the decoration style of the recognized content.|
@@ -293,29 +267,29 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetSpanType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorSpanType* textEditorSpanType)](#oh_arkui_texteditorselectionmenuoptions_getspantype) | - | Obtains the span type of the text selection menu in the text editor.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetContentNode(OH_ArkUI_TextEditorSelectionMenuOptions* options, ArkUI_NodeHandle node)](#oh_arkui_texteditorselectionmenuoptions_setcontentnode) | - | Sets the content node of the text selection menu in the text editor.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetContentNode(OH_ArkUI_TextEditorSelectionMenuOptions* options, ArkUI_NodeHandle* node)](#oh_arkui_texteditorselectionmenuoptions_getcontentnode) | - | Obtains the content node of the text selection menu in the text editor.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetResponseType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorResponseType responseType)](#oh_arkui_texteditorselectionmenuoptions_setresponsetype) | - | Sets the response type of the text selection menu in the text editor.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetResponseType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorResponseType* responseType)](#oh_arkui_texteditorselectionmenuoptions_getresponsetype) | - | Obtains the response type of the text selection menu in the text editor.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetMenuType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextMenuType menuType)](#oh_arkui_texteditorselectionmenuoptions_setmenutype) | - | Sets the type of the text selection menu in the text editor.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetMenuType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextMenuType* menuType)](#oh_arkui_texteditorselectionmenuoptions_getmenutype) | - | Obtains the type of the text selection menu in the text editor.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuShowCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(int32_t start, int32_t end, void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenushowcallback) | - | Sets the callback triggered when the text selection menu is displayed.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuHideCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(int32_t start, int32_t end, void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenuhidecallback) | - | Sets the callback triggered when the text selection menu is hidden.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuAppearCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(int32_t start, int32_t end, void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenuappearcallback) | - | Sets the callback triggered when the text selection menu appears.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuDisappearCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenudisappearcallback) | - | Sets the callback triggered when the text selection menu disappears.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode mode)](#oh_arkui_texteditorselectionmenuoptions_sethapticfeedbackmode) | - | Sets the haptic feedback mode of the text selection menu in the text editor.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode* mode)](#oh_arkui_texteditorselectionmenuoptions_gethapticfeedbackmode) | - | Obtains the haptic feedback mode of the text selection menu in the text editor.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu(OH_ArkUI_TextEditorStyledStringController* controller)](#oh_arkui_texteditorstyledstringcontroller_closeselectionmenu) | - | Closes the text selection menu of the styled string controller in the text editor.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetSelection(const OH_ArkUI_TextEditorStyledStringController* controller, uint32_t* start, uint32_t* end)](#oh_arkui_texteditorstyledstringcontroller_getselection) | - | Obtains the selected area using the styled string controller.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledstring) | - | Sets the styled string displayed using the styled string controller.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_getstyledstring) | - | Obtains the styled string displayed using the styled string controller.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledplaceholder) | - | Sets the placeholder text in the styled string style using the styled string controller.|
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const OH_ArkUI_TextEditorStyledStringController* controller, int32_t start, int32_t end)](#oh_arkui_texteditorstyledstringcontroller_scrolltovisible) | -    | Scrolls the content within the range from the specified start index to the end index to the visible area using the styled string controller.|
-| [ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_textcontroller_setstyledstring) | - | Sets a styled string for the text component.|
-| [OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()](#oh_arkui_lineargradientoptions_create) | - | Creates an object for linear gradient effect options.|
-| [void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* options)](#oh_arkui_lineargradientoptions_destroy) | - | Destroys the object for linear gradient effect options.|
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientOptions* options, float angle)](#oh_arkui_lineargradientoptions_setangle) | - | Sets the angle in linear gradient effect options.|
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGradientOptions* options, float* angle)](#oh_arkui_lineargradientoptions_getangle) | - | Obtains the angle in linear gradient effect options.|
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection direction)](#oh_arkui_lineargradientoptions_setdirection) | - | Sets the direction in linear gradient effect options.|
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection* direction)](#oh_arkui_lineargradientoptions_getdirection) | - | Obtains the direction in linear gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetResponseType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorResponseType responseType)](#oh_arkui_texteditorselectionmenuoptions_setresponsetype) | - | Sets the response type of the text selection menu in the text editor. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetResponseType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorResponseType* responseType)](#oh_arkui_texteditorselectionmenuoptions_getresponsetype) | - | Obtains the response type of the text selection menu in the text editor. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetMenuType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextMenuType menuType)](#oh_arkui_texteditorselectionmenuoptions_setmenutype) | - | Sets the type of the text selection menu in the text editor. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetMenuType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextMenuType* menuType)](#oh_arkui_texteditorselectionmenuoptions_getmenutype) | - | Obtains the type of the text selection menu in the text editor. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuShowCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(int32_t start, int32_t end, void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenushowcallback) | - | Sets the callback triggered when the text selection menu is displayed. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuHideCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(int32_t start, int32_t end, void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenuhidecallback) | - | Sets the callback triggered when the text selection menu is hidden. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuAppearCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(int32_t start, int32_t end, void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenuappearcallback) | - | Sets the callback triggered when the text selection menu appears. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuDisappearCallback(OH_ArkUI_TextEditorSelectionMenuOptions* options, void* userData, void (\*callback)(void* callbackUserData))](#oh_arkui_texteditorselectionmenuoptions_registeronmenudisappearcallback) | - | Sets the callback triggered when the text selection menu disappears. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode mode)](#oh_arkui_texteditorselectionmenuoptions_sethapticfeedbackmode) | - | Sets the haptic feedback mode of the text selection menu in the text editor. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode* mode)](#oh_arkui_texteditorselectionmenuoptions_gethapticfeedbackmode) | - | Obtains the haptic feedback mode of the text selection menu in the text editor. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu(OH_ArkUI_TextEditorStyledStringController* controller)](#oh_arkui_texteditorstyledstringcontroller_closeselectionmenu) | - | Closes the text selection menu of the styled string controller in the text editor. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetSelection(const OH_ArkUI_TextEditorStyledStringController* controller, uint32_t* start, uint32_t* end)](#oh_arkui_texteditorstyledstringcontroller_getselection) | - | Obtains the selected area using the styled string controller. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledstring) | - | Sets the styled string displayed using the styled string controller. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_getstyledstring) | - | Obtains the styled string displayed using the styled string controller. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledplaceholder) | - | Sets the placeholder text in the styled string style using the styled string controller. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const OH_ArkUI_TextEditorStyledStringController* controller, int32_t start, int32_t end)](#oh_arkui_texteditorstyledstringcontroller_scrolltovisible) | -    | Scrolls the content within the range from the specified start index to the end index to the visible area using the styled string controller. |
+| [ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_textcontroller_setstyledstring) | - | Sets a styled string for the text component. |
+| [OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()](#oh_arkui_lineargradientoptions_create) | - | Creates an object for linear gradient effect options. |
+| [void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* options)](#oh_arkui_lineargradientoptions_destroy) | - | Destroys the object for linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientOptions* options, float angle)](#oh_arkui_lineargradientoptions_setangle) | - | Sets the angle in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGradientOptions* options, float* angle)](#oh_arkui_lineargradientoptions_getangle) | - | Obtains the angle in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection direction)](#oh_arkui_lineargradientoptions_setdirection) | - | Sets the direction in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection* direction)](#oh_arkui_lineargradientoptions_getdirection) | - | Obtains the direction in linear gradient effect options. |
 | [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetRepeating(OH_ArkUI_LinearGradientOptions* options, bool repeating)](#oh_arkui_lineargradientoptions_setrepeating) | - | Sets whether the color is repeated in linear gradient effect options.|
 | [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetRepeating(const OH_ArkUI_LinearGradientOptions* options, bool* repeating)](#oh_arkui_lineargradientoptions_getrepeating) | - | Obtains whether the color is repeated in linear gradient effect options.|
 | [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetColorStop(OH_ArkUI_LinearGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_lineargradientoptions_setcolorstop) | - | Sets the color stop in linear gradient effect options.|
@@ -332,6 +306,10 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRepeating(const OH_ArkUI_RadialGradientOptions* options, bool* repeating)](#oh_arkui_radialgradientoptions_getrepeating) | - | Obtains whether the color is repeated in radial gradient effect options.|
 | [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetColorStop(OH_ArkUI_RadialGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_radialgradientoptions_setcolorstop) | - | Sets the color stop in radial gradient effect options.|
 | [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetColorStop(const OH_ArkUI_RadialGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)](#oh_arkui_radialgradientoptions_getcolorstop) | - | Obtains the color stop in radial gradient effect options.|
+| [ArkUI_SelectedDragPreviewStyle* OH_ArkUI_SelectedDragPreviewStyle_Create()](#oh_arkui_selecteddragpreviewstyle_create) | - | Creates a preview style shown when dragging selected text. |
+| [void OH_ArkUI_SelectedDragPreviewStyle_Dispose(ArkUI_SelectedDragPreviewStyle* config)](#oh_arkui_selecteddragpreviewstyle_dispose) | - | Destroys the preview style shown when dragging selected text. |
+| [void OH_ArkUI_SelectedDragPreviewStyle_SetColor(ArkUI_SelectedDragPreviewStyle* config, uint32_t color)](#oh_arkui_selecteddragpreviewstyle_setcolor) | - | Sets the background color of the preview style shown when dragging selected text. |
+| [uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewStyle* config)](#oh_arkui_selecteddragpreviewstyle_getcolor) | - | Obtains the background color of the preview style shown when dragging selected text. |
 
 ## Enum Description
 
@@ -507,60 +485,6 @@ Enumerates the component units.
 | ARKUI_LENGTH_METRIC_UNIT_PX = 0 | The unit is px.|
 | ARKUI_LENGTH_METRIC_UNIT_VP = 1 | The unit is vp.|
 | ARKUI_LENGTH_METRIC_UNIT_FP = 2 | The unit is fp.|
-
-### ArkUI_ListItemSwipeActionState
-
-```c
-enum ArkUI_ListItemSwipeActionState
-```
-
-**Description**
-
-
-Enumerates the item states of [SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component. The default value is **ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED**.
-
-**Since**: 12
-
-| Value| Description|
-| -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0 | Collapsed state. When the list item is swiped in the opposite direction of the main axis, the swipe action item is hidden.|
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED = 1 | Expanded state. When the list item is swiped in the opposite direction of the main axis, the swipe action item is shown.|
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING = 2 | In-action state. The list item is in this state when it enters the delete area.|
-
-### ArkUI_ListItemSwipeEdgeEffect
-
-```c
-enum ArkUI_ListItemSwipeEdgeEffect
-```
-
-**Description**
-
-
-Enumerates the item edge effects of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the **Listitem** component. The default value is **ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING**.
-
-**Since**: 12
-
-| Value| Description|
-| -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0 | When the list item scrolls to the edge of the list, it can continue to scroll for a distance.|
-| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE = 1 | The list item cannot scroll beyond the edge of the list.|
-
-### ArkUI_ListItemSwipeActionDirection
-
-```c
-enum ArkUI_ListItemSwipeActionDirection
-```
-
-**Description**
-
-Enumerates the swipe action menu display directions for **ListItem** components.
-
-**Since**: 21
-
-| Value| Description|
-| -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | For vertical lists: left side in LTR mode, right side in RTL mode. For horizontal lists: top side.|
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | For vertical lists: right side in LTR mode, left side in RTL mode. For horizontal lists: bottom side.|
 
 ### ArkUI_CrownSensitivity
 
@@ -1319,509 +1243,6 @@ Obtains the font weight of the selected digit-style navigation indicator of the 
 | Type| Description|
 | -- | -- |
 | [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight).|
-
-### OH_ArkUI_ListItemSwipeActionItem_Create()
-
-```c
-ArkUI_ListItemSwipeActionItem* OH_ArkUI_ListItemSwipeActionItem_Create()
-```
-
-**Description**
-
-
-Creates a **ListItemSwipeActionItem** instance.
-
-**Since**: 12
-
-**Returns**
-
-| Type                                | Description|
-|------------------------------------| -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* | Pointer to the **ListItemSwipeActionItem** instance.|
-
-### OH_ArkUI_ListItemSwipeActionItem_Dispose()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_Dispose(ArkUI_ListItemSwipeActionItem* item)
-```
-
-**Description**
-
-
-Disposes of a **ListItemSwipeActionItem** instance.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance to dispose of.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetContent()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* item, ArkUI_NodeHandle node)
-```
-
-**Description**
-
-
-Sets the layout content for a **ListItemSwipeActionItem** instance.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Layout information.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item, float distance)
-```
-
-**Description**
-
-
-Sets the swipe distance threshold for deleting the list item.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-| float distance | Swipe distance threshold for deleting the list item, in vp.|
-
-### OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance()
-
-```c
-float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item)
-```
-
-**Description**
-
-
-Obtains the swipe distance threshold for deleting the list item.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| float | Swipe distance threshold for deleting the list item, in vp. The value **0** is returned if an exception occurs.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeActionItem* item, void (*callback)())
-```
-
-**Description**
-
-
-Sets the callback invoked each time the list item enters the delete area.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name                                    | Description|
-|-----------------------------------------| -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-| callback                                | Callback event.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(void* userData))
-```
-
-**Description**
-
-
-Sets the callback invoked each time the list item enters the delete area. User-defined data will be passed to the callback event.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-| void* userData | Pointer to the user-defined data.|
-| callback | Callback event.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetOnAction()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem* item, void (*callback)())
-```
-
-**Description**
-
-
-Sets the callback invoked when the [list item](./arkui-ts/ts-container-listitem.md) is deleted while in the delete area.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-| callback | Callback event.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(void* userData))
-```
-
-**Description**
-
-
-Sets the callback invoked when the list item is deleted while in the delete area. User-defined data will be passed to the callback event.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-| void* userData | Pointer to the user-defined data.|
-| callback | Callback event.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeActionItem* item, void (*callback)())
-```
-
-**Description**
-
-
-Sets the callback invoked each time the list item exits the delete area.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-| callback | Callback event.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(void* userData))
-```
-
-**Description**
-
-
-Sets the callback invoked each time the list item exits the delete area. User-defined data will be passed to the callback event.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-| void* userData | Pointer to the user-defined data.|
-| callback | Callback event.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeActionItem* item,void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState))
-```
-
-**Description**
-
-
-Sets the callback invoked when the swipe state of the list item changes.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-| callback | Callback event. The input parameter is **swipeActionState**, indicating the swipe state of the list item.|
-
-### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData()
-
-```c
-void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState, void* userData))
-```
-
-**Description**
-
-
-Sets the callback invoked when the swipe state of the list item changes. User-defined data will be passed to the callback event.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
-|  void* userData | Pointer to the user-defined data.|
-| callback | Callback event. The input parameter is **swipeActionState**, indicating the swipe state of the list item.|
-
-### OH_ArkUI_ListItemSwipeActionOption_Create()
-
-```c
-ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()
-```
-
-**Description**
-
-
-Creates a **ListItemSwipeActionOption** instance.
-
-**Since**: 12
-
-**Returns**
-
-| Type                                  | Description|
-|--------------------------------------| -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* | Pointer to the **ListItemSwipeActionOption** instance.|
-
-### OH_ArkUI_ListItemSwipeActionOption_Dispose()
-
-```c
-void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption* option)
-```
-
-**Description**
-
-
-Disposes of a **ListItemSwipeActionOption** instance.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance to dispose of.|
-
-### OH_ArkUI_ListItemSwipeActionOption_SetStart()
-
-```c
-void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)
-```
-
-**Description**
-
-
-Sets the layout content for the left edge (for a vertical layout) or top edge (for a horizontal layout) of a **ListItemSwipeActionItem** instance.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the layout information.|
-
-### OH_ArkUI_ListItemSwipeActionOption_SetEnd()
-
-```c
-void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* option,ArkUI_ListItemSwipeActionItem* item)
-```
-
-**Description**
-
-
-Sets the layout content for the right edge (for a vertical layout) or bottom edge (for a horizontal layout) of a **ListItemSwipeActionItem** instance.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the layout information.|
-
-### OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect()
-
-```c
-void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionOption* option,ArkUI_ListItemSwipeEdgeEffect edgeEffect)
-```
-
-**Description**
-
-
-Sets the effect used when the scroll boundary is reached.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
-| [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | Effect used when the boundary of the scrolling area is reached.|
-
-### OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect()
-
-```c
-int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActionOption* option)
-```
-
-**Description**
-
-
-Obtains the effect used when the scroll boundary is reached.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Effect used when the boundary of the scrolling area is reached. The default return value is [ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING](#arkui_listitemswipeedgeeffect).|
-
-### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange()
-
-```c
-void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeActionOption* option,void (*callback)(float offset))
-```
-
-**Description**
-
-
-Sets the callback invoked when the scroll offset changes.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
-| callback | Callback event. **offset**: scroll offset, in vp.|
-
-### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
-
-```c
-void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_ListItemSwipeActionOption* option,void* userData, void (*callback)(float offset, void* userData))
-```
-
-**Description**
-
-
-Sets the callback invoked when the scroll offset changes. User-defined data will be passed to the callback event.
-
-**Since**: 12
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
-|  void* userData | Pointer to the user-defined data.|
-| callback | Callback event. **offset**: scroll offset, in vp.|
-
-### OH_ArkUI_ListItemSwipeAction_Expand()
-
-```c
-int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListItemSwipeActionDirection direction)
-```
-
-**Description**
-
-Expands the swipe action menu for the specified list item.
-
-**Since**: 21
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ListItem** node object.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Swipe action menu display direction for the **ListItem** component.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_PARAM_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the passed node object type is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the passed node is not mounted to the component tree.|
-
-> **NOTE**
->
-> - If the **List** component's **NODE_LIST_CACHED_COUNT** attribute is configured to preload **ListItem** child components, swipe action menus can be expanded for preloaded **ListItem** child components outside the visible area. Otherwise, child components outside the visible area cannot be expanded.
-
-### OH_ArkUI_ListItemSwipeAction_Collapse()
-
-```c
-int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)
-```
-
-**Description**
-
-Collapses the swipe action menu for the specified list item.
-
-**Since**: 21
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ListItem** node object.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_PARAM_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the passed node object type is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the passed node is not mounted to the component tree.|
 
 ### OH_ArkUI_AccessibilityState_Create()
 

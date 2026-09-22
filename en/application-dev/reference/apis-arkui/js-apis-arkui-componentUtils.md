@@ -1,12 +1,11 @@
 # @ohos.arkui.componentUtils (componentUtils)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=18e94b724bec38088e609f6eb78294c1c8dd8eb8 translatedAt=2026-07-29T09:27:53.173Z pushedAt=2026-07-31T09:32:15.444Z -->
+<!-- md-trans-meta sourceCommit=3ddb6f7d5458e03f96ae5f64e626eb2fb03d26f6 translatedAt=2026-08-29T09:29:38.886Z pushedAt=2026-08-31T08:53:01.909Z -->
 
 The **componentUtils** module provides API for obtaining the coordinates and size of the drawing area of a component. It is applicable to scenarios where the actual drawing area information of a component needs to be queried after the component layout is complete, helping you obtain layout results such as component sizes and positions.
 
@@ -23,7 +22,6 @@ The **componentUtils** module provides API for obtaining the coordinates and siz
 ```ts
 import { componentUtils } from '@kit.ArkUI';
 ```
-
 ## componentUtils.getRectangleById<sup>(deprecated)</sup>
 
 getRectangleById(id: string): ComponentInfo
@@ -88,7 +86,7 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | rotate         | [RotateResult](#rotateresult) | No      | No    | Rotation of the component.               |
 | transform      | [Matrix4Result](#matrix4result) | No      | No    | Affine matrix of the component, which is a 4x4 matrix object created based on the input parameter. |
 
-### Size
+## Size
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -99,7 +97,7 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | width    | number | No       | No     | Component width.<br>Unit: px                      |
 | height   | number | No       | No     | Component height.<br>Unit: px                      |
 
-### Offset
+## Offset
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -110,7 +108,7 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | x       | number| No       | No     | X-coordinate.<br>Unit: px                           |
 | y       | number| No       | No     | Y-coordinate.<br>Unit: px                           |
 
-### TranslateResult
+## TranslateResult
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -122,7 +120,7 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | y       | number | No       | No    | Translation distance along the y-axis.<br>Unit: vp                       |
 | z       | number | No       | No     | Translation distance along the z-axis.<br>Unit: vp                       |
 
-### ScaleResult
+## ScaleResult
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -136,7 +134,7 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | centerX | number | No | No | X-axis coordinate of the transform center point.<br>Unit: vp |
 | centerY | number | No | No | Y-axis coordinate of the transform center point.<br>Unit: vp |
 
-### RotateResult
+## RotateResult
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -151,7 +149,7 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 | centerX | number | No       | No  | X-axis coordinate of the transform center point.<br>Unit: vp                 |
 | centerY | number | No       | No  | Y-axis coordinate of the transform center point.<br>Unit: vp                 |
 
-### Matrix4Result
+## Matrix4Result
 
 type Matrix4Result = [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]
 

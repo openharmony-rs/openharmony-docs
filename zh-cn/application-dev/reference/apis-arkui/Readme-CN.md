@@ -17,7 +17,7 @@
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
-    - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
+    - [@ohos.arkui.Prefetcher (内容预取)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
@@ -164,7 +164,7 @@
       - [轴事件](arkui-ts/ts-universal-events-axis.md)
       - [按键事件](arkui-ts/ts-universal-events-key.md)
       - [表冠事件](arkui-ts/ts-universal-events-crown.md)
-      - [焦点轴事件](arkui-ts/ts-universal-events-focus_axis.md)
+      - [焦点轴事件](arkui-ts/ts-universal-events-focus-axis.md)
     - 交互响应事件<!--interaction-events-->
       - [点击事件](arkui-ts/ts-universal-events-click.md)
       - [拖拽事件](arkui-ts/ts-universal-events-drag-drop.md)
@@ -259,7 +259,7 @@
     - 动态属性与自定义<!--attribute-modifier-property-->
       - [动态属性设置](arkui-ts/ts-universal-attributes-attribute-modifier.md)
       - [动态手势设置](arkui-ts/ts-universal-attributes-gesture-modifier.md)
-      - [自定义绘制设置](arkui-ts/ts-universal-attributes-draw-modifier.md)
+      - [自定义绘制](arkui-ts/ts-universal-attributes-draw-modifier.md)
       - [自定义内容](arkui-ts/ts-universal-attributes-content-modifier.md)
       - [自定义属性设置](arkui-ts/ts-universal-attributes-custom-property.md)
       - [动态SymbolGlyphModifier属性设置](arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md)
@@ -779,6 +779,10 @@
     - [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md)
     - [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md)
     - [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)
+    - [OH_ArkUI_PropertyAnimation*](capi-arkui-nativemodule-arkui-propertyanimation8h.md)
+    - [OH_ArkUI_KeyframeAnimation*](capi-arkui-nativemodule-arkui-keyframeanimation8h.md)
+    - [OH_ArkUI_PathAnimation*](capi-arkui-nativemodule-arkui-pathanimation8h.md)
+    - [OH_ArkUI_AnimationGroup*](capi-arkui-nativemodule-arkui-animationgroup8h.md)
     - [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)
     - [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md)
     - [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md)
@@ -1013,8 +1017,9 @@
     - [DrawableDescriptor错误码](errorcode-drawable-descriptor.md)
     - [环境变量错误码](errorcode-env.md)
     - [反色能力错误码](errorcode-force-dark.md)
+    - [动视效错误码](errorcode-animation.md)
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)
   - UI编译<!--arkui-compile-arkts-errcode-->
-    - [编译错误码](_ark_ui_compile.md)
+    - [编译错误码](errorcode-arkui-compile.md)

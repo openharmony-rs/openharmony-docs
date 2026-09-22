@@ -1,8 +1,8 @@
 # @ohos.multimedia.avsession (媒体会话管理)(系统接口)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester:@chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -982,8 +982,6 @@ on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionT
 
 最新分布式远端会话变更的监听事件。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
@@ -1019,8 +1017,6 @@ avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_S
 off(type: 'distributedSessionChange', distributedSessionType: DistributedSessionType, callback?: Callback<Array\<AVSessionController>>): void
 
 取消最新分布式远端会话变更的监听事件，取消后，不再进行该事件的监听。
-
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1704,8 +1700,8 @@ getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController
 | 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception |
-| 6600102  | session does not exist |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
@@ -1778,8 +1774,8 @@ getAVCastController(sessionId: string): Promise\<AVCastController>
 | 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | server exception |
-| 6600102  | The session does not exist |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 

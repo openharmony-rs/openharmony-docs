@@ -138,7 +138,7 @@ onError(callback: ErrorCallback)
 
 onTerminated(callback: Callback\<TerminationInfo\>)
 
-被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时触发此回调。使用callback异步回调。
+被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时触发此回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -164,7 +164,7 @@ onTerminated(callback: Callback\<TerminationInfo\>)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | 否 | 否 | 被拉起的UIExtensionAbility退出时返回的结果码，0表示正常退出，非0表示异常退出。具体结果码含义由被拉起的UIExtensionAbility定义。 |
+| code | number | 否 | 否 | 被拉起的UIExtensionAbility退出时返回的结果码。调用terminateSelfWithResult退出时，结果码由传入的resultCode决定；调用terminateSelf退出时，结果码为默认值0。 |
 | want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。未返回数据时该字段为空。 |
 
 ## SecurityUIExtensionProxy
@@ -181,7 +181,7 @@ onTerminated(callback: Callback\<TerminationInfo\>)
 
 send(data: Record\<string, Object\>): void
 
-用于在双方建立连接成功后，向被拉起的Ability发送数据，提供异步发送能力。数据将被扩展Ability通过[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)接收处理。
+用于在双方建立连接成功后，向被拉起的Ability发送数据，提供异步发送能力。数据将被拉起的Ability通过[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)接收处理。
 
 **起始版本：** 26.0.0
 
@@ -245,7 +245,7 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，代表订阅被拉起的Ability异步注册时触发的回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。订阅被拉起的Ability注册[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)后触发的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。被拉起的Ability注册[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)后触发的回调。 |
 
 ### on('syncReceiverRegister')
 
@@ -270,7 +270,7 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-取消订阅被拉起的Ability异步注册时触发的回调。使用callback异步回调。
+取消订阅被拉起的Ability异步注册时触发的回调。
 
 **起始版本：** 26.0.0
 
@@ -289,7 +289,7 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 
 off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-取消订阅被拉起的Ability同步注册时触发的回调。使用callback异步回调。
+取消订阅被拉起的Ability同步注册时触发的回调。
 
 **起始版本：** 26.0.0
 

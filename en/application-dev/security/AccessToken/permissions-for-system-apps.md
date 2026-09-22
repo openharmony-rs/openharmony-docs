@@ -341,9 +341,11 @@ Allows a system application to obtain theme skinning resources in the skin direc
 
 **Certificate-based authorization**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 20
+
+**Changelog**: Since API version 26.0.1, this permission is also available on cars.
 
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
@@ -7452,7 +7454,7 @@ With this permission, the application can call the API to obtain the local accou
 
 **Certificate-based authorization**: true
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 24
 
@@ -9061,6 +9063,20 @@ Allows an application to use the wired projection service to query information s
 
 **Since**: 26.1.0
 
+## ohos.permission.vehicle.ACCESS_EXTERNAL_DVR_DATA
+
+Allows an application to access data on the external storage card of the dashcam.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.2.0
+
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
 Allows a system application to send the authorization results for model download requests to the model management service.
@@ -9150,6 +9166,258 @@ Allows a system application to modify the delayed task parameters of specified a
 ## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
 
 Allows an application to restore the vehicle system to factory settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.ACCESS_SERVICE_NAVIGATION_PRIVATE_DATA
+
+Allows a system application to access sensitive data provided by the navigation information service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
+
+Allows an application to switch the list of displayable applications on multi‑mode devices.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: tablets | PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_SHARE_PHOTO
+
+Allows a system application to access shared albums and files within the albums.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | PCs/2-in-1 devices | cars | TVs | wearables
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_LOH
+ 	 
+Allows an application to invoke virtualization capabilities of the Linux subsystem.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_LOH_PTY
+
+Allows an application to pass Linux commands with normal privileges to a container for execution through a pseudo-terminal (PTY).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.1.0
+
+## ohos.permission.MANAGE_LOH_PTY_ROOT
+
+Allows an application to pass Linux commands with root privileges to a container for execution through a pseudo-terminal (PTY).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.1.0
+
+## ohos.permission.CLEAR_BACKGROUND_APPS
+
+Allows an application to clear background application resources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.SOFTBUS_MANAGER_RESOURCE
+
+Allows a system application to manage SoftBus resources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
+
+**Valid since**: 26.1.0
+
+## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
+
+Allows an application to install freely distributable applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
+ 
+Allows an application to skip enterprise re-signing certificate verification.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.DEVICE_INFO_WRITE
+
+Allows an application to configure parameters for devices attached to the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.DEVICE_INFO_READ
+
+Allows an application to get parameters of devices attached to the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.LICENSE_WRITE
+
+Allows an application to apply for a temporary vehicle license.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.LICENSE_READ
+
+Allows an application to get license-related information about the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.CURTAIN_WRITE
+
+Allows an application to set curtain mode and motion commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.CURTAIN_READ
+
+Allows an application to get curtain mode and motion status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.CLUSTER_INFO_WRITE
+
+Allows an application to set the personalization parameters for the instrument cluster.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.CLUSTER_INFO_READ
+
+Allows an application to get information related to instrument cluster personalization settings.
 
 **Permission level**: system_basic
 
