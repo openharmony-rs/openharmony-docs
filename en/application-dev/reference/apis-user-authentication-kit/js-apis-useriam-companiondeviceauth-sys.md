@@ -5,8 +5,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-
-## Overview
+<!-- md-trans-meta sourceCommit=7507bf7498175f9363f60d56ed8f750b80e8d09c translatedAt=2026-09-21T03:02:34.308Z pushedAt=2026-09-22T01:29:30.430Z -->
 
 The **companionDeviceAuth** module is an important part of the OpenHarmony user identity and access management (UserIAM) system. It is dedicated to companion device authentication management. This module provides the system application with capabilities such as querying and subscribing to companion devices, and managing the service scope.
 
@@ -111,7 +110,7 @@ Currently, the services of the companion device module include the default servi
 
 Adding services has requirements on the scenarios supported by the server device. For example, the multi-screen collaboration service requires that the server device support the agency authentication scenario.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -126,7 +125,7 @@ Adding services has requirements on the scenarios supported by the server device
 
 Enumerates device ID types. They are used to define the device service identifier type. System-defined types and vendor-defined types are supported.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -141,7 +140,7 @@ Enumerates device ID types. They are used to define the device service identifie
 
 Selects the purpose of the companion device.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -157,7 +156,7 @@ Selects the purpose of the companion device.
 
 Defines the device service ID. It uniquely identifies a device and its user, including the device ID type, device ID, and user ID.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -173,7 +172,7 @@ Defines the device service ID. It uniquely identifies a device and its user, inc
 
 Defines the device status information. It describes the current status of the companion device, including the device service ID, user name, model information, device name, online status, and list of supported service IDs.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -192,7 +191,7 @@ Defines the device status information. It describes the current status of the co
 
 Describes the complete status information about a registered companion device authentication template, including the template ID, data confirmation status, validity, user ID, time when the template is added, supported services, and associated device status.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -214,7 +213,7 @@ type TemplateStatusCallback = (templateStatusList: TemplateStatus[]) => void
 
 Defines the callback triggered for receiving notifications of template status changes. When the template status changes (for example, the template is added, deleted, or its validity changes), the system notifies the application through this callback.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -232,7 +231,7 @@ type ContinuousAuthStatusCallback = (isAuthPassed: boolean, authTrustLevel?: Use
 
 Defines the callback triggered for receiving notifications of continuous authentication status changes. When the authentication status of a companion device changes, the system applies the current authentication result and authentication reliability level through this callback notification.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -251,7 +250,7 @@ type AvailableDeviceStatusCallback = (deviceStatusList: DeviceStatus[]) => void
 
 Defines the callback triggered for receiving notifications of available device status changes. When the list of available devices changes (for example, a new device goes online or a device goes offline), the system notifies the application through this callback.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -267,7 +266,7 @@ Defines the callback triggered for receiving notifications of available device s
 
 Defines continuous authentication parameters. They are used to configure parameters related to the subscription to the continuous authentication status, for example, specifying the target template to be subscribed to.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -289,7 +288,7 @@ Obtains the status of the companion device template. This API is used to query t
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -333,7 +332,7 @@ Subscribes to template status change events. This API uses an asynchronous callb
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -379,7 +378,7 @@ Unsubscribes from template status change events. This API uses an asynchronous c
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -426,7 +425,7 @@ Subscribes to the events for status changes of companion devices that can be add
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -472,7 +471,7 @@ Unsubscribes from the events for status changes of companion devices that can be
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -519,7 +518,7 @@ Subscribes to the events for continuous authentication status of companion devic
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -576,7 +575,7 @@ Unsubscribes from the continuous authentication status change event of the compa
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -632,7 +631,7 @@ Obtains the status monitor. This API is used to obtain the status monitor object
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -693,7 +692,7 @@ try {
 
 Returns the result of companion device selection. It is used to return the device information and extended context selected by the user in the device selection callback.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -710,7 +709,7 @@ type DeviceSelectCallback = (selectPurpose: number) => DeviceSelectResult
 
 Defines the callback triggered for the companion device selection. When the system requires the user to select a companion device (for example, when adding a template or performing authentication), this callback is triggered. The application needs to return the information about the selected device.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -736,7 +735,7 @@ Registers a callback for companion device selection. When the system requires th
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -800,7 +799,7 @@ Unregisters a callback for companion device selection. After the callback is unr
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -838,7 +837,7 @@ Updates the service scope supported by the specified companion device template. 
 
 **Required permissions**: ohos.permission.USE_USER_IDM
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 

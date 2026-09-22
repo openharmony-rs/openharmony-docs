@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=2f60b87a09259ca058c0c6434a21fab631b01f26 translatedAt=2026-09-21T02:20:56.688Z pushedAt=2026-09-22T01:29:30.356Z -->
 
 ```c
 typedef struct HiAppEvent_AppEventInfo {...} HiAppEvent_AppEventInfo
@@ -27,7 +28,9 @@ Defines a struct for the information about a single event, including the domain,
 
 | Name| Description|
 | -- | -- |
-| const char* domain | Pointer to the event domain.|
-| const char* name | Pointer to the event name.|
+| const char* domain | Event domain. It indicates the business domain or functional module to which the event belongs, used for event classification and management. |
+| const char* name | Event name. It is used together with **domain** to uniquely identify a specific event. |
 | enum [EventType](capi-hiappevent-h.md#eventtype) type | Event type.|
-| const char* params | Event parameter list in JSON format.|
+| const char* params | Event parameter list in JSON format string. |
+
+
