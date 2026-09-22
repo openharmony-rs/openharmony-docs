@@ -1277,7 +1277,7 @@ Ability状态信息。
 
 | 类型 | 说明 |
 | --- | --- |
-| _[AbilityStateData](js-apis-inner-application-abilityStateData.md).default | Ability状态信息。 |
+| _[AbilityStateData (Ability状态数据)](js-apis-inner-application-abilityStateData.md).default | Ability状态信息。 |
 
 ## AbilityStateData<sup>23+</sup>
 
@@ -1293,7 +1293,7 @@ Ability状态信息。
 
 | 类型                                                         | 说明              |
 | ------------------------------------------------------------ | ----------------- |
-| _[AbilityStateData](js-apis-inner-application-abilityStateData.md) | Ability状态信息。 |
+| _[AbilityStateData (Ability状态数据)](js-apis-inner-application-abilityStateData.md) | Ability状态信息。 |
 
 ## AppStateData<sup>14+</sup>
 

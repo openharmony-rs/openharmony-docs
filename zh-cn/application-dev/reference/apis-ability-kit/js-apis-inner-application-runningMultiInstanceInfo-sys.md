@@ -1,4 +1,4 @@
-# RunningMultiInstanceInfo (系统接口)
+# RunningMultiInstanceInfo (多实例应用运行信息)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
