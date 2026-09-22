@@ -635,7 +635,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 > **说明：**
 >
-> 从API version 26.0.1开始，当录屏模式为[OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
+> 从API版本26.0.1开始，当录屏模式为[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
 
 ## 更多资源
 
