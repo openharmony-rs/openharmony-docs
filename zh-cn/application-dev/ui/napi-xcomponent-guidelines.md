@@ -172,8 +172,8 @@ XComponent推荐使用两种方式管理XComponent持有Surface的生命周期�
 - 通过ArkTS声明式UI描述来创建组件并结合OH_ArkUI_SurfaceHolder实现对Surface生命周期的管理。
 
   <!-- @[surface_holder_declarative_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
-
-  ``` typescript
+  
+  ``` TypeScript
   import native from 'libnativerender.so';
   
   // ...
@@ -182,30 +182,31 @@ XComponent推荐使用两种方式管理XComponent持有Surface的生命周期�
   export struct SurfaceHolderDeclarative {
     @State currentStatus: string = 'init';
     private xcNode: FrameNode | null = null;
+  
     build() {
       NavDestination() {
         // ...
-        Column({ space: 10 }) {
-          // 创建XComponent组件
-          XComponent({
-            type: XComponentType.SURFACE,
-          })
-            .id('XComponentSurfaceHolder')
-            .onAttach(() => {
-              this.xcNode = this.getUIContext().getAttachedFrameNodeById('XComponentSurfaceHolder');
-              if (!this.xcNode) {
-                return;
-              }
-              native.bindNode('XComponentSurfaceHolder', this.xcNode); // 跨语言调用至Native侧获取SurfaceHolder并绑定Surface生命周期回调
-              this.currentStatus = 'index';
+          Column({ space: 10 }) {
+            // 创建XComponent组件
+            XComponent({
+              type: XComponentType.SURFACE,
             })
-            .onDetach(() => {
-              native.unbindNode('XComponentSurfaceHolder');
-              this.xcNode = null;
-            })
+              .id('XComponentSurfaceHolder')
+              .onAttach(() => {
+                this.xcNode = this.getUIContext().getAttachedFrameNodeById('XComponentSurfaceHolder');
+                if (!this.xcNode) {
+                  return;
+                }
+                native.bindNode('XComponentSurfaceHolder', this.xcNode); // 跨语言调用至Native侧获取SurfaceHolder并绑定Surface生命周期回调
+                this.currentStatus = 'index';
+              })
+              .onDetach(() => {
+                native.unbindNode('XComponentSurfaceHolder');
+                this.xcNode = null;
+              })
             // ...
-        }
-        // ...
+          }
+            // ...
       }
     }
   }
