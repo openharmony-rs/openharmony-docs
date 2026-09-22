@@ -1274,7 +1274,8 @@ try {
 | WIFI_P2P   | 0   | Wi-Fi P2P（点对点连接），允许设备在没有接入点的情况下直接相互连接。禁用后，设备无法通过Wi-Fi P2P进行点对点连接，影响文件传输、游戏联机、屏幕共享等需要直接Wi-Fi连接的应用功能。 |
 | X_KEY   | 1   | X键能力。禁用后将无法使用X键直达应用或服务（例如开启相机、手电筒、计算器等）。<br>**起始版本：** 26.0.1 |
 | LOCAL_INPUT   | 2   | 本地输入（包含键盘、鼠标、触控板、触摸屏等）被禁用后，无法通过本地输入进行操作。重启设备可解除禁用。在息屏状态下禁用会导致屏幕无法唤醒，若禁用后屏幕自动息屏，同样会导致无法唤醒屏幕。<br>**起始版本：** 26.0.0 |
-| TRAFFIC_REDIRECTION   | 5   | 网络流量重定向管控策略。禁用后，无法将TCP流量重定向到其它端口，取消禁用之后可恢复使用。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
+| PACKET_FILTERING   | 3   | 网络报文过滤管控策略，即按预设规则决定网络数据包的放行或丢弃，详见[net_trafficfilter.h](../apis-network-kit/capi-net-trafficfilter-h.md)。禁用后，通过[OH_TrafficFilter_AddPacketRule](../apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addpacketrule)接口添加的报文过滤规则仍可添加成功，但不再生效。取消禁用之后可恢复使用。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.1 |
+| TRAFFIC_REDIRECTION   | 5   | 网络流量重定向管控策略，即按预设规则将匹配的TCP流量转发到其它端口，详见[net_trafficfilter.h](../apis-network-kit/capi-net-trafficfilter-h.md)。禁用后，通过[OH_TrafficFilter_AddRedirectRule](../apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)接口添加的重定向规则仍可添加成功，但不再生效。取消禁用之后可恢复使用。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
 | CORE_DUMP   | 6   | 创建文件转储。禁用后，无法通过任务管理器创建文件转储。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
 | RS232   | 7   | RS-232串口管控策略。禁用后，无法通过RS-232串口传输数据。当前仅支持PC/2in1设备使用（部分设备不支持RS-232串口）。<br>**起始版本：** 26.0.0 |
 | DISK_ERASURE   | 8   | 磁盘擦除能力。禁用后，"磁盘擦除"入口将被置灰。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
