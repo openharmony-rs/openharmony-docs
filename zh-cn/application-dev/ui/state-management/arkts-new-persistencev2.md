@@ -20,7 +20,7 @@ PersistenceV2提供状态变量持久化能力，开发者可以通过connect或
 >
 >globalConnect从API version 18开始支持，行为和connect保持一致，唯一的区别为connect的底层存储路径为module级别的路径，而globalConnect的底层存储路径为应用级别，详细区别见使用场景[在不同的module中使用connect和globalConnect](#在不同的module中使用connect和globalconnect)。
 >
->globalConnect从API version 23开始支持[集合类型](#globalconnect支持集合的类型)（Array、Map、Set、Date、collections.Array、collections.Map、collections.Set）的持久化，支持在UI线程持久化@Sendable类型的数据持久化，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23的新增的globalConnect接口。
+>globalConnect从API version 23开始支持[集合类型](#globalconnect支持的集合类型)（Array、Map、Set、Date、collections.Array、collections.Map、collections.Set）的持久化，支持在UI线程持久化@Sendable类型的数据持久化，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23的新增的globalConnect接口。
 
 ## 概述
 
@@ -159,7 +159,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
      ![persistencev2-sync-0](./figures/persistencev2-sync-0.gif)
 
-- globalConnect在持久化多个相同[集合类型](#globalconnect支持集合的类型)时，需要提供不同的`key`来区分持久化数据。
+- globalConnect在持久化多个相同[集合类型](#globalconnect支持的集合类型)时，需要提供不同的`key`来区分持久化数据。
 
    如下展示开发者持久化相同的`Array<number>`类型的部分示例代码片段：
 
@@ -444,6 +444,27 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 14、不支持在使用connect或globalConnect的类中使用[\@Computed](./arkts-new-computed.md)。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。
 
+15、在使用globalConnect持久化[集合类型](#globalconnect支持的集合类型)（如`Array`、`Map`、`Set`、`collections.Array`、`collections.Map`、`collections.Set`）时，若容器内部元素类型为基础类型（如`number`、`string`、`boolean`），则不应声明`defaultSubCreator`，否则会导致编辑、编译报错。
+
+- `defaultSubCreator`的类型为`StorageDefaultCreator<S>`，其泛型参数`S`受`S extends object`约束，而`number`、`string`、`boolean`等基础类型在ArkTS中不继承自`object`，无法满足该约束，因此当容器内部元素类型为基础类型时，声明`defaultSubCreator`将导致编辑、编译报错。
+
+- 当容器内部元素类型为自定义`class`类型（即继承自`object`的引用类型）时，才需要声明`defaultSubCreator`，用于通知状态管理框架如何创建容器内的对象项。如下示例以`Array<number>`为例展示正反用法：
+
+    ```typescript
+    // 反例：容器内元素类型为基础类型number，声明defaultSubCreator会导致编辑、编译报错
+    @Local arr1: Array<number> = PersistenceV2.globalConnect({
+      type: Array<number>,
+      defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
+      defaultSubCreator: () => 10
+    })!;
+
+    // 正例：容器内元素类型为基础类型number，不声明defaultSubCreator
+    @Local arr2: Array<number> = PersistenceV2.globalConnect({
+      type: Array<number>,
+      defaultCreator: () => UIUtils.makeObserved(new Array<number>())
+    })!;
+    ```
+
 ## globalConnect支持的类型
 
 ### globalConnect顶层持久化数据类型及非顶层数据类型
@@ -515,7 +536,7 @@ class PersistClass {
 }
 ```
 
-### globalConnect支持集合的类型
+### globalConnect支持的集合类型
 
 集合类型是指`Array<V>`、`Map<K, V>`、`Set<V>`、`collections.Array<V>`、`collections.Map<K, V>`、`collections.Set<V>`。
 

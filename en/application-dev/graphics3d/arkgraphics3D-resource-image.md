@@ -5,11 +5,17 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e71c7c42a1e9c6cd7995c37c9e93faab7103ecc5 translatedAt=2026-09-14T09:33:07.466Z pushedAt=2026-09-15T13:19:25.676Z -->
+<!-- md-trans-meta sourceCommit=a200f12b3c07f37fb080224a65f9be5397544a01 translatedAt=2026-09-20T06:45:58.912Z pushedAt=2026-09-20T08:15:49.839Z -->
 
-Image is essentially a two-dimensional buffer for storing information required for 3D rendering calculation, such as basic colors and normals.
+Image: a two-dimensional texture resource in 3D rendering, essentially a memory buffer that stores pixel data. It provides the data required for rendering object surfaces, including maps such as base color, normal, metallic, roughness, and ambient occlusion. It can also serve as the texture input of a material or a custom shader, ultimately determining the appearance of an object surface.
 
-ArkGraphics 3D provides the capability of creating image resources in PNG, JPG, and KTX formats and customizing image resources.
+ArkGraphics 3D provides the capability of creating Image resources in JPEG, PNG, and KTX formats and supports customizing the Image resources you need. The support for each format is described in the following table:
+
+| Format | Description |
+|------|----------|
+| JPEG (.jpg/.jpeg) | Supports JPEG files with JFIF, Exif, or ICC Profile markers in the header.<br>On devices running OpenHarmony 7.0.0 or later, JPEG files with DQT, XMP, MPF, or Adobe markers in the header are also supported. |
+| PNG (.png) | Supports standard PNG files. |
+| KTX (.ktx) | Supports files in the KTX format. KTX (Khronos Texture) is a texture container format defined by the Khronos Group, used to store texture data that can be read directly by the GPU. |
 
 ## How to Develop
 1. Import the required modules.

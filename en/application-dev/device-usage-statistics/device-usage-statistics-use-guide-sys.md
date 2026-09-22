@@ -5,6 +5,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=4517d8951650b6827c117dbc27949ea5827acec2 translatedAt=2026-09-20T06:25:20.701Z pushedAt=2026-09-20T07:47:37.702Z -->
 
 ## When to Use
 
@@ -313,8 +314,8 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise result ' + JSON.stringify(res));
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise success.');
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise result ' + JSON.stringify(res));
     }).catch( (err: BusinessError) => {
         console.error('BUNDLE_ACTIVE queryDeviceEventStats promise failed. code is: ' + err.code + ',message is: ' + err.message);
     });
@@ -444,7 +445,6 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
         }
     });
     ```
-
 ## Samples
 
 The following samples are available for device usage statistics:

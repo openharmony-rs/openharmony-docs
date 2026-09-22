@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0d817d3523273c5374e8b7926f965ca540e6d924 translatedAt=2026-09-14T09:34:41.707Z pushedAt=2026-09-15T13:19:43.412Z -->
+<!-- md-trans-meta sourceCommit=9337b894cc276e9d41c374e020c39c9ad5e59a9d translatedAt=2026-09-20T06:51:30.989Z pushedAt=2026-09-20T08:27:17.778Z -->
 
 In ArkGraphics 3D, .shader files are based on the JSON format and must adhere to JSON syntax. These files consist of the following sections:
 
@@ -101,7 +101,7 @@ Specifies the properties for depth and stencil testing. The options are as follo
       | "always" | Always passes the depth test.|
 
 ### colorBlendState
-Specifies the blending properties of the rendering source and destination, including **colorAttachments**, which specifies blending properties for color attachments. **colorAttachments** includes the following items:
+Specifies the blending properties of the rendering source and destination in this rendering, and specifies the blending mode for color attachments through **colorAttachments**. **colorAttachments** includes the following items:
    - **enableBlend**: specifies whether blending between the rendering source and destination is enabled. **true** if blending is enabled, **false** otherwise. If enabled, the rendering source and destination are blended in the specified manner; if disabled, no blending is performed.
    - **colorWriteMask**: specifies the channel mask of the rendered color attachment. If a channel mask is specified, the channel is blended. If no channel mask is specified, no blending is performed. The value can be **r_bit**, **g_bit**, **b_bit**, **a_bit**, and any of their combinations using the vertical bar (|). The following table lists the values and their meanings.
      | Value| Description|
@@ -230,7 +230,7 @@ Identifies the material component name. The current valid value is **MaterialCom
 
 ### customProperties
 Specifies custom properties passed during rendering. These custom properties are contained in a data array. Each object in the data array includes the following properties:
-   - **name**: specifies the name of custom data passed during rendering, which corresponds to the data name in custom rendering.
+   - **name**: specifies the name of the custom data, which must be consistent with the data name referenced in the custom shader.
    - **displayName**: specifies the name displayed in the 3D editor.
    - **type**: specifies the data type. The following table lists the values and their meanings.
      | Value| Description|
