@@ -2316,7 +2316,7 @@ Sets the bitrate for the streaming media. This API is valid only for HLS/DASH st
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| bitrate | number | Yes  | Bitrate to set, in bit/s.<br>You can obtain the available bitrates of the current HLS/DASH stream by subscribing to the [availableBitrates](#onavailablebitrates9) event. If the bitrate to set is not in the list of the available bitrates, the AVPlayer selects from the list the bitrate that is closed to the bitrate to set.<br>If the length of the available bitrate list obtained through the event is 0, no bitrate can be set and the **bitrateDone** callback will not be triggered.|
+| bitrate | number | Yes  | Bitrate to set, in bit/s.<br>You can obtain the available bitrates of the current HLS/DASH stream by subscribing to the [availableBitrates](#onavailablebitrates9) event. If the bitrate to set is not in the list of the available bitrates, the AVPlayer selects from the list the bitrate that is closest to the bitrate to set.<br>If the length of the available bitrate list obtained through the event is 0, no bitrate can be set and the **bitrateDone** callback will not be triggered.|
 
 **Example**
 
