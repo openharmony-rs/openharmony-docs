@@ -42,7 +42,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.isSimActive(0, (err: BusinessError, data: boolean) => {
     if (err) {
-        console.err(`isSimActive failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`isSimActive failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -135,7 +135,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
     if (err) {
-        console.err(`getDefaultVoiceSlotId failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getDefaultVoiceSlotId failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -204,7 +204,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.hasOperatorPrivileges(0, (err: BusinessError, data: boolean) => {
     if (err) {
-        console.err(`hasOperatorPrivileges failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`hasOperatorPrivileges failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -292,7 +292,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getISOCountryCodeForSim(0, (err: BusinessError, data: string) => {
     if (err) {
-        console.err(`getISOCountryCodeForSim failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getISOCountryCodeForSim failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -413,7 +413,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getSimOperatorNumeric(0, (err: BusinessError, data: string) => {
     if (err) {
-        console.err(`getSimOperatorNumeric failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getSimOperatorNumeric failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -534,7 +534,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getSimSpn(0, (err: BusinessError, data: string) => {
     if (err) {
-        console.err(`getSimSpn failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getSimSpn failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -654,7 +654,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getSimState(0, (err: BusinessError, data: sim.SimState) => {
     if (err) {
-        console.err(`getSimState failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getSimState failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -773,7 +773,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getCardType(0, (err: BusinessError, data: sim.CardType) => {
     if (err) {
-        console.err(`getCardType failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getCardType failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -893,7 +893,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
     if (err) {
-        console.err(`hasSimCard failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`hasSimCard failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -1002,6 +1002,7 @@ getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): 
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+|201       | Permission denied.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
@@ -1018,7 +1019,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
     if (err) {
-        console.err(`getSimAccountInfo failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getSimAccountInfo failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -1058,6 +1059,7 @@ getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+|201       | Permission denied.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
@@ -1120,7 +1122,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getActiveSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountInfo>) => {
     if (err) {
-        console.err(`getActiveSimAccountInfoList failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getActiveSimAccountInfoList failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -1479,7 +1481,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getDefaultVoiceSimId((err: BusinessError, data: number) => {
     if (err) {
-        console.err(`getDefaultVoiceSimId failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getDefaultVoiceSimId failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
@@ -1562,7 +1564,7 @@ import { sim } from '@kit.TelephonyKit';
 
 sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
   if (err) {
-        console.err(`getSimLabel failed. callback: err->${JSON.stringify(err)}`);
+        console.error(`getSimLabel failed. callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`callback: data->${JSON.stringify(data)}`);
