@@ -853,7 +853,7 @@ With this permission, the application can use the user passive recognition capab
 
 ## ohos.permission.GET_STORAGE_VOLUME_INFO
 
-Allows an application to identify whether the current user is the device owner.
+Allows an application to query basic storage device properties.
 
 With this permission, an application can query physical disk information (such as disk ID, device type, vendor ID, and product ID) and volume information (such as volume ID, mount status, capacity, mount path, and file system type) of external storage devices. It also allows querying hardware information (such as physical path, model, brand, media type, operational status, and capacity) of local system and data disks.
 
