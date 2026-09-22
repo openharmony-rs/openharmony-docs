@@ -1295,6 +1295,24 @@ The number of signed-in accounts reaches the upper limit.
 
 尝试注销多余的系统账号，并及时移除不再需要保留的系统账号。
 
+## 9201048 设备操作失败
+
+**错误信息**
+
+Failed to operate the device.
+
+**错误描述**
+
+当前设备操作失败。
+
+**可能原因**
+
+磁盘擦除失败。
+
+**处理步骤**
+
+擦除失败，请重试。
+
 ## 9201055 获取USB设备序列号失败
 
 **错误信息**
