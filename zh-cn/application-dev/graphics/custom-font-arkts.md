@@ -43,9 +43,8 @@
    
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, $r, NodeContainer, Color, ShadowStyle, FlexAlign, VerticalAlign } from '@ohos.arkui.component'
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
    import { State } from '@ohos.arkui.stateManagement'
-   import { UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
    ```
 

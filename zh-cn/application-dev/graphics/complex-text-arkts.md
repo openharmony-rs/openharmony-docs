@@ -545,8 +545,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer, Image } from '@ohos.arkui.component'
    import { State } from '@ohos.arkui.stateManagement'
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-   import { UIContext } from '@kit.ArkUI'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
    
    // 创建一个MyRenderNode类，并绘制文本。
@@ -870,11 +869,8 @@ let myParagraphStyle: text.ParagraphStyle = {
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer, Image } from '@ohos.arkui.component'
    import { State } from '@ohos.arkui.stateManagement'
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-   import { UIContext } from '@kit.ArkUI'
-   import { drawing } from '@kit.ArkGraphics2D'
-   import { text } from '@kit.ArkGraphics2D'
-   import { common2D } from '@kit.ArkGraphics2D'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+   import { drawing, text, common2D } from '@kit.ArkGraphics2D'
    
    // 创建一个MyRenderNode类，并绘制文本。
    class MyRenderNode extends RenderNode {
