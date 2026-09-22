@@ -1771,7 +1771,6 @@ format(phoneNumber: string): string
   phoneNumber.split('').forEach((char: string) => {
     formatResult += char;
     formatResult = typingFormatter.format(formatResult); // formatResult = '130 493'
-  }
   });
   ```
 
