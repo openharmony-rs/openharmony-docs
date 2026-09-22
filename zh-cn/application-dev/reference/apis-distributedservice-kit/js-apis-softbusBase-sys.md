@@ -68,7 +68,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| deviceType | int | 否 | 否 | 设备类型，具体值以系统定义为准。 |
+| deviceType | number | 否 | 否 | 设备类型，取值为整数，具体值以系统定义为准。 |
 | deviceId | ArrayBuffer | 否 | 否 | 设备ID，为二进制数据，网络字节序（大端），最大长度6字节。 |
 | customData | ArrayBuffer | 否 | 否 | 广播携带的自定义数据，长度与被发现设备广播携带的自定义数据长度一致，最大长度5字节。 |
 
