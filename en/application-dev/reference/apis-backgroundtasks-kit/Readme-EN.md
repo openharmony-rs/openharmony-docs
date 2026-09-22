@@ -16,7 +16,7 @@
   - [@ohos.resourceschedule.backgroundProcessManager (Background Child Process Management)](js-apis-backgroundProcessManager.md)
   - [@ohos.resourceschedule.backgroundLoader (Background Loader)](js-apis-resourceschedule-backgroundLoader.md)
   <!--Del-->
-  - [@ohos.reminderAgentManager (Background Agent Reminder) (system API)](js-apis-reminderAgentManager-sys.md)
+  - [@ohos.reminderAgentManager (Background Agent Reminder) (System API)](js-apis-reminderAgentManager-sys.md)
   - [@ohos.resourceschedule.backgroundTaskManager (Background Task Management) (System API)](js-apis-resourceschedule-backgroundTaskManager-sys.md)
   - [@ohos.resourceschedule.deviceStandby (Device Standby) (System API)](js-apis-resourceschedule-deviceStandby-sys.md)
   - [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md)
@@ -26,7 +26,7 @@
   - Application<!--background-tasks-arkts-application-->
     - [WorkSchedulerExtensionContext (Work Scheduler Callback Context)](js-apis-WorkSchedulerExtensionContext.md)
     <!--Del-->
-    - [WorkSchedulerExtensionContext (Work Scheduler Callback Context) (system API)](js-apis-WorkSchedulerExtensionContext-sys.md)
+    - [WorkSchedulerExtensionContext (Work Scheduler Callback Context) (System API)](js-apis-WorkSchedulerExtensionContext-sys.md)
     <!--DelEnd-->
   - APIs No Longer Maintained<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (Background Task Management)](js-apis-backgroundTaskManager.md)
