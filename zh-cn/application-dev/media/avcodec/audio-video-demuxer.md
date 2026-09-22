@@ -34,7 +34,7 @@
 > **说明**
 >
 > - 调用解封装能力解析网络播放路径，需要[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
-> - 如需获取媒体库资源的fd，可参考[使用Picker选择媒体库资源](../medialibrary/photoAccessHelper-photoviewpicker.md)文档。
+> - 如需获取媒体库资源的文件描述符（fd），可参考[使用Picker选择媒体库资源](../medialibrary/photoAccessHelper-photoviewpicker.md)文档。
 > - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
 ### 在 CMake 脚本中链接动态库
