@@ -547,7 +547,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 
 ### 录制虚拟扩展屏幕
 
-从API version 26.0.1开始，支持[OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式，即可以创建虚拟扩展屏幕并对其内容进行录制。
+从API版本26.0.1开始，支持[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN模式，即可以创建虚拟扩展屏幕并对其内容进行录制。
 
 在此模式下，系统会创建一个虚拟扩展屏幕，应用可对其内容进行录制。关于虚拟屏和扩展屏的概念说明请参见[屏幕管理开发术语](../../displaymanager/display-terminology.md)。
 
@@ -568,7 +568,7 @@ config.videoInfo.videoCapInfo.displayId = 0;
 
 > **说明：**
 >
-> - 无论[OH_AVScreenCapture_StrategyForPickerPopUp()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值，该模式下都不会弹出Picker，。
+> - 无论[OH_AVScreenCapture_StrategyForPickerPopUp()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值，该模式下都不会弹出Picker。
 > - 录制虚拟扩展屏幕时，扩展屏幕的显示模式受系统限制。针对有内置屏的设备，只能同时存在1个扩展屏幕；针对无内置屏的设备，最多可同时存在2个扩展屏幕。
 
 
