@@ -1341,6 +1341,139 @@ observer.onCommunicationStateChange(callback, options);
 observer.offCommunicationStateChange(callback, options);
 ```
 
+## observer.on('VoipStateChange')
+
+on\(type: \'VoipStateChange\', callback: Callback\<VoIPCallStateInfo\>\): void
+
+订阅VoIP通话状态变化事件，使用callback方式作为异步方法。
+
+**起始版本：** 26.0.1
+
+**需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+|  参数名  |                              类型                         | 必填 |                            说明                                   |
+| -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
+| type     | string                                                    | 是   | VoIP通话状态变化事件，参数固定为'VoipStateChange'。                 |
+| callback | Callback\<[VoIPCallStateInfo](#voipcallstateinfo)\> | 是   | 回调函数，返回VoIP通话状态信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                               |
+
+**示例：**
+
+```ts
+observer.on('voipStateChange', (data: observer.VoIPCallStateInfo) => {
+    console.info("on voipStateChage, data:" + JSON.stringify(data));
+});
+```
+
+## observer.off('VoipStateChange')
+
+off\(type: \'VoipStateChange\', callback?: Callback\<VoIPCallStateInfo\>\): void
+
+取消订阅VoIP通话状态变化事件，使用callback方式作为异步方法。
+
+**起始版本：** 26.0.1
+
+**需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+|  参数名  |                              类型                         | 必填 |                            说明                                   |
+| -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
+| type     | string                                                    | 是   | VoIP通话状态变化事件，参数固定为'VoipStateChange'。                 |
+| callback | Callback\<[VoIPCallStateInfo](#voipcallstateinfo)\> | 否   | 回调函数，返回VoIP通话状态信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                               |
+
+**示例：**
+
+```ts
+let callback: (data: observer.VoIPCallStateInfo) => void = (data: observice.VoIPCallStateInfo) => {
+    console.info("on voipStateChange, data:" + JSON.stringfy(data));
+}
+observer.on('voipStateChange', callback);
+// 可以指定传入on中的callbacke取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('voipStateChange', callback);
+observer.off('voipStateChange');
+```
+
+## VoIPCallStateInfo
+
+VoIP呼叫状态信息。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Telephony.StateRegistry
+
+| 名称 | 类型                                   |  只读 | 可选 | 说明 |
+| ----- |--------------------------------------| ----- | ---- | -----|
+|  appName  | strting |  否  |  否  | VoIP应用程序名称。 |
+| contactName | string  |  否  |  否  | VoIP呼叫的联系人姓名。 |
+| callType | [VoIPCallType](#voipcalltype)  |  否  |  否  | VoIP呼叫类型。 |
+| VoIPCallState | [VoIPCallState](#voipcallstate)  |  否  |  否  | VoIP呼叫状态。 |
+| isVoiceAnswerSupported | boolean  |  否  |  否  | VoIP应用是否支持将当前呼叫作为语音呼叫接听。 |
+
+## VoIPCallType
+
+VoIP呼叫类型
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Telephony.StateRegistry
+
+| 名称        | 值   | 说明              |
+| ----------- | ---- | ----------------- |
+| VOICE_ONE_TO_ONE    | 0    | 语音一对一通话。            |
+| VIDEO_ONE_TO_ONE     | 1    | 视频一对一通话。           |
+| VOICE_CONFERENCE  | 2    | 语音会议通话。       |
+| VIDEO_CONFERENCE  | 3    | 视频会议通话。       |
+
+## VoIPCallState
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Telephony.StateRegistry
+
+| 名称        | 值   | 说明              |
+| ----------- | ---- | ----------------- |
+| IDLE           | 0    | VoIP通话空闲。            |
+| INCOMING       | 1    | VoIP通话来电。           |
+| OUTGOING       | 2    | VoIP通话去电。       |
+| DIALING        | 3    | VoIP通话呼叫。       |
+| ANSWERED       | 4    | VoIP通话已接通。       |
+| ACTIVE         | 5    | 正在进行VoIP通话。       |
+| HOLDING        | 6    | VoIP通话保持。       |
+| DISCONNECTING  | 7    | 正在断开VoIP通话。       |
+| DISCONNECTED   | 8    | VoIP通话已断开。       |
+
 ## LockReason<sup>8+</sup>
 
 SIM卡锁类型。
