@@ -34,7 +34,7 @@
 > **说明**
 >
 > - 调用解封装能力解析网络播放路径，需要[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
-> - 调用解封装能力解析本地文件，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_IMAGEVIDEO。
+> - 调用解封装能力解析媒体库中的图片或者视频，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_IMAGEVIDEO。
 > - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
 ### 在 CMake 脚本中链接动态库
