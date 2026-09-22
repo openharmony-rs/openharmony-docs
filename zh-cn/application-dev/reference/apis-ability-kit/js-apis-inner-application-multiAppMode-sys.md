@@ -1,4 +1,4 @@
-# MultiAppMode (系统接口)
+# MultiAppMode (应用多开模式)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

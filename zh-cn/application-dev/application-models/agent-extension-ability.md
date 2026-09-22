@@ -113,7 +113,7 @@
     }
     ```
 
-5. 在工程Module的`resources/base/profile/`目录下新建agent_config.json文件，然后在其中配置[AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)信息，详细操作步骤请参考[Agent配置文件说明](./agent-extension-configuration.md)。
+5. 在工程Module的`resources/base/profile/`目录下新建agent_config.json文件，然后在其中配置[AgentCard (Agent卡片)](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)信息，详细操作步骤请参考[Agent配置文件说明](./agent-extension-configuration.md)。
 
 ## 使用AgentExtensionAbility组件收发数据
 
