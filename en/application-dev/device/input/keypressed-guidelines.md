@@ -24,8 +24,8 @@ The following table lists common APIs for key press events. For details, see [@o
 
 | API | Description |
 | ------------------------------------------------------------ | -------------------------- |
-| on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback\<KeyEvent>): void | Subscribes to press events of the specified key and intercepts the default system response. |
-| off(type: 'keyPressed', callback?: Callback\<KeyEvent>): void | Unsubscribes from press events of the specified key and restores the default system response. |
+| on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback\<KeyEvent>): void | Subscribes to key press events. |
+| off(type: 'keyPressed', callback?: Callback\<KeyEvent>): void | Unsubscribes from key press events. |
 
 ## How to Develop
 

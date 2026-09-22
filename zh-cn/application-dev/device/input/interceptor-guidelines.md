@@ -17,10 +17,10 @@
 
 | 接口名称 | 描述 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) | 创建按键事件拦截。 |
-| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) | 创建输入事件拦截，包含鼠标、触摸和轴事件。 |
-| Input_Result OH_Input_RemoveKeyEventInterceptor(void) | 删除按键事件拦截。 |
-| Input_Result OH_Input_RemoveInputEventInterceptor(void) | 删除输入事件拦截，包含鼠标、触摸和轴事件。 |
+| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) | 添加按键事件的拦截。 |
+| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) | 添加输入事件拦截，包括鼠标、触屏和轴事件。 |
+| Input_Result OH_Input_RemoveKeyEventInterceptor(void) | 移除按键事件拦截。 |
+| Input_Result OH_Input_RemoveInputEventInterceptor(void) | 移除输入事件拦截，包括鼠标、触屏和轴事件。 |
 
 ## 开发步骤
 
