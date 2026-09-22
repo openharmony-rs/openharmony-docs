@@ -22,7 +22,7 @@
 
 > **说明：**
 >
-> - 权限申请建议在Ability创建时一次性完成，并检查授权结果（authResults）；用户拒绝后，后续星闪接口调用将返回[201 api权限校验失败](../../reference/errorcode-universal.md#201-api权限校验失败)错误。
+后续星闪接口调用将返回[201 API权限校验失败](../../reference/errorcode-universal.md#201-api权限校验失败)错误。
 > - 事件订阅类接口的权限行为参见[星闪常见问题 > 事件订阅类接口的权限要求问题](nearlink-faq-guide.md#事件订阅类接口的权限要求问题)：无权限订阅不会报错，但收不到事件上报。
 
 ## 查询是否支持星闪
