@@ -2278,9 +2278,9 @@ try {
  
 setWeakPinEnable(isEnable: boolean, fd?: number): void
  
-设置设备锁屏弱密码校验的使能状态。开启弱密码校验后，用户设置锁屏密码时，系统会根据弱密码文件中的弱密码列表对用户设置的密码进行校验，如果密码存在于弱密码列表中，将拒绝设置该密码，防止用户设置过于简单的密码。适用于企业安全合规场景，如防止员工使用常见弱密码（如123456、000000等），提升设备安全防护能力。禁用弱密码校验后，用户设置锁屏密码时将不再进行弱密码校验。
+设置锁屏弱密码校验的弱密码库。设置弱密码库后，用户设置锁屏密码时，系统会根据弱密码库中的弱密码列表对用户设置的密码进行校验，如果密码存在于弱密码列表中，将拒绝设置该密码，防止用户设置过于简单的密码。适用于企业安全合规场景，如防止员工使用常见弱密码（如123456、000000等），提升设备安全防护能力。取消弱密码库后，用户设置锁屏密码时将不再进行弱密码校验。
  
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
  
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
  
@@ -2292,8 +2292,8 @@ setWeakPinEnable(isEnable: boolean, fd?: number): void
  
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| isEnable | boolean | 是   | 是否开启弱密码校验。true表示开启，false表示关闭。            |
-| fd       | number  | 否   | 弱密码文件的文件描述符。开启弱密码校验时必填，关闭弱密码校验时忽略。弱密码文件需要放置于应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。 |
+| isEnable | boolean | 是   | 是否设置弱密码库。true表示设置，false表示取消。            |
+| fd       | number  | 否   | 弱密码库文件的文件描述符。设置弱密码库时必填，取消弱密码库时忽略。<br>弱密码库文件需要放置于应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。<br>文件每行对应一个弱密码。<br>文件大小不能超过 16 MB。 |
  
 **错误码**：
  
@@ -2321,6 +2321,8 @@ try {
   console.info(`Succeeded in setting weak pin enable.`);
 } catch (err) {
   console.error(`Failed to set weak pin enable. Code: ${err.code}, message: ${err.message}`);
+} finally {
+  fileIo.closeSync(fd);
 }
 ```
  
@@ -2328,9 +2330,9 @@ try {
  
 isWeakPinEnabled(): boolean
  
-查询设备锁屏弱密码校验是否已开启。企业可通过此接口查询当前弱密码校验策略的使能状态，用于策略审计和合规性检查。
+查询锁屏弱密码库是否已设置。企业可通过此接口查询当前弱密码库的状态，用于策略审计和合规性检查。
  
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
  
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
  
@@ -2342,7 +2344,7 @@ isWeakPinEnabled(): boolean
  
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 返回true表示弱密码校验已开启，false表示未开启。              |
+| boolean | 返回true表示弱密码库已设置，false表示未设置。              |
  
 **错误码**：
  
@@ -2362,7 +2364,7 @@ import { securityManager } from '@kit.MDMKit';
  
 try {
   let result: boolean = securityManager.isWeakPinEnabled();
-  console.info(`Succeeded in checking weak pin enabled, result : ${result}`);
+  console.info(`Succeeded in checking weak pin enabled, result: ${result}`);
 } catch (err) {
   console.error(`Failed to check weak pin enabled. Code: ${err.code}, message: ${err.message}`);
 }
