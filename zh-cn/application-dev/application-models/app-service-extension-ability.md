@@ -1163,20 +1163,28 @@ class Stub extends rpc.RemoteObject {
 
   private validAppIdentifier: string = 'your_valid_app_identifier_here';
 
-  onRemoteMessageRequest(
+  async onRemoteMessageRequest(
     code: int,
     data: rpc.MessageSequence,
     reply: rpc.MessageSequence,
-    options: rpc.MessageOption): boolean | Promise<boolean> {
-    this.verifyClientIdentity().then((isValid: boolean) => {
-      if (isValid) {
-        hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
-      } else {
-        hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
-      }
-    }).catch((err) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${err.code}, ${err.message}`);
-    });
+    options: rpc.MessageOption): Promise<boolean> {
+    let isValid: boolean = false;
+    try {
+      isValid = await this.verifyClientIdentity();
+    } catch (err) {
+      const error: BusinessError = err as BusinessError;
+      hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${error.code}, ${error.message}`);
+      // 校验异常时视为校验失败
+      return false;
+    }
+    if (!isValid) {
+      hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
+      // 返回false后，客户端sendMessageRequest会调用失败
+      return false;
+    }
+    hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
+    // 校验通过后处理业务逻辑
+    // ...
     return true;
   }
 
@@ -1301,12 +1309,10 @@ ArkTS-Sta示例：
 <!-- @[ability_app_service_four](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AppServiceExtensionAbility-sta/entry/src/main/ets/myappserviceextabilityfour/MyAppServiceExtAbility.ets) -->
 
 ``` TypeScript
-import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
-import { abilityAccessCtrl, bundleManager } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want, abilityAccessCtrl } from '@kit.AbilityKit';
 import { Permissions } from 'permissions';
 import rpc from '@ohos.rpc';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = '[AppServiceExtImpl]';
 const DOMAIN_NUMBER: int = 0xFF00;
@@ -1326,19 +1332,6 @@ class Stub extends rpc.RemoteObject {
     options: rpc.MessageOption): boolean | Promise<boolean> {
     // 开发者自行实现业务逻辑
     hilog.info(DOMAIN_NUMBER, TAG, `onRemoteMessageRequest: ${data}`);
-    let callerUid = rpc.IPCSkeleton.getCallingUid();
-    bundleManager.getBundleNameByUid(callerUid).then((callerBundleName) => {
-      hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid: ' + callerBundleName);
-      // 对客户端包名进行识别
-      if (callerBundleName !== 'com.samples.stagemodelabilitydevelop') { // 识别不通过
-        hilog.info(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
-        return;
-      }
-      // 识别通过，执行正常业务逻辑
-    }).catch((err) => {
-      hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
-    });
-
     let callerTokenId: int = rpc.IPCSkeleton.getCallingTokenId().toInt();
     let accessManager = abilityAccessCtrl.createAtManager();
     // 所校验的具体权限由开发者自行选择，此处ohos.permission.GET_BUNDLE_INFO_PRIVILEGED只作为示例
