@@ -3134,64 +3134,64 @@
 						"start_line":16
 					},
 					{
-						"end_line":38,
+						"end_line":46,
 						"name":"error_observer",
-						"start_line":25
+						"start_line":33
 					},
 					{
-						"end_line":127,
+						"end_line":152,
 						"name":"onclick_error_observer",
-						"start_line":114
-					},
-					{
-						"end_line":48,
-						"name":"error_func",
-						"start_line":40
-					},
-					{
-						"end_line":141,
-						"name":"onclick_error_func",
-						"start_line":129
-					},
-					{
-						"end_line":70,
-						"name":"promise_func",
-						"start_line":58
-					},
-					{
-						"end_line":175,
-						"name":"onclick_promise_func",
-						"start_line":159
-					},
-					{
-						"end_line":97,
-						"name":"freeze_call_back",
-						"start_line":93
-					},
-					{
-						"end_line":209,
-						"name":"onclick_freeze_call_back",
-						"start_line":195
+						"start_line":139
 					},
 					{
 						"end_line":56,
+						"name":"error_func",
+						"start_line":48
+					},
+					{
+						"end_line":166,
+						"name":"onclick_error_func",
+						"start_line":154
+					},
+					{
+						"end_line":78,
+						"name":"promise_func",
+						"start_line":66
+					},
+					{
+						"end_line":200,
+						"name":"onclick_promise_func",
+						"start_line":184
+					},
+					{
+						"end_line":105,
+						"name":"freeze_call_back",
+						"start_line":101
+					},
+					{
+						"end_line":234,
+						"name":"onclick_freeze_call_back",
+						"start_line":220
+					},
+					{
+						"end_line":64,
 						"name":"loop_observer",
-						"start_line":50
+						"start_line":58
 					},
 					{
-						"end_line":157,
+						"end_line":182,
 						"name":"onclick_loop_observer",
-						"start_line":143
+						"start_line":168
 					},
 					{
-						"end_line":91,
+						"end_line":99,
 						"name":"unhandled_rejection_observer",
-						"start_line":72
+						"start_line":80
 					},
 					{
-						"end_line":193,
+						"end_line":218,
 						"name":"onclick_unhandled_rejection_observer",
-						"start_line":177
+						"start_line":202
 					},
 					{
 						"end_line":23,
@@ -3234,7 +3234,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":32,
 						"name":"first_error_handler",
 						"start_line":1
 					}
@@ -3244,7 +3244,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":31,
 						"name":"second_error_handler",
 						"start_line":1
 					}
@@ -3254,7 +3254,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstFreezeHandler.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":44,
 						"name":"first_freeze_handler",
 						"start_line":16
 					}
@@ -3264,7 +3264,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondFreezeHandler.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":44,
 						"name":"second_freeze_handler",
 						"start_line":16
 					}
@@ -3284,19 +3284,19 @@
 						"start_line":24
 					},
 					{
-						"end_line":43,
+						"end_line":55,
 						"name":"App_Hicollie_Watcher_R_ptr",
-						"start_line":40
+						"start_line":52
 					},
 					{
-						"end_line":1187,
+						"end_line":1195,
 						"name":"App_Hicollie_OnReceive",
-						"start_line":1114
+						"start_line":1119
 					},
 					{
-						"end_line":1265,
+						"end_line":1276,
 						"name":"App_Hicollie_Trigger",
-						"start_line":1189
+						"start_line":1197
 					},
 					{
 						"end_line":30,
@@ -3304,9 +3304,9 @@
 						"start_line":27
 					},
 					{
-						"end_line":1112,
+						"end_line":1117,
 						"name":"Hicollie_Set_Timer",
-						"start_line":1092
+						"start_line":1095
 					},
 					{
 						"end_line":1129,
@@ -3409,9 +3409,9 @@
 						"start_line":27
 					},
 					{
-						"end_line":1112,
+						"end_line":1117,
 						"name":"Hicollie_Set_Timer",
-						"start_line":1092
+						"start_line":1095
 					},
 					{
 						"end_line":1129,
