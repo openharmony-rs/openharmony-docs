@@ -583,7 +583,7 @@ namespace Validation {
 
 **TypeScript对照**
 
-<!-- @[ts_declaration_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleDelaration.ts) -->
+<!-- @[ts_declaration_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleDeclaration.ts) -->
 
 ``` TypeScript
 // TypeScript声明文件对照写法

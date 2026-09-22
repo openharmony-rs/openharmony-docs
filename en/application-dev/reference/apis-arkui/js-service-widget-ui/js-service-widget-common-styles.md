@@ -1,17 +1,18 @@
 # Universal Styles
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:14:57.436Z pushedAt=2026-07-31T12:04:26.609Z -->
 
 You can set universal styles in the **style** attribute or **.css** files. Universal style fields are all optional.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
-
 
 | Name| Type| Default Value| Description|
 | -------- | -------- | -------- | -------- |
@@ -24,7 +25,7 @@ You can set universal styles in the **style** attribute or **.css** files. Unive
 | padding | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | 0 | Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
 | padding-[left\|top\|right\|bottom] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | 0 | Left, top, right, and bottom padding.|
 | padding-[start\|end] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | 0 | Start and end padding.|
-| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | 0 | Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
+| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | 0 | Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br/>-&nbsp;If you set only one value, it specifies the margin for all the four sides.<br/>-&nbsp;If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br/>-&nbsp;If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br/>-&nbsp;If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order). |
 | margin-[left\|top\|right\|bottom] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | 0 | Left, top, right, and bottom margins.|
 | margin-[start\|end] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | 0 | Start and end margins.|
 | border | - | 0 | Shorthand attribute to set all borders. Set **border-width**, **border-style**, and **border-color** in sequence. Default values are used for attributes that are not set.|

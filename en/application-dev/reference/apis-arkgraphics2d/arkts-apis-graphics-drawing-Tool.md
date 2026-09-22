@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8cb1e961ff2b923659fd70bcd0083c6e2446d4ab translatedAt=2026-08-24T08:17:55.378Z pushedAt=2026-08-31T03:04:30.361Z -->
 
-A utility class that provides only static methods to convert data structs defined in other modules and [common2D](js-apis-graphics-common2D.md).
+The tool class defined in this module provides only static methods and mainly implements the conversion of data structures defined in other modules and [common2D](js-apis-graphics-common2D.md).
 
 > **NOTE**
 >
@@ -37,13 +38,13 @@ Converts a color value of the **ResourceColor** type to a **common2D.Color** obj
 
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| resourceColor | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | Yes  | Color value of the **ResourceColor** type. (All four types of inputs are supported. The following provides 13 example inputs.) The fourth type of [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) supports only the construction method **$r('belonging.type.name')**. Ensure that the resource has been defined in the **main/resources/base/element** directory. (The types **color**, **string**, and **integer** are available for the belonging **app**, whereas only the type **color** is available for the belonging **sys**.)|
+| resourceColor | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | Required | Color value in ResourceColor format (all four input types are supported, and 10 sample inputs are provided in the example). The fourth type [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) accepts only the ``$r('belonging.type.name')`` constructor. Ensure that the resource is defined in the main/resources/base/element directory (app supports color, string, and integer, while sys supports only color). |
 
 **Returns**
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| [common2D.Color](js-apis-graphics-common2D.md#color) | **Common2D.Color** object. If the conversion fails, a null pointer is returned.|
+| [common2D.Color](js-apis-graphics-common2D.md#color) | The converted common2D.Color object, or undefined if the conversion fails. |
 
 **Error codes**
 
@@ -51,7 +52,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 

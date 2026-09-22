@@ -1,7 +1,7 @@
 # 使用Node-API调用返回值为promise的ArkTS方法
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -14,7 +14,7 @@
 
 处理[Promise](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-promise)对象：将Promise与C++回调绑定，处理异步结果。
 
-转换数据类型：在回调中将JavaScript结果转换为c++可用的数据。
+转换数据类型：在回调中将JavaScript结果转换为C++可用的数据。
 
 ### 示例代码
 - 模块注册

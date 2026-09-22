@@ -51,11 +51,6 @@ executeDrag(custom: CustomBuilder \| DragItemInfo, dragInfo: dragController.Drag
 import { dragController } from '@kit.ArkUI';
 import { unifiedDataChannel } from '@kit.ArkData';
 
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
-
 @Entry
 @Component
 struct DragControllerPage {
@@ -83,14 +78,13 @@ struct DragControllerPage {
                 data: unifiedData,
                 extraParams: ''
               };
-              let eve: DragInfo = new DragInfo();
               this.getUIContext().getDragController().executeDrag(() => {
                 this.DraggingBuilder()
-              }, dragInfo, (err, eve) => {
-                if (eve.event) {
-                  if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+              }, dragInfo, (err, dragEventParam) => {
+                if (!err && dragEventParam?.event) {
+                  if (dragEventParam.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
-                  } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
+                  } else if (dragEventParam.event.getResult() == DragResult.DRAG_FAILED) {
                     // ...
                   }
                 }
@@ -146,11 +140,6 @@ import { dragController } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { unifiedDataChannel } from '@kit.ArkData';
 
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
-
 @Entry
 @Component
 struct DragControllerPage {
@@ -202,18 +191,18 @@ struct DragControllerPage {
                   },
                   extraInfo: 'DragItemInfoTest'
                 };
-                let eve: DragInfo = new DragInfo();
                 this.getUIContext()
                   .getDragController()
                   .executeDrag(dragItemInfo, dragInfo)
-                  .then((eve) => {
-                    if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                  .then((dragEventParam) => {
+                    if (dragEventParam.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                       // ...
-                    } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
+                    } else if (dragEventParam.event.getResult() == DragResult.DRAG_FAILED) {
                       // ...
                     }
                   })
                   .catch((err: Error) => {
+                    console.error(`Failed to execute drag. Cause: ${err.message}`);
                   })
               });
             }
@@ -232,7 +221,7 @@ struct DragControllerPage {
 
 createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragInfo: dragController.DragInfo): dragController.DragAction
 
-创建拖拽的Action对象，需要显式指定拖拽背板图（可多个），以及拖拽的数据，跟手点等信息；当通过一个已创建的Action对象发起的拖拽未结束时，无法再次创建新的Action对象，接口会抛出异常；当Action对象的生命周期结束后，注册在该对象上的回调函数会失效，因此需要在一个尽量长的作用域下持有该对象，并在每次发起拖拽前通过createDragAction返回新的对象覆盖旧值。
+创建拖拽的Action对象时，需要显式指定拖拽背板图（可多个）、拖拽的数据、跟手点等信息。当通过一个已创建的Action对象发起的拖拽未结束时，无法再次创建新的Action对象，接口会抛出异常。当Action对象的生命周期结束后，注册在该对象上的回调函数会失效。因此，需要在需要接收该对象回调期间持有该对象，并在每次发起拖拽前通过createDragAction返回新的对象覆盖旧值。
 
 > **说明：**
 >
@@ -327,7 +316,7 @@ createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragIn
    }
    ```
 
-2. 调用this.getUIContext().getSharedLocalStorage()获取上下文，再获取DragController对象以执行后续拖拽操作。
+2. 调用this.getUIContext().getSharedLocalStorage()获取共享LocalStorage，再获取DragController对象以执行后续拖拽操作。
    ```ts
    import { dragController, UIContext } from '@kit.ArkUI';
    import { image } from '@kit.ImageKit';
@@ -373,7 +362,8 @@ createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragIn
                  extraParams: ''
                };
                try {
-                 this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo);
+                 let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+                 this.dragAction = uiContext.getDragController().createDragAction(this.customBuilders, dragInfo);
                  if (!this.dragAction) {
                    console.info('listener dragAction is null');
                    return;
@@ -425,7 +415,7 @@ getDragPreview(): dragController.DragPreview
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [dragController.DragPreview](js-apis-arkui-dragController.md#dragpreview11) | 一个代表拖拽背板的对象，提供背板样式设置的接口，在onDrop和onDragEnd回调中使用不生效。 |
+| [dragController.DragPreview](js-apis-arkui-dragController.md#dragpreview11) | 返回一个代表拖拽背板的对象，提供背板样式设置的接口；在onDrop和onDragEnd回调中使用该对象设置背板样式不生效。 |
 
 **错误码：** 通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
@@ -437,7 +427,7 @@ getDragPreview(): dragController.DragPreview
 
 setDragEventStrictReportingEnabled(enable: boolean): void
 
-当目标从父组件拖拽到子组件时，通过该方法设置是否会触发父组件的onDragLeave的回调。
+当拖拽对象从父组件拖拽到子组件时，是否会触发父组件的onDragLeave回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -447,7 +437,7 @@ setDragEventStrictReportingEnabled(enable: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable | boolean | 是   | 将目标从父组件拖拽到子组件时，是否会触发父组件的onDragLeave的回调。true表示触发父组件的onDragLeave的回调，false表示不触发。 |
+| enable | boolean | 是   | 当拖拽对象从父组件拖拽到子组件时，是否会触发父组件的onDragLeave回调。true表示触发父组件的onDragLeave回调，false表示不触发。 |
 
 **示例：**
 
@@ -543,6 +533,7 @@ struct NormalEts {
         this.previewData = {
           pixelMap: this.pixmap
         };
+        this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
       });
 
       let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
@@ -550,8 +541,6 @@ struct NormalEts {
       let unifiedData = new unifiedDataChannel.UnifiedData(data);
       this.unifiedData1 = unifiedData;
       this.finished = true;
-
-      this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
     }, 4000);
     this.timeout1 = timeout;
   }
@@ -597,7 +586,7 @@ struct NormalEts {
 
 enableDropDisallowedBadge(enabled: boolean): void
 
-当拖拽数据类型与组件配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)允许接收的数据类型无交集时，可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式处理时，拖拽对象会显示加号及数据编号的角标。如果返回DragBehavior.MOVE以向系统声明数据以剪切方式处理，拖拽对象将只显示数据编号的角标。当目标进行拖拽时，若系统决定或组件显式声明无法处理拖拽数据，可通过该方法检查是否应显示拖拽禁止角标。该接口暂不支持[UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md)。
+当拖拽数据类型与组件配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)允许接收的数据类型无交集时，可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式处理时，拖拽对象会显示加号及数据编号的角标。如果返回DragBehavior.MOVE以向系统声明数据以剪切方式处理，拖拽对象将只显示数据编号的角标。当拖拽对象经过目标区域时，若系统决定或组件显式声明无法处理拖拽数据，可通过该方法设置是否显示拖拽禁止角标。该接口暂不支持[UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -607,7 +596,7 @@ enableDropDisallowedBadge(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled | boolean | 是   | 当拖拽数据类型与组件配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)允许接收的数据类型无交集时，可显示禁用角标；对目标组件进行拖拽时，通过enableDropDisallowedBadge方法检查是否显示拖拽禁止角标。true表示显示拖拽禁止角标，false表示不显示拖拽禁止角标。默认值为false。 |
+| enabled | boolean | 是   | 当拖拽数据类型与组件配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)允许接收的数据类型无交集时，可显示禁用角标；当拖拽对象经过目标组件时，通过enableDropDisallowedBadge方法设置是否显示拖拽禁止角标。true表示显示拖拽禁止角标，false表示不显示拖拽禁止角标。未调用该接口时不显示拖拽禁止角标。 |
 
 **示例：**
 

@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
@@ -28,7 +28,7 @@
 - Entry对应同一份数据的不同格式； </br>
 - pasteDataProperty定义了剪贴板中数据内容的属性，包含时间戳、数据类型、可粘贴范围以及一些附加数据等。
 
-为了复制应用和粘贴应用对剪贴板数据内容理解一致，更好的实现不同应用间的复制粘贴体验，应用适配剪贴板时需按如下原则处理：
+为了复制应用和粘贴应用对剪贴板数据内容理解一致，更好地实现不同应用间的复制粘贴体验，应用适配剪贴板时需按如下原则处理：
 
 **应用复制时向剪贴板写入数据**
 
@@ -70,7 +70,7 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 | [setData(data: PasteData): Promise&lt;void&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setdata9-1) | 将数据写入系统剪贴板，使用Promise异步回调。 |
 | [getData(callback: AsyncCallback&lt;PasteData&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9) | 读取系统剪贴板内容，使用callback异步回调。 |
 | [getData(): Promise&lt;PasteData&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9-1) | 读取系统剪贴板内容，使用Promise异步回调。 |
-| [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | 读取系统剪贴板内容, 此接口为同步接口，不能与SetData同线程调用。 |
+| [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | 读取系统剪贴板内容，此接口为同步接口，不能与SetData同线程调用。 |
 
 ### 示例代码
 
@@ -92,12 +92,10 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
     }
   }
   export async function getPlainData(type: string): Promise<string> {
+    // 从系统剪贴板中读取数据
     try {
-      // 从系统剪贴板中读取数据
       let data = await systemPasteboard.getData();
-      // 从剪贴板数据中获取条目数量
       let recordCount = data.getRecordCount();
-      // 从剪贴板数据中获取对应条目信息
       let result = '';
       for (let i = 0; i < recordCount; i++) {
         let record = data.getRecord(i).toPlainText();
@@ -150,26 +148,28 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
     let data = new unifiedDataChannel.UnifiedData();
     data.addRecord(record);
     // 2.向系统剪贴板中存入一条PlainText数据
-    systemPasteboard.setUnifiedData(data).then((data: void) => {
+    try {
+      await systemPasteboard.setUnifiedData(data);
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in setting UnifiedData.');
       // 存入成功，处理正常场景
-    }).catch((err: BusinessError) => {
+    } catch (err) {
       hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to set UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
-    });
+    };
     // 3.从系统剪贴板中读取这条text数据
-    systemPasteboard.getUnifiedData().then((data) => {
-      let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+    try {
+      let pasteData = await systemPasteboard.getUnifiedData();
+      let records: unifiedDataChannel.UnifiedRecord[] = pasteData.getRecords();
       for (let j = 0; j < records.length; j++) {
         if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
           let text = records[j].getValue() as uniformDataStruct.PlainText;
           hilog.info(0xFF00, '[Sample_pasteboard]', `${j + 1}.${text.textContent}`);
         }
       }
-    }).catch((err: BusinessError) => {
+    } catch (err) {
       hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
-    });
+    };
   }
 ```
 

@@ -159,7 +159,7 @@ stopVpnExtensionAbility(want: Want): Promise\<void>
 
 以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                               |
+| 错误码ID | 错误信息                               |
 | --------- | -------------------------------------- |
 | 401       | If the input parameter is not valid parameter.|
 | 16000001  | The specified ability does not exist.  |
@@ -268,7 +268,7 @@ onAuthorizationResult(callback: Callback\<boolean\>): void
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| callback  | Callback\<boolean\> |是   | 回调函数，用于返回用户授权结果。true表示用户同意授权，false表示用户拒绝授权。 |
+| callback  | Callback\<boolean\> | 是   | 回调函数。返回true表示用户同意授权；返回false表示用户拒绝授权。 |
 
 **示例：**
 
@@ -403,7 +403,7 @@ create(config: VpnConfig): Promise\<number\>
 
 | 类型              | 说明                                                           |
 | ----------------- | -------------------------------------------------------------- |
-| Promise\<number\> | 以 Promise 形式返回获取结果，返回指定虚拟网卡的文件描述符 fd。 |
+| Promise\<number\> | Promise对象，返回指定虚拟网卡的文件描述符 fd。 |
 
 **错误码：**
 
@@ -420,7 +420,7 @@ create(config: VpnConfig): Promise\<number\>
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -501,7 +501,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 protect(socketFd: number): Promise\<void\>
 
-保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用Promise方式作为异步方法。
+保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
@@ -531,7 +531,7 @@ protect(socketFd: number): Promise\<void\>
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -587,7 +587,7 @@ destroy(): Promise\<void\>
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -674,7 +674,7 @@ generateVpnId(): Promise\<string\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回获取结果，返回vpnId。 |
+| Promise\<string\> | Promise对象，返回vpnId。 |
 
 **错误码：**
 
@@ -720,7 +720,7 @@ protectProcessNet(): Promise\<void\>
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -761,17 +761,17 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 | routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | 否  | 是 | VPN虚拟网卡的路由信息（API version 23前最多可配置1024条路由；从API version 23开始最多可配置10000条路由）。                  |
 | dnsAddresses        | Array\<string\>                                                 | 否  | 是 | DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。最多可配置64个DNS服务器地址。                                    |
 | searchDomains       | Array\<string\>                                                | 否  | 是 | DNS的搜索域列表。                                     |
-| mtu                 | number                                                         | 否  | 是 | 最大传输单元MTU值（单位：字节）。取值范围：[576，1500]。               |
-| isIPv4Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv4。true表示支持，false表示不支持, 默认值为true。<br>**注意**：若支持IPv4功能，需要在addresses中配置IPv4类型的IP地址。  |
-| isIPv6Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv6。true表示支持，false表示不支持, 默认值为false。<br>**注意**：若支持IPv6功能，需要在addresses中配置IPv6类型的IP地址。  |
-| isInternal          | boolean                                                         | 否  | 是 | 是否支持内置VPN。true表示支持，false表示不支持, 默认值为false。 |
-| isBlocking          | boolean                                                        | 否  | 是 | 是否阻塞模式。true表示阻塞模式，false表示非阻塞模式, 默认值为false。       |
+| mtu                 | number                                                         | 否  | 是 | 最大传输单元MTU值（单位：字节）。取值范围：[576, 1500]。               |
+| isIPv4Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv4。true表示支持，false表示不支持，默认值为true。<br>**注意**：若支持IPv4功能，需要在addresses中配置IPv4类型的IP地址。  |
+| isIPv6Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv6。true表示支持，false表示不支持，默认值为false。<br>**注意**：若支持IPv6功能，需要在addresses中配置IPv6类型的IP地址。  |
+| isInternal          | boolean                                                         | 否  | 是 | 是否支持内置VPN。true表示支持，false表示不支持，默认值为false。 |
+| isBlocking          | boolean                                                        | 否  | 是 | 是否阻塞模式。true表示阻塞模式，false表示非阻塞模式，默认值为false。       |
 | trustedApplications | Array\<string\>                                                | 否  | 是 | 受信任的应用信息列表，string类型表示的包名。当配置该列表后，仅该列表中的应用数据才能根据routes被VPN代理。API version 23前最多可配置64个受信任的应用包名；从API version 23开始最多可配置256个受信任的应用包名。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
 | blockedApplications | Array\<string\>                                                 | 否  | 是 | 被阻止的应用信息列表，string类型表示的包名。当配置该列表后，该列表中的应用数据不会被VPN代理，其他应用可以根据routes配置被VPN代理。API version 23前最多可配置64个被阻止的应用包名；从API version 23开始最多可配置256个被阻止的应用包名。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
 
 **示例：**
 
-```js
+```ts
 import { vpnExtension} from '@kit.NetworkKit';
 
 let vpnConfig: vpnExtension.VpnConfig = {

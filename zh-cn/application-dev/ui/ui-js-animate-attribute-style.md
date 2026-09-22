@@ -55,7 +55,7 @@ text {
   font-size: 35px;
   animation: 2s change2 infinite linear-out-slow-in;
 }
-/* 颜色变化 */
+/* 颜色与不透明度变化 */
 @keyframes change{
   from {
     background-color: #f76160;

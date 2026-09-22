@@ -27,7 +27,7 @@ The following table lists the APIs for creating and deleting event interception.
 
 ### Linking a Dynamic Library
 
-Before calling interception-related APIs, you need to link the related dynamic library. You can do this by editing the **CMakeList.txt** file as follows:
+Before calling interception-related APIs, you need to link the related dynamic library. You can do this by editing the **CMakeLists.txt** file as follows:
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)
@@ -198,3 +198,7 @@ static napi_value RemoveEventInterceptor(napi_env env, napi_callback_info info)
     // ...
 }
 ```
+
+## Samples
+
+- [NDKInputEventInterceptor (C/C++)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/InputKit/NDKInputEventInterceptor)

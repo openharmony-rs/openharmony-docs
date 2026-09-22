@@ -1,27 +1,27 @@
 # Component Transition (transition)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-01T11:56:21.865Z -->
 
-You can configure the component transition animations through the **transition** attribute for when a component is inserted or removed.
+In-component transition mainly configures transition parameters through the **transition** attribute to display transition animations when child components of a container component are inserted or deleted, thereby improving user experience. For details about how to use in-component transition, see [Enter/Exit Transition](../../../ui/arkts-enter-exit-transition.md).
 
 >  **NOTE**
 >
 >  This feature is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  There are two ways to trigger a component's transition:
->  1. When a component is inserted or removed (for example, when there are changes in **if** conditions, or when components are added or removed in a **ForEach** loop), the transition effects of all newly inserted/removed components are triggered recursively.
->  2. When the [visibility](ts-universal-attributes-visibility.md#visibility) attribute of a component changes between visible and invisible (both **Visibility.Hidden** and **Visibility.None** are regarded as invisible), only the transition effect of the component is triggered. When switching between **Visibility.Visible** and **Visibility.None**, if the attribute is directly set to **Visibility.None**, the component layout size becomes 0, and no transition effect is observed. If the visibility attribute is changed to **Visibility.None** in the animation, the component layout size is 0 and the animation is applied. In this case, the transition effect and the layout animation are superimposed, resulting in a composite dual-animation effect.
-
+>  1. When a component is inserted or deleted (for example, when the if condition changes or ForEach adds or deletes components), the transition effects of all newly inserted/deleted components are triggered recursively.
+>  2. When the [visibility](ts-universal-attributes-visibility.md#visibility) attribute of a component changes between visible and invisible (Visibility.Hidden or Visibility.None), only the transition effect of that component is triggered. When switching between Visibility.Visible and Visibility.None, if the component is directly set to Visibility.None, the component layout size becomes 0, in which case the transition effect cannot be observed. When the visibility attribute is changed to Visibility.None within an animation, the change of the component layout to 0 carries the animation effect. In this case, the transition and layout animations are superimposed, producing a composite dual-animation effect. For details about the specific effect, see [Example 4](#example-4-dual-animation-composite-effect-during-visibility-switching).
 
 ## transition
 
 transition(value: TransitionOptions | TransitionEffect): T
 
-Sets the transition effects used when a component is inserted or removed.
+Transition effect for the insertion, display, deletion, and hiding of a component. It can be triggered by component insertion/deletion (for example, when the if condition changes or ForEach adds or deletes components) or by switching the visibility attribute between visible and invisible.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,13 +33,13 @@ Sets the transition effects used when a component is inserted or removed.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- |  ---- | -------- |
-| value | [TransitionOptions](#transitionoptionsdeprecated)<sup>(deprecated)</sup> \| [TransitionEffect](#transitioneffect10) | Yes| Transition effects used when a component is inserted or removed.<br>**NOTE**<br>For details, see [TransitionOptions](#transitionoptionsdeprecated) and [TransitionEffect](#transitioneffect10).|
+| value | [TransitionOptions](#transitionoptionsdeprecated)<sup>(deprecated)</sup> \| [TransitionEffect](#transitioneffect10)  | Yes | Sets the transition effect for component insertion, display, and deletion hiding.<br>**NOTE**<br>For details, see the object descriptions of [TransitionOptions](#transitionoptionsdeprecated) and [TransitionEffect](#transitioneffect10). |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## transition<sup>12+</sup>
 
@@ -50,6 +50,8 @@ Sets the transition effects used when a component is inserted or removed. Compar
 >**NOTE**
 >
 > This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,13 +64,13 @@ Sets the transition effects used when a component is inserted or removed. Compar
 | Name| Type| Mandatory| Description|
 | -------- | -------- |  ---- | -------- |
 | effect | [TransitionEffect](#transitioneffect10)  | Yes| Transition effects used when a component is inserted or removed.|
-| onFinish | Optional&lt;[TransitionFinishCallback](#transitionfinishcallback12)&gt; | Yes| Callback when the transition animation ends.|
+| onFinish | Optional&lt;[TransitionFinishCallback](#transitionfinishcallback12)&gt; | Yes | Transition animation end callback. For the specific conditions under which it takes effect, see [TransitionFinishCallback](#transitionfinishcallback12). If undefined is passed in, the transition animation end callback is not registered, and no callback notification is received after the transition animation ends. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## TransitionEdge<sup>10+</sup>
 
@@ -77,6 +79,8 @@ Enumerates the transition edge types.
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +95,8 @@ Enumerates the transition edge types.
 
 Defines the transition effect by using the provided APIs, as listed below.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -101,20 +107,20 @@ Defines the transition effect by using the provided APIs, as listed below.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | ---------- | -------- | -------- | -------- |
-| IDENTITY | [TransitionEffect](#transitioneffect10)\<"identity"> | Yes| No| Disables the transition effect.|
+| IDENTITY | [TransitionEffect](#transitioneffect10)\<"identity"> | Yes | No | Disables the transition effect. If a component is attached to or detached from the component tree or its visibility changes within the animation range, and the component is not configured with transition, a default opacity transition effect (TransitionEffect.OPACITY) is applied to the component. If this default effect is not needed, configure IDENTITY to disable it so that the component appears or disappears directly. |
 | OPACITY | [TransitionEffect](#transitioneffect10)\<"opacity"> | Yes| No| Applies a transition effect with the opacity changing from 0 to 1 when the component appears and from 1 to 0 when the component disappears. This is equivalent to **TransitionEffect.opacity(0)**.|
 | SLIDE | [TransitionEffect](#transitioneffect10)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; }> | Yes| No| Applies a transition effect of sliding in from the start edge when the component appears and sliding out from the end edge when the component disappears. This means sliding in from the left edge and sliding out from the right edge for left-to-right scripts, and sliding in from the right edge and sliding out from the left edge for right-to-left scripts. This is equivalent to **TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))**. |
-| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10)\<"slideSwitch"> | Yes| No| Applies a transition effect of sliding in from the right with first scaling down and then scaling up when the component appears and sliding out from the left with first scaling down and then scaling up when the component disappears. This transition effect comes with its own animation parameters, which can also be overridden. The default animation duration is 600 milliseconds, with a specified animation curve of cubicBezierCurve(0.24, 0.0, 0.50, 1.0) and a minimum scale factor of 0.8.|
+| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10)\<"slideSwitch"> | Yes | No | Specifies the transition effect in which the component shrinks and then enlarges while sliding in from the right when appearing, and shrinks and then enlarges while sliding out to the left when disappearing. This effect comes with built-in animation parameters, which can be overridden by custom animation parameters specified through the .animation() method. The built-in animation parameters have a duration of 600 ms, use the animation curve cubicBezierCurve(0.24, 0.0, 0.50, 1.0), and have a minimum scale ratio of 0.85. |
 
 >  **NOTE**
 >
->  1. For transition effects combined through the **combine** function, animation settings can be configured through the **animation** parameter on a one-on-one basis. In addition, the animation settings of a transition effect are applicable to the one following it. For example, with **TransitionEffect.OPACITY.animation({duration: 1000}).combine(TransitionEffect.translate({x: 100}))**, the **duration** settings (1000 ms) apply to both the OPACITY and translate effects.
->  2. The animation settings take effect in the following sequence: animation settings specified in the current **TransitionEffect** > animation settings specified in the previous **TransitionEffect** > animation settings specified in **animateTo** that triggers the component to appear and disappear.
->  3. If **animateTo** is not used and **TransitionEffect** does not have the **animation** parameter specified, the component will appear or disappear without any transition animation.
->  4. If the value of an attribute specified in **TransitionEffect** is the same as the default value, no transition animation will be applied to the attribute. For example, with **TransitionEffect.opacity(1).animation({duration:1000})**, because the default value of **opacity** is also **1**, no opacity animation will be applied, and the component appears or disappears without any transition animation.
->  5. For details about the scale and rotate effects, see [Transformation](ts-universal-attributes-transformation.md).
->  6. If a component's attach or detach in the component tree or [visibility](ts-universal-attributes-visibility.md#visibility) change is triggered within the animation scope ([animateTo](../arkts-apis-uicontext-uicontext.md#animateto) or [animation](ts-animatorproperty.md)), and the root component does not have a transition configured, a default opacity transition, namely **TransitionEffect.OPACITY**, will be applied to the component. The animation parameters will follow the parameters of the surrounding animation environment. If this default behavior is not desired, it can be disabled by configuring **TransitionEffect.IDENTITY**, which causes the component to appear or disappear instantly without any transition effect.
->  7. To ensure that the complete disappearance transition process is visible when triggering it by deleting an entire subtree, it is necessary to guarantee that the root component of the subtree being deleted has ample time to complete its disappearance transition, as demonstrated in Example 3.
+>  1. TransitionEffect can combine multiple transition effects through the combine function. You can specify the animation parameter for each effect separately, and the animation parameter of the preceding effect can also apply to the following effect. For example, in TransitionEffect.OPACITY.animation({duration: 1000}).combine(TransitionEffect.translate({x: 100})), the animation parameter with a duration of 1000 ms applies to both OPACITY and translate.
+>  2. The precedence of animation parameters is as follows: the animation parameter specified by this TransitionEffect > the animation parameter specified by the preceding TransitionEffect > the animation parameter in animateTo that triggers the appearance and disappearance of the component.
+>  3. If animateTo is not used to trigger the transition animation and no animation parameter is specified in TransitionEffect, the component appears or disappears directly.
+>  4. If the attribute value specified in TransitionEffect is the same as the default value, no transition animation is generated for that attribute. For example, in TransitionEffect.opacity(1).animation({duration:1000}), since the default value of opacity is also 1, no opacity animation is generated, and the component appears or disappears directly.
+>  5. For more details about the scale and rotate effects, see [Transformation](ts-universal-attributes-transformation.md).
+>  6. If the insertion/removal or visibility ([visibility](ts-universal-attributes-visibility.md#visibility)) change of a component is triggered within an animation scope ([animateTo](../arkts-apis-uicontext-uicontext.md#animateto), [animation](ts-animatorproperty.md)), and the root component of the subtree has no transition configured, a default opacity transition, that is, TransitionEffect.OPACITY, is added to the component, with the animation parameter following that of the current animation environment. If this is not needed, you can disable it by explicitly configuring TransitionEffect.IDENTITY so that the component appears or disappears directly.
+>  7. When the disappearance transition is triggered by deleting an entire subtree, to observe the complete disappearance transition process, ensure that the root component of the deleted subtree has sufficient disappearance transition time. See Example 3.
 
 ### translate<sup>10+</sup>
 
@@ -126,13 +132,15 @@ Sets the translation effect for component transitions.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions)      | Yes  | Translation effect for component transitions, specifying the start point of insertion and the end point of deletion.<br>-**x**: distance to translate along the x-axis.<br>-**y**: distance to translate along the y-axis.<br>-**z**: distance to translate along the z-axis.|
+| options  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions)      | Yes   | Translation effect during component transition, which is the value at the start point upon insertion and at the end point upon deletion.<br>-x: horizontal translation distance.<br>-y: vertical translation distance.<br>-z: translation distance along the z-axis. |
 
 **Return value**
 
@@ -150,13 +158,15 @@ Sets the rotation effect for component transitions.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [RotateOptions](ts-universal-attributes-transformation.md#rotateoptions)      | Yes  | Rotation effect for component transitions, specifying the start point of insertion and the end point of deletion.<br>- **x**: X-component of the rotation vector.<br>- **y**: Y-component of the rotation vector.<br>- **z**: Z-component of the rotation vector.<br>- **centerX** and **centerY**: rotation center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>- **centerZ**: z-axis anchor point, that is, the z-component of the 3D rotation center point. The default value is **0**.<br>- **perspective**: viewing distance. It is not supported for use in transition animations.|
+| options  | [RotateOptions](ts-universal-attributes-transformation.md#rotateoptions)      | Yes   | Rotation effect during component transition, which is the value at the start point on insertion and at the end point on deletion.<br>-angle: rotation angle in degrees (°), which determines the rotation amplitude around the rotation axis.<br>-x: horizontal rotation vector component.<br>-y: vertical‑longitudinal rotation vector component.<br>-z: vertical‑elevational rotation vector component.<br>-&nbsp;centerX and centerY specify the rotation center point. The default values of centerX and centerY are "50%", and the numeric type is in vp, meaning that the component center point is used as the rotation center point by default. The string format supports percentages (for example, "50%").<br>-&nbsp;A center point of (0, 0) represents the top-left corner of the component.<br>-&nbsp;When centerX and centerY are set to invalid strings (for example, "illegalString"), the default value is "0".<br>-centerZ specifies the z-axis anchor point, that is, the z-axis component of the 3D rotation center point. The default value of centerZ is 0.<br>-perspective specifies the viewing distance. The perspective attribute is not supported for transition animation. |
 
 **Return value**
 
@@ -174,13 +184,15 @@ Sets the scaling effect for component transitions.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions)     | Yes  | Scaling effect for component transitions, specifying the start point of insertion and the end point of deletion. The scale value set here is multiplied by the component's **scale** attribute. For example, if the component's scale is 0.8 and the transition scale is set to 0.5, the component entry animation starts from a scale of 0.4.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>-z: currently invalid in two-dimensional display.<br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>**NOTE**<br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used.|
+| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions)      | Yes   | Scale effect during component transition, which is the value at the start point during insertion and at the end point during deletion. The set scale value is multiplicatively superimposed on the current scale attribute of the component. For example, if the current scale value of the component is 0.8 and the transition scale value is set to 0.5, the scale value of the component entry animation starts from 0.8×0.5=0.4.<br>-&nbsp;x: horizontal magnification (or reduction ratio).<br>-&nbsp;y: vertical magnification (or reduction ratio).<br>-&nbsp;z: This parameter is invalid because the current display is two-dimensional.<br>-&nbsp;centerX and centerY indicate the center point of scaling. The default values of centerX and centerY are "50%", that is, the center point of the component is used as the scaling center point by default.<br>-&nbsp;A center point of (0, 0) represents the top-left corner of the component.<br>**NOTE**<br>When centerX and centerY are set to invalid strings (for example, "illegalString"), the default value is "0". |
 
 **Return value**
 
@@ -198,29 +210,33 @@ Sets the opacity for component transition.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| alpha  | number      | Yes  | Opacity of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>Value range: [0, 1].<br>**NOTE**<br>If the value specified is less than 0, the value **0** is used. If the value specified is greater than 1, the value **1** is used.|
+| alpha  | number      | Yes   | Opacity effect during component transition, which is the value at the start point of insertion and the end point of deletion.<br>Value range: [0, 1]<br>**Note:** <br>An invalid value less than 0 is processed as 0, and an invalid value greater than 1 is processed as 1. When alpha is 1 (the same as the default value), no opacity transition effect is generated, and the component appears or disappears directly. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10)\<"opacity"> | Opacity of component transition.|
+| [TransitionEffect](#transitioneffect10)\<"opacity"> | Returns a TransitionEffect object that represents the opacity transition effect, used to configure the opacity transition animation when a component appears and disappears. |
 
 ### move<sup>10+</sup>
 
 move(edge: TransitionEdge): TransitionEffect\<"move">
 
-Sets the slide-in and slide-out effects for component transitions from the screen edges.
+Sets the effect of sliding in from and out to the window edge during component transition.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -228,23 +244,25 @@ Sets the slide-in and slide-out effects for component transitions from the scree
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| edge  | [TransitionEdge](#transitionedge10)     | Yes  | The slide-in and slide-out effects for component transitions from the screen edges. This is essentially a translation effect, specifying the start point of insertion and the end point of deletion.|
+| edge  | [TransitionEdge](#transitionedge10)     | Yes   | Effect of sliding in and out from the window edge during component transition. It is essentially a translation effect, serving as the start point on insertion and the end point on deletion. Unlike translate, move automatically calculates the offset based on the window edge position through TransitionEdge (including RTL/LTR direction adaptation), without the need to manually specify a specific offset value. It is suitable for scenarios where the component slides in and out from the window edge. translate requires manually specifying the offset value and is suitable for scenarios where the offset direction and distance need to be customized. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10)\<"move"> | Current animation's slide-in and slide-out effects from the screen edges.|
+| [TransitionEffect](#transitioneffect10)\<"move"> | Effect of the current animation sliding in and out from the window edge. |
 
 ### asymmetric<sup>10+</sup>
 
 asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect\<"asymmetric">
 
-Sets the asymmetric transition effect.
+Sets an asymmetric transition effect, that is, appearance and disappearance use two independent and different animations, and the effects are not inverse processes of each other. It applies to scenarios where different animation strategies are required for appearance and disappearance. For details about the specific effect, see [Example 2](#example-2-using-different-transitioneffect-configurations-for-image-appearance-and-disappearance).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,14 +270,14 @@ Sets the asymmetric transition effect.
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| appear  | [TransitionEffect](#transitioneffect10)      | Yes  | Transition effect for appearance.<br>If the **asymmetric** function is not used for **TransitionEffect**, the transition effect takes effect for both appearance and disappearance of the component.|
-| disappear  | [TransitionEffect](#transitioneffect10)      | Yes  | Transition effect for disappearance.<br>If the **asymmetric** function is not used for **TransitionEffect**, the transition effect takes effect for both appearance and disappearance of the component.|
+| appear  | [TransitionEffect](#transitioneffect10)      | Yes   | Transition effect for appearance.<br>If the TransitionEffect is not constructed through the asymmetric function, this effect takes effect both when the component appears and when it disappears. |
+| disappear  | [TransitionEffect](#transitioneffect10)      | Yes   | Transition effect for disappearance.<br>If the TransitionEffect is not constructed through the asymmetric function, this effect takes effect both when the component appears and when it disappears. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10)\<"asymmetric"> | Asymmetric transition effect for the current animation.|
+| [TransitionEffect](#transitioneffect10)\<"asymmetric"> | Returns a TransitionEffect object that represents an asymmetric transition effect, where appearance and disappearance use different transition animations. |
 
 ### constructor<sup>10+</sup>
 
@@ -271,14 +289,16 @@ Constructs a **TransitionEffect** object.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| type  | [Type](ts-appendix-enums.md#transitiontype)                                    | Yes  | Transition type.|
-| effect  | [Effect](#transitioneffect10)                                     | Yes  | Transition parameter.|
+| type  | [Type](ts-appendix-enums.md#transitiontype)                                    | Yes   | Transition type, which specifies the scenario where this transition effect takes effect. Default value: **TransitionType.All**, which means the transition effect takes effect for both insertion and deletion. If **type** is not specified, the default value **TransitionType.All** is used. |
+| effect  | [Effect](#transitioneffect10)                                     | Yes   | Transition effect configuration, which specifies the specific transition animation effect, including the parameter settings of transition effects such as opacity, translation, rotation, and scale. |
 
 ### combine<sup>10+</sup>
 
@@ -289,6 +309,8 @@ Combination of transition effects.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -302,7 +324,7 @@ Combination of transition effects.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10) | Combined transition effect.|
+| [TransitionEffect](#transitioneffect10) | Combined transition effect. |
 
 ### animation<sup>10+</sup>
 
@@ -314,30 +336,34 @@ Animation settings.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type| Mandatory| Description          |
 | ------ | -------- | ---- | ------------------ |
-| value  | [AnimateParam](ts-explicit-animation.md#animateparam)   | Yes  | Animation parameters.<br>The **onFinish** callback in **AnimateParam** does not work here.<br>If **combine** is used for combining transition effects, the animation settings of a transition effect are applicable to the one following it.|
+| value  | [AnimateParam](ts-explicit-animation.md#animateparam)   | Yes   | Animation parameter.<br>This parameter is used only to specify the animation parameter. The onFinish callback of the input parameter AnimateParam does not take effect.<br>If TransitionEffect objects are combined through combine, the animation parameter of the preceding TransitionEffect can also be used for the following TransitionEffect. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10) | Current animation effect.|
+| [TransitionEffect](#transitioneffect10) | Returns a TransitionEffect object configured with the specified animation parameters, which take effect in the transition effect. |
 
 
 ## TransitionFinishCallback<sup>12+</sup>
 
 type TransitionFinishCallback = (transitionIn: boolean) => void
 
-Represents the type of callback for the end of a component's transition animation.
+Defines the type of the callback invoked when the component transition animation ends.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -345,11 +371,11 @@ Represents the type of callback for the end of a component's transition animatio
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| transitionIn | boolean | Yes  | Type of callback for the end of the transition animation.<br>The value **true** indicates that the callback is for the end of an appearance animation, and **false** indicates that the callback is for the end of a disappearance animation.|
+| transitionIn | boolean | Yes   | End callback type of the transition animation.<br>true indicates the appearance animation end callback, false indicates the disappearance animation end callback. |
 
 >  **NOTE**
->  1. When a subtree is triggered to attach or detach, which in turn recursively triggers appearance and disappearance transitions, only the root component's disappearance animation end callback can be guaranteed to be invoked. If a child component's disappearance animation end callback is scheduled after the root component's disappearance animation end callback, it will not be invoked because the entire subtree has already been destroyed.
->  2. The end callback is only invoked after the last of the same type of animation (either appearance or disappearance) for the same component has finished. That is, if appearance and disappearance animations are triggered repeatedly (for example, through changes in **Visibility**), only the end callback of the final appearance or disappearance will be executed.
+>  1. When the appearance and disappearance transitions are triggered recursively by inserting or removing a subtree, only the disappearance animation end callback of the root component is guaranteed to be invoked. If the disappearance animation end callback of a child component occurs later than that of the root component, the child component's end callback will not be invoked because the entire subtree has been destroyed.
+>  2. The end callback is invoked only after the last animation of the same type (appearance or disappearance) of the same component ends. That is, if the appearance and disappearance animations are triggered repeatedly (for example, through Visibility), only the end callback of the last appearance or disappearance is invoked.
 
 ## TransitionOptions<sup>(deprecated)</sup>
 
@@ -363,18 +389,18 @@ Defines the transition effect by setting parameters in the struct.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| type | [TransitionType](ts-appendix-enums.md#transitiontype)  | No| Yes| Transition type.<br>Default value: **TransitionType.All**<br>**NOTE**<br>If **type** is not specified, the default value **TransitionType.All** is used, which means that the transition effect works for both component addition and deletion.|
-| opacity | number | No| Yes| Opacity of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>Value range: [0, 1]<br>**NOTE**<br>If the value specified is less than 0, the value **0** is used. If the value specified is greater than 1, the value **1** is used.|
-| translate |   [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions)  | No| Yes | Translation of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>-**x**: distance to translate along the x-axis.<br>-**y**: distance to translate along the y-axis.<br>-**z**: distance to translate along the z-axis.|
-| scale |  [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions)| No| Yes| Scaling of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>- **z**: scale factor along the z-axis (not effective for the current 2D graphics).<br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>**NOTE**<br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used.|
-| rotate |  [RotateOptions](ts-universal-attributes-transformation.md#rotateoptions)| No| Yes| Rotation of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>- **x**: X-component of the rotation vector.<br>- **y**: Y-component of the rotation vector.<br>- **z**: Z-component of the rotation vector.<br>- **centerX** and **centerY**: rotation center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.|
+| type | [TransitionType](ts-appendix-enums.md#transitiontype) | No | Yes | Specifies the scenario in which the transition effect takes effect.<br>Default value: TransitionType.All<br>**Note:**<br>If type is not specified, the default value TransitionType.All is used, which means the transition effect takes effect for both insertion and deletion. |
+| opacity | number | No | Yes | Sets the opacity effect during component transition, which is the value at the start point of insertion and the end point of deletion. Set this attribute when a fade-in/fade-out transition effect is required. If this attribute is not set and no other transition effect is set, an opacity transition effect is generated by default (equivalent to opacity being 0). If other transition effects are set, no opacity transition effect is generated.<br>Value range: [0, 1]<br>**Note:** <br>If an invalid value less than 0 is set, it is processed as 0. If an invalid value greater than 1 is set, it is processed as 1. |
+| translate | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions) | No | Yes | Sets the translation effect during component transition, which is the value at the start point of insertion and the end point of deletion.<br>-x: translation distance along the horizontal axis.<br>-y: translation distance along the vertical axis.<br>-z: translation distance along the depth axis. |
+| scale | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions) | No | Yes | Sets the scale effect during component transition, which is the value at the start point of insertion and the end point of deletion. The set scale value is multiplied by the component's current scale attribute. For example, if the component's current scale value is 0.8 and the transition scale value is set to 0.5, the scale value of the component's entry animation starts from 0.8×0.5=0.4.<br>-x: horizontal scale factor (or reduction ratio).<br>-y: vertical scale factor (or reduction ratio).<br>-z: currently the display is two-dimensional, so this parameter is invalid.<br>-&nbsp;centerX and centerY specify the scale center point. The default values of centerX and centerY are "50%", which means the component's center point is used as the scale center point by default.<br>-&nbsp;A center point of (0, 0) represents the top-left corner of the component.<br>**Note:** <br>If centerX or centerY is set to an invalid string (for example, "illegalString"), the default value "0" is used. |
+| rotate | [RotateOptions](ts-universal-attributes-transformation.md#rotateoptions) | No | Yes | Sets the rotation effect during component transition, which is the value at the start point of insertion and the end point of deletion.<br>-x: rotation vector component along the horizontal axis.<br>-y: rotation vector component along the vertical axis.<br>-z: rotation vector component along the depth axis.<br>-&nbsp;centerX and centerY specify the rotation center point. The default values of centerX and centerY are "50%", which means the component's center point is used as the rotation center point by default. The string format supports percentages (for example, "50%").<br>-&nbsp;A center point of (0, 0) represents the top-left corner of the component.<br>-&nbsp;If centerX or centerY is set to an invalid string (for example, "illegalString"), the default value "0" is used. |
 
 >  **NOTE**
 >
->  1. When set to a value of the **TransitionOptions** type, the **transition** attribute must work with [animateTo](../arkts-apis-uicontext-uicontext.md#animateto). The animation duration, curve, and delay follow the settings in **animateTo**.
->  2. If the value of the **TransitionOptions** type has only **type** specified, the transition effect will take on the default opacity. For example, **{type: TransitionType.Insert}** produces the same effect as **{type: TransitionType.Insert, opacity: 0}**. If a specific style is specified, the transition effect will not take on the default opacity.
+>  1. When the transition effect is specified using an input parameter of the TransitionOptions type, it **must** be used together with [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) to take effect. The animation duration, curve, and delay follow the configuration in animateTo.
+>  2. When TransitionOptions is used as the input parameter and no parameter other than type is specified, it is equivalent to specifying an opacity transition effect. For example, specifying {type: TransitionType.Insert} is equivalent to specifying the transition effect {type: TransitionType.Insert, opacity: 0}. When a specific effect is specified, the default opacity transition effect is not added.
 
-## Example
+## Examples
 
 ### Example 1: Using the Same TransitionEffect Configuration for Image Appearance and Disappearance
 
@@ -413,7 +439,7 @@ struct TransitionEffectExample1 {
   }
 }
 ```
-Below you can see the example in action.<br>
+Schematic diagram:<br>
 ![transitionComponent2](figures/transitionComponent2.gif)
 
 ### Example 2: Using Different TransitionEffect Configurations for Image Appearance and Disappearance
@@ -445,8 +471,8 @@ struct TransitionEffectExample2 {
         })
       if (this.flag) {
         // Apply different transition effects to the appearance and disappearance of the image.
-        // When the image appears, its opacity changes 0 to 1 (default value) over the duration of 1000 ms, and after 1000 ms has elapsed, its rotation angle changes from 180° around the z-axis to 0° (default value) over the duration of 1000 ms.
-        // When the image disappears, after 1000 ms has elapsed, its opacity changes 1 (default value) to 0 over the duration of 1000 ms, and its rotation angle changes from 0° (default value) to 180° around the z-axis over the duration of 1000 ms.
+        // When the image appears, its opacity changes from 0 to 1 (default value) over the duration of 1000 ms, and after 1000 ms has elapsed, its rotation angle changes from 180° around the z-axis to 0° (default value) over the duration of 1000 ms.
+        // When the image disappears, after 1000 ms has elapsed, its opacity changes from 1 (default value) to 0 over the duration of 1000 ms, and its rotation angle changes from 0° (default value) to 180° around the z-axis over the duration of 1000 ms.
         // Replace $r('app.media.testImg') with the image resource file you use.
         Image($r('app.media.testImg')).width(200).height(200)
           .transition(
@@ -473,7 +499,7 @@ struct TransitionEffectExample2 {
   }
 }
 ```
-Below you can see the example in action.<br>
+Schematic diagram:<br>
 ![transitionComponent3](figures/transitionComponent3.gif)
 
 ### Example 3: Setting transition on Parent and Child Components
@@ -505,7 +531,7 @@ struct TransitionEffectExample3 {
         Column() {
           Row() {
             // Replace $r('app.media.testImg') with the image resource file you use.
-            Image($r('app.media.testImg')).width(150).height(150).id("image1")
+            Image($r('app.media.testImg')).width(150).height(150).id('image1')
               .transition(TransitionEffect.OPACITY.animation({ duration: 1000 }))
           }
 
@@ -514,11 +540,12 @@ struct TransitionEffectExample3 {
             .width(150)
             .height(150)
             .margin({ top: 50 })
-            .id("image2")
+            .id('image2')
             .transition(TransitionEffect.scale({ x: 0, y: 0 }).animation({ duration: 1000 }))
-          Text("view").margin({ top: 50 })
+          Text('view').margin({ top: 50 })
         }
-        .id("column1")
+        .id('column1')
+        // Use opacity(0.99) instead of 1 for the root component to avoid the transition animation not being triggered when the property value equals the default value.
         .transition(TransitionEffect.opacity(0.99).animation({ duration: 1000 }),
           // The end callback is set on the first layer of disappearing nodes to ensure that there is a callback at the end of the disappearance.
           (transitionIn: boolean) => {
@@ -530,5 +557,43 @@ struct TransitionEffectExample3 {
   }
 }
 ```
-Below you can see the example in action.<br>
+Schematic diagram:<br>
 ![transitionComponent4](figures/transitionComponent4.gif)
+
+### Example 4: Dual-animation Composite Effect During Visibility Switching
+
+This example demonstrates the dual-animation composite effect produced when [transition](#transition) animation is superimposed on layout animation as [visibility](ts-universal-attributes-visibility.md#visibility) switches between Visibility.Visible and Visibility.None.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TransitionVisibilityExample {
+  @State isVisible: boolean = true;
+
+  build() {
+    Column() {
+      Button('toggle visibility').width(150).height(30).margin(30)
+        .onClick(() => {
+          this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+            this.isVisible = !this.isVisible;
+          });
+        })
+      Column() {
+        Text('Hello World')
+          .fontSize(20)
+          .fontColor(Color.White)
+      }
+      .width(200)
+      .height(100)
+      .backgroundColor('#317AF7')
+      .justifyContent(FlexAlign.Center)
+      .transition(TransitionEffect.OPACITY.animation({ duration: 1000 }))
+      .visibility(this.isVisible ? Visibility.Visible : Visibility.None)
+    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+Schematic diagram:<br>
+![transitionComponent5](figures/transitionComponent5.gif)
+

@@ -3,10 +3,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e7bd4b9be9a9e20b7a13185fe75e55f283c09e67 translatedAt=2026-09-03T10:07:53.748Z pushedAt=2026-09-05T10:47:30.348Z -->
 
-The module describes the startup configuration of a child process. When starting a child process through [childProcessManager](js-apis-app-ability-childProcessManager.md), you can configure the startup configuration of the child process through **ChildProcessOptions**.
+Defines the startup configuration options of a child process, including the sandbox isolation level, network access permission, and independent UID. When a child process is started through [childProcessManager](js-apis-app-ability-childProcessManager.md), you can use ChildProcessOptions to configure the startup options of the child process.
 
 > **NOTE**
 > 
@@ -27,14 +28,14 @@ import { ChildProcessOptions } from '@kit.AbilityKit';
 | Name       | Type     | Read-Only| Optional| Description                                                              |
 | ----------- | --------- | ---- | ----- | ----------------------------------------------- |
 | isolationMode | boolean | No| Yes| Controls the sandbox isolation level and network access permissions of the child process. **true** if the child process runs in an independent sandbox environment and cannot access the network; **false** if the child process shares the sandbox and network environment with the main process. The default value is **false**.|
-| isolationUid<sup>21+<sup> | boolean | No| Yes| Whether the child process uses an independent UID. **true** if the child process uses an independent UID; **false** if the child process and the main process share the same UID. The default value is **false**. This parameter is valid only when **isolationMode** is set to **true**.|
+| isolationUid<sup>21+</sup> | boolean | No | Yes | Whether the child process uses an independent UID. The value true means the child process has an independent UID, and false means the child process shares the same UID as the main process. The default value is false. Only effective when isolationMode is true. |
 
 **Example**
 
 Sample code for the child process:
 
 ```ts
-// Create the child process class DemoProcess.ets in src/main/ets/process of the entry module.
+// Create the DemoProcess.ets child process class under src/main/ets/process in the entry module:
 // entry/src/main/ets/process/DemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
 
@@ -51,7 +52,7 @@ Sample code for the main process:
 
 <!--code_no_check-->
 ```ts
-// Call childProcessManager.startArkChildProcess to start the child process.
+// Use the childProcessManager.startArkChildProcess method to start a child process.
 // entry/src/main/ets/pages/Index.ets
 import { ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -70,11 +71,11 @@ struct Index {
             try {
               DemoProcess.toString(); // Call any API of the DemoProcess class to prevent the code from being directly optimized by the compiler because it is not being referenced.
               let options: ChildProcessOptions = {
-                isolationMode: false,
+                isolationMode: true,
                 isolationUid: false
               };
               let args: ChildProcessArgs = {
-                entryParams: "testParam",
+                entryParams: 'testParam',
               };
               childProcessManager.startArkChildProcess("entry/ets/process/DemoProcess.ets", args, options)
                 .then((pid) => {

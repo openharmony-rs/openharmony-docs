@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:45:57.255Z pushedAt=2026-07-16T11:32:58.779Z -->
+<!-- md-trans-meta sourceCommit=80561ebc7faaf623275268c36fa1115cdebd8434 translatedAt=2026-08-11T10:10:53.388Z pushedAt=2026-08-11T11:19:47.783Z -->
 
 ## Overview
 
@@ -262,8 +262,7 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 // In the xxx.ets file, implement the attribute setting of the child window.
-import { window, router } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -294,9 +293,8 @@ struct transferCtrlSubWindow {
 
 ```ts
 // In the .ets file, implement the operations of creating a child window and displaying or hiding a window.
-import { window, router } from '@kit.ArkUI';
-import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 import { AnimationConfig } from '../entryability/AnimationConfig';
 
 @Entry
@@ -325,7 +323,7 @@ struct Index {
     promise.then(async(subWin: window.Window) => {
       this.subWindow_ = subWin;
       AppStorage.setOrCreate<window.Window>("systemTypeWindow", subWin);
-      await subWin.setUIContent("pages/transferCtrlSubWindow",()=>{});
+      await subWin.setUIContent("pages/transferCtrlSubWindow");
       await subWin.moveWindowTo(100,100);
       await subWin.resize(200,200);
     }).catch((err:Error)=>{

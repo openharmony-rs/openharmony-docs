@@ -71,7 +71,7 @@
 // Index.ets
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 const TAG = 'IndexPage';
@@ -197,7 +197,7 @@ const TAG = 'IndexPage';
   import { UIAbility } from '@kit.AbilityKit';
   import { window, display } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
-  import hilog from '@ohos.hilog';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
   const DOMAIN = 0x0000;
   const TAG = 'Sample_AdjustLayout';
@@ -280,7 +280,7 @@ const TAG = 'IndexPage';
   ``` TypeScript
   import { window } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
-  import hilog from '@ohos.hilog';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
   const DOMAIN = 0x0000;
   const TAG = 'Sample_AdjustLayout';
@@ -422,7 +422,7 @@ const TAG = 'IndexPage';
   // Index.ets
   import { window } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
-  import hilog from '@ohos.hilog';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
   const DOMAIN = 0x0000;
   const TAG = 'IndexPage';

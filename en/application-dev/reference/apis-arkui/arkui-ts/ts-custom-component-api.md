@@ -1,17 +1,20 @@
 # Custom Component Built-in APIs
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=918e5db29690bc5ded790d176a4ef13a02848f1b translatedAt=2026-08-24T06:51:20.346Z pushedAt=2026-08-25T07:34:40.147Z -->
 
-Custom component built-in APIs are APIs predefined on the base class of custom components in the ArkUI framework. You can call these APIs on the instance of a custom component to obtain information, such as the UI context, about the instance.
+The custom component built-in APIs are provided by the ArkUI development framework and defined on the base class of custom components. Developers can call the corresponding APIs on the instance of a custom component to obtain information about the current custom component instance, including the **UIContext** to which the component belongs, the unique ID of the component, the **NavDestination**, **Navigation**, and router page information associated with the component, and the custom dialog controller.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
+> - The APIs of this module can be used only in the stage model.
 
 ## getUIContext
 
@@ -20,6 +23,8 @@ getUIContext(): UIContext
 Obtains the **UIContext** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +36,7 @@ Obtains the **UIContext** instance.
 
 ## UIContext
 
-type UIContext = UIContext
+type UIContext = import('../api/@ohos.arkui.UIContext').UIContext
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -39,7 +44,7 @@ type UIContext = UIContext
 
 | Type                                                     | Description                   |
 | --------------------------------------------------------- | ----------------------- |
-| [UIContext](../arkts-apis-uicontext-uicontext.md) | **UIContext** instance obtained.|
+| import('../api/@ohos.arkui.UIContext').[UIContext](../arkts-apis-uicontext-uicontext.md) | **UIContext** instance object. |
 
 **Example**
 
@@ -63,9 +68,11 @@ struct MyComponent {
 
 getUniqueId(): number
 
-Obtains the unique ID of this component. This unique ID is assigned by the system to each component. If this API is called before the component's corresponding node is created or after it has been destroyed, an invalid unique ID, which is **-1**, will be returned.
+Obtains the unique ID of the current component. The unique ID is assigned by the system to each component and is guaranteed to be unique within the current app. If this API is called before the component's corresponding node is created or after it has been destroyed, an invalid unique ID, **-1**, is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +102,7 @@ struct MyComponent {
 
 queryNavDestinationInfo(): NavDestinationInfo | undefined;
 
-Queries the **NavDestination** information of this custom component. This API has effect only when the component is contained within a **NavDestination** component.
+Queries the [NavDestination](ts-basic-components-navdestination.md) information of this custom component. This API has effect only when the component is contained within a **NavDestination** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -136,7 +143,6 @@ struct MyComponent {
   }
 }
 ```
-
 
 ## queryNavDestinationInfo<sup>18+</sup>
 
@@ -266,7 +272,7 @@ struct MyComponent {
 
 ## NavDestinationInfo
 
-type NavDestinationInfo = NavDestinationInfo
+type NavDestinationInfo = import('../api/@ohos.arkui.observer').default.NavDestinationInfo
 
 Defines a **NavDestinationInfo** object.
 
@@ -276,14 +282,13 @@ Defines a **NavDestinationInfo** object.
 
 | Type    | Description      |
 | ------ | ---------- |
-| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | **NavDestinationInfo** instance obtained.|
-
+| import('../api/@ohos.arkui.observer').default.[NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | **NavDestinationInfo** instance object. |
 
 ## queryNavigationInfo<sup>12+</sup>
 
 queryNavigationInfo(): NavigationInfo | undefined
 
-Queries the **Navigation** information of this custom component.
+Queries the [Navigation](ts-basic-components-navigation.md) information of this custom component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -337,7 +342,7 @@ export struct PageOne {
 
 ## NavigationInfo<sup>12+</sup>
 
-type NavigationInfo = NavigationInfo
+type NavigationInfo = import('../api/@ohos.arkui.observer').default.NavigationInfo
 
 Defines a **NavigationInfo** object.
 
@@ -347,7 +352,7 @@ Defines a **NavigationInfo** object.
 
 | Type    | Description      |
 | ------ | ---------- |
-| [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | **NavigationInfo** instance obtained.|
+| import('../api/@ohos.arkui.observer').default.[NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | **NavigationInfo** instance object. |
 
 ## queryRouterPageInfo<sup>12+</sup>
 
@@ -385,7 +390,7 @@ struct MyComponent {
 
 ## RouterPageInfo<sup>12+</sup>
 
-type RouterPageInfo = RouterPageInfo
+type RouterPageInfo = import('../api/@ohos.arkui.observer').default.RouterPageInfo
 
 Defines a **RouterPageInfo** object.
 
@@ -395,7 +400,7 @@ Defines a **RouterPageInfo** object.
 
 | Type    | Description      |
 | ------ | ---------- |
-| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | **RouterPageInfo** instance obtained.|
+| import('../api/@ohos.arkui.observer').default.[RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | **RouterPageInfo** instance object. |
 
 ## getDialogController<sup>18+</sup>
 
@@ -432,7 +437,7 @@ struct MyComponent {
     Column() {
       Button('Close Dialog')
         .onClick(() => {
-          let ctrl: PromptActionDialogController = this.getDialogController();
+          let ctrl: PromptActionDialogController | undefined = this.getDialogController();
           if (ctrl != undefined) {
             ctrl.close();
           }
@@ -481,7 +486,7 @@ struct Index {
 
 ## PromptActionDialogController<sup>18+</sup>
 
-type PromptActionDialogController = promptAction.DialogController
+type PromptActionDialogController = import('../api/@ohos.promptAction').promptAction.DialogController
 
 Defines a custom dialog box controller, which can be used to control a custom dialog box, including actions such as closing the dialog box. For details, see [promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18).
 
@@ -491,4 +496,4 @@ Defines a custom dialog box controller, which can be used to control a custom di
 
 | Type                                                        | Description                        |
 | ------------------------------------------------------------ | ---------------------------- |
-| [promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18) | Instance of **promptAction.DialogController**.|
+| import('../api/@ohos.promptAction').[promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18) | Indicates that the object type is a **promptAction.DialogController** instance object. |

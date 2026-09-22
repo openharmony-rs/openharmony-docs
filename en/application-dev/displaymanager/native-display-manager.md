@@ -6,7 +6,7 @@
 <!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b21bd82a68f5cb2fefefde92a7afef87223beafc translatedAt=2026-07-09T08:20:53.544Z pushedAt=2026-07-09T10:42:12.507Z -->
+<!-- md-trans-meta sourceCommit=7562b6c0a5050c30facd711764ab207b08a86029 translatedAt=2026-08-24T11:34:15.338Z pushedAt=2026-08-25T03:17:18.376Z -->
 
 ## When to Use
 
@@ -26,7 +26,7 @@ The [OH_DisplayManager](../reference/apis-arkui/capi-oh-displaymanager.md) modul
 
 ## Available APIs
 
-The following table lists the common APIs. For more API description, see [OH_DisplayManager](../reference/apis-arkui/capi-oh-displaymanager.md).
+The following table lists the common APIs. For more API descriptions, see [OH_DisplayManager](../reference/apis-arkui/capi-oh-displaymanager.md).
 
 | Name| Description|
 | -------- | -------- |
@@ -41,9 +41,11 @@ The following table lists the common APIs. For more API description, see [OH_Dis
 
 ## Linking the Dynamic Library in the CMake Script
 
-``` text
-target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
-target_link_libraries(entry PUBLIC libnative_display_manager.so )
+<!-- @[add_display_target_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(nativedisplay PUBLIC libhilog_ndk.z.so)
+target_link_libraries(nativedisplay PUBLIC libnative_display_manager.so)
 ```
 
 ## Including Header Files
@@ -135,7 +137,7 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
 
 ## Listening for Display Status Changes
 
-Call **OH_NativeDisplayManager_RegisterDisplayChangeListener** to register a listener for display status changes, including the rotation, resolution, refresh rate, and DPI changes. Call **OH_NativeDisplayManager_UnregisterDisplayChangeListener** to cancel the listening for the display status changes.
+Call **OH_NativeDisplayManager_RegisterDisplayChangeListener** to register a listener for display status changes, including the rotation, resolution, refresh rate, and DPI changes. Call **OH_NativeDisplayManager_UnregisterDisplayChangeListener** to unregister the listener for the display status changes.
 
 <!-- @[register_display_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -275,23 +277,6 @@ EXTERN_C_END
 ## Registering Modules
 
 <!-- @[register_display_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_module displayModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "nativedisplay",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&displayModule);
-}
-```
 
 ``` C++
 static napi_module displayModule = {

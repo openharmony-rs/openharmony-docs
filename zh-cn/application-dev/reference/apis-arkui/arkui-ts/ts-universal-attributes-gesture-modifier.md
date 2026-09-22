@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-动态设置组件绑定的手势，支持在属性设置时使用if/else语法，适用于需要根据组件状态或用户操作切换手势绑定的场景，可提升手势配置的灵活性。
+动态设置组件绑定的手势，支持在属性设置时使用if/else语法，适用于需要根据组件状态或用户操作切换单一手势或手势组绑定的场景，可提升手势配置的灵活性。
 
 >  **说明：**
 >
@@ -24,7 +24,7 @@ gestureModifier(modifier: GestureModifier): T
 >
 >  gestureModifier不支持自定义组件。
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> 该接口不支持在[attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -44,15 +44,15 @@ gestureModifier(modifier: GestureModifier): T
 
 ## GestureModifier
 
-GestureModifier用于封装组件手势的动态设置逻辑，开发者需自定义class实现GestureModifier接口，并在applyGesture中根据需要设置或切换组件绑定的手势。
+GestureModifier用于封装组件手势的动态设置逻辑。开发者需自定义class实现GestureModifier接口，并在applyGesture中根据需要设置或切换组件绑定的手势。
 
 ### applyGesture
 
 applyGesture(event: UIGestureEvent): void
 
-手势更新函数，适用于需要根据组件状态或用户操作动态切换手势绑定的场景。
+手势应用函数，适用于需要根据组件状态或用户操作动态切换手势绑定的场景。
 
-开发者可根据需要自定义实现该方法，对组件设置需要绑定的手势，支持使用if/else语法进行动态设置。若在当次手势操作过程中触发了组件上的手势动态切换，该切换效果在当次手势结束（所有手指抬起）后的下一次手势操作中生效。
+开发者可根据需要自定义实现该方法，通过调用UIGestureEvent的[addGesture()](./ts-uigestureevent.md#addgesture)方法对组件设置需要绑定的手势，支持使用if/else语法进行动态设置。若在当次手势操作过程中触发了组件上的手势动态切换，该切换效果在当次手势结束（所有手指抬起）后的下一次手势操作中生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

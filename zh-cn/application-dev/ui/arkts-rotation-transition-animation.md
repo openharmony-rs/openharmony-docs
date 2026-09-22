@@ -19,7 +19,7 @@
 ``` TypeScript
 @Entry
 @Component
-struct rotation {
+struct RotationTest {
   build() {
     Stack() {
       // 请将$r('app.media.tree')替换为实际资源文件
@@ -37,7 +37,9 @@ struct rotation {
 
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
-"orientation": "auto_rotation",
+{
+  "orientation": "auto_rotation"
+}
 ```
 
 布局切换的旋转屏动画，会对同步旋转的窗口与应用视图做大小和位置的过渡。
@@ -55,7 +57,7 @@ import { display } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct rotation {
+struct RotationTest {
 
   // 获取通过监听窗口的windowSizeChange事件得到的屏幕显示方向
   @StorageLink('orientation') myOrientation: display.Orientation = display.Orientation.PORTRAIT;
@@ -64,7 +66,7 @@ struct rotation {
     Stack() {
 
       // 当屏幕显示方向变化时，切换组件的视图效果
-      if (this.myOrientation == display.Orientation.PORTRAIT || this.myOrientation == display.Orientation.PORTRAIT_INVERTED) {
+      if (this.myOrientation === display.Orientation.PORTRAIT || this.myOrientation === display.Orientation.PORTRAIT_INVERTED) {
         // 请将$r('app.media.sky')替换为实际资源文件
         Image($r('app.media.sky'))
           .size({ width: 100, height: 100 })
@@ -140,7 +142,9 @@ const TAG: string = 'EntryAbility';
 
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
-"orientation": "auto_rotation",
+{
+  "orientation": "auto_rotation"
+}
 ```
 
 透明度变化的旋转屏动画，会对窗口做大小和位置的过渡，并同时对应用视图做切换过渡，且为消失隐藏的应用视图做渐隐效果，对新出现的视图做渐显的效果。

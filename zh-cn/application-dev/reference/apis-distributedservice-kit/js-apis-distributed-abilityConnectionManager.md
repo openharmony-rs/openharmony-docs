@@ -66,9 +66,9 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.|
+| 801      | Capability not supported. Possible causes: Failed to call the API due to limited device capabilities.|
 
 **示例：**
 
@@ -446,7 +446,7 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| token | string | 是    | 用于协作服务管理的令牌。    |
+| token | string | 是    | 用于协作服务管理的令牌。该值通过wantParam参数中'ohos.dms.collabToken'键获取（在应用被拉起后的onCollaborate生命周期方法的wantParam参数中获取）。   |
 | reason | string | 是    | 连接被拒绝的原因。    |
 
 **错误码：**
@@ -636,7 +636,7 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.off("disconnect", sessionId);
 
   ```

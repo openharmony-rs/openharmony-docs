@@ -90,7 +90,7 @@ struct TestDemo14 {
           let res = inputDevice.supportKeysSync(Number(idTemp), [KeyCode.KEYCODE_FINGERPRINT_SLIDE_UP,
             KeyCode.KEYCODE_FINGERPRINT_SLIDE_DOWN]);
           if (res[0] && res[1]) {
-            console.info(`keyPressed ${idTemp} Device id list supportKeysSync : ${JSON.stringify(res)}`);
+            console.info(`keyPressed ${idTemp} Device id list supportKeysSync: ${JSON.stringify(res)}`);
             resolve(true);
             return;
           }

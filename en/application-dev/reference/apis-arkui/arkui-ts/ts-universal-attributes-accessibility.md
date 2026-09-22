@@ -1,26 +1,33 @@
 # Accessibility
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=c43314d48e5bb6db0c940e002f5fb3a101c7f656 translatedAt=2026-09-01T12:05:27.390Z -->
 
-You can set accessibility attributes and events for components to fully leverage accessibility features.
+Sets accessibility attributes and events for components to fully leverage accessibility features. It supports setting accessibility grouping, accessibility text, accessibility description, accessibility importance, accessibility virtual child nodes, accessibility component types, screen reader focus control, status announcement, and custom accessibility actions. It applies to scenarios where screen reader assistance is required for visually impaired users and where application accessibility needs to be improved.
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## accessibilityGroup
 
-accessibilityGroup(value: boolean):T
+accessibilityGroup(value: boolean): T
 
-Sets whether to enable accessibility grouping. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.
+Sets whether to enable accessibility grouping. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the content of the child components.
 
 If accessibility grouping is enabled for a component that does not contain a universal text attribute or an [accessibility text](#accessibilitytext) attribute, the system will concatenate the universal text attributes of its child components to generate merged text for the component. Child components without universal text attributes will be ignored during concatenation, and their accessibility text (if any) won't be used in the merged text.
 
 When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"yes"**, it becomes focusable by screen readers when other accessibility criteria are met, bypassing **accessibilityGroup** constraints.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -42,17 +49,17 @@ When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"
 
 ## accessibilityGroup<sup>14+</sup>
 
-accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions):T
+accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions): T
 
-Sets whether to enable accessibility grouping. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.
+Sets whether to enable accessibility grouping. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the content of the child components.
 
-If accessibility grouping is enabled for a component that does not contain a universal text attribute or an [accessibility text](#accessibilitytext) attribute, the system will concatenate the universal text attributes of its child components to generate merged text for the component. Child components without universal text attributes will be ignored during concatenation.
+If accessibility grouping is enabled for a component that does not contain a universal text attribute and has no [accessibilityText](#accessibilitytext) set, the universal text attributes of its child components are concatenated by default as the merged text of the component. If a child component has no universal text attribute, that child component is ignored and not concatenated, and its accessibility text is not used in the merged text.
 
 When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"yes"**, it becomes focusable by screen readers when other accessibility criteria are met, bypassing **accessibilityGroup** constraints.
 
 When [accessibilityPreferred](ts-types.md#accessibilityoptions14) is set to **true**, the system prioritizes concatenating the accessibility text attributes of the child components to generate merged text for the component. If a child component has no accessibility text set, its universal text attribute will be used instead. Components without either attribute will be excluded from concatenation.
 
-Since API version 23, the state information and click events of a specific child component can be used as the accessibility capabilities of the current aggregation component via the **stateController** and **actionController** parameters.
+Since API version 23, you can specify a specific child component through the relevant configuration items in accessibilityOptions (stateControllerRoleType or stateControllerId, actionControllerRoleType or actionControllerId), so that the state information and click events of that child component take over the accessibility capabilities of the current aggregation component.
 
 > **NOTE**
 >
@@ -69,7 +76,7 @@ Since API version 23, the state information and click events of a specific child
 | Name              | Type                                                   | Mandatory| Description                                                        |
 | -------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isGroup              | boolean                                                 | Yes  | Whether to enable accessibility grouping. The value **true** means to enable accessibility grouping, and **false** means the opposite. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components. Text and accessibility information from child components are merged and sent to the accessibility service as a whole.<br>Default value: **false**|
-| accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14) | Yes  | Options for accessibility grouping. When **accessibilityPreferred** is set to **true**, the system will prioritize concatenating accessibility text for screen readers. When **accessibilityPreferred** is set to **false**, accessibility text will not be prioritized.<br>**stateController** and **actionController** enable the current aggregated component to use the state information and tap events of specific child components as its accessibility capabilities.|
+| accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14) | Yes | Configuration options object for the accessibility group, which contains the following attributes:<br/>- accessibilityPreferred: when set to true, the application prioritizes concatenating accessibility text for reading; when set to false, the application does not prioritize accessibility text during screen reading.<br/>- stateControllerRoleType or stateControllerId: supported since API version 23, specifies a specific child component whose state information is used as the accessibility state of the current aggregate component.<br/>- actionControllerRoleType or actionControllerId: supported since API version 23, specifies a specific child component whose click event is used as the accessibility action of the current aggregate component.|
 
 **Return value**
 
@@ -79,9 +86,13 @@ Since API version 23, the state information and click events of a specific child
 
 ## accessibilityText
 
-accessibilityText(value: string):T
+accessibilityText(value: string): T
 
 Sets the accessibility text. If a component lacks text content, you can set the accessibility text attribute to enable text-to-speech playback for accessibility purposes. If a component already contains text content, the accessibility text takes precedence during screen reading scenarios.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -103,7 +114,7 @@ Sets the accessibility text. If a component lacks text content, you can set the 
 
 ## accessibilityText<sup>12+</sup>
 
-accessibilityText(text: Resource):T
+accessibilityText(text: Resource): T
 
 Sets the accessibility text, with support for resource references using [Resource](ts-types.md#resource). If a component lacks text content, you can set the accessibility text attribute to enable text-to-speech playback for accessibility purposes. If a component already contains text content, the accessibility text takes precedence during screen reading scenarios.
 
@@ -121,7 +132,7 @@ Sets the accessibility text, with support for resource references using [Resourc
 
 | Name| Type  | Mandatory| Description                                                                                                                                                                                                                                                                  |
 | ------ | ------ | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| text  | [Resource](ts-types.md#resource) | Yes  | Resource reference of accessibility text. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for such components. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>**NOTE**<br>If a component has both text content and accessibility text, only the accessibility text is announced.<br>If a component is grouped for accessibility purposes but lacks both text content and accessibility text, the screen reader will concatenate text from its child components (depth-first traversal).<br>To prioritize accessibility text concatenation, set **accessibilityPreferred** in **accessibilityGroup**.|
+| text  | [Resource](ts-types.md#resource) | Yes   | Accessibility text reference resource. When a component does not contain a text attribute, the screen reader does not announce anything when this component is selected, and the user cannot clearly know which component is currently selected. To address this scenario, developers can set accessibility text for components that do not contain text information. When the screen reader selects this component, it announces the content of the accessibility text, helping screen reader users clearly know which component they have selected.<br/>**Note:**<br/>If a component has both a text attribute and an accessibility text attribute, only the accessibility text content is announced when the component is selected.<br/>If a component has the accessibility group attribute set to true but has neither an accessibility text attribute nor a text attribute, the text of its child components is concatenated (depth-first).<br/>The accessibility text attribute is not concatenated. To concatenate the accessibility text first, set accessibilityPreferred of [accessibilityGroup](#accessibilitygroup14). |
 
 **Return value**
 
@@ -132,9 +143,13 @@ Sets the accessibility text, with support for resource references using [Resourc
 
 ## accessibilityDescription
 
-accessibilityDescription(value: string):T
+accessibilityDescription(value: string): T
 
 Sets the accessibility description. This attribute provides additional context and explanation for the component, helping users understand its functionality and purpose.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -156,7 +171,7 @@ Sets the accessibility description. This attribute provides additional context a
 
 ## accessibilityDescription<sup>12+</sup>
 
-accessibilityDescription(description: Resource):T
+accessibilityDescription(description: Resource): T
 
 Sets the accessibility description, with support for resource references using [Resource](ts-types.md#resource). This attribute provides additional context and explanation for the component, helping users understand its functionality and purpose.
 
@@ -184,7 +199,7 @@ Sets the accessibility description, with support for resource references using [
 
 ## accessibilityLevel
 
-accessibilityLevel(value: string):T
+accessibilityLevel(value: string): T
 
 Sets the accessibility level. It determines whether the component can be recognized by accessibility services.
 
@@ -196,9 +211,10 @@ Sets the accessibility level. It determines whether the component can be recogni
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | string | Yes  | Accessibility level that determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component's recognizability is determined jointly by accessibility services and ArkUI.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**NOTE**<br>When accessibilityLevel is set to **"auto"**, the component's recognizability depends on the following factors:<br>1. The accessibility service internally determines whether the component can be recognized.<br>2. If the parent component's **accessibilityGroup** property has **isGroup** set to **true**, the accessibility service will not focus on its child components, making them unrecognizable.<br>3. If the parent component's **accessibilityLevel** is set to **"no-hide-descendants"**, the component will not be recognized by accessibility services.|
+| value  | string | Yes   | Accessibility importance, which controls whether a component can be recognized by the accessibility service.<br/>Supported values:<br/>"auto": The accessibility service and ArkUI jointly determine whether the component can be recognized by the accessibility service.<br/>"yes": The component can be recognized by the accessibility service. When the parent component enables the accessibility group, a child component set to "yes" is not restricted by the group and can still be focused if other Screen Reader rules are met.<br/>"no": The component cannot be recognized by the accessibility service.<br/>"no-hide-descendants": The component and all its child components cannot be recognized by the accessibility service.<br/>Default value: "auto"<br/>**Note:**<br/>When accessibilityLevel is set to "auto", whether the component can be recognized by the accessibility service depends on the following factors:<br/>1. Whether the component can be recognized is determined internally by the accessibility service, which makes the choice on its own.<br/>2. If the isGroup attribute of the parent component's accessibilityGroup is set to true, the accessibility service no longer pays attention to the content of its child components, and the component cannot be recognized by the accessibility service.<br/>3. If the accessibilityLevel attribute of the parent component is set to "no-hide-descendants", the component cannot be recognized by the accessibility service. |
 
 **Return value**
 
@@ -208,9 +224,9 @@ Sets the accessibility level. It determines whether the component can be recogni
 
 ## accessibilityVirtualNode<sup>11+</sup>
 
-accessibilityVirtualNode(builder: CustomBuilder):T
+accessibilityVirtualNode(builder: CustomBuilder): T
 
-Sets an accessibility virtual child node. For custom drawing components, a **CustomBuilder** is passed, which is used to provide accessibility information. The components within the **CustomBuilder** are only used for layout and not for display. When the accessibility service obtains node information, it returns the node information from the **CustomBuilder**. For example, when using the [Canvas](./ts-components-canvas-canvas.md) component, you can set placeholder components matching the position and size through virtual nodes, enabling accessibility services to recognize the drawn content in corresponding areas.
+Sets the accessibility virtual child node. Passes a CustomBuilder to a self-drawn component. The components in the CustomBuilder are laid out but not displayed on the backend. When an assistive application obtains accessibility node information, the node information in the CustomBuilder is returned. For example, when using the canvas component [Canvas](ts-components-canvas-canvas.md), you can set placeholder components with matching positions and sizes through virtual nodes, so that the accessibility service can identify the self-drawn information of the corresponding area.
 
 > **NOTE**
 >
@@ -226,7 +242,7 @@ Sets an accessibility virtual child node. For custom drawing components, a **Cus
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| builder  | [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Accessibility virtual node. Pass a custom builder to the custom drawing component. The components within the custom builder are used for layout only and are not visually rendered. When accessibility services retrieve node information, the node information from the custom builder is returned.|
+| builder  | [CustomBuilder](ts-types.md#custombuilder8) | Yes   | Accessibility virtual child node. It allows developers to pass a CustomBuilder for a self-drawn component. The components in the CustomBuilder are only laid out, not displayed, on the backend. When an assistive application obtains accessibility node information, the node information in the CustomBuilder is returned. |
 
 **Return value**
 
@@ -236,9 +252,9 @@ Sets an accessibility virtual child node. For custom drawing components, a **Cus
 
 ## accessibilityChecked<sup>13+</sup>
 
-accessibilityChecked(isCheck: boolean):T
+accessibilityChecked(isCheck: boolean): T
 
-Sets the checked state for the accessibility node. This API is used in multi-select scenarios and only affects component state announcements in screen reading scenarios.
+Maintains the selected state of the accessibility node to support multiple selection, indicating whether the component is selected. This API affects only the component status announcement information in the screen reader scenario.
 
 >**NOTE**
 >
@@ -252,9 +268,10 @@ Sets the checked state for the accessibility node. This API is used in multi-sel
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name | Type   | Mandatory| Description                                                        |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
-| isCheck | boolean | Yes  | Whether the current component is selected.<br>The options are as follows:<br>**true**: The component is selected.<br>**false**: The component is not selected.<br>**undefined**: The component determines its own selected state.<br>Default value: **undefined**.<br>**NOTE**<br>1. Setting this parameter to **true** or **false** will automatically set the component's **checkable** attribute to **true**.<br>2. The **accessibilityChecked** attribute indicates that a component operates in multi-selection mode, whereas [accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13) indicates single-selection mode. These two modes are mutually exclusive: A component cannot simultaneously support both. Concurrent usage creates accessibility conflicts, causing screen readers and other assistive technologies to incorrectly interpret the selection state. When implementing multi-selection mode using **accessibilityChecked** (by setting it to **true** or **false**), ensure that the **accessibilitySelected** attribute is not simultaneously configured. If it is previously set, reset **accessibilitySelected** to **undefined** using its corresponding API.|
+| isCheck | boolean | Yes | Whether the component is selected.<br/>Supported values:<br/>true: The current component is selected.<br/>false: The current component is not selected.<br/>undefined: The selected state is determined by the component itself.<br/>Default value: undefined<br/>**NOTE**<br/>1. After this API is used to set the value to true or false, the checkable attribute of the component is set to true by default.<br/>2. The accessibilityChecked attribute indicates that the component is in multi-select mode, while the [accessibilitySelected](#accessibilityselected13) attribute indicates that the component is in single-select mode. A component cannot be in both selection modes at the same time, which would cause an accessibility state conflict and prevent accessibility assistance applications such as the screen reader from correctly identifying the selected state. If this API is used to set the component to multi-select mode (set to true or false), ensure that the accessibilitySelected function has not been used to set the attribute to true or false. If it has been set, use the accessibilitySelected function to set the accessibilitySelected attribute to undefined mode. |
 
 **Return value**
 
@@ -264,9 +281,9 @@ Sets the checked state for the accessibility node. This API is used in multi-sel
 
 ## accessibilitySelected<sup>13+</sup>
 
-accessibilitySelected(isSelect: boolean):T
+accessibilitySelected(isSelect: boolean): T
 
-Sets the checked state for the accessibility node. This API is used in single-select scenarios and only affects component state announcements in screen reading scenarios.
+Maintains the selected state of an accessibility node to support single selection, indicating whether the component is selected. This API affects only the component status announcement information in screen reader scenarios.
 
 >**NOTE**
 >
@@ -280,9 +297,10 @@ Sets the checked state for the accessibility node. This API is used in single-se
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name  | Type   | Mandatory| Description                                                        |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| isSelect | boolean | Yes  | Whether the current component is selected.<br>The options are as follows:<br>**true**: The component is selected.<br>**false**: The component is not selected.<br>**undefined**: The component determines its own selected state.<br>Default value: **undefined**.<br>**NOTE**<br>1. [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13) indicates multi-select mode, while **accessibilitySelected** indicates single-select mode. These modes are mutually exclusive: A component cannot support both simultaneously. Concurrent usage creates accessibility conflicts, causing screen readers and other assistive technologies to misinterpret selection states.<br>When implementing single-select mode using this parameter (by setting it to **true** or **false**), ensure that **accessibilityChecked** is not configured.<br>If it is previously set, reset **accessibilityChecked** to **undefined** using its corresponding API.|
+| isSelect | boolean | Yes | Whether the component is selected.<br/>Supported values:<br/>true: The component is selected.<br/>false: The component is not selected.<br/>undefined: The component determines the selected state by itself.<br/>Default value: undefined<br/>**Note:**<br/>1. The [accessibilityChecked](#accessibilitychecked13) attribute indicates that the component is in multi-select mode, while the accessibilitySelected attribute indicates that the component is in single-select mode. A component cannot be in both selection modes at the same time, which would cause an accessibility state conflict and prevent accessibility assistance applications such as screen readers from correctly identifying the selected state.<br/>If this API is used to set the component to single-select mode (true or false), ensure that the accessibilityChecked function has not been used to set the attribute to true or false;<br/>If it has been set, use the accessibilityChecked function to set the accessibilityChecked attribute to undefined mode. |
 
 **Return value**
 
@@ -292,9 +310,9 @@ Sets the checked state for the accessibility node. This API is used in single-se
 
 ## accessibilityRole<sup>18+</sup>
 
-accessibilityRole(role: AccessibilityRoleType):T
+accessibilityRole(role: AccessibilityRoleType): T
 
-Sets the role type of the accessibility component, which affects how the component is announced by screen readers.
+Sets the accessibility component type. Different component types have corresponding reading methods. You can modify the component type based on application requirements to control how and what is read for the component in accessibility mode.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -306,7 +324,7 @@ Sets the role type of the accessibility component, which affects how the compone
 
 | Name  | Type   | Mandatory| Description                                                        |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| role | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18) | Yes  | Role of the component as announced by screen readers (for example, button or chart). You can define custom roles.|
+| role | [AccessibilityRoleType](#accessibilityroletype18) | Yes | Component type announced by the screen reader, such as button or chart. The specific type can be selected by the developer as needed. |
 
 **Return value**
 
@@ -333,7 +351,7 @@ Enumerates the component role types used by screen readers.
 | BLANK  | 4 | Blank placeholder component.|
 | BUTTON | 5 | Button.|
 | BACK_BUTTON | 6 | Back button on a large image page.|
-| SHEET_DRAG_BAR | 7 | Drag bar for sheets.|
+| SHEET_DRAG_BAR | 7 | Drag bar of a dialog box. |
 | CALENDAR_PICKER | 8 | Calendar picker.|
 | CALENDAR | 9 | Calendar.|
 | CANVAS | 10 | Canvas component.|
@@ -366,17 +384,17 @@ Enumerates the component role types used by screen readers.
 | GRID_ITEM | 37 | Single-item container within a grid container.|
 | GRID_ROW | 38 | Grid row component.|
 | HYPERLINK | 39 | Hyperlink component.|
-| IMAGE | 40 | Image component|
+| IMAGE | 40 | Image component.|
 | IMAGE_ANIMATOR | 41 | Frame animation component.|
-| IMAGE_BITMAP | 42 | Pixel data for canvas rendering.|
-| IMAGE_DATA | 43 | Pixel data for canvas rendering.|
+| IMAGE_BITMAP | 42 | Bitmap image object that can be drawn on a canvas. |
+| IMAGE_DATA | 43 | Pixel data of a canvas area. |
 | IMAGE_SPAN | 44 | Component used to display inline images.|
 | LABEL | 45 | Label.|
 | LINE | 46 | Line.|
 | LIST | 47 | List.|
 | LIST_ITEM | 48 | Specific item in a list.|
 | LIST_ITEM_GROUP | 49 | List item group.|
-| LOADING_PROGRESS | 50 | Component for display loading animations.|
+| LOADING_PROGRESS | 50 | Component for displaying loading animations.|
 | MARQUEE | 51 | Marquee component.|
 | MATRIX2D | 52 | 2D matrix object.|
 | MENU | 53 | Menu.|
@@ -402,7 +420,7 @@ Enumerates the component role types used by screen readers.
 | POLYGON | 73 | Component used to draw a polygon.|
 | POLYLINE | 74 | Component used to draw a polyline.|
 | POPUP | 75 | Popup with a specific style.|
-| PROGRESS | 76 | Text download button.|
+| PROGRESS | 76 | Progress bar component. |
 | QRCODE | 77 | QR code.|
 | RADIO | 78 | Radio button.|
 | RATING | 79 | Component for selecting a rating within a given range.|
@@ -422,7 +440,7 @@ Enumerates the component role types used by screen readers.
 | SELECT | 93 | Drop-down list component.|
 | SHAPE | 94 | Parent component of the drawing components.|
 | SIDEBAR_CONTAINER | 95 | Sidebar container that can show and hide the sidebar.|
-| SLIDER | 96 | Vertical slider.|
+| SLIDER | 96 | Slider component. |
 | SPAN | 97 | Component used to display inline text.|
 | STACK | 98 | Stack container.|
 | STEPPER | 99 | Stepper component.|
@@ -450,11 +468,11 @@ Enumerates the component role types used by screen readers.
 | WATER_FLOW | 121 | Waterfall layout container.|
 | WEB | 122 | Component for loading web pages.|
 | XCOMPONENT | 123 | Custom rendering component.|
-| ROLE_NONE | 124 | Null.|
+| ROLE_NONE | 124 | Does not set a specific accessibility component type. The component is announced by the screen reader based on its default type. |
 
 ## accessibilityNextFocusId<sup>18+</sup>
 
-accessibilityNextFocusId(nextId: string):T
+accessibilityNextFocusId(nextId: string): T
 
 Sets the next component to receive focus during screen reader navigation.
 
@@ -476,11 +494,40 @@ Sets the next component to receive focus during screen reader navigation.
 | -------- | -------- |
 | T | Current object.|
 
+## accessibilityNextFocusId
+
+accessibilityNextFocusId(nextId: string, nextFocusParams: AccessibilityNextFocusParams | undefined): T
+
+Specifies the next focus of a component during screen reader swipe focus traversal, and supports configuring detailed parameters.
+
+Through the [AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams) parameter, you can configure whether to search for the focus in descendant nodes during accessibility next focus processing.
+
+**Since**: 26.0.0
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| nextId | string | Yes   | [Unique ID](ts-universal-attributes-component-id.md#id) of the next component to be focused. If the unique ID has no corresponding component, the set accessibilityNextFocusId does not exist and the setting is invalid. |
+| nextFocusParams | [AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams) \| undefined | Yes   | Detailed parameters for accessibility next focus processing, used to configure whether to search for focusable nodes in descendant nodes.<br/>When the value is undefined, the detailed parameters for next focus processing are not configured, and the focus is not searched for in descendant nodes. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| T | Current object. |
+
 ## accessibilityDefaultFocus<sup>18+</sup>
 
-accessibilityDefaultFocus(focus: boolean):T
+accessibilityDefaultFocus(focus: boolean): T
 
-Sets the initial screen reader focus on the page.
+Sets the initial focus of the screen reader for a page. When the screen reader enters the current page for the first time, the focus is positioned on the component set to true, so that developers can guide users to prioritize the core content of the page.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -492,7 +539,7 @@ Sets the initial screen reader focus on the page.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| focus  | boolean | Yes  | Initial screen reader focus on the page. The value **true** means the component is the default initial focus for screen readers on the current page. Other values are ignored.|
+| focus  | boolean | Yes   | Sets the initial focus for the screen reader on the page. The value **true** means that this component is the default first focus of the current page, and **false** means that this component is not set as the default first focus. |
 
 **Return value**
 
@@ -502,7 +549,7 @@ Sets the initial screen reader focus on the page.
 
 ## accessibilityUseSamePage<sup>18+</sup>
 
-accessibilityUseSamePage(pageMode: AccessibilitySamePageMode):T
+accessibilityUseSamePage(pageMode: AccessibilitySamePageMode): T
 
 Sets the same-page mode for the current component and its host application.
 
@@ -538,12 +585,12 @@ Enumerates the same-page modes for cross-process embedded components and their h
 
 | Name       | Value  | Description                                                        |
 | ----------- | ---- | ------------------------------------------------------------ |
-| SEMI_SILENT | 0    | Ignores initial page loading events and root node page events from the cross-process embedded component.|
+| SEMI_SILENT | 0    | The page event sent when the page is loaded for the first time in the process started by a component displayed in cross-process embedding, and the page event sent by the root node of the page, will be ignored. |
 | FULL_SILENT | 1    | Ignores all page events from the cross-process embedded component.                                     |
 
 ## accessibilityScrollTriggerable<sup>18+</sup>
 
-accessibilityScrollTriggerable(isTriggerable: boolean):T
+accessibilityScrollTriggerable(isTriggerable: boolean): T
 
 Sets whether the accessibility node triggers automatic screen scrolling. When no focusable components are visible on the current page within a container, this setting determines whether automatic scrolling is initiated.
 
@@ -555,9 +602,10 @@ Sets whether the accessibility node triggers automatic screen scrolling. When no
 
 **Parameters**
 
+<!--Table: auto; 10%; 10%; auto-->
 | Name        |  Type   | Mandatory| Description                                                        |
 | -------------- | ------- | ---- | ------------------------------------------------------------ |
-| isTriggerable  | boolean | Yes  | Whether the component triggers automatic scrolling for screen readers when the current page has no focusable components.<br>The options are as follows:<br>**true**: The component triggers automatic scrolling for screen readers when the current page has no focusable components.<br>**false**: The component does not trigger automatic scrolling for screen readers when the current page has no focusable components.<br>**undefined**: The default settings are restored.<br>Default value: **true**<br>**NOTE**<br>1. This API does not affect the **scrollable** property in the [ElementAttributeValues](../../apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues) of the native accessibility node.<br>2. The final scrolling behavior is determined by the screen reader based on this API and whether the component supports scrolling.<br>3. This API applies to all basic components. It is recommended for scrollable containers, such as [List](./ts-container-list.md), [Grid](./ts-container-grid.md), [Scroll](./ts-container-scroll.md), and [WaterFlow](./ts-container-waterflow.md).|
+| isTriggerable  | boolean | Yes   | Indicates whether the component supports this capability.<br/>Supported values:<br/>true: When the screen reader focus switches and no focusable component exists on the current page in the container, automatic scrolling is required.<br/>false: When the screen reader focus switches and no focusable component exists on the current page in the container, automatic scrolling is not required.<br/>undefined: Restores the default value.<br/>Default value: true.<br/>**Note:**<br/>1. This attribute does not affect the scrollable attribute in the original accessibility node attribute [ElementAttributeValues](../../apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues).<br/>2. The scrolling logic of a component under the screen reader is determined by the screen reader based on this attribute and whether the component supports scrolling.<br/>3. This is a universal attribute and can be configured for all basic components. It is recommended to configure it for scrollable component types such as [List](./ts-container-list.md), [Grid](./ts-container-grid.md), [Scroll](./ts-container-scroll.md), and [WaterFlow](./ts-container-waterflow.md).|
 
 **Return value**
 
@@ -567,13 +615,13 @@ Sets whether the accessibility node triggers automatic screen scrolling. When no
 
 ## accessibilityTextHint<sup>12+</sup>
 
-accessibilityTextHint(value: string):T
+accessibilityTextHint(value: string): T
 
-Sets the text hint for the component, which can be queried by accessibility services.
+Sets the text hint of a component. The hint is listened to and responded to by the in-vehicle accessibility service only in in-vehicle interaction scenarios.
 
->**NOTE**
+> **NOTE**
 >
-> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+> Since API version 20, this API is supported in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This API is used to set the universal attributes of a component. The text content configured through this attribute API is listened to and responded to only by the in-vehicle accessibility service. Therefore, this API takes effect only in in-vehicle interaction scenarios<!--RP1--><!--RP1End-->.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -585,7 +633,7 @@ Sets the text hint for the component, which can be queried by accessibility serv
 
 | Name        |  Type   | Mandatory| Description                                                        |
 | -------------- | ------- | ---- | ------------------------------------------------------------ |
-| value  | string | Yes  | Text hint for the component, which can be queried by accessibility services.|
+| value  | string | Yes   | Text prompt of the component. It is listened to and responded to by the in-vehicle accessibility service only in the scenario of interaction with the vehicle. |
 
 **Return value**
 
@@ -595,15 +643,15 @@ Sets the text hint for the component, which can be queried by accessibility serv
 
 ## accessibilityFocusDrawLevel<sup>19+</sup>
 
-accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel):T
+accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel): T
 
-Sets the drawing level for the accessibility focus highlight (green frame).
+Sets the drawing level of the accessibility focus green frame.
 
 > **NOTE**
 >
-> 1. By default, the accessibility focus highlight (green frame) is drawn at the same level as the focused component. This can sometimes result in the frame being obscured or clipped by parent components or siblings with higher [z-order](./ts-universal-attributes-z-order.md).
+> 1. The accessibility focus green frame is drawn at the focused node level. This level is used by default. Due to the drawing order of components and graphics, the drawn green frame may be occluded and clipped by the parent component or a sibling component with a higher [Z-order](./ts-universal-attributes-z-order.md).
 >
-> 2. Drawing the green frame at the top [z-order](./ts-universal-attributes-z-order.md) prevents obstruction from component [overlays](./ts-universal-attributes-overlay.md#overlay) and [clipping](./ts-universal-attributes-sharp-clipping.md#clip12). However, this approach may not be suitable for interacting with overlay components that should visually cover the focused element while keeping the accessibility highlight hidden.
+> 2. When the green frame is drawn at the top level of the [Z-order](./ts-universal-attributes-z-order.md), it can avoid the failure to display the accessibility green frame caused by component occlusion [overlay](./ts-universal-attributes-overlay.md#overlay) and clipping [clip](./ts-universal-attributes-sharp-clipping.md#clip12). However, because of the higher drawing level, this configuration is not suitable if the currently focused component needs to be occluded during interaction and the accessibility green frame should not be displayed.
 
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 19.
@@ -616,7 +664,7 @@ Sets the drawing level for the accessibility focus highlight (green frame).
 
 | Name  | Type   | Mandatory| Description                                                        |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| drawLevel | [FocusDrawLevel](ts-appendix-enums.md#focusdrawlevel19) | Yes  | Drawing level for the accessibility focus highlight frame.|
+| drawLevel | [FocusDrawLevel](ts-appendix-enums.md#focusdrawlevel19) | Yes | Draw level of the accessibility focus green box, used to control the drawing position of the green box. By default, the box is drawn at the focused node level (that is, the focused node itself is drawn). For the optional values and their meanings, see the [FocusDrawLevel](ts-appendix-enums.md#focusdrawlevel19) enum, which includes two modes: drawing at the focused node level and drawing at the top level controlled by the Z-order. |
 
 **Return value**
 
@@ -640,19 +688,19 @@ Sets the state description of a component for broadcasting, which clearly descri
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| description  | string \| [Resource](ts-types.md#resource) \| undefined | Yes  | Text to be broadcasted for the current state of the component.<br>If the text contains more than 1000 characters, the first 1000 characters will be broadcasted.<br>**undefined**: The text is empty by default.|
+| description  | string \| [Resource](ts-types.md#resource) \| undefined | Yes  | Text to be broadcast for the current state of the component.<br>If the text contains more than 1000 characters, the first 1000 characters will be broadcast.<br>**undefined**: The text is empty by default.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current object. |
 
 ## accessibilityActionOptions<sup>23+</sup>
 
 accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 
-Provides optional parameters for setting accessibility operations of a component, which is used to restrict or modify the operations initiated by accessibility applications such as the screen reader.
+Sets the optional parameters for accessibility operations of a component, which are used to restrict or modify the operations initiated by accessibility applications such as the screen reader.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
@@ -668,9 +716,37 @@ Provides optional parameters for setting accessibility operations of a component
 
 **Return value**
 
+| Type | Description |
+| -------- | -------- |
+| T | Current object. |
+
+## accessibilityCustomActions
+
+accessibilityCustomActions(actions: Array&lt;AccessibilityCustomAction&gt; | undefined): T
+
+Sets the custom accessibility actions of a component. Developers can set an array of custom actions to bind callbacks for custom operations on the component by action name.
+
+**Since**: 26.0.0
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| actions  | Array&lt;[AccessibilityCustomAction](ts-types.md#accessibilitycustomaction)&gt; \| undefined | Yes   | Array of custom accessibility actions. Each action contains an action name and a callback, used to bind callbacks for custom operations on the component by action name.<br/>**Note:**<br/>The array supports a maximum of 16 actions. Actions beyond this limit do not take effect.<br/>If the value is undefined, no custom actions are set. |
+
+**Return value**
+
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current object. |
 
 ## Example
 
@@ -683,8 +759,8 @@ This example demonstrates how to use **accessibilityText** and **accessibilityDe
 @Entry
 @Component
 struct Index {
-
-  @Builder customAccessibilityNode() {
+  @Builder
+  customAccessibilityNode() {
     Column() {
       Text(`virtual node`)
     }
@@ -695,7 +771,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("Text 1")
+        Text('Text 1')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         Text("Text 2")
@@ -724,7 +800,7 @@ This example shows how to prioritize reading the accessibility text of child com
 // xxx.ets
 @Entry
 @Component
-struct Focus {
+struct Index {
   build() {
     Column({ space: 10 }) {
       Text('123456')
@@ -735,7 +811,7 @@ struct Focus {
       Button().accessibilityLevel("yes").accessibilityText("Accessibility text is announced if no text is present")
       Button("Text content is announced if no accessibility text is present").accessibilityLevel("yes")
       Button()
-      Button('btn123').accessibilityText("Button with both accessibility and text btn123").accessibilityLevel("yes")
+      Button('btn123').accessibilityText('has accessibility has text btn123').accessibilityLevel('yes')
       Button('btn123').accessibilityLevel("yes")
     }
     .accessibilityGroup(true, { accessibilityPreferred: true })
@@ -822,7 +898,7 @@ struct Index {
 
 ### Example 5: Configuring Screen Reader Scrolling, Focus Highlight Frame, and Cross-Process Focus
 
-This example demonstrates the use of **accessibilityScrollTriggerable** to set whether an accessibility node supports screen reading scroll, **accessibilityFocusDrawLevel** to set the drawing level of the accessibility focus highlight frame, and **accessibilityUseSamePage** for cross-process embedded components, such as [EmbeddedComponent](ts-container-embedded-component.md).
+This example demonstrates how to use accessibilityScrollTriggerable to set whether the accessibility node supports Screen Reader scrolling, accessibilityFocusDrawLevel to set the drawing level of the accessibility focus green frame, and accessibilityUseSamePage to set the same-page mode for components displayed across processes in embedded mode (such as [EmbeddedComponent](ts-container-embedded-component.md)).
 
 ```ts
 // xxx.ets
@@ -833,7 +909,7 @@ import { Want } from '@kit.AbilityKit';
 struct Index {
   @State message: string = 'Message: ';
   private want: Want = {
-    // Bundle name of the EmbeddedComponent provider. Configure it as required.
+    // Configure the bundleName of the EmbeddedComponent provider based on actual conditions.
     bundleName: 'com.example.embeddeddemo',
     // Ability name of the EmbeddedComponent provider. Configure it as required.
     abilityName: 'ExampleEmbeddedAbility',
@@ -850,8 +926,6 @@ struct Index {
               .fontWeight(FontWeight.Medium)
             Column() {
               EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-                .width('100%')
-                .height('90%')
                 .onTerminated((info) => {
                   this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
                 })
@@ -907,6 +981,7 @@ struct Index {
             .margin({ top: 15 })
             .accessibilityText($r('app.string.app_name'))
             .accessibilityDescription($r('app.string.module_desc'))
+
             Column() {
               Text('Text 4')
                 .fontSize(18)
@@ -937,12 +1012,11 @@ This example demonstrates how to use the optional parameters **stateControllerRo
 @Entry
 @Component
 struct Index {
-  @State isSelected: boolean = false;
 
   build() {
     Column({ space: 20 }) {
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
-        Text("Enable Feature")
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
+        Text('Enable feature?')
         Toggle({ type: ToggleType.Switch, isOn: false })
           .selectedColor('#007DFF')
           .switchPointColor('#FFFFFF')
@@ -950,12 +1024,14 @@ struct Index {
             console.info('Component status:' + isOn);
           })
       }
-      .accessibilityGroup(true, {stateControllerRoleType : AccessibilityRoleType.TOGGLER,
-                                 actionControllerRoleType : AccessibilityRoleType.TOGGLER})
+      .accessibilityGroup(true, {
+        stateControllerRoleType: AccessibilityRoleType.TOGGLER,
+        actionControllerRoleType: AccessibilityRoleType.TOGGLER
+      })
       .width('80%')
-      .border({ color : Color.Black, width : 2 })
+      .border({ color: Color.Black, width: 2 })
 
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Text("Enable Feature")
         Toggle({ type: ToggleType.Switch, isOn: false })
           .selectedColor('#007DFF')
@@ -965,10 +1041,12 @@ struct Index {
           })
           .id("TestToggle")
       }
-      .accessibilityGroup(true, {stateControllerId : "TestToggle",
-                                 actionControllerId : "TestToggle"})
+      .accessibilityGroup(true, {
+        stateControllerId: "TestToggle",
+        actionControllerId: "TestToggle"
+      })
       .width('80%')
-      .border({ color : Color.Black, width : 2 })
+      .border({ color: Color.Black, width: 2 })
 
     }
     .height('100%')
@@ -979,7 +1057,7 @@ struct Index {
 
 ### Example 7: Setting the State Announcement for the Accessibility Component
 
-In this example, the [accessibilityStateDescription](ts-universal-attributes-accessibility.md#accessibilitystatedescription23) API is used to modify the state description of a component. After the accessibility feature is enabled, when a component is focused or tapped, the screen reader reads the component state description.
+This example uses the [accessibilityStateDescription](#accessibilitystatedescription23) API to modify the Status Announcement of a component. After the accessibility feature is enabled, when the component is focused or clicked, the Screen Reader announces the state information of the component.
 
 The **accessibilityStateDescription** API is available since API version 23.
 
@@ -1023,13 +1101,63 @@ struct Index {
           max: 100,
           style: SliderStyle.OutSet
         })
-          // Adjust the Slider step when using screen reader gestures.
-          .accessibilityActionOptions({ scrollStep : 10 })
+        // Adjust the step size of slider sliding under screen reader gestures.
+          .accessibilityActionOptions({ scrollStep: 10 })
       }
       .width('80%')
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+### Example 9 (Set Custom Accessibility Actions)
+
+This example demonstrates how to use [accessibilityCustomActions](#accessibilitycustomactions) to set custom accessibility actions for a component. Developers can bind callbacks for custom actions by action name.
+
+Since API version 26.0.0, accessibilityCustomActions is added.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State listData: Array<string> = ['List item 1', 'List item 2', 'List item 3', 'List item 4'];
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        ForEach(this.listData, (item: string, index: number) => {
+          ListItem() {
+            Row() {
+              Text(item)
+                .fontSize(16)
+              Blank()
+              Text('Delete')
+                .fontSize(14)
+                .fontColor(Color.Red)
+            }
+            .width('100%')
+            .padding(10)
+            .onClick(() => {
+              console.info('[TestTag] click success!')
+            })
+            .accessibilityLevel('yes')
+            .accessibilityCustomActions([
+              {
+                name: 'deleteItem',
+                onAction: () => {
+                  this.listData.splice(index, 1);
+                }
+              }
+            ])
+          }
+        }, (item: string) => item)
+      }
+      .width('100%')
+      .height('100%')
+    }
   }
 }
 ```

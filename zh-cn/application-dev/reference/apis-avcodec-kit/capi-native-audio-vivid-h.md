@@ -150,7 +150,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder 
 | -- | -- |
 | [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | int32_t objectIndex | 要更新的音频对象索引，从0开始，小于在[OH_AudioVividMetaBuilder_Create](#oh_audiovividmetabuilder_create)创建builder时入参format设置的[OH_MD_KEY_AUDIO_OBJECT_NUMBER](./capi-codecbase.md#音频专有的键值对)对应的值。 |
-| float gain | 对象渲染时应用的线性增益值，范围为[0.0, 6.0]，线性增益0.0为静音，1.0为不变。此参数可选，如未设置则不应用增益。 |
+| float gain | 对象渲染时应用的线性增益值，范围为[0.0, 6.0]，线性增益0.0为静音，1.0为不变。 |
 
 **返回：**
 
@@ -262,7 +262,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilde
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：参数builder为空指针或无效。</li><br>         <li>AV_ERR_UNSUPPORT：当前设备不支持此功能。</li><br>         <li>AV_ERR_UNKNOWN：创建构建器失败，属于未知错误，请查看日志获取详细信息。</li><br>         </ul> |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：参数builder为空指针或无效。<br>         AV_ERR_UNSUPPORT：当前设备不支持此功能。<br>         AV_ERR_UNKNOWN：创建构建器失败，属于未知错误，请查看日志获取详细信息。 |
 
 ### OH_AudioVividMetaBuilder_UpdateBaseMeta()
 
@@ -293,7 +293,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *b
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：参数builder、format为空指针或无效。</li><br>         </ul> |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：参数builder、format为空指针或无效。 |
 
 ### OH_AudioVividMetaBuilder_AddObject()
 
@@ -323,7 +323,7 @@ Audio Vivid元数据构造器内添加一个音频对象。添加音频对象后
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：参数builder、objectIndex为空指针或无效。</li><br>         <li>AV_ERR_UNKNOWN：添加对象失败，属于未知错误，请查看日志获取详细信息。</li><br>         </ul> |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：参数builder、objectIndex为空指针或无效。<br>        AV_ERR_UNKNOWN：添加对象失败，属于未知错误，请查看日志获取详细信息。 |
 
 ### OH_AudioVividMetaBuilder_RemoveObject()
 
@@ -348,6 +348,6 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | <ul><br>         <li>AV_ERR_OK：执行成功。</li><br>         <li>AV_ERR_INVALID_VAL：</li><br>         <li>    1. 参数builder为空指针或无效；</li><br>         <li>    2. 参数objectIndex无效。</li><br>         </ul> |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>        AV_ERR_INVALID_VAL：<br>            1. 参数builder为空指针或无效；<br>            2. 参数objectIndex无效。 |
 
 

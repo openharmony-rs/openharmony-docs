@@ -117,7 +117,7 @@ static JSVM_Value CreateObject(JSVM_Env env, JSVM_CallbackInfo info)
     // 设置属性名为 "name"
     OH_JSVM_CreateStringUtf8(env, "name", JSVM_AUTO_LENGTH, &name);
     JSVM_Value value = nullptr;
-    // 设置属性值为 "Hello from N-API!"
+    // 设置属性值为 "Hello OH_JSVM_CreateObject!"
     OH_JSVM_CreateStringUtf8(env, "Hello OH_JSVM_CreateObject!", JSVM_AUTO_LENGTH, &value);
     // 将属性设置到对象上
     OH_JSVM_SetProperty(env, object, name, value);
@@ -424,7 +424,7 @@ cpp部分代码：
 #include "napi/native_api.h"
 #include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#define NUMBERINT_FOUR
+#define NUMBERINT_FOUR 4
 // ...
 
 // 定义一个静态常量JSVM_TypeTag数组存储类型标签
@@ -471,9 +471,9 @@ static JSVM_Value CheckObjectTypeTag(JSVM_Env env, JSVM_CallbackInfo info)
     bool checkResult = false;
     JSVM_Status status = OH_JSVM_CheckObjectTypeTag(env, args[0], &TagsData[index], &checkResult);
     if (status != JSVM_OK) {
-        OH_LOG_ERROR(LOG_APP, "JSVM SetTypeTagToObject fail");
+        OH_LOG_ERROR(LOG_APP, "JSVM CheckObjectTypeTag fail");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM SetTypeTagToObject:%{public}d", checkResult);
+        OH_LOG_INFO(LOG_APP, "JSVM CheckObjectTypeTag:%{public}d", checkResult);
     }
     // 将bool结果转换为JSVM_Value并返回
     JSVM_Value checked = nullptr;

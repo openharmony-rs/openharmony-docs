@@ -2,8 +2,8 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
-<!--Owner: @no86-->
-<!--Designer: @mmwwbb-->
+<!--Owner: @zl_startup-->
+<!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
@@ -55,7 +55,7 @@
     ``` TypeScript
     import { selectionManager, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    
+
     export class SelectionModel {
       private selectionInfo: selectionManager.SelectionInfo | undefined;
       private selectionContent: string | undefined;
@@ -100,7 +100,7 @@
         return this.selectionPanel;
       }
     
-      public setSelectionPanel(selectionPanel: selectionManager.Panel) {
+      public setSelectionPanel(selectionPanel: selectionManager.Panel | undefined) {
         this.selectionPanel = selectionPanel;
       }
     
@@ -161,9 +161,9 @@
 
 4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
     <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
-
+    
     ``` TypeScript
-    import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility, BusinessError } from '@kit.BasicServicesKit';
+    import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility } from '@kit.BasicServicesKit';
     import { SelectionModel } from '../models/SelectionModel';
     import { Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
@@ -183,10 +183,10 @@
         return true;
       }
     }
-
+    
     class SelectionExtAbility extends SelectionExtensionAbility {
       private panel_: selectionManager.Panel | undefined = undefined;
-
+    
       onConnect(want: Want): rpc.RemoteObject {
         SelectionModel.getInstance().setContext(this.context);
         selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
@@ -197,11 +197,11 @@
         });
         return new SelectionAbilityStub('remote');
       }
-
+    
       onDisconnect(): void {
         selectionManager.destroyPanel(this.panel_);
       }
-
+    
       async createSelectionPanel() {
         let panelInfo: PanelInfo = {
           panelType: PanelType.MENU_PANEL,
@@ -213,62 +213,61 @@
         try {
           let panel: selectionManager.Panel = await selectionManager.createPanel(this.context, panelInfo);    // 创建菜单面板
           this.panel_ = panel;
-          panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
-            .then(() => {
-              hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MenuPanel].');
+          try {
+            panel.on('hidden', () => {    // 监听弹窗隐藏（窗口失焦时会触发隐藏）
+              hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
             })
-            .catch((error: BusinessError) => {
-              hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent, error: ${JSON.stringify(error)}`);
-              return;
-            })
+          } catch (error) {
+            hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen panel hidden');
+          }
+          try {
+            await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
+            hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MenuPanel].');
+          } catch (error) {
+            hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent, error: ${JSON.stringify(error)}`);
+          }
         } catch(error) {
           hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: ${JSON.stringify(error)}`);
         }
       }
-
+    
       async onSelected(info: selectionManager.SelectionInfo) {
         SelectionModel.getInstance().setSelectionInfo(info);
         try {
           let content = await selectionManager.getSelectionContent();   // 获取划词内容
           SelectionModel.getInstance().setSelectionContent(content);
         } catch (error) {
-          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
+          hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
           return;
         }
         if (!this.panel_) {
           hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
           return;
         }
-        this.panel_.moveToGlobalDisplay(info.startDisplayX, info.startDisplayY)    // 将弹窗移动到用户鼠标划词的起始点
-          .then(() => {
-            hilog.info(0x0000, 'SelectionExtensionAbility', 'Move succeed.');
-          })
-          .catch((error: BusinessError) => {
-            hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to move, error: ${JSON.stringify(error)}`);
-            return;
-          });
-
-        await this.panel_.show()    // 显示弹窗
-          .then(() => {
-            hilog.info(0x0000, 'SelectionExtensionAbility', 'Show succeed.');
-          })
-          .catch((error: BusinessError) => {
-            hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to show panel, error: ${JSON.stringify(error)}`);
-            return;
-          });
-
-        this.panel_.on('hidden', () => {    // 监听弹窗隐藏（窗口失焦时会触发隐藏）
-          hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
-        })
+        try {
+          await this.panel_.moveToGlobalDisplay(info.startDisplayX, info.startDisplayY)    // 将弹窗移动到用户鼠标划词的起始点
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'Move succeed.');
+        } catch (error) {
+          hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to move, error: ${JSON.stringify(error)}`);
+          return;
+        }
+    
+        try {
+          await this.panel_.show()    // 显示弹窗
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'Show succeed.');
+        } catch (error) {
+          hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to show panel, error: ${JSON.stringify(error)}`);
+          return;
+        }
       }
     }
-
+    
     export default SelectionExtAbility;
     ```
 
 5. 在[MenuPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets)文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
     <!-- @[MenuPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets) -->
-
+    
     ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager, PanelInfo, BusinessError, PanelType, SelectionExtensionContext } from '@kit.BasicServicesKit';
@@ -280,9 +279,18 @@
     struct MenuPanel {
       @State message: string = 'MenuPanel';
       selectionInfo: selectionManager.SelectionInfo | undefined = undefined;
-
+    
       CreateMainPanel() {
         this.selectionInfo = SelectionModel.getInstance().getSelectionInfo();
+        let existingPanel = SelectionModel.getInstance().getSelectionPanel();
+        if (existingPanel !== undefined) {
+          try {
+            existingPanel.show();
+          } catch (error) {
+            SelectionModel.getInstance().setSelectionPanel(undefined);
+          }
+          return;
+        }
         let panelInfo: PanelInfo = {
           panelType: PanelType.MAIN_PANEL,
           x: 0,
@@ -300,34 +308,32 @@
             try {
               panel.on('destroyed', () => {
                 hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has destroyed');
+                SelectionModel.getInstance().setSelectionPanel(undefined);
               })
             } catch (error) {
-              hilog.info(0x0000, 'SelectionExtensionAbility', 'Failed to listen window destroy');
+              hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen window destroy');
             }
-            panel.setUiContent('pages/MainPanel')
-              .then(() => {
-                hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MainPanel].');
-              })
-              .catch((error: BusinessError) => {
-                hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent of main panel, error: [${JSON.stringify(error)}]`);
-                return;
-              });
-
-            await panel.show()
-              .then(() => {
-                hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to show main panel.');
-              })
-              .catch((error: BusinessError) => {
-                hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to show main panel, error: [${JSON.stringify(error)}]`);
-                return;
-              });
+            try {
+              await panel.setUiContent('pages/MainPanel');
+              hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MainPanel].');
+            } catch (error) {
+              hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent of main panel, error: [${JSON.stringify(error)}]`);
+              return;
+            }
+    
+            try {
+              await panel.show();
+              hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to show main panel.');
+            } catch (error) {
+              hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to show main panel, error: [${JSON.stringify(error)}]`);
+            }
           })
           .catch((error: BusinessError) => {
             hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: [${JSON.stringify(error)}]`);
             return;
           });
       }
-
+    
       startEntryAbility() {   // 拉起应用
         let wantAbility: Want = {
           bundleName: 'com.selection.selectionapplication',   // 应用的bundleName
@@ -344,7 +350,7 @@
             })
         }
       }
-
+    
       build() {
         Column() {
           Button('click to show MAIN_PANEL')

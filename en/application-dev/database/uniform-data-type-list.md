@@ -1,11 +1,12 @@
 # Prebuilt UTDs
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:39:26.947Z pushedAt=2026-06-25T10:36:58.628Z -->
+<!-- md-trans-meta sourceCommit=a92c62906a53dbb211f0a7456ddb51494343703a translatedAt=2026-08-20T06:24:32.679Z pushedAt=2026-08-20T12:47:41.639Z -->
 
 A Uniform Type Descriptor (UTD) is used to address data type ambiguity in a system. It provides a standardized way to describe the same data type in different representations, such as MIME types and file name extensions. For example, when describing a JPG/JPEG image, you can use **image/jpeg**, **.jpg**, **.jpeg**, or **image/picture**. For details, see [Generic UTDs](#generic-utds).
 
@@ -15,7 +16,7 @@ To facilitate use, OpenHarmony is prebuilt with common UTDs, which are classifie
 
 ## Generic UTDs
 
-Generic UTDs define universal data types that can be identified by the vast majority of applications, devices, and platforms in cross-application, cross-device, and cross-platform interactions. The IDs of these types of UTDs are in **general.xxx** format. The following table lists the generic UTDs prebuilt in the system.
+Generic UTDs represent universal data types that can be identified by the vast majority of apps, devices, and platforms in cross-app, cross-device, and cross-platform interactions, with UTD IDs in the `general.xxx` format. The following table lists the generic UTDs prebuilt in the system.
 
 | **UTD ID**                         | **BelongingTo**        | **File Name Extension**               | **MIME Type**                                                                        | **Description**                            |
 |-------------------------------------|-------------------------------|----------------------------------------|----------------------------------------------------------------------------------------|------------------------------------|
@@ -46,7 +47,7 @@ Generic UTDs define universal data types that can be identified by the vast majo
 | general.rgb-image                   | general.image                 | .rgb                                   | image/x-rgb                                                                            | RGB bitmap type.                           |
 | general.svg-image                   | general.image                 | .svg, .svgz                            | image/svg+xml                                                                          | Scalable Vector Graphics (SVG) format.                         |
 | general.wbmp-image                  | general.image                 | .wbmp                                  | image/vnd.wap.wbmp                                                                     | Wireless Bitmap image format.                            |
-| general.xpixmap-image               | general.image                 | .xpm                                   | image/x-xpixmap                                                                        | X Window PixMap image format.                           |
+| general.xpixmap-image               | general.image                 | .xpm                                   | image/x-xpixmap                                                                        | X Window PixMap image format.                            |
 | general.xwindowdump-image           | general.image                 | .xwd                                   | image/x-xwindowdump                                                                    | X Window dump (XWD) image format.                           |
 | general.heif                        | general.image                 | .heif, .heifs, .hif                    | image/heif                                                                             | High Efficiency Image File (HEIF) format.                          |
 | general.heic                        | general.image                 | .heic, .heics                          | image/heic                                                                             | High Efficiency Image Container (HEIC) format.                        |
@@ -77,7 +78,7 @@ Generic UTDs define universal data types that can be identified by the vast majo
 | general.pcm                         | general.audio                 | .pcm                                   | audio/pcm                                                                              | PCM audio format.                           |
 | general.flac                        | general.audio                 | .flac                                  | audio/flac                                                                             | FLAC audio format.                          |
 | general.alac                        | general.audio                 | .alac                                  | audio/alac                                                                             | ALAC audio format.                          |
-| general.mp3                         | general.audio                 | .mp3                                   | audio/mp3                                                                              | MPEG-3 audio format.                        |
+| general.mp3                         | general.audio                 | .mp3                                   | audio/mp3                                                                              | MPEG-1 Audio Layer 3 audio format.                         |
 | general.aac                         | general.audio                 | .aac                                   | audio/aac                                                                              | AAC audio format.                           |
 | general.au-audio                    | general.audio                 | .au, .snd                              | audio/basic, audio/au, audio/snd                                                       | Au audio format.                            |
 | general.aifc-audio                  | general.audio                 | .aifc, .aif, .aiff                     | audio/x-aiff                                                                           | Audio Interchange File Format (AIFC).                          |
@@ -220,9 +221,10 @@ Generic UTDs define universal data types that can be identified by the vast majo
 | com.huawei.hmos.musiccreate.gofile                                     |                 general.archive                                                          | .gomusic                            |    -    |  **musiccreate** file format. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
 | com.apple.coreaudio-format                                     |                 general.audio                                                            | .caf                            |    audio/x-caf                   |  CAF audio data file. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
 
-
 ## System-specific UTDs
+
 The system-specific UTDs are closely related to a platform or an operating system and are used for cross-application interaction within the system or platform. The IDs of system-specific UTDs are in the ***os-name*.xxx** format. The following table lists the system-specific UTDs prebuilt in the system.
+
 | **UTD ID**                | **BelongingTo**   | **File Name Extension**              | **MIME Type**                                                    | **Description**                          |
 |----------------------------|--------------------------|---------------------------------------|--------------------------------------------------------------------|----------------------------------|
 | openharmony.form           | general.object           |                  -                    |-                                                                    | Form type defined by OpenHarmony.          |
@@ -247,7 +249,9 @@ The system-specific UTDs are closely related to a platform or an operating syste
 | openharmony.dlp            | general.composite-object | .dlp                                  |-                                                                    | Account-based encryption file defined by OpenHarmony.    |
 
 ## Application-specific UTDs
+
 Application-specific UTDs are defined and maintained by a specific application or organization, and the data interaction is identified by the specific application. The IDs of these types of UTDs are in the **com.*company-name*.xxx** or **org.*organization-name*.xxx** format. The following table lists the application-specific UTDs prebuilt in the system.
+
 | **UTD ID**                                                 | **BelongingTo**                                                   | **File Name Extension**        | **MIME Type**                                                           | **Description**                                   |
 |-------------------------------------------------------------|--------------------------------------------------------------------------|---------------------------------|---------------------------------------------------------------------------|-------------------------------------------|
 | com.microsoft.bmp                                           | general.image                                                            | .bmp, .bm               | image/bmp, image/x-ms-bmp                                                 | Microsoft Windows BMP format.                            |
@@ -391,7 +395,7 @@ Application-specific UTDs are defined and maintained by a specific application o
 | com.amazon.azw3                                             | general.ebook                                                            | .azw3                   | application/vnd.amazon.mobi8-ebook, application/x-mobi8-ebook             | AZW3 eBook format.                            |
 | com.amazon.kfx                                              | general.ebook                                                            | .kfx                    |                               -                                           | KFX eBook format.                            |
 | com.autodesk.dwg                                            | general.composite-object                                                 | .dwg                    | image/vnd.dwg                                                             | AutoCAD file format.                            |
-| com.autodesk.dxf                                            | general.composite-object                                                 | .dxf                    | image/vnd.dxf                                                             | AutoCAD Drawing Exchange Format (DXF).                          |
+| com.autodesk.dxf                                            | general.composite-object                                                 | .dxf                    | image/vnd.dxf                                                             | AutoCAD drawing exchange format (DXF).                           |
 | com.autodesk.dws                                            | general.composite-object                                                 | .dws                    |                                 -                                         | AutoCAD drawing standards file.                        |
 | com.autodesk.dwt                                            | general.composite-object                                                 | .dwt                    |                                 -                                         | AutoCAD drawing template.                            |
 | com.autodesk.dwf                                            | general.composite-object                                                 | .dwf                    | model/vnd.dwf                                                             | AutoCAD Design Web Format (DWF).                            |
@@ -502,7 +506,7 @@ Application-specific UTDs are defined and maintained by a specific application o
 | com.microsoft.vbscript                                      | general.script                                                           | .vbs                    | application/x-vbs                                                         | VBScript format.|
 | com.microsoft.sys                                           | general.object                                                           | .sys                    |                                       -                                    | Windows system file format.|
 | com.microsoft.powershell-script                             | general.script                                                           | .ps1                    |                                     -                                      | Windows PowerShell script format.|
-| com.microsoft.registry                                      | general.database                                                         | .reg                    |                                    -                                       | DOS batch file format.|
-| com.microsoft.dos-batch                                     | general.script                                                           | .bat                    | application/x-bat                                                         | Windows registry format.|
+| com.microsoft.registry                                      | general.database                                                         | .reg                    |                                    -                                       | Windows registry format. |
+| com.microsoft.dos-batch                                     | general.script                                                           | .bat                    | application/x-bat                                                         | DOS batch file format. |
 | com.microsoft.inf                                           | general.text                                                             | .inf                    | text/plain                                                                | Setup information file format.|
 | com.microsoft.sccd                                          | general.xml                                                              | .sccd                   |                                       -                                    | Signed Custom Capability Descriptor (SCCD) file format.|

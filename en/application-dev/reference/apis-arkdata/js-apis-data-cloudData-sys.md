@@ -5,6 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @ltttjs; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=2804a32e158448d3711a6400375ce1e32da499a1 translatedAt=2026-09-04T03:23:59.941Z pushedAt=2026-09-09T09:11:03.705Z -->
 
 The **cloudData** module provides APIs for implementing device-cloud synergy and device-cloud sharing.
 
@@ -19,7 +20,7 @@ Device-cloud sharing enables data sharing across accounts based on device-cloud 
 The **cloudData** module provides the following functionalities:
 
 - [Config](#config): provides APIs for setting device-cloud synergy, including enabling and disabling device-cloud sync, clearing data, and notifying data changes.
-- [sharing](#sharing11): provides APIs for device-cloud data sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing the invitation confirmation state, and querying the shared resource.
+- [sharing](#sharing11): provides APIs for device-cloud sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing a confirmed invitation, and querying shared resources.
 
 > **NOTE**
 >
@@ -45,7 +46,7 @@ Enumerates the operations for clearing the downloaded cloud data locally.
 | --------- | --- | ---------------------------- |
 | CLEAR_CLOUD_INFO | 0 |  Clear the cloud identifier of the data downloaded from the cloud (the flag indicating that the data comes from the cloud) and retain the data locally.|
 | CLEAR_CLOUD_DATA_AND_INFO | 1 | Clear the data downloaded from the cloud, excluding the cloud data that has been modified locally.  |
-| CLEAR_CLOUD_NONE<sup>23+</sup> | 2 | Does not clear any data.  |
+| CLEAR_CLOUD_NONE<sup>23+</sup> | 2 | Do not clear any data.  |
 
 ## ExtraData<sup>11+</sup>
 
@@ -56,7 +57,7 @@ Represents the transparently transmitted data, which contains information requir
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | eventId   | string | No  | No  | Event ID. Currently, only the value **cloud_data_change** is supported, indicating cloud data change. Other values are invalid.|
-| extraData | string | No  | No  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application bundle name, database name, database type, and database table name. All the fields cannot be empty.|
+| extraData | string | No  | No  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application bundle name, database name, database type, and database table name. None of the fields can be empty.|
 
 **Example**
 
@@ -70,7 +71,7 @@ Represents the transparently transmitted data, which contains information requir
 let extraData: cloudData.ExtraData = {
   eventId: "cloud_data_change",
   extraData: '{"data": "{"accountId": "aaa", "bundleName": "com.bbb.xxx", "containerName": "alias", "databaseScopes": ["private", "shared"], "recordTypes": ["xxx", "yyy", "zzz"]}"}',
-}
+};
 ```
 
 ## StatisticInfo<sup>12+</sup>
@@ -133,14 +134,14 @@ Defines the switch configuration of a device-cloud synergy database.
 
 ## DBActionInfo<sup>23+</sup>
 
-Defines the clearance information of a device-cloud synergy database.
+Defines the database-level clearing rules for device-cloud synergy.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
 | Name      | Type           | Read-Only| Optional| Description                      |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
-| action     | [ClearAction](#clearaction)           | No  | No  | Default data clearance mode of the database.|
-| tableInfo  | Record<string, [ClearAction](#clearaction)> | No  | Yes  | Information about the table whose data is to be cleared and the clearance rules. The key is the table name, and the value is the clearance mode of the table. If this parameter is not set, the data clearance mode of database is used by default.  |
+| action     | [ClearAction](#clearaction)           | No   | No   | Default data clearing rule of the database. |
+| tableInfo  | Record<string, [ClearAction](#clearaction)> | No   | Yes   | Table information of the data to be cleared and the clearing rule of each table. The key is the table name, and the value is the clearing rule of the table. If this parameter is not configured, the data clearing rule of the database is used by default.   |
 
 ## BundleInfo
 
@@ -159,13 +160,15 @@ Defines the device-cloud synergy application information.
 
 ## ClearConfig<sup>23+</sup>
 
-Defines the clearance configuration of a device-cloud synergy database.
+Defines the database-level clearing rules for device-cloud synergy.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
 | Name      | Type           | Read-Only| Optional| Description                      |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
-| dbInfo     | Record<string, [DBActionInfo](#dbactioninfo23)>    | No  | No  | Information about the database whose data is to be cleared and the clearance rules. The key is the database name, and the value is the clearance configuration of the database.  |
+| dbInfo     | Record<string, [DBActionInfo](#dbactioninfo23)>    | No   | No   | Database information of the data to be cleared and the clearing rule of each database. The key is the database name, and the value is the clearing rule of the database. |
 
 ## Config
 
@@ -188,7 +191,7 @@ Enables device-cloud synergy. This API uses an asynchronous callback to return t
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | accountId | string                          | Yes  | ID of the logged-in cloud account.                                        |
-| switches  | Record<string, boolean>         | Yes  | Device-cloud synergy settings for applications. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.|
+| switches  | Record<string, boolean>         | Yes   | Device-cloud synergy switch information of each application. The key is the bundle name of the application, and the value is the switch status of the application. The value **true** means to enable the device-cloud switch of the application, and **false** means to disable it. |
 | callback  | AsyncCallback&lt;void&gt;       | Yes  | Callback used to return the result. If device-cloud synergy is enabled successfully, the value of **err** is **undefined**; otherwise, the value is an error object.|
 
 **Error codes**
@@ -217,8 +220,8 @@ try {
       console.error(`Failed to enable.Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -240,7 +243,7 @@ Enables device-cloud synergy. This API uses a promise to return the result.
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | accountId | string                          | Yes  | ID of the logged-in cloud account.                                        |
-| switches  | Record<string, boolean>         | Yes  | Device-cloud synergy settings for applications. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.|
+| switches  | Record<string, boolean>         | Yes   | Device-cloud synergy switch information of each application. The key is the bundle name of the application, and the value is the switch status of the application. The value **true** means to enable the device-cloud switch of the application, and **false** means to disable it. |
 
 **Return value**
 
@@ -272,8 +275,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to enable.Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -322,8 +325,8 @@ try {
       console.error(`Failed to disableCloud. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -375,8 +378,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to disableCloud. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -428,8 +431,8 @@ try {
       console.error(`Failed to change App cloud switch. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -484,8 +487,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -546,15 +549,15 @@ let config: cloudData.SwitchConfig = {
       }
     }
   }
-}
+};
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true, config).then(() => {
     console.info('Succeeded in changing App cloud switch');
   }).catch((err: BusinessError) => {
     console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -577,7 +580,7 @@ Notifies the data changes in the cloud. This API uses an asynchronous callback t
 | ---------- | ------------------------- | ---- | -------------------- |
 | accountId  | string                    | Yes  | ID of the logged-in cloud account.|
 | bundleName | string                    | Yes  | Bundle name of the application.            |
-| callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the data changes in the cloud is successfully notified, the value of **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the data changes in the cloud are successfully notified, the value of **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -605,8 +608,8 @@ try {
       console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -660,8 +663,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -691,7 +694,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported.|
@@ -713,8 +716,8 @@ try {
       console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -723,7 +726,7 @@ try {
 
 static notifyDataChange(extInfo: ExtraData, userId: number, callback: AsyncCallback&lt;void&gt;):void
 
-Notifies the data changes of a user in the cloud. This API uses an asynchronous callback to return the result. You can also specify the database and tables with data changes in the **extraData** field in **extInfo**, and specify the user ID.
+Notifies the data changes of a user in the cloud. You can specify the database and tables with data changes in the **extraData** field in **extInfo**, and specify the user account ID through **userId**. This API uses an asynchronous callback to return the result.
 
 **System API:** This is a system API.
 
@@ -736,7 +739,7 @@ Notifies the data changes of a user in the cloud. This API uses an asynchronous 
 | Name  | Type                     | Mandatory| Description                                           |
 | -------- | ------------------------- | ---- | ----------------------------------------------- |
 | extInfo  | [ExtraData](#extradata11)   | Yes  | Transparently transmitted data, including information about the application that has data changes.       |
-| userId   | number                    | Yes  | User ID that exists in the system.|
+| userId   | number                    | Yes   | User account ID, which refers to the existing user account ID in the system. |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -745,7 +748,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported.|
@@ -768,8 +771,8 @@ try {
       console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -778,7 +781,7 @@ try {
 
 static notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt;
 
-Notifies the data changes in the cloud. This API uses a promise to return the result. You can specify the database and tables with data changes in the **extraData** field in **extInfo**, and specify the user ID.
+Notifies the data changes in the cloud. You can specify the database and tables with data changes in the **extraData** field in **extInfo**, and specify the user account ID through **userId**. This API uses a promise to return the result.
 
 **System API:** This is a system API.
 
@@ -805,7 +808,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported.|
@@ -826,8 +829,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -909,7 +912,7 @@ Queries information about the last device-cloud sync. This API uses a promise to
 
 | Type                                                        | Description                                        |
 | ------------------------------------------------------------ | -------------------------------------------- |
-| Promise&lt;Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt; | Promise used to return the database name and the result set of the last device-cloud sync.|
+| Promise&lt;Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt; | Result set with database names as keys and the last device-cloud sync information as values. |
 
 **Error codes**
 
@@ -935,9 +938,9 @@ try {
     console.info(`Succeeded in querying last syncinfo. Info is ${JSON.stringify(result)}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to query last syncinfo. Error code is ${err.code}, message is ${err.message}`);
-	});
-} catch(e) {
-  let error = e as BusinessError;
+  });
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -999,8 +1002,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to query last sync info. Error code is ${err.code}, message is ${err.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1053,8 +1056,8 @@ try {
   cloudData.Config.onSyncInfoChanged(bundleInfos, (result) => {
     console.info(`Sync info changed. Result is ${JSON.stringify(result)}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1110,24 +1113,24 @@ const progressCallback = (result: Record<string, Record<string, cloudData.SyncIn
 // Subscribe to sync information changes.
 try {
   cloudData.Config.onSyncInfoChanged(bundleInfos, progressCallback);
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 
 // Unsubscribe from a specified callback.
 try {
   cloudData.Config.offSyncInfoChanged(bundleInfos, progressCallback);
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 
 // Unsubscribe from all callbacks.
 try {
   cloudData.Config.offSyncInfoChanged(bundleInfos);
-} catch(e) {
-  let error = e as BusinessError;
+} catch(err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1216,7 +1219,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 801      | Capability not supported.|
-| 14800001 | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800001 | Invalid arguments. Possible causes: 1. Empty conditions; 2. Missing GROUP BY clause. |
 
 **Example**
 
@@ -1225,15 +1228,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { relationalStore } from '@kit.ArkData';
 
 try {
-  cloudData.Config.cloudSync("bundleName", "storeId", relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, (progress)=>{
+  cloudData.Config.cloudSync("bundleName", "storeId", relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, (progress) => {
     console.info('Succeeded in getting progress details.');
   }).then(() => {
     console.info('Succeeded in syncing cloud data.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to sync cloud data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to sync cloud data. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1255,7 +1258,7 @@ Clears the cloud data locally. This API uses an asynchronous callback to return 
 | Name    | Type                                               | Mandatory| Description                            |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
 | accountId  | string                                              | Yes  | ID of the logged-in cloud account.            |
-| appActions | Record<string, [ClearAction](#clearaction)>         | Yes  | Information about the application whose data is to be cleared and the operation to perform.|
+| appActions | Record<string, [ClearAction](#clearaction)>         | Yes   | Application information of the data to be cleared and the clearing rule of each application. The key is the application bundle name, and the value is the clearing rule. |
 | callback   | AsyncCallback&lt;void&gt;                           | Yes  | Callback used to return the result. If the local cloud data is cleared successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1275,7 +1278,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let account: string = "test_id";
-type dataType = Record<string, cloudData.ClearAction>
+type dataType = Record<string, cloudData.ClearAction>;
 let appActions: dataType = {
   'test_bundleName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
   'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO
@@ -1288,8 +1291,8 @@ try {
       console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1311,7 +1314,7 @@ Clears the cloud data locally. This API uses a promise to return the result.
 | Name    | Type                                               | Mandatory| Description                            |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
 | accountId  | string                                              | Yes  | ID of the logged-in cloud account.            |
-| appActions | Record<string, [ClearAction](#clearaction)>         | Yes  | Information about the application whose data is to be cleared and the operation to perform.|
+| appActions | Record<string, [ClearAction](#clearaction)>         | Yes   | Application information of the data to be cleared and the clearing rule of each application. The key is the application bundle name, and the value is the clearing rule. |
 
 **Return value**
 
@@ -1347,8 +1350,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1372,8 +1375,8 @@ Clears the cloud data locally. This API uses a promise to return the result.
 | Name    | Type                                               | Mandatory| Description                            |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
 | accountId  | string                                              | Yes  | ID of the logged-in cloud account.            |
-| appActions | Record<string, [ClearAction](#clearaction)>         | Yes  | Information about the application whose data is to be cleared and the operation to perform.|
-| config | Record<string, [ClearConfig](#clearconfig23)>         | No  | Clearance information of a device-cloud synergy database. The key is the application bundle name, and the value is the database clearance rules of the application. Clearance priority: table > database > application. If this parameter is not set, the application-level data clearance mode is used by default.|
+| appActions | Record<string, [ClearAction](#clearaction)>         | Yes   | Application information of the data to be cleared and the clearing rule of each application. The key is the application package name, and the value is the clearing rule. |
+| config | Record<string, [ClearConfig](#clearconfig23)>         | No   | Database-level clearing rule for device-cloud synergy. The key is the application package name, and the value is the database clearing rule of the application. Clearing rule priority: table level > database level > application level. If this parameter is not configured, the application-level data clearing rule is used by default. |
 
 **Return value**
 
@@ -1414,15 +1417,15 @@ let config: Record<string, cloudData.ClearConfig> = {
       }
     }
   }
-}
+};
 try {
   cloudData.Config.clear(account, appActions, config).then(() => {
     console.info('Succeeded in clearing cloud data');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1464,7 +1467,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 202      | Permission verification failed, application is not a system application. |
 | 801      | Capability not supported because the device does not support the device-cloud capability. |
 | 14800001 | Invalid arguments. Possible causes: Empty conditions. |
 
@@ -1492,8 +1495,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to cloud sync. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1533,7 +1536,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 202      | Permission verification failed. The application is not a system application and uses a system API. |
 | 801      | Capability not supported because the device does not support the device-cloud capability. |
 | 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
@@ -1553,15 +1556,15 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to stop cloud sync. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
 ## sharing<sup>11+</sup>
 
-Provides APIs for device-cloud data sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing the invitation confirmation state, and querying the shared resource.
+Provides APIs for device-cloud data sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing a confirmed invitation, and querying shared resources.
 
 ### Role<sup>11+</sup>
 
@@ -1666,9 +1669,9 @@ Allocates a shared resource ID based on the data that matches the specified pred
 | Name   | Type                           | Mandatory| Description                        |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | storeId      | string                        | Yes  | Name of the RDB store.|
-| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Predicates for matching the data to share.|
+| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Predicate conditions for querying the data of the sharing resource identifier. |
 | participants | Array&lt;[Participant](#participant11)&gt; | Yes  | Participants of the share.|
-| columns      | Array&lt;string&gt;           | No  | Columns in which the data is located. The default value is **undefined**, which means column names are not returned.|
+| columns      | Array&lt;string&gt;           | No   | Names of the columns to query. The default value is **undefined**, which means no column fields are returned. |
 
 **Return value**
 
@@ -1705,21 +1708,31 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
 cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data']).then((resultSet) => {
-  if (!resultSet.goToFirstRow()) {
-    console.error(`row error`);
+  if (resultSet === undefined || resultSet === null) {
+    console.error(`resultSet is null`);
     return;
   }
-  const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-  console.info(`sharing resource: ${res}`);
-  sharingResource = res;
+  try {
+    if (!resultSet.goToFirstRow()) {
+      console.error(`row error`);
+      return;
+    }
+    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+    console.info(`sharing resource: ${res}`);
+    sharingResource = res;
+  } catch (err) {
+    console.error(`Failed to get sharing resource: ${err}`);
+  } finally {
+    resultSet.close();
+  }
 }).catch((err: BusinessError) => {
   console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1737,9 +1750,9 @@ Allocates a shared resource ID based on the data that matches the specified pred
 | Name   | Type                           | Mandatory| Description                        |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | storeId      | string                        | Yes  | Name of the RDB store.|
-| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Predicates for matching the data to share.|
+| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Predicate conditions for querying the data of the sharing resource identifier. |
 | participants | Array&lt;[Participant](#participant11)&gt; | Yes  | Participants of the share.|
-| columns      | Array&lt;string&gt;           | Yes  | Columns in which the data is located.|
+| columns      | Array&lt;string&gt;           | Yes  | Names of the columns to query. |
 | callback     | AsyncCallback&lt;[relationalStore.ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt;  | Yes | Callback used to return the result set of the data to share.|
 
 **Error codes**
@@ -1771,23 +1784,33 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
-cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data'], (err: BusinessError, resultSet) => {
+cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data'], (err: BusinessError, resultSet: relationalStore.ResultSet) => {
   if (err) {
     console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
     return;
   }
-  if (!resultSet.goToFirstRow()) {
-    console.error(`row error`);
+  if (resultSet === undefined || resultSet === null) {
+    console.error(`resultSet is null`);
     return;
   }
-  const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-  console.info(`sharing resource: ${res}`);
-  sharingResource = res;
-})
+  try {
+    if (!resultSet.goToFirstRow()) {
+      console.error(`row error`);
+      return;
+    }
+    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+    console.info(`sharing resource: ${res}`);
+    sharingResource = res;
+  } catch (err) {
+    console.error(`Failed to get sharing resource: ${err}`);
+  } finally {
+    resultSet.close();
+  }
+});
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1805,7 +1828,7 @@ Allocates a shared resource ID based on the data that matches the specified pred
 | Name   | Type                           | Mandatory| Description                        |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | storeId      | string                        | Yes  | Name of the RDB store.|
-| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Predicates for matching the data to share.|
+| predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes   | Predicate conditions for querying the data of the sharing resource identifier. |
 | participants | Array&lt;[Participant](#participant11)&gt; | Yes  | Participants of the share.|
 | callback     | AsyncCallback&lt;[relationalStore.ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt;  | Yes  | Callback used to return the result set of the data to share.|
 
@@ -1838,23 +1861,33 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
-cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (err: BusinessError, resultSet) => {
+cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (err: BusinessError, resultSet: relationalStore.ResultSet) => {
   if (err) {
     console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
     return;
   }
-  if (!resultSet.goToFirstRow()) {
-    console.error(`row error`);
+  if (resultSet === undefined || resultSet === null) {
+    console.error(`resultSet is null`);
     return;
   }
-  const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-  console.info(`sharing resource: ${res}`);
-  sharingResource = res;
-})
+  try {
+    if (!resultSet.goToFirstRow()) {
+      console.error(`row error`);
+      return;
+    }
+    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+    console.info(`sharing resource: ${res}`);
+    sharingResource = res;
+  } catch (err) {
+    console.error(`Failed to get sharing resource: ${err}`);
+  } finally {
+    resultSet.close();
+  }
+});
 ```
 
 ### share<sup>11+</sup>
@@ -1908,12 +1941,12 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 cloudData.sharing.share('sharing_resource_test', participants).then((result) => {
   console.info(`share success, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`share failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### share<sup>11+</sup>
@@ -1962,14 +1995,14 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
-cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessError, result) => {
+});
+cloudData.sharing.share('sharing_resource_test', participants, (err: BusinessError, result) => {
   if (err) {
     console.error(`share failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`share succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### unshare<sup>11+</sup>
@@ -2023,12 +2056,12 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 cloudData.sharing.unshare('sharing_resource_test', participants).then((result) => {
   console.info(`unshare succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### unshare<sup>11+</sup>
@@ -2078,13 +2111,13 @@ participants.push({
   },
   attachInfo: ''
 })
-cloudData.sharing.unshare('sharing_resource_test', participants, ((err: BusinessError, result) => {
+cloudData.sharing.unshare('sharing_resource_test', participants, (err: BusinessError, result) => {
   if (err) {
     console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`unshare succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### exit<sup>11+</sup>
@@ -2128,7 +2161,7 @@ cloudData.sharing.exit('sharing_resource_test').then((result) => {
   console.info(`exit share success, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### exit<sup>11+</sup>
@@ -2163,13 +2196,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.exit('sharing_resource_test', ((err: BusinessError, result) => {
+cloudData.sharing.exit('sharing_resource_test', (err: BusinessError, result) => {
   if (err) {
     console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`exit share succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -2223,13 +2256,13 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 
 cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((result) => {
   console.info(`change privilege succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -2278,15 +2311,15 @@ participants.push({
     shareable: false
   },
   attachInfo: ''
-})
+});
 
-cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: BusinessError, result) => {
+cloudData.sharing.changePrivilege('sharing_resource_test', participants, (err: BusinessError, result) => {
   if (err) {
     console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`change privilege succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -2330,7 +2363,7 @@ cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
   console.info(`query participants succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -2348,7 +2381,7 @@ Queries the participants of the specified shared data. This API uses an asynchro
 | Name   | Type                           | Mandatory| Description                        |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | sharingResource  | string                | Yes  | Shared resource ID.|
-| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt;  | Yes  | Callback used to return the participants obtained.|
+| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt;  | Yes   | Callback invoked to return the result of querying the sharing participants. |
 
 **Error codes**
 
@@ -2365,13 +2398,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessError, result) => {
+cloudData.sharing.queryParticipants('sharing_resource_test', (err: BusinessError, result) => {
   if (err) {
     console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`query participants succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -2394,7 +2427,7 @@ Queries the participants based on the sharing invitation code. This API uses a p
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt; | Promise used to return the participants obtained.|
+| Promise&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt; | Promise used to return the result of querying the sharing participants. |
 
 **Error codes**
 
@@ -2415,7 +2448,7 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').
   console.info(`query participants by invitation succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -2433,7 +2466,7 @@ Queries the participants based on the sharing invitation code. This API uses an 
 | Name   | Type                           | Mandatory| Description                        |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | invitationCode  | string                | Yes  | Invitation code of the share.|
-| callback        | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt; | Yes  | Callback used to return the participants obtained.|
+| callback        | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Participant](#participant11)&gt;&gt;&gt; | Yes   | Callback invoked to return the query result of the sharing participants. |
 
 **Error codes**
 
@@ -2450,13 +2483,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', ((err: BusinessError, result) => {
+cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', (err: BusinessError, result) => {
   if (err) {
     console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`query participants by invitation succeeded, result: ${result}`);
-}))
+});
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2503,7 +2536,7 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
   shareResource = result.value;
 }).catch((err: BusinessError) => {
   console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2540,14 +2573,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let shareResource: string;
-cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED, ((err: BusinessError, result) => {
+cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED, (err: BusinessError, result) => {
   if (err) {
     console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`confirm invitation succeeded, result: ${result}`);
   shareResource = result.value;
-}))
+});
 ```
 
 ### changeConfirmation<sup>11+</sup>
@@ -2592,7 +2625,7 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
   console.info(`change confirmation succeeded, result: ${result}`);
 }).catch((err: BusinessError) => {
   console.error(`change confirmation failed, code is ${err.code},message is ${err.message}`);
-})
+});
 ```
 
 ### changeConfirmation<sup>11+</sup>
@@ -2628,12 +2661,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.State.STATE_REJECTED, ((err: BusinessError, result) => {
+cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.State.STATE_REJECTED, (err: BusinessError, result) => {
   if (err) {
     console.error(`change confirmation failed, code is ${err.code},message is ${err.message}`);
     return;
   }
   console.info(`change confirmation succeeded, result: ${result}`);
-}))
+});
 ```
  <!--no_check-->

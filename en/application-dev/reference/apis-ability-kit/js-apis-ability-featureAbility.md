@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=adac32ca89d9bd332aa4865feec176933267fbd9 translatedAt=2026-09-03T09:32:05.024Z pushedAt=2026-09-05T10:47:30.180Z -->
 
-The FeatureAbility module provides APIs that enable user interaction. You can use the APIs to start or terminate an ability, obtain a dataAbilityHelper object, obtain the window corresponding to the current ability, and connect to or disconnect from a ServiceAbility.
+The FeatureAbility module provides the ability to interact with users, including starting a new ability, stopping an ability, obtaining a dataAbilityHelper object, obtaining the window corresponding to the current ability, and connecting to or disconnecting from a ServiceAbility.
 
 > **NOTE**
 >
@@ -29,11 +30,13 @@ import { featureAbility } from '@kit.AbilityKit';
 
 startAbility(parameter: StartAbilityParameter, callback: AsyncCallback\<number>): void
 
-Starts an ability. This API uses an asynchronous callback to return the result.
+Starts a new ability. This API uses an asynchronous callback to return the result. It is used to start an ability for page navigation, launching other applications, opening third-party applications, and other scenarios.
 
 > **NOTE**
 >
 > For details about the startup rules for the components in the FA model, see [Component Startup Rules (FA Model)](../../application-models/component-startup-rules-fa.md).
+>
+> To obtain the result returned by the started ability, use [startAbilityForResult](#featureabilitystartabilityforresult7).
 
 **Model restriction**: This API can be used only in the FA model.
 
@@ -52,6 +55,7 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// Start a new Ability.
 featureAbility.startAbility(
   {
     want:
@@ -83,15 +87,17 @@ featureAbility.startAbility(
 
 startAbility(parameter: StartAbilityParameter): Promise\<number>
 
-Starts an ability. This API uses a promise to return the result.
+Starts a new ability. This API uses a promise to return the result. It is used to start an ability for page navigation, launching other applications, opening third-party applications, and other scenarios.
 
 > **NOTE**
 >
 > For details about the startup rules for the components in the FA model, see [Component Startup Rules (FA Model)](../../application-models/component-startup-rules-fa.md).
+>
+> To obtain the result returned by the started ability, use [startAbilityForResult](#featureabilitystartabilityforresult7-1).
+
+**Model Constraint**: This API can be used only in the FA model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.FAModel
-
-**Model restriction**: This API can be used only in the FA model.
 
 **Parameters**
 
@@ -111,6 +117,7 @@ Starts an ability. This API uses a promise to return the result.
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// Start a new Ability.
 featureAbility.startAbility(
   {
     want:
@@ -165,6 +172,7 @@ Obtains a dataAbilityHelper object.
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// Obtain the dataAbilityHelper object.
 let dataAbilityHelper = featureAbility.acquireDataAbilityHelper(
   'dataability:///com.example.DataAbility'
 );
@@ -176,12 +184,14 @@ startAbilityForResult(parameter: StartAbilityParameter, callback: AsyncCallback\
 
 Starts an ability. This API uses an asynchronous callback to return the result. The following situations may be possible for a started ability:
  - Normally, you can call [terminateSelfWithResult](#featureabilityterminateselfwithresult7) to terminate the ability. The result is returned to the caller.
- - If an exception occurs, for example, the ability is killed, an exception message, in which **resultCode** is **-1**, is returned to the caller.
- - If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](#featureabilityterminateselfwithresult7) to terminate the ability, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+ - In abnormal cases, such as when the ability is killed, exception information is returned to the caller, with resultCode set to -1.
+ - If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](#featureabilityterminateselfwithresult7) to terminate the ability, the normal result is returned only to the last caller, and exception information, with resultCode set to -1, is returned to the other callers.
 
 > **NOTE**
 >
 > For details about the startup rules for the components in the FA model, see [Component Startup Rules (FA Model)](../../application-models/component-startup-rules-fa.md).
+>
+> If you do not need to obtain the result returned by the started ability, use [startAbility](#featureabilitystartability).
 
 **Model restriction**: This API can be used only in the FA model.
 
@@ -200,6 +210,7 @@ Starts an ability. This API uses an asynchronous callback to return the result. 
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// Start an Ability and obtain the returned result.
 featureAbility.startAbilityForResult(
   {
     want:
@@ -231,8 +242,8 @@ startAbilityForResult(parameter: StartAbilityParameter): Promise\<AbilityResult>
 
 Starts an ability. This API uses a promise to return the result. The following situations may be possible for a started ability:
  - Normally, you can call [terminateSelfWithResult](#featureabilityterminateselfwithresult7) to terminate the ability. The result is returned to the caller.
- - If an exception occurs, for example, the ability is killed, an exception message, in which **resultCode** is **-1**, is returned to the caller.
- - If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](#featureabilityterminateselfwithresult7) to terminate the ability, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+ - In abnormal cases, such as when the ability is killed, exception information is returned to the caller, with resultCode set to -1.
+ - If the started ability is in singleton mode, and different applications call this API multiple times to start the ability, when the ability calls [terminateSelfWithResult](#featureabilityterminateselfwithresult7) to terminate itself, the normal result is returned only to the last caller, and an exception message, in which resultCode is -1, is returned to the other callers.
 
 > **NOTE**
 >
@@ -260,6 +271,7 @@ Starts an ability. This API uses a promise to return the result. The following s
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// Start an Ability and obtain the return result.
 featureAbility.startAbilityForResult(
   {
     want:
@@ -314,6 +326,7 @@ Terminates this ability. This API uses an asynchronous callback to return the re
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// Stop the current Ability and return the result.
 featureAbility.terminateSelfWithResult(
   {
     resultCode: 1,
@@ -374,6 +387,7 @@ Terminates this ability. This API uses a promise to return the result. If the ab
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// Stop the current Ability and return the result.
 featureAbility.terminateSelfWithResult(
   {
     resultCode: 1,
@@ -405,7 +419,7 @@ featureAbility.terminateSelfWithResult(
 });
 ```
 
-## featureAbility.hasWindowFocus<sup>7+<sup>
+## featureAbility.hasWindowFocus<sup>7+</sup>
 
 hasWindowFocus(callback: AsyncCallback\<boolean>): void
 
@@ -419,7 +433,7 @@ Checks whether the main window of this ability has the focus. This API uses an a
 
 | Name      | Type                     | Mandatory  | Description                                      |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes   |Callback used to return the result.<br>If the main window has the focus, **true** is returned. Otherwise, **false** is returned.|
+| callback | AsyncCallback\<boolean> | Yes | Callback function.<br>true if this Ability currently has window focus; false otherwise. |
 
 **Example**
 
@@ -427,6 +441,7 @@ Checks whether the main window of this ability has the focus. This API uses an a
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// Check whether the main window of the Ability has window focus.
 featureAbility.hasWindowFocus((error, data) => {
   if (error && error.code !== 0) {
     console.error(`hasWindowFocus fail, error: ${JSON.stringify(error)}`);
@@ -436,7 +451,7 @@ featureAbility.hasWindowFocus((error, data) => {
 });
 ```
 
-## featureAbility.hasWindowFocus<sup>7+<sup>
+## featureAbility.hasWindowFocus<sup>7+</sup>
 
 hasWindowFocus(): Promise\<boolean>
 
@@ -450,7 +465,7 @@ Checks whether the main window of this ability has the focus. This API uses a pr
 
 | Type               | Description                                   |
 | ----------------- | ------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. If the main window has the focus, **true** is returned. Otherwise, **false** is returned.|
+| Promise\<boolean> | Promise object. If this Ability currently has window focus, returns true; otherwise returns false. |
 
 **Example**
 
@@ -458,6 +473,7 @@ Checks whether the main window of this ability has the focus. This API uses a pr
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// Check whether the main window of the Ability has window focus.
 featureAbility.hasWindowFocus().then((data) => {
   console.info(`hasWindowFocus data: ${JSON.stringify(data)}`);
 });
@@ -477,7 +493,7 @@ Obtains the Want corresponding to the ability to start. This API uses an asynchr
 
 | Name      | Type                           | Mandatory  | Description       |
 | -------- | ----------------------------- | ---- | --------- |
-| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | Yes   | Callback used to return the Want.|
+| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | Yes | Callback invoked when the Want corresponding to the Ability to be started is obtained. If the operation is successful, err is undefined and data is the Want corresponding to the current Ability; otherwise, an error object is returned. |
 
 **Example**
 
@@ -485,6 +501,7 @@ Obtains the Want corresponding to the ability to start. This API uses an asynchr
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// Obtain the Want corresponding to the Ability to be started.
 featureAbility.getWant((error, data) => {
   if (error && error.code !== 0) {
     console.error(`getWant fail, error: ${JSON.stringify(error)}`);
@@ -516,6 +533,7 @@ Obtains the Want corresponding to the ability to start. This API uses a promise 
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// Obtain the Want corresponding to the Ability to be started.
 featureAbility.getWant().then((data) => {
   console.info(`getWant data: ${JSON.stringify(data)}`);
 });
@@ -543,6 +561,7 @@ Obtains the application context.
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// Get the application context.
 let context = featureAbility.getContext();
 context.getBundleName((error, data) => {
   if (error && error.code !== 0) {
@@ -557,7 +576,11 @@ context.getBundleName((error, data) => {
 
 terminateSelf(callback: AsyncCallback\<void>): void
 
-Terminates this ability. This API uses an asynchronous callback to return the result.
+Terminates this ability. This API uses an asynchronous callback to return the result. It is used to proactively close the current page or end the ability lifecycle.
+
+> **NOTE**
+>
+> To return the result to the caller, use [terminateSelfWithResult](#featureabilityterminateselfwithresult7).
 
 **Model restriction**: This API can be used only in the FA model.
 
@@ -575,6 +598,7 @@ Terminates this ability. This API uses an asynchronous callback to return the re
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// Stop the current Ability.
 featureAbility.terminateSelf(
   (error) => {
     console.error(`error: ${JSON.stringify(error)}`);
@@ -586,7 +610,7 @@ featureAbility.terminateSelf(
 
 terminateSelf(): Promise\<void>
 
-Terminates this ability. This API uses a promise to return the result.
+Terminates this ability. This API uses a promise to return the result. It is used to proactively close the current page or end the ability lifecycle.
 
 **Model restriction**: This API can be used only in the FA model.
 
@@ -605,6 +629,7 @@ Terminates this ability. This API uses a promise to return the result.
 import { featureAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Stop the current Ability.
 featureAbility.terminateSelf().then(() => {
   console.info('==========================>terminateSelf=======================>');
 }).catch((error: BusinessError) => {
@@ -647,6 +672,7 @@ Connects this ability to a ServiceAbility.
 import { featureAbility } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 
+// Connect ServiceAbility.
 let connectId = featureAbility.connectAbility(
   {
     deviceId: '',
@@ -709,6 +735,7 @@ let connectId = featureAbility.connectAbility(
   },
 );
 
+// Disconnect from the ServiceAbility.
 featureAbility.disconnectAbility(connectId, (error) => {
   if (error && error.code !== 0) {
     console.error(`disconnectAbility fail, connectId: ${connectId}, error: ${JSON.stringify(error)}`);
@@ -766,6 +793,7 @@ let connectId = featureAbility.connectAbility(
   },
 );
 
+// Disconnect from the ServiceAbility.
 featureAbility.disconnectAbility(connectId).then(() => {
   console.info('disconnectAbility success');
 }).catch((error: BusinessError)=>{
@@ -788,7 +816,7 @@ Obtains the window corresponding to this ability. This API uses an asynchronous 
 
 | Name    | Type                         | Mandatory| Description                         |
 | -------- | ----------------------------- | ---- | ----------------------------- |
-| callback | AsyncCallback\<[window.Window](../apis-arkui/arkts-apis-window-Window.md)> | Yes  | Callback used to return the window.|
+| callback | AsyncCallback\<[window.Window](../apis-arkui/arkts-apis-window-Window.md)> | Yes | Callback Function. When the window is obtained successfully, err is undefined and data is the window corresponding to the current Ability; otherwise an error object. |
 
 **Example**
 
@@ -798,6 +826,7 @@ import { featureAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Obtain the window corresponding to the current Ability.
 featureAbility.getWindow((error: BusinessError, data: window.Window) => {
   if (error && error.code !== 0) {
     console.error(`getWindow fail, error: ${JSON.stringify(error)}`);
@@ -831,6 +860,7 @@ import { featureAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Get the window corresponding to the current Ability.
 featureAbility.getWindow().then((data: window.Window) => {
   console.info(`getWindow success, data: ${typeof(data)}`);
 }).catch((error: BusinessError)=>{
@@ -900,7 +930,7 @@ Enumerates the error codes that may be returned when an ability is started.
 | ------------------------------ | ---- | ---------------------------------------- |
 | NO_ERROR         | 0    | No error.  |
 | INVALID_PARAMETER | -1   | Invalid parameter.|
-| ABILITY_NOT_FOUND | -2   | The ability is not found.|
+| ABILITY_NOT_FOUND | -2   | The Ability is not found. |
 | PERMISSION_DENY   | -3   | Permission denied.  |
 
 ## DataAbilityOperationType<sup>7+</sup>
@@ -924,9 +954,9 @@ type Context = _Context
 
 Defines the Context module.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**Model restriction:** This API can be used only in the FA model.
 
-**Model restriction**: This API can be used only in the FA model.
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Type| Description|
 | --- | --- |
@@ -938,9 +968,9 @@ type AppVersionInfo = _AppVersionInfo
 
 Defines an AppVersionInfo object.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**Model restriction:** This API can be used only in the FA model.
 
-**Model restriction**: This API can be used only in the FA model.
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Type| Description|
 | --- | --- |
@@ -952,9 +982,9 @@ type ProcessInfo = _ProcessInfo
 
 Defines a ProcessInfo object.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**Model restriction:** This API can be used only in the FA model.
 
-**Model restriction**: This API can be used only in the FA model.
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Type| Description|
 | --- | --- |

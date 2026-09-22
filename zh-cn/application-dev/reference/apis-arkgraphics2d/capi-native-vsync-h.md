@@ -9,8 +9,9 @@
 ## 概述
 
 定义获取和使用NativeVsync的相关函数。
-<!--RP1-->
-**相关示例：** [NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--RP1End-->
+
+<!--Del-->
+**相关示例：** [NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--DelEnd-->
 
 **引用文件：** <native_vsync/native_vsync.h>
 
@@ -77,7 +78,7 @@ OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 
 **描述**
 
-创建一个OH_NativeVSync实例，每次调用都会产生一个新的实例。<br>本接口需要与[OH_NativeVSync_Destroy](capi-native-vsync-h.md#oh_nativevsync_destroy)接口配合使用，否则会存在内存泄漏。
+创建一个OH_NativeVSync实例，每次调用都会产生一个新的实例，OH_NativeVSync实例存在数量上限，超出后会返回空指针。<br>本接口需要与[OH_NativeVSync_Destroy](capi-native-vsync-h.md#oh_nativevsync_destroy)接口配合使用，否则会存在内存泄漏。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeVsync
 

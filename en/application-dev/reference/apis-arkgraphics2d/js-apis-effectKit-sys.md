@@ -6,7 +6,7 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=244626bd3ee350522bab6ea45e122f80881abd5e translatedAt=2026-07-13T11:25:57.465Z pushedAt=2026-07-15T10:32:06.147Z -->
+<!-- md-trans-meta sourceCommit=840854f9fe10a258a0038fd37739f3e768710f28 translatedAt=2026-08-24T09:20:08.949Z pushedAt=2026-08-31T12:03:02.187Z -->
 
 The Image Effect module provides basic capabilities for processing images, including brightness adjustment, blurring, grayscale adjustment, and intelligent color picking. It is applicable to scenarios such as adding filter effects in image editing apps, blurring the background image of app startup pages, automatically extracting UI theme colors, and analyzing image color schemes.
 
@@ -26,7 +26,7 @@ This module provides the following common functions related to image effects:
 ## Modules to Import
 
 ```ts
-import { effectKit } from "@kit.ArkGraphics2D";
+import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
 ## PictureComplexityDegree<sup>22+</sup>
@@ -125,8 +125,8 @@ For detailed introduction of the following error codes, please refer to [Univers
 **Example**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -148,7 +148,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
         console.info('get top proportion colors and percentages: color ' + key + ', percentage ' + value);
       })
     }
-  })
+  });
 });
 ```
 
@@ -183,8 +183,8 @@ For detailed introduction of the following error codes, please refer to [Univers
 **Example**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -204,7 +204,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let shadeDegree: effectKit.PictureShadeDegree = colorPicker.getShadeDegree();
       console.info('The shade degree of the image is ' + shadeDegree);
     }
-  })
+  });
 });
 ```
 
@@ -237,8 +237,8 @@ For detailed introduction of the following error codes, please refer to [Univers
 **Example**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -258,7 +258,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let complexityDegree: effectKit.PictureComplexityDegree = colorPicker.getComplexityDegree();
       console.info('The complexity degree of the image is ' + complexityDegree);
     }
-  })
+  });
 });
 ```
 
@@ -291,8 +291,8 @@ For detailed introduction of the following error codes, please refer to [Univers
 **Example**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -312,7 +312,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
         let percentage: number = colorPicker.getAlphaZeroTransparentProportion();
       console.info('Get proportion of fully transparent pixels: ' + percentage);
     }
-  })
+  });
 });
 ```
 
@@ -341,18 +341,18 @@ Obtains the Morandi shadow color from the dominant color of the image and writes
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -362,7 +362,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let color = colorPicker.getMorandiShadowColor();
       console.info('get Morandi shadow color =' + color);
     }
-  })
+  });
 });
 ```
 
@@ -391,18 +391,18 @@ Generates a strong immersion color that blends with the background color and is 
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -412,7 +412,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let color = colorPicker.getDeepenImmersionColor();
       console.info('get deepen immersion color =' + color);
     }
-  })
+  });
 });
 ```
 
@@ -441,18 +441,18 @@ Generates an immersive background color that creates an immersive visual effect,
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -491,18 +491,18 @@ Generates an immersive foreground color that can create an immersive visual effe
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -512,7 +512,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let color = colorPicker.getImmersiveForegroundColor();
       console.info('get immersive foreground color =' + color);
     }
-  })
+  });
 });
 ```
 
@@ -549,8 +549,8 @@ For detailed introduction of the following error codes, please refer to [Univers
 **Example**
 
 ```js
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
 let opts: image.InitializationOptions = {
@@ -570,7 +570,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let pictureLightDegree: effectKit.PictureLightDegree = colorPicker.discriminatePictureLightDegree();
       console.info('The color light degree of the image is ' + pictureLightDegree);
     }
-  })
+  });
 });
 ```
 
@@ -599,18 +599,18 @@ Generates a reverse color based on the image brightness discrimination result, a
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
 const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
     if (error) {
@@ -620,7 +620,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       let color = colorPicker.getReverseColor();
       console.info('get reverse color =' + color);
     }
-  })
+  });
 });
 ```
 
@@ -648,7 +648,7 @@ Adds a gradient blur effect with an elliptical mask to the effect chain and retu
 
 | Name | Type        | Mandatory | Description                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  blurRadius   | number | Yes   | Blur radius, a positive integer in px. If the blur radius is greater than 60 px, it is automatically truncated. The blur effect is proportional to the set blur radius value. A larger value indicates a more obvious effect. |
+|  blurRadius   | number | Yes   | Blur radius, a positive integer in px. If the blur radius is greater than 60 px, it is automatically truncated. If the blur radius is less than or equal to 0 px, no effect is applied. The blur effect is proportional to the set blur radius value. A larger value indicates a more obvious effect. |
 |  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | Yes | Coordinates of the center point of the elliptical mask. |
 |  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | Yes | Radius of the elliptical mask along the X-axis and Y-axis. |
 |  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | Yes | Array of gradient blur positions and degrees. The array elements are binary arrays, where the first element indicates the position and the second element indicates the blur degree. The value range of the position is [0, 1], where 0 corresponds to the center of the ellipse and 1 corresponds to the boundary of the ellipse. The value range of the blur degree is [0, 1], where 0 indicates no blur, and values greater than 1 are automatically converted to 1. The position parameter values must be strictly increasing. The array length cannot be less than 2 and the maximum is 12. |
@@ -666,9 +666,9 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass in the read image data
-function ImageEllipticalGradientBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
+function ImageEllipticalGradientBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise((resolve, reject) => {
-    let imageSource = image.createImageSource(Image);
+    let imageSource = image.createImageSource(imageBuffer);
     let blurRadius:number = 25;
     let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
     let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];

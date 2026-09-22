@@ -6,7 +6,7 @@
 <!--Designer: @zhanglu161-->
 <!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9f53a9e77747af975b5a889ab884bf4bcac288aa translatedAt=2026-06-30T10:23:28.915Z pushedAt=2026-06-30T13:43:40.767Z -->
+<!-- md-trans-meta sourceCommit=99de6ea4cb9fbb5492225360bd6bd82121ebd7c1 translatedAt=2026-08-24T11:37:43.608Z pushedAt=2026-08-25T07:40:06.254Z -->
 
 ## Overview
 
@@ -41,9 +41,9 @@ Task dependency applies to scenarios where tasks have specific sequence or logic
 
 Data dependency applies to scenarios where tasks are triggered by data production and consumption relationships.
 
-A data object may have multiple versions. Each version corresponds to one producer task and zero, one, or more consumer tasks. A sequence of the data object versions and the version-specific producer task and consumer tasks are defined according to the delivery sequence of the producer task and consumer tasks.
+A data object may have multiple versions. Each version corresponds to one producer task and zero, one, or more consumer tasks. The order of the multiple versions of the data object, as well as the producer and consumer tasks corresponding to each version, is defined according to the order in which the producer tasks and consumer tasks are submitted.
 
-When all producer tasks and consumer tasks of the data object of all the available versions are executed, the data dependency is removed. In this case, the task enters the ready state and can be scheduled for execution.
+A task whose data dependency is removed enters the ready state and can be scheduled for execution. The dependency-removed state refers to the state where all producer tasks of all input data object versions and all consumer tasks of all output data object versions have completed execution.
 
 FFRT can dynamically build producer/consumer-based data dependencies between tasks at runtime and perform scheduling based on the task data dependency status, including:
 
@@ -79,7 +79,7 @@ The following conclusions can be drawn:
 
 - task2/task3 and task4 form a consumer-producer dependency. This means that task4 can write data A only after task2/task3 reads data A.
 
-- task 4 and task 5 form a producer-producer dependency. This means that task 5 can write data A only after task 4 writes data A.
+- task4 and task5 form a producer-producer dependency. This means that task 5 can write data A only after task 4 writes data A.
 
 ## Example: Streaming Video Processing
 
@@ -87,7 +87,7 @@ A user uploads a video to the platform. The processing steps include: parsing, t
 
 ![image](figures/ffrt_figure1.png)
 
-The FFRT provides task graph that can describe the task dependency and parallelize the preceding video processing process. The code is as follows:
+The graph-based concurrency paradigm provided by FFRT can describe task dependencies and parallelize the preceding video processing flow. The code is as follows:
 
 <!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
 
@@ -170,18 +170,18 @@ The expected output may be as follows:
 ```plain
 Video parsing
 Video transcoding
-Thumbnails generation
+Thumbnail generation
 Watermark adding
 Video release
 ```
 
 > **NOTE**
 >
-> The `ffrt_submit_h_f` and `ffrt_submit_f` APIs can receive naked function pointer tasks as parameters. If there are pre-processing and post-processing operations on the task, refer to the [ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base) function to construct the task structure.
+> The `ffrt_submit_h_f` and `ffrt_submit_f` APIs can receive bare function pointer tasks as parameters. If there are pre-processing and post-processing operations on the task, refer to the [ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base) function to construct the task structure.
 
 ## Example: Fibonacci Sequence
 
-Each number in the Fibonacci sequence is the sum of the first two numbers. The process of calculating the Fibonacci number can well express the task dependency through the data object. The code for calculating the Fibonacci number using the FFRT framework is as follows:
+Each number in the Fibonacci sequence is the sum of the previous two numbers. The process of calculating the Fibonacci number can effectively express the task dependency through the data object. The code for calculating the Fibonacci number using the FFRT framework is as follows:
 
 <!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
 
@@ -263,9 +263,9 @@ In the example, `fibonacci(x-1)` and `fibonacci(x-2)` are submitted to FFRT as t
 
 > **NOTE**
 >
-> The `ffrt_submit_f` API can receive a naked function pointer task as a parameter. If there are pre-processing and post-processing operations on the task, refer to the [ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base) function to construct the task structure.
+> The `ffrt_submit_f` API can receive a bare function pointer task as a parameter. If there are pre-processing and post-processing operations on the task, refer to the [ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base) function to construct the task structure.
 
-Each task forms a call tree in the FFRT.
+All tasks form a call tree inside FFRT.
 
 ![image](figures/ffrt_figure2.png)
 
@@ -276,13 +276,13 @@ The main FFRT APIs involved in the preceding example are as follows:
 | Name                                                      | Description                                                                             |
 | ---------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | [ffrt_submit_f](ffrt-api-guideline-c.md#ffrt_submit_f)     | Submits a task.<br>**Note**: This API is supported since API version 20.              |
-| [ffrt_submit_h_f](ffrt-api-guideline-c.md#ffrt_submit_h_f) | Submits a task, and obtains the task handle.<br>**Note**: This API is supported since API version 20.|
+| [ffrt_submit_h_f](ffrt-api-guideline-c.md#ffrt_submit_h_f) | Submits a task, and returns the task handle.<br>**Note**: This API is supported since API version 20.|
 | [ffrt_wait_deps](ffrt-api-guideline-c.md#ffrt_wait_deps)   | Waits until the dependent tasks are complete.                                                             |
 
 > **NOTE**
 >
-> - For details about how to use FFRT C++ APIs, see [Using FFRT C++ APIs](ffrt-development-guideline.md#using-ffrt-c-api-1).
-> - When using FFRT C or C++ APIs, you can refer to the FFRT C++ API third-party library to simplify the header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
+> - For details about how to use FFRT C++ APIs, see [Using FFRT C++ API](ffrt-development-guideline.md#using-ffrt-c-api-1).
+> - When using FFRT C or C++ APIs, you can simplify header file inclusion by using the FFRT C++ API third-party library, that is, use the `#include "ffrt/ffrt.h"` statement.
 
 ## Constraints
 

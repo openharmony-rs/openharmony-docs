@@ -1,4 +1,4 @@
-# 全屏启动原子化服务组件（FullScreenLaunchComponent）
+# 全屏启动原子化服务 (FullScreenLaunchComponent)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
@@ -23,9 +23,11 @@ FullScreenLaunchComponent允许开发者以全屏方式拉起原子化服务，�
 
 ## 实现原理
 
-FullScreenLaunchComponent提供的一种全屏启动原子化服务的能力。需要拉起原子化服务时，拉起方向AMS查询拉起方是否授权使用方可以嵌入式运行原子化服务。已授权时，使用方全屏嵌入式运行原子化服务；未授权时，使用方跳出式拉起原子化服务。
+FullScreenLaunchComponent提供的一种全屏启动原子化服务的能力。需要拉起原子化服务时，拉起方向AMS查询被拉起方是否授权使用方可以嵌入式运行原子化服务。已授权时，使用方全屏嵌入式运行原子化服务；未授权时，使用方跳出式拉起原子化服务。
 
-<!--Del-->全屏嵌入式运行原子化服务是指，通过[UIExtension](./arkts-ui-extension-components-sys.md)封装的组件方式嵌入到使用方的组件树中，拉起EmbeddableUIAbility，展示提供方的应用内容，以实现组件式的交互体验。<!--DelEnd-->
+<!--Del-->
+全屏嵌入式运行原子化服务是指，通过[UIExtension](./arkts-ui-extension-components-sys.md)封装的组件方式嵌入到使用方的组件树中，拉起EmbeddableUIAbility，展示提供方的应用内容，以实现组件式的交互体验。 
+<!--DelEnd-->
 
 跳出式运行原子化服务是指，非组件化的方式拉起EmbeddableUIAbility，交互体验接近独立窗口。
 
@@ -103,7 +105,7 @@ Native API接口提供能力，在FullScreenLaunchComponent场景下也需要考
 | <!--DelRow-->[性能监测](../reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md) | 不支持   | 用户操作场景提供性能相关指标监测能力，目前仅包含响应时延、完成时延、丢帧。| —                                                            |
 | [注册自定义字体](../reference/apis-arkui/js-apis-font.md)    | 不支持   | 本模块提供注册自定义字体。                                   | 注册字体存在影响范围的问题，提供方侧无法影响使用方应用的字体。 |
 | [PluginComponentManager](../reference/apis-arkui/js-apis-plugincomponent.md) | 不支持   | 用于给插件组件的使用者请求组件与数据，使用者发送组件模板和数据。 | 依赖获取其他组件的数据，提供方组件在另一个进程中，无法提供访问宿主组件的能力。 |
-| <!--DelRow-->[用户界面外观(系统接口)](../reference/apis-arkui/js-apis-uiappearance-sys.md) | 不支持   | 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。 | 提供方不能通过该能力影响使用方。                             |
+| <!--DelRow-->[@ohos.uiAppearance (用户界面外观)(系统接口)](../reference/apis-arkui/js-apis-uiappearance-sys.md) | 不支持   | 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。 | 提供方不能通过该能力影响使用方。                             |
 
 ## 约束与限制
 
@@ -162,7 +164,7 @@ FullScreenLaunchComponent不支持通用事件，会将事件经过坐标转换�
 应用开发者（提供方）需要考虑如下设计约束：
 
 - 尽量使用布局变化少的场景。
-- 当由布局变化时，提供方js线程尽量少的执行任务，确保js线程能够及时响应布局变化的任务。
+- 当有布局变化时，提供方js线程尽量少的执行任务，确保js线程能够及时响应布局变化的任务。
 
 应用开发者（使用方）可以通过如下方式消减闪白问题：
 

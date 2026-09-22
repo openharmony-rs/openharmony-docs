@@ -1,10 +1,12 @@
 # @ohos.arkui.uiMaterial (System Material)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4074739ec104663f417d9981273bcd01b284c4ca translatedAt=2026-08-05T03:06:35.858Z pushedAt=2026-08-06T02:42:06.022Z -->
 
 This module provides APIs for system materials. Different system materials correspond to different UI effects, including the [background color](arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [border color](arkui-ts/ts-universal-attributes-border.md#bordercolor), [border width](arkui-ts/ts-universal-attributes-border.md#borderwidth), [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow), and [material filter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23). The system materials currently provided is of the [ImmersiveMaterial](#immersivematerial) type. Immersive material objects have different performance on different devices. The immersive material objects take effect only on devices that support immersive materials, and can be configured but do not take effect on devices that do not support immersive materials. You can use [isImmersiveMaterialSupported](#uimaterialisimmersivematerialsupported) to check whether the device supports immersive materials. On devices that support immersive materials, the material effect varies depending on the device's computing power. You can use [getGlobalMaterialLevel](#uimaterialgetglobalmateriallevel) to obtain the material level of the device. For details, see the description of [ImmersiveMaterial](#immersivematerial).
 
@@ -22,7 +24,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 Immersive material class, which inherits from [Material](#material).
 
-The performance of immersive materials varies depending on whether the device supports immersive materials and on the device's computing power. You can use [isImmersiveMaterialSupported](#uimaterialisimmersivematerialsupported) to check whether the device supports immersive materials and use [getGlobalMaterialLevel](#uimaterialgetglobalmateriallevel) to obtain the material level of the device. You can set immersive materials on devices that do not support immersive materials, but the settings will have no effect. For high- and medium-computing devices that support immersive materials, material effects are implemented using [materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23) and [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow). After the **systemMaterial** attribute takes effect, the set [backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor) attribute is restored to transparent, and the set [borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth) attribute is restored to no border. For low-computing devices that support immersive materials, backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor), [borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth), and [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow) are used to achieve material effects. In addition, the effect of the same material is affected by the immersive light configuration in the system settings application. The material parameters and effects vary depending on the immersive light configuration.
+The immersive material has tiered performance based on whether the device supports immersive material and the device's computing power. You can use [isImmersiveMaterialSupported](#uimaterialisimmersivematerialsupported) to determine whether the device supports immersive material, and use [getGlobalMaterialLevel](#uimaterialgetglobalmateriallevel) to obtain the material level of the device. On devices that do not support immersive material, immersive material can be set but will have no effect. On high and medium computing power devices that support immersive material, the material effect is implemented through the material layer filter attribute [materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23) and the shadow attribute [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow). When the [systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) attribute takes effect, the previously set background color attribute [backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor) is restored to transparent, and the previously set border width attribute [borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth) is restored to no border effect. On low computing power devices that support immersive material, the material effect is implemented through the background color attribute [backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor), border color attribute [borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor), border width attribute [borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth), and shadow attribute [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow). The effect of the same material is influenced by the immersive light sensation configuration item in the system settings app. Under different intensity levels of immersive light sensation configuration, the material parameters and effects may vary.
 
 ### constructor
 
@@ -64,7 +66,7 @@ static get empty(): Material
 
 Returns an empty material object, which is used to disable the immersive system material effect for a component. The usage method is **uiMaterial.Material.empty**.
 
-In enabled state, you can disable the immersive system material effect for a component by setting **systemMaterial(uiMaterial.Material.empty)**. If the component does not support the component-level immersive system material API, the material effect cannot be disabled using this API.
+In enabled mode, you can set `systemMaterial(uiMaterial.Material.empty)` to individually disable the immersive system material effect for a specific component. If the component does not support the component-level immersive system material API, the material effect cannot be disabled through this method.
 
 **Since**: 26.0.0
 
@@ -89,8 +91,6 @@ Enumerates system material types.
 **Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -155,7 +155,7 @@ Obtains the material configuration information of this application. The returned
 
 ## ImmersiveStyle
 
-Enumerates immersive material styles. Different material styles correspond to different material parameters, including the blur degree and brightness.
+Enumerates immersive material styles. Different material styles correspond to different material parameters, including the blur intensity and highlight effects.
 
 **Since**: 26.0.0
 
@@ -263,10 +263,10 @@ Immersive material parameters.
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
 | style   | [ImmersiveStyle](#immersivestyle)                                   | No| Yes  | Material style. Different styles correspond to different material parameters, which affect the material thickness.<br>Note: This parameter takes effect only for high- and medium-computing devices that support immersive materials.<br>Default value: **uiMaterial.ImmersiveStyle.REGULAR**|
 | materialColor   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)                                   | No| Yes  | Coloring of the material layer. For high- and medium-computing devices that support immersive materials, if this parameter is not specified or is set to **undefined**, no additional pure color effect is mixed. If this parameter is set to a valid color value, this parameter will mix a pure color effect for the material filter. If the color is completely opaque, the material filter effect will be blocked. For low-computing devices that support immersive materials, if this parameter is not specified or is set to **undefined**, the background color effect of the material on the devices takes effect. If this parameter is set to a valid color value, this parameter value is used as the value of the [backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor) attribute.<br>Note: This parameter takes effect on the display effect of all computing power devices that support immersive materials.<br>Default value: **undefined**|
-| colorInvert   | boolean                                   | No| Yes  | Whether the subtree of the node of the material object automatically adapts the material to the complementary color of the background color.<br>**false** indicates the material is not automatically adapted to the complementary color of the background color.<br>**true** indicates that the material is automatically adapted to the complementary color of the background color only when the material layer is thin enough. The materials that can be adapted to the complementary color are defined by the system. Such materials must have at least the **THIN** or **ULTRA_THIN** style, and are related to the strength configuration of the immersive light effect of the application. The thinner the material and the stronger the immersive light effect, the more likely the material meets the requirements for adapting to the complementary color.<br>The automatic complementary color adaptation capability takes effect only when special resource values (listed in Table 1) are set for some attribute APIs. Such attribute APIs include:<br>[fontColor](arkui-ts/ts-basic-components-text.md#fontcolor) of the **Text** component;<br>[fontColor](arkui-ts/ts-basic-components-button.md#fontcolor) of the **Button** component;<br>[fontColor](arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor) of the **SymbolGlyph** component;<br>[fillColor](arkui-ts/ts-basic-components-image.md#fillcolor) of the **Image** component;<br>[placeholderColor](arkui-ts/ts-basic-components-search.md#placeholdercolor), [fontColor](arkui-ts/ts-basic-components-search.md#fontcolor10), icon color in [searchIcon](arkui-ts/ts-basic-components-search.md#searchicon10), icon color in [cancelButton](arkui-ts/ts-basic-components-search.md#cancelbutton10), caret color in (arkui-ts/ts-basic-components-search.md#caretstyle10), and button color in [searchButton](arkui-ts/ts-basic-components-search.md#searchbutton) under the **Search** component;<br>[BottomTabBarStyle](arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9) used by [tabBar](arkui-ts/ts-container-tabcontent.md#tabbar) of the **TabContent** component;<br>[prefixIcon](arkui-ts/ohos-arkui-advanced-Chip.md#prefixiconoptions), [fillColor](arkui-ts/ohos-arkui-advanced-Chip.md#iconcommonoptions) of the **suffixIcon** attribute, and [fontColor](arkui-ts/ohos-arkui-advanced-Chip.md#labeloptions) of the [label](arkui-ts/ohos-arkui-advanced-Chip.md#labeloptions) attribute under the **Chip** component;<br>[fontColor](arkui-ts/ohos-arkui-advanced-ChipGroup.md#chipitemstyle) of [itemStyle](arkui-ts/ohos-arkui-advanced-ChipGroup.md#chipgroup-1) of the **ChipGroup** component;<br>[fontColor](arkui-ts/ts-basic-components-textarea.md#fontcolor) and [placeholderColor](arkui-ts/ts-basic-components-textarea.md#placeholdercolor) of the **TextArea** component;<br>[fontColor](arkui-ts/ts-basic-components-textinput.md#fontcolor) and [placeholderColor](arkui-ts/ts-basic-components-textinput.md#placeholdercolor) of the **TextInput** component;<br>[fontColor](arkui-ts/ohos-arkui-advanced-SegmentButton.md#properties) of the **SegmentButton** component;<br>[fontColor](arkui-ts/ts-container-swiper.md#fontcolor) of the **Swiper** component.<br>When the preceding APIs are used, the text and icon colors are automatically inverted.<br>Note: This parameter takes effect only for high- and medium-computing devices that support immersive materials.<br>Default value: **false**|
+| colorInvert   | boolean                                   | No| Yes  | Whether the subtree of the node of the material object automatically adapts the material to the complementary color of the background color.<br>**false** indicates the material is not automatically adapted to the complementary color of the background color.<br>**true** indicates that the material is automatically adapted to the complementary color of the background color only when the material layer is thin enough. The materials that can be adapted to the complementary color are defined by the system. Such materials must have at least the **THIN** or **ULTRA_THIN** style, and are related to the strength configuration of the immersive light effect of the application. The thinner the material and the stronger the immersive light effect, the more likely the material meets the requirements for adapting to the complementary color.<br>The automatic complementary color adaptation capability takes effect only when special resource values (listed in Table 1) are set for some attribute APIs. Such attribute APIs include:<br>[fontColor](arkui-ts/ts-basic-components-text.md#fontcolor) of the **Text** component;<br>[fontColor](arkui-ts/ts-basic-components-button.md#fontcolor) of the **Button** component;<br>[fontColor](arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor) of the **SymbolGlyph** component;<br>[fillColor](arkui-ts/ts-basic-components-image.md#fillcolor) of the **Image** component;<br>[placeholderColor](arkui-ts/ts-basic-components-search.md#placeholdercolor), [fontColor](arkui-ts/ts-basic-components-search.md#fontcolor10), icon color in [searchIcon](arkui-ts/ts-basic-components-search.md#searchicon10), icon color in [cancelButton](arkui-ts/ts-basic-components-search.md#cancelbutton10), caret color in [caretStyle](arkui-ts/ts-basic-components-search.md#caretstyle10), and button color in [searchButton](arkui-ts/ts-basic-components-search.md#searchbutton) under the **Search** component;<br>[BottomTabBarStyle](arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9) used by [tabBar](arkui-ts/ts-container-tabcontent.md#tabbar) of the **TabContent** component;<br>[prefixIcon](arkui-ts/ohos-arkui-advanced-Chip.md#prefixiconoptions), [fillColor](arkui-ts/ohos-arkui-advanced-Chip.md#iconcommonoptions) of the **suffixIcon** attribute, and [fontColor](arkui-ts/ohos-arkui-advanced-Chip.md#labeloptions) of the [label](arkui-ts/ohos-arkui-advanced-Chip.md#labeloptions) attribute under the **Chip** component;<br>[fontColor](arkui-ts/ohos-arkui-advanced-ChipGroup.md#chipitemstyle) of [itemStyle](arkui-ts/ohos-arkui-advanced-ChipGroup.md#chipgroup-1) of the **ChipGroup** component;<br>[fontColor](arkui-ts/ts-basic-components-textarea.md#fontcolor) and [placeholderColor](arkui-ts/ts-basic-components-textarea.md#placeholdercolor) of the **TextArea** component;<br>[fontColor](arkui-ts/ts-basic-components-textinput.md#fontcolor) and [placeholderColor](arkui-ts/ts-basic-components-textinput.md#placeholdercolor) of the **TextInput** component;<br>[fontColor](arkui-ts/ohos-arkui-advanced-SegmentButton.md#properties-1) of the **SegmentButton** component;<br>[fontColor](arkui-ts/ts-container-swiper.md#fontcolor) of the **Swiper** component.<br>When the preceding APIs are used, the text and icon colors are automatically inverted.<br>Note: This parameter takes effect only for high- and medium-computing devices that support immersive materials.<br>Default value: **false**|
 | applyShadow   | boolean                                   | No| Yes  | Whether to add a shadow effect for a material.<br>If this parameter is set to **true**, the added shadow effect in the material always takes effect, which takes precedence over the general [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow) attribute. If this parameter is set to **false**, only the general shadow attribute takes effect.<br>Note: This parameter takes effect on the display effect of all computing power devices that support immersive materials.<br>Default value: **true**|
 | interactive   | boolean                                   | No| Yes  | Whether to enable the interactive deformation effect.<br>The value **true** indicates to enable the interactive deformation effect, and **false** indicates the opposite.<br>Note: This parameter takes effect on the display effect of all computing power devices that support immersive materials.<br>Default value: **false**|
-| lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | No| Yes  | Parameters for the light sensing interaction feedback effect parameter. If this parameter is set to null, the light sensing interaction feedback effect is disabled.<br>Note: This parameter takes effect only for high- and medium-computing devices that support immersive materials.<br>Default value: **undefined**, indicating that the light sensing interaction feedback effect is not set.|
+| lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | No | Yes   | Parameter for the light sensory interaction feedback effect. When a LightEffectOptions object is passed in, light sensory interaction feedback is enabled; when null is passed in, the light sensory interaction feedback effect is explicitly disabled; when not passed in, the default value is **undefined**, depending on whether the component has a default interactive light effect.<br/>**Note:** This parameter takes effect only on the display effect of high- and medium- computing power devices that support immersive material.<br/>Default value: undefined, meaning the light sensory interaction feedback effect is not set. |
 
 **Table 1** Deep and light color values corresponding to special resource value pairs
 
@@ -413,6 +413,7 @@ This example shows how to use [uiMaterial.getMaterialInfo](#uimaterialgetmateria
 Since API version 26.0.0, the **uiMaterial.getMaterialInfo** and **empty** APIs are added.
 
 Configure the toggle information in the [module.json5](../../quick-start/module-configuration-file.md) file. Note that the configuration takes effect only in the module of the entry type.
+
 ``` json5
 {
   "module": {
@@ -427,7 +428,9 @@ Configure the toggle information in the [module.json5](../../quick-start/module-
   }
 }
 ```
+
 Write the sample code as follows:
+
 ``` ts
 import { uiMaterial } from '@kit.ArkUI';
 
@@ -496,7 +499,7 @@ This example shows how to use the **interactive** API in [ImmersiveOptions](#imm
 Since API version 26.0.0, the **interactive** API is added.
 
 ``` ts
-import { uiMaterial } from '@kit.ArkUI'
+import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -507,7 +510,7 @@ struct Index {
       Image($r('app.media.startIcon'))
       Column() {
         Column() {
-          Text("Context")
+          Text('Context')
         }
         .margin({ bottom: 100 })
         .width(248)
@@ -542,6 +545,7 @@ struct LightEffect {
   @State itemsKey: number[] = [0, 1, 2];
   @State circleRadius: number = 40;
   @State spaceValue: number = 10;
+  // Create an immersive material object, and enable interactive deformation and sensory interaction feedback effects (the default white light color is used when lightEffect.color is undefined).
   @State myMaterial: uiMaterial.Material = new uiMaterial.ImmersiveMaterial({
     style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
     interactive: true,

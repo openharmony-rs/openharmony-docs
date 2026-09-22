@@ -4,7 +4,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## 场景介绍
 
@@ -225,7 +225,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     let isIdleState = usageStatistics.isIdleStateSync("com.ohos.camera");
     ```
 
-8. 查询FA使用记录。返回数量最大不超过maxNum设置的值，若不传入maxNum参数，则默认maxNum为1000, 需要配置ohos.permission.BUNDLE_ACTIVE_INFO权限。
+8. 查询FA使用记录。返回数量最大不超过maxNum设置的值，若不传入maxNum参数，则默认maxNum为1000，需要配置ohos.permission.BUNDLE_ACTIVE_INFO权限。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -313,8 +313,8 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise result ' + JSON.stringify(res));
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise success.');
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise result ' + JSON.stringify(res));
     }).catch( (err: BusinessError) => {
         console.error('BUNDLE_ACTIVE queryDeviceEventStats promise failed. code is: ' + err.code + ',message is: ' + err.message);
     });

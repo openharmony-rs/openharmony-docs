@@ -26,7 +26,7 @@ struct OhosImageSourceSupportedFormat {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| char* format = nullptr | 图像源支持的格式字符串头地址。 |
-| size_t size = 0 | 图像源支持的格式字符串大小。 |
-
-
+| char* format = nullptr | 图像源支持的格式字符串头地址。仅适用于C++编译环境。 |
+| size_t size = 0 | 图像源支持的格式字符串大小。仅适用于C++编译环境。 |
+| char* format | 图像源支持的格式字符串头地址。仅适用于C编译环境。 |
+| size_t size | 图像源支持的格式字符串大小。仅适用于C编译环境。 |

@@ -31,7 +31,7 @@ responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) | 是   | 触摸热区，包括位置和大小。<br>默认触摸热区为整个组件，默认值：<br>{<br>x：0,<br>y：0,<br>width：'100%',<br>height：'100%'<br>}<br> |
+| value  | Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) | 是   | 触摸热区，包括位置和大小。<br>默认触摸热区为整个组件，默认值：<br>{<br>x：0,<br>y：0,<br>width：'100%',<br>height：'100%'<br>}<br>异常值：参数为undefined或null时，按默认值处理。 |
 
 **返回值：**
 
@@ -79,7 +79,7 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| regions  | Array&lt;[ResponseRegion](#responseregion22对象说明)&gt;&nbsp; | 是   | 组件的触摸热区数组。<br>每个触摸热区均包括输入工具类型、位置和大小。<br>默认值：<br>[{<br>tool：ResponseRegionSupportedTool.ALL,<br>x：LengthMetrics.vp(0),<br>y：LengthMetrics.vp(0),<br>width：LengthMetrics.percent(1),<br>height：LengthMetrics.percent(1)<br>}] |
+| regions  | Array&lt;[ResponseRegion](#responseregion22对象说明)&gt;&nbsp; | 是   | 组件的触摸热区数组。<br>每个触摸热区均包括输入工具类型、位置和大小。<br>默认值：<br>[{<br>tool：ResponseRegionSupportedTool.ALL,<br>x：LengthMetrics.vp(0),<br>y：LengthMetrics.vp(0),<br>width：LengthMetrics.percent(1),<br>height：LengthMetrics.percent(1)<br>}]<br>异常值：参数为undefined或null时，按默认值处理。 |
 
 **返回值：**
 
@@ -106,7 +106,7 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
   >
   > - x和y可以设置正负值百分比。当x设置为'100%'时表示热区往右偏移组件本身宽度大小，当x设置为'-100%'时表示热区往左偏移组件本身宽度大小。当y设置为'100%'时表示热区往下偏移组件本身高度大小，当y设置为'-100%'时表示热区往上偏移组件本身高度大小。
   >
-  > - width和height设置百分比时，只能设置正值百分比。width：'100%'表示热区宽度设置为该组件本身的宽度。比如组件本身宽度是100vp，那么'100%'表示热区宽度也为100vp。height：'100%'表示热区高度设置为该组件本身的高度。
+  > - width和height设置百分比时，只能设置正值百分比。width：'100%'表示热区宽度设置为该组件本身的宽度。比如组件本身宽度是100vp，那么'100%'表示热区宽度也为100vp。height：'100%'表示热区高度设置为该组件本身的高度。设置为0或负值百分比时，采用默认值'100%'。
   >
   > - 百分比相对于组件自身宽高进行计算。
   >
@@ -126,7 +126,7 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
   >
   > - x和y的计算结果为正值时，分别代表向右偏移和向下偏移；当计算结果为负值时，分别代表向左偏移和向上偏移。
   >
-  > - width和height采用string类型时，string需采用小写字符，否则不生效，支持calc()的动态计算。指定calc()的入参字符串格式为'宽高缩放比例 ± 宽高增量'，宽高缩放比例为百分比，宽高增量单位为px或vp。例如'calc(80% + 10vp)'中，80%为宽高缩放比例、10vp为宽高增量。width和height采用LengthMetrics类型且单位为percent时，相对于组件自身宽高进行计算，percent(1)代表100%。当计算结果为负值时，采用默认值。
+  > - width和height采用string类型时，string需采用小写字符，否则不生效，支持calc()的动态计算。指定calc()的入参字符串格式为'宽高缩放比例 ± 宽高增量'，宽高缩放比例为百分比，宽高增量单位为px或vp；格式不符合要求或使用其他单位时不生效。例如'calc(80% + 10vp)'中，80%为宽高缩放比例、10vp为宽高增量。width和height采用LengthMetrics类型且单位为percent时，相对于组件自身宽高进行计算，percent(1)代表100%。当计算结果为负值时，采用默认值。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -220,7 +220,7 @@ struct TouchTargetExample {
 
 ```ts
 // xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
+import { LengthMetrics, ResponseRegionSupportedTool } from '@kit.ArkUI';
 
 @Entry
 @Component

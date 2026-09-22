@@ -6,8 +6,9 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:02:57.293Z pushedAt=2026-09-11T03:07:31.650Z -->
 
-The input event injection module provides the capability to simulate keyboard, mouse, and touch input events.
+The inputEventClient module provides the capability to inject input events, including key, mouse/touchpad, and touchscreen events.
 
 **Since:** 26.0.0
 
@@ -25,7 +26,7 @@ Creates a keyboard controller for simulating key operations. This API uses a pro
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -83,7 +84,7 @@ Creates a mouse controller for simulating mouse operations. This API uses a prom
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -141,7 +142,7 @@ Creates a touch controller for simulating touch operations. This API uses a prom
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -207,7 +208,7 @@ Presses a key. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -278,7 +279,7 @@ Releases a key. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -329,7 +330,7 @@ Moves the mouse cursor to the specified display coordinates. This API uses a pro
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -398,7 +399,7 @@ Presses a mouse button. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -469,7 +470,7 @@ Release a mouse button. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -511,7 +512,7 @@ Starts an axis event. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -587,7 +588,7 @@ Updates an axis event. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -630,7 +631,7 @@ Ends an axis event. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -670,7 +671,7 @@ Represents information about a single touch point on the display.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -696,7 +697,7 @@ Presses down a touch point. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -723,7 +724,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0,9]. |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 4300002 | The display does not exist. |
 | 3800001 | Input service exception. |
 
@@ -788,7 +789,7 @@ Moves a touch point. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -815,7 +816,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 3800001 | Input service exception. |
 
 **Example:**
@@ -830,7 +831,7 @@ Releases a touch point. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -857,7 +858,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 3800001 | Input service exception. |
 
 **Example:**

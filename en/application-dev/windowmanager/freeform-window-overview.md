@@ -16,7 +16,7 @@ Freeform windows are stacked along the Z-axis in the order they are opened or ga
 
 When a new freeform window is launched, it is displayed by default at a certain offset to the lower right of the previous window in a cascading manner.
 
-Each freeform window displays a title bar at the top by default. The app icon is shown on the left side of the title bar, and the three-button control buttons (maximize/restore, minimize, and close) are shown on the right side. The window title bar also supports additional [immersive configuration](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive#section359241062916).
+Each freeform window displays a title bar at the top by default. The app icon is shown on the left side of the title bar, and the three-button control buttons (maximize/restore, minimize, and close) are shown on the right side. The window title bar also supports additional [immersive configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-immersive#section359241062916).
 
 You can resize a freeform window by dragging its edges, and move it by dragging its title bar.
 

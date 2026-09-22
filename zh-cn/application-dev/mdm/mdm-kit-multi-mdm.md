@@ -14,14 +14,12 @@
 
 Admin组件可以通过不同的方式激活，不同的激活方式，成为的角色也不同。
 
-1.通过[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。当MDM应用仅需对设备进行管控，无需管理其他DA应用时，可选择被激活为DA。
+1. 通过[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。当MDM应用仅需对设备进行管控，无需管理其他DA应用时，可选择被激活为DA。
 
-2.通过[adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口，激活后成为[BDA角色](./mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)。当MDM应用需要对员工使用的个人设备在特殊场景进行有限管控（如禁用拍照、录音等）时，可选择被激活为BDA。
+2. 通过[adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口，激活后成为[BDA角色](./mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)。当MDM应用需要对员工使用的个人设备在特殊场景进行有限管控（如禁用拍照、录音等）时，可选择被激活为BDA。<!--Del-->
+3. 通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_SUPER，激活后成为[SDA角色](./mdm-kit-term.md#super-device-admin-sda超级设备管理员)。当MDM应用需要管理多个其他DA应用时，可选择被激活为SDA。
 
-<!--Del-->
-3.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_SUPER，激活后成为[SDA角色](./mdm-kit-term.md#super-device-admin-sda超级设备管理员)。当MDM应用需要管理多个其他DA应用时，可选择被激活为SDA。
-
-4.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_NORMAL，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。<!--DelEnd-->
+4. 通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_NORMAL，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。<!--DelEnd-->
 
 ## 管控策略冲突
 
@@ -52,7 +50,7 @@ MDM B：不禁用摄像头。<br/>
 - Admin组件激活状态变更：Admin组件被取消激活或MDM应用被卸载时，无论设备上是否还有其他MDM应用，该策略立即失效，相关设备设置恢复至系统默认状态，其他MDM应用即可重新配置该策略。
 
 ### 规则3：配置
-- 设计原则：MDM kit提供了简化企业IT管理员管理设备的能力，一般用于代替用户手动输入或适应动态变化的环境和需求的场景。企业IT管理员可以后台批量配置企业设备信息，提升管理效率，这类能力一般通过配置规则来处理策略冲突。
+- 设计原则：MDM Kit提供了简化企业IT管理员管理设备的能力，一般用于代替用户手动输入或适应动态变化的环境和需求的场景。企业IT管理员可以后台批量配置企业设备信息，提升管理效率，这类能力一般通过配置规则来处理策略冲突。
 - 策略生效逻辑：系统仅保留后下发的策略或可能把多份策略都保留，但是实际生效的为最新的配置。
 - 示例1：<br/>
 MDM A：设置NTP服务器为ntp.a.com。<br/>
@@ -66,7 +64,7 @@ MDM B：配置Wi-Fi2，使设备连接到Wi-Fi2网络。<br/>
 - Admin组件激活状态变更：Admin组件被取消激活或MDM应用被卸载时，无论设备上是否还有其他MDM应用，已生效的配置均被保留，不受卸载影响。
 
 ### 规则4：合并
-- 设计原则：对于很多管控策略本身就具有合集属性，允许一个MDM应用多次修改添加，对于这类管控策略冲突设计合并规格。允许多个MDM应用对于同一策略进行追加设置，多个应用设置的策略都能生效。
+- 设计原则：对于很多管控策略本身就具有合集属性，允许一个MDM应用多次修改添加，对于这类管控策略冲突设计合并规则。允许多个MDM应用对于同一策略进行追加设置，多个应用设置的策略都能生效。
 - 策略生效逻辑：系统合并所有MDM应用设置的数据集合，取并集后生效。只有当某一项数据从所有MDM应用的列表中被移除时，才会从最终名单中删除。
 - 示例：<br/>
 MDM应用A：添加[应用1, 应用2] 至应用允许运行名单。<br/>

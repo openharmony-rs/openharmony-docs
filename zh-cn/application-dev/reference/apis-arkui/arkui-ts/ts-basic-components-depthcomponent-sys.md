@@ -34,6 +34,8 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -41,7 +43,7 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | background | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 背景资源。支持静态图片或3D模型。<br>静态图支持加载PixelMap和ResourceStr的数据源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>3D模型仅支持加载ResourceStr的数据源，仅支持glTF和glb的3D模型格式。ResourceStr包含Resource和string格式。其中string格式可用于加载本地3D模型，支持绝对路径或file://前缀的沙箱URI，不支持网络资源的加载；Resource格式可以跨包/跨模块访问模型资源文件，推荐以该方式加载本地3D模型。 |
-| options | [DepthComponentOptions](#depthcomponentoptions) | 否 | 景深组件配置项。默认值：`{ depthSpace: DepthSpaceType.INSTANCE }`。 |
+| options | [DepthComponentOptions](#depthcomponentoptions) | 否 | 景深组件配置项。默认值：`{ depthSpace: DepthSpaceType.INSTANCE, render3DScale: 1.0, colorSpace: colorSpaceManager.ColorSpace.SRGB }`。 |
 
 ## DepthComponentOptions
 
@@ -53,12 +55,15 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| depthSpace | [DepthSpaceType](#depthspacetype) | 否 | 是 | 景深空间类型。 |
+| depthSpace | [DepthSpaceType](#depthspacetype) | 否 | 是 | 景深空间类型。默认值：`DepthSpaceType.INSTANCE`。 |
 | render3DScale | number | 否 | 是 | 3D渲染窗口的缩放比例，同时作用于宽度和高度。取值范围：(0.0, 1.0]，超出该范围的值无效（继承之前的取值，如果之前未设置取默认值）。默认值：1.0。 |
+| colorSpace | import('../api/@ohos.graphics.colorSpaceManager').default.[ColorSpace](../../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 否 | 是 | 渲染表面的色域。设置时作为色域信息应用到底层渲染表面；未设置时不应用色域信息，渲染表面保持默认色域。默认值：colorSpaceManager.ColorSpace.SRGB。 |
 
 ## DepthSpaceType
 
@@ -73,6 +78,8 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -102,6 +109,8 @@ depthMap(depthMap: ResourceStr | PixelMap, callback?: DepthMapCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -127,6 +136,8 @@ camera(camera: DepthCameraParams)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -146,6 +157,8 @@ light(light: DepthLightParams)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -169,6 +182,8 @@ onComplete(callback: DepthComponentCompleteCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -188,6 +203,8 @@ onError(callback: DepthComponentErrorCallback)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -209,6 +226,8 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -226,6 +245,8 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -248,6 +269,8 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -267,6 +290,8 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -283,6 +308,8 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -304,6 +331,8 @@ type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -321,6 +350,8 @@ type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => vo
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -341,6 +372,8 @@ type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -358,6 +391,8 @@ type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -377,14 +412,18 @@ type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
 
 ```ts
 // xxx.ets
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
 @Entry
 @Component
 struct DepthComponentInstanceExample {
   build() {
     Column() {
       // 请开发者替换为实际的资源文件
-      DepthComponent($r('app.media.background')) {
-        Text('Spatial Effect')
+      DepthComponent($r('app.media.background'), {
+        colorSpace: colorSpaceManager.ColorSpace.DISPLAY_P3
+      }) {
+        Text('Depth Component')
           .fontSize(100)
           .spatialEffect({
             position: {
@@ -433,7 +472,7 @@ struct DepthComponentInstanceExample {
   }
 }
 ```
-![toggle](figures/DepthComponent_position_1.png)
+![文字视觉倾斜与遮挡效果](figures/DepthComponent-2D.png)
 
 ### 示例2（实现文字部分仅设置深度遮挡效果）
 
@@ -478,7 +517,7 @@ struct DepthComponentInstanceExample {
   }
 }
 ```
-![toggle](figures/DepthComponent_position_2.png)
+![仅设置深度的文字遮挡效果](figures/DepthComponent-depthonly.png)
 
 ### 示例3（实现截取部分渲染内容）
 
@@ -529,4 +568,4 @@ struct DepthComponentInstanceExample {
   }
 }
 ```
-![toggle](figures/DepthComponent_cameraBufferCrop_1.png)
+![移轴裁剪截取局部渲染效果](figures/DepthComponent-cameraCrop.png)

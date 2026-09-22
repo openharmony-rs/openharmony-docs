@@ -1,12 +1,14 @@
 # Show/Hide Event
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-08-24T07:03:05.841Z pushedAt=2026-08-25T07:34:59.649Z -->
 
-The show/hide event is triggered when a component is mounted or unmounted from the component tree. A component appears when mounted to the component tree and disappears when unmounted from the component tree.
+The show/hide event is triggered when a component is attached to or detached from the component tree. It can be used to listen for lifecycle changes during component attach and detach, and to execute related business processing at the corresponding time.
 
 > **NOTE**
 >
@@ -26,6 +28,8 @@ Triggered when this component is mounted to the component tree. Due to the follo
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -38,16 +42,17 @@ Triggered when this component is mounted to the component tree. Due to the follo
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
-
+| T | Current component, used for chained calls. |
 
 ## onDetach<sup>12+</sup>
 
 onDetach(callback: Callback\<void>): T
 
-Triggered when this component is unmounted from the component tree. You are advised to use [onDisAppear](#ondisappear) instead.
+Triggered when this component is detached from the component tree.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +66,7 @@ Triggered when this component is unmounted from the component tree. You are advi
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## onAppear
 
@@ -89,8 +94,7 @@ Triggered when this component appears.
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
-
+| T | Current component, used for chained calls. |
 
 ## onDisAppear
 
@@ -114,8 +118,7 @@ Triggered when this component disappears.
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
-
+| T | Current component, used for chained calls. |
 
 ## Example
 
@@ -123,8 +126,6 @@ This example demonstrates how to control the mounting and unmounting of a compon
 
 ```ts
 // xxx.ets
-import { promptAction } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct AppearExample {
@@ -136,7 +137,7 @@ struct AppearExample {
     Column() {
       Button(this.changeAppear)
         .onClick(() => {
-          this.isShow = !this.isShow
+          this.isShow = !this.isShow;
         }).margin(15)
       if (this.isShow) {
         Text(this.myText).fontSize(26).fontWeight(FontWeight.Bold)
@@ -160,4 +161,4 @@ struct AppearExample {
 }
 ```
 
-![onDisAppear](figures/onDisAppear.gif)
+![attach_and_detach](figures/onDisAppear.gif)

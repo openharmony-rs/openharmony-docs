@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a25f23f63f302873dc43f20e41915285e52f064b translatedAt=2026-09-03T11:34:26.316Z pushedAt=2026-09-05T10:47:30.649Z -->
 
 The module defines the listener used to listen for ability foreground and background state changes.
 

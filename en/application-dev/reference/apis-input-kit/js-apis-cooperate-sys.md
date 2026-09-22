@@ -6,17 +6,17 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:22:15.060Z pushedAt=2026-06-12T06:53:06.211Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:50:20.804Z pushedAt=2026-09-11T09:08:05.619Z -->
 
 The **inputDeviceCooperate** module implements screen hopping for two or more networked devices to share the keyboard and mouse for collaborative operations.
 
 > **NOTE**
 >
->- The APIs of this module are no longer maintained since API version 10 and will be deprecated since API version 23. You are advised to use the APIs of [@ohos.cooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md) (Screen Hopping) instead.
-> 
+>- The APIs of this module are no longer maintained since API version 10 and are deprecated since API version 23. You are advised to use the new APIs of [@ohos.cooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md) (screen hopping).
+>
 >- The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->- The APIs provided by this module are system APIs.
+>- The APIs of this module are system APIs.
 
 ## Modules to Import
 
@@ -34,7 +34,7 @@ Enables or disables screen hopping. This API uses an asynchronous callback to re
 >
 >This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11) and [cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11) instead.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Cooperator
+**System capability:** SystemCapability.MultimodalInput.Input.Cooperator
 
 **Parameters**
 
@@ -46,6 +46,7 @@ Enables or disables screen hopping. This API uses an asynchronous callback to re
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 
 | ID| Error Message         |
 | -------- | -----------------|
@@ -92,7 +93,7 @@ Specifies whether to enable screen hopping. This API uses a promise to return th
 >
 >This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11-1) and [cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11-1) instead.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Cooperator
+**System capability:** SystemCapability.MultimodalInput.Input.Cooperator
 
 **Parameters**
 
@@ -109,6 +110,7 @@ Specifies whether to enable screen hopping. This API uses a promise to return th
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 
 | ID| Error Message         |
 | -------- | -----------------|
@@ -163,6 +165,7 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-cooperator.md).
 
+
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202      | SystemAPI permit error.<br/>Supported version: 12+ |
@@ -183,7 +186,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          const sinkDeviceDescriptor = "descriptor";
+          const sinkDeviceDescriptor = 'descriptor';
           let srcInputDeviceId = 0;
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId, (error: BusinessError) => {
@@ -212,7 +215,7 @@ Starts screen hopping. This API uses a promise to return the result.
 >
 >This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.activateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11-1) instead.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Cooperator
+**System capability:** SystemCapability.MultimodalInput.Input.Cooperator
 
 **Parameters**
 
@@ -220,6 +223,8 @@ Starts screen hopping. This API uses a promise to return the result.
 | --------             | ---------------------------- | ----  | ----------------------------   |
 | sinkDeviceDescriptor | string                       |  Yes  | Descriptor of the target device for screen hopping.            |
 | srcInputDeviceId     | number                       |  Yes  | ID of the target device for screen hopping.          |
+
+
 
 **Return value**
 
@@ -230,6 +235,7 @@ Starts screen hopping. This API uses a promise to return the result.
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-cooperator.md).
+
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -251,7 +257,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          const sinkDeviceDescriptor = "descriptor";
+          const sinkDeviceDescriptor = 'descriptor';
           const srcInputDeviceId = 0;
           inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
             console.info(`Succeeded in starting keyboard mouse crossing.`);
@@ -285,6 +291,7 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 
 | ID| Error Message          |
 | -------- | ----------------- |
@@ -343,6 +350,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
+
 | Error Code ID | Error Message |
 | -------- | -------- |
 | 202      | SystemAPI permit error.<br/>Supported version: 12+ |
@@ -394,10 +402,12 @@ Obtains the state of the screen hopping switch. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
+
 | ID| Error Message         |
 | -------- | ----------------- |
 | 202      | SystemAPI permit error.<br/>Supported version: 12+ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
 
 **Example**
 
@@ -412,7 +422,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let deviceDescriptor = "descriptor";
+          let deviceDescriptor = 'descriptor';
           try {
             inputDeviceCooperate.getState(deviceDescriptor, (error: BusinessError, data: object) => {
               if (error) {
@@ -458,10 +468,12 @@ Checks whether screen hopping is enabled. This API uses a promise to return the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
+
 | ID| Error Message         |
 | -------- | ----------------- |
 | 202      | SystemAPI permit error.<br/>Supported version: 12+ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
 
 **Example**
 
@@ -476,7 +488,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let deviceDescriptor = "descriptor";
+          let deviceDescriptor = 'descriptor';
           inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
             console.info(`Succeeded in getting the status, data: ${JSON.stringify(data)}.`);
           }).catch((error: BusinessError) => {
@@ -492,7 +504,7 @@ struct Index {
 
 on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void
 
-Registers a listener for screen hopping state changes. This API uses an asynchronous callback to return the result.
+Registers a listener for screen hopping status changes. This API uses an asynchronous callback to return the result.
 
 > **Note:**
 >
@@ -504,22 +516,25 @@ Registers a listener for screen hopping state changes. This API uses an asynchro
 
 | Name               | Type                                                            | Mandatory| Description                           |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
-| type                 | string                                                          |  Yes | Event type. The value is **cooperation**.        |
-| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**, **data** is the screen hopping event information. Otherwise, **err** is undefined.   |
+| type                 | string                                                          |  Yes  | Registration type. The value is 'cooperation'.         |
+| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**, **data** is the screen hopping event information. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 202      | SystemAPI permit error.<br/>Supported version: 12+ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+
 **Example**
 
 ```ts
 import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -528,10 +543,13 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let callback = (msg: object) => {
-            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
-            return false;
-          }
+          let callback = (error: BusinessError | undefined, data: { deviceDescriptor: string, eventMsg: EventMsg }) => {
+            if (error) {
+              console.error(`Failed to monitor cooperation, Code: ${error.code}, message: ${error.message}.`);
+              return;
+            }
+            console.info(`Succeeded in monitoring cooperation, data: ${JSON.stringify(data)}.`);
+          };
           try {
             inputDeviceCooperate.on('cooperation', callback);
           } catch (error) {
@@ -559,22 +577,25 @@ Deregisters the listener for screen hopping status changes. This API uses an asy
 
 | Name               | Type                                                             | Mandatory   | Description                          |
 | --------             | ----------------------------                                     | ----   | ----------------------------   |
-| type                 | string                                                           |  Yes   | Event type. The value is **cooperation**.        |
-| callback             | AsyncCallback\<void> |  No  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is undefined. If this parameter is not specified, all callbacks registered by the current application are unregistered. |
+| type                 | string                                                           |  Yes    | Registration type. The value is 'cooperation'.         |
+| callback             | AsyncCallback\<void> |  No  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. If this parameter is not specified, all callbacks registered by the current application are unregistered. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 202      | SystemAPI permit error.<br/>Supported version: 12+ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+
 **Example**
 
 ```ts
 import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -584,13 +605,16 @@ struct Index {
       Text()
         .onClick(() => {
           // Unregister a single callback.
-          let callbackOn = (msg: object) => {
-            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
-            return false;
-          }
+          let callbackOn = (error: BusinessError | undefined, data: { deviceDescriptor: string, eventMsg: EventMsg }) => {
+            if (error) {
+              console.error(`Failed to monitor cooperation, Code: ${error.code}, message: ${error.message}.`);
+              return;
+            }
+            console.info(`Succeeded in monitoring cooperation, data: ${JSON.stringify(data)}.`);
+          };
           try {
             inputDeviceCooperate.on('cooperation', callbackOn);
-            inputDeviceCooperate.off("cooperation", callbackOn);
+            inputDeviceCooperate.off('cooperation', callbackOn);
           } catch (error) {
             console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -599,9 +623,9 @@ struct Index {
   }
 }
 ```
-
 ```ts
 import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -611,13 +635,16 @@ struct Index {
       Text()
         .onClick(() => {
           // Unregister all callbacks.
-          let callback = (msg: object) => {
-            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
-            return false;
-          }
+          let callback = (error: BusinessError | undefined, data: { deviceDescriptor: string, eventMsg: EventMsg }) => {
+            if (error) {
+              console.error(`Failed to monitor cooperation, Code: ${error.code}, message: ${error.message}.`);
+              return;
+            }
+            console.info(`Succeeded in monitoring cooperation, data: ${JSON.stringify(data)}.`);
+          };
           try {
             inputDeviceCooperate.on('cooperation', callback);
-            inputDeviceCooperate.off("cooperation");
+            inputDeviceCooperate.off('cooperation');
           } catch (error) {
             console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }

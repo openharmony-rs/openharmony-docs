@@ -1,17 +1,20 @@
 # Animation Smoothing
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-09-21T02:35:12.359Z pushedAt=2026-09-21T03:16:52.301Z -->
 
 
-When running animations, the UI is also interacting with users in real time. It must respond immediately to changes in user behavior. For example, if the user swipes up to exit in the midst of an application launch process, the UI should immediately transit from the startup animation to the exit animation, rather than finishing the startup animation before exiting. In the scenario where the animation triggered when the user lifts their fingers off the screen, the initial velocity of the animation must inherit the gesture speed, so as to avoid pauses caused by velocity discontinuity. For the preceding and similar scenarios, the system provides efficient APIs for smoothing between animations and between animations and gestures.
+When running animations, the UI is also interacting with users in real time. It must respond immediately to changes in user behavior. For example, if the user swipes up to exit in the midst of an application launch process, the UI should immediately transit from the startup animation to the exit animation, rather than finishing the startup animation before exiting. For scenarios such as desktop page turning, where an animation is triggered from finger-following to finger-release, the initial velocity of the release animation should inherit the gesture velocity to avoid a sense of stutter caused by velocity discontinuity. For the preceding and similar scenarios, the system provides efficient APIs for smoothing between animations and between animations and gestures while minimizing development complexity.
 
-Assume that there is a running animation for an animatable property. If the end value of the property changes due to an operation on the UI, you can create a new animation for it, by changing the property value in the [animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) closure or by changing the input parameter value of the [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md) API. The system then automatically connects the previous animation with the new animation.
+## Animation-to-Animation Continuity
 
-The following example demonstrates how clicking the **Click** button changes the scale property of the red square. When you click **Click** repeatedly, the target value of the **scale** property changes continuously, and the animation smoothly moves toward the new target value.
+Assume that there is a running animation for an animatable property. If the end value of the property changes due to an operation on the UI, you can create a new animation for it, by changing the property value in the [animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) closure or by changing the input parameter value of the [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md) API. The system then automatically connects the previous animation with the new animation. You only need to focus on the implementation of the current single animation.
+
+The following example demonstrates how clicking the **Click** button changes the scale property of the red square. When you click **Click** repeatedly, the end value of the **scale** property changes continuously, and the animation smoothly moves toward the new end value.
 
 <!-- @[animation_template1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/cohesion/template1/Index.ets) -->
 
@@ -48,7 +51,7 @@ struct AnimationToAnimationDemo {
           x: this.animationController.isAnimation ? 2 : 1,
           y: this.animationController.isAnimation ? 2 : 1
         })
-        .animation({ curve: curves.springMotion(0.4, 0.8) }) // Step 4: Enable animation. When the animation target value changes, the system automatically applies smooth transition.
+        .animation({ curve: curves.springMotion(0.4, 0.8) }) // Step 4: Enable animation. When the animation end value changes, the system automatically applies smooth transition.
 
       Button('Click')
         .margin({ top: 200 })
@@ -69,13 +72,13 @@ struct AnimationToAnimationDemo {
 
 
 
-## Smoothing Between Gestures and Animations
+## Gesture-Animation Continuity
 
 In scenarios where gestures are used, a property change is generally triggered when the user places or moves their finger (or fingers) on the screen, and continues after the user lifts their finger (or fingers) off the screen until the end value of the property is reached.
 
 The initial velocity of the property change after the user lifts their finger (or fingers) should be consistent with the velocity of the property change at the moment before the user lifts their finger (or fingers). If the former is **0**, it feels like a running car stops suddenly, an unusual abrupt change not comfortable to users.
 
-In cases where smoothing between [tap gestures](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md) and [animations](./arkts-animation.md) is critical, for example, when scrolling a list, you can apply a responsive spring curve to the property animation running when the user places or moves their finger (or fingers) on the screen; and apply a spring curve to the property animation running after the user lifts their finger (or fingers) off the screen. For the animation following the [springMotion](../reference/apis-arkui/js-apis-curve.md#curvesspringmotion9) curve, its portion that is running after the user lifts their finger (or fingers) off the screen automatically inherits the previous velocity and starts from where the previous portion leaves off.
+For scenarios where a transition is needed between [touch events](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md) and [animations](./arkts-animation.md) (such as list scrolling), a property animation using the finger-following spring curve can be applied each time a component attribute is changed during the finger-following phase. When the finger is released, the release spring curve is used to generate the property animation for the release phase. For animations that use the [springMotion](../reference/apis-arkui/js-apis-curve.md#curvesspringmotion9) curve, the animation in the release phase automatically inherits the velocity from the finger-following phase animation, starting from the current position of the finger-following animation and moving to the specified end attribute value.
 
 The following example implements a ball moving smoothly with the gesture.
 

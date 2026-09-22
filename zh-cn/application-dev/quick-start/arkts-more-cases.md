@@ -201,7 +201,7 @@ type ControllerConstructor = {
   new (value: string): Controller;
 }
 
-class testMenu {
+class TestMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -211,7 +211,7 @@ class testMenu {
   }
 }
 
-let t = new testMenu();
+let t = new TestMenu();
 console.info(t.createController()!.value);
 ```
 
@@ -359,7 +359,7 @@ interface ControllerConstructor {
   new (value: string): Controller;
 }
 
-class testMenu {
+class TestMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -369,7 +369,7 @@ class testMenu {
   }
 }
 
-let t = new testMenu();
+let t = new TestMenu();
 console.info(t.createController()!.value);
 ```
 
@@ -448,7 +448,7 @@ class C extends A {}
 
 let arr: Array<A> = [];
 
-let originMenusMap:Map<string, C> = new Map(arr.map(item => [item.str, (item instanceof C) ? item: null]));
+let originMenusMap: Map<string, C> = new Map(arr.map(item => [item.str, (item instanceof C) ? item: null]));
 ```
 
 **建议改法**
@@ -1016,7 +1016,7 @@ let d = +'string';
 <!-- @[no_polymorphic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
 ``` TypeScript
-let a = Number.parseInt('5'); // 使用Number.parseInt显示转换
+let a = Number.parseInt('5'); // 使用Number.parseInt显式转换
 let b = -Number.parseInt('5');
 let c = ~Number.parseInt('5');
 let d = new Number('123');
@@ -1279,7 +1279,7 @@ function foo4() {
 }
 
 let obj = { value: 'abc' };
-foo.apply(obj);
+foo4.apply(obj);
 ```
 
 **建议改法1**
@@ -1450,7 +1450,7 @@ class Controller {
 
 type ControllerConstructor = new (value: string) => Controller;
 
-class testMenu {
+class TestMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -1460,8 +1460,8 @@ class testMenu {
   }
 }
 
-let t = new testMenu()
-console.info(t.createController()!.value)
+let t = new TestMenu();
+console.info(t.createController()!.value);
 ```
 
 **建议改法**
@@ -1771,7 +1771,7 @@ entries.forEach((value, key) => {
 
 ``` TypeScript
 interface I {
-  name:string
+  name: string;
 }
 
 class A {}
@@ -1791,7 +1791,7 @@ class Test {
 
 ``` TypeScript
 interface I {
-  name:string
+  name: string;
 }
 
 class A {}
@@ -1861,39 +1861,39 @@ a?.bar();
 
 **建议改法**
 
-1.一般情况下，**建议按照业务逻辑**在声明时初始化属性，或者在构造函数中为属性赋值。如：
+1. 一般情况下，**建议按照业务逻辑**在声明时初始化属性，或者在构造函数中为属性赋值。如：
 
-```typescript
-// code with error
-class Test {
-  value: number
-  flag: boolean
-}
+    ```typescript
+    // code with error
+    class Test {
+      value: number
+      flag: boolean
+    }
 
-// 方式一，在声明时初始化
-class Test {
-  value: number = 0
-  flag: boolean = false
-}
+    // 方式一，在声明时初始化
+    class Test {
+      value: number = 0
+      flag: boolean = false
+    }
 
-// 方式二，在构造函数中赋值
-class Test {
-  value: number
-  flag: boolean
-  constructor(value: number, flag: boolean) {
-    this.value = value;
-    this.flag = flag;
-  }
-}
-```
+    // 方式二，在构造函数中赋值
+    class Test {
+      value: number
+      flag: boolean
+      constructor(value: number, flag: boolean) {
+        this.value = value;
+        this.flag = flag;
+      }
+    }
+    ```
 
-2.对于对象类型（包括函数类型）`A`，如果不确定如何初始化，建议按照以下方式之一进行初始化：
+2. 对于对象类型（包括函数类型）`A`，如果不确定如何初始化，建议按照以下方式之一进行初始化：
 
-​ 方式(i)  `prop: A | null = null`
+  ​ 方式(i)  `prop: A | null = null`
 
-​ 方式(ii) `prop?: A`
+  ​ 方式(ii) `prop?: A`
 
-​ 方式三(iii) `prop: A | undefined = undefined`
+  ​ 方式三(iii) `prop: A | undefined = undefined`
 
 - 从性能角度看，`null`类型仅用于编译期的类型检查，不会影响虚拟机性能。而`undefined | A`被视为联合类型，运行时可能产生额外开销。
 - 从代码可读性、简洁性的角度来说，`prop?:A`是`prop: A | undefined = undefined`的语法糖，**推荐使用可选属性的写法**。

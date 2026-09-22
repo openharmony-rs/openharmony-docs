@@ -33,7 +33,7 @@
    // 通过@Builder构建模态展示界面
    @Builder MyBuilder() {
      Column() {
-       Text('my model view')
+      Text('my modal view')
      }
      // 通过转场动画实现出现消失转场动画效果，transition需要加在builder下的第一个组件 
      .transition(TransitionEffect.translate({ y: 1000 }).animation({ curve: curves.springMotion(0.6, 0.8) }))
@@ -46,7 +46,7 @@
    // 模态转场控制变量
    @State isPresent: boolean = false;
 
-   Button('Click to present model view')
+   Button('Click to present modal view')
      // 通过选定的模态接口，绑定模态展示界面，ModalTransition是内置的ContentCover转场动画类型，这里选择None代表系统不加默认动画，通过onDisappear控制状态变量变换
      .bindContentCover(this.isPresent, this.MyBuilder(), {
                modalTransition: ModalTransition.NONE,
@@ -306,7 +306,7 @@ struct BindSheetDemo {
   mySheet() {
     Column() {
       Flex({ direction: FlexDirection.Row, wrap: FlexWrap.Wrap }) {
-        ForEach(this.menuList, (item: string) => {
+        ForEach(this.menuList, (item: Resource) => {
           Text(item)
             .fontSize(16)
             .fontColor(0x333333)
@@ -478,7 +478,7 @@ struct BindContextMenuDemo {
   @Builder
   myMenu() {
     Column() {
-      ForEach(this.menu, (item: string) => {
+      ForEach(this.menu, (item: Resource) => {
         Row() {
           Text(item)
             .fontSize(18)
@@ -538,7 +538,7 @@ struct BindContextMenuDemo {
 
 [bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup)属性可为组件绑定弹窗，并设置弹窗内容，交互逻辑和显示状态。
 
-完整示例和代码如下。
+完整示例和效果如下。
 
 
 <!-- @[bind_popup_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template5/BindPopupDemo.ets) -->
@@ -606,7 +606,7 @@ struct BindPopupDemo {
 
 上述模态转场接口需要绑定到其他组件上，通过监听状态变量改变调起模态界面。同时，也可以通过if范式，通过新增/删除组件实现模态转场效果。
 
-完整示例和代码如下。
+完整示例和效果如下。
 
 
 <!-- @[modal_transition_with_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template6/ModalTransitionWithIf.ets) -->

@@ -68,7 +68,7 @@ isLinearMetrics(): boolean
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.enableLinearMetrics(true);
@@ -94,7 +94,7 @@ getSkewX(): number
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.setSkewX(-1);
@@ -120,7 +120,7 @@ isEmbolden(): boolean
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.enableEmbolden(true);
@@ -146,7 +146,7 @@ getScaleX(): number
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.setScaleX(2);
@@ -172,7 +172,7 @@ getHinting(): FontHinting
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 console.info("values=" + font.getHinting());
@@ -197,7 +197,7 @@ getEdging(): FontEdging
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 console.info("values=" + font.getEdging());
@@ -225,7 +225,7 @@ enableSubpixel(isSubpixel: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -258,7 +258,7 @@ enableEmbolden(isEmbolden: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -291,7 +291,7 @@ enableLinearMetrics(isLinearMetrics: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -324,7 +324,7 @@ setSize(textSize: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -383,7 +383,7 @@ setTypeface(typeface: Typeface): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -477,7 +477,7 @@ measureText(text: string, encoding: TextEncoding): number
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -486,6 +486,48 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let font = new drawing.Font();
 font.measureText("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF8);
+```
+
+## measureTextWithFallback
+
+measureTextWithFallback(text: string, encoding: TextEncoding): number
+
+测量文本的宽度，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体测量该字符宽度；若未找到回退字体，则仍使用当前字型的字体进行测量。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 待测量的文本内容，将按encoding指定的编码方式进行解析。 |
+| encoding | [TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | 是 | 指定文本的编码格式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 返回包含回退字体的文本宽度，浮点数。单位为物理像素px。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let font = new drawing.Font();
+font.measureTextWithFallback("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF8);
 ```
 
 ## measureSingleCharacter<sup>12+</sup>
@@ -516,7 +558,7 @@ measureSingleCharacter(text: string): number
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -526,7 +568,6 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     const font = new drawing.Font();
     font.setSize(20);
     let width = font.measureSingleCharacter("你");
@@ -604,7 +645,7 @@ setScaleX(scaleX: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -650,7 +691,7 @@ setSkewX(skewX: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -696,7 +737,7 @@ setEdging(edging: FontEdging): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -729,7 +770,7 @@ setHinting(hinting: FontHinting): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -768,7 +809,7 @@ countText(text: string): number
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -802,7 +843,7 @@ setBaselineSnap(isBaselineSnap: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -863,7 +904,7 @@ setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -925,7 +966,7 @@ setForceAutoHinting(isForceAutoHinting: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -979,7 +1020,7 @@ getWidths(glyphs: Array\<number>): Array\<number>
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->OpenHarmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
 
 **返回值：**
 
@@ -993,7 +1034,7 @@ getWidths(glyphs: Array\<number>): Array\<number>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1038,7 +1079,7 @@ textToGlyphs(text: string, glyphCount?: number): Array\<number>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1049,6 +1090,67 @@ let font : drawing.Font = new drawing.Font();
 let text : string = 'hello world';
 let glyphs : number[] = font.textToGlyphs(text);
 console.info("drawing text toglyphs OnTestFunction num =  " + glyphs.length );
+```
+
+## textToGlyphsWithFallback
+
+textToGlyphsWithFallback(text: string, glyphCount?: number): Array\<TypefaceFallbackInfo>
+
+将文本转换为字形索引，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体的字形索引；若未找到回退字体，则仍使用当前字型字体的notdef占位字形。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 待转换为字形索引的文本字符串。 |
+| glyphCount | number | 否 | 文本表示的字符数量，该参数为整数。传入时必须与[countText](#counttext12)获取的值相等，不传入时默认为text表示的字符数量。传入浮点数，按照向下取整处理。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array\<[TypefaceFallbackInfo](arkts-apis-graphics-drawing-i.md#typefacefallbackinfo)> | 返回字体回退信息数组。数组中的每个元素包含使用相同回退字体的字形索引数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font : drawing.Font = new drawing.Font();
+    let text : string = 'hello world';
+    let infos : Array<drawing.TypefaceFallbackInfo> = font.textToGlyphsWithFallback(text);
+    console.info("drawing textToGlyphsWithFallback infos length = " + infos.length );
+    let offset = 0;
+    for (let run of infos) {
+      font.setTypeface(run.typeface);
+      let positions: Array<common2D.Point> = [];
+      let glyphWidths = font.getWidths(run.glyphIds);
+      for (let j = 0; j < run.glyphIds.length; j++) {
+        positions.push({x: offset, y: 80});
+        offset += glyphWidths[j];
+      }
+      canvas.drawGlyphs(run.glyphIds, 0, positions, 0, run.glyphIds.length, font);
+    }
+  }
+}
 ```
 
 ## getBounds<sup>18+</sup>
@@ -1065,7 +1167,7 @@ getBounds(glyphs: Array\<number>): Array\<common2D.Rect>
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->OpenHarmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
 
 **返回值：**
 
@@ -1083,7 +1185,7 @@ let text: string = 'hello world';
 let glyphs: number[] = font.textToGlyphs(text);
 let fontBounds: Array<common2D.Rect> = font.getBounds(glyphs);
 for (let index = 0; index < fontBounds.length; index++) {
-  console.info("get fontWidths[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
+  console.info("get fontBounds[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
     " right:", fontBounds[index].right, " bottom:", fontBounds[index].bottom);
 }
 ```
@@ -1119,7 +1221,7 @@ getTextPath(text: string, byteLength: number, x: number, y: number): Path
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1256,7 +1358,7 @@ setThemeFontFollowed(followed: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 

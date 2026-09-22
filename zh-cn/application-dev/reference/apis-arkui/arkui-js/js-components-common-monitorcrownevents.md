@@ -34,7 +34,7 @@ setMonitorForCrownEvents(handler: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| handler | Function | 是 | 旋转表冠事件发生后执行该回调。回调格式为`(event)=>{ return false/true; }`。<br>返回true时，旋转表冠事件不再分发给获焦的组件。<br>返回false时，旋转表冠事件会继续分发给获焦组件。当回调返回undefined或无返回值时，默认取值为false。<br>可通过入参获取旋转表冠事件信息，事件信息请参见**表1 CrownEvent对象属性列表**。 |
+| handler | Function | 是 | 旋转表冠事件发生后执行该回调。回调格式为`(event) => { return true; }`或`(event) => { return false; }`。<br>返回true时，旋转表冠事件不再分发给获焦的组件。<br>返回false时，旋转表冠事件会继续分发给获焦组件。当回调返回undefined或无返回值时，默认取值为false。<br>可通过入参获取旋转表冠事件信息，事件信息请参见**表1 CrownEvent对象属性列表**。 |
 
 
 **表1** CrownEvent对象属性列表
@@ -109,7 +109,7 @@ clearMonitorForCrownEvents(): void
     <button class="btn" type="capsule" value="flagChange" onclick="flagChange"></button>
     <list class="list" focusable="true" scrollpage="true">
         <list-item for="{{ array }}" class="listItem">
-            <text class="text" onclick="toggleShow" show="{{ visible }}">{{ $item.value }}</text>
+            <text class="text">{{ $item.value }}</text>
         </list-item>
     </list>
 </div>
@@ -138,9 +138,9 @@ export default {
     },
     onShow() {
         setMonitorForCrownEvents((event) => {
-            console.info('event timestamp is: ', event.timeStamp, ', angularVelocity is: ',
+            console.info('event timestamp is: ', event.timestamp, ', angularVelocity is: ',
                 event.angularVelocity);
-            console.info('rotate is: ', event.rotate);
+            console.info('degree is: ', event.degree);
             return this.flag;
         });
     },

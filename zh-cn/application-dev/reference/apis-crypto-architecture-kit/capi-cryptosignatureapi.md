@@ -9,7 +9,7 @@
 
 ## 概述
 
-为应用提供验签接口。
+描述OpenHarmony为应用提供的签名验签接口。
 
 **起始版本：** 12
 
@@ -17,4 +17,4 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [crypto_signature.h](capi-crypto-signature-h.md) | 定义验签接口。 |
+| [crypto_signature.h](capi-crypto-signature-h.md) | 定义签名验签接口。 |

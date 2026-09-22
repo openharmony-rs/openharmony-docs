@@ -1,12 +1,14 @@
 # Class (WebSchemeHandlerRequest)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=c3549f5fc26f86afdb3e7a215c50ff6d6d5cab0c translatedAt=2026-08-07T04:47:57.193Z pushedAt=2026-08-07T08:11:46.696Z -->
 
-Represents a request intercepted by the **WebSchemeHandler** object.
+The WebSchemeHandlerRequest class defines a wrapper object for resource requests intercepted through WebSchemeHandler. When a developer registers a custom protocol handler (WebSchemeHandler), the Web kernel creates a WebSchemeHandlerRequest instance and passes it to the callback method upon intercepting a request matching the protocol. This object provides the following request information query methods: getting request header information, request URL, request method, source URL, determining whether it is a main frame request, whether it is associated with a user gesture, getting the request body stream, resource type, and the frame URL that triggered the request, so as to determine whether to intercept the request and construct a corresponding response.
 
 > **NOTE**
 >
@@ -92,7 +94,7 @@ For the complete sample code, see [onRequestStart](./arkts-apis-webview-WebSchem
 
 isMainFrame(): boolean
 
-Checks whether the resource request is for the main frame.
+Checks whether the resource request is from the main frame.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -100,7 +102,7 @@ Checks whether the resource request is for the main frame.
 
 | Type    | Description           |
 | ------ | ------------- |
-| boolean | Whether the resource request is for the main frame. If the resource request is for the main frame, **true** is returned. Otherwise, **false** is returned.|
+| boolean | Whether the resource request is for the main frame. The value **true** indicates the resource request is for the main frame, and **false** indicates otherwise. |
 
 **Example**
 
@@ -118,7 +120,7 @@ Checks whether the resource request is associated with a gesture (for example, a
 
 | Type    | Description           |
 | ------ | ------------- |
-| boolean | Whether the resource request is associated with a gesture (for example, a tap). If the resource request is associated with a gesture, **true** is returned. Otherwise, **false** is returned.|
+| boolean | true if the resource request is associated with a gesture (such as a tap); false otherwise. |
 
 **Example**
 

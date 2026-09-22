@@ -1,11 +1,11 @@
 # @ohos.application.DataShareExtensionAbility (DataShare ExtensionAbility) (System API)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:35:59.683Z pushedAt=2026-06-29T02:15:43.576Z -->
+<!-- md-trans-meta sourceCommit=f1094879371e6414b0a333671a0c5aa07a215e25 translatedAt=2026-09-04T03:19:50.497Z pushedAt=2026-09-09T09:11:03.700Z -->
 
 The **DataShareExtensionAbility** module provides data share services based on the ExtensionAbility.
 
@@ -32,7 +32,7 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | Yes| No|Context of the DataShare ExtensionAbility.|
+| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | Yes| No|Context of the **DataShareExtensionAbility**.|
 
 ### onCreate
 
@@ -190,10 +190,10 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchUpdate(operations: Record<string, Array<dataShare.UpdateOperation>>, callback: Function) {
     let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
     let results : Record<string, Array<number>> = {};
-    let a = Object.entries(recordOps);
-    for (let i = 0; i < a.length; i++) {
-      let key = a[i][0];
-      let values = a[i][1];
+    let entries = Object.entries(recordOps);
+    for (let i = 0; i < entries.length; i++) {
+      let key = entries[i][0];
+      let values = entries[i][1];
       let result : number[] = [];
       for (const value of values) {
         rdbStore.update(TBL_NAME, value.values, value.predicates).then(async (rows) => {
@@ -202,7 +202,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
         }).catch((err:BusinessError) => {
           console.error(`Failed to Update. Code: ${err.code}, message: ${err.message}`);
           result.push(-1)
-        })
+        });
       }
       results[key] = result;
     }
@@ -402,6 +402,8 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 ## UpdateOperation<sup>12+</sup>
+
+type UpdateOperation = dataShare.UpdateOperation
 
 Represents the batch update operation information.
 

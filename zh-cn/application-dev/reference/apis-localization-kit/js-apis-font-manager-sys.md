@@ -2,13 +2,13 @@
 
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
-<!--Owner: @liule_123-->
+<!--Owner: @OningO-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
 本模块为系统应用提供第三方字体的安装、卸载以及字体数据迁移能力。具体为：
-- 安装指定路径的字体文件（支持.ttf、.ttc格式）。
+- 安装指定路径的字体文件，支持`.ttf`、`.ttc`和`.otf`格式。
 - 根据字体名称卸载已安装的字体。
 - 在设备升级期间启动字体数据迁移任务，并提供迁移进度和结果回调。
 
@@ -16,7 +16,7 @@
 >  
 >  - 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块为系统接口。
+>  - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.fontManager (字体管理)](js-apis-font-manager.md)。
 
 ## 导入模块
 
@@ -29,8 +29,11 @@ import { fontManager } from '@kit.LocalizationKit';
 installFont(path: string): Promise&lt;number&gt;
 
 将指定路径下的字体文件安装到系统字体库中。使用Promise异步回调。
-
-安装成功后，应用可以通过字体名称使用该字体。
+> **说明：**
+>
+> - 安装成功后，应用可以通过字体名称使用该字体。同一字体路径不可重复安装。
+>
+> - 支持安装的字体文件个数最大数量为200。从26.0.1版本开始，PC/2in1支持安装的字体文件最大数量为800。
 
 **需要权限:** ohos.permission.UPDATE_FONT
 
@@ -40,7 +43,7 @@ installFont(path: string): Promise&lt;number&gt;
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| path | string | 是    | 待安装的字体文件路径，仅支持.ttf和.ttc格式的字体文件。 |
+| path | string | 是    | 待安装的字体文件路径，仅支持`.ttf`、`.ttc`和`.otf`格式的字体文件。 |
 
 **返回值：**
 
@@ -92,7 +95,7 @@ uninstallFont(fullName: string): Promise&lt;number&gt;
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| fullName | string | 是    | 需要卸载的字体名称，可通过打开.ttf或.ttc字体文件获取。<br>字体名称区分大小写，请确保与实际字体名称完全一致。 |
+| fullName | string | 是    | 需要卸载的字体名称，可通过打开`.ttf`、`.ttc`和`.otf`字体文件获取。<br>字体名称区分大小写，请确保与实际字体名称完全一致。 |
 
 **返回值：**
 

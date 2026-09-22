@@ -506,7 +506,7 @@ systemRingtonePlayer.on('audioInterrupt', async(interruptEvent: audio.InterruptE
 });
 ```
 
-### off('audioInterrupt') <sup>10+</sup>
+### off('audioInterrupt')
 
 off(type: 'audioInterrupt'): void
 

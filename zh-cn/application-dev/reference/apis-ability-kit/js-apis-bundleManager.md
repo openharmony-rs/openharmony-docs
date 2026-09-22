@@ -37,6 +37,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | 用于获取包含fileContextMenuConfig的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | 用于获取包含routerMap的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | 用于获取包含skills的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。<br/>**起始版本：** 26.2.0 |
 | GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>23+</sup>      | 0x00010000 | 用于获取包含hapModuleInfo的bundleInfo，仅支持entry模块对应的bundleInfo.hapModulesInfo，如果entry模块不存在，bundleInfo.hapModulesInfo列表为空。获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## ExtensionAbilityType
@@ -236,6 +237,20 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | GET_ABILITY_INFO_ONLY_SYSTEM_APP  | 0x00000010 | 获取系统应用对应的AbilityInfo。                           |
 | GET_ABILITY_INFO_WITH_APP_LINKING | 0x00000040 | 获取通过<!--RP3-->[域名校验](../../application-models/app-linking-startup.md#实现原理)<!--RP3End-->筛选的AbilityInfo。          |
 | GET_ABILITY_INFO_WITH_SKILL       | 0x00000080 | 获取包含skills的AbilityInfo。                    |
+
+## BundleInstallStatus
+
+应用安装状态枚举。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+| 名称 | 值 | 说明 |
+| -------- | ------ | ------------------------------------------------------------ |
+| BUNDLE_NOT_EXIST   | 1 | 应用未安装。 |
+| BUNDLE_INSTALLING  | 2 | 应用正在安装。 |
+| BUNDLE_INSTALLED   | 3 | 应用已安装。 |
 
 ## bundleManager.getBundleInfoForSelf
 
@@ -916,7 +931,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
 | userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -1428,7 +1443,7 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity数组。 |
+| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity信息。 |
 
 **错误码：**
 
@@ -1771,8 +1786,6 @@ try {
     hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
   });
 } catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
 }
 ```
@@ -1935,6 +1948,57 @@ try {
 }
 ```
 
+## bundleManager.getBundleInstallStatus
+
+getBundleInstallStatus(bundleName: string): BundleInstallStatus
+
+获取指定应用的安装状态。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------ | ---- | ------------------------------------------------------- |
+| bundleName | string | 是 | 表示应用包名。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------ | ------------------------------------ |
+| [BundleInstallStatus](#bundleinstallstatus) | 返回指定应用的安装状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的包名
+let bundleName: string = 'com.ohos.demo';
+
+try {
+  let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
+  hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
+}
+```
+
 ## ApplicationInfo
 
 type ApplicationInfo = _ApplicationInfo
@@ -1971,7 +2035,7 @@ type Metadata = _Metadata
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: SystemCapability.BundleManager.BundleFramework.Core
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -2165,7 +2229,7 @@ ElementName信息。
 
 type Skill = _Skill.Skill
 
-skill信息。
+Skill信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2173,7 +2237,7 @@ skill信息。
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |skill信息。 |
+| [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |Skill信息。 |
 
 ## SkillUrl<sup>12+</sup>
 

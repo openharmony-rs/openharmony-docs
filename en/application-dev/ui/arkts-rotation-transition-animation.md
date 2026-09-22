@@ -6,7 +6,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:47:48.918Z pushedAt=2026-07-09T11:59:44.436Z -->
+<!-- md-trans-meta sourceCommit=4074739ec104663f417d9981273bcd01b284c4ca translatedAt=2026-08-04T06:36:10.390Z pushedAt=2026-08-04T08:22:48.818Z -->
 
 Rotation transition animations are designed to create seamless visual transitions when the screen display orientation changes. There are two approaches to choose from:<br> [Rotation transition animation with layout switching](#rotation-transition-animation-with-layout-switching): This animation is your go-to solution for an out-of-the-box implementation experience. It can be achieved by simply configuring automatic rotation (or setting the window display orientation) in the **module.json5** file.<br> [Rotation transition animation with opacity changing](#rotation-transition-animation-with-opacity-changing): This animation adds a touch of sophistication with fade-in and fade-out effects for components during screen rotations. It requires additional setup beyond the **module.json5** configuration, including the preparation of two sets of visuals.
 
@@ -39,7 +39,9 @@ struct rotation {
 Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
 
 ```json
-"orientation": "auto_rotation",
+{
+  "orientation": "auto_rotation"
+}
 ```
 
 The rotation transition animation with layout switching ensures a seamless transition of size and position for windows and application views that rotate in synchronization.
@@ -66,7 +68,7 @@ struct rotation {
     Stack() {
 
       // Switch the component's visual effect when the screen display orientation changes.
-      if (this.myOrientation == display.Orientation.PORTRAIT || this.myOrientation == display.Orientation.PORTRAIT_INVERTED) {
+      if (this.myOrientation === display.Orientation.PORTRAIT || this.myOrientation === display.Orientation.PORTRAIT_INVERTED) {
         // Replace $r('app.media.sky') with the actual resource file.
         Image($r('app.media.sky'))
           .size({ width: 100, height: 100 })
@@ -144,7 +146,9 @@ const TAG: string = 'EntryAbility';
 Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
 
 ```json
-"orientation": "auto_rotation",
+{
+  "orientation": "auto_rotation"
+}
 ```
 
 The rotation transition animation with opacity changing manages the transition of size and position for the window and smoothly switches between application views, providing a fade-out effect for the disappearing view and a fade-in effect for the appearing view.

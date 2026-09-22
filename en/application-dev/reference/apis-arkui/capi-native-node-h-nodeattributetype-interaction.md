@@ -1,10 +1,12 @@
 # ArkUI_NodeAttributeType (Interaction Attribute)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @zju_ljz-->
-<!--Designer: @hehongyang3; @lanshouren-->
+<!--Designer: @hehongyang3; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=d27aaf307ea858355080aeefde96ba220d2e1704 translatedAt=2026-08-25T02:19:01.956Z pushedAt=2026-08-26T07:49:36.500Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -216,7 +218,7 @@ NODE_VISIBLE_AREA_CHANGE_RATIO = 93
 Visible area ratio (visible area/total area of the component) threshold for invoking the visible area change event of the component.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 22
+**Since**: 12
 
 **Parameters**
 
@@ -290,7 +292,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Focus movement direction, as defined in [ArkUI_FocusMove](capi-common-attributes-h.md#arkui_focusmove).|
-| .object | Next focus node The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).|
+| .object | Next focus node. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).|
 
 ## NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_RATIO
 

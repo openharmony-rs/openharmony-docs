@@ -6,7 +6,7 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=cb84f8fe2e38bbeba25c5506a75a0804a063c158 translatedAt=2026-07-16T06:41:53.501Z pushedAt=2026-07-16T13:24:40.648Z -->
+<!-- md-trans-meta sourceCommit=840854f9fe10a258a0038fd37739f3e768710f28 translatedAt=2026-08-24T09:20:52.776Z pushedAt=2026-08-31T12:03:17.283Z -->
 
 The Image Effect module provides basic capabilities for processing images, including brightness adjustment, blurring, grayscale adjustment, and intelligent color picking. It is applicable to scenarios such as adding filter effects in image editing apps, blurring the background image of app startup pages, automatically extracting UI theme colors, and analyzing image color schemes.
 
@@ -63,7 +63,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // Create a buffer for the image effect.
 const colorBuffer = new ArrayBuffer(96);
 // Set the image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -120,7 +120,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a buffer for image effects.
 const colorBuffer = new ArrayBuffer(96);
 // Set image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -134,7 +134,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
   // Create a ColorPicker instance.
   effectKit.createColorPicker(pixelMap).then(colorPicker => {
     console.info('Succeeded in creating colorPicker.');
-  }).catch((err : BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
   });
 });
@@ -183,7 +183,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a buffer for image effects.
 const colorBuffer = new ArrayBuffer(96);
 // Set image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -197,7 +197,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
   // Create a ColorPicker instance for the specified color sampling area.
   effectKit.createColorPicker(pixelMap, [0, 0, 1, 1]).then(colorPicker => {
     console.info('Succeeded in creating colorPicker.');
-  }).catch((err : BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
   });
 });
@@ -239,7 +239,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // Create a buffer for image effects.
 const colorBuffer = new ArrayBuffer(96);
 // Set image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -297,7 +297,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // Create a buffer for image effects.
 const colorBuffer = new ArrayBuffer(96);
 // Set image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -440,7 +440,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // Create a buffer for image effects.
 const colorBuffer = new ArrayBuffer(96);
 // Set image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -493,7 +493,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // Create a buffer for the image effect.
 const colorBuffer = new ArrayBuffer(96);
 // Set the image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -552,7 +552,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // Create a buffer for image effects.
 const colorBuffer = new ArrayBuffer(96);
 // Set image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -784,10 +784,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
-function imageBlur(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // Create an image source.
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // Set the blur radius.
       let radius = 5;
@@ -877,10 +877,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
-function imageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
+function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // Create the image source.
-    let imageSource = image.createImageSource(Image);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // Set the blur radius.
       let radius = 30;
@@ -942,7 +942,7 @@ struct Index {
 
 invert(): Filter
 
-Adds the invert effect to the effect chain and returns the instance of the chain. This method inverts the RGB color values of the image. It is commonly used in scenarios such as negative film effect, image artistic processing, and night mode adaptation.
+Adds the invert effect to the effect chain and returns the instance of the chain. This method inverts the RGB color values of the image (that is, new RGB value = 255 - original RGB value), and is commonly used to implement scenarios such as negative film effects, artistic image processing, and night mode adaptation.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -959,10 +959,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
-function imageInvert(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageInvert(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // Create the image source.
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // Create a Filter instance.
       let headFilter = effectKit.createEffect(pixelMap);
@@ -1053,10 +1053,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
-function imageColorFilter(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageColorFilter(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // Create the image source.
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // Define the color matrix.
       let colorMatrix: Array<number> = [
@@ -1150,10 +1150,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
-function imageBrightness(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageBrightness(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // Create the image source.
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // Set the brightness value.
       let bright = 0.5;
@@ -1236,10 +1236,10 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
-function imageGrayscale(imageData: ArrayBuffer): Promise<image.PixelMap> {
+function imageGrayscale(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise(async (resolve) => {
     // Create the image source.
-    let imageSource = image.createImageSource(imageData);
+    let imageSource = image.createImageSource(imageBuffer);
     await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       // Create a Filter instance.
       let headFilter = effectKit.createEffect(pixelMap);
@@ -1326,7 +1326,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // Create a buffer for image effects.
 const colorBuffer = new ArrayBuffer(96);
 // Set image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -1380,7 +1380,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 // Create a buffer for the image effect.
 const colorBuffer = new ArrayBuffer(96);
 // Set the image initialization options.
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
@@ -1401,7 +1401,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 getPixelMap(): image.PixelMap
 
-Obtains **image.PixelMap** of the source image to which the effect chain has been added. It is commonly used in scenarios where the processed image needs to be saved or displayed.
+Obtains **image.PixelMap** of the source image to which the effect chain has been added. It is commonly used in scenarios where the processed image needs to be saved or displayed. By default, CPU rendering is used.
 
 > **NOTE**
 >
@@ -1422,7 +1422,7 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 
 const colorBuffer = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {

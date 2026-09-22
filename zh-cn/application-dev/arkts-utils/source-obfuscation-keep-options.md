@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-从API version 10开始，开启混淆后代码中的方法、属性或路径将被混淆。但在运行时，如果访问是未被混淆的原始方法、属性或路径，可能会导致功能失效。因此需要根据不同的场景配置相应的保留选项。
+从API version 10开始，开启混淆后代码中的方法、属性或路径将被混淆。但在运行时，通过混淆前的原始名称访问已被混淆的方法、属性或路径，可能会导致功能失效。因此需要根据不同的场景配置相应的保留选项。
 
 排查场景和配置字段时，推荐使用[混淆助手配置保留选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123)，快速识别需要配置的保留选项和白名单字段。
 
@@ -134,12 +134,12 @@ lastName
     // ...
     let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留
     
-    class jsonTest {
+    class JsonTest {
       prop1: string = '';
       prop2: number = 0
     }
     
-    let obj = new jsonTest();
+    let obj = new JsonTest();
     const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留
     ```
 
@@ -313,7 +313,7 @@ file
     <!-- @[optionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->        
     
     ``` TypeScript
-    // main.ts
+    // ArkGuardAbility.ts
     const moduleName = './DynamicImportFile'; // moduleName对应的路径名DynamicImportFile应该被保留
     async function func2() {
       const modules = await import(moduleName);
@@ -468,7 +468,7 @@ Human
 
 1. 该选项在开启[-compact](./source-obfuscation-rule-options.md#-compact)功能后才会生效；未开启`-compact`时，配置不生效。
 2. 配置的路径仅支持相对路径，`./`和`../`均为相对于混淆配置文件所在的目录。若配置路径为文件夹，则该文件夹下的文件及子文件夹中的文件都不被压缩。
-3. 当配置路径指向远程三方包（即`oh_modules`目录）时，需指定其在**工程级**`oh_modules`中的真实路径（与[`-keep`](#-keep)中保留远程HAP包的方式二一致），以确保路径解析正确。 
+3. 当配置路径指向远程三方包（即`oh_modules`目录）时，需指定其在**工程级**`oh_modules`中的真实路径（与[`-keep`](#-keep)中保留远程HAR包的方式二一致），以确保路径解析正确。 
 
 ```text
 -compact

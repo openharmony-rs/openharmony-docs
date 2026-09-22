@@ -1,10 +1,12 @@
 # ArkUI_AttributeItem
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @piggyguy; @wangyang2022-->
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e7bbac8df342a3329dc5f8c5db3d9883d3c9dda2 translatedAt=2026-08-19T04:16:42.846Z pushedAt=2026-08-19T06:56:33.951Z -->
 
 ```c
 typedef struct {...} ArkUI_AttributeItem
@@ -26,7 +28,7 @@ Defines the [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#seta
 
 | Name                                | Description|
 | ---------------------------------- | --- |
-| const [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | Pointer to the numeric type array, used to store parameters of the numeric array type. The array length is specified by **size**.|
+| const [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | Pointer to the numeric array used to store attribute parameters of the numeric type. The array length is specified by **size**. |
 | int32_t size                       | Length of the **value** array, which must be used together with the **value** variable.|
-| const char* string                 | String pointer, used to store parameters of the string type.|
-| void* object                       | Object pointer, used to store parameters of the object type.|
+| const char* string                 | Pointer to the string used to store attribute parameters of the string type. |
+| void* object                       | Pointer to the object data used to store attribute parameters of the object type. |

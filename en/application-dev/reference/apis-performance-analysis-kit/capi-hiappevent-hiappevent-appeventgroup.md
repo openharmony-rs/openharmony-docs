@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=7addffc63d219ad1e54baac60e90c00085674e53 translatedAt=2026-09-16T10:07:50.402Z pushedAt=2026-09-20T09:01:52.218Z -->
 
 ```c
 typedef struct HiAppEvent_AppEventGroup {...} HiAppEvent_AppEventGroup
@@ -13,7 +14,7 @@ typedef struct HiAppEvent_AppEventGroup {...} HiAppEvent_AppEventGroup
 
 ## Overview
 
-Defines the information of an event group, including its name, the array of event information grouped by name, and the length of the event array.
+Defines a group of event information used to manage and organize event information with the same name. This structure contains the name of the event group, an array of individual event information grouped by name, and the length of the event array.
 
 **Since**: 12
 
@@ -30,3 +31,5 @@ Defines the information of an event group, including its name, the array of even
 | const char* name | Pointer to the event name.|
 | const struct HiAppEvent_AppEventInfo* appEventInfos | Pointer to the array of events with the same event name.|
 | uint32_t infoLen | Length of the event array.|
+
+

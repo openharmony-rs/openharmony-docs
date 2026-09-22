@@ -12,7 +12,7 @@ typedef ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle
 
 ## 概述
 
-定义触摸识别器句柄，用于表示触摸识别器对象，并在触摸识别或手势处理接口中传递和管理该对象。适用于自定义手势识别、多点触控事件处理，以及需要对触摸事件进行精细化拦截和分发控制的场景。
+定义触摸识别器句柄，用于表示触摸识别器对象，并在手势打断、手势收集拦截等接口中传递该对象。具体接口请参见[native_gesture.h](capi-native-gesture-h.md)。
 
 **起始版本：** 15
 

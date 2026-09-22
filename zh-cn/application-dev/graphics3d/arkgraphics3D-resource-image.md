@@ -6,9 +6,15 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-图片（Image）：图片本质上是一个储存信息的二维内存块(buffer)，用于储存3D渲染计算过程需要的相关信息，比如基础颜色、法线等等。
+图片（Image）：3D渲染中的二维纹理资源，本质为存储像素数据的内存缓冲区（buffer）。它提供物体表面渲染所需的数据，包括基础颜色、法线、金属度、粗糙度和环境遮蔽等贴图，也可作为材质或自定义着色器的纹理输入，最终决定物体表面的外观。
 
-ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支持用户自定义需要的Image资源。
+ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支持用户自定义需要的Image资源。各个格式的支持情况如下表所示：
+
+| 格式 | 支持情况 |
+|------|----------|
+| JPEG（.jpg/.jpeg） | 支持识别头部携带JFIF、Exif或ICC Profile标记的JPEG文件；<br>搭载OpenHarmony 7.0.0及以上版本的设备，新增支持识别头部包含DQT、XMP、MPF或Adobe标记的JPEG文件。 |
+| PNG（.png） | 支持标准的PNG文件。 |
+| KTX（.ktx） | 支持KTX格式的文件。KTX（Khronos Texture）是由Khronos Group定义的纹理容器格式，用于存储GPU可直接读取的纹理数据。 |
 
 ## 开发步骤
 1. 导入相关模块。
@@ -53,7 +59,7 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
-   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```

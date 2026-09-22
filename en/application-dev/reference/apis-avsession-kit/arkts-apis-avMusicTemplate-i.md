@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=3afa4fd3e808878967edf771b363da0aa57bd0a3 translatedAt=2026-09-01T12:37:49.126Z pushedAt=2026-09-07T03:29:47.974Z -->
 
 > **NOTE**
 >
@@ -138,7 +139,7 @@ Defines the parameters for querying a media instance.
 | Name         | Type                                                        | Read-Only| Optional| Description                  |
 | ------------- | ------------------------------------------------------------ | ---- | ---- | ---------------------- |
 | entityId      | string                                                       | No  | No  | ID of the media instance.        |
-| pageIndex     | number                                                       | No  | No  | Index of the media tab page.    |
+| pageIndex     | number                                                       | false   | false   | Pagination query index.     |
 | type          | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | No  | No  | Type of the media resource.        |
 | subEntityType | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | No  | Yes  | Media resource type of the child node.|
 | sort          | [Sort](arkts-apis-avMusicTemplate-e.md#sort)       | No  | Yes  | Sorting of the queried list data.|
@@ -210,8 +211,8 @@ Defines the playback information.
 | isSupportPrev          | boolean  | No  | No  | Whether the previous song is supported. **true**: yes; **false**: no. No default value.|
 | isSupportQuickForward  | boolean  | No  | No  | Whether quick-forward is supported. **true**: yes; **false**: no. No default value.|
 | isSupportQuickBackward | boolean  | No  | No  | Whether quick-backward is supported. **true**: yes; **false**: no. No default value.|
-| quickForwardStep       | number     | No  | No  | Quick-forward step.                          |
-| quickBackwardStep      | number     | No  | No  | Quick-backward step.                          |
+| quickForwardStep       | number     | No   | No   | Fast-forward step, in milliseconds.                           |
+| quickBackwardStep      | number     | No   | No   | Rewind step, in milliseconds.                        |
 | isSupportSkipHead      | boolean  | No  | No  | Whether to support skipping the beginning. **true**: yes; **false**: no. No default value.|
 | isSupportSkipTail      | boolean  | No  | No  | Whether to support skipping the end. **true**: yes; **false**: no. No default value.|
 | isSupportPlayMode      | boolean  | No  | No  | Whether to support switching the playback mode. **true**: yes; **false**: no. No default value.|
@@ -220,8 +221,8 @@ Defines the playback information.
 | currentPlayRate        | string   | No  | No  | Current playback rate.                           |
 | isSupportSoundQuality  | boolean  | No  | No  | Whether to support sound quality. **true**: yes; **false**: no. No default value.|
 | isSupportSoundEffect   | boolean  | No  | No  | Whether to support sound effect. **true**: yes; **false**: no. No default value.|
-| totalDuration          | number     | No  | No  | Total playback duration.                             |
-| currentPlayDuration    | number     | No  | No  | Current playback duration.                           |
+| totalDuration          | number     | No   | No   | Total playback duration, in milliseconds.                            |
+| currentPlayDuration    | number     | No   | No   | Current playback duration, in milliseconds.                         |
 | isSupportProgress      | boolean  | No  | No  | Whether to support the progress. **true**: yes; **false**: no. The default value is **true**.|
 
 ## FavoriteData
@@ -252,12 +253,12 @@ Defines the setting item.
 | title        | string                                                       | No  | No  | Title of the setting item.                                              |
 | desc         | string                                                       | No  | No  | Description of the setting item.                                              |
 | settingType  | [SettingType](arkts-apis-avMusicTemplate-e.md#settingtype) | No  | Yes  | Type of the setting item.                                              |
-| settingValue | string \| boolean \| [SettingContent](#settingcontent)[] \| [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | No  | Yes  | Value of the setting item.<br>- When **settingType** is **SettingType.SWITCH**, the value is of the boolean type.<br>- When **settingType** is **SettingType.LIST**, the value is a **SettingContent** array.<br>- When **settingType** is **SettingType.JUMP**, the value is of the string type.|
+| settingValue | string \| boolean \| [SettingContent](#settingcontent)[] \| [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | No   | Yes   | Value of the setting item.<br>- When **settingType** is set to **SettingType.SWITCH**, the value is of the Boolean type.<br>- When **settingType** is set to **SettingType.LIST**, the value is a **SettingContent** array.<br>- When **settingType** is set to **SettingType.JUMP**, the value is of the string type. |
 | mediaId      | string                                                       | No  | No  | Media ID associated with the current setting.<br>If the setting is associated with the current media information, set **mediaId**; otherwise, do not set **mediaId**.|
 
 ## SettingContent
 
-Defines the setting content. (The audio template defines the setting page, and the setting content is used to fill the setting page.)
+Defines the setting content, which is used to display or configure related content on the setting page of the audio template.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -268,7 +269,7 @@ Defines the setting content. (The audio template defines the setting page, and t
 | value      | string                                                       | No  | No  | Setting content.                                       |
 | isSelected | boolean                                                      | No  | No  | Whether to select the setting content. **true**: yes; **false**: no. No default value.|
 | textTags   | string[]                                                     | No  | Yes  | Array of descriptions of the setting content.                             |
-| imageTags  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)[] | No  | Yes  | Array of tag descriptions of the setting content.                         |
+| imageTags  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)[] | No   | Yes   | Array of image tags for the setting content.                          |
 
 ## QrCodeInfo
 
@@ -354,7 +355,7 @@ Defines the membership purchase information.
 
 ## CustomElement
 
-Defines the custom element on the home page. It is inherited from [OperResult](#operresult).
+Defines the custom element on the home page (in-app user home page). It is inherited from [OperResult](#operresult).
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -386,7 +387,7 @@ Defines the user information.
 
 ## SearchPlayInfo
 
-Defines the search playback information.
+Defines the video information for search and playback.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -412,6 +413,7 @@ Defines the audio information for search and playback.
 | description   | string                                        | No  | Yes  | Description of the audio.                                     |
 | playMusicOnly | boolean                                       | No  | Yes  | Whether to play only audio. **true**: yes; **false**: no. No default value.|
 | playMode      | string                                        | No  | Yes  | Playback mode of the audio.                                   |
+| extras        | string                                        | No   | Yes   | Additional information about the audio.<br>**Since:** 26.1.0                                    |
 
 ## SearchPlayMusicItem
 
@@ -438,5 +440,5 @@ Defines the video information for search and playback.
 | ------------- | ------ | ---- | ---- | ---------------- |
 | entityId      | string | No  | No  | Unique ID of the video.|
 | episodeId     | string | No  | Yes  | Episode ID of the video.  |
-| episodeNumber | number   | No  | Yes  | Number of video episodes.    |
+| episodeNumber | number   | No   | Yes   | Episode number of the video.     |
 | extras        | string | No  | Yes  | Additional information about the video.|

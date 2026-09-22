@@ -409,6 +409,7 @@ console.info(`${compareTuples(tuple1, tuple2)}`);  // true
 ``` TypeScript
 条件表达式 ? 真值 : 假值
 ```
+
 <!-- @[ternary_conditional_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
 ``` TypeScript
@@ -544,7 +545,7 @@ console.info(`${!isB}`);  // true
 
 // 双重否定转换为布尔值
 let notValue: number = 5;
-console.info(`${!!notValue}`);  // true（等同于Boolean(notValue))
+console.info(`${!!notValue}`);  // true（等同于Boolean(notValue)）
 ```
 
 ### 逻辑与运算符 (&&)
@@ -758,6 +759,8 @@ ArkTS支持松散相等（`==`），但不建议使用，推荐使用严格相�
 ### 不建议使用松散相等
 
 ArkTS支持`==`和`!=`松散相等，但不建议使用，推荐使用`===`和`!==`严格相等，避免隐式类型转换导致的潜在问题。
+
+<!-- @[loose_equality_not_recommended](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
 ``` TypeScript
 let inputValue: string | null = null;

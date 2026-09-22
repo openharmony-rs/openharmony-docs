@@ -461,24 +461,30 @@ for (let pair of pairs) {
 
 ### for...in循环
 
-`for...in`遍历对象的**属性键名**（包括继承的可枚举属性），与`for...of`遍历**值**不同。`for...in`的遍历顺序不保证固定，且遍历数组时返回的是字符串索引（如`"0"`而非`0`），容易导致类型和逻辑错误。遍历数组应使用`for...of`或`forEach`，仅在需要遍历对象键名时使用`for...in`。
+`for...in`遍历对象的**属性键名**（包括继承的可枚举属性），与`for...of`遍历**值**不同。`for...in`的遍历顺序不保证固定，且遍历数组时返回的是字符串索引（如`"0"`而非`0`），容易导致类型和逻辑错误。ArkTS不支持`for...in`（`arkts-no-for-in`），详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持for--in)，遍历数组应使用`for...of`或`forEach`，遍历对象键名应使用`Object.keys()`。
+
+**TypeScript对照**
+
+<!-- @[ts_for_in_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Control.ts) -->
 
 ``` TypeScript
+// TypeScript对照写法（ArkTS不支持for...in）
+// for...in遍历对象返回属性键名
 let finObj: Record<string, number> = { 'a': 1, 'b': 2, 'c': 3 };
 for (let key in finObj) {
-  console.info(`${key}: ${finObj[key]}`);  // a: 1, b: 2, c: 3
+  console.info(`${key}: ${finObj[key]}`); // a: 1, b: 2, c: 3
 }
 
-// for...in遍历数组返回字符串索引（"0"而非0），应使用for...of替代
+// for...in遍历数组返回字符串索引（"0"而非0）
 let finArr: number[] = [10, 20, 30];
 for (let index in finArr) {
-  console.info(`${index}`);  // "0", "1", "2"（字符串索引，非数值）
+  console.info(`${index}`); // "0", "1", "2"（字符串索引，非数值）
 }
 ```
 
 > **说明：**
 > 
-> `for...in`返回的是键名（字符串），`for...of`返回的是值。遍历数组应使用`for...of`或`forEach`，遍历对象键名可使用`for...in`或`Object.keys()`。
+> `for...in`返回的是键名（字符串），`for...of`返回的是值。遍历数组应使用`for...of`或`forEach`，遍历对象键名应使用`Object.keys()`。
 
 ### for循环（传统计数式）
 
@@ -560,7 +566,8 @@ while (condition) {
   // 注意：需要在循环体内更新条件变量
 }
 ```
-while适合循环次数在编译时无法确定、基于特定条件（如队列非空）、等待条件满足（如轮询）或需动态调整循环条件的场景。
+
+`while`适合循环次数在编译时无法确定、基于特定条件（如队列非空）、等待条件满足（如轮询）或需动态调整循环条件的场景。
 
 <!-- @[while_loop_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
@@ -850,7 +857,7 @@ interface User {
 
 ``` TypeScript
 // 参数验证后提前退出
-function processData(data: string): void {
+function processData(data: string | null | undefined): void {
   if (data === null || data === undefined) {
     console.info('数据无效');
     return;  // 提前退出

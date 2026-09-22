@@ -8,9 +8,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-struct OH_Filter_ColorMatrix {
-    // ...
-};
+struct OH_Filter_ColorMatrix {...}
 ```
 
 ## 概述

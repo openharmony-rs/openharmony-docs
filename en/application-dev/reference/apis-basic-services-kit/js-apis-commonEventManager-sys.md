@@ -1,14 +1,12 @@
 # @ohos.commonEventManager (Common Event) (System API)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=5b716a0e1c062ed98c8e1f363a9507fe09b52f56 translatedAt=2026-07-21T02:32:52.027Z pushedAt=2026-07-21T07:45:40.309Z -->
 
-This module provides system APIs related to common events, including publishing common events to specified users, removing sticky common events, and enabling or disabling static subscription events.
+This module provides system APIs to publish common events to specified users, remove sticky common events, enable or disable static subscription events.
 
 > **NOTE**
 >
@@ -48,7 +46,7 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -103,7 +101,7 @@ Publishes a common event to a specified user and specifies the information to be
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -163,7 +161,7 @@ Removes a sticky common event. This API uses an asynchronous callback to return 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -214,7 +212,7 @@ Removes a sticky common event that has been published. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -258,7 +256,7 @@ Enables or disables static subscription for an app. This API uses an asynchronou
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -307,7 +305,7 @@ Enables or disables static subscription for an app. This API uses a promise to r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -317,6 +315,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1500008  | Failed to initialize the common event service.     |
 
 **Example**
+
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -355,7 +354,7 @@ Enables or disables static subscription to a common event for the current app. T
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Common Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |

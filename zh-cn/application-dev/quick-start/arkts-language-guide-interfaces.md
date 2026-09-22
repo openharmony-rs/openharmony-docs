@@ -311,6 +311,20 @@ console.info(`${mixed[1]}`);    // Second
 console.info(`${mixed.key1}`);  // Value1
 ```
 
+ArkTS中使用`Map`替代索引签名，实现动态键值存储：
+
+<!-- @[map_replaces_index_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+
+``` TypeScript
+// ArkTS替代方案：使用Map
+let dictMap: Map<string, string | number> = new Map();
+dictMap.set('name', 'Alice');
+dictMap.set('age', 25);
+dictMap.set('city', 'New York');
+
+console.info(`${dictMap.get('city')}`);  // New York
+```
+
 ### 类实现接口
 
 类通过implements关键字实现接口，必须提供接口中所有成员的具体实现，不同类可以实现同一接口提供不同行为。
@@ -1502,7 +1516,7 @@ function tsCreateSquare(config: TsSquareConfig): { color: string; area: number }
 }
 
 let tsEpSquare2 = tsCreateSquare({ colour: 'red', width: 100 });
-// 编译错误：'colour' does not exist in type 'SquareConfig'
+// 编译错误：'colour' does not exist in type 'TsSquareConfig'
 ```
 
 绕过多余属性检查的常用方法包括类型断言、添加索引签名或先赋值给中间变量。大多数多余属性错误是真正的bug，应优先修复。

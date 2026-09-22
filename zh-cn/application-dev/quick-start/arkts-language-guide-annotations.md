@@ -38,11 +38,10 @@ class MyClass {
 - 注解必须放置在声明之前。
 - 注解可以包含上述示例中所示的参数。
 
-对于要使用的注解，其名称必须以符号`@`（例如：@MyAnno）为前缀。符号`@`和名称之间不允许有空格和行分隔符。
+对于要使用的注解，其名称必须以符号`@`（例如：@MyAnno）为前缀。
 
 ``` TypeScript
 ClassAuthor({authorName: "Bob"}) // 编译错误：注解需要'@'为前缀
-@ ClassAuthor({authorName: "Bob"}) // 编译错误：符号`@`和名称之间不允许有空格和行分隔符
 ```
 
 如果在使用位置无法访问注解名称，则会发生编译错误。
@@ -65,7 +64,7 @@ class MyClass1 {
 >
 > 应用开发中，在[release模式下构建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section19788284410)源码HAR，并同时[开启混淆](../../application-dev/arkts-utils/source-obfuscation.md)时，由于编译产物为JS文件，而在JS中没有注解的实现机制，因此会在编译过程中被移除，导致无法通过注解实现AOP插桩。
 >
-> 为避免因此引起的功能异常，禁止在JS HAR(编译产物中存在JS的HAR包)中使用注解。
+> 为避免因此引起的功能异常，禁止在JS HAR（编译产物中存在JS的HAR包）中使用注解。
 >
 > 如果需要在release模式并且开启混淆的情况下构建含有注解的HAR包，可以构建[字节码HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415)。
 

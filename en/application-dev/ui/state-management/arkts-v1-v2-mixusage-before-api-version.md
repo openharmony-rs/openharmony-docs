@@ -1,12 +1,11 @@
 # Guidelines for Mixed Use of State Management V1 and V2 (Before API Version 19)
-
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
 <!--Owner: @jiyujia926--> 
 <!--Designer: @zhangboren--> 
 <!--Tester: @TerryTsao--> 
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=5cbda8a742fe4c75db3800c28ccfc8ffcd9cebc0 translatedAt=2026-06-30T03:38:40.780Z pushedAt=2026-07-01T03:34:24.237Z -->
+<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:07.963Z pushedAt=2026-07-24T03:23:19.860Z -->
 
 ## Overview
 
@@ -23,9 +22,7 @@ Before API version 19, mixed usage scenarios are subject to relatively strict va
 - When no variables are passed between components, V2 custom components can be used in V1 custom components, including imported third-party custom components decorated with \@ComponentV2.
 
 - When variables are passed between components, the following restrictions apply when passing V1 variables to V2 custom components:
-
   - Variables in V1 not decorated by any decorator (hereinafter referred to as regular variables): V2 can only receive them using \@Param.
-
   - Variables in V1 decorated by a decorator (hereinafter referred to as state variables): V2 can only receive them through the \@Param decorator, and this is limited to simple type data such as boolean, number, enum, string, undefined, and null.
 
 **2. V2->V1 Rule Summary**
@@ -35,16 +32,14 @@ Before API version 19, mixed usage scenarios are subject to relatively strict va
 - When there is no variable passing between components, V2 custom components can use V1 custom components, including imported third-party custom components decorated with \@Component.
 
 - When there is variable passing between components, passing V2 variables to V1 custom components has the following restrictions:
-
   - Passing V2 regular variables (not decorated with state variable decorators) to V1 custom components:
 
      If V1 uses a state variable to receive this data, only the following three V1 state variable decorators can be used: [@State](./arkts-state.md), [@Prop](./arkts-prop.md), and [@Provide](./arkts-provide-and-consume.md).
-
   - V2 state variable (decorated with a state variable decorator) passed to a V1 custom component:
 
      If V1 uses a state variable decorator (again, only \@State, \@Prop, and \@Provide are supported) to decorate the received data, built-in type data such as Array, Set, Map, and Date are not supported. Note that V2 state variables support the Function type, but none of the V1 state variable decorators support the Function type. Passing a Function type will cause a runtime verification error. Taking \@State as an example, see [@State restrictions](./arkts-state.md#constraints) for details.
-
   - [@Link](./arkts-link.md) in V1 follows its original initialization rules and can only be initialized by a V1 state variable. For details, see [@Link initialization rule diagram](./arkts-link.md#variable-transferaccess-rules).
+
 
 ## Restrictions
 
@@ -76,7 +71,9 @@ Before API version 19, mixed usage scenarios are subject to relatively strict va
 
 Except for capability extension decorators such as \@Watch, \@Once, and \@Require, which can be used in conjunction with other decorators, other decorators are not allowed to decorate the same variable.
 
+
 ## Using V2 Custom Components in V1
+
 
 ### Without Passing Variables
 
@@ -125,6 +122,7 @@ struct IndexSix {
 }
 ```
 
+
 ### Passing undecorated variables
 
 When a variable is not decorated by a decorator, it does not have the capability to be observed. When passing this variable to V2, note that V2 components have strict management of data input and must receive it through the [@Param](./arkts-new-param.md) decorator. The observation capability for receiving data in V2 is the \@Param capability. For received Class types, changes can only be observed through \@ObservedV2 and \@Trace.
@@ -147,8 +145,8 @@ class InfoTwo {
 @ComponentV2
 struct ChildTwo {
   // V2 enforces strict data input management. When data is passed from a parent component, it must be received using the @Param decorator.
-  @Param @Once message: string = 'hello'; // Changes can be observed, and synchronization back to the parent component depends on @Event. Using @Once allows modification of the variable decorated with @Param.
-  @Param @Once undefinedVal: string | undefined = undefined; // Using @Once allows modification of the variable decorated with @Param.
+  @Param @Once message: string = 'hello'; // Using @Once allows modifying variables decorated with @Param.
+  @Param @Once undefinedVal: string | undefined = undefined;
   @Param info: InfoTwo = new InfoTwo(); // Class property changes cannot be observed.
   @Require @Param set: Set<number>;
 
@@ -218,6 +216,9 @@ struct IndexTwo {
   }
 }
 ```
+
+
+
 
 ### Passing simple type state variables
 
@@ -312,6 +313,9 @@ struct IndexFour {
 }
 ```
 
+
+
+
 ### Passing class type state variables
 
 When using V2 components in V1 to pass parameters, V1 decorators only support decorating simple type data and do not support class types. The following provides a migration solution for scenarios involving class type data passing.
@@ -325,9 +329,7 @@ V2 decorators cannot be used together with @Observed. When V1 passes a class dec
 For specific implementation, refer to the following example code:
 
 1. Use @ObservedV2 to decorate the class singleton ViewModelV2. The V2 component V2Comp directly uses the singleton ViewModelV2 instance for UI rendering.
-
 2. Add a bridging component V1BridgeComponent decorated by @Component between the V1 component V1Comp and the V2 component V2Comp. Use @Watch to listen and assign the class data decorated by @Observed in V1 to the class data decorated by @ObservedV2 in V2.
-
 3. Directly introduce the bridge component V1BridgeComponent in the V1 component V1Comp, and the bridge component V1BridgeComponent introduces the V2 component V2Comp.
 
 <!-- @[v1_to_v2_observed_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedClass.ets) -->
@@ -484,6 +486,9 @@ struct IndexTen {
 }
 ```
 
+
+
+
 ### Passing nested objects
 
 The observation capability of V1 decorators proxies the data itself. Therefore, when data is nested, V1 can only observe deep-level data by splitting child components using @Observed + @ObjectLink. However, V2 cannot receive objects decorated by @Observed, and @ObjectLink cannot be used in V2. @Observed does not have the powerful deep-level observation capability of @ObservedV2 + @Trace, so deep nesting of @Observed will not be discussed here; only the usage scenarios of @ObservedV2 in V1 will be discussed.
@@ -495,9 +500,7 @@ When \@ObservedV2 and \@Observed are used in a nested manner, whether the class 
 In the following example code:
 
 - The outermost MessageInfoNested1 class is decorated by \@Observed and can be decorated by \@State in the V1 component IndexOne. Changes at the second level of the data source \@State (the info and messageId attributes), although unable to trigger a refresh at this level, will be observed by \@ObjectLink and \@Param, triggering a refresh of their associated components.
-
 - The messageInfo attribute is passed to the V1 component. The V1 component ChildOne must use \@ObjectLink to receive it, while the class of the info attribute passed to the V2 component GrandSon1 is decorated by \@ObservedV2.
-
 - \@Track prevents the info in the MessageInfo1 class from being refreshed along with messageId changes. If the developer removes \@Track, they can observe the cascading refresh of info when messageId changes, but this is not the observation capability of \@ObjectLink.
 
 <!-- @[observed_object_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObservedAndObjectLink.ets) -->
@@ -599,6 +602,8 @@ struct IndexOne {
 }
 ```
 
+
+
 **\@ObservedV2+\@Trace observing class nested classes**
 
 \@ObservedV2+\@Trace implements observation capability on class attributes, so when a class attribute is marked with \@Trace, changes can be observed regardless of the nesting depth. In the following example code, the MessageInfoNested object and its attributes are all decorated with \@ObservedV2. When used in the V1 component Index, they cannot be used together with V1 decorators. The messageInfo attribute is passed from the V1 component to the V2 component, and the V2 component Child receives it through \@Param, and modifications can be observed.
@@ -690,6 +695,7 @@ struct Index {
 }
 ```
 
+
 ## V2 Component Using V1 Component
 
 When state variables from V2 are passed to custom components in V1, the following restrictions apply:
@@ -699,6 +705,7 @@ When state variables from V2 are passed to custom components in V1, the followin
 - When V1 uses decorators to receive data, only @State, @Prop, and @Provide can be used.
 
 - When V1 uses decorators to receive data, built-in type data is not supported; otherwise, a compilation error will occur.
+
 
 ### Passing simple type state variables
 
@@ -735,6 +742,7 @@ struct V2Comp2 {
   }
 }
 ```
+
 
 ### Passing class type
 
@@ -789,6 +797,8 @@ struct IndexFive {
 }
 ```
 
+
+
 **Defining a Class Decorated with \@ObservedV2**
 
 V1 decorators cannot be used together with \@ObservedV2. In the following example code, the **InfoNine** class is decorated with \@ObservedV2. When a V1 component receives a variable, the **info** variable cannot be decorated by a V1 decorator, but the UI can be refreshed through modification, relying on the observation capability of \@ObservedV2 + \@Trace.
@@ -840,12 +850,13 @@ struct IndexNine {
 }
 ```
 
+
+
 ### Passing common built-in types
 
 When passing built-in types from V2 to V1, the decorator used to define the built-in type in V2 and the decorator used to receive the built-in type in V1 are mutually exclusive.
 
 - When V1 uses a decorator to receive data, built-in types cannot be decorated with a decorator in V2.
-
 - V1 can receive data without using a decorator. The received variable will be a regular variable within the V1-defined component, and it can be decorated with a decorator in V2.
 
 In the following example code, V2 passes a set variable to a V1 custom component, and the V1 component uses \@Provide to receive it. Therefore, when defining the set variable in the V2 component IndexEight, to avoid a compilation error, the set variable cannot be decorated with \@Local.
@@ -885,6 +896,9 @@ struct IndexEight {
   }
 }
 ```
+
+
+
 
 ## Summary of mixed usage scenarios
 

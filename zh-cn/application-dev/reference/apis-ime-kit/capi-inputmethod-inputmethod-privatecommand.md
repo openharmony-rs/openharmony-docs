@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -26,7 +26,7 @@ typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand
 
 **所在头文件：** [inputmethod_private_command_capi.h](capi-inputmethod-private-command-capi-h.md)
 
-相关函数列表：
+相关函数：
 | 函数 | 说明 |
 | --- | --- |
 | [OH_PrivateCommand_Create](capi-inputmethod-private-command-capi-h.md#oh_privatecommand_create) | 创建InputMethod_PrivateCommand实例。|

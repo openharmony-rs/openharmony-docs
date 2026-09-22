@@ -4,7 +4,7 @@
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
+<!--Adviser: @yuwenliang0514-->
 
 ## 概述
 
@@ -112,7 +112,7 @@ typedef void(*GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEv
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const struct GameDevice_DeviceEvent* deviceEvent) | 输出参数。设备状态变化事件[GameDevice_DeviceEvent](capi-gamecontroller-gamedevice-deviceevent.md)。 |
+| const struct GameDevice_DeviceEvent* deviceEvent | 输入参数。设备状态变化事件[GameDevice_DeviceEvent](capi-gamecontroller-gamedevice-deviceevent.md)。 |
 
 ### OH_GameDevice_DeviceEvent_GetChangedType()
 

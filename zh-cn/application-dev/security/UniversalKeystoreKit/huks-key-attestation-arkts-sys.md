@@ -19,7 +19,7 @@
 
 4. 将密钥别名与参数集作为参数传入[attestKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksattestkeyitem9)方法中，即可证明密钥。
 
-## 开发步骤
+## 开发案例
 <!-- @[non_anonymized_key_proof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/NonanonymousKeyProof/entry/src/main/ets/pages/NonAnonymousKeyProof.ets) -->
 
 ``` TypeScript
@@ -77,7 +77,7 @@ let genOptions: huks.HuksOptions = {
 };
 
 /* 2.封装证明密钥的参数集 */
-let attestKeyproperties: huks.HuksParam[] = [
+let attestKeyProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
     value: securityLevel
@@ -96,7 +96,7 @@ let attestKeyproperties: huks.HuksParam[] = [
   }
 ]
 let huksOptions: huks.HuksOptions = {
-  properties: attestKeyproperties
+  properties: attestKeyProperties
 };
 
 function stringToUint8Array(str: string) {

@@ -24,7 +24,7 @@
 
    独立子窗在[自由窗口](freeform-window-overview.md#自由窗口)状态下，不跟随主窗前后台的切换，仅跟随主窗一起销毁，独立子窗与主窗可通过点击调整层级。
 
-   <!-- @[create_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[create_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    let windowStage_: window.WindowStage | undefined = undefined;
@@ -39,7 +39,7 @@
            // 1.使用createSubWindow接口创建子窗
            windowStage_.createSubWindow('SubWindow', (err, data) => {
              if (err?.code) {
-               console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+               console.error(`Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
              }
              subWindowClass = data;
              if (!subWindowClass) {
@@ -49,6 +49,7 @@
              console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
              // ...
            })
+         }
    ```
    
    <!-- @[create_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
@@ -91,13 +92,13 @@
   
    此处以设置独立子窗的属性为例。示例代码如下：
 
-   <!-- @[independent_subWindow_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[independent_subWindow_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    // 2.子窗口创建成功后，设置子窗口的位置、大小及相关属性等。
    independentWindowClass.moveWindowTo(100, 100, (err) => {
      if (err?.code) {
-       console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+       console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
        return;
      }
      console.info('Succeeded in moving the window.');
@@ -107,7 +108,7 @@
      }
      independentWindowClass.resize(1000, 500, (err) => {
        if (err?.code) {
-         console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+         console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
          return;
        }
        console.info('Succeeded in changing the window size.');
@@ -121,13 +122,13 @@
 
    此处以加载显示独立子窗的具体内容为例。示例代码如下：
 
-   <!-- @[independent_subWindow_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[independent_subWindow_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    // 3.为子窗口加载对应的目标页面。
    independentWindowClass.setUIContent('pages/IndependentSubWindow', (err) => {
      if (err?.code) {
-       console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+       console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
        return;
      }
      console.info('Succeeded in loading the content.');
@@ -138,11 +139,12 @@
      // 显示子窗口。
      independentWindowClass.showWindow((err) => {
        if (err?.code) {
-         console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+         console.error(`Failed to show the window. Cause code: ${err.code}, message: ${err.message}`);
          return;
        }
        console.info('Succeeded in showing the window.');
      });
+   });
    ```
 
 4. 销毁子窗口。
@@ -151,13 +153,13 @@
 
    此处以销毁独立子窗为例。示例代码如下：
 
-   <!-- @[destroy_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[destroy_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
    independentWindowClass.destroyWindow((err) => {
      if (err?.code) {
-       console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
+       console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
        return;
      }
      console.info('Succeeded in destroying the window.');

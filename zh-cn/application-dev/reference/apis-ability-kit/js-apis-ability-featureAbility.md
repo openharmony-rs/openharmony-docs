@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-FeatureAbility模块提供与用户进行交互的Ability的能力，包括启动新的Ability、停止Ability、获取dataAbilityHelper对象、获取当前Ability对应的窗口，连接/断连Service等。
+FeatureAbility模块提供与用户进行交互的Ability的能力，包括启动新的Ability、停止Ability、获取dataAbilityHelper对象、获取当前Ability对应的窗口，连接/断连ServiceAbility等。
 
 > **说明：**
 >
@@ -241,8 +241,8 @@ startAbilityForResult(parameter: StartAbilityParameter): Promise\<AbilityResult>
 
 启动一个Ability。使用Promise异步回调。启动Ability后，存在如下几种情况：
  - 正常情况下可通过调用[terminateSelfWithResult](#featureabilityterminateselfwithresult7)接口使之终止并且返回结果给调用方。
- - 异常情况下比如杀死Ability会返回异常信息给调用方, 异常信息中resultCode为-1。
- - 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](#featureabilityterminateselfwithresult7)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+ - 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。
+ - 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](#featureabilityterminateselfwithresult7)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息，异常信息中resultCode为-1。
 
 > **说明：**
 >
@@ -432,7 +432,7 @@ hasWindowFocus(callback: AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                      | 必填   | 说明                                       |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
-| callback | AsyncCallback\<boolean> | 是    |回调函数。<br>如果此Ability当前具有视窗焦点，则返回true；否则返回false。 |
+| callback | AsyncCallback\<boolean> | 是    |回调函数。<br>如果此Ability当前具有窗口焦点，则返回true；否则返回false。 |
 
 **示例：**
 
@@ -464,7 +464,7 @@ hasWindowFocus(): Promise\<boolean>
 
 | 类型                | 说明                                    |
 | ----------------- | ------------------------------------- |
-| Promise\<boolean> | Promise对象。如果此Ability当前具有视窗焦点，则返回true；否则返回false。 |
+| Promise\<boolean> | Promise对象。如果此Ability当前具有窗口焦点，则返回true；否则返回false。 |
 
 **示例：**
 
@@ -929,7 +929,7 @@ featureAbility.AbilityStartSetting.BOUNDS_KEY
 | ------------------------------ | ---- | ---------------------------------------- |
 | NO_ERROR         | 0    | 没有异常。   |
 | INVALID_PARAMETER | -1   | 无效的参数。 |
-| ABILITY_NOT_FOUND | -2   | 找不到ABILITY。 |
+| ABILITY_NOT_FOUND | -2   | 找不到Ability。 |
 | PERMISSION_DENY   | -3   | 权限拒绝。   |
 
 ## DataAbilityOperationType<sup>7+</sup>

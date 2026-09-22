@@ -12,7 +12,7 @@ typedef struct ArkUI_DragAndDropInfo ArkUI_DragAndDropInfo
 
 ## 概述
 
-主动发起拖拽后，通过拖拽状态监听返回的系统拖拽相关数据，帮助应用根据拖拽状态进行后续处理。
+主动发起拖拽后，系统通过拖拽状态监听回调返回ArkUI_DragAndDropInfo。开发者可从该结构体获取拖拽开始或结束状态，以及拖拽结束时的拖拽事件数据，并根据状态进行后续处理。拖拽回调的注册方式请参见[drag_and_drop.h](capi-drag-and-drop-h.md)。
 
 **起始版本：** 12
 

@@ -1,10 +1,11 @@
 # @ohos.data.dataShare (DataShare) (System API)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=68d7b8030be7ba5da7e711fc0d0ad9a1a6eb2337 translatedAt=2026-09-04T03:27:35.694Z pushedAt=2026-09-09T09:11:03.715Z -->
 
 The **DataShare** module allows an application to manage its own data and share data with other applications on the same device.
 
@@ -16,11 +17,11 @@ For details about the database types supported in non-silent scenarios, see [Sha
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs provided by this module are system APIs.
+> - The APIs of this module are system APIs.
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The callback of the **on('rdbDataChange')** API for subscribing to changes of the RelationalStore (RDB) supports the transmission of data up to 10 MB.
+> - The callback of the API **on('rdbDataChange')** for subscribing to RDB (RelationalStore) data changes supports data transfer of no more than 10 MB.
 
 
 ## Modules to Import
@@ -99,12 +100,13 @@ Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whe
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**Parameters**
 
 | Name  | Type                                                | Mandatory| Description                                                        |
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)        | Yes  | Context of the application.                                          |
 | uri      | string                                                   | Yes  | URI of the server application to connect.                              |
-| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes  | Whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
+| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes | Specifies whether [DataShareHelper](#datasharehelper) is in proxy mode, and specifies the waiting time for startup during non-silent access.<br>If not set, [DataShareHelper](#datasharehelper) is not in proxy mode, and the waiting time for startup during non-silent access is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter of **options** must be set; otherwise, **DataShareHelper** creation fails and an error is returned. |
 | callback | AsyncCallback&lt;[DataShareHelper](#datasharehelper)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DataShareHelper** instance created. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -163,7 +165,7 @@ Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whe
 | ------- | ------------------------------------------------- | ---- | ------------------------------ |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | Yes  | Context of the application.            |
 | uri     | string                                            | Yes  | URI of the server application to connect.|
-| options<sup>10+</sup> | [DataShareHelperOptions](#datasharehelperoptions10) | No| Optional configuration of the **DataShareHelper** instance. It specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
+| options<sup>10+</sup> | [DataShareHelperOptions](#datasharehelperoptions10) | No | Optional configuration. It specifies whether the [DataShareHelper](#datasharehelper) is in proxy mode and the wait time for startup during non-silent access.<br>If this parameter is not set, the [DataShareHelper](#datasharehelper) is not in proxy mode, and the wait time for startup during non-silent access is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter of **options** must be set; otherwise, the **DataShareHelper** fails to be created and an error is returned.|
 
 **Return value**
 
@@ -226,7 +228,7 @@ Observe the following when using this API:
 | Name | Type                                                   | Mandatory| Description                                                                                                                                                                                                                                                                              |
 | ------- | ------------------------------------------------------- | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | Yes  | Context of the application.                                                                                                                                                                                                                                                                       |
-| uri     | string                                                  | No  | URI of the data, for which silent access is to be enabled.<br>Global setting: If **uri** is **undefined** or **null** or is not specified, all the previous settings will be cleared and silent access will be enabled globally for the data provider.<br>URI-specific setting: If a URI is specified, silent access to the specified URI will be enabled.<br>When datashareHelper APIs are called, the URI-specific setting is preferentially applied. If no match is found, the global setting is applied.<br>URI format: **datashare:///{bundleName}/{moduleName}/{storeName}/{tableName}**|
+| uri     | string                                                  | No   | Data path of the data provider for which silent access is to be enabled.<br>1) Global switch state: If **uri** is not passed, is **undefined**, or is **null**, all previously set **uri** switch states are cleared, and silent access to the data provider is enabled.<br>2) Precise switch state: If **uri** is a fixed value, silent access is enabled only for that **uri**.<br>When calling **datashareHelper** APIs, the switch state that precisely matches the **uri** is matched first. If no match is found, the global switch state is matched.<br>uri format: **datashare:///{bundleName}/{moduleName}/{storeName}/{tableName}** |
 
 **Return value**
 
@@ -281,7 +283,7 @@ Observe the following when using this API:
 | Name | Type                                                   | Mandatory| Description                                                                                                                                                                                                                                                                            |
 | ------- | ------------------------------------------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | Yes  | Context of the application.                                                                                                                                                                                                                                                                     |
-| uri     | string                                                  | No  | URI of the data, for which silent access is to be disabled.<br>Global setting: If **uri** is **undefined** or **null** or is not specified, all the previous settings will be cleared and silent access will be disabled globally for the data provider.<br>URI-specific setting: If a URI is specified, silent access to the specified URI will be disabled.<br>When datashareHelper APIs are called, the URI-specific setting is preferentially applied. If no match is found, the global setting is applied.<br>URI format: **datashare:///{bundleName}/{moduleName}/{storeName}/{tableName}**|
+| uri     | string                                                  | No   | Data path of the data provider to be closed.<br>1. Global switch state: If the input parameter does not carry a **uri**, or the **uri** is **undefined** or **null**, the previously set uri switch state is cleared, and silent access to the data provider is disabled.<br>2. Precise switch state: If the **uri** input parameter is a fixed value, only the silent access corresponding to this **uri** is disabled.<br>When calling **datashareHelper**-related APIs, the switch state that precisely matches the **uri** is matched first. If no match is found, the global switch state is matched.<br>uri format: **datashare:///{bundleName}/{moduleName}/{storeName}/{tableName}** |
 
 **Return value**
 
@@ -321,14 +323,14 @@ export default class EntryAbility extends UIAbility {
 
 ## DataShareHelperOptions<sup>10+</sup>
 
-Represents the optional parameters of [DataShareHelper](#datasharehelper).
+Specifies the optional parameters of [DataShareHelper](#datasharehelper), including whether it is in proxy mode and the startup waiting time for non-silent access.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| isProxy | boolean | No| Yes| Whether the [DataShareHelper](#datasharehelper) is in proxy mode. The default value is **false**.<br>If the value is **true**, the [DataShareHelper](#datasharehelper) to be created is in proxy mode, and all operations will not open the data provider application unless the database does not exist. If the database does not exist, [createDataShareHelper](#datasharecreatedatasharehelper10) will start the data provider to create a database.|
-| waitTime<sup>18+</sup> | number | No| Yes| Waiting time for starting the data provider process, in seconds. The default value is **2**. The value must be greater than 0.|
+| isProxy | boolean | No | Yes | Default value: **false**. If set to **true**, the [DataShareHelper](#datasharehelper) to be created is in proxy mode, and all operations do not open the data provider application unless the database does not exist. When the database does not exist, [createDataShareHelper](#datasharecreatedatasharehelper10) starts the data provider to create the database. |
+| waitTime<sup>18+</sup> | number | No | Yes | Waiting time for starting the data provider process, in seconds. The default value is **2**. The value must be greater than 0. |
 
 ## TemplateId<sup>10+</sup>
 
@@ -338,7 +340,7 @@ Defines the **TemplateId** struct. **TemplateId** is generated by [**addTemplate
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| subscriberId | string | No| No| ID of the subscriber who handles the callback. The value must the same as the **subscriberId** in [**addTemplate**](#addtemplate10). The ID of each subscriber must be unique.|
+| subscriberId | string | No| No| ID of the subscriber who handles the callback. The value must be the same as the **subscriberId** in [**addTemplate**](#addtemplate10). The ID of each subscriber must be unique.|
 | bundleNameOfOwner | string | No| No| Bundle name of the template owner who creates the template.|
 
 ## PublishedItem<sup>10+</sup>
@@ -355,7 +357,7 @@ Defines the data to publish.
 
 ## RdbDataChangeNode<sup>10+</sup>
 
-Represents the RDB data change result. The data returned by the callback is not larger than 10 MB in size.
+Represents the result of subscribing to or unsubscribing from RDB data changes. The callback supports data transfer of no more than 10 MB.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -385,7 +387,7 @@ Defines the struct of the template used in a subscription.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | predicates | Record<string, string> | No| No| Predicates to use. When [**on**](#onrdbdatachange10) is called, the predicates are used to generate data. This parameter applies only to RDB data storage. |
-| scheduler | string | No| No| Template scheduler SQL, which is embedded with a custom function. Currently, the **remindTimer** function is embedded. The **remindTimer** triggers a subscription-based update in specified scenarios.<br>The scheduler SQL statement is triggered when:<br>1. The subscribed data is modified.<br>2. The first subscription is added to the corresponding database.|
+| scheduler | string | No | No | Scheduler SQL of the template. Custom functions are embedded for processing, and the preset custom function **remindTimer** is currently used. **remindTimer** triggers a subscription refresh once in the specified scenario.<br>Trigger scenarios:<br>1. When data is modified and a subscription exists, the corresponding scheduler SQL statement is triggered.<br>2. When the first subscription of the corresponding database is added, the corresponding scheduler SQL statement is triggered. |
 | update<sup>18+</sup> | string | No| Yes| Update SQL statement of a specified template. The default value is an empty string. When [on](#onrdbdatachange10) is called, the **update** parameter is used to update data. This parameter applies only to RDB data storage. |
 
 ## OperationResult<sup>10+</sup>
@@ -439,9 +441,13 @@ Provides a **DataShareHelper** instance to access or manage data on the server. 
 
 on(type: 'dataChange', uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Subscribes to the data change of the specified URI. After an observer is registered, the subscriber will receive a notification when the **notifyChange** API is called. This API uses an asynchronous callback to return the result. This function does not support cross-user notification subscription. An application can subscribe to a single URI for a maximum of 51 times.
+Subscribes to the data change event of the data corresponding to the specified URI. Cross-user subscription to notifications is not supported.
 
-Notification triggering: In non-silent scenarios, a notification is published if the [notifyChange](#notifychange-1) method is called. In silent scenarios, a notification is automatically published if data is modified via silent access.
+**Notification triggering:** In non-silent scenarios, a notification is published to the subscribers of the specified URI when the [notifyChange](#notifychange-1) method is called. In silent scenarios, a notification is automatically published when the data is modified through silent access to the specified URI.
+
+**Specification limits**
+* Before OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 50 subscriptions globally.
+* Since OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 2500 subscriptions globally.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -479,14 +485,18 @@ if (dataShareHelper !== undefined) {
 
 on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallback&lt;ChangeInfo&gt;): void
 
-Subscribes to the data change of the specified URI. After a change notification is registered, the subscriber will receive a notification when the **notifyChange** API is called. The change notification contains the data change type, URI of the data changed, and the changed data. This API uses an asynchronous callback to return the result. This function does not support cross-user notification subscription. An application can subscribe to a single URI for a maximum of 51 times.
+Subscribes to the data change event of the data corresponding to the specified URI. Cross-user subscription to notifications is not supported.
 
 **API called in pairs**
 - This API is used in pairs with [off('dataChange')](#offdatachange12), which is used to unsubscribe from data change events.
 - To cancel the subscription, ensure that the values of **type**, **uri**, and **callback** are the same as those set during the subscription.
 - If the subscription is not canceled in time, memory leaks and resource occupation may occur.
 
-Notification triggering: In non-silent scenarios, a notification is published if the [notifyChange](#notifychange12) method is called. In silent scenarios, a notification is automatically published if data is modified via silent access, but **ChangeInfo** in the callback is invalid.
+**Notification triggering:** In non-silent scenarios, a notification carrying [ChangeInfo](#changeinfo12) is published to the subscribers of the specified URI when the [notifyChange](#notifychange12) method is called. In silent scenarios, a notification is automatically published when the data is modified through silent access to the specified URI, but the **ChangeInfo** in the callback notification is invalid in this case.
+
+**Specification limits**
+* Before OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 50 subscriptions globally.
+* Starting from OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 2500 subscriptions globally.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -633,7 +643,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 | -------- | -------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700011 | The URI does not exist.|
+| 15700011 | The URI is not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **Example**
@@ -683,7 +693,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 | -------- | -------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700011 | The URI does not exist.|
+| 15700011 | The URI is not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **Example**
@@ -952,7 +962,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 | -------- | -------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700012 | The data area does not exist.|
+| 15700012 | The data area is not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **Example**
@@ -1008,7 +1018,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let publishCallback: (err: BusinessError, result: Array<dataShare.OperationResult>) => void = (err: BusinessError, result: Array<dataShare.OperationResult>): void => {
   console.info("publishCallback " + JSON.stringify(result));
@@ -1038,7 +1048,7 @@ In silent scenarios, the total size of the **data** and **bundleName** parameter
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | data      | Array&lt;[PublishedItem](#publisheditem10)&gt;    | Yes  | Data to publish.|
 | bundleName | string                      | Yes  | Application of the data to publish. This parameter is valid only for the private data published. Only the application can read the data. |
-| version | number                         | No  | Version of the data to publish. A larger value indicates a later version. If the version of the data published is earlier than that of the data in the database, the data in the database will not be updated.<br> If the data version is not checked, leave this parameter unspecified.|
+| version | number                         | No   | Version of the data to publish. A larger value indicates a newer data version. If the published version number is smaller than the record in the database, the update fails.<br> If the version of the data to publish does not need to be checked, leave this parameter unspecified. |
 
 **Return value**
 
@@ -1054,7 +1064,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 | -------- | -------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700012 | The data area does not exist.|
+| 15700012 | The data area is not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **Example**
@@ -1169,7 +1179,7 @@ In silent scenarios, the total size of the **uri** and **value** parameters pass
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | uri      | string                                                    | Yes  | URI of the data to insert.                                    |
 | value    | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes  | Value of the data to insert.          |
-| callback | AsyncCallback&lt;number&gt;                               | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the index of the inserted data record. Otherwise, **err** is an error object.<br>The data index is not returned if the APIs of the database in use, for example, the key-value database (KVDB), do not support the return of indexes.|
+| callback | AsyncCallback&lt;number&gt;                               | Yes  | Callback used to return the result. If a single data record is inserted into the database successfully, **err** is **undefined** and **data** is the index of the inserted data record; otherwise, **err** is an error object.<br>Because the corresponding APIs of some databases (such as KVDB) do not support returning an index, this **callback** cannot return an index value if the server uses a database that does not support indexes. |
 
 **Error codes**
 
@@ -1239,7 +1249,7 @@ In silent scenarios, the total size of the **uri** and **value** parameters pass
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the index of the inserted data record.<br>The data index is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
+| Promise&lt;number&gt; | Promise object. Returns the index of the inserted data record.<br>Because the corresponding APIs of some databases (such as KVDB) do not support returning an index, if the server uses a database that does not support indexes, this Promise cannot return an index value either. |
 
 **Error codes**
 
@@ -1301,8 +1311,8 @@ In silent scenarios, the total size of the **uri** and **predicates** parameters
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to delete.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for deleting data.<br>The predicate methods supported by **delete()** vary depending on the database in use. For example, the KVDB supports only **inKeys**. If the predicate method is empty in silent scenarios, the entire table is deleted by default. The specifications for non-silent scenarios are defined by the data provider.|
-| callback   | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of deleted data records. Otherwise, **err** is an error object.<br>The number of deleted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filtering conditions.<br>The predicate methods supported by the **delete** API depend on the database selected by the server. For example, the deletion of KVDB currently supports only the **inKeys** predicate. In the silent access scenario, if the methods in the predicate are empty, the entire table is deleted by default. In the non-silent access scenario, the specifications are defined by the data provider. |
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback invoked to return the result. If one or more data records are deleted from the database successfully, **err** is **undefined** and **data** is the number of deleted data records obtained. Otherwise, err is an error object.<br>Because the corresponding APIs of some databases (such as KVDB) do not provide the relevant support, if the server uses such a database, this **callback** cannot return the number of deleted data records. |
 
 **Error codes**
 
@@ -1357,13 +1367,13 @@ In silent scenarios, the total size of the **uri** and **predicates** parameters
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to delete.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for deleting data.<br>The predicate methods supported by **delete()** vary depending on the database in use. For example, the KVDB supports only **inKeys**. If the predicate method is empty in silent scenarios, the entire table is deleted by default. The specifications for non-silent scenarios are defined by the data provider.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filter criteria.<br>The predicate methods supported by the **delete** API depend on the database selected by the server. For example, the deletion of KVDB currently supports only the **inKeys** predicate. In the silent access scenario, if the methods in the predicate are empty, the entire table is deleted by default. In the non-silent access scenario, the specifications are defined by the data provider. |
 
 **Return value**
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the number of deleted data records.<br>The number of deleted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
+| Promise&lt;number&gt; | Promise object. Number of deleted data records.<br>Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this Promise cannot return the number of deleted data records either. |
 
 **Error codes**
 
@@ -1418,7 +1428,7 @@ When this API is used to query database data, if the query content exceeds the r
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to query.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for querying data.<br>The predicate methods supported by **query()** vary depending on the database used. For example, the KVDB supports only **inKeys** and **prefixKey**. If the predicate method is empty in silent scenarios, the entire table is queried by default. The specifications for non-silent scenarios are defined by the data provider.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filter criteria.<br>The predicate methods supported by the **query** API depend on the database selected by the server. For example, KVDB currently supports only **inKeys** and **prefixKey**. In a silent access scenario, when the methods in the predicate are empty, the entire table is queried by default. In a non-silent access scenario, the specifications are defined by the data provider. |
 | columns    | Array&lt;string&gt;                                          | Yes  | Column to query. If this parameter is left empty, all columns will be queried.              |
 | callback   | AsyncCallback&lt;[DataShareResultSet](js-apis-data-DataShareResultSet-sys.md#datashareresultset)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the result set obtained. Otherwise, **err** is an error object.|
 
@@ -1478,7 +1488,7 @@ When this API is used to query database data, if the query content exceeds the r
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to query.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for querying data.<br>The predicate methods supported by **query()** vary depending on the database used. For example, the KVDB supports only **inKeys** and **prefixKey**. If the predicate method is empty in silent scenarios, the entire table is queried by default. The specifications for non-silent scenarios are defined by the data provider.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filter criteria.<br>The predicate methods supported by the **query** API depend on the database selected by the server. For example, KVDB currently supports only **inKeys** and **prefixKey**. In a silent scenario, when the methods in the predicate are empty, the entire table is queried by default. In a non-silent scenario, the specification is defined by the data provider. |
 | columns    | Array&lt;string&gt;                                          | Yes  | Column to query. If this parameter is left empty, all columns will be queried.              |
 
 **Return value**
@@ -1539,9 +1549,9 @@ In silent scenarios, the total size of the **uri**, **predicates**, and **value*
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to update.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for deleting data.<br>The predicate methods supported by **update()** vary depending on the database in use. For example, only the relational database (RDB) supports predicates. If the predicate method is empty in silent scenarios, the entire table is updated by default. The specifications for non-silent scenarios are defined by the data provider.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filtering conditions.<br>The predicate filtering conditions supported by the **update** API depend on the database selected by the server. For example, KVDB does not support predicate filtering conditions, and only RDB does. In a silent scenario, when the methods in the predicate are empty, the entire table is updated by default. In a non-silent scenario, the specifications are defined by the data provider. |
 | value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Value of the data to update.                                 |
-| callback   | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of updated data records. Otherwise, **err** is an error object.<br>The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback invoked to return the result. If the data records in the database are updated successfully, **err** is **undefined** and **data** is the number of updated data records. Otherwise, err is an error object.<br>Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this **callback** cannot return the number of updated data records. |
 
 **Error codes**
 
@@ -1607,14 +1617,14 @@ In silent scenarios, the total size of the **uri**, **predicates**, and **value*
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to update.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for deleting data.<br>The predicate methods supported by **update()** vary depending on the database in use. For example, only the relational database (RDB) supports predicates. If the predicate method is empty in silent scenarios, the entire table is updated by default. The specifications for non-silent scenarios are defined by the data provider.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filter criteria.<br>The predicate filter criteria supported by the **update** API depend on the database used by the server. For example, KVDB does not support predicate filter criteria, and only RDB does. In the silent access scenario, when the methods in the predicate are empty, the entire table is updated by default. In the non-silent access scenario, the specifications are defined by the data provider. |
 | value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Value of the data to update.                                  |
 
 **Return value**
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the number of data records updated.<br>The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
+| Promise&lt;number&gt; | Promise used to return the number of updated data records.<br>Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this Promise cannot return the number of updated data records. |
 
 **Error codes**
 
@@ -1665,9 +1675,9 @@ try {
 
 batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;
 
-Batch updates data in the database. The total number of objects for operations (that is, KV pairs of the objects) cannot exceed 4000. If the number exceeds 4000, the update will fail. The transaction of this API depends on the data provider. This API uses a promise to return the result. Silent access is not supported currently.
+Updates data records in the database in batches. The total number of all operations (that is, the key-value pairs of the **operations** object) must not exceed 4000; otherwise, the update fails. The transactionality of this API depends on the **provider** (data provider). This API uses a promise to return the result. Silent access is not supported.
 
-In non-silent scenarios, the size of the **operations** parameter passed in this API called cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
+In non-silent scenarios, the size of the **operations** parameter passed when calling this API cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1681,7 +1691,7 @@ In non-silent scenarios, the size of the **operations** parameter passed in this
 
 | Type                                                 | Description                                                        |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | Promise used to return an array of updated data records. The value **-1** means the update operation fails.<br>The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
+| Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | Promise object used to return the collection of the numbers of updated data records. The number of data records for an **UpdateOperation** that fails to update is **-1**.<br>Because the corresponding APIs of some databases (such as KVDB) do not provide such support, this Promise cannot return the number of updated data records if the server uses such a database. |
 
 **Error codes**
 
@@ -1691,7 +1701,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 | -------- | ------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 15700000 | Inner error.                         |
+| 15700000 | Inner error. Possible causes: 1.The internal status is abnormal; 2.The interface is incorrectly used; 3.Permission configuration error; 4.A system error. |
 | 15700013 | The DataShareHelper instance is already closed. |
 
 **Example**
@@ -1732,10 +1742,10 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).batchUpdate(record).then((data: Record<string, Array<number>>) => {
       // Traverse data to obtain the update result of each data record. value indicates the number of data records that are successfully updated. If value is less than 0, the update fails.
-      let a = Object.entries(data);
-      for (let i = 0; i < a.length; i++) {
-        let key = a[i][0];
-        let values = a[i][1];
+      let entries = Object.entries(data);
+      for (let i = 0; i < entries.length; i++) {
+        let key = entries[i][0];
+        let values = entries[i][1];
         console.info(`Update uri:${key}`);
         for (const value of values) {
           console.info(`Update result:${value}`);
@@ -1768,7 +1778,7 @@ In non-silent scenarios, the size of the **values** parameter and the **uri** pa
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri      | string                                                       | Yes  | URI of the data to insert.                                    |
 | values   | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | Yes  | Data to insert.                                          |
-| callback | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of data records inserted. Otherwise, **err** is an error object.<br>The number of inserted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback invoked when the batch data is inserted into the database successfully. In this case, **err** is **undefined** and **data** is the number of inserted data records; otherwise, err is an error object.<br>Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this **callback** cannot return the number of inserted data records. |
 
 **Error codes**
 
@@ -1829,7 +1839,7 @@ In non-silent scenarios, the size of the **values** parameter and the **uri** pa
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the number of data records inserted.<br>The number of inserted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
+| Promise&lt;number&gt; | Promise used to return the number of inserted data records.<br>Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this promise cannot return the number of inserted data records. |
 
 **Error codes**
 
@@ -1883,7 +1893,7 @@ Closes the **DataShareHelper** instance. After this API is called, the instance 
 
 **Error codes**
 
-For details about the error codes, see [DataShare Error Codes](errorcode-datashare.md).
+For details about the error codes, see [DataShare Error Codes](errorcode-datashare.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message    |
 | -------- | ------------ |
@@ -1932,7 +1942,7 @@ let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
-      console.info("normalizeUri failed, error message : " + err);
+      console.error(`Failed to normalize URI. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info("normalizeUri = " + data);
     }
@@ -1980,7 +1990,7 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri).then((data: string) => {
     console.info("normalizeUri = " + data);
   }).catch((err: BusinessError) => {
-    console.info("normalizeUri failed, error message : " + err);
+    console.error(`Failed to normalize URI. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -2078,7 +2088,7 @@ notifyChange(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 Notifies the registered observer of data changes. This API uses an asynchronous callback to return the result. Silent access is not supported currently.
 
-In non-silent scenarios, the size of the **uri** parameter passed in this API called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+In non-silent scenarios, the size of the **uri** parameter passed when calling this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2116,7 +2126,7 @@ notifyChange(uri: string): Promise&lt;void&gt;
 
 Notifies the registered observer of data changes. This API uses a promise to return the result. Silent access is not supported currently.
 
-In non-silent scenarios, the size of the **uri** parameter passed in this API called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+In non-silent scenarios, the size of the **uri** parameter passed in this API call cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2157,7 +2167,7 @@ notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 
 Notifies the observer of the data change of the specified URI. This API uses a promise to return the result. Silent access is not supported currently.
 
-In non-silent scenarios, the size of the **data** parameter passed in this API called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+In non-silent scenarios, the size of the **data** parameter passed when calling this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 

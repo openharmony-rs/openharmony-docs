@@ -95,9 +95,9 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```cpp
 const char *srcCallNative = R"JS(triggerOOMError();)JS";
 ```
-**执行结果**
+**执行结果：**
 
-在LOG中输出：　
+在LOG中输出：
 ```cpp
 JSVM Trigger OOM Error: success
 ```
@@ -164,7 +164,7 @@ const char* srcCallNative = R"JS(triggerFatalError())JS";
 ```
 **执行结果：**
 
-在LOG中输出：　
+在LOG中输出：
 ```cpp
 JSVM Trigger Fatal Error: success
 ```
@@ -206,7 +206,7 @@ static JSVM_Value TriggerPromiseReject(JSVM_Env env, JSVM_CallbackInfo info)
     // 设置Promise Reject处理函数
     JSVM_CALL(OH_JSVM_SetHandlerForPromiseReject(vm, OnPromiseReject));
     JSVM_Value strVal;
-    char *str = "new Promise((resolve, reject) => { reject(42); })";
+    const char *str = "new Promise((resolve, reject) => { reject(42); })";
     OH_JSVM_CreateStringUtf8(env, str, JSVM_AUTO_LENGTH, &strVal);
     JSVM_Script script;
     OH_JSVM_CompileScript(env, strVal, nullptr, 0, false, nullptr, &script);
@@ -240,7 +240,7 @@ const char* srcCallNative = R"JS(triggerPromiseReject())JS";
 ```
 **执行结果：**
 
-在LOG中输出：　
+在LOG中输出：
 ```cpp
 JSVM Trigger Promise Reject: success
 ```

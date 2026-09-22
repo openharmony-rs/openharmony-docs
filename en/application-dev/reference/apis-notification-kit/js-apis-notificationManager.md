@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:39:55.127Z pushedAt=2026-06-30T10:57:37.021Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:12:45.865Z pushedAt=2026-07-22T02:22:57.608Z -->
 
 This module provides notification management capabilities, allowing applications to manage the complete lifecycle of notifications. This includes operations such as publishing, updating, and canceling notifications, creating and querying notification slots, querying and requesting authorization status for notification capabilities, setting application badges, and querying stored notifications in the notification center.
 
@@ -72,6 +72,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600015  | The current notification status does not support duplicate configurations.<br> Applicable versions: 11+       |
 | 1600016  | The notification version for this update is too low.<br> Applicable versions: 11+                             |
 | 1600020  | The application is not allowed to send notifications due to permission settings.<br> Applicable versions: 12+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>Applicable versions: 26.0.0+ |
 | 2300007  | Network unreachable.<br> Applicable versions: 11+                                                             |
 
 **Example**
@@ -143,6 +144,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1600015  | The current notification status does not support duplicate configurations.<br> Applicable versions: 11+       |
 | 1600016  | The notification version for this update is too low.<br> Applicable versions: 11+                             |
 | 1600020  | The application is not allowed to send notifications due to permission settings.<br> Applicable versions: 12+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br>Applicable versions: 26.0.0+ |
 | 2300007  | Network unreachable.<br> Applicable versions: 11+                                                             |
 
 **Example**
@@ -174,11 +176,11 @@ notificationManager.publish(notificationRequest).then(() => {
 
 cancel(id: number, label: string, callback: AsyncCallback\<void\>): void
 
-Cancels a notification with the specified ID and label. This API uses an asynchronous callback to return the result.
+Cancels a published notification based on the notification ID and label. This API uses an asynchronous callback to return the result.
 
 After cancellation, the corresponding notification will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user. This is suitable for scenarios where a specific notification with a particular tag needs to be precisely canceled.
 
-Compared with [notificationManager.cancel(id, callback)](#notificationmanagercancel-2), which only passes in the notification ID, this API additionally passes in the **label** parameter, allowing precise cancellation of notifications with different tags under the same ID.
+Compared with [notificationManager.cancel(id, callback)](#notificationmanagercancel-2), which requires only the notification ID, this API additionally has the **label** parameter, allowing precise cancellation of notifications with the same ID but different labels.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -187,7 +189,7 @@ Compared with [notificationManager.cancel(id, callback)](#notificationmanagercan
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
 | id       | number                | Yes   | Notification ID, used to identify the target notification. This value is specified by the **id** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when a notification is published.               |
-| label    | string                | Yes   | Notification tag, used to distinguish notifications with different tags under the same ID. This value is specified by the **label** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when a notification is published.             |
+| label    | string                | Yes   | Notification label. This value is specified by the **label** field in [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) during the notification publishment.<br> - If the **label** field is empty, the published notification that matches the specified notification ID and has an empty label is canceled.<br> - If the **label** field is not empty, the published notification that matches both the specified notification ID and label is canceled.             |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -222,7 +224,7 @@ notificationManager.cancel(0, "label", cancelCallback);
 
 cancel(id: number, label?: string): Promise\<void\>
 
-Cancels a published notification based on the notification ID and label. If the label is empty, it cancels the published notification that matches the specified notification ID and has an empty label. This API uses a promise to return the result.
+Cancels a published notification based on the notification ID and label. This API uses a promise to return the result.
 
 After cancellation, the corresponding notification will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user.
 
@@ -233,7 +235,7 @@ After cancellation, the corresponding notification will be removed from the noti
 | Name | Type  | Mandatory| Description    |
 | ----- | ------ | ---- | -------- |
 | id    | number | Yes   | Notification ID, used to identify the target notification. This value is specified by the id field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when publishing a notification.   |
-| label | string | No  | Notification label. This parameter is left empty by default.|
+| label | string | No | Notification label. The default value is empty. This value is specified by the **label** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) during the notification publishment.<br> - If the **label** field is empty, the published notification that matches the specified notification ID and has an empty label is canceled.<br> - If the **label** field is not empty, the published notification that matches both the specified notification ID and label is canceled. |
 
 **Return value**
 
@@ -581,7 +583,7 @@ getSlots(callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
 Obtains all notification slots of this application. This API uses an asynchronous callback to return the result.
 
-This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder method, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed.
+This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder method, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed. The corresponding notification slots must be created through [addSlot](#notificationmanageraddslot) first; otherwise, the obtained result will be empty.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -624,7 +626,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 Obtains all notification slots of this application. This API uses a promise to return the result.
 
-This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder method, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed.
+This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder method, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed. The corresponding notification slots must be created through [addSlot](#notificationmanageraddslot) first; otherwise, the obtained result will be empty.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -849,8 +851,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.<br> Applicable versions: 9-10                                     |
-| 202      | Not system application to call the interface.<br> Applicable versions: 9-10                                     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.     |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -896,8 +896,6 @@ For details about the error codes, see [Notification Error Codes](errorcode-noti
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.<br> Applicable versions: 9-10                                     |
-| 202      | Not system application to call the interface.<br> Applicable versions: 9-10                                     |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -965,7 +963,7 @@ A badge is a numeric identifier displayed in the upper right corner of an applic
 
 | Name     | Type  | Mandatory| Description      |
 | ----------- | ------ | ---- | ---------- |
-| badgeNumber | number | Yes  | Notification badge number to set. If **badgeNumber** is set to **0**, badges are cleared; if the value is greater than **99**, **99+** is displayed on the badge.|
+| badgeNumber | number | Yes  | Notification badge number to set. If **badgeNumber** is set to a value less than or equal to **0**, badges are cleared; if the value is greater than **99**, **99+** is displayed on the badge.|
 
 **Return value**
 
@@ -1015,7 +1013,7 @@ A badge is a numeric identifier displayed in the upper right corner of an applic
 
 | Name     | Type                 | Mandatory| Description              |
 | ----------- | --------------------- | ---- | ------------------ |
-| badgeNumber | number                | Yes  | Notification badge number to set. If **badgeNumber** is set to **0**, badges are cleared; if the value is greater than **99**, **99+** is displayed on the badge.        |
+| badgeNumber | number                | Yes  | Notification badge number to set. If **badgeNumber** is set to a value less than or equal to **0**, badges are cleared; if the value is greater than **99**, **99+** is displayed on the badge.        |
 | callback    | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1091,7 +1089,7 @@ getActiveNotificationCount(callback: AsyncCallback\<number\>): void
 
 Obtains the number of active notifications of this application. This API uses an asynchronous callback to return the result.
 
-This API is used to query the number of notifications of the current application that are still active in the notification center (not deleted by the user or canceled by the program). This is suitable for scenarios where an unread notification count prompt needs to be displayed.
+This API is used to query the number of active notifications published by the current application in the notification center. This is suitable for scenarios where an unread notification count prompt needs to be displayed.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1134,7 +1132,7 @@ getActiveNotificationCount(): Promise\<number\>
 
 Obtains the number of active notifications of this application. This API uses a promise to return the result.
 
-This API is used to query the number of notifications of the current application in the notification center. This is suitable for scenarios where an unread notification count prompt needs to be displayed.
+This API is used to query the number of active notifications published by the current application in the notification center. This is suitable for scenarios where an unread notification count prompt needs to be displayed.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1261,7 +1259,7 @@ Obtains some information about the **wantAgent** field in [NotificationRequest](
 | Name | Type  | Mandatory| Description    |
 | ----- | ------ | ---- | -------- |
 | id    | number | Yes   | Notification ID, used to identify the target notification. This value is specified by the **id** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when a notification is published.   |
-| label | string | No  | Notification label. This parameter is left empty by default.|
+| label | string | No | Notification label. The default value is empty. This value is specified by the **label** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) during the notification publishment.<br> - If the **label** field is empty, some information about the published notification that matches the specified notification ID and has an empty label is obtained.<br> - If the **label** field is not empty, some information about the published notification that matches both the specified notification ID and label is obtained. |
 
 **Return value**
 
@@ -1696,9 +1694,9 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 Checks whether the device supports cross-device notifications. This API uses an asynchronous callback to return the result.
 
-**Since**: 9
-
-**Deprecated from**: 26.0.0
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0. <!--Del-->You are advised to use [isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20) with the **deviceType** parameter instead.<!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1742,9 +1740,9 @@ isDistributedEnabled(): Promise\<boolean>
 
 Checks whether the device supports cross-device notifications. This API uses a promise to return the result.
 
-**Since**: 9
-
-**Deprecated from**: 26.0.0
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0. <!--Del-->You are advised to use [isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20) with the **deviceType** parameter instead.<!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1862,9 +1860,9 @@ Unlike [openNotificationSettings](#notificationmanageropennotificationsettings13
 
 **Return value**
 
-| Type     | Description       | 
+| Type     | Description       |
 |---------|-----------|
-| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise used to return the result.| 
+| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise used to return the notification settings of this application. |
 
 **Error codes**
 
@@ -1916,7 +1914,7 @@ Obtains the notification settings of the application, including the switch statu
 
 | Type              | Description           |
 | ------------------ | --------------- |
-| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise used to return the result.|
+| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise used to return the notification settings of this application. |
 
 **Error codes**
 
@@ -1993,7 +1991,7 @@ Enumerates the notification content types.
 | NOTIFICATION_CONTENT_PICTURE      | 2          | Picture-attached notification.         |
 | NOTIFICATION_CONTENT_CONVERSATION | 3          | Conversation notification.|
 | NOTIFICATION_CONTENT_MULTILINE    | 4          | Multi-line text notification.       |
-| NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | Live view notification. A third-party application cannot directly create a notification of this type. After the system proxy creates a system live view, the third-party application publishes a notification with the same ID to update the specified content.|
+| NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | System live view notification. A third-party application cannot directly create a notification of this type. After the system proxy creates a system live view, the third-party application publishes a notification with the same ID to update the specified content.|
 | NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | Common live view notification. Available only to system applications. |
 
 ## SlotLevel
@@ -2040,12 +2038,12 @@ Describes the setting status of the notification mode switch.
 
 | Name            | Type    | Read-Only| Optional| Description                                        |
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
-| vibrationEnabled | boolean | No  |  No | Whether to enable vibration.<br> - **true**: enabled.<br> - **false**: disable.|
-| soundEnabled     | boolean | No  |  No | Whether to enable ringtone.<br> - **true**: enabled.<br> - **false**: disable.|
-| lockScreenEnabled     | boolean | No  |  Yes | Whether to enable lock screen notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enabled.<br> - **false**: disable.|
-| bannerEnabled     | boolean | No  |  Yes | Whether to enable banner notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enabled.<br> - **false**: disable.|
-| badgeNumberEnabled     | boolean | No  |  Yes | Whether to enable the display of notification badges.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enabled.<br> - **false**: disable.|
-| notificationEnabled     | boolean | No  |  Yes | Whether to enable the application notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enabled.<br> - **false**: disable.|
+| vibrationEnabled | boolean | No  |  No | Whether to enable vibration.<br> - **true**: enable.<br> - **false**: disable.|
+| soundEnabled     | boolean | No  |  No | Whether to enable ringtone.<br> - **true**: enable.<br> - **false**: disable.|
+| lockScreenEnabled     | boolean | No  |  Yes | Whether to enable lock screen notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enable.<br> - **false**: disable.|
+| bannerEnabled     | boolean | No  |  Yes | Whether to enable banner notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enable.<br> - **false**: disable.|
+| badgeNumberEnabled     | boolean | No  |  Yes | Whether to enable the display of notification badges.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enable.<br> - **false**: disable.|
+| notificationEnabled     | boolean | No  |  Yes | Whether to enable the application notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enable.<br> - **false**: disable.|
 
 ## PriorityNotificationType<sup>23+</sup>
 

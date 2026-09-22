@@ -417,3 +417,41 @@ struct CalendarPickerDialogExample {
 ```
 
 ![CalendarPickerDialog](figures/calendar_picker_dialog_backgroundEffect.png)
+
+### 示例9（设置沉浸光感）
+
+该示例通过配置[systemMaterial](#calendardialogoptions对象说明)，实现沉浸光感效果。
+
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+
+从API版本26.0.0开始，在CalendarDialogOptions中新增了systemMaterial属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CalendarPickerDialogExample {
+  private selectedDate: Date = new Date('2025-08-05');
+
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      Column() {
+        Button('Show CalendarPicker Dialog')
+          .margin(20)
+          .onClick(() => {
+            CalendarPickerDialog.show({
+              selected: this.selectedDate,
+              systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+            });
+          })
+      }.width('100%')
+      .height('100%')
+      .backgroundImage($r('app.media.bgImg'))  // $r('app.media.bgImg')需要替换为开发者所需的资源文件
+      .backgroundImageSize(ImageSize.FILL)
+    }
+  }
+}
+```
+
+![calendar-picker-dialog-systemMaterial](figures/calendar-picker-dialog-systemMaterial.gif)

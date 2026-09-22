@@ -16,6 +16,8 @@
 
 继承通过`extends`关键字建立父子类层次，子类复用父类成员并可扩展或重写，实现多态。
 
+<!-- @[extends_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+
 ``` TypeScript
 class Parent {
   // 父类成员
@@ -25,6 +27,7 @@ class Child extends Parent {
   // 子类成员
 }
 ```
+
 继承让子类复用父类成员以减少重复代码、随父类修改自动同步提升可维护性、通过重写实现多态，并建立清晰的类型层次。
 
 <!-- @[basic_inheritance_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
@@ -515,6 +518,8 @@ class FutureFeature extends Base {
 }
 ```
 
+空子类无需显式声明构造函数，创建实例时隐式调用父类构造函数（等价于自动生成`constructor(...args) { super(...args); }`）。
+
 ### 继承链与多级继承的概念
 
 继承链是指类之间从基类到派生类的多层继承关系。例如`GrandParent → Parent → Child`构成三级继承链，每层继承父类的`public`和`protected`成员并可添加自己的成员。继承链使代码复用在多个层级间传递，但层数过深会增加理解难度和查找性能开销。
@@ -533,38 +538,38 @@ class GrandParent {
   }
 }
 
-class Parent extends GrandParent {
+class MultiLevelParent extends GrandParent {
   methodParent(): void {
-    console.info('Parent method');
+    console.info('MultiLevelParent method');
   }
   
   methodGrandParent(): void {
-    console.info('Parent overrides GrandParent');
+    console.info('MultiLevelParent overrides GrandParent');
     super.methodGrandParent();  // 调用父类方法
   }
 }
 
-class Child extends Parent {
+class MultiLevelChild extends MultiLevelParent {
   methodChild(): void {
-    console.info('Child method');
+    console.info('MultiLevelChild method');
   }
   
   methodParent(): void {
-    console.info('Child overrides Parent');
+    console.info('MultiLevelChild overrides MultiLevelParent');
     super.methodParent();  // 调用父类方法
   }
 }
 
-let child: Child = new Child();
+let multiLevelChild: MultiLevelChild = new MultiLevelChild();
 
-child.methodChild();           // 'Child method'
-child.methodParent();          // 'Child overrides Parent', 'Parent method'
-child.methodGrandParent();     // 'Parent overrides GrandParent', 'GrandParent method'
+multiLevelChild.methodChild();           // 'MultiLevelChild method'
+multiLevelChild.methodParent();          // 'MultiLevelChild overrides MultiLevelParent', 'MultiLevelParent method'
+multiLevelChild.methodGrandParent();     // 'MultiLevelParent overrides GrandParent', 'GrandParent method'
 
 // 继承链查找：从子类到父类
-// Child.methodChild() -> Child自身
-// Child.methodParent() -> Child重写 -> Parent方法
-// Child.methodGrandParent() -> Parent重写 -> GrandParent方法
+// MultiLevelChild.methodChild() -> MultiLevelChild自身
+// MultiLevelChild.methodParent() -> MultiLevelChild重写 -> MultiLevelParent方法
+// MultiLevelChild.methodGrandParent() -> MultiLevelParent重写 -> GrandParent方法
 
 // 继承层级限制：避免过深继承
 // 推荐：不超过3层继承
@@ -925,7 +930,7 @@ console.info(`${baseProcessor.process(5).toString()}`);  // 15（调用子类重
 
 子类方法的访问权限必须不低于父类方法。
 
-<!-- @[override_access_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @[ts_override_access_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
 
 ``` TypeScript
 class AccessParent {
@@ -938,6 +943,12 @@ class AccessParent {
   protected protectedMethod(): void {
     console.info(`Parent protected`);
   }
+
+  // public方法（演示降低访问权限）
+  public loweredAccessMethod(): void {}
+
+  // private方法（子类不可见，不能重写）
+  private privateMethod(): void {}
 }
 
 class OverrideAccessChild extends AccessParent {
@@ -1091,7 +1102,7 @@ console.info(`${employee.getInfo()}`);  // 'Bob, 30, Engineering'
 
 ### 子类静态方法中调用父类静态成员
 
-子类静态方法通过类名调用父类静态成员，不能使用super关键字。
+子类静态方法可通过类名或super关键字调用父类静态成员。
 
 <!-- @[static_method_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
 
@@ -1127,25 +1138,26 @@ class StaticChild extends StaticBase {
     return StaticChild.getValue();  // 继承的静态方法
   }
 
-  // 注意：静态方法中不能使用super
-  static invalidMethod(): void {
-    super.baseMethod();  // 编译错误：super不能用于静态方法
+  // 静态方法中可通过super调用父类静态方法
+  static callViaSuper(): void {
+    super.baseMethod();  // 通过super调用父类静态方法
   }
 }
 
 StaticChild.combinedMethod();       // 'Base static method', 'Base static method'
 console.info(`${StaticChild.getTotalValue()}`);       // 30
 console.info(`${StaticChild.getInheritedValue()}`);   // 10
+StaticChild.callViaSuper();         // 'Base static method'
 
 // 静态方法调用规则：
 // 通过类名调用静态成员
 // 子类名可调用继承的静态成员
-// 不能在静态方法中使用super
+// 可通过super调用父类静态方法
 ```
 
 ### super关键字的使用场景与限制
 
-super的使用场景包括：调用父类构造函数（`super()`）、调用父类方法（`super.method()`）；限制包括：`super()`必须在构造函数第一行、不能在静态方法中使用、不能通过`super`直接访问父类属性（应使用`this`）。
+super的使用场景包括：调用父类构造函数（`super()`）、调用父类方法（`super.method()`）、在静态方法中调用父类静态方法（`super.staticMethod()`）；限制包括：`super()`必须在构造函数第一行、不能通过`super`直接访问父类属性（应使用`this`）。
 
 <!-- @[ts_super_usage_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
 

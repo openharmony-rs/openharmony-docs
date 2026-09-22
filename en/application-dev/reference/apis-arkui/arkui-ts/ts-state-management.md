@@ -1,12 +1,11 @@
 # State Management with Application-Level Variables
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhushilin0206-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=79e4597a11fe0470e85a7a6ec526decbb0cbcff4 translatedAt=2026-07-15T07:47:29.881Z pushedAt=2026-07-16T08:21:59.553Z -->
+<!-- md-trans-meta sourceCommit=794d3776b2f94b375e089173ebb664f23e77d92c translatedAt=2026-09-02T11:28:47.629Z pushedAt=2026-09-03T03:36:08.113Z -->
 
 The state management module provides data storage, persistent data management, UIAbility data storage, and environment state query required by applications. [AppStorage](#appstorage) is the global UI state storage center bound to applications, [LocalStorage](#localstorage9) provides page-level UI state storage, [PersistentStorage](#persistentstorage) enables state variable persistence, and [Environment](#environment) offers the capability to read system environment variables and write their values to AppStorage.
 
@@ -119,10 +118,9 @@ If the given property does not exist in AppStorage, **undefined** is returned.
 
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | Two-way bound data of the specified property in AppStorage, or **undefined** if the property does not exist.|
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractpropertyt9) | Two-way bound data of the specified property in AppStorage, or **undefined** if the property does not exist. |
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 47);
 let linkToPropA1: SubscribedAbstractProperty<number> = AppStorage.link('PropA');
@@ -151,10 +149,9 @@ Similar to the [link](#link10) API, establishes a two-way data binding with the 
 
 | Type                                 | Description                                      |
 | ----------------------------------- | ---------------------------------------- |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | Instance of **SubscribedAbstractProperty&lt;T&gt;**, which is the two-way bound data of the property corresponding to **propName** in AppStorage.|
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data of the property corresponding to **propName** in AppStorage. |
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 47);
 let link1: SubscribedAbstractProperty<number> = AppStorage.setAndLink('PropB', 49); // Create PropB with the default value 49.
@@ -181,7 +178,7 @@ Establishes a one-way data binding with the property corresponding to **propName
 
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | One-way bound data of the specified property in AppStorage, or **undefined** if the property does not exist.|
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractpropertyt9) | One-way bound data of the specified property in AppStorage, or **undefined** if the property does not exist. |
 
 **Example**
 
@@ -213,10 +210,9 @@ Similar to the [prop](#prop10) API, establishes a one-way data binding with the 
 
 | Type                                 | Description                                     |
 | ----------------------------------- | --------------------------------------- |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | Instance of **SubscribedAbstractProperty&lt;T&gt;**, which is the one-way bound data of the property corresponding to **propName** in AppStorage. |
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the one-way bound data of the property corresponding to **propName** in AppStorage. |
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 47);
 let prop: SubscribedAbstractProperty<number> = AppStorage.setAndProp('PropB', 49); // PropA -> 47, PropB -> 49
@@ -245,7 +241,6 @@ Checks whether the property corresponding to **propName** exists in [AppStorage]
 | boolean | Returns **true** if the property exists in AppStorage; returns **false** otherwise.|
 
 **Example**
-
 ```ts
 AppStorage.has('simpleProp');
 ```
@@ -273,7 +268,6 @@ Obtains the value of the property corresponding to **propName** from [AppStorage
 | T&nbsp;\|&nbsp;undefined | Value of the property corresponding to **propName** in AppStorage, or **undefined** if it does not exist. |
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 47);
 let value: number = AppStorage.get('PropA') as number; // 47
@@ -303,7 +297,6 @@ Sets the value of the property corresponding to **propName** in [AppStorage](../
 | boolean | Returns **false** if the property corresponding to **propName** does not exist in AppStorage or if the assignment fails. Returns **true** if the assignment is successful.|
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 48);
 let res: boolean = AppStorage.set('PropA', 47); // true
@@ -330,7 +323,6 @@ If **propName** does not exist, this API creates it with the value of **newValue
 | newValue | T | Yes | New value of the property corresponding to **propName**. Since API version 12, the value can be **null** or **undefined**. |
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('simpleProp', 121);
 ```
@@ -347,7 +339,7 @@ The property subscribers include the following:
 
 1. Variables decorated by [@StorageLink](../../../ui/state-management/arkts-appstorage.md#storagelink) and [@StorageProp](../../../ui/state-management/arkts-appstorage.md#storageprop).
 
-2. Instances of [SubscribedAbstractProperty](#subscribedabstractproperty) returned by [link](#link10), [prop](#prop10), [setAndLink](#setandlink10), or [setAndProp](#setandprop10)
+2. Instances of [SubscribedAbstractProperty](#subscribedabstractpropertyt9) returned by [link](#link10), [prop](#prop10), [setAndLink](#setandlink10), or [setAndProp](#setandprop10).
 
 To delete these subscribers:
 
@@ -372,7 +364,6 @@ To delete these subscribers:
 | boolean | Returns **true** if the operation is successful; returns **false** if the operation fails.|
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 47);
 AppStorage.link<number>('PropA');
@@ -399,7 +390,6 @@ Obtains all property names in [AppStorage](../../../ui/state-management/arkts-ap
 | IterableIterator&lt;string&gt; | All property names in AppStorage.|
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropB', 48);
 let keys: IterableIterator<string> = AppStorage.keys();
@@ -424,7 +414,6 @@ For details about the subscriber, see [delete](#delete10).
 | boolean | Returns **true** if the properties in AppStorage have no subscribers and the deletion is successful; returns **false** if there are still subscribers.|
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 47);
 let res: boolean = AppStorage.clear(); // true: There are no subscribers.
@@ -447,7 +436,6 @@ Obtains the number of properties in [AppStorage](../../../ui/state-management/ar
 | number | Number of properties in AppStorage. |
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropB', 48);
 let res: number = AppStorage.size(); // 1
@@ -482,7 +470,6 @@ If the given property does not exist in AppStorage, **undefined** is returned.
 | any | Two-way bound data of the specified property in AppStorage, or **undefined** if the property does not exist.|
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
 let linkToPropA1: SubscribedAbstractProperty<number> = AppStorage.Link('PropA');
@@ -513,10 +500,9 @@ Similar to the [Link](#linkdeprecated) API, establishes a two-way data binding w
 
 | Type                                 | Description                                      |
 | ----------------------------------- | ---------------------------------------- |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | Instance of **SubscribedAbstractProperty&lt;T&gt;**, which is the two-way bound data of the property corresponding to **propName** in AppStorage. |
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data of the property corresponding to **propName** in AppStorage. |
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
 let link1: SubscribedAbstractProperty<number> = AppStorage.SetAndLink('PropB', 49); // Create PropB with the default value 49.
@@ -549,7 +535,6 @@ Establishes a one-way data binding with the property corresponding to **propName
 | any | One-way bound data of the specified property in AppStorage, or **undefined** if the property does not exist.|
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
 let prop1: SubscribedAbstractProperty<number> = AppStorage.Prop('PropA');
@@ -580,10 +565,9 @@ Similar to the [Prop](#propdeprecated) API, establishes a one-way data binding w
 
 | Type                                 | Description                                     |
 | ----------------------------------- | --------------------------------------- |
-| [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractproperty) | Instance of **SubscribedAbstractProperty&lt;S&gt;**, which is the one-way bound data of the property corresponding to **propName** in AppStorage. |
+| [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;S&gt;, which is the one-way bound data of the property corresponding to **propName** in AppStorage. |
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
 let prop: SubscribedAbstractProperty<number> = AppStorage.SetAndProp('PropB', 49); // PropA -> 47, PropB -> 49
@@ -614,7 +598,6 @@ Checks whether the property corresponding to **propName** exists in [AppStorage]
 | boolean | Returns **true** if the property exists in AppStorage; returns **false** otherwise.|
 
 **Example**
-
 ```ts
 AppStorage.Has('simpleProp');
 ```
@@ -644,7 +627,6 @@ Obtains the value of the property corresponding to **propName** from [AppStorage
 | T&nbsp;\|&nbsp;undefined | Value of the property corresponding to **propName** in AppStorage, or **undefined** if it does not exist.|
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
 let value: number = AppStorage.Get('PropA') as number; // 47
@@ -676,7 +658,6 @@ Sets the value of the property corresponding to **propName** in [AppStorage](../
 | boolean | Returns **false** if the property corresponding to **propName** does not exist in AppStorage. Returns **true** if the operation is successful.|
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropA', 48);
 let res: boolean = AppStorage.Set('PropA', 47); // true
@@ -703,7 +684,6 @@ Sets the value of the property corresponding to **propName** in [AppStorage](../
 | newValue | T      | Yes   | New value of the property corresponding to **propName**. Since API version 12, the value can be **null** or **undefined**.|
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('simpleProp', 121);
 ```
@@ -737,7 +717,6 @@ Subscribers include properties bound using [Link](#linkdeprecated) and [Prop](#p
 | boolean | Returns **true** if the operation is successful; returns **false** if the operation fails.|
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
 AppStorage.Link('PropA');
@@ -766,11 +745,11 @@ Obtains all property names in [AppStorage](../../../ui/state-management/arkts-ap
 | IterableIterator&lt;string&gt; | All property names in AppStorage.|
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropB', 48);
 let keys: IterableIterator<string> = AppStorage.Keys();
 ```
+
 
 ### staticClear<sup>(deprecated)</sup>
 
@@ -791,10 +770,10 @@ Deletes all properties from [AppStorage](../../../ui/state-management/arkts-apps
 | boolean | Result of deleting all properties from AppStorage. Returns **true** if the operation is successful; returns **false** otherwise. |
 
 **Example**
-
 ```ts
 let clearResult = AppStorage.staticClear();
 ```
+
 
 ### Clear<sup>(deprecated)</sup>
 
@@ -817,11 +796,11 @@ For details about the subscriber, see [delete](#delete10).
 | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
 
 **Example**
-
 ```typescript
 AppStorage.SetOrCreate('PropA', 47);
 let res: boolean = AppStorage.Clear(); // true: There are no subscribers.
 ```
+
 
 ### IsMutable<sup>(deprecated)</sup>
 
@@ -848,11 +827,11 @@ Checks whether the property corresponding to **propName** in [AppStorage](../../
 | boolean | Whether the property corresponding to **propName** is mutable. Currently, this return value is always **true**.|
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropA', 47);
 let res: boolean = AppStorage.IsMutable('PropA');
 ```
+
 
 ### Size<sup>(deprecated)</sup>
 
@@ -873,11 +852,11 @@ Obtains the number of properties in [AppStorage](../../../ui/state-management/ar
 | number | Number of properties in AppStorage. |
 
 **Example**
-
 ```ts
 AppStorage.SetOrCreate('PropB', 48);
 let res: number = AppStorage.Size(); // 1
 ```
+
 
 ## LocalStorage<sup>9+</sup>
 
@@ -906,11 +885,11 @@ Creates a [LocalStorage](../../../ui/state-management/arkts-localstorage.md) ins
 | initializingProperties | Object | No | Properties and values used to initialize the **LocalStorage** instance. This parameter is passed when property data is preset during creation. Its keys serve as property names in **LocalStorage**, and values are the initial values of the corresponding properties. **initializingProperties** cannot be set to **undefined**. If not passed, the default value is an empty object, indicating **LocalStorage** contains no preset properties. |
 
 **Example**
-
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 ```
+
 
 ### getShared<sup>(deprecated)</sup>
 
@@ -963,12 +942,12 @@ Checks whether the property corresponding to **propName** exists in [LocalStorag
 | boolean | Returns **true** if the property exists in LocalStorage; returns **false** otherwise.|
 
 **Example**
-
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 storage.has('PropA'); // true
 ```
+
 
 ### get<sup>9+</sup>
 
@@ -995,12 +974,12 @@ Obtains the value of the property corresponding to **propName** from [LocalStora
 | T&nbsp;\|&nbsp;undefined | Value of the property corresponding to **propName** in LocalStorage, or **undefined** if it does not exist.|
 
 **Example**
-
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 let value: number = storage.get('PropA') as number; // 47
 ```
+
 
 ### set<sup>9+</sup>
 
@@ -1035,6 +1014,7 @@ let storage: LocalStorage = new LocalStorage(initialData);
 let res: boolean = storage.set('PropA', 47); // true
 let res1: boolean = storage.set('PropB', 47); // false
 ```
+
 
 ### setOrCreate<sup>9+</sup>
 
@@ -1165,10 +1145,9 @@ If the given property does not exist in LocalStorage, **undefined** is returned.
 
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | Returns the **SubscribedAbstractProperty&lt;T&gt;** instance if the given property exists in LocalStorage; returns **undefined** otherwise.|
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data of the property corresponding to **propName** in LocalStorage; **undefined** if the property does not exist in LocalStorage. |
 
 **Example**
-
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
@@ -1176,6 +1155,7 @@ let linkToPropA1: SubscribedAbstractProperty<number> = storage.link('PropA');
 let linkToPropA2: SubscribedAbstractProperty<number> = storage.link('PropA'); // linkToPropA2.get() == 47
 linkToPropA1.set(48); // Two-way synchronization: linkToPropA1.get() == linkToPropA2.get() == 48
 ```
+
 
 ### setAndLink<sup>9+</sup>
 
@@ -1200,16 +1180,16 @@ Similar to the [link](#link9) API, establishes a two-way data binding with the p
 
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | Instance of **SubscribedAbstractProperty&lt;T&gt;** and two-way bound data of the given property in LocalStorage.|
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data of the property corresponding to **propName** in LocalStorage. |
 
 **Example**
-
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 let link1: SubscribedAbstractProperty<number> = storage.setAndLink('PropB', 49); // Create PropB with the default value 49.
 let link2: SubscribedAbstractProperty<number> = storage.setAndLink('PropA', 50); // PropA already exists with the value 47.
 ```
+
 
 ### prop<sup>9+</sup>
 
@@ -1233,10 +1213,9 @@ Establishes a one-way data binding with the property corresponding to propName i
 
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractproperty) | Instance of **SubscribedAbstractProperty&lt;S&gt;**, which is the one-way bound data of the property corresponding to **propName** in LocalStorage. If the corresponding **propName** does not exist in LocalStorage, **undefined** is returned. |
+| [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;S&gt;, which is the one-way bound data of the property corresponding to **propName** in LocalStorage; **undefined** if the property does not exist in LocalStorage. |
 
 **Example**
-
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
@@ -1244,6 +1223,7 @@ let prop1: SubscribedAbstractProperty<number> = storage.prop('PropA');
 let prop2: SubscribedAbstractProperty<number> = storage.prop('PropA');
 prop1.set(1); // One-way synchronization: prop1.get() returns 1, while prop2.get() returns 47.
 ```
+
 
 ### setAndProp<sup>9+</sup>
 
@@ -1268,7 +1248,7 @@ Similar to the [prop](#prop9) API, establishes a one-way data binding with the p
 
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
-| [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractproperty) | Instance of **SubscribedAbstractProperty&lt;S&gt;**, which is the one-way bound data of the property corresponding to **propName** in LocalStorage. |
+| [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractpropertyt9) | Instance of SubscribedAbstractProperty&lt;S&gt;, which is the one-way bound data of the property corresponding to **propName** in LocalStorage. |
 
 **Example**
 
@@ -1277,6 +1257,7 @@ let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 let prop: SubscribedAbstractProperty<number> = storage.setAndProp('PropB', 49); // PropA -> 47, PropB -> 49
 ```
+
 
 ### delete<sup>9+</sup>
 
@@ -1288,7 +1269,7 @@ The property subscribers include the following:
 
 1. Variables decorated by [@LocalStorageLink](../../../ui/state-management/arkts-localstorage.md#localstoragelink) and [@LocalStorageProp](../../../ui/state-management/arkts-localstorage.md#localstorageprop).
 
-2. Instances of [SubscribedAbstractProperty](#subscribedabstractproperty) returned by [link](#link9), [prop](#prop9), [setAndLink](#setandlink9), or [setAndProp](#setandprop9)
+2. Instances of [SubscribedAbstractProperty](#subscribedabstractpropertyt9) returned by [link](#link9), [prop](#prop9), [setAndLink](#setandlink9), or [setAndProp](#setandprop9).
 
 To delete these subscribers:
 
@@ -1315,7 +1296,6 @@ To delete these subscribers:
 | boolean | Returns **true** if the operation is successful; returns **false** if the operation fails.|
 
 **Example**
-
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
@@ -1325,6 +1305,7 @@ let res1: boolean = storage.delete('PropB'); // false: PropB does not exist in L
 storage.setOrCreate('PropB', 48);
 let res2: boolean = storage.delete('PropB'); // true: PropB is successfully deleted from LocalStorage.
 ```
+
 
 ### keys<sup>9+</sup>
 
@@ -1345,12 +1326,12 @@ Obtains all property names in [LocalStorage](../../../ui/state-management/arkts-
 | IterableIterator&lt;string&gt; | All property names in LocalStorage.|
 
 **Example**
-
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 let keys: IterableIterator<string> = storage.keys();
 ```
+
 
 ### size<sup>9+</sup>
 
@@ -1371,12 +1352,12 @@ Obtains the number of properties in [LocalStorage](../../../ui/state-management/
 | number | Number of properties in LocalStorage.|
 
 **Example**
-
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 let res: number = storage.size(); // 1
 ```
+
 
 ### clear<sup>9+</sup>
 
@@ -1394,17 +1375,19 @@ For details about the subscriber, see [delete](#delete9).
 
 **Return value**
 
+
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
 | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
 
-**Example**
 
+**Example**
 ```ts
 let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 let res: boolean = storage.clear(); // true: There are no subscribers.
 ```
+
 
 ### GetShared<sup>(deprecated)</sup>
 
@@ -1429,7 +1412,6 @@ Obtains the [LocalStorage](../../../ui/state-management/arkts-localstorage.md) i
 | [LocalStorage](#localstorage9) | **LocalStorage** instance shared across the current stage. |
 
 **Example**
-
 ```ts
 let storage: LocalStorage = LocalStorage.GetShared();
 ```
@@ -1466,6 +1448,7 @@ let ref1: AbstractProperty<number> | undefined = AppStorage.ref('PropA');
 ref1?.get(); // ref1.get()=47
 ```
 
+
 ### set<sup>12+</sup>
 
 set(newValue: T): void
@@ -1476,11 +1459,14 @@ Updates the data of the referenced property in [AppStorage](../../../ui/state-ma
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+
 **Parameters**
+
 
 | Name  | Type| Mandatory| Description                             |
 | -------- | ---- | ---- | ------------------------------------- |
 | newValue | T    | Yes   | New value of the property referenced in AppStorage/LocalStorage. The value can be **null** or **undefined**. |
+
 
 **Example**
 
@@ -1525,7 +1511,7 @@ let ref1: AbstractProperty<number> | undefined = AppStorage.ref('PropA');
 ref1?.info(); // ref1.info()='PropA'
 ```
 
-## SubscribedAbstractProperty
+## SubscribedAbstractProperty\<T\><sup>9+</sup>
 
 An object of a one-way or two-way synchronized property in [AppStorage](../../../ui/state-management/arkts-appstorage.md) or [LocalStorage](../../../ui/state-management/arkts-localstorage.md). It is used to establish a data synchronization relationship with a property in AppStorage or LocalStorage. A **SubscribedAbstractProperty** instance needs to be manually released through the [aboutToBeDeleted](#abouttobedeleted10) API to cancel the synchronization relationship and invalidate the instance.
 
@@ -1552,12 +1538,12 @@ Reads the data of the synchronized property from [AppStorage](../../../ui/state-
 | T    | Data of the synchronized property in AppStorage or LocalStorage.|
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 47); 
 let prop1: SubscribedAbstractProperty<number> = AppStorage.prop('PropA');    
 prop1.get(); // prop1.get()=47
 ```
+
 
 ### set<sup>9+</sup>
 
@@ -1571,14 +1557,16 @@ Sets the data of the synchronized property in [AppStorage](../../../ui/state-man
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+
 **Parameters**
+
 
 | Name  | Type| Mandatory| Description                                                 |
 | -------- | ---- | ---- | --------------------------------------------------------- |
 | newValue | T | Yes | New value of the synchronized property in AppStorage or LocalStorage. Since API version 12, the value can be **null** or **undefined**. |
 
-**Example**
 
+**Example**
 ```ts
 AppStorage.setOrCreate('PropA', 47);
 let prop1: SubscribedAbstractProperty<number> = AppStorage.prop('PropA');
@@ -1601,14 +1589,13 @@ prop3.set(undefined);
 
 abstract aboutToBeDeleted(): void
 
-Cancels the one-way or two-way synchronization relationship between the [SubscribedAbstractProperty](#subscribedabstractproperty) instance and [AppStorage](../../../ui/state-management/arkts-appstorage.md) or [LocalStorage](../../../ui/state-management/arkts-localstorage.md), and invalidates the **SubscribedAbstractProperty** instance. That is, after **aboutToBeDeleted** is called, [set](#set9-1) or [get](#get9-1) can no longer be called using the **SubscribedAbstractProperty** instance.
+Cancels the one-way or two-way synchronization relationship between the [SubscribedAbstractProperty](#subscribedabstractpropertyt9) instance and [AppStorage](../../../ui/state-management/arkts-appstorage.md) or [LocalStorage](../../../ui/state-management/arkts-localstorage.md), and invalidates the **SubscribedAbstractProperty** instance. That is, after **aboutToBeDeleted** is called, [set](#set9-1) or [get](#get9-1) can no longer be called using the **SubscribedAbstractProperty** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 47);
 let link = AppStorage.setAndLink('PropB', 49); // PropA -> 47, PropB -> 49
@@ -1632,7 +1619,6 @@ Returns the name of the synchronized property in [AppStorage](../../../ui/state-
 | string | Name of the property synchronized in AppStorage or LocalStorage. |
 
 **Example**
-
 ```ts
 AppStorage.setOrCreate('PropA', 47); 
 let prop1: SubscribedAbstractProperty<number> = AppStorage.prop('PropA');
@@ -1687,9 +1673,11 @@ According to the preceding initialization process, if the property exists in App
 | key          | string | Yes  | Property name.                                                     |
 | defaultValue | T      | Yes  | Default value used for initialization if the specified **key** is not found in PersistentStorage or AppStorage. Since API version 12, the value can be **null** or **undefined**. |
 
+
 **Example**
 
 For details about how to use **persistProp**, see [Accessing a PersistentStorage-Initialized Property from AppStorage](../../../ui/state-management/arkts-persiststorage.md#accessing-a-persistentstorage-initialized-property-from-appstorage).
+
 
 ### deleteProp<sup>10+</sup>
 
@@ -1708,10 +1696,10 @@ Performs the reverse operation of [persistProp](#persistprop10). It deletes the 
 | key  | string | Yes   | Property name in PersistentStorage.|
 
 **Example**
-
 ```ts
 PersistentStorage.deleteProp('highScore');
 ```
+
 
 ### persistProps<sup>10+</sup>
 
@@ -1730,10 +1718,10 @@ Persists multiple properties. This API is similar to [persistProp](#persistprop1
 | props | [PersistPropsOptions](#persistpropsoptions10)[] | Yes | Array of properties to persist, where each item contains a property name and a default value. |
 
 **Example**
-
 ```ts
 PersistentStorage.persistProps([{ key: 'highScore', defaultValue: '0' }, { key: 'weightScore', defaultValue: '1' }]);
 ```
+
 
 ### keys<sup>10+</sup>
 
@@ -1752,10 +1740,10 @@ Returns an array of all persisted property names.
 | Array&lt;string&gt; | Returns an array of all persisted property names.|
 
 **Example**
-
 ```ts
 let keys: Array<string> = PersistentStorage.keys();
 ```
+
 
 ### PersistProp<sup>(deprecated)</sup>
 
@@ -1773,6 +1761,7 @@ The order for determining the type and value of a property is as follows:
 
 According to the preceding initialization process, if the property exists in AppStorage, its value will overwrite the value in the PersistentStorage file. Since AppStorage stores data in memory, this operation causes the data in the persistent file to be overwritten by the in-memory data, making the persistent data meaningless.
 
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [persistProp](#persistprop10) instead.
@@ -1786,17 +1775,21 @@ According to the preceding initialization process, if the property exists in App
 | key          | string | Yes  | Property name.                                                     |
 | defaultValue | T      | Yes  | Default value used for initialization if the specified **key** is not found in PersistentStorage or AppStorage. The default value cannot be **null** or **undefined**. |
 
+
 **Example**
+
 
 ```ts
 PersistentStorage.PersistProp('highScore', '0');
 ```
+
 
 ### DeleteProp<sup>(deprecated)</sup>
 
 static DeleteProp(key: string): void
 
 Performs the reverse operation of [PersistProp](#persistpropdeprecated). It deletes the property corresponding to **key** from [PersistentStorage](../../../ui/state-management/arkts-persiststorage.md), after which subsequent operations on [AppStorage](../../../ui/state-management/arkts-appstorage.md) no longer affect PersistentStorage. To persist the property again, call the [PersistProp](#persistpropdeprecated) API again.
+
 
 > **NOTE**
 >
@@ -1811,10 +1804,10 @@ Performs the reverse operation of [PersistProp](#persistpropdeprecated). It dele
 | key  | string | Yes   | Property name in PersistentStorage.|
 
 **Example**
-
 ```ts
 PersistentStorage.DeleteProp('highScore');
 ```
+
 
 ### PersistProps<sup>(deprecated)</sup>
 
@@ -1859,11 +1852,9 @@ Returns an array of all persisted property names.
 | Array&lt;string&gt; | Returns an array of all persisted property names.|
 
 **Example**
-
 ```ts
 let keys: Array<string> = PersistentStorage.Keys();
 ```
-
 ## EnvPropsOptions<sup>10+</sup>
 
 Defines a key-value pair object used to specify environment variable names and their default values, passed as a parameter to [envProps](#envprops10).
@@ -1910,6 +1901,7 @@ If **envProp** is not called, reading environment variables directly from AppSto
 
 For details about how to use **envProp**, see [Accessing Environment Parameters from the UI](../../../ui/state-management/arkts-environment.md#accessing-environment-parameters-from-the-ui).
 
+
 ### envProps<sup>10+</sup>
 
 static envProps(props: EnvPropsOptions[]): void
@@ -1927,13 +1919,13 @@ Works in a way similar to the [envProp](#envprop10) API, with the difference tha
 | props  | [EnvPropsOptions](#envpropsoptions10)[] | Yes  | Array of key-value pairs consisting of system environment variables and default values.|
 
 **Example**
-
 ```ts
 Environment.envProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, {
   key: 'languageCode',
   defaultValue: 'en'
 }, { key: 'prop', defaultValue: 'hhhh' }]);
 ```
+
 
 ### keys<sup>10+</sup>
 
@@ -1952,7 +1944,6 @@ Returns the property key array of environment variables.
 | Array&lt;string&gt; | Array of property keys of environment variables. |
 
 **Example**
-
 ```ts
 Environment.envProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, {
   key: 'languageCode',
@@ -1961,6 +1952,7 @@ Environment.envProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, 
 
 let keys: Array<string> = Environment.keys(); // keys contains accessibilityEnabled, languageCode, and prop.
 ```
+
 
 ### EnvProp<sup>(deprecated)</sup>
 
@@ -1991,9 +1983,11 @@ If **EnvProp** is not called, reading environment variables directly from AppSto
 
 **Example**
 
+
 ```ts
 Environment.EnvProp('accessibilityEnabled', 'default');
 ```
+
 
 ### EnvProps<sup>(deprecated)</sup>
 
@@ -2014,13 +2008,13 @@ Works in a way similar to the [EnvProp](#envpropdeprecated) API, with the differ
 | props  | {key:&nbsp;string; &nbsp;defaultValue:&nbsp;any}[] | Yes  | Array of key-value pairs consisting of system environment variables and default values.|
 
 **Example**
-
 ```ts
 Environment.EnvProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, {
   key: 'languageCode',
   defaultValue: 'en'
 }, { key: 'prop', defaultValue: 'hhhh' }]);
 ```
+
 
 ### Keys<sup>(deprecated)</sup>
 
@@ -2050,6 +2044,7 @@ Environment.EnvProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, 
 
 let keys: Array<string> = Environment.Keys(); // keys contains accessibilityEnabled, languageCode, and prop.
 ```
+
 
 ## Built-in Environment Variables
 

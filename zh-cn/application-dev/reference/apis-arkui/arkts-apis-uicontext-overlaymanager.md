@@ -89,18 +89,27 @@ struct OverlayExample {
   @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
+  @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
 
   build() {
     Column({ space: 5 }) {
-      Button('打开浮层').onClick(() => {
+      Button('openOrderOverlay').onClick(() => {
         let componentContent = new ComponentContent(
           this.uiContext, wrapBuilder<[Params]>(builderText),
           new Params(this.message, { x: 0, y: 110 })
         );
+        this.contentArray.push(componentContent);
         this.overlayNode.openOrderOverlay(componentContent, {
           levelOrder: LevelOrder.clamp(100),
           levelMode: LevelMode.OVERLAY
         });
+      })
+      Button('close overlay').onClick(() => {
+        if (this.contentArray.length > 0) {
+          this.overlayNode.removeComponentContent(this.contentArray.pop());
+        } else {
+          console.info('arrayIndex有误');
+        }
       })
     }
     .width('100%')
@@ -124,7 +133,7 @@ struct OverlayExample {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- |--------| -------- |
 | levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否 | 是 | 浮层的显示顺序。<br>**说明：**<br>- 默认值：LevelOrder.clamp(0) |
-| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 浮层的显示模式。<br>**说明：**<br>- 默认值：LevelMode.OVERLAY |
+| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15) | 否 | 是 | 浮层的显示模式。<br>**说明：**<br>- 默认值：LevelMode.OVERLAY |
 | levelUniqueId | number | 否 | 是 | 浮层需要显示的层级下的节点uniqueId，uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。取值范围为大于等于0的数字，当且仅当levelMode设置为LevelMode.EMBEDDED时生效。 |
 
 ## addComponentContent<sup>12+</sup>

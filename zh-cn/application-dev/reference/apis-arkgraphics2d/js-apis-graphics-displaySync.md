@@ -24,6 +24,8 @@ create(): DisplaySync
 
 创建DisplaySync对象，通过此对象设置UI自绘制内容帧率。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -42,6 +44,8 @@ let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 
 开发者可以从回调函数中获取帧绘制的时间戳信息，包含当前帧到达的时间timestamp和下一帧预期到达的时间targetTimestamp。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -58,6 +62,8 @@ let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 
 设置期望的帧率范围。设置的期望帧率范围将作为系统调度的参考，系统会尽量在此范围内调整绘制帧率。未调用该方法或传入ExpectedFrameRateRange(0, 0, 0)时将跟随应用当前运行的帧率。建议在调用[start](#start)前设置，以便立即生效；调用[start](#start)之后设置也可生效但可能存在延迟。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +104,8 @@ on(type: 'frame', callback: Callback\<IntervalInfo\>): void
 
 订阅每一帧的变化。注册回调函数后，还需调用[start](#start)方法启动DisplaySync，系统才会在每一帧触发该回调。和[off('frame')](#offframe)方法配对使用，用于取消注册回调函数。回调函数在UI主线程执行。回调频率受[setExpectedFrameRateRange](#setexpectedframeraterange)设置的帧率范围影响。若回调执行耗时过长，可能导致卡顿，建议回调中只进行轻量业务逻辑。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -129,6 +137,8 @@ off(type: 'frame', callback\?: Callback\<IntervalInfo\>): void
 
 取消订阅每一帧的变化。与[on('frame')](#onframe)方法配对使用。取消成功后，将不再触发回调函数。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -159,6 +169,8 @@ backDisplaySync?.off("frame", callback)
 start(): void
 
 使通过[setExpectedFrameRateRange](#setexpectedframeraterange)设置的期望帧率范围生效；如果通过[on('frame')](#onframe)注册了回调函数，则开始请求VSync信号，触发已注册的回调，每帧执行一次。和[stop](#stop)方法配对使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -225,6 +237,8 @@ struct Index {
 stop(): void
 
 关闭期望帧率范围并且停止每帧回调。需在调用[start](#start)后使用，停止后DisplaySync的配置（如期望帧率范围、回调函数）仍然保留，可随时通过[start](#start)重新启动。[stop](#stop)方法会解除DisplaySync与UI上下文和窗口的关联，通常无需特定的UI上下文。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

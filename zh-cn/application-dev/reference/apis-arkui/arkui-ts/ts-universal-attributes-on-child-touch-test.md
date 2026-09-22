@@ -46,7 +46,7 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 ## TouchTestInfo<sup>11+</sup>
 
-当前屏幕触点所在组件的坐标系、id和尺寸相关信息。
+当前屏幕触点相对于窗口、父组件和子组件的坐标，以及子组件的id、位置和尺寸相关信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -320,7 +320,7 @@ struct ListExample {
     .backgroundColor(0xF1F3F5)
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchInfo) => {
+    .onChildTouchTest(() => {
       return { strategy: TouchTestStrategy.DEFAULT }
     })
   }
