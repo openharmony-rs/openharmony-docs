@@ -291,7 +291,7 @@ Represents combination key options.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| preKeys    | Array\<number>   | No   | No| Preceding key set. The number of preceding keys ranges from [0, 4]. There is no requirement on the sequence of the keys.<br>For example, in the combination keys **Ctrl+Alt+A**, **Ctrl+Alt** are called preceding keys.|
+| preKeys    | Array\<number>   | No   | No| Preceding key set. The number of preceding keys ranges from 0 to 4. There is no requirement on the sequence of the keys.<br>For example, in the combination keys **Ctrl+Alt+A**, **Ctrl+Alt** are called preceding keys.|
 | finalKey             | number  | No   |  No| Final key. This parameter is mandatory. A callback is triggered by the final key.<br>For example, in the combination keys **Ctrl+Alt+A**, **A** is called the final key.|
 | isFinalKeyDown       | boolean | No   |  No| Whether the final key is pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.|
 | finalKeyDownDuration | number  | No   |  No| Duration for holding down the key, in μs.<br>If the value of this field is **0**, a callback is triggered immediately.<br>If the value of this field is greater than **0** and **isFinalKeyDown** is **true**, a callback is triggered when the key keeps being pressed after the specified duration expires. If **isFinalKeyDown** is **false**, a callback is triggered when the key is released before the specified duration expires.  |
