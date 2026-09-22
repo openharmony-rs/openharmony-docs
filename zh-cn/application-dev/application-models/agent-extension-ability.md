@@ -90,7 +90,7 @@
 
 4. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册AgentExtensionAbility，type标签需要设置为"agent"，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-    ```json
+    ```json5
     {
       "module": {
         "extensionAbilities": [
@@ -104,7 +104,7 @@
             "metadata": [
               {
                 "name": "ohos.extension.agent",
-                "resource": "$profile:agent_config",
+                "resource": "$profile:agent_config"
               }
             ]
           }
@@ -165,7 +165,7 @@ export default class AgentExtAbility extends AgentExtensionAbility {
     } catch (err) {
       let code = (err as BusinessError).code;
       let msg = (err as BusinessError).message;
-      console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+      console.error(`authorize failed, err code: ${code}, err msg: ${msg}.`);
     }
   }
   // ...
