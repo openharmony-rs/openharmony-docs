@@ -3793,6 +3793,9 @@ struct TabsFloatingStyleExample {
   }
 }
 ```
+
+该示例配图为高算力设备强档效果：
+
 ![tabs_floating_style](figures/tabsFloatingBar.gif)
 
 ### 示例25（设置侧边页签栏样式）
