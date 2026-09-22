@@ -120,7 +120,7 @@ struct Index1 {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.pushPathByName('navigation_pageOne', null);
+            this.pathStack.pushPathByName('navigation_PageOne', null);
           })
       }.width('100%').height('100%')
     }
