@@ -1,11 +1,11 @@
-# Building and Managing ArkGraphics 3D Scenes
+# Setting Up and Managing Scenes
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e71c7c42a1e9c6cd7995c37c9e93faab7103ecc5 translatedAt=2026-09-14T09:34:06.893Z pushedAt=2026-09-15T13:19:29.617Z -->
+<!-- md-trans-meta sourceCommit=574d191c949d463a333fe17e34f0b44a5e6f2931 translatedAt=2026-09-20T06:49:29.167Z pushedAt=2026-09-20T08:26:47.385Z -->
 
 A 3D scene consists of three essential parts: light, camera, and model.
 - Light provides illumination for a 3D scene so that the models in the 3D scene become visible. Without light, the rendering result is all black.

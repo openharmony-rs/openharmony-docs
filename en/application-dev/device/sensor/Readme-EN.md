@@ -2,10 +2,10 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @LiuChao-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=2d7b4266499e3556fe42ddb8c4180af3db492816 translatedAt=2026-09-14T08:50:24.537Z pushedAt=2026-09-15T10:37:06.014Z -->
+<!-- md-trans-meta sourceCommit=352fca6d2978ec6438d588ca2b739b6c08b60200 translatedAt=2026-09-20T06:20:27.772Z pushedAt=2026-09-20T07:45:45.598Z -->
 
 - [About This Kit](sensorservice-kit-intro.md)
 - Sensor<!--sensor-->

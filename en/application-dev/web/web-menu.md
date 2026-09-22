@@ -5,7 +5,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:16:24.263Z pushedAt=2026-09-15T13:41:36.586Z -->
+<!-- md-trans-meta sourceCommit=a9167d12e10d1b1d2027c4b77c486469893d0fa6 translatedAt=2026-09-20T07:14:34.433Z pushedAt=2026-09-20T08:49:18.360Z -->
 
 As a key component of user interaction, menus build a clear navigation system and present function entries through a structured layout, allowing users to quickly find target content or perform operations. As an important hub of human-machine interaction, menus significantly improve the accessibility and user experience of the Web component and are an indispensable part of app design. The Web component menu types include the [text selection menu](./web-menu.md#text-selection-menu), [context menu](./web-menu.md#context-menu), and [custom menu](./web-menu.md#custom-menu). You can flexibly select a menu type based on your specific requirements.
 |Menu Type|Target Element|Response Type|Customizable|
@@ -256,10 +256,18 @@ struct WebComponent {
 </html>
 ```
 ![onContextMenuShow](./figures/onContextMenuShow.gif)
+
+### Closing the Context Menu
+
+After `onContextMenuShow` is triggered, the application needs to end the current menu operation. In the preceding example, the context menu result object is obtained through `event.result` in the `onContextMenuShow` callback and saved to `this.result`. Then, in the `onStateChange` callback of `bindPopup`, the popup closing is monitored, and `this.result!.closeContextMenu()` is called to close the Web context menu. Merely setting the popup state to not displayed cannot replace calling [closeContextMenu](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#closecontextmenu9). If the callback is triggered only once when you long press the image repeatedly, first check whether this API was called when the previous menu was closed. If the menu has already been closed, check whether the web page has intercepted the `contextmenu` event.
+
 ## Custom Menu
 The custom menu gives developers the flexibility to control when the menu is triggered and how it is presented. It allows the app to dynamically match function entries based on user operation scenarios, significantly simplifying UI adaptation during development while making the interaction experience more intuitive.
 
 You can implement the custom menu feature through the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) API. Currently, it additionally supports triggering the custom menu and custom text menu by long pressing images, links, and text.
+
+When an image is in the selected state, a tap within the selection area may be used to handle the selection or the menu, and the page's `click` event may not be triggered. If the application needs to provide an operation entry when an image is selected, you can configure menu items for the image through `bindSelectionMenu` below. If the application needs to respond to a normal page click, exit the selected state first and then tap the image.
+
 1. Create a [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) component as the menu popup.
 2. Bind the MenuBuilder menu popup through the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) method of the Web component. Set [WebElementType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webelementtype13) to `WebElementType.IMAGE` and [responseType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webresponsetype13) to `WebResponseType.LONG_PRESS` to indicate that the menu pops up when an image is long pressed. In [options](../reference/apis-arkweb/arkts-basic-components-web-i.md#selectionmenuoptionsext13), define the menu display callback `onAppear`, the menu disappearance callback `onDisappear`, the preview window `preview`, and the menu type `menuType`.
 
@@ -567,8 +575,12 @@ HTML example
 ![bindSelectionMenu_link](./figures/web-menu-bindselectionmenu-link.gif)
 
 ## Saving Images from the Web Menu
+The example in this section processes image elements in a web page: it obtains the image address through `getLastHitTest().extra` and then saves the image to the gallery. Images embedded in a PDF do not necessarily participate in hit testing as web page image elements. When you long press an image in a PDF, you cannot rely on `onContextMenuShow` or `getLastHitTest().extra` to obtain its address.
+
+If the application needs to save images embedded in a PDF, obtain the image data from the original PDF file or the service that provides the PDF, and then perform the save. If the application already has the original image address before generating the PDF, you can keep that address and refer to the image download and save process in the following example. The following example itself cannot extract images from a PDF.
+
 1. Create a MenuBuilder component as the menu popup, use the [SaveButton](../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md) component to save images, and bind the MenuBuilder to Web through bindContextMenu.
-2. Obtain the image URL in onContextMenuShow, and save the image to the app sandbox through copyLocalPicToDir or copyUrlPicToDir.
+2. In the `onContextMenuShow` callback, call [getLastHitTest](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getlasthittest18) to obtain the image URL and save it to `this.imgUrl`. After the user taps the save button, call `copyLocalPicToDir` (for a local image) or `copyUrlPicToDir` (for a network image) based on the URL type to save the image to the application sandbox.
 3. Save the image in the app sandbox to the gallery through photoAccessHelper.
 
 <!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->

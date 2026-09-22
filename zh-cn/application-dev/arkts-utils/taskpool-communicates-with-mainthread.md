@@ -31,6 +31,7 @@
    ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
    import { IconItemSource } from './IconItemSource';
+   import { BusinessError } from '@kit.BasicServicesKit';
    // 实现接收Task消息的方法
    function notice(data: number): void {
      console.info('子线程已加载数据，共加载图片: ', data);

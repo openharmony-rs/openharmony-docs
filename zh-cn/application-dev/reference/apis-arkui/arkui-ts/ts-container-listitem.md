@@ -206,8 +206,6 @@ start和end对应的@builder函数中顶层必须是单个组件（如果顶层�
 
 滑动手势只在ListItem区域上生效，如果子组件滑出ListItem区域外，在ListItem以外的部分不会响应滑动手势。所以在多列模式下，建议不要将划出组件宽度设置过大。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                         | 类型                                                         | 只读 | 可选 | 说明                                                         |
@@ -222,8 +220,6 @@ start和end对应的@builder函数中顶层必须是单个组件（如果顶层�
 SwipeActionItem用于配置[SwipeActionOptions](#swipeactionoptions9对象说明)中的start或end划出项，包括划出时显示的操作项、长距离操作区域的距离阈值，以及进入、退出长距离操作区域、抬手触发操作和状态变化时的回调。
 
 作为start划出项时，List为垂直布局时显示在ListItem左侧，List为水平布局时显示在ListItem上方；作为end划出项时，List为垂直布局时显示在ListItem右侧，List为水平布局时显示在ListItem下方。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

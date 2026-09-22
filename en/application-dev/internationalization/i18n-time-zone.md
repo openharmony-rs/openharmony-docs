@@ -6,7 +6,7 @@
 <!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-08-15T01:53:49.781Z pushedAt=2026-08-15T08:42:29.007Z -->
+<!-- md-trans-meta sourceCommit=0c6f4d200018e8b19cbb56fa8ed5faf7c07be220 translatedAt=2026-09-20T06:55:05.623Z pushedAt=2026-09-20T08:34:11.018Z -->
 
 ## Use Cases
 
@@ -46,8 +46,8 @@ The following table describes the key APIs of the time zone module. For details 
    import { i18n } from '@kit.LocalizationKit';
    ```
 
-2. Usage scenarios.
 
+2. Usage scenarios.
 - Basic functions of the time zone interface: obtaining a specific time zone, calculating fixed and actual time zone offsets, and traversing the time zone list.
 
    <!-- @[get_current_timezone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
@@ -78,30 +78,6 @@ The following table describes the key APIs of the time zone module. For details 
 
    // List of time zone city IDs supported by the system.
    let cityIDs = i18n.TimeZone.getAvailableZoneCityIDs(); // cityIDs = ['Auckland', 'Magadan', ...]
-
-   // Traverse the list of time zone city IDs.
-   let timezoneList: object[] = []; // Time zone list displayed to the user.
-
-   class Item {
-     public cityDisplayName = '';
-     public timezoneId = '';
-     public offset = '';
-     public cityId = '';
-   };
-
-   for (let i = 0; i < cityIDs.length; i++) {
-     let cityId = cityIDs[i];
-     let timezone: i18n.TimeZone = i18n.TimeZone.getTimezoneFromCity(cityId); // TimeZone object corresponding to the city ID
-     let cityDisplayName = i18n.TimeZone.getCityDisplayName(cityId, 'zh-CN'); // Localized city name.
-     let timestamp = (new Date()).getTime();
-     let item: Item = {
-       cityDisplayName: cityDisplayName,
-       timezoneId: timezone.getID(),
-       offset: 'GMT' + (timezone.getOffset(timestamp) / 3600 * 1000),
-       cityId: cityId
-     };
-     timezoneList.push(item);
-   }
 
    // TimeZone object array corresponding to the specified geographical coordinates
    let timezoneArray: i18n.TimeZone[] = i18n.TimeZone.getTimezonesByLocation(-43.1, -22.5);

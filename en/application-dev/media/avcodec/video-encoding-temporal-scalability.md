@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T02:01:48.511Z pushedAt=2026-08-22T03:55:14.654Z -->
+<!-- md-trans-meta sourceCommit=6dad6da34c3dfb17e3d881ff0d84d7a0117b3bdf translatedAt=2026-09-20T07:01:54.222Z pushedAt=2026-09-20T08:39:12.355Z -->
 
 ## Basic Concepts
 
@@ -27,7 +27,6 @@ The figure below shows the new bitstream structure when the frames at L3 are dro
 ![Temporal scalability 4 layers L3 dropped](figures/temporal-scalability-4layers-L3-dropped.png)
 
 ### Structure of a Temporally Scalable Bitstream
-
 A bitstream is organized by one or more Group of Pictures (GOPs). A GOP is a collection of consecutive pictures that can be independently decoded. It measures the distance between two I-frames (also named key frames).
 
 A GOP can be further divided into one or more Temporal Group of Pictures (TGOPs), and each TGOP is composed by a base layer (BL) and one or more associated enhancement layers (ELs). For example, frame 0 to frame 7 in the foregoing four-layer temporally scalable bitstream form a TGOP.
@@ -47,7 +46,6 @@ The temporally scalable bitstream structure is implemented by specifying referen
 Although a specific cross-frame reference structure can be implemented when there is more than one STR, the span supported by temporal scalability is limited due to an excessively short validity period. This problem does not exist when coming to the LTR, which also covers the cross-frame scenario of the STR. Therefore, the LTR is preferably used to implement the structure of a temporally scalable bitstream.
 
 ## When to Use
-
 You are advised to use temporal scalability in the following scenarios:
 
 - Real-time encoding and transmission scenarios with no cache or low cache on the playback side, for example, video conferencing, live streaming, and collaborative office.
@@ -292,9 +290,7 @@ The LTR feature provides a configuration of the frame-level reference relationsh
 | OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR   | POC number of the LTR frame referenced by the current frame. |
 
 - **OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT**: This parameter is set in the configuration phase. The value of this parameter must not be greater than the maximum number of supported LTR frames. For details, see step 3 below.
-
 - **OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR **: The BL layer and the EL layer to skip are marked as an LTR frame.
-
 - **OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR**: POC number of the frame marked as the LTR frame.
 
 For example, to implement the four-layer temporally hierarchical structure described in [Introduction to Temporally Scalable Video Coding](#introduction-to-temporally-scalable-video-coding), perform the following steps:
@@ -350,13 +346,14 @@ This section describes only the steps that are different from the basic encoding
         // - Write the stream to encode.
         // - Notify the encoder of EOS.
         // - Write the frame parameter.
-        auto format = std::shared_ptr<OH_AVFormat>(OH_AVBuffer_GetParameter(buffer), OH_AVFormat_Destroy);
+        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
         if (format == nullptr) {
             // Handle exceptions.
         }
-        OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR, 1);
-        OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, 4);
-        OH_AVBuffer_SetParameter(buffer, format.get());
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR, 1);
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, 4);
+        OH_AVBuffer_SetParameter(buffer, format);
+        OH_AVFormat_Destroy(format);
         // Notify the encoder that the buffer input is complete.
         OH_VideoEncoder_PushInputBuffer(codec, index);
     }
@@ -384,6 +381,9 @@ This section describes only the steps that are different from the basic encoding
     // 2.1 Implement the OH_VideoEncoder_OnNeedInputParameter callback function.
     static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
     {
+        if (parameter == nullptr) {
+            // Exception handling.
+        }
         // The index of the input frame buffer is sent to InIndexQueue.
         // The input frame data (specified by avformat) is sent to InFormatQueue.
         // Perform data processing. For details, see:

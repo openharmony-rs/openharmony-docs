@@ -2,10 +2,10 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @LiuChao-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=2d7b4266499e3556fe42ddb8c4180af3db492816 translatedAt=2026-09-14T08:57:53.821Z pushedAt=2026-09-15T12:34:27.178Z -->
+<!-- md-trans-meta sourceCommit=352fca6d2978ec6438d588ca2b739b6c08b60200 translatedAt=2026-09-20T06:23:06.105Z pushedAt=2026-09-20T07:47:11.715Z -->
 
 ## When to Use
 

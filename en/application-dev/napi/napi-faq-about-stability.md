@@ -1,20 +1,21 @@
 # FAQs About Stability
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=70ba2bcd8488b9d551343ac02dbfe4989edea211 translatedAt=2026-09-20T07:04:57.534Z pushedAt=2026-09-20T09:12:49.267Z -->
 
 ## How do I troubleshoot the issue that an application often crashes during running
 
-- Question: During Node-API development, an application often crashes, and the cpp crash stack is displayed. The stack top is the system library **libark_jsruntime.so**, and the first few frames of the crash stack contain **libace_napi.z.so**. How do I troubleshoot this issue? 
+- Specific issue: During development with Node-API, the application crashes with high probability. A cpp crash stack appears, with the top of the stack being the system library libark_jsruntime.so, and the first few frames of the crash stack also containing libace_napi.z.so. How to locate and resolve this issue?  
 
-The issue occurs frequently. The crash stack varies slightly each time, but the crash stack top is **libark_jsruntime.so** or **libace_napi.z.so** of the system library.   
+The reproduction probability is high, and each crash stack differs slightly. However, the commonality is that the top of the crash stack is the system library libark_jsruntime.so or libace_napi.z.so.    
 
-- The crash information is as follows: 
+- The crash information is as follows:  
 ```sh
-Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caus
+Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caused by NULL pointer dereference
 Fault thread info:
 Tid:15894, Name:e.myapplication
 #00 pc 002b8dd4 /system/lib/platformsdk/libark_jsruntime.so
@@ -24,118 +25,121 @@ Tid:15894, Name:e.myapplication
 #04 pc 00428d0f /system/lib/platformsdk/libark_jsruntime.so
 ```
 
-- Answer: 
+- Locate the issue:  
 
-If the application frequently crashes when the Node-API is used, and the crash stack top is in the system **library libark_jsruntime.so**, the issue may be caused by improper use of the Node-API.  
-- You can refer to the following troubleshooting methods:  
-1. Check whether there are multi-thread safety issues, which are likely to occur.  
+If a high-probability crash occurs when using Node-API and the top of the crash stack is the system library libark_jsruntime.so, it is generally caused by improper use of Node-API APIs.   
+- The following approach to locating the issue can be used as a reference:   
+1. Check whether there is a thread safety issue (high probability).   
 
-   DevEco Studio provides a switch for checking multi-thread safety issues. After the switch is enabled, recompile, package, and run the code to check whether the crash stack complies with the description in the following topic. If yes, multi-thread safety problems occur when Node-API is used.
+   DevEco Studio provides a related switch. After enabling the switch, recompile, package, and run the application, and check whether the crash stack matches the description in the following document. If so, there is a thread safety issue when using Node-API. 
 
-     
+   [Common Thread Safety Issues](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
 
-   Multi Thread Check in DevEco Studio:  
+   DevEco Studio switch:   
 
-   ![multi-thread-check](figures/multi-thread-check.png)  
-2. Check whether the input parameter of the Node-API is invalid.  
-- In this case, the .so file appears higher on the crash stack. The .so file calls a specific Node-API, for example, **napi_call_function**. Then, the Node-API calls **libark_jsruntime .so**, and the crash occurs in **libark_jsruntime**. 
+   ![multi-thread-check](figures/multi-thread-check.png)   
+2. Invalid input parameters when calling Node-API interfaces.   
+- In this case, the .so file on the crash stack is usually shallow. The .so file calls a specific Node-API interface, such as `napi_call_function`, and then Node-API calls the `libark_jsruntime` .so file, where the crash occurs directly.  
 
-The following shows an example stack structure. 
+The following is an example of the stack structure.  
 ```sh
 #01 /system/lib/platformsdk/libark_jsruntime.so
 #02 /system/lib/platformsdk/libark_jsruntime.so
-#03 /system/lib/platformsdk/libace_napi.z.so(napi_set_named_property+170) -- Node-API .so, which displays the failed API call.
+#03 /system/lib/platformsdk/libace_napi.z.so(napi_set_named_property+170) -- The Node-API .so file. This location shows the specific API that reports the call error.
 #04 /data/storage/el1/bundle/libs/arm/libentry.so -- Your .so file.
 ```
-- If the input parameter is incorrect, the .so file usually appears high on the crash stack (it will not be far away from the stack top, such as #10). However, you can also refer to the following troubleshooting methods. 
-- Troubleshooting methods: 
+- If the issue is caused by input parameters, the .so file is usually at a shallow position on the crash stack (it does not reach a position far from the top of the stack, such as #10). However, you can still troubleshoot by following this approach.  
+- Troubleshooting approach:  
 
-a. Check whether the **napi_value** is not initialized (the value is not assigned successfully, but is passed to the API as an invalid input parameter).
+a. Check whether any `napi_value` is uninitialized or not yet assigned successfully, and is directly passed to an interface as an invalid input parameter.
 
-b. Check whether the error-prone API can be found by referring to the following topic.
+b. Check whether the corresponding section can be found in this list of error-prone APIs.
 
-   
-  
-   
+<!--Del--> <!--DelEnd-->
+
+<!--Del--> <!--DelEnd-->
 
 
 ## How to handle thread safety issues when the ArkTS method is concurrently called in the thread pool
 
-- In an ArkTS class method, **napi_ref** is created. To concurrently call the ArkTS method in the C++ thread pool, I have the following questions: 
-1. Can the ArkTS class method cached by **napi_ref** be called in the thread pool created by C++? 
-2. How to ensure thread safety when ArkTS is called back? 
 
-Answer to question 1:
+- Consider the following scenario: there is a class method in ArkTS, and a `napi_ref` reference has been created for this method. You now want to call the ArkTS method concurrently in a C++ thread pool. The following questions arise:  
+1. Can the ArkTS class method cached by `napi_ref` be called in a thread pool created in C++?  
+2. How can thread safety be ensured when calling back to ArkTS?  
 
-An ArkTS task can be thrown back to the ArkTS thread only in the C++ thread. In this case, the task is not called synchronously, but is thrown. 
+For issue 1:
 
-Note that the ArkTS method can be executed only on the ArkTS thread. 
+You can only throw the ArkTS task back to the ArkTS thread from the C++ thread. This is not a synchronous call, but an action of throwing a task.  
 
-Answer to question 2:
+Note that the actual execution of this ArkTS method can only be completed on the ArkTS thread. That is, the method can only run on the corresponding ArkTS thread.  
 
-As mentioned above, C++ threads throw tasks to ArkTS threads to execute ArkTS methods. For details about thread safety, see [Thread Safety Development Using Node-API](use-napi-thread-safety.md). 
+For question 2:
 
-In addition, you can enable the Ark multi-thread check during development to intercept multi-thread security issues. 
+As mentioned above, C++ threads throw tasks to the ArkTS thread, which then executes the ArkTS method. For thread safety, refer to [Thread Safety Development Using Node-API](use-napi-thread-safety.md).  
+
+In addition, during development, you can enable [Ark multithreading detection](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ark-runtime-detection#section75786272088), which can intercept multithreading safety issues.  
 
 ## What should I do if the content of napi_value changes
 
-- Question: When a program is initialized, **env** and a method (**napi_value**) are saved. The method is checked when it is created. The result of **napi_typeof** is **napi_function**, which meets the expectation. After the program runs for a period of time, the saved **env** and method fail to be checked, and the method is not a **napi_function**. The **env** and method are saved and used in the same main thread. How to solve this problem? 
+- Description: During program initialization, `env` and a method (`napi_value`) are saved. When this method was first created, it was checked, and `napi_typeof` returned `napi_function`, which met expectations. After the program has been running for a while, when the saved `env` and method are used again to invoke it, the method no longer passes the check—it is no longer a `napi_function`. Both saving and usage occur on the same main thread. How can this be resolved?  
 
-- Answer: 
-1. Check whether **napi_value** is used out of the scope. 
+- Troubleshooting suggestions:  
+1. Confirm whether the `napi_value` is still being used after going out of scope, which causes a use-after-scope issue.  
 
-    
+<!--Del--> <!--DelEnd-->
 
-    
+<!--Del--> <!--DelEnd-->
 
-2. You are advised to use **napi_ref** instead of **napi_value**.
+2. You are advised to use `napi_ref` when saving, rather than saving the `napi_value` directly.
 
 ## Is there a method to obtain the latest napi_env
 
-- Question: The native layer needs to call an ArkTS method at a deeper layer and cannot pass **napi_env** layer by layer. If **napi_env** is directly cached, the system crashes. What should I do? 
+- Specific description: The native layer needs to call ArkTS methods at a deep call level and cannot pass napi_env layer by layer. Caching it directly causes crashes.  
 ```sh
 #00 /system/lib/platformsdk/libark_jsruntime.so(panda::JSValueRef::IsFunction)
 #01 /system/lib/platformsdk/libace_napi.z.so(napi_call_function)
 #02 /data/storage/el1/bundle/libs/arm/libentry.so
 ...
 ```
-- Answer: 
-1. To save **napi_env**, you can only pass it by calling functions layer by layer because Node-API does not provide the capability of directly obtaining **napi_env**. You are not advised to save **napi_env** due to the following reasons: 
-   
-   - If the **napi_env**'s exit is not perceived, the **use-after-free** issue may occur. 
-   
-   - **napi_env** is strongly bound to the ArkTS thread. If **napi_env** is used by other ArkTS threads, multi-thread safety issues may occur. 
-   
-   References:
-   
+- Answer:  
+1. About saving napi_env:  
+
+   Node-API does not provide the capability to obtain napi_env directly; it can only be passed through layer-by-layer function calls. Saving napi_env is generally not recommended for two reasons:  
+
+   First, if the exit of napi_env is not perceived by the user, a use-after-free issue can easily occur.  
+
+   Second, napi_env is strongly bound to the ArkTS thread. If napi_env is used on another ArkTS thread, thread safety issues arise.  
+
+   Reference:
+
    [Why cannot napi_env be cached?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-73)
 
-2. The key to this issue is as follows: 
+2. The key to this issue is as follows:  
 
-   To forcibly save the **env**, you can use the callback of **napi_add_env_cleanup_hook** to check whether the **env** exits. In addition, enable **Multi Thread Check** during development to avoid multi-thread safety issues.
+   If you must save env, you need to perceive whether env has exited. You can use the callback of napi_add_env_cleanup_hook to perceive this. At the same time, enable the multi-thread detection switch during development to avoid thread safety issues.
 
-    
-   
-      
+   Reference:
 
-3. The crash may occur because the input parameter **func** is invalid when **napi_call_function** is called. You can check whether **napi_value** is cached. The possible cause is that **napi_value** exceeds the **napi_handle_scope** after being cached.
+   [Common Multithreading Safety Issues](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)
 
-    To use similar logic, use **napi_ref** for storage can prolong the lifecycle. 
+3. For the crash itself, it may occur when calling `napi_call_function` because the `func` parameter is invalid. You can check whether the `napi_value` has been cached. In this case, the `napi_value` may have been cached and then become invalid after going out of the scope of the `napi_handle_scope`. 
 
-- References: 
+    If similar logic exists, use `napi_ref` for storage, which can extend the lifecycle.  
 
-  [napi_create_reference, napi_delete_reference](use-napi-life-cycle.md) 
+- Reference:
 
-   
+  [napi_create_reference, napi_delete_reference](use-napi-life-cycle.md)  
+
+<!--Del--> <!--DelEnd-->
 
 ## What should I do if napi_add_env_cleanup_hook is called incorrectly
 
-- Question: What should I do if an error is reported when **napi_add_env_cleanup_hook** or **napi_remove_env_cleanup_hook** is called? 
+- Specific issue: How to handle call errors of `napi_add_env_cleanup_hook`/`napi_remove_env_cleanup_hook`?  
 
-When an error is reported when **napi_add_env_cleanup_hook** or **napi_remove_env_cleanup_hook** is called, the possible causes and logs are as follows: 
-1. The two APIs are used outside the ArkTS thread to which **env** belongs, causing multi-thread safety issues. The error log "current napi interface cannot run in multi-thread" is reported. 
-2. When **napi_add_env_cleanup_hook** is called, the same **args** is repeatedly used to register different callbacks. As a result, the registration fails. The third input parameter **args** of the API is used as the **key** value of the internal **map** of the API. When the callback of the same **args** is registered repeatedly, only the first registration is successful. If the registration fails, subsequent service functionalities may be abnormal or crash. The error log "AddCleanupHook Failed" is reported. 
-3. When **napi_remove_env_cleanup_hook** is called, the callback is deleted using **args** that does not exist or has been deleted. The API fails to be called, and the error message "RemoveCleanupHook Failed" is displayed. 
+The call errors of `napi_add_env_cleanup_hook` and `napi_remove_env_cleanup_hook` are usually caused by improper API usage. The common causes and characteristic logs are as follows.  
+1. The two APIs are called outside the ArkTS thread where `env` resides, causing a thread safety issue. The characteristic error log is `current napi interface cannot run in multi-thread`.  
+2. When calling `napi_add_env_cleanup_hook`, the same `args` is reused to register different callback functions, causing subsequent registrations to fail. The third parameter `args` of this API serves as the `key` in the internal `map`. When a callback with the same `args` is registered repeatedly, subsequent registrations fail, and only the first registration succeeds. A registration failure may cause subsequent service functions to behave abnormally or crash. The characteristic error log is `AddCleanupHook Failed`.  
+3. When calling `napi_remove_env_cleanup_hook`, an attempt is made to remove a callback function through an `args` that does not exist (or has already been removed). The API call fails, and the characteristic error log `RemoveCleanupHook Failed` appears.  
 
 Example:
 
@@ -143,39 +147,39 @@ Example:
 void AddEnvCleanupHook(napi_env env)
 {
     napi_add_env_cleanup_hook(env, [](void* args) -> void {
-        // Callback of the cleanup function.
-    }, env); // env is a common data. Even if it is not repeatedly registered here, it may be registered in advance in other places. As a result, the registration fails.
+        // cleanup function callback
+    }, env); // env is a common piece of data. Even if it is not registered repeatedly here, it may have been registered in advance elsewhere, causing the registration here to fail.
 }
 
 static napi_value Test(napi_env env, napi_callback_info info)
 {
     // First registration.
     AddEnvCleanupHook(env);
-    // Second registration.
+    // Second duplicate registration.
     AddEnvCleanupHook(env);
     return nullptr;
 }
 ```
 
-- Answer:
-1. To ensure multi-thread safety, ensure that the API is called by the ArkTS thread to which **env** belongs.
-2. If the registration fails, you need to specify the function to be registered and ensure that the **key** value (the third input parameter of **napi_add_env_cleanup_hook**) is unique.
-3. If the deletion fails, ensure that **args** has been registered and not deleted.
+- Fix suggestions:
+1. For multi-thread safety issues, ensure that the thread calling the API is on the ArkTS thread where `env` resides.
+2. For registration failure issues, the function to be registered must be specified by the caller. Ensure that the `key` value (that is, the third input parameter of `napi_add_env_cleanup_hook`) is unique.
+3. For deletion failure issues, ensure that `args` has been registered and has not been deleted.
 
-References:
+Reference:
 
 [Working with Cleanup Hooks Using Node-API](use-napi-about-cleanuphook.md)
 
- 
+<!--Del--> <!--DelEnd-->
 
 ## What are the typical error scenarios of lifecycle-related development between napi_open_handle_scope and napi_close_handle_scope
 
-- Question: What should I do if the stability is affected when I use napi_open_handle_scope and napi_close_handle_scope to manage ArkTS objects? 
+- Specific issue: How to handle stability issues that occur when using the `napi_open_handle_scope` and `napi_close_handle_scope` APIs to manage ArkTS objects?  
 
-Stability problems occur when **napi_open_handle_scope** and **napi_close_handle_scope** are incorrectly called. The common causes are as follows: 
-1. **napi_open_handle_scope** and **napi_close_handle_scope** are not used in pairs. A scope is opened but not closed. As a result, memory leaks occur and the program may break down.
-2. The scopes are not closed in the reverse order of opening the scope. As a result, memory corruption may occur. In the scenario where **open_scope1**, **open_scope2**, **close_scope1**, and **close_scope2** are used, the pointer is returned after **close_scope1** is called, which may overwrite the memory in **scope2** and cause memory corruption. 
-3. The scope created in the native method is not closed before the method returns. As a result, the scope pairing is disordered during function reentry, causing stability issues. 
+Stability issues in `napi_open_handle_scope` and `napi_close_handle_scope` calls are commonly caused by the following, all of which result from improper API usage.  
+1. `napi_open_handle_scope` and `napi_close_handle_scope` are not used in pairs. Opening a scope without closing it causes memory leaks and may trigger a program crash. 
+2. Scopes are not closed in the reverse order in which they were opened, which may cause memory corruption. For example, in a scenario such as open_scope1, open_scope2, close_scope1, close_scope2, after close_scope1 the pointer is returned and is highly likely to overwrite the memory in scope2, causing memory corruption.  
+3. A scope created in a native method is not closed before the method returns, causing scope pairing to become disordered upon function re-entry and leading to stability issues.  
 
 Example:
 
@@ -183,7 +187,7 @@ Example:
 #include "napi/native_api.h"
 #include <hilog/log.h>
 
-// 1. Global scope
+// 1. Global scope.
 static napi_handle_scope g_globalScope = nullptr;
 
 static napi_value CallFunction(napi_env env, napi_callback_info info) {
@@ -193,33 +197,33 @@ static napi_value CallFunction(napi_env env, napi_callback_info info) {
     
     napi_valuetype type = napi_undefined;
     if (argv[0] == nullptr || napi_typeof(env, argv[0], &type) != napi_ok || type != napi_function) {
-        OH_LOG_INFO(LOG_APP, "Invalid JS function parameter");
+        OH_LOG_INFO(LOG_APP, "Invalid JS function parameter.");
         napi_value errRet = nullptr;
         napi_create_int32(env, -1, &errRet);
         return errRet;
     }
 
     if (!g_globalScope) {
-        OH_LOG_INFO(LOG_APP, "[Initial call] The global scope is empty. Open the scope.");
+        OH_LOG_INFO(LOG_APP, "[First call] Global scope is empty, execute open.");
         napi_open_handle_scope(env, &g_globalScope);
-        // Initial call: Execute the JS function.
+        // First call: execute the JS function.
         napi_value global = nullptr;
         napi_get_global(env, &global);
         napi_value result = nullptr;
         napi_call_function(env, global, argv[0], argc, argv, &result);
-        return result; // Directly return the result for the initial call, and do not execute the subsequent close logic.
+        return result; // First call returns directly without executing the subsequent close logic.
     } else {
-        // Reentrant call: Return the fixed value and close the scope.
+        // Reentrant call: return a fixed value directly and close the scope.
         napi_value result = nullptr;
         napi_create_int32(env, 10, &result);
-        OH_LOG_INFO(LOG_APP, "[Reentrant call] The global scope is not empty. Close the scope.");
+        OH_LOG_INFO(LOG_APP, "[Reentrant call] Global scope is not empty, execute close.");
         napi_close_handle_scope(env, g_globalScope);
         g_globalScope = nullptr;
         return result;
     }
 }
 ```
-API declaration
+API declaration:
 ```ts
 // index.d.ts
 export const callFunction : (func : Function) => void;
@@ -231,23 +235,23 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 function reenterFunc(count = 1) : void{
-  hilog.info(0x0000, 'testTag', `[JS] Recursion`);
+  hilog.info(0x0000, 'testTag', `[JS side] Recursion`);
   if (count <= 0) {
     return;
   }
   testNapi.callFunction(() => reenterFunc(count - 1));
-  hilog.info(0x0000, 'testTag', `[JS] Reentrant call`);
+  hilog.info(0x0000, 'testTag', `[JS side] Reentrant call`);
   return;
 }
 
 try {
   testNapi.callFunction(reenterFunc);
-  hilog.info(0x0000, 'testTag', '[Execution completed]');
+  hilog.info(0x0000, 'testTag', '[Execution complete]');
 } catch (error) {
   hilog.error(0x0000, 'testTag', `Call error: ${error.message}`);
 }
 ```
-CMakeLists.txt
+CMakeLists.txt:
 ```text
 cmake_minimum_required(VERSION 3.5.0)
 project(Test)
@@ -266,11 +270,11 @@ add_definitions( "-DLOG_DOMAIN=0xd0d0" )
 add_definitions( "-DLOG_TAG=\"testTag\"" )
 target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 ```
-- Answer:
-1. **napi_open_handle_scope** and **napi_close_handle_scope** must be used in pairs. Check whether they are used in pairs. 
-2. All scopes must be closed in the reverse order of opening. 
-3. All scopes created in the native method must be closed before the method returns. 
+- Fix suggestions:
+1. `napi_open_handle_scope` and `napi_close_handle_scope` must be used in pairs, and you should check this yourself.  
+2. All scopes must be closed in the reverse order of opening.  
+3. All scopes created in a native method must be closed before the method returns.  
 
-References:
+Reference:
 
-[Performing Lifecycle Management Using Node-API](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)
+[Lifecycle Development Using Node-API APIs](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)
