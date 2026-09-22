@@ -44,7 +44,7 @@ When a custom component is destroyed, the [aboutToDisappear](../reference/apis-a
 
 - [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9): web callback event, which is triggered when the body of an HTTP response starts to be loaded and a new page is about to be displayed in the rendering process. In this case, the document loading is still in the early stage, so the linked resources such as online CSS and images may not be available.
 
-- [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9): triggered when an application rendering process exits abnormally. You can release system resources and save data in this callback. If you want to recover the application, call the [loadUrl](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to reload the page. For details, see [How can I prevent page suspension when the Web component's child rendering process exits unexpectedly](#how-can-i-prevent-page-suspension-when-the-web-components-rendering-child-process-exits-unexpectedly).
+- [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9): triggered when an application rendering process exits abnormally. You can release system resources and save data in this callback. If you want to recover the application, call the [loadUrl](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to reload the page. For details, see [How Can I Prevent Page Suspension When the Web Component Child Rendering Process Exits Unexpectedly](#how-can-i-prevent-page-suspension-when-the-web-component-child-rendering-process-exits-unexpectedly).
 
 - [onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear): triggered when a component is uninstalled from the component tree, This event is triggered when a component is uninstalled.
 
@@ -181,7 +181,7 @@ Pay attention to some important performance indicators during web page loading. 
 
 - [onLargestContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onlargestcontentfulpaint12): triggered when the largest content, such as the image, text block, or video, is drawn in the visible area.
 
-## How can I prevent page suspension when the Web component's child rendering process exits unexpectedly
+## How Can I Prevent Page Suspension When the Web Component Child Rendering Process Exits Unexpectedly
 
 ArkWeb is a **Web** component platform designed to display web page content for applications and provide capabilities such as page loading, interaction, and debugging. When an ArkWeb application is used, the page may be suspended due to various reasons. For example, the ArkWeb child rendering process crashes due to front-end exceptions, or the background ArkWeb child rendering process is terminated due to insufficient system resources. In this case, you need to open the page again or restart the application.
 
