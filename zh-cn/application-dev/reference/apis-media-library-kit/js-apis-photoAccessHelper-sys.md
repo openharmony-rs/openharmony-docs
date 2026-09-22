@@ -2103,7 +2103,7 @@ startAssetAnalysisAsync(config: AnalysisConfig, callback: Callback&lt;AnalysisRe
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid types of config.<br>2. The types or uris array size of config exceed max value. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -2160,7 +2160,7 @@ stopAssetAnalysis(config: AnalysisConfig): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid AnalysisType of config.<br>2. The types or uris array size of config exceed max value. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -2221,7 +2221,7 @@ invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback&lt;AnalysisToolR
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported tool type.<br>2. The length of **param** in **ToolInvokeConfig** exceeds 16KB. |
-| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout;<br>2. System exception. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout.<br>2. System exception. |
 
 **示例：**
 
@@ -2285,7 +2285,7 @@ cancelAnalysisTool(config: ToolCancelConfig): Promise&lt;void&gt;
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Invalid task id.<br>2. The length of **param** in **ToolCancelConfig** exceeds 16KB. |
-| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout;<br>2. System exception. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout.<br>2. System exception. |
 
 **示例：**
 
@@ -2748,8 +2748,8 @@ on(type: 'hiddenPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): 
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenPhotoChange'; 2. The same callback is registered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The type is not fixed at 'hiddenPhotoChange'; (2) The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -2807,8 +2807,8 @@ off(type: 'hiddenPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;)
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenPhotoChange'; 2. The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The type is not fixed at 'hiddenPhotoChange'; (2) The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -2869,8 +2869,8 @@ on(type: 'trashedPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;):
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151  | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is registered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151  | The scenario parameter verification fails.<br>Possible causes: (1) The type is not fixed at 'trashedPhotoChange'; (2) The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -2928,8 +2928,8 @@ off(type: 'trashedPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The type is not fixed at 'trashedPhotoChange'; (2) The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -2990,7 +2990,7 @@ onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151  | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.  |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3048,7 +3048,7 @@ offAnalysisPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3109,8 +3109,8 @@ on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is registered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The type is not fixed at 'hiddenAlbumChange'; (2) The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3168,8 +3168,8 @@ off(type: 'hiddenAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): voi
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The type is not fixed at 'hiddenAlbumChange'; (2) The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3230,8 +3230,8 @@ on(type: 'trashedAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedAlbumChange'; 2. The same callback is registered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The type is not fixed at 'trashedAlbumChange'; (2) The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3289,8 +3289,8 @@ off(type: 'trashedAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): vo
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedAlbumChange'; 2. The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The type is not fixed at 'trashedAlbumChange'; (2) The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3351,7 +3351,7 @@ onAnalysisAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.                                                  |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3409,7 +3409,7 @@ offAnalysisAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3527,7 +3527,7 @@ getPhotoAlbums(options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 
 **示例：**
@@ -3592,8 +3592,8 @@ getPhotoAlbumOrder(orderStyle: number, options?: FetchOptions): Promise&lt;Fetch
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3658,8 +3658,8 @@ setPhotoAlbumOrder(orderStyle: number, albumOrders: Array&lt;AlbumOrder&gt;): Pr
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -3729,7 +3729,7 @@ query(sql: string): Promise&lt;ResultSet&gt;
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The SQL statement is abnormal. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out.|
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: (1) The database is corrupted. (2) The file system is abnormal. (3) The IPC request timed out.|
 
 **示例：**
 
@@ -4239,7 +4239,7 @@ getAssetCompatibleUris(bundleName: string, assets: Array&lt;PhotoAsset&gt;, comp
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The bundleName is invalid; 2. The compatibleFlag is invalid. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -4356,8 +4356,8 @@ convertToAsset(path: string): Promise&lt;PhotoAsset&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Converted an image after filtering into an asset object;<br>2. File to be converted is not exist;<br>3. Only images in the public directory of filemanager can be converted. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Converted an image after filtering into an asset object.<br>2. File to be converted is not exist.<br>3. Only images in the public directory of filemanager can be converted. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -4413,8 +4413,8 @@ cloneToAlbum(assets: PhotoAsset[], target: Album,option?: BatchOperationOptions)
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target directory does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden.<br>2. Asset to be cloned is cloud pictures, which can not be cloned.<br>3. The target directory does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -4483,8 +4483,8 @@ cloneToDir(assets: string[], target: string, option?: BatchOperationOptions): Pr
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target album does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden.<br>2. Asset to be cloned is cloud pictures, which can not be cloned.<br>3. The target album does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -4550,8 +4550,8 @@ cloneAssetsByPath(assets: string[], target: Album, option?: BatchOperationOption
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target album does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden.<br>2. Asset to be cloned is cloud pictures, which can not be cloned.<br>3. The target album does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -4609,7 +4609,7 @@ modifyAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[], disableMo
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported;<br>2. The orderKey and orderSubKey are not in the specified range;<br>3. The order type must be either descending or ascending. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported.<br>2. The orderKey and orderSubKey are not in the specified range.<br>3. The order type must be either descending or ascending. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4677,7 +4677,7 @@ modifyHiddenAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[], dis
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported;<br>2. The orderKey and orderSubKey are not in the specified range;<br>3. The order type must be either descending or ascending. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported.<br>2. The orderKey and orderSubKey are not in the specified range.<br>3. The order type must be either descending or ascending. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4914,8 +4914,8 @@ moveAssetsToDir(assets: string[], target: string, option?: BatchOperationOptions
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target directory is not supported;<br>2. Asset to be moved does not exist;<br>3. Automatic renaming is not supported. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target directory is not supported.<br>2. Asset to be moved does not exist.<br>3. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -4981,8 +4981,8 @@ moveAssetsByPath(assets: string[], target: Album, option?: BatchOperationOptions
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target Album is not supported;<br>2. Asset to be moved does not exist;<br>3. Automatic renaming is not supported. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target Album is not supported.<br>2. Asset to be moved does not exist.<br>3. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -5041,7 +5041,7 @@ createAssetsWithAlbum(creationSettings: CreationSetting[], isRealTimeThumb: bool
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 |Scenario-specific parameters are incorrect. Possible causes are as follows:<br>1. The input parameter creationSettings is null or undefined.<br>2. The array length of creationSettings is bigger than 500. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 
 **示例：**
 
@@ -5213,7 +5213,7 @@ startDeepOptimizeSpace(callback?: Callback&lt;DeepOptimizeSpaceProgress&gt;): Pr
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800201 | Unsupported operation type. Possible causes:<br>1. Repeatedly started;<br>2. System is busy, please try again later. |
+| 23800201 | Unsupported operation type. Possible causes:<br>1. Repeatedly started.<br>2. System is busy, please try again later. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -6461,7 +6461,7 @@ createTemporaryCompatibleDuplicate(): Promise&lt;void&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being edited.|
+| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset.<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being edited.|
 | 23800301   |Internal system error.It is recommended to retry and check the logs.Possible causes:<br> 1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out.   |
 
 **示例：**
@@ -7977,8 +7977,8 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchRes
 | :------- | :----------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -8073,7 +8073,7 @@ getAttribute(attrs: AlbumAttribute[]): Promise<Record<AlbumAttribute, AlbumAttri
 | --- | --- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported attribute;<br>2. The attrs size exceeds 20;<br>3. Empty or duplicate attribute; |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported attribute.<br>2. The attrs size exceeds 20.<br>3. Empty or duplicate attribute. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:<br>1. Database corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out. |
 
 **示例：**
@@ -8425,7 +8425,7 @@ setCameraEditData(editData: MediaAssetEditData): void
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 
 **示例：**
@@ -9016,7 +9016,7 @@ setHiddenAttribute(hiddenState: boolean): void
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The asset is not exist. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -9073,7 +9073,7 @@ setTitleByFile(name: string): void
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The asset is not exist. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -9139,7 +9139,7 @@ static deleteLocalAssetsPermanentlyWithUri(context: Context, assetUris: Array&lt
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |     
+| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out.  |     
 
 **示例：**
 
@@ -9210,7 +9210,7 @@ static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise&
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The context is empty; (2) Asset uri array size is empty or bigger than 500 . |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
 
 **示例：**
@@ -9265,7 +9265,7 @@ static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise&
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The context is empty; (2) Asset uri array size is empty or bigger than 500 . |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
 
 **示例：**
@@ -9321,8 +9321,8 @@ static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Pr
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. | 
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The context is empty; (2) Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:(1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. | 
 
 **示例：**
 
@@ -9364,7 +9364,7 @@ setMovingPhotoVersion(version: number): void
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Parameter error, Only supports 9. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -9776,7 +9776,7 @@ static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean):
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Album array size is bigger than 500. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: (1) The context is empty; (2) Album array size is bigger than (500) |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. |
 
 **示例：**
@@ -9933,7 +9933,7 @@ setHiddenAttribute(hiddenState: boolean, isInherited: boolean):void
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The album is not exist. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -9990,7 +9990,7 @@ setAlbumNameByFile(name: string): void
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The album is not exist. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -10052,7 +10052,7 @@ operateAttribute(operation: AlbumOperation): void
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values of operation is incorrect. |
 | 23800201 | Unsupported operation type. It is recommended to check the logs.<br>Possible causes:<br>1. Unsupported AlbumAttribute for the album.<br>2. Unsupported AlbumOperationType for the AlbumAttribute.<br>3. Other operation limit. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted. (2) The file system is abnormal. (3) The IPC request timed out. |
 
 **示例：**
 
@@ -10181,7 +10181,7 @@ moveAssetsWithUri(assetUris: Array&lt;String&gt;, targetAlbum: Album): void
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument.| 
-| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out.         |
 | 14000016 | Operation Not Support.     |
 
 **示例：**
@@ -10304,7 +10304,7 @@ recoverAssetsWithUri(assetUris: Array&lt;String&gt;): void
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument.| 
-| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out.         |
 | 14000016 | Operation Not Support.     |
 
 **示例：**
@@ -10434,7 +10434,7 @@ deleteAssetsWithUri(assetUris: Array&lt;String&gt;): void
 | -------- | ---------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument.| 
-| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out.         |
 | 14000016 | Operation Not Support.     |
 
 **示例：**
@@ -13981,7 +13981,7 @@ cancel(): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. No task can be canceled. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -14798,7 +14798,7 @@ goToRow(position: number): boolean
 | --------- | ---------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed, possible causes: position invalid. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -14838,7 +14838,7 @@ goToFirstRow(): boolean
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -14878,7 +14878,7 @@ goToNextRow(): boolean
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -14925,7 +14925,7 @@ getValue(columnIndex: number): ValueType
 | --------- | ---------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed, possible causes: columnIndex invalid. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -14966,7 +14966,7 @@ getRow(): ValuesBucket
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
@@ -15001,7 +15001,7 @@ close(): void
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: (1) Database corrupted; (2) The file system is abnormal; (3) The IPC request timed out. |
 
 **示例：**
 
