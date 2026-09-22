@@ -3119,7 +3119,7 @@ async function test(){
 
 off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStreamDeviceChangeInfo>): void
 
-Unsbscribes from audio output device changes, carrying the change reason. This API uses an asynchronous callback to return the result.
+Unsubscribes from audio output device changes, carrying the change reason. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

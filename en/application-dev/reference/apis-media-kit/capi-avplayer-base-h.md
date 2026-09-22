@@ -76,7 +76,7 @@ The file declares the structs and enums of the AVPlayer.
 | const char * OH_PLAYER_BITRATE | Pointer to the key for obtaining the bit rate, in bit/s. The value is of the uint32_t type.<br>**Since**: 12|
 | const char * OH_PLAYER_CURRENT_POSITION | Pointer to the key for obtaining the playback progress information, in ms. The value is of the int32_t type.<br>**Since**: 12|
 | const char * OH_PLAYER_DURATION | Pointer to the key for obtaining the duration of the media asset, in ms. The value type is int64_t.<br>**Since**: 12|
-| const char * OH_PLAYER_VIDEO_WIDTH | Pointer to the key for obtaining the video weight, in px. The value type is int32_t.<br>**Since**: 12|
+| const char * OH_PLAYER_VIDEO_WIDTH | processingPointer to the key for obtaining the video width, in px. The value type is int32_t.<br>**Since**: 12|
 | const char * OH_PLAYER_VIDEO_HEIGHT | Pointer to the key for obtaining the video height, in px. The value type is int32_t.<br>**Since**: 12|
 | const char * OH_PLAYER_MESSAGE_TYPE | Pointer to the key for obtaining the type of message received by the AVPlayer. The value is of the int32_t type.<br> The value **1** means that the video frame starts to be rendered.<br>**Since**: 12|
 | const char * OH_PLAYER_IS_LIVE_STREAM | Pointer to the key for checking whether a media asset is live streaming. The value is of the int32_t type. The value **0** means a non-live stream, and **1** means a live stream.<br>**Since**: 12|
