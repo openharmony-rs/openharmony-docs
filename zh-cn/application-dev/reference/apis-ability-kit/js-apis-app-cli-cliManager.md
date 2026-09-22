@@ -9,7 +9,7 @@
 
 本模块提供与系统命令行工具（CLI）的交互能力，可以执行Shell命令，以及管理会话。会话在调用execCmd接口时创建，用于跟踪命令的执行状态和结果。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -21,7 +21,7 @@ import { cliManager } from '@kit.AbilityKit';
 
 执行Shell命令的可选参数。可用于指定工作目录、环境变量、后台运行、前台执行时长、超时时长、安全策略及事件回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -43,7 +43,7 @@ import { cliManager } from '@kit.AbilityKit';
 
 CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准错误输出、终止信号、是否超时及执行时长。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -62,7 +62,7 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 
 执行CLI工具时，系统会为调用方和CLI工具建立一个会话，此字段描述会话状态。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -78,7 +78,7 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 
 执行CLI工具时，系统会为调用方和CLI工具建立一个会话，此字段描述会话信息的格式。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -106,7 +106,7 @@ execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise\<CliSessionInfo\>
 > - 26.0.0版本仅系统应用可调用，需ohos.permission.EXEC_CLI_TOOL权限；26.0.1版本起，普通应用可通过ohos.permission.EXEC_PUBLIC_CLI_TOOL权限调用。
 > - `isShellCommand`为`false`的CLI命令模式及`challenge`参数为系统接口，仅系统应用可使用。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -184,7 +184,7 @@ subscribeSession(sessionId: string, callback: ToolEventCallback): Promise\<void\
 > - 会话仅限创建进程管理：只有调用`execCmd`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
 > - 如果在调用[execCmd](#climanagerexeccmd)时已通过[ExecCmdOptions](#execcmdoptions)的callback参数提供了事件回调，则无需再调用本接口。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -257,7 +257,7 @@ clearSession(sessionId: string): Promise\<void\>
 >
 > - 会话仅限创建进程管理：只有调用`execCmd`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -321,7 +321,7 @@ querySession(sessionId: string): Promise\<CliSessionInfo\>
 >
 > - 会话仅限创建进程管理：只有调用`execCmd`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -385,7 +385,7 @@ sendMessage(sessionId: string, message: string): Promise\<void\>
 >
 > - 会话仅限创建进程管理：只有调用`execCmd`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
