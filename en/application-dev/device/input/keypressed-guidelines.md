@@ -22,10 +22,10 @@ Each system function key has a system-defined default behavior. For example, the
 
 The following table lists common APIs for key press events. For details, see [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](../../reference/apis-input-kit/js-apis-inputconsumer.md).
 
-| API | Description |
+| API | Description|
 | ------------------------------------------------------------ | -------------------------- |
-| on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback\<KeyEvent>): void | Subscribes to key press events. |
-| off(type: 'keyPressed', callback?: Callback\<KeyEvent>): void | Unsubscribes from key press events. |
+| on(type: "keyPressed", options: KeyPressedConfig, callback: Callback\<KeyEvent>): void |Subscribes to press events of the specified key and intercepts the default system response. |
+| off(type: "keyPressed", callback?: Callback\<KeyEvent>): void |Unsubscribes from press events of the specified key and restores the default system response. |
 
 ## How to Develop
 
@@ -152,7 +152,7 @@ struct TestDemo14 {
                 .showToast({ message: 'Successfully added monitoring for Volume Up key!' })
               this.text = "Monitoring for Volume Up key has been added."
             } catch (error) {
-              hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
+              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
               this.getUIContext()
                 .getPromptAction()
@@ -198,7 +198,7 @@ struct TestDemo14 {
                 .showToast({ message: 'Successfully added monitoring for Volume Down key!' })
               this.text = "Monitoring for Volume Down key has been added."
             } catch (error) {
-              hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
+              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
               this.getUIContext()
                 .getPromptAction()
@@ -248,7 +248,7 @@ struct TestDemo14 {
                   .showToast({ message: 'Successfully added monitoring for Slide Up key!' })
                 this.text = "Monitoring for Slide Up key has been added."
               } catch (error) {
-                hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
+                hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
                   JSON.stringify(error, ["code", "message"]));
                 this.getUIContext()
                   .getPromptAction()
@@ -295,7 +295,7 @@ struct TestDemo14 {
                   .showToast({ message: 'Successfully added monitoring for Slide Down key!' })
                 this.text = "Monitoring for Slide Down key has been added."
               } catch (error) {
-                hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
+                hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
                   JSON.stringify(error, ["code", "message"]));
                 this.getUIContext()
                   .getPromptAction()

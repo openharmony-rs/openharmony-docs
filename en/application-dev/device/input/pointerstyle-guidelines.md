@@ -22,12 +22,12 @@ import { pointer } from '@kit.InputKit';
 
 The following table lists common APIs for mouse pointer management. For details, see [@ohos.multimodalInput.pointer (Mouse Pointer)](../../reference/apis-input-kit/js-apis-pointer.md).
 
-| API | Description |
+| API                                                      | Description                                                        |
 | ------------------------------------------ | ------------------------------------------------------- |
-| isPointerVisible(callback: AsyncCallback\<boolean>): void | Obtains the display/hidden state of the current window. |
-| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | Sets the cursor display/hidden state. This state applies to all windows of the current process. |
-| setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | Sets the mouse pointer style type for a specified window. |
-| getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | Obtains the mouse pointer style type of a specified window. |
+| isPointerVisible(callback: AsyncCallback\<boolean>): void | Obtains the visible status of the mouse pointer.                                |
+| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | Sets the visible status of the mouse pointer. This setting takes effect for the mouse pointer globally.|
+| setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | Sets the mouse pointer style. This setting takes effect for the mouse pointer style of a specified window.        |
+| getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | Obtains the mouse pointer style.                                          |
 
 ## Hiding the Mouse Pointer
 
