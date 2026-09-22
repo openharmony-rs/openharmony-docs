@@ -25,7 +25,7 @@ Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需
 
 以下为Router页面的示例。
 
-<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->  
+<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->   
 
 ``` TypeScript
 // Index.ets
@@ -46,7 +46,7 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Button('router to PageOne', { stateEffect: true, type: ButtonType.Capsule })
+        Button('router to pageOne', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
           .margin(20)
@@ -70,13 +70,13 @@ struct Index {
 }
 ```
 
-<!-- @[router_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/PageOne.ets) --> 
+<!-- @[router_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/PageOne.ets) -->  
 
 ``` TypeScript
 @Entry
 @Component
-struct PageOne {
-  @State message: string = 'This is PageOne';
+struct pageOne  {
+  @State message: string = 'This is pageOne ';
 
   build() {
     Row() {
@@ -103,7 +103,7 @@ struct PageOne {
 
 以下为Navigation导航页的示例。
 
-<!-- @[nav_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/Index.ets) --> 
+<!-- @[nav_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/Index.ets) -->  
 
 ``` TypeScript
 // Index.ets
@@ -120,7 +120,7 @@ struct Index1 {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.pushPathByName('navigation_PageOne', null);
+            this.pathStack.pushPathByName('navigation_pageOne', null);
           })
       }.width('100%').height('100%')
     }
@@ -187,17 +187,17 @@ export struct PageOne {
 
 Router通过`@ohos.router`模块提供的方法来操作页面，建议使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](../reference/apis-arkui/arkts-apis-uicontext-router.md)对象。
 
-<!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) --> 
+<!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) -->  
 
 ``` TypeScript
 // push page
-this.getUIContext().getRouter().pushUrl({ url:'pages/PageOne', params: null });
+this.getUIContext().getRouter().pushUrl({ url:'pages/pageOne', params: null });
 
 // pop page
-this.getUIContext().getRouter().back({ url: 'pages/PageOne' });
+this.getUIContext().getRouter().back({ url: 'pages/pageOne' });
 
 // replace page
-this.getUIContext().getRouter().replaceUrl({ url: 'pages/PageOne' });
+this.getUIContext().getRouter().replaceUrl({ url: 'pages/pageOne' });
 
 // clear all page
 this.getUIContext().getRouter().clear();
@@ -229,20 +229,20 @@ struct Index {
   }
 }
 ```
-<!-- @[nav_stack_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/PathStack.ets) --> 
+<!-- @[nav_stack_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/PathStack.ets) -->  
 
 ``` TypeScript
 this.pathStack.pop();
 // push page
-this.pathStack.pushPath({ name: 'PageOne' });
+this.pathStack.pushPath({ name: 'pageOne' });
 
 // pop page
 this.pathStack.pop();
 this.pathStack.popToIndex(1);
-this.pathStack.popToName('PageOne');
+this.pathStack.popToName('pageOne');
 
 // replace page
-this.pathStack.replacePath({ name: 'PageOne' });
+this.pathStack.replacePath({ name: 'pageOne' });
 
 // clear all page
 this.pathStack.clear();
@@ -250,8 +250,8 @@ this.pathStack.clear();
 // 获取路由栈大小
 let size: number = this.pathStack.size();
 
-// 删除栈中name为PageOne的所有页面
-this.pathStack.removeByName('PageOne');
+// 删除栈中name为pageOne的所有页面
+this.pathStack.removeByName('pageOne');
 
 // 删除指定索引的页面
 this.pathStack.removeByIndexes([1, 3, 5]);
@@ -262,11 +262,11 @@ this.pathStack.getAllPathName();
 // 获取索引为1的页面参数
 this.pathStack.getParamByIndex(1);
 
-// 获取PageOne页面的参数
-this.pathStack.getParamByName('PageOne');
+// 获取pageOne页面的参数
+this.pathStack.getParamByName('pageOne');
 
-// 获取PageOne页面的索引集合
-this.pathStack.getIndexByName('PageOne');
+// 获取pageOne页面的索引集合
+this.pathStack.getIndexByName('pageOne');
 // ...
 ```
 
@@ -369,7 +369,7 @@ export struct PageOne {
 
 **方式四**：通过自定义组件查询接口获取，参考[queryNavigationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavigationinfo12)。
 
-<!-- @[router_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router4.ets) -->
+<!-- @[router_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router4.ets) --> 
 
 ``` TypeScript
 // 子页面中的自定义组件
@@ -390,7 +390,7 @@ struct CustomNode {
     Row() {
       Button('Method 4: queryNavigationInfo')
         .onClick(() => {
-          this.pathStack.pushPath({ name: 'PageTwo' });
+          this.pathStack.pushPath({ name: 'pageTwo' });
         })
     }
   }
