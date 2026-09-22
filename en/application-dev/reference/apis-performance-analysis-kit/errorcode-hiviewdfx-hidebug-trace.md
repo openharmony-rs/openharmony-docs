@@ -6,6 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=44da34c75e0877dd26e067a23f1dc0303066fdbb translatedAt=2026-09-21T02:41:24.937Z pushedAt=2026-09-22T01:29:30.401Z -->
 
 > **NOTE**
 >
@@ -27,7 +28,7 @@ The trace capture is in progress.
 
 **Solution**
 
-Wait until the trace capture is complete or call **hidebug.stopAppTraceCapture** to stop the trace capture.
+Wait for the trace capture to finish, or call the **hidebug.stopAppTraceCapture** API to stop the running trace capture, to resolve the duplicate capture issue.
 
 ## 11400103 Permission Verification Failed
 
@@ -45,7 +46,7 @@ The directory does not exist or is deleted by mistake.
 
 **Solution**
 
-Run the trace capture again to generate a correct trace file in the current directory.
+Run the capture API again to regenerate the correct directory file, to resolve the permission verification failure issue.
 
 ## 11400104 Internal Error
 
@@ -67,7 +68,7 @@ The system kernel crashes or the application process does not respond.
 
 **Solution**
 
-Restart the application or device.
+Restart the application or device to resolve the issue of an abnormal internal state of trace capture.
 
 ## 11400105 Trace Capture Disabled
 
@@ -85,7 +86,7 @@ Trace capture is not enabled.
 
 **Solution**
 
-Enable trace capture and then stop it.
+Ensure that trace capture has been successfully started before calling the API to stop trace capture.
 
 ## 11400106 API Call Quota Exceeded
 
@@ -99,13 +100,13 @@ The API call quota is exceeded.
 
 **Possible Causes**
 
-1. This API is called by a process more than once per day.
+1. The API is called by a process more than the quota (once per day).
 
-2. This API is called by the system more than five times per week.
+2. The API is called by the device more than the quota (five times per week).
 
 **Solution**
 
-Wait for the update of the API call quota.
+Wait for the call quota of the process or device to be refreshed, to resolve the issue that the API call quota has been exceeded.
 
 ## 11400120 Trace File Storage Limit Reached
 
@@ -123,7 +124,7 @@ The number of .sys files returned by the trace collection in the directory is gr
 
 **Solution**
 
-Delete files from the trace directory.
+Clean up the files in the trace directory to resolve the issue that the trace file storage limit has been reached.
 
 ## 11400302 Trace Collection Exceeds the Resource Quota
 
@@ -145,4 +146,4 @@ The number of times the application calls trace collection exceeds the daily quo
 
 **Solution**
 
-If the quota is used up on the current day, wait until the system resource quota is updated on the next day.
+Wait for the system resource quota to be refreshed on the next day, to resolve the issue that trace capture exceeds the resource quota.

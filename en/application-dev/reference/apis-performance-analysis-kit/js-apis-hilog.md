@@ -2,12 +2,23 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @buzhenwang-->
+<!--Owner: @suxunquan-->
 <!--Designer: @milkbread123-->
-<!--Tester: @liyang2235-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=3d4a76a8a3a9ec61e86fdabb12ca78ee9333017a translatedAt=2026-09-21T02:49:53.781Z pushedAt=2026-09-22T01:29:30.415Z -->
 
-The HiLog subsystem allows your applications or services to output logs based on the specified type, level, and format string. Such logs help you learn the running status of applications and better debug programs.
+The HiLog module is the log printing subsystem provided by OpenHarmony. It allows applications or services to output logs based on the specified log type, log level, and format string. Developers can use HiLog to record key process information, exceptions, and error events during application running, so as to learn the running status of applications and better debug programs. HiLog is suitable for recording running logs during the development and debugging phase of applications and services, and also for reducing log output and protecting private data through level control in officially released versions.
+
+The HiLog module provides the following core functions:
+
+**Log printing**: Provides five level functions: **debug**, **info**, **warn**, **error**, and **fatal**. Developers can select an appropriate level to output logs based on the severity of the information. Log content supports format strings and privacy identifiers, facilitating structured recording and protection of sensitive data.
+
+**Log level control**: Use **setMinLogLevel** to set the minimum log level for filtering out low-level log output, or use **setLogLevel** together with the preference policy (**PreferStrategy**) to flexibly determine the effective relationship between the newly set level and the system-controlled level, avoiding redundant logs.
+
+**Log printability check**: Use **isLoggable** to determine, before printing a log, whether the log with the specified domain, tag, and level can be output, avoiding the performance overhead of invalid log printing.
+
+**Log output management**: Use **setOutputType** to set log output to the console, private sandbox, or public sandbox; use **setOutputTypeByDomain** to finely control the output mode of different domains based on a domain ID list; and provide management capabilities such as sandbox log directory query, sandbox log file retrieval, and sandbox log refresh and cleanup.
 
 > **NOTE**
 >
@@ -33,7 +44,7 @@ Checks whether logs are printable based on the specified service domain, log tag
 
 | Name| Type                 | Mandatory| Description                                                        |
 | ------ | --------------------- | ---- | ------------------------------------------------------------ |
-| domain | number                | Yes  | Service domain of logs. The value ranges from **0x0** to **0xFFFF**. If the value exceeds the range, logs cannot be printed.<br>You can define the value as required.|
+| domain | number                | Yes   | Domain identifier corresponding to the log. The range is 0x0~0xFFFF. If out of range, the log cannot be printed.<br>It is recommended for developers to customize the division within the application as needed. |
 | tag    | string                | Yes  | Log tag in the string format. You are advised to use this parameter to identify a particular service behavior or the class holding the ongoing method. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.|
 | level  | [LogLevel](#loglevel) | Yes  | Log level.                                                  |
 
@@ -59,8 +70,8 @@ Enumerates the log levels.
 
 | Name |   Value  | Description                                                        |
 | ----- | ------ | ------------------------------------------------------------ |
-| DEBUG | 3      | Log level used to record more detailed process information than INFO logs to help developers analyze service processes and locate faults.|
-| INFO  | 4      | Log level used to record key service process nodes and exceptions that occur during service running,<br>for example, no network signal or login failure.<br>These logs should be recorded by the dominant module in the service to avoid repeated logging conducted by multiple invoked modules or low-level functions.|
+| DEBUG | 3      | Log level used to record detailed process. Logs at this level allow for more detailed analysis of business processes and problem locating. |
+| INFO  | 4      | Log level used to record key business process nodes, allowing the main running process of the business to be restored;<br>Used to record predictable abnormal situation information, such as no network signal and login failure.<br>These logs should be recorded by the dominant module within the business to avoid duplicate recording in multiple called modules or low-level functions. |
 | WARN  | 5      | Log level used to record severe, unexpected faults that have little impact on users and can be rectified by the programs themselves or through simple operations.|
 | ERROR | 6      | Log level used to record program or functional errors that affect the normal running or use of the functionality and can be fixed at a high cost, for example, by resetting data.|
 | FATAL | 7      | Log level used to record program or functionality crashes that cannot be rectified.              |
@@ -81,10 +92,10 @@ DEBUG logs are not recorded in official versions by default. They are available 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | Yes  | Service domain of logs. The value ranges from **0x0** to **0xFFFF**. If the value exceeds the range, logs cannot be printed.<br>You can define the value as required.|
+| domain | number | Yes | Domain identifier corresponding to the log. The range is 0x0~0xFFFF. If out of range, the log cannot be printed.<br>It is recommended for developers to customize the division within the application as needed. |
 | tag    | string | Yes  | Log tag in the string format. You are advised to use this parameter to identify a particular service behavior or the class holding the ongoing method. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.|
-| format | string | Yes  | Format string used to output logs in a specified format. It can contain several elements, where the parameter type and privacy identifier are mandatory.<br>Parameters labeled **{public}** are public data and are displayed in plaintext; parameters labeled **{private}** (default value) are private data and are filtered by **\<private>**.|
-| args   | any[]  | No  | Variable-length parameter list corresponding to the format string. The number and type of parameters must map to the identifier in the format string.|
+| format | string | Yes | Format string used for formatting log output. Multiple parameters can be set in the format string, and each parameter needs to include the parameter type and privacy identifier.<br>Available parameter format specifiers include **%d**, **%i**, **%s**, **%o**, **%O**, etc. For details, see [Parameter Format](#parameter-format).<br>Privacy identifiers are divided into **{public}** and **{private}**, defaulting to **{private}**. Content marked as **{public}** is output in plaintext, while content marked as **{private}** is filtered for echo with \<private>. The privacy identifier mechanism helps developers protect privacy-sensitive data. |
+| args | any[] | No | Variable-length parameter list corresponding to the format string **format**. The number and types of parameters must correspond one-to-one with the identifiers in the format string. When the format string contains no placeholders, this parameter can be omitted, and only the format string itself is output. |
 
 **Example**
 
@@ -116,10 +127,10 @@ Prints INFO logs.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | Yes  | Service domain of logs. The value ranges from **0x0** to **0xFFFF**. If the value exceeds the range, logs cannot be printed.<br>You can define the value as required. |
+| domain | number | Yes | Domain identifier corresponding to the log. The range is 0x0~0xFFFF. If out of range, the log cannot be printed.<br>It is recommended for developers to customize the division within the application as needed. |
 | tag    | string | Yes  | Log tag in the string format. You are advised to use this parameter to identify a particular service behavior or the class holding the ongoing method. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.|
-| format | string | Yes  | Format string used to output logs in a specified format. It can contain several elements, where the parameter type and privacy identifier are mandatory.<br>Parameters labeled **{public}** are public data and are displayed in plaintext; parameters labeled **{private}** (default value) are private data and are filtered by **\<private>**.|
-| args   | any[]  | No  | Variable-length parameter list corresponding to the format string. The number and type of parameters must map to the identifier in the format string.|
+| format | string | Yes | Format string used for formatting log output. Multiple parameters can be set in the format string, and each parameter needs to include the parameter type and privacy identifier.<br>Available parameter format specifiers include **%d**, **%i**, **%s**, **%o**, **%O**, etc. For details, see [Parameter Format](#parameter-format).<br>Privacy identifiers are divided into **{public}** and **{private}**, defaulting to **{private}**. Content marked as **{public}** is output in plaintext, while content marked as **{private}** is filtered for echo with \<private>. The privacy identifier mechanism helps developers protect privacy-sensitive data. |
+| args | any[] | No | Variable-length parameter list corresponding to the format string **format**. The number and types of parameters must correspond one-to-one with the identifiers in the format string. When the format string contains no placeholders, this parameter can be omitted, and only the format string itself is output. |
 
 **Example**
 
@@ -151,10 +162,10 @@ Prints WARN logs.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | Yes  | Service domain of logs. The value ranges from **0x0** to **0xFFFF**. If the value exceeds the range, logs cannot be printed.<br>You can define the value as required. |
+| domain | number | Yes  | Domain identifier corresponding to the log. The range is 0x0~0xFFFF. If out of range, the log cannot be printed.<br>It is recommended for developers to customize the division within the application as needed. |
 | tag    | string | Yes  | Log tag in the string format. You are advised to use this parameter to identify a particular service behavior or the class holding the ongoing method. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.|
-| format | string | Yes  | Format string used to output logs in a specified format. It can contain several elements, where the parameter type and privacy identifier are mandatory.<br>Parameters labeled **{public}** are public data and are displayed in plaintext; parameters labeled **{private}** (default value) are private data and are filtered by **\<private>**.|
-| args   | any[]  | No  | Variable-length parameter list corresponding to the format string. The number and type of parameters must map to the identifier in the format string.|
+| format | string | Yes  | Format string used for formatting log output. Multiple parameters can be set in the format string, and each parameter needs to include the parameter type and privacy identifier.<br>Available parameter format specifiers include **%d**, **%i**, **%s**, **%o**, **%O**, etc. For details, see [Parameter Format](#parameter-format).<br>Privacy identifiers are divided into **{public}** and **{private}**, defaulting to **{private}**. Content marked as **{public}** is output in plaintext, while content marked as **{private}** is filtered for echo with \<private>. The privacy identifier mechanism helps developers protect privacy-sensitive data. |
+| args   | any[]  | No   | Variable-length parameter list corresponding to the format string **format**. The number and types of parameters must correspond one-to-one with the identifiers in the format string. When the format string contains no placeholders, this parameter can be omitted, and only the format string itself is output. |
 
 **Example**
 
@@ -186,10 +197,10 @@ Prints ERROR logs.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | Yes  | Service domain of logs. The value ranges from **0x0** to **0xFFFF**. If the value exceeds the range, logs cannot be printed.<br>You can define the value as required. |
-| tag    | string | Yes  | Log tag in the string format. You are advised to use this parameter to identify a particular service behavior or the class holding the ongoing method. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.|
-| format | string | Yes  | Format string used to output logs in a specified format. It can contain several elements, where the parameter type and privacy identifier are mandatory.<br>Parameters labeled **{public}** are public data and are displayed in plaintext; parameters labeled **{private}** (default value) are private data and are filtered by **\<private>**.|
-| args   | any[]  | No  | Variable-length parameter list corresponding to the format string. The number and type of parameters must map to the identifier in the format string.|
+| domain | number | Yes | Domain identifier corresponding to the log. The range is 0x0~0xFFFF. If out of range, the log cannot be printed.<br>It is recommended for developers to customize the division within the application as needed. |
+| tag    | string | Yes | Log tag in the string format. You are advised to use this parameter to identify a particular service behavior or the class holding the ongoing method. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur. |
+| format | string | Yes | Format string used for formatting log output. Multiple parameters can be set in the format string, and each parameter needs to include the parameter type and privacy identifier.<br>Available parameter format specifiers include **%d**, **%i**, **%s**, **%o**, **%O**, etc. For details, see [Parameter Format](#parameter-format).<br>Privacy identifiers are divided into **{public}** and **{private}**, defaulting to **{private}**. Content marked as **{public}** is output in plaintext, while content marked as **{private}** is filtered for echo with \<private>. The privacy identifier mechanism helps developers protect privacy-sensitive data. |
+| args   | any[]  | No  | Variable-length parameter list corresponding to the format string **format**. The number and types of parameters must correspond one-to-one with the identifiers in the format string. When the format string contains no placeholders, this parameter can be omitted, and only the format string itself is output. |
 
 **Example**
 
@@ -221,10 +232,10 @@ Prints FATAL logs.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | Yes  | Service domain of logs. The value ranges from **0x0** to **0xFFFF**. If the value exceeds the range, logs cannot be printed.<br>You can define the value as required. |
+| domain | number | Yes | Domain identifier corresponding to the log. The range is 0x0~0xFFFF. If out of range, the log cannot be printed.<br>It is recommended for developers to customize the division within the application as needed. |
 | tag    | string | Yes  | Log tag in the string format. You are advised to use this parameter to identify a particular service behavior or the class holding the ongoing method. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.|
-| format | string | Yes  | Format string used to output logs in a specified format. It can contain several elements, where the parameter type and privacy identifier are mandatory.<br>Parameters labeled **{public}** are public data and are displayed in plaintext; parameters labeled **{private}** (default value) are private data and are filtered by **\<private>**.|
-| args   | any[]  | No  | Variable-length parameter list corresponding to the format string. The number and type of parameters must map to the identifier in the format string.|
+| format | string | Yes | Format string used for formatting log output. Multiple parameters can be set in the format string, and each parameter needs to include the parameter type and privacy identifier.<br>Available parameter format specifiers include **%d**, **%i**, **%s**, **%o**, **%O**, etc. For details, see [Parameter Format](#parameter-format).<br>Privacy identifiers are divided into **{public}** and **{private}**, defaulting to **{private}**. Content marked as **{public}** is output in plaintext, while content marked as **{private}** is filtered for echo with \<private>. The privacy identifier mechanism helps developers protect privacy-sensitive data. |
+| args | any[] | No | Variable-length parameter list corresponding to the format string **format**. The number and types of parameters must correspond one-to-one with the identifiers in the format string. When the format string contains no placeholders, this parameter can be omitted, and only the format string itself is output. |
 
 **Example**
 
@@ -246,7 +257,7 @@ If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the out
 
 setMinLogLevel(level: LogLevel): void
 
-Sets the minimum log level.
+Sets the minimum log level for application log printing, which is used to intercept low-level log printing. Use it when you need to optimize application performance or reduce interference from low-value logs, so as to avoid redundant logs.
 
 > **NOTE**
 >
@@ -272,7 +283,7 @@ The following example prints five HiLog logs of different levels and calls the *
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
 hilog.setMinLogLevel(hilog.LogLevel.WARN);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
-hilog.error(0x0001, 'testTag', 'this is an error level log, id: %{public}d', 3);
+hilog.error(0x0001, "testTag", 'this is an error level log, id: %{public}d', 3);
 hilog.setMinLogLevel(hilog.LogLevel.DEBUG);
 hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
@@ -326,9 +337,9 @@ Enumerates the preference strategies.
 
 | Name |   Value  | Description                                                        |
 | ------ | --------------------- | ------------------------------------------------------------ |
-| UNSET_LOGLEVEL | 0 | The setting is cleared. The system-controlled minimum log level takes effect.|
-| PREFER_CLOSE_LOG | 1 | The larger value of the new log level and the system-controlled minimum log level takes effect.|
-| PREFER_OPEN_LOG | 2 | The smaller value of the new log level and the system-controlled minimum log level takes effect.|
+| UNSET_LOGLEVEL | 0 | Used to clear the setting. The minimum log level that actually takes effect is the minimum level controlled by the system. |
+| PREFER_CLOSE_LOG | 1 | The minimum log level that actually takes effect is the larger of the newly set level and the minimum level controlled by the system. This is applicable to scenarios that require strictly restricting log output. |
+| PREFER_OPEN_LOG | 2 | The minimum log level that actually takes effect is the smaller of the newly set level and the minimum level controlled by the system. This is applicable to scenarios that require opening log output as much as possible. |
 
 **Example**
 
@@ -346,7 +357,7 @@ hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
 
 The first log is printed properly because the global log level is **INFO**.
 
-When the minimum log level of the process is set to **WARN** and the **PREFER_OPEN_LOG** is strategy selected, the actual minimum log level is **INFO**. Therefore, the second and third logs can be printed properly.
+After setting the minimum process log level to **WARN** and selecting the **PREFER_OPEN_LOG** policy, the actually effective minimum log level is the global log level **INFO**, so both the second and third logs can be printed normally.
 
 When the minimum log level of the process is set to **DEBUG** and the **PREFER_CLOSE_LOG** strategy is selected (equivalent to **hilog.setMinLogLevel(hilog.LogLevel.DEBUG)**), the fourth log cannot be printed because the global log level is **INFO**. The fifth log can be printed.
 
@@ -445,7 +456,7 @@ Sets the output type of HiLog.
 
 | Name| Type                 | Mandatory| Description                                                        |
 | ------ | --------------------- | ---- | ------------------------------------------------------------ |
-| type  | [OutputType](#outputtype) | Yes  | Output type of HiLog.                                                  |
+| type  | [OutputType](#outputtype) | Yes   | Output type of HiLog, used to set the output target of HiLog logs (such as the console or sandbox).                                                   |
 
 **Return value**
 
@@ -541,9 +552,11 @@ hilog.info(0x0001, "testTag", 'last output type:%{public}d', last);
 **Log result**:
 
 Console output.
+<!--RP9-->
 ```text
 05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  last output type:4
 ```
+<!--RP9End-->
 
 ## hilog.getOutputDir
 
@@ -573,9 +586,11 @@ hilog.info(0x0001, "testTag", 'sandbox output dir:%{public}s', dir);
 **Log result**:
 
 Console output.
+<!--RP10-->
 ```text
 05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  sandbox output dir:/data/storage/el2/log/hiapplog/
 ```
+<!--RP10End-->
 
 ## hilog.clean
 
@@ -598,7 +613,7 @@ hilog.clean();
 
 flush(): void
 
-Refreshes HiLog logs in the sandbox.
+Flushes the HiLog logs in the sandbox to ensure that the logs are written to disk.
 
 **Since**: 26.0.0
 
@@ -639,11 +654,12 @@ Obtains the HiLog sandbox log files that have been modified within the specified
 
 Obtain the files that have been modified within 5 minutes.
 ```js
-hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
-hilog.flush();
-let logs = hilog.getLogFile(300);
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+let timeInterval
+let logs = hilog.getLogFile(timeInterval);
 hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
+hilog.flush();
 ```
 
 **Log result**:

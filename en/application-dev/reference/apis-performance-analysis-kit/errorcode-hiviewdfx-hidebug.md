@@ -6,6 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=44da34c75e0877dd26e067a23f1dc0303066fdbb translatedAt=2026-09-21T02:41:33.830Z pushedAt=2026-09-22T01:29:30.403Z -->
 
 > **NOTE**
 >
@@ -63,9 +64,9 @@ The API call quota has been exceeded and the operation cannot be performed.
 
 **Possible Causes**
 
-1. This API is called by a process more than once per day.
+1. The API is called by a process more than the quota (once per day).
 
-2. This API is called by the system more than five times per week.
+2. The API is called by the device more than the quota (five times per week).
 
 **Solution**
 
