@@ -28,18 +28,6 @@ ohos-window 是 OpenHarmony 提供的窗口管理命令行工具，用于操控�
 
 ## Claw 规范遵循情况
 
-### 命令命名规范
-
-- 工具名称采用 `ohos-<domain>` 格式：`ohos-window`
-- 子命令使用小写英文，多词子命令以连字符分隔：`restore-window`
-- 参数采用双连字符前缀的驼峰命名：`--windowId`
-- 命令规范元数据通过 JSON 配置文件 `ohos-window.json` 定义
-
-### 输入格式规范
-
-- 命令行参数通过位置参数列表（`argList_`）精确匹配并校验
-- 输入参数定义在 `ohos-window.json` 的 `inputSchema` 字段中，采用 JSON Schema 规范
-
 ### 输出格式规范
 
 所有命令执行结果均以 JSON 格式输出到标准输出，符合 `ohos-window.json` 中 `outputSchema` 的定义。
