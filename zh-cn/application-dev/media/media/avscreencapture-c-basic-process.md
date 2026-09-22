@@ -338,7 +338,7 @@ void HandleVideoBuffer(OH_AVBuffer *buffer)
     }
     OH_NativeBuffer_Unreference(nativebuffer);
     buffer = nullptr;
-    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable inner audio");
+    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable Video");
 }
 
 void HandleAudioBuffer(OH_AVBuffer *buffer, FILE *file, const char *logMsg)
