@@ -48,14 +48,14 @@
 2. 查询设备是否支持机械体设备控制能力。
    <!-- @[is_control_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
-    ```ts
-    try {
-     isSupported = mechanicManager.isControlSupported();
-     console.info(`'isSupported:' ${isSupported}`);
-    } catch (err) {
-     console.error('errCode:' + JSON.stringify(err));
-    }
-    ```
+   ```ts
+   try {
+    isSupported = mechanicManager.isControlSupported();
+    console.info(`'isSupported:' ${isSupported}`);
+   } catch (err) {
+    console.error('errCode:' + JSON.stringify(err));
+   }
+   ```
 
 3. 获取已连接的机械体列表。
    <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
