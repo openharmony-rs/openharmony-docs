@@ -48,12 +48,12 @@
 2. 查询设备是否支持机械体设备控制能力。
    <!-- @[is_control_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
-   ```ts
+   ``` TypeScript
    try {
-    isSupported = mechanicManager.isControlSupported();
-    console.info(`'isSupported:' ${isSupported}`);
+     isSupported = mechanicManager.isControlSupported();
+     console.info(`'isSupported:' ${isSupported}`);
    } catch (err) {
-    console.error('errCode:' + JSON.stringify(err));
+     console.error('errCode:' + JSON.stringify(err));
    }
    ```
 
