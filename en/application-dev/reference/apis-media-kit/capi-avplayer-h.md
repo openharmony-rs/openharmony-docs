@@ -1193,7 +1193,7 @@ OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer *player, OH_AVPlayerOnInf
 
 **Description**
 
-Sets a callback for the event indicating that the AVPlayer receives a message. Since API version 12, this API is a substitute for **OH_AVPlayer_SetPlayerCallback** and flexiblely supports multiple instances. It is applicable to scenarios such as listening for player status changes, receiving playback notifications, and controlling the playback process.
+Sets a callback for the event indicating that the AVPlayer receives a message. Since API version 12, this API is a substitute for **OH_AVPlayer_SetPlayerCallback** and flexibly supports multiple instances. It is applicable to scenarios such as listening for player status changes, receiving playback notifications, and controlling the playback process.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1221,7 +1221,7 @@ OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnEr
 
 **Description**
 
-Sets a callback for the event indicating that an error occurs in the AVPlayer. Since API version 12, this API is a substitute for **OH_AVPlayer_SetPlayerCallback** and flexiblely supports multiple instances. This API is applicable to scenarios such as playback error handling, error reporting, user error notification, and abnormal playback recovery.
+Sets a callback for the event indicating that an error occurs in the AVPlayer. Since API version 12, this API is a substitute for **OH_AVPlayer_SetPlayerCallback** and flexibly supports multiple instances. This API is applicable to scenarios such as playback error handling, error reporting, user error notification, and abnormal playback recovery.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
