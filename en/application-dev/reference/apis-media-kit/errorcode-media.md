@@ -96,7 +96,7 @@ The following are common cases when the AVPlayer service returns error code 5400
 
 **Possible Causes**
 
-1. The end of the media file to be played contains data that does not comply with the format or the tail information of the file is damaged. As a result, when the demuxer parses the end of the file, an abnormal state is triggered, and an error indicating the operation is now allowed is reported.
+1. The end of the media file to be played contains data that does not comply with the format or the tail information of the file is damaged. As a result, when the demuxer parses the end of the file, an abnormal state is triggered, and an error indicating the operation is not allowed is reported.
 2. The encapsulation format of the media file is incorrect. For example, the moov box of the MP4 file is located at the end of the file, the mdat box data is incomplete, or an error occurs in the demuxer during parsing.
 3. The player is invoked to perform a playback control operation (such as seek, pause, or play) when the file parsing is abnormal. The current state does not support this operation.
 
