@@ -100,7 +100,7 @@ depthMap(depthMap: ResourceStr | PixelMap, callback?: DepthMapCallback)
 
 > **说明：**
 >
-> 深度图是用于描述在3D空间中，背景中每个像素点与相机距离的二维矩阵图像。
+> 深度图是用于描述在三维空间中，背景中每个像素点与相机距离的二维矩阵图像。
 > 其数据格式为灰阶图，灰度值越大（颜色越白）的像素点距离相机越近。
 
 **起始版本：** 26.0.0
@@ -252,7 +252,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| position | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 相机在三维空间中的位置。无单位，其值表示3D空间中的坐标。 |
+| position | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 相机在三维空间中的位置。无单位，其值表示三维空间中的坐标。 |
 | quaternion | [DepthVector4](ts-universal-attributes-spatial-effect-sys.md#depthvector4) | 否 | 否 | 相机旋转四元数，按(x, y, z, w)表示。无单位。 |
 | yFov | number | 否 | 否 | 相机垂直方向视场角，单位为弧度。 |
 | zNear | number | 否 | 否 | 近裁剪面距离。无单位。必须为正数。 |
@@ -315,7 +315,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 光照方向向量。无单位，其值表示3D空间中的坐标。 |
+| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 光照方向向量。无单位，其值表示三维空间中的坐标。 |
 | color | [DepthColorRGB](ts-universal-attributes-spatial-effect-sys.md#depthcolorrgb) | 否 | 否 | 光照颜色。 |
 | intensity | number | 否 | 否 | 光照强度。无单位，取值范围[0, +∞)。<br/>建议取值范围[0, 1]，当设置为0时，无光照。 |
 

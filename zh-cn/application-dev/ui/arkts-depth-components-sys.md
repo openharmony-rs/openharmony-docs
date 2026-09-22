@@ -108,7 +108,7 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 ![相机移轴裁剪示意图](figures/DepthComponent-cameraBufferCrop-params.png)
 
-经过场景重建与相机设置后，背景与子组件统一经过相同的三维变换管线，相机依据position与quaternion将世界坐标变换到观察空间（“相机眼中的世界”），再结合yFov、zNear、zFar与组件宽高比进行透视投影、变换到裁剪空间，经透视除法得到归一化设备坐标（Normalized Device Coordinates，NDC），最后通过视口变换映射到屏幕像素坐标，过程如下：
+经过场景重建与相机设置后，背景与子组件统一经过相同的三维变换管线。相机依据position与quaternion将世界坐标变换到观察空间（“相机眼中的世界”）。再结合yFov、zNear、zFar与组件宽高比进行透视投影，变换到裁剪空间。经透视除法得到归一化设备坐标（Normalized Device Coordinates，NDC），最后通过视口变换映射到屏幕像素坐标，过程如下：
 
 ![三维变换管线](figures/DepthComponent-coord-transform.png)
 
@@ -601,7 +601,7 @@ struct DepthComponentDepthExample {
 // 为子组件设置空间效果：X、Y为归一化设备坐标、直接映射屏幕，
 // 四角XY设置为上窄下宽的梯形，Z统一控制深度
 Text('NDC Mode')
-  .fontSize(80)
+  .fontSize(120)
   .fontColor(Color.White)
   .spatialEffect({
     position: {
