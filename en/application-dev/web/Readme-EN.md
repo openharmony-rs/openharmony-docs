@@ -9,7 +9,7 @@
 
 - [About This Kit](web-component-overview.md)
 - [ArkWeb Process](web-component-process.md)
-- [Lifecycle of Web Components](web-event-sequence.md)
+- [Lifecycle of the Web Component](web-event-sequence.md)
 - Setting Basic Attributes and Events<!--web-set-attributes-events-->
   - [Developing User-Agent](web-default-userAgent.md)
   - [Managing Cookies and Data Storage](web-cookie-and-data-storage-mgmt.md)
@@ -27,7 +27,7 @@
   - [Invoking Frontend Page Functions on the Application](web-in-app-frontend-page-function-invoking.md)
   - [Invoking Application Functions on the Frontend Page](web-in-page-app-function-invoking.md)
   - [Establishing a Data Channel Between the Application and the Frontend Page](web-app-page-data-channel.md)
-  - [Mutual Invoking (C/C++) Between the Application and the Frontend Page](arkweb-ndk-jsbridge.md)
+  - [Mutual Invoking Between the Application and the Frontend Page (C/C++)](arkweb-ndk-jsbridge.md)
   - [Establishing a Data Channel Between the Application and the Frontend Page (C/C++)](arkweb-ndk-page-data-channel.md)
 - Managing Web Page Interactions<!--web-manage-page-interaction-->
   - [Implementing Nested Scrolling](web-nested-scrolling.md)
@@ -41,15 +41,15 @@
 - Managing Cyber Security and Privacy for the Web Component<!--web-manage-cyber-security-privacy-->
   - [Resolving Cross-Origin Resource Access](web-cross-origin.md)
   - [Intelligent Tracking Prevention](web-intelligent-tracking-prevention.md)
-  - [Enabling Ads Blocking](web-adsblock.md)
+  - [Using the Ad Blocking Feature](web-adsblock.md)
   - [Using Secure Shield Mode](web-secure-shield-mode.md)
 - Managing Web Page Loading and Browsing Records<!--web-manage-loading-browsing-->
   - [Loading Web Pages](web-page-loading-with-web-components.md)<!--RP4--><!--RP4End-->
   - [Managing Page Redirection and Browsing History Navigation](web-redirection-and-browsing-history-mgmt.md)
-  - [Intercepting Network Requests Initiated by Web Components](web-scheme-handler.md)
+  - [Intercepting Network Requests Initiated by the Web Component](web-scheme-handler.md)
   - [Customizing Page Request Responses](web-resource-interception-request-mgmt.md)
-  - [Accelerating Web Page Access with Preconnecting and Prefetching](web-predictor.md)
-  - [Setting Back-forward Cache](web-set-back-forward-cache.md)
+  - [Accelerating Web Page Access](web-predictor.md)
+  - [Setting the Backward-Forward Cache](web-set-back-forward-cache.md)
   - [Migrating Web Components Between Different Windows](web-component-migrate.md)
 - Managing Web Page File Upload and Download<!--web-manage-upload-download-->
   - [Uploading Files](web-file-upload.md)
@@ -65,7 +65,7 @@
   - [Previewing PDF Files](web-pdf-preview.md)
   - [Calculating and Adjusting Safe Area Insets](web-safe-area-insets.md)
   - [Using Menus to Process Web Content](web-menu.md)
-  - [Interacting with the System Clipboard](web-clipboard.md)
+  - [Processing Web Page Content by Interacting with the System Clipboard](web-clipboard.md)
   - [Using Smart Text Data Detector](web-data-detector.md)<!--RP5--><!--RP5End-->
 - Same-Layer Rendering<!--same-layer-rendering-->
   - [Using Same-Layer Rendering](web-same-layer.md)<!--RP3--><!--RP3End-->
