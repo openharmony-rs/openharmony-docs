@@ -159,7 +159,7 @@
 
 > **说明：**
 >
-> - `-s 1901`：指向ResourceSchedule系统服务发送命令（1901为该服务ID）。
+> - `-s 1901`：向ResourceSchedule系统服务发送命令（1901为该服务ID）。
 > - `-a`：携带附加参数，需用引号包裹，格式为`backgroundLoader 包名 Ability名`，示例中的`com.example.myapplication`和`EntryAbility`需替换为实际值。
 
 ```shell
