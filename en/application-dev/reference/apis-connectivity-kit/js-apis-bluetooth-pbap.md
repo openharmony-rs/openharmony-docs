@@ -67,3 +67,44 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+
+## pbap.createPbapClientProfile
+
+createPbapClientProfile(): PbapClientProfile
+
+Creates a [PCE](../../connectivity/bluetooth/terminology.md#pce) instance. Through this instance, you can use the local device as the PCE and implement functions such as obtaining the phone book synchronization state and subscribing to phone book synchronization state change events. Typical use scenarios include the Bluetooth car kit accessing the phone book of a mobile phone as the PCE and cross-device contacts synchronization.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Return value**
+
+| Type                           | Description        |
+| ----------------------------- | ---------- |
+|PbapClientProfile | PCE instance.<br>- The class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.<br>- The counterpart of the PCE role is the [PSE](../../connectivity/bluetooth/terminology.md#pse) role. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|801 | Capability not supported.          |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    console.info('pbapClient success');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
