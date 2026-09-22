@@ -33,8 +33,8 @@
 | MIMEType    | [PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)   | 否 | 是   | 可选择的媒体文件类型，若无此参数，则默认为图片和视频类型。<br>**注意：**<br>当配置参数[BaseSelectOptions](#baseselectoptions).mimeTypeFilter、[BaseSelectOptions](#baseselectoptions).combinedMediaTypeFilter、[BaseSelectOptions](#baseselectoptions).photoViewMimeTypeFileSizeFilters或[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | maxSelectNumber      | number | 否   | 是 | 选择媒体文件数量的最大值，单位：个。取值范围[1, 500]，若不设置则默认为50。此参数会限制[BaseSelectOptions](#baseselectoptions).preselectedUris数组长度以及[PhotoSelectOptions](#photoselectoptions).maxPhotoSelectNumber和[PhotoSelectOptions](#photoselectoptions).maxVideoSelectNumber的取值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | isPhotoTakingSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持拍照，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| isSearchSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持搜索，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | 否   | 是 | 图片推荐相关配置参数。若需要根据图片数据分析结果推荐相应图片，则配置此参数；若不配置，则不会显示推荐图片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| isSearchSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持搜索，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：**  从API version 26.0.1开始，select方法支持car设备，但是isSearchSupported属性不支持car设备，如果在car设备上配置则不生效。     |
+| recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | 否   | 是 | 图片推荐相关配置参数。若需要根据图片数据分析结果推荐相应图片，则配置此参数；若不配置，则不会显示推荐图片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：**  从API version 26.0.1开始，select方法支持car设备，但是recommendationOptions属性不支持car设备，如果在car设备上配置则不生效。   |
 | preselectedUris<sup>11+</sup> | Array&lt;string&gt;  | 否   | 是 | 预选择图片的URI列表。数组长度受[BaseSelectOptions](#baseselectoptions).maxSelectNumber、[BaseSelectOptions](#photoselectoptions).maxPhotoSelectNumber和[BaseSelectOptions](#photoselectoptions).maxVideoSelectNumber共同限制，取值范围[0, 500]，默认50，否则超出部分不生效。若不配置，则默认不预选择任何图片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isPreviewForSingleSelectionSupported<sup>12+</sup> | boolean  | 否   | 是 | 单选模式下是否需要进入大图预览，true表示需要，false表示不需要，默认为true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | singleSelectionMode<sup>18+</sup> | [SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | 否   | 是 | 单选模式类型。默认为大图预览模式（SingleSelectionMode.BROWSER_MODE）。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -60,7 +60,7 @@
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| isEditSupported<sup>11+</sup>       | boolean | 否   | 是 | 是否支持编辑照片，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
+| isEditSupported<sup>11+</sup>       | boolean | 否   | 是 | 是否支持编辑照片，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：**  从API version 26.0.1开始，select方法支持car设备，但是isSearchSupported属性不支持car设备，如果在car设备上配置则不生效。     |
 | isOriginalSupported<sup>12+</sup>       | boolean | 否   | 是 | 是否显示选择原图按钮，true表示显示，false表示不显示，默认为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | subWindowName<sup>12+</sup>       | string | 否   | 是 | 子窗口名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | 否   | 是 | 完成按钮显示的内容。不配置该参数时，使用系统默认按钮文本。<br>完成按钮指在界面右下方，用户点击表示图片选择已完成的按钮。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。     |
