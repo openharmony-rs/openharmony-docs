@@ -531,6 +531,34 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 // 在配置参数结束后执行"g_missionIds2.clear()"。
 ```
 
+### 录制虚拟扩展屏幕
+
+从API版本26.0.1开始，支持[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN模式，即可以创建虚拟扩展屏幕并对其内容进行录制。
+
+在此模式下，系统会创建一个虚拟扩展屏幕，应用可对其内容进行录制。关于虚拟屏和扩展屏的概念说明请参见[屏幕管理开发术语](../../displaymanager/display-terminology.md)。
+
+<!-- @[screenCapture_virtualExtendedScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+// 在config中配置录虚拟扩展屏幕的宽度、高度。
+int32_t width = 1920;
+int32_t height = 1080;
+config.videoInfo.videoCapInfo.videoFrameWidth = width;
+config.videoInfo.videoCapInfo.videoFrameHeight = height;
+
+// 设置录屏模式为虚拟扩展屏幕录制。
+config.captureMode = OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN;
+// 创建的虚拟扩展屏幕绑定到displayId为0的屏幕上。
+config.videoInfo.videoCapInfo.displayId = 0;
+```
+
+> **说明：**
+>
+> - 无论[OH_AVScreenCapture_StrategyForPickerPopUp()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值，该模式下都不会弹出Picker。
+> - 录制虚拟扩展屏幕时，扩展屏幕的显示模式受系统限制。针对有内置屏的设备，只能同时存在1个扩展屏幕；针对无内置屏的设备，最多可同时存在2个扩展屏幕。
+
+
+
 ## 弹窗模式说明
 
 从API version 23开始，支持PC/2in1设备、Phone/Tablet设备通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)控制是否统一弹出选择共享内容弹窗。
@@ -590,6 +618,10 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
   - **录制指定窗口（OH_CAPTURE_SPECIFIED_WINDOW）**：传入单个窗口ID时，弹出选择共享内容弹窗并默认选中指定窗口；传入多个窗口ID时，不弹出选择共享内容弹窗，仅弹出隐私保护弹窗。
 
 - 在Phone/Tablet设备上，不同录屏模式下统一不弹出Picker，仅弹出隐私保护弹窗。
+
+> **说明：**
+>
+> 从API版本26.0.1开始，当录屏模式为[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
 
 ## 更多资源
 
