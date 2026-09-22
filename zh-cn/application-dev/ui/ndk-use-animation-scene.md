@@ -619,7 +619,7 @@
                {
                    OH_ArkUI_AnimatorOnFrameEvent_GetUserData(event); // 获取动画事件对象中的用户自定义对象
                    auto value = OH_ArkUI_AnimatorOnFrameEvent_GetValue(event); // 获取动画事件对象中的当前进度
-                   OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init",
+                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Init",
                        "CXX OH_ArkUI_AnimatorOption_RegisterOnFrameCallback  %{public}f", value);
                    g_animator_button->SetWidth(value);
                });
