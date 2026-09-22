@@ -1494,3 +1494,5 @@ This example demonstrates the trending searches list effect using the [maxLines]
 
 ![text-hot-search](figures/text-hot-search.png)
 <!--RP1--><!--RP1End-->
+
+<!--no_check-->
