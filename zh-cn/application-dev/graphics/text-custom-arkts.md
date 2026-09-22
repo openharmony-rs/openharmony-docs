@@ -43,6 +43,11 @@
 
 1. 导入依赖的相关模块。
    <!-- @[arkts_independent_shaping_text_import_modules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+   import { text, drawing, common2D } from '@kit.ArkGraphics2D'
+   ```
 
 2. 创建段落样式，并构造段落生成器ParagraphBuilder实例。
    <!-- @[arkts_independent_shaping_text_paragraph_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
