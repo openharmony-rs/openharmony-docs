@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=177cf08b41b42ef2a0a1e73e96f1ea583ec5a150 translatedAt=2026-09-20T09:16:54.896Z pushedAt=2026-09-21T12:27:12.066Z -->
 
 ```c
 typedef struct {...} ArkUI_NativeGestureAPI_3
@@ -12,7 +13,7 @@ typedef struct {...} ArkUI_NativeGestureAPI_3
 
 ## Overview
 
-Defines a collection of gesture APIs, including gesture APIs in the [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) and [ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md) structs and new gesture APIs.
+Defines a collection of gesture APIs, including gesture APIs in the [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) and [ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md) structs as well as new gesture APIs. It supports setting parallel gesture event callbacks for ArkUI nodes, and is applicable to interaction scenarios that require parallel gesture recognition.
 
 **Since**: 26.0.0
 
@@ -46,18 +47,18 @@ ArkUI_ErrorCode (*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, A
 **Description**
 
 
-Sets the callback function for a parallel gesture event.
+Sets the callback function for parallel gesture events. This API applies to scenarios where your custom gesture needs to be processed in parallel with gestures of other components on the response chain.
 
 **Parameters**
 
 | Name                                                             | Description|
 |------------------------------------------------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the ArkUI node for which you want to set a parallel gesture event callback.|
-| void* userData                                                         | Pointer to the user-defined data. The caller must ensure the security of the data lifecycle.|
-| ArkUI_GestureRecognizer* (*parallelGesture)(ArkUI_ParallelGestureEvent* event) | Pointer to the parallel gesture event. **event** returns the data of the parallel gesture event. **parallelGesture** returns the pointer to the recognizer for the gesture that needs to be recognized parallelly.|
+| void* userData                                                         | Pointer to the user-defined data, used to pass the caller's custom context information in the parallel gesture event callback. You can pass **nullptr** when no custom context needs to be associated. If a non-null pointer is passed, the caller must ensure the security of the data lifecycle. If the data is released during the callback, the callback execution may be abnormal. |
+| ArkUI_GestureRecognizer* (\*parallelGesture)(ArkUI_ParallelGestureEvent* event) | Pointer to the callback function for a parallel gesture event. **event** indicates the parallel gesture event object, which contains the gesture event information when this callback is triggered. **parallelGesture** returns the pointer to the recognizer for the gesture that needs to be recognized parallelly. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>            [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>            Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |

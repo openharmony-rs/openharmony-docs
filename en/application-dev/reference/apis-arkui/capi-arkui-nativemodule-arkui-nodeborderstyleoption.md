@@ -1,10 +1,11 @@
-# ArkUI_NodeBorderStyleOption
+# ArkUI_NodeBorderStyle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e38613798f040f2695e3e29c684cf5cc4eae87aa translatedAt=2026-09-20T09:19:54.720Z pushedAt=2026-09-21T12:25:41.126Z -->
 
 ```c
 typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption
@@ -12,7 +13,7 @@ typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption
 
 ## Overview
 
-Defines a node border style option.
+Defines a border style configuration option, which is used to set the style type of a node border, including solid, dashed, dotted, and other styles.
 
 **Since**: 20
 
