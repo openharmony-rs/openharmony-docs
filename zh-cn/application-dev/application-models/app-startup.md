@@ -531,7 +531,7 @@ AppStartup分别提供了自动和手动两种方式来执行启动任务，entr
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-// ···
+// ...
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -541,8 +541,7 @@ export default class EntryAbility extends UIAbility {
       startupManager.run(startParams).then(() => {
         console.info(`StartupTest startupManager run then, startParams = ${JSON.stringify(startParams)}.`);
       }).catch((error: BusinessError) => {
-        console.error(`StartupTest promise catch error, error = ${JSON.stringify(error)}.`);
-        console.error(`StartupTest promise catch error, startParams = ${JSON.stringify(startParams)}.`);
+        console.error(`StartupTest promise catch error, code = ${error.code}, message = ${error.message}.`);
       })
     } catch (error) {
       let errMsg = (error as BusinessError).message;
@@ -551,8 +550,7 @@ export default class EntryAbility extends UIAbility {
       console.error(`Startup catch error, errMsg= ${errMsg}.`);
     }
   }
-
-// ···
+  // ...
 }
 ```
 
