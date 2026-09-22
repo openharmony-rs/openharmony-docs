@@ -3148,7 +3148,7 @@ void OH_Input_SetPreKeys(Input_Hotkey *hotkey, int32_t *preKeys, int32_t size)
 | -- | -- |
 | [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | hotkey 快捷键对象的实例。 |
 | int32_t *preKeys | preKeys 修饰键列表。 |
-| int32_t size | 修饰键个数，取值范围[1, 2]。 |
+| int32_t size | 修饰键个数，取值范围[1, 4]。 |
 
 ### OH_Input_GetPreKeys()
 

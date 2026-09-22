@@ -2752,7 +2752,7 @@ Sets the pointer size. This API returns the result synchronously.
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | number | Yes    | Mouse cursor size. The value ranges from [1, 7], and the default value is 1. |
+| size  | number | Yes    | Mouse cursor size. The value ranges from [1, 7], and the default value is **1**. |
 
 **Error codes**
 
