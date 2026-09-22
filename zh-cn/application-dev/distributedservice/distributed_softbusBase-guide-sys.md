@@ -88,7 +88,7 @@
 
 <!-- @[import_softbus_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 ```
 
@@ -120,29 +120,29 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 <!-- @[start_adv](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```TypeScript
-      const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
-      const customData = this.buildCustomData();
-      await softbusBase.startPerceptionAdv(type, customData);
+``` TypeScript
+const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
+const customData = this.buildCustomData();
+await softbusBase.startPerceptionAdv(type, customData);
 ```
 
 **4. （可选）切换高频 10 秒并更新自定义负载。**
 
 <!-- @[set_high_freq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```TypeScript
-      const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
-      const customData = this.buildCustomData();
-      await softbusBase.setPerceptionAdvHighFreq(type, customData);
+``` TypeScript
+const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
+const customData = this.buildCustomData();
+await softbusBase.setPerceptionAdvHighFreq(type, customData);
 ```
 
 **5. 停止感知广播。**
 
 <!-- @[stop_adv](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```TypeScript
-      const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
-      await softbusBase.stopPerceptionAdv(type);
+``` TypeScript
+const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
+await softbusBase.stopPerceptionAdv(type);
 ```
 
 ### 扫描端开发指导
@@ -151,7 +151,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 <!-- @[import_softbus_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 ```
 
@@ -161,26 +161,26 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 <!-- @[start_scan](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```TypeScript
-      const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
-      const cycle = softbusBase.PerceptionCycle.PERCEPTION_CYCLE_MEDIUM;
-      await softbusBase.startPerceptionScan(type, cycle);
+``` TypeScript
+const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
+const cycle = softbusBase.PerceptionCycle.PERCEPTION_CYCLE_MEDIUM;
+await softbusBase.startPerceptionScan(type, cycle);
 ```
 
 **4. 获取感知扫描发现的设备列表。**
 
 <!-- @[get_device_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```TypeScript
-      const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
-      const devices = await softbusBase.getPerceptionDeviceList(type);
+``` TypeScript
+const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
+const devices = await softbusBase.getPerceptionDeviceList(type);
 ```
 
 **5. 停止感知扫描并清空设备列表。**
 
 <!-- @[stop_scan](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```TypeScript
-      const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
-      await softbusBase.stopPerceptionScan(type);
+``` TypeScript
+const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
+await softbusBase.stopPerceptionScan(type);
 ```
