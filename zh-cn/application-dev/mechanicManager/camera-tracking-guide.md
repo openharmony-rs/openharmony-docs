@@ -50,10 +50,10 @@
 
     ```ts
     try {
-      isSupported = mechanicManager.isControlSupported();
-      console.info(`'isSupported:' ${isSupported}`);
+     isSupported = mechanicManager.isControlSupported();
+     console.info(`'isSupported:' ${isSupported}`);
     } catch (err) {
-      console.error('errCode:' + JSON.stringify(err));
+     console.error('errCode:' + JSON.stringify(err));
     }
     ```
 
