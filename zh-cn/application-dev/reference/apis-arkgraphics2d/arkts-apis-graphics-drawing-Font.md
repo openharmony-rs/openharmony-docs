@@ -1137,7 +1137,7 @@ class DrawingRenderNode extends RenderNode {
     let font : drawing.Font = new drawing.Font();
     let text : string = 'hello world';
     let infos : Array<drawing.TypefaceFallbackInfo> = font.textToGlyphsWithFallback(text);
-    console.info("drawing textToGlyphsWithFallback infos lenth = " + infos.length );
+    console.info("drawing textToGlyphsWithFallback infos length = " + infos.length );
     let offset = 0;
     for (let run of infos) {
       font.setTypeface(run.typeface);
