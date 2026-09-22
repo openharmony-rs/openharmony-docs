@@ -357,6 +357,11 @@
    let devicePipe: usbManager.USBDevicePipe;
    try {
      devicePipe = usbManager.connectDevice(usbDevice);
+     if (!devicePipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
    } catch (error) {
      console.error(`USB connectDevice failed: ${error}`);
      this.logInfo_ += '\n[ERROR] USB connectDevice failed: ' + JSON.stringify(error);
@@ -485,19 +490,21 @@
        type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT,
        timeout: 2000,
        length: 10,
-       callback: () => {
+       callback: (err: BusinessError | null, callBackData: usbManager.SubmitTransferCallback | undefined) => {
+         if (err) {
+           console.error(`transfer error: ${err}`);
+           this.logInfo_ += '\n[ERROR] transfer error: ' + JSON.stringify(err);
+           return;
+         }
+         console.info(`callBackData = ${callBackData}`);
+         this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
+         console.info(`transfer success,result = ${transferParams?.buffer}`);
+         this.logInfo_ += '\n[INFO] transfer success,result = ' + JSON.stringify(transferParams?.buffer);
        },
        userData: new Uint8Array(10),
        buffer: new Uint8Array(10),
        isoPacketCount: 2,
      };
-   
-     transferParams.callback = (err: BusinessError | null, callBackData: usbManager.SubmitTransferCallback | undefined) => {
-       console.info(`callBackData = ${callBackData}`);
-       this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
-       console.info(`transfer success,result = ${transferParams?.buffer}`);
-       this.logInfo_ += '\n[INFO] transfer success,result = ' + JSON.stringify(transferParams?.buffer);
-     }
      usbManager.usbSubmitTransfer(transferParams);
      console.info('USB transfer request submitted.');
      this.logInfo_ += '\n[INFO] USB transfer request submitted.';
@@ -534,11 +541,21 @@
    }
    try {
      usbManager.usbCancelTransfer(transferParams);
+   } catch (error) {
+     console.error(`usbCancelTransfer failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: ' + JSON.stringify(error);
+   }
+   try {
      usbManager.releaseInterface(devicePipe, usbInterface);
+   } catch (error) {
+     console.error(`releaseInterface failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] releaseInterface failed: ' + JSON.stringify(error);
+   }
+   try {
      usbManager.closePipe(devicePipe);
    } catch (error) {
-     console.error(`release failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] release failed: ' + JSON.stringify(error);
+     console.error(`closePipe failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] closePipe failed: ' + JSON.stringify(error);
    }
    ```
    
