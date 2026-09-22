@@ -2,9 +2,10 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T01:52:12.654Z pushedAt=2026-09-22T01:19:10.337Z -->
 
 This guide applies to the communication between ArkWeb applications and frontend pages. You can use the ArkWeb native APIs to conduct the service communication mechanism (native JSBridge for short) based on the application architecture.
 
@@ -12,13 +13,13 @@ For details about how to optimize the performance of JSBridge, see [JSBridge Opt
 
 ## Applicable Application Architecture
 
-If an application is developed using ArkTS and C++ language, or if its architecture is close to that of an applet and has a built-in C++ environment, you are advised to use [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) provided by ArkWeb on the native side to implement the JSBridge capabilities.
+If an application is developed using ArkTS and C++, or if its architecture is close to that of a mini-program and has a built-in C++ environment, you are advised to use [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) provided by ArkWeb on the native side to implement the JSBridge capabilities.
 
   ![arkweb_jsbridge_arch](figures/arkweb_jsbridge_arch.png)
 
-  The preceding figure shows a general architecture of applets with universal applicability. In this architecture, the logical layer depends on a JavaScript runtime built in an application, and the runtime runs in an existing C++ environment. The logic layer can communicate with the view layer (in which ArkWeb as the renderer) in the C++ environment through the native API, instead of using the ArkTS **JSBridge** API in the ArkTS environment.
+  The preceding figure shows a general architecture of mini-programs with universal applicability. In this architecture, the logic layer depends on a JavaScript runtime built in an application, and the runtime runs in an existing C++ environment. The logic layer can communicate with the view layer (in which ArkWeb serves as the renderer) in the C++ environment through the Native API, instead of using the ArkTS **JSBridge** API in the ArkTS environment.
 
-  The figure on the left shows that the application needs to invoke the ArkTS environment and then the C++ environment to build an applet using the ArkTS **JSBridge** API. Using the native **JSBridge** API is more efficient because the switching between the ArkTS and C++ environments is not required, as shown in the figure on the right.
+  The figure on the left shows that the application needs to invoke the ArkTS environment and then the C++ environment to build a mini-program using the ArkTS **JSBridge** API. Using the native **JSBridge** API is more efficient because the switching between the ArkTS and C++ environments is not required, as shown in the figure on the right.
 
   ![arkweb_jsbridge_diff](figures/arkweb_jsbridge_diff.png)
 
@@ -46,7 +47,7 @@ In addition, the [permission](#invoking-application-functions-on-the-frontend-pa
 * ArkTS side:
 
   <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->    
-  
+
   ``` TypeScript
   // Define a webTag and transfer it as an input parameter when WebviewController is created to establish the mapping between controller and webTag.
   webTag: string = 'ArkWeb1';
@@ -63,7 +64,7 @@ In addition, the [permission](#invoking-application-functions-on-the-frontend-pa
 * C++ Side:
 
   <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->    
-  
+
   ``` C++
   // Parse and store the webTag.
   static napi_value NativeWebInit(napi_env env, napi_callback_info info)
@@ -90,7 +91,7 @@ In addition, the [permission](#invoking-application-functions-on-the-frontend-pa
 
 ### Obtaining API Struct Using the Native API
 
-On the ArkWeb native side, you need to obtain the API struct before invoking the native API in the struct. Through [OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi), you can obtain the structs of [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) based on the input parameter **type**. [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) corresponds to [web_webview.WebviewController API](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md) on the ArkTS side, and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) corresponds to [ArkWeb Component API](../reference/apis-arkweb/arkts-basic-components-web.md) on the ArkTS side.
+On the ArkWeb Native side, you must first obtain the API struct before you can call the Native APIs in it. The ArkWeb Native-side APIs are obtained through the [OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) function. Depending on the input parameter `type`, you can obtain the [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) structs respectively. Among them, [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) corresponds to the ArkTS-side [WebviewController](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md) API, and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) corresponds to the ArkTS-side [ArkWeb component API](../reference/apis-arkweb/arkts-basic-components-web.md).
 
   ```c++
   static ArkWeb_ControllerAPI *controller = nullptr;
@@ -105,7 +106,7 @@ On the ArkWeb native side, you need to obtain the API struct before invoking the
 Register the component lifecycle callback using [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md). Before calling the API, you are advised to use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
 
   <!-- @[the_native_side_registers_the_callback_of_the_component_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->
-  
+
   ``` C++
   if (!ARKWEB_MEMBER_MISSING(component, onControllerAttached)) {
       component->onControllerAttached(
@@ -137,25 +138,26 @@ Register the component lifecycle callback using [ArkWeb_ComponentAPI](../referen
 
 Register the application functions with the frontend page through [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex). The registration takes effect after the next loading or reloading.
 
-  <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp) -->
-  
+  <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp) -->    
+
   ``` C++
   // Register an object.
   OH_LOG_Print(
-      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit RegisterJavaScriptProxy begin");
+      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit registerJavaScriptProxyEx begin");
   ArkWeb_ProxyMethodWithResult method1 = {
       "method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult method2 = {
       "method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult methodList[2] = {method1, method2};
   // Call the Native Development Kit API to register an object.
-  // In this case, you can use proxy.method1 and proxy.method2 to call ProxyMethod1 and ProxyMethod2 in this file on HTML5 pages.
+  // With this registration, the H5 page can use proxy.method1 and proxy.method2 to call the ProxyMethod1 and ProxyMethod2 methods in this file.
   ArkWeb_ProxyObjectWithResult proxyObject = {"ndkProxy", methodList, 2};
+  // The permission parameter is empty, indicating that no permission control is performed.
   controller->registerJavaScriptProxyEx(webTag, &proxyObject, "");
   ```
 
   - The **permission** parameter is a JSON string as follows:
-  ```json
+  ```json5
   {
     "javascriptProxyPermission": {
       "urlPermissionList": [       // Object-level permission. If it is granted, all methods are available.
@@ -357,9 +359,10 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
 
 * ArkTS APIs exposed on the Node-API side:
 
-  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts) -->
-  
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts) -->    
+
   ``` TypeScript
+  // entry4/src/main/cpp/types/libentry4/index.d.ts
   export const nativeWebInit: (webName: string) => void;
   export const runJavaScript: (webName: string, jsCode: string) => void;
   ```
@@ -810,7 +813,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
 
 ### Obtaining API Struct Using the Native API
 
-To invoke the native APIs, obtain the API structs on the ArkWeb native side first. Through [OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi), you can obtain the pointer structs of [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) based on the input parameter **type**. [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) corresponds to [web_webview.WebviewController API](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md) on the ArkTS side, and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) corresponds to [ArkWeb Component API](../reference/apis-arkweb/arkts-basic-components-web.md) on the ArkTS side.
+On the ArkWeb Native side, you must first obtain the API struct before you can call the Native APIs in it. The ArkWeb Native-side APIs are obtained through the [OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) function. Depending on the input parameter `type`, you can obtain the [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) function pointer structs respectively. Among them, [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md) corresponds to the ArkTS-side [WebviewController](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md) API, and [ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md) corresponds to the ArkTS-side [ArkWeb component API](../reference/apis-arkweb/arkts-basic-components-web.md).
 
   ```c++
   static ArkWeb_ControllerAPI *controller = nullptr;

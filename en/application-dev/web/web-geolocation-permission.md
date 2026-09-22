@@ -5,6 +5,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=c28ea2927014e45f20905be7ea794f64672608e9 translatedAt=2026-09-21T02:13:39.115Z pushedAt=2026-09-21T12:44:41.560Z -->
 
 Since API version 9, the **Web** component supports the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class and [onGeolocationShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#ongeolocationshow) method for managing web page location permissions. For details, see <!--RP1-->[Privacy Protection](../../device-dev/security/security-privacy-protection.md)<!--RP1End-->.
 
@@ -13,7 +14,7 @@ The **Web** component determines whether to grant the frontend page permission b
 ## Required Permissions
 To obtain the location, you need to configure the location permission in **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-   ```json
+   ``` JSON5
    "requestPermissions":[
       {
         "name" : "ohos.permission.LOCATION" // Precise location
@@ -139,7 +140,7 @@ In the following example, when a user clicks the **Get Location** button on the 
   ```
 
 ## Managing Location Permissions
-The **Web** component provides the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class for managing web page location permissions, including [allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation) for adding a location permission, [getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation) for viewing location permissions, and [deleteAllGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deleteallgeolocation) for deleting a location permission.  
+You can manage the location permissions of web pages through the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class of the Web component. This class provides methods for adding ([allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation)), viewing ([getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)), and deleting ([deleteGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deletegeolocation)) the location permissions of web pages. For example, you can check whether a web page has applied for the location permission and delete the location permission that a web page has applied for.
 
 
 ```ts

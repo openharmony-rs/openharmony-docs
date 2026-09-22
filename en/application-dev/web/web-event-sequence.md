@@ -1,10 +1,11 @@
 # Lifecycle of the Web Component
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T02:09:20.920Z pushedAt=2026-09-22T01:34:04.445Z -->
 
 ## Overview
 
@@ -16,7 +17,7 @@ The statuses of a **Web** component include binding a controller to it, the star
 
 For details about how to keep web pages alive, see [Using Offline Web Components](../web/web-offline-mode.md).
 
-If the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) function is executed when a custom component is destructed, the **Web** component is destroyed and unbound from the WebviewController, and the JS running environment is also destroyed.
+When a custom component is destroyed, the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) function is executed. The **Web** component is then destroyed, the **Web** component is unbound from [WebviewController](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md), and the JS runtime environment is destroyed as well.
 
 **Figure 1** Callback events during the normal web page loading of the **Web** component
 
@@ -26,7 +27,7 @@ If the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-l
 
 - [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear): executed before its build function when a new instance of a custom component is created. You are advised to set the web debug mode and customize protocol URL permissions and cookies at this status.
 
-- [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10): triggered when the controller is successfully bound to the **Web** component. Do not call APIs related to the **Web** component before this callback. Otherwise, a js-error exception will be thrown. You are advised to inject a JS object, set a custom user agent, and use APIs irrelevant to web page operations in this event. However, the web page is not loaded when this callback is called. Therefore, APIs for web page operation, such as [zoomIn](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomin) and [zoomOut](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomout), cannot be used in this callback.
+- [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10) event: triggered when the Controller is successfully bound to the **Web** component. Calling APIs related to the **Web** component before this event callback is prohibited; otherwise, a js-error exception is thrown. It is recommended to inject JS objects, set a custom user agent, and use APIs unrelated to web page operations in this event. However, because the web page has not been loaded when this callback is invoked, APIs for operating the web page, such as [zoomIn](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomin) and [zoomOut](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomout), cannot be used in the callback.
 
 - [onLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10): triggered before the **Web** component loads a URL, which is used to determine whether to block the access. By default, the loading is allowed.
 
@@ -36,18 +37,18 @@ If the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-l
 
 - [onProgressChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprogresschange): triggered to notify the page loading progress. The multi-frame page or subframes may continue to be loaded while the main frame has been loaded. Therefore, this event may be received after the [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend) event.
 
-- [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend): triggered only in the main frame when a web page is already loaded. Multi-frame pages may start to be loaded at the same time. Even if the main frame is already loaded, the sub-frames may start to be loaded or continue to be loaded. This callback will not be triggered for the navigation to the same page or the failed navigation. You are advised to execute the JavaScript script in this callback. Note that even if this callback function is received, the next frame may not reflect the DOM status.
+- [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend): triggered only in the main frame when a web page has finished loading. Multi-frame pages may start loading at the same time. Even if the main frame is already loaded, the subframes may start loading or continue loading. This callback will not be triggered for navigation to the same page or failed navigation. You are advised to execute JavaScript script in this callback. Note that even if this callback function is received, the next frame may not reflect the DOM status.
 
 ## Statuses of the Abnormal Web Page Loading
 - [onOverrideUrlLoading](../reference/apis-arkweb/arkts-basic-components-web-events.md#onoverrideurlloading12): triggered for the host application to obtain control when a URL is about to be loaded to the current web page. The value **true** means to stop loading the URL, and the value **false** means to continue loading the URL. The behavior of **onLoadIntercept()** is different from that of the **onOverrideUrlLoading()** and they are triggered in different timing. Therefore, the two APIs are used in different scenarios. The **onLoadIntercept** event is triggered when **loadUrl** and iframe are loaded, but the **onOverrideUrlLoading** event is not triggered when **loadUrl** and specific iframe are loaded.
 
 - [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9): web callback event, which is triggered when the body of an HTTP response starts to be loaded and a new page is about to be displayed in the rendering process. In this case, the document loading is still in the early stage, so the linked resources such as online CSS and images may not be available.
 
-- [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9): triggered when an application rendering process exits abnormally. You can release system resources and save data in this callback. If you want to recover the application, call the [loadUrl](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to reload the page. For details, see [How can I prevent page suspension when the Web component's rendering child process exits unexpectedly](#how-can-i-prevent-page-suspension-when-the-web-components-rendering-child-process-exits-unexpectedly).
+- [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9): triggered when an application rendering process exits abnormally. You can release system resources and save data in this callback. If you want to recover the application, call the [loadUrl](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to reload the page. For details, see [How can I prevent page suspension when the Web component's child rendering process exits unexpectedly](#how-can-i-prevent-page-suspension-when-the-web-components-rendering-child-process-exits-unexpectedly).
 
 - [onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear): triggered when a component is uninstalled from the component tree, This event is triggered when a component is uninstalled.
 
-Codes on the application side:
+- Application-side code:
 
   ```ts
   // xxx.ets
@@ -174,13 +175,13 @@ Codes on the application side:
 
 Pay attention to some important performance indicators during web page loading. Such as First Contentful Paint (FCP), First Meaningful Paint (FMP), and Largest Contentful Paint (LCP). The **Web** component provides the following APIs for notifying you these indicators of online non-PDF web pages. Local web pages and PDF web pages are not supported.
 
-- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10): triggered when the web page content such as a text, image, non-blank Canvas, or SVG is drawn for the first time.
+- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10) event: callback for the first contentful paint of a web page. It is the time when text, images, non-blank [canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), or SVG is first painted.
 
 - [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12): triggered when the first meaningful paint is drawn.
 
 - [onLargestContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onlargestcontentfulpaint12): triggered when the largest content, such as the image, text block, or video, is drawn in the visible area.
 
-## How can I prevent page suspension when the Web component's rendering child process exits unexpectedly
+## How can I prevent page suspension when the Web component's child rendering process exits unexpectedly
 
 ArkWeb is a **Web** component platform designed to display web page content for applications and provide capabilities such as page loading, interaction, and debugging. When an ArkWeb application is used, the page may be suspended due to various reasons. For example, the ArkWeb child rendering process crashes due to front-end exceptions, or the background ArkWeb child rendering process is terminated due to insufficient system resources. In this case, you need to open the page again or restart the application.
 
@@ -193,7 +194,7 @@ import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
 struct WebComponent {
-  needReloadWhenVisible: boolean = false ;  // When the Web component is invisible, the page reloading is blocked after the render process exits. When the Web component is visible, the page is reloaded.
+  needReloadWhenVisible: boolean = false;  // When the Web component is invisible, prevent the page from being reloaded after the render exits; reload the page when it becomes visible.
   webIsVisible: boolean = false;            // Check whether the Web component is visible.
 
   // The child process crash is distinguished from other exceptions. You can refine the exception handling policy based on the actual service.
