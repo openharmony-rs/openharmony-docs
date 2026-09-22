@@ -27097,6 +27097,11 @@
 						"end_line":372,
 						"name":"screenCapture_buffer_strategy_pickerPopUpFalse",
 						"start_line":359
+					},
+					{
+						"end_line":516,
+						"name":"screenCapture_virtualExtendedScreen",
+						"start_line":505
 					}
 				]
 			}
