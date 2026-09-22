@@ -307,7 +307,7 @@ export struct OverlayManagerWithOrder {
               let componentContent = this.contentArray.splice(this.arrayIndex, 1);
               this.overlayManager.removeComponentContent(componentContent.pop());
             } else {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+              hilog.error(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         }.width('100%')
