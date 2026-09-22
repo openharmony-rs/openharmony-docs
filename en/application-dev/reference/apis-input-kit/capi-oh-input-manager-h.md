@@ -3149,7 +3149,7 @@ Sets the modifier keys.
 | -- | -- |
 | [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | Hotkey object.|
 | int32_t *preKeys | List of modifier keys.|
-| int32_t size | Number of modifier keys. The value range is [1, 2]. |
+| int32_t size | Number of modifier keys. The value range is [1, 4]. |
 
 ### OH_Input_GetPreKeys()
 
