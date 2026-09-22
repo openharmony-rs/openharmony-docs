@@ -46,7 +46,7 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Button('router to pageOne', { stateEffect: true, type: ButtonType.Capsule })
+        Button('router to PageOne', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
           .margin(20)
