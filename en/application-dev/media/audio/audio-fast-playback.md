@@ -116,7 +116,7 @@ static OH_AudioData_Callback_Result MyOnWriteData_New(
 
 - To prevent audio stuttering, do not perform time-consuming operations in the callback function **OH_AudioRenderer_OnWriteDataCallback**.
 
-- To maintain independence between data writing logic and stream state control, do not call the audio stream control APIs in the callback function **OH_AudioRenderer_OnWriteData**.
+- To maintain independence between data writing logic and stream state control, do not call the audio stream control APIs in the callback function **OH_AudioRenderer_OnWriteDataCallback**.
 
     | Audio Stream Control API                                                   | Description        |
     | ------------------------------------------------------------ | ------------ |

@@ -96,7 +96,7 @@ To implement audio playback with the TonePlayer, perform the following steps:
    }
    ```
 
-If the API call sequence is abnormal, error code ·6800301 NAPI_ERR_SYSTEM· is returned.
+If the API call sequence is abnormal, error code `6800301 NAPI_ERR_SYSTEM` is returned.
 
 ## Complete Sample Code
 

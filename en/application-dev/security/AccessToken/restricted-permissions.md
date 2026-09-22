@@ -1350,9 +1350,11 @@ With this permission, the application can utilize the APIs provided by the game 
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.0.0
+
+**Changelog**: Since API version 26.0.0, this permission is also available on tablets, PCs/2-in-1 devices and TVs.
 
 ## ohos.permission.KNOCK_COLLABORATION
 

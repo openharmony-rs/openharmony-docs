@@ -1590,7 +1590,7 @@ Enumerates the modes in which components are laid out along the cross axis of th
 
 | Value| Description|
 | -- | -- |
-| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | The default configuration in the [Flex](..//apis-arkui/arkui-ts/ts-container-flex.md) container is used. This is the default value.|
+| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | The default configuration in the [Flex](../apis-arkui/arkui-ts/ts-container-flex.md) container is used. This is the default value.|
 | ARKUI_ITEM_ALIGNMENT_START = 1 | The items in the flex container are aligned with the cross-start edge.|
 | ARKUI_ITEM_ALIGNMENT_CENTER = 2 | The items in the flex container are centered along the cross axis.|
 | ARKUI_ITEM_ALIGNMENT_END = 3 | The items in the flex container are aligned with the cross-end edge.|
@@ -1615,7 +1615,7 @@ Enumerates the vertical alignment modes.
 | ARKUI_FLEX_ALIGNMENT_START = 1 | The child components are aligned with the start edge of the main axis. This is the default value.|
 | ARKUI_FLEX_ALIGNMENT_CENTER = 2 | The child components are aligned in the center of the main axis.|
 | ARKUI_FLEX_ALIGNMENT_END = 3 | The child components are aligned with the end edge of the main axis.|
-| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis in [Flex](..//apis-arkui/arkui-ts/ts-container-flex.md). The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with the main-end.|
+| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis in [Flex](../apis-arkui/arkui-ts/ts-container-flex.md). The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with the main-end.|
 | ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and cross-main are both half the size of the space between two adjacent components.|
 | ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent components are the same.|
 
@@ -1628,7 +1628,7 @@ enum ArkUI_FlexDirection
 **Description**
 
 
-Enumerates the directions of the main axis in the [Flex](..//apis-arkui/arkui-ts/ts-container-flex.md) container.
+Enumerates the directions of the main axis in the [Flex](../apis-arkui/arkui-ts/ts-container-flex.md) container.
 
 **Since**: 12
 
@@ -1802,7 +1802,7 @@ Enumerates the barrier directions.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_BARRIER_DIRECTION_START = 0 | The barrier is on the left side of all the referenced components specified by [referencedId](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md#barrierstyle12). This is the default value.|
+| ARKUI_BARRIER_DIRECTION_START = 0 | The barrier is on the left side of all the referenced components specified by [referencedId](../apis-arkui/arkui-ts/ts-container-relativecontainer.md#barrierstyle12). This is the default value.|
 | ARKUI_BARRIER_DIRECTION_END = 1 | The barrier is on the right side of all the referenced components specified by referencedId.|
 | ARKUI_BARRIER_DIRECTION_TOP = 2 | The barrier is at the top of all the referenced components specified by referencedId.|
 | ARKUI_BARRIER_DIRECTION_BOTTOM = 3 | The barrier is at the bottom of all the referenced components specified by referencedId.|
@@ -3496,7 +3496,7 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 **Description**
 
 
-Creates guideline options in [RelativeContainer](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md).
+Creates guideline options in [RelativeContainer](../apis-arkui/arkui-ts/ts-container-relativecontainer.md).
 
 **Since**: 12
 

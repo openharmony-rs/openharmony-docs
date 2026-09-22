@@ -1,12 +1,11 @@
 # Creating an Asynchronous Thread for AVTranscoder Video Transcoding (ArkTS)
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f1377aba9c588aa67d3242004db9590ac467b0f5 translatedAt=2026-08-11T01:50:09.295Z pushedAt=2026-08-11T12:25:40.007Z -->
+<!-- md-trans-meta sourceCommit=edbe56e8c39168a1956f05fd88c23c9bbefde40a translatedAt=2026-09-20T07:03:35.630Z pushedAt=2026-09-20T08:39:20.879Z -->
 
 During development, applications often create asynchronous threads to perform video transcoding tasks to meet various requirements, including:
 
@@ -25,7 +24,6 @@ During development, applications often create asynchronous threads to perform vi
 This example uses a Worker thread to perform asynchronous transcoding. For details about how to use Worker threads, refer to the following documents:
 
 - [@ohos.worker (Starting the Worker)](../../reference/apis-arkts/js-apis-worker.md)
-
 - [Worker](../../arkts-utils/worker-introduction.md)
 
 ### How to Develop
@@ -234,7 +232,6 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
 Refer to the sample project to use a Worker thread to implement asynchronous transcoding.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder), and copy its resources to the corresponding directories.
-
     ```txt
     AsyncTranscoder
     entry/build-profile.json5 (Configure fields to package Worker thread files into the application.)
@@ -258,5 +255,4 @@ Refer to the sample project to use a Worker thread to implement asynchronous tra
     └── rawfile
         └── H264_AAC.mp4 (Video resource)
     ```
-
 2. Compile and run the project.

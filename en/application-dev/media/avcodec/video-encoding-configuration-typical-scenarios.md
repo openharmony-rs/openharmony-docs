@@ -6,13 +6,14 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f14aa63875cd96aa08061c51eb046c8f033e04bc translatedAt=2026-08-06T13:49:48.618Z pushedAt=2026-08-07T08:34:44.674Z -->
+<!-- md-trans-meta sourceCommit=1118f6e2324779c8658355768d124e0368126398 translatedAt=2026-09-20T06:59:25.360Z pushedAt=2026-09-20T08:38:59.321Z -->
 
 This topic provides recommended configuration parameters for AVCodec video encoding in various scenarios. It aims to help you configure video encoders according to your specific needs.
 
 Video encoding is widely used in scenarios such as short-range projection (typically screen encoding and delivery between multiple devices within 10 meters), video calls, video conferencing, live streaming, video editing, and video sharing. Based on user experience requirements, these scenarios can be grouped into three categories: low-latency, real-time streaming, and offline encoding.
 
 This topic provides the recommended encoding parameter configurations for video encoding in these three categories, helping you select appropriate parameters based on your service requirements.
+
 
 ## General Development Steps
 
@@ -52,7 +53,6 @@ This section describes only the steps involved in the encoder configuration phas
    In the encoder parameter configuration phase, configure parameters suitable for low-latency encoding scenarios.
 
    In low-latency short-range projection scenarios, the recommended encoding parameters for typical resolution (using H.265 as an example) are as follows:
-
    | Resolution (px)    | Frame Rate (fps) | Bitrate (kbps)| Access Frame Interval (ms) | Rate Control Mode |
    | ------------------| -------- | -------- | ------ | ------ |
    | 2560x1600  | 60       | 5000     | 5000 |  CBR  |
@@ -61,7 +61,6 @@ This section describes only the steps involved in the encoder configuration phas
    | 960x540  | 60       | 1500    | 5000 |  CBR  |
 
    In low-latency scenarios such as video calls, video conferencing, and co-host live streaming, the recommended encoding parameters for typical resolution (using H.265 as an example) are as follows:
-
    | Resolution (px)    | Frame Rate (fps) | Bitrate (kbps)| Access Frame Interval (ms) | Rate Control Mode |
    | ------------------| -------- | -------- | ------ | ------ |
    | 1920x1080  | 30       | 1500     | -1 |  CBR  |
@@ -81,6 +80,9 @@ This section describes only the steps involved in the encoder configuration phas
    ```c++
    // 1. Create an AVFormat parameter instance.
    OH_AVFormat *format = OH_AVFormat_Create(); 
+   if (format == nullptr) {
+       // Exception handling.
+   }
    // 2. Populate encoding parameter key-value pairs (using a 1080p@30fps SDR input source as an example).
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920); // Mandatory. Video pixel width.
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080); // Mandatory. Video pixel height.
@@ -120,8 +122,8 @@ This section describes only the steps involved in the encoder configuration phas
    // 4. Destroy the AVFormat instance after configuration.
    OH_AVFormat_Destroy(format);
    ```
-
    If you need to adapt to network fluctuations, it is recommended to combine this with [temporally scalable video coding](video-encoding-temporal-scalability.md) configuration.
+
 
 Starting from API version 26.0.0, on platforms that support high-quality constant bitrate mode (CBRHQ), it is recommended to use the CBRHQ rate control method instead of constant bitrate (CBR). If CBRHQ is configured but the platform does not support it, the CBR rate control mode is automatically used as a fallback.
 
@@ -140,9 +142,12 @@ The CBRHQ rate control method is configured as follows:
 ```c++
 // 1. Create an AVFormat parameter instance.
 OH_AVFormat *format = OH_AVFormat_Create();
+if (format == nullptr) {
+    // Handle exceptions.
+}
 // 2. Populate encoding parameter key-value pairs (using a 1080p@15fps SDR input source as an example).
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1080); // Mandatory. Video pixel width.
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1920); // Mandatory. Video pixel height.
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920); // Required. Video pixel width.
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080); // Required. Video pixel height.
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12); // Mandatory. Video source data layout format.
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 0); // VUI, video YUV range flag. 0: limited range, 1: full range.
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // VUI, video source color gamut.
@@ -155,18 +160,18 @@ OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL,10000); // Mandatory.
 // 3. Query CBRHQ support and select an appropriate rate control configuration.
 OH_AVCapability *cap = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true);
 if (cap == nullptr || !OH_AVCapability_IsEncoderBitrateModeSupported(cap, OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY)) {
-    //     // CBRHQ is not supported. Use CBR instead.
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, OH_BitrateMode::BITRATE_MODE_CBR); //     // Mandatory. Rate control mode set to CBR.
+    // CBRHQ is not supported. Use CBR instead.
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, OH_BitrateMode::BITRATE_MODE_CBR); // Mandatory. Rate control mode set to CBR.
 } else {
-    //     // CBRHQ is supported. Configure the CBRHQ rate control mode.
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY); //     // Mandatory. Rate control mode set to CBRHQ.
+    // CBRHQ is supported. Configure the CBRHQ rate control mode.
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY); // Mandatory. Rate control mode set to CBRHQ.
 }
 OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, 1520000); // Mandatory. Set the bitrate, in bps.
 
 // 4. Configure encoding parameters for the video encoder.
 int32_t ret = OH_VideoEncoder_Configure(videoEnc, format);
 if (ret != AV_ERR_OK) {
-    //     // Exception handling.
+    // Exception handling.
 }
 // 5. Destroy the AVFormat instance after configuration is complete.
 OH_AVFormat_Destroy(format);
@@ -185,7 +190,7 @@ In entertainment live streaming scenarios, the recommended encoding parameters f
 | Resolution (px)     | Frame Rate (fps) | Bitrate (kbps)| Access Frame Interval (ms) | Rate Control Mode |
 | ------------------| -------- | -------- | ------ | ------ |
 | 1920x1080  | 25       | 3000     | 2000 |  VBR  |
-| 1080x720  | 25       | 1500     | 2000 |  VBR  |
+| 1280x720  | 25       | 1500     | 2000 |  VBR  |
 | 960x544  | 25       | 1000    | 2000 |  VBR  |
 | 864x480  | 25       | 800     | 2000 |  VBR  |
 
@@ -199,8 +204,8 @@ In gaming live streaming scenarios, the recommended encoding parameters for typi
 // 1. Create an AVFormat parameter instance.
 OH_AVFormat *format = OH_AVFormat_Create();
 // 2. Populate encoding parameter key-value pairs (using a 1080p@25fps SDR input source as an example).
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1080); // Mandatory. Video pixel width.
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1920); // Mandatory. Video pixel height.
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920); // Required. Video pixel width.
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080); // Required. Video pixel height.
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12); // Mandatory. Video source data layout format.
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 0); // VUI, video YUV range flag. 0: limited range, 1: full range.
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // VUI, video source color gamut.
@@ -227,7 +232,7 @@ In entertainment live streaming scenarios, the recommended encoding parameters f
 | Resolution (px)    | Frame Rate (fps) | SQR Quality Factor | Peak Bitrate (kbps)| Access Frame Interval (ms) | Rate Control Mode |
 | ------------------| -------- | -------- | ------ | ------ | -------- |
 | 1920x1080  | 25 |  25    | 3000     | 2000 |  SQR  |
-| 1080x720  | 25  |  25   | 1500     | 2000 |  SQR  |
+| 1280x720  | 25  |  25   | 1500     | 2000 |  SQR  |
 | 960x544  | 25  |  25  | 1000    | 2000 |  SQR  |
 | 864x480  | 25  |  25  | 800     | 2000 |  SQR  |
 
@@ -243,8 +248,8 @@ The SQR rate control method is configured as follows:
 // 1. Create an AVFormat parameter instance.
 OH_AVFormat *format = OH_AVFormat_Create();
 // 2. Fill in the encoding parameter key-value pair (using the 1080p@25 fps SDR input source as an example).
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1080); // Mandatory. Video pixel width.
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1920); // Mandatory. Video pixel height.
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920); // Required. Video pixel width.
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080); // Required. Video pixel height.
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12); // (Mandatory) Format of the video source data.
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 0); // VUI, video YUV range flag. 0: limited range, 1: full range.
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // VUI, video source color primaries.
@@ -276,9 +281,11 @@ if (ret != AV_ERR_OK) {
 OH_AVFormat_Destroy(format);
 ```
 
+
 ## Offline Encoding Scenarios
 
 Offline encoding is used in scenarios such as video editing and video sharing.
+
 
 **How to Develop**
 
@@ -393,3 +400,4 @@ OH_AVFormat_Destroy(format);
 ## Precautions
 
 The encoding recommendations in this guide should be further optimized based on specific service conditions in actual use. At a given bitrate, the encoding quality of a video can vary significantly depending on the spatiotemporal complexity of the video content being encoded. Generally, video content with complex motion and rich texture is prone to blurring or blocking artifacts when the bitrate is insufficient. In such cases, a higher bitrate must be configured.
+

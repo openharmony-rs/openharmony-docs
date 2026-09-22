@@ -6,7 +6,6 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=5c6e465f4cb7e5e44777311b9850301a734295d4 translatedAt=2026-08-12T06:27:51.352Z pushedAt=2026-08-12T09:17:17.035Z -->
 
 ## Overview
 

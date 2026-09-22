@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=212c062cf9929960ddfc3ef82147fe9a963da757 translatedAt=2026-09-16T02:32:21.539Z pushedAt=2026-09-16T03:24:46.865Z -->
+<!-- md-trans-meta sourceCommit=5f9ae49f4b8e860dbba833c52ed50c83453102b4 translatedAt=2026-09-20T06:17:38.684Z pushedAt=2026-09-20T11:33:07.478Z -->
 
 Driver Development Kit (DDK) provides peripheral driver developers with efficient, secure, and feature-rich extended peripheral driver development solutions — ArkTS APIs and C APIs — enabling a seamless plug-and-play experience for end users.
 
@@ -112,7 +112,7 @@ The following table lists the associated modules you may use during development 
     - The lifecycle of DriverExtensionAbility depends on when a peripheral is connected, which is reflected in the following aspects:
       - When a peripheral in the "VID + PID" device list configured for DriverExtensionAbility is connected, its lifecycle interval is the same as the connection period of that peripheral.
       - When multiple peripherals in the "VID + PID" device list configured for DriverExtensionAbility are connected in sequence, its lifecycle interval lasts from the connection of the first peripheral to the removal of the last peripheral.
-      - When a connected peripheral appears in the "VID + PID" lists configured for multiple DriverExtensionAbility instances, the peripheral affects only the lifecycle of the driver ability installed first. For details, see [When Multiple Driver Abilities Are Configured for the Same Peripheral Device Model, Inserting the Device Starts Only One Driver Ability](./externaldevice-faqs.md#when-multiple-driver-abilities-are-configured-for-the-same-peripheral-device-model-inserting-the-device-starts-only-one-driver-ability).
+      - When a connected peripheral appears in the "VID + PID" lists configured for multiple DriverExtensionAbility instances, the peripheral affects only the lifecycle of the driver ability installed first. For details, see [When Multiple Driver Abilities Are Configured for the Same Peripheral Device Model, Inserting the Device Starts Only One Driver Ability](./externaldevice-faqs.md#when-multiple-driver-abilities-are-configured-for-the-same-peripheral-device-model-inserting-the-device-supports-starting-only-one-driver-ability).
 
 4. API access security control in **DriverExtensionAbility**
     - The system supports building scenario-specific extension abilities based on **ExtensionAbility**. **DriverExtensionAbility** is a type of ability designed for developing user-mode peripheral drivers.

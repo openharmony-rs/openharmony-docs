@@ -760,7 +760,7 @@ backPressBehavior(behavior: ListBackPressBehavior | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| behavior  | [ListBackPressBehavior](#listbackpressbehavior对象说明) \| undefined | 是   | List组件的系统返回键行为选项。当前支持通过[ListBackPressBehavior](#listbackpressbehavior对象说明)参数，配置系统返回键生效时，是否收起已展开的ListItem的滑出组件。<br/>设置为undefined时，恢复默认行为，即系统返回键生效时，收起已展开的ListItem的滑出组件。|
+| behavior  | [ListBackPressBehavior](#listbackpressbehavior) \| undefined | 是   | List组件的系统返回键行为选项。当前支持通过[ListBackPressBehavior](#listbackpressbehavior)参数，配置系统返回键生效时，是否收起已展开的ListItem的滑出组件。<br/>设置为undefined时，恢复默认行为，即系统返回键生效时，收起已展开的ListItem的滑出组件。|
 
 ### enableEditMode
 
@@ -843,7 +843,7 @@ ListItemGroup吸顶或吸底效果枚举。
 | NORMAL   | 0 | 默认列表限位动画速度，适用于列表项主轴方向尺寸较大（如接近列表视口（即列表可视区域）主轴尺寸），每次滑动仅滚动一个列表项的场景。            |
 | SLOW  | 1 | 列表限位动画速度低于NORMAL，适用于列表项主轴方向尺寸较小（如远小于列表视口（即列表可视区域）主轴尺寸），每次滑动需滚动多个列表项的场景。 |
 
-## ListBackPressBehavior对象说明
+## ListBackPressBehavior
 
 定义List组件的系统返回键行为。
 

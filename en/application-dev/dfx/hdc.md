@@ -6,7 +6,7 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=3bab2b5b5264b2a320ce362e13ec1f6589bae7b3 translatedAt=2026-09-14T09:05:52.565Z pushedAt=2026-09-15T12:39:56.805Z -->
+<!-- md-trans-meta sourceCommit=a3465ee9687286e8938442ad1767b0c844bac9c7 translatedAt=2026-09-20T06:26:57.241Z pushedAt=2026-09-20T07:48:02.498Z -->
 
 OpenHarmony Device Connector (hdc) is a command line tool used to interact with devices for debugging, data transfer, log viewing, and application installation. It can run on Windows, Linux, and MacOS to provide efficient and convenient device debugging capabilities.
 
@@ -396,6 +396,10 @@ $ hdc -t connect-key1 wait # Use -t to specify the device to be connected when t
    ```
 
    If **Connect OK** is displayed, the connection is successful.
+
+   > **NOTE**
+   >
+   > A maximum of 16 connections are supported. If the number of connections exceeds 16, connection blocking occurs. Wait until an existing connection is released before connecting to a new device.
 
 4. Check the connection.
 

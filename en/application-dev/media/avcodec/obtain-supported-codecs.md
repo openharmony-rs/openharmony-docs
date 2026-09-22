@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9768ff1ae14bfefbda92349bc1fa2540f53676ed translatedAt=2026-08-06T13:44:37.112Z pushedAt=2026-08-07T07:22:42.777Z -->
+<!-- md-trans-meta sourceCommit=49f0327cc0483db85e6efade75651eaaabb5f377 translatedAt=2026-09-20T06:56:41.609Z pushedAt=2026-09-20T08:35:28.779Z -->
 
 Due to differences in sources, codec protocols, and device capabilities, the available codecs and their capabilities vary across different devices.
 
@@ -23,7 +23,6 @@ To ensure that codec behavior meets expectations, use the audio and video codec 
    target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```
-
    > **NOTE**
    >
    > The word **sample** in the preceding code snippet is only an example. Use the actual project directory name.
@@ -40,23 +39,23 @@ To ensure that codec behavior meets expectations, use the audio and video codec 
 
 3. Obtain an audio/video codec capability instance.
 
-You can obtain an audio/video codec capability instance in the following ways. After the instance is obtained, you can proceed with subsequent operations. The instance has no explicit release API; the system automatically releases and reclaims resources when it is no longer in use.
+   You can obtain an audio/video codec capability instance in the following ways. After the instance is obtained, you can proceed with subsequent operations. The instance has no explicit release API; the system automatically releases and reclaims resources when it is no longer in use.
 
-Method 1: Call [OH_AVCodec_GetCapability](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapability) to obtain the audio/video codec capability instance recommended by the system.
+   Method 1: Call [OH_AVCodec_GetCapability](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapability) to obtain the audio/video codec capability instance recommended by the system.
 
    ```c++
    // Obtain the AAC decoder capability instance recommended by the system.
    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
    ```
 
-Method 2: Call [OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitybycategory) to obtain the codec capability instance for the specified hardware or software.
+   Method 2: Call [OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitybycategory) to obtain the codec capability instance for the specified hardware or software.
 
    ```c++
    // Obtain the AVC encoder capability instance for the specified hardware.
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
 
-Method 3: Starting from API version 24, you can call [OH_AVCodec_GetCapabilityList](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitylist) to obtain the full list of capability instances for a specified codec type (for example, video decoder).
+   Method 3: Starting from API version 24, you can call [OH_AVCodec_GetCapabilityList](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitylist) to obtain the full list of capability instances for a specified codec type (for example, video decoder).
 
    ```c++
    // Obtain the capability instance list of all video decoders in the system.
@@ -179,11 +178,8 @@ if (createdVDecNum < NEEDED_VDEC_NUM) {
 ### Controlling the Encoding Quality
 
 The following rate control modes are available: constant bit rate (CBR), dynamic bit rate (VBR), constant quality (CQ), stable quality (SQR), and high quality constant bit rate (CBRHQ).
-
 - In CBR, VBR, and CBRHQ modes, the encoding quality is determined by the bit rate parameters. The CBRHQ mode is available starting from API version 26.0.0 and supports only H.265 (HEVC) encoding. If CBRHQ is configured but not supported by the platform, the CBR mode is automatically used as a fallback.
-
 - For CQ, the encoding quality is determined by the quality parameters.
-
 - For SQR, the encoding quality is determined by the SQR factor and the maximum bit rate. Currently, only H.265 (HEVC) encoding is supported.
 
 | API    | Description                        |
@@ -319,7 +315,7 @@ if (format == nullptr) {
 }
 if (!OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, bitrateMode) ||
    !OH_AVFormat_SetIntValue(format, OH_MD_KEY_SQR_FACTOR, sqrFactor) ||
-   !OH_AVFormat_SetIntValue(format, OH_MD_KEY_MAX_BITRATE, maxBitrate)) {
+   !OH_AVFormat_SetLongValue(format, OH_MD_KEY_MAX_BITRATE, maxBitrate)) {
    // Handle exceptions.
 }
 if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
@@ -350,9 +346,7 @@ if (ret != AV_ERR_OK) {
 }
 OH_AVFormat_Destroy(dynamicFormat);
 ```
-
 The following is an example of the CBRHQ rate control mode:
-
 ```c++
 OH_BitrateMode bitrateMode = BITRATE_MODE_CBR_HIGH_QUALITY;
 int32_t bitrate = 3000000;
@@ -395,6 +389,7 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 }
 OH_AVFormat_Destroy(format);
 ```
+
 
 ### Checking the Complexity Range Supported
 
@@ -832,6 +827,7 @@ if (isSupported) {
          // Handle exceptions.
       }
    }
+   OH_AVFormat_Destroy(properties);
 }
 // 3. Create and configure an encoder.
 OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
