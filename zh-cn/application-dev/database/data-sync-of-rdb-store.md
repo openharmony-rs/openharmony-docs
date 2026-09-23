@@ -489,7 +489,7 @@
    }
    ```
 
-7. 当数据未完成同步，或未触发数据同步时，可使用RdbStore的[remoteQuery](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1)方法查询组网内指定设备上分布式表中的数据。
+7. 当数据未完成同步，或未触发数据同步时，可使用RdbStore的[remoteQuery()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1)接口查询组网内指定设备上分布式表中的数据。
 
    ArkTS-Dyn示例：
    <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
