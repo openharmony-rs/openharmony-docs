@@ -49,11 +49,9 @@ Runtime error.
 
 **处理步骤**
 
-1. 检查调用接口时传入的证书链数据、证书对象以及证书校验参数是否正确、完整，数据格式是否符合要求。
-2. 检查是否正确创建证书链校验器对象。使用[createCertChainValidator](js-apis-cert.md#certcreatecertchainvalidator)接口成功创建的对象才能调用`validate`或`validateCert`接口进行校验。
-3. 检查证书链校验参数配置是否正确，例如是否通过[trustedCerts](js-apis-cert.md#certvalidationparams)参数指定了正确的信任证书列表，或通过[trustSystemCa](js-apis-cert.md#certvalidationparams)参数启用了系统信任证书，确保待验证证书能够构建出完整的证书链。
-4. 检查待验证证书是否有效。若证书链校验成功但返回的证书链为空，请确认待验证证书能够通过指定的信任锚点构建出完整的证书链。
-5. 若以上检查均无法定位问题，请收集日志信息并联系华为技术支持。
+1. 检查内存空间是否充足，清理内存后重试。
+2. 系统异常，请稍后重试或重启设备。
+3. 若以上检查均无法定位问题，请收集日志信息并联系华为技术支持。
 
 ## 19020003 参数检查失败
 
