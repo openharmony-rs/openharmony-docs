@@ -6,11 +6,12 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=dca31322189f91fc40f262b55618120da7c83182 translatedAt=2026-09-17T08:10:07.949Z pushedAt=2026-09-21T11:20:02.476Z -->
 
 ## When to Use
 
 The deployment process is as follows:
-1. Use the MindSpore Lite model conversion tool to convert the original model (for example, ONNX or CAFFE) to a .ms model file. You can check the supported ONNX operators against the [MindSpore Lite Kit operator list](mindspore-lite-supported-operators.md) to ensure that the model conversion is successful.
+1. The developer first uses the MindSpore Lite model conversion tool to convert the original model (for example, ONNX or CAFFE) into a model file with the .ms extension. For the ONNX [operators](mindspore-lite-term.md#operator) supported by MindSpore Lite Kit, see the [MindSpore Lite Kit Operator Support List](mindspore-lite-supported-operators.md) to ensure successful model conversion.
 2. Call APIs of the MindSpore Lite inference engine to perform [model inference](mindspore-lite-guidelines.md).
 
 ## Obtaining the Model Conversion Tool
@@ -27,11 +28,11 @@ You can obtain the MindSpore Lite model conversion tool in either of the followi
 
 > **NOTE**
 >
-> - The build option that supports PyTorch model conversion is disabled by default. Therefore, the downloaded installation package does not support PyTorch model conversion and can be obtained only by source code building.
+> - Because the compilation option for supporting PyTorch model conversion is disabled by default, the downloaded installation package does not support PyTorch model conversion. It can be obtained only through source code building.
 >
-> - If the transpose and convolution operators are fused in the model, you need to obtain the model through source code compilation. Otherwise, an alarm similar to the following may be displayed: node infer shape failed, node is Default/Conv2DFusion-xxx.
+> - If the model contains transpose and convolution [operator fusion](mindspore-lite-term.md#operator-fusion), it must be obtained through source code building. Otherwise, a warning similar to the following may occur: node infer shape failed, node is Default/Conv2DFusion-xxx.
 >
-> - If the NPU backend is used for inference, you need to determine whether to [disable the fusion of clip operators](#disabling-the-fusion-of-specified-operators) and obtain the model conversion tool through source code compilation. Otherwise, an error similar to the following may be reported: BuildKirinNPUModel# Create full model kernel failed.
+> - When the [NPU](mindspore-lite-term.md#npu) backend is specified for inference, you need to customize [disabling clip operator fusion](#disabling-the-fusion-of-specified-operators), and the model conversion tool must be obtained through source code building. Otherwise, an error similar to the following may occur: BuildKirinNPUModel# Create full model kernel failed.
 
 1. The environment requirements are as follows:
 
@@ -74,17 +75,17 @@ The following describes the parameters in detail.
 |        Name       | Mandatory           | Description                                                    | Value Range                                        |
 | :----------------: | ------------------- | ------------------------------------------------------------ | ------------------------------------------------ |
 |       --help       | No                 | Displays all help information.                                          | -                                                |
-|       --fmk        | Yes                 | Original format of the input model. This parameter can be set to **MSLITE** only when the MS model is converted to micro code.| MINDIR, CAFFE, TFLITE, TF, ONNX, PYTORCH, or MSLITE|
+|       --fmk        | Yes                 | Original format of the input model. MSLITE is supported only when an [MS model](mindspore-lite-term.md#ms-model) is converted to Micro code. | MINDIR, CAFFE, TFLITE, TF, ONNX, PYTORCH, MSLITE |
 |    --modelFile     | Yes                 | Path of the input model.                                            | -                                                |
 |    --outputFile    | Yes                 | Path of the output model. You do not need to add an extension because the extension `.ms` is automatically generated.           | -                                                |
 |    --weightFile    | Yes for CAFFE model conversion| Path of the model weight file.                                    | -                                                |
-|    --configFile    | No                 | 1) Path of the quantization configuration file after training. 2) Path of the extended function configuration file.| -                                                |
-|       --fp16       | No                 | Whether to store the weights of float32 data as float16 data during model serialization.<br>The default value is **off**.| on or off                                         |
-|    --inputShape    | No                 | Set the input dimensions of the model. Make sure that the sequence of the input dimensions is the same as that of the original model. The model structure can be further optimized for some specific models, but the dynamic shape feature will be unavailable for the converted model. Separate each input name and shape by a colon (:), and separate each pair of input name and shape by a semicolon (;). In addition, enclose them with double quotation marks (""). For example, set this parameter to **"inTensorName_1: 1,32,32,4;inTensorName_2:1,64,64,4;"**.| -                                                |
-| --inputDataFormat  | No                 | Input format of the exported model. This parameter is valid only for 4D input.<br>The default value is **NHWC**.| NHWC or NCHW                                      |
-|  --inputDataType   | No                 | Data type of the input tensor of the quantization model. This parameter is valid only when the quantization parameters (**scale** and **zero point**) are configured for the input tensor. The data type is the same as that of the input tensor of the original model by default.<br>The default value is **DEFAULT**.| FLOAT32, INT8, UINT8, or DEFAULT                   |
-|  --outputDataType  | No                 | Data type of the output tensor of the quantization model. This parameter is valid only when the quantization parameters (**scale** and **zero point**) are configured for the output tensor. The data type is the same as that of the output tensor of the original model by default.<br>The default value is **DEFAULT**.| FLOAT32, INT8, UINT8, or DEFAULT                   |
-| --outputDataFormat | No                 | Output format of the exported model. This parameter is valid only for 4D output.                | NHWC or NCHW                                      |
+|    --configFile    | No                  | 1) Can be used as the path of the [post-training quantization](mindspore-lite-term.md#post-training-quantization) configuration file; 2) can be used as the path of the extension feature configuration file. | -                                                |
+|       --fp16       | No                  | Sets whether to store weights in float32 data format as float16 data format during model serialization.<br>The default value is off. | on, off                                          |
+|    --inputShape    | No                  | Sets the dimensions of the model input. The order of the input dimensions is the same as that in the original model. For certain models, the model structure can be further optimized, but the converted model may lose the dynamic shape feature. The input name and shape are separated by `:`, multiple inputs are separated by `;`, and the whole value is enclosed in double quotation marks `""`. For example, configure it as "inTensorName_1: 1,32,32,4;inTensorName_2:1,64,64,4;". | -                                                |
+| --inputDataFormat  | No                  | Sets the input format of the exported model. It is valid only for four-dimensional inputs.<br>The default value is NHWC. | NHWC, NCHW                                       |
+|  --inputDataType   | No                  | Sets the data type of the input tensor of the quantized model. It is valid only when the quantization parameters (scale and zero point) of the model input tensor are configured. By default, it is the same as the data type of the input tensor of the original model.<br>The default value is DEFAULT. | FLOAT32, INT8, UINT8, DEFAULT                    |
+|  --outputDataType  | No                  | Sets the data type of the output tensor of the quantized model. It is valid only when the quantization parameters (scale and zero point) of the model output tensor are configured. By default, it is the same as the data type of the output tensor of the original model.<br>The default value is DEFAULT. | FLOAT32, INT8, UINT8, DEFAULT                    |
+| --outputDataFormat | No                  | Sets the output format of the exported model. It is valid only for four-dimensional outputs.<br>The default value is NHWC. | NHWC, NCHW                                       |
 
 > **NOTE**
 > - The parameter name and value are separated by an equal sign (=) and no space is allowed between them.
@@ -104,11 +105,11 @@ The command output is as follows:
 ```bash
 CONVERT RESULT SUCCESS:0
 ```
-This indicates that the CAFFE model is successfully converted to the MindSpore Lite model. A new file named **lenet.ms** is generated in the specified path.
+This indicates that the CAFFE model has been successfully converted into a MindSpore Lite model, and a new file `lenet.ms` is obtained.
 
 ## (Optional) Offline Model Conversion
 
-If you want to reduce the loading delay to meet the requirements of the deployment scenario, you can use offline model-based inference as an alternative. Offline models are network models obtained using the offline model conversion tool of the AI hardware vendor. The hardware vendor is responsible for parsing and inference of offline models.
+When the deployment scenario has strict requirements on loading latency, developers may want to further reduce the loading latency. In this case, another deployment solution can be used, that is, inference based on the [offline model](mindspore-lite-term.md#offline-model). An offline model is a model converted using the offline model conversion tool provided by the hardware vendor, and it is parsed and inferred by the hardware vendor.
 
 During inference, MindSpore Lite directly sends the offline model to the AI hardware connected to NNRt. This way, the model can be loaded without the need for online image composition, greatly reducing the model loading delay. In addition, MindSpore Lite can provide additional hardware-specific information to assist the AI hardware in model inference.
 
@@ -146,10 +147,10 @@ Field description:
 - `input_dtypes` (mandatory): model input data type, which is in the type format. If multiple data types are specified, use a semicolon (;) to separate them.
 - `input_shapes` (mandatory): model input shape, which is in the integer array format. If multiple input shapes are specified, use a semicolon (;) to separate them.
 - `input_formats` (optional): model input memory format, which is in the string format. If multiple formats are specified, use a semicolon (;) to separate them. The default value is NHWC.
-- `output_names` (optional): model output name, which is in the string format. If multiple names are specified, use a semicolon (;) to separate them.
+- `output_names` (optional): model output name, which is in the string format. If multiple outputs are specified, use a semicolon (`;`) to separate them.
 - `output_dtypes` (mandatory): model output data type, which is in the type format. If multiple data types are specified, use a semicolon (;) to separate them.
 - `output_shapes` (mandatory): model output shape, which is in the integer array format. If multiple output shapes are specified, use a semicolon (;) to separate them.
-- `output_formats` (optional): model output memory format, which is in the string format. If multiple formats are specified, use a semicolon (;) to separate them. The default value is NHWC.
+- `output_formats` (optional): model output memory layout, which is in the string format. If multiple outputs are specified, use a semicolon (`;`) to separate them. The default value is NHWC.
 - `extended_parameters` (optional): custom configuration of the inference hardware, which is in the key-value pair format. It is passed to the AI hardware through the NNRt backend during inference.
 
 ## Appendix

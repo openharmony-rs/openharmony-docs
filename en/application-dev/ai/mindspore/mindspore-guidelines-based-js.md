@@ -6,6 +6,7 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=5d62b3733f7514ac42caed184702a916bb3df6a2 translatedAt=2026-09-17T08:09:35.825Z pushedAt=2026-09-21T11:19:58.954Z -->
 
 ## When to Use
 
@@ -13,21 +14,16 @@ You can use [@ohos.ai.mindSporeLite](../../reference/apis-mindspore-lite-kit/js-
 
 Image classification can be used to recognize objects in images and is widely used in areas such as medical image analysis, auto driving, e-commerce, and facial recognition.
 
-## Basic Concepts
-
-Before getting started, you need to understand the following basic concepts:
-
-**Tensor**: a special data structure that is similar to an array or matrix. It is the basic data structure used in MindSpore Lite network operations.
-
-**Float16 inference mode**: an inference mode in half-precision format, where a number is represented with 16 bits.
+To adapt your own model based on this demo, use a static-shape model. Note that the ArkTS APIs do not support inference of dynamic-shape models on the NPU backend.
 
 ## **Available APIs**
 
-APIs involved in MindSpore Lite model inference are categorized into context APIs, model APIs, and tensor APIs. For details about APIs, see [@ohos.ai.mindSporeLite](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md).
+The following table lists the APIs involved in the general development process of MindSpore Lite inference. For more APIs and details, see [@ohos.ai.mindSporeLite (On-Device AI Framework)](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md).
 
 | API                                                      | Description            |
 | ------------------------------------------------------------ | ---------------- |
 | loadModelFromFile(model: string, context?: Context): Promise&lt;Model&gt; | Loads a model from a file.|
+| loadModelFromBuffer(model: ArrayBuffer, context?: Context): Promise&lt;Model&gt; | Loads the model from memory. |
 | getInputs(): MSTensor[]                                      | Obtains the model input.|
 | predict(inputs: MSTensor[]): Promise&lt;MSTensor[]&gt;       | Performs model inference.      |
 | getData(): ArrayBuffer                                       | Obtains tensor data.|
@@ -70,15 +66,14 @@ If you have other pre-trained models for image classification, convert the origi
 
 2. Call [@ohos.ai.mindSporeLite](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md) to implement inference on the device. The operation process is as follows:
 
-   1. Create a context, and set parameters such as the number of runtime threads and device type. The sample model does not support NNRt inference.
+   1. Create a context, set parameters such as the number of threads and the device type. The model in this sample does not support inference using [NNRt](mindspore-lite-term.md#nnrt).
    2. Load the model. In this example, the model is loaded from the memory.
    3. Load data. Before executing a model, you need to obtain the model input and then fill data in the input tensors.
    4. Perform model inference through the **predict** API.
-   
-   <!-- @[model_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/model.ets) -->
 
-   ```typescript
-   // model.ets
+   <!-- @[model_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/model.ets) --> 
+
+   ``` TypeScript
    import { mindSporeLite } from '@kit.MindSporeLiteKit'
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -116,14 +111,13 @@ If you have other pre-trained models for image classification, convert the origi
 
 1. Call [@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) to pick up the desired image in the album.
 
-2. Based on the input image size, call [@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) and [@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) to perform operations such as cropping the image, obtaining the image buffer, and standardizing the image.
+2. Based on the input size of the model, call [@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) (for image processing) and [@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) (for basic file operations) to crop the selected image, obtain the image buffer data, and perform normalization.
 
 3. Load the model file and call the inference function to perform inference on the selected image, and process the inference result.
 
-   <!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/Index.ets) -->
-   
-   ```typescript
-   // Index.ets
+   <!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/Index.ets) --> 
+
+   ``` TypeScript
    import modelPredict from './model';
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -146,16 +140,19 @@ If you have other pre-trained models for image classification, convert the origi
      @State maxIndex: number = 0;
      @State maxArray: Array<number> = [];
      @State maxIndexArray: Array<number> = [];
+     // ...
    
      build() {
        Row() {
          Column() {
            Text(this.modelPredict)
+           // ...
            Button() {
              Text('photo')
                .fontSize(30)
                .fontWeight(FontWeight.Bold)
            }
+           // ...
            .onClick(() => {
              let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
              if (resMgr === null || resMgr === undefined){
@@ -323,7 +320,6 @@ If you have other pre-trained models for image classification, convert the origi
        .height('100%')
      }
    }
-   
    ```
 
 ### Debugging and Verification
@@ -340,7 +336,7 @@ If you have other pre-trained models for image classification, convert the origi
    $ hdc shell aa start -a EntryAbility -b com.samples.mindsporelitearktsdemo
    ```
 
-2. Touch the **photo** button on the device screen, select an image, and touch **OK**. The classification result of the selected image is displayed on the device screen. In the log printing result, filter images by the keyword **MS_LITE**. The following information is displayed:
+2. Tap the **photo** button on the device screen, select an image, and tap **OK**. The classification result of the selected image is displayed on the device screen. In the log printing result, filter images by the keyword **MS_LITE**. The following information is displayed:
 
    ```verilog
    08-06 03:24:33.743   22547-22547  A03d00/JSAPP                   com.sampl...liteark+  I     MS_LITE_LOG: PhotoViewPicker.select successfully, photoSelectResult uri: {"photoUris":["file://media/Photo/13/IMG_1501955351_012/plant.jpg"]}
