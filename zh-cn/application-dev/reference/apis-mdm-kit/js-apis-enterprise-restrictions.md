@@ -1339,7 +1339,7 @@ try {
 | SUPER_HUB | 2    | 中转站。当前仅支持手机、平板设备使用，禁用后无法使用中转站功能。若中转站已开启，本次使用不受影响，但关闭后将无法再次使用。 |
 | FINGERPRINT | 3    | 设备指纹认证能力，当前仅支持PC/2in1设备使用。使用时有以下规则：<br/>1. 禁用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](#featurefordevice24)）后，再禁用某用户的设备指纹认证能力，会报策略冲突。<br/>2. 禁用/启用指定用户的设备指纹认证能力后，再禁用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](#featurefordevice24)）时，后者会覆盖前者的策略。此后再启用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](#featurefordevice24)），则所有用户都允许使用设备指纹认证能力。 |
 | PRINT | 4    | 设备打印能力。如果禁用了指定用户的设备打印能力，再启用设备打印能力（[FeatureForDevice.PRINTER](#featurefordevice24)），该用户下的设备打印能力仍然被禁用。 |
-| MTP_CLIENT | 5    | MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。针对文件操作，手机可以拖动到电脑，电脑无法拖动到手机。当已禁用设备MTP客户端能力（[FeatureForDevice.MTP_CLIENT](#featurefordevice24)）时，再禁用某用户MTP客户端写入能力，会报策略冲突。 |
+| MTP_CLIENT | 5    | MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。以手机为例，针对文件操作，手机可以拖动到电脑，电脑无法拖动到手机。当已禁用设备MTP客户端能力（[FeatureForDevice.MTP_CLIENT](#featurefordevice24)）时，再禁用某用户MTP客户端写入能力，会报策略冲突。 |
 | USB_STORAGE_DEVICE_WRITE | 6    | USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<!--RP5--><!--RP5End--><br/>以下三种情况再禁用某用户USB存储设备写入能力，会报策略冲突。<br/>1）已禁用设备USB能力（[FeatureForDevice.USB](#featurefordevice24)）。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了存储类型的USB设备禁用。 |
 | DISK_RECOVERY_KEY | 7    | 恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。 |
 | SUDO | 8    | superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。 |
