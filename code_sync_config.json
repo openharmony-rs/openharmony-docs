@@ -66813,6 +66813,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/openCustomDialogWithSystemMaterial.ets",
+				"functions":[
+					{
+						"end_line":89,
+						"name":"open_custom_dialog_with_system_material_set_material",
+						"start_line":56
+					}
+				]
 			}
 		]
 	},
