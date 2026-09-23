@@ -52,7 +52,7 @@ ohos-window 是 OpenHarmony 提供的窗口管理命令行工具，用于操控�
   "status": "failed",
   "errCode": "ERR_INVALID_INPUT",
   "errMsg": "Invalid input parameters. The passed parameters are invalid.",
-  "suggestion": "Check the passed parameters and ensure they are valid.\n"
+  "suggestion": "Check the passed parameters and ensure they are valid."
 }
 ```
 
