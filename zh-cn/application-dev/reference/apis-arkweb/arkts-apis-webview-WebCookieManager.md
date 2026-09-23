@@ -1531,9 +1531,9 @@ static setLazyInitializeWebEngine(lazy: boolean): void
 >
 > - 该接口是全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。
 > 
-> - 该接口仅适用于调用后会初始化CookieManager的接口，比如[WebCookieManager](#arkts-apis-webview-WebCookieManager.md)的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
+> - 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
 >
-> - 从API版本26.0.1开始，调用本接口设置为true后，[WebCookieManager](#arkts-apis-webview-WebCookieManager.md)的接口支持在异步线程使用。
+> - 从API版本26.0.1开始，调用本接口设置为true后，WebCookieManager的接口支持在异步线程使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
