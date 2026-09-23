@@ -1,4 +1,4 @@
-# AutoStartupInfo (系统接口)
+# AutoStartupInfo (开机自启应用组件信息)(系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025-->
