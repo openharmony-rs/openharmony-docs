@@ -1057,7 +1057,7 @@ VM内存信息。
 | -------------------| ------- |----|----| ----------------------------------- |
 | threadId           | number  | 否  | 否  | 线程号。      |
 | cpuUsage           | number  | 否  | 否  | 线程CPU使用率。 |
-| threadName           | string  | 否  | 是  | 线程名。<br>**起始版本**：26.1.0 |
+| threadName           | string  | 否  | 是  | 线程名。<br>**起始版本**：26.0.1 |
 
 ## tags<sup>12+</sup>
 
@@ -1757,9 +1757,9 @@ getAppRunningUniqueId(): string
 
 获取应用程序的运行唯一标识符。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 

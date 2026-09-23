@@ -12,7 +12,7 @@ typedef struct OH_LowPowerAudioSink OH_LowPowerAudioSink
 
 ## Overview
 
-The struct describes the declaration for the LowPowerAudioSink.
+**OH_LowPowerAudioSink** is a data structure used in low-power audio output scenarios. You can use this structure to implement the low-power audio output function.
 
 **Since**: 20
 

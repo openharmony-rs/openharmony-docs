@@ -2302,7 +2302,7 @@ setAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityNa
 **示例：**
 
 ```ts
-import { applicationManager, common } from '@kit.MDMKit';
+import { applicationManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -2366,7 +2366,7 @@ isAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityNam
 **示例：**
 
 ```ts
-import { applicationManager, common } from '@kit.MDMKit';
+import { applicationManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -2431,7 +2431,7 @@ isAbilityDisabled(admin: Want | null, bundleName: string, accountId: number, abi
 **示例：**
 
 ```ts
-import { applicationManager, common } from '@kit.MDMKit';
+import { applicationManager } from '@kit.MDMKit';
 
 try {
   // 需根据实际情况进行替换
@@ -3275,7 +3275,7 @@ Kiosk模式的特征。
 
 | 名称         | 值   | 说明  |
 | ----------- | ------ |------ |
-| COLLABORATION_SERVICE  | 0 | 协同业务。允许使用协同业务的应用，可以通过使用[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)中的API或[跨设备连接UIAbility开发指南](../../distributedservice/abilityconnectmanager-guidelines.md)中的方式，跨设备拉起其他应用的页面并向其传输数据。 |
+| COLLABORATION_SERVICE  | 0 | 协同业务。允许使用协同业务的应用，可以通过使用[UIAbilityContext (UIAbility上下文)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)中的API或[跨设备连接UIAbility开发指南](../../distributedservice/abilityconnectmanager-guidelines.md)中的方式，跨设备拉起其他应用的页面并向其传输数据。 |
 
 ## WindowState
 

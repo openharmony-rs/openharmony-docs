@@ -32,7 +32,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
+| context | [UIAbilityContext (UIAbility上下文)](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
 
 **返回值：**
 
@@ -88,7 +88,7 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
+| context | [UIAbilityContext (UIAbility上下文)](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
 
 **返回值：**
 

@@ -1,4 +1,4 @@
-# WorkSchedulerExtensionContext (System API)
+# WorkSchedulerExtensionContext (Work Scheduler Callback Context) (System API)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -6,11 +6,11 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=2926e8b0a22c06ee385f90757b573a71e6cb5894 translatedAt=2026-09-15T13:59:29.490Z pushedAt=2026-09-17T09:13:29.721Z -->
+<!-- md-trans-meta sourceCommit=298e4d5de4139f6963e24584b03fa18002046fd4 translatedAt=2026-09-22T01:19:34.566Z pushedAt=2026-09-22T08:35:28.354Z -->
 
 The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides a context environment for the **WorkSchedulerExtensionAbility**. This module provides the context for deferred task scheduling and allows you to start or stop the **ServiceExtensionAbility** when a task is started or stopped.
 
-This module directly serves as the context for **WorkSchedulerExtension** and provides the capability to access resources specific to **WorkSchedulerExtensionAbility**.
+WorkSchedulerExtensionContext can directly serve as the context for WorkSchedulerExtension and provides the capability to access resources specific to **WorkSchedulerExtensionAbility**.
 
 > **NOTE**
 > 
@@ -19,6 +19,14 @@ This module directly serves as the context for **WorkSchedulerExtension** and pr
 > - The APIs of this module can be used only in the stage model.
 >
 > - The APIs provided by this module are system APIs.
+>
+> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [WorkSchedulerExtensionContext (Work Scheduler Callback Context) (System API)](js-apis-WorkSchedulerExtensionContext.md).
+
+## Modules to Import
+
+```ts
+import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';  
+```
 
 ## How to Use
 
@@ -28,9 +36,9 @@ Obtain the context through a **WorkSchedulerExtensionAbility** child class insta
 import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-    onWorkStart(workInfo: workScheduler.WorkInfo) {
-        let workSchedulerExtensionContext = this.context; // Obtain the WorkSchedulerExtensionContext
-    }
+  onWorkStart(workInfo: workScheduler.WorkInfo) {
+    let workSchedulerExtensionContext = this.context; // Obtain the WorkSchedulerExtensionContext
+  }
 }
 ```
 
@@ -58,7 +66,7 @@ Starts the **ServiceExtensionAbility**. This API is used to start the associated
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
-| ID| Error Message|
+| Error Code ID| Error Message|
 | ------- | -------- |
 | 201 | The application does not have permission to call the interface. |
 | 202 | The application is not system-app, can not use system-api. |
@@ -90,10 +98,10 @@ let want : Want = {
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStart(workInfo: workScheduler.WorkInfo) {
     console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
-      // Start the corresponding service.
+      // Start the corresponding Service.
       this.context.startServiceExtensionAbility(want).then(() => {
         console.info('succeeded in starting ServiceExtensionAbility.');
-      }).catch ((err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         console.error(`failed to start ServiceExtensionAbility. Code: ${err.code}, message: ${err.message}`);
       });
   }

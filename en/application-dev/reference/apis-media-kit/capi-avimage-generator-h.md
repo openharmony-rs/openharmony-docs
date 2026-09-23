@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=bea8fb0022cefc82abde107c0df33efa9455c886 translatedAt=2026-09-15T15:44:10.760Z pushedAt=2026-09-22T06:09:01.387Z -->
 
 ## Overview
 
@@ -62,7 +63,7 @@ Creates an OH_AVImageGenerator instance, which is used to generate video frames 
 ### OH_AVImageGenerator_SetFDSource()
 
 ```c
-OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator,int32_t fd, int64_t offset, int64_t size)
+OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int32_t fd, int64_t offset, int64_t size)
 ```
 
 **Description**
@@ -92,7 +93,7 @@ Sets a data source based on the media file descriptor.
 ### OH_AVImageGenerator_FetchFrameByTime()
 
 ```c
-OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator,int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)
+OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator, int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)
 ```
 
 **Description**
@@ -112,7 +113,7 @@ This function must be called after [OH_AVImageGenerator_SetFDSource](#oh_avimage
 | -- | -- |
 | [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* generator | Pointer to the OH_AVImageGenerator instance.|
 | int64_t timeUs | Time point of the video frame to be extracted in the video, in μs.|
-| [OH_AVImageGenerator_QueryOptions](capi-avimage-generator-base-h.md#oh_avimagegenerator_queryoptions) options | Mappings between the given time points and video frames.|
+| [OH_AVImageGenerator_QueryOptions](capi-avimage-generator-base-h.md#oh_avimagegenerator_queryoptions) options | Options that specify how to search for video frames based on the given time points. |
 | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)** pixelMap | Double pointer to the video frame object obtained.|
 
 **Return value**
@@ -147,3 +148,5 @@ Releases the resources used by the OH_AVImageGenerator instance and destroys the
 | Type| Description|
 | -- | -- |
 | [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.|
+
+

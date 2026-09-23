@@ -287,7 +287,7 @@ struct PreImeEventExample {
         .height('40vp')
         .border({ radius: '20vp' })
         .onKeyPreIme((event: KeyEvent) => {
-          // 使用方向左键不生效
+          // 使方向左键失效
           if (event.keyCode === KeyCode.KEYCODE_DPAD_LEFT) {
             return true;
           }

@@ -11,15 +11,15 @@
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 3800001 Input Service Error
+## 3800001 Multimodal input internal error
 
 **Error Message**
 
-Input service exception.
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
 
 **Description**
 
-This error code is generated if an internal error occurs in the input service when an input event injection API is called.
+Internal error of the multimodal input service.
 
 **Possible Causes**
 
@@ -36,7 +36,7 @@ Try again later. If the fault persists, check the system resource usage.
 
 **Error Message**
 
-Status error, which indicates different situations in different APIs and scenarios.
+Status error. The specific scenario varies by interface and context.
 
 **Description**
 
