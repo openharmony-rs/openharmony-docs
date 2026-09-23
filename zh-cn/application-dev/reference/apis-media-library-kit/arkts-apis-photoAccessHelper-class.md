@@ -60,7 +60,7 @@
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| isEditSupported<sup>11+</sup>       | boolean | 否   | 是 | 是否支持编辑照片，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：**  从API版本26.0.1开始，select方法支持Car设备，但isEditSupported属性不支持Car设备，所以在Car设备上配置本属性不会生效。     |
+| isEditSupported<sup>11+</sup>       | boolean | 否   | 是 | 是否支持编辑照片，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 从API版本26.0.1开始，select方法支持Car设备，但isEditSupported属性不支持Car设备，所以在Car设备上配置本属性不会生效。     |
 | isOriginalSupported<sup>12+</sup>       | boolean | 否   | 是 | 是否显示选择原图按钮，true表示显示，false表示不显示，默认为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | subWindowName<sup>12+</sup>       | string | 否   | 是 | 子窗口名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | 否   | 是 | 完成按钮显示的内容。不配置该参数时，使用系统默认按钮文本。<br>完成按钮指在界面右下方，用户点击表示图片选择已完成的按钮。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。     |
