@@ -38,7 +38,7 @@ Function调用的可选参数。包含Function调用时的应用上下文信息�
 
 | 名称       | 类型 | 必填 | 说明 |
 | ---------- | ---- | --- | ------------------ |
-| context | [Context](js-apis-inner-application-context.md) | 否 | 执行Function调用时的应用上下文信息。<br>**说明**：目前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) |
+| context | [Context](js-apis-inner-application-context.md) | 否 | 执行Function调用时的应用上下文信息。<br>**说明**：目前仅支持[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md) |
 
 ## InvokeResult
 
@@ -80,7 +80,7 @@ queryFunctions(): Promise\<Array\<FunctionInfo>>
 
 | 类型                               | 说明                       |
 | ---------------------------------- | -------------------------- |
-| Promise\<Array\<[FunctionInfo](js-apis-inner-application-FunctionInfo-sys.md#functioninfo)>> | Promise对象，返回可用Function的信息列表，包含命名空间、名称、版本、描述、输入输出模式等。 |
+| Promise\<Array\<[FunctionInfo (Function信息)](js-apis-inner-application-FunctionInfo-sys.md#functioninfo)>> | Promise对象，返回可用Function的信息列表，包含命名空间、名称、版本、描述、输入输出模式等。 |
 
 **错误码：**
 

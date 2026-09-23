@@ -223,7 +223,7 @@ saveAppState(context?: UIAbilityContext): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| context | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)| 否 | 需要保存状态的UIAbility所对应的context。|
+| context | [UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)| 否 | 需要保存状态的UIAbility所对应的context。|
 
 **返回值：**
 
