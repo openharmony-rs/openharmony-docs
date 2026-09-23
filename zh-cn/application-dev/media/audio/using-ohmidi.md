@@ -521,7 +521,7 @@ static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
 
 构造[OH_MIDIEvent](../../reference/apis-audio-kit/capi-ohmidi-oh-midievent.md)事件数组，通过[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送MIDI消息。
 
-<!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
+<!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value SendMIDI(napi_env env, napi_callback_info info)
@@ -560,14 +560,8 @@ static napi_value SendMIDI(napi_env env, napi_callback_info info)
 
     uint32_t eventsWritten = 0;
     OH_MIDIStatusCode status = OH_MIDIDevice_Send(it->second, portIndex, events.data(), eventCount, &eventsWritten);
-    napi_create_object(env, &result);
-    napi_value statusValue;
-    napi_create_int32(env, static_cast<int32_t>(status), &statusValue);
-    napi_set_named_property(env, result, "status", statusValue);
-    napi_value writtenValue;
-    napi_create_uint32(env, eventsWritten, &writtenValue);
-    napi_set_named_property(env, result, "eventsWritten", writtenValue);
-    return result;
+    // ...
+}
 ```
 
 **UMP格式说明**
