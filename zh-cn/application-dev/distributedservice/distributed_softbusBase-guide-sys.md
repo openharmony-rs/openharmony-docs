@@ -80,8 +80,6 @@
 - 扫描端调用 startPerceptionScan() 启动扫描，调用 getPerceptionDeviceList() 获取已发现设备。
 - 不再使用时分别调用 stopPerceptionAdv() / stopPerceptionScan() 停止。
 
-> 下列各步骤中 \<!-- @\[id\](url) --\> 标签后的代码块与本仓 [DistributedSoftbusBase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) 的 `Index.ets` 源码逐字同源，由门禁 DocCodeCheck 校验；片段摘自完整 sample，`this.buildCustomData()` 等上下文见该源文件。
-
 ### 广播端开发指导
 
 **1. 导入所需的模块**（完整工程还需导入 `BusinessError`、`Logger` 等，见 sample）。
