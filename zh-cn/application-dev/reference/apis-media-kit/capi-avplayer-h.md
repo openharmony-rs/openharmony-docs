@@ -37,7 +37,7 @@ AVPlayer是音视频播放组件，提供完整的播放控制和高级功能（
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef void (\*Player_MediaKeySystemInfoCallback)(OH_AVPlayer \*player, DRM_MediaKeySystemInfo\* mediaKeySystemInfo)](#player_mediakeysysteminfocallback) | Player_MediaKeySystemInfoCallback | 播放器DRM信息更新时调用。 |
-| [OH_AVPlayer *OH_AVPlayer_Create(void)](#oh_avplayer_create) | - | 如某些设备可能仅支持创建较少的播放器实例，建议通过相关系统参数或芯片规格文档查询具体限制。 |
+| [OH_AVPlayer *OH_AVPlayer_Create(void)](#oh_avplayer_create) | - | 创建播放器。推荐单个应用创建的音视频播放器实例限制总数，如某些设备可能仅支持创建较少的播放器实例，建议通过相关系统参数或芯片规格文档查询具体限制。 |
 | [OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_seturlsource) | - | 设置播放器的播放源。对应的源可以是HTTP URL或HTTPS URL。 |
 | [OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_setfdsource) | - | 设置播放器的媒体文件描述符来源。 |
 | [OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer \*player, OH_AVDataSourceExt\* datasrc, void* userData)](#oh_avplayer_setdatasource) | - | 设置播放器的媒体源，该媒体源的数据由应用程序提供。 |
@@ -78,7 +78,7 @@ AVPlayer是音视频播放组件，提供完整的播放控制和高级功能（
 | [OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySession *mediaKeySession, bool secureVideoPath)](#oh_avplayer_setdecryptionconfig) | - | 设置解密信息。适用于DRM加密媒体内容的场景，如播放加密视频、播放付费内容、播放受版权保护的媒体资源等。 |
 | [OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer *player, OH_AVPlayerOnInfoCallback callback, void *userData)](#oh_avplayer_setoninfocallback) | - | 设置播放器消息回调监听函数。 |
 | [OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnErrorCallback callback, void *userData)](#oh_avplayer_setonerrorcallback) | - | 设置播放器错误回调监听函数。 |
-| [OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)](#oh_avplayer_getmediadescription) | - | 获取播放器媒体源信息。设置完播放资源并且播放处于initialized/prepared/playing/paused/completed/stopped状态，可调用该接口。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放，应调用OH_AVFormat_Destroy接口释放。 |
+| [OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)](#oh_avplayer_getmediadescription) | - | 获取播放器媒体源信息。设置完播放资源并且播放处于initialized/prepared/playing/paused/completed/stopped状态，可调用该接口。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。适用于媒体信息显示、播放详情查看、媒体元数据获取等场景。 |
 | [OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_addfdsubtitlesource) | - | 将文件描述符字幕资源添加到播放器。目前，外挂字幕必须在AVPlayer设置完视频资源的fdSrc之后再设置。 |
 | [OH_AVErrCode OH_AVPlayer_AddUrlSubtitleSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_addurlsubtitlesource) | - | 将URL字幕资源添加到播放器。外挂字幕必须在AVPlayer设置完URL之后再设置。 |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackRange(OH_AVPlayer *player, int32_t mSecondsStart, int32_t mSecondsEnd, bool closestRange)](#oh_avplayer_setplaybackrange) | - | 设置播放起始位置和结束位置。仅播放指定范围内的内容。可在初始化、已准备、暂停、停止或完成状态下调用。 |
@@ -147,7 +147,7 @@ OH_AVPlayer *OH_AVPlayer_Create(void)
 
 **描述**
 
-如某些设备可能仅支持创建较少的播放器实例，建议通过相关系统参数或芯片规格文档查询具体限制。
+创建播放器。推荐单个应用创建的音视频播放器实例限制总数，如某些设备可能仅支持创建较少的播放器实例，建议通过相关系统参数或芯片规格文档查询具体限制。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -205,7 +205,7 @@ OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t of
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t fd | 媒体源的文件描述符。必须为有效的文件描述符，即大于等于0，可通过open()等系统方法调用获取。 |
+| int32_t fd | 媒体源的文件描述符。必须为有效的文件描述符。 |
 | int64_t offset | 媒体源在文件描述符中的偏移量，单位为字节（Byte）。取值范围[0, 文件总大小)，必须小于文件总大小，从文件开头读取时可设为0。 |
 | int64_t size | 表示媒体源的大小，单位为字节（Byte）。取值范围(0, 文件总大小 - offset]，必须大于0且不能超过文件剩余大小。 |
 
@@ -382,7 +382,7 @@ OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)
 
 异步释放播放器资源。<br> 异步释放可以提升性能，但不能确保播放画面的SurfaceBuffer已释放。调用者需要确保播放画面窗口的生命周期安全。适用于退出播放页面、销毁播放器实例等需要快速释放资源的场景。
 
-差异说明：[OH_AVPlayer_ReleaseSync](#oh_avplayer_releasesync)也用于释放播放器资源，但采用同步方式，会阻塞等待SurfaceBuffer释放完成。本方法适合需要快速释放且能自行管理窗口生命周期的场景；ReleaseSync适合需要确保资源完全释放的场景，但耗时较长。
+差异说明：本方法适合需要快速释放且能自行管理窗口生命周期的场景。[OH_AVPlayer_ReleaseSync](#oh_avplayer_releasesync)也用于释放播放器资源，但采用同步方式，会阻塞等待SurfaceBuffer释放完成，适合需要确保资源完全释放的场景，耗时较长。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1325,7 +1325,7 @@ OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, in
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针，需在通过OH_AVPlayer_SetFDSource设置完视频资源后再添加字幕。 |
 | int32_t fd | 字幕源的文件描述符，必须为有效的文件描述符（大于等于0），可通过open()等系统调用获取。 |
-| int64_t offset | 文件描述符中媒体源的偏移量，单位为字节。取值范围[0, 文件总大小)，从文件开头读取时可设为0。 |
+| int64_t offset | 文件描述符中媒体源的偏移量，单位为字节（Byte）。取值范围[0, 文件总大小)，从文件开头读取时可设为0。 |
 | int64_t size | 媒体源的大小，单位为字节（Byte），用于指定从文件描述符中读取的媒体数据长度。取值范围(0, 文件总大小 - offset]，必须大于0。 |
 
 **返回：**
