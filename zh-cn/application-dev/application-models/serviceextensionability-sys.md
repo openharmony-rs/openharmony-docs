@@ -645,7 +645,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
   export default class ServiceExtImpl extends IdlServiceExtStub {
     processData(data: number, callback: ProcessDataCallback): void {
       // 开发者自行实现业务逻辑
-      hilog.info(DOMAIN_NUMBER, TAG, `processData: ${data}`); 
+      hilog.info(DOMAIN_NUMBER, TAG, `processData: ${data}`);
       let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();
       let accessManager = abilityAccessCtrl.createAtManager();
       // 所校验的具体权限由开发者自行选择，此处ohos.permission.GET_BUNDLE_INFO_PRIVILEGED只作为示例
