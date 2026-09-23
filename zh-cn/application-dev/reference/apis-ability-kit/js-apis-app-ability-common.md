@@ -33,7 +33,7 @@ type UIAbilityContext = _UIAbilityContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).default | UIAbility组件上下文。 |
+| [_UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md).default | UIAbility组件上下文。 |
 
 ## AbilityStageContext
 
@@ -350,7 +350,7 @@ type LiveFormExtensionContext = _LiveFormExtensionContext.default
 
 type AgentCard = _AgentCard
 
-[AgentCard](../apis-ability-kit/js-apis-inner-application-AgentCard.md)相当于Agent(智能体)的"名片"，用于描述Agent的能力和技能，由开发者在Agent的配置文件agent_config.json中配置。
+[AgentCard (Agent卡片)](../apis-ability-kit/js-apis-inner-application-AgentCard.md)相当于Agent(智能体)的"名片"，用于描述Agent的能力和技能，由开发者在Agent的配置文件agent_config.json中配置。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -360,7 +360,7 @@ type AgentCard = _AgentCard
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AgentCard](../apis-ability-kit/js-apis-inner-application-AgentCard.md) | Agent(智能体)的"名片"，用于描述Agent的能力和技能。 |
+| [_AgentCard (Agent卡片)](../apis-ability-kit/js-apis-inner-application-AgentCard.md) | Agent(智能体)的"名片"，用于描述Agent的能力和技能。 |
 
 ## AgentProvider<sup>24+</sup>
 

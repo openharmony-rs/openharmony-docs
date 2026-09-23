@@ -1,12 +1,13 @@
 # Fitting In the Page Content Layout
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc-->
-<!--Designer: @LongLie-->
+<!--Owner: @sinat_22543221-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=e2fe1cbbd7c46a501650bcdaabcac02edf6b0694 translatedAt=2026-09-21T02:11:12.772Z pushedAt=2026-09-21T12:32:49.295Z -->
 
-When **layoutMode(WebLayoutMode.FIT_CONTENT)** is used, the size of the **Web** component can automatically fit in the page content.
+When using the adaptive page content layout mode of the **Web** component size, [layoutMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)([WebLayoutMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#weblayoutmode11).FIT_CONTENT), the size of the **Web** component can adapt to the page content.
 
 <!--RP1--><!--RP1End-->
 
@@ -35,13 +36,13 @@ As shown in Figure 3, the height of the **Web** component automatically adapts t
 
 ## Specifications and Constraints
 
-1. Set the [rendering mode](web-render-mode.md) to [synchronous](web-render-mode.md#synchronous-rendering-mode) to avoid exceptions (white screen and layout errors) caused by the excessive component size.
-2. Disable [overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11). When the overscroll mode is enabled and a user scrolls to the edge of a web page, the web page is displayed with a spring animation, which conflicts with the rebound effect of the **Scroll** component, affecting user experience.
-3. Set [keyboardAvoidMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12) to **RESIZE_CONTENT** to disable this mode.
-4. Do not support page zooming.
-5. Do not support using the **height** attribute of the **Web** component to change the component height.
-6. Support only component height fitting in the page content, but not width fitting.
-7. Do not support the waterfall page.
+1. You are advised to set the [rendering mode](web-render-mode.md) to [synchronous](web-render-mode.md#synchronous-rendering-mode) to avoid exceptions (white screen and layout errors) caused by the excessive component size.
+2. You are advised to disable [overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11). When the overscroll mode is enabled and a user scrolls to the edge of a web page, the **Web** component bounces back with an elastic animation, which conflicts with the rebound of the **Scroll** component and affects the experience.
+3. When [keyboardAvoidMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12) is set to `RESIZE_CONTENT`, this avoidance mode does not take effect.
+4. Page gesture zooming is not supported.
+5. Using the **height** attribute of the **Web** component to change the component height is not supported.
+6. Only the component height can adapt to the page content. Adaptive width is not supported.
+7. The waterfall page is not supported.
 
 ## Sample Code
 
@@ -86,7 +87,7 @@ struct WebHeightPage {
 The code for the **fit_content.html** page is as follows:
 
 ```html
-<!--fit_content.html-->
+<!-- fit_content.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,12 +101,12 @@ The code for the **fit_content.html** page is as follows:
         <p>ArkWeb provides Web components to display web page content in applications. The common application scenarios are as follows:</p>
         <ul>
             <li><p>
-                Web page integration: Applications can use Web components to embed web page content to reduce development costs and improve development and operation efficiency.</p> 
+                Web page integration: Applications can use Web components to embed web page content to reduce development costs and improve development and operation efficiency.</p>
             </li>
             <li><p>
-                Web browsing: Browser applications can use Web components to open third-party web pages, browse web pages in traceless mode, and set advertisement blocking.</p>
+                Web browsing: Browser applications can use Web components to open third-party web pages, browse web pages in incognito mode, and set ad blocking.</p>
             </li>
-            <li><p>Applet: Host applications of the applet type can use web components to render applet pages. </p></li>
+            <li><p>Mini-program: Host applications of the mini-program type can use web components to render mini-program pages. </p></li>
         </ul>
     </div>
     <div><h2 id="Capabilities">Capabilities</h2>
@@ -119,7 +120,7 @@ The code for the **fit_content.html** page is as follows:
                 Interaction with the application UI: The text selection menu, context menu, and file upload page can be customized to interact with the application UI. </p>
             </li>
             <li><p>Applications can interact with web pages through JavaScriptProxy. </p></li>
-            <li><p>Security and privacy: Incognito browsing mode, advertisement blocking, and Advanced Security mode. </p></li>
+            <li><p>Security and privacy: Incognito browsing mode, ad blocking, and Secure Shield mode. </p></li>
             <li><p>Maintenance and debugging capability: DevTools debugging and Crashpad (used to collect Web component crash information).
             </p></li>
             <li><p>
@@ -144,7 +145,7 @@ The code for the **fit_content.html** page is as follows:
 **Possible Causes**
 
 - The height of the internal HTML5 page exceeds 7680 px (physical pixel), but the rendering mode is not set to [synchronous rendering mode](web-render-mode.md#synchronous-rendering-mode).
-- The **metaviewport** attribute is not configured.
+- The [metaviewport](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12) attribute is not configured.
 
 **Solution**
 
@@ -158,13 +159,13 @@ The code for the **fit_content.html** page is as follows:
 
 The height of the DOM node of the core content is 0.
 
-If the CSS **height: \<number> vh** is conflict with the **Web** component size adaptation page layout, check whether **height: \<number> vh** is the first CSS height style from the body node. For example, in the following structure, the height of the DOM node whose ID is 2 is 0.
+There is a calculation conflict between the CSS style `height: <number> vh` and the adaptive page layout of the **Web** component size. Check whether `height: <number> vh` is the first height CSS style within the body node. In the following structure, the height of the DOM node with the ID 2 will be 0.
 
 ```html
 <body>
   <div id = "1">
-    <div id = "2" style = "height: 100vh">Child DOM</div>
-    <div id = "3" style = "height: 20px">Child DOM</div>
+    <div id = "2" style = "height: 100vh">child DOM</div>
+    <div id = "3" style = "height: 20px">child DOM</div>
   </div>
 </body>
 ```
@@ -187,8 +188,10 @@ If the CSS **height: \<number> vh** is conflict with the **Web** component size 
   ```html
   <body>
     <div id = "1">
-      <div id = "2" style = "height: 20px">Child DOM</div>
-      <div id = "3" style = "height: 20px">Child DOM</div>
+      <div id = "2" style = "height: 20px">child DOM</div>
+      <div id = "3" style = "height: 20px">child DOM</div>
     </div>
   </body>
   ```
+
+

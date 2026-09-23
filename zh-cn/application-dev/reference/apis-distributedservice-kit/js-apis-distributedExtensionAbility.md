@@ -161,8 +161,8 @@ DistributedExtensionAbility不支持以下模块的引用。
 | Ability Kit（程序框架服务） | [@ohos.ability.featureAbility (FeatureAbility模块)](../apis-ability-kit/js-apis-ability-featureAbility.md)  |
 | Ability Kit（程序框架服务） | [@ohos.ability.particleAbility (ParticleAbility模块)](../apis-ability-kit/js-apis-ability-particleAbility.md)  |
 |<!--DelRow-->Ability Kit（程序框架服务） | [ServiceExtensionContext (系统接口)](../apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md)  |
-|<!--DelRow-->Ability Kit（程序框架服务） | [UIAbilityContext (系统接口)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md)  |
-| Ability Kit（程序框架服务） | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)  |
+|<!--DelRow-->Ability Kit（程序框架服务） | [UIAbilityContext (UIAbility上下文)(系统接口)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md)  |
+| Ability Kit（程序框架服务） | [UIAbilityContext (UIAbility上下文)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)  |
 | Ability Kit（程序框架服务） | [@ohos.continuation.continuationManager (流转/协同管理)](../apis-ability-kit/js-apis-continuation-continuationManager.md)  |
 |<!--DelRow-->Accessibility Kit（无障碍服务）| [@ohos.accessibility.config (系统辅助功能配置)(系统接口)](../apis-accessibility-kit/js-apis-accessibility-config-sys.md)|
 | ArkUI（方舟UI框架）  | [@ohos.prompt (弹窗)](../apis-arkui/js-apis-prompt.md)  |

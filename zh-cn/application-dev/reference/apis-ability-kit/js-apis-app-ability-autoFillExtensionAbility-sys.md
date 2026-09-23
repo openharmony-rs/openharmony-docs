@@ -33,7 +33,7 @@ import { AutoFillExtensionAbility } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [AutoFillExtensionContext](js-apis-inner-application-autoFillExtensionContext-sys.md)  | 否 | 否 | AutoFillExtension的上下文环境，继承自ExtensionContext。 |
+| context | [AutoFillExtensionContext (自动填充扩展上下文)](js-apis-inner-application-autoFillExtensionContext-sys.md)  | 否 | 否 | AutoFillExtension的上下文环境，继承自ExtensionContext。 |
 
 
 ### onCreate
