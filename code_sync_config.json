@@ -35235,6 +35235,11 @@
 						"end_line":455,
 						"name":"off_trackingStateChange",
 						"start_line":449
+					},
+					{
+						"end_line":182,
+						"name":"is_control_supported",
+						"start_line":179
 					}
 				]
 			},
