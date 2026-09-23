@@ -127,7 +127,7 @@ SQL语句中的函数，如下所示：
 
 更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
-1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。可通过[isVectorSupported()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoreisvectorsupported18)接口判断。示例代码如下：
+1. 调用[isVectorSupported()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoreisvectorsupported18)接口判断当前系统是否支持向量数据库，返回false表示当前系统不具备向量数据库能力。示例代码如下：
 
    <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
