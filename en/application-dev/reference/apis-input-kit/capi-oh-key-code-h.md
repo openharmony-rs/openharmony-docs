@@ -153,7 +153,7 @@ Enumerates the key codes.
 | KEYCODE_MEDIA_PLAY = 2085 | Media: Play key|
 | KEYCODE_MEDIA_PAUSE = 2086 | Media: Pause key|
 | KEYCODE_MEDIA_CLOSE = 2087 | Media: Close key|
-| KEYCODE_MEDIA_EJECT = 2088 | Media: Reject key|
+| KEYCODE_MEDIA_EJECT = 2088 | Media: Eject key|
 | KEYCODE_MEDIA_RECORD = 2089 | Media: Record key|
 | KEYCODE_F1 = 2090 | F1 key|
 | KEYCODE_F2 = 2091 | F2 key|
@@ -333,8 +333,8 @@ Enumerates the key codes.
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729 | Keyboard Input Assist_Next, used to switch to the next input method in the input group.<br/>**Since:** 22 |
 | KEYCODE_KBDINPUTASSIST_ACCEPT = 2730 | Keyboard Input-assisted Accept key<br>**Since**: 22|
 | KEYCODE_KBDINPUTASSIST_CANCEL = 2731 | Keyboard Input-assisted Cancel key<br>**Since**: 22|
-| KEYCODE_MOUSE_ASSISTANT = 2732 | Mouse AI Assistant key<br>**Since**: 24|
-| KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | Mouse Smart Selection key<br>**Since**: 24|
+| KEYCODE_MOUSE_ASSISTANT = 2732 | Mouse AI Assistant key<br>**Since**: 26.0.0|
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | Mouse Smart Selection key<br>**Since**: 26.0.0|
 | KEYCODE_AOD_SINGLE_CLICK = 2740 | Phone touchscreen single-click event, used in Always-On Display state.<br/>**Since:** 26.0.0 |
 | KEYCODE_FRONT = 2800 | Front key, which is used to launch the windshield defogger<br>**Since**: 22|
 | KEYCODE_SETUP = 2801 | Setup key<br>**Since**: 22|
