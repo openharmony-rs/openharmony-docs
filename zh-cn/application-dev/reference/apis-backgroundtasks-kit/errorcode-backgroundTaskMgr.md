@@ -182,7 +182,7 @@ Continuous task storage failed.
 1. 请检查文件/data/service/el1/public/background_task_mgr/running_task。
 2. 系统内部工作异常，请稍候重试，或者重启设备尝试。
 
-## 9800008 该设备类型不支持申请长时任务
+## 9800008 请求的长时任务不支持此设备类型
 
 **错误信息**
 
@@ -190,11 +190,11 @@ The requested continuous task is not supported on this device type.
 
 **错误描述**
 
-该设备类型不支持申请长时任务。
+请求的长时任务不支持此设备类型。
 
 **可能原因**
 
-1. 申请的长时任务类型在当前设备不支持
+1. 请求的长时任务类型在当前设备不支持
 
 **处理步骤**
 
