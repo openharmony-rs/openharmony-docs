@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren--> 
 <!--Tester: @TerryTsao--> 
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:07.963Z pushedAt=2026-07-24T03:23:19.860Z -->
+<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:51:03.264Z pushedAt=2026-09-23T09:44:24.955Z -->
 
 ## Overview
 
@@ -69,7 +69,7 @@ Before API version 19, mixed usage scenarios are subject to relatively strict va
   @Local @Param message: string = 'Hello World'; // Multiple V2 decorators are not allowed to decorate the same variable, resulting in a compilation error
   ```
 
-Except for capability extension decorators such as \@Watch, \@Once, and \@Require, which can be used in conjunction with other decorators, other decorators are not allowed to decorate the same variable.
+  Except for capability extension decorators such as \@Watch, \@Once, and \@Require, which can be used in conjunction with other decorators, other decorators are not allowed to decorate the same variable.
 
 
 ## Using V2 Custom Components in V1
@@ -222,7 +222,7 @@ struct IndexTwo {
 
 ### Passing simple type state variables
 
-When using a V2 component in V1, decorators in V1 components only support decorating simple type data, including: boolean, number, string, null, and undefined. V2 components use \@Param to receive parameters.
+When using a V2 component in V1, decorators in V1 components only support decorating simple type data, including: boolean, number, enum, string, null, and undefined. V2 components use \@Param to receive parameters.
 
 If a Class type or built-in type (Array, Map, Set, Date) decorated with \@State is passed when using a V2 component in V1, a compilation error will occur. In the following example code, the \@State decorator must be removed from the info and set variables. The behavior of \@Prop, \@Link, \@ObjectLink, \@Provide, \@Consume, \@StorageProp, \@StorageLink, \@LocalStorageProp, and \@LocalStorageLink is consistent with \@State.
 
@@ -520,7 +520,7 @@ class InfoOne {
 @Observed
 class MessageInfo1 { // One-level nesting.
   @Track public info: InfoOne; // Avoid unnecessary UI re-rendering of info when messageId changes.
-  @Track public messageId: number; // Avoid unnecessary UI re-rendering of info when messageId changes.
+  @Track public messageId: number; // Prevents changes to info from triggering a cascading refresh of messageId.
 
   constructor(info?: InfoOne, messageId?: number) {
     this.info = info || new InfoOne();

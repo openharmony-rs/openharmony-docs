@@ -5,7 +5,7 @@
 <!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:05:09.774Z pushedAt=2026-07-24T01:13:46.492Z -->
+<!-- md-trans-meta sourceCommit=843d6fa3247ca83eb1fb22363d3e4b77bc027d58 translatedAt=2026-09-21T11:07:14.484Z pushedAt=2026-09-23T08:33:55.425Z -->
 
 In state management V1, [$$](./arkts-two-way-sync.md) is recommended for implementing two-way binding for built-in components.
 
@@ -18,17 +18,17 @@ In state management V2, the **!!** syntax is recommended for unified two-way bin
 
 ## Overview
 
-The `!!` two-way binding syntax is a syntactic sugar that facilitates two-way data binding for developers. It is used to initialize properties decorated by [\@Param](arkts-new-param.md) and events decorated by [\@Event](arkts-new-event.md) in child components. The \@Event method name must be declared as "$" + the \@Param property name. For details, see [Use Scenarios](#use-scenarios).
+The `!!` two-way binding syntax is syntactic sugar that facilitates two-way data binding for developers. It is used to initialize properties decorated by [\@Param](arkts-new-param.md) and events decorated by [\@Event](arkts-new-event.md) in child components. The \@Event method name must be declared as "$" + the \@Param property name. For details, see [Use Scenarios](#when-to-use).
 
 - When **!!** is used, changes in the parent component are synchronized to the child component, and vice versa, achieving two-way synchronization.
 - If **!!** is not used, changes flow only from the parent to the child, which means one-way synchronization.
 
-## Use Scenarios
+## When to Use
 
 ### Two-Way Binding Between Custom Components
 1. In the **Index** component, construct a child **Star** component and use **!!** to enable two-way binding for the **value** attribute. This automatically initializes the child component's **@Param value** and **@Event $value**.
 
-   Two-way binding syntax sugar used with the @Param and @Event decorators.
+   Two-way binding syntax sugar used with the \@Param and \@Event decorators.
 
    <!-- @[ArkUI_Star_binding1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->  
 
@@ -63,7 +63,7 @@ The `!!` two-way binding syntax is a syntactic sugar that facilitates two-way da
           // Use the @Param and @Event syntax to implement two-way binding of customized components.
           Star({ value: this.value, $value: (val: number) => { this.value = val; } })
           // ...
-        // ···
+        // ...
         }
       }
     }
@@ -192,7 +192,7 @@ struct BindMenuInterface {
 
 **Rules of Use**
 
-- Currently, two-way binding with **!!** supports variables of basic types. When such variables are decorated with state management V1 decorators such as [\@State](arkts-state.md), or state management V2 decorators such as [\@Local](arkts-new-local.md), changes in variable values will trigger UI updates.
+- Currently, two-way binding with `!!` supports variables of basic types. When such variables are decorated with state management V1 decorators such as [\@State](arkts-state.md), or state management V2 decorators such as [\@Local](arkts-new-local.md), changes in variable values will trigger UI updates.
 
   | Attribute                                                        | Supported Parameter| Initial API Version|
   | ------------------------------------------------------------ | --------------- | ----------- |
@@ -202,8 +202,8 @@ struct BindMenuInterface {
   | [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputoptions) | text | 18   |
   | [TextArea](../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#textareaoptions) | text | 18   |
   | [Search](../../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#searchoptions18) | value | 18   |
-  | [BindSheet](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet) | isShow | 18   |
-  | [BindContentCover](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover) | isShow | 18   |
+  | [bindSheet](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet) | isShow | 18   |
+  | [bindContentCover](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover) | isShow | 18   |
   | [SideBarContainer](../../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md) | [sideBarWidth](../../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md#sidebarwidth) | 18   |
   | [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | [navBarWidth](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9) | 18   |
   | [Toggle](../../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#toggleoptions18) | isOn | 18   |

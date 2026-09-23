@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:08:00.950Z pushedAt=2026-07-23T11:23:19.381Z -->
+<!-- md-trans-meta sourceCommit=9eafd9142dc2c4ea793bd0803079a8d9e2cf40ce translatedAt=2026-09-21T11:16:13.785Z pushedAt=2026-09-23T09:06:39.831Z -->
 
 To enhance the capability of the state management framework in observing changes to properties within class objects, you can use the [@ObservedV2](../../reference/apis-arkui/arkui-ts/ts-state-management-observedv2.md#observedv2) decorator and the [@Trace](../../reference/apis-arkui/arkui-ts/ts-state-management-trace.md#trace) decorator to decorate classes and properties in classes.
 
@@ -654,6 +654,8 @@ struct Index {
 ```
 
 ![observedv2-sync-8](./figures/observedv2-sync-8.gif)
+
+In inheritance scenarios, do not repeatedly declare a **property** with the same name as the parent class in the subclass; otherwise, it may cause unexpected dependency collection. For details, see [Unexpected Dependency Collection Caused by Same-Name @Trace Properties in Parent and Child Classes in Lazy Loading Scenarios](#unexpected-dependency-collection-caused-by-same-name-trace-properties-in-parent-and-child-classes-in-lazy-loading-scenarios).
 
 ### Decorating Basic Type Arrays with @Trace
 
@@ -1410,3 +1412,90 @@ struct Detail {
 ```
 
 ![observedv2_router_deserialize.gif](./figures/observedv2_router_deserialize.gif)
+
+
+### Unexpected Dependency Collection Caused by Same-Name @Trace Properties in Parent and Child Classes in Lazy Loading Scenarios
+
+When the framework performs [\@Computed](./arkts-new-computed.md) computation, component rendering, or [PersistenceV2](./arkts-new-persistencev2.md) persistence, it collects the dependencies of the state variables accessed during execution. If a parent class and a child class declare a @Trace property with the same name, and the child class is loaded lazily through [lazy import](../../arkts-utils/arkts-lazy-import.md) and happens to be loaded for the first time during the dependency collection process described above, the same-name property in the child class triggers a read of the same-name property in the parent class, thereby collecting the dependency of that same-name property.
+
+Therefore, when the same-name property is modified for the first time, it triggers unexpected \@Computed recomputation, component refresh, or PersistenceV2 persistence writes; subsequent modifications do not continue to trigger this unexpected behavior. It is recommended that you declare the @Trace property only in the parent class and let the child class inherit it directly, rather than declaring it again in the child class. The following uses the \@Computed scenario as an example for illustration.
+
+**Incorrect Usage**
+
+``` TypeScript
+// LazyImportTraceBase.ets
+@ObservedV2
+export class Parent {
+  @Trace value: number = 0;
+}
+```
+
+``` TypeScript
+// LazyImportTraceChild.ets
+import { Parent } from './LazyImportTraceBase';
+
+@ObservedV2
+export class Child extends Parent {
+  @Trace value: number = 0;
+  @Trace value2: number = 0;
+}
+```
+
+``` TypeScript
+// Lazy-load the Child class.
+import lazy { Child } from './LazyImportTraceChild';
+
+@Entry
+@ComponentV2
+struct LazyImportTrace {
+  @Local count: number = 1;
+  child?: Child;
+
+  @Computed
+  get doubleCount(): number {
+    if (!this.child) {
+      // Child is lazy-loaded through lazy import and is first loaded during @Computed initialization.
+      // The parent class and the subclass declare @Trace value with the same name, so the dependency of the current @Computed doubleCount is collected.
+      this.child = new Child();
+    }
+    console.info('execute @Computed doubleCount');
+    // It is expected that @Computed doubleCount is recalculated only when count changes.
+    return this.count * 2;
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Text(`doubleCount ${this.doubleCount}`)
+        .fontSize(20)
+      Button(`Change child value ${this.child?.value}`)
+        .onClick(() => {
+          if (this.child) {
+            this.child.value++;
+          }
+        })
+      Button(`Change count ${this.count}`)
+        .onClick(() => {
+          this.count++;
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+**Correct Usage**
+
+Define `value` uniformly in the parent class, and let the child class inherit the property directly without declaring the same-name @Trace property again. You only need to modify `LazyImportTraceChild.ets` as follows, while keeping the other code unchanged.
+
+``` TypeScript
+import { Parent } from './LazyImportTraceBase';
+
+@ObservedV2
+export class Child extends Parent {
+  // Do not redefine value in the subclass; directly inherit the value property decorated with @Trace from the parent class.
+  @Trace value2: number = 0;
+}
+```
+
+![lazy-import-track.gif](./figures/lazy-import-track.gif)
