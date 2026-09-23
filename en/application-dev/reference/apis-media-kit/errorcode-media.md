@@ -334,7 +334,7 @@ The surface operation failed.
 **Possible Causes**
 
 1. **avPlayer.surfaceId** is called to set the surface when the AVPlayer status is incorrect. As a result, the request for obtaining the input surface fails.
-2. The surface ID is invalid. **XComponent** or other components that can provide the are not correctly initialized, and the generated surface ID is unavailable.
+2. The surface ID is invalid. **XComponent** or other components that can provide the surface are not correctly initialized, and the generated surface ID is unavailable.
 3. The **BufferQueue** configuration of the surface is incorrect. The connection between the consumer (decoder) and the producer (renderer) is not properly established, and the input surface cannot be obtained.
 4. The same surface is bound to multiple players or other components at the same time. As a result, the surface operation fails due to resource competition.
 5. The underlying graphics module or surface management service is abnormal, and an error is returned when the surface-related API is called.
