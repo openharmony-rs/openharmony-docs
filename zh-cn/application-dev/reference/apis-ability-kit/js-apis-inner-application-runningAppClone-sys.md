@@ -1,4 +1,4 @@
-# RunningAppClone (系统接口)
+# RunningAppClone (分身应用运行信息)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-定义分身应用在运行态的结构信息，被[RunningMultiAppInfo](js-apis-inner-application-runningMultiAppInfo-sys.md)所包含。通过该结构可以获取分身应用的索引、UID和进程ID等信息，适用于需要区分和管理分身应用的场景，便于系统级应用进行应用隔离和资源管理。
+定义分身应用在运行态的结构信息，被[RunningMultiAppInfo (多开应用运行信息)](js-apis-inner-application-runningMultiAppInfo-sys.md)所包含。通过该结构可以获取分身应用的索引、UID和进程ID等信息，适用于需要区分和管理分身应用的场景，便于系统级应用进行应用隔离和资源管理。
 
 > **说明：**
 >

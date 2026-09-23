@@ -129,6 +129,8 @@ API version 9-18，使用该接口无需权限；从API version 19开始，需�
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
@@ -149,6 +151,7 @@ API version 9-18，使用该接口无需权限；从API version 19开始，需�
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices. |
 
 **示例：**
 
@@ -174,6 +177,8 @@ API version 9-18，使用该接口无需权限；从API version 19开始，需�
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
@@ -196,6 +201,7 @@ API version 9-18，使用该接口无需权限；从API version 19开始，需�
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam. |
+| 801     | Capability not supported. This API cannot work in car devices. |
 
 **示例：**
 

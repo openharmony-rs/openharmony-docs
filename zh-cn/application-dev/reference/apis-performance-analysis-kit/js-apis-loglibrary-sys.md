@@ -27,6 +27,8 @@ import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**系统接口：** 此接口为系统接口。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -48,6 +50,8 @@ list(logType: string): LogEntry[]
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -115,6 +119,8 @@ copy(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -200,6 +206,8 @@ copy(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**系统接口：** 此接口为系统接口。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -276,6 +284,8 @@ move(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.WRITE_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -361,6 +371,8 @@ move(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**系统接口：** 此接口为系统接口。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -437,6 +449,8 @@ remove(logType: string, logName: string): void
 **需要权限：** ohos.permission.WRITE_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 

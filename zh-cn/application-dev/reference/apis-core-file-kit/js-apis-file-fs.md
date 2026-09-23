@@ -6095,6 +6095,8 @@ ArkTS-Sta: moveFileSync(src: string, dest: string, mode?: int): void
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23

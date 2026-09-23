@@ -1,4 +1,4 @@
-# AbilityFirstFrameStateObserver (系统接口)
+# AbilityFirstFrameStateObserver (首帧绘制状态监听器)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
@@ -40,7 +40,7 @@ Ability首帧绘制完成时触发的回调函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| data | [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | 是 | 表示首帧绘制完成时返回的数据。 |
+| data | [AbilityFirstFrameStateData (首帧绘制状态数据)](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | 是 | 表示首帧绘制完成时返回的数据。 |
 
 **示例**：
 

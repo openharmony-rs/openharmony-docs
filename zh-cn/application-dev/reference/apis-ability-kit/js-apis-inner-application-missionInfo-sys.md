@@ -1,4 +1,4 @@
-# MissionInfo (系统接口)
+# MissionInfo (任务信息)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

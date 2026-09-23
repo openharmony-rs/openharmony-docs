@@ -2129,7 +2129,7 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知弹窗绑定Ability的上下文。 |
+| context | [UIAbilityContext (UIAbility上下文)](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知弹窗绑定Ability的上下文。 |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。当应用通过弹窗获取用户授权成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
@@ -2218,7 +2218,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知弹窗绑定的Ability上下文。 |
+| context | [UIAbilityContext (UIAbility上下文)](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知弹窗绑定的Ability上下文。 |
 
 **返回值：**
 
@@ -2528,7 +2528,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
+| context | [UIAbilityContext (UIAbility上下文)](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
 
 **返回值：**
 
@@ -2622,7 +2622,7 @@ openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<Notifica
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
+| context | [UIAbilityContext (UIAbility上下文)](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
 
 **返回值：**
 
