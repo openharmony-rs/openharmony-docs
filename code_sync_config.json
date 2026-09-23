@@ -897,7 +897,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
 				"functions":[
 					{
-						"end_line":549,
+						"end_line":551,
 						"name":"input_case_input_KeyboardController358",
 						"start_line":387
 					},
