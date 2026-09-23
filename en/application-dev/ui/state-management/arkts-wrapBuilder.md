@@ -1,12 +1,11 @@
 # wrapBuilder: Encapsulating Global @Builder
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=5cbda8a742fe4c75db3800c28ccfc8ffcd9cebc0 translatedAt=2026-06-30T03:38:42.041Z pushedAt=2026-07-01T07:43:29.943Z -->
+<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:54:31.514Z pushedAt=2026-09-23T09:58:54.529Z -->
 
 When multiple global \@Builder functions are used within a single struct to implement different UI effects, code maintenance becomes challenging and the page structure appears cluttered. In this case, you can use [wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md) to encapsulate the global \@Builder.
 
@@ -68,6 +67,8 @@ How to use:
 let builderVar: WrappedBuilder<[string, number]> = wrapBuilder(MyBuilder);
 let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; // Can be placed in an array.
 ```
+
+
 
 ## Constraints
 
@@ -163,11 +164,13 @@ struct IndexItem {
 
 ## Assigning a Value to a Class or API Attribute Using the @Builder Method
 
-Use the **MyBuilder** method decorated with \@Builder as the parameter of **wrapBuilder**, and assign the return value of **wrapBuilder** to the property in the **ChildOptions** API. The property can be transferred to other child components in the form of data.
+Use the \@Builder-decorated method `myBuilder` as the parameter of **wrapBuilder**, and assign the return value of **wrapBuilder** to the property in the `ChildOptions` API. The property can be transferred to other child components in the form of data.
 
-```ts
+<!-- @[wrapbuilder_as_field](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/WrapBuilderAsField.ets) --> 
+
+``` TypeScript
 @Builder
-function MyBuilder(value: string, size: number) {
+function myBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
     .margin(10)
@@ -181,7 +184,7 @@ interface ChildOptions {
 @Component
 struct Index {
   childOptions: ChildOptions = {
-    wrappedBuilder: wrapBuilder(MyBuilder)
+    wrappedBuilder: wrapBuilder(myBuilder)
   };
 
   build() {
@@ -220,7 +223,7 @@ class Tmp {
 @Builder
 function overBuilder(param: Tmp) {
   Column() {
-    Text(`wrapBuildervalue:${param.paramA2}`)
+    Text(`wrapBuilder value: ${param.paramA2}`)
       .fontSize(20)
       .margin(10)
   }
