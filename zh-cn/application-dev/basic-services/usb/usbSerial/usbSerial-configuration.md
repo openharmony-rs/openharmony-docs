@@ -63,7 +63,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    ``` TypeScript
    // 导入serialManager模块
    import { serialManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit'
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { buffer } from '@kit.ArkTS';
    import { JSON } from '@kit.ArkTS';
    ```
@@ -138,13 +138,8 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    // 获取串口配置
    try {
      let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
-     if (attribute === undefined) {
-       console.error('getAttribute usbSerial error, attribute is undefined');
-       this.logInfo_ += '\n[ERROR] getAttribute usbSerial error, attribute is undefined';
-     } else {
-       console.info(`getAttribute usbSerial success, attribute: ${attribute}`);
-       this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
-     }
+     console.info(`getAttribute usbSerial success, attribute: ${JSON.stringify(attribute)}`);
+     this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
    } catch (error) {
      console.error(`getAttribute usbSerial error: ${error}`);
      this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: ' + JSON.stringify(error);
@@ -164,7 +159,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
        stopBits: serialManager.StopBits.STOPBIT_1
      }
      serialManager.setAttribute(portId, attribute);
-     console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
+     console.info(`setAttribute usbSerial success, attribute: ${JSON.stringify(attribute)}`);
      this.logInfo_ += '\n[INFO] setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
    } catch (error) {
      console.error(`setAttribute usbSerial error: ${error}`);
