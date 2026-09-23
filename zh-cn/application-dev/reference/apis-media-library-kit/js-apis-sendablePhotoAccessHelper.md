@@ -108,7 +108,7 @@ getAssets(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;Ph
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid.<br>2. System internal error, failed to create boolean value, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry.<br>3. System internal error, query or IPC returned null, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid.<br>2. System internal error, failed to create boolean value, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry.<br>3. System internal error, query or IPC returned null, please retry. |
 
 **示例：**
 
@@ -172,7 +172,7 @@ getBurstAssets(burstKey: string, options: photoAccessHelper.FetchOptions): Promi
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid.<br>2. System internal error, failed to create boolean value, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry.<br>3. System internal error, query or IPC returned null, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid.<br>2. System internal error, failed to create boolean value, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry.<br>3. System internal error, query or IPC returned null, please retry. |
 
 **示例：**
 
@@ -257,7 +257,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -318,7 +318,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: photoAccessHelper.Fe
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, failed to create boolean value, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry.<br>2. System internal error, album query returned null, possible causes: (1) Database exception; (2) IPC timeout. Please retry.<br>3. System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, failed to create boolean value, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry.<br>2. System internal error, album query returned null, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry.<br>3. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -730,7 +730,7 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Invalid number of parameters, expected 0 to 2 parameters.<br>2. Object is not a valid object.<br>3. Failed to extract callback.<br>4. System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs.<br>5. Failed to query the thumbnail. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Invalid number of parameters, expected 0 to 2 parameters.<br>2. Object is not a valid object.<br>3. Failed to extract callback.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. Failed to query the thumbnail. |
 
 **示例：**
 
@@ -1240,7 +1240,7 @@ getAssets(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;Ph
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid.<br>2. System internal error, failed to create boolean value, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry.<br>3. System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid.<br>2. System internal error, failed to create boolean value, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry.<br>3. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 

@@ -132,7 +132,7 @@ close(): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid argument. Possible causes: <br>1. Parameter count exceeds the limit; 2. The current object is invalid |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -181,7 +181,7 @@ getFirstObject(callback: AsyncCallback&lt;T&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -231,7 +231,7 @@ getFirstObject(): Promise&lt;T&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -278,7 +278,7 @@ getNextObject(callback: AsyncCallback&lt;T&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -333,7 +333,7 @@ getNextObject(): Promise&lt;T&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -381,7 +381,7 @@ getLastObject(callback: AsyncCallback&lt;T&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -431,7 +431,7 @@ getLastObject(): Promise&lt;T&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -477,7 +477,7 @@ getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -533,7 +533,7 @@ getObjectByPosition(index: number): Promise&lt;T&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -582,7 +582,7 @@ getAllObjects(callback: AsyncCallback&lt;Array&lt;T&gt;&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -632,7 +632,7 @@ getAllObjects(): Promise&lt;Array&lt;T&gt;&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes:(1) Database exception; (2) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes:1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 

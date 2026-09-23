@@ -48,17 +48,17 @@ MediaLibrary inner fail.
 4. 数组无效或不是数组类型（Failed to get array length）。
 5. 服务端内部错误（Server returned an invalid argument error）。
 6. 回调处理失败，系统内部错误。可能原因（Callback processing failed, system internal error, possible causes）：
-    - 数据库异常（Database exception）；
-    - 文件系统异常（File system exception）；
-    - IPC 通信超时，请重试（IPC timeout. Please retry and check logs）。
+   - 数据库异常（Database exception）；
+   - 文件系统异常（File system exception）；
+   - IPC通信超时，请重试（IPC timeout. Please retry and check logs）。
 
 7. 数据服务初始化失败。可能原因（Data service initialization failed, possible causes）：
-    - 数据库异常（Database exception）；
-    - IPC 通信超时，请检查 context 是否正确初始化并重试（IPC timeout. Please check if the context is properly initialized and retry）。
+   - 数据库异常（Database exception）；
+   - IPC通信超时，请检查context是否正确初始化并重试（IPC timeout. Please check if the context is properly initialized and retry）。
 8. 系统内部错误。可能原因（System internal error, possible causes）：
-    - 数据库异常（Database exception）；
-    - 文件系统异常（File system exception）；
-    - IPC 通信超时，请重试并检查日志（IPC timeout. Please retry and check logs）。
+   - 数据库异常（Database exception）；
+   - 文件系统异常（File system exception）；
+   - IPC通信超时，请重试并检查日志（IPC timeout. Please retry and check logs）。
 
 **处理步骤**
 
@@ -96,40 +96,40 @@ Invalid parameter.
 **可能原因**
 
 1. 参数不是数组类型（The parameter is not an array）。
-2. indexSet 参数为 undefined（IndexSet is null or undefined）。
+2. indexSet参数为undefined（IndexSet is null or undefined）。
 3. 索引超出对象范围，必须在 [0, count) 范围内（The index is out of range, must be within [0, count)）。
-4. 不支持的结果集类型，必须为有效的 FetchResType 枚举值（The FetchResType is not supported, must be a valid FetchResType enum value）。
+4. 不支持的结果集类型，必须为有效的FetchResType枚举值（The FetchResType is not supported, must be a valid FetchResType enum value）。
 5. 场景参数验证失败（Scenario parameter verification failed）。
 6. 需要一个或两个参数（One or two parameters are required）。
 7. 第一个参数不是对象类型或第二个参数不是函数类型（The first parameter is not an object or the second parameter is not a function）。
 8. 对象不是有效对象（The object is not a valid instance to get asset object）。
-9. PhotoAsset 不是有效的 PhotoAsset 对象（The PhotoAsset is not a valid PhotoAsset object）。
+9. PhotoAsset不是有效的PhotoAsset对象（The PhotoAsset is not a valid PhotoAsset object）。
 10. 检查是否为隐藏或回收资源（Check whether it is a hidden or recycled album）。
 11. 检查是否不是图片或视频类型（Check whether it is not a MEDIA_TYPE_IMAGE or MEDIA_TYPE_VIDEO）。
 12. 普通资源无效（Ordinary assets invalid）。
 13. 注册已达上限（Registration has reached the limit）。
-14. 为 callback 创建引用失败（Failed to create a reference for the callback）。
-15. 同一 callback 已注册过该资源的监听（The listener for this resource has been registered with the same callback）。
-16. 从照片资源获取 fileId 失败（Failed to get fileId from photo asset）。
+14. 为callback创建引用失败（Failed to create a reference for the callback）。
+15. 同一callback已注册过该资源的监听（The listener for this resource has been registered with the same callback）。
+16. 从照片资源获取fileId失败（Failed to get fileId from photo asset）。
 17. 单个资源监听数已达上限（≥ 200）（Failed to get file asset instance）。
 18. 对象无效（The object is not a valid instance）。
 19. 参数类型无效（The parameter type is invalid）。
-20. album 参数无效，传入的 Album 不是通过 photoAccessHelper.getAlbums() 或 createAlbum() 获取的有效实例（Album object is not a valid object）。
+20. album参数无效，传入的Album不是通过photoAccessHelper.getAlbums()或createAlbum()获取的有效实例（Album object is not a valid object）。
 21. 普通相册无效（Ordinary album invalid）。
-22. 创建 callback 引用失败（Failed to create callback reference）。
+22. 创建callback引用失败（Failed to create callback reference）。
 23. 从未注册过任何观察者（No observer has ever been registered）。
 24. 观察者列表为空（Observer list is empty）。
-25. 参数数量不正确，应为 1 或 2 个参数（The number of parameters is invalid, expected 1 or 2 parameters）。
-26. bundleName 参数必须是有效的非空 string 类型（The bundleName parameter must be a non-empty string）。
-27. config 参数必须是 object 类型（The config parameter must be an object）。
-28. supportedHighResolution 属性必须是 boolean 类型（The supportedHighResolution attribute must be a boolean）。
-29. supportedMimeType 属性必须是 string 数组类型（The supportedMimeType attribute must be an array of strings）。
-30. 数组包含不支持的 MIME 类型，仅支持 image/jpeg 和 image/png（The supportedMimeType array contains unsupported MIME types, only image/jpeg and image/png are supported）。
-31. supportedMimeTypes 数组大小超过限制（去重后最多 2 个）（The supportedMimeTypes array size exceeds the limit (max 2 after deduplication)）。
+25. 参数数量不正确，应为1或2个参数（The number of parameters is invalid, expected 1 or 2 parameters）。
+26. bundleName参数必须是有效的非空string类型（The bundleName parameter must be a non-empty string）。
+27. config参数必须是object类型（The config parameter must be an object）。
+28. supportedHighResolution属性必须是boolean类型（The supportedHighResolution attribute must be a boolean）。
+29. supportedMimeType属性必须是string数组类型（The supportedMimeType attribute must be an array of strings）。
+30. 数组包含不支持的MIME类型，仅支持image/jpeg和image/png（The supportedMimeType array contains unsupported MIME types, only image/jpeg and image/png are supported）。
+31. supportedMimeTypes数组大小超过限制（去重后最多2个）（The supportedMimeTypes array size exceeds the limit (max 2 after deduplication)）。
 32. 系统内部错误。可能原因（System internal error, possible causes）：
     - 数据库异常（Database exception）；
     - 文件系统异常（File system exception）；
-    - IPC 通信超时，请重试并检查日志（IPC timeout. Please retry and check logs）。
+    - IPC通信超时，请重试并检查日志（IPC timeout. Please retry and check logs）。
 
 **处理步骤**
 
