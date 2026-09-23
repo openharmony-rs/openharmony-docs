@@ -9281,7 +9281,7 @@ With this permission, the application can call basic virtual machine capabilitie
  	 
 Allows an application to call enhanced virtual machine capabilities.
 
-With this permission,the application can call enhanced virtual machine capabilities,such as importing and exporting virtual machine disk images and obtaining the host serial number(SN).
+With this permission, the application can call enhanced virtual machine capabilities, such as importing and exporting virtual machine disk images and obtaining the host serial number (SN).
 
 **Permission level**: system_basic
 
