@@ -14,7 +14,7 @@
 
 ### 实现原理
 
-设备感知能力基于 BLE 广播/扫描实现，无需设备预先组网。广播端通过 `startPerceptionAdv` 携带自定义负载广播自身，扫描端通过 `startPerceptionScan` 发现周边感知设备，并经 `getPerceptionDeviceList` 获取设备快照。广播端在协同唤醒等短时高频场景可调用 `setPerceptionAdvHighFreq` 切换高频 10 秒。
+设备感知能力基于 BLE 广播/扫描实现，无需设备预先组网。广播端通过 `startPerceptionAdv` 携带自定义负载广播自身，扫描端通过 `startPerceptionScan` 发现周边感知设备，并经 `getPerceptionDeviceList` 获取设备列表。广播端在协同唤醒等短时高频场景可调用 `setPerceptionAdvHighFreq` 切换高频 10 秒。
 
 应用通过感知类型（`PerceptionType`）区分业务场景（如协同唤醒），通过保活周期（`PerceptionCycle`）控制扫描功耗档位。
 
