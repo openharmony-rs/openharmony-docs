@@ -5,9 +5,9 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:17:19.948Z pushedAt=2026-09-15T13:41:41.644Z -->
+<!-- md-trans-meta sourceCommit=021a1def5f4f9a294e2a9e42fe57bc8bf26b4de7 translatedAt=2026-09-22T13:06:30.680Z pushedAt=2026-09-22T13:35:01.671Z -->
 
-There may be times when you want to implement nested scrolling for the **Web** component. A typical use case is a page that contains multiple scrollable areas including the **Web** component, whose scrolling is intrinsically linked with the scroll positions in other areas. To implement nested scrolling between **Web** components and ArkUI scrollable containers ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md) and [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)), you should set the ArkUI [NestedScrollMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) attribute for the **Web** components after receiving the scrolling gesture events.
+A typical use case for nested scrolling with the Web component is a page containing multiple independent scrollable areas. When users scroll the content in the Web area, other scrollable areas can be linked to it, providing a nested scrolling experience that supports scrolling the page in all directions. For **Web** components embedded in scrollable containers ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md), and [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)), you need to set the ArkUI [NestedScrollMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) attribute after receiving the scrolling gesture events to implement nested scrolling between the **Web** component and ArkUI scrollable containers.
 
 The following provides two solutions for implementing nested scrolling of **Web** components: Solution 1: [Using the nestedScroll Attribute](#using-the-nestedscroll-attribute); Solution 2: [Distributing Scrolling Offsets Through the Parent Scroll Component](#distributing-scrolling-offsets-through-the-parent-scroll-component). You can select a solution based on the specific service scenario. To associate **Web** components with other parent components, you are advised to use solution 1. To customize the scrolling of **Web** components and other scrolling components, especially in some complex scenarios, you are advised to use solution 2.
 
@@ -128,11 +128,11 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
 
     (3) If the **Scroll** component scrolls to the top, the scrolling offset is sent to the **Web** component, and the **Scroll** component does not scroll.
 
-**Implementation**
+**Key Implementation**
 
 1. Disable the scrolling gestures of the **Web** component.
 
-    (1) Call [setScrollable](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setscrollable12) to disable touch scrolling.
+    (1) First, call the Web component's scroll controller method to disable touch scrolling for the Web component via [setScrollable](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setscrollable12).
     ```ts
     this.webController.setScrollable(false, webview.ScrollType.EVENT);
     ```
@@ -145,7 +145,7 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
       return GestureJudgeResult.CONTINUE;
     })
     ```
-2. How to disable the gestures of the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component.
+2. Disable the gestures of the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component.
     ```ts
     .enableScrollInteraction(false)
     ```
@@ -157,25 +157,25 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
 
 4. Check whether the **Web** component scrolls to the boundary.
 
-   (1) Obtain the height, content height, and current scrolling offset of the **Web** component to determine the boundary.
+   (1) Obtain the height, content height, and current scrolling offset of the Web component to determine the boundary.
 
    (2) Determine whether the **Web** component scrolls to the top: **webController.getPageOffset().y == 0**;
 
    (3) Determine whether the **Web** component scrolls to the bottom: **webController.getPageOffset().y + this.webHeight >= webController.getPageHeight()**;
 
-   (4) Obtain the height of the **Web** component: webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
+   (4) Obtain the page content height of the **Web** component: webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
 
-   (5) Obtain the height of the **Web** component window: webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
+   (5) Obtain the height of the **Web** component itself (window): webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
 
    (6) Obtain the scrolling offset of the **Web** component: webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
 5. Disable the scrolling feature of the **Scroll** component.
 
    Bind the **Scroll** component to the [onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9) event and return the remaining scrolling offset as **0**. Then the **Scroll** component does not scroll and does not stop the inertial scrolling animation.
-6. How to distribute the scrolling offset to the **List** component.
+6. Distribute the scrolling offset to the **List** component.
     ```ts
     this.listScroller.scrollBy(0, offset)
     ```
-7. How to distribute the scrolling offset to the **Web** component.
+7. Distribute the scrolling offset to the **Web** component.
     ```ts
     this.webController.scrollBy(0, offset)
     ```
