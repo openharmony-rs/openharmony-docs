@@ -241,7 +241,7 @@
       - [Shadow Effect](arkts-shadow-effect.md)
       - [Color Effect](arkts-color-effect.md)
       - Blur<!--arkts-blur-->
-        - [Dynamic Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
+        - [Motion Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
     - [Frame Animation (ohos.animator)](arkts-animator.md)<!--RP10--><!--RP10End-->
   - Using Customization Capabilities<!--arkts-user-defined-capabilities-->
     - [Customization Capability Overview](arkts-user-defined.md)

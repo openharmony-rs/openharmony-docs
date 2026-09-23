@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=a42f8feedc5dcea22b2974f472d01ab7526f02c7 translatedAt=2026-09-01T01:19:35.451Z pushedAt=2026-09-03T06:40:38.965Z -->
+<!-- md-trans-meta sourceCommit=98b59aab53480716b722fc4051586a4a2638d2bf translatedAt=2026-09-11T00:51:21.272Z pushedAt=2026-09-11T03:17:27.251Z -->
 
 The **infraredEmitter** module generates IR signals of the specified frequency and size, and queries the frequency range supported by the device.
 
@@ -35,8 +35,8 @@ Generates IR signals at the specified frequency and level.
 
 | Name      | Type                       | Mandatory  | Description                                      |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| infraredFrequency | number             | Yes   | IR frequency, in Hz.|
-| pattern | Array&lt;number&gt; | Yes    | Infrared level signal, in microseconds (μs). The number of infrared level signals ranges from 0 to 1024. The value of this parameter must be greater than 0. If this parameter is set to **0**, the API does not take effect. <br/>For example, in the level signal array [100,200,300,400], **100** indicates a high-level signal, **200** indicates a low-level signal, **300** is a high-level signal, and **400** is a low-level signal. |
+| infraredFrequency | number             | Yes   | Infrared frequency, in Hz.|
+| pattern | Array&lt;number&gt; | Required | Infrared level signals, in microseconds (μs). The number of level signals ranges from 0 to 1024. When the value is 0, the API call does not take effect. The value of each level signal must be greater than 0.<br/>For example, in the level signal array [100,200,300,400], 100 μs is a high level signal, 200 μs is a low level signal, 300 μs is a high level signal, and 400 μs is a low level signal. |
 
 **Error codes**
 
@@ -82,7 +82,7 @@ Queries the frequency range of the infrared signals supported by the device. It 
 
 **System capability**: SystemCapability.MultimodalInput.Input.InfraredEmitter
 
-**Device behavior differences**: On phones and TVs that support IR emitters, this API returns the frequency range of IR signals. On devices that do not support IR emitters, this API returns one group of maximum and minimum frequencies, both of which are 0 Hz. You are advised to use the [hasIrEmitter](#infraredemitterhasiremitter23) API to check whether a device supports IR emitters.
+**Device behavior differences**: On phones and TVs that support infrared emitters, this API returns the frequency range of infrared signals. On devices that do not support infrared emitters, this API returns one group of maximum and minimum frequencies, both of which are 0 Hz. You are advised to use the [hasIrEmitter](#infraredemitterhasiremitter23) API to check whether a device supports infrared emitters.
 
 **Return value**
 
@@ -138,7 +138,7 @@ Defines the frequency range of IR signals.
 
 hasIrEmitter(): Promise&lt;boolean&gt;
 
-Checks whether the device has an infrared transmitter. This API uses a promise to return the result.
+Checks whether the device has an infrared emitter. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 

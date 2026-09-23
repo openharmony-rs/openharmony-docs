@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=503ff1206bb73f5278c1fec8ca7b685eefbba922 translatedAt=2026-09-01T01:21:32.157Z pushedAt=2026-09-03T08:20:30.895Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:56:30.860Z pushedAt=2026-09-11T06:06:26.219Z -->
 
 The **inputDevice** module provides APIs for input device management, including querying input device information, setting/obtaining the keyboard repeat delay, and setting the input device switch status.
 
@@ -15,6 +15,7 @@ The **inputDevice** module provides APIs for input device management, including 
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimodalInput.inputDevice (Input Device)](js-apis-inputdevice.md).
+
 
 ## Modules to Import
 
@@ -128,7 +129,7 @@ struct Index {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
               console.info(`Succeeded in setting keyboard repeat delay.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -355,7 +356,7 @@ struct Index {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
               console.info(`Succeeded in setting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -380,7 +381,7 @@ Obtains the keyboard repeat rate. This API uses an asynchronous callback to retu
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes | Callback function. If the operation is successful, err is undefined and data is the keyboard key repeat rate, in ms per event; otherwise, err is an error object. |
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback function. If the operation is successful, err is undefined and data is the keyboard repeat rate, in ms per event; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -436,7 +437,7 @@ Obtains the keyboard repeat rate. This API uses a promise to return the result.
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise used to return the keyboard key repeat rate, in ms per event. |
+| Promise&lt;number&gt; | Promise used to return the keyboard repeat rate, in ms per event. |
 
 **Error codes**
 
@@ -465,7 +466,7 @@ struct Index {
             inputDevice.getKeyboardRepeatRate().then((rate: number) => {
               console.info(`Succeeded in getting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -480,7 +481,7 @@ struct Index {
 
 setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
-Sets the input switch status of an input device. Take the touchscreen as an example. If the input switch is off, the touchscreen does not respond when being touched. If the input switch is on, the touchscreen wakes up when being touched. This API uses a promise to return the result.
+Sets the switch status of an input device. Take the touchscreen as an example. If the input switch is off, the touchscreen does not respond when being touched. If the input switch is on, the touchscreen wakes up when being touched. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -505,11 +506,12 @@ Sets the input switch status of an input device. Take the touchscreen as an exam
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Device Error Codes](errorcode-inputdevice.md).
 
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. The application does not have the permission required to call the API. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 401      | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 
 **Example**
@@ -551,9 +553,9 @@ Binds an input device to a display group. Only external USB and Bluetooth mice, 
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions:** ohos.permission.INPUT_DEVICE_CONTROLLER
+**Required permissions**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
-**System capability:** SystemCapability.MultimodalInput.Input.InputDevice
+**System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
 **System API**: This is a system API.
 

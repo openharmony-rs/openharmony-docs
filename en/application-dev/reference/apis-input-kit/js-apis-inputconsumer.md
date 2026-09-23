@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.inputConsumer (Global Shortcut Keys)
+# @ohos.multimodalInput.inputConsumer (Global Hotkeys)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e9a226ed6be406b56bf2cbe8be651aa0b4b98e5a translatedAt=2026-09-01T01:20:08.830Z pushedAt=2026-09-04T02:13:57.494Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:55:16.840Z pushedAt=2026-09-11T04:13:07.259Z -->
 
 The **inputConsumer** module implements listening for combination key events as well as listening and interception for volume key events.
 
@@ -14,9 +14,11 @@ The **inputConsumer** module implements listening for combination key events as 
 >
 > - The initial APIs of this module are supported since API version 14. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Global shortcut keys are combination keys defined by the system or application. System shortcut keys are defined by the system, and application shortcut keys are defined by applications.
+> - Global hotkeys are combination keys defined by the system or application. System hotkeys are defined by the system, and application hotkeys are defined by applications.
+
 
 ## Modules to Import
+
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
@@ -24,7 +26,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 ## HotkeyOptions
 
-Defines shortcut key options.
+Defines hotkey options.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -43,7 +45,6 @@ Sets the key event consumption configuration.
 **Device behavior difference**: Before API version 23, this API is supported on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, this API returns error code 801. Since API version 23, this API is supported on phones, tablets, PCs/2-in-1 devices, TVs, and car devices. On other device types, this API returns error code 801.
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
-
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
 | key       | number  | No      | No      | Key value.<br/>**Note:** Since API version 26.0.0, the [KEYCODE_FINGERPRINT_SLIDE_UP](js-apis-keycode.md#keycode) key and [KEYCODE_FINGERPRINT_SLIDE_DOWN](js-apis-keycode.md#keycode) key are newly supported. These are not universal key values across devices. Before using them, check whether the current device supports reporting the related key events. For details, see [Development Guide for Prioritized Response to System Function Keys](../../device/input/keypressed-guidelines.md).<br/>Since API version 21, the [KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode) key, [KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode) key, and [KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode) key are newly supported.<br/>For API version 20 and earlier, only the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode) key and [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode) key are supported. |
@@ -54,7 +55,7 @@ Sets the key event consumption configuration.
 
 getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 
-Obtains all system shortcut keys. This API uses a promise to return the result.
+Obtains all system hotkeys. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -64,7 +65,7 @@ Obtains all system shortcut keys. This API uses a promise to return the result.
 
 | Type        |  Description                                      |
 | ---------- |  ---------------------------------------- |
-| Promise&lt;Array&lt;[HotkeyOptions](#hotkeyoptions)&gt;&gt;                    | Promise used to return the list of all system shortcut keys.|
+| Promise&lt;Array&lt;[HotkeyOptions](#hotkeyoptions)&gt;&gt;                    | Promise used to return the list of all system hotkeys.|
 
 **Error codes**:
 
@@ -87,7 +88,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // Obtains all system shortcut keys.
+          // Obtains all system hotkeys.
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
             console.info(`Succeeded in getting list of system hotkeys: ${JSON.stringify(data)}.`);
           }).catch((error: BusinessError) => {
@@ -103,7 +104,7 @@ struct Index {
 
 on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
-Subscribes to application shortcut key change events. This API obtains combination key input events that meet the specified conditions, and uses an asynchronous callback to return the result.
+Subscribes to application hotkey change events. This API obtains combination key input events that meet the specified conditions, and uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -152,7 +153,7 @@ struct Index {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
           };
           try {
-            // Subscribe to shortcut key change events.
+            // Subscribe to hotkey change events.
             inputConsumer.on('hotkeyChange', hotkeyOptions, hotkeyCallback);
           } catch (error) {
             console.error(`Failed to Subscribe hot key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -167,7 +168,7 @@ struct Index {
 
 off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptions&gt;): void
 
-Unsubscribes from application shortcut key change events. This API uses an asynchronous callback to return the result.
+Unsubscribes from application hotkey change events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -177,7 +178,7 @@ Unsubscribes from application shortcut key change events. This API uses an async
 | ---------- | -------------------------- | ---- | ---------- |
 | type       | string                     | Yes   | Event type. This parameter has a fixed value of **hotkeyChange**.       |
 | hotkeyOptions | [HotkeyOptions](#hotkeyoptions) | Yes   | Shortcut key options.            |
-| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | No   | Callback to unregister. If this parameter is left unspecified, listening will be disabled for all callbacks registered for the specified shortcut key options.|
+| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | No   | Callback to unregister. If this parameter is left unspecified, listening will be disabled for all callbacks registered for the specified hotkey options.|
 
 **Error codes**:
 
@@ -209,9 +210,9 @@ struct Index {
           };
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
-            // Subscribe to shortcut key change events.
+            // Subscribe to hotkey change events.
             inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
-            // Unsubscribe from shortcut key change events.
+            // Unsubscribe from hotkey change events.
             inputConsumer.off('hotkeyChange', hotkeyOption, hotkeyCallback);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
@@ -242,9 +243,9 @@ struct Index {
           };
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
-            // Subscribe to shortcut key change events.
+            // Subscribe to hotkey change events.
             inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
-            // Unsubscribe from shortcut key change events.
+            // Unsubscribe from hotkey change events.
             inputConsumer.off('hotkeyChange', hotkeyOption);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {

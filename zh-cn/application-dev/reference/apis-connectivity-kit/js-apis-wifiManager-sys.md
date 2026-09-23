@@ -1977,23 +1977,6 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-## WifiCapability
-
-wifi支持的能力。
-
-**起始版本：** 26.0.0
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| WIFI_AUTO_ENABLE | 0 | wifi自动打开能力。 |
-
 
 ## wifiManager.setWifiCapability
 
@@ -2015,7 +1998,7 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| capability | [WifiCapability](#wificapability) | 是 | wifi能力枚举。 |
+| capability | [WifiCapability](js-apis-wifiManager.md#wificapability) | 是 | Wi-Fi能力枚举。 |
 | enable | boolean | 是 | 是否开启Wi-Fi能力，true表示开启，false表示关闭。 |
 
 **错误码：**
@@ -2058,7 +2041,7 @@ getWifiCapability(capability: WifiCapability): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| capability | [WifiCapability](#wificapability)| 是 | wifi能力枚举。 |
+| capability | [WifiCapability](js-apis-wifiManager.md#wificapability)| 是 | wifi能力枚举。 |
 
 **返回值：**
 

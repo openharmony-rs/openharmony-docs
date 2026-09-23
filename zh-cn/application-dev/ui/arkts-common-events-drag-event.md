@@ -732,11 +732,11 @@ struct GridEts {
   onPageShow(): void {
     let i: number = 0;
     for(i = 0; i < 100; i++) {
-    this.numbers.push(i);
-    this.isSelectedGrid.push(false);
-    this.previewData.push({});
+      this.numbers.push(i);
+      this.isSelectedGrid.push(false);
+      this.previewData.push({});
+    }
   }
-}
 
 @Builder
 RandomBuilder(idx: number) {
@@ -917,7 +917,7 @@ export struct DropAnimationExample {
               if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
                 hilog.info(DOMAIN, TAG, '%{public}s', 'Drag Success');
               } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                hilog.info(DOMAIN, TAG, '%{public}s', 'Drag failed');
+                hilog.error(DOMAIN, TAG, '%{public}s', 'Drag failed');
               }
             })
 

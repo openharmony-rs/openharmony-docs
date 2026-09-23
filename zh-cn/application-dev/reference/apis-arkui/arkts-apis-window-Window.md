@@ -7043,6 +7043,8 @@ setAspectRatio(ratio: number): Promise&lt;void&gt;
 
 > **说明：**
 >
+> - 本接口根据窗口标题栏的显隐状态，结合预设的标题栏高度和窗口边框厚度计算窗口内容区域：标题栏显示时，标题栏高度按48vp计算，左、右、下边框厚度各按5vp计算；标题栏隐藏时，标题栏高度和窗口边框厚度均按0计算。上述计算未使用标题栏和窗口边框的实际尺寸，因此，实际窗口内容区域的宽高比可能与设置值存在偏差。当需要根据标题栏和窗口边框的实际尺寸及可见性设置窗口内容区域的宽高比时，推荐使用[setContentAspectRatio](#setcontentaspectratio21)接口。
+>
 > - 通过其他接口如[resize](#resize9)、[resizeAsync](#resizeasync12)设置窗口大小时，不受ratio约束。
 >
 > - 仅主窗可设置，且仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下生效。此比例参数将持久化保存，关闭应用或重启设备后，切换到自由悬浮窗口模式时，设置的比例仍然生效。
@@ -7114,6 +7116,8 @@ setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
 设置窗口内容布局（不含边框和标题栏等装饰）的比例，使用callback异步回调。
 
 > **说明：**
+>
+> - 本接口根据窗口标题栏的显隐状态，结合预设的标题栏高度和窗口边框厚度计算窗口内容区域：标题栏显示时，标题栏高度按48vp计算，左、右、下边框厚度各按5vp计算；标题栏隐藏时，标题栏高度和窗口边框厚度均按0计算。上述计算未使用标题栏和窗口边框的实际尺寸，因此，实际窗口内容区域的宽高比可能与设置值存在偏差。当需要根据标题栏和窗口边框的实际尺寸及可见性设置窗口内容区域的宽高比时，推荐使用[setContentAspectRatio](#setcontentaspectratio21)接口。
 >
 > - 通过其他接口如[resize](#resize9)、[resizeAsync](#resizeasync12)设置窗口大小时，不受ratio约束。
 >
@@ -11702,7 +11706,7 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 | -------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 待转换的值的类型。 |
 | to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 目标值的类型。 |
-| value    | number               | 是   | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。|
+| value    | number               | 是   | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。|
 
 **返回值：**
 
@@ -12200,8 +12204,8 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名   | 类型                      | 必填 | 说明                       |
 | -------- | ------------------------- | ---- | -------------------------- |
-| width    | number                    | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
-| height   | number                    | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| width    | number                    | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
+| height   | number                    | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                 |
 
 **示例：**
@@ -12249,8 +12253,8 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| width  | number | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
-| height | number | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| width  | number | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
+| height | number | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
 
 **返回值：**
 

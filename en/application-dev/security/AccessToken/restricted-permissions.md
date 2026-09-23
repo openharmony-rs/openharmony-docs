@@ -1460,9 +1460,11 @@ With this permission, the application can utilize the APIs provided by the game 
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.0.0
+
+**Changelog**: Since API version 26.0.0, this permission is also available on tablets, PCs/2-in-1 devices and TVs.
 
 ## ohos.permission.KNOCK_COLLABORATION
 
@@ -1702,4 +1704,18 @@ Allows an application to obtain the list of applications installed on the device
  
 **Supported devices**: PCs/2-in-1 devices
  
+**Since**: 26.1.0
+
+## ohos.permission.ASSESSMENT_CONFIGURATION
+
+Allows an application to enter exam mode. The system service will display a dialog to remind the user that system capabilities will be restricted once exam mode is enabled. This prevents cheating or information leakage during exams, ensuring exam fairness while protecting user rights.
+
+<!--RP112--><!--RP112End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Since**: 26.1.0

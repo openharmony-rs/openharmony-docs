@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1275b89181ca8fc1862130ee865235369b412dd3 translatedAt=2026-09-15T02:24:10.720Z pushedAt=2026-09-15T09:03:59.007Z -->
 
-The **baseProfile** module provides APIs for managing basic Bluetooth profiles.
+The **baseProfile** module provides common methods for basic Bluetooth [profiles](../../connectivity/bluetooth/terminology.md#profile), including setting and obtaining connection strategies. These methods are inherited by Bluetooth profile modules (such as [A2DP](../../connectivity/bluetooth/terminology.md#a2dp) and [HFP](../../connectivity/bluetooth/terminology.md#hfp)) to help you manage connection strategies for Bluetooth devices.
 
 > **NOTE**
 >
@@ -32,9 +33,9 @@ Enumerates the profile connection strategies.
 
 | Name                            | Value     | Description           |
 | -------------------------------- | ------ | --------------- |
-| CONNECTION_STRATEGY_UNSUPPORTED   | 0 | Default connection strategy to use when the device is not paired.<br>This is a system API.|
-| CONNECTION_STRATEGY_ALLOWED  | 1 |  Connection strategy to use when the device is allowed to accept or initiate pairing.<br>This is a system API.|
-| CONNECTION_STRATEGY_FORBIDDEN  | 2 | Connection strategy to use when the device is not allowed to accept or initiate pairing.<br>This is a system API. |
+| CONNECTION_STRATEGY_UNSUPPORTED   | 0 | Default connection strategy to use when the device is not paired.<br>This API is a system API. |
+| CONNECTION_STRATEGY_ALLOWED  | 1 |  Connection strategy to use when the device is allowed to accept or initiate pairing.<br>This API is a system API. |
+| CONNECTION_STRATEGY_FORBIDDEN  | 2 | Connection strategy to use when the device is not allowed to accept or initiate pairing.<br>This API is a system API.  |
 
 
 
@@ -42,7 +43,7 @@ Enumerates the profile connection strategies.
 
 setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the profile connection strategy for this device. This API uses an asynchronous callback to return the result.
+Sets the profile connection strategy for this device. This API uses an asynchronous callback to return the result. For example, when managing Bluetooth devices, you can call this API to set the connection strategy for a specific device to allow or prevent it from automatically initiating or accepting pairing requests.
 
 **System API**: This is a system API.
 
@@ -92,7 +93,7 @@ try {
 
 setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&lt;void&gt;
 
-Sets the profile connection strategy for this device. This API uses a promise to return the result.
+Sets the profile connection strategy for this device. This API uses a promise to return the result. For example, when managing Bluetooth devices, you can call this API to set the connection strategy for a specific device to allow or prevent it from automatically initiating or accepting pairing requests.
 
 **System API**: This is a system API.
 
@@ -111,7 +112,7 @@ Sets the profile connection strategy for this device. This API uses a promise to
 
 | Type                 | Description           |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -149,7 +150,7 @@ try {
 
 getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStrategy&gt;): void
 
-Obtains the profile connection strategy. This API uses an asynchronous callback to return the result.
+Obtains the profile connection strategy. This API uses an asynchronous callback to return the result. For example, in Bluetooth device management, you can call this API to query the connection strategy of the current device to display the strategy status or determine subsequent connection operations.
 
 **System API**: This is a system API.
 
@@ -162,7 +163,7 @@ Obtains the profile connection strategy. This API uses an asynchronous callback 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | Yes   | Address of the device to pair, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;[ConnectionStrategy](#connectionstrategy)&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[ConnectionStrategy](#connectionstrategy)&gt; | Yes | Callback used to return the result. If the connection strategy is obtained successfully, **err** is **undefined** and data is the connection strategy obtained. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -198,7 +199,7 @@ try {
 
 getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 
-Obtains the profile connection strategy. This API uses a promise to return the result.
+Obtains the profile connection strategy. This API uses a promise to return the result. For example, in Bluetooth device management, you can call this API to query the connection strategy of the current device to display the strategy status or determine subsequent connection operations.
 
 **System API**: This is a system API.
 
@@ -216,7 +217,7 @@ Obtains the profile connection strategy. This API uses a promise to return the r
 
 | Type                 | Description           |
 | ------------------- | ------------- |
-|   Promise&lt;[ConnectionStrategy](js-apis-bluetooth-baseProfile-sys.md#connectionstrategy)&gt; | Promise used to return the result.|
+|   Promise&lt;[ConnectionStrategy](#connectionstrategy)&gt; | Promise used to return the connection strategy obtained. |
 
 **Error codes**
 

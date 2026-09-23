@@ -17,7 +17,7 @@
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
-    - [@ohos.arkui.Prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
+    - [@ohos.arkui.Prefetcher (内容预取)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
@@ -779,6 +779,10 @@
     - [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md)
     - [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md)
     - [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)
+    - [OH_ArkUI_PropertyAnimation*](capi-arkui-nativemodule-arkui-propertyanimation8h.md)
+    - [OH_ArkUI_KeyframeAnimation*](capi-arkui-nativemodule-arkui-keyframeanimation8h.md)
+    - [OH_ArkUI_PathAnimation*](capi-arkui-nativemodule-arkui-pathanimation8h.md)
+    - [OH_ArkUI_AnimationGroup*](capi-arkui-nativemodule-arkui-animationgroup8h.md)
     - [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)
     - [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md)
     - [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md)
@@ -1013,6 +1017,7 @@
     - [DrawableDescriptor错误码](errorcode-drawable-descriptor.md)
     - [环境变量错误码](errorcode-env.md)
     - [反色能力错误码](errorcode-force-dark.md)
+    - [动视效错误码](errorcode-animation.md)
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)
