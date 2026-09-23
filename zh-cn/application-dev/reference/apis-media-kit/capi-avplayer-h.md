@@ -436,7 +436,7 @@ OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float 
 
 设置播放器的音量。<br> 可以在播放或暂停的过程中使用。取值为0时，表示无声音。默认音量为1，若未调用本接口设置音量则使用该默认值。
 
-差异说明：[OH_AVPlayer_SetLoudnessGain](#oh_avplayer_setloudnessgain)也用于控制声音强度，但使用响度增益（单位dB）进行绝对值控制。本方法使用相对音量[0, 1]，适合通用的音量调节场景；SetLoudnessGain适合需要统一不同音频源响度的专业场景，且有特定的使用条件限制。
+差异说明：本方法使用相对音量[0, 1]，适合通用的音量调节场景。[OH_AVPlayer_SetLoudnessGain](#oh_avplayer_setloudnessgain)也用于控制声音强度，但使用响度增益（单位dB）进行绝对值控制，适合需要统一不同音频源响度的专业场景，且有特定的使用条件限制。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -521,7 +521,7 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTim
 
 获取当前播放时间（通过参数返回），精确到毫秒。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。适用于进度条显示、播放时间统计、断点续播记录等场景。
 
-差异说明：[OH_AVPlayer_GetPlaybackPosition](#oh_avplayer_getplaybackposition)也用于获取播放位置，但直接返回int32_t类型的位置值。本方法通过输出参数返回位置，同时返回错误码便于判断调用是否成功；GetPlaybackPosition直接返回位置值，调用更简洁但不提供错误状态。根据是否需要错误处理选择对应接口。
+差异说明：本方法通过输出参数返回位置，同时返回错误码便于判断调用是否成功。[OH_AVPlayer_GetPlaybackPosition](#oh_avplayer_getplaybackposition)也用于获取播放位置，但直接返回int32_t类型的位置值，调用更简洁但不提供错误状态。根据是否需要错误处理选择对应接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -602,7 +602,9 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed s
 
 **描述**
 
-根据指定的[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)，设置播放器的播放速率。支持的状态包括prepared、playing、paused、completed。默认播放速率为1.0倍速（正常速度），若未调用本接口设置速率则使用该默认值。<br> 差异说明：[OH_AVPlayer_SetPlaybackRate](#oh_avplayer_setplaybackrate)也用于设置播放速率，但使用float类型支持更灵活的速率范围。本方法使用固定枚举档位，适合标准播放场景；SetPlaybackRate适合需要精确控制速率值的场景。适用于倍速播放、慢动作回放、快进预览等场景。
+根据指定的[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)，设置播放器的播放速率。支持的状态包括prepared、playing、paused、completed。默认播放速率为1.0倍速（正常速度），若未调用本接口设置速率则使用该默认值。
+
+差异说明：本方法使用固定枚举档位，适合标准播放场景。[OH_AVPlayer_SetPlaybackRate](#oh_avplayer_setplaybackrate)也用于设置播放速率，但使用float类型支持更灵活的速率范围，适合需要精确控制速率值的场景。适用于倍速播放、慢动作回放、快进预览等场景。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -631,7 +633,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 
 在有效范围内，设置播放器的播放速率。<br> 支持的状态包括prepared、playing、paused、completed。默认播放速率为1.0倍速（正常速度），若未调用本接口设置速率则使用该默认值。
 
-差异说明：[OH_AVPlayer_SetPlaybackSpeed](#oh_avplayer_setplaybackspeed)也用于设置播放速率，但使用固定枚举档位。本方法使用float类型支持更灵活的速率范围，适合需要精确控制速率值的场景。
+差异说明：本方法使用float类型支持更灵活的速率范围，适合需要精确控制速率值的场景。[OH_AVPlayer_SetPlaybackSpeed](#oh_avplayer_setplaybackspeed)也用于设置播放速率，但使用固定枚举档位。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -660,7 +662,7 @@ OH_AVErrCode OH_AVPlayer_GetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed *
 
 获取当前播放器的播放速率。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。
 
-差异说明：[OH_AVPlayer_GetPlaybackRate](#oh_avplayer_getplaybackrate)也用于获取播放速率，但返回float类型值。本方法返回AVPlaybackSpeed枚举值，适合配合SetPlaybackSpeed使用；GetPlaybackRate返回精确数值，适合需要精确速率信息的场景。
+差异说明：本方法返回AVPlaybackSpeed枚举值，适合配合SetPlaybackSpeed使用。[OH_AVPlayer_GetPlaybackRate](#oh_avplayer_getplaybackrate)也用于获取播放速率，但返回float类型值，适合需要精确速率信息的场景。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -689,7 +691,7 @@ OH_AVErrCode OH_AVPlayer_GetPlaybackRate(OH_AVPlayer *player, float *rate)
 
 获取当前播放器播放速率。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。
 
-差异说明：[OH_AVPlayer_GetPlaybackSpeed](#oh_avplayer_getplaybackspeed)也用于获取播放速率，但返回AVPlaybackSpeed枚举值。本方法返回float类型值，适合需要精确速率信息的场景。
+差异说明：本方法返回float类型值，适合需要精确速率信息的场景。[OH_AVPlayer_GetPlaybackSpeed](#oh_avplayer_getplaybackspeed)也用于获取播放速率，但返回AVPlaybackSpeed枚举值。
 
 **起始版本：** 23
 
@@ -1042,7 +1044,7 @@ OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 
 选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨道。<br> 设置生效后，原音轨将失效。选择字幕轨道时，播放器应处于prepared、playing、paused或completed状态；选择音轨时，播放器应处于prepared状态。
 
-差异说明：[OH_AVPlayer_SelectTrackWithMode](#oh_avplayer_selecttrackwithmode)也用于选择轨道，但可以指定切换模式。本方法使用默认切换模式；如需控制切换行为（如平滑切换），应使用SelectTrackWithMode。适用于多语言视频切换、字幕显示控制、多音轨选择等场景。
+差异说明：本方法使用默认切换模式，适用于多语言视频切换、字幕显示控制、多音轨选择等场景。[OH_AVPlayer_SelectTrackWithMode](#oh_avplayer_selecttrackwithmode)也用于选择轨道，但可以指定切换模式。如需控制切换行为（如平滑切换），应使用SelectTrackWithMode。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1470,7 +1472,7 @@ OH_AVErrCode OH_AVPlayer_SelectTrackWithMode(OH_AVPlayer *player, int32_t index,
 
 在播放包含多个音视频轨道的资源时，使用指定的切换模式选择轨道。<br> 选择字幕轨道时，播放器应处于prepared、playing、paused或completed状态；选择音轨时，播放器应处于prepared状态。
 
-差异说明：[OH_AVPlayer_SelectTrack](#oh_avplayer_selecttrack)也用于选择轨道，但使用默认切换模式。本方法可以指定切换模式（如平滑切换），适合需要控制切换行为的高级场景。
+差异说明：本方法可以指定切换模式（如平滑切换），适合需要控制切换行为的高级场景。[OH_AVPlayer_SelectTrack](#oh_avplayer_selecttrack)也用于选择轨道，但使用默认切换模式。
 
 **起始版本：** 23
 
