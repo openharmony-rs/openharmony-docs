@@ -78,7 +78,7 @@
 - Application Redirection<!--inter-app-redirection-->
   - [Application Redirection Overview](link-between-apps-overview.md)
   - Launch the Specified Application<!--directional-redirection-->
-    - [Launch the Specified Application Overview](app-startup-overview.md)
+    - [Overview of Starting a Specified Application](app-startup-overview.md)
     - [(Optional) Using canOpenLink to Check Whether an Application Is Accessible](canopenlink.md)
     - [Obtaining the URL Information of the Target Application](obtaining-target-app-url-info.md)
     - [Using Deep Linking for Application Redirection](deep-linking-startup.md)

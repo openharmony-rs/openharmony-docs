@@ -19,11 +19,11 @@ import { shortKey } from '@kit.InputKit';
 
 ## 接口说明
 
-事件注入常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)](../../reference/apis-input-kit/js-apis-shortKey-sys.md)。
+系统预置全局快捷键常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)](../../reference/apis-input-kit/js-apis-shortKey-sys.md)。
 
-| 接口名称  | 描述 |
+| 接口名称 | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
-| setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void |设置快捷键拉起Ability的延迟时间。 |
+| setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void | 设置快捷键拉起Ability的延迟时间。 |
 
 ## 开发步骤
 
@@ -41,7 +41,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            shortKey.setKeyDownDuration("screenshot", 500, (error: BusinessError) => { // 设置截屏应用screenshot延迟时间为5秒（500毫秒）
+            shortKey.setKeyDownDuration('screenshot', 5000, (error: BusinessError) => { // 设置截屏应用screenshot延迟时间为5秒（5000毫秒）
               if (error) {
                 console.error(`Set key down duration failed, error: ${JSON.stringify(error, ["code", "message"])}`);
                 return;

@@ -21,12 +21,12 @@ import { pointer } from '@kit.InputKit';
 
 鼠标光标控制常用接口如下表所示，接口详细介绍请参见[@ohos.multimodalInput.pointer (鼠标光标)](../../reference/apis-input-kit/js-apis-pointer.md)。
 
-| 接口名称                                                       | 描述                                                         |
+| 接口名称 | 描述 |
 | ------------------------------------------ | ------------------------------------------------------- |
-| isPointerVisible(callback: AsyncCallback\<boolean>): void | 获取鼠标光标显示或隐藏状态。                                 |
-| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | 设置鼠标光标显示或隐藏状态，该接口会影响全局鼠标光标的显示状态。 |
-| setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | 设置鼠标光标样式，该接口会影响指定窗口鼠标光标样式。         |
-| getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | 查询鼠标光标样式。                                           |
+| isPointerVisible(callback: AsyncCallback\<boolean>): void | 获取当前窗口的显示/隐藏状态。 |
+| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | 设置光标显示/隐藏状态，此状态作用于当前进程的所有窗口。 |
+| setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | 设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型。 |
+| getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | 获取指定窗口的鼠标样式类型，此接口仅支持获取本应用进程内窗口的鼠标样式类型。 |
 
 ## 设置鼠标光标隐藏
 

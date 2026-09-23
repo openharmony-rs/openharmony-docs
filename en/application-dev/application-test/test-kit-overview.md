@@ -5,6 +5,9 @@
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fc51a757cde4308898b8986a88362ef10907d498 translatedAt=2026-09-17T09:20:10.106Z pushedAt=2026-09-21T11:20:37.067Z -->
+
+## Capability Scope
 
 Test Kit provides automated test frameworks that support unit, UI, and performance tests. It enables you to write and execute automated test scripts in ArkTS and assess the effectiveness of your features based on test results. Since API version 20, the performance test capability is supported.
 
@@ -22,9 +25,13 @@ Test Kit provides automated test frameworks that support unit, UI, and performan
 - Performance test capability: provides automated white-box performance test features. Performance test scripts are developed based on JSUnit. For details, see <!--RP3-->[PerfTest User Guide](perftest-guideline.md)<!--RP3End-->. The main features are as follows:
   - Basic performance data collection during the execution of a specified code segment, including the execution duration, CPU usage, and memory usage.
   - Application scenario-based performance data collection, including the application launch latency, page switching latency, and list scrolling frame rate.
+- Auxiliary testing capability: provides command-line auxiliary testing tools that support system state management and environment simulation. Devices running OpenHarmony 7.0.0 or later support this capability. For details, see <!--RP5-->Auxiliary Testing Tool Usage Guide<!--RP5End-->.
 <!--Del-->
 In addition, Test Kit provides the following command line tools:
 
 - SmartPerf: monitors performance and power consumption metrics, including FPS, CPU, GPU, RAM, and Temp. It provides Device-hap and Device-daemon. For details, see [SmartPerf User Guide](smartperf-guidelines.md).
 - wukong: supports random event injection, component injection, exception capture, report generation, and data traversal screenshot of abilities. For details, see [wukong User Guide](wukong-guidelines.md).
 <!--DelEnd-->
+
+<!--RP4-->
+<!--RP4End-->

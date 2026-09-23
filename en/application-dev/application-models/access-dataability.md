@@ -3,9 +3,10 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-09-17T08:17:37.663Z pushedAt=2026-09-21T11:20:21.747Z -->
 
 To access a DataAbility, import the basic dependency packages and obtain the URI string for communicating with the DataAbility.
 
@@ -22,7 +23,7 @@ The sample code for accessing a DataAbility is as follows:
 
 
 1. Create a DataAbilityHelper instance.
-   
+
     ```ts
     import featureAbility from '@ohos.ability.featureAbility';
     import ohos_data_ability from '@ohos.data.dataAbility';
@@ -33,7 +34,7 @@ The sample code for accessing a DataAbility is as follows:
     ```
 
 2. Construct RDB data.
-   
+
     ```ts
     import ohos_data_ability from '@ohos.data.dataAbility';
     import rdb from '@ohos.data.rdb';
@@ -46,9 +47,9 @@ The sample code for accessing a DataAbility is as follows:
     ```
 
     For details about DataAbilityPredicates, see [DataAbility Predicates](../reference/apis-arkdata/js-apis-data-ability.md).
-   
+
 3. Use **insert** to insert data to the DataAbility.
-   
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -107,8 +108,8 @@ The sample code for accessing a DataAbility is as follows:
       }
     }
     ```
-    
-    
+
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -163,9 +164,9 @@ The sample code for accessing a DataAbility is as follows:
       }
     }
     ```
-   
+
 4. Use **delete** to delete data from the DataAbility.
-   
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -223,7 +224,7 @@ The sample code for accessing a DataAbility is as follows:
     }
     ```
 
-    
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -280,7 +281,7 @@ The sample code for accessing a DataAbility is as follows:
     ```
 
 5. Use **update** to update data in the DataAbility.
-   
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -340,7 +341,7 @@ The sample code for accessing a DataAbility is as follows:
     }
     ```
 
-    
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -399,7 +400,7 @@ The sample code for accessing a DataAbility is as follows:
     ```
 
 6. Use **query** to query data in the DataAbility.
-   
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -468,7 +469,7 @@ The sample code for accessing a DataAbility is as follows:
     }
     ```
 
-    
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -533,9 +534,9 @@ The sample code for accessing a DataAbility is as follows:
       }
     }
     ```
-   
+
 7. Use **batchInsert** to insert data in batches to the DataAbility.
-   
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -594,7 +595,7 @@ The sample code for accessing a DataAbility is as follows:
     }
     ```
 
-    
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -652,7 +653,7 @@ The sample code for accessing a DataAbility is as follows:
     ```
 
 8. Use **executeBatch** to process data in batches in the DataAbility.
-   
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';
@@ -718,7 +719,7 @@ The sample code for accessing a DataAbility is as follows:
       }
     ```
 
-    
+
     ```ts
     import ability from '@ohos.ability.ability';
     import featureAbility from '@ohos.ability.featureAbility';

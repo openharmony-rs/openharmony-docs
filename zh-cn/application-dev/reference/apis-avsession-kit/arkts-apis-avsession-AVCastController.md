@@ -972,7 +972,7 @@ avCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
 
 off(type: 'mediaItemChange'): void
 
-取消设置投播当前播放媒体内容事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置投播当前播放媒体内容事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1039,7 +1039,7 @@ avCastController.on('playNext', () => {
 
 off(type: 'playNext'): void
 
-取消设置播放下一首资源事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置播放下一首资源事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1106,7 +1106,7 @@ avCastController.on('playPrevious', () => {
 
 off(type: 'playPrevious'): void
 
-取消设置播放上一首资源事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置播放上一首资源事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1301,7 +1301,7 @@ avCastController.on('seekDone', (pos: number) => {
 
 off(type: 'seekDone'): void
 
-取消设置seek结束事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置seek结束事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1432,7 +1432,7 @@ avCastController.on('videoSizeChange', (width: number, height: number) => {
 
 off(type: 'videoSizeChange'): void
 
-取消视频尺寸事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消视频尺寸事件监听。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1505,7 +1505,7 @@ avCastController.on('error', (error: BusinessError) => {
 
 off(type: 'error'): void
 
-取消播放的错误事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消播放的错误事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

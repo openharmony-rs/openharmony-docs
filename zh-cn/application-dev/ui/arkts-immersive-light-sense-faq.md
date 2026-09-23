@@ -37,8 +37,9 @@
 
 以下示例展示了分别在Navigation标题栏中和Navigation内容区，开启沉浸光感的显示效果。位于Navigation标题栏中的Column开启沉浸光感正常生效；位于Navigation内容区中的Column组件，因其不处于Navigation标题栏或底部TabBar中，不生效沉浸光感效果。
  
-<!-- @[material_scope_adapt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets) -->
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
+<!-- @[material_scope_adapt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets) -->
 
 ``` TypeScript
 import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
@@ -47,6 +48,7 @@ import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
 @Component
 struct MaterialScopeAdaptExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State titleHeight: number = 140;
 
   @Builder
   NavigationTitle() {
@@ -77,6 +79,7 @@ struct MaterialScopeAdaptExample {
     .alignItems(VerticalAlign.Center)
     .width('100%')
     .padding(16)
+    .height(this.titleHeight)
   }
 
   build() {
@@ -124,7 +127,7 @@ struct MaterialScopeAdaptExample {
         .justifyContent(FlexAlign.Center)
         .alignItems(HorizontalAlign.Center)
       }
-      .title(this.NavigationTitle, { barStyle: BarStyle.STACK })
+      .title({ builder: this.NavigationTitle, height: this.titleHeight }, { barStyle: BarStyle.STACK })
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
   }
 }
@@ -173,6 +176,44 @@ Column() {
 .systemMaterial(new uiMaterial.ImmersiveMaterial({
   style: uiMaterial.ImmersiveStyle.THIN,
 }))
+```
+
+### 自定义弹出框CustomDialog没有生效沉浸式系统材质效果
+
+**问题现象**
+
+- 通过[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)创建的自定义弹出框，传入systemMaterial属性后没有生效沉浸式系统材质效果。
+- CustomDialog设置[customStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)为true时弹出框没有生效沉浸式系统材质效果。
+
+**可能原因**
+
+如果使用openCustomDialog、openCustomDialogWithController创建自定义弹出框，或设置弹出框的customStyle属性为true时，弹出框的背板由开发者自定义，当前暂不支持对此场景适配沉浸式系统材质。
+
+**解决措施**
+
+不支持在自定义弹出框背板中适配沉浸式系统材质。
+
+若开发者有诉求，建议使用其他类似接口，如[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)。
+
+**代码示例**
+
+以下代码展示了使用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)接口创建自定义弹出框，并生效沉浸式系统材质效果。
+
+<!-- @[open_custom_dialog_with_system_material_set_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/openCustomDialogWithSystemMaterial.ets) -->
+
+```ts
+Button('Click Me')
+  .fontSize(30)
+  .onClick(() => {
+    this.getUIContext()
+      .getPromptAction()
+      .openCustomDialog({
+        builder: () => {
+          this.customDialogComponent()
+        },
+        systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+      })
+  })
 ```
 
 ## 设置沉浸式系统材质后组件边框呈现出周围背景的颜色
