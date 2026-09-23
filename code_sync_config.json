@@ -46296,5 +46296,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/mechanicManager/camera-tracking-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets",
+				"functions":[
+					{
+						"end_line":182,
+						"name":"is_control_supported",
+						"start_line":179
+					}
+				]
+			}
+		]
 	}
 ]
