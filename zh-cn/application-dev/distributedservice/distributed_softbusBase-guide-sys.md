@@ -86,7 +86,7 @@
 
 <!-- @[import_softbus_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 ```
 
@@ -118,7 +118,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 <!-- @[start_adv](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
 const customData = this.buildCustomData();
 await softbusBase.startPerceptionAdv(type, customData);
@@ -128,7 +128,7 @@ await softbusBase.startPerceptionAdv(type, customData);
 
 <!-- @[set_high_freq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
 const customData = this.buildCustomData();
 await softbusBase.setPerceptionAdvHighFreq(type, customData);
@@ -138,7 +138,7 @@ await softbusBase.setPerceptionAdvHighFreq(type, customData);
 
 <!-- @[stop_adv](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
 await softbusBase.stopPerceptionAdv(type);
 ```
@@ -149,7 +149,7 @@ await softbusBase.stopPerceptionAdv(type);
 
 <!-- @[import_softbus_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
 ```
 
@@ -159,7 +159,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 <!-- @[start_scan](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
 const cycle = softbusBase.PerceptionCycle.PERCEPTION_CYCLE_MEDIUM;
 await softbusBase.startPerceptionScan(type, cycle);
@@ -169,7 +169,7 @@ await softbusBase.startPerceptionScan(type, cycle);
 
 <!-- @[get_device_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
 const devices = await softbusBase.getPerceptionDeviceList(type);
 ```
@@ -178,7 +178,7 @@ const devices = await softbusBase.getPerceptionDeviceList(type);
 
 <!-- @[stop_scan](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
 await softbusBase.stopPerceptionScan(type);
 ```
