@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-用于卡片内部和提供方应用间的交互，当前支持router、message、call<!--Del-->、insightIntent<!--DelEnd-->类型的事件，仅在卡片中可以调用。<!--Del-->其中，insightIntent类型的事件仅拥有意图执行权限的系统应用支持，用于通过意图框架执行意图跳转。<!--DelEnd-->
+用于卡片内部和提供方应用间的交互，当前支持router、message、call<!--Del-->、insightIntent<!--DelEnd-->类型的事件，仅在卡片中可以调用。<!--Del-->其中，insightIntent类型的事件仅拥有意图执行权限([ohos.permission.EXECUTE_INSIGHT_INTENT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionexecute_insight_intent))的系统应用支持，用于通过意图框架执行意图跳转。<!--DelEnd-->
 
 > **说明：** 
 >
@@ -40,13 +40,13 @@ action参数说明：
 
 | **参数名** | **类型** |  **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| action | string | 是 |action的类型，支持以下预定义的类型：<br/>-&nbsp;router：跳转到提供方应用的指定UIAbility，只允许在点击事件中触发。<br/>-&nbsp;message：自定义消息，触发后会调用提供方FormExtensionAbility的[onFormEvent()](../apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)生命周期回调。<br/>-&nbsp;call：后台启动提供方应用。触发后会拉起提供方应用的指定UIAbility（仅支持launchType为singleton的[UIAbility](../../application-models/uiability-launch-type.md)，即启动模式为单实例的UIAbility），但不会调度到前台。提供方应用需要具备后台运行权限([ohos.permission.KEEP_BACKGROUND_RUNNING](../../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running))。<!--Del--><br/>-&nbsp;insightIntent：通过[意图框架](../apis-ability-kit/js-apis-app-ability-insightIntent.md)执行意图跳转到提供方应用，只允许在点击事件中触发，仅拥有意图执行权限的系统应用支持。<br/>**起始版本：** 26.0.1<!--DelEnd--> |
+| action | string | 是 |action的类型，支持以下预定义的类型：<br/>-&nbsp;router：跳转到提供方应用的指定UIAbility，只允许在点击事件中触发。<br/>-&nbsp;message：自定义消息，触发后会调用提供方FormExtensionAbility的[onFormEvent()](../apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)生命周期回调。<br/>-&nbsp;call：后台启动提供方应用。触发后会拉起提供方应用的指定UIAbility（仅支持launchType为singleton的[UIAbility](../../application-models/uiability-launch-type.md)，即启动模式为单实例的UIAbility），但不会调度到前台。提供方应用需要具备后台运行权限([ohos.permission.KEEP_BACKGROUND_RUNNING](../../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running))。<!--Del--><br/>-&nbsp;insightIntent：通过[意图框架](../apis-ability-kit/js-apis-app-ability-insightIntent.md)执行意图跳转到提供方应用，只允许在点击事件中触发，仅拥有意图执行权限([ohos.permission.EXECUTE_INSIGHT_INTENT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionexecute_insight_intent))的系统应用支持。<br/>**起始版本：** 26.0.1<!--DelEnd--> |
 | bundleName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的包名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的包名，缺省时使用卡片提供方应用的包名。<!--DelEnd--> |
 | moduleName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的模块名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的模块名，缺省时使用卡片提供方应用的模块名。<!--DelEnd--> |
 | abilityName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的UIAbility名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的UIAbility名，缺省时使用提供方应用[module.json5配置文件](../../quick-start/module-configuration-file.md)中入口UIAbility对应的名称。<!--DelEnd--> |
 | uri<sup>11+</sup> | string   | 否   | action为router&nbsp;类型时跳转的UIAbility的统一资源标识符。uri和abilityName同时存在时，abilityName优先。<!--Del-->enableRouteSecondPage为true时，uri可与abilityName同时生效，用于跳转到提供方应用的二级页面，仅系统应用支持。<!--DelEnd--> |<!--Del-->
 | enableRouteSecondPage | boolean | 否 | action为router&nbsp;类型时是否允许uri与abilityName同时生效，以跳转到提供方应用的二级页面，默认为false，仅系统应用支持。<br/>**起始版本：** 26.0.1 |
-| intentName | string | 否 | action为insightIntent&nbsp;类型时指定要执行的意图名称，action为insightIntent&nbsp;类型时必填，仅拥有意图执行权限的系统应用支持。<br/>**起始版本：** 26.0.1 |<!--DelEnd-->
+| intentName | string | 否 | action为insightIntent&nbsp;类型时指定要执行的意图名称，action为insightIntent&nbsp;类型时必填，仅拥有意图执行权限([ohos.permission.EXECUTE_INSIGHT_INTENT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionexecute_insight_intent))的系统应用支持。<br/>**起始版本：** 26.0.1 |<!--DelEnd-->
 | params | Object | 否 | 当前action携带的额外参数，内容使用JSON格式的键值对形式。<!--Del-->action为insightIntent&nbsp;类型时，"params"中可填入参数'intentParams'和'executeMode'，详见下方说明。<!--DelEnd--> |
 
 >**说明：**
