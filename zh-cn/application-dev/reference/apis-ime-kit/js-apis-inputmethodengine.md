@@ -123,8 +123,8 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | PATTERN_ONE_TIME_CODE_NUMBER | number | 15 | 数字验证码编辑框。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | OPTION_ASCII | number | 20 | 允许输入ASCII值。 |
 | OPTION_NONE | number | 0 | 不指定编辑框输入属性。 |
-| OPTION_AUTO_CAP_CHARACTERS | number | 2 | 允许输入字符。 |
-| OPTION_AUTO_CAP_SENTENCES | number | 8 | 允许输入句子。 |
+| OPTION_AUTO_CAP_CHARACTERS | number | 2 | 自动将字符首字母大写。 |
+| OPTION_AUTO_CAP_SENTENCES | number | 8 | 自动将句子首字母大写。 |
 | OPTION_AUTO_WORDS | number | 4 | 允许输入单词。 |
 | OPTION_MULTI_LINE | number | 1 | 允许输入多行。 |
 | OPTION_NO_FULLSCREEN | number | 10 | 半屏样式。 |

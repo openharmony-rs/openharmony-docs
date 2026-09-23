@@ -20,6 +20,7 @@ CMakeLists.txt中添加以下lib。
 
 ```txt
 libohinputmethod.so
+libhilog_ndk.z.so
 ```
 
 ## 引用头文件
