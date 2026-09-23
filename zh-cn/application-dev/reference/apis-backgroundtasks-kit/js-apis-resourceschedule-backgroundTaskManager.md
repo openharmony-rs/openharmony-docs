@@ -1642,7 +1642,7 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_CANCEL_VOIP_NOT_RUNNING            | 13   | 申请VOIP类型长时任务，但是未检测到音频流或者录音流。  |
 | SYSTEM_CANCEL_USER_UNAUTHORIZED           | 14   | 申请特殊场景类型长时任务，但是用户未授权。  |
 | SYSTEM_CANCEL_NOT_USE_NEARLINK            | 15   | 申请NEARLINK类型长时任务，但是未使用星闪相关业务。<br/>**起始版本：** 26.0.1 |
-| SYSTEM_CANCEL_NOT_USE_USB                 | 16   | 申请USB类型长时任务，但是未检测到USB设备。<br/>**起始版本：** 26.2.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
+| SYSTEM_CANCEL_NOT_USE_USB                 | 16   | 申请USB类型长时任务，但是未检测到USB设备。<br/>**起始版本：** 26.2.0  |
 
 ## BackgroundSubMode<sup>16+</sup>
 
