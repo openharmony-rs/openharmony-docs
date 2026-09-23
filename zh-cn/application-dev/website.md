@@ -5955,7 +5955,7 @@
         - [Memory](reference/common/capi-memory.md)
         - [JSVM](reference/common/capi-jsvm.md)
       - 头文件<!--common-basic-headerfile-->
-        - [syscap_ndk.h](reference/common/syscap__ndk_8h.md)
+        - [syscap_ndk.h](reference/common/syscap-ndk-8h.md)
         - [purgeable_memory.h](reference/common/capi-purgeable-memory-h.md)
         - [jsvm.h](reference/common/capi-jsvm-h.md)
         - [jsvm_types.h](reference/common/capi-jsvm-types-h.md)
