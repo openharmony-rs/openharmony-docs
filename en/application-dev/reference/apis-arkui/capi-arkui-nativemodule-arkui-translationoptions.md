@@ -5,6 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=d08606d031c19ca91bcb797bc358ec3a21ddc632 translatedAt=2026-09-22T09:18:37.789Z pushedAt=2026-09-22T11:46:30.566Z -->
 
 ```c
 typedef struct {...} ArkUI_TranslationOptions
@@ -12,13 +13,13 @@ typedef struct {...} ArkUI_TranslationOptions
 
 ## Overview
 
-Defines the translation effect object for component transitions.
+Defines the translation options for component transition, used to set the translation distance of a component in the x, y, and z directions during the transition.
 
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [native_type_visual.h](capi-native-type-visual-h.md)
 
 ## Summary
 
@@ -26,6 +27,6 @@ Defines the translation effect object for component transitions.
 
 | Name| Description|
 | -- | -- |
-| float x | X-axis translation distance, in vp.|
-| float y | Y-axis translation distance, in vp.|
-| float z | Z-axis translation distance, in vp.|
+| float x | X-axis translation distance, in vp. Value principles: A positive value indicates translation to the right, a negative value indicates translation to the left, and **0** indicates no translation. Default value: **0**. |
+| float y | Y-axis translation distance, in vp. Value principles: A positive value indicates translation downward, a negative value indicates translation upward, and **0** indicates no translation. Default value: **0**. |
+| float z | Z-axis translation distance, in vp. Value principles: A positive value indicates translation toward the observer, a negative value indicates translation away from the observer, and **0** indicates no translation. When moving along the z-axis, since the observation point remains unchanged, the component will be scaled up as the value of **z** approaches the observation point and scaled down as it moves away. Default value: **0**. |
