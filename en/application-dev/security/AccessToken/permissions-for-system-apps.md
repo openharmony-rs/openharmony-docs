@@ -9265,7 +9265,7 @@ Allows an application to pass Linux commands with root privileges to a container
  	 
 Allows an application to call basic virtual machine capabilities.
 
-With this permission,the application can call basic virtual machine capabilities,such as installing,deleting,starting,and pausing virtual machines.
+With this permission, the application can call basic virtual machine capabilities, such as installing, deleting, starting, and pausing virtual machines.
 
 **Permission level**: system_basic
 
