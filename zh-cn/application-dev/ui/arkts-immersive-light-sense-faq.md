@@ -198,19 +198,26 @@ Column() {
 
 <!-- @[open_custom_dialog_with_system_material_set_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/openCustomDialogWithSystemMaterial.ets) -->
 
-```ts
+``` TypeScript
 Button('Click Me')
-  .fontSize(30)
-  .onClick(() => {
+.fontSize(30)
+.onClick(() => {
     this.getUIContext()
-      .getPromptAction()
-      .openCustomDialog({
+    .getPromptAction()
+    .openCustomDialog({
         builder: () => {
-          this.customDialogComponent()
+        this.customDialogComponent()
         },
-        systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
-      })
-  })
+        systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK }),
+        // ...
+    })
+    .then((dialogId: number) => {
+        this.customDialogComponentId = dialogId;
+    })
+    .catch((error: BusinessError) => {
+        console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`);
+    })
+})
 ```
 
 ## 设置沉浸式系统材质后组件边框呈现出周围背景的颜色
