@@ -27,17 +27,15 @@ import { cliManager } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
-| 名称       | 类型 | 必填 | 说明 |
-| ---------- | ---- | --- | ------------------ |
-| workDir    | string | 否 | 命令执行的工作目录，如果不传或传空，则为根目录。 |
-| env        | Record\<string, string\> | 否 | 命令执行的环境变量。 |
-| background | boolean | 否 | 表示命令是否后台执行。<br/>true：后台执行，false：前台执行。<br/>默认值：false。 |
-| yieldMs    | number | 否 | 命令前台执行时长，单位为毫秒。取值范围：0 ~ 1000 * timeout，默认值：0。 |
-| timeout    | number | 否 | 命令执行超时时长，单位为秒。取值范围：0 ~ 1800。默认值：1800，传0表示不会超时。 |
-| policy     | string | 否 | 安全策略，参数格式为JSON字符串。 |
-| isShellCommand | boolean | 否 | 表示命令是否作为Shell命令执行。true：作为Shell命令执行；false：作为CLI工具命令执行，此时需配合`challenge`参数。<br/>默认值：true。<br/>**系统接口**：此属性为系统接口，自26.0.1版本起可用。 |
-| challenge  | string | 否 | 使用[requestToolPermissions](js-apis-abilityToolAccessCtrl-sys.md#abilitytoolaccessctrlrequesttoolpermissions)接口生成的[TicketInfo](js-apis-abilityToolAccessCtrl-sys.md#ticketinfo)中的ticket字符串。仅在`isShellCommand`为false时生效。<br/>默认值：空字符串。<br/>**系统接口**：此属性为系统接口，自26.0.1版本起可用。 |
-| callback   | [ToolEventCallback (CLI工具事件回调)](js-apis-inner-application-toolEventCallback-sys.md) | 否 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
+| 名称       | 类型 | 只读 | 可选 | 说明 |
+| ---------- | ---- | ---- | ---- | ------------------ |
+| workDir    | string | 否 | 是 | 命令执行的工作目录，如果不传或传空，则为根目录。 |
+| env        | Record\<string, string\> | 否 | 是 | 命令执行的环境变量。 |
+| background | boolean | 否 | 是 | 表示命令是否后台执行。<br/>true：后台执行，false：前台执行。<br/>默认值：false。 |
+| yieldMs    | number | 否 | 是 | 命令前台执行时长，单位为毫秒。取值范围：0 ~ 1000 * timeout，默认值：0。 |
+| timeout    | number | 否 | 是 | 命令执行超时时长，单位为秒。取值范围：0 ~ 1800。默认值：1800，传0表示不会超时。 |
+| policy     | string | 否 | 是 | 安全策略，参数格式为JSON字符串。 |
+| callback   | [ToolEventCallback (CLI工具事件回调)](js-apis-inner-application-toolEventCallback-sys.md) | 否 | 是 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
 
 ## ExecResult
 
@@ -49,14 +47,14 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
-| 名称          | 类型     | 只读 | 必填 | 说明 |
+| 名称          | 类型     | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | ---  |----------------- |
-| exitCode      | number  | 否   | 否   | 工具的退出码。默认值：undefined。 |
-| outputText    | string  | 否   | 否   | 工具的标准输出（stdout）。默认值：undefined。 |
-| errorText     | string  | 否   | 否   | 工具的标准错误输出（stderr）。默认值：undefined。 |
-| signalNumber  | number  | 否   | 否   | 工具的终止信号。默认值：undefined。 |
-| timeOut       | boolean | 否   | 是   | 工具的执行是否超时。true表示超时，false表示未超时。 |
-| executionTime | number  | 否   | 是   | 工具的执行时长。单位：ms。|
+| exitCode      | number  | 否   | 是   | 工具的退出码。默认值：undefined。 |
+| outputText    | string  | 否   | 是   | 工具的标准输出（stdout）。默认值：undefined。 |
+| errorText     | string  | 否   | 是   | 工具的标准错误输出（stderr）。默认值：undefined。 |
+| signalNumber  | number  | 否   | 是   | 工具的终止信号。默认值：undefined。 |
+| timeOut       | boolean | 否   | 否   | 工具的执行是否超时。true表示超时，false表示未超时。 |
+| executionTime | number  | 否   | 否   | 工具的执行时长。单位：ms。|
 
 ## SessionStatus
 
@@ -84,12 +82,12 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
-| 名称      | 类型 | 只读 | 必填 | 说明 |
+| 名称      | 类型 | 只读 | 可选 | 说明 |
 | --------- | ---- | ---- | --- | ------------------ |
-| sessionId  | string | 否 | 是 | 会话id。 |
-| toolName  | string | 否 | 是 | 工具名称。 |
-| status  | [SessionStatus](#sessionstatus) | 否 | 是 | 会话状态。 |
-| result  | [ExecResult](#execresult) | 否 | 否 | 工具执行结果。默认值：undefined。 |
+| sessionId  | string | 否 | 否 | 会话id。 |
+| toolName  | string | 否 | 否 | 工具名称。 |
+| status  | [SessionStatus](#sessionstatus) | 否 | 否 | 会话状态。 |
+| result  | [ExecResult](#execresult) | 否 | 是 | 工具执行结果。默认值：undefined。 |
 
 ## cliManager.execCmd
 
@@ -97,26 +95,15 @@ execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise\<CliSessionInfo\>
 
 执行Shell命令，返回会话信息。使用Promise异步回调。
 
-根据[ExecCmdOptions](#execcmdoptions)中的`isShellCommand`属性，命令执行分为两种模式：
-- **Shell命令模式**（`isShellCommand`为`true`，默认）：将`cmd`作为原始Shell命令在系统Shell环境中执行。自26.0.1版本起，普通应用可通过ohos.permission.EXEC_PUBLIC_CLI_TOOL权限调用。
-- **CLI命令模式**（`isShellCommand`为`false`，系统接口）：将`cmd`解析为已注册的CLI工具命令（toolName + subCommand + args），需配合`challenge`参数进行访问凭据校验。仅系统应用可使用。
-
-> **说明：**
->
-> - 26.0.0版本仅系统应用可调用，需ohos.permission.EXEC_CLI_TOOL权限；26.0.1版本起，普通应用可通过ohos.permission.EXEC_PUBLIC_CLI_TOOL权限调用。
-> - `isShellCommand`为`false`的CLI命令模式及`challenge`参数为系统接口，仅系统应用可使用。
-
 **起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：以下权限二选一：
-- ohos.permission.EXEC_CLI_TOOL（26.0.0版本起可用）
-- ohos.permission.EXEC_PUBLIC_CLI_TOOL（26.0.1版本起可用，仅限2in1设备）
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
-**设备行为差异**：Shell命令模式（`isShellCommand`为`true`，默认）在PC/2in1中可正常调用，在其他设备类型中返回801错误码。CLI命令模式（`isShellCommand`为`false`）不受此限制。
+**设备行为差异**：该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -138,7 +125,6 @@ execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise\<CliSessionInfo\>
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 35600031 | Maximum number of processes has been reached. |
 | 35600050  | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
@@ -188,9 +174,7 @@ subscribeSession(sessionId: string, callback: ToolEventCallback): Promise\<void\
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：以下权限二选一：
-- ohos.permission.EXEC_CLI_TOOL（26.0.0版本起可用）
-- ohos.permission.EXEC_PUBLIC_CLI_TOOL（26.0.1版本起可用，仅限2in1设备）
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -214,7 +198,6 @@ subscribeSession(sessionId: string, callback: ToolEventCallback): Promise\<void\
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
-| 202      | Not system application. |
 | 35600032 | The specified session does not exist.                                  |
 | 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
 
@@ -261,9 +244,7 @@ clearSession(sessionId: string): Promise\<void\>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：以下权限二选一：
-- ohos.permission.EXEC_CLI_TOOL（26.0.0版本起可用）
-- ohos.permission.EXEC_PUBLIC_CLI_TOOL（26.0.1版本起可用，仅限2in1设备）
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -286,7 +267,6 @@ clearSession(sessionId: string): Promise\<void\>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
-| 202      | Not system application. |
 | 35600032 | The specified session does not exist.                                  |
 | 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
 
@@ -325,9 +305,7 @@ querySession(sessionId: string): Promise\<CliSessionInfo\>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：以下权限二选一：
-- ohos.permission.EXEC_CLI_TOOL（26.0.0版本起可用）
-- ohos.permission.EXEC_PUBLIC_CLI_TOOL（26.0.1版本起可用，仅限2in1设备）
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -341,7 +319,7 @@ querySession(sessionId: string): Promise\<CliSessionInfo\>
 
 | 类型                                      | 说明                               |
 | ----------------------------------------- | ---------------------------------- |
-| Promise\<[CliSessionInfo](#clisessioninfo)> | Promise对象，返回CLI工具会话信息。 |
+| Promise\<[CliSessionInfo](#clisessioninfo)\> | Promise对象，返回CLI工具会话信息。 |
 
 **错误码：**
 
@@ -350,7 +328,6 @@ querySession(sessionId: string): Promise\<CliSessionInfo\>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
-| 202      | Not system application. |
 | 35600032 | The specified session does not exist.                                  |
 | 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
 
@@ -389,9 +366,7 @@ sendMessage(sessionId: string, message: string): Promise\<void\>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：以下权限二选一：
-- ohos.permission.EXEC_CLI_TOOL（26.0.0版本起可用）
-- ohos.permission.EXEC_PUBLIC_CLI_TOOL（26.0.1版本起可用，仅限2in1设备）
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -415,7 +390,6 @@ sendMessage(sessionId: string, message: string): Promise\<void\>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
-| 202      | Not system application. |
 | 35600032 | The specified session does not exist.                                  |
 | 35600033 | Failed to write message to the tool process.                             |
 | 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
