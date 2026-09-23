@@ -442,7 +442,42 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 13. 当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
     - 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
-14. 不支持在使用connect或globalConnect的类中使用[\@Computed](./arkts-new-computed.md)。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。
+14. 在API版本26.2.0前，不支持在使用globalConnect持久化的类中使用[\@Computed](./arkts-new-computed.md)函数。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。从API版本26.2.0开始，通过在[ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionst18)中配置ignoreReadOnlyProperties为true，可以在globalConnect持久化的类中使用\@Computed函数。ignoreReadOnlyProperties默认为false，设为true时，PersistenceV2会跳过只读的属性（如\@Computed函数），避免反序列化失败。
+
+    ```typescript
+    import { PersistenceV2 } from '@kit.ArkUI';
+
+    @ObservedV2
+    class SampleComputed {
+      @Trace public value: number = 1;
+
+      // @Computed为只读属性，需配合ignoreReadOnlyProperties使用
+      @Computed
+      get doubled(): number {
+        return this.value * 2;
+      }
+    }
+
+    @Entry
+    @ComponentV2
+    struct Index {
+      @Local sample: SampleComputed = PersistenceV2.globalConnect({
+        type: SampleComputed,
+        defaultCreator: () => new SampleComputed(),
+        // 必须配置ignoreReadOnlyProperties: true，否则反序列化会因@Computed失败，导致应用crash
+        ignoreReadOnlyProperties: true
+      })!;
+
+      build() {
+        Column() {
+          Text(`doubled value is ${this.sample.doubled}`)
+        }.width('100%')
+      }
+    }
+    ```
+
+    ![persistencev2-ignorereadonlyproperties](./figures/persistencev2-ignorereadonlyproperties.png)
+  
 
 15. 在使用globalConnect持久化[集合类型](#globalconnect支持的集合类型)（如`Array`、`Map`、`Set`、`collections.Array`、`collections.Map`、`collections.Set`）时，若容器内部元素类型为基础类型（如`number`、`string`、`boolean`），则不应声明`defaultSubCreator`，否则会导致编辑、编译报错。
 
