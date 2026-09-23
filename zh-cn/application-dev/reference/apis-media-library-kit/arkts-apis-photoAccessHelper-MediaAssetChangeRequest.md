@@ -553,7 +553,7 @@ addResource(type: ResourceType, fileUri: string): void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900002 | The file corresponding to the URI is not in the app sandbox. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
-| 14000016 | Operation type not support. Possible causes:<br>1. A previous asset creation or modification request has not been applied yet. |
+| 14000016 | Operation type not support. Possible causes:<br>A previous asset creation or modification request has not been applied yet. |
 
 **示例：**
 
@@ -606,7 +606,7 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
-| 14000016 | Operation type not support. Possible causes:<br>1. A previous asset creation or modification request has not been applied yet. |
+| 14000016 | Operation type not support. Possible causes:<br>A previous asset creation or modification request has not been applied yet. |
 
 **示例：**
 
@@ -649,7 +649,7 @@ saveCameraPhoto(): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
-| 14000016 | Operation type not support. Possible causes:<br>1. A previous asset creation or modification request has not been applied yet. |
+| 14000016 | Operation type not support. Possible causes:<br>A previous asset creation or modification request has not been applied yet. |
 
 **示例：**
 
@@ -780,7 +780,7 @@ setOrientation(orientation: number): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 

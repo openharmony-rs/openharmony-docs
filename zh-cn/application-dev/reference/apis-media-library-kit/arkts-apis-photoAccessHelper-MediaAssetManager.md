@@ -55,7 +55,7 @@ static requestImage(context: Context, asset: PhotoAsset, requestOptions: Request
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object.<br>2.User file service initialization failed, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please check if the context is valid and retry.<br>3.Failed to initialize the dataHandler callback, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object.<br>2. User file service initialization failed, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please check if the context is valid and retry.<br>3. Failed to initialize the dataHandler callback, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry. |
 
 **示例：**
 
@@ -140,7 +140,7 @@ static requestImageData(context: Context, asset: PhotoAsset, requestOptions: Req
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object.<br>2.User file service initialization failed, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please check if the context is valid and retry.<br>3.Failed to initialize the dataHandler callback, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object.<br>2. User file service initialization failed, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please check if the context is valid and retry.<br>3. Failed to initialize the dataHandler callback, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry. |
 
 **示例：**
 
@@ -225,7 +225,7 @@ static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: R
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. <br> 适用版本：18+ |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter parsing failed, please check the number and types of parameters.<br>2.User file service initialization failed, possible causes: (1) Database exception; (2) IPC timeout. Please check if the context is valid and retry.<br>3.Failed to initialize the dataHandler callback, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter parsing failed, please check the number and types of parameters.<br>2. User file service initialization failed, possible causes: (1) Database exception; (2) IPC timeout. Please check if the context is valid and retry.<br>3. Failed to initialize the dataHandler callback, possible causes: (1) Memory insufficient; (2) IPC timeout. Please retry. |
 
 **示例：**
 
@@ -310,7 +310,7 @@ static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: Req
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. <br> 适用版本：15+ |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter parsing failed, please check the number and types of parameters.<br>2.The dataHandler parameter must be a valid object.<br>3.User file service initialization failed, possible causes: (1) Database exception; (2) IPC timeout. Please check if the context is valid and retry.<br>4.System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter parsing failed, please check the number and types of parameters.<br>2. The dataHandler parameter must be a valid object.<br>3. User file service initialization failed, possible causes: (1) Database exception; (2) IPC timeout. Please check if the context is valid and retry.<br>4. System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -385,7 +385,7 @@ static cancelRequest(context: Context, requestId: string): Promise\<void>
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.User file service initialization failed, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please check if the context is valid and retry.<br>2.The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. User file service initialization failed, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please check if the context is valid and retry.<br>2. The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
 
 **示例：**
 
@@ -435,7 +435,7 @@ static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: str
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Failed to parse parameters. Please check the number and types of parameters.<br>2.System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse parameters. Please check the number and types of parameters.<br>2. System internal error, possible causes: (1) Database exception; (2) File system exception; (3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -487,7 +487,7 @@ static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: Re
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.User file client initialization failed, possible causes: (1) Database exception; (2) IPC timeout. Please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>User file client initialization failed, possible causes: (1) Database exception; (2) IPC timeout. Please retry. |
 
 **示例：**
 
