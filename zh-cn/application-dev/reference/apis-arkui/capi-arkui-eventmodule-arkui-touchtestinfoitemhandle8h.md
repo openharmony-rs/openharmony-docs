@@ -12,7 +12,7 @@ typedef ArkUI_TouchTestInfoItemHandle* ArkUI_TouchTestInfoItemArray
 
 ## 概述
 
-定义触摸测试信息项句柄数组，用于表示多个触摸测试信息项句柄。在触摸事件分发与测试过程中，可通过此数组类型统一管理和访问多个触摸测试结果，适用于需要同时处理多个触点测试信息的场景。
+定义触摸测试信息项句柄数组，用于聚合触摸命中测试过程中产生的信息项句柄，便于批量访问触摸测试信息。具体接口请参见[native_gesture.h](capi-native-gesture-h.md)。
 
 **起始版本：** 22
 
