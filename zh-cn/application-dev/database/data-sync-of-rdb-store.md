@@ -211,6 +211,7 @@
    1. 调用[on('dataChange')](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#ondatachange)接口监听其他设备的数据变化，当数据变化同步至当前设备时，将执行订阅的回调方法，入参为数据发生变化的设备ID列表。
    2. 通过[obtainDistributedTableName()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#obtaindistributedtablename)接口根据设备ID获取与设备对应的分布式表表名，查询对应设备分布式表中的数据。
 
+
    ArkTS-Dyn示例：
    <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
    
