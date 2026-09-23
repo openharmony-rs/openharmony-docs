@@ -6,10 +6,10 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供MDM Kit中常用公共能力的纯类型定义，包含枚举类型和数据结构。本模块仅导出类型声明，不包含具体实现逻辑或可执行代码。
+本模块提供MDM Kit中常用的公共能力，包含枚举类型、数据结构以及管控特性查询接口等。
 
 **使用场景**：
-在企业设备管理应用开发中，当需要配置设备管控策略、管理应用实例、处理应用安装结果、监听策略变更等场景时，会使用本模块定义的类型。这些类型为MDM Kit中各子模块的接口提供统一的参数和返回值标准。
+在企业设备管理应用开发中，当需要配置设备管控策略、管理应用实例、处理应用安装结果、监听策略变更、查询设备是否支持指定管控特性等场景时，会使用本模块定义的类型和接口。这些类型和接口为MDM Kit中各子模块提供统一的参数和返回值标准。
 
 **收益**：
 通过标准化的类型定义，可以简化企业设备管理应用的开发流程，提高代码的可维护性和类型安全性，降低类型相关的运行时错误。
@@ -137,3 +137,57 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | ----------- | -------- | ------------------------------- |
 | SELF | 0  | 当前Admin设置的策略。|
 | ALL | 1  | 全部Admin设置的策略。|
+
+## ManagedFeature
+
+管控特性。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称                    | 值 | 说明                              |
+| ----------------------- | -------- | --------------------------------- |
+| LOCAL_HOTA_DOMAIN       | 0  | 本机HOTA（Huawei Over-the-Air）域名。    |
+| USER_EXTEND_CREDENTIAL  | 1  | 扩展身份认证凭据。                |
+| DEVICE_SECURITY_LEVEL   | 2  | 设备安全等级。              |
+| PRINTER_IP_ADDRESS_POLICY | 3 | 打印机IP地址策略。          |
+
+## common.isFeatureSupported
+
+isFeatureSupported(feature: ManagedFeature): boolean
+
+查询是否支持某个管控特性。适用于企业设备管理应用在调用与设备形态相关的管控接口前，先确认当前设备是否支持对应特性，再进行差异化的业务处理，避免在不支持的设备上调用相关接口。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                        | 必填 | 说明           |
+| ------- | ------------------------------------------- | ---- | -------------- |
+| feature | [ManagedFeature](#managedfeature)           | 是   | 管控特性。     |
+
+**返回值：**
+
+| 类型    | 说明                                       |
+| ------- | ------------------------------------------ |
+| boolean | true表示支持该特性，false表示不支持该特性。 |
+
+**示例：**
+
+```ts
+import { common } from '@kit.MDMKit';
+
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.LOCAL_HOTA_DOMAIN);
+if (isSupported) {
+  console.info('The local HOTA domain feature is supported.');
+} else {
+  console.info('The local HOTA domain feature is not supported.');
+}
+```
