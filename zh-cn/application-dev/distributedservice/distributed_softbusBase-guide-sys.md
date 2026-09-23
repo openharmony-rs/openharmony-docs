@@ -86,7 +86,7 @@
 
 **1. 导入所需的模块**（完整工程还需导入 `BusinessError`、`Logger` 等，见 sample）。
 
-\<!-- @[import_softbus_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) --\>
+<!-- @[import_softbus_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
@@ -118,7 +118,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 **3. 启动感知广播，携带自定义数据。**
 
-\<!-- @[start_adv](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) --\>
+<!-- @[start_adv](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
@@ -128,7 +128,7 @@ await softbusBase.startPerceptionAdv(type, customData);
 
 **4. （可选）切换高频 10 秒并更新自定义数据。**
 
-\<!-- @[set_high_freq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) --\>
+<!-- @[set_high_freq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
@@ -138,7 +138,7 @@ await softbusBase.setPerceptionAdvHighFreq(type, customData);
 
 **5. 停止感知广播。**
 
-\<!-- @[stop_adv](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) --\>
+<!-- @[stop_adv](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
@@ -149,7 +149,7 @@ await softbusBase.stopPerceptionAdv(type);
 
 **1. 导入所需的模块**（与广播端一致）。
 
-\<!-- @[import_softbus_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) --\>
+<!-- @[import_softbus_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import softbusBase from '@ohos.distributed.softbusBase';
@@ -159,7 +159,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 **3. 启动感知扫描，指定保活周期。**
 
-\<!-- @[start_scan](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) --\>
+<!-- @[start_scan](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
@@ -169,7 +169,7 @@ await softbusBase.startPerceptionScan(type, cycle);
 
 **4. 获取感知扫描发现的设备列表。**
 
-\<!-- @[get_device_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) --\>
+<!-- @[get_device_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
@@ -178,7 +178,7 @@ const devices = await softbusBase.getPerceptionDeviceList(type);
 
 **5. 停止感知扫描并清空设备列表。**
 
-\<!-- @[stop_scan](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) --\>
+<!-- @[stop_scan](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusBase/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
