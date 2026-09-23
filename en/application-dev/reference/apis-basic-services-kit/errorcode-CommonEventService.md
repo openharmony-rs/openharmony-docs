@@ -5,6 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-23T02:07:55.498Z pushedAt=2026-09-23T11:33:25.551Z -->
 
 > **NOTE**
 >
@@ -72,7 +73,7 @@ A third-party application cannot send system common events.
 
 **Description**
 
-The third-party application fails to send system common events.
+Third-party applications cannot send [system common events](../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **Possible Causes**
 
@@ -145,7 +146,7 @@ Failed to initialize the common event service.
 
 **Description**
 
-An error occurs in the initialization process of the common event server.
+An error occurs in the initialization process of the [common event service](../../basic-services/common-event/common-event-glossary.md#common-event-service-ces).
 
 **Possible Causes**
 
