@@ -59,7 +59,7 @@ MDM（Mobile Device Management，移动设备管理）应用支持为账号添�
 2. 导入模块。
 
    <!-- @[import_usb_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MDMKit/UsbKeyAuth/entry/src/main/ets/service/UsbKeyAuthService.ets) -->
-
+   
    ``` TypeScript
    import { securityManager } from '@kit.MDMKit';
    import { userAuth } from '@kit.UserAuthenticationKit';
