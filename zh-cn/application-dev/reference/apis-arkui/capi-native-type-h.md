@@ -1758,7 +1758,7 @@ enum ArkUI_ItemAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | 使用[Flex](..//apis-arkui/arkui-ts/ts-container-flex.md)容器中默认配置，该值为默认值。 |
+| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | 使用[Flex](../apis-arkui/arkui-ts/ts-container-flex.md)容器中默认配置，该值为默认值。 |
 | ARKUI_ITEM_ALIGNMENT_START = 1 | 元素在Flex容器中，交叉轴方向首部对齐。 |
 | ARKUI_ITEM_ALIGNMENT_CENTER = 2 | 元素在Flex容器中，交叉轴方向居中对齐。 |
 | ARKUI_ITEM_ALIGNMENT_END = 3 | 元素在Flex容器中，交叉轴方向底部对齐。 |
@@ -1802,7 +1802,7 @@ enum ArkUI_FlexAlignment
 | ARKUI_FLEX_ALIGNMENT_START = 1 | 主轴方向首端对齐，该值为默认值。 |
 | ARKUI_FLEX_ALIGNMENT_CENTER = 2 | 主轴方向中心对齐。 |
 | ARKUI_FLEX_ALIGNMENT_END = 3 | 主轴方向尾部对齐。 |
-| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | [Flex](..//apis-arkui/arkui-ts/ts-container-flex.md)主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素行首对齐，最后的元素行尾对齐。 |
+| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | [Flex](../apis-arkui/arkui-ts/ts-container-flex.md)主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素行首对齐，最后的元素行尾对齐。 |
 | ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素到行首的距离时相邻元素间距离的一半。 |
 | ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离、第一个元素到行首的距离和最后的元素到行尾的距离均相等。 |
 
@@ -1815,7 +1815,7 @@ enum ArkUI_FlexDirection
 **描述：**
 
 
-定义[Flex](..//apis-arkui/arkui-ts/ts-container-flex.md)容器的主轴方向。
+定义[Flex](../apis-arkui/arkui-ts/ts-container-flex.md)容器的主轴方向。
 
 **起始版本：** 12
 
@@ -2096,7 +2096,7 @@ enum ArkUI_BarrierDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BARRIER_DIRECTION_START = 0 | 屏障在其所有[referencedId](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md#barrierstyle12对象说明)的最左侧，该值为默认值。 |
+| ARKUI_BARRIER_DIRECTION_START = 0 | 屏障在其所有[referencedId](../apis-arkui/arkui-ts/ts-container-relativecontainer.md#barrierstyle12对象说明)的最左侧，该值为默认值。 |
 | ARKUI_BARRIER_DIRECTION_END = 1 | 屏障在其所有referencedId的最右侧。 |
 | ARKUI_BARRIER_DIRECTION_TOP = 2 | 屏障在其所有referencedId的最上方。 |
 | ARKUI_BARRIER_DIRECTION_BOTTOM = 3 | 屏障在其所有referencedId的最下方。 |
@@ -3789,7 +3789,7 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 **描述：**
 
 
-创建[RelativeContainer](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md)容器内的辅助线信息。
+创建[RelativeContainer](../apis-arkui/arkui-ts/ts-container-relativecontainer.md)容器内的辅助线信息。
 
 **起始版本：** 12
 

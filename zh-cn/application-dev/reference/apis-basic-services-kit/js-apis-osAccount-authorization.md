@@ -9,9 +9,9 @@
 
 本模块提供操作系统本地账号授权管理能力。您可以使用该命名空间中的API请求对指定的[Privilege](#privilege)进行授权，这些特权是基于授权策略和用户同意来进行授予的。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -25,9 +25,9 @@ getAuthorizationManager(): AuthorizationManager
 
 获取[AuthorizationManager](#authorizationmanager)实例。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -51,9 +51,9 @@ let authorizationManager: authorization.AuthorizationManager = authorization.get
 
 定义授权管理器，用于请求和检查授权。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -65,9 +65,9 @@ requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise&l
 
 当应用处于前台且不存在有效授权时，将以模应用弹窗方式显示授权弹窗。若已存在有效授权，则会直接复用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -80,7 +80,7 @@ requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise&l
 | 参数名    | 类型                                                | 必填 | 说明                                                             |
 | --------- | --------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | privilege | [Privilege](#privilege)                             | 是   | 目标特权。      |
-| context   | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 承载授权弹窗的UIAbility上下文。 |
+| context   | [UIAbilityContext (UIAbility上下文)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 承载授权弹窗的UIAbility上下文。 |
 
 **返回值：**
 
@@ -153,9 +153,9 @@ hasAuthorization(privilege: Privilege): Promise&lt;boolean&gt;
 
 检查当前进程是否拥有指定特权的授权。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -227,9 +227,9 @@ try {
 
 在请求对这些特权授权前，确保当前应用和运行环境满足授权策略要求。有关每个特权的详细定义（包括授权策略），请参见[系统账号特权列表](appendix-osAccount-authorization-privileges.md)。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -243,9 +243,9 @@ try {
 
 枚举授权结果码。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -262,9 +262,9 @@ try {
 
 定义授权结果。目前，所有[Privilege](#privilege)的授权有效期均与调用进程的生命周期相绑定（随进程销毁而失效）。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 

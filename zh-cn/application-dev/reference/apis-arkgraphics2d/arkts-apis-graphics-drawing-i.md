@@ -85,6 +85,23 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
+
+## TypefaceFallbackInfo
+
+定义字体回退信息的结构体，表示一组使用相同回退字体的字形片段。
+
+**ArkTS模式：** 此接口仅支持ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+| 名称    | 类型   | 只读 | 可选 | 说明   |
+| ------- | ------ | ---- | ---- | ------------------ |
+| glyphIds   | Array\<number> | 否   | 否   | 该字形片段的字形ID数组。 |
+| typeface | [Typeface](arkts-apis-graphics-drawing-Typeface.md) | 否 | 否 | 该字形片段匹配到的字体对象。 |

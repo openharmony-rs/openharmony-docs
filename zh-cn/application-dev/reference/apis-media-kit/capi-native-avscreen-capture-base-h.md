@@ -109,7 +109,7 @@ enum OH_CaptureMode
 | OH_CAPTURE_HOME_SCREEN = 0 | 录制主屏幕。 |
 | OH_CAPTURE_SPECIFIED_SCREEN = 1 | 录制指定屏幕。使用此模式需在OH_AVScreenCaptureConfig中指定displayId。 |
 | OH_CAPTURE_SPECIFIED_WINDOW = 2 | 录制指定窗口。使用此模式需在OH_AVScreenCaptureConfig中指定windowId。 |
-| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | 创建一个虚拟扩展屏幕并对其内容进行录制。<br>**起始版本：** 26.1.0 |
+| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | 创建一个虚拟扩展屏幕并对其内容进行录制。<br>**起始版本：** 26.0.1 |
 | OH_CAPTURE_INVAILD = -1 | 无效模式。 |
 
 ### OH_AudioCaptureSourceType
@@ -629,5 +629,5 @@ typedef void (*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | 指向OH_AVScreenCapture实例的指针。 |
-| [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)* privacyProtect | 隐私保护信息指针。指向包含隐私保护事件详细信息的结构体，用于处理录屏过程中的隐私保护回调事件。 |
+| [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)* privacyProtect | 隐私保护信息指针。指向包含隐私保护事件详细信息的结构体，用于返回录屏过程中隐私保护信息。 |
 | void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |

@@ -900,7 +900,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.STEERINGWHEEL_INFO
 
@@ -916,7 +916,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
 
@@ -932,7 +932,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
 
@@ -948,7 +948,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
 
@@ -964,7 +964,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
 
@@ -980,7 +980,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.BRAKE_PEDAL_INFO
 
@@ -996,7 +996,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
@@ -1612,7 +1612,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MMA_ENERGYREFILL
 
@@ -1626,7 +1626,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MMA_WEATHER
 
@@ -1640,7 +1640,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MMA_SPATIALACTION
 
@@ -1654,4 +1654,4 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1

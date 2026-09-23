@@ -1366,9 +1366,7 @@ avCastController.onMediaItemChange((item: avSession.AVQueueItem) => {
 
 off(type: 'mediaItemChange'): void
 
-注销设置投播当前播放媒体内容事件监听。
-
-指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置投播当前播放媒体内容事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1512,9 +1510,7 @@ avCastController.onPlayNext(() => {
 
 off(type: 'playNext'): void
 
-注销播放下一首资源事件监听。
-
-指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置播放下一首资源事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1657,9 +1653,7 @@ avCastController.onPlayPrevious(() => {
 
 off(type: 'playPrevious'): void
 
-注销设置播放上一首资源事件监听。
-
-指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置播放上一首资源事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2091,9 +2085,7 @@ avCastController.onSeekDone((pos: int) => {
 
 off(type: 'seekDone'): void
 
-注销设置seek结束事件监听。
-
-指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置seek结束事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2384,7 +2376,7 @@ avCastController.onVideoSizeChange((width: int, height: int) => {
 
 off(type: 'videoSizeChange'): void
 
-注销媒体控制器视频尺寸变化的事件监听。
+取消视频尺寸事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2537,7 +2529,7 @@ avCastController.onError((error: BusinessError) => {
 
 off(type: 'error'): void
 
-注销播放的错误事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消播放的错误事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

@@ -143,7 +143,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    }
    ```
 
-4. 重写自定义RenderNode的[draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw)函数，获取Canvas进行自定义的绘制操作，即本章下文中的内容。
+4. 重写自定义RenderNode的[draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw)函数，获取Canvas进行自定义的绘制操作，即本章下文中的内容。
    
    ArkTS-Dyn示例：
 
@@ -289,7 +289,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 4. 在MyNodeController的aboutToAppear()函数中创建PixelMap。
 
-5. 重写自定义RenderNode的[draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw)函数，在其中获取离屏Canvas进行绘制：
+5. 重写自定义RenderNode的[draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw)函数，在其中获取离屏Canvas进行绘制：
 
    1. 利用4中创建的PixelMap构造离屏Canvas。
    2. 对离屏Canvas进行自定义的绘制操作。

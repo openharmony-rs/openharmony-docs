@@ -233,7 +233,7 @@ ArkTS-Sta: radiusWidth(rWidth: double | string): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回当前对象。 |
+| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回设置圆角半径宽度后的RectShape对象，可用于链式调用继续配置矩形形状。 |
 
 ### radiusHeight
 
@@ -263,7 +263,7 @@ ArkTS-Sta: radiusHeight(rHeight: double | string): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回RectShape对象。 |
+| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回设置圆角半径高度后的RectShape对象，可用于链式调用继续配置矩形形状。 |
 
 ### radius
 
@@ -293,7 +293,7 @@ ArkTS-Sta: radius(radius: double | string | Array<double | string>): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回RectShape对象。 |
+| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回设置圆角半径后的RectShape对象，可用于链式调用继续配置矩形形状。 |
 
 ## ShapeSize
 

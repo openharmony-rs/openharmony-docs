@@ -498,7 +498,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.info('bind success');
+  console.error('bind success');
   udp.getState((err: BusinessError, data: socket.SocketStateBase) => {
     if (err) {
       console.error('getState fail');
@@ -526,7 +526,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                             | 说明                                       |
 |  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取UDPSocket状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取UDPSocket状态的结果。 |
 
 **错误码：**
 
@@ -765,7 +765,7 @@ getLocalAddress(): Promise\<NetAddress\>
 
 | 类型            | 说明                                                 |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -1012,7 +1012,7 @@ udp.off('error');
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | address<sup>11+</sup> | string | 否   | 否   | IP地址。在bind方法中表示本地绑定的地址，在connect方法中表示目标地址。                                           |
 | port    | number | 否   | 否   | 端口号 ，范围0~65535。如果不指定系统随机分配端口。           |
-| family  | number | 否   | 否   | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPv6类型，该字段必须被显式指定为2。<br />- 3：Domain<sup>18+</sup>。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
+| family  | number | 否   | 否   | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPv6类型，该字段必须被显式指定为2。<br />- 3：Domain（从API version 18开始支持）。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
 
 ## ProxyOptions<sup>18+</sup>
 
@@ -1207,7 +1207,7 @@ addMembership(multicastAddress: NetAddress, callback: AsyncCallback\<void\>): vo
 | 201     | Permission denied.      |
 | 2301022 | Invalid argument.       |
 | 2301088 | Not a socket.           |
-| 2301098 | Address in use.         |
+| 2301098 | Address in use. |
 
 **示例：**
 
@@ -1263,7 +1263,7 @@ addMembership(multicastAddress: NetAddress): Promise\<void\>
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
 | 2301088 | Not a socket.           |
-| 2301098 | Address in use.         |
+| 2301098 | Address in use. |
 
 **示例：**
 
@@ -1312,7 +1312,7 @@ dropMembership(multicastAddress: NetAddress, callback: AsyncCallback\<void\>): v
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
 | 2301088 | Not a socket.           |
-| 2301098 | Address in use.         |
+| 2301098 | Address in use. |
 
 **示例：**
 
@@ -1368,7 +1368,7 @@ dropMembership(multicastAddress: NetAddress): Promise\<void\>
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
 | 2301088 | Not a socket.           |
-| 2301098 | Address in use.         |
+| 2301098 | Address in use. |
 
 **示例：**
 
@@ -1545,7 +1545,7 @@ getMulticastTTL(): Promise\<number\>
 
 | 类型               | 说明                        |
 | ----------------   | --------------------------- |
-| Promise\<number\> | 以Promise形式返回当前TTL数值。 |
+| Promise\<number\> | Promise对象，返回当前TTL数值。 |
 
 **错误码：**
 
@@ -2397,7 +2397,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                        | 说明                                        |
 | ------------------------------------------ | ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取对端socket地址的结果。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。 |
 
 **错误码：**
 
@@ -2505,7 +2505,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取TCPSocket状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取TCPSocket状态的结果。 |
 
 **错误码：**
 
@@ -2604,7 +2604,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | 以Promise形式返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -3281,7 +3281,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                         | 说明                                       |
 |  ------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取TCPSocket状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取TCPSocket状态的结果。 |
 
 **错误码：**
 
@@ -4106,7 +4106,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                               | 说明                                        |
 |  --------------------------------- |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取对端socket地址的结果。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。 |
 
 **错误码：**
 
@@ -4776,7 +4776,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                          | 说明                                     |
 | :------------------------------------------- | :--------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取LocalSocket状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取LocalSocket状态的结果。 |
 
 **示例：**
 
@@ -4829,7 +4829,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型               | 说明                              |
 | :---------------- | :-------------------------------- |
-| Promise\<number\> | 以Promise形式返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -4949,7 +4949,7 @@ getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
 | 类型                         | 说明                                      |
 | :-------------------------- | :---------------------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | 以Promise形式返回设置LocalSocket套接字的属性。 |
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise对象，返回设置LocalSocket套接字的属性。 |
 
 **错误码：**
 
@@ -5007,7 +5007,7 @@ getLocalAddress(): Promise\<string\>
 
 | 类型            | 说明                                                 |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise\<string\> | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -5452,7 +5452,7 @@ listen(address: LocalAddress): Promise\<void\>
 
 | 类型            | 说明                                                   |
 | :-------------- | :---------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回执行结果， 成功返回空，失败返回错误码错误信息。|
+| Promise\<void\> | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -5505,7 +5505,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                         | 说明                                            |
 | :------------------------------------------- | :--------------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取LocalSocketServer状态的结果。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取LocalSocketServer状态的结果。 |
 
 **示例：**
 
@@ -5619,7 +5619,7 @@ getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
 | 类型                         | 说明                        |
 | :-------------------------- | :-------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | 以Promise形式返回套接字的属性。 |
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise对象，返回套接字的属性。 |
 
 **错误码：**
 
@@ -5673,7 +5673,7 @@ getLocalAddress(): Promise\<string\>
 
 | 类型            | 说明                                                 |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise\<string\> | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -6091,7 +6091,7 @@ getLocalAddress(): Promise\<string\>
 
 | 类型            | 说明                                                 |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise\<string\> | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -6461,7 +6461,7 @@ constructTLSSocketInstance(): TLSSocket
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**返回值:**
+**返回值：**
 
 | 类型                               | 说明                    |
 |  --------------------------------- |  ---------------------- |
@@ -6492,7 +6492,7 @@ constructTLSSocketInstance(tcpSocket: TCPSocket): TLSSocket
 |-----------|----| ---- |------------------------|
 | tcpSocket | [TCPSocket](#tcpsocket)   | 是   | 需要进行升级的TCPSocket对象。 |
 
-**返回值:**
+**返回值：**
 
 | 类型                               | 说明                    |
 |  --------------------------------- |  ---------------------- |
@@ -6708,7 +6708,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                             | 说明                                       |
 |  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取TLSSocket状态的结果。失败返回错误码，错误信息。|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取TLSSocket状态的结果。失败返回错误码，错误信息。|
 
 **错误码：**
 
@@ -7377,7 +7377,7 @@ connect(options: TLSConnectOptions): Promise\<void\>
 
 | 类型                                        | 说明                          |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void\>                              | 以Promise形式返回，成功无返回，失败返回错误码，错误信息。|
+| Promise\<void\>                              | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -7616,7 +7616,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                        | 说明                                        |
 |  ------------------------------------------ |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7689,7 +7689,7 @@ getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
 | 类型            | 说明                  |
 | -------------- | -------------------- |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | 以Promise形式返回本地的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise对象，返回本地的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7768,7 +7768,7 @@ getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
 | 类型            | 说明                  |
 | -------------- | -------------------- |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | 以Promise形式返回服务端的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise对象，返回服务端的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7844,7 +7844,7 @@ getProtocol():Promise\<string\>
 
 | 类型            | 说明                  |
 | -------------- | -------------------- |
-| Promise\<string\> | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
+| Promise\<string\> | Promise对象，返回通信的协议。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7919,7 +7919,7 @@ getCipherSuite(): Promise\<Array\<string\>\>
 
 | 类型                    | 说明                  |
 | ---------------------- | --------------------- |
-| Promise\<Array\<string\>\> | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
+| Promise\<Array\<string\>\> | Promise对象，返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -7993,7 +7993,7 @@ getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
 | 类型                    | 说明                  |
 | ---------------------- | -------------------- |
-| Promise\<Array\<string\>\> | 以Promise形式返回获取到的双方支持的签名算法。 |
+| Promise\<Array\<string\>\> | Promise对象，返回获取到的双方支持的签名算法。 |
 
 **错误码：**
 
@@ -8072,7 +8072,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | 以Promise形式返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -8285,11 +8285,11 @@ TLS安全相关操作。当本地证书cert和私钥key不为空时，开启双�
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| ca                    | string \| Array\<string\> | 否   | 是 | 服务端的ca证书，用于认证校验服务端的数字证书。默认为系统预置CA证书<sup>12+</sup>。最多支持设置1000本证书。 |
+| ca                    | string \| Array\<string\> | 否   | 是 | 服务端的ca证书，用于认证校验服务端的数字证书。从API version 12开始，默认为系统预置CA证书。最多支持设置1000本证书。 |
 | cert                  | string \| Array\<string\>         | 否   | 是 | 本地客户端的数字证书。从API version 24开始支持传入数组，最多支持设置1000本证书。                 |
 | key                   | string                                                  | 否   | 是 | 本地数字证书的私钥。                   |
 | password                | string                                                  | 否   | 是 | 读取私钥的密码。                      |
-| protocols             | [Protocol](#protocol9) \|Array\<[Protocol](#protocol9)\> | 否   | 是| TLS的协议版本，默认为"TLSv1.2"。                  |
+| protocols             | [Protocol](#protocol9) \| Array\<[Protocol](#protocol9)\> | 否   | 是| TLS的协议版本，默认为"TLSv1.2"。                  |
 | useRemoteCipherPrefer | boolean                                                 | 否   | 是 | 优先使用对等方的密码套件。true：优先使用对等方的密码套件；false：不优先使用对等方的密码套件。        |
 | signatureAlgorithms   | string                                                 | 否   | 是 | 通信过程中的签名算法，默认为"" 。              |
 | cipherSuite           | string                                                 | 否   | 是 | 通信过程中的加密套件，默认为"" 。              |
@@ -8326,7 +8326,7 @@ constructTLSSocketServerInstance(): TLSSocketServer
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**返回值:**
+**返回值：**
 
 | 类型                                  | 说明                          |
 |  ------------------------------------ |  ---------------------------- |
@@ -8435,7 +8435,7 @@ listen(options: TLSConnectOptions): Promise\<void\>
 
 | 类型            | 说明                                                      |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -8568,7 +8568,7 @@ getState(): Promise\<SocketStateBase\>
 
 | 类型                                           | 说明                                                         |
 |  --------------------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取TLSSocketServer状态的结果。失败返回错误码，错误信息。 |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise对象，返回获取TLSSocketServer状态的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -8788,7 +8788,7 @@ setExtraOptions(options: TCPExtraOptions): Promise\<void\>
 
 | 类型            | 说明                                                      |
 |  -------------- |  -------------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -8936,7 +8936,7 @@ getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
 | 类型                                            | 说明                                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | 以Promise形式返回本地的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise对象，返回本地的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -9068,7 +9068,7 @@ getProtocol():Promise\<string\>
 
 | 类型              | 说明                                                    |
 | ----------------- | ------------------------------------------------------- |
-| Promise\<string\> | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
+| Promise\<string\> | Promise对象，返回通信的协议。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -9576,7 +9576,7 @@ send(data: string \| ArrayBuffer): Promise\<void\>
 
 | 类型            | 说明                                                      |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -9709,7 +9709,7 @@ close(): Promise\<void\>
 
 | 类型            | 说明                                                      |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回，成功返回空。失败返回错误码，错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -9836,7 +9836,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                 | 说明                                                         |
 |  ----------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -9964,7 +9964,7 @@ getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
 | 类型                                            | 说明                                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | 以Promise形式返回对端的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise对象，返回对端的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -10094,7 +10094,7 @@ getCipherSuite(): Promise\<Array\<string\>\>
 
 | 类型                       | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<string\>\> | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
+| Promise\<Array\<string\>\> | Promise对象，返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -10221,7 +10221,7 @@ getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
 | 类型                       | 说明                                          |
 | -------------------------- | --------------------------------------------- |
-| Promise\<Array\<string\>\> | 以Promise形式返回获取到的双方支持的签名算法。 |
+| Promise\<Array\<string\>\> | Promise对象，返回获取到的双方支持的签名算法。 |
 
 **错误码：**
 

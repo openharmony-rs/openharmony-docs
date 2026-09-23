@@ -54,7 +54,7 @@ onAbilityStateChanged(abilityStateData: AbilityStateData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| abilityStateData | [AbilityStateData](js-apis-inner-application-abilityStateData.md) | 是 | Ability状态信息。 |
+| abilityStateData | [AbilityStateData (Ability状态数据)](js-apis-inner-application-abilityStateData.md) | 是 | Ability状态信息。 |
 
 ## ApplicationStateObserver.onProcessCreated
 

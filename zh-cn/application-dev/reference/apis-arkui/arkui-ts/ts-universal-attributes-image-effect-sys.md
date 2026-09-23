@@ -45,13 +45,11 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 
 标识如何将指定的混合模式应用于视图的内容。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 值   | 说明                                                             |
 | ---------------| ------ | ---------------------------------------------------------------- |
-| OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |创建离屏画布时，先拷贝一份背景初始化画布，再将此组件和子组件内容绘制到离屏画布上，然后整体进行混合。 <br> **系统接口：** 此接口为系统接口。 |
+| OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |创建离屏画布时，先拷贝一份背景初始化画布，再将此组件和子组件内容绘制到离屏画布上，然后整体进行混合。 <br> **系统接口：** 此接口为系统接口。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。|
 
 ## excludeFromRenderGroup<sup>22+</sup>
 
@@ -143,7 +141,7 @@ markLayeredRender(value: boolean | undefined): T
 
 标记节点是否为独立图层进行绘制，基于该分层标记使能离屏缓存并且在后续帧会复用此缓存，缓存需要刷新时会基于脏区进行局部刷新，达到降负载效果。未通过该接口设置时，节点不标记为独立图层进行绘制。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -153,7 +151,7 @@ markLayeredRender(value: boolean | undefined): T
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **参数：**
 

@@ -1,4 +1,4 @@
-# ToolInfo (系统接口)
+# ToolInfo (CLI工具信息)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->

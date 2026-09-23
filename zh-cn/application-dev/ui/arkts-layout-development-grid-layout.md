@@ -552,11 +552,11 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
     API version 20之前布局显示（xs设备未配置栅格列数，取默认列数12）：
 
-    ![gridLayoutColumnOption](figures/gridLayoutColumnOption.gif)
+    ![gridLayoutColumnOption-w800](figures/gridLayoutColumnOption.gif)
 
     API version 20及以后布局显示（xs设备继承sm设备栅格列数）：
 
-    ![gridLayoutColumnOption2](figures/gridLayoutColumnOption2.gif)
+    ![gridLayoutColumnOption2-w800](figures/gridLayoutColumnOption2.gif)
 
   仅部分设置sm、md的栅格列数，未配置的xs、lg、xl、xxl设备根据栅格列数补全（见[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)）取默认值。
 

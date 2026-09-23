@@ -493,6 +493,7 @@ ArkTS-Sta: nextFocus(nextStep: FocusMovement | undefined): this
 该示例通过配置[defaultFocus](#defaultfocus9)可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置[groupDefaultFocus](#groupdefaultfocus9)可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置[focusOnTouch](#focusontouch9)可以使绑定的组件点击后立即获焦。
 
 ```ts
+import { AttributeModifier, ButtonAttribute } from '@kit.ArkUI';
 // focusTest.ets
 @Entry
 @Component
@@ -636,7 +637,7 @@ struct FocusableExample {
 
 ![groupDefaultFocus2](figures/groupDefaultFocus2.png)
 
-第三次按TAB键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部配置了defaultFocus的组件上：
+第三次按TAB键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部首个可获焦组件上：
 
 ![groupDefaultFocus3](figures/groupDefaultFocus3.png)
 
@@ -1013,7 +1014,7 @@ struct TabStop {
 
 从API version 18开始，该示例通过配置[nextFocus](#nextfocus18)实现自定义走焦规则。
 
-如果不配置[nextFocus](#nextfocus18)，默认的点击tab的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B。
+如果不配置[nextFocus](#nextfocus18)，默认的点击tab的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，Tab键前几次的走焦顺序变更为：M->D->F->B。
 
 ```ts
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {

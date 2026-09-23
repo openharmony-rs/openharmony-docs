@@ -5740,7 +5740,7 @@ Allows an application to switch the list of displayable applications on multi‑
 
 **Supported devices**: tablets | PCs/2-in-1 devices
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.CAMERA_SHARED
 
@@ -5769,3 +5769,17 @@ Allows an application to manage clone preferences.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 **Valid since**: 26.0.0
+
+## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
+ 
+Allows an application to install freely distributable applications.
+ 
+**Permission level**: system_core
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Valid since**: 26.0.1

@@ -418,7 +418,7 @@ dumpJsHeapData(filename: string): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -465,7 +465,7 @@ dumpJsHeapData(filename: string, needClean: boolean): void
 
 **ArkTS-Dyn起始版本**：24
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1269,14 +1269,11 @@ VM内存信息。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：23
-
 | 名称               | 类型    | 只读 | 可选 | 说明                                |
 | -------------------| ------- |----|----| ----------------------------------- |
-| threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。      |
-| cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。 |
+| threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23      |
+| cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
+| threadName           | string  | 否  | 是  | 线程名。<br>**ArkTS-Dyn起始版本**：26.0.1<br>**ArkTS-Sta起始版本**：26.0.1 |
 
 ## tags<sup>12+</sup>
 
@@ -1410,7 +1407,7 @@ TRIM_LEVEL_2相比TRIM_LEVEL_1，裁剪时间更长。冻屏的阈值为6秒。�
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 | 名称         | 值   | 说明                                                         |
 | ------------ | ---- | ------------------------------------------------------------ |
@@ -1662,7 +1659,7 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1735,7 +1732,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本**：24
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1810,7 +1807,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 
 **ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -2028,7 +2025,7 @@ setJsRawHeapTrimLevel(level: JsRawHeapTrimLevel): void
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -2130,4 +2127,32 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let rssInfo: hidebug.RssInfo = hidebug.getRssInfo();
 console.info(`rss: ${rssInfo.rss}, swapRss: ${rssInfo.swapRss}`);
+```
+## hidebug.getAppRunningUniqueId
+
+getAppRunningUniqueId(): string
+
+获取应用程序的运行唯一标识符。
+
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：26.0.1
+
+**ArkTS-Sta起始版本**：26.0.1
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| string | 返回运行唯一标识ID字符串。失败时返回空字符串。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let apprunningId = hidebug.getAppRunningUniqueId();
+console.info(`apprunningId: ${apprunningId}`);
 ```

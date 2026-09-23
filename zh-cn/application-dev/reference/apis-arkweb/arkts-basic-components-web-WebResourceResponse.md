@@ -196,7 +196,93 @@ ArkTS-Sta: setResponseData(data: string | int | Resource | ArrayBuffer): void
 
 | 参数名  | 类型                                     | 必填   | 说明                                     |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| data | string \| ArkTS-Dyn: number<br>ArkTS-Sta: int \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer<sup>11+</sup> | 是    | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负责关闭。Resource表示应用rawfile目录下文件资源。ArrayBuffer表示资源的原始二进制数据。 |
+| data | ArkTS-Dyn: string \| number \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer<sup>11+</sup><br/> ArkTS-Sta: string \| int \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer<sup>11+</sup> | 是    | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负责关闭。Resource表示应用rawfile目录下文件资源（该接口不支持根据Resource对象获取HSP资源）。ArrayBuffer表示资源的原始二进制数据。 |
+
+## setResponseBody
+
+ArkTS-Dyn: setResponseBody(data: string | number | Resource | ArrayBuffer): void
+
+ArkTS-Sta: setResponseBody(data: string | int | Resource | ArrayBuffer): void
+
+设置资源响应数据。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名  | 类型                                     | 必填   | 说明                                     |
+| ---- | ---------------------------------------- | ---- | ---------------------------------------- |
+| data | ArkTS-Dyn: string \| number \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer<br/> ArkTS-Sta: string \| int \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer | 是    | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负责关闭。Resource表示应用rawfile目录下文件资源（该接口支持根据Resource对象获取HSP资源）。ArrayBuffer表示资源的原始二进制数据。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller})
+        .onInterceptRequest((event) => {
+          this.responseWeb.setResponseBody("<!DOCTYPE html><html><body><h1>Hello, World</h1></body></html>");
+          this.responseWeb.setResponseEncoding('utf-8');
+          this.responseWeb.setResponseMimeType('text/html');
+          this.responseWeb.setResponseCode(200);
+          this.responseWeb.setReasonMessage('OK');
+          return this.responseWeb;
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static';
+
+import { webview } from '@kit.ArkWeb';
+import { buffer, util } from '@kit.ArkTS';
+import { application, common, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { Entry, Column, Component, Web, Button, Text, Row, WebResourceResponse, Header, WebAttribute, $rawfile } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller})
+        .onInterceptRequest((event) => {
+          this.responseWeb.setResponseBody("<!DOCTYPE html><html><body><h1>Hello, World</h1></body></html>");
+          this.responseWeb.setResponseEncoding('utf-8');
+          this.responseWeb.setResponseMimeType('text/html');
+          this.responseWeb.setResponseCode(200);
+          this.responseWeb.setReasonMessage('OK');
+          return this.responseWeb;
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## setResponseEncoding<sup>9+</sup>
 
@@ -298,7 +384,7 @@ setResponseIsReady(IsReady: boolean): void
 
 > **说明：**
 >
-> - 在资源请求拦截场景中，应先调用setResponseData()、setResponseEncoding()、setResponseMimeType()、setResponseHeader()、setResponseCode()、setReasonMessage()等方法设置响应的各个属性。最后调用setResponseIsReady(true)来触发资源返回。
+> - 在资源请求拦截场景中，应先调用setResponseData()、setResponseBody()、setResponseEncoding()、setResponseMimeType()、setResponseHeader()、setResponseCode()、setReasonMessage()等方法设置响应的各个属性。最后调用setResponseIsReady(true)来触发资源返回。
 > - 异步数据场景：需先调用setResponseIsReady(false)，待数据准备好后调用setResponseData()等设置方法，最后调用setResponseIsReady(true)来触发资源返回。
 > - 如果不正确设置调用顺序，可能导致XMLHttpRequest同步请求阻塞。
 

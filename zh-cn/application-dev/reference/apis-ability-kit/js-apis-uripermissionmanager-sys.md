@@ -522,10 +522,9 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 | 201 | Permission denied. <br>适用版本：10 - 11 |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
 | 16000059 | Invalid URI type. |
-| 801 | Capability not supported. <br>适用版本：19+ |
 
 **示例：**
 

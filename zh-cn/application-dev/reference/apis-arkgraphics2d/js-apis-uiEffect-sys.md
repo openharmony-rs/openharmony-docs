@@ -146,6 +146,76 @@ struct example {
 }
 ```
 
+## uiEffect.createColorfulBrightnessBlender
+
+createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender
+
+创建[ColorfulBrightnessBlender](#colorfulbrightnessblender)实例，用于给组件添加基于保持色相的提亮压暗效果。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型                                              | 必填 | 说明                        |
+| ------ | ------------------------------------------------- | ---- | --------------------------- |
+| brightnessBlenderParam  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。|
+| options  | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   |  提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
+
+**返回值：**
+
+| 类型                                     | 说明                     |
+| ---------------------------------------- | ----------------------- |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender)  | 返回基于保持色相的提亮压暗混合器。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from "@kit.ArkGraphics2D"
+
+let blender : uiEffect.ColorfulBrightnessBlender =
+  uiEffect.createColorfulBrightnessBlender({
+    cubicRate:1.0,
+    quadraticRate:1.0,
+    linearRate:1.0,
+    degree:1.0,
+    saturation:1.0,
+    positiveCoefficient:[2.3, 4.5, 2.0],
+    negativeCoefficient:[0.5, 2.0, 0.5],
+    fraction:0.0}, {
+    darkenWeight: 0.6,
+    vibrancyStrength: 0.5,
+    lumaDiff: 0.4,
+    hdrEnabled: true,
+    tintedColorPercent: 1.0})
+
+@Entry
+@Component
+struct example {
+  build() {
+    RelativeContainer() {
+      Image($r("app.media.backgroundImage"))
+        .width("100%")
+        .height("100%")
+      
+      Text("Hello world")
+        .fontSize(100)
+        .fontColor(Color.Red)
+        .fontWeight(900)
+        .position({x: 50, y: 200})
+        .advancedBlendMode(blender)
+    }
+  }
+}
+```
+
 ## Filter
 Filter效果类，用于将相应的效果添加到指定的组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
 
@@ -1431,9 +1501,9 @@ ArkTS-Sta: haloBloom(tintColor: Color, bloomFactor: double, glowExposure: double
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -1536,9 +1606,9 @@ ArkTS-Sta: spinBlur(center: common2D.Point, angle: double, samples: int): Filter
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -1680,6 +1750,8 @@ VisualEffect效果类，用于将相应的效果添加到指定的组件上。�
 backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
 将混合器添加至组件上以改变组件背景颜色，具体的更改效果由输入决定，目前仅支持提亮混合器。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2129,9 +2201,11 @@ struct Index {
 
 ## Blender<sup>13+</sup>
 
-type Blender = BrightnessBlender | HdrBrightnessBlender
+type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlender
 
 混合器类型，用于描述混合效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2141,6 +2215,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 | ----------------------------- | ------------------------------------------------- |
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。<br>**ArkTS-Dyn起始版本**: 12<br>**ArkTS-Sta起始版本**: 23 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。<br>**ArkTS-Dyn起始版本**: 20<br>**ArkTS-Sta起始版本**: 23 |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**: 26.2.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -2177,6 +2252,25 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 
 **系统接口：** 此接口为系统接口。
 
+
+## ColorfulBrightnessBlender
+
+基于保持色相的提亮压暗混合器，用于将该提亮压暗效果添加到指定的组件上。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题；同时依据亮度差阈值保证前景与背景的对比度。在调用ColorfulBrightnessBlender前，需要先通过[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)创建一个ColorfulBrightnessBlender实例。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称  | 类型   | 只读 | 可选 | 说明                                     |
+| ----- | ------ | ---- | ---- | ---------------------------------------- |
+| brightnessBlenderParam   | [BrightnessBlenderParam](#brightnessblenderparam) | 否   | 否   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。 |
+| options | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   | 是   | 提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
 ## Color<sup>20+</sup>
 
 RGBA格式的颜色描述。
@@ -2245,9 +2339,9 @@ RGBA格式的颜色描述。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -2773,9 +2867,9 @@ static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRef
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -2940,9 +3034,9 @@ static createWarpedRingMask(ringParam: WarpedRingParam): Mask
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3061,9 +3155,9 @@ ArkTS-Sta: static createFractalGlassMask(glassNum: int, glassStrength: double, g
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3177,9 +3271,9 @@ ArkTS-Sta: createBinocularMask(radiusX: double, radiusY: double, gap: double, so
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3295,6 +3389,28 @@ BrightnessBlender参数列表。
 | negativeCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
 | fraction            | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
 
+## ColorfulBrightnessBlenderOptions
+
+基于保持色相的提亮压暗混合器的可选增强配置项，作为[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)的options参数传入。它在常规参数[BrightnessBlenderParam](#brightnessblenderparam)之外，可进一步针对提亮或压暗方向、色彩增强强度、输入色彩影响度、与背景的对比度以及HDR开关进行精细调整，不传时各项采用默认值。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
+| ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
+| darkenWeight        | number                     | 否   | 是   | 前景压暗权重，控制提亮压暗的方向与强度。取0时提亮前景，前景倾向亮于背景以保证可读性；取1时压暗前景，前景倾向暗于背景；0到1之间为提亮与压暗的过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| vibrancyStrength    | number                     | 否   | 是   | 色彩增强强度，控制对前景饱和度的增强程度。取0时不额外增强饱和度，前景保持原始饱和度；值越大饱和度增强越明显，取1时增强到最大、色彩最鲜艳。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| lumaDiff            | number                     | 否   | 是   | 保证可读性的亮度差阈值，用于约束前景与背景之间的亮度差以保持足够对比度。取0时不强制额外亮度差，可读性约束最弱；值越大强制的亮度差越大、对比度越强；取1时强制最大亮度差。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| hdrEnabled          | boolean                    | 否   | 是   | 是否主动开启HDR。取true时主动开启HDR，结果亮度可超出SDR范围（>1.0），在HDR设备上呈现更高亮度，适合HDR内容；取false时不主动开启HDR，结果限制在SDR范围（≤1.0），但当前景或背景本身为HDR时仍可能被动触发HDR。<br>默认值为false。 |
+| tintedColorPercent  | number                     | 否   | 是   | 输入色彩影响度，控制输入色参与提亮压暗计算的程度。取1时输入色完全参与计算，输出结果保留输入色的色彩倾向；取0时输入色不参与计算，输出结果不受输入色的影响，直接基于背景颜色做提亮压暗；0到1之间为两者的插值过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+
 ## HeatDistortionEffectParam
 
 热浪扭曲效果的参数。
@@ -3345,9 +3461,9 @@ BrightnessBlender参数列表。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3368,9 +3484,9 @@ BrightnessBlender参数列表。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3387,9 +3503,9 @@ BrightnessBlender参数列表。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 

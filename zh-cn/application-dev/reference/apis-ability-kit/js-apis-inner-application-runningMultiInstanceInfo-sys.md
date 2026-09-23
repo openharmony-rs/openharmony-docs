@@ -1,4 +1,4 @@
-# RunningMultiInstanceInfo (系统接口)
+# RunningMultiInstanceInfo (多实例应用运行信息)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -42,14 +42,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let bundleName = 'ohos.samples.etsclock';
   appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
-    console.info(`getRunningMultiAppInfo success`);
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
-  })
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+      console.info(`getRunningMultiAppInfo success`);
+    }).catch((err: BusinessError) => {
+      console.error(`getRunningMultiAppInfo error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
+    });
+} catch (err) {
+  console.error(`getRunningMultiAppInfo error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
 }
 ```
 

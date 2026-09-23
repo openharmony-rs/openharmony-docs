@@ -1,4 +1,4 @@
-# ToolEventCallback (系统接口)
+# ToolEventCallback (CLI工具事件回调)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
@@ -38,7 +38,7 @@ CLI工具会话事件的回调接口。
 
 | 名称    | 类型                                                 | 只读 | 可选 | 说明                      |
 | ------- | ---------------------------------------------------- | ---- | ---- | ------------------------- |
-| onEvent | (event: [CliToolEvent](js-apis-inner-application-cliToolEvent-sys.md#clitoolevent)) => void | 否   | 否   | CLI工具会话事件回调函数。 |
+| onEvent | (event: [CliToolEvent (CLI工具会话事件)](js-apis-inner-application-cliToolEvent-sys.md#clitoolevent)) => void | 否   | 否   | CLI工具会话事件回调函数。 |
 
 **示例：**
 

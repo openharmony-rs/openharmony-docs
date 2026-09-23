@@ -1,4 +1,4 @@
-# AutoFillRequest (系统接口)
+# AutoFillRequest (自动填充请求)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -15,7 +15,7 @@
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 当前页面仅包含本模块的系统接口，其他公开接口参见[AutoFillRequest](js-apis-inner-application-autoFillRequest.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[AutoFillRequest (自动填充请求)](js-apis-inner-application-autoFillRequest.md)。
 
 ## 导入模块
 
@@ -35,7 +35,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称                     | 类型                                                      | 只读 | 可选 | 说明 |
 | ------------------------ | --------------------------------------------------------- | ---- | ---- | ---- |
-| customData<sup>13+</sup> | [CustomData](js-apis-inner-application-customData-sys.md) | 否   | 否   | 自定义数据。<br>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23 |
+| customData<sup>13+</sup> | [CustomData (自定义数据)](js-apis-inner-application-customData-sys.md) | 否   | 否   | 自定义数据。<br>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23 |
 | isPopup<sup>12+</sup>    | boolean | 否   | 否   | 自动填充服务是否拉起popup窗口。<br>true：当前拉起popup窗口。<br>false：当前拉起模态窗。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## UpdateRequest<sup>12+</sup>
@@ -54,7 +54,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
+| viewData    | [ViewData (视图数据)](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
 
 ## FillResponse
 
@@ -72,7 +72,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
+| viewData    | [ViewData (视图数据)](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
 
 ## FillRequestCallback
 

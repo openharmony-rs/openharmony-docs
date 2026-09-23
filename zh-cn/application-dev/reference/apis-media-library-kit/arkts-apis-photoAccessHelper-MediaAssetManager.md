@@ -344,6 +344,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset === undefined) {
+        console.error('photoAsset is undefined');
+        return;
+      }
       await photoAccessHelper.MediaAssetManager.requestVideoFile(context, photoAsset, requestOptions, fileUri, handler);
       console.info('requestVideoFile successfully');
   });
@@ -518,6 +522,10 @@ async function example(context: Context) {
     }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset === undefined) {
+        console.error('photoAsset is undefined');
+        return;
+      }
       await photoAccessHelper.MediaAssetManager.quickRequestImage(context, photoAsset, requestOptions, handler);
       console.info('quickRequestImage successfully');
   });
@@ -532,7 +540,7 @@ static requestCompositeAuxiliaryImageData(context: Context, asset: PhotoAsset, d
 
 AI增强会额外产生一张图片，该图片与原始图组成复合图。复合图中额外产生的图片默认用于显示，另一张原始图称为辅助图。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -601,6 +609,10 @@ async function example(context: Context) {
     console.info('Succeeded in getting assets');
     // 获取查询结果中的第一个资产。
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
     try {
       // 请求复合图中的辅助图的数据，返回的requestId可用于cancelRequest接口取消该请求。
       let requestId: string = await photoAccessHelper.MediaAssetManager.requestCompositeAuxiliaryImageData(context, photoAsset, handler);

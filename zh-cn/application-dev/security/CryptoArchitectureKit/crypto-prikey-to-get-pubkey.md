@@ -19,8 +19,8 @@
 
    生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。
 
-2. 调用[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，随机生成非对称密钥对象（KeyPair）。
-   
+2. 调用[AsyKeyGenerator.convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12-1)，传入私钥的二进制数据，生成非对称密钥对象（KeyPair）。
+
    KeyPair对象中包括公钥PubKey、私钥PriKey。
 
 3. 调用[PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded)获取KeyPair中公钥对象的二进制数据。
@@ -92,8 +92,8 @@
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = await priKey.getPubKey();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = await priKey.getPubKey();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);
@@ -165,8 +165,8 @@
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = priKey.getPubKeySync();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = priKey.getPubKeySync();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);

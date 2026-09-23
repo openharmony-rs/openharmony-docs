@@ -11,8 +11,7 @@
 > **说明：**
 >
 > API version 10开始支持@Reusable，支持在ArkTS中使用。
->
-> 关于组件复用的原理与使用、优化方法、适用场景，请参考[组件复用最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse)。
+<!--RP1--><!--RP1End-->
 
 ## 概述
 

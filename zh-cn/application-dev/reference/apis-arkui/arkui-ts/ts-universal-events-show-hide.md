@@ -122,7 +122,7 @@ ArkTS-Dyn: onDisAppear(event: () => void): T
 
 ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
-组件从组件树卸载时触发此回调。
+组件消失时触发此回调。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -138,7 +138,7 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| 是   | onDisAppear事件的回调函数，表示组件已卸载消失。|
+| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| 是   | onDisAppear事件的回调函数，表示组件已消失。|
 
 **返回值：**
 

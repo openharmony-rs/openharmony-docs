@@ -339,7 +339,7 @@ ArkTS-Sta: apiAvailable(version: string | int): boolean
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 

@@ -1954,9 +1954,9 @@ constructor(options?: NumericTextTransitionOptions)
 
 | 名称                   | 值  | 说明                  |
 | --------------------- | -------  | ------------------- |
-| MITER_JOIN            | 0  | 拐角类型为锐角。 |
+| MITER_JOIN            | 0  | 拐角类型为尖角。 |
 | ROUND_JOIN            | 1  | 拐角类型为圆角。 |
-| BEVEL_JOIN            | 2  | 拐角类型为平角。 |
+| BEVEL_JOIN            | 2  | 拐角类型为斜角。 |
 
 ## TextDirection<sup>22+</sup>
 
@@ -2021,7 +2021,7 @@ ArkTS-Sta: type FontVariation = text.FontVariation
 
 可变字体的属性。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 

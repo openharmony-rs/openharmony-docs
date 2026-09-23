@@ -2216,7 +2216,9 @@ const workerInstance = new worker.ThreadWorker("workers/worker.ets");
 workerInstance.postMessage("message from main thread to worker");
 workerInstance.onmessage = (d: MessageEvents): void => {
   // 当Worker线程传递myModel时，data即为myModel。data没有init的方法
-  let data: string  = d.data;
+  let data: Record<string, Object> = d.data as Record<string, Object>;
+  console.info('name:', data.name);// name: default name
+  console.info('init:', data.init === undefined);// init: true
 }
 ```
 ```ts
@@ -2225,7 +2227,7 @@ import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 
 const workerPort = worker.workerPort;
 class MyModel {
-    name = "undefined";
+    name = "default name";
     init() {
         this.name = "MyModel";
     }

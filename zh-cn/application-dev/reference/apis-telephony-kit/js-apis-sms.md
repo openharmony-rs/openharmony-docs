@@ -66,10 +66,10 @@ const specification: string = '3gpp';
 const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
 sms.createMessage(pdu, specification, (err: BusinessError, data: sms.ShortMessage) => {
     if (err) {
-        console.error('callback: err->${JSON.stringify(err)}');
+        console.error(`callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('callback: data->${JSON.stringify(data)}');
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -172,17 +172,17 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
     if (err) {
-        console.error('sendCallback: err->${JSON.stringify(err)}');
+        console.error(`sendCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('sendCallback: data->${JSON.stringify(data)}');
+    console.info(`sendCallback: data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
     if (err) {
-        console.error('deliveryCallback: err->${JSON.stringify(err)}');
+        console.error(`deliveryCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('deliveryCallback: data->${JSON.stringify(data)}'); 
+    console.info(`deliveryCallback: data->${JSON.stringify(data)}`); 
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -238,17 +238,17 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
     if (err) {
-        console.error('sendCallback: err->${JSON.stringify(err)}');
+        console.error(`sendCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('sendCallback: data->${JSON.stringify(data)}');
+    console.info(`sendCallback: data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
     if (err) {
-        console.error('deliveryCallback: err->${JSON.stringify(err)}');
+        console.error(`deliveryCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('deliveryCallback: data->${JSON.stringify(data)}'); 
+    console.info(`deliveryCallback: data->${JSON.stringify(data)}`); 
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -260,7 +260,10 @@ let options: sms.SendMessageOptions = {
     deliveryCallback: deliveryCallback
 };
 sms.sendShortMessage(options, (err: BusinessError) => {
-    console.info(`callback: err->${JSON.stringify(err)}`);
+    if (err) {
+        console.error(`callback: err->${JSON.stringify(err)}`);
+        return;
+    }
 });
 ```
 
@@ -311,17 +314,17 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
     if (err) {
-        console.error('sendCallback: err->${JSON.stringify(err)}');
+        console.error(`sendCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('sendCallback: data->${JSON.stringify(data)}');
+    console.info(`sendCallback: data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
     if (err) {
-        console.error('deliveryCallback: err->${JSON.stringify(err)}');
+        console.error(`deliveryCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('deliveryCallback: data->${JSON.stringify(data)}'); 
+    console.info(`deliveryCallback: data->${JSON.stringify(data)}`); 
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -368,10 +371,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSlotId((err: BusinessError, data: number) => {
     if (err) {
-        console.error('callback: err->${JSON.stringify(err)}');
+        console.error(`callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('callback: data->${JSON.stringify(data)}');
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -474,10 +477,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSimId((err: BusinessError, data: number) => {
     if (err) {
-        console.error('callback: err->${JSON.stringify(err)}');
+        console.error(`callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('callback: data->${JSON.stringify(data)}');
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 

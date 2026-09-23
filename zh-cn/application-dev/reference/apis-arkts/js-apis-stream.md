@@ -1305,7 +1305,7 @@ ArkTS-Sta: on(event: string, callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data'` \| `'end'` \| `'error'` \| `'readable'` \| `'pause'` \| `'resume'` 。<br>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data'` \| `'end'` \| `'error'` \| `'readable'` \| `'pause'` \| `'resume'` 。<br>\- `'close'`：可读流关闭，发生error事件或end事件后触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function | 是 | 回调函数，返回事件数据。 |
 
 **示例：**
@@ -1368,7 +1368,7 @@ ArkTS-Sta: off(event: string, callback?: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br>\- `'close'`：可读流关闭，发生error事件或end事件后触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function   | 否 | 回调函数。 |
 
 **示例：**

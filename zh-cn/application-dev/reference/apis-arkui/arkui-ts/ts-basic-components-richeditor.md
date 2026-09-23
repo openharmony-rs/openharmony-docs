@@ -1552,7 +1552,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否 | 否    | 图片垂直对齐方式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | objectFit     | [ImageFit](ts-appendix-enums.md#imagefit) | 否 | 否    | 图片缩放类型。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | layoutStyle<sup>12+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11)     | 否 | 是   | 图片布局样式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23 |
-| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | 否 | 是   | 图片拉伸选项。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0|
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | 否 | 是   | 图片拉伸选项。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.1|
 
 ## RichEditorLayoutStyle<sup>11+</sup> 
 
@@ -2074,7 +2074,44 @@ ArkTS-Sta: addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanO
 
 | 类型     | 说明                     |
 | ------ | ---------------------- |
-| ArkTS-Dyn: number <br>ArkTS-Sta: int \| undefined | 添加完成的builderSpan在所有Span中的索引位置。 |
+| ArkTS-Dyn: number <br>ArkTS-Sta: int \| undefined | 添加完成的BuilderSpan在所有Span中的索引位置。取值范围：[0, 所有Span数量-1]。 |
+
+### addRichEditorBuilderSpan
+
+ArkTS-Dyn: addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): number
+
+ArkTS-Sta: addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): int | undefined
+
+在RichEditor中添加自定义布局（BuilderSpan），提供身份识别与生命周期感知能力。
+
+> **说明：**
+>
+> - BuilderSpan对象中的[onAttach](#richeditorbuilderspan)和[onDetach](#richeditorbuilderspan)回调接收一个[BuilderSpanInfo](#builderspaninfo)对象，包含id和offset。
+> - 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
+> - 撤销/重做不会还原BuilderSpan对象。通过撤销还原时，被移除的BuilderSpan会降级为空格文本Span。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名     | 类型                                     | 必填   | 说明       |
+| ------- | ---------------------------------------- | ---- | ---------- |
+| value   | [RichEditorBuilderSpan](#richeditorbuilderspan) | 是    | BuilderSpan对象，包含构造器、生命周期回调和无障碍配置。     |
+| info | [BuilderSpanInfo](#builderspaninfo) | 否    | BuilderSpan的身份与位置信息。info.id用于标识BuilderSpan，info.offset用于指定插入位置。默认值：undefined，此时BuilderSpan追加到末尾且id为undefined。 |
+
+**返回值：**
+
+| 类型     | 说明                     |
+| ------ | ---------------------- |
+| ArkTS-Dyn: number <br>ArkTS-Sta: int \| undefined | 添加完成的BuilderSpan在所有Span中的索引位置。取值范围：[0, 所有Span数量-1]。undefined表示添加操作未执行成功，无法返回有效的索引位置。 |
 
 ### addSymbolSpan<sup>11+</sup>
 
@@ -2181,6 +2218,42 @@ ArkTS-Sta: getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | 
 | 类型                                       | 说明           |
 | ---------------------------------------- | ------------ |
 | ArkTS-Dyn: Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> <br>ArkTS-Sta: Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> \| undefined | 指定范围内的文本和图片Span详细信息，包含各Span的位置、内容、样式等属性，可用于查询和操作组件内的文本与图片内容。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
+
+### getRichEditorBuilderSpans
+
+ArkTS-Dyn: getRichEditorBuilderSpans(value?: RichEditorRange): Array\<BuilderSpanInfo\>
+
+ArkTS-Sta: getRichEditorBuilderSpans(value?: RichEditorRange): Array\<BuilderSpanInfo\> | undefined
+
+获取指定范围内BuilderSpan的身份与位置信息。
+
+> **说明：**
+>
+> - 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
+> - 通过接口[addBuilderSpan](#addbuilderspan11)创建的BuilderSpan，返回的[BuilderSpanInfo](#builderspaninfo)中id为**undefined**（匿名）。
+> - 返回的[BuilderSpanInfo](#builderspaninfo)中的**offset**字段反映当前实际偏移位置，随文本内容变化动态更新。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名   | 类型                                | 必填   | 说明        |
+| ----- | ----------------------------------- | ---- | ----------- |
+| value | [RichEditorRange](#richeditorrange) | 否 | 目标BuilderSpan的范围。<br>省略时，返回所有BuilderSpan信息。 |
+
+**返回值：**
+
+| 类型                                       | 说明           |
+| ---------------------------------------- | ------------ |
+| ArkTS-Dyn: Array\<[BuilderSpanInfo](#builderspaninfo)\> <br>ArkTS-Sta: Array\<[BuilderSpanInfo](#builderspaninfo)\> \| undefined | BuilderSpan身份与位置信息数组。<br>当controller未绑定组件时，返回undefined，表示尚无BuilderSpan信息可获取。<br>当绑定的组件被释放时，返回空数组。 |
 
 ### deleteSpans
 
@@ -2679,7 +2752,7 @@ SymbolSpan样式选项。
 | verticalAlign             | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10)| 否| 是    | 图片垂直对齐方式。<br/>默认值:ImageSpanAlignment.BOTTOM <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | objectFit                 | [ImageFit](ts-appendix-enums.md#imagefit) | 否| 是    | 图片缩放类型。<br/> 默认值:ImageFit.Cover。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。       <br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | layoutStyle<sup>11+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11) | 否| 是    | 图片布局样式。默认值：{"borderRadius":"","margin":""}<br>   <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                          <br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 23|
-| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否| 是    | 图片拉伸选项。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0 |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否| 是    | 图片拉伸选项。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.1 |
 
 ## RichEditorSymbolSpanOptions<sup>11+</sup>
 
@@ -2729,6 +2802,54 @@ SymbolSpan样式选项。
 | ------ | ------ | ---- | ----------|--------------------------- |
 | offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是    | 添加builder的位置。取值范围：[0, 所有内容长度]。省略或当值小于0或大于所有内容长度时，添加到所有内容最后面。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 23|
 | accessibilitySpanOptions<sup>23+</sup> | [AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明) | 否 | 是    | 无障碍朗读功能属性。缺省时，取[AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明)的默认值。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。  <br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 23  <br/>**ArkTS-Sta起始版本：** 23  |
+
+## BuilderSpanInfo
+
+定义RichEditor中BuilderSpan的身份与位置信息。
+
+> **说明：**
+>
+> 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+| 名称     | 类型      | 只读 | 可选   | 说明                                    |
+| ------ | ------ | ---- | ----------|--------------------------- |
+| id | string | 否 | 是    | 开发者自定义的身份标识，用于标识BuilderSpan。框架不强制唯一性约束，由开发者自行保证唯一性。未传入时，值为undefined，表示该BuilderSpan为匿名BuilderSpan。|
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是    | 当作为[addRichEditorBuilderSpan](#addricheditorbuilderspan)的参数传入时，表示BuilderSpan的插入位置。当通过[getRichEditorBuilderSpans](#getricheditorbuilderspans)或回调获取时，表示BuilderSpan在文本内容中的当前偏移位置，该值由框架维护，随文本内容变化动态更新。|
+
+## RichEditorBuilderSpan
+
+定义RichEditor的BuilderSpan对象，提供身份识别与生命周期感知能力。
+
+> **说明：**
+>
+> 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+| 名称     | 类型      | 只读 | 可选   | 说明                                    |
+| ------ | ------ | ---- | ----------|--------------------------- |
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 否    | 自定义组件构造器。|
+| onAttach | Callback\<[BuilderSpanInfo](#builderspaninfo)\> | 否 | 是    | BuilderSpan挂载到RichEditor时触发的回调。回调接收一个[BuilderSpanInfo](#builderspaninfo)对象，包含id和offset。|
+| onDetach | Callback\<[BuilderSpanInfo](#builderspaninfo)\> | 否 | 是    | BuilderSpan从RichEditor中被移除时触发的回调。包括通过[deleteSpans](#deletespans) API删除、输入法键盘删除、剪切操作以及普通撤销降级等删除场景。回调接收一个[BuilderSpanInfo](#builderspaninfo)对象，包含id和offset。<br>**说明：** 在拖拽撤销（[undoStyle](#undostyle20)参数取值为UndoStyle.KEEP_STYLE）场景中，onDetach回调不会被触发，因为BuilderSpan正在被恢复而非被删除。|
+| accessibilitySpanOptions | [AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明) | 否 | 是    | 无障碍朗读功能属性。缺省时，取[AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明)的默认值。|
 
 ## RichEditorSpan<sup>12+</sup>
 
@@ -8597,7 +8718,7 @@ struct ScrollToVisibleDemo {
 
 该示例通过设置[RichEditorImageSpanStyle](#richeditorimagespanstyle)的resizable属性，对图片不同方向进行拉伸。
 
-从API版本26.1.0开始，RichEditorImageSpanStyle新增resizable属性。
+从API版本26.0.1开始，RichEditorImageSpanStyle新增resizable属性。
 
 ```ts
 @Entry
@@ -8662,3 +8783,233 @@ struct RichEditorResizablePage {
 ```
 
 ![richEditorResizable](figures/richeditor-resizable.png)
+
+### 示例45（添加带身份标识的BuilderSpan）
+
+该示例演示通过[addRichEditorBuilderSpan](#addricheditorbuilderspan)添加带身份标识的BuilderSpan，并通过[getRichEditorBuilderSpans](#getricheditorbuilderspans)获取BuilderSpan信息，在日志中打印返回结果。
+
+从API版本26.2.0开始，新增addRichEditorBuilderSpan和getRichEditorBuilderSpans接口。
+
+ArkTS-Dyn示例：
+```ts
+@Entry
+@Component
+struct RichEditorBuilderSpanPage {
+  @State logMessages: string[] = [];
+  private controller: RichEditorController = new RichEditorController();
+  private spanCount: number = 0;
+
+  addLog(msg: string, isCallback: boolean = false) {
+    let prefix = isCallback ? '<<<----- ' : '';
+    this.logMessages = [...this.logMessages, prefix + msg];
+  }
+
+  @Builder
+  myBuilder() {
+    Row() {
+      Text(`span${this.spanCount}`)
+        .fontSize(14)
+        .margin(5)
+        .fontColor(Color.White)
+    }
+    .borderRadius(12)
+    .backgroundColor(Color.Blue)
+  }
+
+  build() {
+    Column() {
+      Text('BuilderSpanInfo Demo')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 10 })
+
+      RichEditor({ controller: this.controller })
+        .id("rich_editor_inspector_demo")
+        .width('100%')
+        .height(50)
+        .borderWidth(1)
+        .borderColor(Color.Gray)
+        .margin({ bottom: 10 })
+
+      Divider()
+        .margin({ bottom: 5 })
+
+      Text('Log:')
+        .fontSize(14)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 5 })
+
+      List() {
+        ForEach(this.logMessages, (msg: string, index: number) => {
+          ListItem() {
+            Scroll() {
+              Text(msg).fontSize(11)
+            }
+            .scrollable(ScrollDirection.Horizontal)
+            .scrollBar(BarState.Off)
+            .fadingEdge(true)
+          }
+        }, (msg: string, index: number) => msg + index.toString())
+      }
+      .height(150)
+      .borderWidth(1)
+      .borderColor(Color.Gray)
+      .stackFromEnd(true)
+
+      Button('addRichEditorBuilderSpan')
+        .margin(5)
+        .clickEffect({ level: ClickEffectLevel.HEAVY })
+        .onClick(() => {
+          this.spanCount++;
+          let idVal = 'testId';
+          let offVal = 1;
+          let span: RichEditorBuilderSpan = {
+            builder: this.myBuilder,
+            onAttach: (info: BuilderSpanInfo) => {
+              this.addLog('[onAttach] info=' + JSON.stringify(info), true);
+            },
+            onDetach: (info: BuilderSpanInfo) => {
+              this.addLog('[onDetach] info=' + JSON.stringify(info), true);
+            }
+          }
+          let info: BuilderSpanInfo = { id: idVal, offset: offVal };
+          let idx = this.controller.addRichEditorBuilderSpan(span, info);
+          this.addLog(`{builder,onAttach+onDetach},{id:${info.id}, offset: ${info.offset}} => idx: ${idx}`);
+        })
+
+      Button('getRichEditorBuilderSpans')
+        .margin(5)
+        .clickEffect({ level: ClickEffectLevel.HEAVY })
+        .onClick(() => {
+          let spans = this.controller.getRichEditorBuilderSpans();
+          if (spans) {
+            this.addLog('getRichEditorBuilderSpans() count: ' + spans.length);
+            for (let i = 0; i < spans.length; i++) {
+              this.addLog('  span[' + i + ']: id=' + (spans[i].id ?? 'undefined') + ', offset=' +
+                (spans[i].offset ?? 'undefined'), true);
+            }
+          } else {
+            this.addLog('getRichEditorBuilderSpans() => undefined');
+          }
+        })
+    }
+    .width('100%')
+    .padding(15)
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, BarState, Text, Column, Row, Color, Component, Button, Scroll, List, Divider, RichEditor, FontWeight,
+  RichEditorController, RichEditorBuilderSpan, BuilderSpanInfo, ForEach, ScrollDirection, ListItem,
+  RichEditorImageSpanOptions, ClickEffectLevel, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct RichEditorBuilderSpanPage {
+  @State logMessages: Array<string> = new Array<string>();
+  private controller: RichEditorController = new RichEditorController();
+  private spanCount: int = 0;
+
+  addLog(msg: string, isCallback: boolean = false) {
+    let prefix = isCallback ? '<<<----- ' : '';
+    this.logMessages = [...this.logMessages, prefix + msg];
+  }
+
+  @Builder
+  myBuilder() {
+    Row() {
+      Text(`span${this.spanCount}`)
+        .fontSize(14)
+        .margin(5)
+        .fontColor(Color.White)
+    }
+    .borderRadius(12)
+    .backgroundColor(Color.Blue)
+  }
+
+  build() {
+    Column() {
+      Text('BuilderSpanInfo Demo')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 10 })
+
+      RichEditor({ controller: this.controller })
+        .id("rich_editor_inspector_demo")
+        .width('100%')
+        .height(50)
+        .borderWidth(1)
+        .borderColor(Color.Gray)
+        .margin({ bottom: 10 })
+
+      Divider()
+        .margin({ bottom: 5 })
+
+      Text('Log:')
+        .fontSize(14)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 5 })
+
+      List() {
+        ForEach(this.logMessages, (msg: string, index: int) => {
+          ListItem() {
+            Scroll() {
+              Text(msg).fontSize(11)
+            }
+            .scrollable(ScrollDirection.Horizontal)
+            .scrollBar(BarState.Off)
+            .fadingEdge(true)
+          }
+        }, (msg: string, index: int) => msg + index.toString())
+      }
+      .height(150)
+      .borderWidth(1)
+      .borderColor(Color.Gray)
+      .stackFromEnd(true)
+
+      Button('addRichEditorBuilderSpan')
+        .margin(5)
+        .clickEffect({ level: ClickEffectLevel.HEAVY })
+        .onClick(() => {
+          this.spanCount++;
+          let idVal = 'testId';
+          let offVal = 1;
+          let span: RichEditorBuilderSpan = {
+            builder: this.myBuilder,
+            onAttach: (info: BuilderSpanInfo) => {
+              this.addLog('[onAttach] info=' + JSON.stringify(info), true);
+            },
+            onDetach: (info: BuilderSpanInfo) => {
+              this.addLog('[onDetach] info=' + JSON.stringify(info), true);
+            }
+          }
+          let info: BuilderSpanInfo = { id: idVal, offset: offVal };
+          let idx = this.controller.addRichEditorBuilderSpan(span, info);
+          this.addLog(`{builder,onAttach+onDetach},{id:${info.id}, offset: ${info.offset}} => idx: ${idx}`);
+        })
+
+      Button('getRichEditorBuilderSpans')
+        .margin(5)
+        .clickEffect({ level: ClickEffectLevel.HEAVY })
+        .onClick(() => {
+          let spans = this.controller.getRichEditorBuilderSpans();
+          if (spans) {
+            this.addLog('getRichEditorBuilderSpans() count: ' + spans.length);
+            for (let i = 0; i < spans.length; i++) {
+              this.addLog('  span[' + i + ']: id=' + (spans[i].id ?? 'undefined') + ', offset=' +
+                (spans[i].offset ?? 'undefined'), true);
+            }
+          } else {
+            this.addLog('getRichEditorBuilderSpans() => undefined');
+          }
+        })
+    }
+    .width('100%')
+    .padding(15)
+  }
+}
+```
+
+![builderSpanInfoDemo](figures/richeditor-builderspan-info.gif)

@@ -180,11 +180,11 @@ struct FreezeChild {
 
 在上面的示例中：
 
-1.点击“change message”更改message的值，当前正在显示的TabContent组件中的@Monitor中注册的方法onMessageUpdated被触发。
+1. 点击“change message”更改message的值，当前正在显示的TabContent组件中的@Monitor中注册的方法onMessageUpdated被触发。
 
-2.点击[TabBar](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar23)“tab1”切换到另外的TabContent，TabContent状态由inactive变为active，对应的@Monitor中注册的方法onMessageUpdated被触发。
+2. 点击[TabBar](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar23)“tab1”切换到另外的TabContent，TabContent状态由inactive变为active，对应的@Monitor中注册的方法onMessageUpdated被触发。
 
-3.再次点击“change message”更改message的值，仅当前显示的TabContent子组件中的@Monitor中注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
+3. 再次点击“change message”更改message的值，仅当前显示的TabContent子组件中的@Monitor中注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
 
 ## Navigation
 
@@ -369,23 +369,23 @@ struct NavigationContentMsgStack {
 
 在上面的示例中：
 
-1.点击“change message”更改message的值，当前正在显示的MyNavigationTestStack组件中的@Monitor中注册的方法onChange被触发。
+1. 点击“change message”更改message的值，当前正在显示的MyNavigationTestStack组件中的@Monitor中注册的方法onChange被触发。
 
-2.点击“Next Page”切换到PageOne，创建PageOneStack节点。
+2. 点击“Next Page”切换到PageOne，创建PageOneStack节点。
 
-3.再次点击“change message”更改message的值，仅PageOneStack中的NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。
+3. 再次点击“change message”更改message的值，仅PageOneStack中的NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。
 
-4.再次点击“Next Page”切换到PageTwo，创建PageTwoStack节点。PageOneStack节点状态由active变为inactive。
+4. 再次点击“Next Page”切换到PageTwo，创建PageTwoStack节点。PageOneStack节点状态由active变为inactive。
 
-5.再次点击“change message”更改message的值，仅PageTwoStack中的NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。Navigation路由栈中非栈顶的NavDestination中的子自定义组件，将是inactive状态。@Monitor方法不会触发。
+5. 再次点击“change message”更改message的值，仅PageTwoStack中的NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。Navigation路由栈中非栈顶的NavDestination中的子自定义组件，将是inactive状态。@Monitor方法不会触发。
 
-6.再次点击“Next Page”切换到PageThree，创建PageThreeStack节点。PageTwoStack节点状态由active变为inactive。
+6. 再次点击“Next Page”切换到PageThree，创建PageThreeStack节点。PageTwoStack节点状态由active变为inactive。
 
-7.再次点击“change message”更改message的值，仅PageThreeStack中的NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。Navigation路由栈中非栈顶的NavDestination中的子自定义组件，将是inactive状态。@Monitor方法不会触发。
+7. 再次点击“change message”更改message的值，仅PageThreeStack中的NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。Navigation路由栈中非栈顶的NavDestination中的子自定义组件，将是inactive状态。@Monitor方法不会触发。
 
-8.点击“Back Page”回到PageTwo，此时，PageTwoStack节点状态由inactive变为active，其NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。
+8. 点击“Back Page”回到PageTwo，此时，PageTwoStack节点状态由inactive变为active，其NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。
 
-9.再次点击“Back Page”回到PageOne，此时，PageOneStack节点状态由inactive变为active，其NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。
+9. 再次点击“Back Page”回到PageOne，此时，PageOneStack节点状态由inactive变为active，其NavigationContentMsgStack子组件中的@Monitor中注册的方法onChange被触发。
 
 ## 混用场景
 

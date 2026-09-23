@@ -1154,7 +1154,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于[WaterFlow](./ts-container-waterflow.md)、[Grid](./ts-container-grid.md)、[List](./ts-container-list.md)、[Swiper](./ts-container-swiper.md)和[LazyVWaterFlowLayout](./ts-container-lazyvwaterflowlayout.md)组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
+定义一个适用于[WaterFlow](./ts-container-waterflow.md)、[Grid](./ts-container-grid.md)、[List](./ts-container-list.md)、[Swiper](./ts-container-swiper.md)、[LazyVWaterFlowLayout](./ts-container-lazyvwaterflowlayout.md)和[LazyVGridLayout](./ts-container-lazyvgridlayout.md)组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持，LazyVGridLayout组件从API版本26.2.0开始支持。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 

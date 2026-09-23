@@ -35,16 +35,16 @@ ArkTS-Sta: beginRecording(width: int, height: int): Canvas \| undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                           |
 | ------ | ------ | ---- | -------------------------------------------------------------- |
-| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的宽度。单位为物理像素px，取值范围为大于0的整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta: 录制画布的宽度。单位为物理像素px，取值范围为大于0的整数。 |
-| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的高度。单位为物理像素px，取值范围为大于0的整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta:录制画布的高度。单位为物理像素px，取值范围为大于0的整数。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的宽度。单位为物理像素px，取值范围为int范围内的正整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta: 录制画布的宽度。单位为物理像素px，取值范围为大于0的整数。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的高度。单位为物理像素px，取值范围为int范围内的正整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta:录制画布的高度。单位为物理像素px，取值范围为大于0的整数。 |
 
 **返回值：**
 
@@ -122,9 +122,9 @@ ArkTS-Sta: finishRecording(): RecordCmd \| undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **返回值：**
 
@@ -194,9 +194,9 @@ ArkTS-Sta: getHeight(): int
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **返回值：**
 
@@ -225,9 +225,9 @@ ArkTS-Sta: getWidth(): int
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **返回值：**
 
