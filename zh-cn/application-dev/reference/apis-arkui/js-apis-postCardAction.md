@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-用于卡片内部和提供方应用间的交互，当前支持router、message、call<!--Del-->、insightIntent<!--DelEnd-->类型的事件，仅在卡片中可以调用。<!--Del-->其中，insightIntent类型的事件仅系统应用支持，用于通过意图框架执行意图跳转。<!--DelEnd-->
+用于卡片内部和提供方应用间的交互，当前支持router、message、call<!--Del-->、insightIntent<!--DelEnd-->类型的事件，仅在卡片中可以调用。<!--Del-->其中，insightIntent类型的事件仅拥有意图执行权限的系统应用支持，用于通过意图框架执行意图跳转。<!--DelEnd-->
 
 > **说明：** 
 >
@@ -44,15 +44,15 @@ action参数说明：
 | bundleName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的包名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的包名，缺省时使用卡片提供方应用的包名。<!--DelEnd--> |
 | moduleName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的模块名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的模块名，缺省时使用卡片提供方应用的模块名。<!--DelEnd--> |
 | abilityName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的UIAbility名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的UIAbility名，缺省时使用提供方应用[module.json5配置文件](../../quick-start/module-configuration-file.md)中入口UIAbility对应的名称。<!--DelEnd--> |
-| uri<sup>11+</sup> | string   | 否   | action为router&nbsp;类型时跳转的UIAbility的统一资源标识符。uri和abilityName同时存在时，abilityName优先。<!--Del-->enableRouteSecondPage为true时，uri可与abilityName同时生效，用于跳转到提供方应用的二级页面，仅系统应用支持。<!--DelEnd--><!--Del--> |
+| uri<sup>11+</sup> | string   | 否   | action为router&nbsp;类型时跳转的UIAbility的统一资源标识符。uri和abilityName同时存在时，abilityName优先。<!--Del-->enableRouteSecondPage为true时，uri可与abilityName同时生效，用于跳转到提供方应用的二级页面，仅系统应用支持。<!--DelEnd--> |<!--Del-->
 | enableRouteSecondPage | boolean | 否 | action为router&nbsp;类型时是否允许uri与abilityName同时生效，以跳转到提供方应用的二级页面，默认为false，仅系统应用支持。<br/>**起始版本：** 26.0.1 |
-| intentName | string | 否 | action为insightIntent&nbsp;类型时指定要执行的意图名称，action为insightIntent&nbsp;类型时必填，仅有意图执行权限的系统应用支持。<br/>**起始版本：** 26.0.1<!--DelEnd--> |
+| intentName | string | 否 | action为insightIntent&nbsp;类型时指定要执行的意图名称，action为insightIntent&nbsp;类型时必填，仅拥有意图执行权限的系统应用支持。<br/>**起始版本：** 26.0.1 |<!--DelEnd-->
 | params | Object | 否 | 当前action携带的额外参数，内容使用JSON格式的键值对形式。<!--Del-->action为insightIntent&nbsp;类型时，"params"中可填入参数'intentParams'和'executeMode'，详见下方说明。<!--DelEnd--> |
 
 >**说明：**
 >
 >"action"为"call"&nbsp;类型时，"params"需填入参数'method'，且类型需为string类型，用于触发UIAbility中对应的方法。
-><!--Del-->"action"为"insightIntent"&nbsp;类型时，"intentName"必填且类型需为string类型，用于指定要执行的意图名称；"params"中可填入参数'intentParams'和'executeMode'：'intentParams'类型为object，用于承载意图执行所需的业务参数，参数值仅支持string、number和boolean类型；'executeMode'类型为number，用于指定意图的执行模式，取值参考[ExecuteMode](../apis-ability-kit/js-apis-app-ability-insightIntent.md#executemode)，缺省为0。<!--DelEnd-->
+><!--Del-->"action"为"insightIntent"&nbsp;类型时，"intentName"必填且类型需为string类型，用于指定要执行的意图名称；"params"中可填入参数'intentParams'和'executeMode'：'intentParams'类型为object，用于承载意图执行所需的业务参数，参数值仅支持string、number和boolean类型；'executeMode'类型为number，用于指定意图的执行模式，取值参考[ExecuteMode](../apis-ability-kit/js-apis-app-ability-insightIntent.md#executemode)，缺省为0。使用insightIntent类型时，提供方应用需申请[ohos.permission.EXECUTE_INSIGHT_INTENT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionexecute_insight_intent)权限。<!--DelEnd-->
 
 **示例：** 
 
