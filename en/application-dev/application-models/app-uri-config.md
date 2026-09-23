@@ -72,7 +72,6 @@ The use of the **linkFeature** field enables an application to deliver a more us
     |PrimaryContactMgmt|Starting from API version 23, this field is newly supported. Indicates the "important contacts list" settings feature of social communication class applications. <!--RP2--><!--RP2End-->|
 2. Skip the confirmation dialog when an application of a specified type is launched: Normally, when an application of a specified type is launched, a dialog asking whether to open the application is displayed. If your application provides login, sharing, or payment capabilities to other applications, you can declare the corresponding LinkFeature in the application (see the following table for values). After the application passes the review and is published, no dialog will be displayed when other applications launch your application.
 
-    ![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)
 
     |Value|Description|
     |---|---|

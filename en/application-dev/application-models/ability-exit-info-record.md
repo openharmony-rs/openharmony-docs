@@ -1,4 +1,4 @@
-# Obtaining Reasons for Abnormal Application Exits
+# Obtaining the Cause of Abnormal Application Exit
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7738447060c2cc1f595c9bdcb430e65d6029dba4 translatedAt=2026-09-17T08:15:12.505Z pushedAt=2026-09-21T11:20:12.552Z -->
+<!-- md-trans-meta sourceCommit=7738447060c2cc1f595c9bdcb430e65d6029dba4 translatedAt=2026-09-17T08:15:12.505Z pushedAt=2026-09-23T01:44:30.825Z -->
 
 If an application crashes and then restarts, you often need to know why it crashed and what the state was, such as the RSS and PSS values of the application memory and the time of the last exit. You can obtain the information from the **launchParam** parameter in the **OnCreate** lifecycle function of the UIAbility and UIExtensionAbility. You can use the information to analyze and improve the application experience, adjust service logic, and boost the application stability.
 
