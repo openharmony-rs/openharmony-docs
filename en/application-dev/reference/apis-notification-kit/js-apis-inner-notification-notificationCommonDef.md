@@ -51,3 +51,4 @@ Describes the user authorization settings.
 | ------ | ------ | ----| -- |  ------ |
 | userGrantEnabled | boolean | Yes | No| Whether the **Allow access to notifications on this device** switch is toggled on. true: **yes**; false: **no**.|
 | grantedBundleInfos    | Array\<[GrantedBundleInfo](#grantedbundleinfo22)\> | Yes | Yes| List of apps for which the **Allow access to notifications on this device** switch is toggled on.|
+<!--no_check-->
