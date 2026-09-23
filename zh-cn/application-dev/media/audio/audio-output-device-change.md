@@ -55,7 +55,7 @@
 
 ### AudioRenderer示例
 
-  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
+  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->  
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -87,7 +87,7 @@
         audioRenderer = renderer;
         // ...
       } else {
-        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       }
     });
@@ -122,7 +122,7 @@
 
 ### AudioSessionManager示例
 
-  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
+  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->  
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -156,7 +156,7 @@
         audioRenderer = renderer;
         // ...
       } else {
-        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       }
     });
