@@ -43,11 +43,8 @@ CMakeLists.txt中添加以下lib。
 
 <!-- @[child_process_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/CMakeLists.txt) -->
 
-```txt
-# ipc capi
-libipc_capi.so
-# 元能力，ability capi
-libchild_process.so
+``` Text
+target_link_libraries(childprocesssample libipc_capi.so libchild_process.so)
 ```
 
 **头文件**
