@@ -110,7 +110,9 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.request.grant(event.request.getAccessibleResource());
+                    let resources = event.request.getAccessibleResource();
+                    console.info('Granting permissions for resources: ' + JSON.stringify(resources));
+                    event.request.grant(resources);
                   }
                 },
                 cancel: () => {
