@@ -33,7 +33,7 @@ type UIAbilityContext = _UIAbilityContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md).default | UIAbility组件上下文。 |
+| [_UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).default | UIAbility组件上下文。 |
 
 ## AbilityStageContext
 
@@ -360,7 +360,7 @@ type AgentCard = _AgentCard
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AgentCard (Agent卡片)](../apis-ability-kit/js-apis-inner-application-AgentCard.md) | Agent(智能体)的"名片"，用于描述Agent的能力和技能。 |
+| [_AgentCard](../apis-ability-kit/js-apis-inner-application-AgentCard.md) | Agent(智能体)的"名片"，用于描述Agent的能力和技能。 |
 
 ## AgentProvider<sup>24+</sup>
 
