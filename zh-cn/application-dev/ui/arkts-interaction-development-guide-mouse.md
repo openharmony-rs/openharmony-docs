@@ -553,7 +553,7 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 
 2. 配置字段说明。
 
-   第一层的2in1表示在PC/2in1类型的设备上鼠标左键或轴事件可转换成触摸事件。2in1第二层的multiModalInputOptions字段，用来设置事件输入选项。内部      字段说明如下：
+   第一层的2in1表示在PC/2in1类型的设备上鼠标左键或轴事件可转换成触摸事件。2in1第二层的multiModalInputOptions字段，用来设置事件输入选项。内部字段说明如下：
 
    | 字段名              | 类型 | 说明                         | 可选 |
    | -------------------- | ---- | ---------------------------- | ---- |
@@ -589,7 +589,7 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 
 2. 配置字段说明。
 
-   第一层的2in1表示在PC/2in1类型的设备上鼠标右键可转换成长按事件。2in1第二层的contextMenuOptions字段，用来配置鼠标右键转换长按事件生效规则。    因为只有PC/2in1设备和Tablet设备支持右键转长按，所以common和phone的第二层不可配置contextMenuOptions字段。contextMenuOptions内部字段说    明如下：
+   第一层的2in1表示在PC/2in1类型的设备上鼠标右键可转换成长按事件。2in1第二层的contextMenuOptions字段，用来配置鼠标右键转换长按事件生效规则。因为只有PC/2in1设备和Tablet设备支持右键转长按，所以common和phone的第二层不可配置contextMenuOptions字段。contextMenuOptions内部字段说明如下：
 
    | 字段名              | 类型 | 说明                         | 可选 |
    | -------------------- | ---- | ---------------------------- | ---- |
