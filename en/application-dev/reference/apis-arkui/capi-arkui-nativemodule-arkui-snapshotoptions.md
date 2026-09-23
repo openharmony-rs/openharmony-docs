@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=177cf08b41b42ef2a0a1e73e96f1ea583ec5a150 translatedAt=2026-09-22T09:08:13.917Z pushedAt=2026-09-22T10:49:22.234Z -->
 
 ```c
 typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions
@@ -12,10 +13,13 @@ typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions
 
 ## Overview
 
-Defines snapshot options.
+Defines snapshot options, used to configure the snapshot behavior when taking a snapshot of a component. It applies to scenarios where the snapshot output effect needs to be controlled based on service requirements.
+
+To use this struct, first call [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions) to create a snapshot options object, and set the snapshot parameters through the related configuration APIs; then pass the object as the **snapshotOptions** parameter to [OH_ArkUI_GetNodeSnapshot](capi-native-node-h.md#oh_arkui_getnodesnapshot). When the object is no longer used, you must call [OH_ArkUI_DestroySnapshotOptions](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions) to release resources.
 
 **Since**: 15
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [common_attributes.h](capi-common-attributes-h.md)
+

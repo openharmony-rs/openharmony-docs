@@ -1,12 +1,11 @@
 # custom_span.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9d935c682ca66fcb6cb6ddce38110a22b9819131 translatedAt=2026-08-11T09:09:22.243Z pushedAt=2026-08-12T01:39:36.422Z -->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-09-22T09:32:37.406Z pushedAt=2026-09-23T09:10:44.026Z -->
 
 ## Overview
 
@@ -210,14 +209,14 @@ Sets the width for a custom span. In text and image layout scenarios, you need t
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | Pointer to the **CustomSpanMetrics** instance. It is used to pass the measurement metric object whose width needs to be set. The parameter cannot be null; otherwise, parameter validation fails. |
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | Pointer to the **CustomSpanMetrics** instance. It is used to pass the measurement metric object whose width needs to be set. The parameter cannot be null; otherwise, parameter verification fails. |
 | float width | Width, in vp. The value range is [0, +∞). The default value is **0.0f**. Negative values have the same effect as the default value. |
 
 **Returns**
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Possible cause: Parameter validation fails because the parameter is null.<br>         Handling steps: Ensure that the metrics parameter passed in is not a null pointer. |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Possible cause: The parameter cannot be null.<br>         Handling steps: Ensure that the **metrics** parameter passed in is not a null pointer.|
 
 ### OH_ArkUI_CustomSpanMetrics_SetHeight()
 
@@ -248,7 +247,7 @@ Sets the height for a custom span. In emoji embedding scenarios, you need to set
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br> Possible cause: Parameter validation fails because the parameter is null.<br> Handling steps: Ensure that the **metrics** parameter passed in is not a null pointer. |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Possible cause: The parameter cannot be null.<br>         Handling steps: Ensure that the **metrics** parameter passed in is not a null pointer.|
 
 ### OH_ArkUI_CustomSpanDrawInfo_Create()
 
@@ -324,7 +323,7 @@ Obtains the x-axis offset of the custom span relative to the mounted component. 
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info | Pointer to the drawing information of a custom span. It is used to pass the drawing information object for which the x-axis offset value needs to be obtained. The parameter cannot be null; otherwise, parameter verification will fail. |
+| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info | Pointer to the drawing information of a custom span. It is used to pass the drawing information object for which the x-axis offset value needs to be obtained. The parameter cannot be null; otherwise, parameter verification will fail. The value must be a valid object created by **OH_ArkUI_CustomSpanDrawInfo_Create()**. |
 
 **Returns**
 
@@ -360,7 +359,7 @@ Obtains the top margin of the custom span relative to the mounted component. In 
 
 | Type | Description |
 | -- | -- |
-| float | Top margin, in px. If parameter validation fails, **0.0f** is returned.<br> The parameter validation fails because the parameter is null. |
+| float | Top margin, in px. If parameter verification fails, **0.0f** is returned.<br> The parameter verification fails because the parameter is null. |
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetLineBottom()
 
@@ -384,13 +383,13 @@ Obtains the bottom margin of the custom span relative to the mounted component. 
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info | Pointer to the drawing information of a custom span. It is used to pass the drawing information object whose bottom margin needs to be obtained. The parameter cannot be null; otherwise, parameter verification will fail. |
+| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info | Pointer to the drawing information of a custom span. It is used to pass the drawing information object for which the bottom margin needs to be obtained. The parameter cannot be null; otherwise, parameter verification will fail. The value must be a valid object created by **OH_ArkUI_CustomSpanDrawInfo_Create()**. |
 
 **Returns**
 
 | Type | Description |
 | -- | -- |
-| float | Bottom margin, in px. If parameter validation fails, **0.0f** is returned.<br> The parameter validation fails because the parameter is null. |
+| float | Bottom margin, in px. If parameter verification fails, **0.0f** is returned.<br> The parameter verification fails because the parameter is null. |
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetBaseline()
 
@@ -421,3 +420,5 @@ Obtains the baseline offset of the custom span relative to the mounted component
 | Type | Description |
 | -- | -- |
 | float | Baseline offset, in px. If parameter verification fails, **0.0f** is returned.<br> The parameter verification fails because the parameter is null. |
+
+
