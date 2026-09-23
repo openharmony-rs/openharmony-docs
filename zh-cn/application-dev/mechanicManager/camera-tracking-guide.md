@@ -49,12 +49,8 @@
    <!-- @[is_control_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
    
    ``` TypeScript
-   try {
-     isSupported = mechanicManager.isControlSupported();
-     console.info(`'isSupported:' ${isSupported}`);
-   } catch (err) {
-     console.error('errCode:' + JSON.stringify(err));
-   }
+   let isSupported: boolean = mechanicManager.isControlSupported();
+   console.info(`'isSupported:' ${isSupported}`);
    ```
 
 3. 获取已连接的机械体列表。
