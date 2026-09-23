@@ -10,6 +10,8 @@
 
 定义ArkUI Native API的公共类型。
 
+**引用文件：** <arkui/common_type.h>
+
 **库：** libace_ndk.z.so
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
