@@ -597,3 +597,4 @@ The following sample is provided to help you better understand how to develop im
 - [MindSpore Lite Application Development Based on Native APIs (C/C++) (API 11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo)
 
 <!--RP1--><!--RP1End-->
+<!--no_check-->
