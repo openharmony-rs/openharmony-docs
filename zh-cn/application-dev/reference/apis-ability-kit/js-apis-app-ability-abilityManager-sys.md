@@ -194,7 +194,7 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AbilityRunningInfo (Ability运行信息)](js-apis-inner-application-abilityRunningInfo.md)>>  | 是    | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
+| callback | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | 是 | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -830,7 +830,7 @@ on(type: 'abilityForegroundState', observer: AbilityForegroundStateObserver): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 调用接口类型，固定填'abilityForegroundState'字符串。 |
-| observer | [AbilityForegroundStateObserver (前台状态监听器)](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 是 | Ability状态观测器，用于观测Ability的启动和退出。 |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 是 | Ability状态观测器，用于观测Ability的启动和退出。 |
 
 **错误码**：
 
@@ -883,7 +883,7 @@ onAbilityForegroundState(observer: AbilityForegroundStateObserver): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                             |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| observer | [AbilityForegroundStateObserver (前台状态监听器)](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 是   | Ability状态观测器，用于观测Ability的启动和退出。 |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 是 | Ability状态观测器，用于观测Ability的启动和退出。 |
 
 **错误码**：
 
@@ -941,7 +941,7 @@ off(type: 'abilityForegroundState', observer?: AbilityForegroundStateObserver): 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 调用接口类型，固定填'abilityForegroundState'字符串。 |
-| observer | [AbilityForegroundStateObserver (前台状态监听器)](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 否 | Ability状态观测器，用于观测Ability的启动和退出。如果未配置该参数，则取消当前应用注册的所有observer。如果配置了该参数，则取消该observer。 |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 否 | Ability状态观测器，用于观测Ability的启动和退出。如果未配置该参数，则取消当前应用注册的所有observer。如果配置了该参数，则取消该observer。 |
 
 **错误码**：
 
@@ -1006,7 +1006,7 @@ offAbilityForegroundState(observer?: AbilityForegroundStateObserver): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| observer | [AbilityForegroundStateObserver (前台状态监听器)](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 否   | Ability状态观测器，用于观测Ability的启动和退出。如果未配置该参数，则取消当前应用注册的所有observer。如果配置了该参数，则取消该observer。 |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 否 | Ability状态观测器，用于观测Ability的启动和退出。如果未配置该参数，则取消当前应用注册的所有observer。如果配置了该参数，则取消该observer。 |
 
 **错误码**：
 
@@ -1075,7 +1075,7 @@ getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback\<Array\<[AbilityStateData (Ability状态数据)](js-apis-inner-application-abilityStateData.md)>>  | 是 |以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+| callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 是 | 以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -1124,7 +1124,7 @@ getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<Array\<[AbilityStateData (Ability状态数据)](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。|
+| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -2010,7 +2010,7 @@ AbilityForegroundStateObserver二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbilityForegroundStateObserver (前台状态监听器)](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
+| [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
 
 ## AbilityForegroundStateObserver<sup>23+</sup>
 
@@ -2028,7 +2028,7 @@ AbilityForegroundStateObserver二级模块。
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [_AbilityForegroundStateObserver (前台状态监听器)](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
+| [_AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
 
 ## PreloadedUIExtensionAbilityDestroyedFn<sup>23+</sup>
 

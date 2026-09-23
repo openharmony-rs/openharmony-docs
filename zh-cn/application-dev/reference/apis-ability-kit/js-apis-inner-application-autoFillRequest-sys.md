@@ -35,7 +35,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称                     | 类型                                                      | 只读 | 可选 | 说明 |
 | ------------------------ | --------------------------------------------------------- | ---- | ---- | ---- |
-| customData<sup>13+</sup> | [CustomData (自定义数据)](js-apis-inner-application-customData-sys.md) | 否   | 否   | 自定义数据。<br>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23 |
+| customData<sup>13+</sup> | [CustomData](js-apis-inner-application-customData-sys.md) | 否 | 否 | 自定义数据。<br>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23 |
 | isPopup<sup>12+</sup>    | boolean | 否   | 否   | 自动填充服务是否拉起popup窗口。<br>true：当前拉起popup窗口。<br>false：当前拉起模态窗。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## UpdateRequest<sup>12+</sup>
@@ -54,7 +54,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData (视图数据)](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
+| viewData | [ViewData](js-apis-inner-application-viewData-sys.md) | 否 | 否 | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。 |
 
 ## FillResponse
 
@@ -72,7 +72,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData (视图数据)](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
+| viewData | [ViewData](js-apis-inner-application-viewData-sys.md) | 否 | 否 | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。 |
 
 ## FillRequestCallback
 
