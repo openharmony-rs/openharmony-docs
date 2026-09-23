@@ -67430,5 +67430,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/task-management/background-loader.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":121,
+						"name":"backgroundLoader_register_callee",
+						"start_line":112
+					},
+					{
+						"end_line":183,
+						"name":"backgroundLoader_registerTask",
+						"start_line":169
+					},
+					{
+						"end_line":210,
+						"name":"backgroundLoader_unregisterTask",
+						"start_line":196
+					},
+					{
+						"end_line":260,
+						"name":"backgroundLoader_getTaskInfo",
+						"start_line":249
+					},
+					{
+						"end_line":237,
+						"name":"backgroundLoader_finishTask",
+						"start_line":223
+					}
+				]
+			}
+		]
 	}
 ]
