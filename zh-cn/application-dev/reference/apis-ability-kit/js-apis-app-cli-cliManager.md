@@ -37,7 +37,7 @@ import { cliManager } from '@kit.AbilityKit';
 | policy     | string | 否 | 安全策略，参数格式为JSON字符串。 |
 | isShellCommand | boolean | 否 | 表示命令是否作为Shell命令执行。true：作为Shell命令执行；false：作为CLI工具命令执行，此时需配合`challenge`参数。<br/>默认值：true。<br/>**系统接口**：此属性为系统接口，自26.0.1版本起可用。 |
 | challenge  | string | 否 | 使用[requestToolPermissions](js-apis-abilityToolAccessCtrl-sys.md#abilitytoolaccessctrlrequesttoolpermissions)接口生成的[TicketInfo](js-apis-abilityToolAccessCtrl-sys.md#ticketinfo)中的ticket字符串。仅在`isShellCommand`为false时生效。<br/>默认值：空字符串。<br/>**系统接口**：此属性为系统接口，自26.0.1版本起可用。 |
-| callback   | [ToolEventCallback](js-apis-inner-application-toolEventCallback-sys.md) | 否 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
+| callback   | [ToolEventCallback (CLI工具事件回调)](js-apis-inner-application-toolEventCallback-sys.md) | 否 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
 
 ## ExecResult
 
@@ -199,7 +199,7 @@ subscribeSession(sessionId: string, callback: ToolEventCallback): Promise\<void\
 | 参数名    | 类型                                      | 必填 | 说明                         |
 | --------- | ----------------------------------------- | ---- | ---------------------------- |
 | sessionId | string                                    | 是   | 目标CLI工具进程的会话ID。    |
-| callback  | [ToolEventCallback](js-apis-inner-application-toolEventCallback-sys.md) | 是   | CLI工具会话事件的回调函数。  |
+| callback  | [ToolEventCallback (CLI工具事件回调)](js-apis-inner-application-toolEventCallback-sys.md) | 是   | CLI工具会话事件的回调函数。  |
 
 **返回值：**
 

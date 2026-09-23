@@ -152,7 +152,7 @@ Call功能主要接口如下表所示。具体的API详见[Caller](../reference/
     }
 
     function sendMsgCallback(data: rpc.MessageSequence): rpc.Parcelable {
-      hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'CalleeSortFunc called');
+      hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'sendMsgCallback called');
 
       // 获取Caller发送的序列化数据
       let receivedData: MyParcelable = new MyParcelable(0, '');

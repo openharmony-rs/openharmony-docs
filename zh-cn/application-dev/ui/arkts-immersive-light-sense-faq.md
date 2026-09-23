@@ -175,6 +175,44 @@ Column() {
 }))
 ```
 
+### 自定义弹出框CustomDialog没有生效沉浸式系统材质效果
+
+**问题现象**
+
+- 通过[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)创建的自定义弹出框，传入systemMaterial属性后没有生效沉浸式系统材质效果。
+- CustomDialog设置[customStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)为true时弹出框没有生效沉浸式系统材质效果。
+
+**可能原因**
+
+如果使用openCustomDialog、openCustomDialogWithController创建自定义弹出框，或设置弹出框的customStyle属性为true时，弹出框的背板由开发者自定义，当前暂不支持对此场景适配沉浸式系统材质。
+
+**解决措施**
+
+不支持在自定义弹出框背板中适配沉浸式系统材质。
+
+若开发者有诉求，建议使用其他类似接口，如[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)。
+
+**代码示例**
+
+以下代码展示了使用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)接口创建自定义弹出框，并生效沉浸式系统材质效果。
+
+<!-- @[open_custom_dialog_with_system_material_set_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/openCustomDialogWithSystemMaterial.ets) -->
+
+```ts
+Button('Click Me')
+  .fontSize(30)
+  .onClick(() => {
+    this.getUIContext()
+      .getPromptAction()
+      .openCustomDialog({
+        builder: () => {
+          this.customDialogComponent()
+        },
+        systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+      })
+  })
+```
+
 ## 设置沉浸式系统材质后组件边框呈现出周围背景的颜色
 
 **问题现象**

@@ -73,6 +73,9 @@ Text(content?: string \| Resource , value?: TextOptions)
 | fontVariations | 设置可变字体的属性。**起始版本：** 26.0.0 |
 | letterSpacing | 设置文本字符间距。 |
 | shaderStyle<sup>20+</sup> | 设置文本渐变或纯色效果。 |
+| strokeColor | 设置文本描边的颜色。<br>**起始版本：** 26.2.0 |
+| strokeJoinStyle | 设置文本描边的拐角样式。<br>**起始版本：** 26.2.0 |
+| strokeWidth | 设置文本描边的宽度。<br>**起始版本：** 26.2.0 |
 | textCase | 设置文本大小写。 |
 | textShadow<sup>10+</sup> | 设置文字阴影效果。 |
 
@@ -1407,6 +1410,70 @@ shaderStyle(shader: ShaderStyle)
 | 参数名     | 类型                                         | 必填                             | 说明                               |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
 | shader | [ShaderStyle](ts-text-common.md#shaderstyle20) | 是 | 径向渐变或线性渐变或纯色。<br>根据传入的参数区分处理径向渐变[RadialGradientStyle](ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](ts-text-common.md#colorshaderstyle20)，最终设置到Text文本上显示为渐变色效果。<br>**说明：** <br>当设置为径向渐变[RadialGradientStyle](ts-text-common.md#radialgradientstyle20)时，若[RadialGradientOptions](./ts-universal-attributes-gradient-color.md#radialgradientoptions18对象说明)的center参数设置到组件范围外时，可将repeating参数设置为true，此时渐变效果会更明显。 |
+
+### strokeColor
+
+strokeColor(color: Optional\<ResourceColor>)
+
+设置文本描边的颜色。未通过该接口设置时，默认为字体颜色。
+
+**起始版本：** 26.2.0
+
+**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                       | 必填 | 说明       |
+| ------ | ------------------------------------------ | ---- | ---------- |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 描边颜色。设置异常值时取字体颜色。需配合[strokeWidth](#strokewidth)设置描边宽度后生效。 |
+
+### strokeJoinStyle
+
+strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle \| undefined)
+
+设置文本描边的拐角样式。未通过该接口设置时，默认值为StrokeJoinStyle.MITER_JOIN，文本拐角处表现为尖角。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型             | 必填 | 说明                                            |
+| ------ | ------- | ---- | ----------------------------------------------- |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 设置文本描边的拐角样式，仅在使用[strokeWidth](#strokewidth)设置文本描边时生效。<br>值为undefined时，按照[StrokeJoinStyle](ts-text-common.md#strokejoinstyle).MITER_JOIN处理，文本拐角处表现为尖角。 |
+
+### strokeWidth
+
+strokeWidth(width: Optional\<LengthMetrics>)
+
+设置文本描边的宽度。未通过该接口设置时，默认值为0，无描边效果。
+
+**起始版本：** 26.2.0
+
+**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。默认值为0，无描边效果。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。 |
 
 ### textAlign
 
@@ -4020,3 +4087,45 @@ struct Utf16GlyphHighlightPage {
 该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 ![textUtf16GlyphHighlight](figures/textUtf16GlyphHighlight.gif)
+
+### 示例35（设置文本描边）
+
+该示例通过[strokeWidth](#strokewidth)、[strokeColor](#strokecolor)和[strokeJoinStyle](#strokejoinstyle)属性为Text设置文本描边样式，分别展示描边宽度、描边颜色和描边拐角样式的效果，并演示了将描边宽度设为负值时显示实心字的效果。
+
+从API版本26.2.0开始，新增[strokeColor](#strokecolor)、[strokeWidth](#strokewidth)和[strokeJoinStyle](#strokejoinstyle)属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextStrokeExample {
+  build() {
+    Column() {
+      Text('Text without stroke')
+        .height(60)
+        .fontSize(30)
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(-3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with ROUND_JOIN stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeJoinStyle(StrokeJoinStyle.ROUND_JOIN)
+        .strokeColor('rgb(39,135,217)')
+    }
+    .width('100%')
+  }
+}
+```
+
+![textStroke](figures/textStroke.png)

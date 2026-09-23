@@ -49,7 +49,7 @@ AutoFillExtensionContext二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [AutoFillExtensionContext](js-apis-inner-application-autoFillExtensionContext-sys.md) | AutoFillExtensionContext二级模块。 |
+| [AutoFillExtensionContext (自动填充扩展上下文)](js-apis-inner-application-autoFillExtensionContext-sys.md) | AutoFillExtensionContext二级模块。 |
 
 ## AutoStartupInfo<sup>11+</sup>
 
@@ -63,7 +63,7 @@ AutoStartupInfo二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | AutoStartupInfo二级模块。 |
+| [_AutoStartupInfo (开机自启应用组件信息)](js-apis-inner-application-autoStartupInfo-sys.md) | AutoStartupInfo二级模块。 |
 
 ## AutoStartupCallback<sup>11+</sup>
 
@@ -77,7 +77,7 @@ AutoStartupCallback二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md) | AutoStartupCallback二级模块。 |
+| [_AutoStartupCallback (开机自启回调)](js-apis-inner-application-autoStartupCallback-sys.md) | AutoStartupCallback二级模块。 |
 
 ## UIServiceExtensionContext<sup>14+</sup>
 
@@ -147,7 +147,7 @@ AgentExtensionConnectCallback二级模块。
 
 type ToolInfo = _ToolInfo
 
-[ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo)用于描述系统命令行工具（CLI）的基本信息。
+[ToolInfo (CLI工具信息)](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo)用于描述系统命令行工具（CLI）的基本信息。
 
 **起始版本：** 26.0.0
 
@@ -159,7 +159,7 @@ type ToolInfo = _ToolInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo) | 用于描述系统命令行工具（CLI）的基本信息。 |
+| [_ToolInfo (CLI工具信息)](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo) | 用于描述系统命令行工具（CLI）的基本信息。 |
 
 ## ToolSummary
 
@@ -183,7 +183,7 @@ type ToolSummary = _ToolSummary
 
 type CliToolEvent = _CliToolEvent
 
-[CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md)用于描述CLI工具进程运行期间产生的会话事件信息。
+[CliToolEvent (CLI工具会话事件)](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md)用于描述CLI工具进程运行期间产生的会话事件信息。
 
 **起始版本：** 26.0.0
 
@@ -195,13 +195,13 @@ type CliToolEvent = _CliToolEvent
 
 | 类型 | 说明 |
 | --- | --- |
-| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
+| [_CliToolEvent (CLI工具会话事件)](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
 
 ## ToolEventCallback
 
 type ToolEventCallback = _ToolEventCallback
 
-[ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md)用于接收CLI工具进程运行期间产生的会话事件。
+[ToolEventCallback (CLI工具事件回调)](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md)用于接收CLI工具进程运行期间产生的会话事件。
 
 **起始版本：** 26.0.0
 
@@ -213,13 +213,13 @@ type ToolEventCallback = _ToolEventCallback
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
+| [_ToolEventCallback (CLI工具事件回调)](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
 
 ## FunctionInfo
 
 type FunctionInfo = _FunctionInfo
 
-[FunctionInfo](../apis-ability-kit/js-apis-inner-application-FunctionInfo-sys.md#functioninfo)用于描述[Function](./js-apis-app-function-functionManager-sys.md)的基本信息。
+[FunctionInfo (Function信息)](../apis-ability-kit/js-apis-inner-application-FunctionInfo-sys.md#functioninfo)用于描述[Function](./js-apis-app-function-functionManager-sys.md)的基本信息。
 
 **起始版本：** 26.0.0
 
@@ -231,7 +231,7 @@ type FunctionInfo = _FunctionInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [_FunctionInfo](../apis-ability-kit/js-apis-inner-application-FunctionInfo-sys.md#functioninfo) | 用于描述Function的基本信息，包括Function命名空间、名称、版本、描述、输入输出模式等。 |
+| [_FunctionInfo (Function信息)](../apis-ability-kit/js-apis-inner-application-FunctionInfo-sys.md#functioninfo) | 用于描述Function的基本信息，包括Function命名空间、名称、版本、描述、输入输出模式等。 |
 
 **示例：**
 

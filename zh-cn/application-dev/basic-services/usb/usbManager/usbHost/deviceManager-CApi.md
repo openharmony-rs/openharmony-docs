@@ -69,7 +69,7 @@ DevEco Studio是进行USB设备驱动开发的必备工具，开发者可以使�
 
 **SDK版本配置**
 
-OH_UsbManager提供的C接口，所需SDK版本为API 26.1.0及以上才可使用。
+OH_UsbManager提供的C接口，所需SDK版本为API 26.0.1及以上才可使用。
 
 **HDC配置**
 
@@ -82,7 +82,7 @@ HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-2. 将public-SDK更新到API 26.1.0或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../../../../faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
+2. 将public-SDK更新到API 26.0.1或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../../../../faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
 3. PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。
 4. 用USB线缆将搭载OpenHarmony的设备连接到PC。
 
@@ -96,7 +96,7 @@ HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命
 
 ### 约束与限制
 
-- OH_UsbManager C接口所需SDK版本为API 26.1.0及以上。
+- OH_UsbManager C接口所需SDK版本为API 26.0.1及以上。
 
 - 当前设备必须作为USB Host模式，所连接的设备为Device模式，方可通过`OH_UsbManager_GetUsbDeviceList`获取到设备列表。
 

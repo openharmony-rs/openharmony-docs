@@ -1,4 +1,4 @@
-# UIAbilityContext (系统接口)
+# UIAbilityContext (UIAbility上下文)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

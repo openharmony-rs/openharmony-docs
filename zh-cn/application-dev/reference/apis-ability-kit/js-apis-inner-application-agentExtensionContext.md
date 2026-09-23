@@ -9,7 +9,7 @@
 
 AgentExtensionContext模块是[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 
-AgentExtensionContext为开发者提供访问当前[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)智能体所配置的[AgentCard](js-apis-inner-application-AgentCard.md)信息的能力。
+AgentExtensionContext为开发者提供访问当前[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)智能体所配置的[AgentCard (Agent卡片)](js-apis-inner-application-AgentCard.md)信息的能力。
 
 > **说明：**
 >
@@ -33,7 +33,7 @@ import { common } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| agentCard | [AgentCard](js-apis-inner-application-AgentCard.md) | 否 | 否 | 当前[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)智能体所配置的[AgentCard](js-apis-inner-application-AgentCard.md#agentcard-1)信息，用于描述智能体的基本信息和能力。 |
+| agentCard | [AgentCard (Agent卡片)](js-apis-inner-application-AgentCard.md) | 否 | 否 | 当前[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)智能体所配置的[AgentCard (Agent卡片)](js-apis-inner-application-AgentCard.md#agentcard)信息，用于描述智能体的基本信息和能力。 |
 
 **示例：**
 

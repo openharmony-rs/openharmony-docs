@@ -113,7 +113,7 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 
 | 类型                               | 说明                       |
 | ---------------------------------- | -------------------------- |
-| Promise\<Array\<[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)\>\> | Promise对象，返回工具详细信息列表。 |
+| Promise\<Array\<[ToolInfo (CLI工具信息)](js-apis-inner-application-ToolInfo-sys.md#toolinfo)\>\> | Promise对象，返回工具详细信息列表。 |
 
 **错误码：**
 
@@ -174,7 +174,7 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
 | 类型                                         | 说明                               |
 | -------------------------------------------- | ---------------------------------- |
-| Promise\<[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)> | Promise对象，返回工具的详细信息。 |
+| Promise\<[ToolInfo (CLI工具信息)](js-apis-inner-application-ToolInfo-sys.md#toolinfo)> | Promise对象，返回工具的详细信息。 |
 
 **错误码：**
 

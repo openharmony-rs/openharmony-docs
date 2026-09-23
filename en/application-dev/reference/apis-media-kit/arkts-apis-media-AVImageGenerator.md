@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b67cbd0055f1c96e4b46e6d3981e4bd2da695c00 translatedAt=2026-09-15T14:22:04.781Z pushedAt=2026-09-22T05:55:46.880Z -->
 
 AVImageGenerator is a class for video thumbnail retrieval. It provides APIs to obtain a thumbnail from a video. Before calling any API in AVImageGenerator, you must use [createAVImageGenerator()](arkts-apis-media-f.md#mediacreateavimagegenerator12) to create an AVImageGenerator instance.
 
@@ -21,13 +22,13 @@ For details about the demo for obtaining video thumbnails, see [Obtaining Video 
 import { media } from '@kit.MediaKit';
 ```
 
-## Properties
+## Attributes
 
 **System capability**: SystemCapability.Multimedia.Media.AVImageGenerator
 
 | Name                                               | Type                                                        | Read-Only| Optional| Description                                                        |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | No  | Yes  | Media file descriptor, which specifies the data source.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> After the resource handle (FD) is transferred to an AVImageGenerator instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVImageGenerator use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
+| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | No  | Yes  | Media file descriptor, which specifies the data source.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> After the resource handle (FD) is transferred to an AVImageGenerator instance, the resource handle must not be used to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder instances. Competition occurs when multiple AVImageGenerator use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
 
 ## fetchFrameByTime<sup>12+</sup>
 
@@ -41,8 +42,8 @@ Obtains a video thumbnail. This API uses an asynchronous callback to return the 
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeUs | number                   | Yes  | Time of the video for which a thumbnail is to be obtained, in μs.|
-| options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the thumbnail timestamp in and the video frame.|
+| timeUs | number                   | Yes  | Time of the video for which a thumbnail is to be obtained, in μs.| ()
+| options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the thumbnail timestamp and the video frame.|
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)     | Yes  | Format parameters of the thumbnail to be obtained.|
 | callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the PixelMap instance obtained; otherwise, **err** is an error object.|
 
@@ -76,19 +77,21 @@ let param: media.PixelMapParams = {
 };
 
 // Obtain the thumbnail.
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param, (error: BusinessError, pixelMap) => {
       if (error) {
-        console.error(`Failed to fetch FrameByTime, err = ${JSON.stringify(error)}`);
+        console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
         return;
       }
       pixel_map = pixelMap;
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -106,7 +109,7 @@ Obtains a video thumbnail. This API uses a promise to return the result.
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
 | timeUs | number                   | Yes  | Time of the video for which a thumbnail is to be obtained, in μs.|
-| options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the thumbnail timestamp in and the video frame.|
+| options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the thumbnail timestamp and the video frame.|
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | Yes  | Format parameters of the thumbnail to be obtained.|
 
 **Return value**
@@ -145,17 +148,19 @@ let param: media.PixelMapParams = {
 };
 
 // Obtain the thumbnail.
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
+      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -173,8 +178,8 @@ Fetches a scaled thumbnail from the video at a particular timestamp. This API us
 | Name    | Type                                         | Mandatory| Description                                                |
 | ---------- | --------------------------------------------- | ---- | ---------------------------------------------------- |
 | timeUs     | number                                        | Yes  | Timestamp, in microseconds (μs), at which the thumbnail is to be fetched from the video.|
-| queryMode  | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12) | Yes  | Relationship between the thumbnail timestamp in and the video frame.          |
-| outputSize | [OutputSize ](arkts-apis-media-i.md#outputsize20)                  | No  | Output size of the thumbnail. By default, the original image size is used.              |
+| queryMode  | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12) | Yes  | Relationship between the thumbnail timestamp and the video frame.          |
+| outputSize | [OutputSize](arkts-apis-media-i.md#outputsize20)                  | No   | Output size of the thumbnail. By default, the original image size is used.               |
 
 **Return value**
 
@@ -208,17 +213,19 @@ let outputSize: media.OutputSize = {
   height: 300,
 };
 // Obtain the thumbnail.
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchScaledFrameByTime(timeUs, queryOption, outputSize).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch ScaledFrameByTime, error message:${error.message}`);
+      console.error(`Failed to fetch ScaledFrameByTime, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -227,7 +234,7 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
 
 release(callback: AsyncCallback\<void>): void
 
-Releases this AVImageGenerator instance. This API uses an asynchronous callback to return the result.
+Releases resources. Uses an asynchronous callback.
 
 **System capability**: SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -260,13 +267,13 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release((error: BusinessError) => {
       if (error) {
-        console.error(`Failed to release, err = ${JSON.stringify(error)}`);
+        console.error(`Failed to release, code: ${error.code}, message: ${error.message}`);
         return;
       }
       console.info(`Succeeded in releasing`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -283,13 +290,13 @@ Releases this AVImageGenerator instance. This API uses a promise to return the r
 
 | Type          | Description                                    |
 | -------------- | ---------------------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
-| ID| Error Message                                 |
+| Error Code ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 
@@ -309,10 +316,10 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
     avImageGenerator.release().then(() => {
       console.info(`Succeeded in releasing.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to release, error message:${error.message}`);
+      console.error(`Failed to release, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
