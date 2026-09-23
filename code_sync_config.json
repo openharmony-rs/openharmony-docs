@@ -46311,5 +46311,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/mdm/mdm-kit-third-party-auth.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MDMKit/UsbKeyAuth/entry/src/main/ets/service/UsbKeyAuthService.ets",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"import_usb_key",
+						"start_line":16
+					},
+					{
+						"end_line":89,
+						"name":"request_auth_token",
+						"start_line":64
+					},
+					{
+						"end_line":141,
+						"name":"bind_usb_key",
+						"start_line":91
+					},
+					{
+						"end_line":209,
+						"name":"unbind_usb_key",
+						"start_line":143
+					},
+					{
+						"end_line":226,
+						"name":"query_credentials",
+						"start_line":211
+					},
+					{
+						"end_line":240,
+						"name":"set_unlock_policy",
+						"start_line":229
+					},
+					{
+						"end_line":265,
+						"name":"get_unlock_policy",
+						"start_line":242
+					}
+				]
+			}
+		]
 	}
 ]
