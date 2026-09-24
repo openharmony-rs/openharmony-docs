@@ -13,7 +13,13 @@
 - 查询已安装字体的作用范围。
 - 注册字体服务状态变化监听器，当字体服务异常退出时通知应用。
 
-**起始版本：** 26.0.1
+>  **说明：**
+>
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -25,7 +31,9 @@ import { fontManager } from '@kit.LocalizationKit';
 
 表示字体作用范围的枚举。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +48,9 @@ import { fontManager } from '@kit.LocalizationKit';
 
 字体服务状态变化监听器。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,7 +62,9 @@ onServiceDied(): void
 
 字体服务异常退出时的回调函数，应用可在此回调函数中执行资源清理或重新注册等操作。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,7 +94,9 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 > - 安装成功后，应用可以通过字体名称使用该字体。同一字体路径不可重复安装。
 > - PC/2in1支持安装的字体文件最大数量为800，其他设备支持安装的字体文件个数最大数量为200。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -139,7 +153,9 @@ uninstallScopeFont(url: string): Promise&lt;void&gt;
 
 根据字体路径卸载已安装的应用级或会话级字体。使用Promise异步回调。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -191,7 +207,9 @@ getFontScope(url: string): Promise&lt;FontScope&gt;
 
 查询指定路径字体的作用范围。使用Promise异步回调。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -247,7 +265,9 @@ onFontObserver(observer: FontClientObserver): void
 > - 每个应用仅可注册一个字体服务状态变化监听器，重复注册会报错。
 > - 同一用户最多允许5个应用同时注册，否则会报错。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -297,7 +317,9 @@ offFontObserver(): void
 
 注销字体服务状态变化监听器。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
