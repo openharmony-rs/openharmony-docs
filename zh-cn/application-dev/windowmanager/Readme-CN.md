@@ -36,7 +36,7 @@
   - [设置窗口动效 (ArkTS)](window-animation.md)
   - [控制窗口外观 (ArkTS)](window-appearance.md)
   - [使用WindowManager管理多模输入事件 (C/C++)](native-window-event-filter.md)
-  - [窗口管理命令行工具](window-cli-faqs.md)
+  - [窗口管理CLI工具](window-cli-faqs.md)
 - 应用启动页的配置与使用<!--launch-page-->
   - [应用启动页简介](launch-page-overview.md)
   - [配置应用启动页](launch-page-config.md)
