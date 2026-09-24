@@ -49,7 +49,7 @@
 | -- | -- | -- |
 | [typedef void (\*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)](#oh_avplayeroninfo) | OH_AVPlayerOnInfo | 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。 |
 | [typedef void (\*OH_AVPlayerOnInfoCallback)(OH_AVPlayer \*player, AVPlayerOnInfoType type, OH_AVFormat\* infoBody, void \*userData)](#oh_avplayeroninfocallback) | OH_AVPlayerOnInfoCallback | 收到播放器消息时被调用。如果应用成功设置该回调，则不会回调OH_AVPlayerOnInfo函数。 |
-| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnErrorCallback](#oh_avplayeronerrorcallback)替代。 |
+| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | 在API版本11及以上的版本发生错误时调用。如果应用成功设置OH_AVPlayerOnErrorCallback回调，则不会调用此函数。 |
 | [typedef void (\*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avplayeronerrorcallback) | OH_AVPlayerOnErrorCallback | 发生错误时被调用。如果应用成功设置该回调，则不会调用OH_AVPlayerOnError函数。 |
 | [typedef void (\*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)](#oh_avplayeronamplitudeupdatecallback) | OH_AVPlayerOnAmplitudeUpdateCallback | 当计算出最大音频电平值时调用。 |
 | [typedef void (\*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)](#oh_avplayeronseimessagereceivedcallback) | OH_AVPlayerOnSeiMessageReceivedCallback | 获取SEI消息的回调。需先通过OH_AVPlayer_EnableSeiMessageReporting接口订阅SEI消息事件，订阅后回调返回SEI信息（含负载类型和负载内容）。适用于获取视频流中的字幕、时间码、元数据等信息。 |
