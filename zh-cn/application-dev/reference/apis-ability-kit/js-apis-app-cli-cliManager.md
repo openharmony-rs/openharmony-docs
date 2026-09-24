@@ -35,7 +35,7 @@ import { cliManager } from '@kit.AbilityKit';
 | yieldMs    | number | 否 | 是 | 命令前台执行时长，单位为毫秒。取值范围：0 ~ 1000 * timeout，默认值：0。超出取值范围时抛出错误码401。 |
 | timeout    | number | 否 | 是 | 命令执行超时时长，单位为秒。取值范围：0 ~ 1800。默认值：1800，传0表示不会超时。超出取值范围时抛出错误码401。 |
 | policy     | string | 否 | 是 | 安全策略，参数格式为JSON字符串。 |
-| callback   | [ToolEventCallback](js-apis-inner-application-toolEventCallback-sys.md) | 否 | 是 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
+| callback   | [ToolEventCallback](js-apis-inner-application-toolEventCallback.md) | 否 | 是 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
 
 ## ExecResult
 
@@ -183,7 +183,7 @@ subscribeSession(sessionId: string, callback: ToolEventCallback): Promise\<void\
 | 参数名    | 类型                                      | 必填 | 说明                         |
 | --------- | ----------------------------------------- | ---- | ---------------------------- |
 | sessionId | string                                    | 是   | 目标CLI工具进程的会话ID。    |
-| callback  | [ToolEventCallback](js-apis-inner-application-toolEventCallback-sys.md) | 是   | CLI工具会话事件的回调函数。  |
+| callback  | [ToolEventCallback](js-apis-inner-application-toolEventCallback.md) | 是   | CLI工具会话事件的回调函数。  |
 
 **返回值：**
 
