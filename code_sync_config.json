@@ -40675,6 +40675,16 @@
 						"start_line":1654
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.h",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"import_header",
+						"start_line":18
+					}
+				]
 			}
 		]
 	},
@@ -40713,6 +40723,16 @@
 						"end_line":473,
 						"name":"create_preview_output",
 						"start_line":456
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
+				"functions":[
+					{
+						"end_line":195,
+						"name":"import_header",
+						"start_line":18
 					}
 				]
 			}
@@ -46397,6 +46417,106 @@
 						"end_line":291,
 						"name":"rotate_anim",
 						"start_line":158
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/native-camera-macro.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
+				"functions":[
+					{
+						"end_line":195,
+						"name":"import_header",
+						"start_line":18
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/native-camera-metadata.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
+				"functions":[
+					{
+						"end_line":195,
+						"name":"import_header",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp",
+				"functions":[
+					{
+						"end_line":1277,
+						"name":"metadata_callback_error",
+						"start_line":1272
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/native-camera-recording.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
+				"functions":[
+					{
+						"end_line":195,
+						"name":"import_header",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp",
+				"functions":[
+					{
+						"end_line":518,
+						"name":"create_video_output",
+						"start_line":501
+					},
+					{
+						"end_line":1045,
+						"name":"video_output_stop",
+						"start_line":1034
+					},
+					{
+						"end_line":1240,
+						"name":"video_callback_error",
+						"start_line":1235
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/native-camera-shooting.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
+				"functions":[
+					{
+						"end_line":195,
+						"name":"import_header",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp",
+				"functions":[
+					{
+						"end_line":498,
+						"name":"create_photo_output",
+						"start_line":475
 					}
 				]
 			}
