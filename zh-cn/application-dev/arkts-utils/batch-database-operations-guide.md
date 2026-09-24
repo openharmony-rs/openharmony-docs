@@ -252,7 +252,7 @@ struct Index {
          id: resultSet.getLong(resultSet.getColumnIndex('id')),
          name: resultSet.getString(resultSet.getColumnIndex('name')),
          age: resultSet.getLong(resultSet.getColumnIndex('age')),
-         salary: resultSet.getLong(resultSet.getColumnIndex('salary'))
+         salary: resultSet.getDouble(resultSet.getColumnIndex('salary'))
        };
        // 包装为 @Sendable 类实例，支持跨线程引用传递
        result[index++] = new SharedValuesBucket(v);
