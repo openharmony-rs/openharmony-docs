@@ -99,7 +99,7 @@ startCrediblePairing(): Promise&lt;void&gt;
 **示例：**
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -146,7 +146,7 @@ removePairedDevice(): Promise&lt;void&gt;
 **示例：**
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -193,7 +193,7 @@ setPairingConfirmation(accept: boolean): void
 **示例：**
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -238,7 +238,7 @@ connect(): Promise&lt;void&gt;
 **示例：**
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -285,7 +285,7 @@ disconnect(): Promise&lt;void&gt;
 **示例：**
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -333,7 +333,7 @@ setDeviceAlias(alias: string): void
 **示例：**
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let addr: string = '11:22:33:44:AA:FF'; // 扫描获取到的远端设备地址
 let device: remoteDevice.RemoteDevice = remoteDevice.createRemoteDevice(addr);
@@ -380,7 +380,7 @@ getDeviceAlias(): string
 **示例：**
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let addr: string = '11:22:33:44:AA:FF'; // 扫描获取到的远端设备地址
 let device: remoteDevice.RemoteDevice = remoteDevice.createRemoteDevice(addr);
@@ -675,7 +675,7 @@ onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
 **示例：**
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError, Callback } from '@ohos.base';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
 
 let callback: Callback<remoteDevice.PairingRequestParam> = (data: remoteDevice.PairingRequestParam) => {
   console.info('pairing request param: ' + JSON.stringify(data));
@@ -721,7 +721,7 @@ offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
 **示例：**
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   remoteDevice.offPairingRequest();
