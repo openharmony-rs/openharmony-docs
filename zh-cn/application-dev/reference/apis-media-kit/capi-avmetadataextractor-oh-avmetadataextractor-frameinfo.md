@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AVMetadataExtractor_FrameInfo
+typedef struct H_AVMetadataExtractor_FrameInfo {...} OH_AVMetadataExtractor_FrameInfo
 ```
 
 ## 概述
