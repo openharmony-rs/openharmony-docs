@@ -309,8 +309,8 @@ on(type:'error', callback: ErrorCallback):void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| 401 | The parameter check failed. |
+| 801 | Capability not supported. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. |
@@ -445,7 +445,7 @@ prepare(config: AVTranscoderConfig): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Return by promise. |
+| 401 | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |

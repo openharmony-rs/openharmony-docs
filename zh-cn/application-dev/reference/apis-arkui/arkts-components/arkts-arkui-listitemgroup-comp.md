@@ -1,6 +1,6 @@
 # ListItemGroup
 
-该组件用来展示列表项分组，支持自定义分组头部和尾部区域、卡片样式、分割线、懒加载与预加载等能力，适用于需要对列表项进行逻辑分组展示的场景。宽度默认充满[List](arkts-arkui-list-comp.md#list)组件，必须配合List组件来使用。
+该组件用来展示列表项分组，支持自定义分组头部和尾部区域、卡片样式、分割线、懒加载与预加载等能力，适用于需要对列表项进行逻辑分组展示的场景。宽度默认充满List组件，必须配合List组件来使用。
 
 ListItemGroup的懒加载是指组件按需加载可见区域内的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。ListItemGroup和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
 
@@ -20,7 +20,7 @@ ListItemGroup的预加载是指除了加载显示区域内的子组件外，还�
 
 > **说明：** 
 > 
-> - 该组件的父组件只能是[List](arkts-arkui-list-comp.md#list)。
+> - 该组件的父组件只能是List。
 > 
 > - ListItemGroup组件不支持设置[通用属性aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio)。
 > 
@@ -32,7 +32,7 @@ ListItemGroup的预加载是指除了加载显示区域内的子组件外，还�
 
 ## 子组件
 
-包含[ListItem](arkts-arkui-listitem-comp.md#list_item)子组件。支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
+包含ListItem子组件。支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
 ## ListItemGroup
 
@@ -75,9 +75,9 @@ ListItemGroup(options?: ListItemGroupOptions)
 
 ### 示例1（设置吸顶/吸底）
 
-该示例通过[sticky](ts-container-list.md#sticky9)实现了Header吸顶和Footer吸底的效果。
+该示例通过sticky实现了Header吸顶和Footer吸底的效果。
 
-ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List和ListItemGroup提供子组件。
+ListDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给List和ListItemGroup提供子组件。
 
 ```TypeScript
 // ListDataSource.ets
@@ -431,7 +431,7 @@ struct ListItemGroupExample {
 
 ### 示例4（设置多列布局）
 
-该示例展示了ListItemGroup在多列布局中的使用，通过设置List组件的[lanes](ts-container-list.md#lanes9)属性实现多列布局。
+该示例展示了ListItemGroup在多列布局中的使用，通过设置List组件的lanes属性实现多列布局。
 
 ListDataSource说明及完整代码参考[示例1（设置吸顶/吸底）](#示例1设置吸顶吸底)。
 
@@ -595,7 +595,7 @@ struct ListItemGroupExample {
 
 ### 示例5（设置悬浮态）
 
-该示例通过将ListItemGroup的[headerStyle](#listitemgroupoptions对象说明)设置为[ListItemGroupHeaderFooterStyle.FLOATING](arkts-arkui-listitemgroup-comp-listitemgroupheaderfooterstyle-e.md)，实现分组头部在滚动时悬浮显示的效果。
+该示例通过将ListItemGroup的headerStyle设置为[ListItemGroupHeaderFooterStyle.FLOATING](arkts-arkui-listitemgroup-comp-listitemgroupheaderfooterstyle-e.md)，实现分组头部在滚动时悬浮显示的效果。
 
 ```TypeScript
 // xxx.ets

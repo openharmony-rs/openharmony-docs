@@ -4,7 +4,7 @@
 declare class NodeAdapter
 ```
 
-NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md#lazy_for_each)实现接口功能。适用于长列表等需要按需加载节点数据的场景，可提升渲染性能并降低内存占用。
+NodeAdapter提供FrameNode的数据懒加载能力，通过LazyForEach实现接口功能。适用于长列表等需要按需加载节点数据的场景，可提升渲染性能并降低内存占用。
 
 > **说明：** 
 > 

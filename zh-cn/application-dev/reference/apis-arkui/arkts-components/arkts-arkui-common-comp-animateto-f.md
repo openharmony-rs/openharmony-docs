@@ -18,7 +18,7 @@ declare function animateTo(value: AnimateParam, event: () => void): void
 > 
 > - 执行aboutToDisappear时，组件即将销毁，不能在aboutToDisappear里面做动画。
 > 
-> - 在组件出现和消失时，可以通过[组件内转场](arkts-arkui-common-comp.md#common)添加动画效果。
+> - 在组件出现和消失时，可以通过组件内转场添加动画效果。
 > 
 > - 组件内转场不支持的属性，可以参考[示例2](arkts-arkui-common-comp-commonmethod-c.md)，使用animateTo实现动画执行结束后组件消失的效果。
 > 

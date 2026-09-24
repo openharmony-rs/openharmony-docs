@@ -4,7 +4,7 @@
 export type AppServiceExtensionContext = _AppServiceExtensionContext.default
 ```
 
-[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件上下文，继承自Context。
+AppServiceExtensionAbility组件上下文，继承自Context。
 
 **起始版本：** 20
 

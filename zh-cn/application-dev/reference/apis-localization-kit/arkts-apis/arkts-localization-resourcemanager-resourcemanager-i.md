@@ -58,7 +58,7 @@ addResource(path: string) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001010](../errorcode-resource-manager.md#9001010-无效的overlay路径) | Invalid overlay path. |
 
 **示例**
@@ -103,13 +103,13 @@ closeRawFd(path: string, callback: _AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;void&gt; | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
+| callback | _AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -174,7 +174,7 @@ closeRawFd(path: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -226,7 +226,7 @@ closeRawFdSync(path: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -283,7 +283,7 @@ getBoolean(resId: number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -360,7 +360,7 @@ getBoolean(resource: Resource): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -429,7 +429,7 @@ getBooleanByName(resName: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -487,13 +487,13 @@ getColor(resId: number, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;number&gt; | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
+| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -601,7 +601,7 @@ getColor(resId: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -666,13 +666,13 @@ getColor(resource: Resource, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;number&gt; | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
+| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -748,7 +748,7 @@ getColor(resource: Resource): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -805,13 +805,13 @@ getColorByName(resName: string, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;number&gt; | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
+| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -881,7 +881,7 @@ getColorByName(resName: string): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -949,7 +949,7 @@ getColorByNameSync(resName: string) : number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -1018,7 +1018,7 @@ getColorSync(resId: number) : number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -1095,7 +1095,7 @@ getColorSync(resource: Resource) : number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -1152,7 +1152,7 @@ getConfiguration(callback: _AsyncCallback<Configuration>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;[Configuration](arkts-localization-resourcemanager-configuration-c.md)&gt; | 是 | 回调函数，返回设备的Configuration。 |
+| callback | _AsyncCallback&lt;[Configuration](arkts-localization-resourcemanager-configuration-c.md)&gt; | 是 | 回调函数，返回设备的Configuration。 |
 
 **示例**
 
@@ -1280,7 +1280,7 @@ getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;[DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md)&gt; | 是 | 回调函数，返回设备的DeviceCapability。 |
+| callback | _AsyncCallback&lt;[DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md)&gt; | 是 | 回调函数，返回设备的DeviceCapability。 |
 
 **示例**
 
@@ -1693,7 +1693,7 @@ getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableD
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -1774,7 +1774,7 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -1845,7 +1845,7 @@ getDrawableDescriptorByName(resName: string, density?: number, type?: number): D
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2187,7 +2187,7 @@ getLocales(includeSystem?: boolean): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 
 **示例**
 
@@ -2244,13 +2244,13 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2302,13 +2302,13 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback<
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2370,7 +2370,7 @@ getMediaBase64ByName(resName: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2431,7 +2431,7 @@ getMediaBase64ByName(resName: string, density: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2490,7 +2490,7 @@ getMediaBase64ByNameSync(resName: string, density?: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2542,13 +2542,13 @@ getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2600,13 +2600,13 @@ getMediaByName(resName: string, density: number, callback: _AsyncCallback<Uint8A
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2668,7 +2668,7 @@ getMediaByName(resName: string): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2729,7 +2729,7 @@ getMediaByName(resName: string, density: number): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2788,7 +2788,7 @@ getMediaByNameSync(resName: string, density?: number): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
@@ -2842,13 +2842,13 @@ getMediaContent(resId: number, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -2901,13 +2901,13 @@ getMediaContent(resId: number, density: number, callback: _AsyncCallback<Uint8Ar
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -2969,7 +2969,7 @@ getMediaContent(resId: number): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3030,7 +3030,7 @@ getMediaContent(resId: number, density: number): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3083,13 +3083,13 @@ getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3147,13 +3147,13 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3221,7 +3221,7 @@ getMediaContent(resource: Resource): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3288,7 +3288,7 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3337,13 +3337,13 @@ getMediaContentBase64(resId: number, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3395,13 +3395,13 @@ getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback<s
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3463,7 +3463,7 @@ getMediaContentBase64(resId: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3524,7 +3524,7 @@ getMediaContentBase64(resId: number, density: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3577,13 +3577,13 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3641,13 +3641,13 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3715,7 +3715,7 @@ getMediaContentBase64(resource: Resource): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3782,7 +3782,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3841,7 +3841,7 @@ getMediaContentBase64Sync(resId: number, density?: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3913,7 +3913,7 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -3976,7 +3976,7 @@ getMediaContentSync(resId: number, density?: number): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -4048,7 +4048,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
@@ -4110,7 +4110,7 @@ getNumber(resId: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -4213,7 +4213,7 @@ getNumber(resource: Resource): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -4283,7 +4283,7 @@ getNumberByName(resName: string): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -4425,7 +4425,7 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 
 **示例**
 
@@ -4477,13 +4477,13 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;[RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md)&gt; | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
+| callback | _AsyncCallback&lt;[RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md)&gt; | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -4555,7 +4555,7 @@ getRawFd(path: string): Promise<RawFileDescriptor>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -4623,7 +4623,7 @@ getRawFdSync(path: string): RawFileDescriptor
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -4667,13 +4667,13 @@ getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回获取的rawfile文件内容。 |
+| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回获取的rawfile文件内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -4736,7 +4736,7 @@ getRawFileContent(path: string): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -4795,7 +4795,7 @@ getRawFileContentSync(path: string): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -4841,13 +4841,13 @@ getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。<br>空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回rawfile子目录下的文件夹及文件列表。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回rawfile子目录下的文件夹及文件列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -4908,7 +4908,7 @@ getRawFileList(path: string): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -4967,7 +4967,7 @@ getRawFileListSync(path: string): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -5080,13 +5080,13 @@ getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源名称对应的字符串数组。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源名称对应的字符串数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5161,7 +5161,7 @@ getStringArrayByName(resName: string): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5233,7 +5233,7 @@ getStringArrayByNameSync(resName: string): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5297,13 +5297,13 @@ getStringArrayValue(resId: number, callback: _AsyncCallback<Array<string>>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5378,7 +5378,7 @@ getStringArrayValue(resId: number): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5445,13 +5445,13 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回resource对象对应的字符串数组。 |
+| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回resource对象对应的字符串数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5531,7 +5531,7 @@ getStringArrayValue(resource: Resource): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5603,7 +5603,7 @@ getStringArrayValueSync(resId: number): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5684,7 +5684,7 @@ getStringArrayValueSync(resource: Resource): Array<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5746,13 +5746,13 @@ getStringByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5822,7 +5822,7 @@ getStringByName(resName: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5888,7 +5888,7 @@ getStringByNameSync(resName: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -5960,7 +5960,7 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6030,7 +6030,7 @@ getStringSync(resId: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6102,7 +6102,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6180,7 +6180,7 @@ getStringSync(resource: Resource): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6258,7 +6258,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6319,13 +6319,13 @@ getStringValue(resId: number, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6412,7 +6412,7 @@ getStringValue(resId: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6473,13 +6473,13 @@ getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回resource对象对应的字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6555,7 +6555,7 @@ getStringValue(resource: Resource): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6611,7 +6611,7 @@ getSymbol(resId: number) : number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6676,7 +6676,7 @@ getSymbol(resource: Resource) : number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6733,7 +6733,7 @@ getSymbolByName(resName: string) : number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -6792,7 +6792,7 @@ isRawDir(path: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
 **示例**
@@ -6852,7 +6852,7 @@ removeResource(path: string) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001010](../errorcode-resource-manager.md#9001010-无效的overlay路径) | Invalid overlay path. |
 
 **示例**
@@ -6902,7 +6902,7 @@ updateOverrideConfiguration(configuration: Configuration): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 
 **示例**
 
@@ -7294,13 +7294,13 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<str
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | num | number | 是 | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -7385,7 +7385,7 @@ getPluralStringByName(resName: string, num: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -7468,7 +7468,7 @@ getPluralStringByNameSync(resName: string, num: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -7543,13 +7543,13 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
 | num | number | 是 | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -7643,7 +7643,7 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -7723,13 +7723,13 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
+| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -7815,7 +7815,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -7898,7 +7898,7 @@ getPluralStringValueSync(resId: number, num: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
@@ -7986,7 +7986,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |

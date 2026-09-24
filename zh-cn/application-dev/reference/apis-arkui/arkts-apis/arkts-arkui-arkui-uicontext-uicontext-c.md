@@ -132,7 +132,7 @@ animateTo(value: AnimateParam, event: () => void): void
 > 
 > - 在组件出现和消失时，可以通过[组件内转场](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)添加动画效果。
 > 
-> - 组件内转场不支持的属性，可以参考[显式动画](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)中的[示例2](../arkts-components/arkts-arkui-common-comp.md#common)，使用animateTo实现动画执行结束后组件消失的效果。
+> - 组件内转场不支持的属性，可以参考[显式动画](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)中的示例2，使用animateTo实现动画执行结束后组件消失的效果。
 > 
 > - 某些场景下，在[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
 > 
@@ -503,7 +503,7 @@ closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
 | [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
@@ -718,7 +718,7 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 **示例**
 
@@ -789,7 +789,7 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 **示例**
 
@@ -853,7 +853,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. The number of parameters is incorrect. <br> 2. Invalid parameter type of context. |
+| 401 | Parameter error. Possible causes:<br> 1. The number of parameters is incorrect. <br> 2. Invalid parameter type of context. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
 **示例**
@@ -1364,7 +1364,7 @@ getComponentSnapshot(): ComponentSnapshot
 
 **示例**
 
-完整示例请参考[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)中的示例。
+完整示例请参考ComponentSnapshot中的示例。
 
 ## getComponentUtils
 
@@ -1438,7 +1438,7 @@ Get object cursor controller.
 
 **示例**
 
-完整示例请参考[CursorController](arkts-apis-uicontext-cursorcontroller.md)中的示例。
+完整示例请参考CursorController中的示例。
 
 ## getDialogPresenter
 
@@ -1464,7 +1464,7 @@ getDialogPresenter(): DialogPresenter
 
 **示例**
 
-完整示例请参考[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)中的示例。
+完整示例请参考DialogPresenter中的示例。
 
 ## getDragController
 
@@ -1490,7 +1490,7 @@ Get DragController.
 
 **示例**
 
-完整示例请参考[DragController](./arkts-apis-uicontext-dragcontroller.md)中的示例。
+完整示例请参考DragController中的示例。
 
 ## getFilteredInspectorTree
 
@@ -1524,7 +1524,7 @@ get the filtered attributes of the component tree.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 **示例**
 
@@ -1626,7 +1626,7 @@ get the filtered attributes of the component tree with the specified id and dept
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 **示例**
 
@@ -1697,7 +1697,7 @@ getFocusController(): FocusController
 
 **示例**
 
-完整示例请参考[FocusController](arkts-apis-uicontext-focuscontroller.md)中的示例。
+完整示例请参考FocusController中的示例。
 
 ## getFont
 
@@ -1723,7 +1723,7 @@ getFont(): Font
 
 **示例**
 
-完整示例请参考[Font](arkts-apis-uicontext-font.md)中的示例。
+完整示例请参考Font中的示例。
 
 ## getFrameNodeById
 
@@ -1925,7 +1925,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 **示例**
 
-完整示例请参考[示例4（设置键盘避让模式为压缩）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
+完整示例请参考示例4（设置键盘避让模式为压缩）、示例5（设置键盘避让模式为上抬）以及示例6（切换避让模式）。
 
 ```TypeScript
 // EntryAbility.ets
@@ -2073,7 +2073,7 @@ getMagnifier(): Magnifier
 
 **示例**
 
-参考[Magnifier](arkts-apis-uicontext-magnifier.md)的bind接口示例。
+参考Magnifier的bind接口示例。
 
 ## getMaxFontScale
 
@@ -2139,7 +2139,7 @@ getMeasureUtils(): MeasureUtils
 
 **示例**
 
-完整示例请参考[MeasureUtils](arkts-apis-uicontext-measureutils.md)中的示例。
+完整示例请参考MeasureUtils中的示例。
 
 ## getMediaQuery
 
@@ -2223,7 +2223,7 @@ Obtains the OverlayManager object.
 
 **示例**
 
-完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
+完整示例请参考OverlayManager中的示例。
 
 ## getOverlayManagerOptions
 
@@ -2249,7 +2249,7 @@ Get object OverlayManagerOptions.
 
 **示例**
 
-完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
+完整示例请参考OverlayManager中的示例。
 
 ## getPageInfoByUniqueId
 
@@ -2544,7 +2544,7 @@ get object PromptAction.
 
 **示例**
 
-完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
+完整示例请参考PromptAction中的示例。
 
 ## getRouter
 
@@ -2687,7 +2687,7 @@ getTextMenuController(): TextMenuController
 
 **示例**
 
-参考[TextMenuController](arkts-apis-uicontext-textmenucontroller.md)接口示例。
+参考TextMenuController接口示例。
 
 ## getUIInspector
 
@@ -2713,7 +2713,7 @@ getUIInspector(): UIInspector
 
 **示例**
 
-完整示例请参考[UIInspector](./arkts-apis-uicontext-uiinspector.md)中的示例。
+完整示例请参考UIInspector中的示例。
 
 ## getUIObserver
 
@@ -3361,7 +3361,7 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
 | [120002](../errorcode-bindSheet.md#120002-内容节点对应半模态页面已存在) | The bindSheetContent already exists. |
 | [120004](../errorcode-bindSheet.md#120004-指定的targetid不存在) | The targetId does not exist. |
@@ -4256,7 +4256,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 **示例**
 
-完整示例请参考[示例4（设置键盘避让模式为压缩）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
+完整示例请参考示例4（设置键盘避让模式为压缩）、示例5（设置键盘避让模式为上抬）以及示例6（切换避让模式）。
 
 ```TypeScript
 // EntryAbility.ets
@@ -4303,7 +4303,7 @@ Init OverlayManager.
 
 **示例**
 
-完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
+完整示例请参考OverlayManager中的示例。
 
 ## setPixelRoundMode
 
@@ -4900,7 +4900,7 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
 | [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 

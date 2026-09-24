@@ -7,7 +7,7 @@
 > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > 该组件从API version 20开始支持使用[AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md)类的
-> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
+> updateConstructorParams接口更新构造参数。
 
 ## 子组件
 
@@ -128,7 +128,7 @@ struct RectExample {
 
 ### 示例2（绘制渐变色矩形）
 
-使用通用属性[linearGradient](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient18)、[clipShape](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape18)分别绘制渐变色矩形。
+使用通用属性linearGradient、clipShape分别绘制渐变色矩形。
 
 从API version 18开始，新增linearGradient、clipShape通用属性。
 

@@ -670,7 +670,7 @@ align(value: Alignment): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | 是 | 设置当前组件绘制区域内的子组件的对齐方式。<br>只在Stack, [FolderStack](arkts-arkui-folderstack-comp.md#folderstack), [Shape](arkts-arkui-shape-comp.md#shape), Button, Marquee, [StepperItem](arkts-arkui-stepperitem-comp.md#stepperitem), Text, TextArea, TextInput, [RichEditor](arkts-arkui-richeditor-comp.md#richeditor), Hyperlink, SymbolGlyph, ListItem, GridItem, Scroll, FlowItem, [ImageAnimator](arkts-arkui-imageanimator-comp.md#imageanimator), LoadingProgress, [PatternLock](arkts-arkui-patternlock-comp.md#patternlock), Progress, QRCode, TextClock, TextTimer, MenuItem, Toggle, Checkbox, and [NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md#nodecontainer)中生效，其中和文本相关的组件Marquee、Text、TextArea、TextInput、RichEditor、Hyperlink的align结果参考[textAlign](ts-basic- components-text.md#textalign)。<br>不支持textAlign属性的组件则无法设置水平方向的文字对齐。<br>默认值：Alignment.Center<br>**说明：** <br>该属性在[Stack](ts-container-stack.md)组件上支持镜像能力，在其他组件上不支持镜像能力。<br>在Stack中该属性与alignContent效果一致，只能设置子组件在当前组件内的对齐方式。 |
+| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | 是 | 设置当前组件绘制区域内的子组件的对齐方式。<br>只在Stack, FolderStack, Shape, Button, Marquee, StepperItem, Text, TextArea, TextInput, RichEditor, Hyperlink, SymbolGlyph, ListItem, GridItem, Scroll, FlowItem, ImageAnimator, LoadingProgress, PatternLock, Progress, QRCode, TextClock, TextTimer, MenuItem, Toggle, Checkbox, and NodeContainer中生效，其中和文本相关的组件Marquee、Text、TextArea、TextInput、RichEditor、Hyperlink的align结果参考textAlign。<br>不支持textAlign属性的组件则无法设置水平方向的文字对齐。<br>默认值：Alignment.Center<br>**说明：** <br>该属性在Stack组件上支持镜像能力，在其他组件上不支持镜像能力。<br>在Stack中该属性与alignContent效果一致，只能设置子组件在当前组件内的对齐方式。 |
 
 **返回值：**
 
@@ -702,7 +702,7 @@ align(alignment: Alignment | LocalizedAlignment): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignment | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) &#124; [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) | 是 | 设置当前组件绘制区域内的子组件的对齐方式，增加支持镜像的能力。<br>[LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md)只在[Shape](arkts-arkui-shape-comp.md#shape), Button, GridItem, FlowItem, [ImageAnimator](arkts-arkui-imageanimator-comp.md#imageanimator), LoadingProgress, [PatternLock](arkts-arkui-patternlock-comp.md#patternlock), Progress, QRCode, TextClock, TextTimer, [StepperItem](arkts-arkui-stepperitem-comp.md#stepperitem), [MenuItem](arkts-arkui-menuitem-comp.md#menuitem), [Toggle](arkts-arkui-menuitem-comp.md#menuitem), Checkbox, and ListItem中有效果。<br>其中，除ListItem与Alignment的效果保持一致以外，其他组件镜像切换均生效；其他设置LocalizedAlignment无效果的组件按其默认效果显示。<br>默认值：Al ignment.Center、LocalizedAlignment.CENTER<br>设置异常值按默认值处理，效果为居中显示。<br>**说明：** <br>Alignment类型不支持镜像能力；LocalizedAlignment类型支持镜像能力，选择LocalizedAlignment中的枚举值，根据direction或系统语言方向的改变实现镜像切换。其中dire ction的优先级高于系统语言方向，当设置direction且不为auto时，LocalizedAlignment的镜像按照direction进行布局；当设置direction为auto或未设置时，LocalizedAli gnment的镜像按照系统语言方向进行布局。 |
+| alignment | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) &#124; [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) | 是 | 设置当前组件绘制区域内的子组件的对齐方式，增加支持镜像的能力。<br>[LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md)只在Shape, Button, GridItem, FlowItem, ImageAnimator, LoadingProgress, PatternLock, Progress, QRCode, TextClock, TextTimer, StepperItem, MenuItem, Toggle, Checkbox, and ListItem中有效果。<br>其中，除ListItem与Alignment的效果保持一致以外，其他组件镜像切换均生效；其他设置LocalizedAlignment无效果的组件按其默认效果显示。<br>默认值：Al ignment.Center、LocalizedAlignment.CENTER<br>设置异常值按默认值处理，效果为居中显示。<br>**说明：** <br>Alignment类型不支持镜像能力；LocalizedAlignment类型支持镜像能力，选择LocalizedAlignment中的枚举值，根据direction或系统语言方向的改变实现镜像切换。其中dire ction的优先级高于系统语言方向，当设置direction且不为auto时，LocalizedAlignment的镜像按照direction进行布局；当设置direction为auto或未设置时，LocalizedAli gnment的镜像按照系统语言方向进行布局。 |
 
 **返回值：**
 
@@ -2555,7 +2555,7 @@ clickEffect(value: ClickEffect | null): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) &#124; null | 是 | 设置当前组件点击回弹效果。<br>**说明：** <br>可通过null取消点击回弹效果。<br>不建议在组件大小动态变化的场景中使用该功能，可能导致回弹效果异常。<br>当组件无法触发通用事件（如[点击事件](arkts-arkui-common-comp.md#common)等事件）时，不支持该属性。<br>回弹触发缩放后可能造成触摸点不在组件上，组件上无法响应手势事件。 |
+| value | [ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) &#124; null | 是 | 设置当前组件点击回弹效果。<br>**说明：** <br>可通过null取消点击回弹效果。<br>不建议在组件大小动态变化的场景中使用该功能，可能导致回弹效果异常。<br>当组件无法触发通用事件（如点击事件等事件）时，不支持该属性。<br>回弹触发缩放后可能造成触摸点不在组件上，组件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -2585,7 +2585,7 @@ clickEffect(effect: Optional<ClickEffect | null>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| effect | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) &#124; null&gt; | 是 | 点击回弹效果的级别，用于控制回弹的强度程度。<br>**说明：** <br>可通过undefined或者null取消点击回弹效果。<br>不建议在组件大小动态变化的场景中使用该功能。<br>当组件无法触发通用事件（如[点击事件](arkts-arkui-common-comp.md#common)等事件）时，不支持该属性。具体包括：组件被设置为disabled状态、组件不可见、组件被其他组件遮挡等场景下，无法触发通用事件，此时clickEffect属性不生效。<br>回弹触发缩放后可能造成触摸点不在组件上，组件上无法响应手势事件。 |
+| effect | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) &#124; null&gt; | 是 | 点击回弹效果的级别，用于控制回弹的强度程度。<br>**说明：** <br>可通过undefined或者null取消点击回弹效果。<br>不建议在组件大小动态变化的场景中使用该功能。<br>当组件无法触发通用事件（如点击事件等事件）时，不支持该属性。具体包括：组件被设置为disabled状态、组件不可见、组件被其他组件遮挡等场景下，无法触发通用事件，此时clickEffect属性不生效。<br>回弹触发缩放后可能造成触摸点不在组件上，组件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -3343,7 +3343,7 @@ expandSafeArea(types?: Array<SafeAreaType>, edges?: Array<SafeAreaEdge>): T
 > 
 > - 组件延伸到避让区时，在避让区的事件如点击事件等可能会被系统拦截，优先给状态栏等系统组件响应。
 > 
-> - 滚动类容器内的组件不建议设置expandSafeArea属性，如果设置，需要按照组件嵌套关系，将当前节点到滚动类祖先容器间所有直接节点设置expandSafeArea属性， 否则expandSafeArea属性在滚动后可能会失效，写法参考[示例7](#示例7滚动类容器扩展安全区)。
+> - 滚动类容器内的组件不建议设置expandSafeArea属性，如果设置，需要按照组件嵌套关系，将当前节点到滚动类祖先容器间所有直接节点设置expandSafeArea属性， 否则expandSafeArea属性在滚动后可能会失效，写法参考示例7。
 > 
 > - expandSafeArea属性仅作用于当前组件，不会向父组件或子组件传递，因此使用过程中，所有相关组件均需配置。
 > 
@@ -3438,7 +3438,7 @@ flexShrink(value: number): T
 
 设置父容器压缩尺寸分配给此属性所在组件的比例。当父容器为Column、Row时，需设置主轴方向的尺寸。
 
-使用[getInspectorByKey](ts-universal-attributes-component-id.md#getinspectorbykey9)获取flexShrink属性时，如果该节点未设置flexShrink属性，默认返回1。
+使用getInspectorByKey获取flexShrink属性时，如果该节点未设置flexShrink属性，默认返回1。
 
 **起始版本：** 7
 
@@ -3725,7 +3725,7 @@ foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOpt
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BlurStyle](arkts-arkui-common-comp-blurstyle-e.md)&gt; | 是 | 内容模糊样式。<br>当style的值为undefined时，恢复为无模糊的内容。 |
-| options | [ForegroundBlurStyleOptions](arkts-arkui-common-comp-foregroundblurstyleoptions-i.md) | 否 | 内容模糊选项。不传入时使用系统默认模糊效果配置，默认值请参考[ForegroundBlurStyleOptions](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyleoptions对象说明)。 |
+| options | [ForegroundBlurStyleOptions](arkts-arkui-common-comp-foregroundblurstyleoptions-i.md) | 否 | 内容模糊选项。不传入时使用系统默认模糊效果配置，默认值请参考ForegroundBlurStyleOptions。 |
 | sysOptions | [SystemAdaptiveOptions](arkts-arkui-common-comp-systemadaptiveoptions-i.md) | 否 | 系统自适应调节参数，用于控制是否启用系统对模糊效果的自适应调整。<br>默认值：{ disableSystemAdaptation: false } |
 
 **返回值：**
@@ -3754,7 +3754,7 @@ foregroundColor(value: ResourceColor | ColoringStrategy): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md) | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor)。不支持[属性动画](arkts-arkui-common-comp.md#common)。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md) | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor)。不支持属性动画。 |
 
 **返回值：**
 
@@ -3784,7 +3784,7 @@ foregroundColor(color: Optional<ResourceColor | ColoringStrategy>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)&gt; | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor)。不支持[属性动画](arkts-arkui-common-comp.md#common)。<br>当color的值为undefined时，若组件之前已设置前景色则维持之前的前景色取值，若组件之前未设置前景色则使用组件默认前景色取值。不同组件的默认前景色取值可能存在差异，建议开发者使用确定颜色或[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)。 |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)&gt; | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor)。不支持属性动画。<br>当color的值为undefined时，若组件之前已设置前景色则维持之前的前景色取值，若组件之前未设置前景色则使用组件默认前景色取值。不同组件的默认前景色取值可能存在差异，建议开发者使用确定颜色或[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)。 |
 
 **返回值：**
 
@@ -3924,7 +3924,7 @@ freeze(freeze: Optional<boolean>): T
 geometryTransition(id: string): T
 ```
 
-组件内隐式共享元素转场。必须配合[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)使用才有动画效果，动效时长、曲线跟随[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)中的配置，不支持[animation](arkts-arkui-common-comp.md#common)动画。geometryTransition会同步圆角，但仅限于geometryTransition绑定处，不会操作容器内部子组件的borderRadius。
+组件内隐式共享元素转场。必须配合[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)使用才有动画效果，动效时长、曲线跟随[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)中的配置，不支持animation动画。geometryTransition会同步圆角，但仅限于geometryTransition绑定处，不会操作容器内部子组件的borderRadius。
 
 **起始版本：** 7
 
@@ -4559,7 +4559,7 @@ layoutGravity(alignment: LocalizedAlignment): T
 layoutWeight(value: number | string): T
 ```
 
-设置组件的布局权重，使组件在父容器（[Row](arkts-arkui-row-comp.md#row)/[Column](arkts-arkui-column-comp.md#column)/[Flex](arkts-arkui-flex-comp.md#flex)）的主轴方向按照权重分配尺寸。适用于父容器尺寸确定、需要多个子组件按比例分配剩余空间的场景。
+设置组件的布局权重，使组件在父容器（Row/Column/Flex）的主轴方向按照权重分配尺寸。适用于父容器尺寸确定、需要多个子组件按比例分配剩余空间的场景。
 
 **起始版本：** 7
 
@@ -4575,7 +4575,7 @@ layoutWeight(value: number | string): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string | 是 | 父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的子组件优先占位，这些子组件占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeight属性生效值大于0的子组件会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略子组件本身的width/height设置，但保留minWidth/ minHeight约束。<br>默认值：0 <br>取值范围：[0, +∞) <br>超出范围时：传入小于0的值时，按0处理。<br>**说明：** <br>仅在[Row](arkts-arkui-row-comp.md#row)/[Column](arkts-arkui-column-comp.md#column)/[Flex](arkts-arkui-flex-comp.md#flex)布局中生效。<br>可选值为大于等于0的数字，或者可以转换为数字的字符串（支持整数、小数格式）。<br>如果容器中有子组件设置了layoutWeight属性，且设置的属性值大于0，则所有子组件不会再基于[flexShrink](#flexshrink)和[flexGrow](#flexgrow)布局。 |
+| value | number &#124; string | 是 | 父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的子组件优先占位，这些子组件占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeight属性生效值大于0的子组件会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略子组件本身的width/height设置，但保留minWidth/ minHeight约束。<br>默认值：0 <br>取值范围：[0, +∞) <br>超出范围时：传入小于0的值时，按0处理。<br>**说明：** <br>仅在Row/Column/Flex布局中生效。<br>可选值为大于等于0的数字，或者可以转换为数字的字符串（支持整数、小数格式）。<br>如果容器中有子组件设置了layoutWeight属性，且设置的属性值大于0，则所有子组件不会再基于[flexShrink](#flexshrink)和[flexGrow](#flexgrow)布局。 |
 
 **返回值：**
 
@@ -4783,7 +4783,7 @@ margin(value: Margin | Length | LocalizedMargin): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Margin](../arkts-apis/arkts-arkui-margin-t.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; [LocalizedMargin](../arkts-apis/arkts-arkui-localizedmargin-t.md) | 是 | 设置组件的外边距。<br>参数为Length类型时，四个方向外边距同时生效。<br>默认值：0 <br>单位：vp <br>margin设置百分比时，上下左右外边距均以父容器的width作为基础值。在[Row](arkts-arkui-row-comp.md#row)、[Column](arkts-arkui-column-comp.md#column)、[Flex](arkts-arkui-flex-comp.md#flex)交叉轴上布局时，子组件在交叉轴方向占用的空间包含子组件本身尺寸和margin值。<br>例如Column容器宽100，其中子组件宽50，margin left为10，right为20，子组件宽度与左右margin之和为50+10+20=80，小于容器宽度100，子组件在交叉轴方向居中对齐，此时水平方向左侧和右侧各有(100-80)/2=10的空白区域。<br>**适用版本：** 12 |
+| value | [Margin](../arkts-apis/arkts-arkui-margin-t.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; [LocalizedMargin](../arkts-apis/arkts-arkui-localizedmargin-t.md) | 是 | 设置组件的外边距。<br>参数为Length类型时，四个方向外边距同时生效。<br>默认值：0 <br>单位：vp <br>margin设置百分比时，上下左右外边距均以父容器的width作为基础值。在Row、Column、Flex交叉轴上布局时，子组件在交叉轴方向占用的空间包含子组件本身尺寸和margin值。<br>例如Column容器宽100，其中子组件宽50，margin left为10，right为20，子组件宽度与左右margin之和为50+10+20=80，小于容器宽度100，子组件在交叉轴方向居中对齐，此时水平方向左侧和右侧各有(100-80)/2=10的空白区域。<br>**适用版本：** 12 |
 
 **返回值：**
 
@@ -5235,7 +5235,7 @@ obscured(reasons: Array<ObscuredReasons>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | 是 | 设置组件内容的遮罩类型，在屏幕录制或屏幕共享等场景下对组件内容进行隐私遮挡。取值原则：请参考[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)枚举定义，如PLACEHOLDER表示使用占位图遮罩。<br>默认值：[]，未设置遮罩原因时，不对组件内容进行隐私遮罩处理。<br>隐私遮罩效果仅在[Image](arkts-arkui-image-comp.md#image)组件、[Text](arkts-arkui-text-comp.md#text)组件<!--Del-->和[FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component系统接口)组件&lt;sup&gt;12+&lt;/sup&gt;<!--DelEnd-->上生效。<br>**说明：** <br>如需在图片加载过程中显示隐私遮罩，需要设置Image组件的宽度和高度；若未设置宽度和高度，图片加载过程中将不会显示隐私遮罩效果。<br>Text组件设置子组件或设置[属性字符串](../arkts-apis/arkts-arkui-styledstring.md#styled_string)时，不支持隐私遮罩。 |
+| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | 是 | 设置组件内容的遮罩类型，在屏幕录制或屏幕共享等场景下对组件内容进行隐私遮挡。取值原则：请参考[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)枚举定义，如PLACEHOLDER表示使用占位图遮罩。<br>默认值：[]，未设置遮罩原因时，不对组件内容进行隐私遮罩处理。<br>隐私遮罩效果仅在Image组件、Text组件<!--Del-->和[FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component系统接口)组件&lt;sup&gt;12+&lt;/sup&gt;<!--DelEnd-->上生效。<br>**说明：** <br>如需在图片加载过程中显示隐私遮罩，需要设置Image组件的宽度和高度；若未设置宽度和高度，图片加载过程中将不会显示隐私遮罩效果。<br>Text组件设置子组件或设置属性字符串时，不支持隐私遮罩。 |
 
 **返回值：**
 
@@ -6398,7 +6398,7 @@ onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | unde
 
 Web组件使用该方法时，如果返回值为`true`，Web组件会判断组件中是否有可编辑节点，如果有可编辑节点才会保留键盘，如果返回值为`false`，无论是否有可编辑节点，键盘都不会保留。
 
-XComponent组件使用该方法时，如果返回值为`true`且XComponent组件使用 [OH_ArkUI_XComponent_SetNeedSoftKeyboard()](../../../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard)设置了需要键盘，才会保留键盘，如果返回值为`false`，无论组件如何设置，键盘都不会保留。
+XComponent组件使用该方法时，如果返回值为`true`且XComponent组件使用 OH_ArkUI_XComponent_SetNeedSoftKeyboard()设置了需要键盘，才会保留键盘，如果返回值为`false`，无论组件如何设置，键盘都不会保留。
 
 当返回值为`true`时，应用的自绘制输入框需要在获焦时主动调用 [attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-2)方法，建立输入法框架和输入法应用的通信，否则点击键盘会失去响应。说明：失焦时输入法框架和输入法应用的通信会断开，获焦时需要重新建立通信。
 
@@ -7159,7 +7159,7 @@ pixelRound(value: PixelRoundPolicy): T
 > 
 > - 在API version 11，本接口采用半像素对齐方式（即0\~0.25取0，0.25\~0.75取0.5，0.75\~1.0取1）。该方式通过保留0.5像素值来减少连续取整可能带来的累积误差。从API version 12开始，未设置取整策略的方向默认采用四舍五入的取整方式，并支持通过PixelRoundCalcPolicy.NO_FORCE_ROUND关闭指定方向的像素取整。
 > 
-> - 从API version12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 从API version12开始，该接口支持在attributeModifier中调用。
 
 正常计算时，上下方向与组件高度相对应，左右方向（镜像的起始方向称为左）与宽度相对应。为方便描述将两组方向称为左上和右下。
 
@@ -8040,7 +8040,7 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 
 > **说明：** 
 > 
-> - sharedTransition需与[PageTransitionEnter][PageTransitionEnter](arkts-arkui-pagetransitionenter-comp.md#pagetransitionenter)和[PageTransitionExit](arkts-arkui-pagetransitionenter-comp-con.md#pagetransitionexit)配合使用，共同控制页面转场动画效果。
+> - sharedTransition需与[PageTransitionEnter]PageTransitionEnter和PageTransitionExit配合使用，共同控制页面转场动画效果。
 > 
 > - 当PageTransitionEnter/PageTransitionExit设置type为RouteType.None、duration为0时，页面整体无转场动画，仅显示共享元素转场动效。
 > 
@@ -8071,7 +8071,7 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback): T
 ```
 
-提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为[setInnerGestureParallelTo](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)。
+提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为setInnerGestureParallelTo。
 
 **起始版本：** 12
 
@@ -8099,7 +8099,7 @@ shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWit
 shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCallback): T
 ```
 
-提供手势与响应链上其他组件的手势设置并行关系的回调事件。使用callback异步回调。此接口对应的C API接口为[setGestureParallelTo](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。
+提供手势与响应链上其他组件的手势设置并行关系的回调事件。使用callback异步回调。此接口对应的C API接口为setGestureParallelTo。
 
 **起始版本：** 26.0.0
 
@@ -8359,7 +8359,7 @@ systemBarEffect(): T
 systemMaterial(material: SystemUiMaterial | undefined): T
 ```
 
-设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](#backgroundcolor)、边框颜色[borderColor](#bordercolor)、边框宽度[borderWidth](#borderwidth)、阴影[shadow](#shadow)、材质层滤镜[materialFilter](#materialfilter)效果，影响的属性与设备材质等级相关，参考[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)。[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis/arkts-arkui-uimaterial-isimmersivematerialsupported-f.md)判断设备是否支持沉浸式材质。使用示例请参考[示例1（设置沉浸式系统材质）](../../../reference/apis-arkui/arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](#backgroundcolor)、边框颜色[borderColor](#bordercolor)、边框宽度[borderWidth](#borderwidth)、阴影[shadow](#shadow)、材质层滤镜[materialFilter](#materialfilter)效果，影响的属性与设备材质等级相关，参考[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)。[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis/arkts-arkui-uimaterial-isimmersivematerialsupported-f.md)判断设备是否支持沉浸式材质。使用示例请参考示例1（设置沉浸式系统材质）。
 
 > **说明：** 
 > 
@@ -8910,9 +8910,9 @@ width(value: Length): T
 
 > **说明：** 
 > 
-> - 在[TextInput](./ts-basic-components-textinput.md)组件中，width设置auto表示自适应文本宽度。
+> - 在TextInput组件中，width设置auto表示自适应文本宽度。
 > 
-> - 在[AlphabetIndexer](./ts-container-alphabet-indexer.md)组件中，width设置auto表示自适应宽度最大索引项的宽度。
+> - 在AlphabetIndexer组件中，width设置auto表示自适应宽度最大索引项的宽度。
 > 
 > - 在Row、Column、RelativeContainer组件中，width设置auto表示自适应子组件。
 > 
@@ -9117,7 +9117,7 @@ useSizeType(value: {
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | {     xs?: number &#124; { span: number; offset: number };     sm?: number &#124; { span: number; offset: number };     md?: number &#124; { span: number; offset: number };     lg?: number &#124; { span: number; offset: number };   } | 是 | 设置在特定设备宽度类型下的占用列数和偏移列数，span：占用列数（需为非负整数）。传入负数或超出GridContainer总列数时，使用默认值；offset：偏移列数（需为非负整数）。传入负数时，使用默认值0。<br>当值为number类型时，仅设置列数，当格式如{"span":&nbsp;1,&nbsp;"offset":&nbsp;0}时，指同时设置占用列数与偏移列数。<br>-&nbsp;xs：指设备宽度类型为SizeType.XS（&lt;320vp）时的占用列数和偏移列数。<br>-&nbsp;sm：指设备宽度类型为SizeType.SM（320vp-600vp）时的占用列数和偏移列数。<br>-&nbsp;md：指设备宽度类型为SizeType.MD（600vp-840vp）时的占用列数和偏移列数。<br>-&nbsp;lg：指设备宽度类型为SizeType.LG（≥840vp）时的占用列数和偏移列数。<br>各尺寸类型的详细断点配置请参见[GridContainer](ts-container-gridcontainer.md)。<br>**说明：** <br>- 调用该属性时，其父组件或祖先组件必须是GridContainer。 |
+| value | {     xs?: number &#124; { span: number; offset: number };     sm?: number &#124; { span: number; offset: number };     md?: number &#124; { span: number; offset: number };     lg?: number &#124; { span: number; offset: number };   } | 是 | 设置在特定设备宽度类型下的占用列数和偏移列数，span：占用列数（需为非负整数）。传入负数或超出GridContainer总列数时，使用默认值；offset：偏移列数（需为非负整数）。传入负数时，使用默认值0。<br>当值为number类型时，仅设置列数，当格式如{"span":&nbsp;1,&nbsp;"offset":&nbsp;0}时，指同时设置占用列数与偏移列数。<br>-&nbsp;xs：指设备宽度类型为SizeType.XS（&lt;320vp）时的占用列数和偏移列数。<br>-&nbsp;sm：指设备宽度类型为SizeType.SM（320vp-600vp）时的占用列数和偏移列数。<br>-&nbsp;md：指设备宽度类型为SizeType.MD（600vp-840vp）时的占用列数和偏移列数。<br>-&nbsp;lg：指设备宽度类型为SizeType.LG（≥840vp）时的占用列数和偏移列数。<br>各尺寸类型的详细断点配置请参见GridContainer。<br>**说明：** <br>- 调用该属性时，其父组件或祖先组件必须是GridContainer。 |
 
 **返回值：**
 

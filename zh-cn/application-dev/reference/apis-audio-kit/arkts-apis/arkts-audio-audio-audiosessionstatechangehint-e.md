@@ -66,7 +66,7 @@ AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4
 
 提示音频会话躲避开始，降低音量播放。
 
-如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers)，此时可以选择执行静音操作。
+如果已启用enableMuteSuggestionWhenMixWithOthers，此时可以选择执行静音操作。
 
 **起始版本：** 20
 
@@ -80,7 +80,7 @@ AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5
 
 提示音频会话躲避结束，恢复音量播放。
 
-如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers)，此时可取消静音。
+如果已启用enableMuteSuggestionWhenMixWithOthers，此时可取消静音。
 
 **起始版本：** 20
 
@@ -126,7 +126,7 @@ AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8
 
 提示音频会话静音。
 
-该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior)设置参数[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene)，且音频会话已激活。
+该提示仅在以下条件满足后才会收到：通过接口setAudioSessionBehavior设置参数[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md).MUTE_WHEN_INTERRUPTED，并已调用setAudioSessionScene，且音频会话已激活。
 
 **起始版本：** 24
 
@@ -142,7 +142,7 @@ AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9
 
 提示音频会话解除静音，恢复播放。
 
-该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior)设置参数[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene)，且音频会话已激活。
+该提示仅在以下条件满足后才会收到：通过接口setAudioSessionBehavior设置参数[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md).MUTE_WHEN_INTERRUPTED，并已调用setAudioSessionScene，且音频会话已激活。
 
 **起始版本：** 24
 

@@ -53,7 +53,7 @@ declare interface AttributeModifier<T>
 | [MarqueeAttribute](arkts-arkui-marquee-comp-attribute.md) | Marquee的[属性](arkts-arkui-marquee-comp-attribute.md)。 |
 | [MenuAttribute](arkts-arkui-menu-comp-attribute.md) | Menu的[属性](arkts-arkui-menu-comp-attribute.md)。 |
 | [MenuItemAttribute](arkts-arkui-menuitem-comp-attribute.md) | MenuItem的[属性](arkts-arkui-menuitem-comp-attribute.md)。 |
-| [MenuItemGroupAttribute](arkts-arkui-menuitemgroup-comp-attribute.md) | [MenuItemGroup](arkts-arkui-menuitemgroup-comp.md#menu_item_group)的属性。 |
+| [MenuItemGroupAttribute](arkts-arkui-menuitemgroup-comp-attribute.md) | MenuItemGroup的属性。 |
 | [NavDestinationAttribute](arkts-arkui-navdestination-comp-attribute.md) | NavDestination的[属性](arkts-arkui-navdestination-comp-attribute.md)。 |
 | [NavigationAttribute](arkts-arkui-navigation-comp-attribute.md) | Navigation的[属性](arkts-arkui-navigation-comp-attribute.md)。 |
 | [NavigatorAttribute](arkts-arkui-navigator-comp-attribute.md) | Navigator的[属性](arkts-arkui-navigator-comp-attribute.md)。 |
@@ -107,7 +107,7 @@ declare interface AttributeModifier<T>
 | <!--DelRow-->FormComponentAttribute | FormComponent的[属性](arkts-arkui-formcomponent-comp-attribute.md#formcomponentattribute系统接口)。 |
 | <!--DelRow-->PluginComponentAttribute | PluginComponent的[属性](arkts-arkui-plugincomponent-comp-attribute.md#plugincomponentattribute系统接口)。 |
 | <!--DelRow-->RemoteWindowAttribute | RemoteWindow的[属性](arkts-arkui-remotewindow-comp-attribute.md#remotewindowattribute系统接口)。 |
-| [UIExtensionComponentAttribute](arkts-arkui-uiextensioncomponent-comp-attribute.md) | UIExtensionComponent的[属性](arkts-arkui-uiextensioncomponent-comp-attribute.md#uiextensioncomponentattribute系统接口)。 |
+| [UIExtensionComponentAttribute](arkts-arkui-uiextensioncomponent-comp-attribute.md) | UIExtensionComponent的属性。 |
 | [ContainerReaderAttribute](arkts-arkui-containerreader-comp-attribute.md) | ContainerReader的[属性](arkts-arkui-containerreader-comp-attribute.md)。<br>**起始版本：** 26.0.0|
 
 > **说明：** 
@@ -152,7 +152,7 @@ applyDisabledAttribute?(instance: T) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](arkts-arkui-button-comp.md#button)组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），[Text](arkts-arkui-text-comp.md#text)组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
+| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），Text组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
 ## applyFocusedAttribute
 
@@ -174,7 +174,7 @@ applyFocusedAttribute?(instance: T) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](arkts-arkui-button-comp.md#button)组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），[Text](arkts-arkui-text-comp.md#text)组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
+| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），Text组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
 ## applyHoveredAttribute
 
@@ -196,7 +196,7 @@ applyHoveredAttribute?(instance: T) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](arkts-arkui-button-comp.md#button)组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），[Text](arkts-arkui-text-comp.md#text)组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
+| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），Text组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
 ## applyNormalAttribute
 
@@ -218,7 +218,7 @@ applyNormalAttribute?(instance: T) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](arkts-arkui-button-comp.md#button)组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），[Text](arkts-arkui-text-comp.md#text)组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
+| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），Text组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
 ## applyPressedAttribute
 
@@ -240,7 +240,7 @@ applyPressedAttribute?(instance: T) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](arkts-arkui-button-comp.md#button)组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），[Text](arkts-arkui-text-comp.md#text)组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
+| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），Text组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
 ## applySelectedAttribute
 
@@ -264,4 +264,4 @@ applySelectedAttribute?(instance: T) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](arkts-arkui-button-comp.md#button)组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），[Text](arkts-arkui-text-comp.md#text)组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
+| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的[属性](arkts-arkui-button-comp-attribute.md)（ButtonAttribute），Text组件的[属性](arkts-arkui-text-comp-attribute.md)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |

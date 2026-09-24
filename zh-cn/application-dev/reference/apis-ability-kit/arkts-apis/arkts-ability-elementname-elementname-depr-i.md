@@ -4,17 +4,17 @@
 export interface ElementName
 ```
 
-ElementName信息，通过接口[Context.getElementName](../../../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetelementname7)获取。
+ElementName信息，通过接口Context.getElementName获取。
 
 > **说明：** 
 > 
-> 从API version 9开始，该模块不再维护，建议使用[bundleManager-ElementName](#elementname)替代。
+> 从API version 9开始，该模块不再维护，建议使用bundleManager-ElementName替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [ElementName](#elementname)
+**替代接口：** ElementName
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 

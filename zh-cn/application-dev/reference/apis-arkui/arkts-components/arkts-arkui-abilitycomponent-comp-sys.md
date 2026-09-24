@@ -4,7 +4,7 @@
 
 > **说明：** 
 > 
-> 从API version 10开始，该组件不再维护，推荐使用[UIExtensionComponent](arkts-arkui-uiextensioncomponent-comp-sys.md#ui_extension_componentsystem-api)。
+> 从API version 10开始，该组件不再维护，推荐使用UIExtensionComponent。
 > 
 > 本模块为系统接口。
 
@@ -16,7 +16,7 @@ AbilityComponent不支持处理输入事件，事件不经过当前Ability，直
 
 AbilityComponent需设置且只能设置width、height，且width、height不支持动态更新。
 
-被拉起的Ability必须继承[WindowExtension](../arkts-apis/arkts-arkui-application-windowextensionability-windowextensionability-c-sys.md)。
+被拉起的Ability必须继承WindowExtension。
 
 ## 子组件
 
@@ -34,7 +34,7 @@ AbilityComponent(value: { want: import('../api/@ohos.app.ability.Want').default 
 
 **废弃版本：** 10
 
-**替代接口：** [UIExtensionComponentInterface](arkts-arkui-uiextensioncomponent-comp-sys.md#uiextensioncomponentinterface)
+**替代接口：** UIExtensionComponentInterface
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

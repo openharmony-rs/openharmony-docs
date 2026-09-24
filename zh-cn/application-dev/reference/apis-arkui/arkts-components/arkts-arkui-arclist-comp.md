@@ -8,7 +8,7 @@
 
 ## 子组件
 
-仅支持[ArcListItem](#ohosarkuiarclist)子组件。
+仅支持ArcListItem子组件。
 
 > **说明：** 
 > 
@@ -50,7 +50,7 @@ ArcList(options?: ArkListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ArcListItemInterface](arkts-arkui-arclist-comp-arclistiteminterface-i.md) | 用于展示弧形列表的子组件，必须配合[ArcList](#ohosarkuiarclist)使用。 |
+| [ArcListItemInterface](arkts-arkui-arclist-comp-arclistiteminterface-i.md) | 用于展示弧形列表的子组件，必须配合ArcList使用。 |
 | [ArkListOptions](arkts-arkui-arclist-comp-arklistoptions-i.md) | 包含创建ArcList组件的基础参数。 |
 
 ### 类型

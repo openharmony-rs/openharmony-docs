@@ -36,9 +36,9 @@ function isPowerSaveMode(pid: number): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | [31800002](../errorcode-backgroundProcessManager.md#31800002-参数错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 

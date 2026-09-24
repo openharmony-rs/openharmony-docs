@@ -4,11 +4,11 @@
 declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+除支持通用属性外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md#common)外，还支持以下事件：
+除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** TextPickerAttribute extends CommonMethod<TextPickerAttribute>
+**继承/实现关系：** TextPickerAttribute extends CommonMethod&lt;TextPickerAttribute&gt;
 
 **起始版本：** 8
 
@@ -126,7 +126,7 @@ defaultTextStyle(style: TextPickerTextStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) | 是 | 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。<br>默认值：与[Text](arkts-arkui-text-comp.md#text)组件默认值相同。 |
+| style | [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) | 是 | 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。<br>默认值：与Text组件默认值相同。 |
 
 ## digitalCrownSensitivity
 
@@ -170,7 +170,7 @@ disableTextStyleAnimation(disabled: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| disabled | boolean | 是 | 是否关闭滑动过程中文本样式变化的动效。<br>- true：关闭文本样式变化动效。<br>- false：不关闭文本样式变化动效。<br>默认值：false <br>**说明：** <br>设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)属性设置的样式。如未设置[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)，则显示为[Text](arkts-arkui-text-comp.md#text)组件默认样式。设置为false时，使用系统默认的滑动文本样式变化动效。 |
+| disabled | boolean | 是 | 是否关闭滑动过程中文本样式变化的动效。<br>- true：关闭文本样式变化动效。<br>- false：不关闭文本样式变化动效。<br>默认值：false <br>**说明：** <br>设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)属性设置的样式。如未设置[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)，则显示为Text组件默认样式。设置为false时，使用系统默认的滑动文本样式变化动效。 |
 
 ## disappearTextStyle
 
@@ -718,7 +718,7 @@ textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 onAccept(callback: (value: string, index: number) => void)
 ```
 
-点击弹窗中的“确定”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](arkts-arkui-textpicker-comp.md#text_picker)中生效。
+点击弹窗中的“确定”按钮时触发该回调。该事件仅在文本滑动选择器弹窗中生效。
 
 > **说明：** 
 > 
@@ -744,7 +744,7 @@ onAccept(callback: (value: string, index: number) => void)
 onCancel(callback: () => void)
 ```
 
-点击弹窗中的“取消”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](arkts-arkui-textpicker-comp.md#text_picker)中生效。
+点击弹窗中的“取消”按钮时触发该回调。该事件仅在文本滑动选择器弹窗中生效。
 
 > **说明：** 
 > 

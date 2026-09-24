@@ -8,7 +8,7 @@ globalConnect接口参数类型，ConnectOptionsCollections继承自[ConnectOpti
 
 如下展示`StorageDefaultCreator&lt;T&gt;`和`StorageDefaultCreator&lt;S&gt;`示例：
 
-**继承/实现关系：** ConnectOptionsCollections extends ConnectOptions<T>
+**继承/实现关系：** ConnectOptionsCollections extends ConnectOptions&lt;T&gt;
 
 **起始版本：** 23
 

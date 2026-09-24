@@ -145,7 +145,7 @@ getCaretOffset() : CaretOffset
 > 
 > - 返回值中的位置信息是光标相对于可编辑组件的位置。
 > 
-> - 当无法获取光标位置时（例如[TextInputController](arkts-arkui-textinput-comp-textinputcontroller-c.md)未与[TextInput](arkts-arkui-textinput-comp.md#text_input)组件绑定时），该接口返回null。
+> - 当无法获取光标位置时（例如[TextInputController](arkts-arkui-textinput-comp-textinputcontroller-c.md)未与TextInput组件绑定时），该接口返回null。
 
 **起始版本：** 11
 

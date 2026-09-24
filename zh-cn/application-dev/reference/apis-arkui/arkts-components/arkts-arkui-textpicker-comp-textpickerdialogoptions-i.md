@@ -391,7 +391,7 @@ defaultTextStyle?: TextPickerTextStyle
 
 设置关闭滑动过程中文本样式变化动效时的各个选项的文本样式，仅当disableTextStyleAnimation为true时生效。
 
-默认值：与[Text](arkts-arkui-text-comp.md#text)组件默认值相同。
+默认值：与Text组件默认值相同。
 
 **类型：** [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)
 
@@ -419,7 +419,7 @@ disableTextStyleAnimation?: boolean
 > **说明：** 
 > 
 > 设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为defaultTextStyle属性设置的样式。如未设置defaultTextStyle，
-> 则显示为[Text](arkts-arkui-text-comp.md#text)组件默认样式。
+> 则显示为Text组件默认样式。
 
 **类型：** boolean
 

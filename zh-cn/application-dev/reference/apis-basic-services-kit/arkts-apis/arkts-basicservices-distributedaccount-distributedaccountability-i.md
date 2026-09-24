@@ -40,8 +40,8 @@ getOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| 201 | Permission denied. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
 **示例**
@@ -92,7 +92,7 @@ getOsAccountDistributedInfo(): Promise<DistributedInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| 201 | Permission denied. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
 **示例**
@@ -139,8 +139,8 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| 201 | Permission denied. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid accountInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -202,8 +202,8 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| 201 | Permission denied. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid accountInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |

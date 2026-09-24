@@ -20,9 +20,9 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 | --- | --- |
 | [disableHotspot](arkts-connectivity-wifimanagerext-disablehotspot-f.md) | 禁用Wi-Fi热点。 |
 | [enableHotspot](arkts-connectivity-wifimanagerext-enablehotspot-f.md) | 启用Wi-Fi热点。 |
-| [getPowerMode](arkts-connectivity-wifimanagerext-getpowermode-f.md#getpowermode) | 获取功率模式，使用Promise异步回调。 |
+| getPowerMode | 获取功率模式，使用Promise异步回调。 |
 | [getPowerMode](arkts-connectivity-wifimanagerext-getpowermode-f.md#getpowermode-1) | 获取功率模式。使用callback异步回调。 |
-| [getSupportedPowerMode](arkts-connectivity-wifimanagerext-getsupportedpowermode-f.md#getsupportedpowermode) | 获取支持的功率模式。使用Promise异步回调。 |
+| getSupportedPowerMode | 获取支持的功率模式。使用Promise异步回调。 |
 | [getSupportedPowerMode](arkts-connectivity-wifimanagerext-getsupportedpowermode-f.md#getsupportedpowermode-1) | 获取支持的功率模式。使用callback异步回调。 |
 | [setPowerMode](arkts-connectivity-wifimanagerext-setpowermode-f.md) | 设置功率模式。 |
 

@@ -181,7 +181,7 @@ struct Index {
 
 ### 示例3（设置Symbol类型图标）
 
-该示例通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)实现了[ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md)设置Symbol类型图标。
+该示例通过SymbolGlyphModifier实现了[ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md)设置Symbol类型图标。
 
 从API版本26.0.0开始，新增ChipV2。
 

@@ -6,7 +6,7 @@
 
 ## 事件
 
-不支持[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)。
+不支持通用事件。
 
 ## 导入模块
 

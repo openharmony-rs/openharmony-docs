@@ -43,7 +43,7 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 **示例**
 
-请参考DynamicLayout组件[示例2（切换布局算法）](../arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
+请参考DynamicLayout组件示例2（切换布局算法）。
 
 ## columnsGap
 

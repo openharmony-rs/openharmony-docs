@@ -1292,7 +1292,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 查询的子节点id，为通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp.md#common)。 |
+| id | string | 是 | 查询的子节点id，为通用属性设置的组件标识。 |
 
 **返回值：**
 
@@ -1471,7 +1471,7 @@ getGlobalPositionOnDisplay(): Position
 getId(): string
 ```
 
-获取用户设置的节点ID（通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp.md#common)）。
+获取用户设置的节点ID（通用属性设置的组件标识）。
 
 **起始版本：** 12
 
@@ -1485,7 +1485,7 @@ getId(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 用户设置的节点ID（通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp.md#common)）。 |
+| string | 用户设置的节点ID（通用属性设置的组件标识）。 |
 
 **示例**
 
@@ -1695,7 +1695,7 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 getNodeType(): string
 ```
 
-获取节点的类型。系统组件类型为组件名称，例如，按钮组件[Button](../arkts-components/arkts-arkui-button-comp.md#button)的类型为Button。而对于自定义组件，若其有渲染内容，则其类型为__Common__。
+获取节点的类型。系统组件类型为组件名称，例如，按钮组件Button的类型为Button。而对于自定义组件，若其有渲染内容，则其类型为__Common__。
 
 **起始版本：** 12
 
@@ -3529,8 +3529,8 @@ moveTo(targetParent: FrameNode, index?: number): void
 > [XComponent](arkts-arkui-typenode-xcomponent-t.md)。对于其他类型的节点，移动操作不会生效。
 > 
 > 当前仅支持根节点为以下类型组件的[BuilderNode](arkts-arkui-buildernode-c.md)进行移动操作：
-> [Stack](../arkts-components/arkts-arkui-stack-comp.md#stack)、[XComponent](../arkts-components/arkts-arkui-xcomponent-comp.md#xcomponent)、
-> [EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md#embedded_component)。对于其他类型的组件，移动操作不会生效。
+> Stack、XComponent、
+> EmbeddedComponent。对于其他类型的组件，移动操作不会生效。
 
 **起始版本：** 18
 
@@ -3893,13 +3893,13 @@ setNeedsLayout(): void
 get commonAttribute(): CommonAttribute
 ```
 
-获取FrameNode中持有的CommonAttribute接口，用于设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)。
+获取FrameNode中持有的CommonAttribute接口，用于设置通用属性和通用事件。
 
 仅可以修改自定义节点的属性。
 
 > **说明：** 
 > 
-> FrameNode的效果参考对齐方式为顶部起始端的[Stack](../arkts-components/arkts-arkui-stack-comp.md#stack)容器组件。
+> FrameNode的效果参考对齐方式为顶部起始端的Stack容器组件。
 > 
 > FrameNode的属性支持情况参考
 > [属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
@@ -3948,7 +3948,7 @@ LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点
 get gestureEvent(): UIGestureEvent
 ```
 
-获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过[绑定手势事件](../arkts-components/arkts-arkui-common-comp.md#common)绑定的手势，两者同时设置了手势时，优先回调绑定手势事件设置的手势事件。
+获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过绑定手势事件绑定的手势，两者同时设置了手势时，优先回调绑定手势事件设置的手势事件。
 
 LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点需要重新设置手势事件回调才能保证监听事件正常响应。
 

@@ -192,7 +192,7 @@ value?: number
 
 小于min时取min，大于max时取max。
 
-$$运算符为系统组件提供TS变量的引用，使得TS变量和slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](arkts-arkui-slider-comp.md#slider)。
+$$运算符为系统组件提供TS变量的引用，使得TS变量和slider组件的value值保持同步。详细使用示例请参考示例7（设置滑动条的双向绑定）。
 
 **类型：** number
 

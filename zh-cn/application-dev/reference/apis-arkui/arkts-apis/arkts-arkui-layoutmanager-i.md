@@ -12,7 +12,7 @@ declare interface LayoutManager
 
 ## 导入对象
 
-以Text组件为例，完整示例请参考Text组件的[示例10（获取文本信息）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例10获取文本信息)。
+以Text组件为例，完整示例请参考Text组件的示例10（获取文本信息）。
 
 ```ts
 controller: TextController = new TextController();
@@ -49,8 +49,8 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素单元.md#基本像素单元）。<br>单位：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素-单位.md#基本像素-单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素单元.md#基本像素单元）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素单元.md#基本像素单元）。<br>单位：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素-单位.md#基本像素-单位）。<br>单位：px |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素单元.md#基本像素单元）。<br>单位：px |
 
 **返回值：**
 
@@ -87,8 +87,8 @@ getCharacterPositionAtCoordinate(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：px。 |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：px。 |
 | encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | 否 | 字符位置使用的编码类型。UTF-8编码时，字符位置以字节为单位；UTF-16编码时，字符位置以UTF-16码元为单位。<br>默认值：TextEncoding.TEXT_ENCODING_UTF8。 |
 
 **返回值：**
@@ -211,8 +211,8 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| x | number | 是 | 相对于组件的横坐标。<br>单位：px |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位：px |
 
 **返回值：**
 

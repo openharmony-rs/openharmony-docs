@@ -324,7 +324,7 @@ requestSelected(id: string): void
 
 > **说明：** 
 > 
-> - 仅当目标组件满足以下全部条件时，请求才会生效：组件可以响应智慧手势，且组件在屏幕内可见，且组件绑定了[onClick](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onclick-1)或绑定了单击手势[TapGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md#tapgesture)。
+> - 仅当目标组件满足以下全部条件时，请求才会生效：组件可以响应智慧手势，且组件在屏幕内可见，且组件绑定了[onClick](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onclick-1)或绑定了单击手势TapGesture。
 > 
 > - 组件能否响应智慧手势由[smartGestureShortcut](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#smartgestureshortcut)中的enabled决定。
 

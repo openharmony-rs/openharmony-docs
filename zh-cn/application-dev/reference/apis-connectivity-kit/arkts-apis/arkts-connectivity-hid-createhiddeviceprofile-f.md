@@ -30,7 +30,7 @@ function createHidDeviceProfile(): HidDeviceProfile
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| 801 | Capability not supported. |
 
 **示例**
 

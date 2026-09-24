@@ -16,7 +16,7 @@ function createExactTimer(config: ExactTimerConfig): Promise<number>
 
 > **说明：** 
 > 
-> 该接口需要和[systemManager.destroyTimer](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-systemtimer-destroytimer-f-sys.md)配合使用。否则，
+> 该接口需要和systemManager.destroyTimer配合使用。否则，
 > 内存泄漏。禁用或删除管理应用程序时，EDM服务会自动销毁管理员创建的所有计时器。
 
 **起始版本：** 26.0.1
@@ -43,8 +43,8 @@ function createExactTimer(config: ExactTimerConfig): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |

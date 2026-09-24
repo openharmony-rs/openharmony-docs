@@ -6,9 +6,9 @@ declare class WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribu
 
 除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)和滚动组件通用事件外，还支持以下事件：
 
-**继承/实现关系：** WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribute>
+**继承/实现关系：** WaterFlowAttribute extends ScrollableCommonMethod&lt;WaterFlowAttribute&gt;
 
 **起始版本：** 9
 
@@ -99,7 +99,7 @@ columnsTemplate(value: string)
 
 例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。
 
-可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见[示例2](../../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#示例2自动计算列数)。
+可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见示例2。
 
 非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算列数时，应使用repeat(auto-fill, track-size)。
 
@@ -199,7 +199,7 @@ friction(value: number | Resource)
 itemConstraintSize(value: ConstraintSizeOptions)
 ```
 
-设置约束尺寸，用于在子组件布局时限制其尺寸范围。使用方法参考[示例1](../../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#示例1使用基本瀑布流)。
+设置约束尺寸，用于在子组件布局时限制其尺寸范围。使用方法参考示例1。
 
 **起始版本：** 9
 
@@ -243,7 +243,7 @@ layoutDirection(value: FlexDirection)
 nestedScroll(value: NestedScrollOptions)
 ```
 
-设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。使用方法参考[嵌套滚动实现方式二](../../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#示例3嵌套滚动实现方式二)。
+设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。使用方法参考嵌套滚动实现方式二。
 
 **起始版本：** 10
 

@@ -18,10 +18,10 @@ import { vcard } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard) | 将联系人导出为 VCF(vcard file)文件。使用callback异步回调。 |
+| exportVCard | 将联系人导出为 VCF(vcard file)文件。使用callback异步回调。 |
 | [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-1) | 将联系人导出为 VCF(vcard file)文件。使用Promise异步回调。 |
 | [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-2) | 将联系人导出为 VCF(vcard file)文件。使用callback异步回调。 |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard) | 将VCard文件导入联系人数据库。使用callback异步回调。 |
+| importVCard | 将VCard文件导入联系人数据库。使用callback异步回调。 |
 | [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-1) | 将VCard文件导入联系人数据库。使用Promise异步回调。 |
 | [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-2) | 将VCard文件导入联系人数据库。使用callback异步回调。 |
 

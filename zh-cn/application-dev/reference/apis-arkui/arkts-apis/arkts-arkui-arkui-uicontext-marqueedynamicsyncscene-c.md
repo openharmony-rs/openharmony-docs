@@ -8,7 +8,7 @@ export class MarqueeDynamicSyncScene extends DynamicSyncScene
 
 > **说明：** 
 > 
-> - MarqueeDynamicSyncScene继承自[DynamicSyncScene](arkts-arkui-arkui-uicontext-uicontext-c.md)，对应[Marquee](../arkts-components/arkts-arkui-marquee-comp.md#marquee)的动态帧率场景。
+> - MarqueeDynamicSyncScene继承自[DynamicSyncScene](arkts-arkui-arkui-uicontext-uicontext-c.md)，对应Marquee的动态帧率场景。
 
 **继承/实现关系：** MarqueeDynamicSyncScene extends [DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)
 

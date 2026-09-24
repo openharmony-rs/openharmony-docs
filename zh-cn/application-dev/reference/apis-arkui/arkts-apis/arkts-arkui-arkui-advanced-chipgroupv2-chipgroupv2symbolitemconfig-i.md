@@ -122,7 +122,7 @@ symbol: SymbolGlyphModifier
 
 **说明：** 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
 
-**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 26.0.0
 

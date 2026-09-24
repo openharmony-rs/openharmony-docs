@@ -4,11 +4,11 @@
 declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+除支持通用属性外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md#common)外，还支持[OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md)、[StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md)、[StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md)和以下事件：
+除支持通用事件外，还支持[OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md)、[StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md)、[StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md)和以下事件：
 
-**继承/实现关系：** RichEditorAttribute extends CommonMethod<RichEditorAttribute>
+**继承/实现关系：** RichEditorAttribute extends CommonMethod&lt;RichEditorAttribute&gt;
 
 **起始版本：** 10
 
@@ -99,7 +99,7 @@ bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, response
     options?: SelectionMenuOptions)
 ```
 
-设置自定义选择菜单。支持自定义菜单风格和触发条件，适合需要深度自定义菜单的场景。自定义菜单超长时，建议内部嵌套[Scroll](arkts-arkui-scroll-comp.md#scroll)组件使用，避免键盘被遮挡。
+设置自定义选择菜单。支持自定义菜单风格和触发条件，适合需要深度自定义菜单的场景。自定义菜单超长时，建议内部嵌套Scroll组件使用，避免键盘被遮挡。
 
 **起始版本：** 10
 
@@ -936,7 +936,7 @@ onWillAttachIME(callback: Callback<IMEClient> | undefined)
 
 <!--Del-->
 
-从API版本26.0.0开始，在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c-sys.md#setkeyboardappearanceconfig)设置键盘的样式。&lt;!--DelEnd- -&gt;
+从API版本26.0.0开始，在输入框将要绑定输入法前，可以通过`UIContext`的系统接口setKeyboardAppearanceConfig设置键盘的样式。&lt;!--DelEnd- -&gt;
 
 **起始版本：** 22
 

@@ -404,7 +404,7 @@ off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptA
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11开始废弃，建议使用
-> [off('audioInterrupt')](../../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#offaudiointerrupt10)
+> off('audioInterrupt')
 > 替代。
 
 **起始版本：** 7

@@ -6,7 +6,7 @@
 > 
 > *
 > 
-> * 仅支持作为[Grid](arkts-arkui-grid-comp.md#grid)组件的子组件使用。
+> * 仅支持作为Grid组件的子组件使用。
 > 
 > * 当GridItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，GridItem子组件在GridItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为Grid时，GridItem子组件在GridItem布局时创建。
 > 
@@ -56,7 +56,7 @@ GridItem(value?: GridItemOptions)
 
 ### 示例1（GridItem设置自身位置）
 
-GridItem通过设置合理的rowStart、rowEnd、columnStart、columnEnd属性来设置自身位置。需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
+GridItem通过设置合理的rowStart、rowEnd、columnStart、columnEnd属性来设置自身位置。需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的GridLayoutOptions参数，详细可参考Grid的示例1（固定行列Grid）和示例3（可滚动Grid设置跨行跨列节点）。
 
 
 

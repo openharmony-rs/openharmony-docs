@@ -23,20 +23,20 @@ import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, Injec
 
 | 名称 | 说明 |
 | --- | --- |
-| [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md#isopenaccessibility) | 判断是否启用了辅助应用。使用callback异步回调。 |
+| isOpenAccessibility | 判断是否启用了辅助应用。使用callback异步回调。 |
 | [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md#isopenaccessibility-1) | 判断是否启用了辅助应用。使用Promise异步回调。 |
 | [isOpenAccessibilitySync](arkts-accessibility-accessibility-isopenaccessibilitysync-f.md) | 查询当前系统内是否存在已开启的辅助应用。 |
-| [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md#isopentouchguide) | 判断触摸浏览模式是否开启。使用callback异步回调。 |
+| isOpenTouchGuide | 判断触摸浏览模式是否开启。使用callback异步回调。 |
 | [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md#isopentouchguide-1) | 判断触摸浏览模式是否开启。使用Promise异步回调。 |
 | [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md) | 查询触摸浏览模式是否开启。 |
-| [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md#getabilitylists) | 查询辅助应用列表。使用callback异步回调。 |
+| getAbilityLists | 查询辅助应用列表。使用callback异步回调。 |
 | [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md#getabilitylists-1) | 查询辅助应用列表。使用Promise异步回调。 |
-| [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist) | 查询辅助应用列表。使用Promise异步回调。 |
+| getAccessibilityExtensionList | 查询辅助应用列表。使用Promise异步回调。 |
 | [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist-1) | 查询辅助应用列表。使用callback异步回调。 |
 | [getAccessibilityExtensionListSync](arkts-accessibility-accessibility-getaccessibilityextensionlistsync-f.md) | 查询当前系统内辅助应用列表，支持按条件查询。 |
-| [sendEvent](arkts-accessibility-accessibility-sendevent-f.md#sendevent) | 发送无障碍事件，事件将被分发到系统中已注册且匹配事件类型的辅助扩展应用进行响应。使用callback异步回调。 |
+| sendEvent | 发送无障碍事件，事件将被分发到系统中已注册且匹配事件类型的辅助扩展应用进行响应。使用callback异步回调。 |
 | [sendEvent](arkts-accessibility-accessibility-sendevent-f.md#sendevent-1) | 发送无障碍事件，事件将被分发到系统中已注册且匹配事件类型的辅助扩展应用进行响应。使用Promise异步回调。 |
-| [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent) | 发送无障碍事件，事件将被分发到系统中已注册且匹配事件类型的辅助应用进行响应。使用callback异步回调。 |
+| sendAccessibilityEvent | 发送无障碍事件，事件将被分发到系统中已注册且匹配事件类型的辅助应用进行响应。使用callback异步回调。 |
 | [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent-1) | 发送无障碍事件，事件将被分发到系统中已注册且匹配事件类型的辅助扩展应用进行响应。使用Promise异步回调。 |
 | [on](arkts-accessibility-accessibility-on-f.md#onaccessibilitystatechange) | 监听辅助应用启用状态变化事件。使用callback异步回调。 |
 | [on](arkts-accessibility-accessibility-on-f.md#ontouchguidestatechange) | 监听触摸浏览功能启用状态变化事件。使用callback异步回调。 |

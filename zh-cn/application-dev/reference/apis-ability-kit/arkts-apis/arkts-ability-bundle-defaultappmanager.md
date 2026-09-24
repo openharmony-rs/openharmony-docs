@@ -18,7 +18,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [isDefaultApplication](arkts-ability-defaultappmanager-isdefaultapplication-f.md#isdefaultapplication) | 根据系统已定义的应用类型或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md)类型判断当前应用是否是该类型的默认应用。使用callback异步回调。 |
+| isDefaultApplication | 根据系统已定义的应用类型或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md)类型判断当前应用是否是该类型的默认应用。使用callback异步回调。 |
 | [isDefaultApplication](arkts-ability-defaultappmanager-isdefaultapplication-f.md#isdefaultapplication-1) | 根据系统已定义的应用类型或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)类型判断当前应用是否是该类型的默认应用。使用Promise异步回调。 |
 | [isDefaultApplicationSync](arkts-ability-defaultappmanager-isdefaultapplicationsync-f.md) | 以同步方法根据系统已定义的应用类型或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md)类型判断当前应用是否是该类型的默认应用，使用boolean形式返回结果。 |
 

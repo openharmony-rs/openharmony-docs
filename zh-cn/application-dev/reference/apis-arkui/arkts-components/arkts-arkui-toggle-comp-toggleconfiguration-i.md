@@ -6,7 +6,7 @@ declare interface ToggleConfiguration extends CommonConfiguration<ToggleConfigur
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md)。
 
-**继承/实现关系：** ToggleConfiguration extends CommonConfiguration<ToggleConfiguration>
+**继承/实现关系：** ToggleConfiguration extends CommonConfiguration&lt;ToggleConfiguration&gt;
 
 **起始版本：** 12
 

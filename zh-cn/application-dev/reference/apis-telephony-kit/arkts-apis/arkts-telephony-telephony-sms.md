@@ -18,15 +18,15 @@ import { sms } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createMessage](arkts-telephony-sms-createmessage-f.md#createmessage) | 根据协议数据单元(PDU)和指定的短信协议创建短信实例。使用callback异步回调。 |
+| createMessage | 根据协议数据单元(PDU)和指定的短信协议创建短信实例。使用callback异步回调。 |
 | [createMessage](arkts-telephony-sms-createmessage-f.md#createmessage-1) | 根据协议数据单元(PDU)和指定的短信协议创建短信实例。使用Promise异步回调。 |
-| [getDefaultSmsSimId](arkts-telephony-sms-getdefaultsmssimid-f.md#getdefaultsmssimid) | 获取发送短信的默认SIM卡ID。使用callback异步回调。 |
+| getDefaultSmsSimId | 获取发送短信的默认SIM卡ID。使用callback异步回调。 |
 | [getDefaultSmsSimId](arkts-telephony-sms-getdefaultsmssimid-f.md#getdefaultsmssimid-1) | 获取发送短信的默认SIM卡ID。使用Promise异步回调。 |
-| [getDefaultSmsSlotId](arkts-telephony-sms-getdefaultsmsslotid-f.md#getdefaultsmsslotid) | 获取发送短信的默认SIM卡槽ID。使用callback异步回调。 |
+| getDefaultSmsSlotId | 获取发送短信的默认SIM卡槽ID。使用callback异步回调。 |
 | [getDefaultSmsSlotId](arkts-telephony-sms-getdefaultsmsslotid-f.md#getdefaultsmsslotid-1) | 获取发送短信的默认SIM卡槽ID。使用Promise异步回调。 |
 | [hasSmsCapability](arkts-telephony-sms-hassmscapability-f.md) | 检查当前设备是否具备短信发送和接收能力，该方法是同步方法。 |
 | [sendMessage](arkts-telephony-sms-sendmessage-f.md) | 发送短信。 |
-| [sendShortMessage](arkts-telephony-sms-sendshortmessage-f.md#sendshortmessage) | 发送短信。使用callback异步回调。 |
+| sendShortMessage | 发送短信。使用callback异步回调。 |
 | [sendShortMessage](arkts-telephony-sms-sendshortmessage-f.md#sendshortmessage-1) | 发送短信。使用Promise异步回调。 |
 
 <!--Del-->

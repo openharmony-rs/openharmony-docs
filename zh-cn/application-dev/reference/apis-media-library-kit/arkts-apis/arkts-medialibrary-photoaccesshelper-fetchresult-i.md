@@ -39,7 +39,7 @@ close(): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -91,7 +91,7 @@ contains(object: T): Promise<boolean>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -143,7 +143,7 @@ getAllObjects(callback: AsyncCallback<Array<T>>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -197,7 +197,7 @@ getAllObjects(): Promise<Array<T>>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -244,7 +244,7 @@ getCount(): number
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -291,7 +291,7 @@ getFirstObject(callback: AsyncCallback<T>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -345,7 +345,7 @@ getFirstObject(): Promise<T>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -393,7 +393,7 @@ getIndex(object: T): Promise<number>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -445,7 +445,7 @@ getLastObject(callback: AsyncCallback<T>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -499,7 +499,7 @@ getLastObject(): Promise<T>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -548,7 +548,7 @@ getNextObject(callback: AsyncCallback<T>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -607,7 +607,7 @@ getNextObject(): Promise<T>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -658,7 +658,7 @@ getObjectByPosition(index: number, callback: AsyncCallback<T>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -718,7 +718,7 @@ getObjectByPosition(index: number): Promise<T>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -776,7 +776,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise<T[]>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -828,13 +828,13 @@ getRangeObjects(index: number, offset: number): Promise<T[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. A non-system application calls a system API.<br>**适用版本：** 21 - 22 |
+| 202 | Permission verification failed. A non-system application calls a system API. A non-system application calls a system API.<br>**适用版本：** 21 - 22 |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails.<br>Possible causes: index or offset validity check failed. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs.<br>Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. |
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -895,7 +895,7 @@ isAfterLast(): boolean
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

@@ -6,7 +6,7 @@ export namespace typeNode
 
 typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础接口进行自定义的挂载，使用占位容器进行显示。适用于需要通过代码动态创建具体类型组件节点并进行自定义挂载的场景。
 
-使用typeNode创建[Text](../arkts-components/arkts-arkui-text-comp.md#text)、[Image](../arkts-components/arkts-arkui-image-comp.md#image)、[Select](../arkts-components/arkts-arkui-select-comp.md#select)、[Toggle](../arkts-components/arkts-arkui-toggle-comp.md#toggle)节点时，当传入的[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
+使用typeNode创建Text、Image、Select、Toggle节点时，当传入的[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
 
 **起始版本：** 12
 
@@ -20,9 +20,9 @@ typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础
 
 | 名称 | 说明 |
 | --- | --- |
-| [createNode](arkts-arkui-typenode-createnode-f.md#createnode) | 创建Text类型的FrameNode节点。使用typeNode创建Text节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。 |
-| [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute) | 获取Text节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
-| [bindController](arkts-arkui-typenode-bindcontroller-f.md#bindcontroller) | 将文本控制器[TextController](../arkts-components/arkts-arkui-text-comp-textcontroller-c.md)绑定到[Text](arkts-arkui-typenode-text-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。 |
+| createNode | 创建Text类型的FrameNode节点。使用typeNode创建Text节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。 |
+| getAttribute | 获取Text节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
+| bindController | 将文本控制器[TextController](../arkts-components/arkts-arkui-text-comp-textcontroller-c.md)绑定到[Text](arkts-arkui-typenode-text-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-1) | 创建Column类型的FrameNode节点。 |
 | [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-1) | 获取Column节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-2) | 创建Row类型的FrameNode节点。 |
@@ -40,13 +40,13 @@ typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础
 | [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-6) | 获取Progress节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-9) | 创建Scroll类型的FrameNode节点。 |
 | [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-7) | 获取Scroll节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
-| [getEvent](arkts-arkui-typenode-getevent-f.md#getevent) | 获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。 |
+| getEvent | 获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。 |
 | [bindController](arkts-arkui-typenode-bindcontroller-f.md#bindcontroller-2) | 将滚动控制器[Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md)绑定到[Scroll](arkts-arkui-typenode-scroll-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-10) | 创建RelativeContainer类型的FrameNode节点。 |
 | [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-8) | 获取RelativeContainer节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-11) | 创建Divider类型的FrameNode节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-12) | 创建LoadingProgress类型的FrameNode节点。 |
-| [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-9) | 获取[LoadingProgress](../arkts-components/arkts-arkui-loadingprogress-comp.md#loading_progress)节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
+| [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-9) | 获取LoadingProgress节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-13) | 创建Search类型的FrameNode节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-14) | 创建Blank类型的FrameNode节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-15) | 创建Image类型的FrameNode节点。使用typeNode创建Image节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。 |
@@ -125,7 +125,7 @@ typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础
 | [ListItem](arkts-arkui-typenode-listitem-t.md) | ListItem类型的FrameNode节点类型。 |
 | [TextInput](arkts-arkui-typenode-textinput-t.md) | TextInput类型的FrameNode节点类型。 |
 | [Button](arkts-arkui-typenode-button-t.md) | Button类型的FrameNode节点类型。以子组件模式创建允许添加一个子组件。以label模式创建不可以添加子组件。 |
-| [ListItemGroup](arkts-arkui-typenode-listitemgroup-t.md) | ListItemGroup类型的FrameNode节点类型。只允许添加[ListItem](../arkts-components/arkts-arkui-listitem-comp.md#list_item)类型子组件。 |
+| [ListItemGroup](arkts-arkui-typenode-listitemgroup-t.md) | ListItemGroup类型的FrameNode节点类型。只允许添加ListItem类型子组件。 |
 | [WaterFlow](arkts-arkui-typenode-waterflow-t.md) | WaterFlow类型的FrameNode节点类型。只允许添加[FlowItem](../arkts-components/arkts-arkui-flowitem-comp-attribute.md)类型子组件。 |
 | [FlowItem](arkts-arkui-typenode-flowitem-t.md) | FlowItem类型的FrameNode节点类型。允许添加一个子组件。 |
 | [XComponent](arkts-arkui-typenode-xcomponent-t.md) | XComponent类型的FrameNode节点类型。 |
@@ -135,7 +135,7 @@ typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础
 | [Rating](arkts-arkui-typenode-rating-t.md) | Rating类型的FrameNode节点类型。 |
 | [Select](arkts-arkui-typenode-select-t.md) | Select类型的FrameNode节点类型。 |
 | [Slider](arkts-arkui-typenode-slider-t.md) | Slider类型的FrameNode节点类型。 |
-| [Toggle](arkts-arkui-typenode-toggle-t.md) | [Toggle](../arkts-components/arkts-arkui-toggle-comp.md#toggle)类型的FrameNode节点类型。 |
+| [Toggle](arkts-arkui-typenode-toggle-t.md) | Toggle类型的FrameNode节点类型。 |
 | [Marquee](arkts-arkui-typenode-marquee-t.md) | Marquee类型的FrameNode节点类型。 |
 | [TextArea](arkts-arkui-typenode-textarea-t.md) | TextArea类型的FrameNode节点类型。 |
 | [SymbolGlyph](arkts-arkui-typenode-symbolglyph-t.md) | SymbolGlyph类型的FrameNode节点类型。 |

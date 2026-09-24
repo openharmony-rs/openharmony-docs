@@ -22,7 +22,7 @@ function resetProcessPriority(pid: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pid | number | 是 | 子进程的进程号，[OH_Ability_StartNativeChildProcess](../../../reference/apis-ability-kit/c-apis/capi-native-child-process-h.md#oh_ability_startnativechildprocess)接口创建子进程后的pid参数，即为子进程进程号。 |
+| pid | number | 是 | 子进程的进程号，OH_Ability_StartNativeChildProcess接口创建子进程后的pid参数，即为子进程进程号。 |
 
 **返回值：**
 

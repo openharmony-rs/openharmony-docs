@@ -173,7 +173,7 @@ struct AlphabetIndexerSample {
 
 ### 示例2（开启自适应折叠模式）
 
-通过[autoCollapse](#autocollapse11)属性开启自适应折叠模式。
+通过autoCollapse属性开启自适应折叠模式。
 
 
 
@@ -315,7 +315,7 @@ struct AlphabetIndexerSample {
 
 ### 示例3（设置提示弹窗背景模糊材质）
 
-通过[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性实现提示弹窗的背景模糊效果。
+通过popupBackgroundBlurStyle属性实现提示弹窗的背景模糊效果。
 
 
 
@@ -450,7 +450,7 @@ struct AlphabetIndexerSample {
 
 该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
-从API版本26.0.0开始，索引条参数[popupBackground](#popupbackground)和[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)均未主动设置（或参数value传入undefined）时，提示弹窗默认开启沉浸光感，默认材质样式为THICK。
+从API版本26.0.0开始，索引条参数popupBackground和popupBackgroundBlurStyle均未主动设置（或参数value传入undefined）时，提示弹窗默认开启沉浸光感，默认材质样式为THICK。
 
 ```TypeScript
 // xxx.ets

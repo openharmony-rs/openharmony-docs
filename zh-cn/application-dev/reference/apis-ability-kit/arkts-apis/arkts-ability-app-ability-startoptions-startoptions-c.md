@@ -94,7 +94,7 @@ maxWindowHeight?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -114,7 +114,7 @@ maxWindowWidth?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -134,7 +134,7 @@ minWindowHeight?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -154,7 +154,7 @@ minWindowWidth?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -286,7 +286,7 @@ supportWindowModes?: Array<bundleManager.SupportWindowMode>
 - SPLIT：支持分屏模式。通常需要配合FULL_SCREEN或FLOATING一起使用，不建议只配置SPLIT。当仅配置SPLIT时，2in1设备上的窗口默认为悬浮窗模式，支持进入分屏模式；Tablet设备上的窗口默认为全屏模  
 式，支持进入分屏模式。
 
-在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下同时配置FULL_SCREEN和SPLIT时，如果应用的[targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
+在自由窗口状态下同时配置FULL_SCREEN和SPLIT时，如果应用的[targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
 
 **约束：**
 
@@ -328,7 +328,7 @@ windowHeight?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -348,7 +348,7 @@ windowLeft?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -384,7 +384,7 @@ windowTop?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -406,7 +406,7 @@ windowWidth?: number
 
 **约束：**
 
-该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+该功能仅在自由窗口状态下生效。
 
 **类型：** number
 
@@ -428,7 +428,7 @@ withAnimation?: boolean
 
 **约束：**
 
-该功能仅在[自由窗口状态](../../../windowmanager/window-terminology.md#自由窗口)下生效，且调用方和目标方必须是同一应用。
+该功能仅在自由窗口状态下生效，且调用方和目标方必须是同一应用。
 
 此参数不填时，默认为undefined，跟随系统默认动画效果。
 

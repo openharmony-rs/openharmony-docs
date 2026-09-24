@@ -23,29 +23,29 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [cancelRetentionState](arkts-dataprotection-dlppermission-cancelretentionstate-f.md#cancelretentionstate) | 取消沙箱保留状态，即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。 |
+| cancelRetentionState | 取消沙箱保留状态，即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。 |
 | [cancelRetentionState](arkts-dataprotection-dlppermission-cancelretentionstate-f.md#cancelretentionstate-1) | 取消沙箱保留状态即恢复DLP文件关闭时自动卸载沙箱策略。使用callback异步回调。 |
 | [cleanSandboxAppConfig](arkts-dataprotection-dlppermission-cleansandboxappconfig-f.md) | 清理沙箱应用配置信息。调用成功后，沙箱应用配置将被清除，恢复默认状态。使用Promise异步回调。 |
 | [closeOpenedEnterpriseDlpFiles](arkts-dataprotection-dlppermission-closeopenedenterprisedlpfiles-f.md) | 关闭当前打开的所有符合指定选项的企业DLP文件。使用Promise异步回调。 |
 | [decryptDlpFile](arkts-dataprotection-dlppermission-decryptdlpfile-f.md) | 将DLP文件解密生成明文文件，仅支持企业账号调用。使用Promise异步回调。 |
 | [generateDlpFileForEnterprise](arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f.md) | 将明文文件加密生成企业账号DLP文件，仅支持企业账号调用。使用Promise异步回调。 |
 | [getControlledAppLists](arkts-dataprotection-dlppermission-getcontrolledapplists-f.md) | 获取当前用户受企业DLP控制的应用程序列表。使用Promise异步回调。 |
-| [getDLPFileAccessRecords](arkts-dataprotection-dlppermission-getdlpfileaccessrecords-f.md#getdlpfileaccessrecords) | 查询最近访问的DLP文件列表。调用成功后返回文件访问记录，用于追踪和管理DLP文件的使用情况。仅支持在非DLP沙箱应用中调用。使用Promise异步回调。 |
+| getDLPFileAccessRecords | 查询最近访问的DLP文件列表。调用成功后返回文件访问记录，用于追踪和管理DLP文件的使用情况。仅支持在非DLP沙箱应用中调用。使用Promise异步回调。 |
 | [getDLPFileAccessRecords](arkts-dataprotection-dlppermission-getdlpfileaccessrecords-f.md#getdlpfileaccessrecords-1) | 查询最近访问的DLP文件列表。调用成功后返回文件访问记录，用于追踪和管理DLP文件的使用情况。仅支持在非DLP沙箱应用中调用。使用callback异步回调。 |
-| [getDLPPermissionInfo](arkts-dataprotection-dlppermission-getdlppermissioninfo-f.md#getdlppermissioninfo) | 查询当前DLP沙箱的权限信息，包括文件授权类型及可执行操作（如查看、编辑、复制等）。仅支持在DLP沙箱应用中调用，使用Promise异步回调。 |
+| getDLPPermissionInfo | 查询当前DLP沙箱的权限信息，包括文件授权类型及可执行操作（如查看、编辑、复制等）。仅支持在DLP沙箱应用中调用，使用Promise异步回调。 |
 | [getDLPPermissionInfo](arkts-dataprotection-dlppermission-getdlppermissioninfo-f.md#getdlppermissioninfo-1) | 查询当前DLP沙箱的权限信息。返回的权限信息包括文件的授权类型和可执行的操作权限（如查看、编辑、复制等）。仅支持在DLP沙箱应用中调用。使用callback异步回调。 |
 | [getDLPSuffix](arkts-dataprotection-dlppermission-getdlpsuffix-f.md) | 获取DLP文件扩展名。调用成功后返回DLP文件扩展名（如'.dlp'）。接口为同步接口。 |
-| [getDLPSupportedFileTypes](arkts-dataprotection-dlppermission-getdlpsupportedfiletypes-f.md#getdlpsupportedfiletypes) | 查询当前可支持权限设置和校验的文件扩展名类型列表。调用成功后返回支持的文件类型列表，用于判断哪些文件类型可进行DLP权限管理。使用Promise异步回调。 |
+| getDLPSupportedFileTypes | 查询当前可支持权限设置和校验的文件扩展名类型列表。调用成功后返回支持的文件类型列表，用于判断哪些文件类型可进行DLP权限管理。使用Promise异步回调。 |
 | [getDLPSupportedFileTypes](arkts-dataprotection-dlppermission-getdlpsupportedfiletypes-f.md#getdlpsupportedfiletypes-1) | 查询当前可支持权限设置和校验的文件扩展名类型列表。调用成功后返回支持的文件类型列表，用于判断哪些文件类型可进行DLP权限管理。使用callback异步回调。 |
 | [getOriginalFileName](arkts-dataprotection-dlppermission-getoriginalfilename-f.md) | 获取指定DLP文件名的原始文件名。该接口为同步接口。 |
-| [getRetentionSandboxList](arkts-dataprotection-dlppermission-getretentionsandboxlist-f.md#getretentionsandboxlist) | 查询指定应用的保留沙箱信息列表。仅支持在非DLP沙箱应用中调用。使用Promise异步回调。 |
+| getRetentionSandboxList | 查询指定应用的保留沙箱信息列表。仅支持在非DLP沙箱应用中调用。使用Promise异步回调。 |
 | [getRetentionSandboxList](arkts-dataprotection-dlppermission-getretentionsandboxlist-f.md#getretentionsandboxlist-1) | 查询指定应用的保留沙箱信息列表。仅支持在非DLP沙箱应用中调用。使用callback异步回调。 |
 | [getRetentionSandboxList](arkts-dataprotection-dlppermission-getretentionsandboxlist-f.md#getretentionsandboxlist-2) | 查询当前应用的保留沙箱信息列表。使用callback异步回调。 |
 | [getSandboxAppConfig](arkts-dataprotection-dlppermission-getsandboxappconfig-f.md) | 获取沙箱应用配置信息，使用Promise异步回调。 |
 | [isDLPFeatureProvided](arkts-dataprotection-dlppermission-isdlpfeatureprovided-f.md) | 查询当前系统是否提供加密保护特性，仅支持企业设备且需[MDM（Mobile Device Management，移动设备管理）](../../../mdm/mdm-kit-intro.md)配置使能。调用成功后返回查询结果，用于判断系统是否支持DLP加密功能。使用Promise异步回调。 |
-| [isDLPFile](arkts-dataprotection-dlppermission-isdlpfile-f.md#isdlpfile) | 根据文件的fd，查询该文件是否是DLP文件。使用Promise异步回调。 |
+| isDLPFile | 根据文件的fd，查询该文件是否是DLP文件。使用Promise异步回调。 |
 | [isDLPFile](arkts-dataprotection-dlppermission-isdlpfile-f.md#isdlpfile-1) | 根据文件的fd，查询该文件是否是DLP文件。调用成功后返回查询结果，true表示是DLP文件，false表示非DLP文件。使用callback异步回调。 |
-| [isInSandbox](arkts-dataprotection-dlppermission-isinsandbox-f.md#isinsandbox) | 查询当前应用是否运行在DLP沙箱环境。使用Promise异步回调。 |
+| isInSandbox | 查询当前应用是否运行在DLP沙箱环境。使用Promise异步回调。 |
 | [isInSandbox](arkts-dataprotection-dlppermission-isinsandbox-f.md#isinsandbox-1) | 查询当前应用是否运行在DLP沙箱环境。使用callback异步回调。 |
 | [off](arkts-dataprotection-dlppermission-off-f.md#offopendlpfile) | 取消监听打开DLP文件。仅支持在非DLP沙箱应用中调用。调用成功后，将不再接收DLP文件打开事件的通知。 |
 | [on](arkts-dataprotection-dlppermission-on-f.md#onopendlpfile) | 监听打开DLP文件。调用成功后，当DLP文件被打开时会触发回调通知当前应用。仅支持在非DLP沙箱应用中调用。 |
@@ -54,10 +54,10 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 | [queryOpenedEnterpriseDlpFiles](arkts-dataprotection-dlppermission-queryopenedenterprisedlpfiles-f.md) | 查询已打开且符合指定选项的企业DLP文件的URI列表。使用Promise异步回调。 |
 | [setControlledAppLists](arkts-dataprotection-dlppermission-setcontrolledapplists-f.md) | 设置受企业DLP控制的应用程序列表。使用Promise异步回调。 |
 | [setEnterprisePolicy](arkts-dataprotection-dlppermission-setenterprisepolicy-f.md) | 设置企业应用防护策略。调用成功后，企业应用的DLP防护将按照设置的策略执行。 |
-| [setRetentionState](arkts-dataprotection-dlppermission-setretentionstate-f.md#setretentionstate) | 设置DLP沙箱的保留状态。默认情况下，打开DLP文件时系统会自动创建沙箱环境，关闭文件后自动销毁沙箱。设置保留状态后，即使关闭DLP文件，沙箱环境也会保留，便于快速重新打开相同DLP文件。适用于需要频繁操作同一DLP文件的场景，可提升文件打开效率。仅支持在DLP沙箱应用中调用。使用Promise异步回调。 |
+| setRetentionState | 设置DLP沙箱的保留状态。默认情况下，打开DLP文件时系统会自动创建沙箱环境，关闭文件后自动销毁沙箱。设置保留状态后，即使关闭DLP文件，沙箱环境也会保留，便于快速重新打开相同DLP文件。适用于需要频繁操作同一DLP文件的场景，可提升文件打开效率。仅支持在DLP沙箱应用中调用。使用Promise异步回调。 |
 | [setRetentionState](arkts-dataprotection-dlppermission-setretentionstate-f.md#setretentionstate-1) | 设置DLP沙箱的保留状态。默认情况下，打开DLP文件时系统会自动创建沙箱环境，关闭文件后自动销毁沙箱。设置保留状态后，即使关闭DLP文件，沙箱环境也会保留，便于快速重新打开相同DLP文件。适用于需要频繁操作同一DLP文件的场景，可提升文件打开效率。仅支持在DLP沙箱应用中调用。使用callback异步回调。 |
 | [setSandboxAppConfig](arkts-dataprotection-dlppermission-setsandboxappconfig-f.md) | 设置沙箱应用配置信息，配置信息为JSON字符串格式，具体内容由应用自行设置。调用成功后，沙箱应用将按照配置信息运行。使用Promise异步回调。仅支持在非DLP沙箱应用中调用。 |
-| [startDLPManagerForResult](arkts-dataprotection-dlppermission-startdlpmanagerforresult-f.md#startdlpmanagerforresult) | 在当前[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)界面以无边框形式打开DLP权限管理应用。使用Promise异步回调。 |
+| startDLPManagerForResult | 在当前[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)界面以无边框形式打开DLP权限管理应用。使用Promise异步回调。 |
 | [startDLPManagerForResult](arkts-dataprotection-dlppermission-startdlpmanagerforresult-f.md#startdlpmanagerforresult-1) | 在指定窗口内以无边框形式打开DLP权限管理应用。使用Promise异步回调。 |
 
 <!--Del-->

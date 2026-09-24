@@ -27,7 +27,7 @@ import { dragController } from '@kit.ArkUI';
 | 名称 | 说明 |
 | --- | --- |
 | [createDragAction](arkts-arkui-dragcontroller-createdragaction-f.md) | 创建拖拽的Action对象，需要显式指定拖拽背板图（可多个），以及拖拽的数据，跟手点等信息；当通过一个已创建的 Action 对象发起的拖拽未结束时，无法再次创建新的 Action 对象，接口会抛出异常；当Action对象的生命周期结束后，注册在该对象上的回调函数会失效，因此需要在一个尽量长的作用域下持有该对象，并在每次发起拖拽前通过createDragAction返回新的对象覆盖旧值。 |
-| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag) | Execute a drag event. |
+| executeDrag | Execute a drag event. |
 | [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag-1) | 主动发起拖拽能力，传入拖拽发起后跟手效果所拖拽的对象以及携带拖拽信息。使用Promise异步回调。 |
 | [getDragPreview](arkts-arkui-dragcontroller-getdragpreview-f.md) | 返回一个代表拖拽背板的对象。 |
 

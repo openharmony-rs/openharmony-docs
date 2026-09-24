@@ -10,8 +10,8 @@
  >
  > - 该组件仅可在Stage模型下使用。
  >
- > - 如果ExceptionPromptV2设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和
- > [通用事件](../arkts-components/arkts-arkui-common-comp.md#common)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到
+ > - 如果ExceptionPromptV2设置通用属性和
+ > 通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到
  > ExceptionPromptV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ExceptionPromptV2设置通用属性和通用事件。
 
 ## 子组件
@@ -20,7 +20,7 @@
 
 ## 事件
 
-不支持[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)。
+不支持通用事件。
 
 ## 导入模块
 

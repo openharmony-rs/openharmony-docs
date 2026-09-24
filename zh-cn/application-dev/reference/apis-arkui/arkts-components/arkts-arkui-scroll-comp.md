@@ -14,7 +14,7 @@
 > 
 > - 手指触摸屏幕时，会停止当前触摸范围内所有滚动组件的滚动动画（[scrollTo](arkts-arkui-scroll-comp-scroller-c.md#scrollto)和[scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex)接口触发的滚动动画除外），包括边缘回弹动画。
 > 
-> - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp.md#common)进行处理。
+> - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考手势拦截增强进行处理。
 
 ## 子组件
 
@@ -263,7 +263,7 @@ struct NestedScroll {
 
 ### 示例3（嵌套滚动实现方式二）
 
-该示例使用[nestedScroll](#nestedscroll10)属性实现了内层List组件和外层Scroll组件的嵌套滚动。
+该示例使用nestedScroll属性实现了内层List组件和外层Scroll组件的嵌套滚动。
 
 
 
@@ -331,7 +331,7 @@ struct StickyNestedScroll {
 
 ### 示例4（嵌套滚动父组件向子组件传递滚动）
 
-该示例使用[enableScrollInteraction](#enablescrollinteraction10)属性和[onScrollFrameBegin](#onscrollframebegin9)事件实现了父组件向子组件传递滚动。
+该示例使用enableScrollInteraction属性和onScrollFrameBegin事件实现了父组件向子组件传递滚动。
 
 
 
@@ -587,7 +587,7 @@ struct ScrollExample {
 
 ### 示例8（单边边缘效果）
 
-该示例通过[edgeEffect](#edgeeffect)接口，实现了Scroll组件设置单边边缘效果。
+该示例通过edgeEffect接口，实现了Scroll组件设置单边边缘效果。
 
 
 
@@ -657,7 +657,7 @@ struct EnablePagingExample {
 
 ### 示例10（设置过界停留）
 
-该示例通过[scrollTo](#scrollto)接口，实现了Scroll组件设置过界停留效果。
+该示例通过scrollTo接口，实现了Scroll组件设置过界停留效果。
 
 
 

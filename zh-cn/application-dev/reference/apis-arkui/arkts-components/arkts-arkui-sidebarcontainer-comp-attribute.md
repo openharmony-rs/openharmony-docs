@@ -8,7 +8,7 @@ declare class SideBarContainerAttribute extends CommonMethod<SideBarContainerAtt
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** SideBarContainerAttribute extends CommonMethod<SideBarContainerAttribute>
+**继承/实现关系：** SideBarContainerAttribute extends CommonMethod&lt;SideBarContainerAttribute&gt;
 
 **起始版本：** 8
 
@@ -363,7 +363,7 @@ sideBarWidth(value: number)
 sideBarWidth(value: Length)
 ```
 
-设置侧边栏的宽度。设置为小于0的值时按默认值显示。受minSideBarWidth和maxSideBarWidth限制，当设置的值不在限制范围内时，取最近的边界值。与[sideBarWidth](#sidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
+设置侧边栏的宽度。设置为小于0的值时按默认值显示。受minSideBarWidth和maxSideBarWidth限制，当设置的值不在限制范围内时，取最近的边界值。与[sideBarWidth](#sidebarwidth)相比，value参数新增了对百分比字符串和其他像素单位的支持。
 
 从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
 

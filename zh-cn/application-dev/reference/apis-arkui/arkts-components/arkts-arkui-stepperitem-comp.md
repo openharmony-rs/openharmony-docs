@@ -21,7 +21,7 @@ StepperItem()
 > **说明：** 
 
 > 从API version 8开始支持，从API version 22开始废弃，建议使用
-> [Swiper](arkts-arkui-swiper-comp.md#swiper)替代。
+> Swiper替代。
 
 **起始版本：** 8
 

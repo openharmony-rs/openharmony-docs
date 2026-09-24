@@ -118,7 +118,7 @@ getType(): GestureControl.GestureType
 
 | 类型 | 说明 |
 | --- | --- |
-| [GestureControl.GestureType](arkts-arkui-tapgesture-comp-gesturetype-e.md) | 当前手势识别器的类型。 |
+| GestureControl.GestureType | 当前手势识别器的类型。 |
 
 ## isBuiltIn
 

@@ -105,7 +105,7 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Return by promise. |
+| 401 | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
 **示例**
@@ -150,7 +150,7 @@ addSubtitleFromUrl(url: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Return by promise. |
+| 401 | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
 **示例**
@@ -386,7 +386,7 @@ deselectTrack(index: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Return by promise. |
+| 401 | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
 **示例**
@@ -1543,7 +1543,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback<audio.AudioStre
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -1975,7 +1975,7 @@ async function test(){
 on(type: 'endOfStream', callback: Callback<void>): void
 ```
 
-监听资源播放至结尾的事件；如果用户设置[loop](../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)=true，播放会跳转至开头重播；如果用户没有设置loop，会通过[stateChange](#onstatechange)上报completed状态。
+监听资源播放至结尾的事件；如果用户设置loop=true，播放会跳转至开头重播；如果用户没有设置loop，会通过[stateChange](#onstatechange)上报completed状态。
 
 **起始版本：** 9
 
@@ -2392,9 +2392,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| 201 | Permission denied. |
+| 401 | The parameter check failed. |
+| 801 | Capability not supported. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error.<br>**适用版本：** 9 - 13 |
@@ -2456,7 +2456,7 @@ on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback<audio.AudioStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -3318,7 +3318,7 @@ seek(timeMs: number, mode?: SeekMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)]。<br>当模式为[SEEK_CONTINUOUS](arkts-media-media-seekmode-e.md)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
+| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, duration]。<br>当模式为[SEEK_CONTINUOUS](arkts-media-media-seekmode-e.md)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
 | mode | [SeekMode](arkts-media-media-seekmode-e.md) | 否 | 基于视频I帧的跳转模式，默认为SEEK_PREV_SYNC模式，**仅在视频资源播放时设置**。 |
 
 **示例**
@@ -3414,7 +3414,7 @@ selectTrack(index: number, mode?: SwitchMode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Return by promise. |
+| 401 | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
 **示例**
@@ -3500,11 +3500,11 @@ setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boole
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
-关于drm模块的示例具体可见[@ohos.multimedia.drm](../apis-drm-kit/arkts-apis-drm.md)。
+关于drm模块的示例具体可见@ohos.multimedia.drm。
 
 ```TypeScript
 import { drm } from '@kit.DrmKit';
@@ -3609,7 +3609,7 @@ setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Return by promise. |
+| 401 | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
 **示例**
@@ -3661,7 +3661,7 @@ setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
 **示例**
@@ -3715,7 +3715,7 @@ setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Prom
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Return by promise. |
+| 401 | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
 **示例**
@@ -3804,7 +3804,7 @@ setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
 **示例**
@@ -4011,7 +4011,7 @@ setVideoWindowSize(width: number, height: number) : Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Return by promise. |
+| 401 | Parameter error. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5410003](../errorcode-media.md#5410003-不支持超分) | Super-resolution not supported. Return by promise. |
 | [5410004](../errorcode-media.md#5410004-未使能超分) | Missing enable super-resolution feature in [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md). Return by promise. |
@@ -4442,8 +4442,6 @@ url?: string
 **支持路径示例**：
 
 1. fd类型播放：fd://xx。
-
-![](../../../reference/apis-media-kit/figures/zh-cn_image_url.png)
 
 2. http网络播放：`http://xx`。
 3. https网络播放：`https://xx`。

@@ -1,6 +1,6 @@
 # Span
 
-作为[Text](arkts-arkui-text-comp.md#text)、[ContainerSpan](arkts-arkui-containerspan-comp-attribute.md)组件的子组件，用于显示行内文本，支持对文本的字体、颜色、大小等样式进行细粒度设置。适用于在同一行文本中混合显示不同样式的场景，如不同字体颜色的文本、添加装饰线或阴影效果等。
+作为Text、[ContainerSpan](arkts-arkui-containerspan-comp-attribute.md)组件的子组件，用于显示行内文本，支持对文本的字体、颜色、大小等样式进行细粒度设置。适用于在同一行文本中混合显示不同样式的场景，如不同字体颜色的文本、添加装饰线或阴影效果等。
 
 > **说明：** 
 > 
@@ -8,11 +8,11 @@
 > 
 > - 该组件从API version 10开始支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的属性。支持继承的属性仅包括：fontColor、fontSize、fontStyle、fontWeight、decoration、letterSpacing、textCase、fontFamily、textShadow。
 > 
-> - 支持[通用属性](arkts-arkui-common-comp.md#common)中的[无障碍属性](arkts-arkui-common-comp.md#common)（[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)）、[组件标识](arkts-arkui-common-comp.md#common)（[id](arkts-arkui-common-comp-commonmethod-c.md#id)、[key](arkts-arkui-common-comp-commonmethod-c.md#key)）和[禁用反色能力](arkts-arkui-common-comp.md#common)（[allowForceDark](arkts-arkui-common-comp-commonmethod-c.md#allowforcedark)），不支持其他通用属性。若需设置其他通用属性，应使用[Text](arkts-arkui-text-comp.md#text)进行设置，或改用[属性字符串](../arkts-apis/arkts-arkui-styledstring.md#styled_string)中的[CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md)自行绘制。
+> - 支持通用属性中的无障碍属性（[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)）、组件标识（[id](arkts-arkui-common-comp-commonmethod-c.md#id)、[key](arkts-arkui-common-comp-commonmethod-c.md#key)）和禁用反色能力（[allowForceDark](arkts-arkui-common-comp-commonmethod-c.md#allowforcedark)），不支持其他通用属性。若需设置其他通用属性，应使用Text进行设置，或改用属性字符串中的[CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md)自行绘制。
 > 
 > - [accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)仅在Span设置了[onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick)事件时生效，配置的文本只会体现在无障碍服务识别到的内嵌链接弹窗中。直接播报时，仍播报Span的内容，不会替换为accessibilityText配置的文本。
 > 
-> - [通用事件](arkts-arkui-common-comp.md#common)只支持点击事件[onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick)和悬浮事件[onHover](arkts-arkui-common-comp-commonmethod-c.md#onhover)。
+> - 通用事件只支持点击事件[onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick)和悬浮事件[onHover](arkts-arkui-common-comp-commonmethod-c.md#onhover)。
 
 ## 子组件
 
@@ -225,7 +225,7 @@ struct SpanExample {
 
 ### 示例2（设置文本阴影）
 
-从API version 11开始，该示例通过[textShadow](#textshadow11)属性展示了文本设置阴影的效果。
+从API version 11开始，该示例通过textShadow属性展示了文本设置阴影的效果。
 
 
 
@@ -279,7 +279,7 @@ struct SpanExample {
 
 ### 示例3（设置背景样式）
 
-从API version 11开始，该示例通过[textBackgroundStyle](#textbackgroundstyle11)属性展示了文本设置背景样式的效果。
+从API version 11开始，该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
 
 
 
@@ -303,7 +303,7 @@ struct SpanExample {
 
 ### 示例4（设置文本基线偏移量）
 
-从API version 12开始，该示例通过[baselineOffset](#baselineoffset12)属性展示了文本设置不同基线偏移量的效果。
+从API version 12开始，该示例通过baselineOffset属性展示了文本设置不同基线偏移量的效果。
 
 
 
@@ -340,9 +340,9 @@ struct SpanExample {
 
 ### 示例5（设置文本可变字体的属性）
 
-该示例通过[fontVariations](#fontvariations)属性设置可变字体的属性。
+该示例通过fontVariations属性设置可变字体的属性。
 
-从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+从API版本26.0.0开始，新增fontVariations接口。
 
 ```TypeScript
 // xxx.ets

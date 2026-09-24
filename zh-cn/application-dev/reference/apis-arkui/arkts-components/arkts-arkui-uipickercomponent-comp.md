@@ -14,11 +14,11 @@ UIPickerComponent容器是用于实现用户选择操作的组件。它支持从
 > 
 > - UIPickerComponent容器当前不支持智能手表设备。开发者可通过deviceInfo.deviceType获取设备类型，判断是否为智能手表设备。
 > 
-> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> - 该组件从API版本26.0.0开始支持WithTheme。
 
 > 
 
-## 子组件 > > - 支持多个子组件。 > - 支持子组件类型：[Text](arkts-arkui-text-comp.md#text)、[Image](arkts-arkui-image-comp.md#image)、[Row](arkts-arkui-row-comp.md#row)和[SymbolGlyph](arkts-arkui-symbolglyph-comp.md#symbolglyph)。 > - 支持渲染控制类型：[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)和 > [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)。
+## 子组件 > > - 支持多个子组件。 > - 支持子组件类型：Text、Image、Row和SymbolGlyph。 > - 支持渲染控制类型：[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)和 > [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)。
 
 
 > **说明：** 
@@ -246,7 +246,7 @@ struct UIPickerComponentSelectedIndexExample {
 
 ### 示例4（设置选中项指示器）
 
-从API version 22开始，该示例实现了设置UIPickerComponent容器的选中项指示器。具体包括：在使用背景指示器时，设置[PickerIndicatorStyle](#pickerindicatorstyle对象说明)的backgroundColor、borderRadius；在使用分割线指示器时，设置[PickerIndicatorStyle](#pickerindicatorstyle对象说明)的strokeWidth、dividerColor、startMargin、endMargin。
+从API version 22开始，该示例实现了设置UIPickerComponent容器的选中项指示器。具体包括：在使用背景指示器时，设置PickerIndicatorStyle的backgroundColor、borderRadius；在使用分割线指示器时，设置PickerIndicatorStyle的strokeWidth、dividerColor、startMargin、endMargin。
 
 
 
@@ -1289,9 +1289,9 @@ struct TimeUIPickerComponentExample {
 
 ### 示例9（设置选项高度）
 
-该示例通过[itemHeight](#itemheight)设置UIPickerComponent容器的选项高度。
+该示例通过itemHeight设置UIPickerComponent容器的选项高度。
 
-从API版本26.0.0开始，新增[itemHeight](#itemheight)属性。
+从API版本26.0.0开始，新增itemHeight属性。
 
 
 

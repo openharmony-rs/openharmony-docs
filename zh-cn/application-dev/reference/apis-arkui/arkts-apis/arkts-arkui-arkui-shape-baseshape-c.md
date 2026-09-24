@@ -6,7 +6,7 @@ declare class BaseShape<T> extends CommonShapeMethod<T>
 
 继承自[CommonShapeMethod](arkts-arkui-arkui-shape-commonshapemethod-c.md)。
 
-**继承/实现关系：** BaseShape extends CommonShapeMethod<T>
+**继承/实现关系：** BaseShape extends CommonShapeMethod&lt;T&gt;
 
 **起始版本：** 12
 

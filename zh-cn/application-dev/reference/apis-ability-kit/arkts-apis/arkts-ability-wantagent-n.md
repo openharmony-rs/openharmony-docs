@@ -24,18 +24,18 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getBundleName](arkts-ability-wantagent-getbundlename-f.md#getbundlename) | 获取WantAgent实例所属应用的包名，使用callback异步回调。 |
+| getBundleName | 获取WantAgent实例所属应用的包名，使用callback异步回调。 |
 | [getBundleName](arkts-ability-wantagent-getbundlename-f.md#getbundlename-1) | 获取WantAgent实例所属应用的包名。使用Promise异步回调。 |
-| [getUid](arkts-ability-wantagent-getuid-f.md#getuid) | 获取WantAgent实例所属应用的UID，使用callback异步回调。 |
+| getUid | 获取WantAgent实例所属应用的UID，使用callback异步回调。 |
 | [getUid](arkts-ability-wantagent-getuid-f.md#getuid-1) | 获取WantAgent实例所属应用的UID。使用Promise异步回调。 |
-| [cancel](arkts-ability-wantagent-cancel-f.md#cancel) | 取消WantAgent实例，使用callback异步回调。 |
+| cancel | 取消WantAgent实例，使用callback异步回调。 |
 | [cancel](arkts-ability-wantagent-cancel-f.md#cancel-1) | 取消WantAgent实例。使用Promise异步回调。 |
 | [trigger](arkts-ability-wantagent-trigger-f.md) | 触发WantAgent实例，执行指定的操作（启动Ability、发送公共事件等）。使用callback异步回调。 |
-| [equal](arkts-ability-wantagent-equal-f.md#equal) | 判断两个WantAgent实例是否相等，使用callback异步回调，以此来确定是否是来自同一应用的相同操作。当两个WantAgent实例由当前用户下的同一应用使用相同的WantAgentInfo信息创建，并且实例未被cancel取消，这两个实例相等。在通知（携带WantAgent实例）场景，通知更新时会比较2个通知中的WantAgent实例，不相等时会把旧通知的WantAgent实例删除。 |
+| equal | 判断两个WantAgent实例是否相等，使用callback异步回调，以此来确定是否是来自同一应用的相同操作。当两个WantAgent实例由当前用户下的同一应用使用相同的WantAgentInfo信息创建，并且实例未被cancel取消，这两个实例相等。在通知（携带WantAgent实例）场景，通知更新时会比较2个通知中的WantAgent实例，不相等时会把旧通知的WantAgent实例删除。 |
 | [equal](arkts-ability-wantagent-equal-f.md#equal-1) | 判断两个WantAgent实例是否相等，使用Promise异步回调，以此来确定是否是来自同一应用的相同操作。当两个WantAgent实例由当前用户下的同一应用使用相同的WantAgentInfo信息创建，并且实例未被cancel取消，这两个实例相等。在通知（携带WantAgent实例）场景，通知更新时会比较2个通知中的WantAgent实例，不相等时会把旧通知的WantAgent实例删除。 |
-| [getWantAgent](arkts-ability-wantagent-getwantagent-f.md#getwantagent) | 创建WantAgent，使用callback异步回调。创建成功返回WantAgent对象，创建失败返回空值。 |
+| getWantAgent | 创建WantAgent，使用callback异步回调。创建成功返回WantAgent对象，创建失败返回空值。 |
 | [getWantAgent](arkts-ability-wantagent-getwantagent-f.md#getwantagent-1) | 创建WantAgent。使用Promise异步回调。创建成功返回WantAgent对象，创建失败返回空值。 |
-| [getOperationType](arkts-ability-wantagent-getoperationtype-f.md#getoperationtype) | 获取一个WantAgent实例的OperationType信息，使用callback异步回调。 |
+| getOperationType | 获取一个WantAgent实例的OperationType信息，使用callback异步回调。 |
 | [getOperationType](arkts-ability-wantagent-getoperationtype-f.md#getoperationtype-1) | 获取一个WantAgent实例的OperationType信息。使用Promise异步回调。 |
 
 <!--Del-->

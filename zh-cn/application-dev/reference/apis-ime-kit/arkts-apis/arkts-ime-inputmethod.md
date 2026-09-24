@@ -47,11 +47,11 @@ import { inputMethod } from '@kit.IMEKit';
 | [offAttachmentDidFail](arkts-ime-inputmethod-offattachmentdidfail-f.md) | 取消订阅绑定失败事件。使用callback异步回调。 |
 | [onAttachmentDidFail](arkts-ime-inputmethod-onattachmentdidfail-f.md) | 订阅绑定失败事件。使用callback异步回调。 |
 | [setSimpleKeyboardEnabled](arkts-ime-inputmethod-setsimplekeyboardenabled-f.md) | 编辑框应用设置简单键盘标志。 |
-| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用callback异步回调。 |
+| switchCurrentInputMethodAndSubtype | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用callback异步回调。 |
 | [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype-1) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。 |
-| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype) | 切换当前输入法的子类型。使用callback异步回调。 |
+| switchCurrentInputMethodSubtype | 切换当前输入法的子类型。使用callback异步回调。 |
 | [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype-1) | 切换当前输入法的子类型。使用promise异步回调。 |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod) | 切换输入法，使用callback异步回调。<br> <br>含义/功能：将当前输入法切换为指定的目标输入法。<br> <br>使用场景：当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。<br> <br>使用后效果：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。 |
+| switchInputMethod | 切换输入法，使用callback异步回调。<br> <br>含义/功能：将当前输入法切换为指定的目标输入法。<br> <br>使用场景：当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。<br> <br>使用后效果：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。 |
 | [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod-1) | 切换输入法，使用promise异步回调。<br> <br>含义/功能：将当前输入法切换为指定的目标输入法。<br> <br>使用场景：当前输入法应用需要切换到另一个输入法时使用。<br> <br>使用后效果：成功时系统将当前输入法切换为目标输入法；失败时当前输入法不变。 |
 
 <!--Del-->

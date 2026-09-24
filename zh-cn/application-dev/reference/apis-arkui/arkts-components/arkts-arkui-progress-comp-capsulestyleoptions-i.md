@@ -120,7 +120,7 @@ font?: Font
 
 文本大小（不支持百分比设置）：12fp
 
-其他文本参数跟随[Text](arkts-arkui-text-comp.md#text)组件的主题值。
+其他文本参数跟随Text组件的主题值。
 
 **类型：** Font
 

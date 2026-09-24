@@ -6,7 +6,7 @@ declare class SwipeGestureHandler extends GestureHandler<SwipeGestureHandler>
 
 快滑手势处理器对象类型。
 
-**继承/实现关系：** SwipeGestureHandler extends GestureHandler<SwipeGestureHandler>
+**继承/实现关系：** SwipeGestureHandler extends GestureHandler&lt;SwipeGestureHandler&gt;
 
 **起始版本：** 12
 

@@ -4,7 +4,7 @@
 declare class FormComponentAttribute extends CommonMethod<FormComponentAttribute>
 ```
 
-**继承/实现关系：** FormComponentAttribute extends CommonMethod<FormComponentAttribute>
+**继承/实现关系：** FormComponentAttribute extends CommonMethod&lt;FormComponentAttribute&gt;
 
 **起始版本：** 7
 

@@ -22,10 +22,10 @@ import { securityLabel } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getSecurityLabel](arkts-corefile-securitylabel-getsecuritylabel-f.md#getsecuritylabel) | 获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用Promise异步回调。 |
+| getSecurityLabel | 获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用Promise异步回调。 |
 | [getSecurityLabel](arkts-corefile-securitylabel-getsecuritylabel-f.md#getsecuritylabel-1) | 获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用callback异步回调。 |
 | [getSecurityLabelSync](arkts-corefile-securitylabel-getsecuritylabelsync-f.md) | 以同步方法获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。 |
-| [setSecurityLabel](arkts-corefile-securitylabel-setsecuritylabel-f.md#setsecuritylabel) | 设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。使用Promise异步回调。 |
+| setSecurityLabel | 设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。使用Promise异步回调。 |
 | [setSecurityLabel](arkts-corefile-securitylabel-setsecuritylabel-f.md#setsecuritylabel-1) | 设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。使用callback异步回调。 |
 | [setSecurityLabelSync](arkts-corefile-securitylabel-setsecuritylabelsync-f.md) | 以同步方法设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。 |
 

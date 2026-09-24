@@ -28,7 +28,7 @@ import { insightIntent } from '@kit.AbilityKit';
 | --- | --- |
 | [ExecuteResult](arkts-ability-insightintent-executeresult-i.md) | 意图执行的返回结果。 |
 | [IntentEntity](arkts-ability-insightintent-intententity-i.md) | 意图实体结构体定义，用于定义意图执行过程中涉及的关键信息对象，包括意图参数和意图执行结果等。 |
-| [IntentResult](arkts-ability-insightintent-intentresult-i.md) | 意图执行的返回结果，支持[泛型类型](../../../quick-start/introduction-to-arkts.md#泛型类和接口)。 |
+| [IntentResult](arkts-ability-insightintent-intentresult-i.md) | 意图执行的返回结果，支持泛型类型。 |
 | [QueryEntityParam](arkts-ability-insightintent-queryentityparam-i.md) | 查询实体的参数。 |
 
 <!--Del-->
@@ -37,7 +37,7 @@ import { insightIntent } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [ExecuteResult](arkts-ability-insightintent-executeresult-i-sys.md) | 意图执行的返回结果。 |
-| [IntentResult](arkts-ability-insightintent-intentresult-i-sys.md) | 意图执行的返回结果，支持[泛型类型](../../../quick-start/introduction-to-arkts.md#泛型类和接口)。 |
+| [IntentResult](arkts-ability-insightintent-intentresult-i-sys.md) | 意图执行的返回结果，支持泛型类型。 |
 | [InteractionInfo](arkts-ability-insightintent-interactioninfo-i-sys.md) | 定义当前意图执行完成后返回的交互信息，包括下一个要触发的意图和要显示的交互界面。 |
 | [InteractionModalUIExtension](arkts-ability-insightintent-interactionmodaluiextension-i-sys.md) | 定义当意图执行完成时模态UIExtension要显示为交互界面的信息，不支持分布式。 |
 | [InteractionText](arkts-ability-insightintent-interactiontext-i-sys.md) | 定义当意图执行完成时TEXT要显示为交互界面的信息，不支持分布式。 |

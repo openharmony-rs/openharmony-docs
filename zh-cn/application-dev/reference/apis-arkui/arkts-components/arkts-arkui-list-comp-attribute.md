@@ -4,11 +4,11 @@
 declare class ListAttribute extends ScrollableCommonMethod<ListAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
+除支持通用属性和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md#common)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
+除支持通用事件和滚动组件通用事件外，还支持以下事件：
 
-**继承/实现关系：** ListAttribute extends ScrollableCommonMethod<ListAttribute>
+**继承/实现关系：** ListAttribute extends ScrollableCommonMethod&lt;ListAttribute&gt;
 
 **起始版本：** 7
 
@@ -418,7 +418,7 @@ editModeOptions(options?: EditModeOptions)
 enableEditMode(enabled: boolean | undefined)
 ```
 
-设置List是否启用编辑模式，启用编辑模式后可以在List组件内滑动多选[ListItem](arkts-arkui-listitem-comp.md#list_item)。未通过该接口设置时，不启用编辑模式。
+设置List是否启用编辑模式，启用编辑模式后可以在List组件内滑动多选ListItem。未通过该接口设置时，不启用编辑模式。
 
 **起始版本：** 26.0.0
 
@@ -681,7 +681,7 @@ onEditModeChange(callback: Callback<boolean> | undefined)
 onItemDragEnter(event: (event: ItemDragInfo) => void)
 ```
 
-拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)进入列表范围内时触发。
+拖拽List的子组件ListItem进入列表范围内时触发。
 
 **起始版本：** 8
 
@@ -703,7 +703,7 @@ onItemDragEnter(event: (event: ItemDragInfo) => void)
 onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 ```
 
-拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)离开列表范围时触发。
+拖拽List的子组件ListItem离开列表范围时触发。
 
 **起始版本：** 8
 
@@ -725,7 +725,7 @@ onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number) => void)
 ```
 
-拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)在列表范围内移动时触发。
+拖拽List的子组件ListItem在列表范围内移动时触发。
 
 **起始版本：** 8
 
@@ -747,9 +747,9 @@ onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: numb
 onItemDragStart(event: OnItemDragStartCallback)
 ```
 
-开始拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)时触发。
+开始拖拽List的子组件ListItem时触发。
 
-不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口实现该效果，参考[示例12（使用onMove进行拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例12使用onmove进行拖拽)。但需注意[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口不支持跨ListItemGroup拖拽。
+不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口实现该效果，参考示例12（使用onMove进行拖拽）。但需注意[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口不支持跨ListItemGroup拖拽。
 
 > **说明：** 
 > 
@@ -767,7 +767,7 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md) | 是 | List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)拖拽开始时触发的回调。<br> API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md)。<br>**适用版本：** 23 |
+| event | [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md) | 是 | List的子组件ListItem拖拽开始时触发的回调。<br> API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md)。<br>**适用版本：** 23 |
 
 ## onItemDrop
 
@@ -799,7 +799,7 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 onItemMove(event: (from: number, to: number) => boolean)
 ```
 
-List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)发生移动时触发。
+List的子组件ListItem发生移动时触发。
 
 **起始版本：** 7
 
@@ -1113,7 +1113,7 @@ stackFromEnd(enabled: boolean)
 sticky(value: StickyStyle)
 ```
 
-配合[ListItemGroup](arkts-arkui-listitemgroup-comp.md#list_item_group)组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。从API version 20开始，sticky属性支持StickyStyle.BOTH枚举值，可直接设置为StickyStyle.BOTH以同时支持header吸顶和footer吸底，效果与StickyStyle.Header | StickyStyle.Footer相同。API version 20之前，可通过StickyStyle.Header | StickyStyle.Footer达到相同效果。
+配合ListItemGroup组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。从API version 20开始，sticky属性支持StickyStyle.BOTH枚举值，可直接设置为StickyStyle.BOTH以同时支持header吸顶和footer吸底，效果与StickyStyle.Header | StickyStyle.Footer相同。API version 20之前，可通过StickyStyle.Header | StickyStyle.Footer达到相同效果。
 
 > **说明：** 
 > 
@@ -1190,7 +1190,7 @@ editMode(value: boolean)
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现编辑状态切换和删除列表项，可通过自定义状态变量控制删除按钮的显示与隐藏，并在删除按钮的点击事件中更新数据源，具体
-> 实现方式请参考[示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
+> 实现方式请参考示例3。
 
 **起始版本：** 7
 
@@ -1217,7 +1217,7 @@ onItemDelete(event: (index: number) => boolean)
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现删除列表项，可在自定义删除按钮的点击事件中更新数据源，具体实现方式请参考
-> [示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
+> 示例3。
 
 **起始版本：** 7
 

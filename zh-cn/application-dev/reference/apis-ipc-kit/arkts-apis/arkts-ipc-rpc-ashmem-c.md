@@ -84,7 +84,7 @@ static create(name: string, size: number): Ashmem
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The Ashmem name passed is empty; 4.The Ashmem size passed is less than or equal to 0. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The Ashmem name passed is empty; 4.The Ashmem size passed is less than or equal to 0. |
 
 **示例**
 
@@ -135,7 +135,7 @@ static create(ashmem: Ashmem): Ashmem
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The passed parameter is not an Ashmem object; 3.The ashmem instance for obtaining packaging is empty. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The passed parameter is not an Ashmem object; 3.The ashmem instance for obtaining packaging is empty. |
 
 **示例**
 
@@ -281,7 +281,7 @@ mapTypedAshmem(mapType: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The passed mapType exceeds the maximum protection level. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The passed mapType exceeds the maximum protection level. |
 | [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
 
 **示例**
@@ -334,7 +334,7 @@ readDataFromAshmem(size: number, offset: number): ArrayBuffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900004](../errorcode-rpc.md#1900004-共享内存读数据失败) | Failed to read data from the shared memory. |
 
 **示例**
@@ -386,7 +386,7 @@ setProtectionType(protectionType: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900002](../errorcode-rpc.md#1900002-系统调用ioctl失败) | Failed to call ioctl. |
 
 **示例**
@@ -460,7 +460,7 @@ writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain arrayBuffer information. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain arrayBuffer information. |
 | [1900003](../errorcode-rpc.md#1900003-共享内存写数据失败) | Failed to write data to the shared memory. |
 
 **示例**
@@ -730,7 +730,7 @@ readAshmem(size: number, offset: number): number[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900004](../errorcode-rpc.md#1900004-共享内存读数据失败) | Failed to read data from the shared memory. |
 
 **示例**
@@ -883,7 +883,7 @@ writeAshmem(buf: number[], size: number, offset: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The element does not exist in the array. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The element does not exist in the array. |
 | [1900003](../errorcode-rpc.md#1900003-共享内存写数据失败) | Failed to write data to the shared memory. |
 
 **示例**

@@ -43,7 +43,7 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager) | 获取当前应用的资源管理对象。使用callback异步回调。 |
+| getResourceManager | 获取当前应用的资源管理对象。使用callback异步回调。 |
 | [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-1) | 获取指定应用的资源管理对象。使用callback异步回调。 |
 | [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-2) | 获取当前应用的资源管理对象。使用Promise异步回调。 |
 | [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-3) | 获取指定应用的资源管理对象。使用Promise异步回调。 |

@@ -74,8 +74,8 @@ function queryContacts(context: Context, callback: AsyncCallback<Array<Contact>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
@@ -176,8 +176,8 @@ function queryContacts(context: Context, holder: Holder, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
@@ -280,8 +280,8 @@ function queryContacts(context: Context, attrs: ContactAttributes, callback: Asy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
@@ -388,8 +388,8 @@ function queryContacts(context: Context, holder: Holder, attrs: ContactAttribute
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 
@@ -506,8 +506,8 @@ function queryContacts(context: Context, holder?: Holder, attrs?: ContactAttribu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例**
 

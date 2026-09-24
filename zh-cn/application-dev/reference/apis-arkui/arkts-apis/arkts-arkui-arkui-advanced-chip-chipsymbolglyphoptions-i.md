@@ -33,7 +33,7 @@ activated?: SymbolGlyphModifier
 
 值为undefined时，按默认值处理。
 
-**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 12
 
@@ -55,7 +55,7 @@ normal?: SymbolGlyphModifier
 
 值为undefined时，按默认值处理。
 
-**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 12
 

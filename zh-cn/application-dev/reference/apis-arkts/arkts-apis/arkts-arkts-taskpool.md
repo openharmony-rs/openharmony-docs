@@ -23,10 +23,10 @@ import { taskpool } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [cancel](arkts-arkts-taskpool-cancel-f.md#cancel) | 取消任务池中的任务。  - 当任务在taskpool等待队列中，取消该任务后该任务将不再执行，并返回任务被取消的异常。  - 当任务已经在taskpool工作线程执行，取消该任务并不影响任务继续执行。执行结果在catch分支返回，开发者可搭配isCanceled方法对任务取消行为作出响应。  - taskpool.cancel对其之前的taskpool.execute、taskpool.executeDelayed或taskpool.executePeriodically生效。 |
+| cancel | 取消任务池中的任务。  - 当任务在taskpool等待队列中，取消该任务后该任务将不再执行，并返回任务被取消的异常。  - 当任务已经在taskpool工作线程执行，取消该任务并不影响任务继续执行。执行结果在catch分支返回，开发者可搭配isCanceled方法对任务取消行为作出响应。  - taskpool.cancel对其之前的taskpool.execute、taskpool.executeDelayed或taskpool.executePeriodically生效。 |
 | [cancel](arkts-arkts-taskpool-cancel-f.md#cancel-1) | 取消任务池中的任务组。如果任务组中的任务未全部执行结束，则整个任务组的执行结果返回undefined。从API version 20开始，支持在执行cancel操作后，在catch分支里使用BusinessError&lt;[taskpool.TaskResult](arkts-arkts-taskpool-taskresult-i.md)&gt;的泛型标记，来获取任务中抛出的异常信息或最终的执行结果。 |
 | [cancel](arkts-arkts-taskpool-cancel-f.md#cancel-2) | 通过任务ID取消任务池中的任务。  - 如果任务在taskpool等待队列中，取消后任务将不再执行，并返回任务取消的异常。  - 当任务已经在taskpool工作线程执行，取消该任务并不影响任务继续执行。执行结果在catch分支返回，开发者可搭配isCanceled方法对任务取消行为作出响应。  - taskpool.cancel对其之前的taskpool.execute、taskpool.executeDelayed或taskpool.executePeriodically生效。  - 在其他线程调用taskpool.cancel时，需注意其行为是异步的，可能导致在cancel调用之后的taskpool.execute或taskpool.executeDelayed的任务被取消。 |
-| [execute](arkts-arkts-taskpool-execute-f.md#execute) | 将待执行的函数放入taskpool的内部任务队列，函数不会立即执行，而是等待分发到工作线程执行。在当前执行模式下，不支持取消任务。使用Promise异步回调。 |
+| execute | 将待执行的函数放入taskpool的内部任务队列，函数不会立即执行，而是等待分发到工作线程执行。在当前执行模式下，不支持取消任务。使用Promise异步回调。 |
 | [execute](arkts-arkts-taskpool-execute-f.md#execute-1) | 校验并发函数的参数类型和返回类型后，将函数添加到taskpool的任务队列。在当前执行模式下，不支持取消任务。使用Promise异步回调。 |
 | [execute](arkts-arkts-taskpool-execute-f.md#execute-2) | 将创建好的任务添加到taskpool的内部任务队列中，任务不会立即执行，而是等待分发到工作线程执行。当前模式支持设置任务优先级和通过cancel取消任务。使用Promise异步回调。 |
 | [execute](arkts-arkts-taskpool-execute-f.md#execute-3) | 将创建好的泛型任务放入taskpool的内部任务队列，校验任务的参数类型和返回值类型。使用Promise异步回调。execute任务的校验是结合**new GenericsTask**一起用的，参数、返回值类型需与**new GenericsTask**中的类型保持一致。 |
@@ -34,9 +34,9 @@ import { taskpool } from '@kit.ArkTS';
 | [execute](arkts-arkts-taskpool-execute-f.md#execute-5) | 将创建好的任务添加到taskpool的内部任务队列中，任务不会立即执行，而是等待分发到工作线程执行。当前模式支持设置任务优先级、设置超时时间和通过cancel取消任务。使用Promise异步回调。 |
 | [execute](arkts-arkts-taskpool-execute-f.md#execute-6) | 将创建好的泛型任务放入taskpool的内部任务队列，使用Promise异步回调。execute任务的类型校验与GenericsTask的构造类型相关联，参数类型和返回值类型需与new GenericsTask时指定的类型保持一致。 |
 | [execute](arkts-arkts-taskpool-execute-f.md#execute-7) | 将创建好的任务组放入taskpool内部任务队列，任务组中的任务不会立即执行，而是等待分发到工作线程执行。任务组中任务全部执行完成后，结果数组统一返回。此模式适用于执行关联任务。使用Promise异步回调。configs配置里可以指定任务组执行的超时时间和优先级。指定的超时时间到了，但是任务组还未完成，则会抛出任务组超时的异常信息。 |
-| [executeDelayed](arkts-arkts-taskpool-executedelayed-f.md#executedelayed) | 延时执行任务。当前执行模式可以设置任务优先级，可通过cancel取消任务。使用Promise异步回调。 |
+| executeDelayed | 延时执行任务。当前执行模式可以设置任务优先级，可通过cancel取消任务。使用Promise异步回调。 |
 | [executeDelayed](arkts-arkts-taskpool-executedelayed-f.md#executedelayed-1) | 延时执行泛型任务，使用Promise异步回调。executeDelayed任务的类型校验与GenericsTask的构造类型相关联，参数类型和返回值类型需与new GenericsTask时指定的类型保持一致。 |
-| [executePeriodically](arkts-arkts-taskpool-executeperiodically-f.md#executeperiodically) | 周期任务每隔period时长执行一次。当前执行模式支持设置任务优先级，可通过cancel取消任务。 |
+| executePeriodically | 周期任务每隔period时长执行一次。当前执行模式支持设置任务优先级，可通过cancel取消任务。 |
 | [executePeriodically](arkts-arkts-taskpool-executeperiodically-f.md#executeperiodically-1) | 周期执行泛型任务，使用Promise异步回调。executePeriodically任务的类型校验与GenericsTask的构造类型相关联，参数类型和返回值类型需与new GenericsTask时指定的类型保持一致。 |
 | [getTask](arkts-arkts-taskpool-gettask-f.md) | 通过taskId或taskId与taskName获取对应的Task实例。 |
 | [getTaskPoolInfo](arkts-arkts-taskpool-gettaskpoolinfo-f.md) | 获取任务池的线程信息和任务信息。 |
@@ -75,5 +75,5 @@ import { taskpool } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../../napi/qos-guidelines.md#qos等级定义)。 |
+| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考QoS等级定义。 |
 | [State](arkts-arkts-taskpool-state-e.md) | 表示任务（Task）状态的枚举。 |

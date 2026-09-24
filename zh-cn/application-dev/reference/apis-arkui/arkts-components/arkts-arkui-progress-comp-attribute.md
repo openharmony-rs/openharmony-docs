@@ -5,14 +5,14 @@ declare class ProgressAttribute<Type extends keyof ProgressStyleMap = keyof Prog
   Style extends ProgressStyleMap[Type] = ProgressStyleMap[Type]> extends CommonMethod<ProgressAttribute<Type>>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+除支持通用属性外，还支持以下属性：
 
 > **说明：** 
 > 
 > 该组件重写了通用属性[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)，直接添加在Progress组件上，设置进度条的底色。如需设
 > 置整个Progress组件的背景色，需要在外层容器上添加backgroundColor，并用该容器包裹Progress组件。
 
-**继承/实现关系：** ProgressAttribute extends CommonMethod<ProgressAttribute<Type>>
+**继承/实现关系：** ProgressAttribute extends CommonMethod&lt;ProgressAttribute&lt;Type&gt;&gt;
 
 **起始版本：** 7
 
@@ -26,7 +26,7 @@ color(value: ResourceColor | LinearGradient)
 
 设置进度条前景色。
 
-从API version 10开始支持利用LinearGradient设置Ring样式的渐变色。Ring类型不建议设置透明度，如需设置透明度，建议使用[DataPanel](arkts-arkui-datapanel-comp.md#data_panel)。
+从API version 10开始支持利用LinearGradient设置Ring样式的渐变色。Ring类型不建议设置透明度，如需设置透明度，建议使用DataPanel。
 
 从API version 23开始支持利用LinearGradient设置Linear样式和Capsule样式的渐变色。API version 22及之前版本使用该方式设置时，会以默认主题色显示。
 
@@ -92,7 +92,7 @@ privacySensitive(isPrivacySensitiveMode: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br> 默认值：false <br>**说明：** <br>设置null表示不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用[FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component系统接口)组件设置[隐私遮罩](arkts-arkui-common-comp.md#common)属性，显示卡片时才有隐私遮罩效果。<!-- DelEnd--> |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br> 默认值：false <br>**说明：** <br>设置null表示不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用FormComponent组件设置隐私遮罩属性，显示卡片时才有隐私遮罩效果。<!-- DelEnd--> |
 
 ## style
 

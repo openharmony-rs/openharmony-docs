@@ -22,7 +22,7 @@ import { JSON } from '@kit.ArkTS';
 | [parse](arkts-arkts-json-parse-f.md) | 解析JSON字符串生成ArkTS对象或null。解析过程中，每个键值对按从最内层到最外层的顺序依次经过reviver函数处理，返回值替换原始值；当传入ParseOptions指定BigIntMode时，符合条件的整数将被解析为BigInt；当入参字符串为'null'时返回null。 |
 | [parseSendable](arkts-arkts-json-parsesendable-f.md) | 解析JSON字符串，生成可直接跨并发实例（Worker或TaskPool）传递、无需拷贝的Sendable对象图。当解析后的JSON数据需要跨线程共享时，使用本接口替代[parse](arkts-arkts-json-parse-f.md)：解析结果直接创建于共享堆，调用返回后即可被各并发实例访问。 |
 | [remove](arkts-arkts-json-remove-f.md) | 从ArkTS对象中删除某种属性，可用于[JSON.parse](arkts-arkts-json-parse-f.md)解析JSON字符串之后，如清理敏感字段、移除冗余数据等场景。JSON.remove接口仅支持最外层为字典形式（即大括号而非中括号包围）的合法JSON串。 |
-| [stringify](arkts-arkts-json-stringify-f.md#stringify) | 该方法将一个ArkTS对象或数组转换为JSON字符串，支持线性容器的转换，不支持非线性容器（传入非线性容器时无法正确序列化）。 |
+| stringify | 该方法将一个ArkTS对象或数组转换为JSON字符串，支持线性容器的转换，不支持非线性容器（传入非线性容器时无法正确序列化）。 |
 | [stringify](arkts-arkts-json-stringify-f.md#stringify-1) | 该方法将一个ArkTS对象或数组转换为JSON字符串，支持线性容器的转换，不支持非线性容器。 |
 
 ### 接口

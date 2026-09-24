@@ -43,7 +43,7 @@ static closeFileDescriptor(fd: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 
 **示例**
 
@@ -181,7 +181,7 @@ static dupFileDescriptor(fd: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900013](../errorcode-rpc.md#1900013-系统调用dup失败) | Failed to call dup. |
 
 **示例**
@@ -495,7 +495,7 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The obtained value of typeCode is incorrect; |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The obtained value of typeCode is incorrect; |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -662,7 +662,7 @@ readBooleanArray(dataIn: boolean[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -801,7 +801,7 @@ readByteArray(dataIn: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -938,7 +938,7 @@ readCharArray(dataIn: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -1077,7 +1077,7 @@ readDoubleArray(dataIn: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -1367,7 +1367,7 @@ readFloatArray(dataIn: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -1509,7 +1509,7 @@ readIntArray(dataIn: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -1692,7 +1692,7 @@ readLongArray(dataIn: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -1787,7 +1787,7 @@ readParcelable(dataIn: Parcelable): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 | [1900012](../errorcode-rpc.md#1900012-js回调方法执行失败) | Failed to call the JS callback function. |
 
@@ -1852,7 +1852,7 @@ readParcelableArray(parcelableArray: Parcelable[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The length of the array passed when reading is not equal to the length passed when writing to the array; 5.The element does not exist in the array. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The length of the array passed when reading is not equal to the length passed when writing to the array; 5.The element does not exist in the array. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 | [1900012](../errorcode-rpc.md#1900012-js回调方法执行失败) | Failed to call the JS callback function. |
 
@@ -1931,7 +1931,7 @@ readRawDataBuffer(size: number): ArrayBuffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -2045,7 +2045,7 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The length of the array passed when reading is not equal to the length passed when writing to the array. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The length of the array passed when reading is not equal to the length passed when writing to the array. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -2204,7 +2204,7 @@ readShortArray(dataIn: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -2346,7 +2346,7 @@ readStringArray(dataIn: string[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -2473,7 +2473,7 @@ rewindRead(pos: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -2521,7 +2521,7 @@ rewindWrite(pos: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -2567,7 +2567,7 @@ setCapacity(size: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 | [1900011](../errorcode-rpc.md#1900011-内存分配失败) | Memory allocation failed. |
 
@@ -2610,7 +2610,7 @@ setSize(size: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -2661,7 +2661,7 @@ writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The obtained value of typeCode is incorrect; 5.Failed to obtain arrayBuffer information. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The obtained value of typeCode is incorrect; 5.Failed to obtain arrayBuffer information. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -2718,7 +2718,7 @@ writeAshmem(ashmem: Ashmem): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter is not an instance of the Ashmem object. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter is not an instance of the Ashmem object. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -2776,7 +2776,7 @@ writeBoolean(val: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -2821,7 +2821,7 @@ writeBooleanArray(booleanArray: boolean[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -2869,7 +2869,7 @@ writeByte(val: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -2914,7 +2914,7 @@ writeByteArray(byteArray: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. 5.The type of the element in the array is incorrect. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. 5.The type of the element in the array is incorrect. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -2961,7 +2961,7 @@ writeChar(val: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3006,7 +3006,7 @@ writeCharArray(charArray: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3051,7 +3051,7 @@ writeDouble(val: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3096,7 +3096,7 @@ writeDoubleArray(doubleArray: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3148,7 +3148,7 @@ writeFileDescriptor(fd: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3193,7 +3193,7 @@ writeFloat(val: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3238,7 +3238,7 @@ writeFloatArray(floatArray: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3288,7 +3288,7 @@ writeInt(val: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3334,7 +3334,7 @@ writeIntArray(intArray: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3379,7 +3379,7 @@ writeInterfaceToken(token: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3425,7 +3425,7 @@ writeLong(val: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3470,7 +3470,7 @@ writeLongArray(longArray: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3576,7 +3576,7 @@ writeParcelable(val: Parcelable): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3641,7 +3641,7 @@ writeParcelableArray(parcelableArray: Parcelable[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3713,7 +3713,7 @@ writeRawDataBuffer(rawData: ArrayBuffer, size: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain arrayBuffer information; 4.The transferred size cannot be obtained; 5.The transferred size is less than or equal to 0; 6.The transferred size is greater than the byte length of ArrayBuffer. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain arrayBuffer information; 4.The transferred size cannot be obtained; 5.The transferred size is less than or equal to 0; 6.The transferred size is greater than the byte length of ArrayBuffer. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3765,7 +3765,7 @@ writeRemoteObject(obj: IRemoteObject): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900008](../errorcode-rpc.md#1900008-非法的ipc对象) | The proxy or remote object is invalid. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
@@ -3824,7 +3824,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The obtained remoteObject is null. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The obtained remoteObject is null. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3882,7 +3882,7 @@ writeShort(val: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3927,7 +3927,7 @@ writeShortArray(shortArray: number[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -3979,7 +3979,7 @@ writeString(val: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -4025,7 +4025,7 @@ writeStringArray(stringArray: string[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The string length is greater than or equal to 40960; 5.The number of bytes copied to the buffer is different from the length of the obtained string. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The string length is greater than or equal to 40960; 5.The number of bytes copied to the buffer is different from the length of the obtained string. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**
@@ -4077,7 +4077,7 @@ readRawData(size: number): number[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
+| 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900010](../errorcode-rpc.md#1900010-读取messagesequence数据失败) | Failed to read data from the message sequence. |
 
 **示例**
@@ -4134,7 +4134,7 @@ writeRawData(rawData: number[], size: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The transferred size cannot be obtained; 5.The transferred size is less than or equal to 0; 6.The element does not exist in the array; 7.Failed to obtain typedArray information; 8.The array is not of type int32; 9.The length of typedarray is smaller than the size of the original data sent. |
+| 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The transferred size cannot be obtained; 5.The transferred size is less than or equal to 0; 6.The element does not exist in the array; 7.Failed to obtain typedArray information; 8.The array is not of type int32; 9.The length of typedarray is smaller than the size of the original data sent. |
 | [1900009](../errorcode-rpc.md#1900009-向messagesequence写入数据失败) | Failed to write data to the message sequence. |
 
 **示例**

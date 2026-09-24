@@ -42,7 +42,7 @@ static disableMenuItems(items: Array<TextMenuItemId>): void
 > - 此接口调用后将影响文本组件的接口[editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions)，其回调方法[onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu)的入参列表中不包含被屏蔽的菜单选项。
 > 
 > 
-> - 涉及文本选择菜单的组件有 [Text](../arkts-components/arkts-arkui-text-comp.md#text)、[TextArea](../arkts-components/arkts-arkui-textarea-comp.md#text_area)、[TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input)、[Search](../arkts-components/arkts-arkui-search-comp.md#search)、[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)、[Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md#webweb控制器)。
+> - 涉及文本选择菜单的组件有 Text、TextArea、TextInput、Search、RichEditor、Web。
 > 
 > 
 > - 系统服务菜单项指除[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)中的复制、剪切、全选、粘贴以外的菜单项。
@@ -144,7 +144,7 @@ static disableSystemServiceMenuItems(disable: boolean): void
 > - 此接口调用后将影响文本组件的接口[editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions)，其回调方法onCreateMenu的入参列表中不包含被屏蔽的菜单选项。
 > 
 > 
-> - 涉及文本选择菜单的组件有 [Text](../arkts-components/arkts-arkui-text-comp.md#text)、TextArea、[TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input)、Search、[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)、Web。
+> - 涉及文本选择菜单的组件有 Text、TextArea、TextInput、Search、RichEditor、Web。
 > 
 > 
 > - 系统服务菜单项指除[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)中的复制、剪切、全选、粘贴以外的菜单项。

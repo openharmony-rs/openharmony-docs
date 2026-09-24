@@ -18,28 +18,28 @@ import { radio } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getISOCountryCodeForNetwork](arkts-telephony-radio-getisocountrycodefornetwork-f.md#getisocountrycodefornetwork) | 获取注册网络所在国家的ISO国家码。使用callback异步回调。 |
+| getISOCountryCodeForNetwork | 获取注册网络所在国家的ISO国家码。使用callback异步回调。 |
 | [getISOCountryCodeForNetwork](arkts-telephony-radio-getisocountrycodefornetwork-f.md#getisocountrycodefornetwork-1) | 获取注册网络所在国家的ISO国家码。使用Promise异步回调。 |
 | [getISOCountryCodeForNetworkSync](arkts-telephony-radio-getisocountrycodefornetworksync-f.md) | 获取注册网络所在国家的ISO国家码。 |
-| [getNetworkSelectionMode](arkts-telephony-radio-getnetworkselectionmode-f.md#getnetworkselectionmode) | 获取当前选网模式。使用callback异步回调。 |
+| getNetworkSelectionMode | 获取当前选网模式。使用callback异步回调。 |
 | [getNetworkSelectionMode](arkts-telephony-radio-getnetworkselectionmode-f.md#getnetworkselectionmode-1) | 获取当前选网模式。使用Promise异步回调。 |
-| [getNetworkState](arkts-telephony-radio-getnetworkstate-f.md#getnetworkstate) | 获取网络状态。使用callback异步回调。 |
+| getNetworkState | 获取网络状态。使用callback异步回调。 |
 | [getNetworkState](arkts-telephony-radio-getnetworkstate-f.md#getnetworkstate-1) | 获取网络状态。使用Promise异步回调。 |
 | [getNetworkState](arkts-telephony-radio-getnetworkstate-f.md#getnetworkstate-2) | 获取网络状态。使用callback异步回调。 |
-| [getOperatorName](arkts-telephony-radio-getoperatorname-f.md#getoperatorname) | 获取运营商名称。使用callback异步回调。 |
+| getOperatorName | 获取运营商名称。使用callback异步回调。 |
 | [getOperatorName](arkts-telephony-radio-getoperatorname-f.md#getoperatorname-1) | 获取运营商名称。使用Promise异步回调。 |
 | [getOperatorNameSync](arkts-telephony-radio-getoperatornamesync-f.md) | 获取运营商名称。 |
-| [getPrimarySlotId](arkts-telephony-radio-getprimaryslotid-f.md#getprimaryslotid) | 获取主卡所在卡槽的索引号。使用callback异步回调。 |
+| getPrimarySlotId | 获取主卡所在卡槽的索引号。使用callback异步回调。 |
 | [getPrimarySlotId](arkts-telephony-radio-getprimaryslotid-f.md#getprimaryslotid-1) | 获取主卡所在卡槽的索引号。使用Promise异步回调。 |
-| [getRadioTech](arkts-telephony-radio-getradiotech-f.md#getradiotech) | 获取当前接入的CS域和PS域无线接入技术。使用callback异步回调。其中，CS域为电路交换域，PS为分组交换域。 |
+| getRadioTech | 获取当前接入的CS域和PS域无线接入技术。使用callback异步回调。其中，CS域为电路交换域，PS为分组交换域。 |
 | [getRadioTech](arkts-telephony-radio-getradiotech-f.md#getradiotech-1) | 获取当前接入的CS域和PS域无线接入技术。使用Promise异步回调。其中，CS域为电路交换域，PS为分组交换域。 |
 | [getRadioTechSync](arkts-telephony-radio-getradiotechsync-f.md) | 获取当前接入的CS域和PS域无线接入技术。CS域为电路交换域，PS为分组交换域。 |
-| [getSignalInformation](arkts-telephony-radio-getsignalinformation-f.md#getsignalinformation) | 获取指定SIM卡槽对应的注册网络信号强度信息列表。使用callback异步回调。 |
+| getSignalInformation | 获取指定SIM卡槽对应的注册网络信号强度信息列表。使用callback异步回调。 |
 | [getSignalInformation](arkts-telephony-radio-getsignalinformation-f.md#getsignalinformation-1) | 获取指定SIM卡槽对应的注册网络信号强度信息列表。使用Promise异步回调。 |
 | [getSignalInformationSync](arkts-telephony-radio-getsignalinformationsync-f.md) | 获取指定SIM卡槽对应的注册网络信号强度信息列表。 |
-| [isNrSupported](arkts-telephony-radio-isnrsupported-f.md#isnrsupported) | 判断当前设备是否支持NR(New Radio)。 |
+| isNrSupported | 判断当前设备是否支持NR(New Radio)。 |
 | [isNrSupported](arkts-telephony-radio-isnrsupported-f.md#isnrsupported-1) | 判断当前设备是否支持NR(New Radio)。 |
-| [isRadioOn](arkts-telephony-radio-isradioon-f.md#isradioon) | 判断指定卡槽位的Radio是否打开。使用callback异步回调。 |
+| isRadioOn | 判断指定卡槽位的Radio是否打开。使用callback异步回调。 |
 | [isRadioOn](arkts-telephony-radio-isradioon-f.md#isradioon-1) | 判断Radio是否打开。使用Promise异步回调。 |
 | [isRadioOn](arkts-telephony-radio-isradioon-f.md#isradioon-2) | 判断主卡的Radio是否打开。使用callback异步回调。 |
 

@@ -1,6 +1,6 @@
 # ImageSpan
 
-ImageSpan是[Text](arkts-arkui-text-comp.md#text)、[ContainerSpan](arkts-arkui-containerspan-comp-attribute.md)组件的子组件，用于在文本中显示行内图片，支持设置图片对齐方式、缩放类型、加载占位图和颜色滤镜等，适用于需要在文本段落中嵌入图片实现图文混排的场景。
+ImageSpan是Text、[ContainerSpan](arkts-arkui-containerspan-comp-attribute.md)组件的子组件，用于在文本中显示行内图片，支持设置图片对齐方式、缩放类型、加载占位图和颜色滤镜等，适用于需要在文本段落中嵌入图片实现图文混排的场景。
 
 > **说明：** 
 > 
@@ -52,7 +52,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 ### 示例1（设置对齐方式）
 
-从API version 10开始，该示例通过[verticalAlign](#verticalalign)、[objectFit](#objectfit)属性展示了ImageSpan组件的对齐方式以及缩放效果。
+从API version 10开始，该示例通过verticalAlign、objectFit属性展示了ImageSpan组件的对齐方式以及缩放效果。
 
 
 
@@ -104,7 +104,7 @@ struct SpanExample {
 
 ### 示例2（设置背景样式）
 
-从API version 11开始，该示例通过[textBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11)属性展示了文本设置背景样式的效果。
+从API version 11开始，该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
 
 
 
@@ -133,7 +133,7 @@ struct Index {
 
 ### 示例3（为图片添加事件）
 
-从API version 12开始，该示例通过[onComplete](#oncomplete12)、[onError](#onerror12)为图片添加加载成功和加载异常的事件。
+从API version 12开始，该示例通过onComplete、onError为图片添加加载成功和加载异常的事件。
 
 ```TypeScript
 // xxx.ets
@@ -162,7 +162,7 @@ struct Index {
 
 ### 示例4（设置颜色滤镜）
 
-从API version 14开始，该示例通过[colorFilter](#colorfilter14)属性展示了给ImageSpan图像设置颜色滤镜的效果。
+从API version 14开始，该示例通过colorFilter属性展示了给ImageSpan图像设置颜色滤镜的效果。
 
 
 
@@ -209,7 +209,7 @@ struct SpanExample {
 
 ### 示例5（设置加载占位图）
 
-从API version 12开始，该示例通过[alt](#alt12)属性展示了ImageSpan设置加载网络图片时占位图的效果。
+从API version 12开始，该示例通过alt属性展示了ImageSpan设置加载网络图片时占位图的效果。
 
 使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
@@ -282,7 +282,7 @@ struct SpanExample {
 
 ### 示例6（使用supportSvg2属性时，SVG图片的显示效果）
 
-从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)的[SVG易用性提升](ts-image-svg2-capabilities.md#svg易用性提升)能力生效。
+从API version 22开始，该示例通过设置supportSvg2属性，使SVG标签解析能力增强功能的SVG易用性提升能力生效。
 
 
 
@@ -323,7 +323,7 @@ struct Index {
 
 ### 示例7（设置图片拉伸）
 
-该示例通过[resizable](#resizable)属性的slice选项，对ImageSpan图片不同方向进行拉伸。
+该示例通过resizable属性的slice选项，对ImageSpan图片不同方向进行拉伸。
 
 从API版本26.1.0开始，新增resizable属性。
 

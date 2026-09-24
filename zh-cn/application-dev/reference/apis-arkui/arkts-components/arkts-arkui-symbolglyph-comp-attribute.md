@@ -4,9 +4,9 @@
 declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
 ```
 
-支持[通用属性](arkts-arkui-common-comp.md#common)，不支持文本通用属性，仅支持以下特有属性：
+支持通用属性，不支持文本通用属性，仅支持以下特有属性：
 
-**继承/实现关系：** SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
+**继承/实现关系：** SymbolGlyphAttribute extends CommonMethod&lt;SymbolGlyphAttribute&gt;
 
 **起始版本：** 11
 
@@ -130,7 +130,7 @@ fontSize(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolGlyph组件字体大小。<br>取值范围：[0, +∞) <br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>不支持设置百分比字符串。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolGlyph组件字体大小。<br>取值范围：[0, +∞) <br>单位：fp <br>不支持设置百分比字符串。 |
 
 ## fontWeight
 
@@ -363,4 +363,4 @@ symbolShadow(shadow: Optional<ShadowOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shadow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | SymbolGlyph组件的阴影效果。<br>单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>**说明：** <br>仅支持ShadowOptions中的radius、color、offsetX、offsetY属性，不支持fill、type属性和color中的ColoringStrategy枚举值。 |
+| shadow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | SymbolGlyph组件的阴影效果。<br>单位：vp <br>**说明：** <br>仅支持ShadowOptions中的radius、color、offsetX、offsetY属性，不支持fill、type属性和color中的ColoringStrategy枚举值。 |

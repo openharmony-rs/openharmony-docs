@@ -4,11 +4,11 @@
 declare class LazyVGridLayoutAttribute extends LazyGridLayoutAttribute<LazyVGridLayoutAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
+除支持通用属性外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md#common)外，还支持以下事件：
+除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** LazyVGridLayoutAttribute extends LazyGridLayoutAttribute<LazyVGridLayoutAttribute>
+**继承/实现关系：** LazyVGridLayoutAttribute extends LazyGridLayoutAttribute&lt;LazyVGridLayoutAttribute&gt;
 
 **起始版本：** 19
 
@@ -36,7 +36,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 
 非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算列数时，应使用repeat(auto-fill, track-size)。
 
-使用效果可以参考[示例3](../../../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#示例3设置自适应列数)。
+使用效果可以参考示例3。
 
 设置为'0fr'时，该列的列宽为0，不显示子组件。设置为其他非法值时，子组件显示为固定1列。
 

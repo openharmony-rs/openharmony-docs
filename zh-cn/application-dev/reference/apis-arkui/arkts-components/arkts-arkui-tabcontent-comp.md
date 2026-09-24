@@ -64,7 +64,7 @@ TabContent()
 
 ### 示例1（自定义页签切换联动）
 
-本示例通过[onAnimationStart](ts-container-tabs.md#onanimationstart11)、[onChange](ts-container-tabs.md#onchange)实现切换时自定义tabBar和TabContent的联动。
+本示例通过onAnimationStart、onChange实现切换时自定义tabBar和TabContent的联动。
 
 > 说明
 > 
@@ -191,7 +191,7 @@ struct TabContentExample {
 
 ### 示例2（自定义侧边页签）
 
-本示例通过[vertical](./ts-container-tabs.md#vertical)、[barPosition](./ts-container-tabs.md#barposition9)实现侧边页签。
+本示例通过vertical、barPosition实现侧边页签。
 
 > 说明
 > 
@@ -443,7 +443,7 @@ struct TabBarStyleExample {
 
 ### 示例4（设置子页签下划线基本属性）
 
-本示例通过SubTabBarStyle中的[indicator](#indicator10)属性，实现了子页签下划线基本属性的展示。
+本示例通过SubTabBarStyle中的indicator属性，实现了子页签下划线基本属性的展示。
 
 
 
@@ -681,7 +681,7 @@ struct TabsAttr {
 
 ### 示例5（设置子页签文本自适应高度属性）
 
-本示例通过[heightAdaptivePolicy](#labelstyle10对象说明)实现了子页签文本高度自适应。
+本示例通过heightAdaptivePolicy实现了子页签文本高度自适应。
 
 
 
@@ -769,7 +769,7 @@ struct TabsTextOverflow {
 
 ### 示例6（设置底部页签基本属性）
 
-本示例通过[padding](#padding10)、[verticalAlign](#verticalalign10)、[layoutMode](#layoutmode10)、[symmetricExtensible](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md#symmetricextensible)实现了底部页签基本属性的展示。
+本示例通过padding、verticalAlign、layoutMode、[symmetricExtensible](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md#symmetricextensible)实现了底部页签基本属性的展示。
 
 
 
@@ -921,9 +921,9 @@ struct TabContentExample6 {
 
 ### 示例7（设置子页签/底部页签文本颜色）
 
-本示例通过[LabelStyle](#labelstyle10对象说明)中的unselectedColor和selectedColor改变底部页签以及子页签的文本颜色。
+本示例通过LabelStyle中的unselectedColor和selectedColor改变底部页签以及子页签的文本颜色。
 
-通过[iconStyle](#iconstyle12)中的unselectedColor和selectedColor改变底部页签的图标颜色。
+通过iconStyle中的unselectedColor和selectedColor改变底部页签的图标颜色。
 
 > 说明
 > 
@@ -1211,7 +1211,7 @@ struct Index {
 
 ### 示例10（通过ComponentContent预加载子节点）
 
-该示例实现了通过ComponentContent设置TabBar，使用TabsController的[preloadItems](ts-container-tabs.md#preloaditems12)预加载子节点。
+该示例实现了通过ComponentContent设置TabBar，使用TabsController的preloadItems预加载子节点。
 
 
 
@@ -1387,7 +1387,7 @@ struct MyComponent {
 
 ### 示例11（设置子页签indicator为图片）
 
-该示例通过SubTabBarStyle中的[indicator](#indicator22)属性，实现了图片格式的子页签下划线风格。
+该示例通过SubTabBarStyle中的indicator属性，实现了图片格式的子页签下划线风格。
 
 从API version 22开始，新增了入参类型包含图片的indicator属性。
 

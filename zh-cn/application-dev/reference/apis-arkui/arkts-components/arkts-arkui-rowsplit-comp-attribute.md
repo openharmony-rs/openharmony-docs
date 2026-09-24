@@ -8,7 +8,7 @@ declare class RowSplitAttribute extends CommonMethod<RowSplitAttribute>
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** RowSplitAttribute extends CommonMethod<RowSplitAttribute>
+**继承/实现关系：** RowSplitAttribute extends CommonMethod&lt;RowSplitAttribute&gt;
 
 **起始版本：** 7
 

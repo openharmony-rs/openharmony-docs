@@ -6,7 +6,7 @@ declare class SelectAttribute extends CommonMethod<SelectAttribute>
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** SelectAttribute extends CommonMethod<SelectAttribute>
+**继承/实现关系：** SelectAttribute extends CommonMethod&lt;SelectAttribute&gt;
 
 **起始版本：** 8
 

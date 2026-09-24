@@ -102,7 +102,7 @@ isLiftingDisabled?: boolean
 isMultiSelectionEnabled?: boolean
 ```
 
-表示拖拽过程中背板图是否支持多选聚拢效果。true表示支持多选聚拢效果，false表示不支持多选聚拢效果。该参数只在[Grid](arkts-arkui-grid-comp.md#grid)和[List](arkts-arkui-list-comp.md#list)组件中的[GridItem](arkts-arkui-griditem-comp.md#griditem)组件和[ListItem](arkts-arkui-listitem-comp.md#list_item)组件生效。
+表示拖拽过程中背板图是否支持多选聚拢效果。true表示支持多选聚拢效果，false表示不支持多选聚拢效果。该参数只在Grid和List组件中的GridItem组件和ListItem组件生效。
 
 当一个item组件设置为多选拖拽时，该组件的子组件不可拖拽。聚拢组件预览图设置的优先级为[dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview)中的string，dragPreview中的PixelMap，组件自截图，不支持dragPreview中的Builder形式。
 

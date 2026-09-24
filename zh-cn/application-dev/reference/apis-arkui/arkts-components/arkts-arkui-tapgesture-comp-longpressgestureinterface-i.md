@@ -10,7 +10,7 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 > 
 > 从API version 18开始，部分设备会优先响应系统的双指长按手势，导致应用的双指长按手势不生效。
 
-**继承/实现关系：** LongPressGestureInterface extends GestureInterface<LongPressGestureInterface>
+**继承/实现关系：** LongPressGestureInterface extends GestureInterface&lt;LongPressGestureInterface&gt;
 
 **起始版本：** 7
 

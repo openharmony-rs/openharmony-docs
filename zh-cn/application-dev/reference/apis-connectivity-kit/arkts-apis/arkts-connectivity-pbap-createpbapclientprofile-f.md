@@ -24,10 +24,10 @@ function createPbapClientProfile(): PbapClientProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| [PbapClientProfile](arkts-connectivity-pbap-pbapclientprofile-i-sys.md) | 返回pbap客户端配置文件的实例。 |
+| PbapClientProfile | 返回pbap客户端配置文件的实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |

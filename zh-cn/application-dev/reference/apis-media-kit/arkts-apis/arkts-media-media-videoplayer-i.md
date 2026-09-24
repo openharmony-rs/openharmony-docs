@@ -639,7 +639,7 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback<void>): void
 > 
 > - SetDisplaySurface需要在设置url和Prepare之间，无音频的视频流必须设置Surface否则Prepare失败。
 > 
-> - 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.surfaceId](../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)替代。
+> - 从API version 8开始支持，从API version 9开始废弃，建议使用AVPlayer.surfaceId替代。
 
 **起始版本：** 8
 
@@ -653,7 +653,7 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| surfaceId | string | 是 | 指定SurfaceId，应从XComponent组件获取，获取方式请参考[XComponent](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp.md#xcomponent)。 |
+| surfaceId | string | 是 | 指定SurfaceId，应从XComponent组件获取，获取方式请参考XComponent。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置SurfaceId成功，err为undefined，否则为错误对象。 |
 
 <a id="setdisplaysurface-1"></a>
@@ -670,7 +670,7 @@ setDisplaySurface(surfaceId: string): Promise<void>
 > 
 > - SetDisplaySurface需要在设置url和Prepare之间，无音频的视频流必须设置Surface否则Prepare失败。
 > 
-> - 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.surfaceId](../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)替代。
+> - 从API version 8开始支持，从API version 9开始废弃，建议使用AVPlayer.surfaceId替代。
 
 **起始版本：** 8
 
@@ -684,7 +684,7 @@ setDisplaySurface(surfaceId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| surfaceId | string | 是 | 指定SurfaceId，应从XComponent组件获取，获取方式请参考[XComponent](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp.md#xcomponent)。 |
+| surfaceId | string | 是 | 指定SurfaceId，应从XComponent组件获取，获取方式请参考XComponent。 |
 
 **返回值：**
 
@@ -1027,8 +1027,6 @@ url: string
 **支持路径示例**：
 
 1. fd类型播放：fd://xx
-
-![](../../../reference/apis-media-kit/figures/zh-cn_image_url.png)
 
 2. http网络播放: http://xx
 3. https网络播放: https://xx

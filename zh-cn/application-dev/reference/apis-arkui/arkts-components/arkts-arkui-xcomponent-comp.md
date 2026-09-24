@@ -38,7 +38,7 @@ XComponent(value: { id: string; type: XComponentType; libraryname?: string; cont
 
 创建**XComponent**组件，其生命周期回调可以从native侧触发。
 
-从API版本12开始，该接口不再维护。建议使用[XComponent(options: XComponentOptions)](#xcomponent)替代。
+从API版本12开始，该接口不再维护。建议使用XComponent(options: XComponentOptions)替代。
 
 **起始版本：** 10
 

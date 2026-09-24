@@ -40,7 +40,7 @@ import { media } from '@kit.MediaKit';
 | [createMediaSourceWithUrl](arkts-media-media-createmediasourcewithurl-f.md) | 创建流媒体预下载媒体来源实例方法。 |
 | [createSoundPool](arkts-media-media-createsoundpool-f.md) | 创建音频池实例。使用callback异步回调。 |
 | [createSoundPool](arkts-media-media-createsoundpool-f.md#createsoundpool-2) | 创建音频池实例。使用Promise异步回调。 |
-| [createVideoPlayer](arkts-media-media-createvideoplayer-f.md#createvideoplayer) | 异步方式创建视频播放实例，使用callback异步回调。 |
+| createVideoPlayer | 异步方式创建视频播放实例，使用callback异步回调。 |
 | [createVideoPlayer](arkts-media-media-createvideoplayer-f.md#createvideoplayer-1) | 异步方式创建视频播放实例，通过Promise获取返回值。 |
 
 <!--Del-->

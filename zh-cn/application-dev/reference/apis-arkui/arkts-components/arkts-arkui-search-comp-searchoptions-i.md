@@ -40,7 +40,7 @@ icon?: string
 
 **说明：** 
 
-icon的数据源支持[使用相对路径显示图片](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例25使用相对路径显示图片)和网络图片。
+icon的数据源支持使用相对路径显示图片和网络图片。
 
 - 支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。
 

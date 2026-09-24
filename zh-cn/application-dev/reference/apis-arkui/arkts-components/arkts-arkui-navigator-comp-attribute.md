@@ -6,13 +6,13 @@ declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>
 
 Navigator的属性。
 
-**继承/实现关系：** NavigatorAttribute extends CommonMethod<NavigatorAttribute>
+**继承/实现关系：** NavigatorAttribute extends CommonMethod&lt;NavigatorAttribute&gt;
 
 **起始版本：** 7
 
 **废弃版本：** 13
 
-**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**替代接口：** Navigation
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +28,7 @@ active(value: boolean)
 
 **废弃版本：** 13
 
-**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**替代接口：** Navigation
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -78,7 +78,7 @@ target(value: string)
 
 **废弃版本：** 13
 
-**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**替代接口：** Navigation
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -104,7 +104,7 @@ type(value: NavigationType)
 
 **废弃版本：** 13
 
-**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**替代接口：** Navigation
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

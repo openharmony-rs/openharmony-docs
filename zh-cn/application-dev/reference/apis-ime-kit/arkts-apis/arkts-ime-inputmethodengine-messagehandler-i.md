@@ -36,7 +36,7 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 接收已绑定当前输入法应用的编辑框应用发送的自定义数据回调函数。<br> <br>  
 > **说明：** <br>
 > <br>
-> 当已注册的[MessageHandler](#messagehandler)接收到来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据时，会触发该回调函数。<br>
+> 当已注册的MessageHandler接收到来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据时，会触发该回调函数。<br>
 > <br>
 > msgId为必选参数，msgParam为可选参数。存在收到仅有msgId自定义数据的可能，需与数据发送方确认自定义数据。
 
@@ -78,9 +78,9 @@ onTerminated(): void
 监听对象终止回调函数。<br> <br>  
 > **说明：** <br>
 > <br>
-> 当应用注册新的[MessageHandler](#messagehandler)对象时，会触发上一个已注册[MessageHandler](#messagehandler)对象的[onTerminated](#onterminated)回调函数。<br>
+> 当应用注册新的MessageHandler对象时，会触发上一个已注册MessageHandler对象的[onTerminated](#onterminated)回调函数。<br>
 > <br>
-> 当应用取消注册时，会触发当前已注册[MessageHandler](#messagehandler)对象的[onTerminated](#onterminated)回调函数。
+> 当应用取消注册时，会触发当前已注册MessageHandler对象的[onTerminated](#onterminated)回调函数。
 
 **起始版本：** 15
 

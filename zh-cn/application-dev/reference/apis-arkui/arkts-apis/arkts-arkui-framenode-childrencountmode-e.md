@@ -16,7 +16,7 @@ export enum ChildrenCountMode
 ALL_EXPAND = 0
 ```
 
-计数展开模式。当遇到懒加载节点（如[LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md#lazy_for_each)）时，展开节点并返回所有子节点数量。
+计数展开模式。当遇到懒加载节点（如LazyForEach）时，展开节点并返回所有子节点数量。
 
 是否展开懒加载节点：是
 

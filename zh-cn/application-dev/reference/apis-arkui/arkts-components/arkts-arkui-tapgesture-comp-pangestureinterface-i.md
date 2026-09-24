@@ -6,7 +6,7 @@ interface PanGestureInterface extends GestureInterface<PanGestureInterface>
 
 滑动手势事件，当滑动的最小距离达到设定的最小值时触发滑动手势事件。
 
-**继承/实现关系：** PanGestureInterface extends GestureInterface<PanGestureInterface>
+**继承/实现关系：** PanGestureInterface extends GestureInterface&lt;PanGestureInterface&gt;
 
 **起始版本：** 7
 

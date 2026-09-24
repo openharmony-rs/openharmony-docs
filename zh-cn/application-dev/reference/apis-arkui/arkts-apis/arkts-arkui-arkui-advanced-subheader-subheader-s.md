@@ -10,7 +10,7 @@ export declare struct SubHeader
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果SubHeader设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeader本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeader设置通用属性和通用事件。
+> - 如果SubHeader设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeader本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeader设置通用属性和通用事件。
 
 ## 子组件
 
@@ -142,7 +142,7 @@ endIcon?: ResourceStr
 endIconSymbolOptions?: SymbolOptions
 ```
 
-endIcon为[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)时的设置项。
+endIcon为SymbolGlyph时的设置项。
 
 默认值：undefined，表示不设置标题尾部Symbol图标样式。
 
@@ -186,7 +186,7 @@ icon?: ResourceStr
 iconSymbolOptions?: SymbolOptions
 ```
 
-icon为[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)时的设置项。
+icon为SymbolGlyph时的设置项。
 
 默认值：undefined，表示不显示图标。
 
@@ -228,7 +228,7 @@ operationSymbolOptions?: Array<SymbolOptions>
 
 operationType为OperationType.ICON_GROUP，
 
-operationItem设置多个图标，图标为[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)时的设置项。
+operationItem设置多个图标，图标为SymbolGlyph时的设置项。
 
 默认值：undefined，表示不设置Symbol图标。
 
@@ -300,7 +300,7 @@ primaryTitleModifier?: TextModifier
 
 **说明：** 只有primaryTitle生效时，该参数才会生效。
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 12
 
@@ -342,7 +342,7 @@ secondaryTitleModifier?: TextModifier
 
 默认值：undefined，表示使用系统默认样式。
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 12
 

@@ -104,7 +104,7 @@ save(option?: PhotoSaveOptions): Promise<Array<string>>
 
 **废弃版本：** 12
 
-**替代接口：** [SaveButton](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp.md#savebutton)
+**替代接口：** SaveButton
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -157,7 +157,7 @@ save(option: PhotoSaveOptions, callback: AsyncCallback<Array<string>>): void
 
 **废弃版本：** 12
 
-**替代接口：** [SaveButton](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp.md#savebutton)
+**替代接口：** SaveButton
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -207,7 +207,7 @@ save(callback: AsyncCallback<Array<string>>): void
 
 **废弃版本：** 12
 
-**替代接口：** [SaveButton](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp.md#savebutton)
+**替代接口：** SaveButton
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 

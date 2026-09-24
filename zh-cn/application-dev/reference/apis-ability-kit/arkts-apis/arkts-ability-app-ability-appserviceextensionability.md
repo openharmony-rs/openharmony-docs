@@ -22,7 +22,7 @@ AppServiceExtensionAbility提供了[onCreate()](arkts-ability-app-ability-appser
  [onDestroy()](arkts-ability-app-ability-appserviceextensionability-appserviceextensionability-c.md#ondestroy)生命周期回调，开发者可根据需要重写对应的回调方法。下图展示了AppServiceExtensionAbility的生命
  周期。
 
-![AppServiceExtensionAbility-lifecycle](../../../application-models/figures/AppServiceExtensionAbility-lifecycle.png)
+AppServiceExtensionAbility-lifecycle
 
 - **onCreate**
 
@@ -43,8 +43,6 @@ AppServiceExtensionAbility提供了[onCreate()](arkts-ability-app-ability-appser
 - **onDisconnect**
 
 当所有连接方断开与AppServiceExtensionAbility实例的连接时，系统会触发该回调。
-
-
 
 ## 导入模块
 

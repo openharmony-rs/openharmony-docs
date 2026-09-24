@@ -7,13 +7,13 @@ export interface BundleInfo
 
 > **说明：** 
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-BundleInfo](#bundleinfo)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用bundleManager-BundleInfo替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [BundleInfo](#bundleinfo)
+**替代接口：** BundleInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 

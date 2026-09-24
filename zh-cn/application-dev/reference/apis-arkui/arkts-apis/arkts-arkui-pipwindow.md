@@ -24,7 +24,7 @@ import { PiPWindow } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-arkui-pipwindow-create-f.md#create) | 创建画中画控制器，使用Promise异步回调。 |
+| create | 创建画中画控制器，使用Promise异步回调。 |
 | [create](arkts-arkui-pipwindow-create-f.md#create-1) | 创建画中画控制器，使用typeNode为画中画添加自定义UI节点。使用Promise异步回调。 |
 | [isPiPEnabled](arkts-arkui-pipwindow-ispipenabled-f.md) | 判断当前设备是否支持画中画功能。 |
 

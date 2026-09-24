@@ -16,7 +16,7 @@
 
 调用[usbManager.closePipe](arkts-basicservices-usbmanager-closepipe-f.md)关闭设备连接通道。
 
-![usbmanager](../../../reference/figures/usbManager.png)
+usbmanager
 
 **起始版本：** 9
 

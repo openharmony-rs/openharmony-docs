@@ -42,7 +42,7 @@ getPiPSettingSwitch(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300014](../errorcode-window.md#1300014-画中画内部错误) | PiP internal error. Possible cause: The PiP controller has been destroyed. |
 
 **示例**
@@ -88,7 +88,7 @@ getPiPWindowInfo(): Promise<PiPWindowInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300014](../errorcode-window.md#1300014-画中画内部错误) | PiP internal error. Possible causes:<br>1.The PiP controller has been destroyed. <br>2.The PiP window is not created or has been destroyed. |
 
 **示例**
@@ -265,7 +265,7 @@ off(type: 'pipWindowSizeChange', callback?: Callback<PiPWindowSize>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 
@@ -505,7 +505,7 @@ on(type: 'pipWindowSizeChange', callback: Callback<PiPWindowSize>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300014](../errorcode-window.md#1300014-画中画内部错误) | PiP internal error. |
 
 **示例**
@@ -721,7 +721,7 @@ updateContentNode(contentNode: typeNode.XComponent): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300014](../errorcode-window.md#1300014-画中画内部错误) | PiP internal error. Possible cause: The PiP controller has been destroyed. |
 
 **示例**

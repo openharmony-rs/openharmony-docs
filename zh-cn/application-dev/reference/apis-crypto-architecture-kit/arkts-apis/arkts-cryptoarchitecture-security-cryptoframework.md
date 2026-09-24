@@ -28,7 +28,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | [createKdf](arkts-cryptoarchitecture-cryptoframework-createkdf-f.md) | 创建密钥派生函数实例。 |
 | [createKem](arkts-cryptoarchitecture-cryptoframework-createkem-f.md) | 创建一个用于密钥封装和解封装操作的Kem实例。 |
 | [createKeyAgreement](arkts-cryptoarchitecture-cryptoframework-createkeyagreement-f.md) | 创建密钥协商实例。 |
-| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac) | 创建消息认证码实例。 |
+| createMac | 创建消息认证码实例。 |
 | [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac-1) | 创建消息认证码实例。 |
 | [createMd](arkts-cryptoarchitecture-cryptoframework-createmd-f.md) | 创建消息摘要实例。 |
 | [createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md) | 创建随机数实例。 |

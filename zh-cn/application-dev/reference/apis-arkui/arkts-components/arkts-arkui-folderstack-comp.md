@@ -1,6 +1,6 @@
 # FolderStack
 
-FolderStack继承自[Stack](arkts-arkui-stack-comp.md#stack)（层叠布局）控件，新增了<!--RP1-->折叠屏悬停<!--RP1End-->能力，通过在FolderStack的配置项[FolderStackOptions](arkts-arkui-folderstack-comp-folderstackoptions-i.md)的upperItems数组上设置子组件id，使相应子组件自动避让折叠屏折痕区后移到上半屏。FolderStack适用于双折叠设备的悬停态场景，如视频播放、视频会议等应用，实现视频画面自动移至上半屏、控制面板保留在下半屏的布局。该组件能解决双折叠设备适配问题，带来提升用户体验、简化开发者布局适配工作的收益。
+FolderStack继承自Stack（层叠布局）控件，新增了<!--RP1-->折叠屏悬停<!--RP1End-->能力，通过在FolderStack的配置项[FolderStackOptions](arkts-arkui-folderstack-comp-folderstackoptions-i.md)的upperItems数组上设置子组件id，使相应子组件自动避让折叠屏折痕区后移到上半屏。FolderStack适用于双折叠设备的悬停态场景，如视频播放、视频会议等应用，实现视频画面自动移至上半屏、控制面板保留在下半屏的布局。该组件能解决双折叠设备适配问题，带来提升用户体验、简化开发者布局适配工作的收益。
 
 > **说明：** 
 > 
@@ -18,7 +18,7 @@ FolderStack继承自[Stack](arkts-arkui-stack-comp.md#stack)（层叠布局）�
 FolderStack(options?: FolderStackOptions)
 ```
 
-折叠屏悬停布局容器，继承自[Stack](arkts-arkui-stack-comp.md#stack)，通过配置upperItems实现折叠屏悬停能力。当设备处于悬停态时，指定子组件自动移至上半屏，其他组件堆叠在下半屏。
+折叠屏悬停布局容器，继承自Stack，通过配置upperItems实现折叠屏悬停能力。当设备处于悬停态时，指定子组件自动移至上半屏，其他组件堆叠在下半屏。
 
 **起始版本：** 11
 

@@ -166,7 +166,7 @@ controller为空时不显示更多按钮，expandedMenuOptions参数不为空则
 
 点击自定义文本选择菜单内置粘贴功能选项后，空白处粘贴或者选中文本替换粘贴均是保留被复制文本的样式。
 
-当富文本组件[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)的copyOptions属性设置为`CopyOptions.None`时，内置的复制剪切功能会被限制。
+当富文本组件RichEditor的copyOptions属性设置为`CopyOptions.None`时，内置的复制剪切功能会被限制。
 
 **类型：** [RichEditorController](../arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md)
 

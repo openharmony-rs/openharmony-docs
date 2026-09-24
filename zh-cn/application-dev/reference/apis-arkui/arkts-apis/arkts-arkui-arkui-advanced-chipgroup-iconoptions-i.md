@@ -48,7 +48,7 @@ sys.float.chip_small_icon_size')}
 src: ResourceStr
 ```
 
-图标图片或图片地址引用请参考[Image](../arkts-components/arkts-arkui-image-comp.md#image)。
+图标图片或图片地址引用请参考Image。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

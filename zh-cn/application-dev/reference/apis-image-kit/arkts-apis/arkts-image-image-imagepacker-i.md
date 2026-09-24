@@ -203,7 +203,7 @@ packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
 **示例**
@@ -500,7 +500,7 @@ packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | If the parameter is invalid. |
+| 401 | If the parameter is invalid. |
 | [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-图片输入数据错误) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-图片数据太大) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
@@ -567,7 +567,7 @@ packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | If the parameter is invalid. |
+| 401 | If the parameter is invalid. |
 | [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-图片输入数据错误) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-图片数据太大) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
@@ -629,7 +629,7 @@ packToDataFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, options: Packi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Failed to encode image. |
 
 **示例**
@@ -951,7 +951,7 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
 **示例**
@@ -1019,7 +1019,7 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: number, op
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types;3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Failed to encode image. |
 
 **示例**

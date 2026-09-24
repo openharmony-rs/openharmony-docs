@@ -22,16 +22,16 @@ import { request } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-basicservices-agent-create-f.md#create) | 创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用callback异步回调。 |
+| create | 创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用callback异步回调。 |
 | [create](arkts-basicservices-agent-create-f.md#create-1) | 创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用Promise异步回调。 |
 | [getTask](arkts-basicservices-agent-gettask-f.md) | 根据任务id查询任务。使用Promise异步回调。 |
-| [remove](arkts-basicservices-agent-remove-f.md#remove) | 移除属于调用方的指定任务，如果正在处理中，该任务将被迫停止。使用callback异步回调。在调用后任务对象和其回调函数会被释放。 |
+| remove | 移除属于调用方的指定任务，如果正在处理中，该任务将被迫停止。使用callback异步回调。在调用后任务对象和其回调函数会被释放。 |
 | [remove](arkts-basicservices-agent-remove-f.md#remove-1) | 移除属于调用方的指定任务，如果正在处理中，该任务将被迫停止。使用Promise异步回调。在调用后任务对象和其回调函数会被释放。 |
-| [show](arkts-basicservices-agent-show-f.md#show) | 根据任务id查询任务的详细信息。使用callback异步回调。 |
+| show | 根据任务id查询任务的详细信息。使用callback异步回调。 |
 | [show](arkts-basicservices-agent-show-f.md#show-1) | 根据任务id查询任务的详细信息。使用Promise异步回调。 |
-| [touch](arkts-basicservices-agent-touch-f.md#touch) | 根据任务id和token查询任务的详细信息。使用callback异步回调。 |
+| touch | 根据任务id和token查询任务的详细信息。使用callback异步回调。 |
 | [touch](arkts-basicservices-agent-touch-f.md#touch-1) | 根据任务id和token查询任务的详细信息。使用Promise异步回调。 |
-| [search](arkts-basicservices-agent-search-f.md#search) | 根据默认[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id，即查询调用时刻至24小时前的所有任务的任务id。使用callback异步回调。 |
+| search | 根据默认[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id，即查询调用时刻至24小时前的所有任务的任务id。使用callback异步回调。 |
 | [search](arkts-basicservices-agent-search-f.md#search-1) | 根据[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id。使用callback异步回调。 |
 | [search](arkts-basicservices-agent-search-f.md#search-2) | 根据[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id。使用Promise异步回调。 |
 | [createGroup](arkts-basicservices-agent-creategroup-f.md) | 根据[GroupConfig](arkts-basicservices-agent-groupconfig-i.md)分组条件创建分组，并返回分组id。使用Promise异步回调。 |

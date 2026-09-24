@@ -14,7 +14,7 @@ function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams, cal
 
 重新启动指定标识的BLE广播。使用Callback异步回调。
 
-[AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md)中advertisingId对应的广播资源已在[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配。若[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时指定了广播持续时间，超时后广播自动停止，调用此接口可重新启动同一路BLE广播。通过[ble.disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)停止的广播，调用此接口可重新启动同一路BLE广播。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange)回调获取重新启动广播结果。
+[AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md)中advertisingId对应的广播资源已在[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配。若[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时指定了广播持续时间，超时后广播自动停止，调用此接口可重新启动同一路BLE广播。通过[ble.disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)停止的广播，调用此接口可重新启动同一路BLE广播。通过ble.on('advertisingStateChange')回调获取重新启动广播结果。
 
 **起始版本：** 11
 
@@ -35,9 +35,9 @@ function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams, cal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| 201 | Permission denied. |
+| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
@@ -124,7 +124,7 @@ function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Pr
 
 重新启动指定标识的BLE广播。使用Promise异步回调。
 
-[AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md)中advertisingId对应的广播资源已在[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配。若[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时指定了广播持续时间，超时后广播自动停止，调用此接口可重新启动同一路BLE广播。通过[ble.disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)停止的广播，调用此接口可重新启动同一路BLE广播。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange)回调获取启动广播结果。
+[AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md)中advertisingId对应的广播资源已在[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配。若[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时指定了广播持续时间，超时后广播自动停止，调用此接口可重新启动同一路BLE广播。通过[ble.disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)停止的广播，调用此接口可重新启动同一路BLE广播。通过ble.on('advertisingStateChange')回调获取启动广播结果。
 
 **起始版本：** 11
 
@@ -150,9 +150,9 @@ function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Pr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| 201 | Permission denied. |
+| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |

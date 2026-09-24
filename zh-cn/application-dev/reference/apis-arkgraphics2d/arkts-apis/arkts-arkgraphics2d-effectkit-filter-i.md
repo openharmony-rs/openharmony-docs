@@ -613,7 +613,7 @@ setColorMatrix(colorMatrix: Array<number>): Filter
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 输入参数错误。 |
+| 401 | 输入参数错误。 |
 
 **示例**
 

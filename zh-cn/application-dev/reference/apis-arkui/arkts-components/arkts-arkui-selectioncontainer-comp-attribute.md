@@ -4,15 +4,15 @@
 export declare class SelectionContainerAttribute extends CommonMethod<SelectionContainerAttribute>
 ```
 
-支持[通用属性](arkts-arkui-common-comp.md#common)。
+支持通用属性。
 
 > **说明：** 
 > 
-> - 不支持[隐私遮罩](arkts-arkui-common-comp.md#common)。
+> - 不支持隐私遮罩。
 > 
-> - 不支持[图形变换](arkts-arkui-common-comp.md#common)，在SelectionContainer容器中子组件Text不支持图形变换。
+> - 不支持图形变换，在SelectionContainer容器中子组件Text不支持图形变换。
 
-**继承/实现关系：** SelectionContainerAttribute extends CommonMethod<SelectionContainerAttribute>
+**继承/实现关系：** SelectionContainerAttribute extends CommonMethod&lt;SelectionContainerAttribute&gt;
 
 **起始版本：** 26.0.0
 
@@ -37,7 +37,7 @@ bindSelectionMenu(spanType: Optional<TextSpanType>, content: Optional<CustomBuil
 > 
 > - bindSelectionMenu的长按响应时长为600ms，[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)的长按响应时长为800ms，当两者同时绑定且触发方式均为长按时，优先响应bindSelectionMenu。
 > 
-> - 自定义菜单过长时，建议内部嵌套使用[Scroll](arkts-arkui-scroll-comp.md#scroll)组件，避免键盘被遮挡。
+> - 自定义菜单过长时，建议内部嵌套使用Scroll组件，避免键盘被遮挡。
 > 
 > - 选区跨越不可复制Text时，菜单仅基于实际选中的可复制文本进行显示和处理。
 > 

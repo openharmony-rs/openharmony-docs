@@ -6,7 +6,7 @@ declare interface TextClockConfiguration extends CommonConfiguration<TextClockCo
 
 开发者需要自定义class实现ContentModifier接口。
 
-**继承/实现关系：** TextClockConfiguration extends CommonConfiguration<TextClockConfiguration>
+**继承/实现关系：** TextClockConfiguration extends CommonConfiguration&lt;TextClockConfiguration&gt;
 
 **起始版本：** 12
 

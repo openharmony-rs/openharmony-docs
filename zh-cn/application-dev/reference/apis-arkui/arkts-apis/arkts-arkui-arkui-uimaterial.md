@@ -2,7 +2,7 @@
 
 本模块提供系统材质的接口定义。不同的系统材质对应不同的UI效果，包括背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)、材质层滤镜[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)效果。当前提供的系统材质为沉浸式材质类型[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)，沉浸式材质对象在不同设备上的表现存在差异，只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[uiMaterial.isImmersiveMaterialSupported](arkts-arkui-uimaterial-isimmersivematerialsupported-f.md)判断设备是否支持沉浸式材质。在支持沉浸式材质的设备上，材质效果在不同算力的设备上有分档表现，可通过[uiMaterial.getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md)获取设备的材质等级，分档效果具体参考[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)的描述。
 
-开发指导请参考[沉浸光感](../../../ui/arkts-immersive-light-sense.md)指南文档。
+开发指导请参考沉浸光感指南文档。
 
 **起始版本：** 26.0.0
 
@@ -31,8 +31,8 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md) | 将一个[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)材质转换为适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md#effect_component)的ImmersiveMaterial材质。与convertToECSubMaterial的区别：本方法转换后的材质适用于EffectComponent本身，且materialColor、applyShadow、interactive、lightEffect属性不会生效；convertToECSubMaterial转换后的材质适用于EffectComponent的子组件。两者通常配合使用，以实现材质效果绘制的合并优化。 |
-| [convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md) | 将一个[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)材质转换为适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md#effect_component)子组件的ImmersiveMaterial材质。 |
+| convertToECMaterial | 将一个[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)材质转换为适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md#effect_component)的ImmersiveMaterial材质。与convertToECSubMaterial的区别：本方法转换后的材质适用于EffectComponent本身，且materialColor、applyShadow、interactive、lightEffect属性不会生效；convertToECSubMaterial转换后的材质适用于EffectComponent的子组件。两者通常配合使用，以实现材质效果绘制的合并优化。 |
+| convertToECSubMaterial | 将一个[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)材质转换为适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md#effect_component)子组件的ImmersiveMaterial材质。 |
 <!--DelEnd-->
 
 ### 类
@@ -88,7 +88,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 ### 示例1（设置系统材质）
 
-本示例介绍如何将半透明材质的Material对象通过[systemMaterial](../arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性设置给组件。
+本示例介绍如何将半透明材质的Material对象通过systemMaterial属性设置给组件。
 
 
 
@@ -124,7 +124,7 @@ struct SystemMaterialPage {
 
 ### 示例2（使用EffectComponent设置系统材质）
 
-本示例介绍如何将[uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)设置到[EffectComponent](../arkui-ts/ts-container-effectcomponent-sys.md)及其子组件上，包括直接使用EC样式材质，以及通过[uiMaterial.convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md)、[uiMaterial.convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md)将材质经过转换后设置两种方式。
+本示例介绍如何将[uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)设置到EffectComponent及其子组件上，包括直接使用EC样式材质，以及通过uiMaterial.convertToECMaterial、uiMaterial.convertToECSubMaterial将材质经过转换后设置两种方式。
 
 从API版本26.0.0开始，新增uiMaterial.convertToECMaterial、uiMaterial.convertToECSubMaterial接口。
 
@@ -185,7 +185,7 @@ struct Index {
 
 ### 示例1（设置沉浸式系统材质）
 
-本示例介绍如何将沉浸式材质的[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象通过[systemMaterial](../arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性设置给组件。
+本示例介绍如何将沉浸式材质的[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)对象通过systemMaterial属性设置给组件。
 
 从API版本26.0.0开始，新增ImmersiveMaterial对象和systemMaterial属性。
 

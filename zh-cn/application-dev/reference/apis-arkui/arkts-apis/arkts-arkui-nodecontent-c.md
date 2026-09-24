@@ -4,7 +4,7 @@
 export class NodeContent extends Content
 ```
 
-NodeContent是ArkUI提供的[ContentSlot](../arkts-components/arkts-arkui-contentslot-comp.md#content_slot)的管理器，用于管理挂载到ContentSlot上的FrameNode节点内容，支持动态添加、删除FrameNode节点。适用于需要通过ContentSlot动态管理FrameNode节点内容的场景，例如根据用户交互动态新增或移除文本、图片等自定义FrameNode节点。
+NodeContent是ArkUI提供的ContentSlot的管理器，用于管理挂载到ContentSlot上的FrameNode节点内容，支持动态添加、删除FrameNode节点。适用于需要通过ContentSlot动态管理FrameNode节点内容的场景，例如根据用户交互动态新增或移除文本、图片等自定义FrameNode节点。
 
 > **说明：** 
 > 

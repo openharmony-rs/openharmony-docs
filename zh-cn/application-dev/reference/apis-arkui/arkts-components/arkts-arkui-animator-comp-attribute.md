@@ -6,7 +6,7 @@ declare class AnimatorAttribute extends CommonMethod<AnimatorAttribute>
 
 定义Animator属性。
 
-**继承/实现关系：** AnimatorAttribute extends CommonMethod<AnimatorAttribute>
+**继承/实现关系：** AnimatorAttribute extends CommonMethod&lt;AnimatorAttribute&gt;
 
 **起始版本：** 7
 

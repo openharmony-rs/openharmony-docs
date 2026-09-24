@@ -30,7 +30,7 @@ import { fastbuffer } from '@kit.ArkTS';
 | [byteLength](arkts-arkts-fastbuffer-bytelength-f.md) | 根据不同的编码格式，返回指定内容的字节数。 |
 | [compare](arkts-arkts-fastbuffer-compare-f.md) | 返回两个FastBuffer对象的比较结果，通常用于对FastBuffer对象数组进行排序。 |
 | [concat](arkts-arkts-fastbuffer-concat-f.md) | 将数组中指定字节长度的内容复制并拼接后，返回新的FastBuffer对象。 |
-| [from](arkts-arkts-fastbuffer-from-f.md#from) | 根据指定数组创建新的FastBuffer对象。 |
+| from | 根据指定数组创建新的FastBuffer对象。 |
 | [from](arkts-arkts-fastbuffer-from-f.md#from-1) | 创建与`arrayBuffer`共享内存的指定长度的FastBuffer对象。 |
 | [from](arkts-arkts-fastbuffer-from-f.md#from-2) | 当入参为FastBuffer对象时，创建新的FastBuffer对象并复制入参数据。新旧对象数据独立，互不影响。 |
 | [from](arkts-arkts-fastbuffer-from-f.md#from-3) | 根据指定编码格式的字符串，创建新的FastBuffer对象。 |

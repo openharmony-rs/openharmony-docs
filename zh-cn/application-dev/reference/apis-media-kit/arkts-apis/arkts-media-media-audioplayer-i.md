@@ -4,7 +4,6 @@
 interface AudioPlayer
 ```
 
-
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVPlayer](arkts-media-multimedia-media.md)替代。
@@ -503,8 +502,6 @@ src: string
 **支持路径示例**：
 
 1. fd类型播放：fd://xx
-
-![](../../../reference/apis-media-kit/figures/zh-cn_image_url.png)
 
 2. http网络播放: http://xx
 3. https网络播放: https://xx

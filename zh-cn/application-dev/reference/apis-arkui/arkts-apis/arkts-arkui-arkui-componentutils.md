@@ -61,7 +61,7 @@ import { componentUtils } from '@kit.ArkUI';
 
 ### 示例1（获取ComponentUtils对象）
 
-推荐使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的ComponentUtils对象。
+推荐使用UIContext中的getComponentUtils方法获取当前UI上下文关联的ComponentUtils对象。
 
 ```TypeScript
 import { matrix4 } from '@kit.ArkUI';
