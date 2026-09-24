@@ -127,7 +127,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| resultCipherText | Array&lt;Uint8Array&gt; | 否 | 否 | 隐私搜索生成的结果密文数组。可通过[getSearchResult](#privacycomputationgetsearchresult)进行解密。 |
+| resultCipherText | Uint8Array[] | 否 | 否 | 隐私搜索生成的结果密文数组。可通过[getSearchResult](#privacycomputationgetsearchresult)进行解密。 |
 | valueCipherText | Uint8Array[] | 否 | 是 | 使用PIR协议进行隐私搜索时生成的值密文数组。这些密文包含与匹配元素相关的加密值。<br>**说明：** 仅PIR协议下存在，PSI协议不读取该值。 |
 
 ## SearchResult
@@ -219,7 +219,7 @@ privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: P
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | privacyTarget | Uint8Array | 是 | 由[genPrivacyTarget](#privacycomputationgenprivacytarget)生成的加密隐私目标。 |
-| elements | Element[] | 是 | 要搜索的数据集元素。 |
+| elements | Element[]| 是 | 要搜索的数据集元素。 |
 | privacyProtocol | [PrivacyProtocol](#privacyprotocol) | 是 | 隐私协议配置，需与生成隐私目标时一致。 |
 
 **返回值**：
@@ -322,59 +322,6 @@ async function getResult(searchResult: privacyComputation.PrivacySearchResult) {
     console.info('matched, attachedValues count: ' + (result.attachedValues?.length ?? 0));
   } else {
     console.info('not matched');
-  }
-}
-```
-
-## 完整示例
-
-以下示例展示一次端到端的隐私计算流程：发起端生成隐私目标 → 响应端执行隐私搜索 → 发起端获取最终结果。
-
-```ts
-import { privacyComputation } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function psiPirDemo() {
-  const privacyProtocol: privacyComputation.PrivacyProtocol = {
-    dataSetSize: privacyComputation.DataSetSize.SIZE_512,
-    protocolType: privacyComputation.ProtocolType.PIR_PROTOCOL
-  };
-
-  try {
-    // 1. 发起端：生成隐私目标
-    const targetElement: privacyComputation.TargetElement = {
-      elemData: new Uint8Array([0x01, 0x02, 0x03]),
-      hashAlg: privacyComputation.HashAlg.SHA256
-    };
-    const privacyTarget: Uint8Array =
-      await privacyComputation.genPrivacyTarget(targetElement, privacyProtocol);
-
-    // 2. 响应端：执行隐私搜索
-    const elements: Array<privacyComputation.Element> = [
-      {
-        elemKey: new Uint8Array([0x01, 0x02, 0x03]),
-        hashAlg: privacyComputation.HashAlg.SHA256,
-        elemValue: new Uint8Array([0xA1, 0xA2])
-      },
-      {
-        elemKey: new Uint8Array([0x07, 0x08, 0x09]),
-        hashAlg: privacyComputation.HashAlg.SHA256
-      }
-    ];
-    const searchResult: privacyComputation.PrivacySearchResult =
-      await privacyComputation.privacySearch(privacyTarget, elements, privacyProtocol);
-
-    // 3. 发起端：获取最终结果
-    const result: privacyComputation.SearchResult =
-      await privacyComputation.getSearchResult(searchResult, privacyProtocol);
-
-    console.info('matched: ' + result.matchedResult);
-    if (result.matchedResult && result.attachedValues) {
-      console.info('attachedValues count: ' + result.attachedValues.length);
-    }
-  } catch (e) {
-    const err = e as BusinessError;
-    console.error('error code: ' + err.code + ', message: ' + err.message);
   }
 }
 ```
