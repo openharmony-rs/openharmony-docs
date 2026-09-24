@@ -32,8 +32,8 @@ import { cliManager } from '@kit.AbilityKit';
 | workDir    | string | 否 | 是 | 命令执行的工作目录，如果不传或传空，则为根目录。 |
 | env        | Record\<string, string\> | 否 | 是 | 命令执行的环境变量。 |
 | background | boolean | 否 | 是 | 表示命令是否后台执行。<br/>true：后台执行，false：前台执行。<br/>默认值：false。 |
-| yieldMs    | number | 否 | 是 | 命令前台执行时长，单位为毫秒。取值范围：0 ~ 1000 * timeout，默认值：0。 |
-| timeout    | number | 否 | 是 | 命令执行超时时长，单位为秒。取值范围：0 ~ 1800。默认值：1800，传0表示不会超时。 |
+| yieldMs    | number | 否 | 是 | 命令前台执行时长，单位为毫秒。取值范围：0 ~ 1000 * timeout，默认值：0。超出取值范围时抛出错误码401。 |
+| timeout    | number | 否 | 是 | 命令执行超时时长，单位为秒。取值范围：0 ~ 1800。默认值：1800，传0表示不会超时。超出取值范围时抛出错误码401。 |
 | policy     | string | 否 | 是 | 安全策略，参数格式为JSON字符串。 |
 | callback   | [ToolEventCallback](js-apis-inner-application-toolEventCallback-sys.md) | 否 | 是 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
 
@@ -53,8 +53,8 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 | outputText    | string  | 否   | 是   | 工具的标准输出（stdout）。默认值：undefined。 |
 | errorText     | string  | 否   | 是   | 工具的标准错误输出（stderr）。默认值：undefined。 |
 | signalNumber  | number  | 否   | 是   | 工具的终止信号。默认值：undefined。 |
-| timeOut       | boolean | 否   | 否   | 工具的执行是否超时。true表示超时，false表示未超时。 |
-| executionTime | number  | 否   | 否   | 工具的执行时长。单位：ms。|
+| timeOut       | boolean | 否   | 否   | 工具的执行是否超时。true表示超时，false表示未超时。默认值：false。 |
+| executionTime | number  | 否   | 否   | 工具的执行时长。单位：ms。默认值：0。|
 
 ## SessionStatus
 
