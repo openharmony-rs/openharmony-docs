@@ -92,12 +92,13 @@ async function extensionKeyGeneration(): Promise<void> {
         value: StringToUint8Array("vendor_defined_resource_info"),
       },
     ];
+    const providerName = 'VendorA_ProductX'; // 为注册时传入的ProviderName
     const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
     const keyAlias = resourceId;  // keyAlias即为resourceId
 
     // 2. 构造密钥参数
     const properties: Array<huks.HuksParam> = [
-      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClass.HUKS_KEY_CLASS_EXTENSION },
+      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION },
       { tag: huks.HuksTag.HUKS_TAG_ALGORITHM, value: huks.HuksKeyAlg.HUKS_ALG_RSA },
       { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
       { tag: huks.HuksTag.HUKS_TAG_PURPOSE, value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN }
@@ -109,13 +110,13 @@ async function extensionKeyGeneration(): Promise<void> {
     };
 
     // 3. 打开资源
-    await openResource(resourceId, []);
+    await openResource(resourceId);
 
     // 4. 生成密钥
     await generateKeyItem(keyAlias, huksOptions);
 
     // 5. 关闭资源
-    await closeResource(resourceId, []);
+    await closeResource(resourceId);
 
     console.info('promise: extensionKeyGeneration completed successfully.');
   } catch (error) {
