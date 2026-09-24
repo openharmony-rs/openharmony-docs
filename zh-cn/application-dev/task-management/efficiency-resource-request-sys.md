@@ -1,4 +1,4 @@
-# 能效资源申请(ArkTS)（仅对系统特权应用开放）
+# 能效资源申请(ArkTS) (仅对系统特权应用开放)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -45,7 +45,7 @@
 
 **表1** 申请能效资源主要接口
 
-以下是能效资源开发使用的相关接口，更多接口及使用方式请见[后台任务管理](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md)。
+以下是能效资源开发使用的相关接口，更多接口及使用方式请见[@ohos.resourceschedule.backgroundTaskManager (后台任务管理)(系统接口)](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

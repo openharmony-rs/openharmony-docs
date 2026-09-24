@@ -1,4 +1,4 @@
-# AutoFillExtensionContext (系统接口) 
+# AutoFillExtensionContext (自动填充扩展上下文)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -43,7 +43,7 @@ reloadInModal(customData: CustomData): Promise\<void>
 
 | 参数名     | 类型                                                      | 必填 | 说明                         |
 | ---------- | --------------------------------------------------------- | ---- | ---------------------------- |
-| customData | [CustomData](js-apis-inner-application-customData-sys.md) | 是   | 拉起模态页面时的自定义信息。 |
+| customData | [CustomData](js-apis-inner-application-customData-sys.md) | 是 | 拉起模态页面时的自定义信息。 |
 
 **返回值：**
 

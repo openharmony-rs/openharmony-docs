@@ -51,3 +51,4 @@
       - [notification.h](capi-notification-h.md)
 - Error Codes<!--notification-arkts-errcode-->
   - [Notification Error Codes](errorcode-notification.md)
+<!--no_check-->

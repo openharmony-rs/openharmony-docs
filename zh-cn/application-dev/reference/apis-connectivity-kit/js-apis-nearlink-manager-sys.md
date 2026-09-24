@@ -55,7 +55,7 @@ enable(): void
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.enable();
@@ -94,7 +94,7 @@ disable(): void
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.disable();
@@ -140,7 +140,7 @@ getLocalAddress(): string
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = manager.getLocalAddress();
@@ -186,7 +186,7 @@ factoryReset(): Promise&lt;void&gt;
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.factoryReset().then(() => {
@@ -261,7 +261,7 @@ setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let mode: manager.ConnectionMode = manager.ConnectionMode.SLE_MODE_CONNECTABLE;

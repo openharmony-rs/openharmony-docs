@@ -175,7 +175,7 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | 是    | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
+| callback | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | 是 | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -764,7 +764,7 @@ getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): vo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>>  | 是 |以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+  | callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 是 | 以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -808,7 +808,7 @@ getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。|
+| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -1427,7 +1427,7 @@ queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicS
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明**：目前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。 |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明**：目前仅支持[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。 |
 | appId | string | 是 | 应用的唯一标识，由云端统一分配。 |
 
 **返回值：**

@@ -1,14 +1,13 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription) (System API)
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:10:01.660Z pushedAt=2026-07-21T01:39:23.329Z -->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:22:34.902Z pushedAt=2026-09-22T08:29:58.377Z -->
 
-The **notificationExtensionSubscription** module provides capabilities for managing notification extension, including opening the extension settings screen, subscribing to/unsubscribing from notification extension, and obtaining/setting the notification authorization status.
+This module provides the capabilities for managing notification extensions, including opening the notification extension subscription settings page, subscribing to and unsubscribing from notification extensions, and obtaining and setting the [notification authorization](../../notification/notification-glossary.md#notification-authorization) status.
 
 > **NOTE**
 >
@@ -78,7 +77,7 @@ Obtains the enabling state of the **Allow access to notifications on this device
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes  | Information about the target application. The application must have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implemented [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md). Otherwise, error code 1600022 is returned.|
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes   | Information about the target application to query. The application must have the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implement [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md); otherwise, error code 1600022 is returned.|
 
 **Return value**
 
@@ -279,11 +278,12 @@ notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enable
 });
 ```
 
+
 ## notificationExtensionSubscription.subscribeNotification
 
 subscribeNotification(priorityStrategy?: number): Promise\<void\>
 
-Subscribes to notifications based on the priority strategy. This API uses a promise to return the result.
+Subscribes to notifications based on the [priority notification](../../notification/notification-glossary.md#priority-notification) filter criteria. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -329,3 +329,4 @@ notificationExtensionSubscription.subscribeNotification(0).then(() => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+<!--no_check-->
