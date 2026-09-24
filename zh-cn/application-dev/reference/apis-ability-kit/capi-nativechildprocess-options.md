@@ -8,7 +8,7 @@
 <!--Adviser: @HelloCrease-->
 
 ```c
-typedef struct {...} NativeChildProcess_Options
+typedef struct NativeChildProcess_Options {...} NativeChildProcess_Options
 ```
 
 ## 概述
