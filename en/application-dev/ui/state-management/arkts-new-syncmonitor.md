@@ -1,4 +1,4 @@
-# @SyncMonitor Decorator: Synchronous Listening for Value Changes of the State Variables
+# \@SyncMonitor Decorator: Synchronous Listening for Value Changes of the State Variables
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
