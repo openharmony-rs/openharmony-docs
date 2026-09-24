@@ -25,7 +25,7 @@
 
 在OverlayManager上新增指定节点（[addComponentContent](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontent12)）、删除指定节点（[removeComponentContent](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#removecomponentcontent12)）、显示所有节点（[showAllComponentContents](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#showallcomponentcontents12)）和隐藏所有节点（[hideAllComponentContents](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#hideallcomponentcontents12)）。
 
-<!-- @[OverlayManager_Demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerComponent.ets) -->
+<!-- @[OverlayManager_Demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerComponent.ets) -->  
 
 ``` TypeScript
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
@@ -98,7 +98,7 @@ export struct OverlayManagerComponent {
               let componentContent = this.contentArray.splice(this.arrayIndex, 1);
               this.overlayNode.removeComponentContent(componentContent.pop());
             } else {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+              hilog.error(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         Button('Show ComponentContent:' + this.arrayIndex)
@@ -107,7 +107,7 @@ export struct OverlayManagerComponent {
               let componentContent = this.contentArray[this.arrayIndex];
               this.overlayNode.showComponentContent(componentContent);
             } else {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+              hilog.error(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         Button('Hide ComponentContent:' + this.arrayIndex)
@@ -116,7 +116,7 @@ export struct OverlayManagerComponent {
               let componentContent = this.contentArray[this.arrayIndex];
               this.overlayNode.hideComponentContent(componentContent);
             } else {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+              hilog.error(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         Button('Show All ComponentContent')
@@ -143,7 +143,7 @@ export struct OverlayManagerComponent {
 ```
 ![overlayManager-demo1](figures/overlaymanager-demo_1.gif)
 
-显示一个始终在屏幕左侧的悬浮球，点击可以弹出alertDialog弹窗。
+显示一个始终在屏幕左侧的悬浮球，点击可以弹出AlertDialog弹窗。
 
 <!-- @[OverlayManager_Demo2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerAlertDialog.ets) -->
 
@@ -219,7 +219,7 @@ export struct OverlayManagerAlertDialog {
 
 从API version 18开始，可以利用OverlayManager对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontentwithorder18)），层次高的浮层会覆盖在层级低的浮层之上。
 
-<!-- @[OverlayManager_Demo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets) -->
+<!-- @[OverlayManager_Demo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets) -->  
 
 ``` TypeScript
 import { ComponentContent, LevelOrder, OverlayManager } from '@kit.ArkUI';
@@ -307,7 +307,7 @@ export struct OverlayManagerWithOrder {
               let componentContent = this.contentArray.splice(this.arrayIndex, 1);
               this.overlayManager.removeComponentContent(componentContent.pop());
             } else {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+              hilog.error(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         }.width('100%')
