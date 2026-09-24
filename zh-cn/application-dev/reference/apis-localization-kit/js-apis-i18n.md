@@ -1427,7 +1427,7 @@ let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
 | cyclicalYear    | number |   否   |   否   |  农历的干支年。<br>取值范围：[1, 60]。   |
 | month           | number |   否   |   否   |  农历的月。<br>**说明：** <br>月份从0开始计数，0表示一月。   |
 | date            | number |   否   |   否   |  农历的日。   |
-| isLeapMonth     | boolean |   否  |   是   |  是否是闰月。默认值：false。<br>true表示该月是闰月，false表示该月不是闰月。  |
+| isLeapMonth     | boolean |   否  |   是   |  该月是否是闰月。<br>true表示该月是闰月，false表示该月不是闰月。默认值：false。  |
 | hour            | number |   否   |   是   |  农历的时。默认值：0。   |
 | minute          | number |   否   |   是   |  农历的分。默认值：0。   |
 | second          | number |   否   |   是   |  农历的秒。默认值：0。   |
