@@ -10006,9 +10006,9 @@ struct WebComponent {
               let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
               if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
                 if (info.similarity >= 0.5 && info.loadingTime < 1000) {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', true);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', true);
                 } else {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', false);
                 }
               } else {
                 console.info('getBlankless info err');
@@ -10079,9 +10079,9 @@ struct WebComponent {
               let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
               if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
                 if (info.similarity >= 0.5 && info.loadingTime < 1000) {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', true);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', true);
                 } else {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', false);
                 }
               } else {
                 console.info('getBlankless info err');
@@ -10161,7 +10161,7 @@ struct WebComponent {
                     // 数据监控
                   },
                 };
-                this.controller.setBlanklessLoadingWithParams('http://www.example.com/page1', param);
+                this.controller.setBlanklessLoadingWithParams('https://www.example.com/page1', param);
               } else {
                 console.info('getBlankless info err');
               }
@@ -10600,7 +10600,7 @@ setSiteIsolationMode(mode: SiteIsolationMode): void
 
 设置站点隔离模式。站点隔离机制将不同源的网站隔离在不同的渲染进程中，减少跨域攻击面。例如：PC等设备上，在未启用站点隔离模式时，原有进程模型是每一个Tab对应一个渲染进程，开启站点隔离后，一个Tab下不同源的Iframe可在独立的渲染进程中运行。
 
-对于仅加载可信网页的第三方应用，可以关闭此功能，以提升性能并减少内存占用，同时减少跨域访问的拦截。默认值根据不同的设备而定，PC/Table采用严格站点隔离[SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21)，Phone默认部分站点隔离[SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21)。[坚盾守护模式](../..//web/web-secure-shield-mode.md)下采用严格站点隔离。
+对于仅加载可信网页的第三方应用，可以关闭此功能，以提升性能并减少内存占用，同时减少跨域访问的拦截。默认值根据不同的设备而定，PC/Table采用严格站点隔离[SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21)，Phone默认部分站点隔离[SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21)。[坚盾守护模式](../../web/web-secure-shield-mode.md)下采用严格站点隔离。
 
 > **说明：**
 >

@@ -106,10 +106,12 @@ struct DragControllerPage {
                 data: unifiedData,
                 extraParams: ''
               }
-              let eve: DragInfo = new DragInfo();
               this.getUIContext().getDragController().executeDrag(() => {
                 this.DraggingBuilder()
               }, dragInfo, (err, eve) => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+                if (err || !eve?.event) {
+                  return;
+                }
                 if (eve.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
@@ -254,7 +256,6 @@ struct DragControllerPage {
                 },
                 extraInfo: "DragItemInfoTest"
               }
-              let eve: DragInfo = new DragInfo();
               this.getUIContext()
                 .getDragController()
                 .executeDrag(dragItemInfo, dragInfo) // 建议使用 this.getUIContext().getDragController().executeDrag()接口
@@ -302,7 +303,7 @@ struct DragControllerPage {
 | extraParams | string                                                 | 否  |  是  | 设置拖拽事件额外信息，具体功能暂未实现。<br>默认值：空<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | touchPoint<sup>11+</sup>    | [TouchPoint](arkui-ts/ts-types.md#touchpoint11)  | 否  |  是  | 配置跟手点坐标。不配置时，左右居中，顶部向下偏移20%。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1)                                | 否   |  是  | 设置拖拽过程中背板图处理模式及数量角标的显示。当需要自定义拖拽预览背板效果或数量角标显示方式时传入；不传入时使用系统默认的拖拽预览背板处理模式和数量角标显示策略。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | 否   |  是  | 设置在主动拖拽过程中由系统自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br>主动拖拽成功发起后，系统会在显示拖拽预览窗口前自动隐藏目标组件。<br>若主动拖拽源本身也需要被隐藏，需要同时传入其uniqueId。<br>组件的uniqueId可通过[UIContext.getFrameNodeById()](arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](js-apis-arkui-frameNode.md#getuniqueid12)获取。<br>开发者需要在拖拽结束回调中按需恢复组件显示状态。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | 否   |  是  | 设置在主动拖拽过程中由系统自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br>默认值：空，不自动隐藏组件。<br>主动拖拽成功发起后，系统会在显示拖拽预览窗口前自动隐藏目标组件。<br>若主动拖拽源本身也需要被隐藏，需要同时传入其uniqueId。<br>组件的uniqueId可通过[UIContext.getFrameNodeById()](arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](js-apis-arkui-frameNode.md#getuniqueid12)获取。<br>开发者需要在拖拽结束回调中按需恢复组件显示状态。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | dataLoadParams<sup>20+</sup>| [unifiedDataChannel.DataLoadParams](../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20)                                | 否   |  是  | 设置起拖方延迟提供数据。调用此方法向系统提供数据加载参数，而非直接传入完整的数据对象。当用户将数据拖拽至目标应用程序并释放时，系统将使用此参数从起拖方请求实际数据。与data同时设置时，dataLoadParams生效。<br>默认值：空<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 **示例：**
@@ -811,12 +812,14 @@ struct ImageExample {
             let pathDir: string = context.distributedFilesDir;
             let destUri = fileUri.getUriFromPath(pathDir);
             let progressListener: unifiedDataChannel.DataProgressListener =
-              (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
+              (progress: unifiedDataChannel.ProgressInfo, dragData: unifiedDataChannel.UnifiedData | null) => {
                 if (dragData != null) {
                   let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
                   if (arr.length > 0) {
                     if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.VIDEO) {
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                      const insertIndex = extraParams ?
+                        JSON.parse(extraParams as string).insertIndex : this.blockArr.length;
+                      this.blockArr.splice(insertIndex, 0, this.uri);
                     }
                   } else {
                     console.info('dragData arr is null');

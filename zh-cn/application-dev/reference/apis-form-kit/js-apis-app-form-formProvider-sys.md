@@ -49,10 +49,10 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.1.0 |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
-| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
 
 **示例：**
 
@@ -115,10 +115,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.1.0 |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
-| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
 
 **示例：**
 
@@ -182,10 +182,10 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.1.0 |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
-| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
 
 **示例：**
 
@@ -350,7 +350,7 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 **系统接口：** 此接口为系统接口。
 
@@ -409,7 +409,7 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 **系统接口：** 此接口为系统接口。
 

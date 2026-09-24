@@ -290,7 +290,7 @@ struct Index {
 
 on(type: 'change', listener: Callback&lt;DeviceListener&gt;): void
 
-注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
+注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。建议在应用主线程执行此操作，且需要在此线程退出前取消监听。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -390,7 +390,7 @@ struct Index {
 
 off(type: 'change', listener?: Callback&lt;DeviceListener&gt;): void
 
-取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
+取消监听输入设备的热插拔事件。使用callback异步回调。取消监听需要与注册监听在同一线程执行。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -1171,7 +1171,7 @@ struct Index {
 | uniq<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的唯一标识。                                         |
 | isVirtual<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。当该字段不存在时，默认值为false。                                      |
 | isLocal<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为本地设备。<br>true表示是本地设备，false表示是非本地设备。当该字段不存在时，默认值为false。                                       |
-| displayId  | number                                  | 是 | 是 | 绑定的目标显示器ID。当系统中有绑定关系时存在该字段，未绑定时不存在该字段。<br>**起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| displayId  | number                                  | 是 | 是 | 绑定的目标显示器ID。当系统中有绑定关系时存在该字段，未绑定时不存在该字段。<br>**起始版本**：26.0.1<br>**模型约束**：此接口仅可在Stage模型下使用。|
 
 ## AxisType<sup>9+</sup>
 

@@ -6,16 +6,13 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d1226d126745b3e8706e636f468e8781c9592562 translatedAt=2026-09-23T08:12:36.808Z pushedAt=2026-09-23T08:19:29.203Z -->
 
 ## When to Use
 
 You can use [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to quickly deploy AI algorithms into your application to perform AI model inference for image classification.
 
 Image classification can be used to recognize objects in images and is widely used in areas such as medical image analysis, auto driving, e-commerce, and facial recognition.
-
-## Basic Concepts
-
-- N-API: a set of native APIs used to build ArkTS components. N-APIs can be used to encapsulate C/C++ libraries into ArkTS modules.
 
 ## Development Process
 
@@ -39,7 +36,7 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
 1. Include the corresponding header file.
 
    <!-- @[napi_image_classification_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
-   
+
    ```c++
    #include <iostream>
    #include <sstream>
@@ -96,7 +93,7 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
    }
    ```
 
-3. Create a context, set parameters such as the number of threads and device type, and load the model. The sample model does not support NNRt inference.
+3. Create a context, set parameters such as the number of threads and the device type, and load the model. The model in this sample does not support inference using [NNRt](mindspore-lite-term.md#nnrt).
 
    <!-- @[napi_image_classification_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
@@ -330,9 +327,9 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
 
 1. In **entry/src/main/cpp/types/libentry/Index.d.ts**, define the ArkTS API **runDemo ()**. The content is as follows:
 
-   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/index.d.ts) -->
-   
-   ```typescript
+   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+   ``` TypeScript
    export const runDemo: (a: number[], b:Object) => Array<number>;
    ```
 
@@ -350,13 +347,12 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
 ### Implementing Image Input and Preprocessing and Performing Inference
 
 1. Call [@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) to pick up the desired image in the album.
-2. Based on the input image size, call [[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) and [@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) to perform operations such as cropping the image, obtaining the image buffer, and standardizing the image.
+2. Based on the input size of the model, call [@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) (for image processing) and [@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) (for basic file operations) to crop the selected image, obtain the image buffer data, and perform normalization.
 3. In **entry/src/main/ets/pages/Index.ets**, call the encapsulated ArkTS module to process the inference result.
 
-<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) --> 
 
-```typescript
-// Index.ets
+``` TypeScript
 import msliteNapi from 'libentry.so';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -380,16 +376,19 @@ struct Index {
   @State maxIndex: number = 0;
   @State maxArray: Array<number> = [];
   @State maxIndexArray: Array<number> = [];
+  // ...
 
   build() {
     Row() {
       Column() {
         Text(this.message)
+        // ...
         Button() {
           Text('photo')
             .fontSize(30)
             .fontWeight(FontWeight.Bold)
         }
+        // ...
         .onClick(() => {
           let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
           if (resMgr === null || resMgr === undefined){
@@ -473,9 +472,9 @@ struct Index {
                         let index = 0;
                         for (let i = 0; i < imageArr.length; i++) {
                           if ((i + 1) % 4 === 0) {
-                            float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // B
+                            float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // R
                             float32View[index+1] = (imageArr[i - 2] / 255.0 - means[1]) / stds[1]; // G
-                            float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // R
+                            float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // B
                             index += 3;
                           }
                         }
@@ -524,9 +523,9 @@ struct Index {
 
                         hilog.info(0xFF00, TAG, '%{public}s',
                           `MS_LITE_LOG: *** Finished MSLite Demo ***`);
-                      }).catch((error: BusinessError) => {
-                        hilog.error(0xFF00, TAG, '%{public}s',
-                          `MS_LITE_ERR: getRawFileContent promise error is: ${error}`);
+                        }).catch((error: BusinessError) => {
+                          hilog.error(0xFF00, TAG, '%{public}s',
+                            `MS_LITE_ERR: getRawFileContent promise error is: ${error}`);
                       })
                     })
                     // 5. Close the file.
@@ -548,7 +547,7 @@ struct Index {
 
 ### Debugging and Verification
 
-1. On DevEco Studio, connect to the device, click **Run entry**, and build your own HAP. 
+1. Connect the device in DevEco Studio, click **Run entry** to compile the HAP, and the following is displayed:
 
    ```shell
    Launching com.samples.mindsporelitecdemo
@@ -598,3 +597,4 @@ The following sample is provided to help you better understand how to develop im
 - [MindSpore Lite Application Development Based on Native APIs (C/C++) (API 11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo)
 
 <!--RP1--><!--RP1End-->
+<!--no_check-->

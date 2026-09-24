@@ -891,7 +891,7 @@ Allows an MDM application to add widgets to the home screen.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.ENTERPRISE_ENCRYPT_BLOCK_DEVICE
 
@@ -908,4 +908,4 @@ Allows an MDM application to mount and unmount the encrypted partition and swap 
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 26.1.0
+**Since**: 26.0.1

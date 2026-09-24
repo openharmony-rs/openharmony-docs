@@ -10,19 +10,19 @@
 
 通用唯一标识（UUID）用于标识星闪服务及其成员（属性、方法、事件等）。根据标识的分配方式，星闪中的UUID分为两类：
 
-- **标准UUID（Standard UUID）**：长度为16比特，由星闪联盟统一分配，具有全局唯一性，用于标识标准服务或标准服务成员（例如标准服务、标准属性）。完整UUID形式为128比特，其中前112比特由固定基础标识决定，128比特基础标识为固定值37BEA880-FC70-11EA-B720-000000000000，后16比特为标准标识，例如37BEA880-FC70-11EA-B720-00000000FDEE。通过标识，客户端可以明确条目承载的是某一个服务、属性、方法或事件等，详情可查阅[星闪标准服务标识](https://www.isla.org.cn/trial/identCid/identListSsid)。
-- **自定义UUID（Custom UUID）**：长度为128比特，由开发者自行定义，用于标识自定义服务或自定义服务成员。开发者可在128比特范围内自行规划，例如FFFFFFFF-1234-5678-ABCD-000000001234。自定义UUID的前112比特不能与标准UUID的基础标识一致（即不能以37BEA880-FC70-11EA-B720-00000000为前缀），否则将被识别为标准UUID。
+- **标准UUID（Standard UUID）**：长度为16比特，由星闪联盟统一分配，具有全局唯一性，用于标识标准服务或标准服务成员（例如标准服务、标准属性）。完整UUID形式为128比特，由基础标识（Base UUID，固定值37BEA880-FC70-11EA-B720-000000000000）的前112比特与16比特标准标识拼接而成，例如37BEA880-FC70-11EA-B720-00000000FDEE。通过标识，客户端可以明确条目承载的是某一个服务、属性、方法或事件等，详情可查阅[星闪标准服务标识](https://www.isla.org.cn/trial/identCid/identListSsid)。
+- **自定义UUID（Custom UUID）**：长度为128比特，由开发者自行定义，用于标识自定义服务或自定义服务成员。开发者可在128比特范围内自行规划，例如FFFFFFFF-1234-5678-ABCD-000000001234。自定义UUID不能以基础标识的前112比特为前缀（即不能以37BEA880-FC70-11EA-B720-00000000开头），否则将被识别为标准UUID。
 
 > **说明：**
 >
 > 自定义服务必须使用自定义UUID，禁止使用标准UUID。
 
-自定义服务的[ssap.Service.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#service)、[ssap.Property.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#property)等用于标识服务及服务成员的UUID字段，取值必须为128比特的自定义UUID；使用星闪标准UUID时，接口将返回[36100044 禁止使用星闪标准服务UUID](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid)错误。
+自定义服务的[ssap.Service.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#service)、[ssap.Property.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#property)等用于标识服务及服务成员的UUID字段，取值必须为128比特的自定义UUID；使用标准UUID时，接口将返回[36100044 禁止使用星闪标准服务UUID](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid)错误。
 
 
 ## 事件订阅类接口的权限要求问题
 
-星闪的事件类接口采用onXXX / offXXX成对形式：
+星闪的事件订阅类接口采用onXXX / offXXX成对形式：
 
 - onXXX(callback) 订阅某类事件，当事件发生时回调callback；
 - offXXX(callback?) 取消订阅；不传callback时取消该类型全部回调。
@@ -48,6 +48,22 @@
 其中，客户端属性值配置描述符和服务端属性值配置描述符在一个属性中最多只能有一个。
 
 当属性支持通知（NOTIFY）操作时，需要为其声明客户端属性值配置描述符：客户端通过[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)开启或关闭该属性的通知，服务端通过[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)向已开启通知的客户端推送属性变化。
+
+## 客户端如何接收属性变化通知
+
+客户端接收属性变化通知（即收到[onPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#onpropertychange)回调）需同时满足以下条件：
+
+1. 服务端在创建该属性时声明了通知（NOTIFY）操作和客户端属性值配置描述符（CLIENT_PROPERTY_CONFIG）；
+2. 客户端已与服务端成功建立SSAP连接；
+3. 客户端已通过[getServices()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#getservices)获取到该属性；
+4. 客户端已调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用该属性的通知；
+5. 客户端已调用[onPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#onpropertychange)注册属性变化回调。
+
+满足上述条件后，服务端调用[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)更新属性值时，会向客户端发送属性变化通知。若上述任一条件不满足，客户端将收不到通知。
+
+> **说明：**
+>
+> 连接断开后，已启用的通知会失效，重新连接后需重新调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用。
 
 ## 什么是星闪设备随机地址
 

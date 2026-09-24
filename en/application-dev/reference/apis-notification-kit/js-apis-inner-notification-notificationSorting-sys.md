@@ -5,6 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:13:31.145Z pushedAt=2026-09-22T08:29:58.368Z -->
 
 The **NotificationSorting** module provides APIs for defining the sorting information of active notifications.
 
@@ -23,5 +24,6 @@ The **NotificationSorting** module provides APIs for defining the sorting inform
 | Name     | Type             | Read-Only  | Optional| Description                    |
 |-----------| ---------------- | -------|----- |-------------------------|
 | slot        | [NotificationSlot](js-apis-inner-notification-notificationSlot.md) | Yes| No| Notification slot type.                 |
-| ranking     | number                                                             | Yes| No| Notification level. If this parameter is not set, the default value is used based on the notification slot type.|
+| ranking     | number                                                             | Yes | No | Notification level. If not set, the default value is determined by the [notification slot](../../notification/notification-glossary.md#notification-slot) type. |
 | hashCode    | string                                                             | Yes| No| Unique ID of the notification.               |
+<!--no_check-->

@@ -4,8 +4,7 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:32.697Z pushedAt=2026-06-23T06:12:23.661Z -->
+<!--Adviser: @zzs911-->
 
 > **NOTE**
 >
@@ -585,7 +584,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
-let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx",  headers);
+let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx", headers);
 ```
 
 **Example 2**
@@ -595,7 +594,6 @@ let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx
 import { media } from "@kit.MediaKit";
 
 async function test(context: Context){
-    // this.getUIContext().getHostContext();
     let mgr = context?.resourceManager;
     if (!mgr) {
         return;
@@ -844,4 +842,137 @@ Creates an AudioRecorder instance to control audio recording. Only one AudioReco
 
 ```ts
 let audioRecorder: media.AudioRecorder = media.createAudioRecorder();
+```
+
+## media.createAVAdsController
+
+createAVAdsController(player: AVPlayer): Promise\<AVAdsController | undefined>
+
+Creates an ad playback controller associated with a player instance. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                |
+| -------- | -------- | ---- | -------------------- |
+| player | [AVPlayer](arkts-apis-media-AVPlayer.md) | Yes  | Player instance created.|
+
+**Return value**
+
+| Type                           | Description                                                        |
+| ------------------------------- | ------------------------------------------------------------ |
+| Promise\<[AVAdsController](arkts-apis-media-AVAdsController.md) \| undefined> | Promise used to return the result. An **AVAdsController** instance is returned if the operation is successful; **undefined** is returned otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400108  | The player object corresponding to player does not exist or is invalid. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test() {
+  let player: media.AVPlayer = await media.createAVPlayer();
+  media.createAVAdsController(player).then((adsController: media.AVAdsController | undefined) => {
+    if (adsController) {
+      console.info('Succeeded in creating AVAdsController');
+    } else {
+      console.error('Failed to create AVAdsController');
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create AVAdsController, error: ${error}`);
+  });
+}
+```
+
+## media.createMediaSourceWithDirectory
+
+createMediaSourceWithDirectory(path: string): Promise\<MediaSource | undefined>
+
+Creates a media source object based on the specified directory path. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                |
+| -------- | -------- | ---- | -------------------- |
+| path | string | Yes  | Directory path for creating a media source.|
+
+**Return value**
+
+| Type                           | Description                                                        |
+| ------------------------------- | ------------------------------------------------------------ |
+| Promise\<[MediaSource](arkts-apis-media-MediaSource.md) \| undefined> | Promise used to return the result. A **MediaSource** instance is returned if the operation is successful; **undefined** is returned otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5411007  | The directory specified by the path parameter does not exist or inaccessible. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test() {
+  media.createMediaSourceWithDirectory("/data/storage/el2/base/media/cache/").then((mediaSource: media.MediaSource | undefined) => {
+    if (mediaSource) {
+      console.info('Succeeded in creating MediaSource with directory');
+    } else {
+      console.error('Failed to create MediaSource with directory');
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create MediaSource with directory, error: ${error}`);
+  });
+}
+```
+
+## media.createAVDownloaderManager
+
+createAVDownloaderManager(): Promise\<AVDownloaderManager>
+
+Creates an offline download task manager instance. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Return value**
+
+| Type                           | Description                                                        |
+| ------------------------------- | ------------------------------------------------------------ |
+| Promise\<[AVDownloaderManager](arkts-apis-media-AVDownloaderManager.md)> | Promise used to return an offline download task manager instance.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test() {
+  media.createAVDownloaderManager().then((downloaderManager: media.AVDownloaderManager) => {
+    console.info('Succeeded in creating AVDownloaderManager');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create AVDownloaderManager, error: ${error}`);
+  });
+}
 ```

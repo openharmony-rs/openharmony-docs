@@ -24,3 +24,69 @@
 | ----------------------------- | ---------------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
 | distortionMode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 否 | 是 | 设置系统材质下弹窗的非线性动画模式。<br/>**默认值：** DistortionMode.DISTORTION_AUTO <br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | edgeLightMode | [EdgeLightMode](./ts-appendix-enums-sys.md#edgelightmode) | 否 | 是 | 设置系统材质下弹窗的流光动画模式。<br/>**默认值：** EdgeLightMode.EDGELIGHT_AUTO <br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## 示例
+
+### 示例1（自定义弹窗设置沉浸式材质、非线性形变与流光）
+
+该示例通过[CustomDialogController](./ts-methods-custom-dialog-box.md#customdialogcontroller)设置[CustomDialogControllerOptions](#customdialogcontrolleroptions)中的系统材质systemMaterial，以及非线性形变[distortionMode](#customdialogcontrolleroptions)和流光[edgeLightMode](#customdialogcontrolleroptions)，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+
+从API版本26.0.0开始，[CustomDialogControllerOptions](#customdialogcontrolleroptions)新增distortionMode和edgeLightMode属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller: CustomDialogController;
+
+  build() {
+    Column() {
+      Text('CustomDialog Text').fontSize(20).margin(10)
+      Button('确定')
+        .margin(10)
+        .onClick(() => {
+          this.controller.close();
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogPage {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample(),
+    alignment: DialogAlignment.Center,
+    // 设置沉浸式材质
+    systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK }),
+    // 非线性形变自适应
+    distortionMode: DistortionMode.DISTORTION_AUTO,
+    // 流光自适应
+    edgeLightMode: EdgeLightMode.EDGELIGHT_AUTO,
+  });
+
+  build() {
+    Column() {
+      Button('CustomDialog')
+        .margin(20)
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open();
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+该示例配图为设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+![CustomDialogExample](figures/CustomDialogController_material.gif)
+
+该示例配图为未设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+![CustomDialogNoExample](figures/CustomDialogController_nomaterial.gif)

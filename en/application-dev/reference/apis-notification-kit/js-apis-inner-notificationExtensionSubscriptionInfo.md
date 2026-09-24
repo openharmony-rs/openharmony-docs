@@ -22,3 +22,4 @@ The **NotificationExtensionSubscriptionInfo** module describes the information a
 | -------------------- | ---------------------|---- | --- |----------------------|
 | type                 | [notificationExtensionSubscription.SubscribeType](js-apis-notificationExtensionSubscription.md#subscribetype) | No | No  | Subscription type, specifying the subscription method for notification extension. Currently, only **SubscribeType.BLUETOOTH** is supported, indicating subscription to notifications via Bluetooth.                |
 | addr                 | string                | No  | No  | Unique identifier of the device. When **type** is set to **SubscribeType.BLUETOOTH**, the corresponding Bluetooth device address is specified. Example: "11:22:33:AA:BB:FF".            |
+<!--no_check-->

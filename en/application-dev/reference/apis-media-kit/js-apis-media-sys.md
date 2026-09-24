@@ -1,10 +1,10 @@
 # @ohos.multimedia.media (Media) (System API)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 The multimedia subsystem provides a set of simple and easy-to-use APIs for you to access the system and use media resources.
 
@@ -54,7 +54,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                      |
 | -------- | ------------------------------ |
-| 202      | Not system App.                |
+| 202      | Not System App. <br>Applicable versions: 12+              |
 | 5400101  | No memory. Return by callback. |
 
 **Example**
@@ -95,7 +95,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                     |
 | -------- | ----------------------------- |
-| 202      | Not system App.               |
+| 202      | Not System App. <br>Applicable versions: 12+             |
 | 5400101  | No memory. Return by promise. |
 
 **Example**
@@ -326,7 +326,7 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 | Name    | Type  |  Read-Only  |   Optional   |  Description                  |
 | -------- | ------ |   ------| ------ | ---------------------- |
-| colorFormat  | [PixelFormat](#pixelformat11) |  No  |  Yes  | Color format of the thumbnail.<br>**System API**: This is a system API.     |
+| colorFormat  | [PixelFormat](#pixelformat11) |  No  |  Yes  | Color format of the thumbnail.<br>**System API:** This is a system API.     |
 
 ## PixelFormat<sup>11+</sup>
 
@@ -451,7 +451,7 @@ isWatermarkSupported(): Promise\<boolean>
 
 Checks whether the device supports the hardware digital watermark. This API uses a promise to return the result.
 
-This API can be called after the [prepare()](arkts-apis-media-AVRecorder.md#prepare9-1), [start()](arkts-apis-media-AVRecorder.md#start9), or [paused()](arkts-apis-media-AVRecorder.md#pause9) event is triggered.
+This API can be called after the [prepare()](arkts-apis-media-AVRecorder.md#prepare9-1), [start()](arkts-apis-media-AVRecorder.md#start9), or [pause()](arkts-apis-media-AVRecorder.md#pause9) event is triggered.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -578,7 +578,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
 | 201      | Permission denied. Return by callback.     |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>Applicable versions: 12+          |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400105  | Service died. Return by callback.          |
@@ -652,7 +652,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201      | Permission denied. Return by promise.     |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>Applicable versions: 12+         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400105  | Service died. Return by promise.          |
@@ -721,7 +721,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>Applicable versions: 12+          |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -771,7 +771,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>Applicable versions: 12+         |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -815,7 +815,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>Applicable versions: 12+          |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -859,7 +859,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>Applicable versions: 12+         |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -901,7 +901,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>Applicable versions: 12+          |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -945,7 +945,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>Applicable versions: 12+         |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -985,7 +985,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>Applicable versions: 12+          |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1027,7 +1027,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>Applicable versions: 12+         |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1069,7 +1069,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>Applicable versions: 12+          |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1113,7 +1113,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>Applicable versions: 12+         |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1153,7 +1153,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
+| 202      | Not System App. <br>Applicable versions: 12+ |
 | 5400105  | Service died. Return by callback. |
 
 **Example**
@@ -1193,8 +1193,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
-| 5400105  | Service died. Return by callback. |
+| 202      | Not System App. <br>Applicable versions: 12+ |
+| 5400105  | Service died. Return by promise. |
 
 **Example**
 
@@ -1233,7 +1233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
+| 202      | Not System App. <br>Applicable versions: 12+ |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1276,7 +1276,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 202      | Not system App.                  |
+| 202      | Not System App. <br>Applicable versions: 12+|
 | 5400103  | I/O error. Return by promise.    |
 | 5400105  | Service died. Return by promise. |
 
@@ -1316,8 +1316,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
-| 201      | permission denied.                |
-| 202      | Not system App.                   |
+| 201      | permission denied. <br>Applicable versions: 12+ |
+| 202      | Not System App. <br>Applicable versions: 12+ |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1333,6 +1333,8 @@ videoRecorder.on('error', (error: BusinessError) => { // Set the 'error' event c
 ```
 
 ## VideoRecordState<sup>9+</sup>
+
+type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'
 
 Enumerates the video recording states. You can obtain the state through the **state** property.
 
@@ -1364,7 +1366,7 @@ The **audioSourceType** and **videoSourceType** parameters are used to distingui
 | audioSourceType | [AudioSourceType](arkts-apis-media-e.md#audiosourcetype9)           | No  | Yes  | Type of the audio source for video recording. This parameter is mandatory for audio recording.                     |
 | videoSourceType | [VideoSourceType](arkts-apis-media-e.md#videosourcetype9)           | No  | No  | Type of the video source for video recording.                                      |
 | profile         | [VideoRecorderProfile](#videorecorderprofile9) | No  | No  | Video recording profile.                                         |
-| rotation        | number                                         | No  | Yes  | Rotation angle of the recorded video. The value can only be 0 (default), 90, 180, or 270.      |
+| rotation        | number                                         | No  | Yes  | Rotation angle of the video to record, in degrees. The value can only be **0°** (default), **90°**, **180°**, or **270°**.      |
 | location        | [Location](arkts-apis-media-i.md#location)                          | No  | Yes  | Geographical location of the recorded video. By default, the geographical location information is not recorded.                |
 | url             | string                                         | No  | No  | Video output URL. Supported: fd://xx (fd number)<br>![](figures/image-url.png) |
 
@@ -1509,3 +1511,111 @@ Specifies whether to capture the entire screen or half of the screen when the fo
 | Name                     | Type   | Mandatory| Description|
 | ------------------------ | ------- | ---- | ---- |
 | enableDeviceLevelCapture | boolean | No  | Whether to capture the entire screen when the foldable PC is folded. **true** to capture the entire screen, **false** to capture half of the screen.|
+
+## AVPlayer<sup>9+</sup>
+
+AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9) to create an AVPlayer instance.
+
+When using the AVPlayer instance, you are advised to register the following callbacks to proactively obtain status changes: [on('stateChange')](arkts-apis-media-AVPlayer.md#onstatechange9): listens for AVPlayer state changes. [on('error')](arkts-apis-media-AVPlayer.md#onerror9): listens for error events.
+
+Applications must properly manage AVPlayer instances according to their specific needs, creating and freeing them when necessary. Holding too many AVPlayer instances can lead to high memory usage, and in some cases, the system might terminate applications to free up resources.
+
+For details about the audio and video playback demo, see [Using AVPlayer to Play Audio (ArkTS)](../../media/media/using-avplayer-for-playback.md) and [Using AVPlayer to Play Videos (ArkTS)](../../media/media/video-playback.md).
+
+### Properties
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**System API:** This is a system API.
+
+| Name              | Type                                  | Read-Only| Optional| Description            |
+| ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
+| enableStartFrameRateOpt | boolean | No  | Yes  |Whether to use a slow synchronization policy to reduce subjective image jitter caused by insufficient frames.<br>The value **true** means to use a slow synchronization policy, and **false** indicates otherwise. The default value is **false**.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+
+### forceLoadVideo
+
+forceLoadVideo(force: boolean): Promise\<void>
+
+Sets whether to forcibly load a video. This API uses a promise to return the result.
+
+This API can be called only when the AVPlayer is in the prepared, playing, or paused state.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                                                        |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| force | boolean | Yes| Whether to forcibly load a video.<br>The value **true** means to forcibly load a video, and **false** indicates otherwise.|
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 202  | Called from Non-System applications. Return by promise.|
+
+**Example**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // Here is only an example. In real development, you must wait for the stateChange event to successfully trigger and reach the prepared, playing, or paused state before proceeding.
+  avPlayer.forceLoadVideo(true);
+}
+```
+
+### enableCameraPostprocessing
+
+enableCameraPostprocessing(): Promise\<void>
+
+Enables post-processing to apply effects during video playback. This API uses a promise to return the result.
+
+This API can be called only when the AVPlayer is in the initialized state.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 202  | Called from Non-System applications. Return by promise.|
+| 5400102  | Operation not allowed. Return by promise.|
+| 5400105  | Service died.|
+
+**Example**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // Here is only an example. In real development, you must wait for the stateChange event to successfully trigger and reach the initialized state before proceeding.
+  avPlayer.enableCameraPostprocessing();
+}
+```

@@ -11,7 +11,7 @@ struct Rect { ... }
 
 ## 概述
 
-如果rects是空指针nullptr，默认Buffer大小为脏区。
+定义矩形区域的结构体，包含矩形框的起始坐标和宽高信息。
 
 **相关模块：** [NativeWindow](capi-nativewindow.md)
 

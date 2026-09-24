@@ -28,11 +28,12 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                                          | 值         | 说明                                                         |
 | --------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。 |
+| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效，并从API版本26.0.1开始在[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br/>**系统API：** 该标记仅支持在系统API中使用。 |
 | GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
 | GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
 | GET_BUNDLE_INFO_WITH_COMMON_CLONE  | 0x00080000 | 用于获取普通分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br/>**起始版本：** 26.0.0 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
 | GET_BUNDLE_INFO_WITH_SANDBOX_CLONE | 0x00100000 | 用于获取沙箱分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br/>**起始版本：** 26.0.0 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
+| GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE | 0x00200000 | 用于获取任一设备模式下已安装的应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)和[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br/>**起始版本：** 26.0.1 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
 
 ## ApplicationFlag
 
@@ -132,7 +133,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 设备模式分发策略枚举，用于指定应用程序如何分发到设备上。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -496,6 +497,74 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAllBundleInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAllBundleInfoInstances
+
+getAllBundleInfoInstances(bundleName: string, bundleFlags: number): Promise\<Array\<BundleInfo>>
+
+根据给定的bundleName和bundleFlags，获取系统中所有的BundleInfo。使用Promise异步回调。
+
+当bundleFlags中携带[GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE](#bundleflag)标记时，可获取应用在任一设备模式下的BundleInfo。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
+| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise对象。返回应用的全部BundleInfo列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE;
+
+try {
+  bundleManager.getAllBundleInfoInstances(bundleName, bundleFlags).then((res: Array<bundleManager.BundleInfo>) => {
+    let index = 0;
+    for (let item of res) {
+      hilog.info(0x0000, 'testTag', 'getAllBundleInfoInstances res: BundleInfo[%{public}d] = %{public}s', index++,
+        JSON.stringify(item));
+    }
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllBundleInfoInstances failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleInfoInstances failed. Cause: %{public}s', message);
 }
 ```
 
@@ -6461,13 +6530,15 @@ filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDist
 
 支持按设备模式分发策略过滤应用列表。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回201错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
