@@ -3183,7 +3183,7 @@ int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, 
 ### OH_ArkUI_NativeModule_RegisterCommonEvent()
 
 ```c
-int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void\* userData, void (\*callback)(ArkUI_NodeEvent\* event))
+int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void* userData, void (*callback)(ArkUI_NodeEvent* event))
 ```
 **描述：**
 
@@ -3821,7 +3821,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node,
 ### OH_ArkUI_NativeModule_GetChildMountPolicy()
 
 ```c
-ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy\* policy)
+ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy* policy)
 ```
 
 **描述**
