@@ -107,7 +107,7 @@
        // 打开相机。
        ret = OH_CameraInput_Open(cameraInput);
        if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraInput_open failed.");
+           OH_LOG_ERROR(LOG_APP, "OH_CameraInput_Open failed.");
            return;
        }
    }
