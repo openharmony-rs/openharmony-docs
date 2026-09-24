@@ -796,6 +796,8 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
       headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
+    }).finally(() => {
+      imageSource.release();
     })
   })
 }
@@ -891,6 +893,8 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
       headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
+    }).finally(() => {
+      imageSource.release();
     })
   })
 }
@@ -972,6 +976,8 @@ function ImageInvert(Image: ArrayBuffer): Promise<image.PixelMap> {
       headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
+    }).finally(() => {
+      imageSource.release();
     })
   })
 }
@@ -1075,6 +1081,8 @@ function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
       headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
+    }).finally(() => {
+      imageSource.release();
     })
   })
 }
@@ -1169,6 +1177,8 @@ function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
       headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
+    }).finally(() => {
+      imageSource.release();
     })
   })
 }
@@ -1254,6 +1264,8 @@ function ImageGrayscale(Image: ArrayBuffer): Promise<image.PixelMap> {
       headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
+    }).finally(() => {
+      imageSource.release();
     })
   })
 }
