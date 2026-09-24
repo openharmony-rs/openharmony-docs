@@ -18,7 +18,7 @@ typedef struct {...} ArkUI_IntOffset
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [common_type.h](capi-common-type-h.md)
 
 ## 汇总
 
@@ -28,5 +28,4 @@ typedef struct {...} ArkUI_IntOffset
 | -- | -- |
 | int32_t x | 水平方向的偏移量，单位为px。x为正数时组件向右偏移，为负数时向左偏移。 |
 | int32_t y | 竖直方向的偏移量，单位为px。y为正数时组件向下偏移，为负数时向上偏移。 |
-
 

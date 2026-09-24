@@ -1,19 +1,20 @@
 # Using AppServiceExtensionAbility for Background Services
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @zhang_hao_zheng-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=556722674c4dacd2a3b1e7f63dd94728429dfa5f translatedAt=2026-09-17T08:25:21.916Z pushedAt=2026-09-21T11:20:29.992Z -->
 
 ## Overview
 
 Starting from API version 20, you can use the [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) component to provide background services for your application. Other third-party applications can obtain the services by starting or connecting to this component.
 
-For example, Data Loss Prevention (DLP) software deployed by an enterprise needs to run long-term in the background without a UI, continuously monitor file operations and network traffic, and intercept violations. You can use the AppServiceExtensionAbility component to implement the core background monitoring service.
+For example, data loss prevention (DLP) software deployed by an enterprise needs to run without a UI for a long time, continuously monitor file operations and network traffic, and intercept violations. You can use the AppServiceExtensionAbility component to implement its core background monitoring service.
 > **NOTE**
 >
-> In this document, the component (currently only the UIAbility is supported) that starts or connects to an AppServiceExtensionAbility is called the client, and the AppServiceExtensionAbility is called the server.
+> In this document, the AppServiceExtensionAbility component that is started or connected is referred to as the server, and the application component (currently only UIAbility is supported) that starts or connects to the AppServiceExtensionAbility component is referred to as the client.
 
 ## Constraints
 
@@ -25,11 +26,11 @@ The AppServiceExtensionAbility takes effect only on 2-in-1 devices.
 
 - To integrate an AppServiceExtensionAbility, applications must request the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION). This ACL permission is available only for enterprise applications.
 
-- APIs provided by [Window](../reference/apis-arkui/arkts-apis-window.md) cannot be called in the AppServiceExtensionAbility.
+- For the restrictions on AppServiceExtensionAbility API calls, see the constraints in [@ohos.app.ability.AppServiceExtensionAbility (Application Background Service Extension Component)](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md).
 
 ## Working Principles
 
-You can launch an AppServiceExtensionAbility from a [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) by either [starting](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20) or [connecting to](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20) it.
+Developers can start the AppServiceExtensionAbility component in [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) by starting ([startAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)) or connecting ([connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)).
 
 - **Starting**: To call [startAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20), the client must be the application to which the AppServiceExtensionAbility belongs, or an application listed in the AppServiceExtensionAbility's trustlist (by configuring the **appIdentifierAllowList** property under the [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) tag).
 - **Connecting**: To call [connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20), the client must be the application to which the AppServiceExtensionAbility belongs, or an application listed in the AppServiceExtensionAbility's trustlist (by configuring the **appIdentifierAllowList** property under the [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) tag), if the [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) instance is not started. If the instance is already started, there are no such restrictions.
@@ -75,7 +76,7 @@ To manually create an AppServiceExtensionAbility in the DevEco Studio project, p
 3. In the **MyAppServiceExtAbility.ets** file, import the [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) module. Customize a class that inherits from AppServiceExtensionAbility and implement the lifecycle callbacks.
 
     <!-- @[ability_app_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
-    
+
     ``` TypeScript
     import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
@@ -132,9 +133,9 @@ To manually create an AppServiceExtensionAbility in the DevEco Studio project, p
     ``` JSON5
     {
       "module": {
-        // ···
+        // ...
         "extensionAbilities": [
-        // ···
+          // ...
           {
             "name": "MyAppServiceExtAbility",
             "description": "appService",
@@ -143,7 +144,7 @@ To manually create an AppServiceExtensionAbility in the DevEco Studio project, p
             "srcEntry": "./ets/myappserviceextability/MyAppServiceExtAbility.ets",
             "appIdentifierAllowList": [
               // Fill in the list of clients that are allowed to start this background service in appIdentifiers.
-            ],
+            ]
           }
         ]
       }
@@ -271,7 +272,7 @@ An application uses [startAppServiceExtensionAbility()](../reference/apis-abilit
 - Enable the [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) to stop itself.
 
   <!-- @[ability_app_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
-  
+
   ``` TypeScript
   import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
   // ···
@@ -288,7 +289,7 @@ An application uses [startAppServiceExtensionAbility()](../reference/apis-abilit
       this.context.terminateSelf().then(() => {
         hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');
       }).catch((error: BusinessError) => {
-        hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: $   {error.message}`);
+        hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
       });
     }
   
@@ -463,9 +464,15 @@ let options: common.ConnectOptions = {
     let data = new rpc.MessageSequence();
     let reply = new rpc.MessageSequence();
 
-    //Write the request data.
-    data.writeInt(1);
-    data.writeInt(2);
+    try {
+         // Write request data.
+         data.writeInt(1);
+         data.writeInt(2);
+       } catch (error) {
+         let e: BusinessError = error as BusinessError;
+         hilog.error(DOMAIN_NUMBER, TAG, 'errorCode ' + e.code);
+         hilog.error(DOMAIN_NUMBER, TAG, 'errorMessage ' + e.message);
+       }
 
     remote.sendMessageRequest(REQUEST_CODE, data, reply, option).then((ret: rpc.RequestResult) => {
       if (ret.errCode === 0) {
@@ -494,13 +501,13 @@ let options: common.ConnectOptions = {
 struct ClientServerExt {
   build() {
     Column() {
-    // ···
+      // ...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            // ···
+            // ...
           }
-        // ···
+          // ...
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
             connectionId = context.connectAppServiceExtensionAbility(want, options);
@@ -508,7 +515,7 @@ struct ClientServerExt {
           })
         }
       }
-    // ···
+      // ...
     }
   }
 }
@@ -523,6 +530,7 @@ struct ClientServerExt {
 import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = '[MyAppServiceExtAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -533,9 +541,15 @@ class Stub extends rpc.RemoteObject {
     data: rpc.MessageSequence,
     reply: rpc.MessageSequence,
     options: rpc.MessageOption): boolean | Promise<boolean> {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onRemoteMessageRequest');
-    let sum = data.readInt() + data.readInt();
-    reply.writeInt(sum);
+    try {
+         hilog.info(DOMAIN_NUMBER, TAG, 'onRemoteMessageRequest');
+         let sum = data.readInt() + data.readInt();
+         reply.writeInt(sum);
+       } catch (error) {
+         let e: BusinessError = error as BusinessError;
+         hilog.error(DOMAIN_NUMBER, TAG, 'errorCode ' + e.code);
+         hilog.error(DOMAIN_NUMBER, TAG, 'errorMessage ' + e.message);
+       }
     return true;
   }
 }
@@ -568,7 +582,7 @@ If your AppServiceExtensionAbility provides sensitive operations, verify the cli
 <!--Del-->
 **Verifying the Client Identity Based on callerUid**
 
-Call [getCallingUid()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid) to obtain the UID of the client, and then call [getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlenamebyuid14) to obtain the corresponding bundle name. In this way, the client identity is verified. Note that [getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlenamebyuid14) is asynchronous, and therefore the server cannot return the verification result to the client. This verification mode applies when the client sends an asynchronous task request to the server. The sample code is as follows:
+Call [getCallingUid()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid) to obtain the client's uid, and then call [getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14) to obtain the bundleName corresponding to the uid, so as to identify the client. Note that [getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14) is an asynchronous API, so the server cannot return the verification result to the client. This verification method is suitable for scenarios where the client initiates an asynchronous task request to the server. The sample code is as follows:
 
 <!-- @[ability_app_service_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets) -->
 
@@ -718,3 +732,4 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
   // Other lifecycle states.
 }
 ```
+

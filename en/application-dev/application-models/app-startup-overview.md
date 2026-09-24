@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=4bad8126d6f63924da12d96cf1b3dfae2cb11cb2 translatedAt=2026-09-17T08:20:07.954Z pushedAt=2026-09-21T11:20:31.780Z -->
 
 This section describes how to start a specified application in linking mode.
 
@@ -18,7 +19,7 @@ This section describes how to start a specified application in linking mode.
 
 An application link is a URL that can direct users to a specific location in an application or a web page. For details about the link format and field meanings, see [Application Link Description](app-uri-config.md). The common format is as follows:
 
-```
+```txt
 scheme://host[:port]/path
 ```
 
@@ -48,7 +49,7 @@ Compared with Deep Linking, App Linking has higher security, reliability, and us
 | Capable of sharing or directly accessible on web pages| Yes| No. The function must be called in the code.|
 | Able to directly start the target application| Yes| Yes. However, this mode is not recommended due to spoofing risks.|
 
-Both Deep Linking and App Linking can be implemented using [openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12). The redirection effect under different conditions is as follows:
+Both Deep Linking and App Linking can be implemented using the [openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12) API. The launch behavior under different conditions is as follows.
 
 > **NOTE**
 > 

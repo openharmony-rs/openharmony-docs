@@ -1,55 +1,42 @@
 # Using OH_MIDI for MIDI Development (C/C++)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
 <!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5e7686f23ef7a264ccc7e08d02658de5cf87ae0f translatedAt=2026-08-18T11:03:04.421Z pushedAt=2026-08-18T11:38:42.582Z -->
+<!-- md-trans-meta sourceCommit=f3efdb02e23121aaefae0a5dab0a37bc284fa9d3 translatedAt=2026-09-23T08:20:49.364Z pushedAt=2026-09-23T08:28:54.976Z -->
 
 ## Scenarios
 
 OH_MIDI is a native MIDI API provided by the system, used for implementing MIDI application development at the C/C++ layer starting from API version 24. When an application needs to interact with external MIDI devices (such as USB MIDI keyboards, Bluetooth MIDI devices) for data exchange, OH_MIDI can be used. Typical use scenarios include:
 
 - **Music creation applications**: Connect a MIDI keyboard, receive played notes in real time, and trigger sound source playback.
-
 - **Instrument learning/teaching applications**: Feed MIDI keyboard performance data into the application to implement features such as scoring and accompaniment.
-
 - **MIDI controller applications**: Send control commands (such as switching timbres, adjusting parameters) to external MIDI devices through the application.
-
 - **MIDI data processing tool**: Receives, parses, and forwards MIDI messages for music production or device debugging.
 
 With **OH_MIDI**, you can implement the following functions:
 
 - Create a MIDI client and manage the connection to the MIDI service.
-
 - Enumerate and manage MIDI devices.
-
 - Open and manage MIDI ports.
-
 - Send and receive MIDI messages.
-
 - Handle MIDI events and callbacks.
-
 - Implement low-latency MIDI data transmission.
 
 ## Checking System Capabilities
 
-Before developing with MIDI, call the [canIUse](../../reference/common/syscap__ndk_8h.md#caniuse) API to check whether the current device supports MIDI capabilities. When **canIUse("SystemCapability.Multimedia.Audio.MIDI")** returns **true**, it indicates that the MIDI capability is available.
+Before developing with MIDI, call the [canIUse](../../reference/common/syscap-ndk-8h.md#caniuse) API to check whether the current device supports MIDI capabilities. When **canIUse("SystemCapability.Multimedia.Audio.MIDI")** returns **true**, it indicates that the MIDI capability is available.
 
 ## Available APIs
 
 The main APIs of OH_MIDI include:
 
 - Client management: [OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create), [OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)
-
 - Device management: [OH_MIDIClient_GetDeviceCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount), [OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos), [OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice), [OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)
-
 - Port management: [OH_MIDIClient_GetPortCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportcount), [OH_MIDIClient_GetPortInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportinfos), [OH_MIDIDevice_OpenInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport), [OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport), [OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport), [OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)
-
 - Data transmission: [OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send), [OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)
-
 - Callback: [OH_MIDICallback_OnDeviceChange](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midicallback_ondevicechange), [OH_MIDIDevice_OnReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)
 
 ## Getting Started
@@ -106,12 +93,10 @@ Creating a MIDI client is the first step in using the MIDI API.
 The client serves as the connection entry point between the application and the MIDI system service, responsible for managing all interactions with the MIDI service. Before creating the client, you need to prepare the callback structure:
 
 The system has defined the [OH_MIDICallbacks](../../reference/apis-audio-kit/capi-ohmidi-oh-midicallbacks.md) structure. You need to implement the callback functions within it:
-
 - onDeviceChange: Automatically called by the system when a MIDI device is connected or disconnected. You handle device connection and removal logic in this callback.
-
 - onError: Called when an error occurs in the MIDI service. The developer handles error logging and exception recovery logic in this callback, such as recreating the client.
 
-Create a MIDI client instance by calling the [OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create) interface, passing in the callback structure and user data.
+Create a MIDI client instance by calling the [OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create) API, passing in the callback structure and user data.
 
 <!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -535,7 +520,7 @@ To send MIDI messages, you need to first construct data in the Universal MIDI Pa
 
 **Send custom MIDI messages.**
 
-Construct an array of [OH_MIDIEvent](../../reference/apis-audio-kit/capi-ohmidi-oh-midievent.md) events, and send MIDI messages through the [OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send) interface.
+Construct an array of [OH_MIDIEvent](../../reference/apis-audio-kit/capi-ohmidi-oh-midievent.md) events, and send MIDI messages through the [OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send) API.
 
 <!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -735,7 +720,7 @@ The **OH_MIDI** APIs provide **userData** parameters at three levels: client-lev
 
 3. Memory safety: The `events` array and all data pointers within it in the `OnMIDIReceived` callback are temporary and valid only during this callback. Any data that needs to be retained must be copied before the callback returns. Accessing expired pointers can lead to undefined behavior (crashes, memory corruption).
 
-4. Error handling: All MIDI interface calls should check the return value and handle error conditions properly.
+4. Error handling: All MIDI API calls should check the return value and handle error conditions properly.
 
 5. Performance optimization: Operations exceeding 1 millisecond or blocking I/O are prohibited in callback functions to ensure real-time processing of MIDI messages is not affected. Performing time-consuming operations or blocking I/O in callbacks will severely impact the real-time processing of MIDI messages, potentially causing audio latency or frame drops.
 
@@ -764,19 +749,15 @@ The **OH_MIDI** APIs provide **userData** parameters at three levels: client-lev
 Use the following methods to verify that MIDI devices are correctly enumerated:
 
 1. Check log output: Confirm that information such as device count, device name, and device type is displayed correctly.
-
 2. Compare with the system device list: Compare with the MIDI device list displayed in system settings.
-
-3. Test hot-plugging: Connect/disconnect a device, and confirm through debug output or logs that the **OnDeviceChange** callback is triggered once when the device is connected and once when the device is disconnected.
+3. Test hot-swap: Connect/disconnect a device, and confirm through debug output or logs that the **OnDeviceChange** callback is triggered once when the device is connected and once when the device is disconnected.
 
 ### Debugging UMP Message Format
 
 The UMP message format follows the MIDI 2.0 standard. Common UMP message types:
 
 - 0x2: MIDI 1.0 Channel Voice Message (32-bit).
-
 - 0x3: MIDI 1.0 System Message (32-bit).
-
 - 0x4: MIDI 2.0 Channel Voice Message (64-bit).
 
 During debugging, you can output raw UMP data for verification:
@@ -791,7 +772,7 @@ Log output: Use **OH_LOG series** macros to output detailed debugging informatio
 
 ### Logging Recommendations
 
-During the development phase, it is recommended to add detailed logs containing timestamps, method names, parameter values, and return values at interface calls, error handling, and key business logic state changes:
+During the development phase, it is recommended to add detailed logs containing timestamps, method names, parameter values, and return values at API calls, error handling, and key business logic state changes:
 
 ``` C++
 #define MIDI_LOG_TAG "[MIDI]"
@@ -814,7 +795,7 @@ Indicates that the send buffer is full and the message cannot be sent immediatel
 
 1. The sending speed exceeds the buffer processing capacity: Reduce the sending frequency (usually in scenarios involving sending a large number of SysEx messages).
 
-2. The buffer is not processed in time: Consider using the [OH_MIDIDevice_FlushOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_flushoutputport) interface to clear the buffer.
+2. The buffer is not processed in time: Consider using the [OH_MIDIDevice_FlushOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_flushoutputport) API to clear the buffer.
 
 3. Handle partial sending: Check the `eventsWritten` parameter to understand how many events were actually sent.
 
@@ -838,25 +819,17 @@ if (result == OH_MIDI_STATUS_WOULD_BLOCK) {
 ### How to Properly Handle Device Hot-Swap
 
 Proper device hot-swap handling process:
-
 1. Listen for device change callbacks: Handle connection and disconnection events in `OnDeviceChange`.
-
 2. Update the device list: Remove devices promptly upon disconnection, and re-enumerate upon connection.
-
 3. Release related resources: When a device is disconnected, close all ports and device handles associated with that device.
-
 4. Error handling: Accessing a disconnected device will return an error. You need to check the error code and log it or notify the user.
 
 ### Handling Bluetooth MIDI Device Connection Failures
 
 Common issues and solutions for Bluetooth MIDI device connections:
-
 1. Permission not declared: Ensure that the `ohos.permission.ACCESS_BLUETOOTH` permission is declared in module.json5.
-
 2. Bluetooth not enabled: Ensure that system Bluetooth is enabled before connecting.
-
 3. Incorrect address: Confirm that the Bluetooth device address format is correct (for example, "AA:BB:CC:DD:EE:FF").
-
 4. Timeout issue: Bluetooth connection is asynchronous and normally requires a wait of 1-3 seconds (the specific time varies depending on the device model and performance). If the target device is already connected to another host, it will take approximately 30 seconds to return a connection failure result. It is recommended to handle timeout logic in the callback function to avoid blocking the main thread.
 
 > **NOTE**
@@ -871,15 +844,10 @@ Common issues and solutions for Bluetooth MIDI device connections:
 This is usually caused by thread safety or memory lifecycle issues.
 
 1. Memory lifecycle issue: The `events` data in the `OnMIDIReceived` callback is only valid during the callback and its pointer cannot be saved for later use.
-
 2. Thread safety issue: The callback is executed in an independent thread, and locking is required when accessing shared data.
-
 3. The solutions are as follows:
-
    - Copy the required data within the callback.
-
    - Use a mutex to protect shared resources.
-
    - Avoid performing time-consuming operations within the callback.
 
 Error example:
@@ -919,37 +887,23 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 ## Sample
 
 The complete sample code can be viewed in the sample project:
-
 - Sample project path: `https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi`.
 
 The sample project demonstrates:
-
 - Creating and destroying a MIDI client
-
 - Device enumeration and device change callbacks
-
 - Opening/closing devices (USB and BLE)
-
 - Obtaining port information
-
 - Open/close input and output ports
-
 - Send MIDI messages (including Note On/Off and SysEx)
-
 - Receive MIDI message callbacks
-
 - Use userData to pass context data
 
 ## References
 
 - [OH_MIDI Development Overview (C/C++)](midi-overview.md)
-
 - [OHMIDI API reference](../../reference/apis-audio-kit/capi-ohmidi.md)
-
 - [native_midi.h](../../reference/apis-audio-kit/capi-native-midi-h.md)
-
 - [native_midi_base.h](../../reference/apis-audio-kit/capi-native-midi-base-h.md)
-
 - [Universal Error Codes](../../reference/errorcode-universal.md)
-
 - Bluetooth BLE Development Guide: [BLE Scanning and Advertising](../../connectivity/bluetooth/ble-development-guide.md)

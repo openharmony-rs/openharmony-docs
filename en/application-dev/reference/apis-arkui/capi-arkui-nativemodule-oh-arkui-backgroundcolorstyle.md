@@ -5,6 +5,7 @@
  <!--Designer: @carnivore233-->
  <!--Tester: @mateng_Holtens-->
  <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ed1823b8bfef96231dc44d6fdc52b5591476e06b translatedAt=2026-09-22T09:20:47.927Z pushedAt=2026-09-22T11:48:50.892Z -->
 
 ```c
 typedef struct OH_ArkUI_BackgroundColorStyle OH_ArkUI_BackgroundColorStyle
@@ -12,7 +13,7 @@ typedef struct OH_ArkUI_BackgroundColorStyle OH_ArkUI_BackgroundColorStyle
 
 ## Overview
 
-Defines a background color style.<br>        [OH_ArkUI_BackgroundColorStyle_Create](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_create) can be used to create a background color style object.<br>        [OH_ArkUI_BackgroundColorStyle_Destroy](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_destroy) can be used to destroy the background color style object.<br>        After the object is created, [OH_ArkUI_BackgroundColorStyle_SetColor](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setcolor) and [OH_ArkUI_BackgroundColorStyle_SetRadius](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setradius) can be used to set the background color and rounded corners.
+Defines a background color style, which supports customizing the background color and corner radius. It is used to set a background highlight effect for a styled string, for example, search result highlighting, key text marking, and label-style text display, to improve the visual hierarchy and recognizability of text.<br>Call [OH_ArkUI_BackgroundColorStyle_Create](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_create) to create a background color style object.<br>After the object is created, call [OH_ArkUI_BackgroundColorStyle_SetColor](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setcolor) and [OH_ArkUI_BackgroundColorStyle_SetRadius](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setradius) to set the background color and corner radius.<br>Call [OH_ArkUI_BackgroundColorStyle_GetColor](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_getcolor) and [OH_ArkUI_BackgroundColorStyle_GetRadius](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_getradius) to obtain the background color and corner radius.<br>After the object is used, call [OH_ArkUI_BackgroundColorStyle_Destroy](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_destroy) to destroy it.
 
 **Since**: 24
 

@@ -332,7 +332,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 参数名     | 类型         | 必填 | 说明                                 |
 | -------- | ------------- | ---- | ----------------------------------- |
-| type     | string       | 是   | 监听事件，固定为'error'，photoOutput创建成功后可监听。 |
+| type     | string       | 是   | 监听事件，固定为'error'，videoOutput创建成功后可监听。 |
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
 **示例：**
