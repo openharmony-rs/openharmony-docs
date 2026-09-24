@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T02:15:20.467Z pushedAt=2026-09-24T06:00:14.204Z -->
 
 The Network Sharing module allows you to share your device's Internet connection with other connected devices by means of Wi-Fi hotspot, Bluetooth, and USB sharing. It also allows you to query the network sharing state and shared mobile data volume.
 
@@ -40,7 +41,9 @@ Checks whether network sharing is supported. This API uses an asynchronous callb
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -80,7 +83,9 @@ Checks whether network sharing is supported. This API uses a promise to return t
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -108,7 +113,7 @@ sharing
 
 isSharing(callback: AsyncCallback\<boolean>): void
 
-Obtains the current network sharing status. This API uses an asynchronous callback to return the result.
+Obtains the current network sharing state. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -124,7 +129,9 @@ Obtains the current network sharing status. This API uses an asynchronous callba
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -164,7 +171,9 @@ Obtains the current network sharing status. This API uses a promise to return th
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -209,7 +218,9 @@ Enables sharing of a specified type. This API uses an asynchronous callback to r
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -261,10 +272,12 @@ Enables sharing of a specified type. This API uses a promise to return the resul
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
-| 202       | Non-system applications use system APIs.     |
 | 201       | Permission denied.                           |
+| 202       | Non-system applications use system APIs.     |
 | 401       | Parameter error.                             |
 | 2200001   | Invalid parameter value.                     |
 | 2200002   | Failed to connect to the service.            |
@@ -309,11 +322,13 @@ Disables sharing of a specified type. This API uses an asynchronous callback to 
 | Name  | Type                                 | Mandatory| Description                                    |
 | -------- | ------------------------------------- | ---- | ---------------------------------------- |
 | type     | [SharingIfaceType](#sharingifacetype) | Yes  | Sharing type. The value **0** means Wi-Fi hotspot sharing, **1** means USB sharing, and **2** means Bluetooth sharing.|
-| callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result.         |
+| callback | AsyncCallback\<void>                  | Yes   | Callback invoked to return the result of stopping network sharing.          |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -364,7 +379,9 @@ Disables sharing of a specified type. This API uses a promise to return the resu
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -398,7 +415,7 @@ sharing
 
 getStatsRxBytes(callback: AsyncCallback\<number>): void
 
-Obtains the volume of mobile data traffic received via network sharing. This API uses an asynchronous callback to return the result.
+Obtains the received data size of the shared network. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -414,7 +431,9 @@ Obtains the volume of mobile data traffic received via network sharing. This API
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -450,11 +469,13 @@ Obtains the volume of mobile data traffic received via network sharing. This API
 
 | Type            | Description                                             |
 | ---------------- | ------------------------------------------------- |
-| Promise\<number> | Promise used to return the data volume, in KB.|
+| Promise\<number> | Promise object used to return the received data size of the shared network, in KB. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -482,7 +503,7 @@ sharing
 
 getStatsTxBytes(callback: AsyncCallback\<number>): void
 
-Obtains the volume of mobile data traffic sent via network sharing. This API uses an asynchronous callback to return the result.
+Obtains the transmitted data size of the shared network. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -498,7 +519,9 @@ Obtains the volume of mobile data traffic sent via network sharing. This API use
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -534,11 +557,13 @@ Obtains the volume of mobile data traffic sent via network sharing. This API use
 
 | Type            | Description                                             |
 | ---------------- | ------------------------------------------------- |
-| Promise\<number> | Promise used to return the data volume, in KB.|
+| Promise\<number> | Promise object, returns the data size of the shared network transmission, in KB. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -566,7 +591,7 @@ sharing
 
 getStatsTotalBytes(callback: AsyncCallback\<number>): void
 
-Obtains the total volume of mobile data traffic sent via network sharing. This API uses an asynchronous callback to return the result.
+Obtains the total data size of the shared network. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -582,7 +607,9 @@ Obtains the total volume of mobile data traffic sent via network sharing. This A
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -618,11 +645,13 @@ Obtains the total volume of mobile data traffic sent via network sharing. This A
 
 | Type            | Description                                           |
 | ---------------- | ----------------------------------------------- |
-| Promise\<number> | Promise used to return the data volume, in KB.|
+| Promise\<number> | Promise object used to return the total data size of the shared network, in KB. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -650,7 +679,7 @@ sharing
 
 getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback\<Array\<string>>): void
 
-Obtains the names of NICs in the specified network sharing state. This API uses an asynchronous callback to return the result.
+Obtains the list of network interface card names in the specified state. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -667,7 +696,9 @@ Obtains the names of NICs in the specified network sharing state. This API uses 
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -711,11 +742,13 @@ Obtains the names of NICs in the specified network sharing state. This API uses 
 
 | Type                    | Description                                     |
 | ------------------------ | ----------------------------------------- |
-| Promise\<Array\<string>> | Promise used to return an array of NIC names.|
+| Promise\<Array\<string>> | Promise object that returns the list of network interface card names in the specified state. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -762,7 +795,9 @@ Obtains the network sharing state of the specified type. This API uses an asynch
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -804,7 +839,9 @@ Obtains the network sharing state of the specified type. This API uses a promise
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -817,7 +854,7 @@ Obtains the network sharing state of the specified type. This API uses a promise
 
 | Type                                             | Description                                     |
 | ------------------------------------------------- | ----------------------------------------- |
-| Promise\<[SharingIfaceState](#sharingifacestate)> | Promise used to return the network sharing state.|
+| Promise\<[SharingIfaceState](#sharingifacestate)> | Promise used to return the sharing state of the specified type of network. |
 
 **Example**
 
@@ -840,7 +877,7 @@ sharing
 
 getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback\<Array\<string\>\>): void
 
-Obtains regular expressions of NICs of a specified type. This API uses an asynchronous callback to return the result.
+Obtains the list of regular expressions for network interface card names of the specified type. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -857,7 +894,9 @@ Obtains regular expressions of NICs of a specified type. This API uses an asynch
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -901,11 +940,13 @@ Obtains regular expressions of NICs of a specified type. This API uses a promise
 
 | Type                    | Description                               |
 | ------------------------ | ----------------------------------- |
-| Promise\<Array\<string>> | Promise used to return an array of regular expressions.|
+| Promise\<Array\<string>> | Promise object used to return the list of regular expressions. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Network Sharing Error Codes](errorcode-net-sharing.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -935,7 +976,7 @@ sharing
 
 on(type: 'sharingStateChange', callback: Callback\<boolean>): void
 
-Registers the network sharing status change event. This API uses an asynchronous callback to return the result.
+Registers a listener for network sharing state changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -948,11 +989,13 @@ Registers the network sharing status change event. This API uses an asynchronous
 | Name  | Type                   | Mandatory| Description                        |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | Yes  | Event type.<br/> The value **sharingStateChange** indicates a network sharing status change event.                  |
-| callback | AsyncCallback\<boolean> | Yes  | Callback invoked when the network sharing state changes.|
+| callback | Callback\<boolean> | Yes | Callback invoked to return the network sharing state. |
 
 **Error codes**
 
-| ID| Error Message                                |
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -972,7 +1015,7 @@ sharing.on('sharingStateChange', (data: boolean) => {
 
 off(type: 'sharingStateChange', callback?: Callback\<boolean>): void
 
-Unregisters the network sharing status change event. This method uses an asynchronous callback to return the result.
+Unregisters the listener for network sharing state changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -985,11 +1028,13 @@ Unregisters the network sharing status change event. This method uses an asynchr
 | Name  | Type                   | Mandatory| Description                        |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | Yes  | Event type. The value **sharingStateChange** indicates a network sharing status change event.                  |
-| callback | AsyncCallback\<boolean> | No  | Callback invoked when the network sharing state changes.|
+| callback | Callback\<boolean> | No | Callback invoked to return the network sharing state. |
 
 **Error codes**
 
-| ID| Error Message                                |
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -1009,7 +1054,7 @@ sharing.off('sharingStateChange', (data: boolean) => {
 
 on(type: 'interfaceSharingStateChange', callback: Callback\<InterfaceSharingStateInfo\>): void
 
-Subscribes to network sharing state changes of a specified NIC. This API uses an asynchronous callback to return the result.
+Registers a listener for network sharing state changes of a network interface card. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1022,11 +1067,13 @@ Subscribes to network sharing state changes of a specified NIC. This API uses an
 | Name  | Type                                                                  | Mandatory| Description                                 |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------- |
 | type     | string                                                                | Yes  | Event type.<br/> The value **interfaceSharingStateChange** indicates a network sharing status change event of the NIC.                           |
-| callback | AsyncCallback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | Yes  | Callback used to return the result. It is called when the network sharing state of a specified NIC changes.|
+| callback | Callback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | Yes | Callback invoked when the sharing state of the specified network interface card changes. |
 
 **Error codes**
 
-| ID| Error Message                                |
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -1046,7 +1093,7 @@ sharing.on('interfaceSharingStateChange', (data: object) => {
 
 off(type: 'interfaceSharingStateChange', callback?: Callback\<InterfaceSharingStateInfo\>): void
 
-Unsubscribes from network sharing state changes of a specified NIC. This API uses an asynchronous callback to return the result.
+Unregisters the listener for network sharing state changes of a network interface card. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1059,11 +1106,13 @@ Unsubscribes from network sharing state changes of a specified NIC. This API use
 | Name  | Type                                                                       | Mandatory| Description                                    |
 | -------- | --------------------------------------------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                                                     | Yes  | Event type. The value **interfaceSharingStateChange** indicates a network sharing status change event of the NIC.                              |
-| callback | AsyncCallback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | No  | Callback used to return the result.|
+| callback | Callback\<[InterfaceSharingStateInfo](#interfacesharingstateinfo11)> | No | Callback for the sharing state change event of the specified network interface card. |
 
 **Error codes**
 
-| ID| Error Message                                |
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -1083,7 +1132,7 @@ sharing.off('interfaceSharingStateChange', (data: object) => {
 
 on(type: 'sharingUpstreamChange', callback: Callback\<NetHandle>): void
 
-Subscribes to upstream network changes. This API uses an asynchronous callback to return the result.
+Registers a listener for upstream network changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1096,11 +1145,13 @@ Subscribes to upstream network changes. This API uses an asynchronous callback t
 | Name  | Type                     | Mandatory| Description                          |
 | -------- | ------------------------- | ---- | ------------------------------ |
 | type     | string                    | Yes  | Event type.<br/> The value **sharingUpstreamChange** indicates an upstream network change event.                    |
-| callback | AsyncCallback\<NetHandle> | Yes  | Callback invoked when the upstream network changes.|
+| callback | Callback\<NetHandle> | Yes | Callback invoked when the uplink network changes. |
 
 **Error codes**
 
-| ID| Error Message                                |
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |
@@ -1120,7 +1171,7 @@ sharing.on('sharingUpstreamChange', (data: object) => {
 
 off(type: 'sharingUpstreamChange', callback?: Callback\<NetHandle>): void
 
-Unsubscribes from upstream network changes. This API uses an asynchronous callback to return the result.
+Unregisters the listener for upstream network changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1133,11 +1184,13 @@ Unsubscribes from upstream network changes. This API uses an asynchronous callba
 | Name  | Type                     | Mandatory| Description                            |
 | -------- | ------------------------- | ---- | -------------------------------- |
 | type     | string                    | Yes  | Event type. The value **sharingUpstreamChange** indicates an upstream network change event.                      |
-| callback | AsyncCallback\<NetHandle> | No  | Callback used for unsubscription from upstream network changes.|
+| callback | Callback\<NetHandle> | No | Callback for the uplink network change event. |
 
 **Error codes**
 
-| ID| Error Message                                |
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                 |
 | --------- | ---------------------------------------- |
 | 201       | Permission denied.                       |
 | 202       | Non-system applications use system APIs. |

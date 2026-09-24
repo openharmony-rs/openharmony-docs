@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:16.972Z pushedAt=2026-06-26T03:00:41.287Z -->
+<!-- md-trans-meta sourceCommit=809546be3905d8ba4534b8a83894a78800ebe4e3 translatedAt=2026-09-23T01:46:23.838Z pushedAt=2026-09-24T06:00:14.169Z -->
 
 > **NOTE**
 >
@@ -20,7 +20,7 @@ Unsupported protocol.
 
 **Description**
 
-This error code is reported if the input protocol version is not supported by the server.
+The protocol is not supported.
 
 **Cause**
 
@@ -145,19 +145,14 @@ The server returned illegal data that cannot be parsed.
 **Cause**
 
 1. The data returned by the server does not conform to the HTTP protocol format.
-
 2. The proxy server configuration is incorrect, and the proxy address points to a non-HTTP proxy service.
-
 3. The service running on the requested port is not an HTTP/HTTPS service.
-
 4. The server or proxy did not return data according to the protocol specification.
 
 **Solution**
 
 1. Check the server implementation and ensure that the returned data is in a valid HTTP format.
-
 2. If a proxy is used, check whether the proxy configuration is correct, and ensure that the proxy address points to an HTTP proxy service.
-
 3. Check whether the target port of the request runs an HTTP/HTTPS service.
 
 ## 2300009 Access to Remote Resources Denied
@@ -330,6 +325,8 @@ This error code is reported if the operation times out.
 
 4. The server load is too high, and the processing speed is slow.
 
+5. A custom DNS rule was set by calling [connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11), causing the domain name to be resolved to an expired or incorrect IP address, so the connection cannot be established.
+
 **Solution**
 
 1. Check the network connection status and ensure that the network is stable.
@@ -338,7 +335,9 @@ This error code is reported if the operation times out.
 
 3. Check the server load.
 
-4. You can search for the log keyword "HttpClient CURLcode result 28" to locate the error.
+4. Check whether a custom DNS rule was set through [connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11). If the set IP address has expired or is incorrect, call [removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11) or [clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11) to clear the rule and try again.
+
+5. You can view the log keyword "HttpClient CURLcode result 28" to locate the error.
 
 ## 2300047 Maximum Redirections Reached
 
@@ -412,6 +411,8 @@ Failed to receive data from the peer; network data reception failed.
 
 3. An exception occurred while the peer was sending data.
 
+4. A custom DNS rule was set by calling [connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11), but the IP address in the rule has become invalid, so no response can be received after the request is sent to the incorrect address.
+
 **Solution**
 
 1. Check the network connection status.
@@ -420,7 +421,9 @@ Failed to receive data from the peer; network data reception failed.
 
 3. Initiate the request again.
 
-4. You can search for the log keyword "HttpClient CURLcode result 56" to locate the error.
+4. Check whether a custom DNS rule was set through [connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11). If the set IP address has expired or is incorrect, call [removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11) or [clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11) to clear the rule and try again, ensuring that the domain name is resolved to the correct IP address.
+
+5. You can view the log keyword "HttpClient CURLcode result 56" to locate the error.
 
 ## 2300058 Local SSL Certificate Error
 
@@ -440,7 +443,7 @@ The format of the SSL certificate is incorrect.
 
 Check the format of the SSL certificate.
 
-## 2300059 Failed to Use the Specified SSL Cipher Algorithm
+## 2300059 Unable to Use the Specified Encryption Algorithm
 
 **Error Message**
 
@@ -448,7 +451,7 @@ The specified SSL cipher cannot be used.
 
 **Description**
 
-This error code is reported if the specified SSL cipher algorithm cannot be used.
+Unable to use the specified encryption algorithm.
 
 **Cause**
 
@@ -669,55 +672,36 @@ Internal error of the HTTP module, usually caused by unmapped errors returned by
 **Cause**
 
 1. **Unmapped error from the underlying network library**:
-
    - The HTTP error code mapping rule is 2300000 + CURL error code. When the error code returned by CURL is not defined in the mapping table, 2300999 is returned uniformly.
-
    - For example, CURL error code 1 maps to 2300001, and CURL error code 28 maps to 2300028. If the error code returned by CURL has no corresponding mapping, 2300999 is returned.
-
    - **Log keyword**: `CURLcode result` (The specific CURL error code value will be printed in the log.)
 
 2. **HTTP3 protocol issue**:
-
    - When the HTTP3 protocol is used, there are other configuration errors before the request starts.
-
    - **Log keyword**: `error_.GetErrorCode()=`. The request protocol is HTTP3.
 
 3. **Global interceptor verification failed**:
-
    - The global request interceptor verification failed.
-
    - **Log keywords**: `GlobalRequestInterceptorCheck fail`, `GlobalRequestInterceptorCheck failed`
 
 **Solution**
 
 1. **For underlying network library errors**:
-
    - View the complete log to obtain the underlying CURL error code.
-
    - Refer to the [CURL Error Code Documentation](https://curl.se/libcurl/c/libcurl-errors.html) to understand the specific error meaning.
-
    - Take corresponding measures based on the error type (network connection, SSL certificate, timeout, etc.).
 
 2. **For HTTP3 protocol issues**:
-
    - If the HTTP3 protocol is used, check whether there are other errors in the request configuration (such as URL format, permissions, etc.).
-
    - Check the specific error information in the log and prioritize resolving that error.
-
    - Consider downgrading to the HTTP/2 or HTTP/1.1 protocol.
 
 3. **For global interceptor issues**:
-
    - Check whether a global HTTP interceptor is configured.
-
    - Check whether the implementation of the interceptor callback is correct.
 
 4. **General measures**:
-
    - Try to recreate the HTTP request object to avoid using an invalidated object.
-
    - Check the memory usage to ensure that system resources are sufficient.
-
    - If the problem persists, collect complete logs and submit a problem report, and contact technical support for help.
-
    - Simplify the request configuration and locate which configuration item causes the problem.

@@ -5,11 +5,13 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T01:13:41.539Z pushedAt=2026-09-24T06:00:14.092Z -->
+
 ## Overview
 
 Defines the APIs of the HTTP request module.
 
-**File to include**: <network/netstack/net_http.h>
+**File to include:** `<network/netstack/net_http.h>`
 
 **Library**: libnet_http.so
 
@@ -33,7 +35,7 @@ Defines the APIs of the HTTP request module.
 | [void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)](#oh_http_destroyheaderentries) | Destroys all key-value pairs obtained from **OH_Http_GetHeaderEntries**.|
 | [Http_Request *OH_Http_CreateRequest(const char *url)](#oh_http_createrequest) | Creates an HTTP request.|
 | [int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)](#oh_http_request) | Initiates an HTTP request.|
-| [void OH_Http_Destroy(struct Http_Request **request)](#oh_http_destroy) | Destroys an HTTP request.|
+| [void OH_Http_Destroy(struct Http_Request **request)](#oh_http_destroy) | Interrupts an HTTP request. |
 
 ## Function Description
 
@@ -269,3 +271,5 @@ Stops the HTTP request.
 | Name| Description|
 | -- | -- |
 | [struct Http_Request](capi-netstack-http-request.md) **request | Pointer to the request to be interrupted, which is a pointer to **Http_Request**. For details, see [Http_Request](capi-netstack-http-request.md).|
+
+
