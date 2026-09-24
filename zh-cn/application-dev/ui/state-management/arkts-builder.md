@@ -2681,9 +2681,8 @@ struct PageBuilderCorrectUsage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderComponentV2Refresh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderComponentV2Refresh.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Column, Text, Builder, ComponentV2, FontWeight, Trace, ObservedV2, Local } from '@kit.ArkUI';
 
 @ObservedV2
@@ -2691,8 +2690,21 @@ class ParamTmp {
   @Trace count : number = 0;
 }
 
+export interface ParamInter {
+  count : number;
+}
+
 @Builder
 function renderText(param: ParamTmp) {
+  Column() {
+    Text(`param : ${param.count}`)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Builder
+function renderTextInter(param: ParamInter) {
   Column() {
     Text(`param : ${param.count}`)
       .fontSize(20)
@@ -2759,7 +2771,7 @@ struct PageBuilder {
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
       renderText(this.builderParams)
-      renderText({ count: this.builderParams.count })
+      renderTextInter({ count: this.builderParams.count })
       renderMap(this.map_value)
       renderSet(this.set_value)
       renderNumberArr(this.numArr_value)

@@ -779,22 +779,20 @@ Column() {
 aboutToAppear是自定义组件build之前执行，aboutToDisappear是自定义组件销毁前执行。但有时自定义组件没有build，就被销毁。为了执行一个完整的生命周期，aboutToDisappear会判断，该组件是否执行了aboutToAppear，如果没有执行便强制触发一次aboutToAppear。\@ComponentAppear装饰的函数和\@ComponentDisappear装饰的函数受状态机约束，\@ComponentDisappear装饰的函数不会误调用\@ComponentAppear装饰的函数。例子如下所示：
 
 <!-- @[LifecycleSwiper](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleSwiper.ets) -->
-``` TypeScript
-// Index.ets
-'use static'
 
+``` TypeScript
 import { SwiperExample } from './SwiperPage';
-import { Entry, Component, State, RelativeContainer, Text, Button } from '@kit.ArkUI';
+import { Entry, Component, State, Column, Text, Button } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct Index {
+struct LifecycleSwiperIndex {
   @State message: string = 'Hello World';
   @State show: boolean = false;
   @State currentTabIndex: number = 0;
 
   build() {
-    RelativeContainer() {
+    Column() {
       Text('start')
         .fontSize(50)
         .fontColor('#000')
