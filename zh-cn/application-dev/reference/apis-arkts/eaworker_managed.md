@@ -303,6 +303,61 @@ static current(): EAWorker | undefined
 let currentWorker = EAWorker.current();
 ```
 
+## exclusiveScope
+static exclusiveScope\<T>(callback: () => T): T
+
+在当前支持跨虚拟机互操作的EAWorker所绑定的操作系统线程栈上同步执行回调函数。该方法会等待回调函数执行结束，并将回调函数的返回值或异常传递给调用方。
+
+> **说明：**
+>
+> - 该方法只能在通过`needInterop`参数开启互操作能力的EAWorker中调用，不支持在主线程、TaskPool工作线程、其他非EAWorker执行上下文或未开启互操作能力的EAWorker中调用。
+> - 回调函数执行期间禁止发生异步操作。回调函数中不能调用`Job.Await`、`setTimeout`或`Promise`等可能触发线程等待的接口。
+> - 不支持在回调函数中嵌套调用`exclusiveScope`。
+> - 该方法为同步调用。回调函数返回或抛出异常后，才会继续执行`exclusiveScope`之后的代码。
+> - 该方法通常与`run`组合使用。在`run`提交的任务中调用`exclusiveScope`时，需要先等待该任务被调度执行，再执行到`exclusiveScope`调用。因此，提交`run`任务并不意味着立即执行`exclusiveScope`回调，其实际开始执行的时机受`run`任务调度时机影响。
+
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | () => T | 是 | 要在当前EAWorker所绑定的操作系统线程栈上同步执行的回调函数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| T | 回调函数的返回值。 |
+
+**异常：**
+
+| 错误 | 错误信息 | 说明 |
+| ---- | -------- | ---- |
+| RuntimeError | EAWorker:: exclusiveScope can only be called in EAWorker | 在主线程或其他非EAWorker执行上下文中调用时抛出。 |
+| RuntimeError | EAWorker:: exclusiveScope is not supported in taskpool workers | 在TaskPool工作线程中调用时抛出。 |
+| RuntimeError | EAWorker:: exclusiveScope requires an EAWorker created with needInterop=true | 当前EAWorker未通过`needInterop`参数开启互操作能力时抛出。 |
+| RuntimeError | EAWorker:: nested exclusiveScope is not allowed | 在`exclusiveScope`的回调函数中嵌套调用`exclusiveScope`时抛出。 |
+| RuntimeError | EAWorker:: exclusiveScope cannot be started while the worker is shutting down | 当前EAWorker正在退出，无法开始执行回调函数时抛出。 |
+| RuntimeError | EAWorker:: exclusiveScope task was canceled during worker shutdown | 已提交的任务在EAWorker退出期间被取消时抛出。 |
+
+**示例：**
+```ts
+let worker = new EAWorker("InteropWorker", true);
+worker.start();
+
+let job = worker.run<int>(() => {
+    console.info("Before exclusiveScope");
+    let result = EAWorker.exclusiveScope<int>(() => {
+        console.info("Run on the OS thread stack");
+        return 42;
+    });
+    console.info("After exclusiveScope");
+    return result;
+});
+
+console.info("Result: " + job.Await()); // Result: 42
+worker.join().Await();
+```
+
 ## postToMain
 static postToMain\<R>(coroFun: Function, ...args: FixedArray\<Any>): Job\<R>
 

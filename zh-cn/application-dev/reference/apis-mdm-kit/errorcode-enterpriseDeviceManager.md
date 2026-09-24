@@ -1295,6 +1295,27 @@ The number of signed-in accounts reaches the upper limit.
 
 尝试注销多余的系统账号，并及时移除不再需要保留的系统账号。
 
+## 9201052 会话超期
+
+**错误信息**
+
+USB key session time out.
+
+**错误描述**
+
+三方自定义身份认证操作过程中会话超期或authToken过期时，会产生此错误码。
+
+**可能原因**
+
+1. 调用openSession后长时间未操作，会话已过期（超过10分钟）。
+2. 通过userAuth获取的authToken已超过有效时长（10分钟）。
+
+**处理步骤**
+
+1. 重新调用openSession获取新的会话和挑战值。
+2. 重新发起用户身份认证，获取新的authToken。
+3. 使用新的会话和authToken重新执行操作。
+
 ## 9201055 获取USB设备序列号失败
 
 **错误信息**

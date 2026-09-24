@@ -14,7 +14,7 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->    
    
    ``` C
    #include <cstdint>
@@ -25,7 +25,6 @@
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -77,7 +76,7 @@
 
 4. 根据传入的SurfaceId，通过[OH_CameraManager_GetSupportedCameraOutputCapability()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability)方法获取当前设备支持的预览能力。通过[OH_CameraManager_CreatePreviewOutput()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createpreviewoutput)方法创建预览输出流，其中，OH_CameraManager_CreatePreviewOutput()方法中的参数分别是cameraManager指针，previewProfiles数组中的第一项，步骤三中获取的surfaceId，以及返回的previewOutput指针。
 
-   <!-- @[create_preview_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->    
+   <!-- @[create_preview_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePreviewOutput(void)
@@ -87,7 +86,7 @@
            return CAMERA_INVALID_ARGUMENT;
        }
        ret_ = OH_CameraManager_CreatePreviewOutput(cameraManager_, previewProfile_, previewSurfaceId_, &previewOutput_);
-       OH_LOG_ERROR(LOG_APP, "create preview width: %{public}d, height: %{public}d, format: %{public}d",
+       OH_LOG_INFO(LOG_APP, "create preview width: %{public}d, height: %{public}d, format: %{public}d",
            previewProfile_->size.width, previewProfile_->size.height, previewProfile_->format);
        if (previewSurfaceId_ == nullptr || previewOutput_ == nullptr || ret_ != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "CreatePreviewOutput failed.");

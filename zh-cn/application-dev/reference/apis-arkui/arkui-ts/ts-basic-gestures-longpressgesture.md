@@ -31,6 +31,10 @@ LongPressGesture(value?: { fingers?: number; repeat?: boolean; duration?: number
 
 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
 
+> **说明：**
+>
+> 当长按过程中触发应用窗口退后台/销毁，手指/手写笔输入源切换（手写笔输入源切换包括手写笔悬浮状态场景），屏幕旋转时，长按手势会被取消。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

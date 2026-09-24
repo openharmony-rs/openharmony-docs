@@ -247,7 +247,7 @@ List组件创建时，所有ListItem将会被创建。显示区域内的ListItem
 ### 使用LazyForEach创建ListItem
 List组件创建时，显示区域中的ListItem会被创建与布局。预加载范围内的ListItem在空闲时创建与布局，但是不会被挂载到组件树上。预加载范围外的ListItem则不会被创建。
 
-当List组件滑动时，进入预加载及显示区域的ListItem将被创建与布局，创建ListItem过程中，若ListItem内部包含[@Reusable](./state-management/arkts-reusable.md)标记的自定义组件，则会优先从缓存池中复用。滑出预加载及显示区域的ListItem将被销毁，其内部若含@Reusable标记的自定义组件，则会被回收并加入缓存池。
+当List组件滑动时，进入预加载及显示区域的ListItem将被创建与布局，创建ListItem过程中，若ListItem内部包含[@Reusable](./state-management/arkts-reusable.md)标记的[自定义组件](./state-management/arkts-create-custom-components.md)，则会优先从缓存池中复用。滑出预加载及显示区域的ListItem将被销毁，其内部若含@Reusable标记的自定义组件，则会被回收并加入缓存池。
 
 **图8** [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)创建ListItem的生命周期
 ![](./figures/list_lazyforeach.png)

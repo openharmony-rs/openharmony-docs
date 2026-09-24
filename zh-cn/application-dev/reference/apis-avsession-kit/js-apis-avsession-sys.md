@@ -1490,8 +1490,6 @@ on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionT
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
@@ -1528,8 +1526,6 @@ avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_S
 onDistributedSessionChange(distributedSessionType: DistributedSessionType, callback: Callback<Array\<AVSessionController>>): void
 
 最新分布式远端会话变更的监听事件。使用callback异步回调。
-
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1570,8 +1566,6 @@ off(type: 'distributedSessionChange', distributedSessionType: DistributedSession
 
 取消最新分布式远端会话变更的监听事件，取消后，不再进行该事件的监听。使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
@@ -1608,8 +1602,6 @@ avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_
 offDistributedSessionChange(distributedSessionType: DistributedSessionType, callback?: Callback<Array\<AVSessionController>>): void
 
 取消最新分布式远端会话变更的监听事件，取消后，不再进行该事件的监听。使用callback异步回调。
-
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2411,8 +2403,6 @@ avSession.off('deviceOffline');
 offDeviceOffline(callback?: Callback\<string>): void
 
 取消设备下线回调的监听。使用callback异步回调。
-
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 

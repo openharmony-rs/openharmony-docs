@@ -30,9 +30,9 @@ sendableContextManager模块提供Context与[SendableContext](js-apis-inner-appl
 
 ## 约束限制
 
-“Context转换为SendableContext”和“SendableContext转换为Context”两个环节中的Context类型必须保持一致。例如，主线程使用[convertFromContext](#sendablecontextmanagerconvertfromcontext)将[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)转换为SendableContext，子线程收到该SendableContext之后，需要通过[convertToUIAbilityContext](#sendablecontextmanagerconverttouiabilitycontext)将SendableContext转换为[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。
+“Context转换为SendableContext”和“SendableContext转换为Context”两个环节中的Context类型必须保持一致。例如，主线程使用[convertFromContext](#sendablecontextmanagerconvertfromcontext)将[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)转换为SendableContext，子线程收到该SendableContext之后，需要通过[convertToUIAbilityContext](#sendablecontextmanagerconverttouiabilitycontext)将SendableContext转换为[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。
 
-目前支持转换的Context包括[Context](js-apis-inner-application-context.md)、[ApplicationContext](js-apis-inner-application-applicationContext.md)、[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。
+目前支持转换的Context包括[Context](js-apis-inner-application-context.md)、[ApplicationContext](js-apis-inner-application-applicationContext.md)、[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。
 
 ## 导入模块
 
@@ -76,7 +76,7 @@ convertFromContext(context: common.Context): SendableContext
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| context | [common.Context](js-apis-inner-application-context.md) | 是 | Context对象。支持Context基类，[ApplicationContext](js-apis-inner-application-applicationContext.md)、[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)和[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)子类。 |
+| context | [common.Context](js-apis-inner-application-context.md) | 是 | Context对象。支持Context基类，[ApplicationContext](js-apis-inner-application-applicationContext.md)、[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)和[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)子类。 |
 
 **返回值：**
 
@@ -509,7 +509,7 @@ convertToUIAbilityContext(sendableContext: SendableContext): common.UIAbilityCon
 
 | 类型 | 说明 |
 | -------- | -------- |
-| common.UIAbilityContext | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)对象。 |
+| common.UIAbilityContext | [UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)对象。 |
 
 **错误码**：
 

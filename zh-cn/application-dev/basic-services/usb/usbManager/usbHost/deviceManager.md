@@ -32,7 +32,7 @@
 ### 搭建环境
 
 - 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-- 将public-SDK更新到API 16或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
+- 将public-SDK更新到API 16或以上。
 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。
 - 用USB线缆将搭载OpenHarmony的设备连接到PC。
 
@@ -304,8 +304,13 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
        return;
      }
      // 打开设备，获取数据传输通道。
-     let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
-     if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
+      let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+      if (!pipe) {
+        console.error('connectDevice failed, pipe is undefined');
+        this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+        return;
+      }
+      if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
        console.error('invalid interface');
        this.logInfo_ += '\n[ERROR] invalid interface';
        return;
@@ -314,8 +319,27 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      /*
        打开对应接口，在设备信息（deviceList）中选取对应的interface。
        interface1为设备配置中的一个接口。
+       开关关闭时调用claimInterface（共享式占用，返回0成功），
+       开关打开时调用claimInterfaceExclusive（独占式占用，失败抛出BusinessError）。
       */
-     usbManager.claimInterface(pipe, interface1, true);
+     if (this.isExclusiveClaim_) {
+       usbManager.claimInterfaceExclusive(pipe, interface1, true, (conflict: usbManager.InterfaceConflictInfo) => {
+         // 其他应用claim同一接口时的异步冲突通知
+         const conflictMsg = `busNum = ${conflict.busNum}, devAddr = ${conflict.devAddr}, ` +
+           `interfaceId = ${conflict.interfaceId}`;
+         console.info(`interface conflict: ${conflictMsg}`);
+         this.logInfo_ += `\n[INFO] interface conflict: ${conflictMsg}`;
+       });
+       console.info('claimInterfaceExclusive success');
+       this.logInfo_ += '\n[INFO] claimInterfaceExclusive success';
+     } else {
+       let claimInterfaceResult: number = usbManager.claimInterface(pipe, interface1, true);
+       if (claimInterfaceResult !== 0) {
+         console.error(`claimInterface error = ${claimInterfaceResult}`);
+         this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+         return;
+       }
+     }
      this.pipe_ = pipe;
      this.interface_ = interface1;
      console.info('open device success');
@@ -344,6 +368,11 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      }
      // 打开设备，获取数据传输通道。
      let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+     if (!pipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
      if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
        console.error('invalid interface');
        this.logInfo_ += '\n[ERROR] invalid interface';
