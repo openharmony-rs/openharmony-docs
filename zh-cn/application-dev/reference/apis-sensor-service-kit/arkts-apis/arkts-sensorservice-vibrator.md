@@ -1,4 +1,4 @@
-# @ohos.vibrator
+# @ohos.vibrator(振动控制模块)
 
 vibrator模块是设备马达振动的控制模块，属于SensorServiceKit。该模块提供精确控制设备马达振动的能力，支持按指定时长、预置效果、自定义配置文件、自定义振动模式等多种方式触发振动，并支持按指定模式或全部模式停止振动。此外，模块还提供振动效果支持查询、马达设备信息查询、马达上下线状态监听等能力。vibrator模块主要用于增强用户交互体验，通过触觉感知反馈为应用提供直观的物理反馈能力。典型使用场景包括：
 
@@ -100,6 +100,13 @@ import { vibrator } from '@kit.SensorServiceKit';
 | [VibrateAttribute](arkts-sensorservice-vibrator-vibrateattribute-i-sys.md) | 马达振动属性。用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)接口的attribute参数，指定马达ID、设备ID和振动使用场景。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [Usage](arkts-sensorservice-vibrator-usage-t.md) | 振动使用场景。不同usage值对应不同的系统振动开关管控规则，开发者需根据实际业务场景选择合适的usage值。 |
+| [VibrateEffect](arkts-sensorservice-vibrator-vibrateeffect-t.md) | 马达振动效果，支持以下四种：在调用[vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md)或[vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)接口时，此参数的四种类型表示以四种不同的形式触发振动。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -108,10 +115,3 @@ import { vibrator } from '@kit.SensorServiceKit';
 | [HapticFeedback](arkts-sensorservice-vibrator-hapticfeedback-e.md) | 简单而通用的振动效果。根据各设备的马达器件不同，同一振动效果的频率会有差异，但效果的频率趋向是统一的。这几种振动效果是EffectId参数的具体值，使用方法参考[vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md)或[vibrator.stopVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md)接口下发[VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md)形式振动的示例代码。 |
 | [VibratorEventType](arkts-sensorservice-vibrator-vibratoreventtype-e.md) | 振动事件类型。用于[VibratorEvent](arkts-sensorservice-vibrator-vibratorevent-i.md)的eventType字段指定振动事件的类型。 |
 | [VibratorStopMode](arkts-sensorservice-vibrator-vibratorstopmode-e.md) | 停止振动的模式。在调用[vibrator.stopVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-1)或[vibrator.stopVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md)接口时，需要使用此参数类型指定停止的振动模式。停止模式和[VibrateEffect&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-vibrateeffect-t.md)中下发的模式为对应关系：VIBRATOR_STOP_MODE_TIME对应VibrateTime类型，VIBRATOR_STOP_MODE_PRESET对应VibratePreset类型。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [Usage](arkts-sensorservice-vibrator-usage-t.md) | 振动使用场景。不同usage值对应不同的系统振动开关管控规则，开发者需根据实际业务场景选择合适的usage值。 |
-| [VibrateEffect](arkts-sensorservice-vibrator-vibrateeffect-t.md) | 马达振动效果，支持以下四种：在调用[vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md)或[vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)接口时，此参数的四种类型表示以四种不同的形式触发振动。 |

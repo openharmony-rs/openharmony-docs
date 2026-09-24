@@ -46,7 +46,7 @@ decoration?: DecorationStyleInterface
 
  color: 与实体颜色一致,
 
- style: TextDecorationStyle.SOLID 
+ style: TextDecorationStyle.SOLID
 
 }
 

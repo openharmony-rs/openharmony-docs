@@ -2,7 +2,17 @@
 
 作为[Text](arkts-arkui-text-comp.md#text)、[ContainerSpan](arkts-arkui-containerspan-comp-attribute.md)组件的子组件，用于显示行内文本，支持对文本的字体、颜色、大小等样式进行细粒度设置。适用于在同一行文本中混合显示不同样式的场景，如不同字体颜色的文本、添加装饰线或阴影效果等。
 
-> **说明：** > > 该组件从API version 10开始支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的属性。支持继承的属性仅包括：fontColor、fontSize、fontStyle、 > fontWeight、decoration、letterSpacing、textCase、fontFamily、textShadow。 > > 不支持[通用属性]](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)。若需设置通用属性， > 应使用[Text](arkts-arkui-text-comp.md#text)进行设置，或改用[属性字符串](../arkts-apis/arkts-arkui-styled_string.md)中的[CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md)自行绘制。 > > [通用事件](arkts-arkui-common-comp-commonmethod-c.md)只支持点击事件 > [onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick)和悬浮事件 > [onHover](arkts-arkui-common-comp-commonmethod-c.md#onhover)。
+> **说明：** 
+> 
+> - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 该组件从API version 10开始支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的属性。支持继承的属性仅包括：fontColor、fontSize、fontStyle、fontWeight、decoration、letterSpacing、textCase、fontFamily、textShadow。
+> 
+> - 支持[通用属性](arkts-arkui-common-comp.md#common)中的[无障碍属性](arkts-arkui-common-comp.md#common)（[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)）、[组件标识](arkts-arkui-common-comp.md#common)（[id](arkts-arkui-common-comp-commonmethod-c.md#id)、[key](arkts-arkui-common-comp-commonmethod-c.md#key)）和[禁用反色能力](arkts-arkui-common-comp.md#common)（[allowForceDark](arkts-arkui-common-comp-commonmethod-c.md#allowforcedark)），不支持其他通用属性。若需设置其他通用属性，应使用[Text](arkts-arkui-text-comp.md#text)进行设置，或改用[属性字符串](../arkts-apis/arkts-arkui-styledstring.md#styled_string)中的[CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md)自行绘制。
+> 
+> - [accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)仅在Span设置了[onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick)事件时生效，配置的文本只会体现在无障碍服务识别到的内嵌链接弹窗中。直接播报时，仍播报Span的内容，不会替换为accessibilityText配置的文本。
+> 
+> - [通用事件](arkts-arkui-common-comp.md#common)只支持点击事件[onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick)和悬浮事件[onHover](arkts-arkui-common-comp-commonmethod-c.md#onhover)。
 
 ## 子组件
 

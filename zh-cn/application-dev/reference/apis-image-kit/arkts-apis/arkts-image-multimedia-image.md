@@ -187,6 +187,12 @@ import { image } from '@kit.ImageKit';
 | [SourceOptions](arkts-image-image-sourceoptions-i-sys.md) | ImageSource的初始化选项。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [HdrMetadataValue](arkts-image-image-hdrmetadatavalue-t.md) | PixelMap使用的HDR元数据值类型，与[HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md)关键字对应。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -229,12 +235,6 @@ import { image } from '@kit.ImageKit';
 | [ResolutionQuality](arkts-image-image-resolutionquality-e-sys.md) | 枚举，画质效果等级类型。 |
 | [SVGResourceLimitLevel](arkts-image-image-svgresourcelimitlevel-e-sys.md) | SVG资源限制等级枚举。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [HdrMetadataValue](arkts-image-image-hdrmetadatavalue-t.md) | PixelMap使用的HDR元数据值类型，与[HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md)关键字对应。 |
 
 ### 常量
 

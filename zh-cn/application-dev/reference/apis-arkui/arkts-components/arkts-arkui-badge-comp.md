@@ -2,13 +2,17 @@
 
 信息标记容器组件，可以附加在单个组件上用于信息提醒。支持数字、字符串和圆点三种标记形式，可自定义标记样式（文本颜色、大小、标记颜色和大小）和显示位置。适用于需要提示用户有新消息或未读消息的场景，例如未读消息计数、新功能提示等，帮助用户快速识别和关注重要信息，提升用户体验。
 
+> **说明：** 
+> 
+> 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 ## 子组件
 
 支持单个子组件。
 
 > **说明：** 
 > 
-> - 子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](arkts-arkui-foreach-comp-attribute.md)和[LazyForEach](arkts-arkui-lazyforeach-comp.md#lazy_for_each)）。
+> - 子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。
 > 
 > - 自定义组件宽高默认为0，需要给其设置宽高，否则标记组件将不显示。
 > 
@@ -68,7 +72,7 @@ Badge(value: BadgeParamWithString)
 | --- | --- |
 | [BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md) | 包含用于创建Badge组件的基础参数。 |
 | [BadgeParamWithNumber](arkts-arkui-badge-comp-badgeparamwithnumber-i.md) | BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md)，具有BadgeParam的全部属性。 |
-| [BadgeParamWithString](arkts-arkui-badge-comp-badgeparamwithstring-i.md) | BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md)，具有BadgeParam的全部属性。 |
+| [BadgeParamWithString](arkts-arkui-badge-comp-badgeparamwithstring-i.md) | BadgeParamWithString继承自[BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md)，具有BadgeParam的全部属性。 |
 | [BadgeStyle](arkts-arkui-badge-comp-badgestyle-i.md) | Badge的样式。包括文本颜色、大小、字重、标记颜色和标记大小。 |
 
 ### 枚举

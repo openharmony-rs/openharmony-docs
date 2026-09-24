@@ -6,7 +6,7 @@ export interface ExpandedMenuOptions extends MenuItemOptions
 
 扩展下拉菜单。
 
-继承自[MenuItemOptions](../arkts-components/arkts-arkui-menuitem-comp-menuitemoptions-i.md)。
+继承自[MenuItemOptions](../../../reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md#menuitemoptions)。
 
 **继承/实现关系：** ExpandedMenuOptions extends [MenuItemOptions](../arkts-components/arkts-arkui-menuitem-comp-menuitemoptions-i.md)
 
@@ -26,7 +26,7 @@ import { EditorEventInfo, EditorMenuOptions, ExpandedMenuOptions, SelectionMenu,
 action?: () => void
 ```
 
-点击菜单项的事件回调。同时配置builder和action时，点击图标会同时响应。不设置时点击无响应。
+点击菜单项的事件回调。不设置时点击无响应。
 
 **起始版本：** 11
 

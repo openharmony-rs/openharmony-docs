@@ -52,7 +52,7 @@ HUKS_ALG_ECC = 2
 HUKS_ALG_DSA = 3
 ```
 
-表示使用DSA算法&lt;!--RP5--&gt;&lt;!--RP5End--&gt;。
+表示使用DSA算法<!--RP5--><!--RP5End-->。
 
 **起始版本：** 8
 
@@ -266,7 +266,7 @@ HUKS_ALG_SM4 = 152
 HUKS_ALG_DES = 160
 ```
 
-表示使用DES算法（API 12开始支持&lt;!--RP4--&gt;轻量级设备&lt;!--RP4End--&gt;，API 18开始支持&lt;!--RP5--&gt;标准设备&lt;!--RP5End--&gt;）。
+表示使用DES算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。
 
 **起始版本：** 12
 
@@ -282,7 +282,7 @@ HUKS_ALG_DES = 160
 HUKS_ALG_3DES = 161
 ```
 
-表示使用3DES算法（API 12开始支持&lt;!--RP4--&gt;轻量级设备&lt;!--RP4End--&gt;，API 18开始支持&lt;!--RP5--&gt;标准设备&lt;!--RP5End--&gt;）。
+表示使用3DES算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。
 
 **起始版本：** 12
 
@@ -298,7 +298,7 @@ HUKS_ALG_3DES = 161
 HUKS_ALG_CMAC = 162
 ```
 
-表示使用CMAC算法（API 12开始支持&lt;!--RP4--&gt;轻量级设备&lt;!--RP4End--&gt;，API 18开始支持&lt;!--RP5--&gt;标准设备&lt;!--RP5End--&gt;）。
+表示使用CMAC算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。
 
 **起始版本：** 12
 

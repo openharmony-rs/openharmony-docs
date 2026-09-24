@@ -102,69 +102,6 @@ invert(): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-matrix2d-c.md) | 逆矩阵结果。 |
 
-## multiply
-
-```TypeScript
-multiply(other?: Matrix2D): Matrix2D
-```
-
-当前矩阵与目标矩阵相乘。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| other | [Matrix2D](arkts-arkui-matrix2d-c.md) | 否 | 目标矩阵。<br>异常值undefined和null按无效值处理。<br>默认值：null |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) | 相乘结果矩阵。 |
-
-## rotate
-
-```TypeScript
-rotate(rx?: number, ry?: number): Matrix2D
-```
-
-对当前矩阵进行旋转运算。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** [rotate](#rotate)
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| rx | number | 否 | 旋转点的水平方向坐标，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：vp |
-| ry | number | 否 | 旋转点的垂直方向坐标，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：vp |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [Matrix2D](arkts-arkui-matrix2d-c.md) |  |
-
 <a id="rotate-1"></a>
 
 ## rotate
@@ -192,6 +129,39 @@ rotate(degree: number, rx?: number, ry?: number): Matrix2D
 | degree | number | 是 | 旋转角度，取值范围无限制。顺时针方向为正角度，可以通过 degree * Math.PI / 180 将角度转换为弧度值。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：弧度 |
 | rx | number | 否 | 旋转点的水平方向坐标，取值范围无限制。<br>默认单位：vp <br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：0 |
 | ry | number | 否 | 旋转点的垂直方向坐标，取值范围无限制。<br>默认单位：vp <br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：0 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) |  |
+
+## rotate
+
+```TypeScript
+rotate(rx?: number, ry?: number): Matrix2D
+```
+
+对当前矩阵进行旋转运算。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** [rotate](#rotate)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| rx | number | 否 | 旋转点的水平方向坐标，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：vp |
+| ry | number | 否 | 旋转点的垂直方向坐标，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：vp |
 
 **返回值：**
 
@@ -260,6 +230,36 @@ translate(tx?: number, ty?: number): Matrix2D
 | 类型 | 说明 |
 | --- | --- |
 | [Matrix2D](arkts-arkui-matrix2d-c.md) | 平移后结果矩阵对象。 |
+
+## multiply
+
+```TypeScript
+multiply(other?: Matrix2D): Matrix2D
+```
+
+当前矩阵与目标矩阵相乘。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| other | [Matrix2D](arkts-arkui-matrix2d-c.md) | 否 | 目标矩阵。<br>异常值undefined和null按无效值处理。<br>默认值：null |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Matrix2D](arkts-arkui-matrix2d-c.md) | 相乘结果矩阵。 |
 
 ## rotateX
 

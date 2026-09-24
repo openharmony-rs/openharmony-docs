@@ -6,6 +6,8 @@ interface Options
 
 设置传感器上报频率及传感器选择参数。
 
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+
 **起始版本：** 8
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -38,9 +40,7 @@ interval?: number | SensorFrequency
 sensorInfoParam?: SensorInfoParam
 ```
 
-传感器传入设置参数，可指定deviceId、sensorIndex，用于多传感器场景下选择目标传感器。
-
-从API version 19开始，该接口支持在原子化服务中使用。
+传感器传入设置参数，可指定deviceId、sensorIndex，用于多传感器场景下选择目标传感器。<br>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
 
 **类型：** [SensorInfoParam](arkts-sensorservice-sensor-sensorinfoparam-i.md)
 

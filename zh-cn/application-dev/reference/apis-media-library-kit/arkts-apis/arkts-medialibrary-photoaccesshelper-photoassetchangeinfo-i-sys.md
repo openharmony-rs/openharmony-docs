@@ -204,6 +204,24 @@ isHidden: boolean
 
 **系统接口：** 此接口为系统接口。
 
+## photoVisibility
+
+```TypeScript
+photoVisibility?: number
+```
+
+照片的可见性。取值限定为整数。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## position
 
 ```TypeScript
@@ -215,6 +233,60 @@ position?: PositionType
 **类型：** [PositionType](arkts-medialibrary-photoaccesshelper-positiontype-e.md)
 
 **起始版本：** 23
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## shareDateDay
+
+```TypeScript
+shareDateDay?: number
+```
+
+共享相册资产被分享日期。取值限定为整数。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## shareGroup
+
+```TypeScript
+shareGroup?: number
+```
+
+要共享的共享相册资产所在的批次。取值限定为整数。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## shareRiskStatus
+
+```TypeScript
+shareRiskStatus?: ShareAlbumRiskStatus
+```
+
+共享相册资产的风控状态。取值限定为整数。
+
+**类型：** [ShareAlbumRiskStatus](arkts-medialibrary-photoaccesshelper-sharealbumriskstatus-e-sys.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

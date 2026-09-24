@@ -38,7 +38,7 @@ function uninstallScopeFont(url: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [31100108](../errorcode-font-manager.md#31100108-无法删除字体) | Failed to delete the font file. |
 | [31100110](../errorcode-font-manager.md#31100110-系统异常导致接口调用失败) | Call failed due to system error. |
-| 31100112 | The scope font is not found. |
+| [31100112](../errorcode-font-manager.md#31100112-scope字体未找到) | The scope font is not found. |

@@ -417,53 +417,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-## getPixelMap
-
-```TypeScript
-getPixelMap(): image.PixelMap
-```
-
-获取已添加链表效果的源图像的image.PixelMap。常用于图片处理后需要保存或显示结果的场景。
-
-> **说明：** 
-> 
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[getEffectPixelMap](#geteffectpixelmap)替代。
-
-**起始版本：** 9
-
-**废弃版本：** 11
-
-**替代接口：** [getEffectPixelMap](#geteffectpixelmap)
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 已添加效果的源图像的image.PixelMap。 |
-
-**示例**
-
-```TypeScript
-import { image } from '@kit.ImageKit';
-import { effectKit } from '@kit.ArkGraphics2D';
-
-const colorBuffer = new ArrayBuffer(96);
-let opts: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
-  }
-};
-image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  let pixel = effectKit.createEffect(pixelMap).grayscale().getPixelMap();
-  console.info('getPixelBytesNumber = ', pixel.getPixelBytesNumber());
-});
-```
-
 ## grayscale
 
 ```TypeScript
@@ -660,7 +613,7 @@ setColorMatrix(colorMatrix: Array<number>): Filter
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 输入参数错误。 |
 
 **示例**
 
@@ -731,4 +684,51 @@ struct Index {
     .width('100%')
   }
 }
+```
+
+## getPixelMap
+
+```TypeScript
+getPixelMap(): image.PixelMap
+```
+
+获取已添加链表效果的源图像的image.PixelMap。常用于图片处理后需要保存或显示结果的场景。
+
+> **说明：** 
+> 
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[getEffectPixelMap](#geteffectpixelmap)替代。
+
+**起始版本：** 9
+
+**废弃版本：** 11
+
+**替代接口：** [getEffectPixelMap](#geteffectpixelmap)
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 已添加效果的源图像的image.PixelMap。 |
+
+**示例**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+
+const colorBuffer = new ArrayBuffer(96);
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  let pixel = effectKit.createEffect(pixelMap).grayscale().getPixelMap();
+  console.info('getPixelBytesNumber = ', pixel.getPixelBytesNumber());
+});
 ```

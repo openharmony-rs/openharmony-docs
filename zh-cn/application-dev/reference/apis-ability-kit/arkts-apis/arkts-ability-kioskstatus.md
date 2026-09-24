@@ -1,4 +1,4 @@
-# KioskStatus
+# KioskStatus(Kiosk状态信息)
 
 ## 汇总
 

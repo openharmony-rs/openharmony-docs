@@ -34,11 +34,11 @@ function setScreenOffTime(timeout: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Parameter verification failed. |
 | [4900101](../errorcode-power.md#4900101-连接服务失败) | Failed to connect to the service. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 19+ |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. This API cannot work in car devices.<br>**适用版本：** 26.0.1+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 19+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. This API cannot work in car devices.<br>**适用版本：** 26.0.1+ |
 
 **示例**
 

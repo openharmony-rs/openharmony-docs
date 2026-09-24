@@ -79,7 +79,8 @@
   - [SourceType](arkts-input-inputdevice-sourcetype-t.md)
   - [FunctionKey](arkts-input-inputdevice-functionkey-e.md)
   - [KeyboardType](arkts-input-inputdevice-keyboardtype-e.md)
-- [@ohos.multimodalInput.inputDeviceCooperate(键鼠穿越)](arkts-input-multimodalinput-inputdevicecooperate.md)
+<!--Del-->
+- [@ohos.multimodalInput.inputDeviceCooperate(键鼠穿越)](arkts-input-multimodalinput-inputdevicecooperate.md)<!--DelEnd-->
   <!--Del-->
   - [enable(系统接口)](arkts-input-inputdevicecooperate-enable-f-sys.md)<!--DelEnd-->
   <!--Del-->

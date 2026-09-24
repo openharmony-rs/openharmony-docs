@@ -2,7 +2,11 @@
 
 滚动条组件ScrollBar，用于配合可滚动组件使用，如[ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist)、List、Grid、Scroll、WaterFlow。
 
-> **说明：** > > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。 > > - ScrollBar主轴方向不设置大小时，采用父组件[布局约束](../arkts-apis/arkts-arkui-framenode-layoutconstraint-i.md)中的maxSize作为主轴方向大小。如果ScrollBar的父组件存在可滚动组件，如 > [ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist)、List、Grid、Scroll、 > WaterFlow，建议设置ScrollBar主轴方向大小，否则ScrollBar主轴方向大小可能为无穷大。
+> **说明：** 
+> 
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 
+> - ScrollBar主轴方向不设置大小时，采用父组件[布局约束](../arkts-apis/arkts-arkui-framenode-layoutconstraint-i.md)中的maxSize作为主轴方向大小。如果ScrollBar的父组件存在可滚动组件，如[ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist)、List、Grid、Scroll、WaterFlow，建议设置ScrollBar主轴方向大小，否则ScrollBar主轴方向大小可能为无穷大。
 
 ## 子组件
 

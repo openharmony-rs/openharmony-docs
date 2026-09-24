@@ -244,7 +244,7 @@ const OPTION_ASCII: number
 const OPTION_AUTO_CAP_CHARACTERS: number
 ```
 
-允许输入字符。
+自动将字符首字母大写。
 
 **类型：** number
 
@@ -258,7 +258,7 @@ const OPTION_AUTO_CAP_CHARACTERS: number
 const OPTION_AUTO_CAP_SENTENCES: number
 ```
 
-允许输入句子。
+自动将句子首字母大写。
 
 **类型：** number
 

@@ -22,9 +22,9 @@ max?: number
 
 **说明：** 
 
-不传入时默认最大值为100。
+不传入时默认值为100。
 
-min大于max时使用默认值0和100。
+min大于max时，min取0，max取100。
 
 max和min支持负数。
 
@@ -50,9 +50,9 @@ min?: number
 
 **说明：** 
 
-不传入时默认最小值为0。
+不传入时默认值为0。
 
-min大于max时使用默认值0和100。
+min大于max时，min取0，max取100。
 
 max和min支持负数。
 
@@ -78,7 +78,7 @@ value: number
 
 **说明：** 
 
-value不在min和max范围内时使用min作为默认值。
+value不在min和max范围内时，取min作为实际值。
 
 **类型：** number
 

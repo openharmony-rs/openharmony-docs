@@ -4,7 +4,7 @@
 declare enum FontWeight
 ```
 
-The font weight of the text
+字体粗细。
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@ The font weight of the text
 Lighter = 0
 ```
 
-Defines a lighter value than [Inherited Value]..
+100字重，字体较细。
 
 **起始版本：** 7
 
@@ -32,7 +32,7 @@ Defines a lighter value than [Inherited Value]..
 Normal = 1
 ```
 
-Normal font. Equivalent to a digital value of 400.
+400字重，字体粗细正常。
 
 **起始版本：** 7
 
@@ -48,7 +48,7 @@ Normal font. Equivalent to a digital value of 400.
 Regular = 2
 ```
 
-Defines a more general value than [Inherited Value].
+400字重，字体粗细正常，与Normal效果相同。
 
 **起始版本：** 7
 
@@ -64,7 +64,7 @@ Defines a more general value than [Inherited Value].
 Medium = 3
 ```
 
-Defines a value that is more centered than [Inherited Value].
+500字重，字体粗细适中。
 
 **起始版本：** 7
 
@@ -80,7 +80,7 @@ Defines a value that is more centered than [Inherited Value].
 Bold = 4
 ```
 
-Bold. Equivalent to a numeric value of 700.
+700字重，字体较粗。
 
 **起始版本：** 7
 
@@ -96,7 +96,7 @@ Bold. Equivalent to a numeric value of 700.
 Bolder = 5
 ```
 
-Defines a value that is heavier than [Inherited Value].
+900字重，字体非常粗。
 
 **起始版本：** 7
 

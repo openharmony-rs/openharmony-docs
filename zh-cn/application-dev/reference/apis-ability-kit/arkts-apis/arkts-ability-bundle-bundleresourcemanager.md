@@ -41,18 +41,18 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 <!--DelEnd-->
 
 <!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md) | 资源信息标志，指示需要获取的资源信息的内容。 |
-<!--DelEnd-->
-
-<!--Del-->
 ### 类型（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [BundleResourceInfo](arkts-ability-bundleresourcemanager-bundleresourceinfo-t-sys.md) | 应用配置的图标和名称信息。 |
 | [LauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-launcherabilityresourceinfo-t-sys.md) | 应用配置的入口图标和名称信息。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md) | 资源信息标志，指示需要获取的资源信息的内容。 |
 <!--DelEnd-->

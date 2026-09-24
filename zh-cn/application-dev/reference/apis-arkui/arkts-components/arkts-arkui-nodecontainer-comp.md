@@ -2,7 +2,17 @@
 
 基础组件，用于挂载自定义节点（如[FrameNode](../arkts-apis/arkts-arkui-typenode-n.md)或[BuilderNode](../arkts-apis/arkts-arkui-buildernode-c.md)中获取的根节点FrameNode），并通过[NodeController](../arkts-apis/arkts-arkui-nodecontroller-c.md)动态控制节点的上树和下树，适用于需要在组件树中动态插入、移除自定义节点以实现UI按需加载与节点复用的场景，可提升页面渲染效率并降低节点创建开销。组件不支持尾随添加子节点，接受一个[NodeController](../arkts-apis/arkts-arkui-nodecontroller-c.md)实例，需与NodeController组合使用。
 
-> **说明：** > > - 该组件下仅支持挂载自定义节点[FrameNode](../arkts-apis/arkts-arkui-typenode-n.md)或者是[BuilderNode](../arkts-apis/arkts-arkui-buildernode-c.md)中获取的根节 > 点FrameNode。 > > - 不支持挂载查询获得的系统组件代理节点，请参见[isModifiable](../arkts-apis/arkts-arkui-framenode-c.md#ismodifiable)。 > > - 当前不支持使用[动态属性设置](arkts-arkui-common-comp.md#common)。 > > - 该组件下的节点树构建时会使用UI实例[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)，实例切换时可能会因实例不匹配，导致所绑定 > [NodeController](../arkts-apis/arkts-arkui-nodecontroller-c.md)的 > [makeNode](../arkts-apis/arkts-arkui-nodecontroller-c.md#makenode)回调方法的入参为undefined，因此该组件当前不支持跨实例的节点复用。 > > - 该组件未销毁时，不会主动触发挂载节点的下树。
+> **说明：** 
+> 
+> - 该组件下仅支持挂载自定义节点[FrameNode](../arkts-apis/arkts-arkui-typenode-n.md)或者是[BuilderNode](../arkts-apis/arkts-arkui-buildernode-c.md)中获取的根节点FrameNode。
+> 
+> - 不支持挂载查询获得的系统组件代理节点，请参见[isModifiable](../arkts-apis/arkts-arkui-framenode-c.md#ismodifiable)。
+> 
+> - 当前不支持使用[动态属性设置](arkts-arkui-common-comp.md#common)。
+> 
+> - 该组件下的节点树构建时会使用UI实例[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)，实例切换时可能会因实例不匹配，导致所绑定[NodeController](../arkts-apis/arkts-arkui-nodecontroller-c.md)的[makeNode](../arkts-apis/arkts-arkui-nodecontroller-c.md#makenode)回调方法的入参为undefined，因此该组件当前不支持跨实例的节点复用。
+> 
+> - 该组件未销毁时，不会主动触发挂载节点的下树。
 
 ## NodeContainer
 

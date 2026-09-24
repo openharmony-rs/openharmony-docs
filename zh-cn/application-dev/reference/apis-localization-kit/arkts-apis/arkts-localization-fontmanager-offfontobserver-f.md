@@ -26,6 +26,6 @@ function offFontObserver(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [31100110](../errorcode-font-manager.md#31100110-系统异常导致接口调用失败) | Call failed due to system error. |
-| 31100115 | The font observer is not registered. |
+| [31100115](../errorcode-font-manager.md#31100115-字体服务状态变化监听器未注册) | The font observer is not registered. |

@@ -36,6 +36,8 @@ style?: TextDecorationStyle
 
 装饰线样式。
 
+默认值：TextDecorationStyle.SOLID
+
 **类型：** [TextDecorationStyle](arkts-arkui-textdecorationstyle-e.md)
 
 **起始版本：** 12

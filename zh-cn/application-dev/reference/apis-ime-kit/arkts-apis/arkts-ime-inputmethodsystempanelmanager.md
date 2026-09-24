@@ -40,17 +40,17 @@ import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 <!--DelEnd-->
 
 <!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [InputMethodInputType](arkts-ime-inputmethodsystempanelmanager-inputmethodinputtype-e-sys.md) | 定义输入类型。 |
-<!--DelEnd-->
-
-<!--Del-->
 ### 类型（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [CommandDataType](arkts-ime-inputmethodsystempanelmanager-commanddatatype-t-sys.md) | 表示私有数据的数据类型。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [InputMethodInputType](arkts-ime-inputmethodsystempanelmanager-inputmethodinputtype-e-sys.md) | 定义输入类型。 |
 <!--DelEnd-->

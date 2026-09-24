@@ -4,9 +4,7 @@
 declare enum TextSelectableMode
 ```
 
-Type of text selectable.
-
-@enum {number}
+文本可选择、可获焦状态。
 
 **起始版本：** 12
 
@@ -18,7 +16,7 @@ Type of text selectable.
 SELECTABLE_UNFOCUSABLE = 0
 ```
 
-set text selectable and unfocusable.
+文本可选择，但不可获焦，设置属性selection、bindSelectionMenu、copyOption不影响当前行为。
 
 **起始版本：** 12
 
@@ -34,7 +32,7 @@ set text selectable and unfocusable.
 SELECTABLE_FOCUSABLE = 1
 ```
 
-set text selectable and focusable.
+文本可选择，可获焦并Touch后获得焦点。
 
 **起始版本：** 12
 
@@ -50,7 +48,7 @@ set text selectable and focusable.
 UNSELECTABLE = 2
 ```
 
-set text unselectable and unfocusable.
+文本不可选择，不可获焦，设置属性selection、bindSelectionMenu、copyOption均不生效。
 
 **起始版本：** 12
 

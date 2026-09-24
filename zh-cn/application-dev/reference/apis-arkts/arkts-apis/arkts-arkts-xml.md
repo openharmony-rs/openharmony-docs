@@ -45,14 +45,14 @@ import { xml } from '@kit.ArkTS';
 | [ParseOptions](arkts-arkts-xml-parseoptions-i.md) | XML解析选项，用于配置XmlPullParser的解析行为。开发者可通过supportDoctype和ignoreNameSpace控制解析范围，通过注册回调函数（tagValueCallbackFunction、attributeValueCallbackFunction、tokenValueCallbackFunction等）接收不同类型的解析事件。 |
 | [XmlSAXHandler](arkts-arkts-xml-xmlsaxhandler-i.md) | XmlSAXHandler定义了SAX解析xml文本时的回调方法。开发者需要实现这些回调方法来处理xml文本的不同部分。这些回调方法会在xml解析过程的对应时机触发。startDocument会在开始解析文档时触发，endDocument会在结束文档解析时触发，startElement会在开始解析元素时触发，endElement会在结束解析元素时触发，characters则会在解析元素间文本内容时触发。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [EventType](arkts-arkts-xml-eventtype-e.md) | 事件类型枚举，定义了XmlPullParser在解析XML过程中可能触发的各类事件。解析时事件按START_DOCUMENT→START_TAG→TEXT/CDSECT→END_TAG→END_DOCUMENT等顺序依次触发，开发者可通过tokenValueCallbackFunction回调接收对应事件。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [AttributeWithTagCb](arkts-arkts-xml-attributewithtagcb-t.md) | ParseOptions中attributeWithTagCallbackFunction的回调方法，三个字符串参数都是由XML解析器在解析过程中自动提取的，开发者无法直接自定义这些值。开发者只能在回调函数中通过返回值来决定如何处理这些已存在的属性。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [EventType](arkts-arkts-xml-eventtype-e.md) | 事件类型枚举，定义了XmlPullParser在解析XML过程中可能触发的各类事件。解析时事件按START_DOCUMENT→START_TAG→TEXT/CDSECT→END_TAG→END_DOCUMENT等顺序依次触发，开发者可通过tokenValueCallbackFunction回调接收对应事件。 |

@@ -4,9 +4,7 @@
 export interface TextChangeEventInfo
 ```
 
-Text change event info
-
-@interface TextChangeEventInfo
+输入框文本变化的信息。
 
 **起始版本：** 22
 
@@ -24,7 +22,7 @@ import { uiObserver } from '@kit.ArkUI';
 content: string
 ```
 
-Current content of text field component.
+变化后的文本内容。
 
 **类型：** string
 
@@ -42,7 +40,7 @@ Current content of text field component.
 id: string
 ```
 
-The id of text field component.
+文本输入组件的ID。
 
 **类型：** string
 
@@ -60,7 +58,7 @@ The id of text field component.
 uniqueId: number
 ```
 
-The uniqueId of the text field component.
+文本输入组件的唯一标识符。
 
 **类型：** number
 

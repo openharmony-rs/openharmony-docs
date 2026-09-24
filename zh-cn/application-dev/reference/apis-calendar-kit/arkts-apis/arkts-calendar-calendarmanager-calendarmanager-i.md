@@ -46,9 +46,9 @@ createCalendar(calendarAccount: CalendarAccount): Promise<Calendar>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
@@ -99,9 +99,9 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calenda
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
@@ -160,9 +160,9 @@ deleteCalendar(calendar: Calendar): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
@@ -224,9 +224,9 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
@@ -333,9 +333,9 @@ getAllCalendars(): Promise<Calendar[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
@@ -385,9 +385,9 @@ getAllCalendars(callback: AsyncCallback<Calendar[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
@@ -443,9 +443,9 @@ getCalendar(calendarAccount?: CalendarAccount): Promise<Calendar>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900003](../errorcode-calendarManager.md#23900003-未找到指定的账户) | 未找到指定的账户。<br>**适用版本：** 23+ |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
@@ -494,9 +494,9 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900003](../errorcode-calendarManager.md#23900003-未找到指定的账户) | 未找到指定的账户。<br>**适用版本：** 23+ |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
@@ -556,9 +556,9 @@ getCalendar(callback: AsyncCallback<Calendar>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**

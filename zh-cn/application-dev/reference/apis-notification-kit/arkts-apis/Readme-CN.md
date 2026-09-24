@@ -532,7 +532,8 @@
     - [PictureOptions(系统接口)](arkts-notification-notificationsubscribeinfo-pictureoptions-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [VoiceContentOptions(系统接口)](arkts-notification-notificationsubscribeinfo-voicecontentoptions-i-sys.md)<!--DelEnd-->
-  - [notificationSubscriber(Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled)](arkts-notification-notificationsubscriber.md)
+  <!--Del-->
+  - [notificationSubscriber(Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled)](arkts-notification-notificationsubscriber.md)<!--DelEnd-->
     <!--Del-->
     - [BadgeEnabledChangedCallback(系统接口)](arkts-notification-notificationsubscriber-badgeenabledchangedcallback-i-sys.md)<!--DelEnd-->
     <!--Del-->

@@ -53,8 +53,8 @@ Before using this interface, first through the getSupportedCameras interface to 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -84,8 +84,8 @@ Create a ControlCenterSession instance.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
 ## createDepthDataOutput
 
@@ -117,7 +117,7 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 
 **示例**
@@ -163,7 +163,7 @@ Checks whether the camera device can be muted.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
 
 **示例**
 
@@ -198,7 +198,7 @@ Check if the control center active.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
 ## isPrelaunchSupported
 
@@ -231,7 +231,7 @@ Checks whether a camera device supports prelaunch.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -248,39 +248,6 @@ function isPreLaunchSupported(context: common.BaseContext): boolean {
     return isSupported;
   }
   return isSupported;
-}
-```
-
-## muteCamera
-
-```TypeScript
-muteCamera(mute: boolean): void
-```
-
-Mutes or unmutes the camera device.
-
-**起始版本：** 10
-
-**废弃版本：** 12
-
-**替代接口：** [muteCameraPersistent](#mutecamerapersistent)
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| mute | boolean | 是 | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
-
-**示例**
-
-```TypeScript
-function muteCamera(cameraManager: camera.CameraManager): void {
-  let mute: boolean = true;
-  cameraManager.muteCamera(mute);
 }
 ```
 
@@ -311,8 +278,8 @@ Mutes the camera device permanently.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 
 **示例**
@@ -349,7 +316,7 @@ Unsubscribes from camera mute status events.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
 
 **示例**
 
@@ -390,7 +357,7 @@ Unsubscribes control center status change event callback.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
 ## on('cameraMute')
 
@@ -417,7 +384,7 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
 
 **示例**
 
@@ -463,7 +430,7 @@ Subscribes control center status change event callback.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
 ## prelaunch
 
@@ -483,7 +450,7 @@ Prelaunches the camera device. This API is called when a user clicks the system 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 13+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 13+ |
 
 **示例**
 
@@ -527,7 +494,7 @@ Pre-switches a camera device to speed up its startup.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
@@ -576,7 +543,7 @@ Sets prelaunch configuration. Before the setting, call [isPrelaunchSupported](#i
 | --- | --- |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12+ |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
 **示例**
@@ -599,5 +566,38 @@ function setPrelaunchConfig(context: common.BaseContext): void {
       }
     }
   }
+}
+```
+
+## muteCamera
+
+```TypeScript
+muteCamera(mute: boolean): void
+```
+
+Mutes or unmutes the camera device.
+
+**起始版本：** 10
+
+**废弃版本：** 12
+
+**替代接口：** [muteCameraPersistent](#mutecamerapersistent)
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mute | boolean | 是 | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
+
+**示例**
+
+```TypeScript
+function muteCamera(cameraManager: camera.CameraManager): void {
+  let mute: boolean = true;
+  cameraManager.muteCamera(mute);
 }
 ```

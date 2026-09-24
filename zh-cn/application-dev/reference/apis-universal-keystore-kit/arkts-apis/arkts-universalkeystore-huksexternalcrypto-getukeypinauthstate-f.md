@@ -35,7 +35,7 @@ function getUkeyPinAuthState(resourceId: string, params?: Array<HuksExternalCryp
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | api is not supported. |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed. |
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | the UKey driver operation failed. |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist. This may happen because the resource ID has not been opened. |

@@ -4,9 +4,7 @@
 declare class TextTimerAttribute extends CommonMethod<TextTimerAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性。
-
-除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
 **继承/实现关系：** TextTimerAttribute extends CommonMethod<TextTimerAttribute>
 

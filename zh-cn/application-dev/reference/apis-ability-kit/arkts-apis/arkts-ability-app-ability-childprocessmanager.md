@@ -45,14 +45,14 @@ import { childProcessManager } from '@kit.AbilityKit';
 | [startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md#startchildprocess-1) | 启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用callback异步回调。 |
 | [startNativeChildProcess](arkts-ability-childprocessmanager-startnativechildprocess-f.md) | 启动[Native子进程](../../../application-models/ability-terminology.md#native子进程)。使用Promise异步回调。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [StartMode](arkts-ability-childprocessmanager-startmode-e.md) | 子进程启动模式枚举。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [ChildProcessInformation](arkts-ability-childprocessmanager-childprocessinformation-t.md) | 定义子进程信息。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [StartMode](arkts-ability-childprocessmanager-startmode-e.md) | 子进程启动模式枚举。 |

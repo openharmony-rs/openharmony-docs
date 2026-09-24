@@ -35,7 +35,7 @@ export function certVerification(cert: CertBlob, caCert?: CertBlob): Promise<num
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2305001](../errorcode-net-networkSecurity.md#2305001-未定义的错误) | Unspecified error. |
 | [2305002](../errorcode-net-networkSecurity.md#2305002-获取证书颁发者失败) | Unable to get issuer certificate. |
 | [2305003](../errorcode-net-networkSecurity.md#2305003-获取证书吊销列表失败) | Unable to get certificate revocation list (CRL). |

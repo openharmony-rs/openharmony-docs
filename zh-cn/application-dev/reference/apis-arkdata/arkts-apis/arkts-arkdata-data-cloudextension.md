@@ -461,6 +461,15 @@ import { cloudExtension } from '@kit.ArkData';
 <!--DelEnd-->
 
 <!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [CloudAssets](arkts-arkdata-cloudextension-cloudassets-t-sys.md) | 表示[CloudAsset](arkts-arkdata-cloudextension-cloudasset-i-sys.md)类型的数组 |
+| [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md) | 表示云数据字段可使用的类型。各接口参数的实际类型视其功能而定。 |
+<!--DelEnd-->
+
+<!--Del-->
 ### 枚举（系统接口）
 
 | 名称 | 说明 |
@@ -468,13 +477,4 @@ import { cloudExtension } from '@kit.ArkData';
 | [ErrorCode](arkts-arkdata-cloudextension-errorcode-e-sys.md) | 表示端云同步过程的状态。请使用枚举名而非枚举值。 |
 | [FieldType](arkts-arkdata-cloudextension-fieldtype-e-sys.md) | 描述数据库表中字段类型的枚举。请使用枚举名而非枚举值。 |
 | [Flag](arkts-arkdata-cloudextension-flag-e-sys.md) | 描述数据库上执行操作的枚举。请使用枚举名而非枚举值。 |
-<!--DelEnd-->
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [CloudAssets](arkts-arkdata-cloudextension-cloudassets-t-sys.md) | 表示[CloudAsset](arkts-arkdata-cloudextension-cloudasset-i-sys.md)类型的数组 |
-| [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md) | 表示云数据字段可使用的类型。各接口参数的实际类型视其功能而定。 |
 <!--DelEnd-->

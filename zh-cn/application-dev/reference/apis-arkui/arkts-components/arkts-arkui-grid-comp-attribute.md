@@ -160,6 +160,8 @@ columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为tr
 
 auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
 
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算列数时，应使用repeat(auto-fill, track-size)。
+
 使用效果可以参考[示例8](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例8设置自适应列数)。
 
 设置为'0fr'时，该列的列宽为0，不显示GridItem。设置为其他非法值时，GridItem显示为固定1列。
@@ -691,32 +693,6 @@ Grid初始化时会触发一次，Grid滚动到起始位置时触发一次。Gri
 | --- | --- | --- | --- |
 | event | () =&gt; void | 是 | 网格到达起始位置时触发的回调。 |
 
-## onScroll
-
-```TypeScript
-onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)
-```
-
-网格滑动时触发。
-
-**起始版本：** 10
-
-**废弃版本：** 12
-
-**替代接口：** onDidScroll
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | 是 | 网格滚动回调，scrollOffset为每帧滚动偏移量，ScrollState为当前滑动状态。 |
-
 ## onScrollBarUpdate
 
 ```TypeScript
@@ -882,6 +858,8 @@ rowsTemplate('repeat(auto-stretch, track-size)')是设置固定行高值为track
 其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为行高，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效行高。
 
 auto-fit模式和auto-stretch模式只支持track-size为一个有效行高值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效行高，如rowsTemplate('repeat(auto-fill, 20)')、rowsTemplate('repeat(auto-fill, 20 80px)')。
+
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算行数时，应使用repeat(auto-fill, track-size)。
 
 设置为'0fr'，则这一行的行高为0，这一行GridItem不显示。设置为其他非法值，按固定1行处理。
 
@@ -1084,3 +1062,29 @@ syncLoad(enable: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 是否同步加载Grid区域内所有子组件。<br> true表示同步加载，false表示异步加载。默认值：true。<br> **说明：** <br>设置为false时，在首次显示、不带动画scrollToIndex跳转场景，若当帧布局耗时超过50ms，会将Grid区域内尚未布局的子组件延后到下一帧进行布局。 |
+
+## onScroll
+
+```TypeScript
+onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)
+```
+
+网格滑动时触发。
+
+**起始版本：** 10
+
+**废弃版本：** 12
+
+**替代接口：** onDidScroll
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | 是 | 网格滚动回调，scrollOffset为每帧滚动偏移量，ScrollState为当前滑动状态。 |

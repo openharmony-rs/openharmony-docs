@@ -4,9 +4,7 @@
 export enum ScrollEventType
 ```
 
-ScrollEvent type.
-
-@enum { number }
+滚动事件的类型。
 
 **起始版本：** 12
 
@@ -18,7 +16,7 @@ ScrollEvent type.
 SCROLL_START = 0
 ```
 
-When the ScrollEvent start.
+滚动事件开始。
 
 **起始版本：** 12
 
@@ -34,7 +32,7 @@ When the ScrollEvent start.
 SCROLL_STOP = 1
 ```
 
-When the ScrollEvent stop.
+滚动事件结束。
 
 **起始版本：** 12
 

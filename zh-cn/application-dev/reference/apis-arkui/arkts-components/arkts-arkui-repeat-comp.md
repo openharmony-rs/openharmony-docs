@@ -1,4 +1,4 @@
-# Repeat(Defines Repeat component.)
+# Repeat
 
 Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组件配合使用。
 
@@ -19,8 +19,8 @@ Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组�
 | 名称 | 说明 |
 | --- | --- |
 | [RepeatArray](arkts-arkui-repeat-comp-repeatarray-t.md) | Repeat数据源参数联合类型。 |
-| [RepeatItemBuilder](arkts-arkui-repeat-comp-repeatitembuilder-t.md) |  |
-| [TemplateTypedFunc](arkts-arkui-repeat-comp-templatetypedfunc-t.md) |  |
+| [RepeatItemBuilder](arkts-arkui-repeat-comp-repeatitembuilder-t.md) | Repeat子组件构建器。 |
+| [TemplateTypedFunc](arkts-arkui-repeat-comp-templatetypedfunc-t.md) | 模板类型生成函数。 |
 
 ### 枚举
 

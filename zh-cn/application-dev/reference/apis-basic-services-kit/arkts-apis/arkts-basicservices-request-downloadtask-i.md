@@ -44,7 +44,7 @@ delete(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -103,7 +103,7 @@ delete(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -157,7 +157,7 @@ getTaskInfo(callback: AsyncCallback<DownloadInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -216,7 +216,7 @@ getTaskInfo(): Promise<DownloadInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -271,7 +271,7 @@ getTaskMimeType(callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -330,7 +330,7 @@ getTaskMimeType(): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -380,7 +380,7 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) => vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -437,7 +437,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -520,7 +520,7 @@ off(type: 'fail', callback?: (err: number) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -581,7 +581,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -630,7 +630,7 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -689,7 +689,7 @@ on(type: 'fail', callback: (err: number) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -713,378 +713,6 @@ try {
 } catch (err) {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
-```
-
-## pause
-
-```TypeScript
-pause(callback: AsyncCallback<void>): void
-```
-
-暂停下载正在运行中的任务，使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [suspend](#suspend)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当暂停下载任务成功，err为undefined，否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.pause((err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in pausing the download task.');
-});
-```
-
-<a id="pause-1"></a>
-
-## pause
-
-```TypeScript
-pause(): Promise<void>
-```
-
-暂停下载正在运行中的任务，使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend](#suspend)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [suspend](#suspend)()
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.pause().then(() => {    
-  console.info('Succeeded in pausing the download task.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## query
-
-```TypeScript
-query(callback: AsyncCallback<DownloadInfo>): void
-```
-
-查询下载任务，返回下载任务的信息，使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getTaskInfo](#gettaskinfo)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DownloadInfo](arkts-basicservices-request-downloadinfo-i.md)&gt; | 是 | 回调函数。当查询下载任务成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo) => {
-  if (err) {
-    console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in querying the download task.');
-  }
-});
-```
-
-<a id="query-1"></a>
-
-## query
-
-```TypeScript
-query(): Promise<DownloadInfo>
-```
-
-查询下载任务，返回下载任务的信息，使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃,建议使用[getTaskInfo](#gettaskinfo)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [getTaskInfo](#gettaskinfo)()
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[DownloadInfo](arkts-basicservices-request-downloadinfo-i.md)&gt; | Promise对象。返回DownloadInfo。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.query().then((downloadInfo) => {    
-  console.info('Succeeded in querying the download task.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## queryMimeType
-
-```TypeScript
-queryMimeType(callback: AsyncCallback<string>): void
-```
-
-查询下载的任务的MimeType，使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getTaskMimeType](#gettaskmimetype)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当查询下载任务的MimeType成功，err为undefined，data为获取到的任务的MimeType对象；否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.queryMimeType((err: BusinessError, data: string) => {
-  if (err) {
-    console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in querying the download mimeType.');
-  }
-});
-```
-
-<a id="querymimetype-1"></a>
-
-## queryMimeType
-
-```TypeScript
-queryMimeType(): Promise<string>
-```
-
-查询下载任务的MimeType，使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](#gettaskmimetype)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [getTaskMimeType](#gettaskmimetype)()
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;string&gt; | Promise对象。返回下载任务的MimeType。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.queryMimeType().then((data: string) => {    
-  console.info('Succeeded in querying the download MimeType.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## remove
-
-```TypeScript
-remove(callback: AsyncCallback<boolean>): void
-```
-
-移除下载的任务，使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.remove((err, result) => {
-  if (err) {
-    console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in removing the download task.');
-});
-```
-
-<a id="remove-1"></a>
-
-## remove
-
-```TypeScript
-remove(): Promise<boolean>
-```
-
-移除下载的任务，使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete)()
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.remove().then((result) => {
-  console.info('Succeeded in removing the download task.');
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
-});
 ```
 
 ## restore
@@ -1115,7 +743,7 @@ restore(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -1174,7 +802,7 @@ restore(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -1199,99 +827,6 @@ try {
 } catch (err) {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
-```
-
-## resume
-
-```TypeScript
-resume(callback: AsyncCallback<void>): void
-```
-
-重新启动被暂停的下载任务，使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [restore](#restore)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当重新启动已暂停的下载任务成功，err为undefined，否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.resume((err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in resuming the download task.');
-});
-```
-
-<a id="resume-1"></a>
-
-## resume
-
-```TypeScript
-resume(): Promise<void>
-```
-
-重新启动被暂停的下载任务，使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](#restore)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [restore](#restore)()
-
-**需要权限：** ohos.permission.INTERNET
-
-**系统能力：** SystemCapability.MiscServices.Download
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
-
-**示例**
-
-```TypeScript
-downloadTask.resume().then(() => {
-  console.info('Succeeded in resuming the download task.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
-});
 ```
 
 ## suspend
@@ -1322,7 +857,7 @@ suspend(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -1381,7 +916,7 @@ suspend(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -1406,4 +941,469 @@ try {
 } catch (err) {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
+```
+
+## pause
+
+```TypeScript
+pause(callback: AsyncCallback<void>): void
+```
+
+暂停下载正在运行中的任务，使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用
+> [suspend](#suspend)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当暂停下载任务成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.pause((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in pausing the download task.');
+});
+```
+
+<a id="pause-1"></a>
+
+## pause
+
+```TypeScript
+pause(): Promise<void>
+```
+
+暂停下载正在运行中的任务，使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend](#suspend)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [suspend](#suspend)()
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.pause().then(() => {    
+  console.info('Succeeded in pausing the download task.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## query
+
+```TypeScript
+query(callback: AsyncCallback<DownloadInfo>): void
+```
+
+查询下载任务，返回下载任务的信息，使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用
+> [getTaskInfo](#gettaskinfo)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DownloadInfo](arkts-basicservices-request-downloadinfo-i.md)&gt; | 是 | 回调函数。当查询下载任务成功，err为undefined，data为获取到的DownloadInfo对象；否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo) => {
+  if (err) {
+    console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in querying the download task.');
+  }
+});
+```
+
+<a id="query-1"></a>
+
+## query
+
+```TypeScript
+query(): Promise<DownloadInfo>
+```
+
+查询下载任务，返回下载任务的信息，使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃,建议使用[getTaskInfo](#gettaskinfo)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getTaskInfo](#gettaskinfo)()
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[DownloadInfo](arkts-basicservices-request-downloadinfo-i.md)&gt; | Promise对象。返回DownloadInfo。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.query().then((downloadInfo) => {    
+  console.info('Succeeded in querying the download task.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## queryMimeType
+
+```TypeScript
+queryMimeType(callback: AsyncCallback<string>): void
+```
+
+查询下载的任务的MimeType，使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用
+> [getTaskMimeType](#gettaskmimetype)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当查询下载任务的MimeType成功，err为undefined，data为获取到的任务的MimeType对象；否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.queryMimeType((err: BusinessError, data: string) => {
+  if (err) {
+    console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in querying the download mimeType.');
+  }
+});
+```
+
+<a id="querymimetype-1"></a>
+
+## queryMimeType
+
+```TypeScript
+queryMimeType(): Promise<string>
+```
+
+查询下载任务的MimeType，使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](#gettaskmimetype)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getTaskMimeType](#gettaskmimetype)()
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string&gt; | Promise对象。返回下载任务的MimeType。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.queryMimeType().then((data: string) => {    
+  console.info('Succeeded in querying the download MimeType.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## remove
+
+```TypeScript
+remove(callback: AsyncCallback<boolean>): void
+```
+
+移除下载的任务，使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 6开始支持，从API version 9开始废弃，建议使用
+> [delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.remove((err, result) => {
+  if (err) {
+    console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in removing the download task.');
+});
+```
+
+<a id="remove-1"></a>
+
+## remove
+
+```TypeScript
+remove(): Promise<boolean>
+```
+
+移除下载的任务，使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete)()
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示移除下载任务成功；返回false表示移除下载任务失败。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.remove().then((result) => {
+  console.info('Succeeded in removing the download task.');
+}).catch ((err: BusinessError) => {
+  console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## resume
+
+```TypeScript
+resume(callback: AsyncCallback<void>): void
+```
+
+重新启动被暂停的下载任务，使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用
+> [restore](#restore)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当重新启动已暂停的下载任务成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.resume((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in resuming the download task.');
+});
+```
+
+<a id="resume-1"></a>
+
+## resume
+
+```TypeScript
+resume(): Promise<void>
+```
+
+重新启动被暂停的下载任务，使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](#restore)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [restore](#restore)()
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.MiscServices.Download
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
+
+**示例**
+
+```TypeScript
+downloadTask.resume().then(() => {
+  console.info('Succeeded in resuming the download task.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
+});
 ```

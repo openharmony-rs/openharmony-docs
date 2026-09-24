@@ -66,7 +66,7 @@ assertComponentExist(by: By): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | if the input parameters are invalid. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | if the input parameters are invalid. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 | [17000003](../errorcode-uitest.md#17000003-断言失败) | if the assertion failed. |
 

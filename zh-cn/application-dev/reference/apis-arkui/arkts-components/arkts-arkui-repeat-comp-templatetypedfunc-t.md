@@ -4,6 +4,8 @@
 declare type TemplateTypedFunc<T> = (item: T, index: number) => string
 ```
 
+模板类型生成函数。
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。

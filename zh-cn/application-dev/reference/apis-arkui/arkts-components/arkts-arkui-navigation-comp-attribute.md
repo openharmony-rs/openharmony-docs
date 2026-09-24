@@ -702,30 +702,6 @@ Navigation双栏模式下，支持设置右侧页面显示默认占位页，占�
 | --- | --- | --- | --- |
 | placeholder | ComponentContent | 是 | 设置Navigation双栏模式下右侧的默认占位页。 |
 
-## subTitle
-
-```TypeScript
-subTitle(value: string)
-```
-
-设置页面副标题。
-
-> **说明：** 
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [title](#title)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | string | 是 | 页面副标题。 |
-
 ## systemBarStyle
 
 ```TypeScript
@@ -817,6 +793,57 @@ titleMode(value: NavigationTitleMode)
 | --- | --- | --- | --- |
 | value | [NavigationTitleMode](arkts-arkui-navigation-comp-navigationtitlemode-e.md) | 是 | 页面标题栏显示模式。<br>默认值：NavigationTitleMode.Free |
 
+## toolbarConfiguration
+
+```TypeScript
+toolbarConfiguration(value: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions)
+```
+
+设置工具栏内容。不设置时不显示工具栏。
+
+> **说明：** 
+> 
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 工具栏内容，使用Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt;设置的工具栏有如下特性：<br>工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br>竖屏模式最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。横屏模式时，如果为[Split](arkts-arkui-navigation-comp-navigationmode-e.md)模式，仍按照竖屏模式显示，如果为[Stack](arkts-arkui-navigation-comp-navigationmode-e.md)模式需配合menus属性的Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br>使用[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)写法为用户自定义工具栏选项，不具备以上功能。 |
+| options | [NavigationToolbarOptions](arkts-arkui-navigation-comp-navigationtoolbaroptions-i.md) | 否 | 工具栏选项。 包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。<br>**适用版本：** 11 |
+
+## subTitle
+
+```TypeScript
+subTitle(value: string)
+```
+
+设置页面副标题。
+
+> **说明：** 
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [title](#title)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | string | 是 | 页面副标题。 |
+
 ## toolBar
 
 ```TypeScript
@@ -846,30 +873,3 @@ toolBar(value: object | CustomBuilder)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | object &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 工具栏内容。 |
-
-## toolbarConfiguration
-
-```TypeScript
-toolbarConfiguration(value: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions)
-```
-
-设置工具栏内容。不设置时不显示工具栏。
-
-> **说明：** 
-> 
-> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 工具栏内容，使用Array&lt;[ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)&gt;设置的工具栏有如下特性：<br>工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br>竖屏模式最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。横屏模式时，如果为[Split](arkts-arkui-navigation-comp-navigationmode-e.md)模式，仍按照竖屏模式显示，如果为[Stack](arkts-arkui-navigation-comp-navigationmode-e.md)模式需配合menus属性的Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br>使用[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)写法为用户自定义工具栏选项，不具备以上功能。 |
-| options | [NavigationToolbarOptions](arkts-arkui-navigation-comp-navigationtoolbaroptions-i.md) | 否 | 工具栏选项。 包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。<br>**适用版本：** 11 |

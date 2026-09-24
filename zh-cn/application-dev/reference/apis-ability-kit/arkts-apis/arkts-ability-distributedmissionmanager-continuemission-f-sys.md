@@ -36,9 +36,9 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
 | [16300502](../errorcode-DistributedSchedule.md#16300502-获取指定的missionid的missioninfo失败) | Failed to get the missionInfo of the specified missionId. |
 | [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free is not supported. |
@@ -117,9 +117,9 @@ function continueMission(parameter: ContinueDeviceInfo, options: ContinueCallbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
 | [16300502](../errorcode-DistributedSchedule.md#16300502-获取指定的missionid的missioninfo失败) | Failed to get the missionInfo of the specified missionId. |
 | [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free is not supported. |
@@ -189,9 +189,9 @@ function continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
 | [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free is not supported. |
 | [16300504](../errorcode-DistributedSchedule.md#16300504-远端未安装应用但支持免安装需使用免安装标识重试) | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |
@@ -262,9 +262,9 @@ function continueMission(parameter: ContinueMissionInfo): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16300501](../errorcode-DistributedSchedule.md#16300501-系统服务工作异常) | The system ability work abnormally. |
 | [16300503](../errorcode-DistributedSchedule.md#16300503-远端未安装应用且不支持免安装) | The application is not installed on the remote end and installation-free is not supported. |
 | [16300504](../errorcode-DistributedSchedule.md#16300504-远端未安装应用但支持免安装需使用免安装标识重试) | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |

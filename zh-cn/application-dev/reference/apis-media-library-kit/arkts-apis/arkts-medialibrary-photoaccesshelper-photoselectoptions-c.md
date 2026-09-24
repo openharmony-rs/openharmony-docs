@@ -60,7 +60,7 @@ contextRecoveryInfo?: ContextRecoveryInfo
 isDestroyedWithNavigation?: boolean
 ```
 
-是否支持跟随[Navigation](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation-1)销毁，true表示支持，false表示不支持，默认为false。
+是否支持跟随[Navigation](../../apis-arkui/arkts-components/arkts-arkui-navigation-comp.md#navigation)销毁，true表示支持，false表示不支持，默认为false。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 

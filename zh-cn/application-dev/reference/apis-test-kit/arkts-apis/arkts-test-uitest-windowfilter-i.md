@@ -39,28 +39,6 @@ active?: boolean
 
 **测试接口：** 此接口仅在自动化测试脚本中使用。
 
-## actived
-
-```TypeScript
-actived?: boolean
-```
-
-窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。
-
-从API version 11开始废弃，建议使用active替代。
-
-**类型：** boolean
-
-**起始版本：** 9
-
-**废弃版本：** 11
-
-**替代接口：** active
-
-**系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## bundleName
 
 ```TypeScript
@@ -134,6 +112,28 @@ title?: string
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Test.UiTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+## actived
+
+```TypeScript
+actived?: boolean
+```
+
+窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。
+
+从API version 11开始废弃，建议使用active替代。
+
+**类型：** boolean
+
+**起始版本：** 9
+
+**废弃版本：** 11
+
+**替代接口：** active
 
 **系统能力：** SystemCapability.Test.UiTest
 

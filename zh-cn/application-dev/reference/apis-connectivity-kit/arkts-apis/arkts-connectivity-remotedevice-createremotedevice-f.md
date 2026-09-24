@@ -36,5 +36,5 @@ function createRemoteDevice(address: string): RemoteDevice
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because the chip does not support it. |
 | [36100041](../errorcode-nearlink-service.md#36100041-无效地址) | Invalid address. |

@@ -78,7 +78,7 @@ Common()
 | [AnimatableArithmetic](arkts-arkui-common-comp-animatablearithmetic-i.md) | 该接口定义非number数据类型的动画运算规则。对非number类型的数据（如数组、结构体、颜色等）做动画，需要实现AnimatableArithmetic\&lt;T\&gt;接口中加法、减法、乘法和判断相等函数，使得该数据能参与动画的插值运算和识别该数据是否发生改变。即定义它们为实现了AnimatableArithmetic\&lt;T\&gt;接口的类型。 |
 | [AnimateParam](arkts-arkui-common-comp-animateparam-i.md) | 动画效果相关参数。 |
 | [AreaChangeOptions](arkts-arkui-common-comp-areachangeoptions-i.md) | 区域变化相关的参数。 |
-| [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md) | Defines the attribute modifier. |
+| [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md) | 开发者需要自定义class实现AttributeModifier接口。 |
 | [AxisEvent](arkts-arkui-common-comp-axisevent-i.md) | 轴事件的对象说明，继承于[BaseEvent](arkts-arkui-common-comp-baseevent-i.md)。 |
 | [BackgroundBlurStyleOptions](arkts-arkui-common-comp-backgroundblurstyleoptions-i.md) | 继承自[BlurStyleOptions](arkts-arkui-common-comp-blurstyleoptions-i.md)。 |
 | [BackgroundBrightnessOptions](arkts-arkui-common-comp-backgroundbrightnessoptions-i.md) | 背景亮度选项。 |

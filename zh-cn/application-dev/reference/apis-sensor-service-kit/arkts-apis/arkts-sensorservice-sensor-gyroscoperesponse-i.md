@@ -6,6 +6,8 @@ interface GyroscopeResponse extends Response
 
 陀螺仪传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+
 **继承/实现关系：** GyroscopeResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
 **起始版本：** 8

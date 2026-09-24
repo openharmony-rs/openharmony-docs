@@ -12,8 +12,7 @@ import { uiObserver } from '@kit.ArkUI';
 export function on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback<NavDestinationInfo>): void
 ```
 
-监听NavDestination组件的状态变化。与  
-* [uiObserver.on](#onnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
+监听NavDestination组件的状态变化。与[uiObserver.on](#onnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **起始版本：** 11
 
@@ -173,7 +172,7 @@ struct Index {
 export function on(type: 'scrollEvent', options: ObserverOptions, callback: Callback<ScrollEventInfo>): void
 ```
 
-Registers a callback function to be called when the scroll event start or stop.
+监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。
 
 **起始版本：** 12
 
@@ -187,9 +186,9 @@ Registers a callback function to be called when the scroll event start or stop.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
-| options | [ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | The options object. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 是 | The callback function to be called when the scroll event start or stop. |
+| type | 'scrollEvent' | 是 | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。 |
+| options | [ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | 指定监听的滚动组件的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 是 | 回调函数。返回滚动事件的信息。 |
 
 
 ## on('scrollEvent')
@@ -198,7 +197,7 @@ Registers a callback function to be called when the scroll event start or stop.
 export function on(type: 'scrollEvent', callback: Callback<ScrollEventInfo>): void
 ```
 
-Registers a callback function to be called when the scroll event start or stop.
+监听所有滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。
 
 **起始版本：** 12
 
@@ -212,8 +211,8 @@ Registers a callback function to be called when the scroll event start or stop.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 是 | The callback function to be called when the scroll event start or stop. |
+| type | 'scrollEvent' | 是 | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 是 | 回调函数。返回滚动事件的信息。 |
 
 
 ## on('routerPageUpdate')
@@ -433,7 +432,7 @@ struct Index {
 export function on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback<TabContentInfo>): void
 ```
 
-监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](arkts-arkui-arkui-uicontext-uiobserver-c.md#ontabchange)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 
@@ -509,7 +508,7 @@ struct TabsExample {
 export function on(type: 'tabContentUpdate', callback: Callback<TabContentInfo>): void
 ```
 
-监听TabContent页面的切换事件。相比[on('tabChange')](arkts-arkui-arkui-uicontext-uiobserver-c.md#ontabchange)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听TabContent页面的切换事件。相比[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 

@@ -53,13 +53,6 @@
 | [Vector3](arkts-arkui-graphics-vector3-i.md) | 用于表示包含x、y、z三个值的向量。 |
 | [Vector4](arkts-arkui-graphics-vector4-i.md) | 用于表示包含x、y、z、w四个值的向量。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md) | 长度属性单位枚举。 |
-| [LengthUnit](arkts-arkui-graphics-lengthunit-e.md) | 长度属性单位枚举。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -75,3 +68,10 @@
 | [Rotation](arkts-arkui-rotation-t.md) | 用于设置组件的旋转角度。 |
 | [Scale](arkts-arkui-scale-t.md) | 用于设置组件的缩放比例。 |
 | [Translation](arkts-arkui-translation-t.md) | 用于设置组件的平移量。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md) | 长度属性单位枚举。 |
+| [LengthUnit](arkts-arkui-graphics-lengthunit-e.md) | 长度属性单位枚举。 |

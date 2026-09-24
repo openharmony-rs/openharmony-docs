@@ -1,4 +1,4 @@
-# @ohos.app.ability.kioskManager
+# @ohos.app.ability.kioskManager(Kiosk模式管理)
 
 KioskManager模块提供Kiosk模式管理能力，包括系统进入/退出Kiosk模式操作。Kiosk模式是一种特殊的设备锁定模式，可以确保设备界面只服务于特定的交互场景。在这种模式下，用户只能使用特定的应用。例如，在银行ATM机上，用户只能通过ATM软件进行操作，而不能退出该软件或切换到其他应用。
 

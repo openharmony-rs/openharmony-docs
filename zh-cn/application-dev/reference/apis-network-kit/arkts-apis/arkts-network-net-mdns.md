@@ -35,14 +35,14 @@ import { mdns } from '@kit.NetworkKit';
 | [LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md) | MDNS服务信息。 |
 | [ServiceAttribute](arkts-network-mdns-serviceattribute-i.md) | MDNS服务属性信息。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [MdnsError](arkts-network-mdns-mdnserror-e.md) | MDNS错误信息。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [NetAddress](arkts-network-mdns-netaddress-t.md) | 获取网络地址。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [MdnsError](arkts-network-mdns-mdnserror-e.md) | MDNS错误信息。 |

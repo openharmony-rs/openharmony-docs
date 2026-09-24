@@ -16,36 +16,6 @@ interface PasteData
 import { pasteboard } from '@kit.BasicServicesKit';
 ```
 
-## addHtmlRecord
-
-```TypeScript
-addHtmlRecord(htmlText: string): void
-```
-
-向当前剪贴板内容中添加一条HTML内容条目，并将MIMETYPE_TEXT_HTML添加到[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)的mimeTypes中。入参均不能为空，否则添加失败。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| htmlText | string | 是 | HTML内容，需符合标准HTML格式。 |
-
-**示例**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let html: string = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"utf-8\">\n" + "<title>HTML-PASTEBOARD_HTML</title>\n" + "</head>\n" + "<body>\n" + "    <h1>HEAD</h1>\n" + "    <p></p>\n" + "</body>\n" + "</html>";
-pasteData.addHtmlRecord(html);
-```
-
 ## addRecord
 
 ```TypeScript
@@ -106,7 +76,7 @@ addRecord(mimeType: string, value: ValueType): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | [12900002](../errorcode-pasteboard.md#12900002-record数量超过最大限制) | The number of records exceeds the upper limit.<br>**适用版本：** 9 |
 
 **示例**
@@ -116,99 +86,6 @@ let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_
 // 创建ArrayBuffer数据
 let dataXml = new ArrayBuffer(256);
 pasteData.addRecord('app/xml', dataXml);
-```
-
-## addTextRecord
-
-```TypeScript
-addTextRecord(text: string): void
-```
-
-向当前剪贴板内容中添加一条纯文本条目，并将MIMETYPE_TEXT_PLAIN添加到[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)的mimeTypes中。入参均不能为空，否则添加失败。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| text | string | 是 | 纯文本内容。 |
-
-**示例**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-pasteData.addTextRecord('good');
-```
-
-## addUriRecord
-
-```TypeScript
-addUriRecord(uri: string): void
-```
-
-向当前剪贴板内容中添加一条URI条目，并将MIMETYPE_TEXT_URI添加到[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)的mimeTypes中。入参均不能为空，否则添加失败。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| uri | string | 是 | URI内容。 |
-
-**示例**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-pasteData.addUriRecord('dataability:///com.example.myapplication1/user.txt');
-```
-
-## addWantRecord
-
-```TypeScript
-addWantRecord(want: Want): void
-```
-
-向当前剪贴板内容中添加一条Want条目，并将MIMETYPE_TEXT_WANT添加到[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)的mimeTypes中。入参均不能为空，否则添加失败。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | Want对象内容。 |
-
-**示例**
-
-```TypeScript
-import { Want } from '@kit.AbilityKit';
-
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let object: Want = {
-    bundleName: "com.example.aafwk.test",
-    abilityName: "com.example.aafwk.test.TwoAbility"
-};
-pasteData.addWantRecord(object);
 ```
 
 ## getMimeTypes
@@ -501,7 +378,7 @@ getRecord(index: number): PasteDataRecord
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [12900001](../errorcode-pasteboard.md#12900001-索引超过范围) | The index is out of range. |
 
 **示例**
@@ -509,47 +386,6 @@ getRecord(index: number): PasteDataRecord
 ```TypeScript
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let record: pasteboard.PasteDataRecord = pasteData.getRecord(0);
-```
-
-## getRecordAt
-
-```TypeScript
-getRecordAt(index: number): PasteDataRecord
-```
-
-获取剪贴板内容中指定下标的条目。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [getRecord](#getrecord)(index: number)
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| index | number | 是 | 指定条目的下标。有效取值范围：[0, getRecordCount()-1]，超出范围返回错误码401。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md) | 指定下标的条目。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-
-**示例**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let record: pasteboard.PasteDataRecord = pasteData.getRecordAt(0);
 ```
 
 ## getRecordCount
@@ -606,47 +442,6 @@ let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_
 let tag: string = pasteData.getTag();
 ```
 
-## hasMimeType
-
-```TypeScript
-hasMimeType(mimeType: string): boolean
-```
-
-检查剪贴板内容中是否有指定的数据类型。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [hasType](#hastype)(mimeType: string)
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| mimeType | string | 是 | 待查询的数据类型。可以是[常量](../../../reference/apis-basic-services-kit/js-apis-pasteboard.md#常量)中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型，也可以是自定义的MIME类型，长度不能超过1024字节。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 有指定的数据类型返回true，否则返回false。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-
-**示例**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let hasType: boolean = pasteData.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN);
-```
-
 ## hasType
 
 ```TypeScript
@@ -677,7 +472,7 @@ hasType(mimeType: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例**
 
@@ -776,7 +571,7 @@ removeRecord(index: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [12900001](../errorcode-pasteboard.md#12900001-索引超过范围) | The index is out of range. |
 
 **示例**
@@ -784,47 +579,6 @@ removeRecord(index: number): void
 ```TypeScript
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 pasteData.removeRecord(0);
-```
-
-## removeRecordAt
-
-```TypeScript
-removeRecordAt(index: number): boolean
-```
-
-移除剪贴板内容中指定下标的条目。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [removeRecord](#removerecord)(index: number)
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| index | number | 是 | 指定的下标。有效取值范围：[0, getRecordCount()-1]，超出范围返回错误码401。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 移除指定下标的条目成功返回true，移除失败（如指定下标不存在或超出范围）返回false。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-
-**示例**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let isRemove: boolean = pasteData.removeRecordAt(0);
 ```
 
 ## replaceRecord
@@ -852,7 +606,7 @@ replaceRecord(index: number, record: PasteDataRecord): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [12900001](../errorcode-pasteboard.md#12900001-索引超过范围) | The index is out of range. |
 
 **示例**
@@ -861,43 +615,6 @@ replaceRecord(index: number, record: PasteDataRecord): void
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
 pasteData.replaceRecord(0, record);
-```
-
-## replaceRecordAt
-
-```TypeScript
-replaceRecordAt(index: number, record: PasteDataRecord): boolean
-```
-
-替换剪贴板内容中指定下标的条目。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [replaceRecord](#replacerecord)(index: number, record: PasteDataRecord)
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| index | number | 是 | 指定的下标。有效取值范围：[0, getRecordCount()-1]，超出范围返回错误码401。 |
-| record | [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md) | 是 | 替换后的条目。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 替换指定下标的条目成功返回true，替换失败（如指定下标不存在或超出范围、参数为空）返回false。 |
-
-**示例**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
-let isReplace: boolean = pasteData.replaceRecordAt(0, record);
 ```
 
 ## setProperty
@@ -924,7 +641,7 @@ setProperty(property: PasteDataProperty): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例**
 
@@ -974,4 +691,287 @@ pasteData.setProperty(prop);
         });
     });
 })
+```
+
+## addHtmlRecord
+
+```TypeScript
+addHtmlRecord(htmlText: string): void
+```
+
+向当前剪贴板内容中添加一条HTML内容条目，并将MIMETYPE_TEXT_HTML添加到[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)的mimeTypes中。入参均不能为空，否则添加失败。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| htmlText | string | 是 | HTML内容，需符合标准HTML格式。 |
+
+**示例**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let html: string = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"utf-8\">\n" + "<title>HTML-PASTEBOARD_HTML</title>\n" + "</head>\n" + "<body>\n" + "    <h1>HEAD</h1>\n" + "    <p></p>\n" + "</body>\n" + "</html>";
+pasteData.addHtmlRecord(html);
+```
+
+## addTextRecord
+
+```TypeScript
+addTextRecord(text: string): void
+```
+
+向当前剪贴板内容中添加一条纯文本条目，并将MIMETYPE_TEXT_PLAIN添加到[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)的mimeTypes中。入参均不能为空，否则添加失败。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 纯文本内容。 |
+
+**示例**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+pasteData.addTextRecord('good');
+```
+
+## addUriRecord
+
+```TypeScript
+addUriRecord(uri: string): void
+```
+
+向当前剪贴板内容中添加一条URI条目，并将MIMETYPE_TEXT_URI添加到[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)的mimeTypes中。入参均不能为空，否则添加失败。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| uri | string | 是 | URI内容。 |
+
+**示例**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+pasteData.addUriRecord('dataability:///com.example.myapplication1/user.txt');
+```
+
+## addWantRecord
+
+```TypeScript
+addWantRecord(want: Want): void
+```
+
+向当前剪贴板内容中添加一条Want条目，并将MIMETYPE_TEXT_WANT添加到[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)的mimeTypes中。入参均不能为空，否则添加失败。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | Want对象内容。 |
+
+**示例**
+
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let object: Want = {
+    bundleName: "com.example.aafwk.test",
+    abilityName: "com.example.aafwk.test.TwoAbility"
+};
+pasteData.addWantRecord(object);
+```
+
+## getRecordAt
+
+```TypeScript
+getRecordAt(index: number): PasteDataRecord
+```
+
+获取剪贴板内容中指定下标的条目。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getRecord](#getrecord)(index: number)
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| index | number | 是 | 指定条目的下标。有效取值范围：[0, getRecordCount()-1]，超出范围返回错误码401。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md) | 指定下标的条目。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+
+**示例**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let record: pasteboard.PasteDataRecord = pasteData.getRecordAt(0);
+```
+
+## hasMimeType
+
+```TypeScript
+hasMimeType(mimeType: string): boolean
+```
+
+检查剪贴板内容中是否有指定的数据类型。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [hasType](#hastype)(mimeType: string)
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](../../../reference/apis-basic-services-kit/js-apis-pasteboard.md#常量)中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型，也可以是自定义的MIME类型，长度不能超过1024字节。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 有指定的数据类型返回true，否则返回false。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+
+**示例**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let hasType: boolean = pasteData.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN);
+```
+
+## removeRecordAt
+
+```TypeScript
+removeRecordAt(index: number): boolean
+```
+
+移除剪贴板内容中指定下标的条目。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [removeRecord](#removerecord)(index: number)
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| index | number | 是 | 指定的下标。有效取值范围：[0, getRecordCount()-1]，超出范围返回错误码401。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 移除指定下标的条目成功返回true，移除失败（如指定下标不存在或超出范围）返回false。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+
+**示例**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let isRemove: boolean = pasteData.removeRecordAt(0);
+```
+
+## replaceRecordAt
+
+```TypeScript
+replaceRecordAt(index: number, record: PasteDataRecord): boolean
+```
+
+替换剪贴板内容中指定下标的条目。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [replaceRecord](#replacerecord)(index: number, record: PasteDataRecord)
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| index | number | 是 | 指定的下标。有效取值范围：[0, getRecordCount()-1]，超出范围返回错误码401。 |
+| record | [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md) | 是 | 替换后的条目。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 替换指定下标的条目成功返回true，替换失败（如指定下标不存在或超出范围、参数为空）返回false。 |
+
+**示例**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
+let isReplace: boolean = pasteData.replaceRecordAt(0, record);
 ```

@@ -6,7 +6,7 @@ typedef struct OH_ArkUI_FontWeightConfigs OH_ArkUI_FontWeightConfigs
 
 ## 概述
 
-定义文本的字体粗细配置，适用于需要精确控制文本字体粗细或需要文本字体粗细跟随设备字体设置变化的应用场景。 可以通过{@link OH_ArkUI_FontWeightConfigs_Create}接口创建文本字体粗细配置对象，<br> 使用完毕后必须调用{@link OH_ArkUI_FontWeightConfigs_Destroy}接口销毁对象以释放资源，避免内存泄漏。<br> 配置创建后通过{@link OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight}接口设置是否启用可变字重调节。<br> 配置创建后通过{@link OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight}接口查看是否启用了可变字重调节。<br> 配置创建后通过{@link OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory}接口设置文本字体粗细是否跟随设备的字体粗细级别更新。<br> 配置创建后通过{@link OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory}接口查看文本字体粗细是否跟随设备的字体粗细级别更新。 当该配置对象被使用且不为空指针时，若用户未通过接口显式设置，各项配置将使用默认值（可变字重调节默认为禁用，文本字体粗细跟随设备字体粗细级别更新默认为启用）。 当该配置为空指针时，不应用默认值，文本字体粗细行为与父组件保持一致。
+定义文本的字体粗细配置，适用于需要精确控制文本字体粗细或需要文本字体粗细跟随设备字体设置变化的应用场景。可以通过{@link OH_ArkUI_FontWeightConfigs_Create}<br>接口创建文本字体粗细配置对象，使用完毕后必须调用{@link OH_ArkUI_FontWeightConfigs_Destroy}接口销毁对象以释放资源，避免内存泄漏。配置创建后，可通过以下接口进行设置和查询：通过<br>{@link OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight}接口设置是否启用可变字重调节，通过<br>{@link OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight}接口获取是否启用了可变字重调节，通过<br>{@link OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory}接口设置文本字体粗细是否跟随设备的字体粗细级别更新，通过<br>{@link OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory}接口获取文本字体粗细是否跟随设备的字体粗细级别更新。当该配置对象被使用且不为空指针时， 若用户未通过接口显式设置，各项配置将使用默认值（可变字重调节默认为禁用，文本字体粗细跟随设备字体粗细级别更新默认为启用）。当该配置为空指针时，不应用默认值，文本字体粗细行为与父组件保持一致。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -8,8 +8,8 @@ PatternLock组件的控制器，用于重置组件状态和设置图案密码状
 
 ## 导入对象
 
-```ts
-patternLockController: PatternLockController = new PatternLockController();
+```typescript
+let patternLockController: PatternLockController = new PatternLockController();
 ```
 
 **起始版本：** 9

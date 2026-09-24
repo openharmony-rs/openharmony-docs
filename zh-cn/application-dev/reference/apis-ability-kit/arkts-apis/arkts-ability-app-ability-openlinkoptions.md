@@ -1,4 +1,4 @@
-# @ohos.app.ability.OpenLinkOptions
+# @ohos.app.ability.OpenLinkOptions(openLink的可选参数)
 
 ## 导入模块
 

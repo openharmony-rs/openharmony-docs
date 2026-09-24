@@ -50,16 +50,6 @@ import { config } from '@kit.AccessibilityKit';
 <!--DelEnd-->
 
 <!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [BlinkingMode](arkts-accessibility-config-blinkingmode-e-sys.md) | 表示闪烁模式的枚举。 |
-| [BlinkingScenario](arkts-accessibility-config-blinkingscenario-e-sys.md) | 表示闪烁场景的枚举。 |
-| [BlinkResultCode](arkts-accessibility-config-blinkresultcode-e-sys.md) | 表示闪烁操作的结果码枚举。 |
-<!--DelEnd-->
-
-<!--Del-->
 ### 类型（系统接口）
 
 | 名称 | 说明 |
@@ -68,6 +58,16 @@ import { config } from '@kit.AccessibilityKit';
 | [DaltonizationColorFilter](arkts-accessibility-config-daltonizationcolorfilter-t-sys.md) | 用于不同色弱类型的校正颜色滤镜。 |
 | [OnDisconnectCallback](arkts-accessibility-config-ondisconnectcallback-t-sys.md) | 描述AccessibilityExtensionAbility断开连接的回调接口。 |
 | [RepeatClickInterval](arkts-accessibility-config-repeatclickinterval-t-sys.md) | 用于不同时间间隔的忽略重复点击。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [BlinkingMode](arkts-accessibility-config-blinkingmode-e-sys.md) | 表示闪烁模式的枚举。 |
+| [BlinkingScenario](arkts-accessibility-config-blinkingscenario-e-sys.md) | 表示闪烁场景的枚举。 |
+| [BlinkResultCode](arkts-accessibility-config-blinkresultcode-e-sys.md) | 表示闪烁操作的结果码枚举。 |
 <!--DelEnd-->
 
 <!--Del-->

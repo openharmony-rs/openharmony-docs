@@ -32,11 +32,17 @@
   <!--Del-->
   - [MediaAssetEditData(系统接口)](arkts-medialibrary-photoaccesshelper-mediaasseteditdata-c-sys.md)<!--DelEnd-->
   - [MediaAssetManager](arkts-medialibrary-photoaccesshelper-mediaassetmanager-c.md)
+  <!--Del-->
+  - [MediaAssetManager(系统接口)](arkts-medialibrary-photoaccesshelper-mediaassetmanager-c-sys.md)<!--DelEnd-->
   - [MediaAssetsChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetschangerequest-c.md)
   <!--Del-->
   - [MediaAssetsChangeRequest(系统接口)](arkts-medialibrary-photoaccesshelper-mediaassetschangerequest-c-sys.md)<!--DelEnd-->
   <!--Del-->
   - [MediaHighlightAlbumChangeRequest(系统接口)](arkts-medialibrary-photoaccesshelper-mediahighlightalbumchangerequest-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [MediaShareAlbumChangeRequest(系统接口)](arkts-medialibrary-photoaccesshelper-mediasharealbumchangerequest-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [MemberInfo(系统接口)](arkts-medialibrary-photoaccesshelper-memberinfo-c-sys.md)<!--DelEnd-->
   - [MimeTypeFilter](arkts-medialibrary-photoaccesshelper-mimetypefilter-c.md)
   - [OperationItem](arkts-medialibrary-photoaccesshelper-operationitem-c.md)
   <!--Del-->
@@ -55,6 +61,8 @@
   - [RequestReadPermissionResult](arkts-medialibrary-photoaccesshelper-requestreadpermissionresult-c.md)
   <!--Del-->
   - [ResultSet(系统接口)](arkts-medialibrary-photoaccesshelper-resultset-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ShareAlbumMemberInfo(系统接口)](arkts-medialibrary-photoaccesshelper-sharealbummemberinfo-c-sys.md)<!--DelEnd-->
   <!--Del-->
   - [TaskSignal(系统接口)](arkts-medialibrary-photoaccesshelper-tasksignal-c-sys.md)<!--DelEnd-->
   - [VideoDurationFilter](arkts-medialibrary-photoaccesshelper-videodurationfilter-c.md)
@@ -90,6 +98,8 @@
   <!--Del-->
   - [ChangeData(系统接口)](arkts-medialibrary-photoaccesshelper-changedata-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [CleanupSize(系统接口)](arkts-medialibrary-photoaccesshelper-cleanupsize-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [CloudAssetDownloadProgressInfo(系统接口)](arkts-medialibrary-photoaccesshelper-cloudassetdownloadprogressinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [CloudAssetDownloadStatus(系统接口)](arkts-medialibrary-photoaccesshelper-cloudassetdownloadstatus-i-sys.md)<!--DelEnd-->
@@ -104,6 +114,8 @@
   <!--Del-->
   - [DeepOptimizeSpaceProgress(系统接口)](arkts-medialibrary-photoaccesshelper-deepoptimizespaceprogress-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [DirtyDataResultInfo(系统接口)](arkts-medialibrary-photoaccesshelper-dirtydataresultinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [Entity(系统接口)](arkts-medialibrary-photoaccesshelper-entity-i-sys.md)<!--DelEnd-->
   - [FetchOptions](arkts-medialibrary-photoaccesshelper-fetchoptions-i.md)
   - [FetchResult](arkts-medialibrary-photoaccesshelper-fetchresult-i.md)
@@ -113,6 +125,10 @@
   - [FusionAssetsInfo(系统接口)](arkts-medialibrary-photoaccesshelper-fusionassetsinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [GalleryFormInfo(系统接口)](arkts-medialibrary-photoaccesshelper-galleryforminfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [IntervalInfo(系统接口)](arkts-medialibrary-photoaccesshelper-intervalinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LocalEnhancementTaskState(系统接口)](arkts-medialibrary-photoaccesshelper-localenhancementtaskstate-i-sys.md)<!--DelEnd-->
   - [MediaAssetDataHandler](arkts-medialibrary-photoaccesshelper-mediaassetdatahandler-i.md)
   - [MediaAssetProgressHandler](arkts-medialibrary-photoaccesshelper-mediaassetprogresshandler-i.md)
   - [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)
@@ -294,6 +310,10 @@
   - [SceneType](arkts-medialibrary-photoaccesshelper-scenetype-e.md)
   <!--Del-->
   - [SearchSuggestionType(系统接口)](arkts-medialibrary-photoaccesshelper-searchsuggestiontype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ShareAlbumRiskStatus(系统接口)](arkts-medialibrary-photoaccesshelper-sharealbumriskstatus-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ShareMemberStatus(系统接口)](arkts-medialibrary-photoaccesshelper-sharememberstatus-e-sys.md)<!--DelEnd-->
   - [SingleSelectionMode](arkts-medialibrary-photoaccesshelper-singleselectionmode-e.md)
   <!--Del-->
   - [SourceMode(系统接口)](arkts-medialibrary-photoaccesshelper-sourcemode-e-sys.md)<!--DelEnd-->

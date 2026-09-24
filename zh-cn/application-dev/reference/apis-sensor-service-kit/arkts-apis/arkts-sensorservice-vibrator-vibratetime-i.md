@@ -6,6 +6,8 @@ interface VibrateTime
 
 指定时长振动类型。仅对振动时长进行启动或停止控制，满足基础功能，无法对振动强度、频率等维度进行个性化设置。
 
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+
 **起始版本：** 9
 
 **系统能力：** SystemCapability.Sensors.MiscDevice

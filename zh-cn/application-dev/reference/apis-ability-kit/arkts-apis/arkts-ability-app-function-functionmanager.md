@@ -1,4 +1,4 @@
-# @ohos.app.function.functionManager
+# @ohos.app.function.functionManager(Function管理)
 
 Function是定义在应用包中的一个业务逻辑单元，可以接收大模型提供的结构化数据来完成应用定义的功能，例如查询实时天气信息、打开指定应用页面等。
 

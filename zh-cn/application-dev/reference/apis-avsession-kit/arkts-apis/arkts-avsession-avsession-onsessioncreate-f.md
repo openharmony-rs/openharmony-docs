@@ -30,7 +30,7 @@ Register session create callback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**

@@ -48,7 +48,7 @@ BOUNCE = 1
 FINISH = 2
 ```
 
-跑马灯全部循环次数完成。
+跑马灯全部循环次数完成或跑马灯停止滚动（例如[TextMarqueeOptions](arkts-arkui-text-comp-textmarqueeoptions-i.md)中start被设置为false）。
 
 **起始版本：** 18
 

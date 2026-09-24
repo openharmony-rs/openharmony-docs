@@ -6,8 +6,6 @@ declare class SpanAttribute extends BaseSpan<SpanAttribute>
 
 属性继承自[BaseSpan](arkts-arkui-span-comp-basespan-c.md)。
 
-通用事件支持[点击事件onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick)、[悬浮事件onHover](arkts-arkui-common-comp-commonmethod-c.md#onhover)。
-
 @extends CommonMethod&lt;SpanAttribute&gt; [since 7 - 10] @extends BaseSpan&lt;SpanAttribute&gt; [since 11]
 
 **继承/实现关系：** SpanAttribute extends BaseSpan<SpanAttribute>
@@ -278,7 +276,7 @@ letterSpacing(value: number | ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 文本字符间距。<br>单位：[fp](../arkts-apis/arkts-arkui-length-t.md) <br>从API version 20开始，支持Resource类型。<br>**适用版本：** 20 |
+| value | number &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 文本字符间距。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>从API version 20开始，支持Resource类型。<br>**适用版本：** 20 |
 
 ## lineHeight
 

@@ -96,7 +96,7 @@ largestTextPaintTime?: number
 navigationStartTime?: number
 ```
 
-导航条加载时间，单位以微秒表示。
+导航开始时间，单位以微秒表示。
 
 **类型：** number
 

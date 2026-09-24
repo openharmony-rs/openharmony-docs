@@ -88,6 +88,26 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | [WidgetParam](arkts-userauthentication-userauth-widgetparam-i-sys.md) | 用户认证界面配置相关参数。该接口用于配置认证界面的显示样式和交互方式，包括标题、导航按钮文本、窗口模式等。通过合理配置这些参数，可以为用户提供清晰的认证引导和良好的交互体验。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [AuthEventKey](arkts-userauthentication-userauth-autheventkey-t.md) | 表示认证事件类型的关键字，作为[on](arkts-userauthentication-userauth-authinstance-i.md#on)接口的参数。 |
+| [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) | 回调函数，返回认证中间状态。该回调用于在认证过程中获取各种中间状态信息，包括每次认证不通过、冻结状态、界面加载和释放等。通过订阅这些中间状态，应用可以在认证过程中提供更精细的用户交互和状态管理。 |
+| [AuthType](arkts-userauthentication-userauth-authtype-t.md) | 表示认证类型。 |
+| [EventInfo](arkts-userauthentication-userauth-eventinfo-t.md) | 表示认证过程中事件信息的类型。 |
+| [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | 表示认证的安全级别。 |
+| [UserRecognitionResultCallback](arkts-userauthentication-userauth-userrecognitionresultcallback-t.md) | 定义接收用户识别结果的回调。 |
+
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ResultCallback](arkts-userauthentication-userauth-resultcallback-t-sys.md) | 返回远程认证结果的回调函数类型。该类型用于远程认证场景，在远程认证完成后，系统会调用此回调函数返回认证结果。 |
+| [WidgetParamCallback](arkts-userauthentication-userauth-widgetparamcallback-t-sys.md) | 获取远程认证页面参数的回调函数类型。该类型用于远程认证场景，在需要获取远程认证界面的配置参数时，系统会调用此回调函数。 |
+<!--DelEnd-->
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -112,26 +132,6 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e-sys.md) | 表示返回码的枚举。该枚举定义了用户认证操作可能返回的所有结果码，包括成功码和各类错误码。应用可根据返回码判断认证结果，并采取相应的处理措施。 |
 | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e-sys.md) | 表示身份认证的凭据类型枚举。该枚举定义了系统支持的认证类型，包括锁屏密码认证（PIN）、生物特征认证（人脸、指纹）等。应用在发起认证时需指定认证类型列表，用户可选择其中任意一种完成认证。不同认证类型具有不同的安全强度和用户体验特点，应用应根据业务场景选择合适的认证类型。 |
 | [WindowModeType](arkts-userauthentication-userauth-windowmodetype-e-sys.md) | 用户认证界面的显示类型枚举。该枚举定义了认证界面可使用的显示模式，用于控制系统身份认证组件的窗口样式。 |
-<!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [AuthEventKey](arkts-userauthentication-userauth-autheventkey-t.md) | 表示认证事件类型的关键字，作为[on](arkts-userauthentication-userauth-authinstance-i.md#on)接口的参数。 |
-| [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) | 回调函数，返回认证中间状态。该回调用于在认证过程中获取各种中间状态信息，包括每次认证不通过、冻结状态、界面加载和释放等。通过订阅这些中间状态，应用可以在认证过程中提供更精细的用户交互和状态管理。 |
-| [AuthType](arkts-userauthentication-userauth-authtype-t.md) | 表示认证类型。 |
-| [EventInfo](arkts-userauthentication-userauth-eventinfo-t.md) | 表示认证过程中事件信息的类型。 |
-| [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | 表示认证的安全级别。 |
-| [UserRecognitionResultCallback](arkts-userauthentication-userauth-userrecognitionresultcallback-t.md) | 定义接收用户识别结果的回调。 |
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [ResultCallback](arkts-userauthentication-userauth-resultcallback-t-sys.md) | 返回远程认证结果的回调函数类型。该类型用于远程认证场景，在远程认证完成后，系统会调用此回调函数返回认证结果。 |
-| [WidgetParamCallback](arkts-userauthentication-userauth-widgetparamcallback-t-sys.md) | 获取远程认证页面参数的回调函数类型。该类型用于远程认证场景，在需要获取远程认证界面的配置参数时，系统会调用此回调函数。 |
 <!--DelEnd-->
 
 ### 常量

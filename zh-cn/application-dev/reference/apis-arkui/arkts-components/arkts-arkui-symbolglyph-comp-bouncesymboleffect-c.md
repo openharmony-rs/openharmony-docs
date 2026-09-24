@@ -18,7 +18,7 @@ BounceSymbolEffect继承自父类SymbolEffect。
 constructor(scope?: EffectScope, direction?: EffectDirection)
 ```
 
-ScaleSymbolEffect的构造函数，缩放动效。
+BounceSymbolEffect的构造函数，弹跳动效。
 
 **起始版本：** 12
 

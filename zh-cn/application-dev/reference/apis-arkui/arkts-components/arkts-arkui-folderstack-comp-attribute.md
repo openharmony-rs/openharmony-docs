@@ -98,7 +98,7 @@ enableAnimation(value: boolean)
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 ```
 
-当前设备的折叠状态改变时触发回调&lt;!--RP3--&gt;（该回调仅在横屏状态下生效）&lt;!--RP3End--&gt;。
+当前设备的折叠状态改变时触发回调<!--RP3-->（该回调仅在横屏状态下生效）<!--RP3End-->。
 
 典型使用场景：根据折叠状态调整应用布局，例如在展开状态下显示双栏布局，在半折叠状态下调整上半屏和下半屏的内容分布。
 

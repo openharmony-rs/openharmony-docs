@@ -4,7 +4,11 @@ LoadingProgress是用于显示加载进度条的组件，在数据加载过程�
 
 加载进度条的动效在组件不可见时停止，组件的可见状态基于[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)处理，可见阈值ratios大于0即视为可见状态。
 
-> **说明：** > > - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> **说明：** 
+> 
+> - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
 
 ## 子组件
 

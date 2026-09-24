@@ -6,6 +6,8 @@ interface SensorInfoParam
 
 传感器传入设置参数，多传感器情况下通过deviceId、sensorIndex控制指定传感器。
 
+**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
+
 **起始版本：** 19
 
 **系统能力：** SystemCapability.Sensors.Sensor

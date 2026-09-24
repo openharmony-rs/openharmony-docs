@@ -47,7 +47,7 @@ clearResourceCache(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application.<br>**适用版本：** 12 - 22 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application.<br>**适用版本：** 12 - 22 |
 
 **示例**
 
@@ -94,7 +94,7 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 
 <a id="freezeuinode-1"></a>
 
@@ -125,7 +125,7 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 
 ## getLuminanceSampler
 
@@ -281,4 +281,4 @@ setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |

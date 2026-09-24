@@ -1,13 +1,10 @@
-# @ohos.arkui.observer
+# @ohos.arkui.observer(无感监听)
 
-UIObserver提供了UI组件行为变化的无感监听能力，支持监听Navigation页面状态变化（NavDestination）、滚动事件、路由页面状态、屏幕像素密度变化、绘制指令下发、布局完成、页面切换等多种UI组件行为。开发者可以通过该模块实现对UI组件状态的实时感知和追踪，适用于需要监控页面生命周期、处理滚动事件、优化渲染性能等场景，帮助开发者更好地理解和管理UI组件的行为变化。无感监听是指在组件状态变化时，系统自动触发回调函数通知开发者，无需开发者手动轮询或主动查询组件状态。监听器通过注册回调函数实现，当目标组件状态改变时，系统内部的事件分发机制会调用已注册的回调函数，携带状态变化信息。
+本模块提供UI组件行为变化的无感监听能力，包括监听页面状态、滚动事件、页面路由、屏幕像素密度、布局和绘制、页面切换以及TabContent状态变化等。适用于需要在不侵入组件业务逻辑的情况下感知UI状态变化的场景。推荐使用[UIObserver](arkts-arkui-arkui-uicontext-uicontext-c.md)进行组件监听。
 
 > **说明：** 
-
-> - 以下API需先使用UIContext中的[getUIObserver](arkts-arkui-arkui-uicontext-uicontext-c.md#getuiobserver)方法获取到UIObserver对象，再通过该对象调用对应方法。
-
-> - UIObserver仅能监听到本进程内的UI组件状态变化信息，
-> - 不支持获取<!--Del-->UIExtensionComponent等<!--DelEnd-->跨进程场景的信息。
+> 
+> - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md#ui_extension_componentsystem-api)等<!--DelEnd-->跨进程场景的信息。
 
 **起始版本：** 11
 
@@ -29,8 +26,8 @@ import { uiObserver } from '@kit.ArkUI';
 | --- | --- |
 | [off](arkts-arkui-uiobserver-off-f.md#offnavdestinationupdate) | 取消监听NavDestination组件的状态变化。与[uiObserver.off](arkts-arkui-uiobserver-off-f.md#offnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。 |
 | [off](arkts-arkui-uiobserver-off-f.md#offnavdestinationupdate) | 取消监听NavDestination组件的状态变化。 |
-| [off](arkts-arkui-uiobserver-off-f.md#offscrollevent) | Removes a callback function that was previously registered with `on()`. |
-| [off](arkts-arkui-uiobserver-off-f.md#offscrollevent) | Removes a callback function that was previously registered with `on()`. |
+| [off](arkts-arkui-uiobserver-off-f.md#offscrollevent) | 取消监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。 |
+| [off](arkts-arkui-uiobserver-off-f.md#offscrollevent) | 取消监听所有滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。 |
 | [off](arkts-arkui-uiobserver-off-f.md#offrouterpageupdate) | 取消监听router中page页面的状态变化。 |
 | [off](arkts-arkui-uiobserver-off-f.md#offdensityupdate) | 取消监听屏幕像素密度的变化。 |
 | [off](arkts-arkui-uiobserver-off-f.md#offwilldraw) | 取消监听每一帧绘制指令下发情况。 |
@@ -39,16 +36,16 @@ import { uiObserver } from '@kit.ArkUI';
 | [off](arkts-arkui-uiobserver-off-f.md#offtabcontentupdate) | 取消监听TabContent页面的切换事件。 |
 | [off](arkts-arkui-uiobserver-off-f.md#offnavdestinationswitch) | 取消监听Navigation的页面切换事件。 |
 | [off](arkts-arkui-uiobserver-off-f.md#offnavdestinationswitch) | 取消监听Navigation的页面切换事件。与uiObserver.off相比，新增了observerOptions参数，即支持设置监听选项。 |
-| [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate) | 监听NavDestination组件的状态变化。与  * [uiObserver.on](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。 |
+| [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate) | 监听NavDestination组件的状态变化。与[uiObserver.on](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。 |
 | [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate) | 监听NavDestination组件的状态变化。 |
-| [on](arkts-arkui-uiobserver-on-f.md#onscrollevent) | Registers a callback function to be called when the scroll event start or stop. |
-| [on](arkts-arkui-uiobserver-on-f.md#onscrollevent) | Registers a callback function to be called when the scroll event start or stop. |
+| [on](arkts-arkui-uiobserver-on-f.md#onscrollevent) | 监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。 |
+| [on](arkts-arkui-uiobserver-on-f.md#onscrollevent) | 监听所有滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md#list)、[Grid](../arkts-components/arkts-arkui-grid-comp.md#grid)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md#scroll)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md#ohosarkuiarclist)。 |
 | [on](arkts-arkui-uiobserver-on-f.md#onrouterpageupdate) | 监听router中page页面的状态变化。 |
 | [on](arkts-arkui-uiobserver-on-f.md#ondensityupdate) | 监听屏幕像素密度变化。 |
 | [on](arkts-arkui-uiobserver-on-f.md#onwilldraw) | 监听每一帧绘制指令下发情况。 |
 | [on](arkts-arkui-uiobserver-on-f.md#ondidlayout) | 监听每一帧布局完成情况。 |
-| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | 监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](arkts-arkui-arkui-uicontext-uiobserver-c.md#ontabchange)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
-| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | 监听TabContent页面的切换事件。相比[on('tabChange')](arkts-arkui-arkui-uicontext-uiobserver-c.md#ontabchange)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
+| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | 监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
+| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | 监听TabContent页面的切换事件。相比[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
 | [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationswitch) | 监听Navigation的页面切换事件。 |
 | [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationswitch) | 监听Navigation的页面切换事件。与uiObserver.on相比，新增了observerOptions参数，即支持设置监听选项。 |
 
@@ -69,9 +66,9 @@ import { uiObserver } from '@kit.ArkUI';
 | [NavDestinationSwitchObserverOptions](arkts-arkui-uiobserver-navdestinationswitchobserveroptions-i.md) | Navigation组件页面切换事件的监听选项。 |
 | [NavigationInfo](arkts-arkui-uiobserver-navigationinfo-i.md) | Navigation组件信息。 |
 | [ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | Observer选项。 |
-| [ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md) | ScrollEvent info. |
+| [ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md) | ScrollEvent滚动信息。 |
 | [TabContentInfo](arkts-arkui-uiobserver-tabcontentinfo-i.md) | TabContent页面的切换信息。 |
-| [TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md) | Text change event info |
+| [TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md) | 输入框文本变化的信息。 |
 
 ### 枚举
 
@@ -79,5 +76,5 @@ import { uiObserver } from '@kit.ArkUI';
 | --- | --- |
 | [NavDestinationState](arkts-arkui-uiobserver-navdestinationstate-e.md) | NavDestination组件状态。 |
 | [RouterPageState](arkts-arkui-uiobserver-routerpagestate-e.md) | routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](arkts-arkui-uiobserver-routerpageinfo-c.md)中，作为routerPageUpdate无感监听的返回值。 |
-| [ScrollEventType](arkts-arkui-uiobserver-scrolleventtype-e.md) | ScrollEvent type. |
+| [ScrollEventType](arkts-arkui-uiobserver-scrolleventtype-e.md) | 滚动事件的类型。 |
 | [TabContentState](arkts-arkui-uiobserver-tabcontentstate-e.md) | TabContent组件的状态。 |

@@ -4,7 +4,7 @@
 declare enum TextContentStyle
 ```
 
-Text content style.
+文本框多态样式。
 
 **起始版本：** 10
 
@@ -16,7 +16,7 @@ Text content style.
 DEFAULT = 0
 ```
 
-Text content default style.
+默认风格。光标宽度为1.5vp，光标高度与文本选中高亮高度和字体大小相关。
 
 **起始版本：** 10
 
@@ -32,7 +32,13 @@ Text content default style.
 INLINE = 1
 ```
 
-Text content inline style.
+内联输入风格，也称内联模式。文本选中高亮高度与输入框高度相同。
+
+内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。
+
+不支持showError属性。
+
+内联模式下，不支持拖入文本。
 
 **起始版本：** 10
 

@@ -45,15 +45,6 @@ function getSync(key: string, def?: string): string
 | --- | --- |
 | string | 系统参数值。<br> 若key存在,返回设定的值。<br> 若key不存在且def有效，返回def；若未指定def或def无效(如undefined)，返回空字符串。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
-| [14700102](../errorcode-system-parameterV9.md#14700102-系统参数值无效) | Invalid system parameter value. |
-| [14700103](../errorcode-device-info.md#14700103-操作因权限被拒绝) | The operation on the system permission is denied. |
-| [14700104](../errorcode-system-parameterV9.md#14700104-系统内部错误包括内存不足死锁等) | System internal error such as out memory or deadlock. |
-
 **示例**
 
 ```TypeScript

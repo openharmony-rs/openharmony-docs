@@ -16,17 +16,17 @@
 | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | build的可选参数。 |
 | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | 创建BuilderNode时的可选参数。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [NodeRenderType](arkts-arkui-buildernode-noderendertype-e.md) | 节点渲染类型枚举。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [InputEventType](arkts-arkui-inputeventtype-t.md) | [postInputEvent](arkts-arkui-buildernode-c.md#postinputevent)的参数，定义要发送的输入事件类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [NodeRenderType](arkts-arkui-buildernode-noderendertype-e.md) | 节点渲染类型枚举。 |
 
 ## 示例
 

@@ -390,33 +390,6 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 | value | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | 是 | List组件的边缘滑动效果，支持弹簧效果和阴影效果。<br>默认值：EdgeEffect.Spring |
 | options | [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | 否 | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br>默认值：{ alwaysEnabled: false }<br><br>**适用版本：** 11 |
 
-## editMode
-
-```TypeScript
-editMode(value: boolean)
-```
-
-设置当前List组件是否处于可编辑模式。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现编辑状态切换和删除列表项，可通过自定义状态变量控制删除按钮的显示与隐藏，并在删除按钮的点击事件中更新数据源，具体
-> 实现方式请参考[示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | boolean | 是 | 当前List组件是否处于可编辑模式。true表示当前List组件处于可编辑模式，false表示当前List组件不处于可编辑模式。<br>默认值：false |
-
 ## editModeOptions
 
 ```TypeScript
@@ -702,33 +675,6 @@ onEditModeChange(callback: Callback<boolean> | undefined)
 | --- | --- | --- | --- |
 | callback | Callback&lt;boolean&gt; &#124; undefined | 是 | 编辑模式状态变化时触发的回调。<br>true表示进入编辑模式，false表示退出编辑模式。<br>传入undefined时取消回调。 |
 
-## onItemDelete
-
-```TypeScript
-onItemDelete(event: (index: number) => boolean)
-```
-
-当List组件在编辑模式时，点击ListItem右边出现的删除按钮时触发。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现删除列表项，可在自定义删除按钮的点击事件中更新数据源，具体实现方式请参考
-> [示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| event | (index: number) =&gt; boolean | 是 |  |
-
 ## onItemDragEnter
 
 ```TypeScript
@@ -922,39 +868,6 @@ List初始化时如果initialIndex为0会触发一次，List滚动到起始位�
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | () =&gt; void | 是 | 列表到达起始位置时触发的回调。 |
-
-## onScroll
-
-```TypeScript
-onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)
-```
-
-列表滑动时触发。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 12开始废弃，建议使用
-> onDidScroll替代。
-
-**起始版本：** 7
-
-**废弃版本：** 12
-
-**替代接口：** onDidScroll
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | 是 | Callback when scroll, scrollOffset: 相对于上一帧的偏移量，List的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br>单位vp。scrollState: 当前滑动状态。 |
 
 ## onScrollFrameBegin
 
@@ -1265,3 +1178,90 @@ syncLoad(enable: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 是否同步加载List区域内所有子组件。<br>true表示同步加载，false表示异步加载。默认值：true。<br>**说明：** <br>设置为false时，在首次显示、不带动画scrollToIndex跳转场景，若当帧布局耗时超过50ms，会将List区域内尚未布局的子组件延后到下一帧进行布局。 |
+
+## editMode
+
+```TypeScript
+editMode(value: boolean)
+```
+
+设置当前List组件是否处于可编辑模式。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现编辑状态切换和删除列表项，可通过自定义状态变量控制删除按钮的显示与隐藏，并在删除按钮的点击事件中更新数据源，具体
+> 实现方式请参考[示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | boolean | 是 | 当前List组件是否处于可编辑模式。true表示当前List组件处于可编辑模式，false表示当前List组件不处于可编辑模式。<br>默认值：false |
+
+## onItemDelete
+
+```TypeScript
+onItemDelete(event: (index: number) => boolean)
+```
+
+当List组件在编辑模式时，点击ListItem右边出现的删除按钮时触发。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现删除列表项，可在自定义删除按钮的点击事件中更新数据源，具体实现方式请参考
+> [示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | (index: number) =&gt; boolean | 是 |  |
+
+## onScroll
+
+```TypeScript
+onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)
+```
+
+列表滑动时触发。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 12开始废弃，建议使用
+> onDidScroll替代。
+
+**起始版本：** 7
+
+**废弃版本：** 12
+
+**替代接口：** onDidScroll
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | 是 | Callback when scroll, scrollOffset: 相对于上一帧的偏移量，List的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br>单位vp。scrollState: 当前滑动状态。 |

@@ -4,9 +4,44 @@
 declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性。
+除支持[通用属性](arkts-arkui-common-comp.md#common)，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件。
+> **说明：** 
+> 
+> 默认情况下，通用属性[padding](arkts-arkui-common-comp-commonmethod-c.md#padding)的默认值为
+
+{
+
+&nbsp;top: '8vp',
+
+&nbsp;right: '16vp',
+
+&nbsp;bottom: '8vp',
+
+&nbsp;left: '16vp'
+
+}
+
+> 输入框开启下划线模式时，通用属性padding的默认值为
+
+{
+
+&nbsp;top: '12vp',
+
+&nbsp;right: '0vp',
+
+&nbsp;bottom: '12vp',
+
+&nbsp;left: '0vp'
+
+}
+
+> 当输入框设置padding为0时，可设置
+> [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius)为0避免光标被截断。
+> 当光标在文本框边缘显示异常时，请检查是否是padding、borderRadius属性影响造成。
+> 
+> 从API version 10开始，单行输入框可设置.width('auto')使组件宽度自适应文本宽度，自适应时组件宽度受constraintSize属性以及父容器传递的最大最小宽度限制，其余使用方式参考
+> [尺寸设置](arkts-arkui-common-comp.md#common)。
 
 **继承/实现关系：** TextInputAttribute extends CommonMethod<TextInputAttribute>
 
@@ -20,7 +55,7 @@ declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
 autoCapitalizationMode(mode: AutoCapitalizationMode)
 ```
 
-设置自动大小写模式的文本模式，只提供接口能力，具体实现以输入法应用为主。
+设置自动大小写模式的文本模式，只提供接口能力，具体实现以输入法应用为主。未通过该接口设置时，默认不产生大小写转换效果，具体实现以输入法应用为主。
 
 **起始版本：** 20
 
@@ -34,7 +69,7 @@ autoCapitalizationMode(mode: AutoCapitalizationMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [AutoCapitalizationMode](../arkts-apis/arkts-arkui-autocapitalizationmode-e.md) | 是 | 自动大小写模式。不设置时，默认不启用自动大小写功能。具体实现以输入法应用为主。 |
+| mode | [AutoCapitalizationMode](../arkts-apis/arkts-arkui-autocapitalizationmode-e.md) | 是 | 自动大小写模式，用于设置输入法的大小写转换规则，具体实现以输入法应用为主。 |
 
 ## barState
 
@@ -64,7 +99,11 @@ barState(value: BarState)
 cancelButton(options: CancelButtonOptions)
 ```
 
-设置右侧清除按钮样式，仅支持图片类型的图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考[示例4（设置右侧清除按钮样式）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例4设置右侧清除按钮样式)。未通过该接口设置时，默认为{ style: CancelButtonStyle.INPUT }，Wearable设备上图标默认尺寸为28vp。
+设置右侧清除按钮样式，仅支持图片类型的图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考[示例4（设置右侧清除按钮样式）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例4设置右侧清除按钮样式)。未通过该接口设置时，默认为{
+
+style: CancelButtonStyle.INPUT
+
+}，Wearable设备上图标默认尺寸为28vp。
 
 **起始版本：** 11
 
@@ -88,7 +127,11 @@ cancelButton(options: CancelButtonOptions)
 cancelButton(symbolOptions: CancelButtonSymbolOptions)
 ```
 
-设置右侧清除按钮样式，仅支持symbol图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考[示例15（设置symbol类型清除按钮）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例15设置symbol类型清除按钮)。未通过该接口设置时，默认为{ style: CancelButtonStyle.INPUT }。
+设置右侧清除按钮样式，仅支持symbol图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考[示例15（设置symbol类型清除按钮）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例15设置symbol类型清除按钮)。未通过该接口设置时，默认为{
+
+style: CancelButtonStyle.INPUT
+
+}。
 
 **起始版本：** 18
 
@@ -200,7 +243,7 @@ compressLeadingPunctuation(enabled: Optional<boolean>)
 contentType(value: ContentType)
 ```
 
-设置自动填充类型。&lt;!--RP7--&gt;&lt;!--RP7End--&gt;
+设置自动填充类型。<!--RP7--><!--RP7End-->
 
 **起始版本：** 12
 
@@ -274,7 +317,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | 是 | 自定义键盘。设定值为undefined时，关闭自定义键盘。<br>**适用版本：** 22 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | 是 | 自定义键盘。设定值为undefined时，关闭自定义键盘。<br>**适用版本：** 10 - 21 |
 | options | [KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md) | 否 | 设置自定义键盘是否支持避让功能。<br>不设置该参数时，自定义键盘默认不支持避让功能。<br>**适用版本：** 12 |
 
 ## decoration
@@ -363,7 +406,7 @@ ellipsisMode(mode: Optional<EllipsisMode>)
 enableAutoFill(value: boolean)
 ```
 
-设置是否启用自动填充。未通过该接口设置时，默认启用自动填充。&lt;!--RP6--&gt;&lt;!--RP6End--&gt;
+设置是否启用自动填充。未通过该接口设置时，默认启用自动填充。<!--RP6--><!--RP6End-->
 
 **起始版本：** 11
 
@@ -596,6 +639,10 @@ fontFamily(value: ResourceStr)
 ```
 
 设置字体列表。未通过该接口设置时，默认字体为'HarmonyOS Sans'。
+
+> **说明：** 
+> 
+> 推荐使用[loadFontSync](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadfontsync)注册自定义字体。
 
 **起始版本：** 7
 
@@ -846,7 +893,7 @@ letterSpacing(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>单位：[fp](../arkts-apis/arkts-arkui-length-t.md) |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 ## lineBreakStrategy
 
@@ -854,7 +901,7 @@ letterSpacing(value: number | string | Resource)
 lineBreakStrategy(strategy: LineBreakStrategy)
 ```
 
-设置折行规则。该属性在wordBreak不等于BREAK_ALL的时候生效，不支持连词符。未通过该接口设置时，默认为LineBreakStrategy.GREEDY。
+设置折行规则。该属性在wordBreak不等于BREAK_ALL的时候生效，不支持连字符。未通过该接口设置时，默认为LineBreakStrategy.GREEDY。
 
 适用于需要优化文本换行效果的场景：LineBreakStrategy.GREEDY适用于优先填充每行的快速换行；LineBreakStrategy.HIGH_QUALITY适用于追求更优视觉效果的排版；LineBreakStrategy.BALANCED适用于需要均匀分配各行内容的布局。
 
@@ -950,7 +997,7 @@ maxFontSize小于等于0或者maxFontSize小于minFontSize时，自适应字号�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>单位：[fp](../arkts-apis/arkts-arkui-length-t.md) <br>需大于0且大于minFontSize，否则自适应字号不生效，按fontSize属性值生效。<br>需配合minFontSize使用，单独设置不生效。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>需大于0且大于minFontSize，否则自适应字号不生效，按fontSize属性值生效。<br>需配合minFontSize使用，单独设置不生效。 |
 
 ## maxLength
 
@@ -1042,7 +1089,7 @@ minFontSize小于或等于0时，自适应字号不生效，此时按照[fontSiz
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>单位：[fp](../arkts-apis/arkts-arkui-length-t.md) <br>需大于0，小于或等于0时自适应字号不生效，按fontSize属性值生效。<br>需配合maxFontSize使用，单独设置不生效。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>需大于0，小于或等于0时自适应字号不生效，按fontSize属性值生效。<br>需配合maxFontSize使用，单独设置不生效。 |
 
 ## onChange
 
@@ -1053,6 +1100,16 @@ onChange(callback: EditableTextOnChangeCallback)
 输入内容发生变化时，触发该回调。
 
 在本回调中，若执行了光标操作，需要开发者在预上屏场景下依据previewText参数调整光标逻辑，以适应预上屏场景。
+
+> **说明：** 
+> 
+> onWillChange和onChange形成will/did时序模式：
+> 
+> - onWillChange在文本变更前触发，可通过返回false拦截变更；返回true则允许变更，随后触发onChange。
+> 
+> - onChange在变更完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillChange用于拦截控制，onChange用于获取变更结果。
 
 **起始版本：** 7
 
@@ -1136,6 +1193,18 @@ onDidDelete(callback: Callback<DeleteValue>)
 
 在删除完成时，触发该回调。
 
+> **说明：** 
+> 
+> - 点击清除按钮不触发onDidDelete回调。
+> 
+> - onWillDelete和onDidDelete形成will/did时序模式：
+> 
+> - onWillDelete在删除操作前触发，可通过返回false拦截删除操作；返回true则允许删除，随后触发onDidDelete。
+> 
+> - onDidDelete在删除完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillDelete用于拦截控制，onDidDelete用于获取删除结果。
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1191,28 +1260,6 @@ onEditChange(callback: Callback<boolean>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | Callback&lt;boolean&gt; | 是 | 输入状态变化回调，返回值为true表示输入框处于编辑态（有光标显示，可以接收用户输入）；返回值为false表示输入框处于非编辑态（无光标显示，不能接收用户输入）。<br>**适用版本：** 18 |
-
-## onEditChanged
-
-```TypeScript
-onEditChanged(callback: (isEditing: boolean) => void)
-```
-
-输入状态变化时，触发该回调。
-
-**起始版本：** 7
-
-**废弃版本：** 8
-
-**替代接口：** [onEditChange](#oneditchange)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | (isEditing: boolean) =&gt; void | 是 | 监听事件的回调函数。 |
 
 ## onPaste
 
@@ -1346,7 +1393,17 @@ onWillChange(callback: Callback<EditableTextChangeValue, boolean>)
 
 在文本内容将要发生变化时，触发该回调。
 
-onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
+> **说明：** 
+> 
+> - onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
+> 
+> - onWillChange和onChange形成will/did时序模式：
+> 
+> - onWillChange在文本变更前触发，可通过返回false拦截变更；返回true则允许变更，随后触发onChange。
+> 
+> - onChange在变更完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillChange用于拦截控制，onChange用于获取变更结果。
 
 **起始版本：** 15
 
@@ -1436,13 +1493,15 @@ onWillDelete(callback: Callback<DeleteValue, boolean>)
 
 > **说明：** 
 > 
-> onWillDelete和onDidDelete形成will/did时序模式：
+> - 点击清除按钮不触发onWillDelete回调。
 > 
-> - onWillDelete在删除操作前触发，可通过返回false拦截删除操作；返回true则允许删除，随后触发onDidDelete
+> - onWillDelete和onDidDelete形成will/did时序模式：
 > 
-> - onDidDelete在删除完成后触发，无法拦截
+> - onWillDelete在删除操作前触发，可通过返回false拦截删除操作；返回true则允许删除，随后触发onDidDelete。
 > 
-> - 两者可以同时使用，onWillDelete用于拦截控制，onDidDelete用于获取删除结果
+> - onDidDelete在删除完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillDelete用于拦截控制，onDidDelete用于获取删除结果。
 
 **起始版本：** 12
 
@@ -1470,11 +1529,11 @@ onWillInsert(callback: Callback<InsertValue, boolean>)
 > 
 > onWillInsert和onDidInsert形成will/did时序模式：
 > 
-> - onWillInsert在输入操作前触发，可通过返回false拦截输入操作；返回true则允许输入，随后触发onDidInsert
+> - onWillInsert在输入操作前触发，可通过返回false拦截输入操作；返回true则允许输入，随后触发onDidInsert。
 > 
-> - onDidInsert在输入完成后触发，无法拦截
+> - onDidInsert在输入完成后触发，无法拦截。
 > 
-> - 两者可以同时使用，onWillInsert用于拦截控制，onDidInsert用于获取输入结果
+> - 两者可以同时使用，onWillInsert用于拦截控制，onDidInsert用于获取输入结果。
 
 **起始版本：** 12
 
@@ -1540,7 +1599,7 @@ passwordIcon(value: PasswordIcon)
 passwordRules(value: string)
 ```
 
-定义生成密码的规则。在触发自动填充时，所设置的密码规则会透传给密码保险箱，用于新密码的生成。&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
+定义生成密码的规则。在触发自动填充时，所设置的密码规则会透传给密码保险箱，用于新密码的生成。<!--RP1--><!--RP1End-->
 
 **起始版本：** 11
 
@@ -1583,6 +1642,10 @@ placeholderFont(value?: Font)
 ```
 
 设置placeholder文本样式，包括字体大小、字体粗细、字体族、字体风格。
+
+> **说明：** 
+> 
+> 可以使用[loadFontSync](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadfontsync)注册自定义字体。
 
 **起始版本：** 7
 
@@ -1646,7 +1709,7 @@ selectAll(value: boolean)
 selectedBackgroundColor(value: ResourceColor)
 ```
 
-设置文本选中底板颜色。如果未设置不透明度，默认为20%不透明度。未通过该接口设置时，默认为'#FF007DFF'（蓝色），Wearable设备上默认值为'#FF1F71FF'（蓝色，比'#FF007DFF'颜色稍深）。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。未通过该接口设置时，默认为'#007DFF'（蓝色），Wearable设备上默认值为'#1F71FF'（蓝色，比'#007DFF'颜色稍深）。
 
 **起始版本：** 10
 
@@ -1660,7 +1723,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 文本选中底板颜色。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 文本选中高亮颜色。 |
 
 ## selectedDragPreviewStyle
 
@@ -1933,7 +1996,7 @@ strokeColor(color: Optional<ResourceColor>)
 strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 ```
 
-设置文本描边拐角样式。
+设置文本描边拐角样式，仅在使用strokeWidth设置文本描边时生效。
 
 **起始版本：** 26.0.0
 
@@ -1947,7 +2010,7 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| strokeJoinStyle | [StrokeJoinStyle](../arkts-apis/arkts-arkui-strokejoinstyle-e.md) &#124; undefined | 是 | 文本描边拐角样式。<br>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](../arkts-apis/arkts-arkui-strokejoinstyle-e.md)，文本拐角处表现为锐角。 |
+| strokeJoinStyle | [StrokeJoinStyle](../arkts-apis/arkts-arkui-strokejoinstyle-e.md) &#124; undefined | 是 | 设置文本描边拐角样式，仅在使用strokeWidth设置文本描边时生效。<br>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](../arkts-apis/arkts-arkui-strokejoinstyle-e.md)，文本拐角处表现为锐角。 |
 
 ## strokeWidth
 
@@ -1969,7 +2032,7 @@ strokeWidth(width: Optional<LengthMetrics>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | 是 | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。 |
+| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | 是 | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。 |
 
 ## style
 
@@ -2063,7 +2126,7 @@ textIndent(value: Dimension)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：[vp](../arkts-apis/arkts-arkui-length-t.md) <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
 
 ## textOverflow
 
@@ -2158,3 +2221,29 @@ wordBreak(value: WordBreak)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [WordBreak](../arkts-apis/arkts-arkui-wordbreak-e.md) | 是 | 内联输入风格编辑态时断行规则。 |
+
+## onEditChanged
+
+```TypeScript
+onEditChanged(callback: (isEditing: boolean) => void)
+```
+
+输入状态变化时，触发该回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 8开始废弃。
+
+**起始版本：** 7
+
+**废弃版本：** 8
+
+**替代接口：** [onEditChange](#oneditchange)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | (isEditing: boolean) =&gt; void | 是 | callback of the listened event. |

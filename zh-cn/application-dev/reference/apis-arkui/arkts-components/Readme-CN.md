@@ -1536,7 +1536,7 @@
   - [RRect(系统接口)](arkts-arkui-remotewindow-comp-rrect-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [WindowAnimationTarget(系统接口)](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md)<!--DelEnd-->
-- [Repeat(Defines Repeat component.)](arkts-arkui-repeat-comp.md)
+- [Repeat](arkts-arkui-repeat-comp.md)
   - [Repeat属性/事件](arkts-arkui-repeat-comp-attribute.md)
   - [RepeatItem](arkts-arkui-repeat-comp-repeatitem-i.md)
   - [TemplateOptions](arkts-arkui-repeat-comp-templateoptions-i.md)

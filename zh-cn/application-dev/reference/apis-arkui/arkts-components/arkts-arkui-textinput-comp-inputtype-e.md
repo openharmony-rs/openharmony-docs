@@ -66,7 +66,7 @@ Email
 
 邮箱地址输入模式。
 
-支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、{、|、}、~，以及@字符（只能存在一个@字符）。
+支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、{、|、}、~，以及@（仅支持一个）。邮箱地址格式需符合基本规范：@字符前为用户名部分，@字符后为域名部分。
 
 **起始版本：** 7
 
@@ -86,7 +86,7 @@ Password
 
 TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。
 
-密码输入模式中，[decoration](arkts-arkui-textinput-comp-attribute.md#decoration)、[showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline)、[lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight)不生效。
+密码输入模式中，[decoration](arkts-arkui-textinput-comp-attribute.md#decoration)、[showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline)、[lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight)、[fontFeature](arkts-arkui-textinput-comp-attribute.md#fontfeature)不生效。
 
 在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。
 
@@ -198,7 +198,7 @@ URL = 13
 ONE_TIME_CODE = 14
 ```
 
-验证码输入模式，无特殊限制。
+验证码输入模式，无特殊限制。该模式下组件获焦后会默认拉起系统输入法。
 
 **起始版本：** 20
 

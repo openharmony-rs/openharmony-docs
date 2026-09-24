@@ -2,9 +2,17 @@
 
 Navigation组件是路由导航的根视图容器，一般作为Page页面的根容器使用，其内部默认包含了标题栏、内容区和工具栏，其中内容区默认首页显示导航内容（Navigation的子组件）或非首页显示（NavDestination的子组件），首页和非首页通过路由进行切换。
 
-> **说明：**
+> **说明：** 
 
-> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea( > [SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重 > 写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](arkts-arkui-common-comp-commonmethod-c.md#expandsafearea)属性实现安全区避让。 > > - [NavBar](arkts-arkui-navigation-comp-navbar-t.md)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及全模态的生命周期进行联动。 > > - Navigation未设置主副标题（[title](arkts-arkui-navigation-comp-attribute.md#title)或[subTitle](arkts-arkui-navigation-comp-attribute.md#subtitle)）且 > [hideBackButton](arkts-arkui-navigation-comp-attribute.md#hidebackbutton)属性设置为true时，不显示标题栏。 > > - Navigation的子页面切换时，新页面会主动请求焦点。 > > - 不建议在[aboutToAppear](arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
+> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](arkts-arkui-common-comp-commonmethod-c.md#expandsafearea)属性实现安全区避让。
+> 
+> - [NavBar](arkts-arkui-navigation-comp-navbar-t.md)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及全模态的生命周期进行联动。
+> 
+> - Navigation未设置主副标题（[title](arkts-arkui-navigation-comp-attribute.md#title)或[subTitle](arkts-arkui-navigation-comp-attribute.md#subtitle)）且[hideBackButton](arkts-arkui-navigation-comp-attribute.md#hidebackbutton)属性设置为true时，不显示标题栏。
+> 
+> - Navigation的子页面切换时，新页面会主动请求焦点。
+> 
+> - 不建议在[aboutToAppear](arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
 
 ## 子组件
 

@@ -55,7 +55,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 | --- | --- |
 | [FontFeature](arkts-arkgraphics2d-drawing-fontfeature-i.md) | 表示字体特征。字体特征是字体内置的排版规则，用于控制字形的显示效果，具体包括连字、替代字形、上下标等功能。 |
 | [FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md) | 描述字形大小和布局的属性信息，同一种字体中的字符属性大致相同。 |
-| [RecordCmd](arkts-arkgraphics2d-drawing-recordcmd-i.md) |  |
+| [RecordCmd](arkts-arkgraphics2d-drawing-recordcmd-i.md) | 描述一组已录制的绘制指令。 |
 | [TextBlobRunBuffer](arkts-arkgraphics2d-drawing-textblobrunbuffer-i.md) | 描述一行文字中具有相同属性的连续字形。 |
 | [TypefaceFallbackInfo](arkts-arkgraphics2d-drawing-typefacefallbackinfo-i.md) | 定义字体回退信息结构体，表示一组使用相同回退字体的字形片段。 |
 

@@ -48,6 +48,20 @@ import { formInfo } from '@kit.FormKit';
 | [TemplateFormDetailInfo](arkts-form-forminfo-templateformdetailinfo-i-sys.md) | 模板卡对应的真实卡片信息。 |
 <!--DelEnd-->
 
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [DeleteFormsCallback](arkts-form-forminfo-deleteformscallback-t-sys.md) | 卡片删除回调。 |
+| [GetFormRectInfoCallback](arkts-form-forminfo-getformrectinfocallback-t-sys.md) | 卡片位置、尺寸查询回调。使用Promise异步回调。 |
+| [GetLiveFormStatusCallback](arkts-form-forminfo-getliveformstatuscallback-t-sys.md) | Get live form status info callback |
+| [GetWantParamsCallback](arkts-form-forminfo-getwantparamscallback-t-sys.md) | 获取卡片参数回调。 |
+| [PublishFormCrossBundleControlCallback](arkts-form-forminfo-publishformcrossbundlecontrolcallback-t-sys.md) | 跨应用加卡管控回调。 |
+| [TemplateFormDetailInfoCallback](arkts-form-forminfo-templateformdetailinfocallback-t-sys.md) | 模板卡真实卡片信息回调。 |
+| [UpdateFormsConfigCallback](arkts-form-forminfo-updateformsconfigcallback-t-sys.md) | 卡片配置更新回调。 |
+<!--DelEnd-->
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -74,18 +88,4 @@ import { formInfo } from '@kit.FormKit';
 | [PublishFormErrorCode](arkts-form-forminfo-publishformerrorcode-e-sys.md) | 发布卡片加桌错误码枚举。 |
 | [RenderingMode](arkts-form-forminfo-renderingmode-e-sys.md) | 卡片支持的渲染模式枚举。 |
 | [SceneAnimationTriggerType](arkts-form-forminfo-sceneanimationtriggertype-e-sys.md) | 场景动效卡片触发类型枚举。 |
-<!--DelEnd-->
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [DeleteFormsCallback](arkts-form-forminfo-deleteformscallback-t-sys.md) | 卡片删除回调。 |
-| [GetFormRectInfoCallback](arkts-form-forminfo-getformrectinfocallback-t-sys.md) | 卡片位置、尺寸查询回调。使用Promise异步回调。 |
-| [GetLiveFormStatusCallback](arkts-form-forminfo-getliveformstatuscallback-t-sys.md) | Get live form status info callback |
-| [GetWantParamsCallback](arkts-form-forminfo-getwantparamscallback-t-sys.md) | 获取卡片参数回调。 |
-| [PublishFormCrossBundleControlCallback](arkts-form-forminfo-publishformcrossbundlecontrolcallback-t-sys.md) | 跨应用加卡管控回调。 |
-| [TemplateFormDetailInfoCallback](arkts-form-forminfo-templateformdetailinfocallback-t-sys.md) | 模板卡真实卡片信息回调。 |
-| [UpdateFormsConfigCallback](arkts-form-forminfo-updateformsconfigcallback-t-sys.md) | 卡片配置更新回调。 |
 <!--DelEnd-->

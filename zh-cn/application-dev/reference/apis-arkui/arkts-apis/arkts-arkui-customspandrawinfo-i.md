@@ -18,7 +18,7 @@ baseline: number
 
 自定义绘制Span的所在行的基线偏移量。
 
-单位：[px](arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -38,7 +38,7 @@ lineBottom: number
 
 自定义绘制Span相对于Text组件的下边距。
 
-单位：[px](arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -58,7 +58,7 @@ lineTop: number
 
 自定义绘制Span相对于Text组件的上边距。
 
-单位：[px](arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -78,7 +78,7 @@ x: number
 
 自定义绘制Span相对于挂载组件的偏移。
 
-单位：[px](arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 

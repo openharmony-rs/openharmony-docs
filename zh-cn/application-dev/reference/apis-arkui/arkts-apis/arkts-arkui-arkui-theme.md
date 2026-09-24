@@ -1,7 +1,4 @@
-# @ohos.arkui.theme
-
-主题换肤
-
+# @ohos.arkui.theme(主题换肤)
 
 ## 导入模块
 

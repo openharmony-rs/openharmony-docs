@@ -138,7 +138,7 @@ fling(velocity: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
 ## getFrameNode
@@ -200,7 +200,7 @@ getItemIndex(x: number, y: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
 ## getItemRect
@@ -239,7 +239,7 @@ getItemRect(index: number): RectResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
 ## isAtEnd
@@ -446,7 +446,7 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 > 
 > 1. 仅支持ArcList、Grid、List、WaterFlow组件。
 > 
-> 2. 在[LazyForEach](arkts-arkui-lazyforeach-comp.md#lazy_for_each)、[ForEach](arkts-arkui-foreach-comp-attribute.md)、[Repeat](arkts-arkui-repeat-comp.md#repeatdefines-repeat-component)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+> 2. 在[LazyForEach](arkts-arkui-lazyforeach-comp.md#lazy_for_each)、[ForEach](arkts-arkui-foreach-comp-attribute.md)、[Repeat](arkts-arkui-repeat-comp.md#repeat)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
 > 
 > 3. 从API version 11开始，在List中支持[contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset)和[contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset)。从API version 22开始，在Grid和WaterFlow组件中支持设置contentStartOffset和contentEndOffset。
 > 

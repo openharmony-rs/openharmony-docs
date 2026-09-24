@@ -28,7 +28,7 @@ function getAccessoryList(): Array<Readonly<USBAccessory>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [14400004](../errorcode-usb.md#14400004-服务异常) | Service exception. Possible causes:<br>1. No accessory is plugged in. |
 
 **示例**

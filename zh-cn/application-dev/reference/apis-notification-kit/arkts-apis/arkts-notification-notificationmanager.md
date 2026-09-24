@@ -229,32 +229,6 @@ import { notificationManager } from '@kit.NotificationKit';
 | [SystemLiveViewSubscriber](arkts-notification-notificationmanager-systemliveviewsubscriber-i-sys.md) | 系统实况窗订阅者。 |
 <!--DelEnd-->
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [ContentType](arkts-notification-notificationmanager-contenttype-e.md) | 通知内容类型。 |
-| [PriorityNotificationType](arkts-notification-notificationmanager-prioritynotificationtype-e.md) | 描述通知的优先级类型。 |
-| [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md) | 通知级别。 |
-| [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 通知渠道类型。 |
-
-<!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md) | 通知提醒方式。 |
-| [DoNotDisturbType](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md) | 免打扰设置的时间类型。 |
-| [NotificationControlFlagStatus](arkts-notification-notificationmanager-notificationcontrolflagstatus-e-sys.md) | 每个bit位都可以控制通知的提示方式。当notificationControlFlags和下表中枚举值进行按位或操作，则表示关闭其提示方式。 |
-| [PriorityEnableStatus](arkts-notification-notificationmanager-priorityenablestatus-e-sys.md) | 描述应用通知的优先级开关状态。 |
-| [PriorityNotificationType](arkts-notification-notificationmanager-prioritynotificationtype-e-sys.md) | 描述通知的优先级类型。 |
-| [PriorityStrategyStatus](arkts-notification-notificationmanager-prioritystrategystatus-e-sys.md) | 描述应用通知的优先策略。 |
-| [RingtoneType](arkts-notification-notificationmanager-ringtonetype-e-sys.md) | 描述自定义铃声类型。 |
-| [SlotType](arkts-notification-notificationmanager-slottype-e-sys.md) | 通知渠道类型。 |
-| [SourceType](arkts-notification-notificationmanager-sourcetype-e-sys.md) | 通知来源类型。 |
-| [SwitchState](arkts-notification-notificationmanager-switchstate-e-sys.md) | 描述通知相关开关的设置状态。 |
-<!--DelEnd-->
-
 ### 类型
 
 | 名称 | 说明 |
@@ -299,4 +273,30 @@ import { notificationManager } from '@kit.NotificationKit';
 | [Trigger](arkts-notification-notificationmanager-trigger-t-sys.md) | 触发条件的具体信息。 |
 | [TriggerType](arkts-notification-notificationmanager-triggertype-t-sys.md) | 触发条件的事件类型的枚举。 |
 | [UnifiedGroupInfo](arkts-notification-notificationmanager-unifiedgroupinfo-t-sys.md) | 描述通知智能聚合信息字段。 |
+<!--DelEnd-->
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ContentType](arkts-notification-notificationmanager-contenttype-e.md) | 通知内容类型。 |
+| [PriorityNotificationType](arkts-notification-notificationmanager-prioritynotificationtype-e.md) | 描述通知的优先级类型。 |
+| [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md) | 通知级别。 |
+| [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 通知渠道类型。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md) | 通知提醒方式。 |
+| [DoNotDisturbType](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md) | 免打扰设置的时间类型。 |
+| [NotificationControlFlagStatus](arkts-notification-notificationmanager-notificationcontrolflagstatus-e-sys.md) | 每个bit位都可以控制通知的提示方式。当notificationControlFlags和下表中枚举值进行按位或操作，则表示关闭其提示方式。 |
+| [PriorityEnableStatus](arkts-notification-notificationmanager-priorityenablestatus-e-sys.md) | 描述应用通知的优先级开关状态。 |
+| [PriorityNotificationType](arkts-notification-notificationmanager-prioritynotificationtype-e-sys.md) | 描述通知的优先级类型。 |
+| [PriorityStrategyStatus](arkts-notification-notificationmanager-prioritystrategystatus-e-sys.md) | 描述应用通知的优先策略。 |
+| [RingtoneType](arkts-notification-notificationmanager-ringtonetype-e-sys.md) | 描述自定义铃声类型。 |
+| [SlotType](arkts-notification-notificationmanager-slottype-e-sys.md) | 通知渠道类型。 |
+| [SourceType](arkts-notification-notificationmanager-sourcetype-e-sys.md) | 通知来源类型。 |
+| [SwitchState](arkts-notification-notificationmanager-switchstate-e-sys.md) | 描述通知相关开关的设置状态。 |
 <!--DelEnd-->

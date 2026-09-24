@@ -2,9 +2,9 @@
 
 定义 Web 组件。
 
-<p><strong>API Note</strong>:
+<p>&lt;strong&gt;API Note&lt;/strong&gt;:
 
-<strong>Performance Note</strong>: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable [optimizeParserBudget](arkts-arkweb-web-comp-attribute.md#optimizeparserbudget) to reduce the first frame rendering content.</p> </p>
+&lt;strong&gt;Performance Note&lt;/strong&gt;: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable [optimizeParserBudget](arkts-arkweb-web-comp-attribute.md#optimizeparserbudget) to reduce the first frame rendering content.</p> </p>
 
 ## Web
 
@@ -104,6 +104,7 @@ Sets Value.
 | [OnTouchIconUrlReceivedEvent](arkts-arkweb-web-comp-ontouchiconurlreceivedevent-i.md) | 定义接收到apple-touch-icon URL时触发的回调信息，包括URL和预合成状态。适用于需要获取网页图标的场景，提升图标管理的灵活性和用户体验。 |
 | [OnWindowNewEvent](arkts-arkweb-web-comp-onwindownewevent-i.md) | 定义网页要求用户创建窗口时触发的回调。从API version 23开始，如需获取更多窗口信息，可使用[OnWindowNewExtEvent](arkts-arkweb-web-comp-onwindownewextevent-i.md)。 |
 | [OnWindowNewExtEvent](arkts-arkweb-web-comp-onwindownewextevent-i.md) | 定义网页请求创建窗口时触发的回调信息，包括窗口特征信息和窗口打开方式。适用于需要精细控制新窗口行为的场景，提升窗口管理的定制性和用户体验。 |
+| [OnZoomChangeEvent](arkts-arkweb-web-comp-onzoomchangeevent-i.md) | 描述网页浏览器级缩放倍率变化的信息。 |
 | [PreviewMenuOptions](arkts-arkweb-web-comp-previewmenuoptions-i.md) | 用于配置预览菜单选项，支持设置菜单弹出时的振动效果。适用于需要增强菜单交互反馈的场景，提升用户体验。 |
 | [RenderProcessNotRespondingData](arkts-arkweb-web-comp-renderprocessnotrespondingdata-i.md) | 提供渲染进程无响应的详细信息。适用于需要诊断渲染进程异常的场景，提升故障排查的准确性和效率。 |
 | [ScreenCaptureConfig](arkts-arkweb-web-comp-screencaptureconfig-i.md) | 提供 Web 屏幕捕获的配置选项，包括捕获模式。适用于需要自定义网页录屏行为的场景，提升录屏功能的灵活性和用户体验。 |
@@ -149,6 +150,7 @@ Sets Value.
 | [OnSslErrorEventCallback](arkts-arkweb-web-comp-onsslerroreventcallback-t.md) | 用户加载资源时发生SSL错误时触发的回调，返回SSL错误详细信息。 |
 | [OnVerifyPinCallback](arkts-arkweb-web-comp-onverifypincallback-t.md) | 需要用户进行PIN码认证时触发的回调。 |
 | [OnViewportFitChangedCallback](arkts-arkweb-web-comp-onviewportfitchangedcallback-t.md) | 网页meta中viewport-fit配置项更改时触发的回调。 |
+| [OnZoomChangeCallback](arkts-arkweb-web-comp-onzoomchangecallback-t.md) | 浏览器级缩放倍率变化时触发的回调类型。 |
 | [TextSelectionChangeCallback](arkts-arkweb-web-comp-textselectionchangecallback-t.md) | onTextSelectionChange的回调，选区内容改变时触发。 |
 | [WebKeyboardCallback](arkts-arkweb-web-comp-webkeyboardcallback-t.md) | 拦截网页可编辑元素拉起软键盘的回调，一般在点击网页input标签时触发。 |
 | [WebviewController](arkts-arkweb-web-comp-webviewcontroller-t.md) | 提供Web控制器的方法。 |

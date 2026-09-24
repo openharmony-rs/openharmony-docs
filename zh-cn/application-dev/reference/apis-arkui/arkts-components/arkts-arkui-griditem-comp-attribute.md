@@ -54,32 +54,6 @@ columnStart(value: number)
 | --- | --- | --- | --- |
 | value | number | 是 | 当前元素起始列号。<br>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md)参数，详细可参考Grid的[示例1（固定行列Grid）](arkts-arkui-grid-comp.md#grid)和[示例3（可滚动Grid设置跨行跨列节点）](arkts-arkui-grid-comp.md#grid)。<br>取值范围：[0, 总列数-1] |
 
-## forceRebuild
-
-```TypeScript
-forceRebuild(value: boolean)
-```
-
-设置在触发组件build时是否重新创建此节点。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃。GridItem会根据自身属性和子组件变化自行决定是否需要重新创建，无需设置。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | boolean | 是 | 设置为true时，在触发组件build时重新创建此节点；设置为false时，不强制重新创建此节点。<br>默认值：false |
-
 ## onSelect
 
 ```TypeScript
@@ -193,3 +167,29 @@ selected(value: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | boolean | 是 | 当前GridItem选中状态。设置为true时为选中状态，设置为false时为非选中状态。<br>默认值：false |
+
+## forceRebuild
+
+```TypeScript
+forceRebuild(value: boolean)
+```
+
+设置在触发组件build时是否重新创建此节点。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃。GridItem会根据自身属性和子组件变化自行决定是否需要重新创建，无需设置。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | boolean | 是 | 设置为true时，在触发组件build时重新创建此节点；设置为false时，不强制重新创建此节点。<br>默认值：false |

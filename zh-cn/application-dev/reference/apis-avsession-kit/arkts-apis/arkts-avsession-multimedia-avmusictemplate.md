@@ -84,22 +84,6 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | [AVMusicTemplateDescriptor](arkts-avsession-avmusictemplate-avmusictemplatedescriptor-i-sys.md) | 音频模板描述。包含音频模板唯一标识，应用的包名和用户ID。 |
 <!--DelEnd-->
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [AVMusicTemplateErrorCode](arkts-avsession-avmusictemplate-avmusictemplateerrorcode-e.md) | 表示错误码类型的枚举。 |
-| [AVMusicTemplateType](arkts-avsession-avmusictemplate-avmusictemplatetype-e.md) | 表示音频模板类型的枚举。 |
-| [ButtonType](arkts-avsession-avmusictemplate-buttontype-e.md) | 表示按钮类型的枚举。 |
-| [DialogType](arkts-avsession-avmusictemplate-dialogtype-e.md) | 表示对话框类型的枚举。 |
-| [DownloadStatus](arkts-avsession-avmusictemplate-downloadstatus-e.md) | 表示下载状态类型的枚举。 |
-| [EntityType](arkts-avsession-avmusictemplate-entitytype-e.md) | 表示媒体资源类型的枚举。 |
-| [MemberPurchaseType](arkts-avsession-avmusictemplate-memberpurchasetype-e.md) | 表示会员购买类型的枚举。 |
-| [PlaybackState](arkts-avsession-avmusictemplate-playbackstate-e.md) | 表示媒体资源的播放状态的枚举。 |
-| [SearchPlayInfoType](arkts-avsession-avmusictemplate-searchplayinfotype-e.md) | 表示搜播信息类型的枚举。 |
-| [SettingType](arkts-avsession-avmusictemplate-settingtype-e.md) | 表示设置类型的枚举。 |
-| [Sort](arkts-avsession-avmusictemplate-sort-e.md) | 表示查询到的列表数据排序类型的枚举。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -141,3 +125,19 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | [ReportTabContentEvent](arkts-avsession-avmusictemplate-reporttabcontentevent-t.md) | 标签页内容上报事件。 |
 | [RequestDialogInfoEvent](arkts-avsession-avmusictemplate-requestdialoginfoevent-t.md) | 对话框信息请求事件。使用Promise异步回调。 |
 | [SettingsChangeEvent](arkts-avsession-avmusictemplate-settingschangeevent-t.md) | 设置变更事件类型。使用Promise异步回调。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [AVMusicTemplateErrorCode](arkts-avsession-avmusictemplate-avmusictemplateerrorcode-e.md) | 表示错误码类型的枚举。 |
+| [AVMusicTemplateType](arkts-avsession-avmusictemplate-avmusictemplatetype-e.md) | 表示音频模板类型的枚举。 |
+| [ButtonType](arkts-avsession-avmusictemplate-buttontype-e.md) | 表示按钮类型的枚举。 |
+| [DialogType](arkts-avsession-avmusictemplate-dialogtype-e.md) | 表示对话框类型的枚举。 |
+| [DownloadStatus](arkts-avsession-avmusictemplate-downloadstatus-e.md) | 表示下载状态类型的枚举。 |
+| [EntityType](arkts-avsession-avmusictemplate-entitytype-e.md) | 表示媒体资源类型的枚举。 |
+| [MemberPurchaseType](arkts-avsession-avmusictemplate-memberpurchasetype-e.md) | 表示会员购买类型的枚举。 |
+| [PlaybackState](arkts-avsession-avmusictemplate-playbackstate-e.md) | 表示媒体资源的播放状态的枚举。 |
+| [SearchPlayInfoType](arkts-avsession-avmusictemplate-searchplayinfotype-e.md) | 表示搜播信息类型的枚举。 |
+| [SettingType](arkts-avsession-avmusictemplate-settingtype-e.md) | 表示设置类型的枚举。 |
+| [Sort](arkts-avsession-avmusictemplate-sort-e.md) | 表示查询到的列表数据排序类型的枚举。 |

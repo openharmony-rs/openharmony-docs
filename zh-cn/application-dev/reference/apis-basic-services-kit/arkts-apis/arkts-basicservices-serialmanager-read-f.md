@@ -41,7 +41,7 @@ function read(portId: number, buffer: Uint8Array, timeout?: number): Promise<num
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) |  |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 | [31400001](../errorcode-usb.md#31400001-串口服务异常) |  |
 | [31400003](../errorcode-usb.md#31400003-端口号不存在) |  |
 | [31400005](../errorcode-usb.md#31400005-设备未打开) |  |

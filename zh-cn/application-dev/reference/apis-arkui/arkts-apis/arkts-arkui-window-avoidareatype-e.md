@@ -8,9 +8,9 @@ enum AvoidAreaType
 
 窗口内容做[沉浸式布局](../../../windowmanager/window-terminology.md#immersive-layout沉浸式布局)适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-arkui-window-avoidarea-i.md)做窗口内容避让。
 
-&lt;!--RP13--&gt;
+<!--RP13-->
 
-&lt;!--RP13End--&gt;
+<!--RP13End-->
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ enum AvoidAreaType
 TYPE_SYSTEM = 0
 ```
 
-表示系统默认区域。&lt;!--RP11--&gt;包含状态栏和三键导航栏区域。&lt;!--RP11End--&gt;
+表示系统默认区域。<!--RP11-->包含状态栏和三键导航栏区域。<!--RP11End-->
 
 **起始版本：** 7
 
@@ -92,7 +92,7 @@ TYPE_NAVIGATION_INDICATOR = 4
 TYPE_FLOAT_NAVIGATION = 5
 ```
 
-表示三键导航区域。&lt;!--RP12--&gt;OpenHarmony各设备不支持此能力。&lt;!--RP12End--&gt;
+表示三键导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End-->
 
 **起始版本：** 26.0.0
 

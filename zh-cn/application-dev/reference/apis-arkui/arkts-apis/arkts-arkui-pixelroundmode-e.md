@@ -4,9 +4,7 @@
 declare enum PixelRoundMode
 ```
 
-像素取整模式
-
-@enum { number }
+指定像素取整模式。
 
 **起始版本：** 18
 
@@ -18,7 +16,7 @@ declare enum PixelRoundMode
 PIXEL_ROUND_ON_LAYOUT_FINISH = 0
 ```
 
-布局结束后像素取整
+在组件测量大小和位置后进行像素取整，默认值为0。
 
 **起始版本：** 18
 
@@ -36,7 +34,7 @@ PIXEL_ROUND_ON_LAYOUT_FINISH = 0
 PIXEL_ROUND_AFTER_MEASURE = 1
 ```
 
-计算大小后像素取整。
+在组件测量大小结束后进行像素取整。
 
 **起始版本：** 18
 

@@ -4,9 +4,7 @@
 declare enum TipsAnchorType
 ```
 
-Follow position type.
-
-@enum { number }
+指定Tips跟随类型。
 
 **起始版本：** 20
 
@@ -18,7 +16,7 @@ Follow position type.
 TARGET
 ```
 
-Follow the component.
+Tips跟随目标物。
 
 **起始版本：** 20
 
@@ -34,7 +32,7 @@ Follow the component.
 CURSOR
 ```
 
-Follow the cursor.
+Tips跟随鼠标。
 
 **起始版本：** 20
 

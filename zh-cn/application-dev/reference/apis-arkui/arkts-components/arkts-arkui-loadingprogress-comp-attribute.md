@@ -4,9 +4,11 @@
 declare class LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
-支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+> **说明：** 
+> 
+> 组件应设置合理的宽高，当组件宽高设置过大时加载进度条的动效可能不符合预期效果。
 
 **继承/实现关系：** LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
 

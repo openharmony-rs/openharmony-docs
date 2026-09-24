@@ -4,11 +4,9 @@
 declare enum VerticalAlign
 ```
 
-VerticalAlign enumeration description
+定义子组件在垂直方向上的对齐格式。
 
-@enum { number }
-
-**起始版本：** 11
+**起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,15 +16,15 @@ VerticalAlign enumeration description
 Top
 ```
 
-Top alignment.
+顶部对齐。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,15 +34,15 @@ Top alignment.
 Center
 ```
 
-Center alignment. The default alignment mode is used.
+居中对齐，默认对齐方式。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,14 +52,14 @@ Center alignment. The default alignment mode is used.
 Bottom
 ```
 
-Bottom alignment.
+底部对齐。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

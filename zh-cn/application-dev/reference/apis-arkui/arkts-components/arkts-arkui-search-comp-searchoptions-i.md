@@ -40,7 +40,7 @@ icon?: string
 
 **说明：** 
 
-icon的数据源支持[使用相对路径显示图片](arkts-arkui-image-comp.md#image)和网络图片。
+icon的数据源支持[使用相对路径显示图片](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例25使用相对路径显示图片)和网络图片。
 
 - 支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。
 
@@ -77,15 +77,21 @@ placeholder?: ResourceStr
 ## value
 
 ```TypeScript
-value?: string | Bindable<string>
+value?: ResourceStr
 ```
 
-Text input in the search text box.
+设置当前显示的搜索文本内容。当需要设置搜索框的初始文本内容时传入此参数，不传入时搜索框为空。
 
-**类型：** string &#124; Bindable&lt;string&gt;
+从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
-**起始版本：** 20
+从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+从API version 20开始，支持Resource类型。
+
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

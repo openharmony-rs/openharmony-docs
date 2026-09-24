@@ -23,18 +23,18 @@ import { ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayout
 | [HoverModeRegionLayoutOptions](arkts-arkui-arkui-advanced-foldsplitcontainer-hovermoderegionlayoutoptions-i.md) | 悬停态布局信息。 |
 | [HoverModeStatus](arkts-arkui-arkui-advanced-foldsplitcontainer-hovermodestatus-i.md) | 设备或应用的折叠、悬停、旋转、窗口状态信息。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [OnHoverStatusChangeHandler](arkts-arkui-onhoverstatuschangehandler-t.md) | 悬停状态变化事件处理器。 |
+
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
 | [ExtraRegionPosition](arkts-arkui-arkui-advanced-foldsplitcontainer-extraregionposition-e.md) | 扩展区域位置信息。 |
 | [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-presetsplitratio-e.md) | 区域比例。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [OnHoverStatusChangeHandler](arkts-arkui-onhoverstatuschangehandler-t.md) | 悬停状态变化事件处理器。 |
 
 ## 示例
 

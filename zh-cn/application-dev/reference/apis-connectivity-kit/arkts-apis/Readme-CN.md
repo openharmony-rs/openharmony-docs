@@ -419,7 +419,8 @@
   - [sppWriteAsync](arkts-connectivity-socket-sppwriteasync-f.md)
   - [SppOptions](arkts-connectivity-socket-sppoptions-i.md)
   - [SppType](arkts-connectivity-socket-spptype-e.md)
-- [@ohos.bluetooth.wearDetection(蓝牙佩戴检测模块)](arkts-connectivity-bluetooth-weardetection.md)
+<!--Del-->
+- [@ohos.bluetooth.wearDetection(蓝牙佩戴检测模块)](arkts-connectivity-bluetooth-weardetection.md)<!--DelEnd-->
   <!--Del-->
   - [disableWearDetection(系统接口)](arkts-connectivity-weardetection-disableweardetection-f-sys.md)<!--DelEnd-->
   <!--Del-->

@@ -75,7 +75,7 @@ OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 成功时返回包含轨道描述信息的OH_AVFormat实例指针，失败时返回空指针。  可能失败的原因：  1. extractor为空指针。  2. 未设置媒体源。  3. 格式不支持。  注意：用户需要使用[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
+| OH_AVFormat * | 成功时返回包含轨道描述信息的OH_AVFormat实例指针，失败时返回空指针。  可能失败的原因：  1. extractor为空指针。  2. 未设置媒体源。  3. 格式不支持。  注意：用户需要使用[OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
 
 ### OH_AVMetadataExtractor_GetCustomInfo()
 
@@ -101,7 +101,7 @@ OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extrac
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 成功时返回包含自定义元数据的OH_AVFormat实例指针，失败时返回空指针。  可能失败的原因：  1. extractor为空指针。  2. 未设置媒体源。  3. 未找到自定义信息。  注意：用户需要使用[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
+| OH_AVFormat * | 成功时返回包含自定义元数据的OH_AVFormat实例指针，失败时返回空指针。  可能失败的原因：  1. extractor为空指针。  2. 未设置媒体源。  3. 未找到自定义信息。  注意：用户需要使用[OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
 
 ### OH_AVMetadataExtractor_SetMediaSource()
 

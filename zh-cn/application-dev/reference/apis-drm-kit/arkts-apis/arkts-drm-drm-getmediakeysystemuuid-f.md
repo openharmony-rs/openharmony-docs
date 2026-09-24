@@ -36,7 +36,7 @@ function getMediaKeySystemUuid(name: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed.Possibly because:<br>1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed.Possibly because:<br>1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [24700101](../errorcode-drm.md#24700101-未知错误) | All unknown errors. |
 | [24700201](../errorcode-drm.md#24700201-服务异常) | Fatal service error, for example, service died. |
 

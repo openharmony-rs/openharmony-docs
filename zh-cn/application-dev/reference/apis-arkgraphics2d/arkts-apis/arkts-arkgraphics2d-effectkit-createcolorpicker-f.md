@@ -38,7 +38,7 @@ function createColorPicker(source: image.PixelMap): Promise<ColorPicker>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 输入参数错误。 |
 
 **示例**
 
@@ -106,7 +106,7 @@ function createColorPicker(source: image.PixelMap, region: Array<number>): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 输入参数错误。 |
 
 **示例**
 
@@ -168,7 +168,7 @@ function createColorPicker(source: image.PixelMap, callback: AsyncCallback<Color
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 输入参数错误。 |
 
 **示例**
 
@@ -231,7 +231,7 @@ function createColorPicker(source: image.PixelMap, region: Array<number>, callba
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 输入参数错误。 |
 
 **示例**
 

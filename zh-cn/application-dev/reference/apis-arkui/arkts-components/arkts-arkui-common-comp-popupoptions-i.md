@@ -649,28 +649,6 @@ placement?: Placement
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## placementOnTop
-
-```TypeScript
-placementOnTop?: boolean
-```
-
-是否在组件上方显示，默认值为false。取值为true：气泡显示到绑定组件的上方，取值false：气泡显示到绑定组件的下方。
-
-**说明：** 
-
-从API version 7开始支持，从API version 10开始废弃，建议使用`placement`替代。
-
-**类型：** boolean
-
-**起始版本：** 7
-
-**废弃版本：** 10
-
-**替代接口：** [placement](#placement)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## popupColor
 
 ```TypeScript
@@ -991,5 +969,27 @@ width?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## placementOnTop
+
+```TypeScript
+placementOnTop?: boolean
+```
+
+是否在组件上方显示，默认值为false。取值为true：气泡显示到绑定组件的上方，取值false：气泡显示到绑定组件的下方。
+
+**说明：** 
+
+从API version 7开始支持，从API version 10开始废弃，建议使用`placement`替代。
+
+**类型：** boolean
+
+**起始版本：** 7
+
+**废弃版本：** 10
+
+**替代接口：** [placement](#placement)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

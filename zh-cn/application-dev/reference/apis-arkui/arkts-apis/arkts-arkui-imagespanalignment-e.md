@@ -4,7 +4,7 @@
 declare enum ImageSpanAlignment
 ```
 
-The alignment of ImageSpan
+图片基于行高的对齐方式。
 
 **起始版本：** 10
 
@@ -16,7 +16,7 @@ The alignment of ImageSpan
 BASELINE = 0
 ```
 
-Indicating that the bottom of the ImageSpan should be aligned with the baseline of the surrounding text.
+图片下边沿与文本BaseLine对齐。
 
 **起始版本：** 10
 
@@ -32,7 +32,7 @@ Indicating that the bottom of the ImageSpan should be aligned with the baseline 
 BOTTOM = 1
 ```
 
-Indicating that the bottom of the ImageSpan should be aligned with the bottom of the surrounding text.
+图片下边沿与行下边沿对齐。
 
 **起始版本：** 10
 
@@ -48,7 +48,7 @@ Indicating that the bottom of the ImageSpan should be aligned with the bottom of
 CENTER = 2
 ```
 
-Indicating that the center of the ImageSpan should be aligned with the center of the surrounding text.
+图片中间与行中间对齐。
 
 **起始版本：** 10
 
@@ -64,7 +64,7 @@ Indicating that the center of the ImageSpan should be aligned with the center of
 TOP = 3
 ```
 
-Indicating that the top of the ImageSpan should be aligned with the top of the surrounding text.
+图片上边沿与行上边沿对齐。
 
 **起始版本：** 10
 
@@ -80,7 +80,7 @@ Indicating that the top of the ImageSpan should be aligned with the top of the s
 FOLLOW_PARAGRAPH = 4
 ```
 
-按照段落TextVerticalAlign的对齐方式来布局
+对齐方式跟随Text父组件。
 
 **起始版本：** 20
 

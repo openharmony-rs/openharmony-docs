@@ -14,34 +14,6 @@ declare interface DatePickerDialogOptions extends DatePickerOptions
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## onAccept
-
-```TypeScript
-onAccept?: (value: DatePickerResult) => void
-```
-
-点击弹窗中的“确定”按钮时触发该回调。回调参数value为当前选中的日期，包含年、月、日信息。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 10开始废弃。建议使用onDateAccept。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** onDateAccept
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | [DatePickerResult](arkts-arkui-datepicker-comp-datepickerresult-i.md) | 是 |  |
-
 ## onCancel
 
 ```TypeScript
@@ -57,34 +29,6 @@ onCancel?: VoidCallback
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onChange
-
-```TypeScript
-onChange?: (value: DatePickerResult) => void
-```
-
-滑动弹窗中的滑动选择器使当前选中项改变时触发该回调。回调参数value为当前选中的日期，包含年、月、日信息。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 10开始废弃。建议使用onDateChange。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** onDateChange
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | [DatePickerResult](arkts-arkui-datepicker-comp-datepickerresult-i.md) | 是 |  |
 
 ## onDidAppear
 
@@ -185,6 +129,62 @@ onWillDisappear?: VoidCallback
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onAccept
+
+```TypeScript
+onAccept?: (value: DatePickerResult) => void
+```
+
+点击弹窗中的“确定”按钮时触发该回调。回调参数value为当前选中的日期，包含年、月、日信息。
+
+> **说明：** 
+> 
+> 从API version 8开始支持，从API version 10开始废弃。建议使用onDateAccept。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** onDateAccept
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [DatePickerResult](arkts-arkui-datepicker-comp-datepickerresult-i.md) | 是 |  |
+
+## onChange
+
+```TypeScript
+onChange?: (value: DatePickerResult) => void
+```
+
+滑动弹窗中的滑动选择器使当前选中项改变时触发该回调。回调参数value为当前选中的日期，包含年、月、日信息。
+
+> **说明：** 
+> 
+> 从API version 8开始支持，从API version 10开始废弃。建议使用onDateChange。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** onDateChange
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [DatePickerResult](arkts-arkui-datepicker-comp-datepickerresult-i.md) | 是 |  |
 
 ## acceptButtonStyle
 

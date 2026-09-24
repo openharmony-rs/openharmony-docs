@@ -40,9 +40,9 @@ function grantUriPermission(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 14300001 | IPC error |
 
 **示例**
@@ -107,9 +107,9 @@ function grantUriPermission(uri: string, bundleName: string, flag: wantConstant.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 14300001 | IPC error |
 
 **示例**
@@ -172,9 +172,9 @@ function grantUriPermission(policies: Array<PolicyInfo>, targetBundleName: strin
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
 

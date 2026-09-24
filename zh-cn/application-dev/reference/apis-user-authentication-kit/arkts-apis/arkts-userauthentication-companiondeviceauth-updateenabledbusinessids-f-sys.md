@@ -43,8 +43,8 @@ function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: nu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
 | [32600002](../errorcode-useriam.md#32600002-模板未找到) | The template is not found. |
 | [32600003](../errorcode-useriam.md#32600003-业务id无效) | The business ID is invalid. |

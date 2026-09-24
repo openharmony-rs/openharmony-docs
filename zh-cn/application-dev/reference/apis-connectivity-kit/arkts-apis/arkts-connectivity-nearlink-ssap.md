@@ -48,6 +48,12 @@ import { ssap } from '@kit.ConnectivityKit';
 | [Service](arkts-connectivity-ssap-service-i-sys.md) | 表示星闪服务。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ConnectionState](arkts-connectivity-ssap-connectionstate-t.md) | 表示和远端设备的连接状态，为枚举值。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -55,9 +61,3 @@ import { ssap } from '@kit.ConnectivityKit';
 | [Operation](arkts-connectivity-ssap-operation-e.md) | 表示Property支持的操作类型，为枚举值。 |
 | [PropertyDescriptorType](arkts-connectivity-ssap-propertydescriptortype-e.md) | 表示Property的描述符类型，为枚举值。 |
 | [PropertyWriteType](arkts-connectivity-ssap-propertywritetype-e.md) | 表示Property支持的写类型，为枚举值。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [ConnectionState](arkts-connectivity-ssap-connectionstate-t.md) | 表示和远端设备的连接状态，为枚举值。 |

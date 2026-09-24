@@ -1,4 +1,4 @@
-# @ohos.sensor
+# @ohos.sensor(传感器模块)
 
 @ohos.sensor 模块是鸿蒙操作系统提供的传感器服务模块，属于 SensorServiceKit。该模块为开发者提供了统一的传感器数据访问能力，涵盖设备上各类物理传感器的数据订阅、查询以及传感器算法计算。sensor 模块是传感器数据访问的统一接口，定义了设备上各类物理传感器的订阅、查询和算法计算能力。当应用需要感知设备运动状态（如摇一摇、翻转）、检测环境条件（如自动调节屏幕亮度、测量气压估算海拔）、获取设备方向（如指南针导航）、监测健康数据（如心率计步）时，应使用本模块订阅对应传感器数据。当需要进行传感器数据相关的数学变换和计算时，应使用传感器算法接口。
 
@@ -145,50 +145,50 @@ import { sensor } from '@kit.SensorServiceKit';
 | [off](arkts-sensorservice-sensor-off-f.md#off-66) | 取消订阅有效运动传感器数据。off取消订阅必须与on订阅成对出现。 |
 | [off](arkts-sensorservice-sensor-off-f.md#off-67) | 取消订阅佩戴检测传感器数据。off取消订阅必须与on订阅成对出现。 |
 | [off](arkts-sensorservice-sensor-off-f.md#offsensorstatuschange) | 取消监听传感器上线下线状态的变化。当不再需要感知传感器上下线状态时调用此接口取消监听。off取消监听必须与on监听成对出现。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-2) | 订阅加速度传感器数据。加速度传感器用于测量设备在X、Y、Z三个方向上的加速度，包含重力加速度分量。适用于需要感知设备运动状态、实现屏幕旋转、游戏操控、计步等场景。调用后，系统会按设定频率通过callback持续上报加速度数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-3) | 订阅未校准加速度传感器数据。未校准加速度传感器与加速度传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始加速度数据或自行实现校准算法的场景。与sensor.on('SensorId.ACCELEROMETER')相比，本接口额外提供偏移值信息，适用于需要分析设备校准偏差的场景。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-4) | 订阅环境光传感器数据。环境光传感器用于测量周围环境的光照强度，适用于自动调节屏幕亮度、判断环境明暗等场景。调用后，系统会按设定频率通过callback持续上报环境光强度数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-5) | 订阅环境温度传感器数据。温度传感器用于测量设备周围的环境温度，适用于环境温度监测、温度补偿等场景。调用后，系统会按设定频率通过callback持续上报温度数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-6) | 订阅气压计传感器数据。气压计传感器用于测量大气压强，适用于海拔估算、天气预报辅助等场景。调用后，系统会按设定频率通过callback持续上报气压数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-7) | 订阅重力传感器数据。重力传感器用于测量设备在X、Y、Z三个方向上受到的重力加速度分量，适用于需要分离重力分量进行运动分析的场景，如游戏操控、运动检测。调用后，系统会按设定频率通过callback持续上报重力分量数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-8) | 订阅校准的陀螺仪传感器数据。陀螺仪传感器用于测量设备绕X、Y、Z轴的旋转角速度，适用于设备旋转检测、姿态跟踪、游戏操控等场景。调用后，系统会按设定频率通过callback持续上报角速度数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-9) | 订阅未校准陀螺仪传感器数据。未校准陀螺仪传感器与陀螺仪传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始陀螺仪数据或自行实现校准算法的场景。与sensor.on('SensorId.GYROSCOPE')相比，本接口额外提供偏移值信息，适用于需要分析设备陀螺仪校准偏差的场景。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-10) | 订阅霍尔传感器数据。霍尔传感器用于检测磁场变化，常用于检测翻盖手机或皮套的开合状态。当霍尔事件被触发得较为频繁时，可通过options参数限定事件上报频率。调用后，系统会通过callback持续上报霍尔状态数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-11) | 订阅心率传感器数据。心率传感器用于测量用户的心率值，适用于健康监测、运动辅助等场景。调用后，系统会按设定频率通过callback持续上报心率数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-12) | 订阅湿度传感器数据。湿度传感器用于测量周围环境的相对湿度，适用于环境湿度监测、智能家居联动等场景。调用后，系统会按设定频率通过callback持续上报湿度数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-13) | 订阅线性加速度传感器数据。线性加速度传感器用于测量设备在X、Y、Z三个方向上的加速度（不含重力加速度分量），适用于需要感知设备纯粹运动加速度的场景，如运动追踪、碰撞检测。与sensor.on('SensorId.ACCELEROMETER')相比，本接口已去除重力分量，适用于仅需设备运动加速度的场景。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-14) | 订阅地磁传感器数据。地磁传感器用于测量设备周围的磁场强度在X、Y、Z三个方向上的分量，适用于指南针、方向检测、金属检测等场景。调用后，系统会按设定频率通过callback持续上报磁场分量数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-15) | 订阅未校准地磁传感器数据。未校准地磁传感器与地磁传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始磁场数据或自行实现校准算法的场景。与sensor.on('SensorId.MAGNETIC_FIELD')相比，本接口额外提供偏移值信息，适用于需要分析设备地磁校准偏差的场景。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-16) | 订阅方向传感器数据。方向传感器用于测量设备绕Z轴旋转的角度(alpha)、绕X轴旋转的角度(beta)和绕Y轴旋转的角度(gamma)，适用于屏幕旋转、指南针、姿态感知等场景。调用后，系统会按设定频率通过callback持续上报方向数据。调用本接口的应用或服务可以通过提示用户使用8字校准法来提高应用获取的方向传感器的精度，此传感器理论误差正负5度，具体的精度根据不同的驱动及算法实现可能存在差异。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-17) | 订阅计步器传感器数据。计步器传感器用于统计用户的步行步数，适用于运动追踪、健康管理等场景。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。调用后，系统会按设定频率通过callback持续上报步数数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-18) | 订阅计步检测器传感器数据。计步检测器传感器用于检测用户是否发生了计步事件（如迈步动作），适用于需要实时检测步行状态的场景。与sensor.on('SensorId.PEDOMETER')相比，本接口上报的是计步事件标量而非累计步数，适用于需要检测单步事件的场景。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-19) | 订阅接近光传感器数据。接近光传感器用于检测物体与设备的距离状态，常用于通话时自动关闭屏幕以防止误触。当接近光事件被触发得较为频繁时，可通过options参数限定事件上报频率。调用后，系统会通过callback持续上报接近状态数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-20) | 订阅旋转矢量传感器数据。旋转矢量传感器用于表示设备的姿态旋转，数据由X、Y、Z分量和标量W组成，可用于设备姿态估计、AR/VR场景等。调用后，系统会按设定频率通过callback持续上报旋转矢量数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-21) | 订阅有效运动传感器数据，用于检测用户拿起设备、明显移动或剧烈摇晃等有效运动事件。适用于需要根据用户活动状态唤醒设备、启动应用或切换模式的场景。调用后，系统会通过callback持续上报有效运动事件数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-22) | 订阅佩戴检测传感器数据。佩戴检测传感器用于检测设备是否被用户佩戴，适用于智能手表等可穿戴设备的佩戴状态检测，以便自动切换工作模式。调用后，系统会按设定频率通过callback持续上报佩戴状态数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-23) | 订阅融合压力传感器数据。融合压力传感器用于获取经融合算法处理的压力数据，仅适用于智能手表设备。适用于需要获取手腕压力数据的健康监测场景。调用后，系统会按设定频率通过callback持续上报融合压力数据。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-24) | 监听加速度传感器的数据变化。适用于需要感知设备运动状态、实现屏幕旋转或游戏操控的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-25) | 监听未校准加速度传感器的数据变化。适用于需要获取包含偏差校准数据的加速度原始数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-26) | 监听环境光传感器的数据变化。适用于需要感知环境光照强度的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-27) | 监听环境温度传感器的数据变化。适用于需要感知环境温度的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-28) | 监听气压计传感器的数据变化。适用于需要感知环境气压的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-29) | 监听重力传感器的数据变化。适用于需要感知设备重力方向的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-30) | 监听陀螺仪传感器的数据变化。适用于需要感知设备旋转角速度的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-31) | 监听未校准陀螺仪传感器的数据变化。适用于需要获取包含偏差校准数据的陀螺仪原始数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-32) | 监听霍尔传感器的数据变化。适用于需要检测设备翻盖或磁铁状态的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-33) | 监听心率传感器的数据变化。适用于需要获取用户心率数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-34) | 监听湿度传感器的数据变化。适用于需要感知环境湿度的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-35) | 监听线性加速度传感器的数据变化。适用于需要获取排除重力影响的线性加速度数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-36) | 监听磁场传感器的数据变化。适用于需要感知设备周围磁场强度与方向的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-37) | 监听未校准磁场传感器的数据变化。适用于需要获取包含偏差校准数据的磁场原始数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-38) | 监听方向传感器的数据变化。适用于需要感知设备姿态方向的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-39) | 监听计步传感器的数据变化。适用于需要获取用户步数数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-40) | 监听计步检测传感器的数据变化。适用于需要检测用户是否在行走的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-41) | 监听接近光传感器的数据变化。适用于需要感知设备前方是否有物体靠近的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-42) | 监听旋转矢量传感器的数据变化。适用于需要感知设备三维空间旋转状态的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-43) | 监听有效运动传感器数据变化。适用于需要检测设备是否有显著运动的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#on-44) | 监听所佩戴的检测传感器的数据变化。适用于需要检测设备是否被佩戴的场景。如果多次调用该接口，仅最后一次调用生效。 |
-| [on](arkts-sensorservice-sensor-on-f.md#onsensorstatuschange) | 监听传感器上线下线状态的变化，callback返回传感器状态事件数据。适用于需要感知传感器设备动态上下线的场景，如远程传感器连接或断开时自动更新传感器列表或订阅状态。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-2) | 订阅加速度传感器数据。使用callback异步回调。加速度传感器用于测量设备在X、Y、Z三个方向上的加速度，包含重力加速度分量。适用于需要感知设备运动状态、实现屏幕旋转、游戏操控、计步等场景。调用后，系统会按设定频率通过callback持续上报加速度数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-3) | 订阅未校准加速度传感器数据。使用callback异步回调。未校准加速度传感器与加速度传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始加速度数据或自行实现校准算法的场景。与sensor.on('SensorId.ACCELEROMETER')相比，本接口额外提供偏移值信息，适用于需要分析设备校准偏差的场景。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-4) | 订阅环境光传感器数据。使用callback异步回调。环境光传感器用于测量周围环境的光照强度，适用于自动调节屏幕亮度、判断环境明暗等场景。调用后，系统会按设定频率通过callback持续上报环境光强度数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-5) | 订阅环境温度传感器数据。使用callback异步回调。温度传感器用于测量设备周围的环境温度，适用于环境温度监测、温度补偿等场景。调用后，系统会按设定频率通过callback持续上报温度数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-6) | 订阅气压计传感器数据。使用callback异步回调。气压计传感器用于测量大气压强，适用于海拔估算、天气预报辅助等场景。调用后，系统会按设定频率通过callback持续上报气压数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-7) | 订阅重力传感器数据。使用callback异步回调。重力传感器用于测量设备在X、Y、Z三个方向上受到的重力加速度分量，适用于需要分离重力分量进行运动分析的场景，如游戏操控、运动检测。调用后，系统会按设定频率通过callback持续上报重力分量数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-8) | 订阅校准的陀螺仪传感器数据。使用callback异步回调。陀螺仪传感器用于测量设备绕X、Y、Z轴的旋转角速度，适用于设备旋转检测、姿态跟踪、游戏操控等场景。调用后，系统会按设定频率通过callback持续上报角速度数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-9) | 订阅未校准陀螺仪传感器数据。使用callback异步回调。未校准陀螺仪传感器与陀螺仪传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始陀螺仪数据或自行实现校准算法的场景。与sensor.on('SensorId.GYROSCOPE')相比，本接口额外提供偏移值信息，适用于需要分析设备陀螺仪校准偏差的场景。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-10) | 订阅霍尔传感器数据。使用callback异步回调。霍尔传感器用于检测磁场变化，常用于检测翻盖手机或皮套的开合状态。当霍尔事件被触发得较为频繁时，可通过options参数限定事件上报频率。调用后，系统会通过callback持续上报霍尔状态数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-11) | 订阅心率传感器数据。使用callback异步回调。心率传感器用于测量用户的心率值，适用于健康监测、运动辅助等场景。调用后，系统会按设定频率通过callback持续上报心率数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-12) | 订阅湿度传感器数据。使用callback异步回调。湿度传感器用于测量周围环境的相对湿度，适用于环境湿度监测、智能家居联动等场景。调用后，系统会按设定频率通过callback持续上报湿度数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-13) | 订阅线性加速度传感器数据。使用callback异步回调。线性加速度传感器用于测量设备在X、Y、Z三个方向上的加速度（不含重力加速度分量），适用于需要感知设备纯粹运动加速度的场景，如运动追踪、碰撞检测。与sensor.on('SensorId.ACCELEROMETER')相比，本接口已去除重力分量，适用于仅需设备运动加速度的场景。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-14) | 订阅地磁传感器数据。使用callback异步回调。地磁传感器用于测量设备周围的磁场强度在X、Y、Z三个方向上的分量，适用于指南针、方向检测、金属检测等场景。调用后，系统会按设定频率通过callback持续上报磁场分量数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-15) | 订阅未校准地磁传感器数据。使用callback异步回调。未校准地磁传感器与地磁传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始磁场数据或自行实现校准算法的场景。与sensor.on('SensorId.MAGNETIC_FIELD')相比，本接口额外提供偏移值信息，适用于需要分析设备地磁校准偏差的场景。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-16) | 订阅方向传感器数据。使用callback异步回调。方向传感器用于测量设备绕Z轴旋转的角度(alpha)、绕X轴旋转的角度(beta)和绕Y轴旋转的角度(gamma)，适用于屏幕旋转、指南针、姿态感知等场景。调用后，系统会按设定频率通过callback持续上报方向数据。调用本接口的应用或服务可以通过提示用户使用8字校准法来提高应用获取的方向传感器的精度，此传感器理论误差正负5度，具体的精度根据不同的驱动及算法实现可能存在差异。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-17) | 订阅计步器传感器数据。使用callback异步回调。计步器传感器用于统计用户的步行步数，适用于运动追踪、健康管理等场景。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。调用后，系统会按设定频率通过callback持续上报步数数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-18) | 订阅计步检测器传感器数据。使用callback异步回调。计步检测器传感器用于检测用户是否发生了计步事件（如迈步动作），适用于需要实时检测步行状态的场景。与sensor.on('SensorId.PEDOMETER')相比，本接口上报的是计步事件标量而非累计步数，适用于需要检测单步事件的场景。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-19) | 订阅接近光传感器数据。使用callback异步回调。接近光传感器用于检测物体与设备的距离状态，常用于通话时自动关闭屏幕以防止误触。当接近光事件被触发得较为频繁时，可通过options参数限定事件上报频率。调用后，系统会通过callback持续上报接近状态数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-20) | 订阅旋转矢量传感器数据。使用callback异步回调。旋转矢量传感器用于表示设备的姿态旋转，数据由X、Y、Z分量和标量W组成，可用于设备姿态估计、AR/VR场景等。调用后，系统会按设定频率通过callback持续上报旋转矢量数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-21) | 订阅有效运动传感器数据，用于检测用户拿起设备、明显移动或剧烈摇晃等有效运动事件。使用callback异步回调。适用于需要根据用户活动状态唤醒设备、启动应用或切换模式的场景。调用后，系统会通过callback持续上报有效运动事件数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-22) | 订阅佩戴检测传感器数据。使用callback异步回调。佩戴检测传感器用于检测设备是否被用户佩戴，适用于智能手表等可穿戴设备的佩戴状态检测，以便自动切换工作模式。调用后，系统会按设定频率通过callback持续上报佩戴状态数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-23) | 订阅融合压力传感器数据。使用callback异步回调。融合压力传感器用于获取经融合算法处理的压力数据，仅适用于智能手表设备。适用于需要获取手腕压力数据的健康监测场景。调用后，系统会按设定频率通过callback持续上报融合压力数据。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-24) | 监听加速度传感器的数据变化。使用callback异步回调。适用于需要感知设备运动状态、实现屏幕旋转或游戏操控的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-25) | 监听未校准加速度传感器的数据变化。使用callback异步回调。适用于需要获取包含偏差校准数据的加速度原始数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-26) | 监听环境光传感器的数据变化。使用callback异步回调。适用于需要感知环境光照强度的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-27) | 监听环境温度传感器的数据变化。使用callback异步回调。适用于需要感知环境温度的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-28) | 监听气压计传感器的数据变化。使用callback异步回调。适用于需要感知环境气压的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-29) | 监听重力传感器的数据变化。使用callback异步回调。适用于需要感知设备重力方向的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-30) | 监听陀螺仪传感器的数据变化。使用callback异步回调。适用于需要感知设备旋转角速度的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-31) | 监听未校准陀螺仪传感器的数据变化。使用callback异步回调。适用于需要获取包含偏差校准数据的陀螺仪原始数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-32) | 监听霍尔传感器的数据变化。使用callback异步回调。适用于需要检测设备翻盖或磁铁状态的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-33) | 监听心率传感器的数据变化。使用callback异步回调。适用于需要获取用户心率数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-34) | 监听湿度传感器的数据变化。使用callback异步回调。适用于需要感知环境湿度的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-35) | 监听线性加速度传感器的数据变化。使用callback异步回调。适用于需要获取排除重力影响的线性加速度数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-36) | 监听磁场传感器的数据变化。使用callback异步回调。适用于需要感知设备周围磁场强度与方向的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-37) | 监听未校准磁场传感器的数据变化。使用callback异步回调。适用于需要获取包含偏差校准数据的磁场原始数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-38) | 监听方向传感器的数据变化。使用callback异步回调。适用于需要感知设备姿态方向的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-39) | 监听计步传感器的数据变化。使用callback异步回调。适用于需要获取用户步数数据的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-40) | 监听计步检测传感器的数据变化。使用callback异步回调。适用于需要检测用户是否在行走的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-41) | 监听接近光传感器的数据变化。使用callback异步回调。适用于需要感知设备前方是否有物体靠近的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-42) | 监听旋转矢量传感器的数据变化。使用callback异步回调。适用于需要感知设备三维空间旋转状态的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-43) | 监听有效运动传感器数据变化。使用callback异步回调。适用于需要检测设备是否有显著运动的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#on-44) | 监听所佩戴的检测传感器的数据变化。使用callback异步回调。适用于需要检测设备是否被佩戴的场景。如果多次调用该接口，仅最后一次调用生效。 |
+| [on](arkts-sensorservice-sensor-on-f.md#onsensorstatuschange) | 监听传感器上线下线状态的变化。使用callback异步回调。适用于需要感知传感器设备动态上下线的场景，如远程传感器连接或断开时自动更新传感器列表或订阅状态。 |
 | [once](arkts-sensorservice-sensor-once-f.md#once) | 获取一次加速度传感器数据。适用于无需持续监听、仅需一次性获取当前加速度数据的场景。调用后，callback仅触发一次，自动取消订阅。 |
 | [once](arkts-sensorservice-sensor-once-f.md#once-1) | 获取一次未校准加速度传感器数据。适用于仅需一次性获取原始加速度及偏移数据的场景。调用后，callback仅触发一次，自动取消订阅。 |
 | [once](arkts-sensorservice-sensor-once-f.md#once-2) | 获取一次环境光传感器数据。适用于仅需一次性获取当前环境光强度的场景。调用后，callback仅触发一次，自动取消订阅。 |
@@ -245,8 +245,8 @@ import { sensor } from '@kit.SensorServiceKit';
 | [off](arkts-sensorservice-sensor-off-f-sys.md#off-1) | 取消订阅颜色传感器数据。与API version 10的off接口相比，新增sensorInfoParam参数，支持通过指定deviceId和sensorIndex来精确取消订阅某一设备上的特定传感器回调，适用于多设备场景。<br>当开发者需要取消订阅特定设备上的颜色传感器数据时（如多设备连接场景），使用此接口。不传入sensorInfoParam时，默认取消本地设备（deviceId为-1）上的回调。<br>调用此接口后，指定设备上的颜色传感器回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消指定设备上SensorId.COLOR类型的所有回调函数。 |
 | [off](arkts-sensorservice-sensor-off-f-sys.md#off-2) | 取消订阅吸收比率传感器数据。调用后，SAR传感器的回调函数将不再触发。<br>当开发者不再需要SAR传感器数据时（如页面切换、应用退出），使用此接口取消订阅，以减少系统资源占用。<br>调用此接口后，之前通过sensor.on(sensor.SensorId.SAR)注册的回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消当前SensorId.SAR类型的所有回调函数。需先调用sensor.on(sensor.SensorId.SAR)订阅后，再调用此接口取消订阅。 |
 | [off](arkts-sensorservice-sensor-off-f-sys.md#off-3) | 取消订阅吸收比率传感器数据。与API version 10的off接口相比，新增sensorInfoParam参数，支持通过指定deviceId和sensorIndex来精确取消订阅某一设备上的特定传感器回调，适用于多设备场景。<br>当开发者需要取消订阅特定设备上的SAR传感器数据时（如多设备连接场景），使用此接口。不传入sensorInfoParam时，默认取消本地设备（deviceId为-1）上的回调。<br>调用此接口后，指定设备上的SAR传感器回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消指定设备上SensorId.SAR类型的所有回调函数。 |
-| [on](arkts-sensorservice-sensor-on-f-sys.md#on) | 订阅颜色传感器数据变化。通过回调函数异步上报颜色传感器数据，数据格式为ColorResponse对象，包含lightIntensity（光照强度）和colorTemperature（色温）两个number类型字段。<br>当开发者需要获取环境光照强度和色温信息以实现屏幕自动亮度调节、拍照色温补偿、环境光线监测等功能时，使用此接口。<br>该接口为异步回调方式，传感器数据变化时通过callback回调上报，无Promise返回值。 |
-| [on](arkts-sensorservice-sensor-on-f-sys.md#on-1) | 订阅吸收比率传感器数据变化。通过回调函数异步上报SAR传感器数据，数据格式为SarResponse对象，包含absorptionRatio（吸收率）一个number类型字段。<br>当开发者需要监测设备电磁波吸收率以实现通信安全监测、辐射检测等功能时，使用此接口。<br>该接口为异步回调方式，传感器数据变化时通过callback回调上报，无Promise返回值。 |
+| [on](arkts-sensorservice-sensor-on-f-sys.md#on) | 订阅颜色传感器数据变化。使用callback异步回调。通过回调函数异步上报颜色传感器数据，数据格式为ColorResponse对象，包含lightIntensity（光照强度）和colorTemperature（色温）两个number类型字段。<br>当开发者需要获取环境光照强度和色温信息以实现屏幕自动亮度调节、拍照色温补偿、环境光线监测等功能时，使用此接口。 |
+| [on](arkts-sensorservice-sensor-on-f-sys.md#on-1) | 订阅吸收比率传感器数据变化。使用callback异步回调。通过回调函数异步上报SAR传感器数据，数据格式为SarResponse对象，包含absorptionRatio（吸收率）一个number类型字段。<br>当开发者需要监测设备电磁波吸收率以实现通信安全监测、辐射检测等功能时，使用此接口。 |
 <!--DelEnd-->
 
 ### 接口
@@ -294,6 +294,12 @@ import { sensor } from '@kit.SensorServiceKit';
 | [SarResponse](arkts-sensorservice-sensor-sarresponse-i-sys.md) | 吸收比率传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。用于表示吸收比率传感器上报的响应数据，包含电磁波吸收率信息。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [SensorFrequency](arkts-sensorservice-sensor-sensorfrequency-t.md) | 传感器上报频率模式，提供预定义的频率档位，方便开发者快速设置常用的上报频率。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -309,9 +315,3 @@ import { sensor } from '@kit.SensorServiceKit';
 | --- | --- |
 | [SensorId](arkts-sensorservice-sensor-sensorid-e-sys.md) | 表示当前支持订阅或取消订阅的传感器类型。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [SensorFrequency](arkts-sensorservice-sensor-sensorfrequency-t.md) | 传感器上报频率模式，提供预定义的频率档位，方便开发者快速设置常用的上报频率。 |

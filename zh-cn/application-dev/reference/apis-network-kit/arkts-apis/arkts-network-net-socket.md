@@ -64,18 +64,18 @@ import { socket } from '@kit.NetworkKit';
 | [UDPSendOptions](arkts-network-socket-udpsendoptions-i.md) | UDPSocket发送参数。 |
 | [UDPSocket](arkts-network-socket-udpsocket-i.md) | UDPSocket连接。在调用UDPSocket的方法前，需要先通过[socket.constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md)创建UDPSocket对象。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | 存储证书的数据。 |
+
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
 | [Protocol](arkts-network-socket-protocol-e.md) | TLS通信的协议版本。 |
 | [ProxyTypes](arkts-network-socket-proxytypes-e.md) | Socket代理类型。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | 存储证书的数据。 |
 
 ### 属性
 

@@ -37,7 +37,7 @@ function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -98,7 +98,7 @@ function upload(config: UploadConfig): Promise<UploadTask>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 

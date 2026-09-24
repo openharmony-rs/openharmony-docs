@@ -4,9 +4,7 @@
 declare enum TextDecorationStyle
 ```
 
-Type of text decoration line style.
-
-@enum {number}
+装饰线样式。
 
 **起始版本：** 12
 
@@ -18,7 +16,7 @@ Type of text decoration line style.
 SOLID = 0
 ```
 
-Solid line.
+单实线（默认值）。
 
 **起始版本：** 12
 
@@ -34,7 +32,7 @@ Solid line.
 DOUBLE = 1
 ```
 
-Double lines.
+双实线。
 
 **起始版本：** 12
 
@@ -50,7 +48,7 @@ Double lines.
 DOTTED = 2
 ```
 
-Dotted line.
+点线。
 
 **起始版本：** 12
 
@@ -66,7 +64,7 @@ Dotted line.
 DASHED = 3
 ```
 
-Dashed line.
+虚线。
 
 **起始版本：** 12
 
@@ -82,7 +80,7 @@ Dashed line.
 WAVY = 4
 ```
 
-Wavy line.
+波浪线。
 
 **起始版本：** 12
 

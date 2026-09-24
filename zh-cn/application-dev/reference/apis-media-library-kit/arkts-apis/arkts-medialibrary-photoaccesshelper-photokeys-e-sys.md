@@ -597,3 +597,163 @@ ATTACHMENT_SIZE = 'attachment_size'
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
+
+## SHARE_OWNER_INFO
+
+```TypeScript
+SHARE_OWNER_INFO = 'share_owner_info'
+```
+
+共享相册的资产所有者。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHARE_RISK_STATUS
+
+```TypeScript
+SHARE_RISK_STATUS = 'share_risk_status'
+```
+
+共享相册资产的风控状态
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHARE_RISK_TYPE
+
+```TypeScript
+SHARE_RISK_TYPE = 'share_risk_type'
+```
+
+共享相册资产的风险类型。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## PHOTO_VISIBILITY
+
+```TypeScript
+PHOTO_VISIBILITY = 'photo_visibility'
+```
+
+照片资产的照片可见性。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHARE_GROUP
+
+```TypeScript
+SHARE_GROUP = 'share_group'
+```
+
+共享相册资产的分享批次
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHARE_DATE_DAY
+
+```TypeScript
+SHARE_DATE_DAY = 'share_date_day'
+```
+
+共享资产的共享日期。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## MUSIC_MASTER_MODE
+
+```TypeScript
+MUSIC_MASTER_MODE = 'music_master_mode'
+```
+
+音乐大师的模式
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## LIVEPHOTO_4D_LATEST_PAIR
+
+```TypeScript
+LIVEPHOTO_4D_LATEST_PAIR = 'livephoto_4d_latest_pair'
+```
+
+记录着该3D动态照片的生成源照片的UniqueId
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## LOCAL_ENHANCEMENT_ABILITY
+
+```TypeScript
+LOCAL_ENHANCEMENT_ABILITY = 'local_enhancement_ability'
+```
+
+端侧AI增强任务类型。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## LOCAL_ENHANCEMENT_STATUS
+
+```TypeScript
+LOCAL_ENHANCEMENT_STATUS = 'local_enhancement_status'
+```
+
+端侧AI增强任务状态。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。

@@ -4,9 +4,7 @@
 declare enum AppRotation
 ```
 
-Enumerates the app rotation.
-
-@enum { number }
+定义应用方向旋转角度。
 
 **起始版本：** 12
 
@@ -18,7 +16,7 @@ Enumerates the app rotation.
 ROTATION_0 = 0
 ```
 
-App does not rotate to display vertically.
+应用方向为0度。
 
 **起始版本：** 12
 
@@ -34,7 +32,7 @@ App does not rotate to display vertically.
 ROTATION_90 = 1
 ```
 
-App rotates 90 degrees clockwise to display horizontally.
+应用方向为90度。
 
 **起始版本：** 12
 
@@ -50,7 +48,7 @@ App rotates 90 degrees clockwise to display horizontally.
 ROTATION_180 = 2
 ```
 
-App rotates 180 degrees clockwise to display vertically in reverse.
+应用方向为180度。
 
 **起始版本：** 12
 
@@ -66,7 +64,7 @@ App rotates 180 degrees clockwise to display vertically in reverse.
 ROTATION_270 = 3
 ```
 
-App rotates 270 degrees clockwise to display horizontally in reverse.
+应用方向为270度。
 
 **起始版本：** 12
 

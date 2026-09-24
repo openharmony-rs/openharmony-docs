@@ -54,10 +54,10 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [diskSN](arkts-basicservices-deviceinfo-con.md#disksn) | 硬盘序列号，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。 |
 | [displayVersion](arkts-basicservices-deviceinfo-con.md#displayversion) | 产品版本。 |
 | [distributionOSApiName](arkts-basicservices-deviceinfo-con.md#distributionosapiname) | 发行版系统API版本名称<!--Del-->，由发行方定义<!--DelEnd-->。 |
-| [distributionOSApiVersion](arkts-basicservices-deviceinfo-con.md#distributionosapiversion) | 发行版系统API版本<!--Del-->，由发行方定义<!--DelEnd-->。&lt;!--RP15--&gt;&lt;!--RP15End--&gt; |
+| [distributionOSApiVersion](arkts-basicservices-deviceinfo-con.md#distributionosapiversion) | 发行版系统API版本<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP15--><!--RP15End--> |
 | [distributionOSName](arkts-basicservices-deviceinfo-con.md#distributionosname) | 发行版系统名称<!--Del-->，由发行方定义<!--DelEnd-->。 |
 | [distributionOSReleaseType](arkts-basicservices-deviceinfo-con.md#distributionosreleasetype) | 发行版系统类型<!--Del-->，由发行方定义<!--DelEnd-->。 |
-| [distributionOSVersion](arkts-basicservices-deviceinfo-con.md#distributionosversion) | 发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。&lt;!--RP11--&gt;&lt;!--RP11End--&gt; |
+| [distributionOSVersion](arkts-basicservices-deviceinfo-con.md#distributionosversion) | 发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP11--><!--RP11End--> |
 | [featureVersion](arkts-basicservices-deviceinfo-con.md#featureversion) | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。 |
 | [firstApiVersion](arkts-basicservices-deviceinfo-con.md#firstapiversion) | 首个版本系统软件API版本。 |
 | [hardwareModel](arkts-basicservices-deviceinfo-con.md#hardwaremodel) | 硬件版本号。 |
@@ -67,7 +67,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [manufacture](arkts-basicservices-deviceinfo-con.md#manufacture) | 设备厂家名称。 |
 | [marketName](arkts-basicservices-deviceinfo-con.md#marketname) | 外部产品系列。 |
 | [ODID](arkts-basicservices-deviceinfo-con.md#odid) | ODID（Open Developer Identifier，开发者匿名设备标识符）。 |
-| [osFullName](arkts-basicservices-deviceinfo-con.md#osfullname) | 系统版本，版本格式&lt;!--RP12--&gt;OpenHarmony-x.x.x.x，其中x表示数字占位符。&lt;!--RP12End--&gt;如需获取版本号各段数值，建议直接使用majorVersion、seniorVersion、featureVersion、buildVersion字段，可提升效率，不建议解析osFullName获取。 |
+| [osFullName](arkts-basicservices-deviceinfo-con.md#osfullname) | 系统版本，版本格式<!--RP12-->OpenHarmony-x.x.x.x，其中x表示数字占位符。<!--RP12End-->如需获取版本号各段数值，建议直接使用majorVersion、seniorVersion、featureVersion、buildVersion字段，可提升效率，不建议解析osFullName获取。 |
 | [osReleaseType](arkts-basicservices-deviceinfo-con.md#osreleasetype) | 系统的发布类型，取值为： |
 | [performanceClass](arkts-basicservices-deviceinfo-con.md#performanceclass) | 描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。 |
 | [productModel](arkts-basicservices-deviceinfo-con.md#productmodel) | 认证型号。 |

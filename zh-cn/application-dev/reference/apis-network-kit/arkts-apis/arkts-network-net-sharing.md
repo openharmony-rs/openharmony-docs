@@ -55,6 +55,12 @@ import { sharing } from '@kit.NetworkKit';
 | [InterfaceSharingStateInfo](arkts-network-sharing-interfacesharingstateinfo-i-sys.md) | 唤醒在网络共享模式下的变化时的监听器。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [NetHandle](arkts-network-sharing-nethandle-t.md) | 数据网络的句柄。在调用NetHandle的方法之前，需要先获取NetHandle对象。 |
+
 <!--Del-->
 ### 枚举（系统接口）
 
@@ -63,9 +69,3 @@ import { sharing } from '@kit.NetworkKit';
 | [SharingIfaceState](arkts-network-sharing-sharingifacestate-e-sys.md) | 网络共享状态。 |
 | [SharingIfaceType](arkts-network-sharing-sharingifacetype-e-sys.md) | 网络共享类型。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [NetHandle](arkts-network-sharing-nethandle-t.md) | 数据网络的句柄。在调用NetHandle的方法之前，需要先获取NetHandle对象。 |

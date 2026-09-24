@@ -49,14 +49,6 @@ import { vpn } from '@kit.NetworkKit';
 | [VpnConnection](arkts-network-vpn-vpnconnection-i-sys.md) | VPN 连接对象。在调用 VpnConnection 的方法前，需要先通过[vpn.createVpnConnection](arkts-network-vpn-createvpnconnection-f-sys.md)创建 VPN 连接对象。 |
 <!--DelEnd-->
 
-<!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [SysVpnType](arkts-network-vpn-sysvpntype-e-sys.md) | 定义VPN网络的类型。 |
-<!--DelEnd-->
-
 ### 类型
 
 | 名称 | 说明 |
@@ -64,3 +56,11 @@ import { vpn } from '@kit.NetworkKit';
 | [AbilityContext](arkts-network-vpn-abilitycontext-t.md) |  |
 | [LinkAddress](arkts-network-vpn-linkaddress-t.md) | 获取网络链接信息。 |
 | [RouteInfo](arkts-network-vpn-routeinfo-t.md) | 获取网络路由信息。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [SysVpnType](arkts-network-vpn-sysvpntype-e-sys.md) | 定义VPN网络的类型。 |
+<!--DelEnd-->

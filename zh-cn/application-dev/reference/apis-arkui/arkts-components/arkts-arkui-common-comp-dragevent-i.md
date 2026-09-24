@@ -225,7 +225,7 @@ getModifierKeyState?(keys: Array<string>): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
 
 ## getPreviewRect
 
@@ -403,54 +403,6 @@ getWindowY(): number
 | --- | --- |
 | number | 当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。 |
 
-## getX
-
-```TypeScript
-getX(): number
-```
-
-当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。
-
-> **说明：** 
-
-**起始版本：** 7
-
-**废弃版本：** 10
-
-**替代接口：** [getWindowX](#getwindowx)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | 返回当前拖拽点相对于窗口左上角的x轴坐标。<br>单位：vp |
-
-## getY
-
-```TypeScript
-getY(): number
-```
-
-当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。
-
-> **说明：** 
-
-**起始版本：** 7
-
-**废弃版本：** 10
-
-**替代接口：** [getWindowY](#getwindowy)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | 返回当前拖拽点相对于窗口左上角的y轴坐标。<br>单位：vp |
-
 ## isRemote
 
 ```TypeScript
@@ -571,8 +523,56 @@ startDataLoading(options: DataSyncOptions): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [190003](../errorcode-drag-event.md#190003-当前阶段不允许操作) | Operation not allowed for current phase. |
+
+## getX
+
+```TypeScript
+getX(): number
+```
+
+当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。
+
+> **说明：** 
+
+**起始版本：** 7
+
+**废弃版本：** 10
+
+**替代接口：** [getWindowX](#getwindowx)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 返回当前拖拽点相对于窗口左上角的x轴坐标。<br>单位：vp |
+
+## getY
+
+```TypeScript
+getY(): number
+```
+
+当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。
+
+> **说明：** 
+
+**起始版本：** 7
+
+**废弃版本：** 10
+
+**替代接口：** [getWindowY](#getwindowy)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 返回当前拖拽点相对于窗口左上角的y轴坐标。<br>单位：vp |
 
 ## autoHideComponentUniqueIds
 

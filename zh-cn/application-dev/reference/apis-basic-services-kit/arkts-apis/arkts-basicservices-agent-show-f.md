@@ -29,7 +29,7 @@ function show(id: string, callback: AsyncCallback<TaskInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900006](../errorcode-request.md#21900006-操作不存在的任务错误) | Task removed or not found. |
 
@@ -64,6 +64,6 @@ function show(id: string): Promise<TaskInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900006](../errorcode-request.md#21900006-操作不存在的任务错误) | Task removed or not found. |

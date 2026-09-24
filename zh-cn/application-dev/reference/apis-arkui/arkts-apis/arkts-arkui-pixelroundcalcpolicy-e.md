@@ -4,9 +4,7 @@
 declare enum PixelRoundCalcPolicy
 ```
 
-Pixel Round Direction
-
-@enum { number }
+组件边界像素取整计算策略。
 
 **起始版本：** 11
 
@@ -18,7 +16,7 @@ Pixel Round Direction
 NO_FORCE_ROUND = 0
 ```
 
-No Force round the component boundary coordinates to integer pixel.
+非取整计算。
 
 **起始版本：** 11
 
@@ -36,7 +34,7 @@ No Force round the component boundary coordinates to integer pixel.
 FORCE_CEIL = 1
 ```
 
-Force ceil the component boundary coordinates to integer pixel.
+向上取整计算。
 
 **起始版本：** 11
 
@@ -54,7 +52,7 @@ Force ceil the component boundary coordinates to integer pixel.
 FORCE_FLOOR = 2
 ```
 
-Force floor the component boundary coordinates to integer pixel.
+向下取整计算。
 
 **起始版本：** 11
 

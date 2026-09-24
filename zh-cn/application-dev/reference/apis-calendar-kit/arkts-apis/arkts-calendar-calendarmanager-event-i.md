@@ -214,7 +214,7 @@ reminderTime?: number[]
 service?: EventService
 ```
 
-&lt;!--RP1--&gt;日程服务。不填时，默认没有一键服务。暂不支持此功能。&lt;!--RP1End--&gt;
+<!--RP1-->日程服务。不填时，默认没有一键服务。暂不支持此功能。<!--RP1End-->
 
 **类型：** [EventService](arkts-calendar-calendarmanager-eventservice-i.md)
 

@@ -26,17 +26,17 @@ import { EditableLeftIconType, EditableTitleBar, EditableTitleBarMenuItem, Edita
 | --- | --- |
 | [EditableTitleBarOptions](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebaroptions-i.md) |  |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [EditableLeftIconType](arkts-arkui-arkui-advanced-editabletitlebar-editablelefticontype-e.md) |  |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [EditableTitleBarItem](arkts-arkui-editabletitlebaritem-t.md) | Declaration of the image item . |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [EditableLeftIconType](arkts-arkui-arkui-advanced-editabletitlebar-editablelefticontype-e.md) |  |
 
 ## 示例
 

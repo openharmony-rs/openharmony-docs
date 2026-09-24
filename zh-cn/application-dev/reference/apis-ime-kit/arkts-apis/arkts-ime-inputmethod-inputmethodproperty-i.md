@@ -114,6 +114,20 @@ readonly labelId?: number
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+## name
+
+```TypeScript
+readonly name: string
+```
+
+必填。输入法包名。
+
+**类型：** string
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ## methodId
 
 ```TypeScript
@@ -129,20 +143,6 @@ readonly methodId: string
 **废弃版本：** 9
 
 **替代接口：** [id](#id)
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-## name
-
-```TypeScript
-readonly name: string
-```
-
-必填。输入法包名。
-
-**类型：** string
-
-**起始版本：** 9
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

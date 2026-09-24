@@ -78,9 +78,9 @@ fontSize?: LengthMetrics
 
 默认字体大小为16fp。
 
-如果LengthMetrics的unit值是PERCENT，当前设置不生效，处理为16fp。
+当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，处理为16fp。
 
-单位：[fp](arkts-arkui-length-t.md) 
+单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
@@ -118,11 +118,7 @@ fontStyle?: FontStyle
 fontVariations?: Array<FontVariation>
 ```
 
-可变字体的属性。
-
-默认值：undefined，表示未设置可变字体的属性。
-
-fontVariations属性的优先级高于fontWeight。
+可变字体的属性。fontVariations属性的优先级高于fontWeight。默认值：undefined，表示未设置可变字体的属性。
 
 **类型：** Array&lt;[FontVariation](arkts-arkui-fontvariation-t.md)&gt;
 
@@ -182,9 +178,9 @@ strokeColor?: ResourceColor
 strokeJoinStyle?: StrokeJoinStyle
 ```
 
-文本描边拐角样式。具体枚举及说明请参考StrokeJoinStyle。
+文本描边拐角样式。具体枚举值及其说明请参考StrokeJoinStyle。
 
-默认值：StrokeJoinStyle.MITER_JOIN。
+默认值：StrokeJoinStyle.MITER_JOIN，表示尖角连接，拐角处为尖锐拐角。
 
 **类型：** [StrokeJoinStyle](arkts-arkui-strokejoinstyle-e.md)
 
@@ -202,11 +198,11 @@ strokeJoinStyle?: StrokeJoinStyle
 strokeWidth?: LengthMetrics
 ```
 
-文本描边宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，处理为0。
+文本描边宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，处理为0。
 
 设置值小于0时为实心字，大于0时为空心字。
 
-默认值为0。
+默认值为0，单位为vp。
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 

@@ -47,7 +47,7 @@ close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2302006](../errorcode-net-webSocket.md#2302006-websocketserver连接不存在) | websocket connection does not exist. |
 
 **示例**
@@ -114,7 +114,7 @@ listAllConnections(): WebSocketConnection[]
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -447,7 +447,7 @@ send(data: string | ArrayBuffer, connection: WebSocketConnection): Promise<boole
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2302006](../errorcode-net-webSocket.md#2302006-websocketserver连接不存在) | websocket connection does not exist. |
 
 **示例**
@@ -523,7 +523,7 @@ start(config: WebSocketServerConfig): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2302002](../errorcode-net-webSocket.md#2302002-websocket-证书不存在) | Websocket certificate file does not exist. |
 | [2302004](../errorcode-net-webSocket.md#2302004-websocketserver-无法在指定的nic网络接口上进行网络监听) | Can't listen on the given NIC. |
 | [2302005](../errorcode-net-webSocket.md#2302005-websocketserver-无法在指定的端口上进行网络监听) | Can't listen on the given Port. |
@@ -579,7 +579,7 @@ stop(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 

@@ -1,4 +1,4 @@
-# @ohos.app.ability.StartOptions
+# @ohos.app.ability.StartOptions(startAbility的可选参数)
 
 ## 导入模块
 

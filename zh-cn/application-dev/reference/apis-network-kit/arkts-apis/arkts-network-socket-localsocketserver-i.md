@@ -101,7 +101,7 @@ getExtraOptions(): Promise<ExtraOptionsBase>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -328,7 +328,7 @@ listen(address: LocalAddress): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2303109](../errorcode-net-socket.md#2303109-错误文件编号) | Bad file number. |
 | [2301013](../errorcode-net-socket.md#2301013-权限不足) | Insufficient permissions. |
 | [2301022](../errorcode-net-socket.md#2301022-参数无效) | Invalid argument. |
@@ -380,7 +380,7 @@ off(type: 'connect', callback?: Callback<LocalSocketConnection>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -422,7 +422,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -466,7 +466,7 @@ on(type: 'connect', callback: Callback<LocalSocketConnection>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -508,7 +508,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -553,7 +553,7 @@ setExtraOptions(options: ExtraOptionsBase): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2301009](../errorcode-net-socket.md#2301009-错误文件描述符) | Bad file descriptor. |
 
 **示例**

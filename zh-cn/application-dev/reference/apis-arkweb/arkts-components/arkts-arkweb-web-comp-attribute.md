@@ -433,13 +433,13 @@ enableAutoFill(value: boolean)
 
 设置是否启用网页自动填充，默认开启。
 
-&lt;!--RP1--&gt;
+<!--RP1-->
 
 > **说明：** 
 > 
 > 本接口的自动填充功能，依赖“智能填充服务”和“密码填充服务”的支持。
 
-&lt;!--RP1End--&gt;
+<!--RP1End-->
 
 **起始版本：** 23
 
@@ -1737,28 +1737,6 @@ onFaviconReceived(callback: Callback<OnFaviconReceivedEvent>)
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnFaviconReceivedEvent](arkts-arkweb-web-comp-onfaviconreceivedevent-i.md)&gt; | 是 | 当前页面接收到新的favicon时触发。<br>**适用版本：** 12 |
 
-## onFileSelectorShow
-
-```TypeScript
-onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void)
-```
-
-调用此函数以处理具有“文件”输入类型的HTML表单，以响应用户按下的“选择文件”按钮。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [onShowFileSelector](#onshowfileselector)
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | (event?: { callback: Function, fileSelector: object }) =&gt; void | 是 | 当触发文件选择器时需要执行的回调。 |
-
 ## onFirstContentfulPaint
 
 ```TypeScript
@@ -2924,28 +2902,6 @@ onSslErrorEventReceive(callback: Callback<OnSslErrorEventReceiveEvent>)
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnSslErrorEventReceiveEvent](arkts-arkweb-web-comp-onsslerroreventreceiveevent-i.md)&gt; | 是 | 当网页收到SSL错误时触发。<br>**适用版本：** 12 |
 
-## onSslErrorReceive
-
-```TypeScript
-onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void)
-```
-
-通知用户加载资源时发生SSL错误。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [onSslErrorEventReceive](#onsslerroreventreceive)
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | (event?: { handler: Function, error: object }) =&gt; void | 是 | 当网页检测到SSL错误时触发的回调。 |
-
 ## onTextSelectionChange
 
 ```TypeScript
@@ -3011,28 +2967,6 @@ onTouchIconUrlReceived(callback: Callback<OnTouchIconUrlReceivedEvent>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnTouchIconUrlReceivedEvent](arkts-arkweb-web-comp-ontouchiconurlreceivedevent-i.md)&gt; | 是 | 接收到的apple-touch-icon URL地址时触发。<br>**适用版本：** 12 |
-
-## onUrlLoadIntercept
-
-```TypeScript
-onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest}) => boolean)
-```
-
-当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** onLoadIntercept
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | (event?: { data: string &#124; WebResourceRequest}) =&gt; boolean | 是 | url的相关信息。<br>返回值：boolean，true表示阻止此次加载，false表示允许此次加载。 |
 
 ## onVerifyPin
 
@@ -3150,6 +3084,26 @@ onWindowNewExt(callback: Callback<OnWindowNewExtEvent>)
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnWindowNewExtEvent](arkts-arkweb-web-comp-onwindownewextevent-i.md)&gt; | 是 | 网页要求用户创建窗口时触发的回调。 |
 
+## onZoomChange
+
+```TypeScript
+onZoomChange(callback: OnZoomChangeCallback)
+```
+
+当网页的浏览器级缩放倍率变化时触发。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [OnZoomChangeCallback](arkts-arkweb-web-comp-onzoomchangecallback-t.md) | 是 | 浏览器级缩放倍率变化时触发的回调。该回调仅由浏览器级缩放变化（例如[setZoomFactor](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setzoomfactor)）触发；页面显示比例变化（捏合缩放）由[onScaleChange](#onscalechange)通知。 |
+
 ## optimizeParserBudget
 
 ```TypeScript
@@ -3213,28 +3167,6 @@ overviewModeAccess(overviewModeAccess: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | overviewModeAccess | boolean | 是 | 设置是否使用概览模式加载网页。<br>true表示使用，false表示不使用。<br>传入undefined或null时为false。 |
-
-## password
-
-```TypeScript
-password(password: boolean)
-```
-
-设置是否应保存密码。该接口为空接口。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** enableAutofill
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| password | boolean | 是 | 设置为true时，表示允许Web保存密码。<br>设置为false时，表示不允许Web保存密码。<br>传入undefined或null时为false。 |
 
 ## pinchSmooth
 
@@ -3397,56 +3329,6 @@ scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
 | --- | --- | --- | --- |
 | policy | [ScrollbarLayoutPolicy](arkts-arkweb-web-comp-scrollbarlayoutpolicy-e.md) | 是 | 设置Web组件内垂直滚动条布局模式。可选值：CONTENT（跟随网页css的direction属性设置），SYSTEM（根据系统语种的左右书写方向进行布局，对于从右向左书写的语言，滚动条将布局在左侧。对于网页内嵌套的多层滚动条均适用）。 |
 
-## selectionMenuOptions
-
-```TypeScript
-selectionMenuOptions(expandedMenuOptions: Array<ExpandedMenuItemOptions>)
-```
-
-Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本内容、图标、回调方法。
-
-该接口只支持选中纯文本，当选中内容包含图片及其他非文本内容时，action信息中会显示乱码。
-
-> **说明：** 
-> 
-> 本接口在与[editMenuOptions](#editmenuoptions)同时使用时，本接口不生效。
-
-**起始版本：** 12
-
-**废弃版本：** 20
-
-**替代接口：** editMenuOptions
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| expandedMenuOptions | Array&lt;[ExpandedMenuItemOptions](arkts-arkweb-web-comp-expandedmenuitemoptions-i.md)&gt; | 是 | 扩展菜单选项。<br>菜单项数量，及菜单的content大小、startIcon图标尺寸，与ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md#menu)组件保持一致。 |
-
-## tableData
-
-```TypeScript
-tableData(tableData: boolean)
-```
-
-设置是否应保存表单数据。当属性没有显式调用时，默认允许Web保存表单数据。该接口为空接口。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** enableAutofill
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| tableData | boolean | 是 | 设置为true时，表示允许Web保存表单数据。<br>设置为false时，表示不允许Web保存表单数据。<br>传入undefined或null时为true。 |
-
 ## textAutosizing
 
 ```TypeScript
@@ -3481,28 +3363,6 @@ textAutosizing(textAutosizing: boolean)
 | --- | --- | --- | --- |
 | textAutosizing | boolean | 是 | 文本自动调整大小。<br>true表示文本自动调整大小，false表示文本不自动调整大小。<br>传入undefined或null时为true。 |
 
-## textZoomAtio
-
-```TypeScript
-textZoomAtio(textZoomAtio: number)
-```
-
-设置页面的文本缩放百分比。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [textZoomRatio](#textzoomratio)
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| textZoomAtio | number | 是 | 要设置的页面的文本缩放百分比。100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值范围为(0, 2147483647]。 |
-
 ## textZoomRatio
 
 ```TypeScript
@@ -3522,28 +3382,6 @@ textZoomRatio(textZoomRatio: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | textZoomRatio | number | 是 | 要设置的页面的文本缩放百分比，100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值为整数，范围为(0, 2147483647]。 |
-
-## userAgent
-
-```TypeScript
-userAgent(userAgent: string)
-```
-
-设置用户代理。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** setCustomUserAgent
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| userAgent | string | 是 | 要设置的用户代理。 |
 
 ## verticalScrollBarAccess
 
@@ -3703,28 +3541,6 @@ webStandardFont(family: string)
 | --- | --- | --- | --- |
 | family | string | 是 | 设置网页的standard font字体库。<br>传入null或undefined时为sans-serif。 |
 
-## wideViewModeAccess
-
-```TypeScript
-wideViewModeAccess(wideViewModeAccess: boolean)
-```
-
-设置Web是否支持html中meta标签的viewport属性。该接口为空接口。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** [metaViewport](#metaviewport)
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| wideViewModeAccess | boolean | 是 | 设置Web是否支持html中meta标签的viewport属性。<br>true表示支持html中meta标签的viewport属性，false表示不支持html中meta标签的viewport属性。 |
-
 ## zoomAccess
 
 ```TypeScript
@@ -3764,3 +3580,207 @@ zoomControlAccess(zoomControlAccess: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | zoomControlAccess | boolean | 是 | 设置是否允许通过组合按键进行缩放。true表示支持，false表示不支持。传入null或undefined时为false。 |
+
+## onFileSelectorShow
+
+```TypeScript
+onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void)
+```
+
+调用此函数以处理具有“文件”输入类型的HTML表单，以响应用户按下的“选择文件”按钮。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [onShowFileSelector](#onshowfileselector)
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | (event?: { callback: Function, fileSelector: object }) =&gt; void | 是 | 当触发文件选择器时需要执行的回调。 |
+
+## onSslErrorReceive
+
+```TypeScript
+onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void)
+```
+
+通知用户加载资源时发生SSL错误。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [onSslErrorEventReceive](#onsslerroreventreceive)
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | (event?: { handler: Function, error: object }) =&gt; void | 是 | 当网页检测到SSL错误时触发的回调。 |
+
+## onUrlLoadIntercept
+
+```TypeScript
+onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest}) => boolean)
+```
+
+当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** onLoadIntercept
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | (event?: { data: string &#124; WebResourceRequest}) =&gt; boolean | 是 | url的相关信息。<br>返回值：boolean，true表示阻止此次加载，false表示允许此次加载。 |
+
+## password
+
+```TypeScript
+password(password: boolean)
+```
+
+设置是否应保存密码。该接口为空接口。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** enableAutofill
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| password | boolean | 是 | 设置为true时，表示允许Web保存密码。<br>设置为false时，表示不允许Web保存密码。<br>传入undefined或null时为false。 |
+
+## selectionMenuOptions
+
+```TypeScript
+selectionMenuOptions(expandedMenuOptions: Array<ExpandedMenuItemOptions>)
+```
+
+Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本内容、图标、回调方法。
+
+该接口只支持选中纯文本，当选中内容包含图片及其他非文本内容时，action信息中会显示乱码。
+
+> **说明：** 
+> 
+> 本接口在与[editMenuOptions](#editmenuoptions)同时使用时，本接口不生效。
+
+**起始版本：** 12
+
+**废弃版本：** 20
+
+**替代接口：** editMenuOptions
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| expandedMenuOptions | Array&lt;[ExpandedMenuItemOptions](arkts-arkweb-web-comp-expandedmenuitemoptions-i.md)&gt; | 是 | 扩展菜单选项。<br>菜单项数量，及菜单的content大小、startIcon图标尺寸，与ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md#menu)组件保持一致。 |
+
+## tableData
+
+```TypeScript
+tableData(tableData: boolean)
+```
+
+设置是否应保存表单数据。当属性没有显式调用时，默认允许Web保存表单数据。该接口为空接口。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** enableAutofill
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| tableData | boolean | 是 | 设置为true时，表示允许Web保存表单数据。<br>设置为false时，表示不允许Web保存表单数据。<br>传入undefined或null时为true。 |
+
+## textZoomAtio
+
+```TypeScript
+textZoomAtio(textZoomAtio: number)
+```
+
+设置页面的文本缩放百分比。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [textZoomRatio](#textzoomratio)
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| textZoomAtio | number | 是 | 要设置的页面的文本缩放百分比。100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值范围为(0, 2147483647]。 |
+
+## userAgent
+
+```TypeScript
+userAgent(userAgent: string)
+```
+
+设置用户代理。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** setCustomUserAgent
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| userAgent | string | 是 | 要设置的用户代理。 |
+
+## wideViewModeAccess
+
+```TypeScript
+wideViewModeAccess(wideViewModeAccess: boolean)
+```
+
+设置Web是否支持html中meta标签的viewport属性。该接口为空接口。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** [metaViewport](#metaviewport)
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| wideViewModeAccess | boolean | 是 | 设置Web是否支持html中meta标签的viewport属性。<br>true表示支持html中meta标签的viewport属性，false表示不支持html中meta标签的viewport属性。 |

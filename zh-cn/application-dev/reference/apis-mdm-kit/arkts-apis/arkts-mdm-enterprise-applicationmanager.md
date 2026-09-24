@@ -64,6 +64,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [isModifyKeepAliveAppsDisallowed](arkts-mdm-applicationmanager-ismodifykeepaliveappsdisallowed-f.md) | 查询应用是否禁止取消保活。 |
 | [queryBundleStatsInfos](arkts-mdm-applicationmanager-querybundlestatsinfos-f.md) | 查询指定用户账户在给定时间段内，各应用在前台运行的累计时长统计信息。查询的最小粒度是天，调用时需要传入起始时间（startTime）、结束时间（endTime）以及目标用户账户ID（accountId）。请求参数startTime和endTime为毫秒级时间戳，支持调用方传入自定义值，startTime默认取当天的00:00:00.000，endTime默认取当天的24:00:00.000（即次日零点）。请求参数接口返回BundleStatsInfo数组，每个元素包含一个应用的包名，其分身索引值及其对应时间段内的前台使用时长（毫秒级时间戳）。若startTime为0，则表示从设备首次开机的时间开始查询。若起始时间晚于结束时间，接口将返回错误码9200012。 |
 | [queryTrafficStats](arkts-mdm-applicationmanager-querytrafficstats-f.md) | 查询当前用户下指定应用在特定时间段内使用流量情况。使用Promise异步回调。 |
+| [releaseExemptionResource](arkts-mdm-applicationmanager-releaseexemptionresource-f.md) | 释放指定应用的备用资源豁免。 |
 | [removeAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-removealloweddistributeabilityconnbundles-f.md) | 为指定用户下的特定分布式业务移除允许跨设备的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用可以不受[setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)的限制，通过使用该特定分布式业务跨设备传输数据；若名单已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用该特定分布式业务跨设备传输数据。 |
 | [removeAllowedNotificationBundles](arkts-mdm-applicationmanager-removeallowednotificationbundles-f.md) | 从允许发送通知的应用名单中移除应用。 |
 | [removeAllowedRunningBundles](arkts-mdm-applicationmanager-removeallowedrunningbundles-f.md) | 将应用从指定用户下的应用运行允许名单中移除。移除后，该应用将不允许在指定用户下运行。 |
@@ -75,6 +76,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [removeHideLauncherIcon](arkts-mdm-applicationmanager-removehidelaunchericon-f.md) | 取消隐藏桌面应用图标名单。 |
 | [removeKeepAliveApps](arkts-mdm-applicationmanager-removekeepaliveapps-f.md) | 移除保活应用名单中的指定应用。 |
 | [removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md) | 为指定用户删除不可关停应用名单。删除后，用户可以在设备上正常关停该应用。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。 |
+| [requestExemptionResource](arkts-mdm-applicationmanager-requestexemptionresource-f.md) | 为指定的应用申请备用资源豁免。申请成功后，即使设备进入待机模式，指定的应用程序也可以使用豁免的资源（如网络访问）。 |
 | [setAbilityDisabled](arkts-mdm-applicationmanager-setabilitydisabled-f.md) | 设置是否禁用指定应用（系统应用和三方应用均支持）的Ability组件。当前仅支持UIAbility类型，禁用后无法拉起此Ability组件的用户界面。 |
 | [setAllowedKioskApps](arkts-mdm-applicationmanager-setallowedkioskapps-f.md) | 设置允许在Kiosk模式下运行的应用。 |
 | [setKioskFeatures](arkts-mdm-applicationmanager-setkioskfeatures-f.md) | 设置Kiosk模式的特征。通过本接口可以控制在Kiosk模式下能否进入通知中心、控制中心。 |
@@ -109,4 +111,5 @@ import { applicationManager } from '@kit.MDMKit';
 | --- | --- |
 | [KioskFeature](arkts-mdm-applicationmanager-kioskfeature-e.md) | Kiosk模式的特征。 |
 | [ServiceType](arkts-mdm-applicationmanager-servicetype-e.md) | 分布式业务类型。 |
+| [StandbyResourceType](arkts-mdm-applicationmanager-standbyresourcetype-e.md) | 枚举备用资源类型。这些类型表示可以从设备待机中豁免的资源限制。当设备进入待机模式时，系统会限制后台应用程序。通过申请备用资源豁免，指定的应用可以继续使用这些资源即使在设备处于待机模式时也是如此。 |
 | [WindowState](arkts-mdm-applicationmanager-windowstate-e.md) | 应用窗口状态。 |

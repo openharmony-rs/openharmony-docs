@@ -275,54 +275,6 @@ for(let i = 0; i < 10; i++) {
 }
 ```
 
-## equal
-
-```TypeScript
-equal(obj: Object): boolean
-```
-
-判断此容器与obj的构成元素是否相同。
-
-> **说明：** 
-> 
-> 此接口从API version 8开始支持，从API version 12开始废弃。无替代接口。
-
-**起始版本：** 8
-
-**废弃版本：** 12
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| obj | Object | 是 | 与当前容器比较元素构成是否相同的对象，可为仅含string或number的LightWeightSet或数组。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 当obj为仅含string或number的LightWeightSet或数组，且对象内部元素构成相同时，返回true；其他情况返回false。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The equal method cannot be bound. |
-
-**示例**
-
-```TypeScript
-let lightWeightSet = new LightWeightSet<string>();
-lightWeightSet.add("squirrel");
-lightWeightSet.add("sparrow");
-let comparisonArray = ["sparrow", "squirrel"];
-// 判断此容器与obj的构成元素是否相同
-let result = lightWeightSet.equal(comparisonArray);
-console.info("result:", result);  // result: true
-```
-
 ## forEach
 
 ```TypeScript
@@ -812,6 +764,54 @@ for (let value of values) {
 }
 // value: sparrow
 // value: squirrel
+```
+
+## equal
+
+```TypeScript
+equal(obj: Object): boolean
+```
+
+判断此容器与obj的构成元素是否相同。
+
+> **说明：** 
+> 
+> 此接口从API version 8开始支持，从API version 12开始废弃。无替代接口。
+
+**起始版本：** 8
+
+**废弃版本：** 12
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| obj | Object | 是 | 与当前容器比较元素构成是否相同的对象，可为仅含string或number的LightWeightSet或数组。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 当obj为仅含string或number的LightWeightSet或数组，且对象内部元素构成相同时，返回true；其他情况返回false。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The equal method cannot be bound. |
+
+**示例**
+
+```TypeScript
+let lightWeightSet = new LightWeightSet<string>();
+lightWeightSet.add("squirrel");
+lightWeightSet.add("sparrow");
+let comparisonArray = ["sparrow", "squirrel"];
+// 判断此容器与obj的构成元素是否相同
+let result = lightWeightSet.equal(comparisonArray);
+console.info("result:", result);  // result: true
 ```
 
 ## length

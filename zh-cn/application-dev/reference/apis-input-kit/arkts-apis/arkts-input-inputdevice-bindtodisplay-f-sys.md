@@ -41,8 +41,8 @@ function bindToDisplay(inputDeviceId: number, displayId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. The application does not have the required permission. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Called by non-system application. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. The application does not have the required permission. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. Called by non-system application. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 | [3900001](../errorcode-inputdevice.md#3900001-指定的设备不存在) | The specified input device does not exist. |
 | [3900004](../errorcode-inputdevice.md#3900004-指定的显示器不存在) | The specified display does not exist. |

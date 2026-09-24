@@ -272,32 +272,6 @@ onStart(event: () => void)
 | --- | --- | --- | --- |
 | event | () =&gt; void | 是 | 状态回调，动画开始播放时触发。 |
 
-## preDecode
-
-```TypeScript
-preDecode(value: number)
-```
-
-设置预解码的图片数量。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃。当前无可替代接口。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | number | 是 | 预解码的图片数量。例如，设置为2时，播放当前帧时会提前加载后面两张图片至缓存，以提升性能。<br>默认值：0 |
-
 ## reverse
 
 ```TypeScript
@@ -345,3 +319,29 @@ state(value: AnimationStatus)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md) | 是 | 用于控制播放状态。<br>默认值：AnimationStatus.Initial |
+
+## preDecode
+
+```TypeScript
+preDecode(value: number)
+```
+
+设置预解码的图片数量。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃。当前无可替代接口。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | number | 是 | 预解码的图片数量。例如，设置为2时，播放当前帧时会提前加载后面两张图片至缓存，以提升性能。<br>默认值：0 |

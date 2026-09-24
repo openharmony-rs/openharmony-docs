@@ -100,6 +100,12 @@ import { display } from '@kit.ArkUI';
 | [Display](arkts-arkui-display-display-i-sys.md) | 屏幕实例。描述Display对象的属性和方法。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [BrightnessCallback](arkts-arkui-display-brightnesscallback-t.md) | 监听屏幕亮度信息时使用的回调函数类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -111,9 +117,3 @@ import { display } from '@kit.ArkUI';
 | [FoldStatus](arkts-arkui-display-foldstatus-e.md) | 当前可折叠设备的折叠状态枚举。如果是双折轴设备，则在充电口朝下的状态下，从右到左分别是折轴一和折轴二。 |
 | [Orientation](arkts-arkui-display-orientation-e.md) | 显示设备当前显示的方向枚举。 |
 | [ScreenShape](arkts-arkui-display-screenshape-e.md) | 显示设备的屏幕形状枚举。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [BrightnessCallback](arkts-arkui-display-brightnesscallback-t.md) | 监听屏幕亮度信息时使用的回调函数类型。 |

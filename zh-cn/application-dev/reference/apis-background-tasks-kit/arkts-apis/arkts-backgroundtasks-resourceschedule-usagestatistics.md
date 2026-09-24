@@ -74,19 +74,19 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 <!--DelEnd-->
 
 <!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [GroupType](arkts-backgroundtasks-usagestatistics-grouptype-e-sys.md) | 应用分组的设置类型。 |
-| [IntervalType](arkts-backgroundtasks-usagestatistics-intervaltype-e-sys.md) | 应用使用时长的查询类型。 |
-<!--DelEnd-->
-
-<!--Del-->
 ### 类型（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [AppStatsMap](arkts-backgroundtasks-usagestatistics-appstatsmap-t-sys.md) |  |
 | [BundleStatsMap](arkts-backgroundtasks-usagestatistics-bundlestatsmap-t-sys.md) | FA模型的使用信息属性集合。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [GroupType](arkts-backgroundtasks-usagestatistics-grouptype-e-sys.md) | 应用分组的设置类型。 |
+| [IntervalType](arkts-backgroundtasks-usagestatistics-intervaltype-e-sys.md) | 应用使用时长的查询类型。 |
 <!--DelEnd-->

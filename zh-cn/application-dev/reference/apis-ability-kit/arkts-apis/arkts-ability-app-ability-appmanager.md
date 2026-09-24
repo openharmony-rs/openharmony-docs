@@ -84,6 +84,27 @@ import { appManager } from '@kit.AbilityKit';
 | [KeepAliveBundleInfo](arkts-ability-appmanager-keepalivebundleinfo-i-sys.md) | 定义应用保活信息，可以通过[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md)或[getKeepAliveAppServiceExtensions](arkts-ability-appmanager-getkeepaliveappserviceextensions-f-sys.md)获取。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [AbilityStateData](arkts-ability-appmanager-abilitystatedata-t.md) | Ability状态信息。 |
+| [ApplicationStateObserver](arkts-ability-appmanager-applicationstateobserver-t.md) | 应用状态监听器。 |
+| [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | 应用状态信息。 |
+| [ProcessData](arkts-ability-appmanager-processdata-t.md) | 进程数据。 |
+| [ProcessInformation](arkts-ability-appmanager-processinformation-t.md) | 进程信息。 |
+
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [AbilityFirstFrameStateData](arkts-ability-appmanager-abilityfirstframestatedata-t-sys.md) | UIAbility首帧绘制完成回调上报数据结构。 |
+| [AbilityFirstFrameStateObserver](arkts-ability-appmanager-abilityfirstframestateobserver-t-sys.md) | UIAbility首帧绘制完成事件监听对象。 |
+| [AppForegroundStateObserver](arkts-ability-appmanager-appforegroundstateobserver-t-sys.md) | 应用启动和退出的状态监听。 |
+| [RunningMultiAppInfo](arkts-ability-appmanager-runningmultiappinfo-t-sys.md) | 应用多开在运行态的结构信息。 |
+<!--DelEnd-->
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -104,25 +125,4 @@ import { appManager } from '@kit.AbilityKit';
 | [KeepAliveAppType](arkts-ability-appmanager-keepaliveapptype-e-sys.md) | 表示被保活应用的应用类型。 |
 | [KeepAliveSetter](arkts-ability-appmanager-keepalivesetter-e-sys.md) | 表示应用保活的设置方类型。 |
 | [PreloadMode](arkts-ability-appmanager-preloadmode-e-sys.md) | 表示预加载应用进程模式的枚举。 |
-<!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [AbilityStateData](arkts-ability-appmanager-abilitystatedata-t.md) | Ability状态信息。 |
-| [ApplicationStateObserver](arkts-ability-appmanager-applicationstateobserver-t.md) | 应用状态监听器。 |
-| [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | 应用状态信息。 |
-| [ProcessData](arkts-ability-appmanager-processdata-t.md) | 进程数据。 |
-| [ProcessInformation](arkts-ability-appmanager-processinformation-t.md) | 进程信息。 |
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [AbilityFirstFrameStateData](arkts-ability-appmanager-abilityfirstframestatedata-t-sys.md) | UIAbility首帧绘制完成回调上报数据结构。 |
-| [AbilityFirstFrameStateObserver](arkts-ability-appmanager-abilityfirstframestateobserver-t-sys.md) | UIAbility首帧绘制完成事件监听对象。 |
-| [AppForegroundStateObserver](arkts-ability-appmanager-appforegroundstateobserver-t-sys.md) | 应用启动和退出的状态监听。 |
-| [RunningMultiAppInfo](arkts-ability-appmanager-runningmultiappinfo-t-sys.md) | 应用多开在运行态的结构信息。 |
 <!--DelEnd-->

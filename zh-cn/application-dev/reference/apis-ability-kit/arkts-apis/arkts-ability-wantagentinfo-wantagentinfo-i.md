@@ -74,6 +74,38 @@ extraInfos?: Record<string, Object>
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+## requestCode
+
+```TypeScript
+requestCode: number
+```
+
+开发者自定义的请求码，用于标识将被执行的动作。
+
+**类型：** number
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## wants
+
+```TypeScript
+wants: Array<Want>
+```
+
+将被执行的动作列表。wants数组为预留能力，当前只支持一个want。传入多个时只取wants数组的第一个成员。
+
+**类型：** Array&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt;
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 ## operationType
 
 ```TypeScript
@@ -96,22 +128,6 @@ operationType?: wantAgent.OperationType
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## requestCode
-
-```TypeScript
-requestCode: number
-```
-
-开发者自定义的请求码，用于标识将被执行的动作。
-
-**类型：** number
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 ## wantAgentFlags
 
 ```TypeScript
@@ -129,22 +145,6 @@ wantAgentFlags?: Array<wantAgent.WantAgentFlags>
 **废弃版本：** 11
 
 **替代接口：** [actionFlags](#actionflags)
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## wants
-
-```TypeScript
-wants: Array<Want>
-```
-
-将被执行的动作列表。wants数组为预留能力，当前只支持一个want。传入多个时只取wants数组的第一个成员。
-
-**类型：** Array&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt;
-
-**起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 

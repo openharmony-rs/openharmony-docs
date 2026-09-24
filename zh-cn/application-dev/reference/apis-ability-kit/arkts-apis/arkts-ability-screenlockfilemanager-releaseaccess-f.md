@@ -30,7 +30,7 @@ function releaseAccess(): ReleaseStatus
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | The specified SystemCapability name was not found. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The specified SystemCapability name was not found. |
 | [29300002](../errorcode-screenLockFileManager.md#29300002-系统服务工作异常) | The system ability works abnormally. |
 | [29300003](../errorcode-screenLockFileManager.md#29300003-应用未开启锁屏敏感数据保护功能) | The application is not enabled the data protection under lock screen. |
 | [29300005](../errorcode-screenLockFileManager.md#29300005-未申请锁屏敏感数据访问权限) | File access was not acquired. |

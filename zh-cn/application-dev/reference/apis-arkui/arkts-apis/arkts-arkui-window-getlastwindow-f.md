@@ -33,7 +33,7 @@ function getLastWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal. |
 | [1300006](../errorcode-window.md#1300006-窗口上下文异常) | This window context is abnormal. |
 
@@ -117,7 +117,7 @@ function getLastWindow(ctx: BaseContext): Promise<Window>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal. |
 | [1300006](../errorcode-window.md#1300006-窗口上下文异常) | This window context is abnormal. |
 

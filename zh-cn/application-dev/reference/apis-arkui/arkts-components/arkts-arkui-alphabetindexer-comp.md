@@ -2,7 +2,10 @@
 
 可以与容器组件联动，用于按逻辑结构快速定位容器显示区域，适用于通讯录、城市列表、分类列表等需要快速定位内容的场景。
 
-> **说明：** > > > 从API version 12开始，触控反馈默认开启；使用前请按[enableHapticFeedback](arkts-arkui-alphabetindexer-comp-attribute.md#enablehapticfeedback)的说明配置振动权限。
+> **说明：** 
+> 
+> 
+> 从API version 12开始，触控反馈默认开启；使用前请按[enableHapticFeedback](arkts-arkui-alphabetindexer-comp-attribute.md#enablehapticfeedback)的说明配置振动权限。
 
 ## 子组件
 

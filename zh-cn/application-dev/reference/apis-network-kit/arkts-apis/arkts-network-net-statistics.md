@@ -88,14 +88,6 @@ import { statistics } from '@kit.NetworkKit';
 | [UidInfo](arkts-network-statistics-uidinfo-i-sys.md) | 查询应用历史流量参数信息。 |
 <!--DelEnd-->
 
-<!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [TrafficPlanParam](arkts-network-statistics-trafficplanparam-e-sys.md) | 定义与流量计划相关的字段。 |
-<!--DelEnd-->
-
 ### 类型
 
 | 名称 | 说明 |
@@ -108,4 +100,12 @@ import { statistics } from '@kit.NetworkKit';
 | 名称 | 说明 |
 | --- | --- |
 | [UidNetStatsInfo](arkts-network-statistics-uidnetstatsinfo-t-sys.md) | [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) for every UID. Key is UID. [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) for every UID. Key is UID. |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [TrafficPlanParam](arkts-network-statistics-trafficplanparam-e-sys.md) | 定义与流量计划相关的字段。 |
 <!--DelEnd-->

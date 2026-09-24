@@ -178,7 +178,7 @@ Exif属性中除"JPEGInterchangeFormat"/"JPEGInterchangeFormatLength"/"GIFLoopCo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
 | [7700102](../errorcode-image.md#7700102-不支持的mime类型) | Unsupported MIME type. |
 | [7700202](../errorcode-image.md#7700202-不支持的元数据) | Unsupported metadata. For example, the property key is not supported, or the property value is invalid. |
 | [7700304](../errorcode-image.md#7700304-图片信息写入文件失败) | Failed to write image properties to the file. |

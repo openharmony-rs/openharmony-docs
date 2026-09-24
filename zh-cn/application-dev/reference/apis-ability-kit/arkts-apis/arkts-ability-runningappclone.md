@@ -1,4 +1,4 @@
-# RunningAppClone
+# RunningAppClone(分身应用运行信息)
 
 ## 汇总
 

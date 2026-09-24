@@ -39,8 +39,8 @@ function createStream(sessionId: number, param: StreamParam): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [32300001](../errorcode-device-manager.md#32300001-重复创建传输流) | Only one stream can be created for the current session. |
 | [32300003](../errorcode-device-manager.md#32300003-比特率不支持) | Bitrate not supported. |
 | [32300004](../errorcode-device-manager.md#32300004-色彩空间不支持) | Color space not supported. |

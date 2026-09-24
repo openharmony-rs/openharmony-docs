@@ -40,7 +40,7 @@ getStatus(): Promise<VideoProcessorStatus | undefined>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该能力。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 不支持该能力。 |
 
 ## offStatusChange
 
@@ -66,7 +66,7 @@ offStatusChange(callback?: VideoProcessorStatusCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该能力。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 不支持该能力。 |
 | [29200006](../../apis-image-kit/errorcode-videoprocessingengine.md#29200006-不被允许的操作) | 不允许执行该操作，可能是由于当前状态不正确。 |
 | [29200009](../../apis-image-kit/errorcode-videoprocessingengine.md#29200009-值无效) | 输入参数无效。 |
 
@@ -94,6 +94,6 @@ onStatusChange(callback: VideoProcessorStatusCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该能力。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 不支持该能力。 |
 | [29200007](../../apis-image-kit/errorcode-videoprocessingengine.md#29200007-内存不足) | 内存不足。 |
 | [29200009](../../apis-image-kit/errorcode-videoprocessingengine.md#29200009-值无效) | 输入值无效。 |

@@ -4,11 +4,9 @@
 declare enum ImageRepeat
 ```
 
-ImageRepeat enumeration description
+用于设置图片重复样式。
 
-@enum { number }
-
-**起始版本：** 11
+**起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,15 +16,15 @@ ImageRepeat enumeration description
 NoRepeat
 ```
 
-Do not draw the picture again.
+不重复绘制图片。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,15 +34,15 @@ Do not draw the picture again.
 X
 ```
 
-Repeat the drawing only on the horizontal axis.
+只在水平轴上重复绘制图片。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,15 +52,15 @@ Repeat the drawing only on the horizontal axis.
 Y
 ```
 
-Repeat the drawing only on the vertical axis.
+只在垂直轴上重复绘制图片。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,14 +70,14 @@ Repeat the drawing only on the vertical axis.
 XY
 ```
 
-Draw the picture repeatedly on both axes.
+在两个轴上重复绘制图片。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

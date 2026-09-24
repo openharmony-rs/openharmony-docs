@@ -40,7 +40,7 @@ displayId: number
 displayX: number
 ```
 
-鼠标X坐标位置。
+鼠标X坐标位置，单位：px。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ displayX: number
 displayY: number
 ```
 
-鼠标Y坐标位置。
+鼠标Y坐标位置，单位：px。
 
 **类型：** number
 

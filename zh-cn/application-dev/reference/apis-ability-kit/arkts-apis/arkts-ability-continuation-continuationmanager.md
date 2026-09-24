@@ -53,16 +53,16 @@ import { continuationManager } from '@kit.AbilityKit';
 | [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md#updatecontinuationstate) | 通知设备选择模块，更新当前的连接状态，使用AsyncCallback方式作为异步方法。 |
 | [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md#updatecontinuationstate-1) | 通知设备选择模块，更新当前的连接状态，使用Promise方式作为异步方法。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [ContinuationMode](arkts-ability-continuationmanager-continuationmode-e.md) | 设备选择模块连接模式。 |
-| [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | 设备连接状态。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [ContinuationExtraParams](arkts-ability-continuationmanager-continuationextraparams-t.md) | 流转管理入口中设备选择模块所需的过滤参数。 |
 | [ContinuationResult](arkts-ability-continuationmanager-continuationresult-t.md) | 流转管理入口返回的设备信息。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ContinuationMode](arkts-ability-continuationmanager-continuationmode-e.md) | 设备选择模块连接模式。 |
+| [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | 设备连接状态。 |

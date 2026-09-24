@@ -32,9 +32,9 @@ function getVisibleWindowInfo(): Promise<Array<WindowInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission.<br>**适用版本：** 18+ |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API.<br>**适用版本：** 12 - 17 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function getVisibleWindowInfo can not work correctly due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission.<br>**适用版本：** 18+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, non-system application uses system API.<br>**适用版本：** 12 - 17 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function getVisibleWindowInfo can not work correctly due to limited device capabilities. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例**

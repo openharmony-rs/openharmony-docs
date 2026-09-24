@@ -38,15 +38,6 @@ import { freeInstall } from '@kit.AbilityKit';
 <!--DelEnd-->
 
 <!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [BundlePackFlag](arkts-ability-freeinstall-bundlepackflag-e-sys.md) | 要查询的应用包标志 |
-| [UpgradeFlag](arkts-ability-freeinstall-upgradeflag-e-sys.md) | 仅供内部系统使用标志位 |
-<!--DelEnd-->
-
-<!--Del-->
 ### 类型（系统接口）
 
 | 名称 | 说明 |
@@ -63,4 +54,13 @@ import { freeInstall } from '@kit.AbilityKit';
 | [PackageConfig](arkts-ability-freeinstall-packageconfig-t-sys.md) | pack.info的包信息。 |
 | [PackageSummary](arkts-ability-freeinstall-packagesummary-t-sys.md) | pack.info中的包摘要信息。 |
 | [Version](arkts-ability-freeinstall-version-t-sys.md) | 包的版本。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [BundlePackFlag](arkts-ability-freeinstall-bundlepackflag-e-sys.md) | 要查询的应用包标志 |
+| [UpgradeFlag](arkts-ability-freeinstall-upgradeflag-e-sys.md) | 仅供内部系统使用标志位 |
 <!--DelEnd-->

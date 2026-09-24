@@ -41,9 +41,9 @@ function getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Verify permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Verify permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not support. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 

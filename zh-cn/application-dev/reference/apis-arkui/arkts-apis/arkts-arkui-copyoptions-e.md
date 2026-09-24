@@ -4,7 +4,7 @@
 declare enum CopyOptions
 ```
 
-Indicates the share option.
+剪贴板复制范围。
 
 **起始版本：** 9
 
@@ -16,7 +16,7 @@ Indicates the share option.
 None = 0
 ```
 
-Not allow share.
+不支持复制。
 
 **起始版本：** 9
 
@@ -34,7 +34,7 @@ Not allow share.
 InApp = 1
 ```
 
-Share in app.
+支持仅在当前应用内复制粘贴。
 
 **起始版本：** 9
 
@@ -52,7 +52,7 @@ Share in app.
 LocalDevice = 2
 ```
 
-Share in local device.
+支持复制后在所有应用内粘贴。
 
 **起始版本：** 9
 
@@ -70,7 +70,7 @@ Share in local device.
 CROSS_DEVICE = 3
 ```
 
-跨设备共享。
+支持跨设备复制。
 
 **起始版本：** 11
 

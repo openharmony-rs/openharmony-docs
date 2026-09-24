@@ -32,7 +32,7 @@ function getCellularDataState(callback: AsyncCallback<DataConnectState>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
 
 **示例**
 
@@ -78,7 +78,7 @@ function getCellularDataState(): Promise<DataConnectState>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 22+ |
 
 **示例**
 

@@ -334,42 +334,6 @@ const uriInstance = uri.URI.createFromParts('mailto', 'no body', 'top');
 console.info(uriInstance.toString()); // mailto:no%20body#top
 ```
 
-## equals
-
-```TypeScript
-equals(other: URI): boolean
-```
-
-判断此URI是否与其他URI对象相等，通过逐组件比较scheme、authority、path、query和fragment等内容来确定两个URI是否等价。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [equalsTo](#equalsto)
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| other | [URI](arkts-arkts-uri-uri-c.md) | 是 | 需要比较的URI对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 返回true表示相等，否则返回false。 |
-
-**示例**
-
-```TypeScript
-const uriInstance = new uri.URI('https://username:password@host:8080/directory/file?query=pppppp#qwer=da');
-const uriInstance1 = new uri.URI('https://username:password@host:8080/directory/file?query=pppppp#qwer=da');
-uriInstance.equals(uriInstance1); // true
-```
-
 ## equalsTo
 
 ```TypeScript
@@ -672,6 +636,42 @@ toString(): string
 ```TypeScript
 const result = new uri.URI('https://username:password@host:8080/directory/file?ab=pppppp#qwer da');
 let result1 = result.toString(); // https://username:password@host:8080/directory/file?ab=pppppp#qwer%20da
+```
+
+## equals
+
+```TypeScript
+equals(other: URI): boolean
+```
+
+判断此URI是否与其他URI对象相等，通过逐组件比较scheme、authority、path、query和fragment等内容来确定两个URI是否等价。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [equalsTo](#equalsto)
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| other | [URI](arkts-arkts-uri-uri-c.md) | 是 | 需要比较的URI对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 返回true表示相等，否则返回false。 |
+
+**示例**
+
+```TypeScript
+const uriInstance = new uri.URI('https://username:password@host:8080/directory/file?query=pppppp#qwer=da');
+const uriInstance1 = new uri.URI('https://username:password@host:8080/directory/file?query=pppppp#qwer=da');
+uriInstance.equals(uriInstance1); // true
 ```
 
 ## authority

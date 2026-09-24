@@ -336,55 +336,6 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 });
 ```
 
-## onDoNotDisturbDateChange
-
-```TypeScript
-onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
-```
-
-回调返回免打扰时间选项变更。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** [onDoNotDisturbChanged](#ondonotdisturbchanged)
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| mode | [notification.DoNotDisturbDate](arkts-notification-notification-donotdisturbdate-depr-i-sys.md) | 是 |  |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import Notification from '@ohos.notification';
-
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('subscribeCallback');
-  }
-};
-
-let onDoNotDisturbDateChangeCallback = (mode: Notification.DoNotDisturbDate) => {
-  console.info('===> onDoNotDisturbDateChange:' + mode);
-}
-
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onDoNotDisturbDateChange: onDoNotDisturbDateChangeCallback
-};
-
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
-```
-
 ## onEnabledNotificationChanged
 
 ```TypeScript
@@ -585,6 +536,55 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
+```
+
+## onDoNotDisturbDateChange
+
+```TypeScript
+onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
+```
+
+回调返回免打扰时间选项变更。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** [onDoNotDisturbChanged](#ondonotdisturbchanged)
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mode | [notification.DoNotDisturbDate](arkts-notification-notification-donotdisturbdate-depr-i-sys.md) | 是 |  |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import Notification from '@ohos.notification';
+
+let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('subscribeCallback');
+  }
+};
+
+let onDoNotDisturbDateChangeCallback = (mode: Notification.DoNotDisturbDate) => {
+  console.info('===> onDoNotDisturbDateChange:' + mode);
+}
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onDoNotDisturbDateChange: onDoNotDisturbDateChangeCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
 ## onBadgeEnabledChanged

@@ -42,7 +42,7 @@ function createLocalWantAgent(info: LocalWantAgentInfo): WantAgent
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 
 **示例**
 

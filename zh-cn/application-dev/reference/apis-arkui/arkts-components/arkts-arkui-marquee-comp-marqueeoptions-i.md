@@ -20,13 +20,7 @@ Marquee初始化参数。
 delay?: number
 ```
 
-设置两轮滚动之间的延迟时间。
-
-默认值：0
-
-取值范围：[0, +∞)，设置的值小于0时等价于设置0。
-
-单位：毫秒
+设置两轮滚动之间的延迟时间。单位：毫秒。单位为：毫秒。取值范围：[0, +∞)，默认值：0设置的值小于0时等价于设置0。
 
 **类型：** number
 
@@ -98,7 +92,7 @@ ArkTS卡片上该参数设置任意值都仅在可见时滚动一次。当设置
 spacing?: LengthMetrics
 ```
 
-两轮跑马灯之间的间距。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。
+两轮跑马灯之间的间距。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。
 
 默认值：跑马灯组件宽度。
 
@@ -168,7 +162,7 @@ step?: number
 
 默认值：6
 
-单位：vp
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 

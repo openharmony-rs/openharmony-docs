@@ -154,11 +154,7 @@ readonly size?: SizeOptions
 readonly sizeInVp?: SizeOptions
 ```
 
-获取属性字符串的图片尺寸。
-
-返回number类型值的单位为`vp`。
-
-当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。
+获取属性字符串的图片尺寸。返回number类型值的单位为`vp`。当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。
 
 **类型：** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -176,7 +172,7 @@ readonly sizeInVp?: SizeOptions
 readonly supportSvg2?: boolean
 ```
 
-获取属性字符串是否开启[SVG标签解析能力增强功能](../arkts-components/arkts-arkui-image-comp.md#image)。
+获取属性字符串是否开启[SVG标签解析能力增强功能](../../../reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)。
 
 true：支持SVG解析新能力；false：保持原有SVG解析能力。
 

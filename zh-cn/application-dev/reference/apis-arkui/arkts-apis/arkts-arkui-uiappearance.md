@@ -1,4 +1,4 @@
-# @ohos.uiAppearance(UI Appearance)
+# @ohos.uiAppearance(用户界面外观)
 
 用户界面外观提供获取系统外观的一些基础能力，包括获取深浅色模式、字体大小缩放比例、字体粗细缩放比例。
 

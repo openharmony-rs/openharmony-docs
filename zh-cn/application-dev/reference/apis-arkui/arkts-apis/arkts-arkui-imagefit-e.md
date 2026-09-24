@@ -4,11 +4,9 @@
 declare enum ImageFit
 ```
 
-Image display mode.
+用于设置图片填充效果。
 
-@enum { number }
-
-**起始版本：** 11
+**起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,15 +16,17 @@ Image display mode.
 Contain
 ```
 
-Keep the aspect ratio to zoom out or zoom in so that the image is completely displayed within the display boundary.
+保持宽高比进行缩小或者放大，使得图片或视频完全显示在边界内，对其方式为水平居中。
 
-**起始版本：** 11
+![ImageFit-Examples01](../../../reference/apis-arkui/arkui-ts/figures/image_fit_contain.png)
+
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,15 +36,17 @@ Keep the aspect ratio to zoom out or zoom in so that the image is completely dis
 Cover
 ```
 
-Keep the aspect ratio to zoom out or zoom in so that both sides of the image are greater than or equal to the display boundary.
+保持宽高比进行缩小或者放大，使得图片或视频两边都大于或等于显示边界，对其方式为水平居中。
 
-**起始版本：** 11
+![ImageFit-Examples02](../../../reference/apis-arkui/arkui-ts/figures/image_fit_cover.png)
+
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,15 +56,17 @@ Keep the aspect ratio to zoom out or zoom in so that both sides of the image are
 Auto
 ```
 
-Adaptive display
+图片或视频会根据其自身尺寸和组件的尺寸进行适当缩放，以在保持比例的同时填充视图，对其方式为水平居中。
 
-**起始版本：** 11
+![ImageFit-Examples03](../../../reference/apis-arkui/arkui-ts/figures/image_fit_auto.png)
+
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,15 +76,17 @@ Adaptive display
 Fill
 ```
 
-Zoom in or out without maintaining the aspect ratio so that the image fills the display boundary.
+不保持宽高比进行放大缩小，使得图片或视频充满显示边界，对齐方式为水平居中。
 
-**起始版本：** 11
+![ImageFit-Examples04](../../../reference/apis-arkui/arkui-ts/figures/image_fit_fill.png)
+
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,15 +96,17 @@ Zoom in or out without maintaining the aspect ratio so that the image fills the 
 ScaleDown
 ```
 
-Keep the aspect ratio displayed, and the image zooms out or remains unchanged.
+保持宽高比进行显示，图片或视频缩小或者保持不变，对齐方式为水平居中。
 
-**起始版本：** 11
+![ImageFit-Examples05](../../../reference/apis-arkui/arkui-ts/figures/image_fit_scaleDown.png)
+
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,15 +116,17 @@ Keep the aspect ratio displayed, and the image zooms out or remains unchanged.
 None
 ```
 
-Keep the original size and display it in the center.
+保持原有尺寸进行显示，对齐方式为水平居中。
 
-**起始版本：** 11
+![ImageFit-Examples06](../../../reference/apis-arkui/arkui-ts/figures/image_fit_none.png)
+
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +136,9 @@ Keep the original size and display it in the center.
 TOP_START = 7
 ```
 
-Top Start.
+图片或视频显示在组件的顶部起始端，且保持原有尺寸。
+
+![ImageFit-Examples07](../../../reference/apis-arkui/arkui-ts/figures/image_fit_top_start.png)
 
 **起始版本：** 12
 
@@ -144,7 +156,9 @@ Top Start.
 TOP = 8
 ```
 
-The top is centered horizontally.
+图片或视频显示在组件的顶部横向居中，且保持原有尺寸。
+
+![ImageFit-Examples08](../../../reference/apis-arkui/arkui-ts/figures/image_fit_top.png)
 
 **起始版本：** 12
 
@@ -162,7 +176,9 @@ The top is centered horizontally.
 TOP_END = 9
 ```
 
-Top tail end.
+图片或视频显示在组件的顶部尾端，且保持原有尺寸。
+
+![ImageFit-Examples09](../../../reference/apis-arkui/arkui-ts/figures/image_fit_top_end.png)
 
 **起始版本：** 12
 
@@ -180,7 +196,9 @@ Top tail end.
 START = 10
 ```
 
-The starting end is centered longitudinally.
+图片或视频显示在组件的起始端纵向居中，且保持原有尺寸。
+
+![ImageFit-Examples10](../../../reference/apis-arkui/arkui-ts/figures/image_fit_start.png)
 
 **起始版本：** 12
 
@@ -198,7 +216,9 @@ The starting end is centered longitudinally.
 CENTER = 11
 ```
 
-Center horizontal and vertical.
+图片或视频显示在组件的横向和纵向居中，且保持原有尺寸。
+
+![ImageFit-Examples11](../../../reference/apis-arkui/arkui-ts/figures/image_fit_center.png)
 
 **起始版本：** 12
 
@@ -216,7 +236,9 @@ Center horizontal and vertical.
 END = 12
 ```
 
-The tail end is centered longitudinally.
+图片或视频显示在组件的尾端纵向居中，且保持原有尺寸。
+
+![ImageFit-Examples12](../../../reference/apis-arkui/arkui-ts/figures/image_fit_end.png)
 
 **起始版本：** 12
 
@@ -234,7 +256,9 @@ The tail end is centered longitudinally.
 BOTTOM_START = 13
 ```
 
-Bottom starting end.
+图片或视频显示在组件的底部起始端，且保持原有尺寸。
+
+![ImageFit-Examples13](../../../reference/apis-arkui/arkui-ts/figures/image_fit_bottom_start.png)
 
 **起始版本：** 12
 
@@ -252,7 +276,9 @@ Bottom starting end.
 BOTTOM = 14
 ```
 
-The bottom is centered horizontally.
+图片或视频显示在组件的底部横向居中，且保持原有尺寸。
+
+![ImageFit-Examples14](../../../reference/apis-arkui/arkui-ts/figures/image_fit_bottom.png)
 
 **起始版本：** 12
 
@@ -270,7 +296,9 @@ The bottom is centered horizontally.
 BOTTOM_END = 15
 ```
 
-Bottom end.
+图片或视频显示在组件的底部尾端，且保持原有尺寸。
+
+![ImageFit-Examples15](../../../reference/apis-arkui/arkui-ts/figures/image_fit_bottom_end.png)
 
 **起始版本：** 12
 
@@ -288,7 +316,7 @@ Bottom end.
 MATRIX = 16
 ```
 
-Matrix of Image.
+配合[imageMatrix](../arkts-components/arkts-arkui-image-comp-attribute.md#imagematrix)使用，使图像在Image组件自定义位置显示，且保持原有尺寸。不支持svg图源。
 
 **起始版本：** 15
 

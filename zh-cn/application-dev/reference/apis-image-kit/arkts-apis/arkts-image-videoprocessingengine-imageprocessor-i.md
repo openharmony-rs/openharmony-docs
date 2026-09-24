@@ -49,7 +49,7 @@ enhanceDetail(sourceImage: image.PixelMap, width: number, height: number, level?
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该能力。由于设备能力受限，enhanceDetail函数无法正常工作。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 不支持该能力。由于设备能力受限，enhanceDetail函数无法正常工作。 |
 | [29200007](../errorcode-videoprocessingengine.md#29200007-内存不足) | 内存不足。 |
 | [29200009](../errorcode-videoprocessingengine.md#29200009-值无效) | 输入参数无效。以下情况会返回该错误：<br>1 - 输入或输出图像缓冲区无效，例如图像缓冲区的宽度或高度过大，或者色彩空间不正确。<br>2 - 参数无效，例如细节增强质量等级不正确。 |
 
@@ -101,7 +101,7 @@ enhanceDetail(sourceImage: image.PixelMap, scale: number, level?: QualityLevel):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该能力。由于设备能力受限，enhanceDetail函数无法正常工作。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 不支持该能力。由于设备能力受限，enhanceDetail函数无法正常工作。 |
 | [29200007](../errorcode-videoprocessingengine.md#29200007-内存不足) | 内存不足。 |
 | [29200009](../errorcode-videoprocessingengine.md#29200009-值无效) | 输入参数无效。以下情况会返回该错误：<br>1 - 输入或输出图像缓冲区无效，例如图像缓冲区的宽度或高度过大，或者色彩空间不正确。<br>2 - 参数无效，例如细节增强质量等级不正确。 |
 
@@ -152,7 +152,7 @@ enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number, le
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该能力。由于设备能力受限，enhanceDetailSync函数无法正常工作。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 不支持该能力。由于设备能力受限，enhanceDetailSync函数无法正常工作。 |
 | [29200004](../errorcode-videoprocessingengine.md#29200004-处理失败) | 图像缓冲区处理失败。例如，处理超时。 |
 | [29200007](../errorcode-videoprocessingengine.md#29200007-内存不足) | 内存不足。 |
 | [29200009](../errorcode-videoprocessingengine.md#29200009-值无效) | 输入参数无效。以下情况会返回该错误：<br>1 - 输入或输出图像缓冲区无效，例如图像缓冲区的宽度或高度过大，或者色彩空间不正确。<br>2 - 参数无效，例如细节增强质量等级不正确。 |
@@ -205,7 +205,7 @@ enhanceDetailSync(sourceImage: image.PixelMap, scale: number, level?: QualityLev
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该能力。由于设备能力受限，enhanceDetailSync函数无法正常工作。 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 不支持该能力。由于设备能力受限，enhanceDetailSync函数无法正常工作。 |
 | [29200004](../errorcode-videoprocessingengine.md#29200004-处理失败) | 图像缓冲区处理失败。例如，处理超时。 |
 | [29200007](../errorcode-videoprocessingengine.md#29200007-内存不足) | 内存不足。 |
 | [29200009](../errorcode-videoprocessingengine.md#29200009-值无效) | 输入参数无效。以下情况会返回该错误：<br>1 - 输入或输出图像缓冲区无效，例如图像缓冲区的宽度或高度过大，或者色彩空间不正确。<br>2 - 参数无效，例如细节增强质量等级不正确。 |

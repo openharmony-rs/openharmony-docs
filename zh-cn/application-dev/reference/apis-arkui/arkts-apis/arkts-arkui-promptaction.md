@@ -1,4 +1,4 @@
-# @ohos.promptAction
+# @ohos.promptAction(弹窗)
 
 创建并显示即时反馈、对话框和操作菜单，适用于系统通知、交互确认、菜单选择等场景。
 

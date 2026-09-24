@@ -36,7 +36,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -84,7 +84,7 @@ connect(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390204](../errorcode-link-enhance.md#32390204-连接个数超出限制) | The number of connection exceeds the limit. |
 | [32390300](../errorcode-link-enhance.md#32390300-内部错误) | Internal error. |
 
@@ -135,7 +135,7 @@ disconnect(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -189,7 +189,7 @@ getPeerDeviceId(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 
 **示例**
 
@@ -238,7 +238,7 @@ off(type: 'connectResult', callback?: Callback<ConnectResult>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -294,7 +294,7 @@ off(type: 'disconnected', callback?: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -350,7 +350,7 @@ off(type: 'dataReceived', callback?: Callback<ArrayBuffer>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -407,7 +407,7 @@ on(type: 'connectResult', callback: Callback<ConnectResult>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -463,7 +463,7 @@ on(type: 'disconnected', callback: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -516,7 +516,7 @@ on(type: 'dataReceived', callback: Callback<ArrayBuffer>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例**
@@ -570,7 +570,7 @@ sendData(data: ArrayBuffer): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 | [32390205](../errorcode-link-enhance.md#32390205-连接状态不可用) | Connection is not ready. |
 | [32390300](../errorcode-link-enhance.md#32390300-内部错误) | Internal error. |

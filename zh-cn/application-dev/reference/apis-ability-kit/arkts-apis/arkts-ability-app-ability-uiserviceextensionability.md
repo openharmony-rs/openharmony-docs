@@ -1,4 +1,4 @@
-# @ohos.app.ability.UIServiceExtensionAbility
+# @ohos.app.ability.UIServiceExtensionAbility(UIServiceExtensionAbility)
 
 ## 导入模块
 

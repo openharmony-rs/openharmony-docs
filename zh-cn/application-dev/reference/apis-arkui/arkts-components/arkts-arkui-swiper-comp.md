@@ -2,9 +2,11 @@
 
 滑块视图容器，提供子组件滑动轮播显示的能力。适用于轮播图展示、图片浏览、引导页、卡片轮播等场景。
 
-> **说明：**
+> **说明：** 
 
-> - Swiper组件通过内置的PanGesture拖动手势实现滑动轮播效果，将[disableSwipe](arkts-arkui-swiper-comp-attribute.md#disableswipe)属性设为true > 时，会禁用该手势监听，从而阻止滑动操作。 > > - Swiper中复用NodeContainer时，禁止递归流程中子节点更新父节点状态变量。
+> - Swiper组件通过内置的PanGesture拖动手势实现滑动轮播效果，将[disableSwipe](arkts-arkui-swiper-comp-attribute.md#disableswipe)属性设为true 时，会禁用该手势监听，从而阻止滑动操作。
+> 
+> - Swiper中复用NodeContainer时，禁止递归流程中子节点更新父节点状态变量。
 
 ## 子组件
 

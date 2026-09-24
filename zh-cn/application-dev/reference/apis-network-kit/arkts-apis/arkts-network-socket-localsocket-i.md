@@ -50,7 +50,7 @@ bind(address: LocalAddress): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2301013](../errorcode-net-socket.md#2301013-权限不足) | Insufficient permissions. |
 | [2301022](../errorcode-net-socket.md#2301022-参数无效) | Invalid argument. |
 | [2301098](../errorcode-net-socket.md#2301098-网络地址已被使用) | Address already in use. |
@@ -148,7 +148,7 @@ connect(options: LocalConnectOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2301013](../errorcode-net-socket.md#2301013-权限不足) | Insufficient permissions. |
 | [2301022](../errorcode-net-socket.md#2301022-参数无效) | Invalid argument. |
 | [2301111](../errorcode-net-socket.md#2301111-连接被拒绝) | Connection refused. |
@@ -435,7 +435,7 @@ off(type: 'message', callback?: Callback<LocalSocketMessageInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -480,7 +480,7 @@ off(type: 'connect', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -520,7 +520,7 @@ off(type: 'close', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -560,7 +560,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -600,7 +600,7 @@ on(type: 'message', callback: Callback<LocalSocketMessageInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -642,7 +642,7 @@ on(type: 'connect', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -678,7 +678,7 @@ on(type: 'close', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -715,7 +715,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
 **示例**
 
@@ -760,7 +760,7 @@ send(options: LocalSendOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2301011](../errorcode-net-socket.md#2301011-操作将阻塞) | Operation would block. |
 
 **示例**
@@ -830,7 +830,7 @@ setExtraOptions(options: ExtraOptionsBase): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2301009](../errorcode-net-socket.md#2301009-错误文件描述符) | Bad file descriptor. |
 
 **示例**

@@ -41,4 +41,4 @@ function getDownloadInfo(url: string): DownloadInfo | undefined
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |

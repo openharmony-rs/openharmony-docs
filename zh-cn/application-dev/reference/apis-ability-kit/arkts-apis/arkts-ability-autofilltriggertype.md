@@ -1,4 +1,4 @@
-# AutoFillTriggerType
+# AutoFillTriggerType(自动填充拉起类型)
 
 ## 汇总
 

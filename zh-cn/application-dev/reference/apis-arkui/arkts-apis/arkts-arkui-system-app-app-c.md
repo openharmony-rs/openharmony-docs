@@ -155,63 +155,6 @@ export default {
 }
 ```
 
-## requestFullWindow
-
-```TypeScript
-static requestFullWindow(options?: RequestFullWindowOptions): void
-```
-
-Requests the application to run in full window. In some scenarios, such as semi-modal FA, the FA runs in non-full window. In this case, you can call this API. This API is invalid for an application already in full-window mode.
-
-**起始版本：** 3
-
-**废弃版本：** 8
-
-**替代接口：** startAbility
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| options | [RequestFullWindowOptions](arkts-arkui-system-app-requestfullwindowoptions-i.md) | 否 | Transition time from non-full window to full window, in milliseconds. By default, the value is in direct proportion to the distance between the non-full window and the full window. |
-
-**示例**
-
-```TypeScript
-import app, { AppResponse } from '@system.app';
-export default class Req {
-  requestFullWindow() {
-    app.requestFullWindow({
-      duration: 200
-    });
-  }
-}
-```
-
-## screenOnVisible
-
-```TypeScript
-static screenOnVisible(options?: ScreenOnVisibleOptions): void
-```
-
-定义屏幕唤醒时是否保持应用可见。
-
-该接口从API version 8 开始废弃。
-
-**起始版本：** 3
-
-**废弃版本：** 8
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| options | [ScreenOnVisibleOptions](arkts-arkui-system-app-screenonvisibleoptions-i.md) | 否 | 当启动保活时，锁屏时将阻止系统返回桌面显示，以保持屏幕唤醒时应用可见。 |
-
 ## setImageCacheCount
 
 ```TypeScript
@@ -452,3 +395,60 @@ export default {
     }
 }
 ```
+
+## requestFullWindow
+
+```TypeScript
+static requestFullWindow(options?: RequestFullWindowOptions): void
+```
+
+Requests the application to run in full window. In some scenarios, such as semi-modal FA, the FA runs in non-full window. In this case, you can call this API. This API is invalid for an application already in full-window mode.
+
+**起始版本：** 3
+
+**废弃版本：** 8
+
+**替代接口：** startAbility
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [RequestFullWindowOptions](arkts-arkui-system-app-requestfullwindowoptions-i.md) | 否 | Transition time from non-full window to full window, in milliseconds. By default, the value is in direct proportion to the distance between the non-full window and the full window. |
+
+**示例**
+
+```TypeScript
+import app, { AppResponse } from '@system.app';
+export default class Req {
+  requestFullWindow() {
+    app.requestFullWindow({
+      duration: 200
+    });
+  }
+}
+```
+
+## screenOnVisible
+
+```TypeScript
+static screenOnVisible(options?: ScreenOnVisibleOptions): void
+```
+
+定义屏幕唤醒时是否保持应用可见。
+
+该接口从API version 8 开始废弃。
+
+**起始版本：** 3
+
+**废弃版本：** 8
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [ScreenOnVisibleOptions](arkts-arkui-system-app-screenonvisibleoptions-i.md) | 否 | 当启动保活时，锁屏时将阻止系统返回桌面显示，以保持屏幕唤醒时应用可见。 |

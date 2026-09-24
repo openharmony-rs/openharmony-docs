@@ -126,7 +126,7 @@ readonly paragraphSpacing?: number
 
 获取属性字符串文本段落的段落间距。
 
-单位：[vp](arkts-arkui-length-t.md)
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -164,15 +164,7 @@ readonly shaderStyle?: ShaderStyle
 readonly tailIndents?: Array<number>
 ```
 
-获取属性字符串文本段落的文本尾部缩进距离。
-
-单位：[vp](arkts-arkui-length-t.md)
-
-取值范围：[0, INT32_MAX]
-
-值为0时不做尾部缩进。
-
-**说明：** tailIndents数组在同一段落内的每一行按数组索引依次取值做缩进；新的段落首行重新从tailIndents数组索引0位置开始取值做缩进。
+获取属性字符串文本段落的文本尾部缩进距离。单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)取值范围：[0, INT32_MAX]值为0时不做尾部缩进。**说明：** tailIndents数组在同一段落内的每一行按数组索引依次取值做缩进；新的段落首行重新从tailIndents数组索引0位置开始取值做缩进。单位为：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。
 
 **类型：** Array&lt;number&gt;
 
@@ -228,7 +220,7 @@ readonly textDirection?: TextDirection
 readonly textIndent?: number
 ```
 
-获取属性字符串文本段落的首行文本缩进。单位：[vp](arkts-arkui-length-t.md)
+获取属性字符串文本段落的首行文本缩进。单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 

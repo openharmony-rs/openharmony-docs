@@ -53,14 +53,6 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 <!--DelEnd-->
 
 <!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 通知删除原因。 |
-<!--DelEnd-->
-
-<!--Del-->
 ### 类型（系统接口）
 
 | 名称 | 说明 |
@@ -80,4 +72,12 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 | [SubscribeCallbackData](arkts-notification-notificationsubscribe-subscribecallbackdata-t-sys.md) | 携带系统属性值的通知信息。 |
 | [VoiceContent](arkts-notification-notificationsubscribe-voicecontent-t-sys.md) | 通知消息中语音播报内容定义。 |
 | [VoiceContentOptions](arkts-notification-notificationsubscribe-voicecontentoptions-t-sys.md) | 实况通知语音播报内容配置项。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 通知删除原因。 |
 <!--DelEnd-->

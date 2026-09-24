@@ -31,13 +31,6 @@ import { JSON } from '@kit.ArkTS';
 | --- | --- |
 | [ParseOptions](arkts-arkts-json-parseoptions-i.md) | 解析的选项，可定义处理BigInt的模式。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [BigIntMode](arkts-arkts-json-bigintmode-e.md) | 定义处理BigInt的模式。由于JSON规范不支持BigInt类型，且Number精度范围为-(2^53-1)到(2^53-1)，本模块提供三种模式以适配不同场景的整数精度需求。 |
-| [ParseReturnType](arkts-arkts-json-parsereturntype-e.md) | 枚举解析返回结果的类型。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -45,3 +38,10 @@ import { JSON } from '@kit.ArkTS';
 | [ISendable](arkts-arkts-json-isendable-t.md) | ISendable是所有Sendable类型（除null和undefined）的父类型。自身没有任何必要的方法和属性。 |
 | [SendableTransformer](arkts-arkts-json-sendabletransformer-t.md) | 定义Sendable JSON解析的转换结果函数类型。 |
 | [Transformer](arkts-arkts-json-transformer-t.md) | 用于转换结果的函数类型。作为[JSON.parse](arkts-arkts-json-parse-f.md)函数的参数时，解析结果中的每个键值对按深度优先顺序（从最内层节点开始，逐层向外）依次调用此函数，this指向当前键值对所属的对象，返回值替换原始值，若返回undefined则该属性将被删除。作为JSON.stringify函数的参数时，序列化引擎会按从外到内的顺序对每个属性调用该函数处理，this指向当前属性所属的对象，返回值作为序列化结果。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [BigIntMode](arkts-arkts-json-bigintmode-e.md) | 定义处理BigInt的模式。由于JSON规范不支持BigInt类型，且Number精度范围为-(2^53-1)到(2^53-1)，本模块提供三种模式以适配不同场景的整数精度需求。 |
+| [ParseReturnType](arkts-arkts-json-parsereturntype-e.md) | 枚举解析返回结果的类型。 |

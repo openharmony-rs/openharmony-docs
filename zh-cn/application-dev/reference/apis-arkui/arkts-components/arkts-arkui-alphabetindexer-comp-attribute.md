@@ -235,32 +235,6 @@ onSelect(callback: OnAlphabetIndexerSelectCallback)
 | --- | --- | --- | --- |
 | callback | [OnAlphabetIndexerSelectCallback](arkts-arkui-alphabetindexer-comp-onalphabetindexerselectcallback-t.md) | 是 | 回调函数，用于处理索引项选中事件。<br>**适用版本：** 18 |
 
-## onSelected
-
-```TypeScript
-onSelected(callback: (index: number) => void)
-```
-
-注册索引项选中事件回调，回调参数为当前选中项索引。
-
-> **说明：** 
-
-> 从API version 7开始支持，从API version 8开始废弃，建议使用[onSelect](#onselect)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 8
-
-**替代接口：** [onSelect](#onselect)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | (index: number) =&gt; void | 是 | 当前选中的索引。 |
-
 ## popupBackground
 
 ```TypeScript
@@ -604,3 +578,29 @@ usingPopup(value: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否显示提示弹窗。<br>默认值：false <br>true：显示提示弹窗。<br>false：不显示提示弹窗。 |
+
+## onSelected
+
+```TypeScript
+onSelected(callback: (index: number) => void)
+```
+
+注册索引项选中事件回调，回调参数为当前选中项索引。
+
+> **说明：** 
+
+> 从API version 7开始支持，从API version 8开始废弃，建议使用[onSelect](#onselect)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 8
+
+**替代接口：** [onSelect](#onselect)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | (index: number) =&gt; void | 是 | 当前选中的索引。 |

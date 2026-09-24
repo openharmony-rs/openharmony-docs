@@ -32,15 +32,15 @@ import { stationary } from '@kit.MultimodalAwarenessKit';
 | --- | --- |
 | [ActivityResponse](arkts-multimodalawareness-stationary-activityresponse-i.md) | 服务响应抽象接口。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ActivityType](arkts-multimodalawareness-stationary-activitytype-t.md) | 设备状态类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
 | [ActivityEvent](arkts-multimodalawareness-stationary-activityevent-e.md) | 设备状态事件。 |
 | [ActivityState](arkts-multimodalawareness-stationary-activitystate-e.md) | 设备状态返回值。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [ActivityType](arkts-multimodalawareness-stationary-activitytype-t.md) | 设备状态类型。 |

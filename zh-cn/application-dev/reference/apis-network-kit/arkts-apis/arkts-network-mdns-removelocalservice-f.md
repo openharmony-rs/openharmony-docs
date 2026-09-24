@@ -33,7 +33,7 @@ function removeLocalService(context: Context, serviceInfo: LocalServiceInfo,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2204002](../errorcode-net-mdns.md#2204002-未找到目标服务) | Callback not found. |
@@ -106,7 +106,7 @@ function removeLocalService(context: Context, serviceInfo: LocalServiceInfo): Pr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2204002](../errorcode-net-mdns.md#2204002-未找到目标服务) | Callback not found. |

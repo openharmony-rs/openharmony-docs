@@ -2,7 +2,7 @@
 
 提供在给定范围内选择评分的组件，通常用于商品评价、内容打分等应用场景。
 
-> **说明：**
+> **说明：** 
 
 > - 当Rating的父节点有指定宽高时，需为Rating组件指定宽高，或为父节点设置值为true的[clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1)属性。
 

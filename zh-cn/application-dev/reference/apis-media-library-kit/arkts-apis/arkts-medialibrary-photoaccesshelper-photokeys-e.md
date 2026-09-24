@@ -351,7 +351,7 @@ DETAIL_TIME = 'detail_time'
 ## DATE_TAKEN_MS
 
 ```TypeScript
-DATE_TAKEN_MS = 'date_taken_ms'
+DATE_TAKEN_MS  = 'date_taken_ms'
 ```
 
 拍摄时的Unix时间戳（单位：毫秒）。

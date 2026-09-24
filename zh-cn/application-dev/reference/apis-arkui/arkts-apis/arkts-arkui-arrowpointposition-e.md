@@ -4,11 +4,9 @@
 declare enum ArrowPointPosition
 ```
 
-ArrowPointPosition enumeration description
+气泡箭头的位置。
 
-@enum { string }
-
-**起始版本：** 12
+**起始版本：** 11
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,9 +16,9 @@ ArrowPointPosition enumeration description
 START = 'Start'
 ```
 
-Target start position
+水平方向：位于父组件最左侧；垂直方向：位于父组件最上侧。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,9 +32,9 @@ Target start position
 CENTER = 'Center'
 ```
 
-Target center position
+位于父组件居中位置。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,9 +48,9 @@ Target center position
 END = 'End'
 ```
 
-Target end position
+水平方向：位于父组件最右侧；垂直方向：位于父组件最下侧。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

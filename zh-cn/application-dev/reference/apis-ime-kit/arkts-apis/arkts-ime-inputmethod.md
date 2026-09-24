@@ -94,20 +94,6 @@ import { inputMethod } from '@kit.IMEKit';
 | [InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i-sys.md) | 输入法软键盘的窗口信息。 |
 <!--DelEnd-->
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [AttachFailureReason](arkts-ime-inputmethod-attachfailurereason-e.md) | 枚举，绑定失败的原因。 |
-| [CapitalizeMode](arkts-ime-inputmethod-capitalizemode-e.md) | 枚举，定义了文本首字母大写的不同模式。<br> |
-| [Direction](arkts-ime-inputmethod-direction-e.md) | 光标移动方向。 |
-| [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | 输入法启用状态。 |
-| [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md) | Enter键的功能类型。 |
-| [ExtendAction](arkts-ime-inputmethod-extendaction-e.md) | 编辑框中文本的扩展编辑操作类型，如剪切、复制等。 |
-| [KeyboardStatus](arkts-ime-inputmethod-keyboardstatus-e.md) | 输入法软键盘状态。 |
-| [RequestKeyboardReason](arkts-ime-inputmethod-requestkeyboardreason-e.md) | 请求键盘输入的原因。 |
-| [TextInputType](arkts-ime-inputmethod-textinputtype-e.md) | 文本输入类型。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -121,6 +107,20 @@ import { inputMethod } from '@kit.IMEKit';
 | --- | --- |
 | [ImeChangeWithUserIdCallback](arkts-ime-inputmethod-imechangewithuseridcallback-t-sys.md) | 输入法变更事件回调，携带发生输入法变更的用户ID。 |
 <!--DelEnd-->
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [AttachFailureReason](arkts-ime-inputmethod-attachfailurereason-e.md) | 枚举，绑定失败的原因。 |
+| [CapitalizeMode](arkts-ime-inputmethod-capitalizemode-e.md) | 枚举，定义了文本首字母大写的不同模式。<br> |
+| [Direction](arkts-ime-inputmethod-direction-e.md) | 光标移动方向。 |
+| [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | 输入法启用状态。 |
+| [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md) | Enter键的功能类型。 |
+| [ExtendAction](arkts-ime-inputmethod-extendaction-e.md) | 编辑框中文本的扩展编辑操作类型，如剪切、复制等。 |
+| [KeyboardStatus](arkts-ime-inputmethod-keyboardstatus-e.md) | 输入法软键盘状态。 |
+| [RequestKeyboardReason](arkts-ime-inputmethod-requestkeyboardreason-e.md) | 请求键盘输入的原因。 |
+| [TextInputType](arkts-ime-inputmethod-textinputtype-e.md) | 文本输入类型。 |
 
 ### 常量
 

@@ -43,6 +43,13 @@ import { hid } from '@kit.ConnectivityKit';
 | [HidHostProfile](arkts-connectivity-hid-hidhostprofile-i-sys.md) | HidHostProfile类提供蓝牙HID设备的连接和断开等管理功能，适用于系统应用中管理蓝牙HID设备的场景。使用HidHostProfile方法之前需要创建该类的实例进行操作，通过[createHidHostProfile()](arkts-connectivity-hid-createhidhostprofile-f.md)方法构造此实例。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [BaseProfile](arkts-connectivity-hid-baseprofile-t.md) | 基础Profile接口定义，提供订阅连接状态和获取连接状态等公共能力。 |
+| [BluetoothAddress](arkts-connectivity-hid-bluetoothaddress-t.md) | 描述蓝牙设备地址信息的参数结构，包括地址与地址类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -52,10 +59,3 @@ import { hid } from '@kit.ConnectivityKit';
 | [ReportType](arkts-connectivity-hid-reporttype-e.md) | 枚举，报告类型。 |
 | [ServiceType](arkts-connectivity-hid-servicetype-e.md) | 枚举，描述HID设备与主机之间连接的服务类型。 |
 | [Subclass](arkts-connectivity-hid-subclass-e.md) | 枚举，HID设备的具体类型。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [BaseProfile](arkts-connectivity-hid-baseprofile-t.md) | 基础Profile接口定义，提供订阅连接状态和获取连接状态等公共能力。 |
-| [BluetoothAddress](arkts-connectivity-hid-bluetoothaddress-t.md) | 描述蓝牙设备地址信息的参数结构，包括地址与地址类型。 |

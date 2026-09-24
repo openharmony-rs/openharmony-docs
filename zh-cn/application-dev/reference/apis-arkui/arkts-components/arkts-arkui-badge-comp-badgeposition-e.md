@@ -16,7 +16,7 @@ declare enum BadgePosition
 RightTop
 ```
 
-圆点显示在右上角。
+标记显示在右上角。
 
 **起始版本：** 7
 
@@ -32,7 +32,7 @@ RightTop
 Right
 ```
 
-Dots are displayed in the upper right corner.
+标记显示在右侧纵向居中。
 
 **起始版本：** 7
 
@@ -48,7 +48,7 @@ Dots are displayed in the upper right corner.
 Left
 ```
 
-The dot is displayed in the left vertical center.
+标记显示在左侧纵向居中。
 
 **起始版本：** 7
 

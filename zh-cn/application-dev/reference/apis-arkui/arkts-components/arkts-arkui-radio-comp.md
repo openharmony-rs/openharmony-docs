@@ -2,9 +2,11 @@
 
 单选框，提供单选类型的用户交互选择项。
 
-> **说明：** > > - API version 12开始，Radio选中默认样式由RadioIndicatorType.DOT变为RadioIndicatorType.TICK。
+> **说明：** 
+> 
+> - API version 12开始，Radio选中默认样式由RadioIndicatorType.DOT变为RadioIndicatorType.TICK。
 
-> - 该组件默认有[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)间距，默认值为：{&nbsp;top: '14px',&nbsp;right: '14px',&nbsp;bottom: '14px',& > nbsp;left: '14px' }。
+> - 该组件默认有[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)间距，默认值为：{&nbsp;top: '14px',&nbsp;right: '14px',&nbsp;bottom: '14px',&nbsp;left: '14px' }。
 
 ## 子组件
 

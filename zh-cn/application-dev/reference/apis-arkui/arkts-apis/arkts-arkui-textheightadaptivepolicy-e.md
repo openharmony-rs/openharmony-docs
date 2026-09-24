@@ -4,7 +4,7 @@
 declare enum TextHeightAdaptivePolicy
 ```
 
-Enum of text height adaptation
+文本自适应布局调整字号的方式。
 
 **起始版本：** 10
 
@@ -16,7 +16,7 @@ Enum of text height adaptation
 MAX_LINES_FIRST = 0
 ```
 
-Priority is given to using the maxLines attribute to adapt the text height. If the layout size using the maxLines attribute exceeds the layout constraint, try reducing the font size to display more text.
+设置文本高度自适应方式为以[maxLines](../arkts-components/arkts-arkui-textarea-comp-attribute.md#maxlines)优先。
 
 **起始版本：** 10
 
@@ -32,7 +32,7 @@ Priority is given to using the maxLines attribute to adapt the text height. If t
 MIN_FONT_SIZE_FIRST = 1
 ```
 
-Priority is given to using the minFontSize attribute to adapt the text height. If the text can be layout in a single line using the minFontSize property, try increasing the font size and using the maximum possible font size.
+设置文本高度自适应方式为以缩小字体优先。
 
 **起始版本：** 10
 
@@ -48,7 +48,7 @@ Priority is given to using the minFontSize attribute to adapt the text height. I
 LAYOUT_CONSTRAINT_FIRST = 2
 ```
 
-Priority is given to using the layout constraint to adapt the text height. If the layout size exceeds the layout constraint, try reducing the font size. If the layout size still exceeds the layout constraint after reducing the font size to minFontSize, remove the lines that exceed the layout constraint.
+设置文本高度自适应方式为以布局约束（高度）优先。
 
 **起始版本：** 10
 

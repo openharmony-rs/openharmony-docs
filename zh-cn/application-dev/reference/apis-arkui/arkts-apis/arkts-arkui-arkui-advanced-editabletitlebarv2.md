@@ -34,12 +34,6 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 | [EditableTitleBarStyleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarstylev2options-i.md) | 标题栏样式配置选项接口。 |
 | [EditableTitleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlev2options-i.md) | 标题配置选项接口。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md) | 左侧图标类型枚举。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -47,6 +41,12 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 | [EditableTitleBarItemV2](arkts-arkui-editabletitlebaritemv2-t.md) | 左侧图像项类型别名。 |
 | [EditableTitleBarItemV2Options](arkts-arkui-editabletitlebaritemv2options-t.md) | 左侧图像项配置选项类型别名。 |
 | [OnActionCallback](arkts-arkui-onactioncallback-t.md) | 点击事件的回调函数类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md) | 左侧图标类型枚举。 |
 
 ## 示例
 

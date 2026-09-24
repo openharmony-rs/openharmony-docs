@@ -40,8 +40,8 @@ function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 20 - 26.0.0 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Unsupported API.<br>**适用版本：** 20 - 26.0.0 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 20 - 26.0.0 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Unsupported API.<br>**适用版本：** 20 - 26.0.0 |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Loopback mode is unsupported. |
 

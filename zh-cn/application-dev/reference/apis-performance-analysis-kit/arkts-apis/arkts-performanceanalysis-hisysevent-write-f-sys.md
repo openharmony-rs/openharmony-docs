@@ -36,7 +36,7 @@ function write(info: SysEventInfo): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [11200001](../errorcode-hisysevent-sys.md#11200001-非法的事件领域) | Invalid event domain. |
 | [11200002](../errorcode-hisysevent-sys.md#11200002-非法的事件名称) | Invalid event name. |
 | [11200003](../errorcode-hisysevent-sys.md#11200003-环境异常) | Abnormal environment. |
@@ -111,7 +111,7 @@ function write(info: SysEventInfo, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [11200001](../errorcode-hisysevent-sys.md#11200001-非法的事件领域) | Invalid event domain. |
 | [11200002](../errorcode-hisysevent-sys.md#11200002-非法的事件名称) | Invalid event name. |
 | [11200003](../errorcode-hisysevent-sys.md#11200003-环境异常) | Abnormal environment. |

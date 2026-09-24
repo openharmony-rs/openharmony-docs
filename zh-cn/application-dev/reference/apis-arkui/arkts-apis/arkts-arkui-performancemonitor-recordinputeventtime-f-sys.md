@@ -34,7 +34,7 @@ function recordInputEventTime(type: ActionType, sourceType: SourceType, time: nu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application. |
 
 **示例**
 

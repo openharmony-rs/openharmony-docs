@@ -18,7 +18,7 @@ ReplaceSymbolEffect继承自父类SymbolEffect。
 constructor(scope?: EffectScope)
 ```
 
-AppearSymbolEffect的构造函数，出现动效。
+ReplaceSymbolEffect的构造函数，替换动效。
 
 **起始版本：** 12
 

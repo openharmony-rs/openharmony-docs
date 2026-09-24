@@ -32,8 +32,8 @@ function createPort(uuid: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because the chip does not support it. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100020](../errorcode-nearlink-service.md#36100020-端口重复注册) | The UUID is already registered. |
 | [36100021](../errorcode-nearlink-service.md#36100021-端口注册数量超出上限) | Port exceeds the upper limit. |

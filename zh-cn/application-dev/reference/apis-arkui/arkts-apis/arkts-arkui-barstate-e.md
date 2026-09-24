@@ -4,7 +4,7 @@
 declare enum BarState
 ```
 
-Used to set the status of the scroll bar.
+用于设置滚动条的状态。
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@ Used to set the status of the scroll bar.
 Off
 ```
 
-Not displayed.
+不显示。
 
 **起始版本：** 7
 
@@ -34,7 +34,7 @@ Not displayed.
 Auto
 ```
 
-On-demand display (displayed when you touch it and disappears after 2 seconds).
+按需显示（触摸时显示，2s后消失）。
 
 **起始版本：** 7
 
@@ -52,7 +52,7 @@ On-demand display (displayed when you touch it and disappears after 2 seconds).
 On
 ```
 
-Resident display.
+常驻显示。
 
 **起始版本：** 7
 

@@ -18,4 +18,4 @@ export type OnDateCounterV2ChangeCallback = (date: CounterV2DateData) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| date | [CounterV2DateData](arkts-arkui-arkui-advanced-counterv2-counterv2datedata-c.md) | 是 |  |
+| date | [CounterV2DateData](arkts-arkui-arkui-advanced-counterv2-counterv2datedata-c.md) | 是 | 当前显示的日期值。 |

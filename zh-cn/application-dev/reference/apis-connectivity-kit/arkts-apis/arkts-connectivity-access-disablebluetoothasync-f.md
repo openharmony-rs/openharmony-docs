@@ -34,8 +34,8 @@ function disableBluetoothAsync(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900013](../errorcode-bluetoothManager.md#2900013-前置操作超时) | The user does not respond. |
 | [2900014](../errorcode-bluetoothManager.md#2900014-用户拒绝此操作) | User refuse the action. |

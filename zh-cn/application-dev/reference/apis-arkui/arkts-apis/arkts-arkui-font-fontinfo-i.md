@@ -182,8 +182,6 @@ weight: number
 
 取值范围：[100,900]，取值间隔为100，分别对应[FontWeight](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontweight-e.md)枚举中的值。
 
-默认值：100
-
 **类型：** number
 
 **起始版本：** 10

@@ -26,7 +26,7 @@ import { advertising } from '@kit.AdsKit';
 
 - refreshTime：AutoAdComponent组件可选自定义参数，用于控制广告的轮播时间间隔。类型number，单位：ms，取值范围[30000, 120000]。如果不设置或取值为非数字或小于等于0的数字，则不轮播，只会展示广告响应中的第一个广告内容。设置小于30000的数字取值30000，设置大于120000的数字取值120000。
 
-&lt;!--RP3--&gt;&lt;!--RP3End--&gt;
+<!--RP3--><!--RP3End-->
 
 **类型：** number &#124; boolean &#124; string &#124; undefined
 

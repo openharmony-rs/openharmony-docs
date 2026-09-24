@@ -4,9 +4,7 @@
 declare enum MarqueeUpdateStrategy
 ```
 
-Marquee scrolling strategy after text update
-
-@enum { number }
+跑马灯组件属性更新后，跑马灯的滚动策略。
 
 **起始版本：** 12
 
@@ -18,7 +16,7 @@ Marquee scrolling strategy after text update
 DEFAULT = 0
 ```
 
-Reset scroll position and restart scroll.
+跑马灯组件属性更新后，从开始位置，运行跑马灯效果。
 
 **起始版本：** 12
 
@@ -34,7 +32,7 @@ Reset scroll position and restart scroll.
 PRESERVE_POSITION = 1
 ```
 
-Preserve scroll position, just change to new text
+跑马灯组件属性更新后，保持当前位置，运行跑马灯效果。
 
 **起始版本：** 12
 

@@ -1,4 +1,4 @@
-# @ohos.calendarManager
+# @ohos.calendarManager(日程管理能力)
 
 本模块提供日历与日程管理能力，包括日历和日程的创建、删除、修改、查询等。
 

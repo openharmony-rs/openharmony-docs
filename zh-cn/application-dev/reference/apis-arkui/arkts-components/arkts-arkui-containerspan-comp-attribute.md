@@ -6,8 +6,6 @@ declare class ContainerSpanAttribute
 
 仅支持以下属性：
 
-不支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
-
 **起始版本：** 11
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

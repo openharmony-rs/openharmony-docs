@@ -182,32 +182,6 @@ lunar(isLunar: Optional<boolean>)
 | --- | --- | --- | --- |
 | isLunar | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 日期是否显示为农历。<br>- true：显示为农历。<br>- false：不显示为农历。<br>默认值：false <br>当isLunar的值为undefined时，使用默认值。 |
 
-## onChange
-
-```TypeScript
-onChange(callback: (value: DatePickerResult) => void)
-```
-
-滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。
-
-从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange](#ondatechange)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** [onDateChange](#ondatechange)(callback: Callback&lt;Date&gt;)
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | (value: DatePickerResult) =&gt; void | 是 | 返回选中的时间，包含年、月、日字段。 |
-
 ## onDateChange
 
 ```TypeScript
@@ -349,3 +323,29 @@ textStyle(style: Optional<PickerTextStyle>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | 是 | 待选项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>当style的值为undefined时，使用默认值。 |
+
+## onChange
+
+```TypeScript
+onChange(callback: (value: DatePickerResult) => void)
+```
+
+滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。
+
+从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange](#ondatechange)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** [onDateChange](#ondatechange)(callback: Callback&lt;Date&gt;)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | (value: DatePickerResult) =&gt; void | 是 | 返回选中的时间，包含年、月、日字段。 |

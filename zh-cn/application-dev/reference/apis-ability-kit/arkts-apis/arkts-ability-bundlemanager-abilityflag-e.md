@@ -100,7 +100,7 @@ GET_ABILITY_INFO_ONLY_SYSTEM_APP = 0x00000010
 GET_ABILITY_INFO_WITH_APP_LINKING = 0x00000040
 ```
 
-获取通过&lt;!--RP3--&gt;[域名校验](../../../application-models/app-linking-startup.md#实现原理)&lt;!--RP3End--&gt;筛选的AbilityInfo。
+获取通过<!--RP3-->[域名校验](../../../application-models/app-linking-startup.md#实现原理)<!--RP3End-->筛选的AbilityInfo。
 
 **起始版本：** 20
 

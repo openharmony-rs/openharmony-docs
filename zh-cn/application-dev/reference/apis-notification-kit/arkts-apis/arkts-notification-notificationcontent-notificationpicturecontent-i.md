@@ -12,7 +12,7 @@ export interface NotificationPictureContent extends NotificationBasicContent
 > 
 > - 用户点击成组展示的通知，查看各个通知详情时，该通知的展示效果变化为展开态。
 > 
-> - 实际显示效果依赖于设备能力和通知中心UI样式&lt;!--RP1--&gt;&lt;!--RP1End--&gt;。
+> - 实际显示效果依赖于设备能力和通知中心UI样式<!--RP1--><!--RP1End-->。
 
 **继承/实现关系：** NotificationPictureContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
 

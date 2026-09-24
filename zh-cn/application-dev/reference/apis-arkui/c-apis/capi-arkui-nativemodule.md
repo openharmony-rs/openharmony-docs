@@ -49,7 +49,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [text_input.h](capi-text-input-h.md) | 定义TextInput相关的枚举。支持多种输入类型配置（包括文本、数字、密码、邮箱、电话号码等）、清除按钮样式定制、自动填充内容类型设置和输入框风格选择，适用于登录注册、表单填写、搜索输入等需要用户交互输入的场景， 帮助开发者快速实现符合业务需求的单行文本输入功能。 |
 | [checkbox.h](capi-checkbox-h.md) | Provides Checkbox node type definitions for <b>NativeNode</b> APIs. |
 | [list.h](capi-list-h.md) | 定义List组件相关的枚举和接口。 |
-| [text.h](capi-text-h.md) | 定义Text相关的枚举和接口，用于配置文本样式、控制跑马灯效果、实现文本实体识别以及管理文本控制器等功能。适用于需要自定义文本显示效果、实现动态文本交互、识别文本中特殊实体（如地址、电话号码）以及精确控制文本字体粗细 等场景。通过这些配置接口，开发者可以灵活控制文本组件的显示效果和交互行为，提升用户体验。 |
+| [text.h](capi-text-h.md) | 定义Text相关的枚举和接口，用于配置文本样式、控制跑马灯效果、实现文本实体识别以及管理文本控制器等功能。适用于需要自定义文本显示效果、实现动态文本交互、识别文本中特殊实体（如地址、电话号码） 以及精确控制文本字体粗细等场景。通过这些配置接口，开发者可以灵活控制文本组件的显示效果和交互行为，提升用户体验。 |
 | [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义。 |
 | [embedded_component.h](capi-embedded-component-h.md) | 声明EmbeddedComponent组件选项（ArkUI_EmbeddedComponentOption）相关的结构体和方法。 开发者可通过这些方法创建、销毁组件选项对象，并为EmbeddedComponent组件设置运行异常回调（onError）和正常退出回调（onTerminated）。 适用于需要在应用中嵌入EmbeddedUIExtensionAbility组件并管理其生命周期、监听运行异常与正常退出事件的应用场景，帮助开发者灵活处理组件运行过程中的状态变化。 |
 | [picker.h](capi-picker-h.md) | 为NativeNode API提供Picker节点类型定义，支持日期选择器、文本选择器等多种类型的选择器组件， 适用于需要在原生层实现滚动选择功能的场景， 提供了丰富的样式配置和数据联动能力，帮助开发者灵活构建各类选择交互。 |

@@ -10,6 +10,22 @@ ConsoleMessage是Web组件中封装JavaScript控制台输出信息的对象。�
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+<a id="constructor-1"></a>
+
+## constructor
+
+```TypeScript
+constructor()
+```
+
+ConsoleMessage的构造函数。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
 ## constructor
 
 ```TypeScript
@@ -34,22 +50,6 @@ ConsoleMessage的构造函数。
 | sourceId | string | 是 | 网页源文件的路径和文件名。 |
 | lineNumber | number | 是 | ConsoleMessage的行号。 |
 | messageLevel | [MessageLevel](arkts-arkweb-web-comp-messagelevel-e.md) | 是 | ConsoleMessage的日志级别。 |
-
-<a id="constructor-1"></a>
-
-## constructor
-
-```TypeScript
-constructor()
-```
-
-ConsoleMessage的构造函数。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Web.Webview.Core
 
 ## getLineNumber
 

@@ -193,36 +193,6 @@ prefixSymbol?: ChipSymbolGlyphOptions
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## suffixIcon
-
-```TypeScript
-suffixIcon?: IconOptions
-```
-
-后缀Image图标属性。当需要在Chip后显示Image图标以提供额外操作或状态提示时设置此参数。
-
-默认值：不显示后缀Image图标。
-
-值为undefined时，按默认值处理。
-
-**说明：** 当suffixIcon有传入参数时，allowClose不生效。
-
-**说明：** 从API version 12开始支持，从API version 14开始废弃。建议使用[suffixImageIcon](arkts-arkui-arkui-advanced-chipgroup-suffiximageiconoptions-i.md)替代。
-
-**类型：** [IconOptions](arkts-arkui-arkui-advanced-chipgroup-iconoptions-i.md)
-
-**起始版本：** 12
-
-**废弃版本：** 14
-
-**替代接口：** [suffixImageIcon](#suffiximageicon)
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## suffixImageIcon
 
 ```TypeScript
@@ -290,5 +260,35 @@ suffixSymbolOptions?: ChipSuffixSymbolGlyphOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## suffixIcon
+
+```TypeScript
+suffixIcon?: IconOptions
+```
+
+后缀Image图标属性。当需要在Chip后显示Image图标以提供额外操作或状态提示时设置此参数。
+
+默认值：不显示后缀Image图标。
+
+值为undefined时，按默认值处理。
+
+**说明：** 当suffixIcon有传入参数时，allowClose不生效。
+
+**说明：** 从API version 12开始支持，从API version 14开始废弃。建议使用[suffixImageIcon](arkts-arkui-arkui-advanced-chipgroup-suffiximageiconoptions-i.md)替代。
+
+**类型：** [IconOptions](arkts-arkui-arkui-advanced-chipgroup-iconoptions-i.md)
+
+**起始版本：** 12
+
+**废弃版本：** 14
+
+**替代接口：** [suffixImageIcon](#suffiximageicon)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

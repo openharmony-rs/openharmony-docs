@@ -8,7 +8,7 @@ export enum ExtensionAbilityType
 
 <!--Table: 30%; 10%; 60%-->
 
-&lt;!--RP2--&gt;&lt;!--RP2End--&gt;
+<!--RP2--><!--RP2End-->
 
 **起始版本：** 9
 

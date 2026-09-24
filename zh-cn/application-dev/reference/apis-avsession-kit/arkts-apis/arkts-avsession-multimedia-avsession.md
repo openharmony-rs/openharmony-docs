@@ -139,6 +139,19 @@ import { avSession } from '@kit.AVSessionKit';
 | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) | 会话令牌的信息。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md) |  |
+| [AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md) | The type of control command |
+| [AVMediaCenterControlType](arkts-avsession-avsession-avmediacentercontroltype-t.md) | 应用可选择设置优先级的播控组件类型 |
+| [AVSessionType](arkts-avsession-avsession-avsessiontype-t.md) | 当前会话支持的会话类型。 |
+| [ExtraInfo](arkts-avsession-avsession-extrainfo-t.md) | 媒体提供方设置的自定义媒体数据包对象。 |
+| [KeyRequestCallback](arkts-avsession-avsession-keyrequestcallback-t.md) | 许可证请求事件的回调函数。 |
+| [NoParamCallback](arkts-avsession-avsession-noparamcallback-t.md) | 定义无参数的回调函数类型。 |
+| [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md) | 定义包含两个参数的回调类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -172,16 +185,3 @@ import { avSession } from '@kit.AVSessionKit';
 | [ProtocolType](arkts-avsession-avsession-protocoltype-e-sys.md) | 远端设备支持的协议类型的枚举。 |
 | [SessionCategory](arkts-avsession-avsession-sessioncategory-e-sys.md) | 表示不同场景会话类别的枚举。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md) |  |
-| [AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md) | The type of control command |
-| [AVMediaCenterControlType](arkts-avsession-avsession-avmediacentercontroltype-t.md) | 应用可选择设置优先级的播控组件类型 |
-| [AVSessionType](arkts-avsession-avsession-avsessiontype-t.md) | 当前会话支持的会话类型。 |
-| [ExtraInfo](arkts-avsession-avsession-extrainfo-t.md) | 媒体提供方设置的自定义媒体数据包对象。 |
-| [KeyRequestCallback](arkts-avsession-avsession-keyrequestcallback-t.md) | 许可证请求事件的回调函数。 |
-| [NoParamCallback](arkts-avsession-avsession-noparamcallback-t.md) | 定义无参数的回调函数类型。 |
-| [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md) | 定义包含两个参数的回调类型。 |

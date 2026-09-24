@@ -10,24 +10,6 @@ export interface NotificationContent
 
 **系统能力：** SystemCapability.Notification.Notification
 
-## contentType
-
-```TypeScript
-contentType?: notification.ContentType
-```
-
-通知内容类型。
-
-**类型：** [notification.ContentType](arkts-notification-notification-contenttype-depr-e.md)
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-**替代接口：** [notificationContentType](#notificationcontenttype)
-
-**系统能力：** SystemCapability.Notification.Notification
-
 ## longText
 
 ```TypeScript
@@ -109,5 +91,23 @@ systemLiveView?: NotificationSystemLiveViewContent
 **类型：** [NotificationSystemLiveViewContent](arkts-notification-notificationcontent-notificationsystemliveviewcontent-i.md)
 
 **起始版本：** 11
+
+**系统能力：** SystemCapability.Notification.Notification
+
+## contentType
+
+```TypeScript
+contentType?: notification.ContentType
+```
+
+通知内容类型。
+
+**类型：** [notification.ContentType](arkts-notification-notification-contenttype-depr-e.md)
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+**替代接口：** [notificationContentType](#notificationcontenttype)
 
 **系统能力：** SystemCapability.Notification.Notification

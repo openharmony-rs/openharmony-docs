@@ -2,6 +2,10 @@
 
 ImageSpan是[Text](arkts-arkui-text-comp.md#text)、[ContainerSpan](arkts-arkui-containerspan-comp-attribute.md)组件的子组件，用于在文本中显示行内图片，支持设置图片对齐方式、缩放类型、加载占位图和颜色滤镜等，适用于需要在文本段落中嵌入图片实现图文混排的场景。
 
+> **说明：** 
+> 
+> - 该组件从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 ## 子组件
 
 无

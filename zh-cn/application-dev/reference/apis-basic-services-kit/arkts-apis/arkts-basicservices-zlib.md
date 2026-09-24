@@ -50,6 +50,13 @@ import { zlib } from '@kit.BasicServicesKit';
 | [ZipOutputInfo](arkts-basicservices-zlib-zipoutputinfo-i.md) | 压缩和解压缩的返回值信息。 |
 | [ZStream](arkts-basicservices-zlib-zstream-i.md) | 处理所有用于压缩和解压缩所需的信息。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [InflateBackInputCallback](arkts-basicservices-zlib-inflatebackinputcallback-t.md) | 一个用于读取用户提供的输入数据的回调函数。当解压缩过程需要更多输入数据时，zlib 将调用此函数。此函数应从数据源读取数据并将其写入缓冲区中。 |
+| [InflateBackOutputCallback](arkts-basicservices-zlib-inflatebackoutputcallback-t.md) | 用户提供的输出数据会被写入回调函数中。每当解压后的数据准备好进行输出时，zlib 就会调用此函数将缓冲区中的数据写入目标位置。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -64,10 +71,3 @@ import { zlib } from '@kit.BasicServicesKit';
 | [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md) | ParallelStrategy作为[Options](arkts-basicservices-zlib-options-i.md)的一个属性，用于指定压缩或解压时的串行或并行策略。 |
 | [PathSeparatorStrategy](arkts-basicservices-zlib-pathseparatorstrategy-e.md) | PathSeparatorStrategy作为[Options](arkts-basicservices-zlib-options-i.md)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。 |
 | [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md) | 压缩/解压缩函数的返回代码。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [InflateBackInputCallback](arkts-basicservices-zlib-inflatebackinputcallback-t.md) | 一个用于读取用户提供的输入数据的回调函数。当解压缩过程需要更多输入数据时，zlib 将调用此函数。此函数应从数据源读取数据并将其写入缓冲区中。 |
-| [InflateBackOutputCallback](arkts-basicservices-zlib-inflatebackoutputcallback-t.md) | 用户提供的输出数据会被写入回调函数中。每当解压后的数据准备好进行输出时，zlib 就会调用此函数将缓冲区中的数据写入目标位置。 |

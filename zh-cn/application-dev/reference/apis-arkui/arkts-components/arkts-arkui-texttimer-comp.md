@@ -4,6 +4,10 @@ TextTimer是通过文本显示计时信息并控制其计时器状态的组件�
 
 组件不可见（非锁屏状态和应用后台状态）时，UI时间变动将停止（即该组件此时不会绘制），[onTimer](arkts-arkui-texttimer-comp-attribute.md#ontimer)仍然会正常触发。
 
+> **说明：** 
+> 
+> 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 ## 子组件
 
 无

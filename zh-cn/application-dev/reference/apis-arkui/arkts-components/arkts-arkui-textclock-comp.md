@@ -4,6 +4,10 @@ TextClock组件通过文本将当前系统时间显示在设备上，支持不�
 
 组件不可见时，时间变动将停止。组件的可见状态基于[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)处理，可见阈值ratios大于0即视为可见状态。
 
+> **说明：** 
+> 
+> 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 ## 子组件
 
 无

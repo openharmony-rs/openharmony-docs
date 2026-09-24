@@ -4,9 +4,7 @@
 declare enum FocusDrawLevel
 ```
 
-Type of focus draw level.
-
-@enum {number}
+定义节点获焦框的绘制层级。
 
 **起始版本：** 19
 
@@ -18,7 +16,7 @@ Type of focus draw level.
 SELF = 0
 ```
 
-Draw focus on node self level.
+获焦框绘制在节点自身层级。
 
 **起始版本：** 19
 
@@ -36,7 +34,7 @@ Draw focus on node self level.
 TOP = 1
 ```
 
-Draw focus on top level.
+获焦框绘制在当前实例Z序的最上层。
 
 **起始版本：** 19
 

@@ -32,28 +32,6 @@ SystemCapability.Multimedia.Audio.Capturer
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-## playbackCaptureConfig
-
-```TypeScript
-playbackCaptureConfig?: AudioPlaybackCaptureConfig
-```
-
-音频内录的配置信息。
-
-SystemCapability.Multimedia.Audio.PlaybackCapture
-
-从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。
-
-**类型：** [AudioPlaybackCaptureConfig](arkts-audio-audio-audioplaybackcaptureconfig-i.md)
-
-**起始版本：** 10
-
-**废弃版本：** 12
-
-**替代接口：** OH_AVScreenCapture in native interface.
-
-**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
-
 ## playbackCaptureMode
 
 ```TypeScript
@@ -87,3 +65,25 @@ SystemCapability.Multimedia.Audio.Capturer
 **起始版本：** 8
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+## playbackCaptureConfig
+
+```TypeScript
+playbackCaptureConfig?: AudioPlaybackCaptureConfig
+```
+
+音频内录的配置信息。
+
+SystemCapability.Multimedia.Audio.PlaybackCapture
+
+从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。
+
+**类型：** [AudioPlaybackCaptureConfig](arkts-audio-audio-audioplaybackcaptureconfig-i.md)
+
+**起始版本：** 10
+
+**废弃版本：** 12
+
+**替代接口：** OH_AVScreenCapture in native interface.
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture

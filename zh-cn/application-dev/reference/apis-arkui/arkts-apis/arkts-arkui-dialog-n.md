@@ -1,4 +1,4 @@
-# dialog
+# dialog(弹出框)
 
 ```TypeScript
 declare namespace dialog

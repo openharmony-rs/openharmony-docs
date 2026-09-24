@@ -39,7 +39,7 @@ function bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback<nu
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [26300001](../errorcode-deviceManager.md#26300001-扩展外设驱动服务异常) | ExternalDeviceManager service exception. |
 | [26300002](../errorcode-deviceManager.md#26300002-驱动服务端不允许驱动客户端绑定) | The driver service does not allow any client to bind. |
 

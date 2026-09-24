@@ -77,7 +77,7 @@ setRow(size: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [11104001](../errorcode-hiappevent.md#11104001-非法的事件包大小值) | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例**
@@ -113,7 +113,7 @@ setSize(size: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [11104001](../errorcode-hiappevent.md#11104001-非法的事件包大小值) | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例**

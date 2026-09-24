@@ -2,7 +2,7 @@
 
 仅在[Tabs](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs)中使用，对应一个切换页签的内容视图。
 
-> **说明：**
+> **说明：** 
 
 > - 该组件默认设置了[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)属性的值为true，若需要扩展内容区到组件外显示，需先关闭clip属性。
 

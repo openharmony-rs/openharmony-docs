@@ -4,9 +4,7 @@
 declare enum EmbeddedType
 ```
 
-Enum of EmbeddedType
-
-@enum { number }
+枚举类型，用于指定EmbeddedComponent可拉起的提供方类型。
 
 **起始版本：** 12
 
@@ -18,7 +16,7 @@ Enum of EmbeddedType
 EMBEDDED_UI_EXTENSION = 0
 ```
 
-The EmbeddedComponent show the UI in EmbeddedUIExtensionAbility.
+表示当前拉起的提供方类型为EmbeddedUIExtensionAbility。
 
 **起始版本：** 12
 

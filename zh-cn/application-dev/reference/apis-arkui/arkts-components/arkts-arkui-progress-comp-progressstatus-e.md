@@ -16,7 +16,7 @@ declare enum ProgressStatus
 LOADING
 ```
 
-加载中。
+加载中状态。开启检查更新动效，此时设置进度值不生效。
 
 **起始版本：** 10
 

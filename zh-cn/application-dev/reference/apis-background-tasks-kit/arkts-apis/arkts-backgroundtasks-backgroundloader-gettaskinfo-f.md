@@ -14,7 +14,7 @@ function getTaskInfo(taskId: number): Promise<TaskInfo>
 
 获取后台预取任务信息。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.2.0
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -38,6 +38,6 @@ function getTaskInfo(taskId: number): Promise<TaskInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [9700003](../errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 | [9700004](../errorcode-workScheduler.md#9700004-参数校验失败) | Check on taskId failed. |

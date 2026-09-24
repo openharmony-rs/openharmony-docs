@@ -41,8 +41,8 @@ function migrateData(sourcePaths: Array<string>, destinationPath: string): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [17700080](../errorcode-bundle.md#17700080-源路径中存在无效路径) | The source paths are invalid. |
 | [17700081](../errorcode-bundle.md#17700081-目标路径为无效路径) | The destination path is invalid. |
 | [17700082](../errorcode-bundle.md#17700082-用户身份认证失败) | User authentication failed. |

@@ -41,8 +41,8 @@ function stopRanging(callback: Callback<RangingResult>, params?: RangingParams):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [34900050](../errorcode-fusionConnectivity.md#34900050-该设备未发起测距) | The device has not initiated ranging. |
 | [34900052](../errorcode-fusionConnectivity.md#34900052-不支持指定类型的测距服务) | The specified type of ranging service is not supported. |
 | [34900054](../errorcode-fusionConnectivity.md#34900054-参数不符合业务规格) | The parameter value does not meet specifications. |

@@ -4,9 +4,7 @@
 export interface ScrollEventInfo
 ```
 
-ScrollEvent info.
-
-@interface ScrollEventInfo
+ScrollEvent滚动信息。
 
 **起始版本：** 12
 
@@ -24,7 +22,7 @@ import { uiObserver } from '@kit.ArkUI';
 axis?: Axis
 ```
 
-滚动方向。
+滚动组件的滚动方向。
 
 **类型：** [Axis](arkts-arkui-axis-e.md)
 
@@ -42,7 +40,7 @@ axis?: Axis
 id: string
 ```
 
-Scroll id.
+滚动组件的id。
 
 **类型：** string
 
@@ -60,7 +58,7 @@ Scroll id.
 offset: number
 ```
 
-Changed ScrollEvent offset.
+滚动组件的当前偏移量。
 
 **类型：** number
 
@@ -78,7 +76,7 @@ Changed ScrollEvent offset.
 scrollEvent: ScrollEventType
 ```
 
-Changed ScrollEvent type.
+滚动事件的类型。
 
 **类型：** [ScrollEventType](arkts-arkui-uiobserver-scrolleventtype-e.md)
 
@@ -96,7 +94,7 @@ Changed ScrollEvent type.
 uniqueId: number
 ```
 
-The uniqueId of the scrollable component.
+滚动组件的uniqueId。
 
 **类型：** number
 

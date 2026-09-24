@@ -31,4 +31,4 @@ Mark moduleNamespace which loaded by dynamic-import is collectable.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | if type of object is not moduleNameSpace. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | if type of object is not moduleNameSpace. |

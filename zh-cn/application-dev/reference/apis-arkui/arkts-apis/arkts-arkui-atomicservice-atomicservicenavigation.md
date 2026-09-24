@@ -28,6 +28,12 @@ import { AtomicServiceNavigation, NavDestinationBuilder, MixMode, GradientAlpha,
 | [SideBarOptions](arkts-arkui-atomicservice-atomicservicenavigation-sidebaroptions-i.md) | 侧边栏的功能选项。 |
 | [TitleOptions](arkts-arkui-atomicservice-atomicservicenavigation-titleoptions-i.md) | 标题栏选项。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [NavDestinationBuilder](arkts-arkui-navdestinationbuilder-t.md) | 用于创建NavDestination组件内容的构建器类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -36,12 +42,6 @@ import { AtomicServiceNavigation, NavDestinationBuilder, MixMode, GradientAlpha,
 | [GradientAlpha](arkts-arkui-atomicservice-atomicservicenavigation-gradientalpha-e.md) | 渐变色显示区域不透明度的可选项。 |
 | [MixMode](arkts-arkui-atomicservice-atomicservicenavigation-mixmode-e.md) | 背景色混合模式的可选项。 |
 | [TitleBarType](arkts-arkui-atomicservice-atomicservicenavigation-titlebartype-e.md) | 标题栏类型的可选项，默认值为ROUND_ICON。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [NavDestinationBuilder](arkts-arkui-navdestinationbuilder-t.md) | 用于创建NavDestination组件内容的构建器类型。 |
 
 ## 示例
 

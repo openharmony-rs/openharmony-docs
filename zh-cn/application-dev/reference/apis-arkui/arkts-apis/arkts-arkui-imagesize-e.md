@@ -4,7 +4,7 @@
 declare enum ImageSize
 ```
 
-ImageSize enumeration description
+用于设置图片宽高效果。
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@ ImageSize enumeration description
 Auto
 ```
 
-Keep the scale of the original image unchanged.
+保持原图的比例不变。
 
 **起始版本：** 7
 
@@ -32,7 +32,7 @@ Keep the scale of the original image unchanged.
 Cover
 ```
 
-Keep the aspect ratio to zoom in or out the image so that both sides of the image are greater than or equal to the display boundary.
+保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。
 
 **起始版本：** 7
 
@@ -48,7 +48,7 @@ Keep the aspect ratio to zoom in or out the image so that both sides of the imag
 Contain
 ```
 
-Keep the aspect ratio to zoom out or zoom in so that the image is completely displayed within the display boundary.
+保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。
 
 **起始版本：** 7
 
@@ -64,7 +64,7 @@ Keep the aspect ratio to zoom out or zoom in so that the image is completely dis
 FILL = 3
 ```
 
-Zoom in or out without maintaining the aspect ratio so that the image fills the display boundary.
+不保持宽高比进行放大缩小，使得图片充满显示边界。
 
 **起始版本：** 12
 

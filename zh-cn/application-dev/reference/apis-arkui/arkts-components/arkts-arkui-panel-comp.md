@@ -2,7 +2,9 @@
 
 可滑动面板，提供一种轻量的内容展示窗口，方便在不同尺寸中切换。
 
-> **说明：** > > 从API version 12开始，该组件不再维护，推荐使用通用属性[bindSheet](arkts-arkui-common-comp-commonmethod-c.md#bindsheet)。
+> **说明：** 
+> 
+> 从API version 12开始，该组件不再维护，推荐使用通用属性[bindSheet](arkts-arkui-common-comp-commonmethod-c.md#bindsheet)。
 
 ## Panel
 

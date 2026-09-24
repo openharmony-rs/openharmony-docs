@@ -1,7 +1,7 @@
 # PartnerAgentExtensionAbility
 
 ```TypeScript
-export default class PartnerAgentExtensionAbility extends ExtensionAbility
+export default declare class PartnerAgentExtensionAbility extends ExtensionAbility
 ```
 
 PartnerAgentExtensionAbility提供设备发现与扩展能力销毁的通知功能，本能力继承自[ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability-extensionability-c.md)，需要应用继承实现。

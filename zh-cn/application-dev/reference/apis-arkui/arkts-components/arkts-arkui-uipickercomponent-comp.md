@@ -2,9 +2,21 @@
 
 UIPickerComponent容器是用于实现用户选择操作的组件。它支持从一组有限的选项中让用户进行单选，采用立体滚轮样式提供直观的视觉反馈和流畅的滑动体验。该组件支持选项按需定制，包括文本类型、图片类型和图文组合类型，可根据业务需求提供更丰富的信息展示，可广泛应用于时间选择、日期选择、地区选择、状态选择等多种场景。
 
-> **说明：** > > - UIPickerComponent容器默认选项行高为40vp，默认显示7个选项。可通过[itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight) > 和[displayedItemCount](arkts-arkui-uipickercomponent-comp-attribute.md#displayeditemcount)属性进行配置。由于显示效果为立体滚轮样式，因此除 > 选中项外的其他选项会进行不同角度的旋转，实际的可视高度会小于选项行高。 > > - UIPickerComponent容器的[height](arkts-arkui-common-comp-commonmethod-c.md#height)建议设置为200vp。当设置的高度大于等于该建议值时， > 可完整显示默认的7个选项；若通过[displayedItemCount](arkts-arkui-uipickercomponent-comp-attribute.md#displayeditemcount)或 > [itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight)配置了更多可见项或更大选项高度，建议相应增大组件高度。设置高度小于建议 > 值时，显示范围会从上下边缘向中间裁剪，可显示的选项数量也会相应减少，始终保持选中项垂直居中。 > > - 当UIPickerComponent容器未设置[width](arkts-arkui-common-comp-commonmethod-c.md#width)时，取当前视图中可见子组件的最大宽度作为容器宽 > 度。建议为UIPickerComponent容器设置宽度，或为每个子组件设置相同宽度，以避免滑动过程中容器宽度动态发生变化，影响显示效果。 > > - UIPickerComponent容器的子组件的对齐方式固定为居中对齐，不支持通过[align](arkts-arkui-common-comp-commonmethod-c.md#align)属性改 > 变子组件的对齐方式。 > > - UIPickerComponent容器当前不支持智能手表设备。开发者可通过deviceInfo.deviceType获取设备类型，判断是否为智能手表设备。 > > - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> **说明：** 
+> 
+> - UIPickerComponent容器默认选项行高为40vp，默认显示7个选项。可通过[itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight)和[displayedItemCount](arkts-arkui-uipickercomponent-comp-attribute.md#displayeditemcount)属性进行配置。由于显示效果为立体滚轮样式，因此除选中项外的其他选项会进行不同角度的旋转，实际的可视高度会小于选项行高。
+> 
+> - UIPickerComponent容器的[height](arkts-arkui-common-comp-commonmethod-c.md#height)建议设置为200vp。当设置的高度大于等于该建议值时，可完整显示默认的7个选项；若通过[displayedItemCount](arkts-arkui-uipickercomponent-comp-attribute.md#displayeditemcount)或[itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight)配置了更多可见项或更大选项高度，建议相应增大组件高度。设置高度小于建议值时，显示范围会从上下边缘向中间裁剪，可显示的选项数量也会相应减少，始终保持选中项垂直居中。
+> 
+> - 当UIPickerComponent容器未设置[width](arkts-arkui-common-comp-commonmethod-c.md#width)时，取当前视图中可见子组件的最大宽度作为容器宽度。建议为UIPickerComponent容器设置宽度，或为每个子组件设置相同宽度，以避免滑动过程中容器宽度动态发生变化，影响显示效果。
+> 
+> - UIPickerComponent容器的子组件的对齐方式固定为居中对齐，不支持通过[align](arkts-arkui-common-comp-commonmethod-c.md#align)属性改变子组件的对齐方式。
+> 
+> - UIPickerComponent容器当前不支持智能手表设备。开发者可通过deviceInfo.deviceType获取设备类型，判断是否为智能手表设备。
+> 
+> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
 
->
+> 
 
 ## 子组件 > > - 支持多个子组件。 > - 支持子组件类型：[Text](arkts-arkui-text-comp.md#text)、[Image](arkts-arkui-image-comp.md#image)、[Row](arkts-arkui-row-comp.md#row)和[SymbolGlyph](arkts-arkui-symbolglyph-comp.md#symbolglyph)。 > - 支持渲染控制类型：[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)和 > [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)。
 

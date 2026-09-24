@@ -130,6 +130,14 @@ import { connection } from '@kit.NetworkKit';
 | [TraceRouteOptions](arkts-network-connection-tracerouteoptions-i.md) | 路由跟踪的选项。 |
 | [UdpNetPortStatesInfo](arkts-network-connection-udpnetportstatesinfo-i.md) | UDP端口状态信息。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [HttpRequest](arkts-network-connection-httprequest-t.md) | 定义一个HTTP请求，可以通过[http.createHttp](arkts-network-http-createhttp-f.md)创建。 |
+| [TCPSocket](arkts-network-connection-tcpsocket-t.md) | 定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md)创建。 |
+| [UDPSocket](arkts-network-connection-udpsocket-t.md) | 定义一个UDPSocket对象，可以通过[socket.constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md)创建。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -150,11 +158,3 @@ import { connection } from '@kit.NetworkKit';
 | --- | --- |
 | [ProxyMode](arkts-network-connection-proxymode-e-sys.md) | 表示代理模式的枚举。使用Promise异步回调。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [HttpRequest](arkts-network-connection-httprequest-t.md) | 定义一个HTTP请求，可以通过[http.createHttp](arkts-network-http-createhttp-f.md)创建。 |
-| [TCPSocket](arkts-network-connection-tcpsocket-t.md) | 定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md)创建。 |
-| [UDPSocket](arkts-network-connection-udpsocket-t.md) | 定义一个UDPSocket对象，可以通过[socket.constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md)创建。 |

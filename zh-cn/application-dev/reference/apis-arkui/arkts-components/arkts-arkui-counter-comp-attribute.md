@@ -4,9 +4,7 @@
 declare class CounterAttribute extends CommonMethod<CounterAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性。
-
-除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性。
 
 **继承/实现关系：** CounterAttribute extends CommonMethod<CounterAttribute>
 
@@ -78,7 +76,7 @@ onDec(event: VoidCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | Counter数值减少的回调函数。<br>**适用版本：** 18 |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | Counter 数值减少的回调函数。<br>**适用版本：** 18 |
 
 ## onInc
 
@@ -100,4 +98,4 @@ onInc(event: VoidCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | Counter数值增加的回调函数。<br>**适用版本：** 18 |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | Counter 数值增加的回调函数。<br>**适用版本：** 18 |
