@@ -62,7 +62,7 @@ struct Page {
 
 $rawfile(value: string): Resource
 
-获取工程rawfile目录下的资源信息。$rawfile会在编译期由工具链转换为[Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9)对象。通过\$rawfile访问rawfile目录下的资源，可参考[资源分类与访问](../../quick-start/resource-categories-and-access.md)。
+获取工程rawfile目录下的资源信息。\$rawfile会在编译期由工具链转换为[Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9)对象。通过\$rawfile访问rawfile目录下的资源，可参考[资源分类与访问](../../quick-start/resource-categories-and-access.md)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
