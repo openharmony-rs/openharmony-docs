@@ -50,17 +50,17 @@ import { preferences } from '@kit.ArkData';
 | [Options](arkts-arkdata-preferences-options-i.md) | Preferences实例配置选项。 |
 | [Preferences](arkts-arkdata-preferences-preferences-i.md) | 首选项实例，提供获取和修改存储数据的接口。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [StorageType](arkts-arkdata-preferences-storagetype-e.md) | Preferences的存储模式枚举。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [ValueType](arkts-arkdata-preferences-valuetype-t.md) | 表示支持的值类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [StorageType](arkts-arkdata-preferences-storagetype-e.md) | Preferences的存储模式枚举。 |
 
 ### 常量
 

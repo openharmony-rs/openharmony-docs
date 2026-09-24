@@ -138,7 +138,7 @@ prepare(config: AudioRecorderConfig): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied.<br>**适用版本：** 12+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied.<br>**适用版本：** 12+ |
 
 ## release
 

@@ -4,7 +4,7 @@
 export class FrameNode
 ```
 
-FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](arkts-arkui-nodecontroller-c.md)可通过[BuilderNode](arkts-arkui-buildernode-c.md)持有的FrameNode将其挂载到[NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md)上，也可通过FrameNode获取[RenderNode](arkts-arkui-rendernode-c.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活UI组合与自定义渲染需求。&lt;!--RP2--&gt;&lt;!--RP2End--&gt;
+FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](arkts-arkui-nodecontroller-c.md)可通过[BuilderNode](arkts-arkui-buildernode-c.md)持有的FrameNode将其挂载到[NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md)上，也可通过FrameNode获取[RenderNode](arkts-arkui-rendernode-c.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活UI组合与自定义渲染需求。<!--RP2--><!--RP2End-->
 
 > **说明：** 
 > 
@@ -929,13 +929,13 @@ getChildrenCount(countMode?: ChildrenCountMode): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| countMode | [ChildrenCountMode](arkts-arkui-framenode-childrencountmode-e.md) | 否 | The children count mode. Default value is ChildrenCountMode.ALL_EXPAND. |
+| countMode | [ChildrenCountMode](arkts-arkui-framenode-childrencountmode-e.md) | 否 | 子节点计数模式。默认值为ChildrenCountMode.ALL_EXPAND。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | Returns the number of children of the current FrameNode based on the count mode. |
+| number | 根据计数模式返回的当前FrameNode的子节点数量。 |
 
 **示例**
 
@@ -1497,7 +1497,7 @@ getId(): string
 getInspectorInfo(): Object
 ```
 
-获取节点的结构信息，该信息和DevEco Studio内置&lt;!--RP1--&gt;ArkUI Inspector&lt;!--RP1End--&gt;工具里面的一致。
+获取节点的结构信息，该信息和DevEco Studio内置<!--RP1-->ArkUI Inspector<!--RP1End-->工具里面的一致。
 
 > **说明：** 
 > 

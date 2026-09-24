@@ -37,7 +37,7 @@ function getResourceId(providerName: string, params: HuksExternalCryptoParam[]):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | API is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | API is not supported. |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | The ability name, bundle name parameter or resource information is missing. |
 | [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed. |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | The provider is not found. |

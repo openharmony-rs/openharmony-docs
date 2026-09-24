@@ -31,6 +31,12 @@ import { baseProfile } from '@kit.ConnectivityKit';
 | [BaseProfile](arkts-connectivity-baseprofile-baseprofile-i-sys.md) | 基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i.md)、[HandsFreeAudioGatewayProfile](arkts-connectivity-hfp-handsfreeaudiogatewayprofile-i-sys.md)等Profile类型都继承于该类。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ProfileConnectionState](arkts-connectivity-baseprofile-profileconnectionstate-t.md) | 本端和对端蓝牙设备间的Profile连接状态。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -45,9 +51,3 @@ import { baseProfile } from '@kit.ConnectivityKit';
 | --- | --- |
 | [ConnectionStrategy](arkts-connectivity-baseprofile-connectionstrategy-e-sys.md) | 枚举，表示Profile的连接策略。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [ProfileConnectionState](arkts-connectivity-baseprofile-profileconnectionstate-t.md) | 本端和对端蓝牙设备间的Profile连接状态。 |

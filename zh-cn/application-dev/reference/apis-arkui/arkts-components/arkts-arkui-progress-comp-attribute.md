@@ -5,9 +5,12 @@ declare class ProgressAttribute<Type extends keyof ProgressStyleMap = keyof Prog
   Style extends ProgressStyleMap[Type] = ProgressStyleMap[Type]> extends CommonMethod<ProgressAttribute<Type>>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
-支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+> **说明：** 
+> 
+> 该组件重写了通用属性[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)，直接添加在Progress组件上，设置进度条的底色。如需设
+> 置整个Progress组件的背景色，需要在外层容器上添加backgroundColor，并用该容器包裹Progress组件。
 
 **继承/实现关系：** ProgressAttribute extends CommonMethod<ProgressAttribute<Type>>
 
@@ -89,7 +92,7 @@ privacySensitive(isPrivacySensitiveMode: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br> 默认值：false <br>**说明：** <br>设置null表示不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用[FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component系统接口)组件设置[隐私遮罩](arkts-arkui-common-comp-commonmethod-c.md#obscured)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br> 默认值：false <br>**说明：** <br>设置null表示不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用[FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component系统接口)组件设置[隐私遮罩](arkts-arkui-common-comp.md#common)属性，显示卡片时才有隐私遮罩效果。<!-- DelEnd--> |
 
 ## style
 
@@ -111,7 +114,7 @@ style(value: Style)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Style | 是 | 组件的样式。<br>**说明：** 不同的type需分别对应相应的style属性设置，详细映射关系参考[ProgressStyleMap](arkts-arkui-progress-comp-progressstylemap-i.md)。<br>- CapsuleStyleOptions：设置Capsule的样式。<br>- RingStyleOptions：设置Ring的样式。<br>- LinearStyleOptions：设置Linear的样式。<br>- ScaleRingStyleOptions：设置ScaleRing的样式。<br>- EclipseStyleOptions：设置Eclipse的样式。<br>- ProgressStyleOptions：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。 |
+| value | Style | 是 | 组件的样式。Style继承于[ProgressStyleMap](arkts-arkui-progress-comp-progressstylemap-i.md)。<br>**说明：** 不同的[ProgressType](arkts-arkui-progress-comp-progresstype-e.md)需分别对应相应的[style](#style)属性设置，详细映射关系参考[ProgressStyleMap](arkts-arkui-progress-comp-progressstylemap-i.md)。<br>- [CapsuleStyleOptions](arkts-arkui-progress-comp-capsulestyleoptions-i.md)：设置Capsule的样式。<br>- [RingStyleOptions](arkts-arkui-progress-comp-ringstyleoptions-i.md)：设置Ring的样式。<br>- [LinearStyleOptions](arkts-arkui-progress-comp-linearstyleoptions-i.md)：设置Linear的样式。<br>- [ScaleRingStyleOptions](arkts-arkui-progress-comp-scaleringstyleoptions-i.md)：设置ScaleRing的样式。<br>- [EclipseStyleOptions](arkts-arkui-progress-comp-eclipsestyleoptions-i.md)：设置Eclipse的样式。<br>- [ProgressStyleOptions](arkts-arkui-progress-comp-progressstyleoptions-i.md)：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。 |
 
 ## value
 

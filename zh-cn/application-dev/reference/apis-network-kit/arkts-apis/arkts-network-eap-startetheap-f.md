@@ -31,7 +31,7 @@ function startEthEap(netId: number, profile: EthEapProfile): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [33200001](../errorcode-net-eap.md#33200001-无效的netid值) | Invalid netId |
 | [33200003](../errorcode-net-eap.md#33200003-无效的eth-eap配置) | Invalid profile |
 | [33200009](../errorcode-net-eap.md#33200009-netmanager进程不存在) | netmanager stop |

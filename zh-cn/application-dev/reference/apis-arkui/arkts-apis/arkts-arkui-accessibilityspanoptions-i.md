@@ -38,29 +38,11 @@ accessibilityDescription?: ResourceStr
 accessibilityLevel?: string
 ```
 
-无障碍重要性。用于设置组件是否可被无障碍辅助服务识别。
-
-支持取值如下：
-
-"auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。
-
-"yes"：当前组件可被无障碍辅助服务识别。
-
-"no"：当前组件不可被无障碍辅助服务识别。
-
-"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。
-
-默认值："auto"
-
-值为undefined时，按默认值处理。
-
-**说明：** 
-
-当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：
-
+无障碍重要性。用于设置组件是否可被无障碍辅助服务识别。支持取值如下："auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。"yes"：当前组件可被无障碍辅助服务识别。"no"：当前组件不可被无障碍辅助服务识别。"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。**说明：** 当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：
 1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。
 2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。
 3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。
+默认值："auto"值为undefined时，按默认值处理。
 
 **类型：** string
 

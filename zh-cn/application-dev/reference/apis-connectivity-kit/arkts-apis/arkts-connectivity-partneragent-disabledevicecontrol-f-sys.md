@@ -42,8 +42,8 @@ function disableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise<void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [34900001](../errorcode-fusionConnectivity.md#34900001-设备未注册) | The device is not bound. |
 | [34900099](../errorcode-fusionConnectivity.md#34900099-操作失败) | Internal error. |

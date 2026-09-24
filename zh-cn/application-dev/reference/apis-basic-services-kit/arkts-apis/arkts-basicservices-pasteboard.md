@@ -48,6 +48,14 @@ import { pasteboard } from '@kit.BasicServicesKit';
 | [ProgressInfo](arkts-basicservices-pasteboard-progressinfo-i.md) | 定义进度上报的数据结构，且仅当进度指示选项[ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md)设置为NONE时才会上报此信息。 |
 | [SystemPasteboard](arkts-basicservices-pasteboard-systempasteboard-i.md) | 系统剪贴板对象。在调用SystemPasteboard的接口前，需要先通过[getSystemPasteboard](arkts-basicservices-pasteboard-getsystempasteboard-f.md)获取系统剪贴板。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ProgressListener](arkts-basicservices-pasteboard-progresslistener-t.md) | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度。 |
+| [UpdateCallback](arkts-basicservices-pasteboard-updatecallback-t.md) | 表示剪贴板内容变更的回调。 |
+| [ValueType](arkts-basicservices-pasteboard-valuetype-t.md) | 用于表示允许的数据字段类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -56,14 +64,6 @@ import { pasteboard } from '@kit.BasicServicesKit';
 | [Pattern](arkts-basicservices-pasteboard-pattern-e.md) | 剪贴板支持检测的模式类型。 |
 | [ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md) | 定义进度条指示选项，可选择是否采用系统默认进度显示。 |
 | [ShareOption](arkts-basicservices-pasteboard-shareoption-e.md) | 可粘贴数据的范围类型枚举。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [ProgressListener](arkts-basicservices-pasteboard-progresslistener-t.md) | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度。 |
-| [UpdateCallback](arkts-basicservices-pasteboard-updatecallback-t.md) | 表示剪贴板内容变更的回调。 |
-| [ValueType](arkts-basicservices-pasteboard-valuetype-t.md) | 用于表示允许的数据字段类型。 |
 
 ### 常量
 

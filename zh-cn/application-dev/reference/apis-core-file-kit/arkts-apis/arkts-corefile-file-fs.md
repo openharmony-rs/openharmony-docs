@@ -186,6 +186,12 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 可选项类型，支持write接口使用，WriteOptions继承自[Options](arkts-corefile-file-fs-options-i.md)。 |
 | [WriteStreamOptions](arkts-corefile-file-fs-writestreamoptions-i.md) | 可选项类型，支持 createWriteStream 接口使用。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ProgressListener](arkts-corefile-progresslistener-t.md) | 拷贝进度监听。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -195,9 +201,3 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 | [LocationType](arkts-corefile-file-fs-locationtype-e.md) | 枚举，文件位置，表示该文件是否在本地或者云端存在。 |
 | [MappingMode](arkts-corefile-file-fs-mappingmode-e.md) | 文件内存映射模式类型的枚举。 |
 | [WhenceType](arkts-corefile-file-fs-whencetype-e.md) | 枚举，文件偏移指针相对偏移位置类型，支持lseek接口使用。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [ProgressListener](arkts-corefile-progresslistener-t.md) | 拷贝进度监听。 |

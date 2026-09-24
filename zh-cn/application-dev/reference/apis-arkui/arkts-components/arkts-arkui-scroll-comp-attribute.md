@@ -265,38 +265,6 @@ onDidZoom(event: ScrollOnDidZoomCallback)
 | --- | --- | --- | --- |
 | event | [ScrollOnDidZoomCallback](arkts-arkui-scroll-comp-scrollondidzoomcallback-t.md) | 是 | 每帧缩放完成时回调。 |
 
-## onScroll
-
-```TypeScript
-onScroll(event: (xOffset: number, yOffset: number) => void)
-```
-
-滚动事件回调，返回滚动时水平、竖直方向偏移量，单位vp。
-
-触发该事件的条件：
-
-1. 滚动组件触发滚动时触发，支持键鼠操作等其他触发滚动的输入设置。
-2. 通过滚动控制器API接口调用。
-3. 越界回弹。
-
-**起始版本：** 7
-
-**废弃版本：** 12
-
-**替代接口：** onWillScroll
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| event | (xOffset: number, yOffset: number) =&gt; void | 是 | callback when scroll, xOffset: 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br>单位vp。yOffset: 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br>单位vp。 |
-
 ## onScrollEdge
 
 ```TypeScript
@@ -324,35 +292,6 @@ onScrollEdge(event: OnScrollEdgeCallback)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [OnScrollEdgeCallback](arkts-arkui-scroll-comp-onscrolledgecallback-t.md) | 是 | 滚动到的边缘位置。<br>当Scroll设置为水平方向滚动时，上报[Edge.Center](../arkts-apis/arkts-arkui-edge-e.md)表示水平方向起始位置，上报[Edge.Baseline](../arkts-apis/arkts-arkui-edge-e.md)表示水平方向末尾位置。由于[Edge.Center](../arkts-apis/arkts-arkui-edge-e.md)和[Edge.Baseline](../arkts-apis/arkts-arkui-edge-e.md)枚举值已经废弃，推荐使用onReachStart、onReachEnd事件监听是否滚动到边界。<br>**适用版本：** 18 |
-
-## onScrollEnd
-
-```TypeScript
-onScrollEnd(event: () => void)
-```
-
-滚动停止事件回调。
-
-触发该事件的条件：
-
-1. 滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。
-2. 通过滚动控制器API接口调用后停止，带过渡动效。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** onScrollStop
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| event | () =&gt; void | 是 |  |
 
 ## onScrollFrameBegin
 
@@ -709,3 +648,64 @@ zoomScale(scale: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | scale | number | 是 | 设置Scroll组件内容的缩放比例，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。<br>默认值：1 <br>取值范围：(0, +∞)，小于或等于0时按默认值1处理。 |
+
+## onScroll
+
+```TypeScript
+onScroll(event: (xOffset: number, yOffset: number) => void)
+```
+
+滚动事件回调，返回滚动时水平、竖直方向偏移量，单位vp。
+
+触发该事件的条件：
+
+1. 滚动组件触发滚动时触发，支持键鼠操作等其他触发滚动的输入设置。
+2. 通过滚动控制器API接口调用。
+3. 越界回弹。
+
+**起始版本：** 7
+
+**废弃版本：** 12
+
+**替代接口：** onWillScroll
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | (xOffset: number, yOffset: number) =&gt; void | 是 | callback when scroll, xOffset: 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br>单位vp。yOffset: 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br>单位vp。 |
+
+## onScrollEnd
+
+```TypeScript
+onScrollEnd(event: () => void)
+```
+
+滚动停止事件回调。
+
+触发该事件的条件：
+
+1. 滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。
+2. 通过滚动控制器API接口调用后停止，带过渡动效。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** onScrollStop
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | () =&gt; void | 是 |  |

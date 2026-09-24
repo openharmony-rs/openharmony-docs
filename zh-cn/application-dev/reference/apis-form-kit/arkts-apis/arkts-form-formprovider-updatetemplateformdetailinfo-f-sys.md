@@ -38,7 +38,7 @@ function updateTemplateFormDetailInfo(templateFormInfo: Array<formInfo.TemplateF
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16501013](../errorcode-form.md#16501013-系统不支持当前操作) | The system does not support the current operation. |
 

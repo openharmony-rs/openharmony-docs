@@ -1,4 +1,4 @@
-# @ohos.app.ability.Ability
+# @ohos.app.ability.Ability(Ability基类)
 
 ## 导入模块
 

@@ -40,14 +40,14 @@ import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 | [traceByValue](arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md#tracebyvalue-1) | 整数跟踪事件，分级控制跟踪输出。用来标记一个预先定义需要跟踪的整数变量名及整数值。 |
 | [unregisterTraceListener](arkts-performanceanalysis-hitracemeter-unregistertracelistener-f.md) | 注销通过registerTraceListener()注册的trace捕获开关通知回调函数。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [HiTraceOutputLevel](arkts-performanceanalysis-hitracemeter-hitraceoutputlevel-e.md) | 枚举，跟踪输出级别。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [TraceEventListener](arkts-performanceanalysis-hitracemeter-traceeventlistener-t.md) | 定义应用trace捕获开关状态切换时的回调函数类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [HiTraceOutputLevel](arkts-performanceanalysis-hitracemeter-hitraceoutputlevel-e.md) | 枚举，跟踪输出级别。 |

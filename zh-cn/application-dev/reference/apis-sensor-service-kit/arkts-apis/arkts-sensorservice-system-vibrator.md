@@ -1,4 +1,4 @@
-# @system.vibrator
+# @system.vibrator(振动控制模块)
 
 户注意力。
  适用于Lite Wearable轻量穿戴设备。对于其他设备类型，自API version 8起该模块不再维护。
@@ -37,4 +37,4 @@ import { Vibrator, VibrateOptions } from '@kit.SensorServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [VibrateOptions](arkts-sensorservice-system-vibrator-vibrateoptions-i.md) | 定义触发设备振动的配置参数，包括振动模式及接口调用的回调函数。开发者调用[Vibrator.vibrate()](../../../reference/apis-sensor-service-kit/js-apis-system-vibrate.md#vibratorvibrate)时，通过VibrateOptions指定振动模式（短振动或长振动）以及监听振动触发成功、失败和完成的回调函数。传入VibrateOptions后，设备将按指定的mode执行相应振动模式，并在振动触发成功时回调success函数，失败时回调fail函数，接口调用结束时回调complete函数。 |
+| [VibrateOptions](arkts-sensorservice-system-vibrator-vibrateoptions-i.md) | 定义触发设备振动的配置参数，包括振动模式及接口调用的回调函数。开发者调用[Vibrator.vibrate()](arkts-sensorservice-vibrator-vibrate-f.md)时，通过VibrateOptions指定振动模式（短振动或长振动）以及监听振动触发成功、失败和完成的回调函数。传入VibrateOptions后，设备将按指定的mode执行相应振动模式，并在振动触发成功时回调success函数，失败时回调fail函数，接口调用结束时回调complete函数。 |

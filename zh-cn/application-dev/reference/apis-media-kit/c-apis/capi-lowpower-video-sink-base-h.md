@@ -90,7 +90,7 @@ LowPowerVideoSink发生错误时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| OH_AVErrCode errCode | 业务操作过程中发生错误时返回的错误码。 请参考[OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) |
+| OH_AVErrCode errCode | 业务操作过程中发生错误时返回的错误码。 请参考[OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) |
 | const char\* errMsg | 业务操作过程中发生错误时返回的错误描述信息。 |
 | void\* userData | 用户执行回调所依赖的数据。 |
 

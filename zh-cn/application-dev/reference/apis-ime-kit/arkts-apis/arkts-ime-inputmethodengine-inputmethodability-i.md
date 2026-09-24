@@ -31,7 +31,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback<Panel>): 
 > <br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../../windowmanager/application-window-fa.md#设置应用子窗口)、<br>
 > [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) <br>
-> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-custom_dialog_controller.md#custom_dialog_controllercustomdialog)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
+> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
 > [弹出框](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md)、<br>
 > [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu)或设置<br>
 > showInSubwindow为false。
@@ -52,7 +52,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback<Panel>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [12800004](../errorcode-inputmethod-framework.md#12800004-不是输入法应用) | not an input method application. |
 
 **示例**
@@ -102,7 +102,7 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise<Panel>
 > <br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../../windowmanager/application-window-fa.md#设置应用子窗口)、<br>
 > [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) <br>
-> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-custom_dialog_controller.md#custom_dialog_controllercustomdialog)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
+> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
 > [弹出框](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md)、<br>
 > [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu)或设置<br>
 > showInSubwindow为false。
@@ -128,7 +128,7 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise<Panel>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [12800004](../errorcode-inputmethod-framework.md#12800004-不是输入法应用) | not an input method application. |
 
 **示例**
@@ -182,7 +182,7 @@ destroyPanel(panel: Panel, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
 **示例**
 
@@ -247,7 +247,7 @@ destroyPanel(panel: Panel): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
 **示例**
 
@@ -803,7 +803,7 @@ on(type: 'callingDisplayDidChange', callback: Callback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例**
 

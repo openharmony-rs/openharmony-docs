@@ -57,6 +57,12 @@ import { ethernet } from '@kit.NetworkKit';
 | [InterfaceStateInfo](arkts-network-ethernet-interfacestateinfo-i-sys.md) | 监听以太网卡状态变化。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [HttpProxy](arkts-network-ethernet-httpproxy-t.md) | 网络代理配置信息。 |
+
 <!--Del-->
 ### 枚举（系统接口）
 
@@ -65,9 +71,3 @@ import { ethernet } from '@kit.NetworkKit';
 | [DeviceConnectionType](arkts-network-ethernet-deviceconnectiontype-e-sys.md) | 以太网设备连接模式。 |
 | [IPSetMode](arkts-network-ethernet-ipsetmode-e-sys.md) | 以太网连接模式。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [HttpProxy](arkts-network-ethernet-httpproxy-t.md) | 网络代理配置信息。 |

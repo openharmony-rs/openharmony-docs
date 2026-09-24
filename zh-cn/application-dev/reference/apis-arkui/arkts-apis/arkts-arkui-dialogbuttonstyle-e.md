@@ -4,9 +4,9 @@
 declare enum DialogButtonStyle
 ```
 
-The Button Style of dialog, @enum { number }
+弹窗按钮的样式。
 
-**起始版本：** 11
+**起始版本：** 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,9 +16,9 @@ The Button Style of dialog, @enum { number }
 DEFAULT = 0
 ```
 
-Default Style.
+白底蓝字（深色主题下为黑底蓝字）。
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -32,9 +32,9 @@ Default Style.
 HIGHLIGHT = 1
 ```
 
-Highlight Style.
+蓝底白字。
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

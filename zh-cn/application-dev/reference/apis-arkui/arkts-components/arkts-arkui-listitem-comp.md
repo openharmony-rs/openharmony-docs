@@ -2,7 +2,11 @@
 
 ListItem用于展示列表中的具体列表项，支持设置划出菜单、选中状态、鼠标框选和卡片样式等能力，必须配合List组件使用，适用于需要在列表中展示内容并对单个列表项进行交互操作（如滑动删除、选中标记）的场景。
 
-> **说明：** > > - 该组件的父组件只能是[List](arkts-arkui-list-comp.md#list)或者[ListItemGroup](arkts-arkui-listitemgroup-comp.md#list_item_group)。 > > - 当ListItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，ListItem子组件在 > ListItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、 > [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为List/ListItemGroup时，ListItem子组 > 件在ListItem布局时创建。
+> **说明：** 
+> 
+> - 该组件的父组件只能是[List](arkts-arkui-list-comp.md#list)或者[ListItemGroup](arkts-arkui-listitemgroup-comp.md#list_item_group)。
+> 
+> - 当ListItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，ListItem子组件在ListItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
 
 ## 子组件
 

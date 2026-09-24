@@ -48,6 +48,26 @@ let uint8Array = textEncoder.encodeInto(strXml);
 let xmlParser = new xml.XmlPullParser(uint8Array.buffer as object as ArrayBuffer, 'UTF-8');
 ```
 
+## parseXml
+
+```TypeScript
+parseXml(option: ParseOptions): void
+```
+
+解析XML，调用后将根据ParseOptions中配置的回调函数触发相应的解析事件，通过回调函数传递标签、属性、文本等解析信息。
+
+**起始版本：** 14
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| option | [ParseOptions](arkts-arkts-xml-parseoptions-i.md) | 是 | XML解析选项。 |
+
 ## parse
 
 ```TypeScript
@@ -103,23 +123,3 @@ that.parse(options);
 // title
 // note
 ```
-
-## parseXml
-
-```TypeScript
-parseXml(option: ParseOptions): void
-```
-
-解析XML，调用后将根据ParseOptions中配置的回调函数触发相应的解析事件，通过回调函数传递标签、属性、文本等解析信息。
-
-**起始版本：** 14
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| option | [ParseOptions](arkts-arkts-xml-parseoptions-i.md) | 是 | XML解析选项。 |

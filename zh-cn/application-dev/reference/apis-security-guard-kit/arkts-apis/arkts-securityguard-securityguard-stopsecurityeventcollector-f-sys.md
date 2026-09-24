@@ -32,6 +32,6 @@ function stopSecurityEventCollector(rule: CollectorRule): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | check permission fail. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system application uses the system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | check permission fail. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | non-system application uses the system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |

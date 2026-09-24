@@ -24,9 +24,25 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 | [setPowerSaveMode](arkts-backgroundtasks-backgroundprocessmanager-setpowersavemode-f.md) | 设置进程的能效模式，使用Promise异步回调。 |
 | [setProcessPriority](arkts-backgroundtasks-backgroundprocessmanager-setprocesspriority-f.md) | 设置子进程的压制档位，子进程被压制后可获得的CPU资源将会受到限制。如果主进程调度策略发生变化，如从后台切至前台等，子进程会跟随主进程一同变化，子进程如需继续压制，需要重新调用本接口。使用Promise异步回调。 |
 
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [clearBackgroundApps](arkts-backgroundtasks-backgroundprocessmanager-clearbackgroundapps-f-sys.md) | 主动清理后台资源。 |
+<!--DelEnd-->
+
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
 | [PowerSaveMode](arkts-backgroundtasks-backgroundprocessmanager-powersavemode-e.md) | 能效模式。 |
 | [ProcessPriority](arkts-backgroundtasks-backgroundprocessmanager-processpriority-e.md) | 子进程压制档位。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ClearType](arkts-backgroundtasks-backgroundprocessmanager-cleartype-e-sys.md) | 资源清理类型。 |
+<!--DelEnd-->

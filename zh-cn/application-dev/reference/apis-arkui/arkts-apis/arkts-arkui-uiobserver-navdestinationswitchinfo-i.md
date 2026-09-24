@@ -22,7 +22,7 @@ import { uiObserver } from '@kit.ArkUI';
 context: UIAbilityContext | UIContext
 ```
 
-The context of the navigation operation.
+触发页面切换的Navigation对应的上下文信息。
 
 **类型：** [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) &#124; UIContext
 
@@ -40,7 +40,7 @@ The context of the navigation operation.
 from: NavDestinationInfo | NavBar
 ```
 
-From navigation content info.
+页面切换的源页面。
 
 **类型：** [NavDestinationInfo](arkts-arkui-uiobserver-navdestinationinfo-i.md) &#124; NavBar
 
@@ -58,7 +58,7 @@ From navigation content info.
 operation: NavigationOperation
 ```
 
-The operation type.
+页面切换操作类型。
 
 **类型：** NavigationOperation
 
@@ -76,7 +76,7 @@ The operation type.
 to: NavDestinationInfo | NavBar
 ```
 
-To navigation content info.
+页面切换的目的页面。
 
 **类型：** [NavDestinationInfo](arkts-arkui-uiobserver-navdestinationinfo-i.md) &#124; NavBar
 

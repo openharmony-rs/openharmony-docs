@@ -35,15 +35,15 @@ import { intelligence } from '@kit.ArkData';
 | [SplitConfig](arkts-arkdata-intelligence-splitconfig-i.md) | 管理文本分块的配置信息。 |
 | [TextEmbedding](arkts-arkdata-intelligence-textembedding-i.md) | 描述文本嵌入模型的文本嵌入函数。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [Image](arkts-arkdata-intelligence-image-t.md) | 表示图片的URI地址，为string类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
 | [ModelVersion](arkts-arkdata-intelligence-modelversion-e.md) | 模型版本枚举。 |
 | [NetworkPolicy](arkts-arkdata-intelligence-networkpolicy-e.md) | 下载云侧模型的网络策略枚举。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [Image](arkts-arkdata-intelligence-image-t.md) | 表示图片的URI地址，为string类型。 |

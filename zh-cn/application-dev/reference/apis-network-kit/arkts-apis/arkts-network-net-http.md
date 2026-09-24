@@ -49,19 +49,6 @@ import { http } from '@kit.NetworkKit';
 | [TlsConfig](arkts-network-http-tlsconfig-i.md) | TLS加密版本及套件配置。 |
 | [ValidationContext](arkts-network-http-validationcontext-i.md) | [ValidationCallback](arkts-network-http-validationcallback-t.md)的验证上下文 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [AddressFamily](arkts-network-http-addressfamily-e.md) | 枚举，解析目标域名时限定的地址类型。 |
-| [CertType](arkts-network-http-certtype-e.md) | 枚举，证书类型。 |
-| [HttpDataType](arkts-network-http-httpdatatype-e.md) | HTTP的数据类型。 |
-| [HttpProtocol](arkts-network-http-httpprotocol-e.md) | HTTP协议版本。 |
-| [InterceptorType](arkts-network-http-interceptortype-e.md) | HTTP拦截器的类型枚举。 |
-| [RequestMethod](arkts-network-http-requestmethod-e.md) | HTTP 请求方法。 |
-| [ResponseCode](arkts-network-http-responsecode-e.md) | 发起请求返回的响应码。 |
-| [TlsVersion](arkts-network-http-tlsversion-e.md) | 枚举，TLS版本号。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -86,3 +73,16 @@ import { http } from '@kit.NetworkKit';
 | [TlsV13SpecificCipherSuite](arkts-network-http-tlsv13specificciphersuite-t.md) | TLS1.3及以上版本支持的加密套件。 |
 | [ValidationCallback](arkts-network-http-validationcallback-t.md) | 自定义远程验证。该API使用Promise异步返回结果。 |
 | [X509Cert](arkts-network-http-x509cert-t.md) | X509证书 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [AddressFamily](arkts-network-http-addressfamily-e.md) | 枚举，解析目标域名时限定的地址类型。 |
+| [CertType](arkts-network-http-certtype-e.md) | 枚举，证书类型。 |
+| [HttpDataType](arkts-network-http-httpdatatype-e.md) | HTTP的数据类型。 |
+| [HttpProtocol](arkts-network-http-httpprotocol-e.md) | HTTP协议版本。 |
+| [InterceptorType](arkts-network-http-interceptortype-e.md) | HTTP拦截器的类型枚举。 |
+| [RequestMethod](arkts-network-http-requestmethod-e.md) | HTTP 请求方法。 |
+| [ResponseCode](arkts-network-http-responsecode-e.md) | 发起请求返回的响应码。 |
+| [TlsVersion](arkts-network-http-tlsversion-e.md) | 枚举，TLS版本号。 |

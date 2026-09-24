@@ -4,21 +4,31 @@
 
 ListItemGroup的懒加载是指组件按需加载可见区域内的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。ListItemGroup和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
 
-- 当ListItemGroup和ForEach结合，会一次性创建所有的子组件，在需要的时候布局和渲染屏幕范围内的节点。当用户滑动时，滑出屏幕范围的节点不会下树销毁，滑入屏幕范围的节点会布局和渲染。
-- 当ListItemGroup和LazyForEach结合，会一次性创建、布局、渲染屏幕范围的节点。当用户滑动时，滑出屏幕范围的节点会下树销毁，滑入屏幕范围的节点会创建、布局、渲染。
-- 当ListItemGroup和带[virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll)的Repeat结合，它的懒加载行为和LazyForEach一致。当ListItemGroup和
+- 当ListItemGroup和ForEach结合，会一次性创建所有的子组件，在需要的时候布局和渲染屏幕范围内的节点。当用户滑动时，滑出屏幕范围的节点不会下树销毁，滑入屏幕范围的节点会布局和渲染。  
+- 当ListItemGroup和LazyForEach结合，会一次性创建、布局、渲染屏幕范围的节点。当用户滑动时，滑出屏幕范围的节点会下树销毁，滑入屏幕范围的节点会创建、布局、渲染。  
+- 当ListItemGroup和带[virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll)的Repeat结合，它的懒加载行为和LazyForEach一致。当ListItemGroup和  
 不带virtualScroll的Repeat结合，它的懒加载行为和ForEach一致。
 
 ListItemGroup的预加载是指除了加载显示区域内的子组件外，还支持空闲时隙提前加载部分显示区域外的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。ListItemGroup和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
 
-- 当ListItemGroup和ForEach结合，如果设置了[cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount)，除了会布局显示区域内子组件外，还会在空闲时隙根
-据List组件的cachedCount属性预布局显示区域外cachedCount范围内的子组件。
-- 当ListItemGroup和LazyForEach结合，如果设置了[cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount)，除了会创建和布局显示区域内子组件外，还
-会在空闲时隙根据List组件的cachedCount属性预创建和预布局显示区域外cachedCount范围内的子组件。
-- 当ListItemGroup和带[virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll)的Repeat结合，它的预加载行为和LazyForEach一致。当ListItemGroup和
+- 当ListItemGroup和ForEach结合，如果设置了[cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount)，除了会布局显示区域内子组件外，还会在空闲时隙根  
+据List组件的cachedCount属性预布局显示区域外cachedCount范围内的子组件。  
+- 当ListItemGroup和LazyForEach结合，如果设置了[cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount)，除了会创建和布局显示区域内子组件外，还  
+会在空闲时隙根据List组件的cachedCount属性预创建和预布局显示区域外cachedCount范围内的子组件。  
+- 当ListItemGroup和带[virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll)的Repeat结合，它的预加载行为和LazyForEach一致。当ListItemGroup和  
 不带virtualScroll的Repeat结合，它的预加载行为和ForEach一致。
 
-> **说明：** > > - 该组件的父组件只能是[List](arkts-arkui-list-comp.md#list)。 > > - ListItemGroup组件不支持设置[通用属性aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio)。 > > - 当ListItemGroup的父组件List的[listDirection](arkts-arkui-list-comp-attribute.md#listdirection)属性为Axis.Vertical时，设置 > [通用属性height](arkts-arkui-common-comp-commonmethod-c.md#height)不生效。ListItemGroup的高度为header高度、footer高度和所有ListItem布局后总高度之和。 > > - 当父组件List的listDirection属性为Axis.Horizontal时，设置[通用属性width](arkts-arkui-common-comp-commonmethod-c.md#width)不生效。ListItemGroup > 的宽度为header宽度、footer宽度和所有ListItem布局后总宽度之和。 > > - ListItemGroup使用direction属性设置布局方向不生效，ListItemGroup组件布局方向跟随父容器List组件的布局方向。
+> **说明：** 
+> 
+> - 该组件的父组件只能是[List](arkts-arkui-list-comp.md#list)。
+> 
+> - ListItemGroup组件不支持设置[通用属性aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio)。
+> 
+> - 当ListItemGroup的父组件List的[listDirection](arkts-arkui-list-comp-attribute.md#listdirection)属性为Axis.Vertical时，设置[通用属性height](arkts-arkui-common-comp-commonmethod-c.md#height)不生效。ListItemGroup的高度为header高度、footer高度和所有ListItem布局后总高度之和。
+> 
+> - 当父组件List的listDirection属性为Axis.Horizontal时，设置[通用属性width](arkts-arkui-common-comp-commonmethod-c.md#width)不生效。ListItemGroup 的宽度为header宽度、footer宽度和所有ListItem布局后总宽度之和。
+> 
+> - ListItemGroup使用direction属性设置布局方向不生效，ListItemGroup组件布局方向跟随父容器List组件的布局方向。
 
 ## 子组件
 

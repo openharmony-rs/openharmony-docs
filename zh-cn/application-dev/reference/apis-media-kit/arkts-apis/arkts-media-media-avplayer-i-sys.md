@@ -54,7 +54,7 @@ enableCameraPostprocessing(): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called from Non-System applications. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 
 **示例**
 
@@ -90,7 +90,7 @@ forceLoadVideo(force: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called from Non-System applications. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 
 **示例**
 
@@ -134,7 +134,7 @@ getCurrentTrack(trackType: MediaType): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called from Non-System applications. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-出现io错误) | I/O error. Return by promise. |

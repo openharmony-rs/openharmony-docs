@@ -4,7 +4,7 @@
 declare enum EffectDirection
 ```
 
-符号动效方向的枚举值。
+动效方向的枚举值。
 
 **起始版本：** 12
 

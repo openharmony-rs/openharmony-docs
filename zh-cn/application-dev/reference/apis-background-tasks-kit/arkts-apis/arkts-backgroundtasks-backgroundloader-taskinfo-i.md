@@ -6,7 +6,7 @@ export interface TaskInfo
 
 任务信息
 
-**起始版本：** 26.0.1
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -26,7 +26,7 @@ abilityName: string
 
 **类型：** string
 
-**起始版本：** 26.0.1
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +42,7 @@ taskId: number
 
 **类型：** number
 
-**起始版本：** 26.0.1
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

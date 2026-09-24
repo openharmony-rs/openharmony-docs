@@ -52,7 +52,7 @@ incognitoMode? : boolean
 
 默认值：false。
 
-传入undefined或null时为false。&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
+传入undefined或null时为false。<!--RP1--><!--RP1End-->
 
 **类型：** boolean
 

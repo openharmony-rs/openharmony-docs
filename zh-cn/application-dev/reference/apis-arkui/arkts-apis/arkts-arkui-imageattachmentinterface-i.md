@@ -16,7 +16,7 @@ declare interface ImageAttachmentInterface
 colorFilter?: ColorFilterType
 ```
 
-获取属性字符串的图片颜色滤镜效果。
+设置属性字符串的图片颜色滤镜效果。不传入时不应用颜色滤镜，图片显示原始颜色。
 
 **类型：** [ColorFilterType](arkts-arkui-colorfiltertype-t.md)
 

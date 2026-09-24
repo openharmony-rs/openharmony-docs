@@ -48,14 +48,6 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 <!--DelEnd-->
 
 <!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [ContinueState](arkts-ability-distributedmissionmanager-continuestate-e-sys.md) | 当前任务流转状态的枚举。模型约束：此接口仅可在Stage模型下使用。 |
-<!--DelEnd-->
-
-<!--Del-->
 ### 类型（系统接口）
 
 | 名称 | 说明 |
@@ -67,4 +59,12 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 | [MissionCallback](arkts-ability-distributedmissionmanager-missioncallback-t-sys.md) | 作为可以[registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md)的入参，用于监听任务状态变化的回调函数，包含任务列表变化通知、任务快照通知和断开连接通知等功能。表示注册监听后建立的回调函数。 |
 | [MissionDeviceInfo](arkts-ability-distributedmissionmanager-missiondeviceinfo-t-sys.md) | 可以作为[registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md)的入参，表示注册监听时所需参数的对象，包含deviceId等设备标识符字段。 |
 | [MissionParameter](arkts-ability-distributedmissionmanager-missionparameter-t-sys.md) | 作为[startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md)的入参，表示同步远端设备任务列表时所需的参数对象，包含deviceId、fixConflict和tag等字段。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ContinueState](arkts-ability-distributedmissionmanager-continuestate-e-sys.md) | 当前任务流转状态的枚举。模型约束：此接口仅可在Stage模型下使用。 |
 <!--DelEnd-->

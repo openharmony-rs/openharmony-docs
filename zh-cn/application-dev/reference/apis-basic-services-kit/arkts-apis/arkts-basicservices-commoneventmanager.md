@@ -75,6 +75,15 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 | [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate-2) | 设置当前应用的静态订阅公共事件的使能状态。使用Promise异步回调。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [CommonEventData](arkts-basicservices-commoneventmanager-commoneventdata-t.md) | 表示公共事件的数据。 |
+| [CommonEventPublishData](arkts-basicservices-commoneventmanager-commoneventpublishdata-t.md) | 描述公共事件内容和属性。 |
+| [CommonEventSubscribeInfo](arkts-basicservices-commoneventmanager-commoneventsubscribeinfo-t.md) | 描述公共事件订阅者的信息。 |
+| [CommonEventSubscriber](arkts-basicservices-commoneventmanager-commoneventsubscriber-t.md) | 描述公共事件的订阅者。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -88,12 +97,3 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 | --- | --- |
 | [Support](arkts-basicservices-commoneventmanager-support-e-sys.md) | 系统公共事件是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限，并使用相应的事件值。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [CommonEventData](arkts-basicservices-commoneventmanager-commoneventdata-t.md) | 表示公共事件的数据。 |
-| [CommonEventPublishData](arkts-basicservices-commoneventmanager-commoneventpublishdata-t.md) | 描述公共事件内容和属性。 |
-| [CommonEventSubscribeInfo](arkts-basicservices-commoneventmanager-commoneventsubscribeinfo-t.md) | 描述公共事件订阅者的信息。 |
-| [CommonEventSubscriber](arkts-basicservices-commoneventmanager-commoneventsubscriber-t.md) | 描述公共事件的订阅者。 |

@@ -4,7 +4,7 @@
 declare enum TextOverflow
 ```
 
-Declare how text overflows.
+文本超长时的显示方式。
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@ Declare how text overflows.
 None = 0
 ```
 
-When the text overflows its dimensions, the text will not be cropped.
+文本超长时按最大行截断显示。
 
 **起始版本：** 7
 
@@ -32,7 +32,7 @@ When the text overflows its dimensions, the text will not be cropped.
 Clip = 1
 ```
 
-When the text overflows its dimensions, the text will be cropped and displayed.
+文本超长时按最大行截断显示，与None效果相同。
 
 **起始版本：** 7
 
@@ -48,7 +48,7 @@ When the text overflows its dimensions, the text will be cropped and displayed.
 Ellipsis = 2
 ```
 
-If the text overflows its dimensions, the text that cannot be displayed shall be replaced by ellipsis.
+文本超长时显示不下的文本用省略号代替。
 
 **起始版本：** 7
 
@@ -64,7 +64,7 @@ If the text overflows its dimensions, the text that cannot be displayed shall be
 MARQUEE = 3
 ```
 
-When the text overflows its dimensions, the text will scroll for displaying.
+文本超长时以跑马灯的方式展示。
 
 **起始版本：** 10
 

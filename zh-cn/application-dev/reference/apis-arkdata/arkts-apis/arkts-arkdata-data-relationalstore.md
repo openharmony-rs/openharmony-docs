@@ -102,6 +102,19 @@ import { relationalStore } from '@kit.ArkData';
 | [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i-sys.md) | 管理关系数据库配置。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [Assets](arkts-arkdata-relationalstore-assets-t.md) | 表示[Asset](arkts-arkdata-relationalstore-asset-i.md)类型的数组。 |
+| [ModifyTime](arkts-arkdata-relationalstore-modifytime-t.md) | 用于存储数据库表的主键和修改时间的数据类型。 |
+| [PRIKeyType](arkts-arkdata-relationalstore-prikeytype-t.md) | 用于表示数据库表某一行主键的数据类型。 |
+| [RowData](arkts-arkdata-relationalstore-rowdata-t.md) | 用于表示数据库表中的某一行数据。 |
+| [RowsData](arkts-arkdata-relationalstore-rowsdata-t.md) | 用于表示数据库表中的多行数据。 |
+| [UTCTime](arkts-arkdata-relationalstore-utctime-t.md) | 用于表示UTC时间的数据类型。 |
+| [ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md) | 用于存储键值对的类型。不支持Sendable跨线程传递。 |
+| [ValueType](arkts-arkdata-relationalstore-valuetype-t.md) | 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -137,16 +150,3 @@ import { relationalStore } from '@kit.ArkData';
 | [DistributedOrigin](arkts-arkdata-relationalstore-distributedorigin-e-sys.md) | 表示数据来源。请使用枚举名称而非枚举值。 |
 | [HAMode](arkts-arkdata-relationalstore-hamode-e-sys.md) | 描述关系型数据库存储的高可用性模式的枚举。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [Assets](arkts-arkdata-relationalstore-assets-t.md) | 表示[Asset](arkts-arkdata-relationalstore-asset-i.md)类型的数组。 |
-| [ModifyTime](arkts-arkdata-relationalstore-modifytime-t.md) | 用于存储数据库表的主键和修改时间的数据类型。 |
-| [PRIKeyType](arkts-arkdata-relationalstore-prikeytype-t.md) | 用于表示数据库表某一行主键的数据类型。 |
-| [RowData](arkts-arkdata-relationalstore-rowdata-t.md) | 用于表示数据库表中的某一行数据。 |
-| [RowsData](arkts-arkdata-relationalstore-rowsdata-t.md) | 用于表示数据库表中的多行数据。 |
-| [UTCTime](arkts-arkdata-relationalstore-utctime-t.md) | 用于表示UTC时间的数据类型。 |
-| [ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md) | 用于存储键值对的类型。不支持Sendable跨线程传递。 |
-| [ValueType](arkts-arkdata-relationalstore-valuetype-t.md) | 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。 |

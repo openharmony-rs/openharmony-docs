@@ -82,6 +82,14 @@ import { webview } from '@kit.ArkWeb';
 | [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md) | WebMessagePort是Web组件中用于应用侧（ArkTS）与HTML5侧（JavaScript）之间双向通信的消息端口接口。通过createWebMessagePorts创建一对关联的端口，将一个端口发送到HTML5侧，另一个保留在应用侧，实现跨运行时消息传递。WebMessagePort支持两种消息协议：基础协议使用WebMessage作为消息载体（postMessageEvent/onMessageEvent），扩展协议使用WebMessageExt支持更丰富的数据类型（postMessageEventExt/onMessageEventExt）。 |
 | [WebStorageOrigin](arkts-arkweb-webview-webstorageorigin-i.md) | 提供Web SQL数据库的使用信息。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) | [onCreateNativeMediaPlayer](arkts-arkweb-webview-webviewcontroller-c.md#oncreatenativemediaplayer)方法的参数。一个回调函数，在网页需要播放媒体时被调用，用于创建一个播放器接管网页中的媒体播放。通过接管机制，应用可以使用自定义播放器实现特殊功能或优化性能。 |
+| [OnProxyConfigChangeCallback](arkts-arkweb-webview-onproxyconfigchangecallback-t.md) | 回调函数，在代理配置发生改变时被调用，回调成功表示代理设置成功。 |
+| [WebMessage](arkts-arkweb-webview-webmessage-t.md) | 用于描述[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)所支持的数据类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -118,11 +126,3 @@ import { webview } from '@kit.ArkWeb';
 | [WebMessageType](arkts-arkweb-webview-webmessagetype-e.md) | [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)接口所支持的数据类型。 |
 | [WebResourceType](arkts-arkweb-webview-webresourcetype-e.md) | 资源请求的资源类型。 |
 | [WebSoftKeyboardBehaviorMode](arkts-arkweb-webview-websoftkeyboardbehaviormode-e.md) | Web软键盘自动控制模式。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) | [onCreateNativeMediaPlayer](arkts-arkweb-webview-webviewcontroller-c.md#oncreatenativemediaplayer)方法的参数。一个回调函数，在网页需要播放媒体时被调用，用于创建一个播放器接管网页中的媒体播放。通过接管机制，应用可以使用自定义播放器实现特殊功能或优化性能。 |
-| [OnProxyConfigChangeCallback](arkts-arkweb-webview-onproxyconfigchangecallback-t.md) | 回调函数，在代理配置发生改变时被调用，回调成功表示代理设置成功。 |
-| [WebMessage](arkts-arkweb-webview-webmessage-t.md) | 用于描述[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)所支持的数据类型。 |

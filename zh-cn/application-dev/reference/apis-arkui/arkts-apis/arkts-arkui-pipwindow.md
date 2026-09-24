@@ -4,7 +4,7 @@
 
 > **说明：** 
 > 
-> - 在&lt;!--RP2--&gt;OpenHarmony 6.0&lt;!--RP2End--&gt;之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从&lt;!--RP2--&gt;OpenHarmony 6.0&lt;!--RP2End-- &gt; &gt;开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。
+> - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0&lt;!--RP2End-- &gt; &gt;开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。
 > 
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](arkts-arkui-global-caniuse-f.md)接口判断当前设备是否支持此syscap及对应接口。
 
@@ -46,6 +46,18 @@ import { PiPWindow } from '@kit.ArkUI';
 | [PiPController](arkts-arkui-pipwindow-pipcontroller-i-sys.md) | 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ControlPanelActionEventCallback](arkts-arkui-pipwindow-controlpanelactioneventcallback-t.md) | 描述画中画控制面板控件动作事件回调。 |
+| [PiPActionEventType](arkts-arkui-pipwindow-pipactioneventtype-t.md) | 画中画控制面板控件动作事件类型，支持以下四种。 |
+| [PiPCallActionEvent](arkts-arkui-pipwindow-pipcallactionevent-t.md) | 视频通话控制事件类型。 |
+| [PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md) | 画中画控制面板的可选控件组列表，应用可以配置是否显示可选控件。使用时必须和[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)对应，否则[create](arkts-arkui-pipwindow-create-f.md)接口抛出401错误码。 |
+| [PiPLiveActionEvent](arkts-arkui-pipwindow-pipliveactionevent-t.md) | 直播控制事件类型。 |
+| [PiPMeetingActionEvent](arkts-arkui-pipwindow-pipmeetingactionevent-t.md) | 视频会议控制事件类型。 |
+| [PiPVideoActionEvent](arkts-arkui-pipwindow-pipvideoactionevent-t.md) | 视频播放控制事件类型。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -66,15 +78,3 @@ import { PiPWindow } from '@kit.ArkUI';
 | --- | --- |
 | [PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e-sys.md) | 画中画模板类型枚举。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [ControlPanelActionEventCallback](arkts-arkui-pipwindow-controlpanelactioneventcallback-t.md) | 描述画中画控制面板控件动作事件回调。 |
-| [PiPActionEventType](arkts-arkui-pipwindow-pipactioneventtype-t.md) | 画中画控制面板控件动作事件类型，支持以下四种。 |
-| [PiPCallActionEvent](arkts-arkui-pipwindow-pipcallactionevent-t.md) | 视频通话控制事件类型。 |
-| [PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md) | 画中画控制面板的可选控件组列表，应用可以配置是否显示可选控件。使用时必须和[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)对应，否则[create](arkts-arkui-pipwindow-create-f.md)接口抛出401错误码。 |
-| [PiPLiveActionEvent](arkts-arkui-pipwindow-pipliveactionevent-t.md) | 直播控制事件类型。 |
-| [PiPMeetingActionEvent](arkts-arkui-pipwindow-pipmeetingactionevent-t.md) | 视频会议控制事件类型。 |
-| [PiPVideoActionEvent](arkts-arkui-pipwindow-pipvideoactionevent-t.md) | 视频播放控制事件类型。 |

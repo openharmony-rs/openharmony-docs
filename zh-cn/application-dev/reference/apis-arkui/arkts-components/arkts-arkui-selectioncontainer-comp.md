@@ -1,8 +1,20 @@
 # SelectionContainer
 
-SelectionContainer组件用于为多个文本节点提供跨节点文本选中、复制及菜单扩展能力，支持统一配置选中文本的手柄颜色和底板颜色，支持灵活的文本拼接策略，支持自定义选择菜单和扩展菜单选项。适用于需要跨多个Text组件实现文本连续选中、统一复制、样式自定义及菜单扩展的场景，解决了多Text组件场景下文本选择体验割裂的问题，提升了用户在复杂文本布局中的交互体验。
+SelectionContainer组件用于为多个文本节点提供跨节点文本选中、复制及菜单扩展能力，支持统一配置选中文本的手柄颜色和高亮颜色，支持灵活的文本拼接策略，支持自定义选择菜单和扩展菜单选项。适用于需要跨多个Text组件实现文本连续选中、统一复制、样式自定义及菜单扩展的场景，解决了多Text组件场景下文本选择体验割裂的问题，提升了用户在复杂文本布局中的交互体验。
 
-> **说明：** > > - 本组件中选中文本相关回调返回的文本内容，按照[Text](arkts-arkui-text-comp.md#text)组件的从上到下显示顺序进行拼接。 > > - 本组件默认布局走[Stack](arkts-arkui-stack-comp.md#stack)，如有其他容器布局需求请在SelectionContainer内放置一个容器组件。 > > - SelectionContainer内跨节点选中文本时不显示放大镜，也不支持[getMagnifier](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getmagnifier)主动设置放大镜。 > > - 仅Text组件中的文本内容参与跨节点选中与文本拼接。
+> **说明：** 
+> 
+> - 本组件中选中文本相关回调返回的文本内容，按照[Text](arkts-arkui-text-comp.md#text)组件的从上到下显示顺序进行拼接。
+> 
+> - 本组件默认布局走[Stack](arkts-arkui-stack-comp.md#stack)，如有其他容器布局需求请在SelectionContainer内放置一个容器组件。
+> 
+> - SelectionContainer内选中文本时不显示放大镜，也不支持[getMagnifier](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getmagnifier)主动设置放大镜。
+> 
+> - SelectionContainer内选中文本时不支持拖拽。
+> 
+> - SelectionContainer内[Repeat](arkts-arkui-repeat-comp.md#repeat)组件下的文本不支持跨节点选中。
+> 
+> - 仅Text组件中的文本内容参与跨节点选中与文本拼接。
 
 ## 子组件
 
@@ -14,7 +26,7 @@ SelectionContainer组件用于为多个文本节点提供跨节点文本选中�
 SelectionContainer(value?: SelectionContainerOptions)
 ```
 
-定义SelectionContainer的构造函数。
+创建一个SelectionContainer组件。
 
 **起始版本：** 26.0.0
 
@@ -28,7 +40,7 @@ SelectionContainer(value?: SelectionContainerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SelectionContainerOptions](arkts-arkui-selectioncontainer-comp-selectioncontaineroptions-i.md) | 否 | 组件的初始化选项。 |
+| value | [SelectionContainerOptions](arkts-arkui-selectioncontainer-comp-selectioncontaineroptions-i.md) | 否 | 组件初始化配置项。 |
 
 ## 汇总
 

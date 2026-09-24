@@ -16,11 +16,6 @@ function getFontByName(fontName: string): FontInfo
 
 > **说明：** 
 > 
-> -getFontByName需要先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getFont](arkts-arkui-arkui-uicontext-uicontext-c.md#getfont)方法获取
-> [Font](arkts-arkui-arkui-uicontext-uicontext-c.md)对象，然后通过该对象进行调用。且直接使用getFontByName可能导致
-> [UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
-> 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getFont](arkts-arkui-arkui-uicontext-uicontext-c.md#getfont)方法获取当前UI上下文关联的[Font](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
 **起始版本：** 10
@@ -45,4 +40,4 @@ function getFontByName(fontName: string): FontInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [FontInfo](arkts-arkui-font-fontinfo-i.md) | 字体的详细信息。 |
+| [FontInfo](arkts-arkui-font-fontinfo-i.md) | 字体的详细信息，包含路径、名称、字重、宽度、是否倾斜等属性。 |

@@ -22,7 +22,7 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 
 > **说明：** 
 > 
-> `addText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑。预上屏状态由输入法管理，应用层调用`addText`/`deleteText`会破坏输入法的状态管理，因此应避免在预上屏状态下调用`addText`。
+> `addText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不推荐在预上屏状态下调用。
 
 **起始版本：** 15
 
@@ -37,7 +37,7 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | 插入的文本内容。 |
-| textOperationOptions | [TextContentControllerOptions](arkts-arkui-common-comp-textcontentcontrolleroptions-i.md) | 否 | 插入文本的配置选项，用于自定义插入位置等参数。当需要在指定位置插入文本时传入此参数，不设置时默认插入文本至末尾。 |
+| textOperationOptions | [TextContentControllerOptions](arkts-arkui-common-comp-textcontentcontrolleroptions-i.md) | 否 | 插入文本的配置选项，不设置时默认插入文本至末尾。 |
 
 **返回值：**
 
@@ -145,7 +145,7 @@ getCaretOffset() : CaretOffset
 > 
 > - 返回值中的位置信息是光标相对于可编辑组件的位置。
 > 
-> - 当无法获取光标位置时（例如[TextInputController](arkts-arkui-textinput-comp-textinputcontroller-c.md)未与[TextInput](arkts-arkui-textinput-comp.md#text_input)组件绑定时），该接口返回undefined。
+> - 当无法获取光标位置时（例如[TextInputController](arkts-arkui-textinput-comp-textinputcontroller-c.md)未与[TextInput](arkts-arkui-textinput-comp.md#text_input)组件绑定时），该接口返回null。
 
 **起始版本：** 11
 
@@ -159,7 +159,7 @@ getCaretOffset() : CaretOffset
 
 | 类型 | 说明 |
 | --- | --- |
-| [CaretOffset](arkts-arkui-common-comp-caretoffset-i.md) | 光标相对输入框的位置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
+| [CaretOffset](arkts-arkui-common-comp-caretoffset-i.md) | 光标相对输入框的位置。   *<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ## getSelection
 
@@ -213,13 +213,6 @@ getTextContentRect() : RectResult
 
 获取已编辑文本内容区域相对于组件的位置和大小，返回值的单位为像素。
 
-> **说明：** 
-> 
-> - 初始不输入文本时，返回值中有相对组件的位置信息，大小为0。
-> - 返回值中的位置信息是第一个字符相对于可编辑组件的位置。
-> - 在Search组件中，返回的位置信息是相对Search组件中搜索图标的偏移值。
-> - 有输入时，返回信息中的宽度是组件编辑区域的固定宽度。
-
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -246,6 +239,10 @@ scrollToVisible(range?: TextRange): void
 > 
 > 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
 
+> **说明：** 
+> 
+> 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
+
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -266,7 +263,7 @@ scrollToVisible(range?: TextRange): void
 setStyledPlaceholder(styledString: StyledString): void
 ```
 
-设置属性字符串样式的占位文本，触发绑定或更新。
+触发属性字符串的绑定或更新。
 
 > **说明：** 
 > 

@@ -41,12 +41,6 @@ import { webSocket } from '@kit.NetworkKit';
 | [WebSocketServer](arkts-network-websocket-websocketserver-i.md) | 在调用WebSocketServer方法前，需要先通过[webSocket.createWebSocketServer](arkts-network-websocket-createwebsocketserver-f.md)创建一个WebSocketServer。 |
 | [WebSocketServerConfig](arkts-network-websocket-websocketserverconfig-i.md) | 启动服务端的service时，需要输入的配置信息和说明。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [TlsProtocol](arkts-network-websocket-tlsprotocol-e.md) | TLS协议类型。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -55,3 +49,9 @@ import { webSocket } from '@kit.NetworkKit';
 | [HttpProxy](arkts-network-websocket-httpproxy-t.md) | 网络全局代理配置信息。 |
 | [ProxyConfiguration](arkts-network-websocket-proxyconfiguration-t.md) | 网络代理配置信息 |
 | [ResponseHeaders](arkts-network-websocket-responseheaders-t.md) | 服务器发送的响应头。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [TlsProtocol](arkts-network-websocket-tlsprotocol-e.md) | TLS协议类型。 |

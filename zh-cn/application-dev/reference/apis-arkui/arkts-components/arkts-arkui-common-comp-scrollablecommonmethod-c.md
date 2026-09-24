@@ -582,43 +582,6 @@ onReachStart(event: () => void): T
 | --- | --- |
 | T | 返回当前滚动组件。 |
 
-## onScroll
-
-```TypeScript
-onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
-```
-
-滚动组件滑动时触发。
-
-> **说明：** 
-> 
-> 从API version 11开始支持，从API version 12开始废弃。[List](arkts-arkui-list-comp.md#list)、[Grid](arkts-arkui-grid-comp.md#grid)和[WaterFlow](arkts-arkui-waterflow-comp.md#water_flow)
-> 组件的onScroll事件在布局之后触发，
-
-**起始版本：** 11
-
-**废弃版本：** 12
-
-**替代接口：** [onDidScroll](#ondidscroll)
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | 是 | 滚动组件滑动时的回调。<br>scrollOffset：相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br> scrollState：当前滑动状态。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| T | 返回当前滚动组件。 |
-
 ## onScrollStart
 
 ```TypeScript
@@ -1022,6 +985,43 @@ scrollBarWidth(value: number | string | Resource): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 滚动条的宽度。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| T | 返回当前滚动组件。 |
+
+## onScroll
+
+```TypeScript
+onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
+```
+
+滚动组件滑动时触发。
+
+> **说明：** 
+> 
+> 从API version 11开始支持，从API version 12开始废弃。[List](arkts-arkui-list-comp.md#list)、[Grid](arkts-arkui-grid-comp.md#grid)和[WaterFlow](arkts-arkui-waterflow-comp.md#water_flow)
+> 组件的onScroll事件在布局之后触发，
+
+**起始版本：** 11
+
+**废弃版本：** 12
+
+**替代接口：** [onDidScroll](#ondidscroll)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | 是 | 滚动组件滑动时的回调。<br>scrollOffset：相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br> scrollState：当前滑动状态。 |
 
 **返回值：**
 

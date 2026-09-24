@@ -25,7 +25,7 @@ function resetOAID(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [17300001](../errorcode-oaid.md#17300001-系统内部错误) | System internal error. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 | 17300002 | Not in the trust list.<br>**适用版本：** 12+ |
 
 **示例**

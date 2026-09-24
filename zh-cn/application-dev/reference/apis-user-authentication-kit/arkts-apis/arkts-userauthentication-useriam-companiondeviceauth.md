@@ -56,16 +56,6 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 <!--DelEnd-->
 
 <!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [BusinessId](arkts-userauthentication-companiondeviceauth-businessid-e-sys.md) | 业务ID枚举。业务ID是伴随设备支持的某个业务场景的唯一标识。不同的伴随设备由于认证安全性差异，支持的业务场景范围也不同，例如免解锁执行语音指令。 |
-| [DeviceIdType](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md) | 设备ID类型枚举。用于定义设备业务标识的类型，支持系统预设类型和厂商自定义扩展类型。 |
-| [SelectPurpose](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md) | 选择伴随设备的目的。 |
-<!--DelEnd-->
-
-<!--Del-->
 ### 类型（系统接口）
 
 | 名称 | 说明 |
@@ -76,4 +66,14 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 | [PasscodePromptCallback](arkts-userauthentication-companiondeviceauth-passcodepromptcallback-t-sys.md) | 定义当框架需要辅助设备的密码时调用的回调。 |
 | [PasscodeSubmitCallback](arkts-userauthentication-companiondeviceauth-passcodesubmitcallback-t-sys.md) | 定义用于提交用户输入的密码的回调。 |
 | [TemplateStatusCallback](arkts-userauthentication-companiondeviceauth-templatestatuscallback-t-sys.md) | 回调函数，用于接收模板状态变化通知。当模板状态发生变化（如添加、删除、有效性变更等）时，系统会通过此回调通知应用。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [BusinessId](arkts-userauthentication-companiondeviceauth-businessid-e-sys.md) | 业务ID枚举。业务ID是伴随设备支持的某个业务场景的唯一标识。不同的伴随设备由于认证安全性差异，支持的业务场景范围也不同，例如免解锁执行语音指令。 |
+| [DeviceIdType](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md) | 设备ID类型枚举。用于定义设备业务标识的类型，支持系统预设类型和厂商自定义扩展类型。 |
+| [SelectPurpose](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md) | 选择伴随设备的目的。 |
 <!--DelEnd-->

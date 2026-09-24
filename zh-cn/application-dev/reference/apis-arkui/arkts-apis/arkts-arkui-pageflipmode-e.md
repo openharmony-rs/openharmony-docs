@@ -4,9 +4,7 @@
 declare enum PageFlipMode
 ```
 
-Page flip mode of Swiper and Tabs on mouse wheel event.
-
-@enum { number } PageFlipMode
+表示鼠标滚轮翻页模式。
 
 **起始版本：** 15
 
@@ -18,7 +16,7 @@ Page flip mode of Swiper and Tabs on mouse wheel event.
 CONTINUOUS = 0
 ```
 
-Turn pages continuously according to the number of mouse wheel events.
+连续翻页模式，鼠标滚轮连续滚动时翻多页。
 
 **起始版本：** 15
 
@@ -36,7 +34,7 @@ Turn pages continuously according to the number of mouse wheel events.
 SINGLE = 1
 ```
 
-The page-turning animation remains unresponsive to other mouse wheel events until it completes.
+单次翻页模式，在一次翻页动画结束前不响应滚轮事件。
 
 **起始版本：** 15
 

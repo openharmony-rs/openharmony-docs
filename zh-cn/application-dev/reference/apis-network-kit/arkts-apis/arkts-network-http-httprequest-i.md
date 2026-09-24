@@ -97,38 +97,6 @@ httpRequest.request(url, {
 });
 ```
 
-## off("headerReceive")
-
-```TypeScript
-off(type: "headerReceive", callback?: AsyncCallback<Object>): void
-```
-
-取消订阅HTTP Response Header事件。
-
-**起始版本：** 6
-
-**废弃版本：** 8
-
-**替代接口：** [off_headersReceive](#offheadersreceive)
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | "headerReceive" | 是 | 取消订阅的事件类型，'headerReceive'。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | 否 | 回调函数。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。 |
-
-**示例**
-
-```TypeScript
-import { http } from '@kit.NetworkKit';
-
-let httpRequest = http.createHttp();
-httpRequest.off("headerReceive");
-```
-
 ## off("headersReceive")
 
 ```TypeScript
@@ -294,19 +262,19 @@ httpRequest.on("dataSendProgress", (data: http.DataSendProgressInfo) => {
 httpRequest.off("dataSendProgress");
 ```
 
-## on("headerReceive")
+## off("headerReceive")
 
 ```TypeScript
-on(type: "headerReceive", callback: AsyncCallback<Object>): void
+off(type: "headerReceive", callback?: AsyncCallback<Object>): void
 ```
 
-订阅HTTP Response Header 事件。
+取消订阅HTTP Response Header事件。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-**替代接口：** [on_headersReceive](#onheadersreceive)
+**替代接口：** [off_headersReceive](#offheadersreceive)
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -314,19 +282,16 @@ on(type: "headerReceive", callback: AsyncCallback<Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | "headerReceive" | 是 | 订阅的事件类型，'headerReceive'。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | 是 | 回调函数。当订阅成功，error为undefined，data为获取到HTTP响应头；否则为错误对象。 |
+| type | "headerReceive" | 是 | 取消订阅的事件类型，'headerReceive'。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | 否 | 回调函数。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。 |
 
 **示例**
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let httpRequest = http.createHttp();
-httpRequest.on("headerReceive", (data: BusinessError) => {
-  console.error("error:" + JSON.stringify(data));
-});
+httpRequest.off("headerReceive");
 ```
 
 ## on("headersReceive")
@@ -494,6 +459,41 @@ httpRequest.on("dataSendProgress", (data: http.DataSendProgressInfo) => {
 httpRequest.off("dataSendProgress");
 ```
 
+## on("headerReceive")
+
+```TypeScript
+on(type: "headerReceive", callback: AsyncCallback<Object>): void
+```
+
+订阅HTTP Response Header 事件。
+
+**起始版本：** 6
+
+**废弃版本：** 8
+
+**替代接口：** [on_headersReceive](#onheadersreceive)
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | "headerReceive" | 是 | 订阅的事件类型，'headerReceive'。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | 是 | 回调函数。当订阅成功，error为undefined，data为获取到HTTP响应头；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let httpRequest = http.createHttp();
+httpRequest.on("headerReceive", (data: BusinessError) => {
+  console.error("error:" + JSON.stringify(data));
+});
+```
+
 ## once("headersReceive")
 
 ```TypeScript
@@ -565,8 +565,8 @@ request(url: string, callback: AsyncCallback<HttpResponse>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300001](../errorcode-net-http.md#2300001-不支持的协议) | Unsupported protocol. |
 | [2300003](../errorcode-net-http.md#2300003-url格式错误) | Invalid URL format or missing URL. |
 | [2300005](../errorcode-net-http.md#2300005-代理服务器域名解析失败) | Failed to resolve the proxy name. |
@@ -659,8 +659,8 @@ request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpRe
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300001](../errorcode-net-http.md#2300001-不支持的协议) | Unsupported protocol. |
 | [2300003](../errorcode-net-http.md#2300003-url格式错误) | Invalid URL format or missing URL. |
 | [2300005](../errorcode-net-http.md#2300005-代理服务器域名解析失败) | Failed to resolve the proxy name. |
@@ -783,8 +783,8 @@ request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300001](../errorcode-net-http.md#2300001-不支持的协议) | Unsupported protocol. |
 | [2300003](../errorcode-net-http.md#2300003-url格式错误) | Invalid URL format or missing URL. |
 | [2300005](../errorcode-net-http.md#2300005-代理服务器域名解析失败) | Failed to resolve the proxy name. |
@@ -878,8 +878,8 @@ requestInStream(url: string, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300001](../errorcode-net-http.md#2300001-不支持的协议) | Unsupported protocol. |
 | [2300003](../errorcode-net-http.md#2300003-url格式错误) | Invalid URL format or missing URL. |
 | [2300005](../errorcode-net-http.md#2300005-代理服务器域名解析失败) | Failed to resolve the proxy name. |
@@ -959,8 +959,8 @@ requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300001](../errorcode-net-http.md#2300001-不支持的协议) | Unsupported protocol. |
 | [2300003](../errorcode-net-http.md#2300003-url格式错误) | Invalid URL format or missing URL. |
 | [2300005](../errorcode-net-http.md#2300005-代理服务器域名解析失败) | Failed to resolve the proxy name. |
@@ -1067,8 +1067,8 @@ requestInStream(url: string, options?: HttpRequestOptions): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300001](../errorcode-net-http.md#2300001-不支持的协议) | Unsupported protocol. |
 | [2300003](../errorcode-net-http.md#2300003-url格式错误) | Invalid URL format or missing URL. |
 | [2300005](../errorcode-net-http.md#2300005-代理服务器域名解析失败) | Failed to resolve the proxy name. |
@@ -1172,7 +1172,7 @@ requestSync(url: string, options?: HttpRequestOptions): HttpResponse
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [2300001](../errorcode-net-http.md#2300001-不支持的协议) | Unsupported protocol. |
 | [2300003](../errorcode-net-http.md#2300003-url格式错误) | Invalid URL format or missing URL. |
 | [2300005](../errorcode-net-http.md#2300005-代理服务器域名解析失败) | Failed to resolve the proxy name. |

@@ -159,40 +159,6 @@ import { bundleManager } from '@kit.AbilityKit';
 | [verifyAbc](arkts-ability-bundlemanager-verifyabc-f-sys.md#verifyabc-1) | 根据给定的abcPaths和deleteOriginalFiles校验.abc文件。使用Promise异步回调。 |
 <!--DelEnd-->
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [AbilityFlag](arkts-ability-bundlemanager-abilityflag-e.md) | Ability组件信息标志，指示需要获取的Ability组件信息的内容。 |
-| [AbilityType](arkts-ability-bundlemanager-abilitytype-e.md) | 标识Ability组件的类型。 |
-| [BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md) | 包信息标志，指示需要获取的包信息的内容。 |
-| [BundleType](arkts-ability-bundlemanager-bundletype-e.md) | 标识应用的类型。 |
-| [CompatiblePolicy](arkts-ability-bundlemanager-compatiblepolicy-e.md) | 标识动态共享库的版本兼容类型。 |
-| [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md) | 标识该Ability的显示模式。仅适用于FA模型的[PageAbility](../../../application-models/pageability-overview.md)。 |
-| [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | 扩展组件的类型。 |
-| [LaunchType](arkts-ability-bundlemanager-launchtype-e.md) | 标识组件的[启动模式](../../../application-models/uiability-launch-type.md)。 |
-| [ModuleType](arkts-ability-bundlemanager-moduletype-e.md) | 标识模块类型。 |
-| [MultiAppModeType](arkts-ability-bundlemanager-multiappmodetype-e.md) | 标识应用多开的模式类型。 |
-| [PermissionGrantState](arkts-ability-bundlemanager-permissiongrantstate-e.md) | 权限授予状态。 |
-| [SupportWindowMode](arkts-ability-bundlemanager-supportwindowmode-e.md) | 标识该组件所支持的窗口模式。 |
-
-<!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [AppDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md) | 标识应用[HarmonyAppProvision配置文件说明](../../../security/app-provision-structure.md)。 |
-| [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md) | 应用信息标志，指示需要获取的应用信息的内容。 |
-| [ApplicationInfoFlag](arkts-ability-bundlemanager-applicationinfoflag-e-sys.md) | 标识应用和用户之间的各种状态类型。 |
-| [ApplicationReservedFlag](arkts-ability-bundlemanager-applicationreservedflag-e-sys.md) | 该ApplicationReservedFlag值的每一位标识相关信息。 |
-| [AppSandboxPolicy](arkts-ability-bundlemanager-appsandboxpolicy-e-sys.md) | 双模式（2in1/平板）场景下的应用沙箱策略。 |
-| [BundleFlag](arkts-ability-bundlemanager-bundleflag-e-sys.md) | 包信息标志，指示需要获取的包信息的内容。 |
-| [BundleInstallStatus](arkts-ability-bundlemanager-bundleinstallstatus-e-sys.md) | 标识应用的安装状态。 |
-| [DeviceModeDistributionPolicy](arkts-ability-bundlemanager-devicemodedistributionpolicy-e-sys.md) | 定义设备模式分发策略枚举，用于指定应用程序如何分发到设备上。 |
-| [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md) | 扩展组件信息标志，指示需要获取的扩展组件信息的内容。 |
-| [ProfileType](arkts-ability-bundlemanager-profiletype-e-sys.md) | 标识配置文件类型。 |
-<!--DelEnd-->
-
 ### 类型
 
 | 名称 | 说明 |
@@ -234,4 +200,38 @@ import { bundleManager } from '@kit.AbilityKit';
 | [RecoverableApplicationInfo](arkts-ability-bundlemanager-recoverableapplicationinfo-t-sys.md) | 预置应用被卸载后可以恢复的预置应用信息。 |
 | [SharedBundleInfo](arkts-ability-bundlemanager-sharedbundleinfo-t-sys.md) | 共享包信息。 |
 | [Validity](arkts-ability-bundlemanager-validity-t-sys.md) | 配置文件中的有效期。 |
+<!--DelEnd-->
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [AbilityFlag](arkts-ability-bundlemanager-abilityflag-e.md) | Ability组件信息标志，指示需要获取的Ability组件信息的内容。 |
+| [AbilityType](arkts-ability-bundlemanager-abilitytype-e.md) | 标识Ability组件的类型。 |
+| [BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md) | 包信息标志，指示需要获取的包信息的内容。 |
+| [BundleType](arkts-ability-bundlemanager-bundletype-e.md) | 标识应用的类型。 |
+| [CompatiblePolicy](arkts-ability-bundlemanager-compatiblepolicy-e.md) | 标识动态共享库的版本兼容类型。 |
+| [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md) | 标识该Ability的显示模式。仅适用于FA模型的[PageAbility](../../../application-models/pageability-overview.md)。 |
+| [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | 扩展组件的类型。 |
+| [LaunchType](arkts-ability-bundlemanager-launchtype-e.md) | 标识组件的[启动模式](../../../application-models/uiability-launch-type.md)。 |
+| [ModuleType](arkts-ability-bundlemanager-moduletype-e.md) | 标识模块类型。 |
+| [MultiAppModeType](arkts-ability-bundlemanager-multiappmodetype-e.md) | 标识应用多开的模式类型。 |
+| [PermissionGrantState](arkts-ability-bundlemanager-permissiongrantstate-e.md) | 权限授予状态。 |
+| [SupportWindowMode](arkts-ability-bundlemanager-supportwindowmode-e.md) | 标识该组件所支持的窗口模式。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [AppDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md) | 标识应用[HarmonyAppProvision配置文件说明](../../../security/app-provision-structure.md)。 |
+| [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md) | 应用信息标志，指示需要获取的应用信息的内容。 |
+| [ApplicationInfoFlag](arkts-ability-bundlemanager-applicationinfoflag-e-sys.md) | 标识应用和用户之间的各种状态类型。 |
+| [ApplicationReservedFlag](arkts-ability-bundlemanager-applicationreservedflag-e-sys.md) | 该ApplicationReservedFlag值的每一位标识相关信息。 |
+| [AppSandboxPolicy](arkts-ability-bundlemanager-appsandboxpolicy-e-sys.md) | 双模式（2in1/平板）场景下的应用沙箱策略。 |
+| [BundleFlag](arkts-ability-bundlemanager-bundleflag-e-sys.md) | 包信息标志，指示需要获取的包信息的内容。 |
+| [BundleInstallStatus](arkts-ability-bundlemanager-bundleinstallstatus-e-sys.md) | 标识应用的安装状态。 |
+| [DeviceModeDistributionPolicy](arkts-ability-bundlemanager-devicemodedistributionpolicy-e-sys.md) | 定义设备模式分发策略枚举，用于指定应用程序如何分发到设备上。 |
+| [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md) | 扩展组件信息标志，指示需要获取的扩展组件信息的内容。 |
+| [ProfileType](arkts-ability-bundlemanager-profiletype-e-sys.md) | 标识配置文件类型。 |
 <!--DelEnd-->

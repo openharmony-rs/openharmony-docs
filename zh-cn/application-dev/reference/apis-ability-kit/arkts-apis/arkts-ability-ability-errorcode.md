@@ -1,4 +1,4 @@
-# @ohos.ability.errorCode
+# @ohos.ability.errorCode(ErrorCode)
 
 ## 导入模块
 

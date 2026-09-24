@@ -55,7 +55,7 @@ ServiceExtensionAbility提供后台服务扩展能力，支持后台运行并对
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501011](../errorcode-form.md#16501011-卡片不支持调用当前接口) | The form can not support this operation |
@@ -174,7 +174,7 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../../application
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501011](../errorcode-form.md#16501011-卡片不支持调用当前接口) | The form can not support this operation |
 

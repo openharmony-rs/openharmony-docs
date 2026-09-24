@@ -16,35 +16,6 @@ abstract class IRemoteObject
 import { rpc } from '@kit.IPCKit';
 ```
 
-## addDeathRecipient
-
-```TypeScript
-addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
-```
-
-注册用于接收远程对象死亡通知的回调。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** registerDeathRecipient(recipient: DeathRecipient, flags: number)
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | 是 | 要注册的回调。 |
-| flags | number | 是 | 死亡通知标志。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | true：回调注册成功，false：回调注册失败。 |
-
 ## getDescriptor
 
 ```TypeScript
@@ -68,28 +39,6 @@ getDescriptor(): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [1900008](../errorcode-rpc.md#1900008-非法的ipc对象) | The proxy or remote object is invalid. |
-
-## getInterfaceDescriptor
-
-```TypeScript
-getInterfaceDescriptor(): string
-```
-
-获取对象的接口描述符，接口描述符为字符串。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** getDescriptor()
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| string | 返回接口描述符。 |
 
 ## getLocalInterface
 
@@ -119,7 +68,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The string length is greater than or equal to 40960; 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 ## isObjectDead
 
@@ -138,34 +87,6 @@ isObjectDead(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | true：对象死亡，false：对象未死亡。 |
-
-## queryLocalInterface
-
-```TypeScript
-queryLocalInterface(descriptor: string): IRemoteBroker
-```
-
-查询接口描述符的字符串。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** getLocalInterface(descriptor: string)
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| descriptor | string | 是 | 接口描述符的字符串。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [IRemoteBroker](arkts-ipc-rpc-iremotebroker-i.md) | 返回绑定到指定接口描述符的IRemoteBroker对象。 |
 
 ## registerDeathRecipient
 
@@ -190,38 +111,9 @@ registerDeathRecipient(recipient: DeathRecipient, flags: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The callback used to receive remote object death notifications is empty. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The callback used to receive remote object death notifications is empty. |
 | [1900005](../errorcode-rpc.md#1900005-ipc对象权限错误) | Operation allowed only for the proxy object. |
 | [1900008](../errorcode-rpc.md#1900008-非法的ipc对象) | The proxy or remote object is invalid. |
-
-## removeDeathRecipient
-
-```TypeScript
-removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
-```
-
-注销用于接收远程对象死亡通知的回调。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** unregisterDeathRecipient(recipient: DeathRecipient, flags: number)
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | 是 | 要注销的回调。 |
-| flags | number | 是 | 死亡通知标志。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | true：回调注销成功，false：回调注销失败。 |
 
 ## sendMessageRequest
 
@@ -259,7 +151,7 @@ sendMessageRequest(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
 
 <a id="sendmessagerequest-1"></a>
 
@@ -295,7 +187,142 @@ sendMessageRequest(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
+
+## unregisterDeathRecipient
+
+```TypeScript
+unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
+```
+
+注销用于接收远程对象死亡通知的回调。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | 是 | 要注销的回调。 |
+| flags | number | 是 | 死亡通知标志。保留参数，设置为0。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The callback used to receive remote object death notifications is empty. |
+| [1900005](../errorcode-rpc.md#1900005-ipc对象权限错误) | Operation allowed only for the proxy object. |
+| [1900008](../errorcode-rpc.md#1900008-非法的ipc对象) | The proxy or remote object is invalid. |
+
+## addDeathRecipient
+
+```TypeScript
+addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
+```
+
+注册用于接收远程对象死亡通知的回调。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** registerDeathRecipient(recipient: DeathRecipient, flags: number)
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | 是 | 要注册的回调。 |
+| flags | number | 是 | 死亡通知标志。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | true：回调注册成功，false：回调注册失败。 |
+
+## getInterfaceDescriptor
+
+```TypeScript
+getInterfaceDescriptor(): string
+```
+
+获取对象的接口描述符，接口描述符为字符串。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** getDescriptor()
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string | 返回接口描述符。 |
+
+## queryLocalInterface
+
+```TypeScript
+queryLocalInterface(descriptor: string): IRemoteBroker
+```
+
+查询接口描述符的字符串。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** getLocalInterface(descriptor: string)
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| descriptor | string | 是 | 接口描述符的字符串。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [IRemoteBroker](arkts-ipc-rpc-iremotebroker-i.md) | 返回绑定到指定接口描述符的IRemoteBroker对象。 |
+
+## removeDeathRecipient
+
+```TypeScript
+removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
+```
+
+注销用于接收远程对象死亡通知的回调。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** unregisterDeathRecipient(recipient: DeathRecipient, flags: number)
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | 是 | 要注销的回调。 |
+| flags | number | 是 | 死亡通知标志。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | true：回调注销成功，false：回调注销失败。 |
 
 ## sendRequest
 
@@ -399,30 +426,3 @@ sendRequest(
 | reply | [MessageParcel](arkts-ipc-rpc-messageparcel-c.md) | 是 | 接收应答数据的MessageParcel对象。 |
 | options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | 是 | 本次请求的同异步模式，默认同步调用。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SendRequestResult](arkts-ipc-rpc-sendrequestresult-i.md)&gt; | 是 | 接收发送结果的回调。 |
-
-## unregisterDeathRecipient
-
-```TypeScript
-unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
-```
-
-注销用于接收远程对象死亡通知的回调。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | 是 | 要注销的回调。 |
-| flags | number | 是 | 死亡通知标志。保留参数，设置为0。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The callback used to receive remote object death notifications is empty. |
-| [1900005](../errorcode-rpc.md#1900005-ipc对象权限错误) | Operation allowed only for the proxy object. |
-| [1900008](../errorcode-rpc.md#1900008-非法的ipc对象) | The proxy or remote object is invalid. |

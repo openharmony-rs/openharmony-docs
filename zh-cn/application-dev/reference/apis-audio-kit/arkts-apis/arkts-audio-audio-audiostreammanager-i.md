@@ -43,7 +43,7 @@ getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback<AudioEffectI
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
 
 **示例**
@@ -90,7 +90,7 @@ getAudioEffectInfoArray(usage: StreamUsage): Promise<AudioEffectInfoArray>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 
 **示例**
@@ -133,7 +133,7 @@ getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -407,161 +407,6 @@ try {
 } catch (err) {
   let error = err as BusinessError;
   console.error(`Failed to check whether acoustic echo canceler is supported. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-## isActive
-
-```TypeScript
-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
-```
-
-获取指定音频流活跃状态。使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive)替代。注意
-> 替代接口与原接口入参存在差异，例如[StreamUsage](arkts-audio-audio-streamusage-e.md)中提供了`STREAM_USAGE_MUSIC`、`
-> STREAM_USAGE_MOVIE`、`STREAM_USAGE_AUDIOBOOK`、`STREAM_USAGE_GAME`等更细分的类型，而
-> [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md)中这些类型统一归入`MEDIA`类型。具体映射关系请参考
-> [音量控制](../../../media/audio/using-right-streamusage-for-playback.md#音量控制)中常见的播放流类型与音量类型的对应关系，迁移时根据实际业务场景选择对应的
-> StreamUsage值。
-
-**起始版本：** 9
-
-**废弃版本：** 20
-
-**替代接口：** [isStreamActive](#isstreamactive)
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频流类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音频流活跃状态成功，err为undefined，data为true表示活跃，false表示不活跃；否则为错误对象。 |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioStreamManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
-  if (err) {
-    console.error(`Failed to check whether the stream is active. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
-});
-```
-
-<a id="isactive-1"></a>
-
-## isActive
-
-```TypeScript
-isActive(volumeType: AudioVolumeType): Promise<boolean>
-```
-
-获取指定音频流是否为活跃状态。使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive)替代。注意
-> 替代接口与原接口入参存在差异，例如[StreamUsage](arkts-audio-audio-streamusage-e.md)中提供了`STREAM_USAGE_MUSIC`、`
-> STREAM_USAGE_MOVIE`、`STREAM_USAGE_AUDIOBOOK`、`STREAM_USAGE_GAME`等更细分的类型，而
-> [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md)中这些类型统一归入`MEDIA`类型。具体映射关系请参考
-> [音量控制](../../../media/audio/using-right-streamusage-for-playback.md#音量控制)中常见的播放流类型与音量类型的对应关系，迁移时根据实际业务场景选择对应的
-> StreamUsage值。
-
-**起始版本：** 9
-
-**废弃版本：** 20
-
-**替代接口：** [isStreamActive](#isstreamactive)
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频流类型。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示流状态为活跃；返回false表示流状态不活跃。 |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioStreamManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
-  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to check whether the stream is active. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## isActiveSync
-
-```TypeScript
-isActiveSync(volumeType: AudioVolumeType): boolean
-```
-
-获取指定音频流是否为活跃状态。同步返回结果。
-
-> **说明：** 
-> 
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive)替代。注
-> 意替代接口与原接口入参存在差异，例如[StreamUsage](arkts-audio-audio-streamusage-e.md)中提供了`STREAM_USAGE_MUSIC`、`
-> STREAM_USAGE_MOVIE`、`STREAM_USAGE_AUDIOBOOK`、`STREAM_USAGE_GAME`等更细分的类型，而
-> [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md)中这些类型统一归入`MEDIA`类型。具体映射关系请参考
-> [音量控制](../../../media/audio/using-right-streamusage-for-playback.md#音量控制)中常见的播放流类型与音量类型的对应关系，迁移时根据实际业务场景选择对应的
-> StreamUsage值。
-
-**起始版本：** 10
-
-**废弃版本：** 20
-
-**替代接口：** [isStreamActive](#isstreamactive)
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频流类型。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 流的活跃状态。返回true表示活跃，返回false表示不活跃。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let value: boolean = audioStreamManager.isActiveSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to check whether the stream is active. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1123,7 +968,7 @@ on(type: 'audioRendererChange', callback: Callback<AudioRendererChangeInfoArray>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -1161,7 +1006,7 @@ on(type: 'audioCapturerChange', callback: Callback<AudioCapturerChangeInfoArray>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -1170,4 +1015,159 @@ on(type: 'audioCapturerChange', callback: Callback<AudioCapturerChangeInfoArray>
 audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
   console.info(`Audio capturer changed, audioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
 });
+```
+
+## isActive
+
+```TypeScript
+isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
+```
+
+获取指定音频流活跃状态。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive)替代。注意
+> 替代接口与原接口入参存在差异，例如[StreamUsage](arkts-audio-audio-streamusage-e.md)中提供了`STREAM_USAGE_MUSIC`、`
+> STREAM_USAGE_MOVIE`、`STREAM_USAGE_AUDIOBOOK`、`STREAM_USAGE_GAME`等更细分的类型，而
+> [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md)中这些类型统一归入`MEDIA`类型。具体映射关系请参考
+> [音量控制](../../../media/audio/using-right-streamusage-for-playback.md#音量控制)中常见的播放流类型与音量类型的对应关系，迁移时根据实际业务场景选择对应的
+> StreamUsage值。
+
+**起始版本：** 9
+
+**废弃版本：** 20
+
+**替代接口：** [isStreamActive](#isstreamactive)
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频流类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音频流活跃状态成功，err为undefined，data为true表示活跃，false表示不活跃；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioStreamManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
+  if (err) {
+    console.error(`Failed to check whether the stream is active. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
+});
+```
+
+<a id="isactive-1"></a>
+
+## isActive
+
+```TypeScript
+isActive(volumeType: AudioVolumeType): Promise<boolean>
+```
+
+获取指定音频流是否为活跃状态。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive)替代。注意
+> 替代接口与原接口入参存在差异，例如[StreamUsage](arkts-audio-audio-streamusage-e.md)中提供了`STREAM_USAGE_MUSIC`、`
+> STREAM_USAGE_MOVIE`、`STREAM_USAGE_AUDIOBOOK`、`STREAM_USAGE_GAME`等更细分的类型，而
+> [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md)中这些类型统一归入`MEDIA`类型。具体映射关系请参考
+> [音量控制](../../../media/audio/using-right-streamusage-for-playback.md#音量控制)中常见的播放流类型与音量类型的对应关系，迁移时根据实际业务场景选择对应的
+> StreamUsage值。
+
+**起始版本：** 9
+
+**废弃版本：** 20
+
+**替代接口：** [isStreamActive](#isstreamactive)
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频流类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示流状态为活跃；返回false表示流状态不活跃。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioStreamManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
+  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the stream is active. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## isActiveSync
+
+```TypeScript
+isActiveSync(volumeType: AudioVolumeType): boolean
+```
+
+获取指定音频流是否为活跃状态。同步返回结果。
+
+> **说明：** 
+> 
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive)替代。注
+> 意替代接口与原接口入参存在差异，例如[StreamUsage](arkts-audio-audio-streamusage-e.md)中提供了`STREAM_USAGE_MUSIC`、`
+> STREAM_USAGE_MOVIE`、`STREAM_USAGE_AUDIOBOOK`、`STREAM_USAGE_GAME`等更细分的类型，而
+> [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md)中这些类型统一归入`MEDIA`类型。具体映射关系请参考
+> [音量控制](../../../media/audio/using-right-streamusage-for-playback.md#音量控制)中常见的播放流类型与音量类型的对应关系，迁移时根据实际业务场景选择对应的
+> StreamUsage值。
+
+**起始版本：** 10
+
+**废弃版本：** 20
+
+**替代接口：** [isStreamActive](#isstreamactive)
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频流类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 流的活跃状态。返回true表示活跃，返回false表示不活跃。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: boolean = audioStreamManager.isActiveSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check whether the stream is active. Code: ${error.code}, message: ${error.message}`);
+}
 ```

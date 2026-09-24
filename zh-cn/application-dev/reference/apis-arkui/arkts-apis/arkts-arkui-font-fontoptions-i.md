@@ -9,8 +9,7 @@ interface FontOptions
 > **说明：** 
 > 
 > 直接使用font可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用
-> [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getFont](arkts-arkui-arkui-uicontext-uicontext-c.md#getfont)方法获取当前UI上下文关联的
+> [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getFont](arkts-arkui-arkui-uicontext-uicontext-c.md#getfont)方法获取当前UI上下文关联的
 > [Font](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
 **起始版本：** 9
@@ -29,7 +28,7 @@ import { font } from '@kit.ArkUI';
 familyName: string | Resource
 ```
 
-设置注册的字体名称。
+设置注册的字体名称。建议使用字母、数字和下划线组成。
 
 **类型：** string &#124; [Resource](arkts-arkui-resource-t.md)
 
@@ -45,7 +44,7 @@ familyName: string | Resource
 familySrc: string | Resource
 ```
 
-设置注册字体文件的路径。
+设置注册字体文件的路径。支持Resource资源引用、$rawfile路径、相对路径和绝对路径。
 
 **说明：** 
 

@@ -36,44 +36,6 @@ builder?: CustomBuilder
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## friction
-
-```TypeScript
-friction?: number | string
-```
-
-下拉摩擦系数，取值范围为0到100。<br>默认值：62<br>- 0表示下拉刷新容器不跟随手势下拉而下拉。<br>- 100表示下拉刷新容器紧紧跟随手势下拉而下拉。<br>- 数值越大，下拉刷新容器跟随手势下拉的反应越灵敏。<br>**说明：** 从API version 8开始支持，从API version 11开始废弃，建议使用[pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)替代。
-
-**类型：** number &#124; string
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** [pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## offset
-
-```TypeScript
-offset?: number | string
-```
-
-下拉起点距离组件顶部的距离。<br>默认值：16，单位vp。类型为string时，需要显式指定像素单位，如'10px'；未指定像素单位时，如'10'，单位为vp。<br>**说明：** 从API version 8开始支持，从API version 11开始废弃，无替代接口。<br>**说明：** <br>offset取值范围[0vp,64vp]。大于64vp按照64vp处理。不支持百分比，不支持负数。
-
-**类型：** number &#124; string
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## promptText
 
 ```TypeScript
@@ -125,5 +87,43 @@ refreshingContent?: ComponentContent
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## friction
+
+```TypeScript
+friction?: number | string
+```
+
+下拉摩擦系数，取值范围为0到100。<br>默认值：62<br>- 0表示下拉刷新容器不跟随手势下拉而下拉。<br>- 100表示下拉刷新容器紧紧跟随手势下拉而下拉。<br>- 数值越大，下拉刷新容器跟随手势下拉的反应越灵敏。<br>**说明：** 从API version 8开始支持，从API version 11开始废弃，建议使用[pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)替代。
+
+**类型：** number &#124; string
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** [pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## offset
+
+```TypeScript
+offset?: number | string
+```
+
+下拉起点距离组件顶部的距离。<br>默认值：16，单位vp。类型为string时，需要显式指定像素单位，如'10px'；未指定像素单位时，如'10'，单位为vp。<br>**说明：** 从API version 8开始支持，从API version 11开始废弃，无替代接口。<br>**说明：** <br>offset取值范围[0vp,64vp]。大于64vp按照64vp处理。不支持百分比，不支持负数。
+
+**类型：** number &#124; string
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

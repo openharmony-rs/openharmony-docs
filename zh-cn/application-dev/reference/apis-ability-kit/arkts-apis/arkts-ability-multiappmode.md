@@ -1,4 +1,4 @@
-# MultiAppMode
+# MultiAppMode(应用多开模式)
 
 ## 汇总
 

@@ -1,4 +1,4 @@
-# @ohos.app.ability.AutoFillExtensionAbility
+# @ohos.app.ability.AutoFillExtensionAbility(AutoFillExtensionAbility)
 
 ## 导入模块
 

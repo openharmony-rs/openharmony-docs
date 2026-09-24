@@ -2,7 +2,9 @@
 
 支持图文混排和文本交互式编辑的组件。
 
-> **说明：** > > - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> **说明：** 
+> 
+> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
 
 ## 子组件
 

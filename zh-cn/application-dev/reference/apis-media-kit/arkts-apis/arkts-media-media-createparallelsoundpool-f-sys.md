@@ -40,7 +40,7 @@ function createParallelSoundPool(maxStreams: number, audioRenderInfo: audio.Audi
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API error. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | System API error. Return by promise. |
 
 **示例**
 

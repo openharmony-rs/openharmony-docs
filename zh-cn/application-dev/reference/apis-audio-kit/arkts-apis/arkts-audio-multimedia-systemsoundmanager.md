@@ -40,6 +40,25 @@ import { systemSoundManager } from '@kit.AudioKit';
 | [ToneHapticsSettings](arkts-audio-systemsoundmanager-tonehapticssettings-i-sys.md) | 系统铃音的振动设置。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [SystemSoundPlayer](arkts-audio-systemsoundmanager-systemsoundplayer-t.md) | 系统音效播放器对象。 |
+
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [RingtoneOptions](arkts-audio-systemsoundmanager-ringtoneoptions-t-sys.md) | 系统铃音播放器配置项。 |
+| [RingtonePlayer](arkts-audio-systemsoundmanager-ringtoneplayer-t-sys.md) | 系统铃音播放器对象。 |
+| [SystemToneOptions](arkts-audio-systemsoundmanager-systemtoneoptions-t-sys.md) | 系统提示音播放器配置项。 |
+| [SystemTonePlayer](arkts-audio-systemsoundmanager-systemtoneplayer-t-sys.md) | 系统提示音播放器对象。 |
+| [ToneAttrsArray](arkts-audio-systemsoundmanager-toneattrsarray-t-sys.md) | 铃音属性数组。 |
+| [ToneHapticsAttrsArray](arkts-audio-systemsoundmanager-tonehapticsattrsarray-t-sys.md) | 系统铃音的振动属性数组。 |
+<!--DelEnd-->
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -59,25 +78,6 @@ import { systemSoundManager } from '@kit.AudioKit';
 | [ToneHapticsFeature](arkts-audio-systemsoundmanager-tonehapticsfeature-e-sys.md) | 枚举，系统振动风格定义。 |
 | [ToneHapticsMode](arkts-audio-systemsoundmanager-tonehapticsmode-e-sys.md) | 枚举，系统铃音场景的振动模式。 |
 | [ToneHapticsType](arkts-audio-systemsoundmanager-tonehapticstype-e-sys.md) | 枚举，系统铃音的振动类型。 |
-<!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [SystemSoundPlayer](arkts-audio-systemsoundmanager-systemsoundplayer-t.md) | 系统音效播放器对象。 |
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [RingtoneOptions](arkts-audio-systemsoundmanager-ringtoneoptions-t-sys.md) | 系统铃音播放器配置项。 |
-| [RingtonePlayer](arkts-audio-systemsoundmanager-ringtoneplayer-t-sys.md) | 系统铃音播放器对象。 |
-| [SystemToneOptions](arkts-audio-systemsoundmanager-systemtoneoptions-t-sys.md) | 系统提示音播放器配置项。 |
-| [SystemTonePlayer](arkts-audio-systemsoundmanager-systemtoneplayer-t-sys.md) | 系统提示音播放器对象。 |
-| [ToneAttrsArray](arkts-audio-systemsoundmanager-toneattrsarray-t-sys.md) | 铃音属性数组。 |
-| [ToneHapticsAttrsArray](arkts-audio-systemsoundmanager-tonehapticsattrsarray-t-sys.md) | 系统铃音的振动属性数组。 |
 <!--DelEnd-->
 
 <!--Del-->

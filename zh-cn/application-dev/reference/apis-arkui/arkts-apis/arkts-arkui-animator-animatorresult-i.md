@@ -62,26 +62,6 @@ finish(): void
 animator.finish();
 ```
 
-## oncancel
-
-```TypeScript
-oncancel: () => void
-```
-
-动画被取消时回调。
-
-**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onCancel](#oncancel)。
-
-**起始版本：** 6
-
-**废弃版本：** 12
-
-**替代接口：** onCancel
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## onCancel
 
 ```TypeScript
@@ -95,26 +75,6 @@ onCancel: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onfinish
-
-```TypeScript
-onfinish: () => void
-```
-
-动画完成时回调。
-
-**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onFinish](#onfinish)。
-
-**起始版本：** 6
-
-**废弃版本：** 12
-
-**替代接口：** onFinish
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,32 +93,6 @@ onFinish: () => void
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## onframe
-
-```TypeScript
-onframe: (progress: number) => void
-```
-
-接收到帧时回调。
-
-**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onFrame](#onframe)。
-
-**起始版本：** 6
-
-**废弃版本：** 12
-
-**替代接口：** onFrame
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| progress | number | 是 |  |
 
 ## onFrame
 
@@ -185,26 +119,6 @@ progress表示动画的当前值。取值范围为[AnimatorOptions](arkts-arkui-
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | progress | number | 是 |  |
-
-## onrepeat
-
-```TypeScript
-onrepeat: () => void
-```
-
-动画重复时回调。
-
-**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onRepeat](#onrepeat)。
-
-**起始版本：** 6
-
-**废弃版本：** 12
-
-**替代接口：** onRepeat
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onRepeat
 
@@ -292,7 +206,7 @@ reset(options: AnimatorOptions): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The specified page is not found or the object property list is not obtained. |
 
 **示例**
@@ -362,7 +276,7 @@ reset(options: AnimatorOptions | SimpleAnimatorOptions): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The specified page is not found or the object property list is not obtained. |
 
 **示例**
@@ -470,6 +384,92 @@ struct AnimatorTest {
   }
 }
 ```
+
+## oncancel
+
+```TypeScript
+oncancel: () => void
+```
+
+动画被取消时回调。
+
+**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onCancel](#oncancel)。
+
+**起始版本：** 6
+
+**废弃版本：** 12
+
+**替代接口：** onCancel
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onfinish
+
+```TypeScript
+onfinish: () => void
+```
+
+动画完成时回调。
+
+**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onFinish](#onfinish)。
+
+**起始版本：** 6
+
+**废弃版本：** 12
+
+**替代接口：** onFinish
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onframe
+
+```TypeScript
+onframe: (progress: number) => void
+```
+
+接收到帧时回调。
+
+**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onFrame](#onframe)。
+
+**起始版本：** 6
+
+**废弃版本：** 12
+
+**替代接口：** onFrame
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| progress | number | 是 |  |
+
+## onrepeat
+
+```TypeScript
+onrepeat: () => void
+```
+
+动画重复时回调。
+
+**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onRepeat](#onrepeat)。
+
+**起始版本：** 6
+
+**废弃版本：** 12
+
+**替代接口：** onRepeat
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## update
 

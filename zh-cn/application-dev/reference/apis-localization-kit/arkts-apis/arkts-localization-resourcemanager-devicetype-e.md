@@ -6,9 +6,9 @@ export enum DeviceType
 
 用于表示当前设备类型。
 
-&lt;!--RP1--&gt;
+<!--RP1-->
 
-&lt;!--RP1End--&gt;
+<!--RP1End-->
 
 **起始版本：** 6
 

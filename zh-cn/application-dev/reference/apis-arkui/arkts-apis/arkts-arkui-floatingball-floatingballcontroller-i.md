@@ -353,7 +353,7 @@ restoreMainWindow(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually returned by VerifyAccessToken. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually returned by VerifyAccessToken. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: Internal error, the window type is not a floating ball. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: The process ID calling the API does not match the process ID of the session that created the floating ball. |
@@ -468,7 +468,7 @@ startFloatingBall(params: FloatingBallParams): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually returned by VerifyAccessToken. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually returned by VerifyAccessToken. |
 | [1300019](../errorcode-window.md#1300019-闪控球参数校验错误) | Wrong parameters for operating the floating ball. Possible causes:<br>1. FloatingBallParams parameter is null. <br>2. Parameter is invalid, such as invalid icon object, template type, or title (empty or exceeds 64 bytes). |
 | [1300020](../errorcode-window.md#1300020-创建闪控球窗口失败) | Failed to create the floating ball window. Possible cause: The main window is not shown. |
 | [1300021](../errorcode-window.md#1300021-启动多个闪控球失败) | Failed to start multiple floating ball windows. |

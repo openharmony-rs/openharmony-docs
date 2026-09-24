@@ -32,12 +32,6 @@ import { ArcSlider, ArcSliderPosition, ArcSliderOptions, ArcSliderOptionsConstru
 | [ArcSliderStyleOptionsConstructorOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptionsconstructoroptions-i.md) | ArcSliderStyleOptions的构造信息。 |
 | [ArcSliderValueOptionsConstructorOptions](arkts-arkui-arkui-advanced-arcslider-arcslidervalueoptionsconstructoroptions-i.md) | ArcSliderValueOptions的构造信息。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [ArcSliderPosition](arkts-arkui-arkui-advanced-arcslider-arcsliderposition-e.md) | 配置弧形Slider的屏幕显示位置。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -45,6 +39,12 @@ import { ArcSlider, ArcSliderPosition, ArcSliderOptions, ArcSliderOptionsConstru
 | [ArcSliderChangeHandler](arkts-arkui-arcsliderchangehandler-t.md) | 弧形Slider的进度值发生变化时触发回调。 |
 | [ArcSliderEnlargeHandler](arkts-arkui-arcsliderenlargehandler-t.md) | 弧形Slider放大或缩小时触发回调。 |
 | [ArcSliderTouchHandler](arkts-arkui-arcslidertouchhandler-t.md) | 弧形Slider被触摸时触发回调。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ArcSliderPosition](arkts-arkui-arkui-advanced-arcslider-arcsliderposition-e.md) | 配置弧形Slider的屏幕显示位置。 |
 
 ## 示例
 

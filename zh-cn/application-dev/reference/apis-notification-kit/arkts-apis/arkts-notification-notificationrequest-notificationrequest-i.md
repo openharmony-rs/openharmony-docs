@@ -393,7 +393,7 @@ label字段的功能类似于id，可以单独使用，也可与id结合共同�
 largeIcon?: image.PixelMap
 ```
 
-通知右侧图标，默认为空。当`content`使用[NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md)时，该参数设置不生效。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。实际显示效果依赖于设备能力和通知中心UI样式&lt;!--RP1--&gt;&lt;!--RP1End--&gt;。
+通知右侧图标，默认为空。当`content`使用[NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md)时，该参数设置不生效。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。实际显示效果依赖于设备能力和通知中心UI样式<!--RP1--><!--RP1End-->。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -439,7 +439,7 @@ notificationSlotType?: notificationManager.SlotType
 overlayIcon?: image.PixelMap
 ```
 
-通知重叠图标，替换通知左侧图标，默认为空。此接口只在[notificationSlotType](arkts-notification-notificationrequest-notificationrequest-i.md)类型设置为SOCIAL_COMMUNICATION时生效。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式&lt;!--RP3--&gt;&lt;!--RP3End--&gt;。
+通知重叠图标，替换通知左侧图标，默认为空。此接口只在[notificationSlotType](arkts-notification-notificationrequest-notificationrequest-i.md)类型设置为SOCIAL_COMMUNICATION时生效。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP3--><!--RP3End-->。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -453,7 +453,7 @@ overlayIcon?: image.PixelMap
 priorityNotificationType?: notificationManager.PriorityNotificationType
 ```
 
-通知优先级类型，默认值为OTHER。设置该参数可使通知置顶，并且在通知中心以突出方式显示。&lt;!--RP2--&gt;&lt;!--RP2End--&gt;实际显示效果依赖于设备能力和通知中心UI样式。
+通知优先级类型，默认值为OTHER。设置该参数可使通知置顶，并且在通知中心以突出方式显示。<!--RP2--><!--RP2End-->实际显示效果依赖于设备能力和通知中心UI样式。
 
 **类型：** [notificationManager.PriorityNotificationType](arkts-notification-notificationmanager-prioritynotificationtype-e.md)
 
@@ -493,31 +493,13 @@ showDeliveryTime?: boolean
 
 **系统能力：** SystemCapability.Notification.Notification
 
-## slotType
-
-```TypeScript
-slotType?: notification.SlotType
-```
-
-通知渠道类型，默认值为OTHER_TYPES。
-
-**类型：** [notification.SlotType](arkts-notification-notification-slottype-depr-e.md)
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-**替代接口：** [notificationSlotType](#notificationslottype)
-
-**系统能力：** SystemCapability.Notification.Notification
-
 ## smallIcon
 
 ```TypeScript
 smallIcon?: image.PixelMap
 ```
 
-通知左侧图标，默认为空。系统自动生成，无需开发者配置。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式&lt;!--RP4--&gt;&lt;!--RP4End--&gt;。
+通知左侧图标，默认为空。系统自动生成，无需开发者配置。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP4--><!--RP4End-->。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -604,5 +586,23 @@ wantAgent?: WantAgent
 **类型：** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md)
 
 **起始版本：** 7
+
+**系统能力：** SystemCapability.Notification.Notification
+
+## slotType
+
+```TypeScript
+slotType?: notification.SlotType
+```
+
+通知渠道类型，默认值为OTHER_TYPES。
+
+**类型：** [notification.SlotType](arkts-notification-notification-slottype-depr-e.md)
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+**替代接口：** [notificationSlotType](#notificationslottype)
 
 **系统能力：** SystemCapability.Notification.Notification

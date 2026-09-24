@@ -30,12 +30,6 @@ import { SubHeaderV2IconType, SubHeaderV2Title, SubHeaderV2Select, SubHeaderV2, 
 | [SubHeaderV2SelectOptions](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2selectoptions-i.md) | 用于构建SubHeaderV2Select对象。 |
 | [SubHeaderV2TitleOptions](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2titleoptions-i.md) | 用于构建SubHeaderV2Title对象。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [SubHeaderV2OperationType](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2operationtype-e.md) | 操作区元素样式。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -45,6 +39,12 @@ import { SubHeaderV2IconType, SubHeaderV2Title, SubHeaderV2Select, SubHeaderV2, 
 | [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) | [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) |
 | [SubHeaderV2SelectOnSelect](arkts-arkui-subheaderv2selectonselect-t.md) | 下拉菜单选中某一项的回调类型。 |
 | [SubHeaderV2TitleBuilder](arkts-arkui-subheaderv2titlebuilder-t.md) | 自定义标题区内容的回调事件类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [SubHeaderV2OperationType](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2operationtype-e.md) | 操作区元素样式。 |
 
 ## 示例
 

@@ -4,11 +4,9 @@
 declare enum HorizontalAlign
 ```
 
-HorizontalAlign enumeration description.
+定义子组件在水平方向上的对齐方式。
 
-@enum { number }
-
-**起始版本：** 11
+**起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,15 +16,15 @@ HorizontalAlign enumeration description.
 Start
 ```
 
-Aligns the start end in the language direction.
+按照语言方向起始端对齐。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,15 +34,15 @@ Aligns the start end in the language direction.
 Center
 ```
 
-Center alignment. The default alignment mode is used.
+居中对齐，默认对齐方式。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,14 +52,14 @@ Center alignment. The default alignment mode is used.
 End
 ```
 
-Aligns the ends in the language direction.
+按照语言方向末端对齐。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

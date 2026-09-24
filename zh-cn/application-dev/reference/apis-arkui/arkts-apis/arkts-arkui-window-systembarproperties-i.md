@@ -24,7 +24,7 @@ enableNavigationBarAnimation?: boolean
 
 是否启用三键导航栏属性变化时的动画效果。true表示启用；false表示不启用。默认值：false。
 
-&lt;!--RP13--&gt;&lt;!--RP13End--&gt;
+<!--RP13--><!--RP13End-->
 
 **类型：** boolean
 
@@ -58,7 +58,7 @@ isNavigationBarLightIcon?: boolean
 
 三键导航栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。
 
-&lt;!--RP13--&gt;&lt;!--RP13End--&gt;
+<!--RP13--><!--RP13End-->
 
 **类型：** boolean
 
@@ -92,7 +92,7 @@ navigationBarColor?: string
 
 三键导航栏背景颜色。作为入参时格式为十六进制RGB或ARGB颜色，不区分大小写，例如'#00FF00'或'#FF00FF00'；作为返回值时格式固定为ARGB颜色，如'#FF00FF00'，默认值为系统配置的颜色。
 
-&lt;!--RP13--&gt;&lt;!--RP13End--&gt;
+<!--RP13--><!--RP13End-->
 
 **类型：** string
 
@@ -110,7 +110,7 @@ navigationBarContentColor?: string
 
 三键导航栏文字颜色。当设置此属性后，`isNavigationBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。
 
-&lt;!--RP13--&gt;&lt;!--RP13End--&gt;
+<!--RP13--><!--RP13End-->
 
 **类型：** string
 

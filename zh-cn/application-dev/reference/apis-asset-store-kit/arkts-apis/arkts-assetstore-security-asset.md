@@ -56,6 +56,13 @@ import { asset } from '@kit.AssetStoreKit';
 | [BatchResult](arkts-assetstore-asset-batchresult-i.md) | [batchAdd](arkts-assetstore-asset-batchadd-f.md)和[batchUpdate](arkts-assetstore-asset-batchupdate-f.md)批量操作的结果。 |
 | [SyncResult](arkts-assetstore-asset-syncresult-i.md) | 关键资产同步的结果。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 关键资产属性的键-值对集合。 |
+| [Value](arkts-assetstore-asset-value-t.md) | 关键资产属性的内容，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md)的值。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -78,10 +85,3 @@ import { asset } from '@kit.AssetStoreKit';
 | --- | --- |
 | [AuthType](arkts-assetstore-asset-authtype-e-sys.md) | 枚举，关键资产支持的用户认证类型。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 关键资产属性的键-值对集合。 |
-| [Value](arkts-assetstore-asset-value-t.md) | 关键资产属性的内容，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md)的值。 |

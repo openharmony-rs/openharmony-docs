@@ -4,7 +4,7 @@
 declare enum EllipsisMode
 ```
 
-Enum of ellipsisMode
+省略的位置。
 
 **起始版本：** 11
 
@@ -16,7 +16,7 @@ Enum of ellipsisMode
 START = 0
 ```
 
-The ellipsis is in the head.
+省略行首内容。适用单行文本场景。
 
 **起始版本：** 11
 
@@ -32,7 +32,7 @@ The ellipsis is in the head.
 CENTER = 1
 ```
 
-The ellipsis is in the middle.
+省略行中内容。适用单行文本场景。
 
 **起始版本：** 11
 
@@ -48,7 +48,7 @@ The ellipsis is in the middle.
 END = 2
 ```
 
-The ellipsis is at the end.
+省略行末内容。适用单行文本和多行文本场景。
 
 **起始版本：** 11
 
@@ -64,7 +64,7 @@ The ellipsis is at the end.
 MULTILINE_START = 3
 ```
 
-省略号在头部。对多行和单行有效。
+省略行首内容。适用单行文本和多行文本场景。
 
 **起始版本：** 24
 
@@ -80,7 +80,7 @@ MULTILINE_START = 3
 MULTILINE_CENTER = 4
 ```
 
-省略号在中间。对多行和单行有效。
+省略行中内容。适用单行文本和多行文本场景。
 
 **起始版本：** 24
 

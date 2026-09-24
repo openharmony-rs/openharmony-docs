@@ -324,88 +324,6 @@ console.info("result = " + result);
 // 输出结果：result = true
 ```
 
-## isBooleanObject
-
-```TypeScript
-isBooleanObject(value: Object): boolean
-```
-
-判断入参是否为 Boolean 类型。
-
-> **NOTE:** 
-> 
-> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
-
-**起始版本：** 8
-
-**废弃版本：** 14
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 检查结果。如果入参为 Boolean 类型，则返回 **true**；否则返回 **false**。 |
-
-**示例**
-
-```TypeScript
-let type = new util.types();
-let result = type.isBooleanObject(new Boolean(true));
-console.info("result = " + result);
-// 输出结果：result = true
-```
-
-## isBoxedPrimitive
-
-```TypeScript
-isBoxedPrimitive(value: Object): boolean
-```
-
-判断入参是否为 Boolean、Number、String 或 Symbol 类型。
-
-> **NOTE:** 
-> 
-> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
-
-**起始版本：** 8
-
-**废弃版本：** 14
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 检查结果。如果入参为 Boolean、Number、String 或 Symbol 类型，则返回 **true**；否则返回**false**。 |
-
-**示例**
-
-```TypeScript
-let type = new util.types();
-let result = type.isBoxedPrimitive(new Boolean(false));
-console.info("result = " + result);
-// 输出结果：result = true
-```
-
 ## isDataView
 
 ```TypeScript
@@ -986,47 +904,6 @@ console.info("result = " + result);
 // 输出结果：result = true
 ```
 
-## isNumberObject
-
-```TypeScript
-isNumberObject(value: Object): boolean
-```
-
-判断入参是否为 Number 类型。
-
-> **NOTE:** 
-> 
-> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
-
-**起始版本：** 8
-
-**废弃版本：** 14
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 检查结果。如果入参为 Number 类型，则返回 **true**；否则返回 **false**。 |
-
-**示例**
-
-```TypeScript
-let type = new util.types();
-let result = type.isNumberObject(new Number(0));
-console.info("result = " + result);
-// 输出结果：result = true
-```
-
 ## isPromise
 
 ```TypeScript
@@ -1239,95 +1116,6 @@ isSharedArrayBuffer(value: Object): boolean
 ```TypeScript
 let type = new util.types();
 let result = type.isSharedArrayBuffer(new SharedArrayBuffer(0));
-console.info("result = " + result);
-// 输出结果：result = true
-```
-
-## isStringObject
-
-```TypeScript
-isStringObject(value: Object): boolean
-```
-
-判断入参是否为字符串对象。
-
-> **NOTE:** 
-> 
-> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
-
-**起始版本：** 8
-
-**废弃版本：** 14
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 检查结果。如果入参为字符串对象，则返回 **true**；否则返回 **false**。 |
-
-**示例**
-
-```TypeScript
-let type = new util.types();
-let result = type.isStringObject(new String('foo'));
-console.info("result = " + result);
-// 输出结果：result = true
-```
-
-## isSymbolObject
-
-```TypeScript
-isSymbolObject(value: Object): boolean
-```
-
-判断入参是否为 symbol 对象。
-
-> **NOTE:** 
-> 
-> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
-
-**起始版本：** 8
-
-**废弃版本：** 14
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | 检查结果。如果入参为 symbol 对象，则返回 **true**；否则返回 **false**。 |
-
-**示例**
-
-```TypeScript
-// /entry/src/main/ets/pages/test.ts
-export const symbols = Symbol('foo');
-```
-
-```TypeScript
-import { symbols } from './test'
-
-let type = new util.types();
-let result = type.isSymbolObject(Object(symbols));
 console.info("result = " + result);
 // 输出结果：result = true
 ```
@@ -1574,6 +1362,218 @@ isWeakSet(value: Object): boolean
 ```TypeScript
 let type = new util.types();
 let result = type.isWeakSet(new WeakSet());
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isBooleanObject
+
+```TypeScript
+isBooleanObject(value: Object): boolean
+```
+
+判断入参是否为 Boolean 类型。
+
+> **NOTE:** 
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 Boolean 类型，则返回 **true**；否则返回 **false**。 |
+
+**示例**
+
+```TypeScript
+let type = new util.types();
+let result = type.isBooleanObject(new Boolean(true));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isBoxedPrimitive
+
+```TypeScript
+isBoxedPrimitive(value: Object): boolean
+```
+
+判断入参是否为 Boolean、Number、String 或 Symbol 类型。
+
+> **NOTE:** 
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 Boolean、Number、String 或 Symbol 类型，则返回 **true**；否则返回**false**。 |
+
+**示例**
+
+```TypeScript
+let type = new util.types();
+let result = type.isBoxedPrimitive(new Boolean(false));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isNumberObject
+
+```TypeScript
+isNumberObject(value: Object): boolean
+```
+
+判断入参是否为 Number 类型。
+
+> **NOTE:** 
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 Number 类型，则返回 **true**；否则返回 **false**。 |
+
+**示例**
+
+```TypeScript
+let type = new util.types();
+let result = type.isNumberObject(new Number(0));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isStringObject
+
+```TypeScript
+isStringObject(value: Object): boolean
+```
+
+判断入参是否为字符串对象。
+
+> **NOTE:** 
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为字符串对象，则返回 **true**；否则返回 **false**。 |
+
+**示例**
+
+```TypeScript
+let type = new util.types();
+let result = type.isStringObject(new String('foo'));
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+## isSymbolObject
+
+```TypeScript
+isSymbolObject(value: Object): boolean
+```
+
+判断入参是否为 symbol 对象。
+
+> **NOTE:** 
+> 
+> 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
+
+**起始版本：** 8
+
+**废弃版本：** 14
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | Object | 是 | 要检查的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 检查结果。如果入参为 symbol 对象，则返回 **true**；否则返回 **false**。 |
+
+**示例**
+
+```TypeScript
+// /entry/src/main/ets/pages/test.ts
+export const symbols = Symbol('foo');
+```
+
+```TypeScript
+import { symbols } from './test'
+
+let type = new util.types();
+let result = type.isSymbolObject(Object(symbols));
 console.info("result = " + result);
 // 输出结果：result = true
 ```

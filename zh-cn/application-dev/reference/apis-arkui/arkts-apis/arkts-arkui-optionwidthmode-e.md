@@ -4,11 +4,9 @@
 declare enum OptionWidthMode
 ```
 
-Decide whether the width of select menu fit the trigger or content
+下拉菜单的宽度模式。
 
-@enum { string }
-
-**起始版本：** 12
+**起始版本：** 11
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,9 +16,9 @@ Decide whether the width of select menu fit the trigger or content
 FIT_CONTENT = 'fit_content'
 ```
 
-The menu width fit the content.
+设置该值时，下拉菜单宽度默认为2栅格。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,9 +32,9 @@ The menu width fit the content.
 FIT_TRIGGER = 'fit_trigger'
 ```
 
-The menu width fit the trigger.
+设置下拉菜单继承下拉按钮宽度。
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

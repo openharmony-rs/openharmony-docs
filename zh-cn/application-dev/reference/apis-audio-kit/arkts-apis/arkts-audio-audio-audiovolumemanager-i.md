@@ -298,7 +298,7 @@ getVolumeGroupManagerSync(groupId: number): AudioVolumeGroupManager
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
@@ -407,57 +407,6 @@ try {
 }
 ```
 
-## off('volumeChange')
-
-```TypeScript
-off(type: 'volumeChange', callback?: Callback<VolumeEvent>): void
-```
-
-取消监听系统音量变化事件。
-
-> **说明：** 
-> 
-> 从API version 12开始支持，从API version 20开始废弃，建议使用
-> [off('streamVolumeChange')](#offstreamvolumechange)替代。
-
-**起始版本：** 12
-
-**废弃版本：** 20
-
-**替代接口：** streamVolumeChange
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'volumeChange' | 是 | 事件回调类型，支持的事件为'volumeChange'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('volumeChange')](#onvolumechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters missing; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
-**示例**
-
-```TypeScript
-// 取消该事件的所有监听。
-audioVolumeManager.off('volumeChange');
-
-// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let volumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
-  console.info(`Volume changed, volumeEvent: ${JSON.stringify(volumeEvent)}.`);
-};
-
-audioVolumeManager.on('volumeChange', volumeChangeCallback);
-
-audioVolumeManager.off('volumeChange', volumeChangeCallback);
-```
-
 ## off('appVolumeChange')
 
 ```TypeScript
@@ -534,20 +483,20 @@ audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC
 audioVolumeManager.off('streamVolumeChange', streamVolumeChangeCallback);
 ```
 
-## on('volumeChange')
+## off('volumeChange')
 
 ```TypeScript
-on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
+off(type: 'volumeChange', callback?: Callback<VolumeEvent>): void
 ```
 
-监听系统音量变化事件（当系统音量发生变化时触发）。使用callback异步回调。
+取消监听系统音量变化事件。
 
 > **说明：** 
 > 
-> 从API version 9开始支持，从API version 20开始废弃，建议使用
-> [on('streamVolumeChange')](#onstreamvolumechange)替代。
+> 从API version 12开始支持，从API version 20开始废弃，建议使用
+> [off('streamVolumeChange')](#offstreamvolumechange)替代。
 
-**起始版本：** 9
+**起始版本：** 12
 
 **废弃版本：** 20
 
@@ -559,22 +508,30 @@ on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'volumeChange' | 是 | 事件回调类型，支持的事件为'volumeChange'，当系统音量发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 是 | 回调函数，返回变化后的音量信息。 |
+| type | 'volumeChange' | 是 | 事件回调类型，支持的事件为'volumeChange'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('volumeChange')](#onvolumechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters missing; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 **示例**
 
 ```TypeScript
-audioVolumeManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
+// 取消该事件的所有监听。
+audioVolumeManager.off('volumeChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let volumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
   console.info(`Volume changed, volumeEvent: ${JSON.stringify(volumeEvent)}.`);
-});
+};
+
+audioVolumeManager.on('volumeChange', volumeChangeCallback);
+
+audioVolumeManager.off('volumeChange', volumeChangeCallback);
 ```
 
 ## on('appVolumeChange')
@@ -641,6 +598,49 @@ on(type: 'streamVolumeChange', streamUsage: StreamUsage, callback: Callback<Stre
 ```TypeScript
 audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC, (streamVolumeEvent: audio.StreamVolumeEvent) => {
   console.info(`Stream volume changed, streamVolumeEvent: ${JSON.stringify(streamVolumeEvent)}.`);
+});
+```
+
+## on('volumeChange')
+
+```TypeScript
+on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
+```
+
+监听系统音量变化事件（当系统音量发生变化时触发）。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 9开始支持，从API version 20开始废弃，建议使用
+> [on('streamVolumeChange')](#onstreamvolumechange)替代。
+
+**起始版本：** 9
+
+**废弃版本：** 20
+
+**替代接口：** streamVolumeChange
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'volumeChange' | 是 | 事件回调类型，支持的事件为'volumeChange'，当系统音量发生变化时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 是 | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+audioVolumeManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Volume changed, volumeEvent: ${JSON.stringify(volumeEvent)}.`);
 });
 ```
 

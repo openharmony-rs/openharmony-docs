@@ -2,7 +2,7 @@
 
 提供分割线组件，分割不同内容块/内容元素。
 
-> **说明：**
+> **说明：** 
 
 > 如果出现分割线粗细不一或者消失的问题，请参考[组件级像素取整常见问题](arkts-arkui-common-comp-commonmethod-c.md#pixelround)。
 

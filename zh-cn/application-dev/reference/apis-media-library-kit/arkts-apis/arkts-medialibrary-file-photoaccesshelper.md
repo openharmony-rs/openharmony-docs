@@ -68,12 +68,16 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [MediaAnalysisAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaanalysisalbumchangerequest-c-sys.md) | 智慧相册变更请求。 |
 | [MediaAssetChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md) | MediaAssetChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md). |
 | [MediaAssetEditData](arkts-medialibrary-photoaccesshelper-mediaasseteditdata-c-sys.md) | 资产编辑数据。 |
+| [MediaAssetManager](arkts-medialibrary-photoaccesshelper-mediaassetmanager-c-sys.md) | 媒体资产管理类，管理媒体资源读取。 |
 | [MediaAssetsChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetschangerequest-c-sys.md) | 批量资产变更请求。 |
 | [MediaHighlightAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediahighlightalbumchangerequest-c-sys.md) | 时刻相册变更请求，MediaHighlightAlbumChangeRequest继承自[MediaAnalysisAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaanalysisalbumchangerequest-c-sys.md)。 |
+| [MediaShareAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediasharealbumchangerequest-c-sys.md) | 表示管理共享相册的变更请求。 |
+| [MemberInfo](arkts-medialibrary-photoaccesshelper-memberinfo-c-sys.md) | 成员信息 |
 | [PhotoAssetCustomRecordManager](arkts-medialibrary-photoaccesshelper-photoassetcustomrecordmanager-c-sys.md) | 媒体库支持图库自定义用户统计行为。 |
 | [PhotoSelectOptions](arkts-medialibrary-photoaccesshelper-photoselectoptions-c-sys.md) | 图库选择选项子类，继承于BaseSelectOptions。用于拉起对应userId空间的picker。 |
 | [RecommendationOptions](arkts-medialibrary-photoaccesshelper-recommendationoptions-c-sys.md) | 图片推荐选项(基于图片数据分析结果，依赖设备适配)。 |
 | [ResultSet](arkts-medialibrary-photoaccesshelper-resultset-c-sys.md) | 提供通过查询数据库生成的数据库结果集的访问方法。 |
+| [ShareAlbumMemberInfo](arkts-medialibrary-photoaccesshelper-sharealbummemberinfo-c-sys.md) | 共享相册成员信息 |
 | [TaskSignal](arkts-medialibrary-photoaccesshelper-tasksignal-c-sys.md) | 用于中断复制操作的信号。 |
 <!--DelEnd-->
 
@@ -124,16 +128,20 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [AnalysisToolResult](arkts-medialibrary-photoaccesshelper-analysistoolresult-i-sys.md) | 分析工具执行的结果。 |
 | [BatchOperationOptions](arkts-medialibrary-photoaccesshelper-batchoperationoptions-i-sys.md) | 批量复制操作选项。 |
 | [ChangeData](arkts-medialibrary-photoaccesshelper-changedata-i-sys.md) | 监听器回调函数的返回值。 |
+| [CleanupSize](arkts-medialibrary-photoaccesshelper-cleanupsize-i-sys.md) | Rom收益 |
 | [CloudAssetDownloadProgressInfo](arkts-medialibrary-photoaccesshelper-cloudassetdownloadprogressinfo-i-sys.md) | 批量下载进度信息。 |
 | [CloudAssetDownloadStatus](arkts-medialibrary-photoaccesshelper-cloudassetdownloadstatus-i-sys.md) | 批量下载任务信息。 |
 | [CloudEnhancementTaskState](arkts-medialibrary-photoaccesshelper-cloudenhancementtaskstate-i-sys.md) | 云增强任务状态，应用调用云增强任务查询接口的返回类型，包含云增强任务状态及部分状态下的额外信息。 |
 | [CloudMediaAssetStatus](arkts-medialibrary-photoaccesshelper-cloudmediaassetstatus-i-sys.md) | 云端媒体资产下载任务的详细信息，应用调用云端资产下载任务查询接口的返回类型。 |
 | [ContextMap](arkts-medialibrary-photoaccesshelper-contextmap-i-sys.md) | 用户输入的字段类型 |
 | [DeepOptimizeSpaceProgress](arkts-medialibrary-photoaccesshelper-deepoptimizespaceprogress-i-sys.md) | 深度优化存储空间的进度信息。 |
+| [DirtyDataResultInfo](arkts-medialibrary-photoaccesshelper-dirtydataresultinfo-i-sys.md) | 脏数据查询结果 |
 | [Entity](arkts-medialibrary-photoaccesshelper-entity-i-sys.md) | 标签返回结构 |
 | [FormInfo](arkts-medialibrary-photoaccesshelper-forminfo-i-sys.md) | 图库卡片相关信息。 |
 | [FusionAssetsInfo](arkts-medialibrary-photoaccesshelper-fusionassetsinfo-i-sys.md) | 融合资产信息。 |
 | [GalleryFormInfo](arkts-medialibrary-photoaccesshelper-galleryforminfo-i-sys.md) | 图库卡片相关信息。 |
+| [IntervalInfo](arkts-medialibrary-photoaccesshelper-intervalinfo-i-sys.md) | 时间区域信息 |
+| [LocalEnhancementTaskState](arkts-medialibrary-photoaccesshelper-localenhancementtaskstate-i-sys.md) | 端侧AI增强任务状态。 |
 | [MovingPhoto](arkts-medialibrary-photoaccesshelper-movingphoto-i-sys.md) | 动态照片对象。 |
 | [Options](arkts-medialibrary-photoaccesshelper-options-i-sys.md) | 可选参数 |
 | [PhotoAccessHelper](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md) | 提供访问照片和相册的功能。 |
@@ -155,6 +163,25 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [SharedPhotoAsset](arkts-medialibrary-photoaccesshelper-sharedphotoasset-i-sys.md) | 共享图片资产。 |
 | [ToolCancelConfig](arkts-medialibrary-photoaccesshelper-toolcancelconfig-i-sys.md) | 取消分析工具的配置。 |
 | [ToolInvokeConfig](arkts-medialibrary-photoaccesshelper-toolinvokeconfig-i-sys.md) | 调用分析工具的配置。 |
+<!--DelEnd-->
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [MemberType](arkts-medialibrary-photoaccesshelper-membertype-t.md) | PhotoAsset的成员类型。 |
+| [OperationValueType](arkts-medialibrary-photoaccesshelper-operationvaluetype-t.md) | 表示不同谓词所需要匹配的值。 |
+| [PhotoAssetParams](arkts-medialibrary-photoaccesshelper-photoassetparams-t.md) | 文件属性名称及其值的Record类型数组。 |
+
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ProgressListener](arkts-medialibrary-photoaccesshelper-progresslistener-t-sys.md) | 表示复制操作进度的监听类型。 |
+| [ResultListener](arkts-medialibrary-photoaccesshelper-resultlistener-t-sys.md) | 表示复制操作结果的监听类型。 |
+| [ValuesBucket](arkts-medialibrary-photoaccesshelper-valuesbucket-t-sys.md) | 用于存储键值对的类型。 |
+| [ValueType](arkts-medialibrary-photoaccesshelper-valuetype-t-sys.md) | 用于表示允许的数据字段类型，接口参数的具体类型根据其功能而定。 |
 <!--DelEnd-->
 
 ### 枚举
@@ -241,6 +268,8 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [RequestPhotoType](arkts-medialibrary-photoaccesshelper-requestphototype-e-sys.md) | 枚举，获取图片或视频缩略图的操作类型。 |
 | [ResourceType](arkts-medialibrary-photoaccesshelper-resourcetype-e-sys.md) | 枚举，写入资源的类型。 |
 | [SearchSuggestionType](arkts-medialibrary-photoaccesshelper-searchsuggestiontype-e-sys.md) | 搜索推荐词类型 |
+| [ShareAlbumRiskStatus](arkts-medialibrary-photoaccesshelper-sharealbumriskstatus-e-sys.md) | 枚举共享相册的风险状态。 |
+| [ShareMemberStatus](arkts-medialibrary-photoaccesshelper-sharememberstatus-e-sys.md) | 枚举共享相册的成员状态。 |
 | [SourceMode](arkts-medialibrary-photoaccesshelper-sourcemode-e-sys.md) | 枚举，资源文件的读取类型。 |
 | [StrongAssociationType](arkts-medialibrary-photoaccesshelper-strongassociationtype-e-sys.md) | 枚举，表示图片的强关联类型。 |
 | [SupportedImageFormat](arkts-medialibrary-photoaccesshelper-supportedimageformat-e-sys.md) | 枚举，支持转换的图片格式。 |
@@ -249,23 +278,4 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [ThumbnailVisibility](arkts-medialibrary-photoaccesshelper-thumbnailvisibility-e-sys.md) | 枚举，缩略图是否可访问。 |
 | [VideoEnhancementType](arkts-medialibrary-photoaccesshelper-videoenhancementtype-e-sys.md) | 枚举，分段式视频的二段式触发类型。 |
 | [WatermarkType](arkts-medialibrary-photoaccesshelper-watermarktype-e-sys.md) | 枚举，水印可编辑标识。 |
-<!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [MemberType](arkts-medialibrary-photoaccesshelper-membertype-t.md) | PhotoAsset的成员类型。 |
-| [OperationValueType](arkts-medialibrary-photoaccesshelper-operationvaluetype-t.md) | 表示不同谓词所需要匹配的值。 |
-| [PhotoAssetParams](arkts-medialibrary-photoaccesshelper-photoassetparams-t.md) | 文件属性名称及其值的Record类型数组。 |
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [ProgressListener](arkts-medialibrary-photoaccesshelper-progresslistener-t-sys.md) | 表示复制操作进度的监听类型。 |
-| [ResultListener](arkts-medialibrary-photoaccesshelper-resultlistener-t-sys.md) | 表示复制操作结果的监听类型。 |
-| [ValuesBucket](arkts-medialibrary-photoaccesshelper-valuesbucket-t-sys.md) | 用于存储键值对的类型。 |
-| [ValueType](arkts-medialibrary-photoaccesshelper-valuetype-t-sys.md) | 用于表示允许的数据字段类型，接口参数的具体类型根据其功能而定。 |
 <!--DelEnd-->

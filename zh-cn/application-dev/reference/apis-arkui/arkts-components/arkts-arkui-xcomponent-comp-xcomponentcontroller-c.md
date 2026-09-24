@@ -299,31 +299,6 @@ setXComponentSurfaceRotation(rotationOptions: SurfaceRotationOptions): void
 | --- | --- | --- | --- |
 | rotationOptions | [SurfaceRotationOptions](arkts-arkui-xcomponent-comp-surfacerotationoptions-i.md) | 是 | 设置XComponent持有Surface在屏幕旋转时是否锁定方向。 |
 
-## setXComponentSurfaceSize
-
-```TypeScript
-setXComponentSurfaceSize(value: {
-    surfaceWidth: number;
-    surfaceHeight: number;
-  }): void
-```
-
-设置XComponent持有Surface的宽度和高度，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
-
-**起始版本：** 9
-
-**废弃版本：** 12
-
-**替代接口：** [setXComponentSurfaceRect](#setxcomponentsurfacerect)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | {     surfaceWidth: number;     surfaceHeight: number;   } | 是 | XComponent所持有的surface的宽度和高度。 |
-
 ## startImageAnalyzer
 
 ```TypeScript
@@ -397,3 +372,28 @@ unlockCanvasAndPost(canvas: DrawingCanvas):void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | canvas | [DrawingCanvas](arkts-arkui-canvas-comp-drawingcanvas-t.md) | 是 | 之前调用lockCanvas方法返回的画布对象。 |
+
+## setXComponentSurfaceSize
+
+```TypeScript
+setXComponentSurfaceSize(value: {
+    surfaceWidth: number;
+    surfaceHeight: number;
+  }): void
+```
+
+设置XComponent持有Surface的宽度和高度，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
+
+**起始版本：** 9
+
+**废弃版本：** 12
+
+**替代接口：** [setXComponentSurfaceRect](#setxcomponentsurfacerect)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | {     surfaceWidth: number;     surfaceHeight: number;   } | 是 | XComponent所持有的surface的宽度和高度。 |

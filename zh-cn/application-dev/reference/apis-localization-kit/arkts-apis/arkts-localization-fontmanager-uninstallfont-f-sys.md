@@ -38,8 +38,8 @@ function uninstallFont(fullName: string): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [31100107](../errorcode-font-manager.md#31100107-卸载的字体文件不存在) | The font file does not exist. |
 | [31100108](../errorcode-font-manager.md#31100108-无法删除字体) | Failed to delete the font file. |
 | [31100109](../errorcode-font-manager.md#31100109-其他错误导致卸载失败) | The system ability works abnormally. |

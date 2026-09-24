@@ -4,7 +4,7 @@
 declare enum AnimationStatus
 ```
 
-Animation status.
+用于动画播放状态。
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@ Animation status.
 Initial = 0
 ```
 
-Initial state of the animation.
+动画初始状态。
 
 **起始版本：** 7
 
@@ -32,7 +32,7 @@ Initial state of the animation.
 Running = 1
 ```
 
-The animation is playing.
+动画处于播放状态。
 
 **起始版本：** 7
 
@@ -48,7 +48,7 @@ The animation is playing.
 Paused = 2
 ```
 
-The animation is paused.
+动画处于暂停状态。
 
 **起始版本：** 7
 
@@ -64,7 +64,7 @@ The animation is paused.
 Stopped = 3
 ```
 
-The animation is stopped.
+动画处于停止状态。
 
 **起始版本：** 7
 

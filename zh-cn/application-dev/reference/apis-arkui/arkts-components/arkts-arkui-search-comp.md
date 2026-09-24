@@ -2,7 +2,13 @@
 
 搜索框组件，支持搜索图标、清除按钮、搜索按钮、placeholder提示文本、自定义键盘等功能配置，适用于浏览器的搜索内容输入框、应用内搜索等场景。
 
-> **说明：** > > 该组件仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor](arkts-arkui-richeditor-comp.md#rich_editor)组件。
+> **说明：** 
+> 
+> - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 该组件仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor](arkts-arkui-richeditor-comp.md#rich_editor)组件。
+> 
+> - 如需设置触摸文本组件外部时是否清除文本选中和手柄，可使用[setTextSelectionClearPolicy](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#settextselectionclearpolicy)接口。
 
 ## 子组件
 

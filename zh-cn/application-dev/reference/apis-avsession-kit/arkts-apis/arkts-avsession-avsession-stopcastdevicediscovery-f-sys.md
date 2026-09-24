@@ -30,7 +30,7 @@ function stopCastDeviceDiscovery(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 
 **示例**
 
@@ -67,7 +67,7 @@ function stopCastDeviceDiscovery(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 
 **示例**
 

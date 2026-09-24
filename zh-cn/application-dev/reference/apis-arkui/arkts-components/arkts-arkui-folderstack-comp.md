@@ -2,7 +2,11 @@
 
 FolderStack继承自[Stack](arkts-arkui-stack-comp.md#stack)（层叠布局）控件，新增了<!--RP1-->折叠屏悬停<!--RP1End-->能力，通过在FolderStack的配置项[FolderStackOptions](arkts-arkui-folderstack-comp-folderstackoptions-i.md)的upperItems数组上设置子组件id，使相应子组件自动避让折叠屏折痕区后移到上半屏。FolderStack适用于双折叠设备的悬停态场景，如视频播放、视频会议等应用，实现视频画面自动移至上半屏、控制面板保留在下半屏的布局。该组件能解决双折叠设备适配问题，带来提升用户体验、简化开发者布局适配工作的收益。
 
-> **说明：** > > - 该组件的悬停态能力针对<!--RP2-->双折叠<!--RP2End-->设计，只在双折叠设备生效。可通过FoldStatus判断设备的折叠状态。 > > - 当该组件的父组件为[if/else：条件渲染](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)节点时，折叠屏悬停能力将会失效。
+> **说明：** 
+> 
+> - 该组件的悬停态能力针对<!--RP2-->双折叠<!--RP2End-->设计，只在双折叠设备生效。可通过FoldStatus判断设备的折叠状态。
+> 
+> - 当该组件的父组件为[if/else：条件渲染](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)节点时，折叠屏悬停能力将会失效。
 
 ## 子组件
 
@@ -44,7 +48,7 @@ FolderStack(options?: FolderStackOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnFoldStatusChangeCallback](arkts-arkui-folderstack-comp-onfoldstatuschangecallback-t.md) | 当折叠状态改变时触发的回调&lt;!--RP4--&gt;，仅在横屏状态下生效&lt;!--RP4End--&gt;。 |
+| [OnFoldStatusChangeCallback](arkts-arkui-folderstack-comp-onfoldstatuschangecallback-t.md) | 当折叠状态改变时触发的回调<!--RP4-->，仅在横屏状态下生效<!--RP4End-->。 |
 | [OnHoverStatusChangeCallback](arkts-arkui-folderstack-comp-onhoverstatuschangecallback-t.md) | 当前设备的悬停状态改变时触发的回调。 |
 | [WindowStatusType](arkts-arkui-folderstack-comp-windowstatustype-t.md) | 窗口模式枚举。 |
 

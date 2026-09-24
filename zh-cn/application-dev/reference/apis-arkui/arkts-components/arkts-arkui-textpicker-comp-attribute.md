@@ -360,58 +360,6 @@ gradientHeight(height: Optional<Dimension>)
 | --- | --- | --- | --- |
 | height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt; | 是 | 内容区上下边缘的渐隐高度。<br>默认值：36vp <br>取值范围：[0, +∞)，支持百分比。<br>**说明：** <br>1. height设置为百分比时，100%为TextPicker高度的一半。<br>2. height设置为0时不显示渐隐效果。<br>3. height设置为数字且超过TextPicker高度的一半时，使用默认值。<br>4. 当height的值为undefined或负数时，使用默认值。 |
 
-## onAccept
-
-```TypeScript
-onAccept(callback: (value: string, index: number) => void)
-```
-
-点击弹窗中的“确定”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](arkts-arkui-textpicker-comp.md#text_picker)中生效。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 10开始废弃。此接口已完全移除，无替代接口。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | (value: string, index: number) =&gt; void | 是 |  |
-
-## onCancel
-
-```TypeScript
-onCancel(callback: () => void)
-```
-
-点击弹窗中的“取消”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](arkts-arkui-textpicker-comp.md#text_picker)中生效。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 10开始废弃。此接口已完全移除，无替代接口。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | () =&gt; void | 是 |  |
-
 ## onChange
 
 ```TypeScript
@@ -763,3 +711,55 @@ textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | 是 | 待选项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>}, <br>minFontSize: 0, <br>maxFontSize: 0, <br>overflow: TextOverflow.Clip <br>} <br>当style的值为undefined时，使用默认值。 |
+
+## onAccept
+
+```TypeScript
+onAccept(callback: (value: string, index: number) => void)
+```
+
+点击弹窗中的“确定”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](arkts-arkui-textpicker-comp.md#text_picker)中生效。
+
+> **说明：** 
+> 
+> 从API version 8开始支持，从API version 10开始废弃。此接口已完全移除，无替代接口。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | (value: string, index: number) =&gt; void | 是 |  |
+
+## onCancel
+
+```TypeScript
+onCancel(callback: () => void)
+```
+
+点击弹窗中的“取消”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](arkts-arkui-textpicker-comp.md#text_picker)中生效。
+
+> **说明：** 
+> 
+> 从API version 8开始支持，从API version 10开始废弃。此接口已完全移除，无替代接口。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | () =&gt; void | 是 | Callback invoked when the cancel button in the dialog box is clicked. |

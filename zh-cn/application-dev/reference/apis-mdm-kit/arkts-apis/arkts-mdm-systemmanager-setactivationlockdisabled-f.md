@@ -46,8 +46,8 @@ function setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
 | [9201011](../errorcode-enterpriseDeviceManager.md#9201011-禁用凭据无效) | The credential of the activation lock is invalid. |
 | [9201012](../errorcode-enterpriseDeviceManager.md#9201012-禁用或启用激活锁失败) | Failed to enable or disable the activation lock. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 

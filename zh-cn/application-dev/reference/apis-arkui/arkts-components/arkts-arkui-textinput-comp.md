@@ -2,7 +2,13 @@
 
 单行文本输入框组件，用于接收用户的单行文本输入。支持多种输入类型（如文本、密码、邮箱、数字等）、自定义样式（字体、颜色、下划线、装饰线等）、输入过滤、密码输入模式、自动填充等功能，适用于登录注册、搜索、表单填写等多种场景。能够解决文本输入验证、格式化、安全输入等常见需求，简化开发流程、提升用户体验并增强数据安全性。
 
-> **说明：** > > 该组件仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor](arkts-arkui-richeditor-comp.md#rich_editor)组件。
+> **说明：** 
+> 
+> - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 该组件仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor](arkts-arkui-richeditor-comp.md#rich_editor)组件。
+> 
+> - 如需设置触摸文本组件外部时是否清除文本选中和手柄，可使用[setTextSelectionClearPolicy](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#settextselectionclearpolicy)接口。
 
 ## 子组件
 

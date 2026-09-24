@@ -1,4 +1,4 @@
-# @ohos.app.ability.dialogSession
+# @ohos.app.ability.dialogSession(dialogSession)
 
 dialogSession模块用于支持系统应用弹框功能。
 

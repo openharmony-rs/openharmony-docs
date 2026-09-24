@@ -39,3 +39,19 @@ HDC_RETAIN_FORCE = 1
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
+
+## SHARE_RETAIN_FORCE
+
+```TypeScript
+SHARE_RETAIN_FORCE = 2
+```
+
+删除云端原始共享文件和共享相册的本地元数据和缩略图。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。

@@ -50,6 +50,24 @@ areaMode?: contextConstant.AreaMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## ignoreReadOnlyProperties
+
+```TypeScript
+ignoreReadOnlyProperties?: boolean
+```
+
+是否忽略只读属性。当值为false时，反序列化含有只读属性的类（例如被\@Computed装饰的getter函数）时会抛出错误。当值为true时，将忽略只读属性，不会抛出错误。默认值为false。
+
+**类型：** boolean
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## key
 
 ```TypeScript

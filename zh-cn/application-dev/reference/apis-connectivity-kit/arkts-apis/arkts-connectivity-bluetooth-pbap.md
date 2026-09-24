@@ -31,15 +31,6 @@ import { pbap } from '@kit.ConnectivityKit';
 | [SyncStateChangeParam](arkts-connectivity-pbap-syncstatechangeparam-i-sys.md) | 电话本同步状态变化信息。 |
 <!--DelEnd-->
 
-<!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [ShareType](arkts-connectivity-pbap-sharetype-e-sys.md) | 枚举，共享类型。 |
-| [SyncStateType](arkts-connectivity-pbap-syncstatetype-e-sys.md) | 电话本同步状态类型。 |
-<!--DelEnd-->
-
 ### 类型
 
 | 名称 | 说明 |
@@ -52,4 +43,13 @@ import { pbap } from '@kit.ConnectivityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [AccessAuthorization](arkts-connectivity-pbap-accessauthorization-t-sys.md) | 枚举，蓝牙访问授权状态。表示对端蓝牙设备访问本端蓝牙Profile（如电话簿、消息等）的授权状态，用于蓝牙数据访问授权场景。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ShareType](arkts-connectivity-pbap-sharetype-e-sys.md) | 枚举，共享类型。 |
+| [SyncStateType](arkts-connectivity-pbap-syncstatetype-e-sys.md) | 电话本同步状态类型。 |
 <!--DelEnd-->

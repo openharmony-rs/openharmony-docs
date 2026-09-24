@@ -1,4 +1,4 @@
-# @ohos.prompt
+# @ohos.prompt(弹窗)
 
 创建并显示文本提示框、对话框和操作菜单。
 

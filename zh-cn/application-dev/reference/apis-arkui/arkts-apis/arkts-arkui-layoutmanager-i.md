@@ -12,7 +12,7 @@ declare interface LayoutManager
 
 ## 导入对象
 
-以Text组件为例，完整示例请参考Text组件的[示例10（获取文本信息）](../arkts-components/arkts-arkui-text-comp.md#text)。
+以Text组件为例，完整示例请参考Text组件的[示例10（获取文本信息）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例10获取文本信息)。
 
 ```ts
 controller: TextController = new TextController();
@@ -33,9 +33,9 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 
 > **说明：** 
 > 
-> - 字形（Glyph）是文本渲染的基本单元，与字符（Character）可能存在一对多关系。如需获取字形级别的位置信息，可使用[getGlyphPositionAtCoordinate](#getglyphpositionatcoordinate)方法。
-> 
 > - 文本内容变更后，需等待布局完成才可获取到最新的位置信息。
+> 
+> - 本接口返回的字符位置为UTF-8编码偏移量。
 
 **起始版本：** 24
 
@@ -49,8 +49,8 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位：[px](arkts-arkui-length-t.md) |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位：[px](arkts-arkui-length-t.md) |
+| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素单元.md#基本像素单元）。<br>单位：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素-单位.md#基本像素-单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素单元.md#基本像素单元）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
@@ -69,6 +69,12 @@ getCharacterPositionAtCoordinate(
 
 根据指定编码类型，获取距离指定坐标最近的字符位置信息。
 
+相比[getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate)，本接口支持通过encoding参数指定字符位置使用的编码类型（UTF-8或UTF-16）。
+
+> **说明：** 
+> 
+> 文本内容变更后，需等待布局完成才可获取到最新的位置信息。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -81,9 +87,9 @@ getCharacterPositionAtCoordinate(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位：[px](arkts-arkui-length-t.md) |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位：[px](arkts-arkui-length-t.md) |
-| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | 否 | 字符位置使用的编码类型，默认值为**TextEncoding.TEXT_ENCODING_UTF8**。 |
+| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | 否 | 字符位置使用的编码类型。UTF-8编码时，字符位置以字节为单位；UTF-16编码时，字符位置以UTF-16码元为单位。<br>默认值：TextEncoding.TEXT_ENCODING_UTF8。 |
 
 **返回值：**
 
@@ -97,19 +103,19 @@ getCharacterPositionAtCoordinate(
 getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefined
 ```
 
-根据给定的文本字形范围来获取范围内的字符范围，以及实际的字形范围。
+根据给定的文本字形范围来获取范围内的字符范围，以及实际的字形范围。本接口的字符偏移量为UTF-8编码。
 
 > **说明：** 
 > 
 > 文本内容变更后，需等待布局完成才可获取到最新的字符范围信息。
-> 以文本“世界Hello”为例，其字形索引与字符索引的对应关系如下：
+> 以文本“世界Hello”为例，UTF-8编码下其字形索引与字符索引的对应关系如下：
 
 | 文本 | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
 | 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
-| 字符索引范围 | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
 
-其字形索引范围为[0, 7]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 11]。如果指定的字形索引范围是[0, 11]，但字形一共只有7个，所以实际的字形索引范围是[0, 7]。
+其字形索引范围为[0, 7]，一个汉字占3个字节，所以其对应的字符索引范围为[0, 11]。如果指定的字形索引范围是[0, 11]，但字形一共只有7个，所以实际的字形索引范围是[0, 7]。
 
 **起始版本：** 24
 
@@ -141,6 +147,23 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 根据指定编码类型和文本字形范围，获取字符范围以及实际的字形范围。
 
+相比[getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
+
+> **说明：** 
+> 
+> 文本内容变更后，需等待布局完成才可获取到最新的字符范围信息。
+> 以文本“世界Hello”为例，不同编码类型下其字形索引与字符索引的对应关系如下：
+
+| 文本 | 世 | 界 | H | e | l | l | o |  
+|---|---|---|---|---|---|---|---|  
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| 字符索引范围（UTF-16） | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+
+UTF-8编码时，其字形索引范围为[0, 7]，一个汉字占3个字节，对应的字符索引范围为[0, 11]。如果指定的字形索引范围超出实际字形数量（如[0, 11]），由于字形一共只有7个，返回的实际字形索引范围为[0, 7]。
+
+UTF-16编码时，字符索引以UTF-16码元为单位，BMP字符（如“世”）占1个码元（2个字节），补充平面字符（如emoji）占2个码元（4字节代理对）。其字形索引范围为[0, 7]，对应的字符索引范围为[0, 7]。如果指定的字形索引范围超出实际字形数量（如[0, 10]），由于字形一共只有7个，返回的实际字形索引范围为[0, 7]。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -154,7 +177,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | glyphRange | [TextRange](arkts-arkui-textrange-i.md) | 是 | 文本的字形范围。 |
-| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | 否 | 字符范围使用的编码类型，默认值为**TextEncoding.TEXT_ENCODING_UTF8**。 |
+| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | 否 | 字符范围使用的编码类型。UTF-8编码时，字符索引以字节为单位；UTF-16编码时，字符索引以UTF-16码元为单位。<br>默认值：TextEncoding.TEXT_ENCODING_UTF8 |
 
 **返回值：**
 
@@ -168,11 +191,11 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 ```
 
-获取较为接近给定坐标的字形的位置信息。
+获取较为接近给定坐标的字符位置信息。
 
 > **说明：** 
 > 
-> - 字形（Glyph）是文本渲染的基本单元，与字符（Character）可能存在一对多关系。如需获取字符级别的位置信息，可使用[getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate)方法。
+> - 本接口实际获取的是UTF-16字符偏移量，而非字形偏移量。
 > 
 > - 文本内容变更后，需等待布局完成才可获取到最新的位置信息。
 
@@ -188,14 +211,14 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位：[px](arkts-arkui-length-t.md) |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位：[px](arkts-arkui-length-t.md) |
+| x | number | 是 | 相对于组件的横坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) | 字形位置信息。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，返回无效值。 |
+| [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) | 字符位置信息。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，返回无效值。 |
 
 ## getGlyphRangeForCharacterRange
 
@@ -203,19 +226,19 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefined
 ```
 
-根据给定的文本字符范围来获取范围内的字形范围，以及实际的字符范围。
+根据给定的文本字符范围来获取范围内的字形范围，以及实际的字符范围。本接口的字符偏移量为UTF-8编码。
 
 > **说明：** 
 > 
 > 文本内容变更后，需等待布局完成才可获取到最新的字形范围信息。
-> 以文本“世界Hello”为例，其字形索引与字符索引的对应关系如下：
+> 以文本“世界Hello”为例，UTF-8编码下其字形索引与字符索引的对应关系如下：
 
 | 文本 | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
 | 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
-| 字符索引范围 | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
 
-其中文本“世”的字形索引范围为[0, 1]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
+其中文本“世”的字形索引范围为[0, 1]，一个汉字占3个字节，所以其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
 
 **起始版本：** 24
 
@@ -247,6 +270,23 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 
 根据指定编码类型和文本字符范围，获取字形范围以及实际的字符范围。
 
+相比[getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
+
+> **说明：** 
+> 
+> 文本内容变更后，需等待布局完成才可获取到最新的字形范围信息。
+> 以文本“世界Hello”为例，不同编码类型下其字形索引与字符索引的对应关系如下：
+
+| 文本 | 世 | 界 | H | e | l | l | o |  
+|---|---|---|---|---|---|---|---|  
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| 字符索引范围（UTF-16） | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+
+UTF-8编码时，一个汉字占3个字节，“世”的字形索引范围为[0, 1]，其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
+
+UTF-16编码时，字符索引以UTF-16码元为单位，BMP字符（如“世”）占1个码元（2个字节），补充平面字符（如emoji）占2个码元（4字节代理对）。“世”的字形索引范围为[0, 1]，其对应的字符索引范围为[0, 1]。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -260,7 +300,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | charRange | [TextRange](arkts-arkui-textrange-i.md) | 是 | 文本的字符范围。 |
-| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | 否 | 字符范围使用的编码类型，默认值为**TextEncoding.TEXT_ENCODING_UTF8**。 |
+| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | 否 | 字符范围使用的编码类型。UTF-8编码时，字符索引以字节为单位；UTF-16编码时，字符索引以UTF-16码元为单位。<br>默认值：TextEncoding.TEXT_ENCODING_UTF8 |
 
 **返回值：**
 
@@ -324,7 +364,7 @@ getLineMetrics(lineNumber: number): LineMetrics
 
 | 类型 | 说明 |
 | --- | --- |
-| [LineMetrics](arkts-arkui-linemetrics-t.md) | 行信息、文本样式信息、以及字体属性信息。<br>当行号小于0或超出实际行，返回无效值。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，返回无效值。 |
+| [LineMetrics](arkts-arkui-linemetrics-t.md) | 行信息、文本样式信息、以及字体属性信息。<br>当行号小于0或超出实际行数，返回无效值。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，返回无效值。 |
 
 ## getRectsForRange
 
@@ -336,7 +376,9 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 > **说明：** 
 > 
-> 文本内容变更后，需等待布局完成才可获取到最新的绘制区域信息。
+> - 文本内容变更后，需等待布局完成才可获取到最新的绘制区域信息。
+> 
+> - 参数range的[TextRange](arkts-arkui-textrange-i.md)为UTF-16字符偏移量。
 
 **起始版本：** 14
 

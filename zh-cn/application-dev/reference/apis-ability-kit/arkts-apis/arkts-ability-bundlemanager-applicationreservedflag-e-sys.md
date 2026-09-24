@@ -6,7 +6,7 @@ export enum ApplicationReservedFlag
 
 该ApplicationReservedFlag值的每一位标识相关信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,7 +20,7 @@ ENCRYPTED_APPLICATION = 0x00000001
 
 标识应用是加密应用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +36,7 @@ ENCRYPTED_KEY_EXISTED = 0x00000002
 
 标识应用的加密密钥存在。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

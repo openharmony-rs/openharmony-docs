@@ -64,16 +64,16 @@ import { taskpool } from '@kit.ArkTS';
 | [Configs](arkts-arkts-taskpool-configs-i.md) | 任务或任务组的配置项。 |
 | [TaskResult](arkts-arkts-taskpool-taskresult-i.md) | 对处于等待或执行过程中的任务执行取消操作后，在catch分支里捕获到BusinessError里的补充信息。其他场景下该信息为undefined。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../../napi/qos-guidelines.md#qos等级定义)。 |
-| [State](arkts-arkts-taskpool-state-e.md) | 表示任务（Task）状态的枚举。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [CallbackFunction](arkts-arkts-taskpool-callbackfunction-t.md) | 注册的回调函数类型。 |
 | [CallbackFunctionWithError](arkts-arkts-taskpool-callbackfunctionwitherror-t.md) | 注册接收错误对象的回调函数类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../../napi/qos-guidelines.md#qos等级定义)。 |
+| [State](arkts-arkts-taskpool-state-e.md) | 表示任务（Task）状态的枚举。 |

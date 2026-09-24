@@ -41,7 +41,7 @@ function subscribe(featureId: UserStatusFeature, callback: Callback<UserStatusDa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited<br> device capabilities. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited<br> device capabilities. |
 | [33900001](../errorcode-userStatus.md#33900001-服务异常) | Service exception. Possible causes:<br>1. System error, such as null pointer and container-related exception. <br>2. Node-API invocation exception, such as a invalid Node-API status. |
 | [33900002](../errorcode-userStatus.md#33900002-订阅失败) | Subscription failed. Possible causes:<br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |

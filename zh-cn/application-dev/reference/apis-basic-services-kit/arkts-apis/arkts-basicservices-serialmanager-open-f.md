@@ -36,7 +36,7 @@ function open(portId: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) |  |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 | [31400001](../errorcode-usb.md#31400001-串口服务异常) |  |
 | [31400002](../errorcode-usb.md#31400002-没有串口设备访问权限) |  |
 | [31400003](../errorcode-usb.md#31400003-端口号不存在) |  |

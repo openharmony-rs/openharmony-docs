@@ -308,7 +308,7 @@ dynamicRangeMode(value: DynamicRangeMode)
 enableAnalyzer(enable: boolean)
 ```
 
-设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。&lt;!--RP3--&gt;&lt;!--RP3End--&gt;
+设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。<!--RP3--><!--RP3End-->
 
 不能和[overlay](arkts-arkui-common-comp-commonmethod-c.md#overlay)属性同时使用，两者同时设置时overlay中[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)属性将失效。该特性依赖设备能力。
 

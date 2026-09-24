@@ -4,7 +4,7 @@
 declare enum TextCase
 ```
 
-Letter type in text
+文本大小写的样式。
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@ Letter type in text
 Normal = 0
 ```
 
-The default is normal.
+保持文本原有大小写。
 
 **起始版本：** 7
 
@@ -32,7 +32,7 @@ The default is normal.
 LowerCase = 1
 ```
 
-The text is all lowercase.
+文本采用全小写。
 
 **起始版本：** 7
 
@@ -48,7 +48,7 @@ The text is all lowercase.
 UpperCase = 2
 ```
 
-The text is all uppercase.
+文本采用全大写。
 
 **起始版本：** 7
 

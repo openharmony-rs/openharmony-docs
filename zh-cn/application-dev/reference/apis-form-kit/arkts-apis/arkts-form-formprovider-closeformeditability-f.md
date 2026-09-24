@@ -30,7 +30,7 @@ function closeFormEditAbility(isMainPage?: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported due to limited device capabilities. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16501015](../errorcode-form.md#16501015-不能关闭其他应用的半模态卡片编辑页) | Cannot close the widget editing page opened by other apps. |
 

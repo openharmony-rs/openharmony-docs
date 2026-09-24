@@ -206,6 +206,12 @@ import { camera } from '@kit.CameraKit';
 | [ZoomQuery](arkts-camera-camera-zoomquery-i-sys.md) | 提供了与设备的缩放相关的查询功能，包括获取支持的缩放比例范围。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ImageType](arkts-camera-camera-imagetype-t.md) | 图片容器类型，用于获取全质量图和未压缩图(YUV)。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -284,9 +290,3 @@ import { camera } from '@kit.CameraKit';
 | [UsageType](arkts-camera-camera-usagetype-e-sys.md) | Enum for usage type used in capture session. |
 | [VideoMetaType](arkts-camera-camera-videometatype-e-sys.md) | Video meta type. |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [ImageType](arkts-camera-camera-imagetype-t.md) | 图片容器类型，用于获取全质量图和未压缩图(YUV)。 |

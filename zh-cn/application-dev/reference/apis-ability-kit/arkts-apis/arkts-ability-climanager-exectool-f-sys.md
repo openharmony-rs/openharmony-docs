@@ -39,14 +39,14 @@ function execTool(toolName: string, subCommand: string, args: Record<string, Obj
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[CliSessionInfo](arkts-ability-climanager-clisessioninfo-i-sys.md)&gt; | 执行结果。 |
+| Promise&lt;[CliSessionInfo](arkts-ability-climanager-clisessioninfo-i.md)&gt; | 执行结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied, interface caller does not have permission"ohos.permission.EXEC_CLI_TOOL". |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. Interface caller is not a system app. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied, interface caller does not have permission"ohos.permission.EXEC_CLI_TOOL". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. Interface caller is not a system app. |
 | [35600030](../errorcode-ability.md#35600030-cli工具不存在) | No tool with the specified name exists. |
 | [35600031](../errorcode-ability.md#35600031-工具并发数已达上限) | Maximum number of processes has been reached. |
 | [35600050](../errorcode-ability.md#35600050-偶发性报错) | System Error. 1. Connect to system service failed; 2. The system service failed to communicate with the dependent module. |

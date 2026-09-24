@@ -4,7 +4,7 @@
 declare interface BadgeParamWithString extends BadgeParam
 ```
 
-BadgeParamWithNumber继承自[BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md)，具有BadgeParam的全部属性。
+BadgeParamWithString继承自[BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md)，具有BadgeParam的全部属性。
 
 **继承/实现关系：** BadgeParamWithString extends [BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md)
 

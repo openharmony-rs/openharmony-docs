@@ -410,52 +410,6 @@ getElementName(): Promise<ElementName>
 | --- | --- |
 | Promise&lt;[ElementName](arkts-ability-elementname-elementname-depr-i.md)&gt; | Promise对象，返回当前ability的ohos.bundleManager.ElementName对象。 |
 
-## getExternalCacheDir
-
-```TypeScript
-getExternalCacheDir(callback: AsyncCallback<string>): void
-```
-
-获取应用程序的外部缓存目录。使用callback异步回调。
-
-**起始版本：** 6
-
-**废弃版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回应用程序的缓存目录的绝对路径。 |
-
-<a id="getexternalcachedir-1"></a>
-
-## getExternalCacheDir
-
-```TypeScript
-getExternalCacheDir(): Promise<string>
-```
-
-获取应用程序的外部缓存目录。使用Promise异步回调。
-
-**起始版本：** 6
-
-**废弃版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回应用程序的缓存目录的绝对路径。 |
-
 ## getFilesDir
 
 ```TypeScript
@@ -896,6 +850,126 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+## verifyPermission
+
+```TypeScript
+verifyPermission(permission: string, options?: PermissionOptions): Promise<number>
+```
+
+验证系统中运行的特定pid和uid是否具有指定的权限。使用Promise异步回调。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permission | string | 是 | 指定权限的名称。 |
+| options | [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md) | 否 | 权限选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;number&gt; | Promise对象，如果pid和uid具有权限，则使用0进行异步回调；否则使用-1回调。 |
+
+<a id="verifypermission-1"></a>
+
+## verifyPermission
+
+```TypeScript
+verifyPermission(permission: string, options: PermissionOptions, callback: AsyncCallback<number>): void
+```
+
+验证系统中运行的特定pid和uid是否允许指定的权限。使用callback异步回调。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permission | string | 是 | 指定权限的名称。 |
+| options | [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md) | 是 | 权限选项。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回权限验证结果，0有权限，-1无权限。 |
+
+<a id="verifypermission-2"></a>
+
+## verifyPermission
+
+```TypeScript
+verifyPermission(permission: string, callback: AsyncCallback<number>): void
+```
+
+验证系统中运行的当前pid和uid是否具有指定的权限。使用callback异步回调。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permission | string | 是 | 指定权限的名称。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回权限验证结果，0有权限，-1无权限。 |
+
+## getExternalCacheDir
+
+```TypeScript
+getExternalCacheDir(callback: AsyncCallback<string>): void
+```
+
+获取应用程序的外部缓存目录。使用callback异步回调。
+
+**起始版本：** 6
+
+**废弃版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回应用程序的缓存目录的绝对路径。 |
+
+<a id="getexternalcachedir-1"></a>
+
+## getExternalCacheDir
+
+```TypeScript
+getExternalCacheDir(): Promise<string>
+```
+
+获取应用程序的外部缓存目录。使用Promise异步回调。
+
+**起始版本：** 6
+
+**废弃版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string&gt; | Promise对象，返回应用程序的缓存目录的绝对路径。 |
+
 ## setShowOnLockScreen
 
 ```TypeScript
@@ -1005,77 +1079,3 @@ setWakeUpScreen(wakeUp: boolean): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-## verifyPermission
-
-```TypeScript
-verifyPermission(permission: string, options?: PermissionOptions): Promise<number>
-```
-
-验证系统中运行的特定pid和uid是否具有指定的权限。使用Promise异步回调。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| permission | string | 是 | 指定权限的名称。 |
-| options | [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md) | 否 | 权限选项。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;number&gt; | Promise对象，如果pid和uid具有权限，则使用0进行异步回调；否则使用-1回调。 |
-
-<a id="verifypermission-1"></a>
-
-## verifyPermission
-
-```TypeScript
-verifyPermission(permission: string, options: PermissionOptions, callback: AsyncCallback<number>): void
-```
-
-验证系统中运行的特定pid和uid是否允许指定的权限。使用callback异步回调。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| permission | string | 是 | 指定权限的名称。 |
-| options | [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md) | 是 | 权限选项。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回权限验证结果，0有权限，-1无权限。 |
-
-<a id="verifypermission-2"></a>
-
-## verifyPermission
-
-```TypeScript
-verifyPermission(permission: string, callback: AsyncCallback<number>): void
-```
-
-验证系统中运行的当前pid和uid是否具有指定的权限。使用callback异步回调。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| permission | string | 是 | 指定权限的名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回权限验证结果，0有权限，-1无权限。 |

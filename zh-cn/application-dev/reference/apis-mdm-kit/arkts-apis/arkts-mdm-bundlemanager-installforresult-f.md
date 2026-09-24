@@ -67,4 +67,4 @@ function installForResult(admin: Want, hapFilePaths: Array<string>, installParam
 | [9201037](../errorcode-enterpriseDeviceManager.md#9201037-数据代理权限配置错误导致应用安装失败) | Failed to install the HAP due to incorrect permission configuration in the data proxy. |
 | [9201038](../errorcode-enterpriseDeviceManager.md#9201038-代码签名验证失败导致应用安装失败) | Failed to install the HAP due to code signature verification failure. |
 | [9201039](../errorcode-enterpriseDeviceManager.md#9201039-企业设备验证失败导致应用安装失败) | Failed to install the HAP due to enterprise device verification failure. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |

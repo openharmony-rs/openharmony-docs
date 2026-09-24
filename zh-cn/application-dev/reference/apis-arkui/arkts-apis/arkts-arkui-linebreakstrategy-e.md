@@ -4,9 +4,7 @@
 declare enum LineBreakStrategy
 ```
 
-Enum of line break strategy
-
-@enum { number }
+折行规则。
 
 **起始版本：** 12
 
@@ -18,7 +16,7 @@ Enum of line break strategy
 GREEDY = 0
 ```
 
-By default. Display as many characters as possible on each line until no more characters can be displayed on that line, and do not automatically add hyphens under this strategy
+使每一行尽可能显示多的字符，直到这一行不能显示更多字符时进行折行。
 
 **起始版本：** 12
 
@@ -34,7 +32,7 @@ By default. Display as many characters as possible on each line until no more ch
 HIGH_QUALITY = 1
 ```
 
-High quality folding. Optimize the layout of the entire text's line breaks and automatically add hyphens if necessary.
+在BALANCED的基础上，尽可能填满行，同时最后一行的权重较低，可能出现最后一行留白较多的情形。
 
 **起始版本：** 12
 
@@ -50,7 +48,7 @@ High quality folding. Optimize the layout of the entire text's line breaks and a
 BALANCED = 2
 ```
 
-Balanced folding. We will try our best to ensure that the width of each line in a paragraph is the same, and if necessary, we will add conjunction
+在不拆词的情况下，尽量使一个段落中每一行的宽度相同。
 
 **起始版本：** 12
 

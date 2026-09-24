@@ -114,6 +114,17 @@ import { connection } from '@kit.ConnectivityKit';
 | [TrustedPairedDevices](arkts-connectivity-connection-trustedpaireddevices-i-sys.md) | 云设备列表。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [BluetoothAddress](arkts-connectivity-connection-bluetoothaddress-t.md) | 描述蓝牙设备地址信息的参数结构，包括地址与地址类型。 |
+| [MajorClass](arkts-connectivity-connection-majorclass-t.md) | 蓝牙设备的主要类型。蓝牙标准协议字段。 |
+| [MajorMinorClass](arkts-connectivity-connection-majorminorclass-t.md) | 蓝牙设备的子类型，在[MajorClass](arkts-connectivity-constant-majorclass-e.md)基础上进一步细分的类型。蓝牙标准协议字段。 |
+| [ProfileConnectionState](arkts-connectivity-connection-profileconnectionstate-t.md) | 蓝牙设备的Profile协议连接状态。Profile协议包括A2DP（Advanced Audio Distribution Profile）、HFP（Hands-Free Profile）和HID（Human Interface Device）等。 |
+| [ProfileId](arkts-connectivity-connection-profileid-t.md) | 枚举，蓝牙Profile协议。 |
+| [ProfileUuids](arkts-connectivity-connection-profileuuids-t.md) | 蓝牙Profile协议的UUID。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -139,14 +150,3 @@ import { connection } from '@kit.ConnectivityKit';
 | [DeviceType](arkts-connectivity-connection-devicetype-e-sys.md) | 枚举，蓝牙远程设备的自定义类型。 |
 | [PinType](arkts-connectivity-connection-pintype-e-sys.md) | 枚举，蓝牙配对类型。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [BluetoothAddress](arkts-connectivity-connection-bluetoothaddress-t.md) | 描述蓝牙设备地址信息的参数结构，包括地址与地址类型。 |
-| [MajorClass](arkts-connectivity-connection-majorclass-t.md) | 蓝牙设备的主要类型。蓝牙标准协议字段。 |
-| [MajorMinorClass](arkts-connectivity-connection-majorminorclass-t.md) | 蓝牙设备的子类型，在[MajorClass](arkts-connectivity-constant-majorclass-e.md)基础上进一步细分的类型。蓝牙标准协议字段。 |
-| [ProfileConnectionState](arkts-connectivity-connection-profileconnectionstate-t.md) | 蓝牙设备的Profile协议连接状态。Profile协议包括A2DP（Advanced Audio Distribution Profile）、HFP（Hands-Free Profile）和HID（Human Interface Device）等。 |
-| [ProfileId](arkts-connectivity-connection-profileid-t.md) | 枚举，蓝牙Profile协议。 |
-| [ProfileUuids](arkts-connectivity-connection-profileuuids-t.md) | 蓝牙Profile协议的UUID。 |

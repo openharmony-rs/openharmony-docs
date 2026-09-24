@@ -145,7 +145,7 @@ contains(value: ScopeType): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains)
+**替代接口：** contains
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -207,7 +207,7 @@ contains(range: Scope): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains)
+**替代接口：** contains
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -689,7 +689,7 @@ toString(): string
 
 **废弃版本：** 9
 
-**替代接口：** [toString](arkts-arkts-util-lrucache-c.md#tostring)
+**替代接口：** toString
 
 **系统能力：** SystemCapability.Utils.Lang
 

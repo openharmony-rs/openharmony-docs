@@ -1,4 +1,4 @@
-# promptAction
+# promptAction(弹窗)
 
 ```TypeScript
 declare namespace promptAction

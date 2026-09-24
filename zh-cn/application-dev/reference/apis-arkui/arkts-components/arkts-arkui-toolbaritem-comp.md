@@ -2,7 +2,9 @@
 
 可以使用**ToolBarItem**组件，通过[toolbar](arkts-arkui-common-comp-commonmethod-c.md#toolbar)通用属性向标题栏中添加toolbar item。
 
-> **说明** > > 该组件通常与[toolbar](arkts-arkui-common-comp-commonmethod-c.md#toolbar)通用属性一起使用。
+> **说明：** 
+> 
+> 该组件通常与[toolbar](arkts-arkui-common-comp-commonmethod-c.md#toolbar)通用属性一起使用。
 
 ## 子组件
 

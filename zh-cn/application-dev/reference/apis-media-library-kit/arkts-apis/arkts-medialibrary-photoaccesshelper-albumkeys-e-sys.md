@@ -97,3 +97,67 @@ FILE_HIDDEN = 'file_hidden'
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
+
+## SHARE_RISK_STATUS
+
+```TypeScript
+SHARE_RISK_STATUS = 'share_risk_status'
+```
+
+共享相册的风控状态
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHARE_RISK_TYPE
+
+```TypeScript
+SHARE_RISK_TYPE = 'share_risk_type'
+```
+
+共享相册的风控类型
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SHARE_ALBUM_OWNER
+
+```TypeScript
+SHARE_ALBUM_OWNER = 'share_album_owner'
+```
+
+共享相册的所有者。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## CLOUD_ID
+
+```TypeScript
+CLOUD_ID = 'cloud_id'
+```
+
+相册的cloudId。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。

@@ -1,19 +1,15 @@
-# CliToolEvent
+# CliToolEvent(CLI工具会话事件)
 
 ## 汇总
 
-<!--Del-->
-### 接口（系统接口）
+### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [CliToolEvent](arkts-ability-clitoolevent-i-sys.md) | CliToolEvent用于描述CLI工具进程运行期间产生的会话事件信息。 |
-<!--DelEnd-->
+| [CliToolEvent](arkts-ability-clitoolevent-i.md) | CliToolEvent用于描述CLI工具进程运行期间产生的会话事件信息。 |
 
-<!--Del-->
-### 枚举（系统接口）
+### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [ToolEventType](arkts-ability-clitoolevent-tooleventtype-e-sys.md) | CLI工具会话事件类型。 |
-<!--DelEnd-->
+| [ToolEventType](arkts-ability-clitoolevent-tooleventtype-e.md) | CLI工具会话事件类型。 |

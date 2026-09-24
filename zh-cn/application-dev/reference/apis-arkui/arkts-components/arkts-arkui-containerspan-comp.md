@@ -2,6 +2,10 @@
 
 [Text](arkts-arkui-text-comp.md#text)组件的子组件，用于统一管理多个[Span](arkts-arkui-span-comp.md#span)、[ImageSpan](arkts-arkui-imagespan-comp.md#image_span)的背景色及圆角弧度，适用于需要为文本片段和图片组合设置统一背景样式的场景。
 
+> **说明：** 
+> 
+> - 该组件从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 ## 子组件
 
 可以包含[Span](arkts-arkui-span-comp.md#span)、[ImageSpan](arkts-arkui-imagespan-comp.md#image_span) 子组件。

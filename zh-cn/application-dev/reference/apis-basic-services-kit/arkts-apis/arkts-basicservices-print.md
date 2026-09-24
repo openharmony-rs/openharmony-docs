@@ -145,6 +145,21 @@ import { print } from '@kit.BasicServicesKit';
 | [PrinterExtensionInfo](arkts-basicservices-print-printerextensioninfo-i-sys.md) | 定义打印扩展信息的接口。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [PrinterChangeCallback](arkts-basicservices-print-printerchangecallback-t.md) | 将打印机事件和打印机信息作为参数的回调方法。 |
+| [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | 定义用来注册强制水印处理的监听事件时使用的回调类型。 |
+
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [PrinterInfoQueryCallback](arkts-basicservices-print-printerinfoquerycallback-t-sys.md) | 定义注册监听printInfoQuery事件的回调类型。printInfo的值表示打印机信息。ppdInfo的值表示所有打印机的ppd信息。 |
+<!--DelEnd-->
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -168,18 +183,3 @@ import { print } from '@kit.BasicServicesKit';
 | [PrintPageType](arkts-basicservices-print-printpagetype-e.md) | 打印纸张类型的枚举。 |
 | [PrintQuality](arkts-basicservices-print-printquality-e.md) | 打印质量的枚举。 |
 | [WatermarkHandleResult](arkts-basicservices-print-watermarkhandleresult-e.md) | 强制水印处理结果的枚举。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [PrinterChangeCallback](arkts-basicservices-print-printerchangecallback-t.md) | 将打印机事件和打印机信息作为参数的回调方法。 |
-| [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | 定义用来注册强制水印处理的监听事件时使用的回调类型。 |
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [PrinterInfoQueryCallback](arkts-basicservices-print-printerinfoquerycallback-t-sys.md) | 定义注册监听printInfoQuery事件的回调类型。printInfo的值表示打印机信息。ppdInfo的值表示所有打印机的ppd信息。 |
-<!--DelEnd-->

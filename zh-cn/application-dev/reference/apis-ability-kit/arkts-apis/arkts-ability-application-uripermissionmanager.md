@@ -1,4 +1,4 @@
-# @ohos.application.uriPermissionManager
+# @ohos.application.uriPermissionManager(URI权限管理)
 
 URI权限管理模块。用于应用A授权/撤销授权URI给应用B。支持在应用间安全地共享文件访问权限，授权后目标应用可访问指定URI的文件，临时授权的权限在目标应用退出后自动回收。适用于应用间文件分享、跨应用数据访问等需要临时授权的场景。
 

@@ -39,7 +39,7 @@ function decompressFile(inFile: string, outFile: string, options: Options, callb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [900001](../errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
 | [900002](../errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 | [900003](../errorcode-zlib.md#900003-传入的源文件格式错误或者已损坏) | The input source file is not in ZIP format or is damaged.<br>**适用版本：** 10+ |
@@ -107,7 +107,7 @@ function decompressFile(inFile: string, outFile: string, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [900001](../errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
 | [900002](../errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 | [900003](../errorcode-zlib.md#900003-传入的源文件格式错误或者已损坏) | The input source file is not in ZIP format or is damaged. |
@@ -177,7 +177,7 @@ function decompressFile(inFile: string, outFile: string, options?: Options): Pro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [900001](../errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
 | [900002](../errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 | [900003](../errorcode-zlib.md#900003-传入的源文件格式错误或者已损坏) | The input source file is not in ZIP format or is damaged.<br>**适用版本：** 10+ |

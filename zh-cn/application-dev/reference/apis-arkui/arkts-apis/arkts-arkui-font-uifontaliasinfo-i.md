@@ -4,7 +4,7 @@
 interface UIFontAliasInfo
 ```
 
-系统的UI字体配置信息。
+别名列表。
 
 **起始版本：** 11
 

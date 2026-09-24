@@ -1,7 +1,7 @@
 # PickerColorMode
 
 ```TypeScript
-export declare enum PickerColorMode
+export enum PickerColorMode
 ```
 
 枚举选择器颜色模式。

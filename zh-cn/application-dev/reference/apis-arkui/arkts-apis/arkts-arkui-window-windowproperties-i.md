@@ -32,24 +32,6 @@ brightness: number
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-## dimBehindValue
-
-```TypeScript
-dimBehindValue: number
-```
-
-下层窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。
-
-**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
-
-**类型：** number
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 ## displayId
 
 ```TypeScript
@@ -196,24 +178,6 @@ isPrivacyMode: boolean
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-## isRoundCorner
-
-```TypeScript
-isRoundCorner: boolean
-```
-
-窗口是否为圆角。true表示窗口为圆角；false表示窗口为非圆角。
-
-**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
-
-**类型：** boolean
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 ## isTransparent
 
 ```TypeScript
@@ -262,28 +226,6 @@ touchable: boolean
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-## type
-
-```TypeScript
-type: WindowType
-```
-
-窗口类型。
-
-当前存在主窗使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)接口返回type不准确的问题，开发者在创建窗口时已指明窗口类型，无需通过getWindowProperties()接口获取窗口类型。
-
-**类型：** [WindowType](arkts-arkui-window-windowtype-e.md)
-
-**起始版本：** 7
-
-**废弃版本：** 26.0.0
-
-**替代接口：** [windowType](#windowtype)
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 ## windowRect
 
 ```TypeScript
@@ -315,5 +257,63 @@ windowType?: WindowType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## dimBehindValue
+
+```TypeScript
+dimBehindValue: number
+```
+
+下层窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。
+
+**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
+
+**类型：** number
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## isRoundCorner
+
+```TypeScript
+isRoundCorner: boolean
+```
+
+窗口是否为圆角。true表示窗口为圆角；false表示窗口为非圆角。
+
+**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
+
+**类型：** boolean
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## type
+
+```TypeScript
+type: WindowType
+```
+
+窗口类型。
+
+当前存在主窗使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)接口返回type不准确的问题，开发者在创建窗口时已指明窗口类型，无需通过getWindowProperties()接口获取窗口类型。
+
+**类型：** [WindowType](arkts-arkui-window-windowtype-e.md)
+
+**起始版本：** 7
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [windowType](#windowtype)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

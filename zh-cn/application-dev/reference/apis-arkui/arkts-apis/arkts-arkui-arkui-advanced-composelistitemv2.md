@@ -34,18 +34,18 @@ import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, Ope
 | [OperateIconV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2options-i.md) | OperateIconV2构造函数的参数选项。 |
 | [OperateItemV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operateitemv2options-i.md) | OperateItemV2构造函数的参数选项。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [IconTypeV2](arkts-arkui-arkui-advanced-composelistitemv2-icontypev2-e.md) | 列表左侧图标类型。 |
-
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
 | [OnActionCallback](arkts-arkui-onactioncallback-t.md) | 列表项右侧元素为图标/箭头，通过点击触发回调函数的类型。 |
 | [OnChangeCallback](arkts-arkui-onchangecallback-t.md) | 列表项右侧元素为Switch/CheckBox/Radio时，当状态发生改变时的回调函数对应的类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [IconTypeV2](arkts-arkui-arkui-advanced-composelistitemv2-icontypev2-e.md) | 列表左侧图标类型。 |
 
 ## 示例
 

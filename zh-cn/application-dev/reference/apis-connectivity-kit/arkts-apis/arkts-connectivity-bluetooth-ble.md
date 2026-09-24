@@ -91,6 +91,14 @@ import { ble } from '@kit.ConnectivityKit';
 | [ScanOptions](arkts-connectivity-ble-scanoptions-i-sys.md) | BLE扫描的配置参数。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [BluetoothAddress](arkts-connectivity-ble-bluetoothaddress-t.md) | 描述蓝牙设备地址信息的参数结构，包括地址与地址类型。 |
+| [BluetoothTransport](arkts-connectivity-ble-bluetoothtransport-t.md) | 表示远端设备的传输类型。 |
+| [ProfileConnectionState](arkts-connectivity-ble-profileconnectionstate-t.md) | 蓝牙设备的Profile协议连接状态。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -115,11 +123,3 @@ import { ble } from '@kit.ConnectivityKit';
 | --- | --- |
 | [EnhanceMode](arkts-connectivity-ble-enhancemode-e-sys.md) | 枚举，高性能扫描模式配置。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [BluetoothAddress](arkts-connectivity-ble-bluetoothaddress-t.md) | 描述蓝牙设备地址信息的参数结构，包括地址与地址类型。 |
-| [BluetoothTransport](arkts-connectivity-ble-bluetoothtransport-t.md) | 表示远端设备的传输类型。 |
-| [ProfileConnectionState](arkts-connectivity-ble-profileconnectionstate-t.md) | 蓝牙设备的Profile协议连接状态。 |

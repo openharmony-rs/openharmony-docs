@@ -18,7 +18,7 @@ componentHeight: number
 
 组件的高。
 
-单位：[px](../arkts-apis/arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -38,7 +38,7 @@ componentWidth: number
 
 组件的宽。
 
-单位：[px](../arkts-apis/arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -58,7 +58,7 @@ contentHeight: number
 
 图片实际绘制的高度。
 
-单位：[px](../arkts-apis/arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **说明：** 
 
@@ -82,7 +82,7 @@ contentOffsetX: number
 
 实际绘制内容相对于组件自身的x轴偏移。
 
-单位：[px](../arkts-apis/arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **说明：** 
 
@@ -106,7 +106,7 @@ contentOffsetY: number
 
 实际绘制内容相对于组件自身的y轴偏移。
 
-单位：[px](../arkts-apis/arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **说明：** 
 
@@ -130,7 +130,7 @@ contentWidth: number
 
 图片实际绘制的宽度。
 
-单位：[px](../arkts-apis/arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **说明：** 
 
@@ -154,7 +154,7 @@ height: number
 
 图片的高。
 
-单位：[px](../arkts-apis/arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -196,7 +196,7 @@ width: number
 
 图片的宽。
 
-单位：[px](../arkts-apis/arkts-arkui-length-t.md)
+单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 

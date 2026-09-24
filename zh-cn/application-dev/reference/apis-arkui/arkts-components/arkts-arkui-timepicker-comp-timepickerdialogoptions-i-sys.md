@@ -27,7 +27,7 @@ distortionMode?: DistortionMode
 > **系统接口：** 此接口为系统接口。
 
 > **说明：** 当取值为 DISTORTION_AUTO 时，需设置
-> [ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)类型材质方可生效，并依据设备算力档位自动生效非线性效果（高中档算力设备生效，
+> [ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md) 类型材质方可生效，并依据设备算力档位自动生效非线性效果（高中档算力设备生效，
 > 低档算力设备不生效）。非线性动画会增加渲染开销，建议在低端设备上谨慎使用。
 > 各枚举取值含义请参见DistortionMode。
 

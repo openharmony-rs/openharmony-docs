@@ -4,9 +4,7 @@
 declare enum DividerMode
 ```
 
-Menu divider mode.
-
-@enum { number }
+分割线模式。
 
 **起始版本：** 19
 
@@ -18,7 +16,7 @@ Menu divider mode.
 FLOATING_ABOVE_MENU = 0
 ```
 
-Menu divider mode floating above menu.
+悬浮在Menu之上，默认值，不占用高度。
 
 **起始版本：** 19
 
@@ -34,7 +32,7 @@ Menu divider mode floating above menu.
 EMBEDDED_IN_MENU = 1
 ```
 
-Menu divider mode embedded in menu.
+在Menu中展开，参与布局计算，占用高度。
 
 **起始版本：** 19
 

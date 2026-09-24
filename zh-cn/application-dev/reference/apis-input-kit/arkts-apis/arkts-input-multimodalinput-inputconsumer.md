@@ -53,18 +53,18 @@ import { inputConsumer } from '@kit.InputKit';
 <!--DelEnd-->
 
 <!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [KeyCommandCallback](arkts-input-inputconsumer-keycommandcallback-t-sys.md) | 按键命令回调函数类型，当快捷键注册条件满足时触发的回调。 |
+<!--DelEnd-->
+
+<!--Del-->
 ### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [KeyCommandTriggerType](arkts-input-inputconsumer-keycommandtriggertype-e-sys.md) | 按键命令触发类型枚举，用于指定组合按键的触发时机。 |
 | [ShieldMode](arkts-input-inputconsumer-shieldmode-e-sys.md) | 系统快捷键屏蔽类型。 |
-<!--DelEnd-->
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [KeyCommandCallback](arkts-input-inputconsumer-keycommandcallback-t-sys.md) | 按键命令回调函数类型，当快捷键注册条件满足时触发的回调。 |
 <!--DelEnd-->

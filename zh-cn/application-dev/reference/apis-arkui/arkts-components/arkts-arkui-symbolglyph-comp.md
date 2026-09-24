@@ -2,6 +2,10 @@
 
 SymbolGlyph组件用于显示系统预置的图标小符号，支持设置颜色、大小、粗细、渲染策略、动效策略等样式属性，适用于需要在应用中展示系统图标的场景，如导航栏图标、按钮图标、状态指示图标等。相比使用图片资源，SymbolGlyph具有体积小、可动态着色、支持动效等优势。<!--RP1--><!--RP1End-->
 
+> **说明：** 
+> 
+> - 该组件从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 ## 子组件
 
 不支持子组件。
@@ -36,7 +40,7 @@ SymbolGlyph(value?: Resource)
 
 | 名称 | 说明 |
 | --- | --- |
-| [EffectDirection](arkts-arkui-symbolglyph-comp-effectdirection-e.md) | 符号动效方向的枚举值。 |
+| [EffectDirection](arkts-arkui-symbolglyph-comp-effectdirection-e.md) | 动效方向的枚举值。 |
 | [EffectFillStyle](arkts-arkui-symbolglyph-comp-effectfillstyle-e.md) | EffectFillStyle的枚举值。 |
 | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | EffectScope的枚举值。 |
 | [ReplaceEffectType](arkts-arkui-symbolglyph-comp-replaceeffecttype-e.md) | 替换动效类型的枚举值。 |

@@ -1,4 +1,4 @@
-# @ohos.app.ability.AbilityConstant
+# @ohos.app.ability.AbilityConstant(Ability相关常量)
 
 AbilityConstant提供Ability相关的枚举，包括应用启动原因[LaunchReason](arkts-ability-abilityconstant-launchreason-e.md)、上次退出原因[LastExitReason](arkts-ability-abilityconstant-lastexitreason-e.md)、迁移结果[OnContinueResult](arkts-ability-abilityconstant-oncontinueresult-e.md)等。
 

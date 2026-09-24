@@ -28,7 +28,7 @@ function removeCheckRule(rule: bigint) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | the parameter check failed, only one bigint type parameter is needed |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | the parameter check failed, only one bigint type parameter is needed |
 
 **示例**
 

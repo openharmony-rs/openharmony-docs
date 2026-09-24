@@ -134,7 +134,7 @@ event为返回信息。
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-菜单背景板使用的系统材质，用于实现菜单背景的视觉效果（如模糊、透明度等）。不同系统材质包含不同的属性，影响最终的显示效果。具体材质类型及属性请参考[uiMaterial.Material](../../../reference/apis-arkui/arkts-apis-uimaterial.md#material)。默认值：undefined，无材质效果。
+菜单背景板使用的系统材质，用于实现菜单背景的视觉效果（如模糊、透明度等）。不同系统材质包含不同的属性，影响最终的显示效果。具体材质类型及属性请参考[uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)。默认值：undefined，无材质效果。
 
 **类型：** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -152,13 +152,21 @@ backgroundSystemMaterial?: uiMaterial.Material
 controller?: RichEditorController
 ```
 
-扩展下拉菜单。
-
-expandedMenuOptions参数为空时无更多按钮，不显示扩展下拉菜单。
-
-expandedMenuOptions参数不为空时显示更多按钮，配置菜单项收起在更多按钮中，点击更多按钮展示。
+富文本控制器不为空时显示默认系统菜单（包含剪切复制粘贴等部分）且默认菜单功能内置。
 
 controller为空时不显示更多按钮，expandedMenuOptions参数不为空则在下拉菜单中显示。
+
+系统默认只支持复制粘贴富文本内容，图文混排需要应用自定义onCopy、onPaste接口。应用自行配置onCopy | onPaste接口时，系统菜单默认复制粘贴失效，调用应用自定义函数。
+
+**说明：** 
+
+点击自定义文本选择菜单内置复制功能选项后，自定义菜单消失选中文本高亮保留。
+
+点击自定义文本选择菜单内置全选功能选项后，自定义菜单消失文本全选高亮。
+
+点击自定义文本选择菜单内置粘贴功能选项后，空白处粘贴或者选中文本替换粘贴均是保留被复制文本的样式。
+
+当富文本组件[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)的copyOptions属性设置为`CopyOptions.None`时，内置的复制剪切功能会被限制。
 
 **类型：** [RichEditorController](../arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md)
 

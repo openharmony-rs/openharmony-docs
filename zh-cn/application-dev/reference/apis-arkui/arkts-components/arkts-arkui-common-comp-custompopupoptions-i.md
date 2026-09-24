@@ -532,28 +532,6 @@ mask?: boolean | { color: ResourceColor }
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## maskColor
-
-```TypeScript
-maskColor?: Color | string | Resource | number
-```
-
-设置气泡遮罩层颜色。
-
-**说明：** 
-
-从 API version 10 开始废弃，建议使用`mask`替代。
-
-**类型：** [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; number
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** [mask](#mask)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## offset
 
 ```TypeScript
@@ -861,5 +839,27 @@ width?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## maskColor
+
+```TypeScript
+maskColor?: Color | string | Resource | number
+```
+
+设置气泡遮罩层颜色。
+
+**说明：** 
+
+从 API version 10 开始废弃，建议使用`mask`替代。
+
+**类型：** [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; number
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** [mask](#mask)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

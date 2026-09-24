@@ -165,7 +165,8 @@
   - [getUserDownloadDir](arkts-corefile-environment-getuserdownloaddir-f.md)
   <!--Del-->
   - [getUserHomeDir(系统接口)](arkts-corefile-environment-getuserhomedir-f-sys.md)<!--DelEnd-->
-- [@ohos.file.fileAccess(公共文件访问与管理)](arkts-corefile-file-fileaccess.md)
+<!--Del-->
+- [@ohos.file.fileAccess(公共文件访问与管理)](arkts-corefile-file-fileaccess.md)<!--DelEnd-->
   <!--Del-->
   - [createFileAccessHelper(系统接口)](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -323,7 +324,8 @@
   - [createHash](arkts-corefile-hash-createhash-f.md)
   - [hash](arkts-corefile-hash-f.md)
   - [HashStream](arkts-corefile-hash-hashstream-c.md)
-- [@ohos.file.keyManager(用户密钥管理)](arkts-corefile-file-keymanager.md)
+<!--Del-->
+- [@ohos.file.keyManager(用户密钥管理)](arkts-corefile-file-keymanager.md)<!--DelEnd-->
   <!--Del-->
   - [deactivateUserKey(系统接口)](arkts-corefile-keymanager-deactivateuserkey-f-sys.md)<!--DelEnd-->
 - [@ohos.file.picker(选择器)](arkts-corefile-file-picker.md)

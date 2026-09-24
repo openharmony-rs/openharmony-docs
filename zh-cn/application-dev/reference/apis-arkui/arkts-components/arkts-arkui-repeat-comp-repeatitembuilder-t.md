@@ -4,6 +4,8 @@
 declare type RepeatItemBuilder<T> = (repeatItem: RepeatItem<T>) => void
 ```
 
+Repeat子组件构建器。
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。

@@ -4,11 +4,9 @@
 declare type Nullable<T> = T | undefined
 ```
 
-在使用该类型时，其值可以使泛型参数T所指定的类型，也可以是undefined。
+在使用该类型时，其值可以是泛型参数T所指定的类型，也可以是undefined。
 
-@typedef { T | undefined } Nullable&lt;T&gt;
-
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -18,5 +16,5 @@ declare type Nullable<T> = T | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| T |  |
-| undefined |  |
+| T | 表示泛型参数T所指定的类型。 |
+| undefined | 表示该类型声明的对象是undefined。 |

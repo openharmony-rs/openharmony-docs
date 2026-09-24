@@ -160,46 +160,6 @@ hand?: InteractionHand
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## screenX
-
-```TypeScript
-screenX: number
-```
-
-点击位置在当前应用窗口坐标系中的X坐标。
-
-单位：vp
-
-**类型：** number
-
-**起始版本：** 7
-
-**废弃版本：** 10
-
-**替代接口：** [windowX](#windowx)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## screenY
-
-```TypeScript
-screenY: number
-```
-
-点击位置在当前应用窗口坐标系中的Y坐标。
-
-单位：vp
-
-**类型：** number
-
-**起始版本：** 7
-
-**废弃版本：** 10
-
-**替代接口：** [windowY](#windowy)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## windowX
 
 ```TypeScript
@@ -277,5 +237,45 @@ y: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## screenX
+
+```TypeScript
+screenX: number
+```
+
+点击位置在当前应用窗口坐标系中的X坐标。
+
+单位：vp
+
+**类型：** number
+
+**起始版本：** 7
+
+**废弃版本：** 10
+
+**替代接口：** [windowX](#windowx)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## screenY
+
+```TypeScript
+screenY: number
+```
+
+点击位置在当前应用窗口坐标系中的Y坐标。
+
+单位：vp
+
+**类型：** number
+
+**起始版本：** 7
+
+**废弃版本：** 10
+
+**替代接口：** [windowY](#windowy)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

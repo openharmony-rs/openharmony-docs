@@ -31,7 +31,7 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | The image data is not supported. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [62980246](../errorcode-image.md#62980246-读取pixelmap失败) | Failed to read the pixelMap. |
 | [62980248](../errorcode-image.md#62980248-pixelmap不允许修改) | Pixelmap not allow modify. |
 
@@ -96,7 +96,7 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | The image data is not supported. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [62980246](../errorcode-image.md#62980246-读取pixelmap失败) | Failed to read the pixelMap. |
 | [62980248](../errorcode-image.md#62980248-pixelmap不允许修改) | Pixelmap not allow modify. |
 

@@ -5,7 +5,7 @@
 - [@ohos.application.DistributedExtensionContext(协同Extension上下文)](arkts-distributedservice-application-distributedextensioncontext.md)
   - [DistributedExtensionContext](arkts-distributedservice-application-distributedextensioncontext-distributedextensioncontext-c.md)
 <!--Del-->
-- [@ohos.cooperate](arkts-distributedservice-cooperate.md)<!--DelEnd-->
+- [@ohos.cooperate(键鼠穿越)](arkts-distributedservice-cooperate.md)<!--DelEnd-->
   <!--Del-->
   - [activate(系统接口)](arkts-distributedservice-cooperate-activate-f-sys.md)<!--DelEnd-->
   <!--Del-->

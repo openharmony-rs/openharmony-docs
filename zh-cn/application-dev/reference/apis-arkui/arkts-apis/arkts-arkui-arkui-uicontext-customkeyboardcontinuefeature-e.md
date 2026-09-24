@@ -4,7 +4,11 @@
 export const enum CustomKeyboardContinueFeature
 ```
 
-自定义键盘接续特性的枚举。
+指定自定义键盘切换时是否接续。
+
+设置为接续，切换输入框时，自定义键盘不会收起和重新拉起。
+
+设置为不接续，切换输入框时，自定义键盘会收起并重新拉起。
 
 **起始版本：** 23
 
@@ -16,7 +20,7 @@ export const enum CustomKeyboardContinueFeature
 ENABLED = 0
 ```
 
-使能自定义键盘接续。
+接续。
 
 **起始版本：** 23
 
@@ -32,7 +36,7 @@ ENABLED = 0
 DISABLED = 1
 ```
 
-关闭自定义键盘接续。
+不接续。
 
 **起始版本：** 23
 

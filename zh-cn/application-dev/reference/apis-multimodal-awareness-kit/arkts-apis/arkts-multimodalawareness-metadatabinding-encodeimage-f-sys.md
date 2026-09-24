@@ -37,7 +37,7 @@ function encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission check failed. A non-system application uses the system API. |
 | [32100001](../errorcode-metadataBinding.md#32100001-文件创建失败) | Internal handling failed. |
 | [32100002](../errorcode-metadataBinding.md#32100002-编码程序执行失败) | Encode process fail. Possible causes:<br>1. Image processing error. <br>2. Channel coding error. |
 

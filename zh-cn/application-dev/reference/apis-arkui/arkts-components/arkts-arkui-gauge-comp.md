@@ -2,7 +2,13 @@
 
 数据量规图表组件，用于将数据展示为环形图表。适用于展示任务完成进度、性能指标、数据占比等场景，支持自定义颜色、起止角度、指针样式、阴影效果等多种视觉配置，能够直观地呈现数据状态，提升用户对数据的理解和交互体验。
 
-> **说明：** > > - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> **说明：** 
+> 
+> - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component)。
+> 
+> - [startAngle](arkts-arkui-gauge-comp-attribute.md#startangle)和[endAngle](arkts-arkui-gauge-comp-attribute.md#endangle)仅决定圆弧路径范围，不影响组件大小。角度差值越小，圆弧在组件内占比越小，`min`/`max`标记与圆弧间留白越大。
 
 ## 子组件
 
@@ -10,7 +16,7 @@
 
 > **说明：** 
 > 
-> - 支持的子组件类型：系统组件和自定义组件，支持条件渲染控制[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)，不支持循环渲染控制[ForEach](arkts-arkui-foreach-comp-attribute.md)和[LazyForEach](arkts-arkui-lazyforeach-comp.md#lazy_for_each)。
+> - 支持的子组件类型：系统组件和自定义组件，支持条件渲染控制[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)，不支持循环渲染控制[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)。
 > 
 > - 建议使用文本组件构建当前数值文本和辅助文本。
 > 

@@ -18,7 +18,7 @@ DisappearSymbolEffect继承自父类SymbolEffect。
 constructor(scope?: EffectScope)
 ```
 
-AppearSymbolEffect的构造函数，出现动效。
+DisappearSymbolEffect的构造函数，消失动效。
 
 **起始版本：** 12
 

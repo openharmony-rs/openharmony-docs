@@ -38,8 +38,8 @@ function openProxyChannel(channelInfo: ChannelInfo): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because bluetooth proxy function has been trimmed.<br>**适用版本：** 26.0.0+ |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because bluetooth proxy function has been trimmed.<br>**适用版本：** 26.0.0+ |
 | [32390001](../errorcode-proxyChannelManager.md#32390001-蓝牙已关闭) | BR is disabled. |
 | [32390002](../errorcode-proxyChannelManager.md#32390002-设备未配对) | Device not paired. |
 | [32390006](../errorcode-proxyChannelManager.md#32390006-参数错误) | Parameter error. |

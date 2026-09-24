@@ -22,7 +22,7 @@ import { media } from '@kit.MediaKit';
 enableDeviceLevelCapture?: boolean
 ```
 
-Defines whether to enable device-level content recording
+用于指定折叠屏PC在折叠状态下录制半块屏幕还是整块屏幕。true表示折叠屏PC在折叠状态下录制整块屏幕，false表示折叠屏PC在折叠状态下录制半块屏幕。
 
 **类型：** boolean
 

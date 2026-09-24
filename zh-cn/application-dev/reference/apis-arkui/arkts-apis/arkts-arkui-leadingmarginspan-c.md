@@ -30,7 +30,7 @@ abstract getLeadingMargin(): LengthMetrics
 
 | 类型 | 说明 |
 | --- | --- |
-| [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 文本段落的缩进。不支持百分比。<br>默认值：0 |
+| [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 文本段落的缩进。不支持百分比。<br>默认值：0 <br> |
 
 ## onDraw
 

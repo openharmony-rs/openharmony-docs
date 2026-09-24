@@ -58,26 +58,6 @@ classification?: string
 
 **系统接口：** 此接口为系统接口。
 
-## creatorInstanceKey
-
-```TypeScript
-readonly creatorInstanceKey?: number
-```
-
-创建者实例键值。
-
-**类型：** number
-
-**起始版本：** 12
-
-**废弃版本：** 15
-
-**替代接口：** [appInstanceKey](#appinstancekey)
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
 ## deviceId
 
 ```TypeScript
@@ -282,6 +262,26 @@ unifiedGroupInfo?: UnifiedGroupInfo
 **类型：** [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md)
 
 **起始版本：** 12
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## creatorInstanceKey
+
+```TypeScript
+readonly creatorInstanceKey?: number
+```
+
+创建者实例键值。
+
+**类型：** number
+
+**起始版本：** 12
+
+**废弃版本：** 15
+
+**替代接口：** [appInstanceKey](#appinstancekey)
 
 **系统能力：** SystemCapability.Notification.Notification
 

@@ -38,8 +38,8 @@ function addBeaconFence(fenceRequest: BeaconFenceRequest): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call ${geoLocationManager.addBeaconFence} due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call ${geoLocationManager.addBeaconFence} due to limited device capabilities. |
 | [3501100](../errorcode-geoLocationManager.md#3501100-由于位置功能开关未打开导致添加beacon围栏失败) | Failed to add a beacon fence because the location switch is off. |
 | [3501101](../errorcode-geoLocationManager.md#3501101-由于蓝牙功能开关未打开导致添加beacon围栏失败) | Failed to add a beacon fence because the bluetooth switch is off. |
 | [3501601](../errorcode-geoLocationManager.md#3501601-由于beacon围栏个数超过最大值限制导致添加围栏失败) | The number of beacon fences exceeds the maximum. |

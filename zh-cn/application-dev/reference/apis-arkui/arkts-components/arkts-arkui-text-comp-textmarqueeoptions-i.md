@@ -148,7 +148,7 @@ marqueeUpdatePolicy?: MarqueeUpdatePolicy
 spacing?: LengthMetrics
 ```
 
-两轮跑马灯之间的间距。单位：vp。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。
+两轮跑马灯之间的间距。单位：vp。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。
 
 默认值：48.0vp
 

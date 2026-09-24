@@ -4,11 +4,9 @@
 declare enum TitleHeight
 ```
 
-Title height.
+设置标题栏的推荐高度。
 
-@enum { number }
-
-**起始版本：** 11
+**起始版本：** 9
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,9 +16,9 @@ Title height.
 MainOnly
 ```
 
-Title height when only main title is available.
+只有主标题时，标题栏的推荐高度（56vp）。
 
-**起始版本：** 11
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -32,9 +30,9 @@ Title height when only main title is available.
 MainWithSub
 ```
 
-Title height when main title and subtitle are both available.
+同时有主标题和副标题时，标题栏的推荐高度（82vp）。
 
-**起始版本：** 11
+**起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

@@ -41,34 +41,6 @@ onDataAdd(index: number): void
 | --- | --- | --- | --- |
 | index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-## onDataAdded
-
-```TypeScript
-onDataAdded(index: number): void
-```
-
-通知组件index的位置有数据添加。添加数据完成后调用。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 8开始废弃。
-
-**起始版本：** 7
-
-**废弃版本：** 8
-
-**替代接口：** [onDataAdd](#ondataadd)
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
-
 ## onDataChange
 
 ```TypeScript
@@ -86,34 +58,6 @@ onDataChange(index: number): void
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
-
-## onDataChanged
-
-```TypeScript
-onDataChanged(index: number): void
-```
-
-通知组件index的位置有数据变化。改变数据完成后调用。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 8开始废弃。
-
-**起始版本：** 7
-
-**废弃版本：** 8
-
-**替代接口：** [onDataChange](#ondatachange)
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,34 +95,6 @@ onDataDelete(index: number): void
 | --- | --- | --- | --- |
 | index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-## onDataDeleted
-
-```TypeScript
-onDataDeleted(index: number): void
-```
-
-通知组件删除index位置的数据并刷新LazyForEach的展示内容。删除数据完成后调用。
-
-> **说明：** 
-> 
-> - 从API version 7开始支持，从API version 8开始废弃。
-
-**起始版本：** 7
-
-**废弃版本：** 8
-
-**替代接口：** [onDataDelete](#ondatadelete)
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
-
 ## onDataMove
 
 ```TypeScript
@@ -198,37 +114,6 @@ onDataMove(from: number, to: number): void
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
-| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
-
-## onDataMoved
-
-```TypeScript
-onDataMoved(from: number, to: number): void
-```
-
-通知组件数据有移动。将from和to位置的数据进行交换。
-
-> **说明：** 
-> 
-> - 从API version 7开始支持，从API version 8开始废弃。
-> 
-> - 数据移动前后键值要保持不变，如果键值有变化，应使用删除数据和新增数据接口。数据移动起始位置与数据移动目标位置交换完成后调用。
-
-**起始版本：** 7
-
-**废弃版本：** 8
-
-**替代接口：** [onDataMove](#ondatamove)
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,3 +201,118 @@ onDatasetChange(dataOperations: DataOperation[]): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | dataOperations | [DataOperation](arkts-arkui-lazyforeach-comp-dataoperation-t.md)[] | 是 | 一次批量处理数据的操作集合，开发者将需要处理的数据操作（添加、删除、改变、移动、交换、重载等）放入该数组，组件按照数组中的操作顺序刷新展示内容。 |
+
+## onDataAdded
+
+```TypeScript
+onDataAdded(index: number): void
+```
+
+通知组件index的位置有数据添加。添加数据完成后调用。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 8开始废弃。
+
+**起始版本：** 7
+
+**废弃版本：** 8
+
+**替代接口：** [onDataAdd](#ondataadd)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+
+## onDataChanged
+
+```TypeScript
+onDataChanged(index: number): void
+```
+
+通知组件index的位置有数据变化。改变数据完成后调用。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 8开始废弃。
+
+**起始版本：** 7
+
+**废弃版本：** 8
+
+**替代接口：** [onDataChange](#ondatachange)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+
+## onDataDeleted
+
+```TypeScript
+onDataDeleted(index: number): void
+```
+
+通知组件删除index位置的数据并刷新LazyForEach的展示内容。删除数据完成后调用。
+
+> **说明：** 
+> 
+> - 从API version 7开始支持，从API version 8开始废弃。
+
+**起始版本：** 7
+
+**废弃版本：** 8
+
+**替代接口：** [onDataDelete](#ondatadelete)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+
+## onDataMoved
+
+```TypeScript
+onDataMoved(from: number, to: number): void
+```
+
+通知组件数据有移动。将from和to位置的数据进行交换。
+
+> **说明：** 
+> 
+> - 从API version 7开始支持，从API version 8开始废弃。
+> 
+> - 数据移动前后键值要保持不变，如果键值有变化，应使用删除数据和新增数据接口。数据移动起始位置与数据移动目标位置交换完成后调用。
+
+**起始版本：** 7
+
+**废弃版本：** 8
+
+**替代接口：** [onDataMove](#ondatamove)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |

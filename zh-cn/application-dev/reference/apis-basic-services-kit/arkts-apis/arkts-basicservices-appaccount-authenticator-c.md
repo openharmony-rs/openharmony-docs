@@ -16,40 +16,6 @@ class Authenticator
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
-## addAccountImplicitly
-
-```TypeScript
-addAccountImplicitly(
-      authType: string,
-      callerBundleName: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void
-```
-
-根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [createAccountImplicitly](#createaccountimplicitly)(options: CreateAccountImplicitlyOptions, callback: AuthCallback)
-
-**系统能力：** SystemCapability.Account.AppAccount
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| authType | string | 是 | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。 |
-| callerBundleName | string | 是 | 鉴权请求方的包名。 |
-| options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
-| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
-
 ## auth
 
 ```TypeScript
@@ -70,42 +36,6 @@ auth(name: string, authType: string, options: Record<string, Object>, callback: 
 | authType | string | 是 | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。 |
 | options | Record&lt;string, Object&gt; | 是 | 鉴权所需要的可选项。 |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 回调对象，用于返回鉴权结果。 |
-
-## authenticate
-
-```TypeScript
-authenticate(
-      name: string,
-      authType: string,
-      callerBundleName: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void
-```
-
-对应用账号进行鉴权，获取OAuth令牌。使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 8开始支持, 从API version 9开始废弃。建议使用[auth](#auth)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [auth](#auth)(name: string, authType: string, options: Record&lt;string, Object&gt;, callback: AuthCallback)
-
-**系统能力：** SystemCapability.Account.AppAccount
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| authType | string | 是 | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。 |
-| callerBundleName | string | 是 | 鉴权请求方的包名。 |
-| options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
-| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
 
 ## checkAccountLabels
 
@@ -310,3 +240,73 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 **示例**
 
 接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
+
+## addAccountImplicitly
+
+```TypeScript
+addAccountImplicitly(
+      authType: string,
+      callerBundleName: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void
+```
+
+根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [createAccountImplicitly](#createaccountimplicitly)(options: CreateAccountImplicitlyOptions, callback: AuthCallback)
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| authType | string | 是 | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。 |
+| callerBundleName | string | 是 | 鉴权请求方的包名。 |
+| options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
+| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |
+
+## authenticate
+
+```TypeScript
+authenticate(
+      name: string,
+      authType: string,
+      callerBundleName: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void
+```
+
+对应用账号进行鉴权，获取OAuth令牌。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 8开始支持, 从API version 9开始废弃。建议使用[auth](#auth)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [auth](#auth)(name: string, authType: string, options: Record&lt;string, Object&gt;, callback: AuthCallback)
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
+| authType | string | 是 | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。 |
+| callerBundleName | string | 是 | 鉴权请求方的包名。 |
+| options | { [key: string]: any } | 是 | 鉴权所需要的可选项。 |
+| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调，用于返回鉴权结果。 |

@@ -40,4 +40,4 @@ columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string &#124; [ItemFillPolicy](../arkts-apis/arkts-arkui-itemfillpolicy-i.md) &#124; undefined | 是 | 布局中的列数。<br>默认值：'1fr' |
+| value | string &#124; [ItemFillPolicy](../arkts-apis/arkts-arkui-itemfillpolicy-i.md) &#124; undefined | 是 | 布局中的列数。<br>默认值：'1fr'<br>非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）<br>设置为'0fr'时，该列的列宽为0，不显示子组件；设置为其他非法值时，子组件显示为固定1列 |

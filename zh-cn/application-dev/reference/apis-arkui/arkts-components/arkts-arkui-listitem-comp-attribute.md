@@ -12,28 +12,6 @@ declare class ListItemAttribute extends CommonMethod<ListItemAttribute>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## editable
-
-```TypeScript
-editable(value: boolean | EditMode)
-```
-
-设置当前ListItem元素是否可编辑，进入编辑模式后可删除或移动列表项。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | boolean &#124; [EditMode](arkts-arkui-listitem-comp-editmode-e.md) | 是 |  |
-
 ## onSelect
 
 ```TypeScript
@@ -108,6 +86,50 @@ selected(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 当前ListItem选中状态。设置为true时为选中状态，设置为false时为默认状态。<br>默认值：false<br>**说明：** 需要在设置多态样式前使用才能生效选中态样式。 |
 
+## swipeAction
+
+```TypeScript
+swipeAction(value: SwipeActionOptions)
+```
+
+用于设置ListItem的划出组件。
+
+**起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [SwipeActionOptions](arkts-arkui-listitem-comp-swipeactionoptions-i.md) | 是 | ListItem的划出组件配置，用于设置划出时显示的组件、滑动效果和滑动状态回调等。 |
+
+## editable
+
+```TypeScript
+editable(value: boolean | EditMode)
+```
+
+设置当前ListItem元素是否可编辑，进入编辑模式后可删除或移动列表项。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | boolean &#124; [EditMode](arkts-arkui-listitem-comp-editmode-e.md) | 是 |  |
+
 ## sticky
 
 ```TypeScript
@@ -135,25 +157,3 @@ sticky(value: Sticky)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | 是 |  |
-
-## swipeAction
-
-```TypeScript
-swipeAction(value: SwipeActionOptions)
-```
-
-用于设置ListItem的划出组件。
-
-**起始版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | [SwipeActionOptions](arkts-arkui-listitem-comp-swipeactionoptions-i.md) | 是 | ListItem的划出组件配置，用于设置划出时显示的组件、滑动效果和滑动状态回调等。 |

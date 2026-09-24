@@ -98,6 +98,12 @@ import { policy } from '@kit.NetworkKit';
 | [UidNetworkAccessPolicy](arkts-network-policy-uidnetworkaccesspolicy-i-sys.md) | 应用标识以及对应应用连接网络的策略。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [NetBearType](arkts-network-policy-netbeartype-t.md) | 网络类型。 |
+
 <!--Del-->
 ### 枚举（系统接口）
 
@@ -109,9 +115,3 @@ import { policy } from '@kit.NetworkKit';
 | [NetUidRule](arkts-network-policy-netuidrule-e-sys.md) | 计量网络规则。 |
 | [RemindType](arkts-network-policy-remindtype-e-sys.md) | 提醒类型。 |
 <!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [NetBearType](arkts-network-policy-netbeartype-t.md) | 网络类型。 |

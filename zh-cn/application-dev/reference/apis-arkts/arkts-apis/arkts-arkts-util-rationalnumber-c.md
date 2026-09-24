@@ -52,42 +52,26 @@ console.info("result = " + result);
 // 输出结果：result = -1
 ```
 
-## compareTo
+<a id="constructor-1"></a>
+
+## constructor
 
 ```TypeScript
-compareTo(another: RationalNumber): number
+constructor()
 ```
 
-将当前的 RationalNumber 对象与给定对象进行比较。
+用于创建 **RationalNumber** 对象的构造函数。
 
-**起始版本：** 8
+**起始版本：** 9
 
-**废弃版本：** 9
-
-**替代接口：** compare
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 表示其他有理数的对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | 根据比较结果返回 0、1 或 -1。 |
 
 **示例**
 
 ```TypeScript
-let rationalNumber = new util.RationalNumber(1,2);
-let rational = util.RationalNumber.createRationalFromString("3/4");
-let result = rationalNumber.compareTo(rational);
-console.info("result = " + result);
-// 输出结果：result = -1
+let rationalNumber = new util.RationalNumber();
 ```
 
 ## constructor
@@ -117,28 +101,6 @@ constructor(numerator: number, denominator: number)
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
-```
-
-<a id="constructor-1"></a>
-
-## constructor
-
-```TypeScript
-constructor()
-```
-
-用于创建 **RationalNumber** 对象的构造函数。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**示例**
-
-```TypeScript
-let rationalNumber = new util.RationalNumber();
 ```
 
 ## createRationalFromString
@@ -223,35 +185,6 @@ let result = rationalNumber.equals(rational);
 console.info("result = " + result);
 // 输出结果：result = false
 ```
-
-## getCommonDivisor
-
-```TypeScript
-static getCommonDivisor(number1: number, number2: number): number
-```
-
-获取两个指定整数的最大公约数。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [getCommonFactor](#getcommonfactor)
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| number1 | number | 是 | 用于获取最大公约数的第一个整数。 |
-| number2 | number | 是 | 用于获取最大公约数的第二个整数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | 获取到的最大公约数。 |
 
 ## getCommonFactor
 
@@ -596,3 +529,70 @@ let result = rationalNumber.valueOf();
 console.info("result = " + result);
 // 输出结果：result = 0.5
 ```
+
+## compareTo
+
+```TypeScript
+compareTo(another: RationalNumber): number
+```
+
+将当前的 RationalNumber 对象与给定对象进行比较。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** compare
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 表示其他有理数的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 根据比较结果返回 0、1 或 -1。 |
+
+**示例**
+
+```TypeScript
+let rationalNumber = new util.RationalNumber(1,2);
+let rational = util.RationalNumber.createRationalFromString("3/4");
+let result = rationalNumber.compareTo(rational);
+console.info("result = " + result);
+// 输出结果：result = -1
+```
+
+## getCommonDivisor
+
+```TypeScript
+static getCommonDivisor(number1: number, number2: number): number
+```
+
+获取两个指定整数的最大公约数。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [getCommonFactor](#getcommonfactor)
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| number1 | number | 是 | 用于获取最大公约数的第一个整数。 |
+| number2 | number | 是 | 用于获取最大公约数的第二个整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 获取到的最大公约数。 |

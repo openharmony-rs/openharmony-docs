@@ -16,7 +16,7 @@ ResourceStr类型图片设置项。
 colorFilter?: ColorFilterType
 ```
 
-获取属性字符串的图片颜色滤镜效果。
+设置属性字符串的图片颜色滤镜效果。不传入时不应用颜色滤镜，图片显示原始颜色。
 
 **类型：** [ColorFilterType](arkts-arkui-colorfiltertype-t.md)
 
@@ -128,7 +128,7 @@ size的默认值与objectFit的值有关，不同的objectFit的值对应size的
 supportSvg2?: boolean
 ```
 
-获取属性字符串是否开启[SVG标签解析能力增强功能](../arkts-components/arkts-arkui-image-comp.md#image)。
+获取属性字符串是否开启[SVG标签解析能力增强功能](../../../reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)。
 
 true：支持SVG解析新能力；false：保持原有SVG解析能力。
 

@@ -18,7 +18,7 @@ export interface Advertisement
 
 自定义参数。
 
-&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
+<!--RP1--><!--RP1End-->
 
 **类型：** Object
 

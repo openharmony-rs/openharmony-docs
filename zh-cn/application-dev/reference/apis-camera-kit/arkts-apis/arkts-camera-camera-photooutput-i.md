@@ -342,7 +342,7 @@ enableMovingPhoto(enabled: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -746,43 +746,6 @@ function offPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput): voi
 }
 ```
 
-## off('captureStart')
-
-```TypeScript
-off(type: 'captureStart', callback?: AsyncCallback<number>): void
-```
-
-注销拍照开始的监听。
-
-> **说明：** 
-> 
-> 从 API version 10开始支持，从API version 11开始废弃。
-> 
-> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
-
-**起始版本：** 10
-
-**废弃版本：** 11
-
-**替代接口：** [off](#offcapturestartwithinfo)(type: 'captureStartWithInfo', callback?: AsyncCallback&lt;CaptureStartInfo&gt;)
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'captureStart' | 是 | 监听事件，固定为'captureStart'，photoOutput创建成功后可监听。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
-
-**示例**
-
-```TypeScript
-function unregisterPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
-  photoOutput.off('captureStart');
-}
-```
-
 ## off('captureStartWithInfo')
 
 ```TypeScript
@@ -988,6 +951,43 @@ function unregisterPhotoOutputError(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+## off('captureStart')
+
+```TypeScript
+off(type: 'captureStart', callback?: AsyncCallback<number>): void
+```
+
+注销拍照开始的监听。
+
+> **说明：** 
+> 
+> 从 API version 10开始支持，从API version 11开始废弃。
+> 
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**起始版本：** 10
+
+**废弃版本：** 11
+
+**替代接口：** [off](#offcapturestartwithinfo)(type: 'captureStartWithInfo', callback?: AsyncCallback&lt;CaptureStartInfo&gt;)
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'captureStart' | 是 | 监听事件，固定为'captureStart'，photoOutput创建成功后可监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例**
+
+```TypeScript
+function unregisterPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
+  photoOutput.off('captureStart');
+}
+```
+
 ## offCapturePhotoAvailable
 
 ```TypeScript
@@ -1112,53 +1112,6 @@ function photoAssetAvailableCallback(err: BusinessError, photoAsset: photoAccess
 
 function onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput): void {
   photoOutput.on('photoAssetAvailable', photoAssetAvailableCallback);
-}
-```
-
-## on('captureStart')
-
-```TypeScript
-on(type: 'captureStart', callback: AsyncCallback<number>): void
-```
-
-监听拍照开始，通过注册回调函数获取Capture ID。使用callback异步回调。
-
-> **说明：** 
-> 
-> 从 API version 10开始支持，从API version 11开始废弃。
-> 
-> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
-
-**起始版本：** 10
-
-**废弃版本：** 11
-
-**替代接口：** [on](#oncapturestartwithinfo)(type: 'captureStartWithInfo', callback: AsyncCallback&lt;CaptureStartInfo&gt;)
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'captureStart' | 是 | 监听事件，固定为'captureStart'，photoOutput创建成功后可监听。每次拍照，底层开始曝光时触发该事件并返回。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 使用callback的方式获取Capture ID。 |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, captureId: number): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`photo capture started, captureId : ${captureId}`);
-}
-
-function registerPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
-  photoOutput.on('captureStart', callback);
 }
 ```
 
@@ -1454,6 +1407,53 @@ function callback(err: BusinessError): void {
 
 function registerPhotoOutputError(photoOutput: camera.PhotoOutput): void {
   photoOutput.on('error', callback);
+}
+```
+
+## on('captureStart')
+
+```TypeScript
+on(type: 'captureStart', callback: AsyncCallback<number>): void
+```
+
+监听拍照开始，通过注册回调函数获取Capture ID。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从 API version 10开始支持，从API version 11开始废弃。
+> 
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**起始版本：** 10
+
+**废弃版本：** 11
+
+**替代接口：** [on](#oncapturestartwithinfo)(type: 'captureStartWithInfo', callback: AsyncCallback&lt;CaptureStartInfo&gt;)
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'captureStart' | 是 | 监听事件，固定为'captureStart'，photoOutput创建成功后可监听。每次拍照，底层开始曝光时触发该事件并返回。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 使用callback的方式获取Capture ID。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, captureId: number): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info(`photo capture started, captureId : ${captureId}`);
+}
+
+function registerPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
+  photoOutput.on('captureStart', callback);
 }
 ```
 

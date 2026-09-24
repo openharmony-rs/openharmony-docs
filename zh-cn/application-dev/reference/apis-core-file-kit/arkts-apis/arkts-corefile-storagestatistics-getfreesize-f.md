@@ -32,9 +32,9 @@ function getFreeSize(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.<br>**适用版本：** 9 - 14 |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application.<br>**适用版本：** 9 - 14 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.<br>**适用版本：** 9 - 14 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application.<br>**适用版本：** 9 - 14 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
@@ -81,8 +81,8 @@ function getFreeSize(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.<br>**适用版本：** 9 - 14 |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application.<br>**适用版本：** 9 - 14 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.<br>**适用版本：** 9 - 14 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application.<br>**适用版本：** 9 - 14 |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 

@@ -16,24 +16,6 @@ interface AudioRendererInfo
 import { audio } from '@kit.AudioKit';
 ```
 
-## content
-
-```TypeScript
-content?: ContentType
-```
-
-音频内容类型。
-
-**类型：** [ContentType](arkts-audio-audio-contenttype-e.md)
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** usage
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 ## rendererFlags
 
 ```TypeScript
@@ -81,3 +63,21 @@ volumeMode?: AudioVolumeMode
 **起始版本：** 19
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+## content
+
+```TypeScript
+content?: ContentType
+```
+
+音频内容类型。
+
+**类型：** [ContentType](arkts-audio-audio-contenttype-e.md)
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** usage
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core

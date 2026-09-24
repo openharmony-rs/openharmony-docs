@@ -38,7 +38,7 @@ function createHash(algorithm: string): HashStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error |
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 

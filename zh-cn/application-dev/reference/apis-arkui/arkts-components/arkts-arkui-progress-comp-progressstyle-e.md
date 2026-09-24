@@ -16,7 +16,7 @@ declare enum ProgressStyle
 Linear
 ```
 
-线性样式。
+线性样式，进度条沿直线方向从一端逐渐填充至另一端。
 
 **起始版本：** 7
 

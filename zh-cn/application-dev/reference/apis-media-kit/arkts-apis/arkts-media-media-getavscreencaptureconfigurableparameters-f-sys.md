@@ -14,6 +14,10 @@ function getAVScreenCaptureConfigurableParameters(sessionId: number): Promise<st
 
 从服务器获取用户可更改的系统隐私保护和应用隐私保护配置。使用Promise异步回调。
 
+> **注意：**
+> 
+> 此接口仅提供给创建弹窗的系统应用调用。
+
 **起始版本：** 20
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -36,8 +40,8 @@ function getAVScreenCaptureConfigurableParameters(sessionId: number): Promise<st
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 | [5400109](../errorcode-media.md#5400109-会话id不存在) | Sessions not exist. Return by promise. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) |  |
 
 **示例**
 

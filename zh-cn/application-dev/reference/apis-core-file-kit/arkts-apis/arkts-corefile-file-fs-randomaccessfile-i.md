@@ -69,7 +69,7 @@ getReadStream(): ReadStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error |
 | 13900008 | Bad file descriptor |
 | 13900011 | Out of memory |
 | 13900012 | Permission denied |
@@ -108,7 +108,7 @@ getWriteStream(): WriteStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error |
 | 13900008 | Bad file descriptor |
 | 13900011 | Out of memory |
 | 13900012 | Permission denied |

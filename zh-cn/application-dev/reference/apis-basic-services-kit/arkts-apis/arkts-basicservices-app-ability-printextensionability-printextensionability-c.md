@@ -40,7 +40,7 @@ public onCancelPrintJob(jobInfo: print.PrintJob): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application<br>**适用版本：** 10 - 23 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 23 |
 
 **示例**
 
@@ -211,7 +211,7 @@ public onRequestPrinterCapability(printerId: number): print.PrinterCapability
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application<br>**适用版本：** 10 - 23 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 23 |
 
 **示例**
 
@@ -283,7 +283,7 @@ public onStartPrintJob(jobInfo: print.PrintJob): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application<br>**适用版本：** 10 - 23 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 23 |
 
 **示例**
 

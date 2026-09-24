@@ -61,12 +61,6 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | [TypeConstructor](arkts-arkui-arkui-statemanagement-typeconstructor-i.md) | 类构造函数。 |
 | [TypeConstructorWithArgs](arkts-arkui-arkui-statemanagement-typeconstructorwithargs-i.md) | 含有任意入参的类构造器。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md) | 自定义组件当前的生命周期状态。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -80,3 +74,9 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | [StorageDefaultCreator](arkts-arkui-storagedefaultcreator-t.md) | 返回默认构造器的函数。 |
 | [TaskCallback](arkts-arkui-taskcallback-t.md) | 同步执行的回调方法。 |
 | [TypeDecorator](arkts-arkui-typedecorator-t.md) | 属性装饰器，用于装饰嵌套类中属于自定义class类的属性。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md) | 自定义组件当前的生命周期状态。 |

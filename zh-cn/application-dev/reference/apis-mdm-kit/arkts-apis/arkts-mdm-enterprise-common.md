@@ -34,6 +34,12 @@ import { common } from '@kit.MDMKit';
 | [InstallationResult](arkts-mdm-common-installationresult-i.md) | 应用安装结果。 |
 | [PolicyChangedEvent](arkts-mdm-common-policychangedevent-i.md) | 策略变更事件。 |
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [EnterpriseAdminExtensionContext](arkts-mdm-common-enterpriseadminextensioncontext-t.md) | EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -43,9 +49,3 @@ import { common } from '@kit.MDMKit';
 | [QueryPolicy](arkts-mdm-common-querypolicy-e.md) | 查询企业设备管理策略 |
 | [Result](arkts-mdm-common-result-e.md) | 应用安装结果码。 |
 | [StartupScene](arkts-mdm-common-startupscene-e.md) | 开机向导完成场景。端侧系统在首次切换子用户完成（仅限PC）、OTA升级完成、首次开机完成开机向导时会通过[onStartupGuideCompleted](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onstartupguidecompleted)回调接口通知设备管理应用。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [EnterpriseAdminExtensionContext](arkts-mdm-common-enterpriseadminextensioncontext-t.md) | EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。 |

@@ -2,13 +2,19 @@
 
 Text组件用于显示文本内容，支持设置字体样式、文本对齐、行高、装饰线等属性，支持图文混排、文本选择、文本识别等功能，适用于需要展示文本信息的各类应用场景。
 
+> **说明：** 
+> 
+> - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 如需设置触摸文本组件外部时是否清除文本选中和手柄，可使用[setTextSelectionClearPolicy](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#settextselectionclearpolicy)接口。 &gt;
+
 ## 子组件
 
 可以包含[Span](arkts-arkui-span-comp.md#span)、[ImageSpan](arkts-arkui-imagespan-comp.md#image_span)、[SymbolSpan](arkts-arkui-symbolspan-comp-attribute.md)和[ContainerSpan](arkts-arkui-containerspan-comp-attribute.md)子组件。
 
 > **说明：** 
 > 
-> 使用[子组件](#text)实现
+> 使用[子组件](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#子组件)实现
 > [图文混排](../../../ui/arkts-text-image-layout.md)场景。
 
 ## Text
@@ -16,8 +22,6 @@ Text组件用于显示文本内容，支持设置字体样式、文本对齐、�
 ```TypeScript
 Text(content?: string | Resource, value?: TextOptions)
 ```
-
-定义文本组件构造函数。
 
 **起始版本：** 7
 
@@ -31,7 +35,7 @@ Text(content?: string | Resource, value?: TextOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 否 | 文本内容。当需要直接显示文本内容时传入此参数。包含子组件[Span](arkts-arkui-span-comp.md#span)或设置了[属性字符串](../arkts-apis/arkts-arkui-styled_string.md)时，该参数不生效。<br>默认值：' '<br>**说明：** <br>显示内容的优先级：属性字符串&gt;Span&gt;Text的文本内容。 |
+| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 否 | 文本内容。当需要直接显示文本内容时传入此参数。包含子组件[Span](arkts-arkui-span-comp.md#span)或设置了[属性字符串](../arkts-apis/arkts-arkui-styledstring.md#styled_string)时，该参数不生效。<br>默认值：' '<br>**说明：** <br>显示内容的优先级：属性字符串&gt;Span&gt;Text的文本内容。 |
 | value | [TextOptions](arkts-arkui-text-comp-textoptions-i.md) | 否 | 文本组件初始化选项，用于配置文本控制器。当需要使用TextController的功能控制文本内容和选择时，传入此参数。<br>默认值：不设置时，不使用文本控制器。<br> |
 
 ## 汇总

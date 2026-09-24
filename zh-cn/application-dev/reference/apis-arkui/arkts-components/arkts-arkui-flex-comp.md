@@ -4,7 +4,15 @@ Flex是以弹性方式布局子组件的容器组件，能够高效地排列、�
 
 具体指南请参考[弹性布局](../../../ui/arkts-layout-development-flex-layout.md)。
 
-> **说明：** > > - Flex组件在渲染时存在二次布局过程，因此在对性能有严格要求的场景下建议使用[Column](arkts-arkui-column-comp.md#column)、[Row](arkts-arkui-row-comp.md#row)代替。最佳实践请参考布局优化指导-合理使用布局组件。 > > - Flex组件主轴不设置长度时默认撑满父容器，如果包含设置[position](arkts-arkui-common-comp-commonmethod-c.md#position)的子组件，此时Flex组件不会撑满父容器。[Column](arkts-arkui-column-comp.md#column)、 > [Row](arkts-arkui-row-comp.md#row)组件主轴不设置长度时默认跟随子节点大小。 > > - Flex、Column、Row组件在没有子节点且不设置宽高时，默认宽高为-1。 > > - 主轴长度可设置为auto使Flex自适应子组件布局，自适应时，Flex长度受[constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)属性以及父容器传递的最大最小长度限制，且 > constraintSize属性优先级更高。
+> **说明：** 
+> 
+> - Flex组件在渲染时存在二次布局过程，因此在对性能有严格要求的场景下建议使用[Column](arkts-arkui-column-comp.md#column)、[Row](arkts-arkui-row-comp.md#row)代替。最佳实践请参考布局优化指导-合理使用布局组件。
+> 
+> - Flex组件主轴不设置长度时默认撑满父容器，如果包含设置[position](arkts-arkui-common-comp-commonmethod-c.md#position)的子组件，此时Flex组件不会撑满父容器。[Column](arkts-arkui-column-comp.md#column)、[Row](arkts-arkui-row-comp.md#row)组件主轴不设置长度时默认跟随子节点大小。
+> 
+> - Flex、Column、Row组件在没有子节点且不设置宽高时，默认宽高为-1。
+> 
+> - 主轴长度可设置为auto使Flex自适应子组件布局，自适应时，Flex长度受[constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)属性以及父容器传递的最大最小长度限制，且constraintSize属性优先级更高。
 
 ## 子组件
 

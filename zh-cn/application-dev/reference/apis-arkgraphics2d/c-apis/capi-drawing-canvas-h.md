@@ -64,7 +64,7 @@
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacter(OH_Drawing_Canvas* canvas, const char* str, const OH_Drawing_Font* font, float x, float y)](#oh_drawing_canvasdrawsinglecharacter) | 用于绘制单个字符。当前字型中的字体不支持待绘制字符时，退化到使用系统字体绘制字符。 与[OH_Drawing_CanvasDrawSingleCharacterWithFeatures](capi-drawing-canvas-h.md#oh_drawing_canvasdrawsinglecharacterwithfeatures)的区别是， 本接口不支持设置字体特征。如需指定字体特征（如连字、字距调整等）， 请使用[OH_Drawing_CanvasDrawSingleCharacterWithFeatures](capi-drawing-canvas-h.md#oh_drawing_canvasdrawsinglecharacterwithfeatures)。 |
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacterWithFeatures(OH_Drawing_Canvas* canvas, const char* str, const OH_Drawing_Font* font, float x, float y, OH_Drawing_FontFeatures* fontFeatures)](#oh_drawing_canvasdrawsinglecharacterwithfeatures) | 绘制单个字符，字符带有字体特征。当前字型中的字体不支持待绘制字符时，退化到使用系统字体绘制字符。 |
 | [void OH_Drawing_CanvasDrawTextBlob(OH_Drawing_Canvas* canvas, const OH_Drawing_TextBlob* textBlob, float x, float y)](#oh_drawing_canvasdrawtextblob) | 用于画一段文字。若构造OH_Drawing_TextBlob的字体不支持待绘制字符，则该部分字符无法绘制。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、textBlob任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas *canvas, const int *glyphIds, int glyphIdCount, int glyphIdOffset, const OH_Drawing_Point2D *positions, int positionCount, int positionOffset, int glyphCount, const OH_Drawing_Font *font)](#oh_drawing_canvasdrawglyphs) | 绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。 |
+| [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas, const int* glyphIds, int glyphIdCount, int glyphIdOffset, const OH_Drawing_Point2D* positions, int positionCount, int positionOffset, int glyphCount, const OH_Drawing_Font* font)](#oh_drawing_canvasdrawglyphs) | 绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。 |
 | [void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias)](#oh_drawing_canvascliprect) | 用于裁剪一个矩形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>clipOp不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_RoundRect* roundRect, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias)](#oh_drawing_canvascliproundrect) | 用于裁剪一个圆角矩形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、roundRect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>clipOp不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path* path, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias)](#oh_drawing_canvasclippath) | 用于裁剪一个自定义路径。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、path任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>clipOp不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
@@ -1063,7 +1063,7 @@ void OH_Drawing_CanvasDrawTextBlob(OH_Drawing_Canvas* canvas, const OH_Drawing_T
 ### OH_Drawing_CanvasDrawGlyphs()
 
 ```c
-OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas *canvas, const int *glyphIds, int glyphIdCount, int glyphIdOffset, const OH_Drawing_Point2D *positions, int positionCount, int positionOffset, int glyphCount, const OH_Drawing_Font *font)
+OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas, const int* glyphIds, int glyphIdCount, int glyphIdOffset, const OH_Drawing_Point2D* positions, int positionCount, int positionOffset, int glyphCount, const OH_Drawing_Font* font)
 ```
 
 **描述：**
@@ -1078,15 +1078,15 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas *canvas
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_Canvas *canvas | 指向OH_Drawing_Canvas对象的指针。 |
-| const int *glyphIds | 字形ID的数组。 |
+| const OH_Drawing_Canvas* canvas | 指向OH_Drawing_Canvas对象的指针。 |
+| const int* glyphIds | 字形ID的数组。 |
 | int glyphIdCount | 字形ID数组的大小，需小于等于数组真实大小，且需大于等于glyphIdOffset与glyphCount之和，超过数组长度无法校验，会导致绘制异常或卡顿。 |
 | int glyphIdOffset | 在字形ID数组绘制前要跳过的元素数量。 <br>若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。 |
-| const OH_Drawing_Point2D *positions | 位置数组。 |
+| const OH_Drawing_Point2D* positions | 位置数组。 |
 | int positionCount | 位置数组的大小，需小于等于数组真实大小，且需大于等于positionOffset与glyphCount之和，超过数组长度无法校验，会导致绘制异常或卡顿。 |
 | int positionOffset | 在位置数组绘制之前要跳过的元素数量。 <br>若glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。 |
 | int glyphCount | 要绘制的字形的数量。如果数量小于或等于0，则不绘制任何内容并返回错误码OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 <br>如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。 |
-| const OH_Drawing_Font *font | 指向字型对象[OH_Drawing_Font](capi-drawing-oh-drawing-font.md)的指针。 |
+| const OH_Drawing_Font* font | 指向字型对象[OH_Drawing_Font](capi-drawing-oh-drawing-font.md)的指针。 |
 
 **返回值：**
 

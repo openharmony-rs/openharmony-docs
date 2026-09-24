@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_TextAreaType](#arkui_textareatype) | ArkUI_TextAreaType | 定义多行文本输入法类型枚举值。 |
+| [ArkUI_TextAreaType](#arkui_textareatype) | ArkUI_TextAreaType | 定义多行文本输入类型枚举值。不同的枚举值用于指定TextArea组件的输入类型，会影响输入内容的验证规则。 |
 
 ## 枚举类型说明
 
@@ -30,7 +30,7 @@ enum ArkUI_TextAreaType
 
 **描述：**
 
-定义多行文本输入法类型枚举值。
+定义多行文本输入类型枚举值。不同的枚举值用于指定TextArea组件的输入类型，会影响输入内容的验证规则。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,10 +38,9 @@ enum ArkUI_TextAreaType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXTAREA_TYPE_NORMAL = 0 | 基本输入模式。 |
-| ARKUI_TEXTAREA_TYPE_NUMBER = 2 | 纯数字模式。 |
-| ARKUI_TEXTAREA_TYPE_PHONE_NUMBER = 3 | 电话号码输入模式。 |
-| ARKUI_TEXTAREA_TYPE_EMAIL = 5 | 邮箱地址输入模式。 |
+| ARKUI_TEXTAREA_TYPE_NORMAL = 0 | 基本输入模式，无特殊限制。 |
+| ARKUI_TEXTAREA_TYPE_NUMBER = 2 | 纯数字输入模式。 |
+| ARKUI_TEXTAREA_TYPE_PHONE_NUMBER = 3 | 电话号码输入模式。<br>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。 |
 | ARKUI_TEXTAREA_TYPE_ONE_TIME_CODE = 14 |  |
 
 

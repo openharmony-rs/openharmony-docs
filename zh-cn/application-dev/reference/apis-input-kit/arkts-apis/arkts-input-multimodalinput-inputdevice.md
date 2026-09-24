@@ -64,13 +64,6 @@ import { inputDevice } from '@kit.InputKit';
 | [DeviceListener](arkts-input-inputdevice-devicelistener-i.md) | 描述输入设备热插拔的信息。 |
 | [InputDeviceData](arkts-input-inputdevice-inputdevicedata-i.md) | 描述输入设备的信息。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [FunctionKey](arkts-input-inputdevice-functionkey-e.md) | 功能键的类型。 |
-| [KeyboardType](arkts-input-inputdevice-keyboardtype-e.md) | 键盘输入设备的类型。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -78,3 +71,10 @@ import { inputDevice } from '@kit.InputKit';
 | [AxisType](arkts-input-inputdevice-axistype-t.md) | 输入设备的轴类型。 |
 | [ChangedType](arkts-input-inputdevice-changedtype-t.md) | 监听设备热插拔事件类型。 |
 | [SourceType](arkts-input-inputdevice-sourcetype-t.md) | 输入设备的输入能力。包括键盘、鼠标、触摸屏、轨迹球、触控板、操纵杆等。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [FunctionKey](arkts-input-inputdevice-functionkey-e.md) | 功能键的类型。 |
+| [KeyboardType](arkts-input-inputdevice-keyboardtype-e.md) | 键盘输入设备的类型。 |

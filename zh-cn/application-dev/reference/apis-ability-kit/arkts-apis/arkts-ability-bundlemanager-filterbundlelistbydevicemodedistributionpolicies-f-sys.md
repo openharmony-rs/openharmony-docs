@@ -47,8 +47,8 @@ function filterBundleListByDeviceModeDistributionPolicies(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Non-system APP calling system API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. Non-system APP calling system API. |
 | [17700097](../errorcode-bundle.md#17700097-设备不支持双模式) | The device does not support the dual mode. |
 | [17700098](../errorcode-bundle.md#17700098-入参无效) | The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]. |
 | [17700099](../errorcode-bundle.md#17700099-设备正在安装卸载应用或双模切换正在处理中) | The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again. |

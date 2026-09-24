@@ -1,6 +1,6 @@
 # PasteButton
 
-安全控件的粘贴控件。用户点击粘贴控件，应用可以临时获取读取剪贴板权限。<br>**说明**</br> <ul><li>
+安全控件的粘贴控件。用户点击粘贴控件，应用可以临时获取读取剪贴板权限。<br>**说明：** &lt;/br&gt; &lt;ul&gt;&lt;li&gt;
 
 ## 核心枚举类型</li> <li>**[PasteIconStyle](arkts-arkui-pastebutton-comp-pasteiconstyle-e.md)：** 粘贴控件图标风格枚举，用于指定控件展示的图标风格。</li> <li>**[PasteDescription](arkts-arkui-pastebutton-comp-pastedescription-e.md)：** 粘贴控件文本描述枚举，用于指定控件展示的文本描述。</li> <li>**[PasteButtonOnClickResult](arkts-arkui-pastebutton-comp-pastebuttononclickresult-e.md)：** 粘贴控件点击结果枚举，用于表示点击后授权是否成功。</li> <li>###### 核心接口类型</li> <li>**[PasteButtonOptions](arkts-arkui-pastebutton-comp-pastebuttonoptions-i.md)：** 粘贴控件配置对象，用于指定图标、文字和按钮类型等元素属性。</li> <li>**[PasteButtonCallback](arkts-arkui-pastebutton-comp-pastebuttoncallback-t.md)：** 粘贴控件点击回调类型，用于返回点击事件、授权结果和错误信息。</li> <li>###### 子组件</li> <li>不支持</li></ul>
 

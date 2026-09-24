@@ -38,6 +38,12 @@ import { a2dp } from '@kit.ConnectivityKit';
 | [A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i-sys.md) | 该实例表示蓝牙媒体音频中的A2DP Source角色。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [BaseProfile](arkts-connectivity-a2dp-baseprofile-t.md) | 基础Profile接口定义，提供监听和获取连接状态等公共能力。 |
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -49,9 +55,3 @@ import { a2dp } from '@kit.ConnectivityKit';
 | [CodecSampleRate](arkts-connectivity-a2dp-codecsamplerate-e.md) | 枚举，蓝牙媒体音频编解码器的采样率，表示每秒对蓝牙音频采样的次数，单位为Hz。采样率的选择会影响音质和传输效率。 |
 | [CodecType](arkts-connectivity-a2dp-codectype-e.md) | 枚举，蓝牙媒体音频编解码器类型。 |
 | [PlayingState](arkts-connectivity-a2dp-playingstate-e.md) | 枚举，蓝牙媒体音频播放状态。 |
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [BaseProfile](arkts-connectivity-a2dp-baseprofile-t.md) | 基础Profile接口定义，提供监听和获取连接状态等公共能力。 |

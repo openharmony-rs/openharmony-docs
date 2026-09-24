@@ -1,4 +1,4 @@
-# @ohos.app.ability.autoFillManager
+# @ohos.app.ability.autoFillManager(自动填充框架)
 
 autoFillManager模块为应用提供账号、密码、地址、电话号码等用户信息的自动填充能力。
 

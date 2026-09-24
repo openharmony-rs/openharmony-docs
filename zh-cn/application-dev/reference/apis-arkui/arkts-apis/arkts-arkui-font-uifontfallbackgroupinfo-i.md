@@ -4,7 +4,7 @@
 interface UIFontFallbackGroupInfo
 ```
 
-系统的UI字体配置信息。
+备用字体集。
 
 **起始版本：** 11
 

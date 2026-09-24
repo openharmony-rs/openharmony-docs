@@ -4,11 +4,9 @@
 declare enum Edge
 ```
 
-Edge.
+用于控制滚动组件在布局中的对齐位置。
 
-@enum { number }
-
-**起始版本：** 11
+**起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,9 +16,9 @@ Edge.
 Top
 ```
 
-The top is centered horizontally.
+竖直方向上边缘。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -32,7 +30,9 @@ The top is centered horizontally.
 Center
 ```
 
-Center horizontal and vertical.
+竖直方向居中位置。
+
+从API version 9开放废弃。
 
 **起始版本：** 7
 
@@ -46,9 +46,9 @@ Center horizontal and vertical.
 Bottom
 ```
 
-The bottom is centered horizontally.
+竖直方向下边缘。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -60,7 +60,9 @@ The bottom is centered horizontally.
 Baseline
 ```
 
-Cross axis direction text baseline alignment.
+交叉轴方向文本基线位置。
+
+从API version 9开始废弃。
 
 **起始版本：** 7
 
@@ -74,9 +76,9 @@ Cross axis direction text baseline alignment.
 Start
 ```
 
-Align the head of the cross axis direction.
+水平方向起始位置。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +90,7 @@ Align the head of the cross axis direction.
 Middle
 ```
 
-Middle
+水平方向居中位置。
 
 **起始版本：** 7
 
@@ -102,9 +104,9 @@ Middle
 End
 ```
 
-Align the head of the cross axis direction.
+水平方向末尾位置。
 
-**起始版本：** 11
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

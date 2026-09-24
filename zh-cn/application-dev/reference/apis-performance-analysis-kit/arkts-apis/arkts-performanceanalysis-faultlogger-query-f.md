@@ -33,8 +33,8 @@ function query(faultType: FaultType, callback: AsyncCallback<Array<FaultLogInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed, Parameter type error |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed, Parameter type error |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
 | [10600001](../errorcode-faultlogger.md#10600001-服务未启动或故障) | The service is not started or is faulty |
 
 **示例**
@@ -104,8 +104,8 @@ function query(faultType: FaultType): Promise<Array<FaultLogInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed, Parameter type error |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed, Parameter type error |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
 | [10600001](../errorcode-faultlogger.md#10600001-服务未启动或故障) | The service is not started or is faulty |
 
 **示例**

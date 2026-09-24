@@ -132,6 +132,27 @@ import { audio } from '@kit.AudioKit';
 | [VolumeGroupInfo](arkts-audio-audio-volumegroupinfo-i-sys.md) | 音量组信息。 |
 <!--DelEnd-->
 
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md) | 数组类型，[AudioCapturerChangeInfo](arkts-audio-audio-audiocapturerchangeinfo-i.md)数组，只读。 |
+| [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 设备属性数组类型，[AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md)数组，只读。 |
+| [AudioEffectInfoArray](arkts-audio-audio-audioeffectinfoarray-t.md) | ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md)数组，只读。 |
+| [AudioRendererChangeInfoArray](arkts-audio-audio-audiorendererchangeinfoarray-t.md) | 数组类型，[AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i.md)数组，只读。 |
+| [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | 回调函数类型，用于音频渲染器的数据写入，回调函数结束后，音频服务会把data指向的数据放入队列里等待播放，因此请勿在回调外再次更改data指向的数据, 且务必保证往data填满待播放数据, 否则会导致音频服务播放杂音。 |
+| [DeviceTypeArray](arkts-audio-audio-devicetypearray-t.md) | 数组类型，[DeviceType](arkts-audio-audio-devicetype-e.md)数组。 |
+
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ActiveStreamsVolumeInfoArray](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md) | ActiveStreamVolumeInfo数组。 |
+| [StreamUsageArray](arkts-audio-audio-streamusagearray-t-sys.md) | 音频类型数组 |
+| [VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md) | 数组类型，[VolumeGroupInfo](arkts-audio-audio-volumegroupinfo-i-sys.md)数组，只读。 |
+<!--DelEnd-->
+
 ### 枚举
 
 | 名称 | 说明 |
@@ -216,27 +237,6 @@ import { audio } from '@kit.AudioKit';
 | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 枚举，播放器的音调类型。 |
 | [VolumeAdjustType](arkts-audio-audio-volumeadjusttype-e-sys.md) | 枚举，音量调节类型。 |
 | [VolumeFlag](arkts-audio-audio-volumeflag-e-sys.md) | 枚举，音量相关操作。 |
-<!--DelEnd-->
-
-### 类型
-
-| 名称 | 说明 |
-| --- | --- |
-| [AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md) | 数组类型，[AudioCapturerChangeInfo](arkts-audio-audio-audiocapturerchangeinfo-i.md)数组，只读。 |
-| [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 设备属性数组类型，[AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md)数组，只读。 |
-| [AudioEffectInfoArray](arkts-audio-audio-audioeffectinfoarray-t.md) | ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md)数组，只读。 |
-| [AudioRendererChangeInfoArray](arkts-audio-audio-audiorendererchangeinfoarray-t.md) | 数组类型，[AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i.md)数组，只读。 |
-| [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | 回调函数类型，用于音频渲染器的数据写入，回调函数结束后，音频服务会把data指向的数据放入队列里等待播放，因此请勿在回调外再次更改data指向的数据, 且务必保证往data填满待播放数据, 否则会导致音频服务播放杂音。 |
-| [DeviceTypeArray](arkts-audio-audio-devicetypearray-t.md) | 数组类型，[DeviceType](arkts-audio-audio-devicetype-e.md)数组。 |
-
-<!--Del-->
-### 类型（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [ActiveStreamsVolumeInfoArray](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md) | ActiveStreamVolumeInfo数组。 |
-| [StreamUsageArray](arkts-audio-audio-streamusagearray-t-sys.md) | 音频类型数组 |
-| [VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md) | 数组类型，[VolumeGroupInfo](arkts-audio-audio-volumegroupinfo-i-sys.md)数组，只读。 |
 <!--DelEnd-->
 
 ### 常量

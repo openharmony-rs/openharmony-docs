@@ -37,7 +37,7 @@ function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 
@@ -93,7 +93,7 @@ function download(config: DownloadConfig): Promise<DownloadTask>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The permissions check fails. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | The permissions check fails. |
 
 **示例**
 

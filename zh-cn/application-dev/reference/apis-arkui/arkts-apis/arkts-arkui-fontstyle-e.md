@@ -4,7 +4,7 @@
 declare enum FontStyle
 ```
 
-Text style
+字体样式。
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@ Text style
 Normal = 0
 ```
 
-Default style.
+标准的字体样式。
 
 **起始版本：** 7
 
@@ -32,7 +32,7 @@ Default style.
 Italic = 1
 ```
 
-Italic style.
+斜体的字体样式。
 
 **起始版本：** 7
 

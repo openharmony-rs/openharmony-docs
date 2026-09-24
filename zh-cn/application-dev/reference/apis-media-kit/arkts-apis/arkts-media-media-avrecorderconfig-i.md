@@ -46,24 +46,6 @@ fileGenerationMode?: FileGenerationMode
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
-## location
-
-```TypeScript
-location?: Location
-```
-
-录制的地理位置，默认不记录地理位置信息。<br>从API version 6开始支持，从API version 12开始废弃。建议使用 [AVMetadata](arkts-media-media-avmetadata-i.md).location。<br>如果同时设置两个值，将会采用[AVMetadata](arkts-media-media-avmetadata-i.md).location。
-
-**类型：** [Location](arkts-media-media-location-i.md)
-
-**起始版本：** 9
-
-**废弃版本：** 12
-
-**替代接口：** [location](arkts-media-media-avmetadata-i.md#location)
-
-**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
-
 ## maxDuration
 
 ```TypeScript
@@ -108,24 +90,6 @@ profile: AVRecorderProfile
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
-## rotation
-
-```TypeScript
-rotation?: number
-```
-
-录制的视频旋转角度，单位为度（°）。mp4格式支持0°、90°、180°和270°，默认值为0°。<br>从API version 6开始支持，从API version 12开始废弃。建议使用[AVMetadata](arkts-media-media-avmetadata-i.md).videoOrientation替代。<br>如果同时设置两个值，将会采用[AVMetadata](arkts-media-media-avmetadata-i.md).videoOrientation。
-
-**类型：** number
-
-**起始版本：** 9
-
-**废弃版本：** 12
-
-**替代接口：** [videoOrientation](arkts-media-media-avmetadata-i.md#videoorientation)
-
-**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
-
 ## url
 
 ```TypeScript
@@ -153,5 +117,41 @@ videoSourceType?: VideoSourceType
 **类型：** [VideoSourceType](arkts-media-media-videosourcetype-e.md)
 
 **起始版本：** 9
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+## location
+
+```TypeScript
+location?: Location
+```
+
+录制的地理位置，默认不记录地理位置信息。<br>从API version 6开始支持，从API version 12开始废弃。建议使用 [AVMetadata](arkts-media-media-avmetadata-i.md).location。<br>如果同时设置两个值，将会采用[AVMetadata](arkts-media-media-avmetadata-i.md).location。
+
+**类型：** [Location](arkts-media-media-location-i.md)
+
+**起始版本：** 9
+
+**废弃版本：** 12
+
+**替代接口：** [location](arkts-media-media-avmetadata-i.md#location)
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+## rotation
+
+```TypeScript
+rotation?: number
+```
+
+录制的视频旋转角度，单位为度（°）。mp4格式支持0°、90°、180°和270°，默认值为0°。<br>从API version 6开始支持，从API version 12开始废弃。建议使用[AVMetadata](arkts-media-media-avmetadata-i.md).videoOrientation替代。<br>如果同时设置两个值，将会采用[AVMetadata](arkts-media-media-avmetadata-i.md).videoOrientation。
+
+**类型：** number
+
+**起始版本：** 9
+
+**废弃版本：** 12
+
+**替代接口：** [videoOrientation](arkts-media-media-avmetadata-i.md#videoorientation)
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder

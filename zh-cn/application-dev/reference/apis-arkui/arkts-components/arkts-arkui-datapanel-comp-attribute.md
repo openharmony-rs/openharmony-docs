@@ -4,9 +4,7 @@
 declare class DataPanelAttribute extends CommonMethod<DataPanelAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
-
-支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
 @extends CommonMethod [since 7 - 10] @extends CommonMethod&lt;DataPanelAttribute&gt; [since 11]
 

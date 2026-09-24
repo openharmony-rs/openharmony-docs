@@ -16,6 +16,39 @@ class URL
 import { url } from '@kit.ArkTS';
 ```
 
+<a id="constructor-1"></a>
+
+## constructor
+
+```TypeScript
+constructor()
+```
+
+URL的无参构造函数，不建议直接调用。请使用parseURL方法创建URL对象。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**示例**
+
+```TypeScript
+let baseUrl = 'https://username:password@host:8080';
+let rootPathUrl = new url.URL("/", baseUrl); // Output 'https://username:password@host:8080/';
+let absoluteUrl = new url.URL(baseUrl); // Output 'https://username:password@host:8080/';
+new url.URL('path/path1', absoluteUrl); // Output 'https://username:password@host:8080/path/path1';
+let relativePathUrl = new url.URL('/path/path1', absoluteUrl);  // Output 'https://username:password@host:8080/path/path1'; 
+new url.URL('/path/path1', relativePathUrl); // Output 'https://username:password@host:8080/path/path1';
+new url.URL('/path/path1', rootPathUrl); // Output 'https://username:password@host:8080/path/path1';
+new url.URL('/path/path1', "https://www.exampleUrl/fr-FR/toot"); // Output https://www.exampleUrl/path/path1
+new url.URL('/path/path1', ''); // Raises a TypeError exception as '' is not a valid URL
+new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is not a valid URL
+new url.URL('https://www.example.com', ); // Output https://www.example.com/
+new url.URL('https://www.example.com', absoluteUrl); // Output https://www.example.com/
+```
+
 ## constructor
 
 ```TypeScript
@@ -38,39 +71,6 @@ URL的构造函数。与parseURL方法功能相同，但parseURL为静态工厂�
 | --- | --- | --- | --- |
 | url | string | 是 | 一个表示绝对URL或相对URL的字符串，必须是合法的URL格式。<br>如果url是相对URL，则需要指定base，用于解析最终的URL。<br>如果 url是绝对URL，则给定的base将不会生效。 |
 | base | string &#124; URL | 否 | 入参字符串或者对象，默认值是undefined。<br>- string：表示基础URL的字符串，当url为相对URL时需为合法URL格式。<br>- URL：已解析的URL对象，用作相对URL解析的基础地址。 |
-
-**示例**
-
-```TypeScript
-let baseUrl = 'https://username:password@host:8080';
-let rootPathUrl = new url.URL("/", baseUrl); // Output 'https://username:password@host:8080/';
-let absoluteUrl = new url.URL(baseUrl); // Output 'https://username:password@host:8080/';
-new url.URL('path/path1', absoluteUrl); // Output 'https://username:password@host:8080/path/path1';
-let relativePathUrl = new url.URL('/path/path1', absoluteUrl);  // Output 'https://username:password@host:8080/path/path1'; 
-new url.URL('/path/path1', relativePathUrl); // Output 'https://username:password@host:8080/path/path1';
-new url.URL('/path/path1', rootPathUrl); // Output 'https://username:password@host:8080/path/path1';
-new url.URL('/path/path1', "https://www.exampleUrl/fr-FR/toot"); // Output https://www.exampleUrl/path/path1
-new url.URL('/path/path1', ''); // Raises a TypeError exception as '' is not a valid URL
-new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is not a valid URL
-new url.URL('https://www.example.com', ); // Output https://www.example.com/
-new url.URL('https://www.example.com', absoluteUrl); // Output https://www.example.com/
-```
-
-<a id="constructor-1"></a>
-
-## constructor
-
-```TypeScript
-constructor()
-```
-
-URL的无参构造函数，不建议直接调用。请使用parseURL方法创建URL对象。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
 
 **示例**
 
@@ -382,6 +382,22 @@ search: string
 
 **系统能力：** SystemCapability.Utils.Lang
 
+## username
+
+```TypeScript
+username: string
+```
+
+获取和设置URL的用户名部分。
+
+**类型：** string
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
 ## searchParams
 
 ```TypeScript
@@ -396,22 +412,6 @@ readonly searchParams: URLSearchParams
 
 **废弃版本：** 9
 
-**替代接口：** [URLParams](arkts-arkts-url-urlparams-c.md)
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## username
-
-```TypeScript
-username: string
-```
-
-获取和设置URL的用户名部分。
-
-**类型：** string
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**替代接口：** params
 
 **系统能力：** SystemCapability.Utils.Lang

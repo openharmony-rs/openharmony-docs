@@ -110,56 +110,6 @@ console.info('retStr = ' + retStr);
 // 输出结果：retStr = utf-8
 ```
 
-## decode
-
-```TypeScript
-decode(input: Uint8Array, options?: { stream?: false }): string
-```
-
-将输入内容解码为字符串。
-
-> **说明：** 
-> 
-> 该接口会正常解析值为\0的字节，将其转换为Unicode字符\u0000（空字符），不会导致解码中断或错误。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [decodeToString](#decodetostring)
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| input | Uint8Array | 是 | 要解码的 Uint8Array 对象。 |
-| options | { stream?: false } | 否 | 解码相关的选项。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| string | 获取到的字符串。 |
-
-**示例**
-
-```TypeScript
-let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
-let uint8 = new Uint8Array(6);
-uint8[0] = 0xEF;
-uint8[1] = 0xBB;
-uint8[2] = 0xBF;
-uint8[3] = 0x61;
-uint8[4] = 0x62;
-uint8[5] = 0x63;
-console.info("input num:");
-let retStr = textDecoder.decode(uint8, {stream: false});
-console.info("retStr = " + retStr);
-// 输出结果：retStr = abc
-```
-
 ## decodeToString
 
 ```TypeScript
@@ -222,6 +172,56 @@ console.info("retStr = " + retStr);
 let retJson = JSON.stringify(retStr)
 console.info("retJson = " + retJson);
 // 输出结果：retJson = ab/u0000c
+```
+
+## decode
+
+```TypeScript
+decode(input: Uint8Array, options?: { stream?: false }): string
+```
+
+将输入内容解码为字符串。
+
+> **说明：** 
+> 
+> 该接口会正常解析值为\0的字节，将其转换为Unicode字符\u0000（空字符），不会导致解码中断或错误。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [decodeToString](#decodetostring)
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| input | Uint8Array | 是 | 要解码的 Uint8Array 对象。 |
+| options | { stream?: false } | 否 | 解码相关的选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string | 获取到的字符串。 |
+
+**示例**
+
+```TypeScript
+let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
+let uint8 = new Uint8Array(6);
+uint8[0] = 0xEF;
+uint8[1] = 0xBB;
+uint8[2] = 0xBF;
+uint8[3] = 0x61;
+uint8[4] = 0x62;
+uint8[5] = 0x63;
+console.info("input num:");
+let retStr = textDecoder.decode(uint8, {stream: false});
+console.info("retStr = " + retStr);
+// 输出结果：retStr = abc
 ```
 
 ## decodeWithStream

@@ -62,28 +62,6 @@ filename?: string
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-## mimeType
-
-```TypeScript
-mimeType?: string
-```
-
-文件的mimeType，通过文件名获取，默认值为文件名后缀。
-
-从 API version 18 开始废弃，建议使用contentType替代。
-
-**类型：** string
-
-**起始版本：** 10
-
-**废弃版本：** 18
-
-**替代接口：** [contentType](#contenttype)
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Request.FileTransferAgent
-
 ## path
 
 ```TypeScript
@@ -121,3 +99,25 @@ path: string
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **测试接口：** 此接口仅在自动化测试脚本中使用。
+
+## mimeType
+
+```TypeScript
+mimeType?: string
+```
+
+文件的mimeType，通过文件名获取，默认值为文件名后缀。
+
+从 API version 18 开始废弃，建议使用contentType替代。
+
+**类型：** string
+
+**起始版本：** 10
+
+**废弃版本：** 18
+
+**替代接口：** [contentType](#contenttype)
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Request.FileTransferAgent

@@ -39,9 +39,9 @@ ohos.permission.MANAGE_USB_CONFIG）来识别是否允许静默授权，跳过�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) |  |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) |  |
-| [401](../../errorcode-universal.md#401-参数检查失败) |  |
+| [201](../../errorcode-universal.md#201-api权限校验失败) |  |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) |  |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 | [14400005](../errorcode-usb.md#14400005-数据库操作异常) |  |
 | [31400001](../errorcode-usb.md#31400001-串口服务异常) |  |
 | [31400003](../errorcode-usb.md#31400003-端口号不存在) |  |

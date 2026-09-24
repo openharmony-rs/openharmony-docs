@@ -1,4 +1,4 @@
-# @ohos.app.ability.abilityManager
+# @ohos.app.ability.abilityManager(Ability信息管理)
 
 AbilityManager模块提供获取、新增、修改Ability相关信息和运行状态信息的能力。
 
@@ -63,20 +63,6 @@ import { abilityManager } from '@kit.AbilityKit';
 | [AtomicServiceStartupRule](arkts-ability-abilitymanager-atomicservicestartuprule-i-sys.md) | 嵌入式拉起原子化服务的规则。 |
 <!--DelEnd-->
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [AbilityState](arkts-ability-abilitymanager-abilitystate-e.md) | Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](arkts-ability-abilityrunninginfo-i.md)返回Ability的状态。 |
-
-<!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [UserStatus](arkts-ability-abilitymanager-userstatus-e-sys.md) | 用户操作的断言调试结果，该类型为枚举。 |
-<!--DelEnd-->
-
 ### 类型
 
 | 名称 | 说明 |
@@ -93,4 +79,18 @@ import { abilityManager } from '@kit.AbilityKit';
 | [ExtensionRunningInfo](arkts-ability-abilitymanager-extensionrunninginfo-t-sys.md) | ExtensionRunningInfo二级模块。 |
 | [PreloadedUIExtensionAbilityDestroyedFn](arkts-ability-abilitymanager-preloadeduiextensionabilitydestroyedfn-t-sys.md) | 预加载[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)被销毁时的回调函数类型。 |
 | [PreloadedUIExtensionAbilityLoadedFn](arkts-ability-abilitymanager-preloadeduiextensionabilityloadedfn-t-sys.md) | 预加载[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)被加载时的回调函数类型。 |
+<!--DelEnd-->
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [AbilityState](arkts-ability-abilitymanager-abilitystate-e.md) | Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](arkts-ability-abilityrunninginfo-i.md)返回Ability的状态。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [UserStatus](arkts-ability-abilitymanager-userstatus-e-sys.md) | 用户操作的断言调试结果，该类型为枚举。 |
 <!--DelEnd-->

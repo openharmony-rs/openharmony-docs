@@ -16,7 +16,7 @@ declare enum DataPanelType
 Line
 ```
 
-线型数据面板。
+线性数据面板。
 
 **起始版本：** 8
 
@@ -32,7 +32,7 @@ Line
 Circle
 ```
 
-Line Rainbow
+环形数据面板。
 
 **起始版本：** 8
 

@@ -4,9 +4,26 @@
 declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性。
+除支持[通用属性](arkts-arkui-common-comp.md#common)，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件。
+> **说明：** 
+> 
+> [通用属性padding](arkts-arkui-common-comp-commonmethod-c.md#padding)的默认值为
+
+{
+
+&nbsp;top: '8vp',
+
+&nbsp;right: '16vp',
+
+&nbsp;bottom: '8vp',
+
+&nbsp;left: '16vp'
+
+}
+
+> 从API version 11开始，多行输入框可设置.width('auto')使组件宽度自适应文本宽度，自适应时组件宽度受constraintSize属性以及父容器传递的最大最小宽度限制，其余使用方式参考
+> [尺寸设置](arkts-arkui-common-comp.md#common)。
 
 **继承/实现关系：** TextAreaAttribute extends CommonMethod<TextAreaAttribute>
 
@@ -20,7 +37,7 @@ declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>
 autoCapitalizationMode(mode: AutoCapitalizationMode)
 ```
 
-设置文本的自动大小写模式，只提供接口能力，具体实现以输入法应用为主。
+设置自动大小写模式的文本模式，只提供接口能力，具体实现以输入法应用为主。未通过该接口设置时，默认不产生大小写转换效果，具体实现以输入法应用为主。
 
 **起始版本：** 20
 
@@ -34,7 +51,7 @@ autoCapitalizationMode(mode: AutoCapitalizationMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [AutoCapitalizationMode](../arkts-apis/arkts-arkui-autocapitalizationmode-e.md) | 是 | 自动大小写模式，具体实现以输入法应用为主。 |
+| mode | [AutoCapitalizationMode](../arkts-apis/arkts-arkui-autocapitalizationmode-e.md) | 是 | 自动大小写模式，用于设置输入法的大小写转换规则，具体实现以输入法应用为主。 |
 
 ## barState
 
@@ -134,7 +151,7 @@ compressLeadingPunctuation(enabled: Optional<boolean>)
 contentType(contentType: ContentType)
 ```
 
-设置自动填充类型。&lt;!--RP3--&gt;&lt;!--RP3End--&gt;
+设置自动填充类型。<!--RP3--><!--RP3End-->
 
 **起始版本：** 12
 
@@ -158,7 +175,7 @@ copyOption(value: CopyOptions)
 
 设置输入的文本是否可复制。设置CopyOptions.None时，只支持粘贴和全选。未通过该接口设置时，默认输入的文本可复制（CopyOptions.LocalDevice，支持设备内复制）。
 
-设置CopyOptions.None时，不支持拖拽操作。[enableSelectedDataDetector](#enableselecteddatadetector)功能需要CopyOptions为LocalDevice或CROSS_DEVICE时才生效。
+设置CopyOptions.None时，不支持拖拽操作。[enableSelectedDataDetector](#enableselecteddatadetector)功能需要CopyOptions为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时才生效。
 
 **起始版本：** 9
 
@@ -210,7 +227,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | 是 | 自定义键盘。设定值为undefined时，关闭自定义键盘。<br>**适用版本：** 22 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | 是 | 自定义键盘。设定值为undefined时，关闭自定义键盘。<br>**适用版本：** 10 - 21 |
 | options | [KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md) | 否 | 设置自定义键盘是否支持避让功能。不传入时，默认不支持避让功能。<br>**适用版本：** 12 |
 
 ## decoration
@@ -301,9 +318,9 @@ EllipsisMode.START和EllipsisMode.CENTER仅在[maxLines](#maxlines)设置为1生
 enableAutoFill(value: boolean)
 ```
 
-设置是否启用自动填充。&lt;!--RP2--&gt;&lt;!--RP2End--&gt;未通过该接口设置时，默认启用自动填充。
+设置是否启用自动填充。<!--RP2--><!--RP2End-->未通过该接口设置时，默认启用自动填充。
 
-&lt;!--RP6--&gt;&lt;!--RP6End--&gt;
+<!--RP6--><!--RP6End-->
 
 **起始版本：** 12
 
@@ -520,6 +537,10 @@ fontFamily(value: ResourceStr)
 ```
 
 设置字体列表。
+
+> **说明：** 
+> 
+> 可以使用[loadFontSync](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadfontsync)注册自定义字体。
 
 **起始版本：** 7
 
@@ -795,7 +816,7 @@ letterSpacing(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>设置为百分比时按默认值处理；设置为0时使用默认值；负值会导致文字压缩，过小时可能无内容显示。<br>单位：[fp](../arkts-apis/arkts-arkui-length-t.md) |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>设置为百分比时按默认值处理；设置为0时使用默认值；负值会导致文字压缩，过小时可能无内容显示。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 ## lineBreakStrategy
 
@@ -825,7 +846,7 @@ lineBreakStrategy(strategy: LineBreakStrategy)
 lineHeight(value: number | string | Resource)
 ```
 
-设置文本的文本行高，设置值不大于0时，不限制文本行高，自适应字体大小。
+设置文本的行高，设置值不大于0时，不限制文本行高，自适应字体大小。
 
 **起始版本：** 12
 
@@ -839,7 +860,7 @@ lineHeight(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本的文本行高。需要显式指定[像素单位](arkts-arkui-common-comp.md#common)，如'10px'，也可设置百分比字符串，如'100%'。<br>**说明：** 不指定像素单位时，默认单位fp，如'10'，等同于10。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本的行高。需要显式指定[像素单位](arkts-arkui-common-comp.md#common)，如'10px'，也可设置百分比字符串，如'100%'。<br>**说明：** 不指定像素单位时，默认单位fp，如'10'，等同于10。 |
 
 ## lineSpacing
 
@@ -908,7 +929,7 @@ maxFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例17（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例17（设置最小字体范围与最大字体范围）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#示例17设置最小字体范围与最大字体范围)。 |
 
 ## maxFontSize
 
@@ -936,7 +957,7 @@ maxFontSize小于等于0或者maxFontSize小于minFontSize时，自适应字号�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>需配合minFontSize以及maxLines或布局大小限制使用，单独设置不生效。<br>取值范围：(0, +∞)。超出取值范围时按照fontSize属性值生效。<br>单位：[fp](../arkts-apis/arkts-arkui-length-t.md) |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>需配合minFontSize以及maxLines或布局大小限制使用，单独设置不生效。<br>取值范围：(0, +∞)。超出取值范围时按照fontSize属性值生效。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 ## maxLength
 
@@ -966,7 +987,21 @@ maxLength(value: number)
 maxLines(value: number)
 ```
 
-配置textOverflow一起使用时，maxLines为可显示行数，超出截断；未配置textOverflow时，内联模式获焦状态下内容超出maxLines时，文本可滚动显示，内联模式非获焦状态下不生效maxLines，非内联模式按行截断。未通过该接口设置时，默认内联输入风格编辑态时文本可显示的最大行数为3，非内联模式下默认值为UINT32_MAX。
+设置文本可显示的最大行数，可选设置超出最大行数的行为为滚动或截断。未通过该接口设置时，默认内联输入风格编辑态时文本可显示的最大行数为3，非内联模式下默认值为UINT32_MAX。
+
+> **说明：** 
+> 
+> 配置textOverflow时：
+> 
+> - maxLines为文本可显示的最大行数，超出部分直接截断。
+> 
+> 未配置textOverflow时：
+> 
+> - 内联模式（获焦状态）：内容超出maxLines时，文本支持滚动显示；
+> 
+> - 内联模式（非获焦状态）：maxLines不生效；
+> 
+> - 非内联模式：文本按maxLines指定的行数截断。
 
 **起始版本：** 10
 
@@ -990,7 +1025,21 @@ maxLines(value: number)
 maxLines(lines: number, options: MaxLinesOptions)
 ```
 
-配置[textOverflow](#textoverflow)一起使用时，maxLines为可显示行数，超出可配置为截断或滚动。未配置textOverflow时，内联模式获焦状态下内容超出maxLines时，文本可滚动显示。内联模式非获焦状态下，maxLines不生效。非内联模式下，按行截断。未通过该接口设置时，默认内联输入风格编辑态时文本可显示的最大行数为3，非内联模式下默认值为+∞，不限制最大行数；文本超长时的显示效果默认为MaxLinesMode.CLIP。
+设置文本可显示的最大行数，可选设置超出最大行数的行为为滚动或截断。未通过该接口设置时，默认内联输入风格编辑态时文本可显示的最大行数为3，非内联模式下默认值为UINT32_MAX。
+
+> **说明：** 
+> 
+> 配置textOverflow时：
+> 
+> - maxLines为文本可显示的最大行数，超出部分直接截断。
+> 
+> 未配置textOverflow时：
+> 
+> - 内联模式（获焦状态）：内容超出maxLines时，文本支持滚动显示；
+> 
+> - 内联模式（非获焦状态）：maxLines不生效；
+> 
+> - 非内联模式：文本按maxLines指定的行数截断。
 
 **起始版本：** 20
 
@@ -1027,7 +1076,7 @@ minFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见示例17（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例17（设置最小字体范围与最大字体范围）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#示例17设置最小字体范围与最大字体范围)。 |
 
 ## minFontSize
 
@@ -1055,7 +1104,7 @@ minFontSize小于或等于0时，自适应字号不生效，此时按照[fontSiz
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>需配合maxFontSize以及maxLines或布局大小限制使用，单独设置不生效。<br>取值范围：(0, maxFontSize]。超出取值范围时按照fontSize属性值生效。<br>单位：[fp](../arkts-apis/arkts-arkui-length-t.md) |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>需配合maxFontSize以及maxLines或布局大小限制使用，单独设置不生效。<br>取值范围：(0, maxFontSize]。超出取值范围时按照fontSize属性值生效。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 ## minLines
 
@@ -1088,6 +1137,16 @@ onChange(callback: EditableTextOnChangeCallback)
 输入内容发生变化时，触发该回调。
 
 在本回调中，若执行了光标操作，需要开发者在预上屏场景下依据[EditableTextOnChangeCallback](../arkts-apis/arkts-arkui-editabletextonchangecallback-t.md)的previewText参数调整光标逻辑，以适应预上屏场景。
+
+> **说明：** 
+> 
+> onWillChange和onChange形成will/did时序模式：
+> 
+> - onWillChange在文本变更前触发，可通过返回false拦截变更；返回true则允许变更，随后触发onChange。
+> 
+> - onChange在变更完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillChange用于拦截控制，onChange用于获取变更结果。
 
 **起始版本：** 7
 
@@ -1131,6 +1190,16 @@ onCopy(callback: (value: string) => void)
 
 进行复制操作时，触发该回调。
 
+> **说明：** 
+> 
+> onWillCopy和onCopy形成will/did时序模式：
+> 
+> - onWillCopy在复制操作前触发，可通过返回false拦截复制操作；返回true则允许复制，随后触发onCopy。
+> 
+> - onCopy在复制操作完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillCopy用于拦截控制，onCopy用于获取复制结果。
+
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -1149,7 +1218,17 @@ onCopy(callback: (value: string) => void)
 onCut(callback: (value: string) => void)
 ```
 
-进行复制操作时，触发该回调。
+进行剪切操作时，触发该回调。
+
+> **说明：** 
+> 
+> onWillCut和onCut形成will/did时序模式：
+> 
+> - onWillCut在剪切操作前触发，可通过返回false拦截剪切操作；返回true则允许剪切，随后触发onCut。
+> 
+> - onCut在剪切操作完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillCut用于拦截控制，onCut用于获取剪切结果。
 
 **起始版本：** 8
 
@@ -1171,7 +1250,17 @@ onDidDelete(callback: Callback<DeleteValue>)
 
 在删除完成时，触发该回调。
 
-点击清除按钮不触发onDidDelete回调。
+> **说明：** 
+> 
+> - 点击清除按钮不触发onDidDelete回调。
+> 
+> - onWillDelete和onDidDelete形成will/did时序模式：
+> 
+> - onWillDelete在删除操作前触发，可通过返回false拦截删除操作；返回true则允许删除，随后触发onDidDelete。
+> 
+> - onDidDelete在删除完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillDelete用于拦截控制，onDidDelete用于获取删除结果。
 
 **起始版本：** 12
 
@@ -1197,13 +1286,13 @@ onDidInsert(callback: Callback<InsertValue>)
 
 > **说明：** 
 > 
-> onWillDelete和onDidDelete形成will/did时序模式：
+> onWillInsert和onDidInsert形成will/did时序模式：
 > 
-> - onWillDelete在删除操作前触发，可通过返回false拦截删除操作；返回true则允许删除，随后触发onDidDelete。
+> - onWillInsert在插入操作前触发，可通过返回false拦截插入操作；返回true则允许插入，随后触发onDidInsert。
 > 
-> - onDidDelete在删除完成后触发，无法拦截。
+> - onDidInsert在插入完成后触发，无法拦截。
 > 
-> - 两者可以同时使用，onWillDelete用于拦截控制，onDidDelete用于获取删除结果。
+> - 两者可以同时使用，onWillInsert用于拦截控制，onDidInsert用于获取插入结果。
 
 **起始版本：** 12
 
@@ -1369,11 +1458,15 @@ onWillChange(callback: Callback<EditableTextChangeValue, boolean>)
 
 > **说明：** 
 > 
-> onWillChange与onChange均监听文本变更，区别在于：
+> - onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
 > 
-> - onWillChange在文本变更前触发，返回false可拦截此次变更；onChange在变更后触发，仅用于通知，无法拦截
+> - onWillChange和onChange形成will/did时序模式：
 > 
-> - 需要拦截控制时使用onWillChange，仅需获取变更结果时使用onChange onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
+> - onWillChange在文本变更前触发，可通过返回false拦截变更；返回true则允许变更，随后触发onChange。
+> 
+> - onChange在变更完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillChange用于拦截控制，onChange用于获取变更结果。onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
 
 **起始版本：** 15
 
@@ -1465,13 +1558,15 @@ onWillDelete(callback: Callback<DeleteValue, boolean>)
 
 > **说明：** 
 > 
-> onWillDelete和onDidDelete形成will/did时序模式：
+> - 点击清除按钮不触发onWillDelete回调。
 > 
-> - onWillDelete在删除操作前触发，可通过返回false拦截删除操作；返回true则允许删除，随后触发onDidDelete
+> - onWillDelete和onDidDelete形成will/did时序模式：
 > 
-> - onDidDelete在删除完成后触发，无法拦截
+> - onWillDelete在删除操作前触发，可通过返回false拦截删除操作；返回true则允许删除，随后触发onDidDelete。
 > 
-> - 两者可以同时使用，onWillDelete用于拦截控制，onDidDelete用于获取删除结果
+> - onDidDelete在删除完成后触发，无法拦截。
+> 
+> - 两者可以同时使用，onWillDelete用于拦截控制，onDidDelete用于获取删除结果。
 
 **起始版本：** 12
 
@@ -1635,7 +1730,7 @@ scrollBarColor(thumbColor: ColorMetrics | undefined)
 selectedBackgroundColor(value: ResourceColor)
 ```
 
-设置文本选中底板颜色。如果未设置不透明度，默认为20%不透明度。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。
 
 **起始版本：** 12
 
@@ -1649,7 +1744,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 文本选中底板颜色，用于自定义文本选中时的背景颜色。如果未设置不透明度，默认为20%不透明度。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 文本选中高亮颜色。 |
 
 ## selectedDragPreviewStyle
 
@@ -1735,7 +1830,7 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 当输入字符数大于最大字符数乘百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。若用户同时设置参数value为true和InputCounterOptions，当thresholdPercentage数值在有效区间内且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动。计数器默认显示红色边框；highlightBorder设置为false时，则不显示红色边框。内联模式下字符计数器不显示。
 
-示例2（设置计数器）展示了设置showCounter的效果。
+[示例2（设置计数器）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#示例2设置计数器)展示了设置showCounter的效果。
 
 **起始版本：** 10
 
@@ -1838,7 +1933,7 @@ strokeWidth(width: Optional<LengthMetrics>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | 是 | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。 |
+| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | 是 | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。 |
 
 ## style
 
@@ -1934,7 +2029,7 @@ textIndent(value: Dimension)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：[vp](../arkts-apis/arkts-arkui-length-t.md) <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
 
 ## textOverflow
 

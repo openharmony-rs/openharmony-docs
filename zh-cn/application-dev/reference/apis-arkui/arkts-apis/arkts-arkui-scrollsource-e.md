@@ -4,7 +4,7 @@
 declare enum ScrollSource
 ```
 
-The possible source of scroll event @enum { number } ScrollSource
+滑动操作的来源。
 
 **起始版本：** 12
 
@@ -16,7 +16,7 @@ The possible source of scroll event @enum { number } ScrollSource
 DRAG = 0
 ```
 
-Drag events.
+拖拽事件。
 
 **起始版本：** 12
 
@@ -32,7 +32,7 @@ Drag events.
 FLING
 ```
 
-Fling after the drag has ended with velocity.
+拖拽结束之后的惯性滑动。
 
 **起始版本：** 12
 
@@ -48,7 +48,7 @@ Fling after the drag has ended with velocity.
 EDGE_EFFECT
 ```
 
-Over scroll with EdgeEffect.Spring.
+EdgeEffect.Spring的边缘滚动效果。
 
 **起始版本：** 12
 
@@ -64,7 +64,7 @@ Over scroll with EdgeEffect.Spring.
 OTHER_USER_INPUT
 ```
 
-Other user input except drag, such as mouse wheel, key event.
+除拖拽外的其他用户输入，如鼠标滚轮、键盘事件等。
 
 **起始版本：** 12
 
@@ -80,7 +80,7 @@ Other user input except drag, such as mouse wheel, key event.
 SCROLL_BAR
 ```
 
-Drag events of scroll bar.
+滚动条的拖拽事件。
 
 **起始版本：** 12
 
@@ -96,7 +96,7 @@ Drag events of scroll bar.
 SCROLL_BAR_FLING
 ```
 
-Fling after the drag on scroll bar has ended with velocity.
+滚动条拖拽结束后的带速度的惯性滑动。
 
 **起始版本：** 12
 
@@ -112,7 +112,7 @@ Fling after the drag on scroll bar has ended with velocity.
 SCROLLER
 ```
 
-Member methods of Scroller without animation.
+Scroller的不带动效方法。
 
 **起始版本：** 12
 
@@ -128,7 +128,7 @@ Member methods of Scroller without animation.
 SCROLLER_ANIMATION
 ```
 
-Member methods of Scroller with animation.
+Scroller的带动效方法。
 
 **起始版本：** 12
 

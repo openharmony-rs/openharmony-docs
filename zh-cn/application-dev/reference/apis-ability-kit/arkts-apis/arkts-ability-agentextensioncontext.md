@@ -1,4 +1,4 @@
-# AgentExtensionContext
+# AgentExtensionContext(智能体扩展组件上下文)
 
 ## 汇总
 

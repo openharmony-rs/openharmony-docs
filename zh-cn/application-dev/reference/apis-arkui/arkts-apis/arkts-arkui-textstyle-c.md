@@ -56,9 +56,7 @@ readonly fontColor?: ResourceColor
 readonly fontConfigs?: FontConfigs
 ```
 
-获取属性字符串的字体配置。
-
-默认返回undefined，表示未设置fontConfigs。
+获取属性字符串的字体配置。默认返回undefined，表示未设置fontConfigs。
 
 **类型：** [FontConfigs](arkts-arkui-fontconfigs-i.md)
 
@@ -98,7 +96,7 @@ readonly fontSize?: number
 
 获取属性字符串的文本字体大小。
 
-单位：[vp](arkts-arkui-length-t.md) 
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -134,9 +132,7 @@ readonly fontStyle?: FontStyle
 readonly fontVariations?: Array<FontVariation>
 ```
 
-获取可变字体的属性数组。
-
-默认值：undefined，表示未设置可变字体的属性。
+获取可变字体的属性数组。默认值：undefined，表示未设置可变字体的属性。
 
 **类型：** Array&lt;[FontVariation](arkts-arkui-fontvariation-t.md)&gt;
 
@@ -198,9 +194,9 @@ readonly strokeColor?: ResourceColor
 readonly strokeJoinStyle?: StrokeJoinStyle
 ```
 
-获取属性字符串的文本描边拐角样式。
+获取属性字符串的文本描边拐角样式。具体枚举值及其说明请参考StrokeJoinStyle。
 
-默认值：StrokeJoinStyle.MITER_JOIN。
+默认值：StrokeJoinStyle.MITER_JOIN，表示尖角连接，拐角处为尖锐拐角。
 
 **类型：** [StrokeJoinStyle](arkts-arkui-strokejoinstyle-e.md)
 
@@ -220,7 +216,7 @@ readonly strokeWidth?: number
 
 获取属性字符串的文本描边宽度。
 
-默认返回0，单位为[vp](arkts-arkui-length-t.md)。
+默认返回0，单位为[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。
 
 **类型：** number
 

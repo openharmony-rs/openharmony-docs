@@ -37,7 +37,7 @@ function subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [1500007](../errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
 | [1500008](../errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
 | [1500010](../errorcode-CommonEventService.md#1500010-订阅者数量超限) | The count of subscriber exceeds system specification. |

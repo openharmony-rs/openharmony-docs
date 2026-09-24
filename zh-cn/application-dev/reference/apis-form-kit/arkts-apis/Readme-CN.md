@@ -274,7 +274,8 @@
 - application<!--arkts-formkit-application-->
   - [FormEditExtensionContext](arkts-form-formeditextensioncontext.md)
     - [FormEditExtensionContext](arkts-form-formeditextensioncontext-c.md)
-  - [FormExtensionContext](arkts-form-formextensioncontext.md)
+  <!--Del-->
+  - [FormExtensionContext](arkts-form-formextensioncontext.md)<!--DelEnd-->
     <!--Del-->
     - [FormExtensionContext(系统接口)](arkts-form-formextensioncontext-c-sys.md)<!--DelEnd-->
   - [LiveFormExtensionContext](arkts-form-liveformextensioncontext.md)

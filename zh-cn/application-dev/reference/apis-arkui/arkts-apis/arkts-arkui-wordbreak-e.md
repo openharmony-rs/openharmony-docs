@@ -4,9 +4,7 @@
 declare enum WordBreak
 ```
 
-Enum of word break
-
-@enum { number }
+断行规则。
 
 **起始版本：** 11
 
@@ -18,7 +16,7 @@ Enum of word break
 NORMAL = 0
 ```
 
-By default, CJK text can be wrapped between any 2 characters, and non-CJK text can only be wrapped in spaces.
+CJK(中文、日文、韩文)文本可以在任意2个字符间断行，而Non-CJK文本（如英文等）只能在空白符处断行。
 
 **起始版本：** 11
 
@@ -34,7 +32,7 @@ By default, CJK text can be wrapped between any 2 characters, and non-CJK text c
 BREAK_ALL = 1
 ```
 
-Non-CJK text be wrapped at any character
+对于Non-CJK的文本，可在任意2个字符间断行。对于CJK文本，效果与NORMAL一致。
 
 **起始版本：** 11
 
@@ -50,7 +48,7 @@ Non-CJK text be wrapped at any character
 BREAK_WORD = 2
 ```
 
-Non-CJK text can be wrapped at any character and if a complete word can be preserved in space breaks, the word must be kept on the line.
+与BREAK_ALL相同，对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断行破发点（如空白符）时，优先按破发点换行，保障单词优先完整显示。若整一行文本均无断行破发点，则在任意2个字符间断行。对于CJK文本，效果与NORMAL一致。
 
 **起始版本：** 11
 
@@ -66,7 +64,7 @@ Non-CJK text can be wrapped at any character and if a complete word can be prese
 HYPHENATION = 3
 ```
 
-For supported languages, line breaks can be performed by syllables.
+每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟BREAK_WORD保持一致。
 
 **起始版本：** 18
 

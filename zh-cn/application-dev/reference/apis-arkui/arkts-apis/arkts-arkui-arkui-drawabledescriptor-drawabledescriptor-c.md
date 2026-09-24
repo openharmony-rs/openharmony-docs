@@ -96,6 +96,8 @@ load(): Promise<DrawableDescriptorLoadedResult>
 
 **起始版本：** 21
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -126,6 +128,8 @@ loadSync(): DrawableDescriptorLoadedResult
 发起图片资源的同步加载，并返回加载结果。
 
 **起始版本：** 21
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 

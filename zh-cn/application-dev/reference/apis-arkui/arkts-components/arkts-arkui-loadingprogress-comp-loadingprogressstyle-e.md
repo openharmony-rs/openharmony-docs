@@ -16,7 +16,7 @@ declare enum LoadingProgressStyle
 Default
 ```
 
-默认加载样式。
+默认加载样式。API version 8及以后不支持设置。
 
 **起始版本：** 8
 
@@ -32,7 +32,7 @@ Default
 Circular
 ```
 
-环形加载样式。
+环形加载样式。API version 8及以后不支持设置。
 
 **起始版本：** 8
 
@@ -48,7 +48,7 @@ Circular
 Orbital
 ```
 
-彗星形加载样式。
+彗星形加载样式。API version 8及以后默认为彗星形样式。
 
 **起始版本：** 8
 

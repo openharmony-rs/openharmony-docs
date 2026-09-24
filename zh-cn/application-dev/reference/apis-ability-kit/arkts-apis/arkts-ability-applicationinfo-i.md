@@ -32,7 +32,7 @@ readonly accessTokenId: number
 readonly appDistributionType: string
 ```
 
-应用程序签名证书的分发类型，分为： &lt;li&gt;app_gallery：应用市场安装的应用。&lt;!--RP1--&gt;&lt;!--RP1End--&gt; &lt;li&gt; enterprise：企业内部应用，企业自行开发、仅限企业内部员工使用的应用，不通过应用市场等公开渠道发布，而是通过企业自己的渠道进行内部分发。&lt;!--RP2--&gt;&lt;!--RP2End--&gt;&lt;li&gt; enterprise_mdm：企业[MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)。<!--Del-->需要被激活[管理员特权](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md)后，才能安装普通企业应用。<!--DelEnd-->&lt;!--RP3--&gt;&lt;!--RP3End--&gt; &lt;li&gt;enterprise_normal：普通企业应用，无需上架华为应用市场，可通过企业[MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)以及离线安装器分发安装。&lt;!--RP4--&gt;&lt;!--RP4End--&gt;&lt;li&gt;os_integration：预置应用，三方应用无法申请配置。&lt;li&gt;crowdtesting：众包测试应用，是由应用市场分发给部分用户，有一定的有效期的特定应用，系统检测到应用的有效期到期后，会通知用户到应用市场更新release版本的应用。从API version 11开始被废弃。&lt;li&gt;internaltesting：应用市场内测的应用。&lt;!--RP5--&gt;&lt;!--RP5End--&gt;&lt;li&gt;none：其他。
+应用程序签名证书的分发类型，分为： &lt;li&gt;app_gallery：应用市场安装的应用。<!--RP1--><!--RP1End--> &lt;li&gt; enterprise：企业内部应用，企业自行开发、仅限企业内部员工使用的应用，不通过应用市场等公开渠道发布，而是通过企业自己的渠道进行内部分发。<!--RP2--><!--RP2End-->&lt;li&gt; enterprise_mdm：企业[MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)。<!--Del-->需要被激活[管理员特权](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md)后，才能安装普通企业应用。<!--DelEnd--><!--RP3--><!--RP3End--> &lt;li&gt;enterprise_normal：普通企业应用，无需上架华为应用市场，可通过企业[MDM应用](../../../mdm/mdm-kit-term.md#mdm应用)以及离线安装器分发安装。<!--RP4--><!--RP4End-->&lt;li&gt;os_integration：预置应用，三方应用无法申请配置。&lt;li&gt;crowdtesting：众包测试应用，是由应用市场分发给部分用户，有一定的有效期的特定应用，系统检测到应用的有效期到期后，会通知用户到应用市场更新release版本的应用。从API version 11开始被废弃。&lt;li&gt;internaltesting：应用市场内测的应用。<!--RP5--><!--RP5End-->&lt;li&gt;none：其他。
 
 **类型：** string
 
@@ -350,26 +350,6 @@ readonly labelResource: Resource
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## metadata
-
-```TypeScript
-readonly metadata: Map<string, Array<Metadata>>
-```
-
-应用程序的元信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_METADATA获取。
-
-**说明：** 从API version 9开始支持，从API version 10开始不再维护，建议使用metadataArray替代。
-
-**类型：** Map&lt;string, Array&lt;[Metadata](arkts-ability-metadata-i.md)&gt;&gt;
-
-**起始版本：** 9
-
-**废弃版本：** 10
-
-**替代接口：** [metadataArray](#metadataarray)
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
 ## metadataArray
 
 ```TypeScript
@@ -525,5 +505,25 @@ readonly uid: number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## metadata
+
+```TypeScript
+readonly metadata: Map<string, Array<Metadata>>
+```
+
+应用程序的元信息，通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_METADATA获取。
+
+**说明：** 从API version 9开始支持，从API version 10开始不再维护，建议使用metadataArray替代。
+
+**类型：** Map&lt;string, Array&lt;[Metadata](arkts-ability-metadata-i.md)&gt;&gt;
+
+**起始版本：** 9
+
+**废弃版本：** 10
+
+**替代接口：** [metadataArray](#metadataarray)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core

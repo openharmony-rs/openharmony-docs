@@ -16,89 +16,6 @@ interface AudioManager
 import { audio } from '@kit.AudioKit';
 ```
 
-## getAudioParameter
-
-```TypeScript
-getAudioParameter(key: string, callback: AsyncCallback<string>): void
-```
-
-获取指定音频参数值。使用callback异步回调。本接口的使用场景为：根据硬件设备的支持能力扩展音频配置。在不同的设备平台上，所支持的音频参数会存在差异。示例代码内使用样例参数，实际支持的音频配置参数见具体设备平台的资料描述。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 11开始废弃。
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| key | string | 是 | 待获取的音频参数的键。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取指定音频参数值成功，err为undefined，data为获取到的指定音频参数值；否则为错误对象。 |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.getAudioParameter('key_example', (err: BusinessError, value: string) => {
-  if (err) {
-    console.error(`Failed to obtain the audio parameter. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in obtaining the audio parameter, value: ${value}.`);
-});
-```
-
-<a id="getaudioparameter-1"></a>
-
-## getAudioParameter
-
-```TypeScript
-getAudioParameter(key: string): Promise<string>
-```
-
-获取指定音频参数值。使用Promise异步回调。本接口的使用场景为：根据硬件设备的支持能力扩展音频配置。在不同的设备平台上，所支持的音频参数会存在差异。示例代码内使用样例参数，实际支持的音频配置参数见具体设备平台的资料描述。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 11开始废弃。
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| key | string | 是 | 待获取的音频参数的键。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回获取的音频参数值。 |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.getAudioParameter('key_example').then((value: string) => {
-  console.info(`Succeeded in obtaining the audio parameter, value: ${value}.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to obtain the audio parameter. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
 ## getAudioScene
 
 ```TypeScript
@@ -245,6 +162,480 @@ getDeviceEnhanceManager(): AudioDeviceEnhanceManager
 
 ```TypeScript
 let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+```
+
+## getRecordingManager
+
+```TypeScript
+getRecordingManager(): AudioRecordingManager
+```
+
+获取录音策略管理器。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i.md) | 返回AudioRecordingManager实例。 |
+
+**示例**
+
+```TypeScript
+let audioRecordingManager: audio.AudioRecordingManager = audioManager.getRecordingManager();
+```
+
+## getRoutingManager
+
+```TypeScript
+getRoutingManager(): AudioRoutingManager
+```
+
+获取音频路由管理器。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [AudioRoutingManager](arkts-audio-audio-audioroutingmanager-i.md) | 返回AudioRoutingManager实例。 |
+
+**示例**
+
+```TypeScript
+let audioRoutingManager: audio.AudioRoutingManager = audioManager.getRoutingManager();
+```
+
+## getSessionManager
+
+```TypeScript
+getSessionManager(): AudioSessionManager
+```
+
+获取音频会话管理器。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [AudioSessionManager](arkts-audio-audio-audiosessionmanager-i.md) | 返回AudioSessionManager实例。 |
+
+**示例**
+
+```TypeScript
+let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+```
+
+## getSpatializationManager
+
+```TypeScript
+getSpatializationManager(): AudioSpatializationManager
+```
+
+获取空间音频管理器。
+
+**起始版本：** 18
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [AudioSpatializationManager](arkts-audio-audio-audiospatializationmanager-i.md) | 返回AudioSpatializationManager实例。 |
+
+**示例**
+
+```TypeScript
+let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
+```
+
+## getStreamManager
+
+```TypeScript
+getStreamManager(): AudioStreamManager
+```
+
+获取音频流管理器。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [AudioStreamManager](arkts-audio-audio-audiostreammanager-i.md) | 返回AudioStreamManager实例。 |
+
+**示例**
+
+```TypeScript
+let audioStreamManager: audio.AudioStreamManager = audioManager.getStreamManager();
+```
+
+## getVolumeManager
+
+```TypeScript
+getVolumeManager(): AudioVolumeManager
+```
+
+获取音频音量管理器。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i.md) | 返回AudioVolumeManager实例。 |
+
+**示例**
+
+```TypeScript
+let audioVolumeManager: audio.AudioVolumeManager = audioManager.getVolumeManager();
+```
+
+## off('audioSceneChange')
+
+```TypeScript
+off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void
+```
+
+取消监听音频场景变化事件。
+
+**起始版本：** 20
+
+**系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'audioSceneChange' | 是 | 事件回调类型，支持的事件为'audioSceneChange'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('audioSceneChange')](#onaudioscenechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioManager.off('audioSceneChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let audioSceneChangeCallback = (audioScene: audio.AudioScene) => {
+  console.info(`Audio scene changed, audioScene: ${audioScene}.`);
+};
+
+audioManager.on('audioSceneChange', audioSceneChangeCallback);
+
+audioManager.off('audioSceneChange', audioSceneChangeCallback);
+```
+
+## off('deviceChange')
+
+```TypeScript
+off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void
+```
+
+取消监听音频设备连接变化事件。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用
+> [off('deviceChange')](arkts-audio-audio-audioroutingmanager-i.md#offdevicechange)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** deviceChange
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('deviceChange')](#ondevicechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioManager.off('deviceChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let deviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
+  console.info(`Device changed, deviceChanged: ${JSON.stringify(deviceChanged)}.`);
+};
+
+audioManager.on('deviceChange', deviceChangeCallback);
+
+audioManager.off('deviceChange', deviceChangeCallback);
+```
+
+## off('interrupt')
+
+```TypeScript
+off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptAction>): void
+```
+
+取消监听音频打断事件。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 11开始废弃，建议使用
+> [off('audioInterrupt')](../../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#offaudiointerrupt10)
+> 替代。
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+**替代接口：** audioInterrupt
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'interrupt' | 是 | 事件回调类型，支持的事件为'interrupt'。 |
+| interrupt | [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | 是 | 音频打断事件类型的参数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[InterruptAction](arkts-audio-audio-interruptaction-i.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('interrupt')](#oninterrupt)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let interAudioInterrupt: audio.AudioInterrupt = {
+  streamUsage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+  contentType: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+  pauseWhenDucked: true
+};
+
+// 取消该事件的所有监听。
+audioManager.off('interrupt', interAudioInterrupt);
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let interruptCallback = (interruptAction: audio.InterruptAction) => {
+  console.info(`Interrupt changed, interruptAction: ${JSON.stringify(interruptAction)}.`);
+};
+
+audioManager.on('interrupt', interAudioInterrupt, interruptCallback);
+
+audioManager.off('interrupt', interAudioInterrupt, interruptCallback);
+```
+
+## on('audioSceneChange')
+
+```TypeScript
+on(type: 'audioSceneChange', callback: Callback<AudioScene>): void
+```
+
+监听音频场景变化事件。使用callback异步回调。
+
+**起始版本：** 20
+
+**系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'audioSceneChange' | 是 | 事件回调类型，支持的事件为'audioSceneChange'，当音频场景模式发生变化时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | 是 | 回调函数，返回当前音频场景模式。 |
+
+**示例**
+
+```TypeScript
+audioManager.on('audioSceneChange', (audioScene: audio.AudioScene) => {
+  console.info(`Audio scene changed, audioScene: ${audioScene}.`);
+});
+```
+
+## on('deviceChange')
+
+```TypeScript
+on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void
+```
+
+监听音频设备连接变化事件（当音频设备连接状态发生变化时触发）。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用
+> [on('deviceChange')](arkts-audio-audio-audioroutingmanager-i.md#ondevicechange)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** deviceChange
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'，当音频设备连接状态发生变化时，触发该事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md)&gt; | 是 | 回调函数，返回设备更新详情。 |
+
+**示例**
+
+```TypeScript
+audioManager.on('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
+  console.info(`Device changed, deviceChanged: ${JSON.stringify(deviceChanged)}.`);
+});
+```
+
+## on('interrupt')
+
+```TypeScript
+on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAction>): void
+```
+
+监听音频打断事件（当音频焦点发生变化时触发）。使用callback异步回调。与[on('audioInterrupt')](arkts-audio-audio-audiorenderer-i.md#onaudiointerrupt)作用一致，均用于监听焦点变化。为无音频流的场景（未曾创建AudioRenderer对象），比如FM、语音唤醒等提供焦点变化监听功能。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 11开始废弃，建议使用
+> [on('audioInterrupt')](arkts-audio-audio-audiocapturer-i.md#onaudiointerrupt)替代。
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+**替代接口：** audioInterrupt
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'interrupt' | 是 | 事件回调类型，支持的事件为'interrupt'，当音频焦点状态发生变化时，触发该事件。 |
+| interrupt | [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | 是 | 音频打断事件类型的参数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[InterruptAction](arkts-audio-audio-interruptaction-i.md)&gt; | 是 | 回调函数，返回打断事件信息。 |
+
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let interAudioInterrupt: audio.AudioInterrupt = {
+  streamUsage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+  contentType: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+  pauseWhenDucked: true
+};
+
+audioManager.on('interrupt', interAudioInterrupt, (interruptAction: audio.InterruptAction) => {
+  console.info(`Interrupt changed, interruptAction: ${JSON.stringify(interruptAction)}.`);
+});
+```
+
+## getAudioParameter
+
+```TypeScript
+getAudioParameter(key: string, callback: AsyncCallback<string>): void
+```
+
+获取指定音频参数值。使用callback异步回调。本接口的使用场景为：根据硬件设备的支持能力扩展音频配置。在不同的设备平台上，所支持的音频参数会存在差异。示例代码内使用样例参数，实际支持的音频配置参数见具体设备平台的资料描述。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 11开始废弃。
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| key | string | 是 | 待获取的音频参数的键。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取指定音频参数值成功，err为undefined，data为获取到的指定音频参数值；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getAudioParameter('key_example', (err: BusinessError, value: string) => {
+  if (err) {
+    console.error(`Failed to obtain the audio parameter. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in obtaining the audio parameter, value: ${value}.`);
+});
+```
+
+<a id="getaudioparameter-1"></a>
+
+## getAudioParameter
+
+```TypeScript
+getAudioParameter(key: string): Promise<string>
+```
+
+获取指定音频参数值。使用Promise异步回调。本接口的使用场景为：根据硬件设备的支持能力扩展音频配置。在不同的设备平台上，所支持的音频参数会存在差异。示例代码内使用样例参数，实际支持的音频配置参数见具体设备平台的资料描述。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 11开始废弃。
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| key | string | 是 | 待获取的音频参数的键。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string&gt; | Promise对象，返回获取的音频参数值。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getAudioParameter('key_example').then((value: string) => {
+  console.info(`Succeeded in obtaining the audio parameter, value: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the audio parameter. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## getDevices
@@ -524,32 +915,6 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 });
 ```
 
-## getRecordingManager
-
-```TypeScript
-getRecordingManager(): AudioRecordingManager
-```
-
-获取录音策略管理器。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i.md) | 返回AudioRecordingManager实例。 |
-
-**示例**
-
-```TypeScript
-let audioRecordingManager: audio.AudioRecordingManager = audioManager.getRecordingManager();
-```
-
 ## getRingerMode
 
 ```TypeScript
@@ -632,104 +997,6 @@ audioManager.getRingerMode().then((value: audio.AudioRingMode) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
 });
-```
-
-## getRoutingManager
-
-```TypeScript
-getRoutingManager(): AudioRoutingManager
-```
-
-获取音频路由管理器。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Multimedia.Audio.Device
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [AudioRoutingManager](arkts-audio-audio-audioroutingmanager-i.md) | 返回AudioRoutingManager实例。 |
-
-**示例**
-
-```TypeScript
-let audioRoutingManager: audio.AudioRoutingManager = audioManager.getRoutingManager();
-```
-
-## getSessionManager
-
-```TypeScript
-getSessionManager(): AudioSessionManager
-```
-
-获取音频会话管理器。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [AudioSessionManager](arkts-audio-audio-audiosessionmanager-i.md) | 返回AudioSessionManager实例。 |
-
-**示例**
-
-```TypeScript
-let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
-```
-
-## getSpatializationManager
-
-```TypeScript
-getSpatializationManager(): AudioSpatializationManager
-```
-
-获取空间音频管理器。
-
-**起始版本：** 18
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [AudioSpatializationManager](arkts-audio-audio-audiospatializationmanager-i.md) | 返回AudioSpatializationManager实例。 |
-
-**示例**
-
-```TypeScript
-let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
-```
-
-## getStreamManager
-
-```TypeScript
-getStreamManager(): AudioStreamManager
-```
-
-获取音频流管理器。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [AudioStreamManager](arkts-audio-audio-audiostreammanager-i.md) | 返回AudioStreamManager实例。 |
-
-**示例**
-
-```TypeScript
-let audioStreamManager: audio.AudioStreamManager = audioManager.getStreamManager();
 ```
 
 ## getVolume
@@ -823,32 +1090,6 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to obtain the volume. Code: ${err.code}, message: ${err.message}`);
 });
-```
-
-## getVolumeManager
-
-```TypeScript
-getVolumeManager(): AudioVolumeManager
-```
-
-获取音频音量管理器。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i.md) | 返回AudioVolumeManager实例。 |
-
-**示例**
-
-```TypeScript
-let audioVolumeManager: audio.AudioVolumeManager = audioManager.getVolumeManager();
 ```
 
 ## isActive
@@ -1302,247 +1543,6 @@ audioManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
   console.info('Succeeded in muting the stream.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to mute the stream. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## off('audioSceneChange')
-
-```TypeScript
-off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void
-```
-
-取消监听音频场景变化事件。
-
-**起始版本：** 20
-
-**系统能力：** SystemCapability.Multimedia.Audio.Communication
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'audioSceneChange' | 是 | 事件回调类型，支持的事件为'audioSceneChange'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('audioSceneChange')](#onaudioscenechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
-
-**示例**
-
-```TypeScript
-// 取消该事件的所有监听。
-audioManager.off('audioSceneChange');
-
-// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let audioSceneChangeCallback = (audioScene: audio.AudioScene) => {
-  console.info(`Audio scene changed, audioScene: ${audioScene}.`);
-};
-
-audioManager.on('audioSceneChange', audioSceneChangeCallback);
-
-audioManager.off('audioSceneChange', audioSceneChangeCallback);
-```
-
-## off('deviceChange')
-
-```TypeScript
-off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void
-```
-
-取消监听音频设备连接变化事件。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [off('deviceChange')](arkts-audio-audio-audioroutingmanager-i.md#offdevicechange)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** deviceChange
-
-**系统能力：** SystemCapability.Multimedia.Audio.Device
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('deviceChange')](#ondevicechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
-
-**示例**
-
-```TypeScript
-// 取消该事件的所有监听。
-audioManager.off('deviceChange');
-
-// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let deviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
-  console.info(`Device changed, deviceChanged: ${JSON.stringify(deviceChanged)}.`);
-};
-
-audioManager.on('deviceChange', deviceChangeCallback);
-
-audioManager.off('deviceChange', deviceChangeCallback);
-```
-
-## off('interrupt')
-
-```TypeScript
-off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptAction>): void
-```
-
-取消监听音频打断事件。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 11开始废弃，建议使用
-> [off('audioInterrupt')](../../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#offaudiointerrupt10)
-> 替代。
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-**替代接口：** audioInterrupt
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'interrupt' | 是 | 事件回调类型，支持的事件为'interrupt'。 |
-| interrupt | [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | 是 | 音频打断事件类型的参数。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[InterruptAction](arkts-audio-audio-interruptaction-i.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('interrupt')](#oninterrupt)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
-
-**示例**
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-
-let interAudioInterrupt: audio.AudioInterrupt = {
-  streamUsage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-  contentType: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-  pauseWhenDucked: true
-};
-
-// 取消该事件的所有监听。
-audioManager.off('interrupt', interAudioInterrupt);
-
-// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let interruptCallback = (interruptAction: audio.InterruptAction) => {
-  console.info(`Interrupt changed, interruptAction: ${JSON.stringify(interruptAction)}.`);
-};
-
-audioManager.on('interrupt', interAudioInterrupt, interruptCallback);
-
-audioManager.off('interrupt', interAudioInterrupt, interruptCallback);
-```
-
-## on('audioSceneChange')
-
-```TypeScript
-on(type: 'audioSceneChange', callback: Callback<AudioScene>): void
-```
-
-监听音频场景变化事件。使用callback异步回调。
-
-**起始版本：** 20
-
-**系统能力：** SystemCapability.Multimedia.Audio.Communication
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'audioSceneChange' | 是 | 事件回调类型，支持的事件为'audioSceneChange'，当音频场景模式发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioScene](arkts-audio-audio-audioscene-e.md)&gt; | 是 | 回调函数，返回当前音频场景模式。 |
-
-**示例**
-
-```TypeScript
-audioManager.on('audioSceneChange', (audioScene: audio.AudioScene) => {
-  console.info(`Audio scene changed, audioScene: ${audioScene}.`);
-});
-```
-
-## on('deviceChange')
-
-```TypeScript
-on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void
-```
-
-监听音频设备连接变化事件（当音频设备连接状态发生变化时触发）。使用callback异步回调。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [on('deviceChange')](arkts-audio-audio-audioroutingmanager-i.md#ondevicechange)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** deviceChange
-
-**系统能力：** SystemCapability.Multimedia.Audio.Device
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'deviceChange' | 是 | 事件回调类型，支持的事件为'deviceChange'，当音频设备连接状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md)&gt; | 是 | 回调函数，返回设备更新详情。 |
-
-**示例**
-
-```TypeScript
-audioManager.on('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
-  console.info(`Device changed, deviceChanged: ${JSON.stringify(deviceChanged)}.`);
-});
-```
-
-## on('interrupt')
-
-```TypeScript
-on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAction>): void
-```
-
-监听音频打断事件（当音频焦点发生变化时触发）。使用callback异步回调。与[on('audioInterrupt')](arkts-audio-audio-audiorenderer-i.md#onaudiointerrupt)作用一致，均用于监听焦点变化。为无音频流的场景（未曾创建AudioRenderer对象），比如FM、语音唤醒等提供焦点变化监听功能。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 11开始废弃，建议使用
-> [on('audioInterrupt')](arkts-audio-audio-audiocapturer-i.md#onaudiointerrupt)替代。
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-**替代接口：** audioInterrupt
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'interrupt' | 是 | 事件回调类型，支持的事件为'interrupt'，当音频焦点状态发生变化时，触发该事件。 |
-| interrupt | [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | 是 | 音频打断事件类型的参数。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[InterruptAction](arkts-audio-audio-interruptaction-i.md)&gt; | 是 | 回调函数，返回打断事件信息。 |
-
-**示例**
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-
-let interAudioInterrupt: audio.AudioInterrupt = {
-  streamUsage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-  contentType: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-  pauseWhenDucked: true
-};
-
-audioManager.on('interrupt', interAudioInterrupt, (interruptAction: audio.InterruptAction) => {
-  console.info(`Interrupt changed, interruptAction: ${JSON.stringify(interruptAction)}.`);
 });
 ```
 

@@ -1,4 +1,4 @@
-# @ohos.arkui.dialog
+# @ohos.arkui.dialog(弹出框)
 
 提供统一的Dialog API。
 

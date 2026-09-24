@@ -298,7 +298,7 @@ displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
 > 
 > - 从API version 18开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
-当导航点样式设定为圆形导航点，视窗内显示子元素数量大于1（多页场景）&lt;!--RP1--&gt;&lt;!--RP1End--&gt;，显示导航点数量情况如下表：
+当导航点样式设定为圆形导航点，视窗内显示子元素数量大于1（多页场景）<!--RP1--><!--RP1End-->，显示导航点数量情况如下表：
 
 | 子元素总数量是否大于视窗内显示的子元素数量 | 是否按组翻页 | 是否循环 | 圆形导航点显示数量 | 说明 |  
 | ------------------------------------------ | ------------ | --------------- | ------------------------------------------------------------ | ---------------------------------------- |  
@@ -526,33 +526,6 @@ indicatorInteractive(value: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | boolean | 是 | 导航点是否可交互。<br>true：导航点可交互；false：导航点不可交互。<br>传入参数非法时，按true处理。 |
-
-## indicatorStyle
-
-```TypeScript
-indicatorStyle(value?: IndicatorStyle)
-```
-
-设置导航点样式。
-
-> **说明：** 
-
-> 从API version 8开始支持，从API version 10开始废弃，建议使用
-> [indicator](#indicator)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 10
-
-**替代接口：** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | [IndicatorStyle](arkts-arkui-swiper-comp-indicatorstyle-i.md) | 否 | 导航点样式。 |
 
 ## interval
 
@@ -1022,3 +995,30 @@ vertical(value: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否为纵向滑动。true为纵向滑动，false为横向滑动。<br>默认值：false |
+
+## indicatorStyle
+
+```TypeScript
+indicatorStyle(value?: IndicatorStyle)
+```
+
+设置导航点样式。
+
+> **说明：** 
+
+> 从API version 8开始支持，从API version 10开始废弃，建议使用
+> [indicator](#indicator)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 10
+
+**替代接口：** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [IndicatorStyle](arkts-arkui-swiper-comp-indicatorstyle-i.md) | 否 | 导航点样式。 |

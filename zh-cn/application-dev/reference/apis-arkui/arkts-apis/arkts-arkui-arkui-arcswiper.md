@@ -24,12 +24,6 @@ import { ArcSwiper, ArcSwiperAttribute, ArcDotIndicator, ArcDirection, ArcSwiper
 | [SwiperContentAnimatedTransition](arkts-arkui-arkui-arcswiper-swipercontentanimatedtransition-i.md) | ArcSwiper自定义切换动画相关信息。 |
 | [SwiperContentTransitionProxy](arkts-arkui-arkui-arcswiper-swipercontenttransitionproxy-i.md) | ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画视窗内的页面信息，同时，也可以通过调用该对象的finishTransition接口通知ArcSwiper组件页面自定义动画已结束。 |
 
-### 枚举
-
-| 名称 | 说明 |
-| --- | --- |
-| [ArcDirection](arkts-arkui-arkui-arcswiper-arcdirection-e.md) | 弧形方向。 |
-
 ### 类型
 
 | 名称 | 说明 |
@@ -39,6 +33,12 @@ import { ArcSwiper, ArcSwiperAttribute, ArcDotIndicator, ArcDirection, ArcSwiper
 | [FinishAnimationHandler](arkts-arkui-finishanimationhandler-t.md) | 停止播放动画时，告知应用。 |
 | [GestureSwipeHandler](arkts-arkui-gestureswipehandler-t.md) | 在页面跟手滑动过程中，逐帧触发的回调。 |
 | [IndexChangedHandler](arkts-arkui-indexchangedhandler-t.md) | 当前显示元素的索引变化时，告知应用。index序列从0开始。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ArcDirection](arkts-arkui-arkui-arcswiper-arcdirection-e.md) | 弧形方向。 |
 
 ### 属性
 

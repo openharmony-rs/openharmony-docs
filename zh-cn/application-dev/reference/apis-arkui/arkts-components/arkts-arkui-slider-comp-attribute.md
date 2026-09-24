@@ -254,62 +254,6 @@ enableHapticFeedback(enabled: boolean)
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 是否开启触控反馈。<br>true：开启触控反馈；false：不开启触控反馈。<br>默认值：true |
 
-## maxLabel
-
-```TypeScript
-maxLabel(value: string)
-```
-
-设置最大值标签的文本内容。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用max替代。max是[SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md)中的属性。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** max
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | string | 是 | 最大值标签文本。 |
-
-## minLabel
-
-```TypeScript
-minLabel(value: string)
-```
-
-设置最小值标签的文本内容。
-
-> **说明：** 
-> 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用min替代。min是[SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md)中的属性。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** min
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | string | 是 | 最小值标签文本。 |
-
 ## minResponsiveDistance
 
 ```TypeScript
@@ -751,3 +695,59 @@ trackThickness或[blockSize](#blocksize)的大小超过Slider组件的宽度或�
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 滑轨的粗细。<br>默认值：当参数style的值设置[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet 时为 4.0vp，[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).InSet时为20.0vp。 |
+
+## maxLabel
+
+```TypeScript
+maxLabel(value: string)
+```
+
+设置最大值标签的文本内容。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用max替代。max是[SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md)中的属性。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** max
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | string | 是 | 最大值标签文本。 |
+
+## minLabel
+
+```TypeScript
+minLabel(value: string)
+```
+
+设置最小值标签的文本内容。
+
+> **说明：** 
+> 
+> 从API version 7开始支持，从API version 9开始废弃，建议使用min替代。min是[SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md)中的属性。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** min
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | string | 是 | 最小值标签文本。 |
