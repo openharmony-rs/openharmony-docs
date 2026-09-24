@@ -46,7 +46,7 @@ obtainingSupported() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[obtain_supported_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_supported_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 obtainingSupported() {
@@ -65,4 +65,4 @@ obtainingSupported() {
 ## 示例代码
 
   - [查询支持的认证能力(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
-  - [查询支持的认证能力(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
+  - [查询支持的认证能力(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)

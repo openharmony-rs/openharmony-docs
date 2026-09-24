@@ -34,7 +34,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 | 名称 | 类型 | 只读 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceType | string | 是 | 设备类型。详细请参考[deviceTypes标签](../../quick-start/module-configuration-file.md#devicetypes标签)。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP1-->wearable<!--RP1End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
+| deviceType | string | 是 | 设备类型。详细请参考[deviceTypes标签](../../quick-start/module-configuration-file.md#devicetypes标签)。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：wearable<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | manufacture | string | 是 | 设备厂家名称。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | brand | string | 是 | 设备品牌名称。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | marketName | string | 是 | 外部产品系列。<br/>示例：<!--RP2-->Mate XX<!--RP2End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
@@ -47,7 +47,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | serial | string | 是 | 设备序列号SN(Serial Number)，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。<br/>**说明**：可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请) <br/>示例：序列号随设备差异<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | bootloaderVersion | string | 是 | Bootloader版本号，用于标识设备启动引导程序的版本信息。<br/>示例：bootloader<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | abiList | string | 是 | 应用二进制接口（Abi）。<br/>示例：arm64-v8a<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
-| securityPatchTag | string | 是 | 安全补丁级别。<br/>示例：<!--RP7-->2021/01/01<!--RP7End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
+| securityPatchTag | string | 是 | 安全补丁级别。<br/>示例：2021/01/01<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | displayVersion | string | 是 | 产品版本。<!--RP14--><!--RP14End--><br/>示例：<!--RP8-->XXX X.X.X.X<!--RP8End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | incrementalVersion | string | 是 | 差异版本号，是编译时生成的ohos的版本号。 <br/>示例：6.1.1.120<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | osReleaseType | string | 是 | 系统的发布类型，取值为：<br/>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。<br/>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。<br/>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。<br/>示例：<!--RP9-->Canary/Beta/Release<!--RP9End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
@@ -57,8 +57,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | featureVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | buildVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：1<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | sdkApiVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统软件API版本。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：12<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
-| sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。从API 26.0.0 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0<br/>**ArkTS-Dyn起始版本：** 26.0.0 |
-| sdkPatchApiVersion | number | 是 | 系统软件Patch API版本。从API 26.0.0 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0<br/>**ArkTS-Dyn起始版本：** 26.0.0 |
+| sdkMinorApiVersion | number | 是 | 从API版本26.0.0起，为配合语义化版本号，新增次版本号的定义，即中间字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：例如系统软件的API版本为26.0.1，则sdkMinorApiVersion为0。例如系统软件的API版本为26.1.0，则sdkMinorApiVersion为1。<br/>**ArkTS-Dyn起始版本：** 26.0.0 |
+| sdkPatchApiVersion | number | 是 | 从API版本26.0.0起，为配合语义化版本号，新增修订版本号的定义，即第三个字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：例如系统软件的API版本为26.0.1，则sdkPatchApiVersion为1。例如系统软件的API版本为26.1.0，则sdkPatchApiVersion为0。<br/>**ArkTS-Dyn起始版本：** 26.0.0 |
 | firstApiVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 首个版本系统软件API版本。<br/>示例：3<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。如果需要获取其中的某个字段值，建议直接使用对应的字段（如deviceType、manufacture等），可提升效率，不建议解析versionId获取。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | buildType | string | 是 | 构建类型。<br/>示例：default<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
@@ -233,7 +233,7 @@ let distributionOSApiVersion: number = deviceInfo.distributionOSApiVersion;
 console.info('the value of the deviceInfo distributionOSApiVersion is :' + distributionOSApiVersion);
 
 let distributionOSApiName: string = deviceInfo.distributionOSApiName;
-// 输出结果：the value of the deviceInfo distributionOSApiName is :OpenHarmony-API
+// 输出结果：the value of the deviceInfo distributionOSApiName is :5.0.1
 console.info('the value of the deviceInfo distributionOSApiName is :' + distributionOSApiName);
 
 let distributionOSReleaseType: string = deviceInfo.distributionOSReleaseType;
@@ -334,13 +334,12 @@ ArkTS-Dyn: apiAvailable(version: string | number): boolean
 
 ArkTS-Sta: apiAvailable(version: string | int): boolean
 
-<!--RP13-->
 检查指定的API版本在当前设备上是否可用。<br/>
 此方法提供OpenHarmony及其各发行版系统版本的兼容性检查。该方法会根据输入格式和API版本范围自动选择合适的版本检查方法。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -363,22 +362,21 @@ ArkTS-Sta: apiAvailable(version: string | int): boolean
 ```ts
 import { deviceInfo } from '@kit.BasicServicesKit';
 
-// 检查API版本是否大于等于26.0.0（返回true表示当前设备API版本满足要求）
+// 针对API version 26.0.0及以后的OpenHarmony底座及发行版接口
 if (deviceInfo.apiAvailable('26.0.0')) {
   // 需要版本隔离的方法
 }
 
 
-// 检查API版本是否大于等于5.0.1 (Distribution OS version, API 26.0.0-)
+// 针对Distribution OS专有接口，即接口标记为since M.S.F(N)的接口
 if (deviceInfo.apiAvailable('5.0.1')) {
   // 需要版本隔离的方法
 }
 
 
-// 检查API版本是否大于等于13 (OpenHarmony SDK version, API 26.0.0-)
+// 针对OpenHarmony底座公共接口，即接口标记为since N
 if (deviceInfo.apiAvailable(13)) {
   // 需要版本隔离的方法
 }
 
 ```
-<!--RP13End-->

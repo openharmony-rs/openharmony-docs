@@ -12,6 +12,8 @@
 >  **说明：**
 > 
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口请参见[@ohos.resourceschedule.workScheduler (延迟任务调度)](js-apis-resourceschedule-workScheduler.md)。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -46,11 +48,13 @@ setExecFrequency(info: FrequencyInfo): void
 
 设置应用所在活跃分组的执行频率。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.SET_WORK_SCHEDULER_PROPERTY
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -98,11 +102,13 @@ resetExecFrequency(uid: number): void
 
 重置应用所在活跃分组的执行频率。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.SET_WORK_SCHEDULER_PROPERTY
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -146,7 +152,7 @@ try {
 
 FrequencyInfo作为参数设置时，uid、workId、interval为必填项。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 

@@ -44,21 +44,39 @@ native callWithRecord(entry: Record<string, PersonInfo>): void;
 ```cpp
 void CallWithRecordImpl(ani_env *env, ani_object record) {
     ani_class recordCls;
-    env->FindClass("std.core.Record", &recordCls);
+    ani_status status = env->FindClass("std.core.Record", &recordCls);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     ani_method getter;
     // Signature can be omitted if there are not overloads
-    env->Class_FindIndexableGetter(recordCls, nullptr, &getter);
+    status = env->Class_FindIndexableGetter(recordCls, nullptr, &getter);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     static constexpr std::string_view name = "Chloe";
     ani_string aniName;
-    env->String_NewUTF8(name.data(), name.length(), &aniName);
+    status = env->String_NewUTF8(name.data(), name.length(), &aniName);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     ani_ref person;
-    env->Object_CallMethod_Ref(record, getter, &person, aniName);
+    status = env->Object_CallMethod_Ref(record, getter, &person, aniName);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     ani_ref personName;
-    env->Object_GetFieldByName_Ref(static_cast<ani_object>(person), "name", &personName);
+    status = env->Object_GetFieldByName_Ref(static_cast<ani_object>(person), "name", &personName);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     ani_double personAge;
-    env->Object_GetFieldByName_Double(static_cast<ani_object>(person), "age", &personAge);
+    status = env->Object_GetFieldByName_Double(static_cast<ani_object>(person), "age", &personAge);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 }
 ```
 
@@ -79,13 +97,16 @@ ANI侧提供以下`TupleValue_*`系列接口：
 ```ts
 let a = [3.14, 2.71, 1.61, 0.59, 10.0];
 
-native callWithTuple(tuple:[double, double, double, double, double]):void;
+native callWithTuple(tuple: [double, double, double, double, double]): void;
 ```
 
 ```cpp
 void callWithTupleImpl(ani_env *env, ani_tuple_value tuple) {
     ani_double result = 0.0;
-    env->TupleValue_GetItem_Double(tuple, 0U, &result);  // result = 3.14
+    ani_status status = env->TupleValue_GetItem_Double(tuple, 0U, &result);  // result = 3.14
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 }
 ```
 上述元组示例，通过传入元组对象和序号参数，获取对应元组序号位置的值。

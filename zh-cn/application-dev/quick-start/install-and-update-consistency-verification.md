@@ -32,7 +32,7 @@
 |--|--|--|--|
 |bundleName|标识应用名称。该字段来源于[app.json5配置文件](./app-configuration-file.md)中的bundleName字段。|是|是|
 |versionCode|标识应用版本号。该字段来源于[app.json5配置文件](./app-configuration-file.md)中的versionCode字段。|是|是|
-|apiReleaseType|标识应用运行需要的API目标版本的类型。设备中未安装该应用，该应用包含多个模块包，模块一个一个安装时，不检验一致性。该字段来源于[app.json5配置文件](./app-configuration-file.md)中的apiReleaseType字段。|否|是|
+|apiReleaseType|标识应用运行需要的API目标版本的类型。设备中未安装该应用，该应用包含多个模块包，模块一个一个安装时，不校验一致性。该字段来源于[app.json5配置文件](./app-configuration-file.md)中的apiReleaseType字段。|否|是|
 |<!--DelRow--> singleton|标识应用是否安装在0用户下。|否|是|
 |<!--DelRow--> appType|标识应用是三方应用或系统应用。|是|是|
 |<!--DelRow--> isStage|标识应用是否为Stage模型。|是，FA模型和Stage模型在同版本中不允许变更。|否|

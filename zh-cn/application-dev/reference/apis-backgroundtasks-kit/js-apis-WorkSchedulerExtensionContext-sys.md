@@ -1,4 +1,4 @@
-# WorkSchedulerExtensionContext（系统接口）
+# WorkSchedulerExtensionContext (延迟任务调度回调上下文)(系统接口)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -18,6 +18,14 @@ WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文�
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口请参见[WorkSchedulerExtensionContext (延迟任务调度回调上下文)(系统接口)](js-apis-WorkSchedulerExtensionContext.md)。
+
+## 导入模块
+
+```ts
+import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';  
+```
 
 ## 使用说明
 

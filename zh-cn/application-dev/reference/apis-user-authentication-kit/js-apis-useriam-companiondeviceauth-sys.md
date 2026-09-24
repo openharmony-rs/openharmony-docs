@@ -325,6 +325,10 @@ type AvailableDeviceStatusCallback = (deviceStatusList: DeviceStatus[]) => void
 
 状态监听器对象。用于监听或获取模板状态、持续认证状态、可添加设备状态等信息。通过[getStatusMonitor](#companiondeviceauthgetstatusmonitor)获取此对象。
 
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
 ### getTemplateStatus
 
 getTemplateStatus(): Promise&lt;TemplateStatus[]&gt;
@@ -1044,9 +1048,9 @@ type PasscodeSubmitCallback = (passcode: Uint8Array) => void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 
@@ -1064,9 +1068,9 @@ type PasscodeSubmitCallback = (passcode: Uint8Array) => void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------- | ---------- | ---- | ---- | ------------------------------------------------------------ |
@@ -1084,9 +1088,9 @@ type PasscodePromptCallback = (submit: PasscodeSubmitCallback, params: PasscodeP
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 
@@ -1109,9 +1113,9 @@ registerPasscodePromptCallback(callback: PasscodePromptCallback): void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 
@@ -1160,9 +1164,9 @@ unregisterPasscodePromptCallback(): void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **错误码：**
 

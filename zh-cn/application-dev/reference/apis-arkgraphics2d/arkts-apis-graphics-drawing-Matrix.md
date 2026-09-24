@@ -652,7 +652,7 @@ ArkTS-Sta: getValue(index: int): double
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 函数返回矩阵给定索引位对应的值，该返回值为整数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 函数返回矩阵给定索引位对应的值，该返回值为浮点数。 |
 
 **错误码：**
 

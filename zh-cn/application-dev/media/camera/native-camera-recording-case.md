@@ -57,7 +57,7 @@
 
     void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "OnCameraInput errorCode = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "OnCameraInput errorCode = %{public}d", errorCode);
     }
 
     CameraInput_Callbacks* GetCameraInputListener(void)
@@ -75,7 +75,7 @@
 
     void CaptureSessionOnError(Camera_CaptureSession* session, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
     }
 
     CaptureSession_Callbacks* GetCaptureSessionRegister(void)
@@ -99,7 +99,7 @@
 
     void VideoOutputOnError(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
     }
 
     VideoOutput_Callbacks* GetVideoOutputListener(void)
@@ -163,10 +163,10 @@
         }
 
         for (int index = 0; index < size; index++) {
-            OH_LOG_ERROR(LOG_APP, "cameraId  =  %{public}s ", cameras[index].cameraId);              // 获取相机ID。
-            OH_LOG_ERROR(LOG_APP, "cameraPosition  =  %{public}d ", cameras[index].cameraPosition);  // 获取相机位置。
-            OH_LOG_ERROR(LOG_APP, "cameraType  =  %{public}d ", cameras[index].cameraType);          // 获取相机类型。
-            OH_LOG_ERROR(LOG_APP, "connectionType  =  %{public}d ", cameras[index].connectionType);  // 获取相机连接类型。
+            OH_LOG_INFO(LOG_APP, "cameraId  =  %{public}s ", cameras[index].cameraId);              // 获取相机ID。
+            OH_LOG_INFO(LOG_APP, "cameraPosition  =  %{public}d ", cameras[index].cameraPosition);  // 获取相机位置。
+            OH_LOG_INFO(LOG_APP, "cameraType  =  %{public}d ", cameras[index].cameraType);          // 获取相机类型。
+            OH_LOG_INFO(LOG_APP, "connectionType  =  %{public}d ", cameras[index].connectionType);  // 获取相机连接类型。
         }
 
         if (size < cameraDeviceIndex + 1) {
@@ -372,19 +372,19 @@
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "Delete Cameras failed.");
         } else {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_DeleteSupportedCameras. ok");
+            OH_LOG_INFO(LOG_APP, "OH_CameraManager_DeleteSupportedCameras. ok");
         }
         ret = OH_CameraManager_DeleteSupportedCameraOutputCapability(cameraManager, cameraOutputCapability);
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "Delete Cameras failed.");
         } else {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_DeleteSupportedCameraOutputCapability success");
+            OH_LOG_INFO(LOG_APP, "OH_CameraManager_DeleteSupportedCameraOutputCapability success");
         }
         ret = OH_Camera_DeleteCameraManager(cameraManager);
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "Delete Cameras failed.");
         } else {
-            OH_LOG_ERROR(LOG_APP, "OH_Camera_DeleteCameraManager success");
+            OH_LOG_INFO(LOG_APP, "OH_Camera_DeleteCameraManager success");
         }
     }
     ```

@@ -49,7 +49,7 @@ queryDeviceInfo(deviceId?: number): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 
 | 错误码ID    | 错误信息                                                                  |
 |----------|-----------------------------------------------------------------------|
-| 201      | The permission check failed.                                          |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. A non-system application cannot call a system API. |
 | 401      | Parameter error. Possible causes: 1.Incorrect parameter types.        |
 | 26300001 | ExternalDeviceManager service exception.                              |
@@ -101,7 +101,7 @@ queryDriverInfo(driverUid?: string): Array&lt;Readonly&lt;DriverInfo&gt;&gt;
 
 | 错误码ID    | 错误信息                                                                  |
 |----------|-----------------------------------------------------------------------|
-| 201      | The permission check failed.                                          |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. A non-system application cannot call a system API. |
 | 401      | Parameter error. Possible causes: 1.Incorrect parameter types.        |
 | 26300001 | ExternalDeviceManager service exception.                              |
@@ -150,7 +150,7 @@ USB设备详细信息，继承自[DeviceInfo](#deviceinfo)。
 |-------------------|--------------------------------------------------------------------|-----|-----|------------------|
 | vendorId          | number                                                             | 否   | 否   | USB设备Vendor ID。  |
 | productId         | number                                                             | 否   | 否   | USB设备Product ID。 |
-| interfaceDescList | Array&lt;Readonly&lt;[USBInterfaceDesc](#usbinterfacedesc)&gt;&gt; | 是   | 否   | USB设备接口描述符列表。    |
+| interfaceDescList | Array&lt;Readonly&lt;[USBInterfaceDesc](#usbinterfacedesc)&gt;&gt; | 否   | 否   | USB设备接口描述符列表。    |
 
 ## USBInterfaceDesc
 

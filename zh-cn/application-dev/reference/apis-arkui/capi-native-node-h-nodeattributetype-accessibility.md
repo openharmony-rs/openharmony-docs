@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## 概述
 
-定义ArkUI在Native侧可以设置的无障碍相关属性集合，包含无障碍文本、说明、模式、状态、值等属性设置。
+定义ArkUI在Native侧可设置、可获取的无障碍相关属性集合，包含无障碍文本、说明、模式、状态、值等属性。
 
 **起始版本：** 12
 
@@ -36,13 +36,13 @@ NODE_ACCESSIBILITY_GROUP = 62
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 为1时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容；为0时表示子组件各自独立可被选中，无障碍服务将分别关注其各子组件内容。参数取值为1或0，传入非法值时该设置不生效。 |
+| .value[0].i32 | 为1时表示该组件及其所有子组件合并为一个可被无障碍服务整体聚焦的组件，无障碍服务将不再单独关注其子组件内容；为0时表示各子组件可被无障碍服务单独聚焦。参数取值为1或0，传入非法值时该设置不生效。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 为1时表示该组件及其所有子组件合并为一个可被无障碍服务整体聚焦的组件，无障碍服务将不再单独关注其子组件内容；为0时表示不启用无障碍分组，各子组件可被无障碍服务单独关注。参数取值为1或0。 |
+| .value[0].i32 | 为1时表示该组件及其所有子组件合并为一个可被无障碍服务整体聚焦的组件，无障碍服务将不再单独关注其子组件内容；为0时表示各子组件可被无障碍服务单独聚焦。返回值取值为1或0。 |
 
 ## NODE_ACCESSIBILITY_TEXT
 
@@ -90,7 +90,7 @@ NODE_ACCESSIBILITY_MODE = 64
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 辅助服务模式，参数类型[ArkUI_AccessibilityMode](capi-native-type-h.md#arkui_accessibilitymode)。 |
+| .value[0].i32 | 辅助服务模式，返回值类型为[ArkUI_AccessibilityMode](capi-native-type-h.md#arkui_accessibilitymode)。 |
 
 ## NODE_ACCESSIBILITY_DESCRIPTION
 
@@ -156,7 +156,7 @@ NODE_ACCESSIBILITY_ACTIONS = 88
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 配置无障碍操作类型，参数类型[ArkUI_AccessibilityActionType](capi-native-type-h.md#arkui_accessibilityactiontype)。 |
+| .value[0].u32 | 无障碍操作类型，返回值类型为[ArkUI_AccessibilityActionType](capi-native-type-h.md#arkui_accessibilityactiontype)。 |
 
 ## NODE_ACCESSIBILITY_ROLE
 
@@ -180,7 +180,7 @@ NODE_ACCESSIBILITY_ROLE = 89
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 无障碍组件类型，参数类型[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)。 |
+| .value[0].u32 | 无障碍角色，返回值类型为[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)。 |
 
 ## NODE_ACCESSIBILITY_STATE
 

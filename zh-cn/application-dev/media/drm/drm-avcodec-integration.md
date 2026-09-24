@@ -60,6 +60,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 2. 获取设备支持的DRM解决方案名称和唯一标识的列表。
 
     ```c++
+    #include <cstring>
     uint32_t count = 3; // count是当前设备实际支持的DRM插件的个数，用户根据实际情况设置。
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));

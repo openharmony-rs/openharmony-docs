@@ -181,7 +181,7 @@ ArkTS-Dyn: onTerminated(callback: Callback\<TerminationInfo\>)
 
 ArkTS-Sta: onTerminated(callback: Callback\<TerminationInfo\> | undefined)
 
-被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时触发此回调。使用callback异步回调。
+被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时触发此回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -213,7 +213,7 @@ ArkTS-Dyn: send(data: Record\<string, Object\>): void
 
 ArkTS-Sta: send(data: Record\<string, RecordData\>): void
 
-用于在双方建立连接成功后，向被拉起的Ability发送数据，提供异步发送能力。数据将被扩展Ability通过[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)接收处理。
+用于在双方建立连接成功后，向被拉起的Ability发送数据，提供异步发送能力。数据将被拉起的Ability通过[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)接收处理。
 
 **系统接口：** 此接口为系统接口。
 
@@ -285,7 +285,7 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，代表订阅被拉起的Ability异步注册时触发的回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。订阅被拉起的Ability注册[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)后触发的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。被拉起的Ability注册[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)后触发的回调。 |
 
 ### on('syncReceiverRegister')
 
@@ -312,7 +312,7 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-取消订阅被拉起的Ability异步注册时触发的回调。使用callback异步回调。
+取消订阅被拉起的Ability异步注册时触发的回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -333,7 +333,7 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 
 off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-取消订阅被拉起的Ability同步注册时触发的回调。使用callback异步回调。
+取消订阅被拉起的Ability同步注册时触发的回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

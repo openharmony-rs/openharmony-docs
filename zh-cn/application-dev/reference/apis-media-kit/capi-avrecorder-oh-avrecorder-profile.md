@@ -7,7 +7,7 @@
 <!--Adviser: @zzs911-->
 
 ```c
-typedef struct OH_AVRecorder_Profile {/* 成员变量详见汇总部分 */} OH_AVRecorder_Profile;
+typedef struct OH_AVRecorder_Profile {/* 成员变量详见汇总部分 */} OH_AVRecorder_Profile
 ```
 
 ## 概述

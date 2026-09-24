@@ -80,7 +80,7 @@
       - [Long](arkts-sta-long.md)
       - [Map](arkts-sta-map.md)
       - [Math](arkts-sta-math.md)
-      - [null](arkts-sta-null.md)
+      - [Null](arkts-sta-null.md)
       - [Numeric](arkts-sta-numeric.md)
       - [Object](arkts-sta-object.md)
       - [ReadonlyArray](arkts-sta-readonly-array.md)
@@ -95,7 +95,7 @@
       - EAWorker<!--js-apis-arkts-eaworker-->
         - [EAWorker（独占线程任务执行器）(ArkTS)](eaworker_managed.md)
         - [EAWorker（独占线程任务执行器）(C/C++)](eaworker_native.md)
-        - [Job和CompletableJob](job.md)
+        - [Job和CompletableJob（任务执行结果）](job.md)
         - [Message (EAWorker消息)](message.md)
         - [MessageHandler (EAWorker消息处理器)](message_handler.md)
       - [WorkerLocal (工作线程本地存储)](arkts-sta-workerlocal.md)
@@ -106,7 +106,7 @@
       - [ConcurrentQueue (并发队列)](arkts-sta-concurrentqueue.md)
       - [ConcurrentHashMap (并发哈希表)](arkts-sta-concurrenthashmap.md)
       - [StdProcess (进程管理标准库)](arkts-sta-std_process.md)
-      - [taskpool](arkts-sta-taskpool.md)
+      - [taskpool (启动任务池)](arkts-sta-taskpool.md)
       - [Promise (异步操作)](arkts-sta-promise.md)
       - [Timer (定时器)](arkts-sta-timer.md)
     - 互操作相关（ArkTS-Sta）<!--js-apis-arkts-interop-->

@@ -1,4 +1,4 @@
-# CliToolEvent (系统接口)
+# CliToolEvent (CLI工具会话事件)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->

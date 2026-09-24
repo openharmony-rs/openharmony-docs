@@ -1,7 +1,7 @@
 # 使用Node-API接口进行函数创建和调用
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -141,7 +141,10 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
 
 在C/C++侧对ArkTS函数进行调用。
 
-注意事项：napi_call_function传入的argv长度需不少于argc；argc为0时可传nullptr，否则argv元素应为有效的`napi_value`。
+注意事项：
+- napi_call_function传入的argv长度需不少于argc。
+- argc为0时可传nullptr，否则argv元素应为有效的`napi_value`。
+- napi_call_function执行后会触发微任务执行。
 
 cpp部分代码
 

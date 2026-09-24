@@ -184,7 +184,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 ## AVRecorderProfile<sup>9+</sup>
 
-音视频录制的配置文件。
+音视频录制配置参数。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 

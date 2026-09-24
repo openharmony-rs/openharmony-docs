@@ -28,7 +28,7 @@ Exif信息的读取与编辑相关C API如下，详细介绍请参考[image_sour
 
 | 接口 | 说明 |
 | -------- | -------- |
-| [OH_ImageSourceNative_GetImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) | 获取指定属性键的Exif信息。 |
+| [OH_ImageSourceNative_GetImagePropertyWithNull()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertywithnull) | 获取指定属性键的Exif信息。 |
 | [OH_ImageSourceNative_ModifyImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty) | 修改指定属性键的Exif信息。 |
 
 ## 注意事项

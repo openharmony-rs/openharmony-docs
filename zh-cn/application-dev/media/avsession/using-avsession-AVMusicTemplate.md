@@ -2,7 +2,7 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -157,7 +157,7 @@
          tabName: '首页'
        };
        let mineTab: avMusicTemplate.MediaTab = {
-         tabId: 'mine',
+         tabId: 'minePage',
          tabName: '我的'
        };
        let mainTabs: avMusicTemplate.MediaTab[] = [homeTab, mineTab];

@@ -1525,12 +1525,12 @@ export default class MainUIAbility extends UIAbility {
       deviceId: ''
     }).then((obj) => {
       caller = obj;
-      let msg = new MyMessageAble('msg', 'world');
+      let msg = new MyMessageable('msg', 'world');
       // 向Callee发送消息并获取返回结果
       caller.callWithResult(method, msg)
         .then((data) => {
           console.info('Caller callWithResult() called');
-          let retMsg = new MyMessageAble('msg', 'world');
+          let retMsg = new MyMessageable('msg', 'world');
           data.readParcelable(retMsg); // 读取Callee返回的Parcelable数据
         })
         .catch((callErr: BusinessError) => {

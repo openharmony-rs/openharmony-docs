@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-智慧手势翻页动作处理，默认方向为向前翻页，包括向右和向下。当通过[registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)接口动态自定义智慧手势行为时，设置返回值[Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md)的selectedProposal为该类型对象，会触发目标组件的翻页操作。
+智慧手势翻页动作处理，默认方向为向前翻页，包括向右和向下。继承自[TargetedGestureProposal](arkts-apis-uicontext-targetedgestureproposal.md)。当通过[registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor)接口动态自定义智慧手势行为时，设置返回值[Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md)的selectedProposal为该类型对象，会触发目标组件的翻页操作。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

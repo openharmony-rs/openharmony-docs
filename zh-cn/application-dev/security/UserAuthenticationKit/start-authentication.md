@@ -74,7 +74,7 @@
 
 > **说明：**
 >
-> 从API版本26.1.0开始，在企业账号场景下，如果用户开通了企业账号认证解锁但没有注册锁屏口令时，应用发起的锁屏口令认证将会自动切换为企业账号密码认证。
+> 从API版本26.0.1开始，在企业账号场景下，如果用户开通了企业账号认证解锁但没有注册锁屏口令时，应用发起的锁屏口令认证将会自动切换为企业账号密码认证。
 
 ## 开发步骤
 
@@ -138,7 +138,7 @@ initiatingUserAuthentication1() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication1() {
@@ -243,7 +243,7 @@ initiatingUserAuthentication2() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication2() {
@@ -352,7 +352,7 @@ initiatingUserAuthentication3() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication3() {
@@ -460,7 +460,7 @@ initiatingUserAuthentication4() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication4() {
@@ -511,4 +511,4 @@ initiatingUserAuthentication4() {
 ## 示例代码
 
   - [发起认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
-  - [发起认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
+  - [发起认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)

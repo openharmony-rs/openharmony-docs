@@ -37,4 +37,4 @@
 - AVCodec Kit常见问题<!--file-avcodec-kit-faq-->
   - [创建视频解码器和NativeWindow初始化并行](parallel-decoding-nativeWindow.md)
   - [视频编解码宽高、跨距与裁剪信息说明](video-dimension-guide.md)
-- [AVCodec Kit术语](glossary.md)
+- [AVCodec Kit术语](avcodec-glossary.md)

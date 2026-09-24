@@ -29,11 +29,11 @@ Notification Kit支持的能力主要包括：
 
 使用Notification Kit的主要业务流程如下：
 
-1.请求[通知授权](notification-glossary.md#notification-authorization通知授权)。
+1. 请求[通知授权](notification-glossary.md#notification-authorization通知授权)。
 
-2.应用发布通知到通知服务。
+2. 应用发布通知到通知服务。
 
-3.将通知展示到[通知中心](notification-glossary.md#notification-center通知中心)。
+3. 将通知展示到[通知中心](notification-glossary.md#notification-center通知中心)。
 
 
 ## 通知样式
@@ -49,6 +49,8 @@ Notification Kit中常用的通知样式如下：
 | [多行文本](./text-notification.md)       | ![multiline_notification](figures/multiline_notification.png)   | 最多可显示三行内容，每行内容超长后以“...”截断。 |
 | [通知角标](./notification-badge.md)      | ![notification_badge](figures/notification_badge.png)   | 以数字的形式展示在右上角。 |
 | [进度条](./progress-bar-notification.md) | ![progress_notification](figures/progress_notification.png)    | 进度类通知。 |
+
+<!--RP5--><!--RP5End-->
 
 ## 约束限制
 - 单个应用已发布的通知在[通知中心](notification-glossary.md#notification-center通知中心)等系统入口的留存数量有限（当前规格最多24条）。

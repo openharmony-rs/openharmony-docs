@@ -230,13 +230,13 @@ static connect\<T extends object\>(ttype: Class, defaultCreator?: StorageDefault
 > **说明：**
 >
 >
-> 1、ttype使用Class.from\<classname\>()方法获得。
+> 1. ttype使用Class.from\<classname\>()方法获得。
 >
-> 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+> 2. 确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
-> 3、PersistenceV2中存储的key为ttype的name，例如，如果传入Info类的实例，此处存储的key即为Info。
+> 3. PersistenceV2中存储的key为ttype的name，例如，如果传入Info类的实例，此处存储的key即为Info。
 >
-> 4、当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
+> 4. 当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
 
 **示例：**
 
@@ -292,13 +292,13 @@ static connect\<T extends object\>(ttype: Class, key: string, defaultCreator?: S
 
 > **说明：**
 >
-> 1、ttype使用Class.from\<classname\>()方法获得。
+> 1. ttype使用Class.from\<classname\>()方法获得。
 >
-> 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+> 2. 确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
-> 3、key建议使用有意义的值，长度不超过255，使用非法字符或空字符的行为是未定义的。
+> 3. key建议使用有意义的值，长度不超过255，使用非法字符或空字符的行为是未定义的。
 >
-> 4、当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
+> 4. 当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
 
 **示例：**
 
@@ -354,21 +354,21 @@ static globalConnect\<T extends object\>(connectOptions: ConnectOptions\<T\>): T
 > **说明：**
 >
 >
-> 1、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+> 1. 确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
-> 2、同一个key，globalConnect不同类型的数据会导致应用异常，应用需要确保类型匹配。
+> 2. 同一个key，globalConnect不同类型的数据会导致应用异常，应用需要确保类型匹配。
 >
-> 3、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
+> 3. key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
 >
-> 4、关联[\@Observed](../../ui/state-management-static/arkts-static-observed-and-objectlink.md)对象时，因为该类型的name属性未定义，需要指定key或者自定义name属性。
+> 4. 关联[\@Observed](../../ui/state-management-static/arkts-static-observed-and-objectlink.md)对象时，因为该类型的name属性未定义，需要指定key或者自定义name属性。
 >
-> 4、数据的存储路径为应用级别，不同module使用相同的key和相同的加密分区进行globalConnect，存储的数据副本应用仅有一份。
+> 5. 数据的存储路径为应用级别，不同module使用相同的key和相同的加密分区进行globalConnect，存储的数据副本应用仅有一份。
 >
-> 5、globalConnect使用同一个key但设置了不同的加密级别，数据为第一个使用globalConnect的加密级别，并且PersistenceV2中的数据也会存入最先使用key的加密级别。
+> 6. globalConnect使用同一个key但设置了不同的加密级别，数据为第一个使用globalConnect的加密级别，并且PersistenceV2中的数据也会存入最先使用key的加密级别。
 >
-> 6、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key必须不一致，否则会运行时报错。
+> 7. connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key必须不一致，否则会运行时报错。
 >
-> 7、EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA，使用说明见[声明权限](../../security/AccessToken/declare-permissions.md)。
+> 8. EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA，使用说明见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **示例：**
 仅供开发者了解globalConnect用法，完整使用需开发者自己写出@Entry组件。

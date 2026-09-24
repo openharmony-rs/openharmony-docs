@@ -13,7 +13,7 @@
 | -------- | -------- |
 | [LocalStorage](./arkts-localstorage.md) | [@ObservedV2](./arkts-new-observedV2-and-trace.md) [@Trace](./arkts-new-observedV2-and-trace.md) |
 | [AppStorage](./arkts-appstorage.md) | [AppStorageV2](./arkts-new-appstoragev2.md) |
-| [Environment](./arkts-environment.md) | 通过[UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1)的config属性获取系统环境变量 |
+| [Environment](./arkts-environment.md) | 通过[UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)的config属性获取系统环境变量 |
 | [PersistentStorage](./arkts-persiststorage.md) | [PersistenceV2](./arkts-new-persistencev2.md) |
 | 存量迁移场景 | \@ObservedV2、\@Trace、[@Monitor](./arkts-new-monitor.md) |
 
@@ -89,7 +89,7 @@ export function Page2Builder() {
   Page2()
 }
 
-// Page2组件获得了父亲Page1组件的LocalStorage实例
+// Page2组件获得了父组件Page1的LocalStorage实例
 @Component
 struct Page2 {
   @LocalStorageLink('count') count: number = 0;
@@ -293,7 +293,7 @@ export function Page2Builder() {
   Page2()
 }
 
-// Page2组件获得了父亲Page1组件的LocalStorage实例
+// Page2组件获得了父组件Page1的LocalStorage实例
 @Component
 struct Page2 {
   @LocalStorageProp('count') count: number = 0;
@@ -866,7 +866,7 @@ export default class PDFData {
 <!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
 
 ``` TypeScript
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import PDFData from './model/PDFData';
 
@@ -1247,7 +1247,7 @@ struct Index1 {
 
 V1中，开发者可以通过Environment来获取环境变量，但Environment获取的结果无法直接使用，需要配合AppStorage才能得到对应环境变量的值。
 
-在切换V2的过程中，开发者无需再通过Environment来获取环境变量，可以直接通过[UIAbilityContext的config属性](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1)获取系统环境变量。
+在切换V2的过程中，开发者无需再通过Environment来获取环境变量，可以直接通过[UIAbilityContext的config属性](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)获取系统环境变量。
 
 V1:
 

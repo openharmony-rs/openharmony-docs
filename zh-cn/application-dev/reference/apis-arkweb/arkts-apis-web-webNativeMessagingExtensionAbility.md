@@ -32,6 +32,8 @@ import WebNativeMessagingExtensionAbility from '@ohos.web.WebNativeMessagingExte
 
 为开发者提供Web原生消息通信能力，继承自ExtensionAbility。
 
+**系统能力:** SystemCapability.Web.Webview.Core
+
 ### 属性
 
 **系统能力:** SystemCapability.Web.Webview.Core

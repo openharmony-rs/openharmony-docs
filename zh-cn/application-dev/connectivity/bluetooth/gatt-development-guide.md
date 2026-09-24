@@ -33,7 +33,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ### 客户端
 
 **1. 创建客户端实例**<br>
-客户端通过查找设备流程搜索到目标设备后，即可构造客户端实例，后续所有操作都基于该客户端实例。
+客户端通过查找设备流程搜索到目标设备后，即可构造客户端实例，后续所有操作都基于该客户端实例。若需连接多个目标设备，则需构造多个客户端实例，即可实现多设备连接。
 ```ts
 // 此处是伪代码
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -279,7 +279,7 @@ try {
   gattClient.disconnect();
 
   // 如果应用不再使用此gattClient，则需要close，gattClient实例将不能再使用
-  gattClient.close() 
+  gattClient.close();
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -334,7 +334,7 @@ let gattService: ble.GattService = {
 };
 
 try {
-  let gattServer: ble.GattServer = ble.createGattServer(); 
+  let gattServer: ble.GattServer = ble.createGattServer();
   gattServer.addService(gattService);
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -351,7 +351,7 @@ function ServerConnectStateChanged(state: ble.BLEConnectionChangeState) {
 }
 
 try {
-  let gattServer: ble.GattServer = ble.createGattServer(); 
+  let gattServer: ble.GattServer = ble.createGattServer();
   gattServer.on('connectionStateChange', ServerConnectStateChanged);
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -834,7 +834,7 @@ export class GattClientManager {
     this.logCharacteristic(this.myCharacteristic);
   }
 
-  // 9. 使能或禁用接收服务端端特征值内容变更通知的能力时调用，一般通知或者指示，二选一
+  // 9. 使能或禁用接收服务端特征值内容变更通知的能力时调用，一般通知或者指示，二选一
   public Notify(enable: boolean) {
     if (!this.gattClient || this.connectState != constant.ProfileConnectionState.STATE_CONNECTED) {
       console.error(TAG, 'gattClient does not exist or state not connected');
@@ -863,7 +863,7 @@ export class GattClientManager {
     }
   }
 
-  // 10. 使能或禁用接收服务端端特征值内容变更指示的能力时调用，一般通知或者指示，二选一
+  // 10. 使能或禁用接收服务端特征值内容变更指示的能力时调用，一般通知或者指示，二选一
   public Indicate(enable: boolean) {
     if (!this.gattClient || this.connectState != constant.ProfileConnectionState.STATE_CONNECTED) {
       console.error(TAG, 'gattClient does not exist or state not connected');

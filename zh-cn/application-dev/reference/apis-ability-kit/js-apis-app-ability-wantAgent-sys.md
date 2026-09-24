@@ -50,6 +50,7 @@ getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
+| 202        | Not System App. Interface caller is not a system app. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|
@@ -223,6 +224,7 @@ getWant(agent: WantAgent): Promise\<Want\>
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
+| 202        | Not System App. Interface caller is not a system app. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|
@@ -517,6 +519,8 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 **系统接口**：此接口为系统接口。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 20
@@ -597,7 +601,7 @@ class MyAbility extends UIAbility {
       // 创建wantAgent对象
       wantAgent.getWantAgent(wantAgentInfo, (err: BusinessError, data: WantAgent) => {
         if (err) {
-          console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+          console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
         } else {
           wantAgentData = data;
         }

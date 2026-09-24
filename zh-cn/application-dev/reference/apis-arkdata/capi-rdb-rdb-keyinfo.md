@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} Rdb_KeyInfo
+typedef struct Rdb_KeyInfo {...} Rdb_KeyInfo
 ```
 
 ## 概述

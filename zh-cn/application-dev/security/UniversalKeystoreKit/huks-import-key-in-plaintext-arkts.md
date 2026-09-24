@@ -287,7 +287,7 @@ async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Prom
         console.info(`promise: isKeyItemExist success, data = ${data}`);
         ret = true;
       }).catch((error: BusinessError) => {
-        console.error(`promise: isKeyItemExist success, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: isKeyItemExist failed, errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: isKeyItemExist input arg invalid`);

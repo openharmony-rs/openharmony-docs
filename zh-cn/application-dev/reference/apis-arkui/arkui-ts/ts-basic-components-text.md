@@ -79,6 +79,9 @@ Text(content?: string | Resource , value?: TextOptions)
 | fontVariations | 设置可变字体的属性。**起始版本：** 26.0.0 |
 | letterSpacing | 设置文本字符间距。 |
 | shaderStyle<sup>20+</sup> | 设置文本渐变或纯色效果。 |
+| strokeColor | 设置文本描边的颜色。<br>**起始版本：** 26.2.0 |
+| strokeJoinStyle | 设置文本描边的拐角样式。<br>**起始版本：** 26.2.0 |
+| strokeWidth | 设置文本描边的宽度。<br>**起始版本：** 26.2.0 |
 | textCase | 设置文本大小写。 |
 | textShadow<sup>10+</sup> | 设置文字阴影效果。 |
 
@@ -127,7 +130,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | caretColor<sup>14+</sup> | 设置文本组件选中区域手柄颜色。 |
 | copyOption<sup>9+</sup> | 设置组件是否支持文本可复制粘贴。 |
 | draggable<sup>9+</sup> | 设置选中文本拖拽效果。 |
-| selectedBackgroundColor<sup>14+</sup> | 设置文本选中底板颜色。 |
+| selectedBackgroundColor<sup>14+</sup> | 设置文本选中高亮颜色。 |
 | selection<sup>11+</sup> | 设置选中区域。 |
 | textSelectable<sup>12+</sup> | 设置是否支持文本可选择、可获焦。 |
 
@@ -914,6 +917,8 @@ ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined
 
 设置可变字体的属性。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1651,7 +1656,7 @@ ArkTS-Dyn: selectedBackgroundColor(color: ResourceColor)
 
 ArkTS-Sta: selectedBackgroundColor(color: ResourceColor | undefined)
 
-设置文本选中底板颜色。如果未设置不透明度，默认不透明度为20%。未通过该接口设置时，默认文本选中底板颜色为'#007DFF'（蓝色）。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。未通过该接口设置时，默认文本选中高亮颜色为'#007DFF'（蓝色）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1667,7 +1672,7 @@ ArkTS-Sta: selectedBackgroundColor(color: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 文本选中底板颜色。<br>取值为undefined时，按默认值处理。 |
+| color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 文本选中高亮颜色。<br>取值为undefined时，按默认值处理。 |
 
 ### selection<sup>11+</sup>
 
@@ -1730,6 +1735,80 @@ ArkTS-Sta: shaderStyle(shader: ShaderStyle | undefined)
 | 参数名     | 类型                                         | 必填                             | 说明                               |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
 | shader | ArkTS-Dyn: [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20)<br>ArkTS-Sta: [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined | 是 | 径向渐变或线性渐变或纯色。<br>根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到Text文本上显示为渐变色效果。<br>**说明：** <br>当设置为径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)时，若[RadialGradientOptions](./ts-universal-attributes-gradient-color.md#radialgradientoptions18对象说明)的center参数设置到组件范围外时，可将repeating参数设置为true，此时渐变效果会更明显。<br>值为undefined时，无渐变效果。 |
+
+### strokeColor
+
+ArkTS-Dyn: strokeColor(color: Optional\<ResourceColor>)
+
+ArkTS-Sta: strokeColor(color: ResourceColor | undefined)
+
+设置文本描边的颜色。未通过该接口设置时，默认为字体颜色。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名 | 类型                                       | 必填 | 说明       |
+| ------ | ------------------------------------------ | ---- | ---------- |
+| color  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)><br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 描边颜色。设置异常值时取字体颜色。需配合[strokeWidth](#strokewidth)设置描边宽度后生效。<br>取值为undefined时，按默认值处理。 |
+
+### strokeJoinStyle
+
+strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle \| undefined)
+
+设置文本描边的拐角样式。未通过该接口设置时，默认值为StrokeJoinStyle.MITER_JOIN，文本拐角处表现为尖角。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名 | 类型             | 必填 | 说明                                            |
+| ------ | ------- | ---- | ----------------------------------------------- |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 设置文本描边的拐角样式，仅在使用[strokeWidth](#strokewidth)设置文本描边时生效。<br>值为undefined时，按照[StrokeJoinStyle](ts-text-common.md#strokejoinstyle).MITER_JOIN处理，文本拐角处表现为尖角。 |
+
+### strokeWidth
+
+ArkTS-Dyn: strokeWidth(width: Optional\<LengthMetrics>)
+
+ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
+
+设置文本描边的宽度。未通过该接口设置时，默认值为0，无描边效果。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| width  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)><br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本描边的宽度。默认值为0，无描边效果。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>取值为undefined时，按默认值处理。 |
 
 ### textAlign
 
@@ -2395,7 +2474,7 @@ Marquee初始化参数。
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | start              | boolean                                         | 否  | 否 | 控制跑马灯进入播放状态。<br>true表示播放，false表示不播放。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23  |
 | step               | ArkTS-Dyn: number <br> ArkTS-Sta: double                                        | 否  | 是 | 滚动动画文本滚动步长。<br>单位：vp<br>取值范围：(0, 文本宽度]。设置小于等于0的值时按默认值处理。<br>默认值：4.0vp <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23     |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。单位：vp。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>默认值：48.0vp <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23  |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。单位：vp。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>默认值：48.0vp <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23  |
 | loop               | ArkTS-Dyn: number <br> ArkTS-Sta: int                                        | 否  | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br>默认值：-1  <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23      |
 | fromStart          | boolean                                         | 否  | 是 | 设置文本从头开始滚动或反向滚动。<br>true表示从头开始滚动，false表示反向滚动。<br>默认值：true <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23                                                  |
 | delay              | ArkTS-Dyn: number <br> ArkTS-Sta: int                                        | 否  | 是 | 设置每次滚动的时间间隔。<br>取值范围：[0, +∞)。设置负数时按默认值处理。<br>默认值：0 <br>单位：毫秒  <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23                                                              |
@@ -3192,7 +3271,7 @@ struct TextExample9 {
 
 ### 示例10（获取文本信息）
 
-从API version 12开始，该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，同时，[LayoutManager](ts-text-common.md#layoutmanager12)中的[getRectsForRange](./ts-text-common.md#getrectsforrange14)（从API version 14开始）接口可以获取指定矩形宽度和高度下，文本中任意区间范围内字符或占位符的绘制区域信息。
+从API version 12开始，该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，同时，[LayoutManager](ts-text-common.md#layoutmanager12)中的[getRectsForRange](./ts-text-common.md#getrectsforrange14)（从API version 14开始）接口可以获取指定矩形宽度样式和高度样式下，文本中任意区间范围内字符或占位符的绘制区域信息。
 
 ```ts
 // xxx.ets
@@ -3265,7 +3344,7 @@ struct TextExample10 {
         Text(this.lineMetrics)
 
         Text('getRectsForRange').fontSize(15).fontColor(0xCCCCCC).width('90%').padding(10)
-        Button('获取指定矩形宽度和高度下，文本中任意区间范围内字符或占位符的绘制区域信息')
+        Button('获取指定矩形宽度样式和高度样式下，文本中任意区间范围内字符或占位符的绘制区域信息')
           .onClick(() => {
             let layoutManager: LayoutManager = this.controller.getLayoutManager();
             if (!layoutManager) {
@@ -3573,7 +3652,7 @@ struct TextExample14 {
         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
         ImageSpan($r('app.media.startIcon'))
           .width(30).height(30)
-          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
         Span('World')
       }
       .textVerticalAlign(TextVerticalAlign.CENTER)
@@ -4223,7 +4302,7 @@ struct TextExample {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.startIcon'))
             .width(30).height(30)
-            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
           Span('World')
         }
         .textVerticalAlign(TextVerticalAlign.CENTER)
@@ -4266,7 +4345,7 @@ struct TextExample {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.startIcon'))
             .width(30).height(30)
-            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
           Span('World')
         }
         .textVerticalAlign(TextVerticalAlign.CENTER)
@@ -4788,3 +4867,82 @@ struct Utf16GlyphHighlightPage {
 该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 ![textUtf16GlyphHighlight](figures/textUtf16GlyphHighlight.gif)
+
+### 示例35（设置文本描边）
+
+该示例通过[strokeWidth](#strokewidth)、[strokeColor](#strokecolor)和[strokeJoinStyle](#strokejoinstyle)属性为Text设置文本描边样式，分别展示描边宽度、描边颜色和描边拐角样式的效果，并演示了将描边宽度设为负值时显示实心字的效果。
+
+从API版本26.2.0开始，新增[strokeColor](#strokecolor)、[strokeWidth](#strokewidth)和[strokeJoinStyle](#strokejoinstyle)属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextStrokeExample {
+  build() {
+    Column() {
+      Text('Text without stroke')
+        .height(60)
+        .fontSize(30)
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(-3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with ROUND_JOIN stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeJoinStyle(StrokeJoinStyle.ROUND_JOIN)
+        .strokeColor('rgb(39,135,217)')
+    }
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Column, Component, Text, LengthMetrics, StrokeJoinStyle } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextStrokeExample {
+  build() {
+    Column() {
+      Text('Text without stroke')
+        .height(60)
+        .fontSize(30)
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(-3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeColor('rgb(39,135,217)')
+      Text('Text with ROUND_JOIN stroke')
+        .height(60)
+        .fontSize(30)
+        .strokeWidth(LengthMetrics.px(3.0))
+        .strokeJoinStyle(StrokeJoinStyle.ROUND_JOIN)
+        .strokeColor('rgb(39,135,217)')
+    }
+    .width('100%')
+  }
+}
+```
+
+![textStroke](figures/textStroke.png)

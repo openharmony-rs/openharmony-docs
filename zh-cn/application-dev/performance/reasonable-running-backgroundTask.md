@@ -10,6 +10,7 @@
 ## 简介 
 
 设备返回主界面、锁屏、应用切换等操作会使应用退至后台。为了降低设备耗电速度、保障用户使用流畅度，系统会对退至后台的应用进行管控，包括进程挂起和进程终止。为了保障后台音乐播放、日历提醒等功能的正常使用，系统提供了受规范约束的后台任务，扩展应用在后台的运行时间。  
+
 本文将介绍各类后台任务的基本概念和适用场景，并且通过对短时任务和长时任务两个场景的性能分析说明合理运行后台任务的必要性。
 
 ## 短时任务
@@ -147,7 +148,7 @@ struct Index {
 | 音视频通话（仅对系统应用开放） | 系统聊天类应用后台音频电话。     |
 | 计算任务（仅对特定设备开放）   | 杀毒软件。              |
 
-- 申请了数据传输的长时任务，系统仅会提升应用进程的优先级，降低系统终止应用进程的概率，但仍然会挂起对应的应用进程。对于上传下载对应的功能，需要调用系统[上传下载代理接口](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统执行，可以参考[文件上传下载性能提升指导](./improve-file-upload-and-download-performance.md)。
+- 申请了数据传输的长时任务，系统仅会提升应用进程的优先级，降低系统终止应用进程的概率，但仍然会挂起对应的应用进程。对于上传下载对应的功能，需要调用系统[@ohos.request (上传下载)](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统执行，可以参考[文件上传下载性能提升指导](./improve-file-upload-and-download-performance.md)。
 - 申请音视频播放长时任务必须使用[媒体会话服务](../media/avsession/avsession-overview.md)，否则无法在后台播放。
 - 申请录音类型长时任务，需要有显著的用户提示，必须通过动态授权弹框来提供用户授权界面，请求用户授权麦克风权限。
 
@@ -182,7 +183,7 @@ struct Index {
 - ohos.permission.LOCATION
 - ohos.permission.KEEP_BACKGROUND_RUNNING
 
-权限申请方式参考[配置文件权限申明](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)，在 [module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/product/phone/entry/src/main/module.json5) 中进行配置。其中部分权限申请以及打开使能通知开关需要用户手动确认。系统为申请的长时任务发布通知栏消息时，应用的使能通知开关必须处于开启状态，否则用户无法感知后台正在运行的长时任务。
+权限申请方式参考[配置文件权限声明](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)，在 [module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/product/phone/entry/src/main/module.json5) 中进行配置。其中部分权限申请以及打开使能通知开关需要用户手动确认。系统为申请的长时任务发布通知栏消息时，应用的使能通知开关必须处于开启状态，否则用户无法感知后台正在运行的长时任务。
 
 后台定位的实现代码如下：
 
@@ -328,7 +329,7 @@ export struct LongTermTaskView {
 
 - 对定位要求不太高的场景可以适当调整上报时间间隔和上报距离间隔，减少更新频率。
 
-- 尽可能的减少网络请求次数和减小网络请求时间间隔。
+- 尽可能地减少网络请求次数和减小网络请求时间间隔。
 
 - 数据传输中使用高效率的数据格式和解析方法，减少任务执行时间。
 

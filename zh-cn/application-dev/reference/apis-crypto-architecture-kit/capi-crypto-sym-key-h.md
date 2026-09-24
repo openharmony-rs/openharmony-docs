@@ -55,7 +55,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 根据给定的算法名称创建对称密钥生成器。例如AES256。
 
-注意：创建的资源必须通过[OH_CryptoSymKeyGenerator_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy)销毁
+注意：创建的资源必须通过[OH_CryptoSymKeyGenerator_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy)销毁。
 
 **起始版本：** 12
 

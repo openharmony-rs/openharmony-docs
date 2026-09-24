@@ -59,7 +59,7 @@ ArkTS-Sta: priorityGesture(gesture: GestureType, mask?: GestureMask): this
 
 1. 默认情况下，子组件优先识别通过gesture绑定的手势，当父组件配置priorityGesture时，父组件优先识别priorityGesture绑定的手势。
 
-2. 绑定长按手势时，设置触发长按的最短时间小的组件会优先响应，会忽略priorityGesture设置。
+2. 绑定长按手势时，触发长按的最短时间较短的手势会优先响应，会忽略priorityGesture设置。
 
 > **说明：**
 >

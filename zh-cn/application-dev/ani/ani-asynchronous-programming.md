@@ -6,9 +6,118 @@
 <!--Tester: @wuhan544-->
 <!--Adviser: @k1ngqaquuu-->
 
-ArkTS 1.2原生支持多任务并发，与ArkTS 1.0（JS）的单线程事件循环模型有很大不同。因此，ANI的设计鼓励将异步流程的编排放在ArkTS层，而不是像NAPI那样在native层管理异步任务。
+ArkTS-Sta原生支持多任务并发，与ArkTS-Dyn（JS）的单线程事件循环模型有很大不同。因此，ANI的设计鼓励将异步流程的编排放在ArkTS层，而不是像NAPI那样在native层管理异步任务。
 
-异步示例：[ani_async_wrapper/ani_async_wrapper.ets · LeechyLiang/ani_cookbook](https://gitcode.com/LeechyLiang/ani_cookbook/blob/master/ani_async_wrapper/ani_async_wrapper.ets)
+异步示例：
+
+```ts
+export class BusinessError<T = void> extends Error {
+    data?: T;
+
+    constructor() {
+        super();
+        this.code = 0;
+    }
+
+    constructor(code: int, error: Error) {
+        super(error.name, error.message, {cause: error.cause} as ErrorOptions);
+        this.code = code;
+    }
+
+    constructor(code: int, data: T, error: Error) {
+        super(error.name, error.message, {cause: error.cause} as ErrorOptions);
+        this.code = code;
+        this.data = data;
+    }
+
+    constructor(code: int, message: string, data?: T) {
+        super(code, message);
+        this.data = data;
+    }
+}
+
+type AsyncCallback<T, E = void> = (err: BusinessError<E> | null, data: T | undefined) => void;
+
+class Ability {
+    native getTempDirSync(option: int): string;
+    getTempDir(option: int, callback: AsyncCallback<string, void>): void {
+        taskpool.execute((): string => {
+            return this.getTempDirSync(option);
+        }).then((res): void => {
+            callback(null, res);
+        }).catch((e): void => {
+            callback(e as BusinessError, undefined);
+        });
+    }
+    getTempDir(option: int): Promise<string> {
+        return new Promise<string>((resolve, reject): void => {
+            taskpool.execute((): string => {
+                return this.getTempDirSync(option);
+            }).then((res): void => {
+                resolve(res);
+            }).catch((e): void => {
+                reject(e);
+            });
+        });
+    }
+}
+
+function main() {
+    const ability = new Ability();
+    // 成功场景：使用回调函数方式获取临时目录
+    ability.getTempDir(1, (err: BusinessError<void> | null, data: string | undefined): void => {
+        if (err) {
+            console.error("Callback方式: Error getting temp dir:", err);
+        } else {
+            console.info("Callback方式: Temp dir:", data);
+        }
+    });
+
+    // 失败场景：native侧抛出BusinessError，经.catch传递到回调
+    ability.getTempDir(0, (err: BusinessError<void> | null, data: string | undefined): void => {
+        if (err) {
+            console.error("Callback方式: Error getting temp dir:", err);
+        } else {
+            console.info("Callback方式: Temp dir:", data);
+        }
+    });
+
+    // 成功场景：使用 Promise 方式获取临时目录
+    ability.getTempDir(1).then((tempDir: string): void => {
+        console.info("Promise方式: Temp dir:", tempDir);
+    }).catch((error: BusinessError<void>): void => {
+        console.error("Promise方式: Error getting temp dir:", error);
+    });
+
+    // 失败场景：native侧抛出BusinessError，被Promise捕获
+    ability.getTempDir(0).then((tempDir: string): void => {
+        console.info("Promise方式: Temp dir:", tempDir);
+    }).catch((error: BusinessError<void>): void => {
+        console.error("Promise方式: Error getting temp dir:", error);
+    });
+}
+```
+
+ArkTS侧只负责实现异步编排，native侧实现同步的`getTempDirSync`，耗时逻辑由ArkTS侧通过`taskpool`分发到工作线程执行：
+
+```cpp
+// native方法：option合法时返回结果，否则抛出BusinessError。
+static ani_string getTempDirSync(ani_env *env, [[maybe_unused]] ani_object obj, ani_int option)
+{
+    if (option == 1) {
+        std::string s = "/usr/tmp";
+        ani_string result;
+        ani_status status = env->String_NewUTF8(s.c_str(), s.size(), &result);
+        if (status != ANI_OK) {
+            // handle error and return
+        }
+        return result;
+    } else {
+        aniThrowBusinessError(env, 1001, "Invalid option provided");
+        return nullptr;
+    }
+}
+```
 
 > ⚠️ **潜在问题：**
 > 在异步上下文中抛出异常可能会导致程序冻结且无法正常结束。

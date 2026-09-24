@@ -59,11 +59,6 @@ ArkTS-Sta: executeDrag(custom: CustomBuilder | DragItemInfo | undefined, dragInf
 import { dragController } from '@kit.ArkUI';
 import { unifiedDataChannel } from '@kit.ArkData';
 
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
-
 @Entry
 @Component
 struct DragControllerPage {
@@ -95,7 +90,7 @@ struct DragControllerPage {
               this.getUIContext().getDragController().executeDrag(() => {
                 this.DraggingBuilder()
               }, dragInfo, (err, eve) => {
-                if (eve.event) {
+                if (!err && eve?.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
                   } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
@@ -160,11 +155,6 @@ import { dragController } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { unifiedDataChannel } from '@kit.ArkData';
 
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
-
 @Entry
 @Component
 struct DragControllerPage {
@@ -228,6 +218,7 @@ struct DragControllerPage {
                     }
                   })
                   .catch((err: Error) => {
+                    console.error(`Failed to execute drag. Cause: ${err.message}`);
                   })
               })
             }
@@ -286,146 +277,146 @@ ArkTS-Sta: createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&
 
 **示例：**
 
-1.在EntryAbility.ets中获取UI上下文并保存至LocalStorage中。
+1. 在EntryAbility.ets中获取UI上下文并保存至LocalStorage中。
 
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window, UIContext } from '@kit.ArkUI';
+   ```ts
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { window, UIContext } from '@kit.ArkUI';
 
-let uiContext: UIContext;
-let localStorage: LocalStorage = new LocalStorage('uiContext');
+   let uiContext: UIContext;
+   let localStorage: LocalStorage = new LocalStorage('uiContext');
 
-export default class EntryAbility extends UIAbility {
-  storage: LocalStorage = localStorage;
+   export default class EntryAbility extends UIAbility {
+     storage: LocalStorage = localStorage;
 
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+     }
 
-  onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-  }
+     onDestroy(): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+     }
 
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+     onWindowStageCreate(windowStage: window.WindowStage): void {
+       // Main window is created, set main page for this ability
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/Index', this.storage, (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-      windowStage.getMainWindow((err, data) => {
-        if (err.code) {
-          console.error(`Failed to obtain the main window. Cause:${err.message}`);
-          return;
-        }
-        let windowClass: window.Window = data;
-        uiContext = windowClass.getUIContext();
-        this.storage.setOrCreate<UIContext>('uiContext', uiContext);
-        // 获取UIContext实例
-      });
-    });
-  }
+       windowStage.loadContent('pages/Index', this.storage, (err, data) => {
+         if (err.code) {
+           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+           return;
+         }
+         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+         windowStage.getMainWindow((err, data) => {
+           if (err.code) {
+             console.error(`Failed to obtain the main window. Cause:${err.message}`);
+             return;
+           }
+           let windowClass: window.Window = data;
+           uiContext = windowClass.getUIContext();
+           this.storage.setOrCreate<UIContext>('uiContext', uiContext);
+           // 获取UIContext实例
+         });
+       });
+     }
 
-  onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-  }
+     onWindowStageDestroy(): void {
+       // Main window is destroyed, release UI related resources
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+     }
+   
+     onForeground(): void {
+       // Ability has brought to foreground
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+     }
 
-  onForeground(): void {
-    // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
-  }
+     onBackground(): void {
+       // Ability has back to background
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+     }
+   }
+   ```
+2. 通过this.getUIContext().getSharedLocalStorage()获取共享LocalStorage，进而获取DragController对象实施后续操作。
+   ```ts
+   import { dragController, UIContext } from '@kit.ArkUI';
+   import { image } from '@kit.ImageKit';
+   import { unifiedDataChannel } from '@kit.ArkData';
 
-  onBackground(): void {
-    // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-  }
-}
-```
-2.通过this.getUIContext().getSharedLocalStorage()获取上下文，进而获取DragController对象实施后续操作。
-```ts
-import { dragController, UIContext } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-import { unifiedDataChannel } from '@kit.ArkData';
+   @Entry()
+   @Component
+   struct DragControllerPage {
+     private dragAction: dragController.DragAction | null = null;
+     customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+     storages = this.getUIContext().getSharedLocalStorage();
 
-@Entry()
-@Component
-struct DragControllerPage {
-  private dragAction: dragController.DragAction | null = null;
-  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  storages = this.getUIContext().getSharedLocalStorage();
+     @Builder
+     DraggingBuilder() {
+       Column() {
+         Text("DraggingBuilder")
+       }
+       .width(100)
+       .height(100)
+       .backgroundColor(Color.Blue)
+     }
 
-  @Builder
-  DraggingBuilder() {
-    Column() {
-      Text("DraggingBuilder")
-    }
-    .width(100)
-    .height(100)
-    .backgroundColor(Color.Blue)
-  }
-
-  build() {
-    Column() {
-      Button('多对象dragAction customBuilder拖拽').onTouch((event?: TouchEvent) => {
-        if (event) {
-          if (event.type == TouchType.Down) {
-            console.info("multi drag Down by listener");
-            this.customBuilders.push(() => {
-              this.DraggingBuilder()
-            });
-            this.customBuilders.push(() => {
-              this.DraggingBuilder()
-            });
-            this.customBuilders.push(() => {
-              this.DraggingBuilder()
-            });
-            let text = new unifiedDataChannel.Text();
-            let unifiedData = new unifiedDataChannel.UnifiedData(text);
-            let dragInfo: dragController.DragInfo = {
-              pointerId: 0,
-              data: unifiedData,
-              extraParams: ''
-            };
-            try {
-              let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
-              this.dragAction = uiContext.getDragController().createDragAction(this.customBuilders, dragInfo);
-              if (!this.dragAction) {
-                console.info("listener dragAction is null");
-                return;
-              }
-              this.dragAction.on('statusChange', (dragAndDropInfo) => {
-                if (dragAndDropInfo.status == dragController.DragStatus.STARTED) {
-                  console.info("drag has start");
-                } else if (dragAndDropInfo.status == dragController.DragStatus.ENDED) {
-                  console.info("drag has end");
-                  if (!this.dragAction) {
-                    return;
-                  }
-                  this.customBuilders.splice(0, this.customBuilders.length);
-                  this.dragAction.off('statusChange');
-                }
-              })
-              this.dragAction.startDrag().then(() => {
-              }).catch((err: Error) => {
-                console.error(`start drag Error:${err.message}`);
-              })
-            } catch (err) {
-              console.error(`create dragAction Error:${err.message}`);
-            }
-          }
-        }
-      }).margin({ top: 20 })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+     build() {
+       Column() {
+         Button('多对象dragAction customBuilder拖拽').onTouch((event?: TouchEvent) => {
+           if (event) {
+             if (event.type == TouchType.Down) {
+               console.info("multi drag Down by listener");
+               this.customBuilders.push(() => {
+                 this.DraggingBuilder()
+               });
+               this.customBuilders.push(() => {
+                 this.DraggingBuilder()
+               });
+               this.customBuilders.push(() => {
+                 this.DraggingBuilder()
+               });
+               let text = new unifiedDataChannel.Text();
+               let unifiedData = new unifiedDataChannel.UnifiedData(text);
+               let dragInfo: dragController.DragInfo = {
+                 pointerId: 0,
+                 data: unifiedData,
+                 extraParams: ''
+               };
+               try {
+                 let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+                 this.dragAction = uiContext.getDragController().createDragAction(this.customBuilders, dragInfo);
+                 if (!this.dragAction) {
+                   console.info("listener dragAction is null");
+                   return;
+                 }
+                 this.dragAction.on('statusChange', (dragAndDropInfo) => {
+                   if (dragAndDropInfo.status == dragController.DragStatus.STARTED) {
+                     console.info("drag has start");
+                   } else if (dragAndDropInfo.status == dragController.DragStatus.ENDED) {
+                     console.info("drag has end");
+                     if (!this.dragAction) {
+                       return;
+                     }
+                     this.customBuilders.splice(0, this.customBuilders.length);
+                     this.dragAction.off('statusChange');
+                   }
+                 })
+                 this.dragAction.startDrag().then(() => {
+                 }).catch((err: Error) => {
+                   console.error(`start drag Error:${err.message}`);
+                 })
+               } catch (err) {
+                 console.error(`create dragAction Error:${err.message}`);
+               }
+             }
+           }
+         }).margin({ top: 20 })
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
 
 ![multi_drag](figures/multi_drag.gif)
 
@@ -574,14 +565,13 @@ struct NormalEts {
         this.previewData = {
           pixelMap: this.pixmap
         };
+        this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
       });
 
       let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
       data.imageUri = "app.media.startIcon";
       let unifiedData = new unifiedDataChannel.UnifiedData(data);
       this.unifiedData1 = unifiedData;
-
-      this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
     }, 4000);
     this.timeout1 = timeout;
   }
@@ -627,7 +617,7 @@ struct NormalEts {
 
 enableDropDisallowedBadge(enabled: boolean): void
 
-当组件的类型与配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)无交集时可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式处理时，拖拽对象会显示加号及数据编号的角标。如果返回DragBehavior.MOVE以向系统声明数据以剪切方式处理，拖拽对象将只显示数据编号的角标。当目标进行拖拽时，若系统决定或组件显式声明无法处理拖拽数据，可通过该方法检查是否应显示拖拽禁止角标。该接口暂不支持[UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md)。
+当组件的类型与配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)无交集时可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式处理时，拖拽对象会显示加号及数据编号的角标。如果返回DragBehavior.MOVE以向系统声明数据以剪切方式处理，拖拽对象将只显示数据编号的角标。当拖拽对象经过目标区域时，若系统决定或组件显式声明无法处理拖拽数据，可通过该方法设置是否显示拖拽禁止角标。该接口暂不支持[UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -641,7 +631,7 @@ enableDropDisallowedBadge(enabled: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled | boolean | 是   | 当组件的类型与配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)无交集时可显示禁用角标，当目标进行拖拽时，通过enableDropDisallowedBadge方法检查是否显示拖拽禁止角标。true表示显示拖拽禁止角标，false表示不显示拖拽禁止角标。默认值为false。 |
+| enabled | boolean | 是   | 当拖拽数据类型与组件配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)允许接收的数据类型无交集时，可显示禁用角标；当拖拽对象经过目标组件时，通过enableDropDisallowedBadge方法设置是否显示拖拽禁止角标。true表示显示拖拽禁止角标，false表示不显示拖拽禁止角标。未调用该接口时不显示拖拽禁止角标。 |
 
 **示例：**
 

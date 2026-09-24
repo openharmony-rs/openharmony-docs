@@ -74,7 +74,7 @@ Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicont
 
 > **说明：**
 >
-> 应用无法修改环境变量参数，因此使用@StorageProp获取。这样即使在组件内修改，也不会同步回AppStorage中，影响其他组件处获取环境变量的结果。
+> 应用无法修改环境变量参数，因此使用@StorageProp获取。这样即使在组件内修改，也不会同步回AppStorage中，不影响其他组件处获取环境变量的结果。
   <!-- @[ui_Environment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/UiEnvironment.ets) -->  
   
   ``` TypeScript

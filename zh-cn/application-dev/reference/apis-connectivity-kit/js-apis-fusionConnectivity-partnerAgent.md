@@ -15,7 +15,7 @@
 - 通过[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)的接口通知应用发现已注册设备。
 
 > **说明：**
-> 
+>
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -58,7 +58,7 @@ bindDevice(deviceAddress: PartnerDeviceAddress, deviceCapability: DeviceCapabili
 - 可以通过接口[isDeviceBound](#partneragentisdevicebound)判断设备是否已注册。若已注册，无需重复调用。
 - 应用需要先实现[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)。
 - 应用注册该设备后，如果外设互通子系统检测到该设备，会激活应用的[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。应用可以在新进程中执行业务操作。每当已注册设备被发现或者已断连时，该进程将被激活并保持运行3分钟（时间随着新的通知刷新）。
-- 在应用注册前，需先调用[connection.pairDevice](js-apis-bluetooth-connection.md#connectionpairdevice)与该设备完成蓝牙配对。如果该设备已注册，且用户在此期间取消了与该设备的配对，该设备的发现和下线通知功能将自动关闭，但注册信息会保留30天。若在这30天内重新与该设备进行蓝牙配对，外设互通子系统可以恢复设备的发现和下线通知功能。否则，注册信息会被清除。
+- 在应用注册前，需先调用[connection.pairDevice](js-apis-bluetooth-connection.md#connectionpairdevice)与该设备完成蓝牙配对。如果该设备已注册，且用户在注册后取消了与该设备的配对，该设备的发现和下线通知功能将自动关闭，但注册信息会保留30天。若在这30天内重新与该设备进行蓝牙配对，外设互通子系统可以恢复设备的发现和下线通知功能。否则，注册信息会被清除。
 - 可以通过接口[getBoundDevices](#partneragentgetbounddevices)获取所有已注册过的设备。
 - 应用在使用该接口前，建议提示用户并获取应用注册该设备的授权。
 
@@ -73,8 +73,8 @@ bindDevice(deviceAddress: PartnerDeviceAddress, deviceCapability: DeviceCapabili
 | 参数名     | 类型                                     | 必填   | 说明                                  |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
 | deviceAddress | [PartnerDeviceAddress](#partnerdeviceaddress) | 是    | 应用注册的设备地址信息。<br>应用需配置PartnerDeviceAddress类型的bluetoothAddress选项。 |
-| deviceCapability | [DeviceCapability](#devicecapability) | 是     | 注册设备支持的能力。<br> - 配置supportBR选项后，外设互通子系统将监听与该设备的[ACL](../../connectivity/bluetooth/terminology.md#acl)连接状态，一旦建立ACL连接，即视为成功发现该设备；<br> - 配置supportBleAdvertiser选项后，系统将启动该设备的[BLE](../../connectivity/bluetooth/terminology.md#ble)扫描，扫描到该设备后，同样视为成功发现该设备。<br> 注意：<br>  为了减少系统功耗，若BLE扫描到该设备后，但应用在3分钟内未与该设备建立蓝牙连接，外设互通子系统将自动终止应用的PartnerAgentExtensionAbility进程。 |
-| businessCapability | [BusinessCapability](#businesscapability) | 是 | 应用注册设备的业务功能，包括媒体控制、通话控制。 |
+| deviceCapability | [DeviceCapability](#devicecapability) | 是     | 注册设备支持的能力。<br> - 配置supportBR选项后，外设互通子系统将监听与该设备的[ACL](../../connectivity/bluetooth/terminology.md#acl)连接状态，一旦建立ACL连接，即视为成功发现该设备；<br> - 配置supportBleAdvertiser选项后，系统将拉起该设备的[BLE](../../connectivity/bluetooth/terminology.md#ble)扫描，扫描到该设备后，同样视为成功发现该设备。<br> 注意：<br>  为了减少系统功耗，BLE扫描到该设备后，若应用在3分钟内未与该设备建立ACL连接，外设互通子系统将自动终止应用的PartnerAgentExtensionAbility进程。 |
+| businessCapability | [BusinessCapability](#businesscapability) | 是 | 应用注册设备的业务功能，包括媒体控制、通话控制。<br>注意：<br>supportMediaControl和supportTelephonyControl均选择false时，设备发现时不会拉起[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。 |
 | partnerAgentExtensionAbilityName | string | 是 | 该参数需与应用模块级配置文件[module.json5](../../quick-start/module-configuration-file.md) 中的[extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities标签) name属性值相同。 |
 
 **返回值**：
@@ -195,7 +195,7 @@ try {
 
 isDeviceBound(deviceAddress: PartnerDeviceAddress): boolean
 
-判断当前应用是否已注册过该设备。
+判断当前应用是否已注册过该设备。使用前建议先调用[isPartnerAgentSupported](#partneragentispartneragentsupported)判断本机是否支持外设互通功能，若不支持则本接口不可用。
 
 - 通过调用[bindDevice](#partneragentbinddevice)接口进行注册。
 - 通过调用[unbindDevice](#partneragentunbinddevice)接口进行解注册。
@@ -251,7 +251,7 @@ try {
 
 getBoundDevices(): PartnerDeviceAddress[]
 
-获取应用当前注册过的所有设备。
+获取应用当前注册过的所有设备。使用前建议先调用[isPartnerAgentSupported](#partneragentispartneragentsupported)判断本机是否支持外设互通功能，若不支持则本接口不可用。
 
 - 可通过调用[bindDevice](#partneragentbinddevice)接口注册设备。
 
@@ -293,10 +293,10 @@ try {
 
 isDeviceControlEnabled(deviceAddress: PartnerDeviceAddress): boolean
 
-判断当前设备的互通功能是否已经打开。
+判断当前设备的互通功能是否已经打开。使用前建议先调用[isPartnerAgentSupported](#partneragentispartneragentsupported)判断本机是否支持外设互通功能，若不支持则本接口不可用。
 
 - 调用[bindDevice](#partneragentbinddevice)接口注册设备后，设备的互通功能将默认开启，且可在系统设置应用设备详情页显示该功能已开启。
-- 如果该功能已关闭，可通过系统设置应用设备详情页信息互通功能开关使能该功能。
+- 如果该功能已关闭，可通过系统设置应用设备详情页中的信息互通功能开关开启该功能。
 - 如果系统设置应用设备详情页未显示此功能开关，请先调用[bindDevice](#partneragentbinddevice)接口注册设备，之后此功能开关按钮会出现。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -356,8 +356,8 @@ try {
 
 | 名称                 | 类型   | 只读 | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| supportBR            | boolean | 否 | 是    | 该设备是否支持通过[ACL](../../connectivity/bluetooth/terminology.md#acl)连接的方式发现，建立ACL连接后会认为成功发现了该设备。发现设备后，会拉起[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程，并调用进程中[onDeviceDiscovered](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md#ondevicediscovered)方法。true表示支持通过连接的方式发现，false表示不支持通过连接的方式发现。未指定默认为false。 |
-| supportBleAdvertiser | boolean | 否 | 是    | 该设备是否支持通过[BLE](../../connectivity/bluetooth/terminology.md#ble)扫描的方式发现，扫描到该设备后会认为成功发现了该设备。发现设备后，会拉起PartnerAgentExtensionAbility进程，并调用进程中onDeviceDiscovered方法。true表示支持通过BLE扫描的方式发现，false表示不支持通过BLE扫描的方式发现。未指定默认为false。<br> 注意：<br>  选择[devicecapability](#devicecapability)中的supportBleAdvertiser选项，若扫描到该设备，3min内无ACL连接，会调用[onDestroyWithReason](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md#ondestroywithreason)并销毁已拉起的PartnerAgentExtensionAbility进程。 |
+| supportBR            | boolean | 否 | 是    | 该设备是否支持通过[ACL](../../connectivity/bluetooth/terminology.md#acl)连接的方式发现，建立ACL连接后会认为成功发现了该设备。发现设备后，在BusinessCapability中至少一项为true的情况下，会拉起[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程，并调用进程中[onDeviceDiscovered](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md#ondevicediscovered)方法。true表示支持通过连接的方式发现，false表示不支持通过连接的方式发现。未指定默认为false。 |
+| supportBleAdvertiser | boolean | 否 | 是    | 该设备是否支持通过[BLE](../../connectivity/bluetooth/terminology.md#ble)扫描的方式发现，扫描到该设备后会认为成功发现了该设备。发现设备后，在BusinessCapability中至少一项为true的情况下，会拉起PartnerAgentExtensionAbility进程，并调用进程中onDeviceDiscovered方法。true表示支持通过BLE扫描的方式发现，false表示不支持通过BLE扫描的方式发现。未指定默认为false。<br> 注意：<br>  选择[DeviceCapability](#devicecapability)中的supportBleAdvertiser选项，若扫描到该设备，3分钟内无ACL连接，会调用[onDestroyWithReason](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md#ondestroywithreason)并销毁已拉起的PartnerAgentExtensionAbility进程。 |
 
 ## BusinessCapability
 
@@ -369,7 +369,7 @@ try {
 
 | 名称                 | 类型   | 只读 | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| supportMediaControl | boolean | 否 | 是 | 该设备是否支持媒体控制功能，例如控制媒体播放、音量调节、上一首和下一首等功能。true表示支持，false表示不支持。未指定默认为false。 |
+| supportMediaControl | boolean | 否 | 是 | 该设备是否支持媒体控制功能，例如控制媒体播放、音量调节、上一首和下一首等功能。true表示支持，false表示不支持。未指定默认为false。<br>注意：<br>supportMediaControl和supportTelephonyControl均选择false时，设备发现时不会拉起[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。 |
 | supportTelephonyControl | boolean | 否 | 是 | 该设备是否支持通话控制功能，如接听和挂断电话。 true表示支持，false表示不支持。未指定默认为false。 <br> 注意：<br>  supportMediaControl和supportTelephonyControl均选择false时，设备发现时不会拉起[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。 |
 
 ## PartnerDeviceAddress
@@ -395,7 +395,7 @@ try {
 | 名称      | 值    | 说明                           |
 | --------  | ---- | ------------------------------ |
 | UNKNOWN_REASON   | 0    | 系统内部导致的未知原因，建议重试该操作。  |
-| USER_CLOSED_ABILITY   | 1    | 用户在系统设置应用关闭了该设备的信息互通功能，建议在系统设置应用开启该设备的信息互通功能。  |
+| USER_CLOSED_ABILITY   | 1    | 用户在系统设置应用中关闭了该设备的信息互通功能，建议在系统设置应用中开启该设备的信息互通功能。  |
 | DEVICE_UNPAIRED  | 2    | 用户取消了该设备的蓝牙配对关系，建议重新进行蓝牙配对流程。  |
 | DEVICE_LOST | 3 | 该设备已断开连接或未被发现，可能原因包括距离过长、设备关机、设备电量耗尽等，建议确认设备状态  |
 | BLUETOOTH_DISABLED    | 4    | 蓝牙被关闭，建议打开蓝牙  |

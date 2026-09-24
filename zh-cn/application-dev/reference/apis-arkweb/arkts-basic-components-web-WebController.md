@@ -1,8 +1,8 @@
 # Class (WebController)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @hwt00888022; @aohui; @runlei-->
+<!--Designer: @dzichou; @yaomingliu; @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -593,7 +593,7 @@ zoom(factor: number): void
 
 | 参数名    | 类型   | 必填   | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| factor | number | 是    | 缩放系数。1表示保持当前缩放比例；小于1为缩小，大于1为放大。取值范围(0, 100]。 |
+| factor | number | 是    | 缩放系数。1表示恢复加载网页的默认缩放比例；小于1为缩小，大于1为放大。取值范围(0, 100]。 |
 
 **示例：**
 

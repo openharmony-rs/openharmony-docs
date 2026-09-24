@@ -556,101 +556,6 @@
 
 文件管理子系统面向应用发布如下[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)，应用如需订阅系统公共事件，请参考公共事件[@ohos.commonEventManager](../js-apis-commonEventManager.md)。
 
-### COMMON_EVENT_VOLUME_REMOVED
-
-表示外部存储设备正常移除的公共事件。
-
-当外部存储设备处于卸载状态，移除该设备时，会发送此公共事件。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
-
-**取值：** "usual.event.data.VOLUME_REMOVED"
-
-
-### COMMON_EVENT_VOLUME_UNMOUNTED
-
-表示外部存储设备状态变更为卸载的公共事件。
-
-当外部存储设备处于挂载状态时，用户选择通过调用unmount接口或者直接移除设备的方法弹出该设备，并且已将外部存储设备卸载成功后，会发送此公共事件。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
-
-**取值：** "usual.event.data.VOLUME_UNMOUNTED"
-
-
-### COMMON_EVENT_VOLUME_MOUNTED
-
-表示外部存储设备状态变更为挂载的公共事件。
-
-当用户插入外部存储设备自动挂载成功或者将处于卸载状态的外部存储设备调用mount接口进行挂载成功后，会发送此公共事件。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
-
-**取值：** "usual.event.data.VOLUME_MOUNTED"
-
-
-### COMMON_EVENT_VOLUME_BAD_REMOVAL
-
-表示外部存储设备异常移除的公共事件。
-
-当外部存储设备处于挂载状态时，用户直接移除该外部存储设备，会发送此公共事件。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
-
-**取值：** "usual.event.data.VOLUME_BAD_REMOVAL"
-
-
-### COMMON_EVENT_VOLUME_EJECT
-
-表示外部存储设备即将被弹出的公共事件。
-
-当外部存储设备处于挂载状态时，用户选择通过调用unmount接口或者直接移除设备的方法弹出该设备时，会发送此公共事件。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
-
-**取值：** "usual.event.data.VOLUME_EJECT"
-
-
 ### COMMON_EVENT_DISK_VOLUME_STATE_CHANGE
 
 表示系统数据盘卷状态发生变化的公共事件。
@@ -696,7 +601,7 @@
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：21
 
@@ -728,7 +633,7 @@
 
 ## Media Kit
 
-### COMMON_EVENT_SCREEN_SHARE
+### COMMON_EVENT_SCREEN_SHARE<sup>20+</sup>
 
 表示系统中发生了屏幕共享事件。
 
@@ -861,7 +766,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -880,7 +785,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -956,7 +861,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
+**取值：** "usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+</sup>
@@ -1032,7 +937,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.DIALER_SPECIAL_CODE"
+**取值：** "commom.event.SPECIAL_CODE"
 
 
 ### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+</sup>

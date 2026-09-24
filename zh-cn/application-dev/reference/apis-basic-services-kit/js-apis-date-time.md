@@ -575,7 +575,7 @@ ArkTS-Sta: getUptime(timeType: TimeType, isNanoseconds?: boolean): long
 
 | 错误码ID | 错误信息                                                                                                           |
 | -------- |----------------------------------------------------------------------------------------------------------------|
-| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification<br> failed.This error code was added due to missing issues.<br> 适用版本：12+ |
+| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -861,12 +861,12 @@ try {
 | Africa/Kinshasa                | 1                     |
 | America/Santiago               | -4                    |
 | Asia/Shanghai                  | 8                     |
-| Asia/Nicosia                   | 3                     |
+| Asia/Nicosia                   | 2                     |
 | Europe/Berlin                  | 2                     |
 | America/Guayaquil              | -5                    |
 | Europe/Madrid                  | 2                     |
 | Pacific/Pohnpei                | 11                    |
-| America/Godthab                | -1                    |
+| America/Godthab                | -2                    |
 | Asia/Jakarta                   | 7                     |
 | Pacific/Tarawa                 | 12                    |
 | Asia/Almaty                    | 6                     |
@@ -877,12 +877,12 @@ try {
 | Pacific/Auckland               | 12                    |
 | Pacific/Tahiti                 | -10                   |
 | Pacific/Port_Moresby           | 10                    |
-| Asia/Gaza                      | 3                     |
-| Europe/Lisbon                  | 1                     |
+| Asia/Gaza                      | 2                     |
+| Europe/Lisbon                  | 0                     |
 | Europe/Moscow                  | 3                     |
-| Europe/Kiev                    | 3                     |
+| Europe/Kiev                    | 2                     |
 | Pacific/Wake                   | 12                    |
-| America/New_York               | -4                    |
+| America/New_York               | -5                    |
 | Asia/Tashkent                  | 5                     |
 
 ## systemDateTime.getAutoTimeStatus<sup>21+</sup>

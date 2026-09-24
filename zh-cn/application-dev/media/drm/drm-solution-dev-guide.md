@@ -469,7 +469,9 @@ clearplay :: host {
 
 selinux用于限制服务进程可访问的资源，以下给定基础的selinux配置，在此基础上按业务添加所需规则。
 
-注意：以下示例中，clearplay_host表示hcs中的hostName值，clearplay_service表示服务名称。
+> **注意：**
+>
+> 以下示例中，clearplay_host表示hcs中的hostName值，clearplay_service表示服务名称。
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/adapter/public/hdf_service_contexts
 

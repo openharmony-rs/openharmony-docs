@@ -1,4 +1,4 @@
-# 使用JSVM-API接口进行primitive类相关开发
+# 使用JSVM-API接口进行primitive类型相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->

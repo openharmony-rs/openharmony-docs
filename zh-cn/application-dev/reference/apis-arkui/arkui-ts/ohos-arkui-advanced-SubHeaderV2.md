@@ -1,9 +1,9 @@
 # SubHeaderV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangrunsen-->
-<!--Designer: @YanSanzo-->
-<!--Tester: @ybhou1993-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -37,30 +37,25 @@ import { SubHeaderV2 } from '@kit.ArkUI';
 
 ## SubHeaderV2
 
-SubHeaderV2({ icon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: SubHeaderV2Select, operationType?: SubHeaderV2OperationType, operationItems?: SubHeaderV2OperationItem[], titleBuilder?: SubHeaderV2TitleBuilder })
+SubHeaderV2({ icon?: SubHeaderV2IconType, endIcon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: SubHeaderV2Select, operationType?: SubHeaderV2OperationType, operationItems?: SubHeaderV2OperationItem[], titleBuilder?: SubHeaderV2TitleBuilder })
 
 子标题，用于列表项顶部，将该组列表划分为一个区块，子标题名称用来概括该区块内容。也可以用于内容项顶部，子标题名称用来概括该区块内容。
 
 **装饰器类型：** @ComponentV2
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型                                                      | 必填 | 装饰器类型 | 说明                                     |
 | -------- |---------------------------------------------------------| -------- | -------- |----------------------------------------|
-| icon| [SubHeaderV2IconType](#subheaderv2icontype)             | 否 | @Param | 图标设置项。<br />默认值：undefined<br/>当title使用secondaryTitle属性时，设置icon属性才会生效。              |
-| title| [SubHeaderV2Title](#subheaderv2title)                   | 否 | @Param| 标题设置项。<br />默认值：undefined              |
-| select| [SubHeaderV2Select](#subheaderv2select)                 | 否 | @Param | 下拉选择器的配置项，包含下拉选项内容、选中状态及回调事件。<br />默认值：undefined       |
-| operationType | [SubHeaderV2OperationType](#subheaderv2operationtype)   | 否 | @Param| 操作区元素样式。<br />默认值：SubHeaderV2OperationType.BUTTON |
-| operationItems | [SubHeaderV2OperationItem](#subheaderv2operationitem)[] | 否 | @Param| 操作区的设置项。<br />默认值：undefined<br/>当operationType为ICON_GROUP时，数组最多包含三个元素。            |
-| titleBuilder | [SubHeaderV2TitleBuilder](#subheaderv2titlebuilder)                            | 否 | @BuilderParam | 自定义标题区内容。当设置此参数时，title参数将不生效。<br />默认值：() => void          |
+| icon| [SubHeaderV2IconType](#subheaderv2icontype)             | 否 | @Param | 图标设置项。<br />默认值：undefined<br/>当title使用secondaryTitle属性时，设置icon属性才会生效。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23            |
+| endIcon| [SubHeaderV2IconType](#subheaderv2icontype)             | 否 | @Param | 标题尾部图标设置项。<br/>当title使用primaryTitle或secondaryTitle属性时，设置endIcon属性才会生效。<br />默认值：undefined，表示不显示标题尾部图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 26.0.1 <br/>**ArkTS-Sta起始版本：** 26.0.1            |
+| title| [SubHeaderV2Title](#subheaderv2title)                   | 否 | @Param| 标题设置项。<br />默认值：undefined   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23       |
+| select| [SubHeaderV2Select](#subheaderv2select)                 | 否 | @Param | 下拉选择器的配置项，包含下拉选项内容、选中状态及回调事件。<br />默认值：undefined  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23    |
+| operationType | [SubHeaderV2OperationType](#subheaderv2operationtype)   | 否 | @Param| 操作区元素样式，用于定义子标题尾部操作按钮的显示形式。<br />默认值：SubHeaderV2OperationType.BUTTON <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| operationItems | [SubHeaderV2OperationItem](#subheaderv2operationitem)[] | 否 | @Param| 操作区的设置项，用于配置子标题尾部的操作按钮。<br />默认值：undefined<br/>当operationType为ICON_GROUP时，数组最多包含三个元素。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。   <br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23       |
+| titleBuilder | [SubHeaderV2TitleBuilder](#subheaderv2titlebuilder)                            | 否 | @BuilderParam | 自定义标题区内容。当设置此参数时，title参数将不生效。<br />默认值：() => void  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23      |
 
 ## SubHeaderV2IconType
 
@@ -285,11 +280,11 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 | -------- | -------- |---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | content |  [SubHeaderV2OperationItemType](#subheaderv2operationitemtype)  | 否 | 否 | 操作区元素内容。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
 | action | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)| 否 | 是 | 操作区事件。默认值：() => void。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| accessibilityText |[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧操作项无障碍描述。 <br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| accessibilityLevel | string | 否 | 是 | 子标题右侧操作项无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧操作项由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧操作项可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧操作项不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧操作项及其所有子组件不可被无障碍辅助服务所识别。<br>默认值：“yes”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 | 
-| accessibilityDescription|[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧操作项无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| defaultFocus | boolean | 否 | 是 | 子标题右侧操作项是否为默认焦点。<br/>true：子标题右侧操作项是默认焦点。<br/>false：子标题右侧操作项不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧操作项id。需要为子标题右侧操作项设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题右侧操作项id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
+| accessibilityText |[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题尾部操作项无障碍描述。 <br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| accessibilityLevel | string | 否 | 是 | 子标题尾部操作项无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题尾部操作项由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题尾部操作项可被无障碍辅助服务所识别。<br/>"no"：当前子标题尾部操作项不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题尾部操作项及其所有子组件不可被无障碍辅助服务所识别。<br>默认值：“yes”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 | 
+| accessibilityDescription|[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题尾部操作项无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| defaultFocus | boolean | 否 | 是 | 子标题尾部操作项是否为默认焦点。<br/>true：子标题尾部操作项是默认焦点。<br/>false：子标题尾部操作项不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| id<sup>24+</sup> | string | 否 | 是 | 子标题尾部操作项id。需要为子标题尾部操作项设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题尾部操作项id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ### constructor
 
@@ -341,11 +336,11 @@ type SubHeaderV2OperationItemAction = () => void
 |--------------------------|-------------------------|---|---|-----------------------------|
 | content                  | [SubHeaderV2OperationItemType](#subheaderv2operationitemtype) | 否 | 否 | 操作项显示的内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
 | action                   | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)         | 否 | 是 | 选项操作事件。默认值：() => void。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧操作项无障碍描述。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| accessibilityLevel       | string | 否 | 是 | 子标题右侧操作项无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧操作项由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧操作项可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧操作项不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧操作项及其所有子组件不可被无障碍辅助服务所识别。<br>默认值：“yes”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 | 
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧操作项无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
-| defaultFocus | boolean | 否 | 是 | 子标题右侧操作项是否为默认焦点。<br/>true：子标题右侧操作项是默认焦点。<br/>false：子标题右侧操作项不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
-| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧操作项id。需要为子标题右侧操作项设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题右侧操作项id。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题尾部操作项无障碍描述。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| accessibilityLevel       | string | 否 | 是 | 子标题尾部操作项无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题尾部操作项由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题尾部操作项可被无障碍辅助服务所识别。<br/>"no"：当前子标题尾部操作项不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题尾部操作项及其所有子组件不可被无障碍辅助服务所识别。<br>默认值：“yes”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 | 
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题尾部操作项无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| defaultFocus | boolean | 否 | 是 | 子标题尾部操作项是否为默认焦点。<br/>true：子标题尾部操作项是默认焦点。<br/>false：子标题尾部操作项不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| id<sup>24+</sup> | string | 否 | 是 | 子标题尾部操作项id。需要为子标题尾部操作项设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题尾部操作项id。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ## SubHeaderV2TitleBuilder
 
@@ -1464,3 +1459,98 @@ struct SubHeaderExample {
 ```
 
 ![/SubHeaderDefaultFocus](figures/SubHeaderDefaultFocus.png)
+
+### 示例10（设置子标题尾部图标）
+该示例主要演示子标题设置endIcon尾部图标，包括普通图片资源和Symbol图标两种形式。
+
+从API版本26.0.1开始，[SubHeaderV2](#subheaderv2-1)新增endIcon属性。
+
+ArkTS-Dyn示例：
+
+```ts
+import {
+  SubHeaderV2,
+  SubHeaderV2Title,
+  SubHeaderV2IconType,
+  SymbolGlyphModifier
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ secondaryTitle: '二级标题' });
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  @Local endIcon: SubHeaderV2IconType = $r('app.media.startIcon');
+  @Local endIconSymbol: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_lungs'));
+
+  aboutToAppear(): void {
+    this.title = new SubHeaderV2Title({
+      secondaryTitle: '二级标题'
+    });
+    this.endIconSymbol = new SymbolGlyphModifier($r('sys.symbol.ohos_lungs'))
+      .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+      .fontColor([Color.Blue, Color.Grey, Color.Green]);
+  }
+
+  build() {
+    Column() {
+      // 图标+二级标题+尾部图标（Image）
+      SubHeaderV2({
+        icon: $r('sys.media.ohos_ic_public_email'),
+        endIcon: this.endIcon,
+        title: this.title
+      })
+      // 图标+二级标题+尾部图标（Symbol）
+      SubHeaderV2({
+        icon: $r('sys.media.ohos_ic_public_email'),
+        endIcon: this.endIconSymbol,
+        title: this.title
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, ComponentV2, $r, Column, SymbolGlyphModifier, SymbolRenderingStrategy, Color, Local } from '@kit.ArkUI';
+import {
+  SubHeaderV2, SubHeaderV2Title
+} from '@ohos.arkui.advanced.SubHeaderV2';
+
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ secondaryTitle: '二级标题' });
+  @Local endIconSymbol: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_lungs'));
+
+  aboutToAppear(): void {
+    this.title = new SubHeaderV2Title({
+      secondaryTitle: '二级标题'
+    });
+    this.endIconSymbol = new SymbolGlyphModifier($r('sys.symbol.ohos_lungs'))
+      .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+      .fontColor([Color.Blue, Color.Grey, Color.Green]);
+  }
+
+  build() {
+    Column() {
+      // 图标+二级标题+尾部图标（Image）
+      SubHeaderV2({
+        icon: $r('sys.media.ohos_ic_public_email'),
+        endIcon: $r('app.media.startIcon'),
+        title: this.title
+      })
+      // 图标+二级标题+尾部图标（Symbol）
+      SubHeaderV2({
+        icon: $r('sys.media.ohos_ic_public_email'),
+        endIcon: this.endIconSymbol,
+        title: this.title
+      })
+    }
+  }
+}
+```
+
+![子标题10](figures/image-subheaderv2-example10.PNG)

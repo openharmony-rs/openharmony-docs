@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -112,7 +112,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136 | HTTPS代理提供的证书无效。 |
 | ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137 | 在尝试进行域名解析（DNS）时发生错误。 |
 | ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | 访问网络的权限被拒绝。这用于区分很可能是由防火墙导致的错误和其他访问被拒绝的错误。另请参阅ARKWEB_ERR_ACCESS_DENIED。 |
-| ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | 请求节流模块取消了此请求，以避免DDOS攻击。 |
+| ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | 请求节流模块取消了此请求，以避免DDoS攻击。 |
 | ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140 | 通过HTTPS代理创建SSL隧道连接的请求收到了302（临时重定向）响应。响应体可能包含请求失败原因的说明。 |
 | ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141 | 我们无法使用客户端证书的私钥签署SSL客户端身份验证握手的CertificateVerify数据。 |
 | ARKWEB_ERR_MSG_TOO_BIG = -142 | 消息对于传输来说太大了。（例如，UDP消息超过了大小阈值）。 |

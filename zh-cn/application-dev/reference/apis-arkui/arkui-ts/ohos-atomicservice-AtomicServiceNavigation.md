@@ -190,8 +190,8 @@ type NavDestinationBuilder = (name: string, param?: Object) => void
 展示AtomicServiceNavigation的基础样式与渐变色背景。
 
 ```ts
-import { AtomicServiceNavigation, MixMode, GradientAlpha, BackgroundTheme } from '@kit.ArkUI';
-import { AtomicServiceTabs, TabBarOptions, TabBarPosition } from '@kit.ArkUI';
+import { AtomicServiceNavigation, MixMode, GradientAlpha, BackgroundTheme, AtomicServiceTabs, TabBarOptions, TabBarPosition } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
@@ -327,8 +327,7 @@ export struct PageTwo {
 设备宽屏场景（宽度大于600vp）下设置抽屉模式，在标题栏插入自定义布局。
 
 ```ts
-import { AtomicServiceNavigation, TitleBarType } from '@kit.ArkUI';
-import { AtomicServiceTabs, TabBarOptions, TabBarPosition } from '@kit.ArkUI';
+import { AtomicServiceNavigation, TitleBarType, AtomicServiceTabs, TabBarOptions, TabBarPosition } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -466,8 +465,7 @@ export struct PageTwo {
 设置侧边栏：背景色与内容样式。
 
 ```ts
-import { AtomicServiceNavigation, TitleBarType } from '@kit.ArkUI';
-import { AtomicServiceTabs, TabBarOptions, TabBarPosition } from '@kit.ArkUI';
+import { AtomicServiceNavigation, TitleBarType, AtomicServiceTabs, TabBarOptions, TabBarPosition } from '@kit.ArkUI';
 
 @Entry
 @Component

@@ -33,8 +33,8 @@ typedef struct {...} OH_NativeXComponent_TouchPoint
 | float y | 触摸点相对于XComponent组件上边缘的y坐标，单位：px。 |
 | [OH_NativeXComponent_TouchEventType](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_toucheventtype) type | 触摸事件的类型，用于区分按压、抬起、移动等不同触摸动作，具体取值见OH_NativeXComponent_TouchEventType。 |
 | double size | 指垫和屏幕之间的接触面积。取值范围为[0.0, 1.0]，值越大表示接触面积越大（归一化值）。 |
-| float force | 当前触摸事件的压力，取值范围为[0, 1]，其中0表示无压力，1表示设备可识别的最大压力（具体取值范围依设备能力而定）。 |
-| int64_t timeStamp | 当前触摸事件的时间戳。触发事件时距离系统启动的时间间隔，单位纳秒。 |
+| float force | 当前触摸事件的压力，取值范围为[0.0, 1.0]，其中0表示无压力，1表示设备可识别的最大压力（具体取值范围依设备能力而定）。 |
+| int64_t timeStamp | 当前触摸事件的时间戳。触发事件时距离系统启动的时间间隔，单位：纳秒。 |
 | bool isPressed | 当前点是否被按下，按下时为true，离开时为false。 |
 
 

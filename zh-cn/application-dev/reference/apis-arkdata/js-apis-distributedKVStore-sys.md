@@ -72,7 +72,7 @@ putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;):
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> 适用版本：10+ |
 
 **示例：**
 
@@ -141,7 +141,7 @@ putBatch(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> 适用版本：10+ |
 
 **示例：**
 
@@ -332,7 +332,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> 适用版本：10+ |
 
 **示例：**
 
@@ -444,7 +444,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> 适用版本：10+ |
 
 **示例：**
 
@@ -535,8 +535,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | **错误码ID** | **错误信息**                                                                                                       |
 | ------------ |----------------------------------------------------------------------------------------------------------------|
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 202          | Permission verification failed. A non-system application calls a system API. |
-| 15100001     | Over max limits.                                                                                               |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
 | 15100003     | Database corrupted.                                                                                            |
 | 15100005     | Database or result set already closed. |
 
@@ -646,8 +646,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 | **错误码ID** | **错误信息**                                                                                                       |
 | ------------ |----------------------------------------------------------------------------------------------------------------|
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 202          | Permission verification failed. A non-system application calls a system API. |
-| 15100001     | Over max limits.                                                                                               |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
 | 15100003     | Database corrupted.                                                                                            |
 | 15100005     | Database or result set already closed. |
 
@@ -754,8 +754,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | **错误码ID** | **错误信息**                                                                                                       |
 | ------------ |----------------------------------------------------------------------------------------------------------------|
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 202          | Permission verification failed. A non-system application calls a system API. |
-| 15100001     | Over max limits.                                                                                               |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
 | 15100003     | Database corrupted.                                                                                            |
 | 15100005     | Database or result set already closed. |
 
@@ -865,8 +865,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 | **错误码ID** | **错误信息**                                                                                                       |
 | ------------ |----------------------------------------------------------------------------------------------------------------|
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 202          | Permission verification failed. A non-system application calls a system API. |
-| 15100001     | Over max limits.                     |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 15100001     | Over max limits. <br> 适用版本：10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -966,8 +966,8 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | **错误码ID** | **错误信息**                                                                                                      |
 | ------------ |---------------------------------------------------------------------------------------------------------------|
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 202          | Permission verification failed. A non-system application calls a system API. |
-| 15100001     | Over max limits.                      |
+| 202          | Permission verification failed, application which is not a system application uses system API.                |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -1082,8 +1082,8 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | **错误码ID** | **错误信息**                                                                                                       |
 | ------------ |----------------------------------------------------------------------------------------------------------------|
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 202          | Permission verification failed. A non-system application calls a system API. |
-| 15100001     | Over max limits.                                                                                               |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
 | 15100003     | Database corrupted.                                                                                            |
 | 15100005     | Database or result set already closed. |
 

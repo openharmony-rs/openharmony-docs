@@ -22,6 +22,6 @@
 - [组件快捷键事件](ts-universal-events-keyboardshortcut.md)
 - [自定义事件分发](ts-universal-attributes-on-child-touch-test.md)
 - [自定义事件拦截](ts-universal-attributes-on-touch-intercept.md)
-- [焦点轴事件](ts-universal-events-focus_axis.md)
+- [焦点轴事件](ts-universal-events-focus-axis.md)
 - [轴事件](ts-universal-events-axis.md)
 <!--DelEnd-->

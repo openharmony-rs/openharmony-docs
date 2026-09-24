@@ -174,7 +174,7 @@ onSystemPrivateCommand(callback: Callback&lt;Record&lt;string, CommandDataType&g
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -220,7 +220,7 @@ offSystemPrivateCommand(callback?: Callback&lt;Record&lt;string, CommandDataType
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -266,7 +266,7 @@ onSystemPanelStatusChange(callback: Callback&lt;SystemPanelStatus&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -312,7 +312,7 @@ offSystemPanelStatusChange(callback?: Callback&lt;SystemPanelStatus&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -368,7 +368,7 @@ sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800026 | input method system panel error. Possible causes: 1. system panel not connected. 2. ipc failed due to large amount of data transferred or other reasons. 3. the caller is not system panel. |
 
 **示例：**
@@ -451,8 +451,8 @@ connectSystemChannel(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | 12800026  | input method system panel error. Possible causes: 1. the system panel not connected.2. ipc failed due to the large amount of data transferred or other reasons. 3. the caller is not system panel.|
 

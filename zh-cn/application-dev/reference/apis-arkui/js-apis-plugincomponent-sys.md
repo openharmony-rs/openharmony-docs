@@ -35,7 +35,7 @@ import { pluginComponentManager } from '@kit.ArkUI';
 | owner     | [Want](../apis-ability-kit/js-apis-application-want.md) | 否 | 否    | 组件提供方Ability信息。                          |
 | target    | [Want](../apis-ability-kit/js-apis-application-want.md) | 否 | 否    | 组件使用方Ability信息。                          |
 | name      | string                              | 否 | 否    | 组件名称，当jsonPath不为空时需与[external.json](#externaljson文件说明)文件中的键名一致。                                    |
-| data      | [KVObject](js-apis-plugincomponent.md#kvobject)      |    否     | 否    | 组件数据，以键值对形式存储。用于向组件使用方传递业务数据，如页面路径（key为'js'，value为模板路径字符串）及自定义数据字段。                                   |
+| data      | [KVObject](js-apis-plugincomponent.md#kvobject)      |    否     | 否    | 组件数据，以键值对形式存储。用于向组件使用方传递业务数据，如模板路径（key为'js'，value为模板路径字符串）及自定义数据字段。                                   |
 | extraData | [KVObject](js-apis-plugincomponent.md#kvobject)          | 否    | 否    | 附加数据，用于在发送组件时传递额外的自定义数据，与组件数据（data）区分，可根据业务需要设置。                                   |
 | jsonPath  | string                         |  否   | 是    | 存放模板路径的[external.json](#externaljson文件说明)文件的路径。当jsonPath不为空时，不触发Push通信，组件模板路径从external.json文件中读取；当jsonPath为空（默认）时，通过Push通信向组件使用方发送组件模板。 |
 
@@ -54,14 +54,14 @@ import { pluginComponentManager } from '@kit.ArkUI';
 | owner    | [Want](../apis-ability-kit/js-apis-application-want.md)| 否 | 否    | 组件使用方Ability信息。                          |
 | target   | [Want](../apis-ability-kit/js-apis-application-want.md) | 否 | 否    | 组件提供方Ability信息。                          |
 | name     | string                         |  否   | 否    | 请求组件名称，当jsonPath不为空时需与[external.json](#externaljson文件说明)文件中的键名一致。                                  |
-| data     | [KVObject](js-apis-plugincomponent.md#kvobject)        |   否    | 否    | 附加数据，以键值对形式存储。用于向组件提供方传递请求时的自定义业务参数，以便提供方根据这些数据返回合适的组件模板。                                    |
+| data     | [KVObject](js-apis-plugincomponent.md#kvobject)        |   否    | 否    | 组件数据，以键值对形式存储。用于向组件提供方传递请求时的自定义业务参数，以便提供方根据这些数据返回合适的组件模板。                                    |
 | jsonPath | string | 否 | 是 | 存放模板路径的[external.json](#externaljson文件说明)文件的路径。当需要从external.json文件加载模板路径而非通过Request通信获取模板时传入此参数。当jsonPath字段不为空时不触发Request通信；当jsonPath为空（默认）时，通过Request通信向组件提供方请求组件模板。 |
 
 ### push<sup>9+</sup>
 
 push(param: PushParameterForStage, callback: AsyncCallback&lt;void&gt;): void
 
-组件提供方向组件使用方主动发送组件与数据。适用于需要主动推送插件组件模板的场景，例如跨应用内容分享、桌面卡片主动刷新等。push 由组件提供方主动发起推送，request 由组件使用方主动发起请求；注意两者参数结构相近但 owner/target 含义相反，请勿混用。组件使用方需通过onPush事件监听接收数据，事件监听接口请参见[@ohos.pluginComponent (PluginComponentManager)](js-apis-plugincomponent.md#plugincomponentmanageron)。
+组件提供方向组件使用方主动发送组件与数据。适用于需要主动推送插件组件模板的场景，例如跨应用内容分享、应用内嵌入的外部插件组件内容动态更新等。push 由组件提供方主动发起推送，request 由组件使用方主动发起请求；注意两者参数结构相近但 owner/target 含义相反，请勿混用。组件使用方需通过onPush事件监听接收数据，事件监听接口请参见[@ohos.pluginComponent (PluginComponentManager)](js-apis-plugincomponent.md#plugincomponentmanageron)。
 
 **系统接口：** 此接口为系统接口。
 

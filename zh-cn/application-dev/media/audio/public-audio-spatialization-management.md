@@ -20,7 +20,7 @@ Audio Vivid是基于AI技术的音频编解码标准，由世界超高清视频�
 
 对于播放音频类的应用，开发者可以查询到设备是否支持空间音频的能力，以及当前设备空间音频的开关状态。
 
-### 获取空间音频示例
+### 获取空间音频实例
 
 应用开发者在使用AudioSpatializationManager的接口前，需要先调用[getSpatializationManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getspatializationmanager18)获取AudioSpatializationManager实例。
 
@@ -98,13 +98,14 @@ import { audio } from '@kit.AudioKit';
 
 ArkTS-Sta示例：
 
-<!-- @[check_isspacesoundon](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererSampleJS_Sta/entry/src/main/ets/pages/renderer.ets) -->
+<!-- @[check_isspacesoundon](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererSampleJS_Sta/entry/src/main/ets/pages/renderer.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 // ...
   let isSpatializationEnabledForCurrentDevice = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
-  console.info(`Succeeded in checking spatialization enabled for current device is: ${isSpatializationEnabledForCurrentDevice}.`);
+  console.info(`Succeeded in using isSpatializationEnabledForCurrentDevice function,
+    IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
 ```
 
 ### 订阅当前发声设备空间音频渲染效果的开关状态变化事件

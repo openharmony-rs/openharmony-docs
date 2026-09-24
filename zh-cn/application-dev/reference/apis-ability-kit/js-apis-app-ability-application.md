@@ -488,7 +488,7 @@ export default class MyAbilityStage extends AbilityStage{
 
 ## application.createModuleContextSync
 
-createModuleContextSync(context: Context, moduleName: string): \<Context>
+createModuleContextSync(context: Context, moduleName: string): Context
 
 创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。该接口为同步接口。
 
@@ -496,13 +496,13 @@ createModuleContextSync(context: Context, moduleName: string): \<Context>
 >
 > 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数**：
 
@@ -515,7 +515,7 @@ createModuleContextSync(context: Context, moduleName: string): \<Context>
 
 | 类型               | 说明                |
 | ------------------ | ------------------- |
-| \<[Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md)> | 返回创建的Context。 |
+| [Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md) | 返回创建的Context。 |
 
 **错误码：**
 

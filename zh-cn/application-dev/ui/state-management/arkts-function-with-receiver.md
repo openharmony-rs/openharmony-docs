@@ -1,4 +1,4 @@
-# Function-with-Receiver：定义扩展组件样式（ArkTS-ST）
+# Function-with-Receiver：定义扩展组件样式（ArkTS-Sta）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->

@@ -20,7 +20,7 @@ formHost模块提供了卡片使用方相关接口的能力，包括对使用方
 import formHost from '@ohos.application.formHost';
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -50,7 +50,7 @@ formHost.deleteForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
@@ -85,7 +85,7 @@ formHost.deleteForm(formId).then(() => {
 });
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -117,7 +117,7 @@ formHost.releaseForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -150,7 +150,7 @@ formHost.releaseForm(formId, true, (error: Base.BusinessError) => {
 });
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
@@ -186,7 +186,7 @@ formHost.releaseForm(formId, true).then(() => {
 });
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -216,7 +216,7 @@ formHost.requestForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string): Promise&lt;void&gt;
 
@@ -251,7 +251,7 @@ formHost.requestForm(formId).then(() => {
 });
 ```
 
-## castTempForm
+## formHost.castTempForm
 
 castTempForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -281,7 +281,7 @@ formHost.castTempForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## castTempForm
+## formHost.castTempForm
 
 castTempForm(formId: string): Promise&lt;void&gt;
 
@@ -316,7 +316,7 @@ formHost.castTempForm(formId).then(() => {
 });
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -346,7 +346,7 @@ formHost.notifyVisibleForms(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -381,7 +381,7 @@ formHost.notifyVisibleForms(formIds).then(() => {
 });
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -411,7 +411,7 @@ formHost.notifyInvisibleForms(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -446,7 +446,7 @@ formHost.notifyInvisibleForms(formIds).then(() => {
 });
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -476,7 +476,7 @@ formHost.enableFormsUpdate(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -511,7 +511,7 @@ formHost.enableFormsUpdate(formIds).then(() => {
 });
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -541,7 +541,7 @@ formHost.disableFormsUpdate(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -576,7 +576,7 @@ formHost.disableFormsUpdate(formIds).then(() => {
 });
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
@@ -603,7 +603,7 @@ formHost.isSystemReady((error: Base.BusinessError) => {
 });
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(): Promise&lt;void&gt;
 
@@ -630,7 +630,7 @@ formHost.isSystemReady().then(() => {
 });
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -661,7 +661,7 @@ formHost.getAllFormsInfo((error: Base.BusinessError, data: formInfo.FormInfo[]) 
 });
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -690,7 +690,7 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
   });
   ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -722,7 +722,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', (error: Base.BusinessError,
 });
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -755,7 +755,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: Base.Busin
 });
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -791,7 +791,7 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
   });
   ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -823,7 +823,7 @@ formHost.deleteInvalidForms(formIds, (error: Base.BusinessError, data: number) =
 });
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
@@ -858,7 +858,7 @@ formHost.deleteInvalidForms(formIds).then((data: number) => {
 });
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&gt;): void
 
@@ -901,7 +901,7 @@ formHost.acquireFormState(want, (error: Base.BusinessError, data: formInfo.FormS
 });
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
@@ -947,7 +947,7 @@ formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
 });
 ```
 
-## on('formUninstall')
+## formHost.on('formUninstall')
 
 on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
@@ -976,7 +976,7 @@ formHost.on('formUninstall', (formId: string) => {
 });
 ```
 
-## off('formUninstall')
+## formHost.off('formUninstall')
 
 off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
@@ -1005,7 +1005,7 @@ formHost.off('formUninstall', (formId: string) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1036,7 +1036,7 @@ formHost.notifyFormsVisible(formIds, true, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt;void&gt;
 
@@ -1072,7 +1072,7 @@ formHost.notifyFormsVisible(formIds, true).then(() => {
 });
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1103,7 +1103,7 @@ formHost.notifyFormsEnableUpdate(formIds, true, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): Promise&lt;void&gt;
 

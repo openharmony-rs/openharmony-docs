@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-pan模块提供了访问蓝牙个人区域网相关功能的方法。
+pan模块提供了访问蓝牙个人区域网（[PAN](../../connectivity/bluetooth/terminology.md#pan)）相关功能的方法，支持[PANU](../../connectivity/bluetooth/terminology.md#panu)（个人区域网用户）和[NAP](../../connectivity/bluetooth/terminology.md#nap)（网络接入点）两种角色，PANU设备可向NAP设备发起连接以实现网络共享。
 
 > **说明：**
 >
@@ -23,13 +23,13 @@ import { pan } from '@kit.ConnectivityKit';
 
 ## PanProfile
 
-使用PanProfile方法之前需要创建该类的实例进行操作，通过[createPanProfile](js-apis-bluetooth-pan.md#pancreatepanprofile)方法构造此实例。
+使用PanProfile方法之前需要创建该类的实例，通过[createPanProfile](js-apis-bluetooth-pan.md#pancreatepanprofile)方法构造此实例。
 
 ### connect
 
 connect(deviceId: string): void
 
-本端作为PANU角色时使用，向指定设备发起Pan服务连接请求。
+本端作为PANU（个人区域网用户）角色时使用，向指定设备发起PAN服务连接请求。需确保对端设备已启用网络共享（NAP）能力才能成功连接。适用于本端需要通过蓝牙PAN连接到远端NAP设备以获取网络访问的场景，例如设备间通过蓝牙共享网络连接。
 - 可通过订阅[on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)事件来感知连接是否成功。
 - 当不需要连接时需调用[disconnect](#disconnect)断开连接。
 
@@ -77,7 +77,8 @@ try {
 
 disconnect(deviceId: string): void
 
-本端作为PANU角色时使用，断开与当前连接设备的Pan服务，并释放相关的资源。
+本端作为PANU（个人区域网用户）角色时使用，断开与当前连接设备的PAN服务，并释放相关的资源。适用于不再需要通过蓝牙PAN获取网络服务时主动断开连接的场景。
+- 可通过订阅[on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)事件来感知断开是否成功。
 
 **系统接口**：此接口为系统接口。
 
@@ -123,8 +124,8 @@ try {
 
 setTethering(enable: boolean): void
 
-本端作为NAP角色时使用，用于设置网络共享状态。
-- 当本端未启用网络共享能力时，作为PANU角色的对端设备无法连接本端的PAN能力。
+本端作为NAP（网络接入点）角色时使用，用于设置网络共享状态。
+- 当本端未启用网络共享能力时，作为PANU角色的对端设备无法连接本端的PAN服务。
 - 调用该接口前，建议先调用[isTetheringOn](js-apis-bluetooth-pan.md#istetheringon)判断当前的网络共享状态。
 - 开启网络共享状态后，可以通过订阅[on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)事件来感知作为PANU角色的对端设备的连接。
 

@@ -33,7 +33,7 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | 是 | 否 | 表示数据共享扩展能力上下文。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | 否 | 否 | 表示数据共享扩展能力上下文。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 | onCreate<sup>23+</sup> | [OnCreateFn](#oncreatefn23) | 否 | 是 | 初始化业务逻辑配置，默认为空（未定义），函数被定义后在DataShare客户端连接DataShareExtensionAbility服务端时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | insert<sup>23+</sup> | [InsertFn](#insertfn23) | 否 | 是 | 插入操作配置，默认为空（未定义），在数据库插入时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | update<sup>23+</sup> | [UpdateFn](#updatefn23) | 否 | 是 | 更新操作配置，默认为空（未定义），在数据库更新时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |

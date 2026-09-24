@@ -1,4 +1,4 @@
-# @ohos.enterprise.deviceControl（设备控制管理）
+# @ohos.enterprise.deviceControl (设备控制管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -146,9 +146,9 @@ try {
 | 名称          | 值   | 说明                                                         |
 | ------------- | ---- | ------------------------------------------------------------ |
 | DISK_ERASURE  | 0    | 磁盘擦除。接口调用后，设备将立即执行磁盘擦除操作。磁盘擦除完成后，整机设备数据将全部被擦除且无法恢复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。仅支持PC/2in1设备。 |
-| RESET_FACTORY | 1 | 设备恢复出厂设置。接口调用后，设备将立即恢复出厂设置。恢复完成后，整机设备数据将全部被擦除且无法恢复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)接口禁用了恢复出厂，需要先解除禁用。<br>**起始版本：** 26.1.0 |
-| REBOOT | 2 | 设备重启。<br>**起始版本：** 26.1.0 |
-| SHUT_DOWN | 3 | 设备关机。<br>**起始版本：** 26.1.0 |
-| LOCK_SCREEN | 4 | 设备锁屏。<br>**起始版本：** 26.1.0 |
-| LOCK_DEVICE | 5 | 设备锁定。该能力使用后设备屏幕无法使用，按键无响应，仅支持锁屏文案定制，不支持在锁屏界面定制交互功能。在开发过程中，下发设备锁定策略前一定要预留逃生通道，并且确保逃生通道正常。建议开发时保留hdc能力与远程通信能力，通过hdc命令或者远程push能力能触发设备解锁定功能。<br>如果需要实现在屏幕锁定的情况下支持自定义行为的能力，建议使用[setAllowedKioskApps](js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)接口配置支持Kiosk模式，使用[enterKioskMode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)接口进入Kiosk模式。<br>**起始版本：** 26.1.0 |
-| UNLOCK_DEVICE | 6 | 设备解锁定。接口调用后，设备将被解锁，用户可正常操作设备。<br>**起始版本：** 26.1.0 |
+| RESET_FACTORY | 1 | 设备恢复出厂设置。接口调用后，设备将立即恢复出厂设置。恢复完成后，整机设备数据将全部被擦除且无法恢复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)接口禁用了恢复出厂，需要先解除禁用。<br>**起始版本：** 26.0.1 |
+| REBOOT | 2 | 设备重启。<br>**起始版本：** 26.0.1 |
+| SHUT_DOWN | 3 | 设备关机。<br>**起始版本：** 26.0.1 |
+| LOCK_SCREEN | 4 | 设备锁屏。<br>**起始版本：** 26.0.1 |
+| LOCK_DEVICE | 5 | 设备锁定。该能力使用后设备屏幕无法使用，按键无响应，仅支持锁屏文案定制，不支持在锁屏界面定制交互功能。在开发过程中，下发设备锁定策略前一定要预留逃生通道，并且确保逃生通道正常。建议开发时保留hdc能力与远程通信能力，通过hdc命令或者远程push能力能触发设备解锁定功能。<br>如果需要实现在屏幕锁定的情况下支持自定义行为的能力，建议使用[setAllowedKioskApps](js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)接口配置支持Kiosk模式，使用[enterKioskMode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)接口进入Kiosk模式。<br>**起始版本：** 26.0.1 |
+| UNLOCK_DEVICE | 6 | 设备解锁定。接口调用后，设备将被解锁，用户可正常操作设备。<br>**起始版本：** 26.0.1 |

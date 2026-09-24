@@ -9,7 +9,7 @@
 
 ## 概述
 
-定义查询蓝牙开关状态的接口。
+提供查询蓝牙开关状态的接口。支持获取蓝牙的开关、打开中、关闭中、BLE only模式等多种状态，适用于需要感知蓝牙当前开关状态以进行相应业务处理的场景。
 
 **引用文件：** <ConnectivityKit/bluetooth/oh_bluetooth.h>
 
@@ -97,12 +97,12 @@ Bluetooth_ResultCode OH_Bluetooth_GetBluetoothSwitchState(Bluetooth_SwitchState 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Bluetooth_SwitchState](capi-oh-bluetooth-h.md#bluetooth_switchstate) *state | - 指向接收蓝牙开关状态的枚举值的指针。需要传入非空指针，否则将返回错误码。详细定义请参考[Bluetooth_SwitchState](capi-oh-bluetooth-h.md#bluetooth_switchstate)。 |
+| [Bluetooth_SwitchState](#bluetooth_switchstate) *state | - 指向接收蓝牙开关状态的枚举值的指针。需要传入非空指针，否则将返回错误码。详细定义请参考[Bluetooth_SwitchState](#bluetooth_switchstate)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Bluetooth_ResultCode](capi-oh-bluetooth-h.md#bluetooth_resultcode) | 蓝牙开关状态函数返回值。<br>     详细定义请参考[Bluetooth_ResultCode](capi-oh-bluetooth-h.md#bluetooth_resultcode)。<br>     [BLUETOOTH_SUCCESS](capi-oh-bluetooth-h.md#bluetooth_resultcode) 成功获取蓝牙开关状态。<br>     [BLUETOOTH_INVALID_PARAM](capi-oh-bluetooth-h.md#bluetooth_resultcode) 输入参数为空指针。 |
+| [Bluetooth_ResultCode](#bluetooth_resultcode) | 蓝牙开关状态函数返回值。<br>     详细定义请参考[Bluetooth_ResultCode](#bluetooth_resultcode)。<br>     [BLUETOOTH_SUCCESS](#bluetooth_resultcode) 成功获取蓝牙开关状态。<br>     [BLUETOOTH_INVALID_PARAM](#bluetooth_resultcode) 输入参数为空指针。 |
 
 

@@ -24,7 +24,7 @@
    DataAbility和DataShareExtensionAbility生命周期对比见下表。
    | FA的DataAbility | Stage的DataShareExtensionAbility | 对比描述 |
    | -------- | -------- | -------- |
-   | onInitialized?(info:&nbsp;AbilityInfo):&nbsp;void | onCreate?(want:&nbsp;Want,&nbsp;callback:<br/>AsyncCallback&lt;void&gt;):&nbsp;void | 两者调用时机一致，函数名即入参都不一样，Stage模型下增加了入参want以便开发者在创建时获取参数。 |
+   | onInitialized?(info:&nbsp;AbilityInfo):&nbsp;void | onCreate?(want:&nbsp;Want,&nbsp;callback:<br/>AsyncCallback&lt;void&gt;):&nbsp;void | 两者调用时机一致，函数名以及入参都不一样，Stage模型下增加了入参want以便开发者在创建时获取参数。 |
    | update?(uri:&nbsp;string,&nbsp;valueBucket:&nbsp;rdb.ValuesBucket,&nbsp;predicates:&nbsp;dataAbility.DataAbilityPredicates,&nbsp;callback:&nbsp;AsyncCallback&lt;number&gt;):&nbsp;void | update?(uri:&nbsp;string,&nbsp;predicates:&nbsp;dataSharePredicates.DataSharePredicates,&nbsp;value:&nbsp;ValuesBucket,&nbsp;callback:&nbsp;AsyncCallback&lt;number&gt;):&nbsp;void | 两者意义和调用时机一致，参数顺序和参数类型略有不同，需要简单改造。 |
    | query?(uri:&nbsp;string,&nbsp;columns:&nbsp;Array&lt;string&gt;,&nbsp;predicates:&nbsp;dataAbility.DataAbilityPredicates,&nbsp;callback:&nbsp;AsyncCallback&lt;ResultSet&gt;):&nbsp;void | query?(uri:&nbsp;string,&nbsp;predicates:&nbsp;dataSharePredicates.DataSharePredicates,&nbsp;columns:&nbsp;Array&lt;string&gt;,&nbsp;callback:&nbsp;AsyncCallback&lt;Object&gt;):&nbsp;void | 两者意义和调用时机一致，参数顺序和参数类型略有不同，需要简单改造。 |
    | delete?(uri:&nbsp;string,&nbsp;predicates:&nbsp;dataAbility.DataAbilityPredicates,&nbsp;callback:&nbsp;AsyncCallback&lt;number&gt;):&nbsp;void | delete?(uri:&nbsp;string,&nbsp;predicates:&nbsp;dataSharePredicates.DataSharePredicates,&nbsp;callback:&nbsp;AsyncCallback&lt;number&gt;):&nbsp;void | 两者意义和调用时机一致，参数类型略有不同，需要简单改造。 |

@@ -1379,6 +1379,7 @@ while (!iteratorResult.done) {
 ```
 
 ### $_iterator<sup>23+</sup>
+### $_iterator<sup>23+</sup>
 
 \$_iterator\(): IterableIterator&lt;T&gt;
 

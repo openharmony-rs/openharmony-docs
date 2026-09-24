@@ -67,3 +67,5 @@ JSVM-API与Native模块之间的交互流程主要分为以下两步：
 1. **初始化阶段**：在Native模块上初始化JSVM和JS上下文，并完成Native函数的注册。Native方法将被挂载到JS执行环境的全局上下文即GlobalThis。
 
 2. **调用阶段**：当JS侧调用通过JSVM-API注册到JS全局上下文的方法时，JS引擎会找到并调用对应的C/C++方法。
+
+<!--RP1--><!--RP1End-->

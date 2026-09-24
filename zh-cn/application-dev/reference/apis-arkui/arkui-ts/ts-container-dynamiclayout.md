@@ -14,6 +14,12 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 
+## 导入模块
+
+```ts
+import { DynamicLayout } from '@kit.ArkUI';
+```
+
 ## 子组件
 
 可以包含子组件。

@@ -39,7 +39,7 @@
 - accessibilitydescription
   
   ```html
-  <!-- showDialog为开发者自定义的事件处理函数，需在JS文件中定义 -->
+  <!-- showDialog为开发者自定义的事件名称，需在卡片json配置文件的actions字段中声明 -->
   <button accessibilitydescription="点击此按键会弹出一个对话框" onclick="showDialog">按键</button>
   ```
 
@@ -66,4 +66,4 @@
 | 属性 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | eventType | number | 事件类型：<br/>-&nbsp;0：custom&nbsp;event<br/>-&nbsp;1：accessibility&nbsp;focus<br/>-&nbsp;2：clear&nbsp;accessibility&nbsp;focus<br/>无障碍服务下发的自定义事件为0，无障碍服务下发的获焦事件为1，无障碍服务下发的失焦事件为2。 |
-| param | Object | 无障碍辅助应用发送自定义事件时需传入的参数对象，参数内容取决于自定义事件的具体业务场景，可包含与该事件相关的业务数据字段。 |
+| param | Object | 无障碍辅助服务发送自定义事件时传入的参数对象，参数内容取决于自定义事件的具体业务场景，可包含与该事件相关的业务数据字段。 |

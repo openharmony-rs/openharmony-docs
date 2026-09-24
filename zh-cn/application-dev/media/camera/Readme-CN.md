@@ -68,4 +68,7 @@
   - [相机预览画面旋转异常问题](camera-rotation-faq.md)
   - [白平衡相关问题](camera-whitebalance-faq.md)
   - [色彩空间配置异常问题](camera-colorspace-faq.md)
+  - [相机切后台黑屏问题](camera-background-faq.md)
+  - [帧率设置不生效问题](camera-framerate-faq.md)
+  - [双路预览图像数据处理问题](camera-dual-preview-faq.md)
 - [Camera Kit术语](camera-glossary.md)

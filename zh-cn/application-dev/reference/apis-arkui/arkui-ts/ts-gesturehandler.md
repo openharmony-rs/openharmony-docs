@@ -46,7 +46,7 @@ tag(tag: string): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前手势处理器对象。 |
 
 ### allowedTypes<sup>14+</sup>
 
@@ -965,7 +965,7 @@ ArkTS-Sta: onActionCancel(event: Callback\<GestureEvent>): this
 
 | 名称         | 类型                                |只读   |可选 | 说明                 |
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
-| fingers | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 触发旋转的最少手指数，最小为2指，最大为5指。<br/>默认值：2 <br/>取值范围：[2, 5]<br/>触发手势时手指数量可以多于fingers参数值，但仅最先落下的两指参与手势计算。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| fingers | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 触发旋转的最少手指数，最小为2指，最大为5指。<br/>默认值：2 <br/>取值范围：[2, 5]<br/>触发手势时手指数量可以多于fingers参数值，但仅最先落下的与fingers参数值相同数量的手指参与手势计算。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | angle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 触发旋转手势的最小改变度数，单位为deg。<br/>默认值：1 <br/>**说明：** <br/>当改变度数的值小于等于0或大于360时，会被转化为默认值。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | isFingerCountLimited<sup>15+</sup> | boolean | 否 | 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。若触摸屏幕的手指数量不等于设置的触发旋转的最少手指数（即上述fingers参数），手势将不会被识别。只有当触摸屏幕的手指数等于设置的触发旋转的最少手指数，并且滑动距离达到阈值时，手势才能被成功识别（只有先落下的两根手指参与手势计算，若抬起其中的一个，手势识别失败）。<br>对于已成功识别的手势，后续改变触摸屏幕的手指数量，不会触发[onActionUpdate](ts-basic-gestures-rotationgesture.md#onactionupdate)事件，但可以触发[onActionEnd](ts-basic-gestures-rotationgesture.md#onactionend)事件。<br>默认值：false<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 

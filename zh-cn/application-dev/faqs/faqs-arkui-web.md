@@ -186,7 +186,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 **解决措施**
 
-在ArkTS中使用JavaScriptProxy方法将ArkTS里的对象注册到H5的window对象中，然后在h5中使用window对象调用该方法。比如下面例子，在ArkTS中将testObj这个对象以别名testObjName注册到h5的window对象上，在上面的h5中就可以使用window.testObjName去访问这个对象。
+在ArkTS中使用JavaScriptProxy方法将ArkTS里的对象注册到H5的window对象中，然后在H5中使用window对象调用该方法。比如下面例子，在ArkTS中将testObj这个对象以别名testObjName注册到H5的window对象上，在上面的H5中就可以使用window.testObjName去访问这个对象。
 
 示例参考：[前端页面调用应用侧函数](../web/web-in-page-app-function-invoking.md#如何建立应用侧与h5侧的交互通道)
 
@@ -313,12 +313,12 @@ setWebDebuggingAccess()接口开启Web组件前端页面调试能力，利用Dev
 2. 渲染机制：web自渲染。
 
 
-## 系统目前是否支持Webrtc的功能？规格是什么？
+## 系统目前是否支持WebRTC的功能？规格是什么？
 
 **解决措施**
 
-1. WebView支持Webrtc的P-P功能以及音视频流功能。
-2. 非WebView场景，系统不直接提供Webrtc，但会提供技术支持，比如支持三方gn+ninja交叉编译方式适配Webrtc（RR-30030985），包含以下两点：
+1. WebView支持WebRTC的P-P功能以及音视频流功能。
+2. 非WebView场景，系统不直接提供WebRTC，但会提供技术支持，比如支持三方gn+ninja交叉编译方式适配WebRTC，包含以下两点：
    * sdk支持gn+ninja交叉编译方式
    * 提供编译样例指导
 

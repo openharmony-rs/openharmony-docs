@@ -356,7 +356,7 @@ The application is not authorized.
 
 **处理步骤**
 
-请申请加入授信应用名单。<!--RP1--><!--RP1End-->
+后续不支持新增配置支持的授信应用。
 
 <!--Del-->
 ## 19100019 DLP文件已过期

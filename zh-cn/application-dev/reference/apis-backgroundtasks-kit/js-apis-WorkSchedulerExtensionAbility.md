@@ -91,8 +91,7 @@ onWorkStart(work: workScheduler.WorkInfo): void
 ArkTS-Dyn示例：
 
 ```ts
-import { workScheduler } from '@kit.BackgroundTasksKit';
-import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStart(work: workScheduler.WorkInfo) {
@@ -105,8 +104,7 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
 ArkTS-Sta示例：
 
 ```ts
-import { workScheduler } from '@kit.BackgroundTasksKit';
-import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStart(work: workScheduler.WorkInfo): void {

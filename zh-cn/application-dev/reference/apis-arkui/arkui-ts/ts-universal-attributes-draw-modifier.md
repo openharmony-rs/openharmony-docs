@@ -1,4 +1,4 @@
-# 自定义绘制
+# 自定义绘制设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

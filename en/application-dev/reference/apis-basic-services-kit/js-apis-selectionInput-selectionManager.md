@@ -2,19 +2,28 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
-<!--Owner: @no86-->
-<!--Designer: @mmwwbb-->
+<!--Owner: @zl_startup-->
+<!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=70b7aed6929032961b85d9a3537fc6d090c1285e translatedAt=2026-09-09T12:05:11.265Z pushedAt=2026-09-09T12:09:55.281Z -->
 
-This module provides word selection management capabilities, including creating, displaying, moving, hiding, and destroying windows, listening for word selection events, and retrieving the selected text.
+This module provides word selection management capabilities, including creating, displaying, moving, hiding, and destroying panels, listening for word selection events using a mouse or touchpad, and retrieving the selected text. The typical usage process is as follows:
+1. Call [on('selectionCompleted')](#selectionmanageronselectioncompleted) to subscribe to the selection completion event.
+2. In the callback, call [getSelectionContent](#getselectioncontent) to obtain the selected text.
+3. Call [createPanel](#createpanel) to create a word selection panel.
+4. Call [setUiContent](#setuicontent) to load the page content.
+5. Call [moveToGlobalDisplay](#movetoglobaldisplay) to move the panel to the specified position.
+6. Call [show](#show) to display the panel.
+7. Call [destroyPanel](#destroypanel) to destroy the panel.
+8. Call [off('selectionCompleted')](#selectionmanageroffselectioncompleted) to unsubscribe from the selection completion event.
 
 > **NOTE**
 >
 > - This module supports both ArkTS-Dyn and ArkTS-Sta.
 > - The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This module is supported only on PCs/2-in-1 devices.
-> - APIs of this module can be called only by applications that integrate the ExtensionAbility for word selection.
+> - This module is supported only on PCs/2-in-1 devices. You can use **canIUse('SystemCapability.SelectionInput.Selection')** to check whether the current device supports this function.
+> - APIs of this module can be called only by apps that integrate the extension ability for word selection. For details about how to implement the extension ability for word selection, see [SelectionExtensionAbility](js-apis-selectionInput-selectionExtensionAbility.md).
 
 ## Modules to Import
 
@@ -26,7 +35,7 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
@@ -36,28 +45,28 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
-Registers a callback to listen for the word selection completion event. This API uses an asynchronous callback to return the result.
+Subscribes to the word selection completion event. This API is used together with [off('selectionCompleted')](#selectionmanageroffselectioncompleted). [off('selectionCompleted')](#selectionmanageroffselectioncompleted) is used to unsubscribe from the event.
 
-**ArkTS mode:** This API applies only to ArkTS-Dyn.
+**ArkTS mode:** This API is only applicable to ArkTS-Dyn.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                          |
-| -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| type     | string                                      | Yes  | Event type, which is **'selectionCompleted'**.|
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes  | Callback used to return the word selection information. This callback is triggered only when the user selects text using the mouse or touchpad (by double-clicking, triple-clicking, or pressing and sliding the left mouse button) and then presses **Ctrl**.      |
+| Name     | Type                                        | Mandatory | Description                                           |
+| -------- | ------------------------------------------- | --------- | ---------------------------------------------- |
+| type     | string                                      | Yes   | Sets the listener type. The value is fixed at 'selectionCompleted'. |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes   | Callback invoked to return the selection event information [SelectionInfo](#selectioninfo). This callback is triggered only when the user selects text (double-click/triple-click/drag) with the mouse or touchpad and then presses the Ctrl key.       |
 
 **Error codes**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
@@ -67,11 +76,12 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 import { selectionManager } from '@kit.BasicServicesKit';
 
 try {
+  // Subscribe to the selection completion event.
   selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
-    console.info(`Enter the callback function.`);
+    console.info('Enter the callback function.');
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register selectionCompleted callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -79,27 +89,27 @@ try {
 
 onSelectionComplete(callback: Callback\<SelectionInfo>): void
 
-Registers a callback to listen for the word selection completion event. This API uses an asynchronous callback to return the result.
+Subscribes to the selection completion event. Used together with [offSelectionComplete](#offselectioncomplete) to unsubscribe.
 
-**ArkTS mode:** This API applies only to ArkTS-Sta.
+**ArkTS mode:** This API is only applicable to ArkTS-Sta.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**ArkTS-Sta start version:** 24
+**ArkTS-Sta Since Version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                          |
-| -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes  | Callback used to return the word selection information. This callback is triggered only when the user selects text using the mouse or touchpad (by double-clicking, triple-clicking, or pressing and sliding the left mouse button) and then presses **Ctrl**.      |
+| Name     | Type                                        | Mandatory | Description                                           |
+| -------- | ------------------------------------------- | --------- | ---------------------------------------------- |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes   | Callback invoked to return the selection event information [SelectionInfo](#selectioninfo). This callback is triggered only when the user selects text (double-click/triple-click/drag) with the mouse or touchpad and then presses the Ctrl key.       |
 
-**Error codes**
+**Error Code**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
@@ -109,11 +119,12 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 import selectionManager from '@ohos.selectionInput.selectionManager';
 
 try {
+  // Subscribe to the selection completion event.
   selectionManager.onSelectionComplete((info: selectionManager.SelectionInfo) => {
     console.info(`SelectionInfo: ${JSON.stringify(info)}`);
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${err.code}, error message: ${err.message}}`);
+  console.error(`Failed to register selectionCompleted callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -121,37 +132,40 @@ try {
 
 off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
-Unregisters the callback used to listen for the word selection completion event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the word selection completion event. This API is used together with [on('selectionCompleted')](#selectionmanageronselectioncompleted).
 
-**ArkTS mode:** This API applies only to ArkTS-Dyn.
+**ArkTS mode:** This API is only applicable to ArkTS-Dyn.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                                        |
+| Name | Type | Mandatory | Description |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                      | Yes  | Event type, which is **'selectionCompleted'**.              |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | No  | Callback used to return [SelectionInfo](#selectioninfo). If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| type | string | Yes | Type of the event to unsubscribe from. The value is fixed to 'selectionCompleted'. |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | No | Callback function to cancel (that is, the callback instance previously used for subscription through the on method). If this parameter is not filled in, all callback events corresponding to the type are unsubscribed from. |
 
 **Example**
 
 ```ts
 import { selectionManager } from '@kit.BasicServicesKit';
 
+// Define the callback function for the selection completion event, used for subscription and unsubscription.
 let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
-  console.info(`Enter the callback function.`);
+  console.info('Enter the callback function.');
 };
 
+// Subscribe to the selection completion event callback first to prepare for subsequent unsubscription.
 selectionManager.on('selectionCompleted', selectionChangeCallback);
 try {
+  // Unsubscribe from the selection completion event.
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionCompleted: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister selectionCompleted. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -159,36 +173,39 @@ try {
 
 offSelectionComplete(callback?: Callback\<SelectionInfo>): void
 
-Unregisters the callback used to listen for the word selection completion event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the selection complete event. This API is used together with [onSelectionComplete](#onselectioncomplete).
 
-**ArkTS mode:** This API applies only to ArkTS-Sta.
+**ArkTS mode:** This API is only applicable to ArkTS-Sta.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**ArkTS-Sta start version:** 24
+**ArkTS-Sta since version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                                        |
+| Name   | Type                                        | Mandatory | Description                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | No  | Callback used to return [SelectionInfo](#selectioninfo). If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | No   | Callback for the selection complete event (that is, the callback instance previously used to subscribe through the onSelectionComplete method). If this parameter is not specified, all callbacks subscribed to the event are unsubscribed. |
 
 **Example**
 
 ```ts
 import selectionManager from '@ohos.selectionInput.selectionManager';
 
+// Define the callback function for the selection complete event, used for subscription and unsubscription.
 let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
   console.info(`Enter the callback function.`);
 };
 
+// Subscribe to the selection complete event callback first to prepare for the subsequent unsubscription.
 selectionManager.onSelectionComplete(selectionChangeCallback);
 try {
+  // Unsubscribe from the selection complete event.
   selectionManager.offSelectionComplete(selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionComplete: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister selectionCompleted. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -196,26 +213,26 @@ try {
 
 getSelectionContent(): Promise\<string>
 
-Obtains this selected text content. This API uses a promise to return the result.
+Obtains the content of the selected text. This API uses a promise to return the result. This API must be called in the [on('selectionCompleted')](#selectionmanageronselectioncompleted) callback and is valid only after the word selection completion event is triggered.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
 **ArkTS-Sta start version:** 24
 
 **Return value**
-| Type  | Description                                                                |
+| Type   | Description                                                                 |
 | ------- | ------------------------------------------------------------------ |
-| Promise\<string> | Promise used to return the content of the selected text. |
+| Promise\<string> | Promise used to return the content of the selected text.  |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service invocation exception. |
 | 33600004   | The interface is called too frequently. |
@@ -230,11 +247,14 @@ ArkTS-Dyn example:
 ```ts
 import { selectionManager } from '@kit.BasicServicesKit';
 
+// Subscribe to the selection completion event and obtain the selected text in the callback.
 selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
   try {
+    // Obtain the selected text content.
     let content = await selectionManager.getSelectionContent();
+    console.info(`Succeeded in getting selection content: ${content}`);
   } catch (err) {
-    console.error(`Failed to get selection content: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to get selection content. Error code: ${err.code}, error message: ${err.message}`);
   }
 });
 ```
@@ -243,19 +263,21 @@ ArkTS-Sta example:
 ```ts
 import selectionManager from '@ohos.selectionInput.selectionManager';
 
+// Subscribe to the selection completion event and obtain the selected text in the callback.
 selectionManager.onSelectionComplete((info: selectionManager.SelectionInfo) => {
   try {
     getSelectionContentAsync().catch((err) => {
-      console.error(`Failed to get selection content: ${err.code}, error message: ${err.message}`);
+      console.error(`Failed to get selection content. Error code: ${err.code}, error message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to get selection content: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to get selection content. Error code: ${err.code}, error message: ${err.message}`);
   }
 });
 
 async function getSelectionContentAsync(): Promise<void> {
+  // Obtain the selected text content.
   const content = await selectionManager.getSelectionContent();
-  console.info('Selection content:', content);
+  console.info(`Succeeded in getting selection content: ${content}`);
 }
 
 ```
@@ -264,13 +286,13 @@ async function getSelectionContentAsync(): Promise<void> {
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
-Creates a word selection panel. This API uses a promise to return the result.
+Creates a word selection panel, which is used to display the service-related operation UI or text processing result. After the panel is used, call [destroyPanel](#destroypanel) to destroy the panel and release resources. This API uses a promise to return the result.
 
 Only one [MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) and one [MAIN_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) can be created for one word selection application.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
@@ -278,23 +300,23 @@ Only one [MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) and on
 
 **Parameters**
 
-| Name  | Type       | Mandatory| Description                    |
+| Name   | Type        | Mandatory | Description                     |
 | ------- | ----------- | ---- | ------------------------ |
-| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | Yes  | Context that the current word selection panel depends on.|
-| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | Yes  | Information about the word selection panel.|
+| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | Yes   | Context information that the current selection panel depends on. It must be the context provided by SelectionExtensionAbility. |
+| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | Yes   | Configuration information of the selection panel, used to specify the panel type, position, width, and height. A single selection application can create only one MENU_PANEL and one MAIN_PANEL. |
 
 **Return value**
-| Type  | Description                                                                |
+| Type   | Description                                                                 |
 | ------- | ------------------------------------------------------------------ |
-| Promise\<[Panel](#panel)> | Promise used to return the word selection panel created. |
+| Promise\<[Panel](#panel)> | Promise used to return the **Panel** object created, which can be used to set, display, hide, and move the panel, and subscribe to events.  |
 
 **Error codes**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **Example**
@@ -306,8 +328,8 @@ import { rpc } from '@kit.IPCKit';
 import { Want } from '@kit.AbilityKit';
 
 class SelectionAbilityStub extends rpc.RemoteObject {
-  constructor(des: string) {
-    super(des);
+  constructor(descriptor: string) {
+    super(descriptor);
   }
   onRemoteMessageRequest(
     code: number,
@@ -321,20 +343,22 @@ class SelectionAbilityStub extends rpc.RemoteObject {
 
 class ServiceExtAbility extends SelectionExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
+    // Configure the selection panel information, including the panel type, position, and size.
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
       x: 0,
       y: 0,
       width: 500,
       height: 200
-    }
+    };
     let selectionPanel: selectionManager.Panel | undefined = undefined;
+    // Create the selection panel. this.context is obtained by inheriting SelectionExtensionAbility.
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
         selectionPanel = panel;
         console.info('Succeed in creating panel.');
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
+        console.error(`Failed to create panel. Error code: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -352,8 +376,8 @@ import rpc from '@ohos.rpc';
 import { Want } from '@kit.AbilityKit';
 
 class SelectionAbilityStub extends rpc.RemoteObject {
-  constructor(des: string) {
-    super(des);
+  constructor(descriptor: string) {
+    super(descriptor);
   }
   onRemoteMessageRequest(
     code: number,
@@ -367,20 +391,22 @@ class SelectionAbilityStub extends rpc.RemoteObject {
 
 class ServiceExtAbility extends SelectionExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
+    // Configure the selection panel information, including the panel type, position, and size.
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
       x: 0,
       y: 0,
       width: 500,
       height: 200
-    }
+    };
     let selectionPanel: selectionManager.Panel | undefined = undefined;
+    // Create the selection panel.
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
         selectionPanel = panel;
         console.info('Succeed in creating panel.');
       }).catch((err) => {
-      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}}`);
+      console.error(`Failed to create panel. Error code: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -392,34 +418,34 @@ export default ServiceExtAbility;
 
 destroyPanel(panel: Panel): Promise\<void>
 
-Destroys the word selection panel. This API uses a promise to return the result.
+Destroys the word selection panel. This API is used together with [createPanel](#createpanel) to destroy the panel object created by **createPanel()**. This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**ArkTS-Dyn start version:** 24
+**ArkTS-Dyn Since Version:** 24
 
-**ArkTS-Sta start version:** 24
+**ArkTS-Sta Since Version:** 24
 
 **Parameters**
 
-| Name  | Type       | Mandatory| Description                    |
+| Name   | Type        | Mandatory | Description                     |
 | ---------| ----------- | ---- | ------------------------ |
-| panel    | [Panel](#panel)       | Yes  | Word selection panel to destroy.     |
+| panel    | [Panel](#panel)       | Yes   | Panel object to destroy.      |
 
 **Return value**
-| Type   | Description                                                                |
+| Type    | Description                                                                 |
 | ------- | -------------------------------------------------------------------- |
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 
 **Example**
 
@@ -430,8 +456,8 @@ import { rpc } from '@kit.IPCKit';
 import { Want } from '@kit.AbilityKit';
 
 class SelectionAbilityStub extends rpc.RemoteObject {
-  constructor(des: string) {
-    super(des);
+  constructor(descriptor: string) {
+    super(descriptor);
   }
   onRemoteMessageRequest(
     code: number,
@@ -445,32 +471,34 @@ class SelectionAbilityStub extends rpc.RemoteObject {
 
 class ServiceExtAbility extends SelectionExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
+    // Configure the selection panel information, including the panel type, position, and size.
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
       x: 0,
       y: 0,
       width: 500,
       height: 200
-    }
+    };
     let selectionPanel: selectionManager.Panel | undefined = undefined;
-
+    // Create the selection panel first to obtain the panel instance for subsequent destruction. this.context is obtained by inheriting SelectionExtensionAbility.
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
         console.info('Succeed in creating panel.');
         selectionPanel = panel;
         try {
           if (selectionPanel) {
+            // Destroy the selection panel.
             selectionManager.destroyPanel(selectionPanel).then(() => {
               console.info('Succeed in destroying panel.');
             }).catch((err: BusinessError) => {
-              console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
+              console.error(`Failed to destroy panel. Error code: ${err.code}, error message: ${err.message}`);
             });
           }
         } catch (err) {
-          console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
+          console.error(`Failed to destroy panel. Error code: ${err.code}, error message: ${err.message}`);
         }
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
+        console.error(`Failed to create panel. Error code: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -488,8 +516,8 @@ import rpc from '@ohos.rpc';
 import { Want } from '@kit.AbilityKit';
 
 class SelectionAbilityStub extends rpc.RemoteObject {
-  constructor(des: string) {
-    super(des);
+  constructor(descriptor: string) {
+    super(descriptor);
   }
   onRemoteMessageRequest(
     code: number,
@@ -503,32 +531,34 @@ class SelectionAbilityStub extends rpc.RemoteObject {
 
 class ServiceExtAbility extends SelectionExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
+    // Configure the selection panel information, including the panel type, position, and size.
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
       x: 0,
       y: 0,
       width: 500,
       height: 200
-    }
+    };
     let selectionPanel: selectionManager.Panel | undefined = undefined;
-
+    // Create the selection panel first to obtain the panel instance for subsequent destruction.
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
         console.info('Succeed in creating panel.');
         selectionPanel = panel;
         try {
           if (selectionPanel) {
+            // Destroy the selection panel.
             selectionManager.destroyPanel(selectionPanel as selectionManager.Panel).then(() => {
               console.info('Succeed in destroying panel.');
             }).catch((err) => {
-              console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
+              console.error(`Failed to destroy panel. Error code: ${err.code}, error message: ${err.message}`);
             });
           }
         } catch (err) {
-          console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
+          console.error(`Failed to destroy panel. Error code: ${err.code}, error message: ${err.message}`);
         }
       }).catch((err) => {
-      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
+      console.error(`Failed to create panel. Error code: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -542,34 +572,34 @@ Defines the information of a word selection event.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
 **ArkTS-Sta start version:** 24
 
-| Name     | Type| Read-Only| Optional| Description        |
+| Name      | Type | Read-only | Optional | Description         |
 | --------- | -------- | ---- | ---- | ------------ |
-| selectionType |[SelectionType](#selectiontype)   | No  | No  | Operation for selecting words.|
-| startDisplayX |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | X-coordinate of the screen where the word selection starts, in px.|
-| startDisplayY |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | Y-coordinate of the screen where the word selection starts, in px.|
-| endDisplayX   |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | X-coordinate of the screen where the word selection ends, in px.|
-| endDisplayY   |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | Y-coordinate of the screen where the word selection ends, in px.|
-| startWindowX  |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | X-coordinate of the window where the word selection starts, in px.|
-| startWindowY  |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | Y-coordinate of the window where the word selection starts, in px.|
-| endWindowX    |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | X-coordinate of the window where the word selection ends, in px.|
-| endWindowY    |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | Y-coordinate of the window where the word selection ends, in px.|
-| displayID     |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | ID of the screen where the window with selected words is located.|
-| windowID      |ArkTS-Dyn:number<br>ArkTS-Sta:int| No  | No  | ID of the window where words are selected.|
-| bundleName    |string| No  | No  | Bundle name of the application where words are selected.|
+| selectionType |[SelectionType](#selectiontype)   | No   | No   | Enum value of the selection mode. |
+| startDisplayX |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | X-axis coordinate of the selection start position on the screen, in px. |
+| startDisplayY |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | Y-axis coordinate of the selection start position on the screen, in px. |
+| endDisplayX   |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | X-axis coordinate of the selection end position on the screen, in px. |
+| endDisplayY   |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | Y-axis coordinate of the selection end position on the screen, in px. |
+| startWindowX  |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | X-axis coordinate of the selection start position on the window, in px. |
+| startWindowY  |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | Y-axis coordinate of the selection start position on the window, in px. |
+| endWindowX    |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | X-axis coordinate of the selection end position on the window, in px. |
+| endWindowY    |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | Y-axis coordinate of the selection end position on the window, in px. |
+| displayID     |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | Screen ID of the window of the selected application. |
+| windowID      |ArkTS-Dyn:number<br>ArkTS-Sta:int| No   | No   | Window ID of the selected application. |
+| bundleName    |string| No   | No   | Bundle name of the selected application. |
 
 ## Panel
 
-Represents the word selection panel.
+Describes a **Panel** object, which is created using [createPanel](#createpanel). This method can be used to set, display, hide, and move the panel, as well as subscribe to events. It is applicable to scenarios where a custom operation UI needs to be displayed to users after word selection is complete.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
@@ -581,35 +611,35 @@ In the following APIs, you must first use [createPanel](#createpanel) to obtain 
 
 setUiContent(path: string): Promise\<void>
 
-Sets the page content for the word selection panel. This API uses a promise to return the result.
+Sets the UI content for the current word selection panel, for example, to display translation results, search suggestions, or custom action buttons. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**ArkTS-Dyn start version:** 24
+**ArkTS-Dyn Since Version:** 24
 
-**ArkTS-Sta start version:** 24
+**ArkTS-Sta Since Version:** 24
 
 **Parameters**
 
-| Name  | Type                  | Mandatory| Description    |
+| Name   | Type                   | Mandatory | Description     |
 | -------- | ---------------------- | ---- | -------- |
-| path | string | Yes  |  Path of the page content to be set. This path is configured in the **resources/base/profile/main_pages.json** file of the project in the stage model. The FA model is not supported.|
+| path | string | Yes   |  Path of the page content to be loaded into the panel. In the stage model, this path must be added to the resources/base/profile/main_pages.json file of the project. The FA model is not supported. |
 
 **Return value**
 
-| Type  | Description                            |
+| Type   | Description                             |
 | ------- | ------------------------------ |
-| Promise\<void> | Promise that returns no value. |
+| Promise\<void> | Promise that returns no value.  |
 
-**Error codes**
+**Error codes:**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -617,16 +647,17 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 ArkTS-Dyn example:
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Load the page content for the selection panel. selectionPanel is the panel instance created by createPanel.
   selectionPanel.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to setUiContent. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to setUiContent. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -634,16 +665,16 @@ ArkTS-Sta example:
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import selectionManager from '@ohos.selectionInput.selectionManager';
 
 try {
+  // Load the page content for the selection panel. selectionPanel is the panel instance created by createPanel.
   selectionPanel?.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err) => {
-    console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}}`);
+    console.error(`Failed to setUiContent. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}}`);
+  console.error(`Failed to setUiContent. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -651,11 +682,11 @@ try {
 
 show(): Promise\<void>
 
-Shows the word selection panel. This API uses a promise to return the result.
+Shows the word selection panel. This API is used together with [hide](#hide). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
@@ -663,17 +694,17 @@ Shows the word selection panel. This API uses a promise to return the result.
 
 **Return value**
 
-| Type  | Description                            |
+| Type   | Description                             |
 | ------- | ------------------------------ |
-| Promise\<void> | Promise that returns no value. |
+| Promise\<void> | Promise that returns no value.  |
 
 **Error codes**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -681,12 +712,13 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 ArkTS-Dyn example:
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// Display the selection panel. selectionPanel is the panel instance created by createPanel.
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to show panel. Error code: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -694,12 +726,12 @@ ArkTS-Sta example:
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import selectionManager from '@ohos.selectionInput.selectionManager';
 
+// Display the selection panel. selectionPanel is the panel instance created by createPanel.
 selectionPanel?.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err) => {
-  console.error(`Failed to show panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to show panel. Error code: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -707,11 +739,11 @@ selectionPanel?.show().then(() => {
 
 hide(): Promise\<void>
 
-Hides the word selection panel. This API uses a promise to return the result.
+Hides the word selection panel. This API is used together with [show](#show). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result. If this API is not called proactively, the panel is automatically hidden when it loses focus.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
@@ -719,17 +751,17 @@ Hides the word selection panel. This API uses a promise to return the result.
 
 **Return value**
 
-| Type  | Description                            |
+| Type   | Description                             |
 | ------- | ------------------------------ |
-| Promise\<void> | Promise that returns no value. |
+| Promise\<void> | Promise that returns no value.  |
 
 **Error codes**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -737,12 +769,13 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 ArkTS-Dyn example:
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// Hide the Selection Panel. selectionPanel is the panel instance created by createPanel.
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to hide panel. Error code: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -750,12 +783,12 @@ ArkTS-Sta example:
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import selectionManager from '@ohos.selectionInput.selectionManager';
 
+// Hide the Selection Panel. selectionPanel is the panel instance created by createPanel.
 selectionPanel?.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err) => {
-  console.error(`Failed to hide panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to hide panel. Error code: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -763,29 +796,29 @@ selectionPanel?.hide().then(() => {
 
 startMoving(): Promise\<void>
 
-Moves the word selection panel by dragging. This API uses a promise to return the result. This API must be written in the **onTouch** callback and the event type must be **TouchType.Down**.
+Sets whether the word selection panel can be dragged along with the mouse, touchpad, or touchscreen. The panel automatically stops moving after the pointer is released. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result. This API must be called in the **onTouch** callback, and the event type must be **TouchType.Down**.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**ArkTS-Dyn start version:** 24
+**ArkTS-Dyn Since Version:** 24
 
-**ArkTS-Sta start version:** 24
+**ArkTS-Sta Since Version:** 24
 
 **Return value**
 
-| Type  | Description                            |
+| Type   | Description                             |
 | ------- | ------------------------------ |
-| Promise\<void> | Promise that returns no value. |
+| Promise\<void> | Promise that returns no value.  |
 
-**Error codes**
+**Error Code:**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -793,20 +826,22 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 ArkTS-Dyn example:
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// Place this code in the build() method of an ArkUI page component. RelativeContainer is a built-in ArkUI component, and TouchEvent and TouchType are built-in types of the ArkUI framework.
 RelativeContainer() {
   /* 
-   * Page layout content, which should be defined based on your actual needs.
+   * Page layout content, which developers need to supplement based on actual requirements.
    */
 }
 .onTouch((event: TouchEvent) => {
   if (event.type === TouchType.Down) {
     if (selectionPanel !== undefined) {
-      selectionPanel.startMoving().then(() => {   // selectionPanel is the panel instance created by createPanel.
+      // Make the selection panel movable by dragging with the mouse, touchpad, or touch screen. selectionPanel is the panel instance created by createPanel.
+      selectionPanel.startMoving().then(() => {
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to startMoving panel: ${err.code}, error message: ${err.message}`);
+        console.error(`Failed to startMoving panel. Error code: ${err.code}, error message: ${err.message}`);
       });
     }
   }
@@ -817,20 +852,21 @@ ArkTS-Sta example:
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import selectionManager from '@ohos.selectionInput.selectionManager';
 
+// Place this code in the build() method of an ArkUI page component. RelativeContainer is a built-in ArkUI component, and TouchEvent and TouchType are built-in types of the ArkUI framework.
 RelativeContainer() {
   /* 
-   * Page layout content, which should be defined based on your actual needs.
+   * Page layout content, to be supplemented by the developer as needed.
    */
 }
 .onTouch((event: TouchEvent) => {
   if (event.type === TouchType.Down) {
     if (selectionPanel !== undefined) {
-      selectionPanel?.startMoving().then(() => {   // selectionPanel is the panel instance created by createPanel.
+      // Enable the selection panel to be dragged to move its position with the mouse, touchpad, or touchscreen. selectionPanel is the panel instance created by createPanel.
+      selectionPanel?.startMoving().then(() => {
         console.info('Succeeded in startMoving the panel.');
       }).catch((err) => {
-        console.error(`Failed to startMoving panel: ${err.code}, error message: ${err.message}`);
+        console.error(`Failed to startMoving panel. Error code: ${err.code}, error message: ${err.message}`);
       });
     }
   }
@@ -842,15 +878,15 @@ RelativeContainer() {
 
 moveTo(x: number, y: number): Promise\<void>
 
-Moves the word selection panel to the specified coordinates on the screen. This API uses a promise to return the result.
+Moves the word selection panel to the specified coordinates in the global coordinate system of the screen. The panel can be moved to an extended screen. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 20 and deprecated since API version 24. You are advised to use [moveToGlobalDisplay](#movetoglobaldisplay) instead.
 
-**System API:** This is a system API.
+**System API**: This is a system API.
 
-**ArkTS mode:** This API applies only to ArkTS-Dyn.
+**ArkTS mode:** This API is only applicable to ArkTS-Dyn.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -858,39 +894,40 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 **Parameters**
 
-| Name  | Type                  | Mandatory| Description    |
+| Name   | Type                   | Mandatory | Description     |
 | -------- | ---------------------- | ---- | -------- |
-| x | number | Yes  |Value of the movement along the X axis, in px.|
-| y | number | Yes  |Value of the movement along the Y axis, in px.|
+| x | number | Yes   |X-axis coordinate of the target position in the global coordinate system of the screen, in px. The global coordinate system uses the top-left corner of the main screen as the origin, with the positive direction of the x-axis pointing right. The x coordinate of an extended screen may be negative depending on the screen layout.|
+| y | number | Yes   |Y-axis coordinate of the target position in the global coordinate system of the screen, in px. The global coordinate system uses the top-left corner of the main screen as the origin, with the positive direction of the y-axis pointing down. The y coordinate of an extended screen may be negative depending on the screen layout.|
 
 **Return value**
 
-| Type  | Description                            |
+| Type   | Description                             |
 | ------- | ------------------------------ |
-| Promise\<void> | Promise that returns no value. |
+| Promise\<void> | Promise that returns no value.  |
 
-**Error codes**
+**Error Codes**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Move the selection panel to the specified position on the screen. selectionPanel is the panel instance created by createPanel.
   selectionPanel.moveTo(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 <!--DelEnd-->
@@ -901,11 +938,11 @@ ArkTS-Dyn: moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
 ArkTS-Sta: moveToGlobalDisplay(x: int, y: int): Promise\<void>
 
-Moves the word selection panel to the specified coordinates on the screen. This API uses a promise to return the result.
+Moves the word selection panel to the specified coordinates in the global coordinate system of the screen. The panel can be moved to an extended screen. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
@@ -913,24 +950,24 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 **Parameters**
 
-| Name  | Type                  | Mandatory| Description    |
+| Name   | Type                   | Mandatory | Description     |
 | -------- | ---------------------- | ---- | -------- |
-| x | ArkTS-Dyn:number<br>ArkTS-Sta:int | Yes  |Value of the movement along the X axis, in px.|
-| y | ArkTS-Dyn:number<br>ArkTS-Sta:int | Yes  |Value of the movement along the Y axis, in px.|
+| x | ArkTS-Dyn:number<br>ArkTS-Sta:int | Yes   |X-axis coordinate of the target position in the global coordinate system on the screen, in px. The global coordinate system uses the top-left corner of the main screen as the origin, with the positive x-axis pointing right. The x coordinate of an extended screen may be negative depending on the screen layout.|
+| y | ArkTS-Dyn:number<br>ArkTS-Sta:int | Yes   |Y-axis coordinate of the target position in the global coordinate system on the screen, in px. The global coordinate system uses the top-left corner of the main screen as the origin, with the positive y-axis pointing down. The y coordinate of an extended screen may be negative depending on the screen layout.|
 
 **Return value**
 
-| Type  | Description                            |
+| Type   | Description                             |
 | ------- | ------------------------------ |
-| Promise\<void> | Promise that returns no value. |
+| Promise\<void> | Promise that returns no value.  |
 
-**Error codes**
+**Error Code**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the following error codes, see [Word Selection Error Codes](errorcode-selection.md). For details about other common error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                      |
+| ID   | Error Message                       |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -938,16 +975,17 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 ArkTS-Dyn example:
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Move the selection panel to the specified position on the screen. selectionPanel is the panel instance created by createPanel.
   selectionPanel.moveToGlobalDisplay(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -955,16 +993,16 @@ ArkTS-Sta example:
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import selectionManager from '@ohos.selectionInput.selectionManager';
 
 try {
+  // Move the selection panel to the specified position on the screen. selectionPanel is the panel instance created by createPanel.
   selectionPanel?.moveToGlobalDisplay(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err) => {
-    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -972,34 +1010,33 @@ try {
 
 on(type: 'destroyed', callback: Callback\<void>): void
 
-Registers a callback to listen for the destroy event of the word selection panel. This API uses an asynchronous callback to return the result.
+Subscribes to the word selection panel destruction event. This API is used together with [off('destroyed')](#offdestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
-**ArkTS mode:** This API applies only to ArkTS-Dyn.
+**ArkTS mode:** This API is only applicable to ArkTS-Dyn.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                          |
-| -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| type     | string                                      | Yes  | Event type, which is **'destroyed'**.|
-| callback | Callback\<void> | Yes  | Callback that returns no value.      |
+| Name     | Type                                        | Mandatory | Description                                           |
+| -------- | ------------------------------------------- | --------- | ---------------------------------------------- |
+| type     | string                                      | Yes   | Sets the listener type. The fixed value is 'destroyed'. |
+| callback | Callback\<void> | Yes   | Callback function, triggered when [destroyPanel](#destroypanel) is called to destroy the panel.       |
 
 **Example**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // Subscribe to the selection panel destruction event. selectionPanel is the panel instance created by createPanel.
   selectionPanel.on('destroyed', () => {
     console.info('Panel has been destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroyed callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register destroyed callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -1007,34 +1044,34 @@ try {
 
 onDestroy(callback: Callback\<void>): void
 
-Registers a callback to listen for the destroy event of the word selection panel. This API uses an asynchronous callback to return the result.
+Subscribes to the word selection panel destruction event. This API is used together with [offDestroy](#offdestroy). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
-**ArkTS mode:** This API applies only to ArkTS-Sta.
+**ArkTS mode:** This API is only applicable to ArkTS-Sta.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Sta start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                          |
+| Name   | Type                                        | Mandatory | Description                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | Callback\<void> | Yes  | Callback that returns no value.      |
+| callback | Callback\<void> | Yes   | Callback invoked when the panel is destroyed by calling [destroyPanel](#destroypanel).       |
 
 **Example**
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import selectionManager from '@ohos.selectionInput.selectionManager';
 
 try {
+  // Subscribe to the word selection panel destruction event. selectionPanel is the panel instance created by createPanel.
   selectionPanel?.onDestroy(() => {
     console.info('Panel has been destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroy callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register destroyed callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -1042,32 +1079,31 @@ try {
 
 off(type: 'destroyed', callback?: Callback\<void>): void
 
-Unregisters the callback used to listen for the destroy event of the word selection panel. This API uses an asynchronous callback to return the result.
+Unsubscribes from the word selection panel destruction event. This API is used together with [on('destroyed')](#ondestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
-**ArkTS mode:** This API applies only to ArkTS-Dyn.
+**ArkTS mode:** This API is only applicable to ArkTS-Dyn.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                                        |
-| -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                      | Yes  | Event type, which is **'destroyed'**.              |
-| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| Name     | Type                                        | Mandatory | Description                                                         |
+| -------- | ------------------------------------------- | --------- | ------------------------------------------------------------ |
+| type     | string                                      | Yes       | Type of the event to unsubscribe from. The value is fixed to 'destroyed'.               |
+| callback | Callback\<void> | No        | Callback function to cancel (that is, the callback instance previously used when subscribing through the on method). If this parameter is not filled in, all callback events corresponding to the type are unsubscribed.|
 
 **Example**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // Unsubscribe from the selection panel destroy event. selectionPanel is the panel instance created by createPanel.
   selectionPanel.off('destroyed');
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister destroyed. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -1075,32 +1111,32 @@ try {
 
 offDestroy(callback?: Callback\<void>): void
 
-Unregisters the callback used to listen for the destroy event of the word selection panel. This API uses an asynchronous callback to return the result.
+Unsubscribes from the selection panel destruction event. This API is used together with [onDestroy](#ondestroy). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
-**ArkTS mode:** This API applies only to ArkTS-Sta.
+**ArkTS mode:** This API is only applicable to ArkTS-Sta.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Sta start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                                        |
+| Name | Type | Mandatory | Description |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<void> | No | Callback function to be canceled (that is, the callback instance previously used when subscribing through the onDestroy method). If this parameter is not filled in, all callback events corresponding to the subscription are canceled.|
 
 **Example**
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import selectionManager from '@ohos.selectionInput.selectionManager';
 
 try {
+  // Unsubscribe from the selection panel destruction event. selectionPanel is the panel instance created by createPanel.
   selectionPanel?.offDestroy();
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister destroyed. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -1108,34 +1144,33 @@ try {
 
 on(type: 'hidden', callback: Callback\<void>): void
 
-Registers a callback to listen for the hide event of the word selection panel. This API uses an asynchronous callback to return the result.
+Subscribes to the word selection panel hiding event. This API is used together with [off('hidden')](#offhidden). This event is triggered when the panel is hidden by calling [hide](#hide) or automatically hidden when it loses focus. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
-**ArkTS mode:** This API applies only to ArkTS-Dyn.
+**ArkTS mode:** This API is only applicable to ArkTS-Dyn.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                          |
-| -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| type     | string                                      | Yes  | Event type, which is **'hidden'**.|
-| callback | Callback\<void> | Yes  | Callback function that returns no value.      |
+| Name     | Type                                        | Mandatory | Description                                           |
+| -------- | ------------------------------------------- | --------- | ---------------------------------------------- |
+| type     | string                                      | Yes   | Sets the listener type. The value is fixed to 'hidden'. |
+| callback | Callback\<void> | Yes   | Callback function invoked when the panel is hidden. The panel can be hidden proactively by calling [hide](#hide), or automatically when it loses focus.       |
 
 **Example**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // Subscribe to the selection panel hidden event. selectionPanel is the panel instance created by createPanel.
   selectionPanel.on('hidden', () => {
     console.info('Panel has been hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hidden callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register hidden callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -1143,34 +1178,34 @@ try {
 
 onHide(callback: Callback\<void>): void
 
-Registers a callback to listen for the hide event of the word selection panel. This API uses an asynchronous callback to return the result.
+Subscribes to the selection panel hiding event. This API is used together with [offHide](#offhide). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
-**ArkTS mode:** This API applies only to ArkTS-Sta.
+**ArkTS mode:** This API is only applicable to ArkTS-Sta.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Sta start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                          |
+| Name | Type | Mandatory | Description |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | Callback\<void> | Yes  | Callback function that returns no value.      |
+| callback | Callback\<void> | Yes | Callback invoked when the panel is hidden. The panel can be hidden proactively by calling [hide](#hide), or automatically when it loses focus. |
 
 **Example**
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import selectionManager from '@ohos.selectionInput.selectionManager';
 
 try {
+  // Subscribe to the selection panel hiding event. selectionPanel is the panel instance created by createPanel.
   selectionPanel?.onHide(() => {
     console.info('Panel has been hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hide callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register hidden callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -1178,32 +1213,31 @@ try {
 
 off(type: 'hidden', callback?: Callback\<void>): void
 
-Unregisters the callback used to listen for the hide event of the word selection panel. This API uses an asynchronous callback to return the result.
+Unsubscribes from the word selection panel hiding event. This API is used together with [on('hidden')](#onhidden). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
-**ArkTS mode:** This API applies only to ArkTS-Dyn.
+**ArkTS mode:** This API is only applicable to ArkTS-Dyn.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                                        |
-| -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                      | Yes  | Event type, which is **'hidden'**.              |
-| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| Name     | Type                                        | Mandatory | Description                                                         |
+| -------- | ------------------------------------------- | --------- | ------------------------------------------------------------ |
+| type     | string                                      | Yes       | Type of the event to unsubscribe from. The value is fixed to 'hidden'.               |
+| callback | Callback\<void> | No        | Callback function to cancel (that is, the callback instance previously used when subscribing through the on method). If this parameter is not filled in, all callback events corresponding to the type are unsubscribed from. |
 
 **Example**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // Unsubscribe from the selection panel hidden event. selectionPanel is the panel instance created by createPanel.
   selectionPanel.off('hidden');
 } catch (err) {
-  console.error(`Failed to unregister hidden: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister hidden. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -1211,49 +1245,49 @@ try {
 
 offHide(callback?: Callback\<void>): void
 
-Unregisters the callback used to listen for the hide event of the word selection panel. This API uses an asynchronous callback to return the result.
+Unsubscribes from the selection panel hiding event. This API is used together with [onHide](#onhide). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
-**ArkTS mode:** This API applies only to ArkTS-Sta.
+**ArkTS mode:** This API is only applicable to ArkTS-Sta.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Sta start version:** 24
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory| Description                                                        |
+| Name   | Type                                        | Mandatory | Description                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<void> | No   | Callback function to be unsubscribed (that is, the callback instance previously used when subscribing through the onHide method). If this parameter is not filled in, all callback events corresponding to the subscription are unsubscribed. |
 
 **Example**
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import selectionManager from '@ohos.selectionInput.selectionManager';
 
 try {
+  // Unsubscribe from the selection panel hiding event. selectionPanel is the panel instance created by createPanel.
   selectionPanel?.offHide();
 } catch (err) {
-  console.error(`Failed to unregister hide: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister hidden. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
 ### SelectionType
 
-Enumerates the operations for selecting words.
+Enumerates the word selection types.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **ArkTS-Dyn start version:** 24
 
 **ArkTS-Sta start version:** 24
 
-| Name        | Value| Description              |
+| Name         | Value | Description               |
 | ------------ | -- | ------------------ |
-| MOUSE_MOVE | 1 | Move the cursor to select words.|
-| DOUBLE_CLICK   | 2 | Double-click to select words.|
-| TRIPLE_CLICK   | 3 | Triple-click to select words.|
+| MOUSE_MOVE | 1 | Word selection by sliding the mouse or touchpad. |
+| DOUBLE_CLICK   | 2 | Word selection by double-clicking the mouse or touchpad. |
+| TRIPLE_CLICK   | 3 | Word selection by triple-clicking the mouse or touchpad. |

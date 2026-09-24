@@ -46,7 +46,7 @@ FastBuffer模块的核心功能包括：
 
 1. **创建和分配内存**：允许基于uint32指定大小初始化FastBuffer，创建后内存容量固定。
 
-2. **读写和复制数据**：支持按索引访问Buffer内的字节，按字节块读取和写入，复制FastBuffer的某部分到其他FastBuffer或数组。
+2. **读写和复制数据**：支持按索引访问FastBuffer内的字节，按字节块读取和写入，复制FastBuffer的某部分到其他FastBuffer或数组。
 
 3. **转换操作**：提供FastBuffer与基本类型（如Uint8Array、string）之间的转换方法，满足不同的数据处理需求。
 
