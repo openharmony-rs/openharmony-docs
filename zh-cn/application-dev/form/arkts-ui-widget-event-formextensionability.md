@@ -86,38 +86,7 @@
 
 - 在FormExtensionAbility的onFormEvent生命周期中调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
   
-    <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/entryformability/EntryFormAbility.ts
-    const TAG: string = 'EntryFormAbility';
-    const DOMAIN_NUMBER: number = 0xFF00;
-    
-    export default class EntryFormAbility extends FormExtensionAbility {
-      // ...
-      onFormEvent(formId: string, message: string): void {
-        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
-        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-    
-        class FormDataClass {
-          title: string = 'Title Update.'; // 和卡片布局中对应
-          detail: string = 'Description update success.'; // 和卡片布局中对应
-        }
-    
-        // 请根据业务替换为实际刷新的卡片数据
-        let formData = new FormDataClass();
-        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
-        formProvider.updateForm(formId, formInfo).then(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
-        }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
-        });
-      }
-    
-      // ...
-    }
-    
-    ```
+    <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->  
   
   运行效果如下图所示。
   
