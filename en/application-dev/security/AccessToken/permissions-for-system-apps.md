@@ -9472,4 +9472,5 @@ Allows an application to modify the device security level (DSL) configuration.
 **Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices | tablets
+
 **Valid since**: 26.2.0
