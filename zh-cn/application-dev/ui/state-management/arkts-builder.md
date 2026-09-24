@@ -2691,8 +2691,21 @@ class ParamTmp {
   @Trace count : number = 0;
 }
 
+export interface ParamInter {
+  count : number;
+}
+
 @Builder
 function renderText(param: ParamTmp) {
+  Column() {
+    Text(`param : ${param.count}`)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Builder
+function renderTextInter(param: ParamInter) {
   Column() {
     Text(`param : ${param.count}`)
       .fontSize(20)
@@ -2759,7 +2772,7 @@ struct PageBuilder {
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
       renderText(this.builderParams)
-      renderText({ count: this.builderParams.count })
+      renderTextInter({ count: this.builderParams.count })
       renderMap(this.map_value)
       renderSet(this.set_value)
       renderNumberArr(this.numArr_value)
@@ -2773,159 +2786,6 @@ struct PageBuilder {
 示例效果图：
 
 ![arkts-builder-usage-flash-by-ComponentV2](figures/arkts-builder-usage-flash-by-ComponentV2.gif)
-
-### 在\@Builder装饰的函数内部修改入参内容
-
-【反例】
-
-**ArkTS-Dyn:**
-``` TypeScript
-interface Temp {
-  paramA: string;
-}
-
-@Builder
-function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-        .onClick(() => {
-          // 错误写法，不允许在@Builder装饰的函数内部修改参数值，否则程序崩溃
-          param.paramA = 'Yes';
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label})
-      Button('click me')
-        .onClick(() => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
-
-**ArkTS-Sta:**
-``` TypeScript
-'use static'
-
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State } from '@kit.ArkUI';
-
-// 引用传递类型是interface时才能触发UI刷新。
-interface Temp {
-  paramA: string;
-}
-
-@Builder
-function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-        .onClick((e: ClickEvent) => {
-          // 错误写法，不允许在@Builder装饰的函数内部修改参数值，否则该参数值的修改不触发刷新
-          param.paramA = 'Yes';
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label})
-      Button('click me')
-        .onClick((e: ClickEvent) => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
-
-【正例】
-
-**ArkTS-Dyn:**
-``` TypeScript
-interface Temp {
-  paramA: string;
-}
-
-@Builder
-function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label})
-      Button('click me')
-        .onClick(() => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
-
-**ArkTS-Sta:**
-<!-- @[BuilderModifyParamPositive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderModifyParamPositive.ets) -->
-``` TypeScript
-'use static'
-
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ListItem, FontWeight, State } from '@kit.ArkUI';
-
-// 引用传递类型是interface时才能触发UI刷新。
-interface Temp {
-  paramA: string;
-}
-
-@Builder
-function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label} as Temp)
-      Button('click me')
-        .onClick((e: ClickEvent) => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
 
 ### 在\@Builder内创建自定义组件传递参数不刷新问题
 
