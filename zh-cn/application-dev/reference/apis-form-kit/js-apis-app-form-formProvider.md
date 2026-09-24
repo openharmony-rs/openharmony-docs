@@ -1494,7 +1494,7 @@ ArkTS-Sta: reloadForms(context: UIAbilityContext, moduleName: string, abilityNam
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------  |
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。     |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。 |
 | moduleName | string | 是   | 指定卡片的moduleName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的module名称一致。需与abilityName、formName配合使用，三者必须同时匹配才能定位到对应卡片。   |
 | abilityName | string | 是 | 指定卡片的abilityName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的ability名称一致。  |
 | formName | string | 是 | 指定卡片在[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的卡片名称。 |
@@ -1586,7 +1586,7 @@ ArkTS-Sta: reloadAllForms(context: UIAbilityContext): Promise&lt;int&gt;
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------  |
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。     |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。 |
 
 **返回值：**
 

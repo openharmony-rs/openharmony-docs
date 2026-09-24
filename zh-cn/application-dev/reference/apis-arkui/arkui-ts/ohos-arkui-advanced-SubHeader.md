@@ -1,9 +1,9 @@
 # SubHeader
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangrunsen-->
-<!--Designer: @YanSanzo-->
-<!--Tester: @ybhou1993-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -38,7 +38,7 @@ import { SubHeader } from '@kit.ArkUI';
 
 ## SubHeader
 
-SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, select?: SelectOptions, operationType?: OperationType, operationItem?: Array&lt;OperationOption&gt;, operationSymbolOptions?: Array&lt;SymbolOptions&gt;, primaryTitleModifier?: TextModifier, secondaryTitleModifier?: TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, contentPadding?: LocalizedPadding, titleId?: string })
+SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, endIcon?: ResourceStr, endIconSymbolOptions?: SymbolOptions, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, select?: SelectOptions, operationType?: OperationType, operationItem?: Array&lt;OperationOption&gt;, operationSymbolOptions?: Array&lt;SymbolOptions&gt;, primaryTitleModifier?: TextModifier, secondaryTitleModifier?: TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, contentPadding?: LocalizedPadding, titleId?: string })
 
 **装饰器类型：**\@Component
 
@@ -48,21 +48,23 @@ SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?:
 
 | 名称 | 类型 | 必填 | 装饰器类型         | 说明 |
 | -------- | -------- | -------- |---------------| -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef        | 图标设置项。<br/>默认值：undefined，表示不显示图标。<br/>当使用secondaryTitle属性时，设置icon属性才会生效。当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| iconSymbolOptions<sup>12+</sup> | [SymbolOptions](#symboloptions12) | 否 | -             | icon为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>默认值：undefined，表示不显示图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef        | 标题内容。<br/>默认值：undefined，表示不显示标题。<br/>当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef        | 副标题内容。<br/>默认值：undefined，表示不显示副标题。当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| select | [SelectOptions](#selectoptions) | 否 | -             | select内容以及事件。<br/>默认值：undefined，表示不显示下拉框。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| operationType | [OperationType](#operationtype) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef        | 操作区（右侧）元素样式。<br/>默认值：OperationType.BUTTON<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| operationItem | Array&lt;[OperationOption](#operationoption)&gt; | 否 | -             | 操作区（右侧）的设置项。当operationType为OperationType.ICON_GROUP时，最多支持配置三个图标项。<br/>默认值：undefined，表示不显示操作区。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | 否 | -             | operationType为OperationType.ICON_GROUP，<br/>operationItem设置多个图标，图标为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>默认值：undefined，表示不设置Symbol图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | -             | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br/>默认值：undefined，表示使用系统默认样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| secondaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | -             | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br/>默认值：undefined，表示使用系统默认样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| titleBuilder<sup>12+</sup> | () => void | 否 | @BuilderParam | 自定义标题区内容。使用titleBuilder时，primaryTitle、secondaryTitle、icon等标题参数不生效。<br/>默认值：undefined，表示不采用自定义标题。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef         | 子标题外边距，不支持设置负数。<br />默认值：<br /> `{start: LengthMetrics.resource(` <br /> `$r('sys.float.margin_left'))`, <br /> `end: LengthMetrics.resource(` <br /> `$r('sys.float.margin_right'))}`<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| contentPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef         | 子标题内边距，不支持设置负数。<br />默认值：<br />左侧为副标题或副标题加图标时：<br /> {start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
-| titleAccessibilityText<sup>23+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef         | 设置标题自定义朗读内容。<br/>默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23  |
-| titleId<sup>24+</sup>  | string | 否 | @Prop         | 标题的唯一标识符。需要为标题设置标识时设置此参数，缺省时不设置此参数。<br/>默认值：undefined，表示不设置标题标识。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24   |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef        | 图标设置项。<br/>默认值：undefined，表示不显示图标。<br/>当使用secondaryTitle属性时，设置icon属性才会生效。当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| iconSymbolOptions<sup>12+</sup> | [SymbolOptions](#symboloptions12) | 否 | -             | icon为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>默认值：undefined，表示不显示图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| endIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef | 标题尾部图标资源。<br/>当使用primaryTitle或secondaryTitle属性时，设置endIcon属性才会生效。<br/>默认值：undefined，表示不显示标题尾部图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 26.0.1 <br/>**ArkTS-Sta起始版本：** 26.0.1  |
+| endIconSymbolOptions | [SymbolOptions](#symboloptions12) | 否 | -             | endIcon为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>默认值：undefined，表示不设置标题尾部Symbol图标样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/> **ArkTS-Dyn起始版本：** 26.0.1 <br/>**ArkTS-Sta起始版本：** 26.0.1 |
+| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef        | 标题内容。<br/>默认值：undefined，表示不显示标题。<br/>当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef        | 副标题内容。<br/>默认值：undefined，表示不显示副标题。当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| select | [SelectOptions](#selectoptions) | 否 | -             | select内容以及事件。<br/>默认值：undefined，表示不显示下拉框。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| operationType | [OperationType](#operationtype) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef        | 操作区（右侧）元素样式。<br/>默认值：OperationType.BUTTON<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| operationItem | Array&lt;[OperationOption](#operationoption)&gt; | 否 | -             | 操作区（右侧）的设置项。当operationType为OperationType.ICON_GROUP时，最多支持配置三个图标项。<br/>默认值：undefined，表示不显示操作区。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | 否 | -             | operationType为OperationType.ICON_GROUP，<br/>operationItem设置多个图标，图标为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>默认值：undefined，表示不设置Symbol图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | -             | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br/>默认值：undefined，表示使用系统默认样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| secondaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | -             | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br/>默认值：undefined，表示使用系统默认样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| titleBuilder<sup>12+</sup> | () => void | 否 | @BuilderParam | 自定义标题区内容。使用titleBuilder时，primaryTitle、secondaryTitle、icon等标题参数不生效。<br/>默认值：undefined，表示不采用自定义标题。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef         | 子标题外边距，不支持设置负数。<br />默认值：<br /> `{start: LengthMetrics.resource(` <br /> `$r('sys.float.margin_left'))`, <br /> `end: LengthMetrics.resource(` <br /> `$r('sys.float.margin_right'))}`<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| contentPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef         | 子标题内边距，不支持设置负数。<br />默认值：<br />左侧为副标题或副标题加图标时：<br /> {start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| titleAccessibilityText<sup>23+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef         | 设置标题自定义朗读内容。<br/>默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23  |
+| titleId<sup>24+</sup>  | string | 否 | @Prop         | 标题的唯一标识符。需要为标题设置标识时设置此参数，缺省时不设置此参数。<br/>默认值：undefined，表示不设置标题标识。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24   |
 
 ## OperationType
 
@@ -109,12 +111,12 @@ SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?:
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                                                                                                                                       |
 | -------- | -------- |---|---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 操作区元素内容。当operationType为TEXT_ARROW或BUTTON时，value为文本内容；当operationType为ICON_GROUP时，value为图标资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| action | ()=&gt;void | 否 | 是 | 子标题右侧按钮点击事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23   |
-| accessibilityLevel<sup>18+</sup>       | string  | 否 | 是 | 子标题右侧按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会转换"yes"。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：类型为TEXT_ARROW和BUTTON时默认值为当前项value属性内容，其他类型默认值为“ ”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值：类型为LOADING时，默认值为“正在加载”，其他类型默认值为“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| defaultFocus<sup>18+</sup> | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
-| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。需要为子标题右侧按钮设置id的时候设置此参数，缺省时不设置此参数。<br/>默认值：undefined，表示不设置子标题右侧按钮id。 <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
+| action | ()=&gt;void | 否 | 是 | 子标题尾部按钮点击事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23   |
+| accessibilityLevel<sup>18+</sup>       | string  | 否 | 是 | 子标题尾部按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会转换"yes"。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题尾部按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：类型为TEXT_ARROW和BUTTON时默认值为当前项value属性内容，其他类型默认值为“ ”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题尾部按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值：类型为LOADING时，默认值为“正在加载”，其他类型默认值为“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| defaultFocus<sup>18+</sup> | boolean | 否 | 是 | 子标题尾部按钮是否为默认焦点。<br/>true：子标题尾部按钮是默认焦点。<br/>false：子标题尾部按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| id<sup>24+</sup> | string | 否 | 是 | 子标题尾部按钮id。需要为子标题尾部按钮设置id的时候设置此参数，缺省时不设置此参数。<br/>默认值：undefined，表示不设置子标题尾部按钮id。 <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ## SymbolOptions<sup>12+</sup>
 
@@ -885,3 +887,75 @@ struct SubHeaderExample {
 ```
 
 ![/SubHeaderDefaultFocus](figures/SubHeaderDefaultFocus.png)
+
+### 示例10（设置子标题尾部图标）
+该示例主要演示子标题设置endIcon尾部图标，包括普通图片资源和Symbol图标两种形式。
+
+从API版本26.0.1开始，[SubHeader](#subheader-1)新增endIcon和endIconSymbolOptions属性。
+
+ArkTS-Dyn示例：
+
+```ts
+import { Prompt, OperationType, SubHeader } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SubHeaderExample {
+  build() {
+    Column() {
+      SubHeader({
+        // 图标+二级标题+尾部图标（Image）
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+        icon: $r('app.media.startIcon'),
+        secondaryTitle: '二级标题',
+        endIcon: $r('app.media.startIcon')
+      })
+      SubHeader({
+        // 图标+二级标题+尾部图标（Symbol）
+        icon: $r('sys.media.ohos_ic_public_email'),
+        secondaryTitle: '二级标题',
+        endIcon: $r('sys.symbol.ohos_lungs'),
+        endIconSymbolOptions: {
+          renderingStrategy: SymbolRenderingStrategy.MULTIPLE_COLOR,
+          fontColor: [Color.Blue, Color.Grey, Color.Green]
+        }
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, $r, Column, SymbolRenderingStrategy, Color } from '@kit.ArkUI';
+import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader';
+
+@Entry
+@Component
+struct SubHeaderExample {
+  build() {
+    Column() {
+      SubHeader({
+        // 图标+二级标题+尾部图标（Image）
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+        icon: $r('app.media.startIcon'),
+        secondaryTitle: '二级标题',
+        endIcon: $r('app.media.startIcon')
+      })
+      SubHeader({
+        // 图标+二级标题+尾部图标（Symbol）
+        icon: $r('sys.media.ohos_ic_public_email'),
+        secondaryTitle: '二级标题',
+        endIcon: $r('sys.symbol.ohos_lungs'),
+        endIconSymbolOptions: {
+          renderingStrategy: SymbolRenderingStrategy.MULTIPLE_COLOR,
+          fontColor: [Color.Blue, Color.Grey, Color.Green]
+        }
+      })
+    }
+  }
+}
+```
+
+![子标题10](figures/image-subheader-example10.PNG)

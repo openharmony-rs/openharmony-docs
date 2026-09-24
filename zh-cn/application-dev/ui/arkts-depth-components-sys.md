@@ -64,7 +64,7 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 深度图的质量直接决定景深效果，精度不足时，背景各像素的远近关系会失真，导致立体层次错乱、物体边缘断层、子组件与背景的遮挡关系错误，整体纵深感被破坏。因此需要关注深度图的来源和精度。
 
-- **来源**：深度图可通过多种途径获取，包括3D建模软件直接导出（精度最高）、基于ToF、结构光等技术原理的深度相机拍摄、AI（人工智能）深度估计模型从普通照片生成、手工绘制。不同来源的精度与可靠性差异较大，建模导出与专业深度相机采集的深度图通常质量最佳。
+- **来源**：深度图可通过多种途径获取，包括3D建模软件直接导出（精度最高）、基于ToF（Time of Flight，飞行时间）、结构光等技术原理的深度相机拍摄、AI（人工智能）深度估计模型从普通照片生成、手工绘制。不同来源的精度与可靠性差异较大，建模导出与专业深度相机采集的深度图通常质量最佳。
 
 - **精度与边缘**：高精度深度图（如建模导出）在物体边缘处层次分明、过渡干脆，景深效果自然；精度较低的深度图（如部分AI生成结果）在物体边缘可能出现模糊或断层，导致景深过渡不自然、产生“分层”或“抠图感”。选择或制作深度图时应尽量保证物体边缘的清晰与连续。
 
@@ -108,7 +108,7 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 ![相机移轴裁剪示意图](figures/DepthComponent-cameraBufferCrop-params.png)
 
-经过场景重建与相机设置后，背景与子组件统一经过相同的三维变换管线，相机依据position与quaternion将世界坐标变换到观察空间（“相机眼中的世界”），再结合yFov、zNear、zFar与组件宽高比进行透视投影、变换到裁剪空间，经透视除法得到归一化设备坐标（Normalized Device Coordinates，NDC），最后通过视口变换映射到屏幕像素坐标，过程如下：
+经过场景重建与相机设置后，背景与子组件统一经过相同的三维变换管线。相机依据position与quaternion将世界坐标变换到观察空间（“相机眼中的世界”）。再结合yFov、zNear、zFar与组件宽高比进行透视投影，变换到裁剪空间。经透视除法得到归一化设备坐标（Normalized Device Coordinates，NDC），最后通过视口变换映射到屏幕像素坐标，过程如下：
 
 ![三维变换管线](figures/DepthComponent-coord-transform.png)
 
@@ -517,7 +517,7 @@ struct DepthComponent3DExample {
 
 打开应用页面，DepthComponent加载3D模型成功后，文字“Depth Component”呈现视觉倾斜效果，且部分内容被模型遮挡。
 
-   ![2D背景下的文字倾斜与遮挡效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-3D.png)
+   ![3D背景下的文字倾斜与遮挡效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-3D.png)
 
 ### 仅设置深度实现文字遮挡效果
 
@@ -601,7 +601,7 @@ struct DepthComponentDepthExample {
 // 为子组件设置空间效果：X、Y为归一化设备坐标、直接映射屏幕，
 // 四角XY设置为上窄下宽的梯形，Z统一控制深度
 Text('NDC Mode')
-  .fontSize(80)
+  .fontSize(120)
   .fontColor(Color.White)
   .spatialEffect({
     position: {
@@ -661,9 +661,9 @@ struct DepthComponentNdcExample {
 
 **预期效果**
 
-打开应用页面，文字“NDC Mode”在屏幕上呈现上窄下宽（上小下大）的倾斜形态：四角X、Y直接映射到屏幕，顶边宽度（x从-0.2到0.2）约为底边宽度（x从-0.5到0.5）的40%；本例未设置遮挡权重，文字不会被背景物体遮挡。
+打开应用页面，文字“NDC Mode”在屏幕上呈现上窄下宽（上小下大）的倾斜形态：四角X、Y直接映射到屏幕，顶边宽度（x从-0.2到0.2）约为底边宽度（x从-0.5到0.5）的40%；本例遮挡权重设为0.5，文字的相应部分会被背景中距相机更近的物体遮挡。
 
-   ![仅设置深度的文字遮挡效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-NDC.png)
+   ![NDC坐标实现的文字倾斜效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-NDC.png)
 
 
 ### 使用移轴裁剪渲染背景局部
