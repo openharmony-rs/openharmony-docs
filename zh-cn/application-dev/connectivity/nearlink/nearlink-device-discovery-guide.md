@@ -23,7 +23,7 @@
 | startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt; | 启动星闪广播。使用Promise异步回调。 |
 | stopAdvertising(advertisingId: number): Promise&lt;void&gt; | 停止星闪广播。使用Promise异步回调。 |
 | onAdvertisingStateChange(callback: Callback&lt;AdvertisingStateChangeInfo&gt;): void | 订阅星闪广播状态变化事件。使用callback异步回调。 |
-| offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;): void | 取消订阅星闪广播状态变化事件。 |
+| offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;): void | 取消订阅星闪广播状态变化事件。使用callback异步回调。 |
 
 ### 开发步骤
 
@@ -96,7 +96,7 @@
     };
     ```
 
-4. 开启星闪广播，返回advertisingId表示当前广播索引。其中advertisingParams为第3步构造的广播参数。
+4. 启动星闪广播，返回advId表示本次广播的ID。其中advertisingParams为第3步构造的广播参数。
 
     <!-- @[advertising_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
@@ -110,7 +110,7 @@
     }
     ```
 
-5. 停止星闪广播。其中advId为第4步开启广播时返回的广播索引。
+5. 停止星闪广播。其中advId为第4步启动广播时返回的广播ID。
 
     <!-- @[advertising_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
@@ -149,9 +149,9 @@
 | 接口名 | 描述 |
 | -------- | -------- |
 | startScan(filters: Array&lt;ScanFilters&gt; \| null, options?: ScanOptions): Promise&lt;void&gt; | 启动星闪扫描。使用Promise异步回调。 |
-| stopScan(): Promise&lt;void&gt; | 停止星闪扫描。 |
-| onDeviceFound(callback: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 订阅扫描结果。使用callback异步回调。 |
-| offDeviceFound(callback?: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 取消订阅扫描结果。 |
+| stopScan(): Promise&lt;void&gt; | 停止星闪扫描。使用Promise异步回调。 |
+| onDeviceFound(callback: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 订阅星闪扫描结果。使用callback异步回调。 |
+| offDeviceFound(callback?: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 取消订阅星闪扫描结果。使用callback异步回调。 |
 
 ### 开发步骤
 
@@ -327,7 +327,7 @@
     }
     ```
 
-4. 配置扫描参数，扫描过滤器配置期望的设备名称、地址等信息。过滤器至少携带一个过滤条件，可配置多组，组之间的条件为或的关系，一组过滤器内的条件为与的关系；filters传null表示不过滤，传空数组或所有字段均为空的过滤器数组时，将返回[36100042 数组为空](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100042-数组为空)错误。
+4. 配置扫描过滤器，设置期望的设备名称、地址等信息。过滤器至少携带一个过滤条件，可配置多个，多个过滤器之间的条件为或的关系，单个过滤器内的条件为与的关系。filters传null表示不过滤，传空数组或所有字段均为空的过滤器数组时，将返回[36100042 数组为空](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100042-数组为空)错误。
 
     <!-- @[scan_config_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
@@ -344,7 +344,7 @@
     }
     ```
 
-5. 开启星闪扫描。其中filters为第4步配置的扫描过滤器，scanOptions为扫描参数。
+5. 启动星闪扫描。其中filters为第4步配置的扫描过滤器，scanOptions为扫描参数。
 
     <!-- @[scan_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     

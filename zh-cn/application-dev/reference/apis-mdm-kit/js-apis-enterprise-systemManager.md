@@ -640,7 +640,7 @@ try {
 
 setLocalHotaDomain(admin: Want, domain: string): void
 
-设置设备本机HOTA（Huawei Over-the-Air）域名。设置成功后，系统将使用指定的HOTA域名进行升级。适用于企业内网升级场景，帮助企业管理员指定设备本机HOTA域名，使设备能够从企业指定的升级服务器获取升级包，避免通过公网升级，提升升级的安全性和可控性。
+设置设备本机HOTA（Huawei Over-the-Air）域名。设置成功后，系统将使用指定的HOTA域名进行升级。适用于企业内网升级场景，帮助企业管理员指定设备本机HOTA域名，使设备能够从企业指定的升级服务器获取升级包，避免通过公网升级，提升升级的安全性和可控性。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.LOCAL_HOTA_DOMAIN）查询设备是否支持本机HOTA域名特性。
 
 HOTA域名使用流程：
 1. 企业管理员通过MDM应用调用[systemManager.setLocalHotaDomain](#systemmanagersetlocalhotadomain)接口设置设备本机HOTA域名，指定升级包下载服务器。
@@ -699,7 +699,7 @@ HOTA域名使用流程：
 **示例：**
 
 ```ts
-import { systemManager } from '@kit.MDMKit';
+import { common, systemManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -709,11 +709,17 @@ let wantTemp: Want = {
 };
 // 需根据实际情况进行替换
 let domain: string = "https://www.hotaExample.com";
-try {
-  systemManager.setLocalHotaDomain(wantTemp, domain);
-  console.info('Succeeded in setting local HOTA domain.');
-} catch (err) {
-  console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+// 调用本接口前，先查询设备是否支持本机HOTA域名特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.LOCAL_HOTA_DOMAIN);
+if (isSupported) {
+  try {
+    systemManager.setLocalHotaDomain(wantTemp, domain);
+    console.info('Succeeded in setting local HOTA domain.');
+  } catch (err) {
+    console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The local HOTA domain feature is not supported.');
 }
 ```
 
@@ -1878,7 +1884,7 @@ try {
 
 addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 
-为当前设备添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。
+为当前设备添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY）查询设备是否支持打印机IP地址策略特性。
 - 已通过[addAllowedPrinterIPAddressesForAccount](#systemmanageraddallowedprinteripaddressesforaccount)设置白名单后再调用本接口，会报策略冲突（9200010）。
 - 已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口，策略可设置成功，但打印功能依然被禁用。
 - 为设备添加白名单后，可通过[removeAllowedPrinterIPAddressesForDevice](#systemmanagerremoveallowedprinteripaddressesfordevice)移除白名单；白名单为空时，所有网络打印机均不受本策略管控。
@@ -1923,15 +1929,21 @@ addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 **示例：**
 
 ```ts
-import { systemManager } from '@kit.MDMKit';
+import { common, systemManager } from '@kit.MDMKit';
 
 // 需要根据实际情况替换
 const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
-try {
-  systemManager.addAllowedPrinterIPAddressesForDevice(ipArray);
-  console.info('Succeeded in adding the allowed printer IP Addresses for the device.');
-} catch (err) {
-  console.error(`Failed to add the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+// 调用本接口前，先查询设备是否支持打印机IP地址策略特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY);
+if (isSupported) {
+  try {
+    systemManager.addAllowedPrinterIPAddressesForDevice(ipArray);
+    console.info('Succeeded in adding the allowed printer IP Addresses for the device.');
+  } catch (err) {
+    console.error(`Failed to add the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The printer IP address policy feature is not supported.');
 }
 ```
 
@@ -1939,7 +1951,7 @@ try {
 
 removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 
-为当前设备移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
+为当前设备移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY）查询设备是否支持打印机IP地址策略特性。
 
 > **说明：**
 >
@@ -1976,15 +1988,21 @@ removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 **示例：**
 
 ```ts
-import { systemManager } from '@kit.MDMKit';
+import { common, systemManager } from '@kit.MDMKit';
 
 // 需要根据实际情况替换
 const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
-try {
-  systemManager.removeAllowedPrinterIPAddressesForDevice(ipArray);
-  console.info('Succeeded in removing the allowed printer IP Addresses for the device.');
-} catch (err) {
-  console.error(`Failed to remove the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+// 调用本接口前，先查询设备是否支持打印机IP地址策略特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY);
+if (isSupported) {
+  try {
+    systemManager.removeAllowedPrinterIPAddressesForDevice(ipArray);
+    console.info('Succeeded in removing the allowed printer IP Addresses for the device.');
+  } catch (err) {
+    console.error(`Failed to remove the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The printer IP address policy feature is not supported.');
 }
 ```
 
@@ -2042,7 +2060,7 @@ try {
 
 addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 
-为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。
+为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY）查询设备是否支持打印机IP地址策略特性。
 - 已通过[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)设置白名单后，再调用本接口，会报策略冲突（9200010）。
 - 已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口，策略可设置成功，但打印功能依然被禁用。
 - 为当前用户添加白名单后，可通过[removeAllowedPrinterIPAddressesForAccount](#systemmanagerremoveallowedprinteripaddressesforaccount)移除白名单；当白名单为空时，所有网络打印机均不受本策略管控。
@@ -2089,16 +2107,22 @@ addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 **示例：**
 
 ```ts
-import { systemManager } from '@kit.MDMKit';
+import { common, systemManager } from '@kit.MDMKit';
 
 // 需要根据实际情况替换
 const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
 
-try {
-  systemManager.addAllowedPrinterIPAddressesForAccount(ipArray);
-  console.info('Succeeded in adding the allowed printer IP Addresses for current user.');
-} catch (err) {
-  console.error(`Failed to add the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+// 调用本接口前，先查询设备是否支持打印机IP地址策略特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY);
+if (isSupported) {
+  try {
+    systemManager.addAllowedPrinterIPAddressesForAccount(ipArray);
+    console.info('Succeeded in adding the allowed printer IP Addresses for current user.');
+  } catch (err) {
+    console.error(`Failed to add the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The printer IP address policy feature is not supported.');
 }
 ```
 
@@ -2106,7 +2130,7 @@ try {
 
 removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 
-为当前用户移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
+为当前用户移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY）查询设备是否支持打印机IP地址策略特性。
 
 > **说明：**
 >
@@ -2144,15 +2168,21 @@ removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): voi
 **示例：**
 
 ```ts
-import { systemManager } from '@kit.MDMKit';
+import { common, systemManager } from '@kit.MDMKit';
 
 // 需要根据实际情况替换
 const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
-try {
-  systemManager.removeAllowedPrinterIPAddressesForAccount(ipArray);
-  console.info('Succeeded in removing the allowed printer IP Addresses for current user.');
-} catch (err) {
-  console.error(`Failed to remove the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+// 调用本接口前，先查询设备是否支持打印机IP地址策略特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.PRINTER_IP_ADDRESS_POLICY);
+if (isSupported) {
+  try {
+    systemManager.removeAllowedPrinterIPAddressesForAccount(ipArray);
+    console.info('Succeeded in removing the allowed printer IP Addresses for current user.');
+  } catch (err) {
+    console.error(`Failed to remove the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The printer IP address policy feature is not supported.');
 }
 ```
 

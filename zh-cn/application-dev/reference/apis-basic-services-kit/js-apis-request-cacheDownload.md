@@ -438,6 +438,8 @@ getDownloadInfo(url: string): DownloadInfo | undefined
 |-------|--------------------|
 | 201   | permission denied. |
 
+**示例：**
+
   ```ts
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
 

@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-合作设备集合是由多个成员设备协同提供特定服务的整体，例如一副星闪耳机包含左右两个耳机单元。当配对的外设属于某个合作设备集合时，通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)接口仅能获取该集合中首个配对的成员设备，无法直接获取其他成员设备信息。作为集合使用者，可通过主动查询或订阅通知的方式，获取该合作设备集合内所有成员设备的完整信息。
+合作设备集合（Coordinated Devices Set，CDS）是由多个成员设备协同提供特定服务的整体，例如一副星闪耳机包含左右两个耳机单元。当配对的外围设备属于某个合作设备集合时，通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)接口仅能获取该集合中首个配对的成员设备，无法直接获取其他成员设备信息。作为集合使用者，可通过合作设备集合管理（Coordinated Devices Set Management，CDSM）能力，以主动查询或订阅通知的方式，获取该合作设备集合内所有成员设备的完整信息。
 
 开发前需按[开发准备](nearlink-preparations-guide.md)完成权限声明与运行时申请，并确保设备已开启星闪（参见[开发准备 > 查询星闪开关状态](nearlink-preparations-guide.md#查询星闪开关状态)），且已配对设备属于某个合作设备集合，已通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取集合中成员设备的地址。
 
@@ -21,7 +21,7 @@
 | createCdsmClient(address: string): CdsmClient | 创建合作设备集合客户端实例。 |
 | getCdsmInfo(): CdsmInfo | 主动查询合作设备集合里所有成员设备的信息。 |
 | onCdsmInfoChange(callback: Callback&lt;CdsmInfo&gt;): void | 订阅远端设备合作设备集合信息变化事件。使用callback异步回调。 |
-| offCdsmInfoChange(callback?: Callback&lt;CdsmInfo&gt;): void | 取消订阅远端设备合作设备集合信息变化事件。 |
+| offCdsmInfoChange(callback?: Callback&lt;CdsmInfo&gt;): void | 取消订阅远端设备合作设备集合信息变化事件。使用callback异步回调。 |
 
 ## 开发步骤
 

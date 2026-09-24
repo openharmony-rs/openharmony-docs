@@ -6,7 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=26a4eea6b424217513c7baf6b84329a3a2e3aeb7 translatedAt=2026-09-15T13:41:23.612Z pushedAt=2026-09-17T09:04:01.260Z -->
+<!-- md-trans-meta sourceCommit=298e4d5de4139f6963e24584b03fa18002046fd4 translatedAt=2026-09-22T01:19:16.825Z pushedAt=2026-09-22T08:31:06.196Z -->
 
 The **WorkSchedulerExtensionAbility** module provides callbacks for deferred task scheduling. You can override the APIs provided by this module. When a deferred task is triggered, the system calls back the application through the APIs allowing you to process the task logic in the callback.
 
@@ -73,11 +73,10 @@ Called when the system starts scheduling the deferred task. This callback is tri
 | ---- | ---------------------------------------- | ---- | -------------- |
 | work | [workScheduler.WorkInfo](js-apis-resourceschedule-workScheduler.md#workinfo) | Yes   | The task to be added to the execution queue.|
 
-**Example**
+**Example** 
 
 ```ts
-import { workScheduler } from '@kit.BackgroundTasksKit';
-import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStart(work: workScheduler.WorkInfo) {
@@ -102,11 +101,10 @@ Called when the system stops scheduling the deferred task. This callback is trig
 | work | [workScheduler.WorkInfo](js-apis-resourceschedule-workScheduler.md#workinfo) | Yes   | Task in the execution queue for which the callback is to be ended.|
 
 
-**Example**
+**Example** 
 
 ```ts
-import { workScheduler } from '@kit.BackgroundTasksKit';
-import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStop(work: workScheduler.WorkInfo) {
