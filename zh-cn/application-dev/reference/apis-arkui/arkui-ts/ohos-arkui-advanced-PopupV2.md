@@ -91,8 +91,7 @@ PopupV2Button定义按钮的相关属性和事件。
 
 ```ts
 // xxx.ets
-import { PopupV2, PopupV2Button } from '@kit.ArkUI';
-import { ImageModifier, TextModifier } from '@kit.ArkUI';
+import { PopupV2, PopupV2Button, ImageModifier, TextModifier } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -147,8 +146,7 @@ struct PopupExample {
 
 ```ts
 // xxx.ets
-import { PopupV2, PopupV2Button } from '@kit.ArkUI';
-import { ImageModifier, TextModifier } from '@kit.ArkUI';
+import { PopupV2, PopupV2Button, ImageModifier, TextModifier } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -203,8 +201,7 @@ struct PopupExample {
 
 ```ts
 // xxx.ets
-import { PopupV2, PopupV2Button } from '@kit.ArkUI';
-import { ImageModifier, TextModifier } from '@kit.ArkUI';
+import { PopupV2, PopupV2Button, ImageModifier, TextModifier } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2

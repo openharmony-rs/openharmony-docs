@@ -736,8 +736,9 @@ function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
       }
     }).catch((err: BusinessError) => {
       reject(err);
+    }).finally(() => {
+      imageSource.release();
     });
-  });
 }
 
 @Entry
@@ -837,6 +838,8 @@ function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
       }
     }).catch((err: BusinessError) => {
       reject(err);
+    }).finally(() => {
+      imageSource.release();
     });
   });
 }
@@ -926,6 +929,8 @@ function imageInvert(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
       }
     }).catch((err: BusinessError) => {
       reject(err);
+    }).finally(() => {
+      imageSource.release();
     });
   });
 }
@@ -1035,6 +1040,8 @@ function imageColorFilter(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
       }
     }).catch((err: BusinessError) => {
       reject(err);
+    }).finally(() => {
+      imageSource.release();
     });
   });
 }
@@ -1135,6 +1142,8 @@ function imageBrightness(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
       }
     }).catch((err: BusinessError) => {
       reject(err);
+    }).finally(() => {
+      imageSource.release();
     });
   });
 }
@@ -1228,6 +1237,8 @@ function imageGrayscale(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
       }
     }).catch((err: BusinessError) => {
       reject(err);
+    }).finally(() => {
+      imageSource.release();
     });
   });
 }
