@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} Camera_OcclusionDetectionResult
+typedef struct Camera_OcclusionDetectionResult {...} Camera_OcclusionDetectionResult
 ```
 
 ## 概述
