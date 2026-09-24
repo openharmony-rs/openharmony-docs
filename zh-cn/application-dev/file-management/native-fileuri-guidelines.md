@@ -65,22 +65,15 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        // ...
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length, &uriResult);
+       delete[] path;
        // 输出结果uri字符串
        // ...
-       if (ret == 0 && uriResult != nullptr) {
-           // 将C字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               free(uriResult);
-               return nullptr;
-           }
-           free(uriResult); // 释放临时字符串
-       } else {
-           // 将C字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, "Hello World", NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               return nullptr;
-           }
+       // 创建返回值后统一释放接口分配的内存，包括错误路径。
+       const char *value = (ret == 0 && uriResult != nullptr) ? uriResult : "Hello World";
+       napi_status status = napi_create_string_utf8(env, value, NAPI_AUTO_LENGTH, &result);
+       free(uriResult);
+       if (status != napi_ok) {
+           return nullptr;
        }
        return result;
    }
@@ -104,22 +97,15 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
        char *pathResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &pathResult);
+       delete[] uri;
        // 输出获取路径结果字符串
        // ...
-       if (ret == 0 && pathResult != nullptr) {
-           // 将C字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, pathResult, NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               free(pathResult);
-               return nullptr;
-           }
-           free(pathResult); // 释放临时字符串
-       } else {
-           // 将空字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               return nullptr;
-           }
+       // 创建返回值后统一释放接口分配的内存，包括错误路径。
+       const char *value = (ret == 0 && pathResult != nullptr) ? pathResult : "";
+       napi_status status = napi_create_string_utf8(env, value, NAPI_AUTO_LENGTH, &result);
+       free(pathResult);
+       if (status != napi_ok) {
+           return nullptr;
        }
        return result;
    }
@@ -143,6 +129,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
+       delete[] uri;
        // 输出所在路径uri字符串
        // ...
        if (ret == 0 && uriResult != nullptr) {
@@ -175,6 +162,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        // 输出传入uri字符串
        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
        bool flags = OH_FileUri_IsValidUri(uri, length);
+       delete[] uri;
        // ...
    }
    ```
@@ -197,22 +185,15 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
+       delete[] uri;
        // 输出获取到的文件名称
        // ...
-       if (ret == 0 && uriResult != nullptr) {
-           // 将C字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               free(uriResult);
-               return NULL;
-           }
-           free(uriResult); // 释放临时字符串
-       } else {
-           // 将空字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               return nullptr;
-           }
+       // 创建返回值后统一释放接口分配的内存，包括错误路径。
+       const char *value = (ret == 0 && uriResult != nullptr) ? uriResult : "";
+       napi_status status = napi_create_string_utf8(env, value, NAPI_AUTO_LENGTH, &result);
+       free(uriResult);
+       if (status != napi_ok) {
+           return nullptr;
        }
        return result;
    }
