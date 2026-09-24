@@ -84,7 +84,7 @@ ArkTS-Sta:
 
 ``` TypeScript
 this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int) => {
-  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
+  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
 })
 ```
 
