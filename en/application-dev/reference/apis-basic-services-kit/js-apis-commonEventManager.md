@@ -596,3 +596,4 @@ Describes the content and properties of a common event.
 | --- | --- |
 | [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event.|
 
+<!--no_check-->

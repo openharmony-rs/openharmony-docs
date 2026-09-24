@@ -385,3 +385,4 @@ commonEventManager.setStaticSubscriberState(true, eventName).then(() => {
   console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMsg: ${err.message}`);
 });
 ```
+<!--no_check-->

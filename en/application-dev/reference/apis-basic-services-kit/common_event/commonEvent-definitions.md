@@ -1403,3 +1403,4 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
   > **NOTE**
   >
   > This type is supported since API version 8 and deprecated since API version 9. You are advised to use [COMMON_EVENT_SPLIT_SCREEN](commonEventManager-definitions.md#common_event_split_screen) instead.
+<!--no_check-->

@@ -321,3 +321,4 @@ commonEvent.createSubscriber(subscribeInfo, createCallBack);
 // Note: This API must be called after the subscriber is successfully created (that is, after the createCallBack callback is executed). Only the API usage is displayed here.
 commonEvent.unsubscribe(subscriber, unsubscribeCallback);
 ```
+<!--no_check-->
