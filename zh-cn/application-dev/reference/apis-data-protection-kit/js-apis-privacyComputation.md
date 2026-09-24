@@ -9,9 +9,9 @@
 
 本模块提供隐私保护的计算能力，包括隐私目标生成、隐私搜索、搜索结果检索等，可用于在不向对方透露原始数据与数据集内容的前提下完成数据比对与检索。
 
-一次完整的隐私计算包含三个步骤：发起端调用[genPrivacyTarget](#privacycomputationgenprivacytarget)生成隐私目标，响应端调用[privacySearch](#privacycomputationprivacysearch)执行隐私搜索并返回结果密文，发起端调用[getSearchResult](#privacycomputationgetsearchresult)解密结果密文得到是否命中及附加值。
+一次完整的隐私计算包含三个步骤：发起端调用[genPrivacyTarget](#privacycomputationgenprivacytarget)生成隐私目标，响应端调用[privacySearch](#privacycomputationprivacysearch)执行隐私搜索并返回结果密文，发起端调用[getSearchResult](#privacycomputationgetsearchresult)解密结果密文得到命中结果及响应端的原始附加值。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## 导入模块
 
@@ -23,16 +23,18 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 定义用于隐私保护计算的哈希算法枚举。用于对目标元素或数据集元素计算哈希值。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SHA256 | 0 | SHA-256哈希算法。未显式指定哈希算法时，默认使用此算法。 |
-| SHA512 | 1 | SHA-512哈希算法。 |
+| NONE | 0 | 没有哈希算法。 |
+| SHA256 | 1 | SHA256哈希算法。未显式指定哈希算法时，默认使用此算法。 |
+| SHA384 | 2 | SHA384哈希算法。 |
+| SHA512 | 3 | SHA512哈希算法。 |
 
 ## DataSetSize
 
@@ -40,9 +42,9 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 请根据隐私搜索中元素的数量与每个结果密文可接受的大小选择合适的取值。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
@@ -56,9 +58,9 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 隐私协议类型的枚举，决定了隐私保护搜索的计算方法。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
@@ -71,24 +73,25 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 定义隐私协议配置，包括数据集大小与协议类型。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| dataSetSize | [DataSetSize](#datasetsize) | 否 | 否 | 隐私协议的数据集大小。确定单个结果密文可以包含的比较次数，结果密文总数由elements.size÷dataSetSize决定。 |
+| dataSetSize | [DataSetSize](#datasetsize) | 否 | 否 | 隐私协议的数据集大小。 |
 | protocolType | [ProtocolType](#protocoltype) | 否 | 否 | 隐私计算的协议类型。 |
+
 
 ## TargetElement
 
 定义隐私计算的目标元素，包括原始元素数据与可选的哈希算法。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
@@ -96,14 +99,13 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 | -------- | -------- | -------- | -------- | -------- |
 | elemData | Uint8Array | 否 | 否 | 要搜索的目标元素的原始数据。 |
 | hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对目标元素计算的哈希算法。未指定时默认使用SHA256。 |
-
 ## Element
 
 定义隐私搜索使用的数据集元素。每个元素包含一个用于匹配的键、可选的哈希算法，以及用于PIR协议检索的可选附加值。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
@@ -117,9 +119,9 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 定义隐私搜索操作的结果，包含结果密文与可选的附加值密文。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
@@ -132,9 +134,9 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 定义解密后的最终搜索结果，指示是否找到匹配项以及与匹配元素关联的可选附加值。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
@@ -149,9 +151,9 @@ genPrivacyTarget(targetElement: TargetElement, privacyProtocol: PrivacyProtocol)
 
 为给定元素生成隐私目标。隐私目标是搜索元素的加密表示，可用于隐私保护搜索而不泄露原始数据。使用Promise异步回调。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
@@ -174,7 +176,10 @@ genPrivacyTarget(targetElement: TargetElement, privacyProtocol: PrivacyProtocol)
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 24000001 | The service is unavailable. |
 | 24000006 | Insufficient memory. |
+| 24000009 | The cryptography operation failed. |
+| 24000017 | The capability is not supported. |
 | 24000018 | Parameter verification failed. |
 
 **示例**：
@@ -203,9 +208,9 @@ privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: P
 
 执行隐私保护搜索。根据加密的隐私目标搜索给定的数据集元素，不向对方透露目标或数据集内容。使用Promise异步回调。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
@@ -214,7 +219,7 @@ privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: P
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | privacyTarget | Uint8Array | 是 | 由[genPrivacyTarget](#privacycomputationgenprivacytarget)生成的加密隐私目标。 |
-| elements | Array&lt;[Element](#element)&gt; | 是 | 要搜索的数据集元素。 |
+| elements | Element[] | 是 | 要搜索的数据集元素。 |
 | privacyProtocol | [PrivacyProtocol](#privacyprotocol) | 是 | 隐私协议配置，需与生成隐私目标时一致。 |
 
 **返回值**：
@@ -229,7 +234,10 @@ privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: P
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 24000001 | The service is unavailable. |
 | 24000006 | Insufficient memory. |
+| 24000009 | The cryptography operation failed. |
+| 24000017 | The capability is not supported. |
 | 24000018 | Parameter verification failed. |
 
 **示例**：
@@ -266,9 +274,9 @@ getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtocol: Priva
 
 获取隐私搜索结果与最终搜索结果。解密[privacySearch](#privacycomputationprivacysearch)返回的结果密文，获取最终匹配结果与可选的附加值。使用Promise异步回调。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Security.Asset
 
@@ -291,7 +299,10 @@ getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtocol: Priva
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 24000001 | The service is unavailable. |
 | 24000006 | Insufficient memory. |
+| 24000009 | The cryptography operation failed. |
+| 24000017 | The capability is not supported. |
 | 24000018 | Parameter verification failed. |
 
 **示例**：
