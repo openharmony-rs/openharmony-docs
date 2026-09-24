@@ -18,7 +18,7 @@ Defines the child process information types and accessor functions, which are us
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Related module:** [AbilityRuntime](capi-abilityruntime.md)
 
@@ -53,7 +53,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_Ability
 
 Obtains a specific child process information handle from the child process information set by index.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 
@@ -79,7 +79,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRun
 
 Obtains the PID of a child process.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 
@@ -104,7 +104,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_Abil
 
 Obtains the PID of the parent process of a child process.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 
@@ -129,7 +129,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 
 Obtains the process name of a child process.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 
@@ -156,7 +156,7 @@ void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessIn
 
 Releases the child process information set.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 

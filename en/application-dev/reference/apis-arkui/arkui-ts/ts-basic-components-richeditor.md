@@ -1210,7 +1210,7 @@ Provides the image span style information returned by the backend.
 | verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | No| No   | Vertical alignment mode of the image.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | objectFit     | [ImageFit](ts-appendix-enums.md#imagefit) | No| No   | Scale mode of the image.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | layoutStyle<sup>12+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11)     | No| Yes  | Image layout style.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | No| Yes  | Image resizing options.<br>**Since**: 26.1.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0.|
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | No| Yes  | Image resizing options.<br>**Since**: 26.0.1<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.1.|
 
 ## RichEditorLayoutStyle<sup>11+</sup> 
 
@@ -2124,7 +2124,7 @@ Image style.
 | verticalAlign             | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10)| No| Yes   | Vertical alignment mode of the image.<br>Default value: **ImageSpanAlignment.BOTTOM**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | objectFit                 | [ImageFit](ts-appendix-enums.md#imagefit) | No| Yes   | Scale mode of the image.<br> Default value: **ImageFit.Cover**<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
 | layoutStyle<sup>11+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11) | No| Yes   | Image layout style. Default value: **{"borderRadius":"","margin":""}**<br><br>**Atomic service API**: This API can be used in atomic services since API version 12.                         |
-| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | No| Yes   | Image resizing options.<br>**Since**: 26.1.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0.|
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | No| Yes   | Image resizing options.<br>**Since**: 26.0.1<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.1.|
 
 ## RichEditorSymbolSpanOptions<sup>11+</sup>
 
@@ -6999,7 +6999,7 @@ struct ScrollToVisibleDemo {
 
 This example shows how to use the **resizable** attribute of [RichEditorImageSpanStyle](#richeditorimagespanstyle) to stretch the image in different directions.
 
-The **resizable** attribute is added to **RichEditorImageSpanStyle** since API version 26.1.0.
+The **resizable** attribute is added to **RichEditorImageSpanStyle** since API version 26.0.1.
 
 ```ts
 @Entry

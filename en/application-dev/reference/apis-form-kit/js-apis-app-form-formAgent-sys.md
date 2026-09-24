@@ -50,10 +50,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.1.0 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
 | 16501008 | Waiting for the form addition to the desktop timed out. <br/>Applicable version: 12+|
-| 16501017 | There is no space to publish form. <br/>**Since:** 26.1.0 |
-| 16501018 | This form does not support publishing. <br/>**Since:** 26.1.0 |
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 
@@ -119,10 +119,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.1.0 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
 | 16501008 | Waiting for the form addition to the desktop timed out.<br/>Applicable version: 12+ |
-| 16501017 | There is no space to publish form. <br/>**Since:** 26.1.0 |
-| 16501018 | This form does not support publishing. <br/>**Since:** 26.1.0 |
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 
@@ -232,7 +232,7 @@ Obtains the list of available widget host service information. This API uses a p
 
 **System API:** This API is a system API.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Return value**
 
@@ -282,7 +282,7 @@ Requests to publish a widget to the widget host service on a remote device. This
 
 **System API:** This is a system API.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 

@@ -2583,7 +2583,7 @@ onCustomCommand(callback: CustomCommandEvent): void
 
 Registers a listener for custom control command events. This API uses an asynchronous callback to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2646,7 +2646,7 @@ offCustomCommand(callback?: CustomCommandEvent): void
 
 Unregisters the listener for custom control commands.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
