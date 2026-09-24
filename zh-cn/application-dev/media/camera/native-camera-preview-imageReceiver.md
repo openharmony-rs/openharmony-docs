@@ -145,8 +145,6 @@
            return;
        }
        uint64_t xComponentSurfaceId = std::stoull(g_xComponentSurfaceIdSlave);
-       OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeCTest %{public}s XComponentId is : %{public}lu.", __func__,
-           xComponentSurfaceId);
        OHNativeWindow *nativeWindow = nullptr;
        int32_t res = OH_NativeWindow_CreateNativeWindowFromSurfaceId(xComponentSurfaceId, &nativeWindow);
        OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest %{public}s XComponentId is : %{public}lu.",
@@ -187,9 +185,9 @@
            OH_LOG_ERROR(LOG_APP, "ShowImage RequestBuffer failed, errCode: %{public}d.", res);
            return;
        }
+   
        // 将image数据拷贝到nativeWindowBuffer上。
        copyBuffer(imageBuffer, bufSize, nativeWindowBuffer);
-   
        Region region1{};
        res = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, region1);
        if (res != 0) {
