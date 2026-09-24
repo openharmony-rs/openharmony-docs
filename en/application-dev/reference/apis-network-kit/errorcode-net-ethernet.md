@@ -1,5 +1,6 @@
 # Ethernet Connection Error Codes
 
+<!-- md-trans-meta sourceCommit=7b8b9d8ce742c4a1126ab4e1f2ad4f9170b54175 translatedAt=2026-09-23T01:45:37.732Z pushedAt=2026-09-24T06:00:14.167Z -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -74,7 +75,7 @@ This error code is reported if a system internal error occurs.
 
 **Error Message**
 
-The device information does not exist.
+Device information does not exist.
 
 **Description**
 
@@ -86,8 +87,8 @@ The device to set or obtain does not exist.
 
 **Procedure**
 
-```
-> hdc shell ifconfig
+``` shell
+hdc shell ifconfig
 ```
 Check whether the device, for example, **eth0** or **eth1**, exists.
 
@@ -95,7 +96,7 @@ Check whether the device, for example, **eth0** or **eth1**, exists.
 
 **Error Message**
 
-Device disconnected.
+Ethernet device not connected.
 
 **Description**
 
@@ -113,7 +114,7 @@ View the Ethernet service and netsys logs to check for the connection status inf
 
 **Error Message**
 
-Failed to write the user configuration.
+Ethernet failed to write user configuration information.
 
 **Description**
 

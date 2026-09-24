@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T02:04:28.304Z pushedAt=2026-09-24T06:00:14.194Z -->
 
 The **ethernet** module provides wired network capabilities, which allow users to set the IP address, subnet mask, gateway, and Domain Name System (DNS) server, and HTTP proxy of a wired network.
 
@@ -24,7 +25,7 @@ import { ethernet } from '@kit.NetworkKit';
 
 setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback\<void>): void
 
-Sets the network interface configuration information. This API uses an asynchronous callback to return the result.
+Sets the network interface configuration. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -83,7 +84,7 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 
 setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise\<void>
 
-Sets the network interface configuration information. This API uses a promise to return the result.
+Sets the network interface configuration. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -102,7 +103,7 @@ Sets the network interface configuration information. This API uses a promise to
 
 | Type               | Description                                                       |
 | ------------------- | ----------------------------------------------------------- |
-| Promise\<void>       | Promise used to return the result. If the operation is successful, the return result is empty. If the operation fails, an error code is returned.|
+| Promise\<void>       | Promise that returns no value. |
 
 **Error codes**
 
@@ -147,7 +148,7 @@ setConfigPromise.then(() => {
 
 getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void
 
-Obtains the information about a specified network interface. This API uses an asynchronous callback to return the result.
+Obtains the configuration of the specified network interface. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -198,7 +199,7 @@ ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.Interface
 
 getIfaceConfig(iface: string): Promise\<InterfaceConfiguration>
 
-Obtains the information about a specified network interface. This API uses a promise to return the result.
+Obtains the configuration of the specified network interface. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -216,7 +217,7 @@ Obtains the information about a specified network interface. This API uses a pro
 
 | Type                             | Description                              |
 | --------------------------------- | ---------------------------------- |
-| Promise\<[InterfaceConfiguration](#interfaceconfiguration)>   | Promise used to return the result.       |
+| Promise\<[InterfaceConfiguration](#interfaceconfiguration)>   | Promise used to return the interface information.        |
 
 **Error codes**
 
@@ -252,7 +253,7 @@ ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => 
 
 isIfaceActive(iface: string, callback: AsyncCallback\<number>): void
 
-Checks whether the interface is activated. This API uses an asynchronous callback to return the result.
+Checks whether the interface is active. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -265,7 +266,7 @@ Checks whether the interface is activated. This API uses an asynchronous callbac
 | Name  | Type                       | Mandatory| Description                                              |
 | -------- | --------------------------- | ---- | -------------------------------------------------- |
 | iface    | string                      | Yes  | Interface name. If this parameter is left empty, the API checks for any active network interface.            |
-| callback | AsyncCallback\<number>       | Yes  | Callback used to return the result. The value **1** means that the network interface is active, **0** means that the network interface is inactive, and any other value means that an error has occurred.|
+| callback | AsyncCallback\<number>       | Yes   | Callback function. <br>- 1: activated<br>- 0: not activated<br>- Other values: error code indicating that the retrieval failed. |
 
 **Error codes**
 
@@ -298,7 +299,7 @@ ethernet.isIfaceActive("eth0", (error: BusinessError, value: number) => {
 
 isIfaceActive(iface: string): Promise\<number>
 
-Checks whether the interface is activated. This API uses a promise to return the result.
+Checks whether the interface is active. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -316,7 +317,7 @@ Checks whether the interface is activated. This API uses a promise to return the
 
 | Type           | Description                                                              |
 | ----------------| ------------------------------------------------------------------ |
-| Promise\<number> | Promise used to return the result. The value **1** means that the network interface is active, **0** means that the network interface is inactive, and any other value means that an error has occurred.|
+| Promise\<number> | Promise object used to return the result. 1 if activated; 0 if not activated; otherwise, an error code indicating the failure to obtain the result.|
 
 **Error codes**
 
@@ -347,7 +348,7 @@ ethernet.isIfaceActive("eth0").then((data: number) => {
 
 getAllActiveIfaces(callback: AsyncCallback\<Array\<string>>): void
 
-Obtains the active network interface. This API uses an asynchronous callback to return the result.
+Obtains the active network interfaces. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -392,7 +393,7 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 
 getAllActiveIfaces(): Promise\<Array\<string>>
 
-Obtains the active network interface. This API uses a promise to return the result.
+Obtains the active network interfaces. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -404,7 +405,7 @@ Obtains the active network interface. This API uses a promise to return the resu
 
 | Type                          | Description                                           |
 | ------------------------------ | ----------------------------------------------- |
-| Promise\<Array\<string>>         | Promise used to return the result.  |
+| Promise\<Array\<string>>         | Promise object, returns the result. The return value is the corresponding API name. |
 
 **Error codes**
 
@@ -435,7 +436,7 @@ ethernet.getAllActiveIfaces().then((data: string[]) => {
 
 on(type: 'interfaceStateChange', callback: Callback\<InterfaceStateInfo>): void
 
-Registers the observer for NIC hot swap events. This API uses an asynchronous callback to return the result.
+Registers a listener for network card hot-swap events. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -448,7 +449,7 @@ Registers the observer for NIC hot swap events. This API uses an asynchronous ca
 | Name  | Type                                   | Mandatory| Description      |
 | -------- | --------------------------------------- | ---- | ---------- |
 | type     | string                  | Yes  | Event type. The value is **interfaceStateChange**.|
-| callback | AsyncCallback\<[InterfaceStateInfo](#interfacestateinfo11)> | Yes  | Callback used to return the result.  |
+| callback | Callback\<[InterfaceStateInfo](#interfacestateinfo11)> | Yes | Callback invoked to return the Ethernet card status information. |
 
 **Error codes**
 
@@ -472,7 +473,7 @@ ethernet.on('interfaceStateChange', (data: object) => {
 
 off(type: 'interfaceStateChange', callback?: Callback\<InterfaceStateInfo\>): void
 
-Unregisters the observer for NIC hot swap events. This API uses an asynchronous callback to return the result.
+Unregisters the listener for network card hot-swap events. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -485,7 +486,7 @@ Unregisters the observer for NIC hot swap events. This API uses an asynchronous 
 | Name  | Type                                   | Mandatory| Description      |
 | -------- | --------------------------------------- | ---- | ---------- |
 | type     | string                  | Yes  | Event type. The value is **interfaceStateChange**.|
-| callback | AsyncCallback\<[InterfaceStateInfo](#interfacestateinfo11)> | No  | Callback used to return the result.  |
+| callback | Callback\<[InterfaceStateInfo](#interfacestateinfo11)> | No | Callback invoked to return the Ethernet card status information. |
 
 **Error codes**
 
@@ -508,7 +509,7 @@ ethernet.off('interfaceStateChange');
 
 getEthernetDeviceInfos(): Promise\<Array\<EthernetDeviceInfos>>
 
-Obtains the device information (such as the vendor name, product name, and maximum connection rate) of the local Ethernet NIC. This API uses a promise to return the result.
+Obtains the device information of the local Ethernet card (such as vendor name, product name, maximum connection rate, etc.). This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
