@@ -118,7 +118,7 @@ stars(value: int | undefined)
 
 stepSize(value: number)
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。设置的评分值会规整到stepSize的整数倍（四舍五入到最近的整数倍）。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -142,7 +142,7 @@ stepSize(value: number)
 
 stepSize(size: Optional\<number>)
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。与[stepSize](#stepsize)相比，size参数新增了对undefined类型的支持。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。设置的评分值会规整到stepSize的整数倍（四舍五入到最近的整数倍）。与[stepSize](#stepsize)相比，size参数新增了对undefined类型的支持。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -166,7 +166,7 @@ stepSize(size: Optional\<number>)
 
 stepSize(value: double | undefined)
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。与[stepSize](#stepsize)相比，value参数新增了对undefined类型的支持。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。设置的评分值会规整到stepSize的整数倍（四舍五入到最近的整数倍）。与[stepSize](#stepsize)相比，value参数新增了对undefined类型的支持。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -338,7 +338,7 @@ callback回调参数说明：
 
 | 参数名   | 类型     | 必填 | 说明                         |
 | -------- | -------- | ---- | ---------------------------- |
-| value | number | 是   | 评分条的评分。 |
+| value | number | 是   | 评分条的评分。取值会规整到[stepSize](#stepsize)的整数倍。 |
 
 ### onChange<sup>18+</sup>
 
@@ -410,7 +410,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| rating | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 评分条的评分。 |
+| rating | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 评分条的评分。取值会规整到[stepSize](#stepsize)的整数倍。 |
 
 ## 键盘走焦规格
 | 按键         | 功能描述                        |
@@ -437,10 +437,10 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 | 名称  | 类型    |    只读    |    可选      |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| rating    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 否 | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
+| rating    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 否 | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br/>设置的评分值会规整到[stepSize](#stepsize)的整数倍（四舍五入到最近的整数倍），实际显示值与[onChange](#onchange)回调值均为规整后的值。该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)与[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
 | indicator | boolean | 否 | 否 | 评分条是否作为指示器使用。当值为true时，表示作为指示器；当值为false时，表示不作为指示器。<br/>默认值：false |
 | stars | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 |评分条的星级总数。<br/>默认值：5 |
-| stepSize | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 |评分条的评分步长。<br/>默认值：0.5 |
+| stepSize | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 |评分条的评分步长。<br/>默认值：0.5<br/>设置的评分值会规整到stepSize的整数倍（四舍五入到最近的整数倍）。 |
 | triggerChange | ArkTS-Dyn: Callback\<number> <br> ArkTS-Sta: Callback\<double> | 否 | 否 |触发评分数量变化。 |
 
 ## RatingOptions<sup>18+</sup>对象说明
@@ -465,7 +465,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 | 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| rating<sup>7+</sup>    | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double>  | 否   | 否   | 设置并接收评分值。取值为undefined时，按默认值处理。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| rating<sup>7+</sup>    | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double>  | 否   | 否   | 设置并接收评分值。取值为undefined时，按默认值处理。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br/>设置的评分值会规整到[stepSize](#stepsize)的整数倍（四舍五入到最近的整数倍），实际显示值与[onChange](#onchange)回调值均为规整后的值。该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | indicator<sup>7+</sup> | boolean | 否   | 是   | 设置评分组件作为指示器使用，值为true时，不可改变评分，值为false时，可进行评分。<br/>默认值：false<br/>**说明：** <br/>indicator=true时，默认组件高度height=12.0vp，组件width=height * stars。 <br/>indicator=false时，默认组件高度height=28.0vp，组件width=height * stars。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 
 ## StarStyleOptions<sup>18+</sup>对象说明

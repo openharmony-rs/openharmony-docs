@@ -172,9 +172,12 @@ Wi-Fi配置信息。
 | ipType | [IpType](#iptype) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | staticIp | [IpConfig](#ipconfig) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
-| configStatus<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
+| configStatus<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  0 - 允许参与选网，1 - 禁止参与选网 <br /> 2 - 永久禁止参与选网，3 - 未知 **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true:允许自动连接。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 17<br />**ArkTS-Sta起始版本：** 23|
 | isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全Wi-Fi检测。false: 不是安全Wi-Fi，true: 是安全Wi-Fi。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| family<sup>20+</sup> | number | 否 | 是 | 静态IP家族：0表示IPv4，1表示IPv6。 <br /> **系统接口：** 此接口为系统接口。 |
+| staticIpv6<sup>20+</sup> | Ipv6Config | 否 | 是 | 静态IPv6配置。<br /> **系统接口：** 此接口为系统接口。 |
+
 ## IpType
 
 表示IP类型的枚举。
@@ -374,7 +377,7 @@ connectToDevice(config: WifiDeviceConfig): void
 | snr | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 信噪比，单位：dB。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | suppState | [SuppState](#suppstate) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | isHiLinkProNetwork | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
-| wifiTxRxValid | boolean | 否 | 是 | 用于指示 Wi-Fi 的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 26.0.0<br />**ArkTS-Sta起始版本：** 26.0.0|
+| wifiTxRxValid | boolean | 否 | 是 | 用于指示 Wi-Fi 的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作，true表示正常，false表示异常<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 26.0.0<br />**ArkTS-Sta起始版本：** 26.0.0|
 
 
 ## SuppState
@@ -1059,9 +1062,9 @@ try {
 
 factoryReset(): void
 
-**系统接口：** 此接口为系统接口。
-
 重置Wi-Fi相关配置并关闭Wi-Fi。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
 
@@ -1903,10 +1906,10 @@ let recvStreamChangeFunc = (result:number) => {
     console.info("Receive stream change event: " + result);
 }
 
-// Register event
+// 注册事件
 wifiManager.on("streamChange", recvStreamChangeFunc);
 
-// Unregister event
+// 注销事件
 wifiManager.off("streamChange", recvStreamChangeFunc);
 
 ```
@@ -2055,10 +2058,10 @@ let recvDeviceConfigChangeFunc = (result:number) => {
     console.info("Receive device config change event: " + result);
 }
 
-// Register event
+// 注册事件
 wifiManager.on("deviceConfigChange", recvDeviceConfigChangeFunc);
 
-// Unregister event
+// 注销事件
 wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 ```
@@ -2207,10 +2210,10 @@ let recvHotspotStaJoinFunc = (result:wifiManager.StationInfo) => {
     console.info("Receive hotspot sta join event: " + result);
 }
 
-// Register event
+// 注册事件
 wifiManager.on("hotspotStaJoin", recvHotspotStaJoinFunc);
 
-// Unregister event
+// 注销事件
 wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 ```
@@ -2359,10 +2362,10 @@ let recvHotspotStaLeaveFunc = (result:wifiManager.StationInfo) => {
     console.info("Receive hotspot sta leave event: " + result);
 }
 
-// Register event
+// 注册事件
 wifiManager.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
-// Unregister event
+// 注销事件
 wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ```
@@ -2449,7 +2452,7 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
+**需要权限：** ohos.permission.SET_WIFI_CONFIG
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -2494,7 +2497,7 @@ getWifiCapability(capability: WifiCapability): boolean
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
+**需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

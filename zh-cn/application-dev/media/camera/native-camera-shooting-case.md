@@ -50,6 +50,7 @@
 3. cpp侧导入NDK接口，并根据传入的SurfaceId进行拍照。
     ```c++
     #include "hilog/log.h"
+    #include "ndk_camera.h"
 
     void CaptureSessionOnFocusStateChange(Camera_CaptureSession* session, Camera_FocusState focusState)
     {

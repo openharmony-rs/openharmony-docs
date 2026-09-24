@@ -91,10 +91,10 @@ ArkTS-Sta: spatialEffect(params: SpatialEffectParams | undefined): this
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| leftTop | [DepthVector3](#depthvector3) | 否 | 否 | 左上角在三维空间中的位置。无单位，其值表示3D空间中的坐标。 |
-| rightTop | [DepthVector3](#depthvector3) | 否 | 否 | 右上角在三维空间中的位置。无单位，其值表示3D空间中的坐标。 |
-| leftBottom | [DepthVector3](#depthvector3) | 否 | 否 | 左下角在三维空间中的位置。无单位，其值表示3D空间中的坐标。 |
-| rightBottom | [DepthVector3](#depthvector3) | 否 | 否 | 右下角在三维空间中的位置。无单位，其值表示3D空间中的坐标。 |
+| leftTop | [DepthVector3](#depthvector3) | 否 | 否 | 左上角在三维空间中的位置。无单位，其值表示三维空间中的坐标。 |
+| rightTop | [DepthVector3](#depthvector3) | 否 | 否 | 右上角在三维空间中的位置。无单位，其值表示三维空间中的坐标。 |
+| leftBottom | [DepthVector3](#depthvector3) | 否 | 否 | 左下角在三维空间中的位置。无单位，其值表示三维空间中的坐标。 |
+| rightBottom | [DepthVector3](#depthvector3) | 否 | 否 | 右下角在三维空间中的位置。无单位，其值表示三维空间中的坐标。 |
 | positionMode | [SpatialPositionMode](#spatialpositionmode) | 否 | 是 | 角点位置的坐标模式。默认值：SpatialPositionMode.WORLD_XYZ。 |
 
 ## DepthVector3
@@ -115,9 +115,9 @@ ArkTS-Sta: spatialEffect(params: SpatialEffectParams | undefined): this
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| x | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | X分量。无单位，其值表示3D空间中的坐标。 |
-| y | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Y分量。无单位，其值表示3D空间中的坐标。 |
-| z | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Z分量。无单位，其值表示3D空间中的坐标。 |
+| x | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | X分量。无单位，其值表示三维空间中的坐标。 |
+| y | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Y分量。无单位，其值表示三维空间中的坐标。 |
+| z | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Z分量。无单位，其值表示三维空间中的坐标。 |
 
 ## SpatialPositionMode
 
@@ -158,10 +158,10 @@ ArkTS-Sta: spatialEffect(params: SpatialEffectParams | undefined): this
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| x | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | X分量。无单位，其值表示3D空间中的坐标。默认值：0 |
-| y | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Y分量。无单位，其值表示3D空间中的坐标。 |
-| z | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Z分量。无单位，其值表示3D空间中的坐标。 |
-| w | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | W分量。无单位，其值表示3D空间中的坐标。 |
+| x | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | X分量。无单位，其值表示三维空间中的坐标。 |
+| y | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Y分量。无单位，其值表示三维空间中的坐标。 |
+| z | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | Z分量。无单位，其值表示三维空间中的坐标。 |
+| w | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | W分量。无单位，其值表示三维空间中的坐标。 |
 
 ## DepthColorRGB
 

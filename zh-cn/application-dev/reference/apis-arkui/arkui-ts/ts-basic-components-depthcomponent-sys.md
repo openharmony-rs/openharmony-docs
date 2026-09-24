@@ -46,7 +46,7 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| background | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 背景资源。支持静态图片或3D模型。<br>静态图支持加载PixelMap和ResourceStr的数据源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>3D模型仅支持加载ResourceStr的数据源，仅支持glTF和glb的3D模型格式。ResourceStr包含Resource和string格式。其中string格式可用于加载本地3D模型，支持绝对路径或file://前缀的沙箱URI，不支持网络资源的加载；Resource格式可以跨包/跨模块访问模型资源文件，推荐以该方式加载本地3D模型。 |
+| background | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 背景资源。支持静态图片或3D模型。<br/>静态图支持加载PixelMap和ResourceStr的数据源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>3D模型仅支持加载ResourceStr的数据源，仅支持glTF和glb的3D模型格式。ResourceStr包含Resource和string格式。其中string格式可用于加载本地3D模型，支持绝对路径或file://前缀的沙箱URI，不支持网络资源的加载；Resource格式可以跨包/跨模块访问模型资源文件，推荐以该方式加载本地3D模型。 |
 | options | [DepthComponentOptions](#depthcomponentoptions) | 否 | 景深组件配置项。默认值：`{ depthSpace: DepthSpaceType.INSTANCE, render3DScale: 1.0, colorSpace: colorSpaceManager.ColorSpace.SRGB }`。 |
 
 ## DepthComponentOptions
@@ -67,7 +67,7 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| depthSpace | [DepthSpaceType](#depthspacetype) | 否 | 是 | 景深空间类型。默认值：`DepthSpaceType.INSTANCE`。 |
+| depthSpace | [DepthSpaceType](#depthspacetype) | 否 | 是 | 景深空间类型。默认值：`DepthSpaceType.INSTANCE`。传入非枚举定义的值时该参数不生效，保持默认值`DepthSpaceType.INSTANCE`。 |
 | render3DScale | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 是 | 3D渲染窗口的缩放比例，同时作用于宽度和高度。取值范围：(0.0, 1.0]，超出该范围的值无效（继承之前的取值，如果之前未设置取默认值）。默认值：1.0。 |
 | colorSpace | ArkTS-Dyn: import('../api/@ohos.graphics.colorSpaceManager').default.[ColorSpace](../../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)</br>ArkTS-Sta: colorSpaceManager.[ColorSpace](../../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 否 | 是 | 渲染表面的色域。设置时作为色域信息应用到底层渲染表面；未设置时不应用色域信息，渲染表面保持默认色域。默认值：colorSpaceManager.ColorSpace.SRGB。 |
 
@@ -108,7 +108,7 @@ depthMap(depthMap: ResourceStr | PixelMap, callback?: DepthMapCallback)
 
 > **说明：**
 >
-> - 深度图是用于描述在3D空间中，背景中每个像素点与相机距离的二维矩阵图像。
+> - 深度图是用于描述在三维空间中，背景中每个像素点与相机距离的二维矩阵图像。
 >
 > - 其数据格式为灰阶图，灰度值越大（颜色越白）的像素点距离相机越近。
 
@@ -275,7 +275,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| position | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 相机在三维空间中的位置。无单位，其值表示3D空间中的坐标。 |
+| position | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 相机在三维空间中的位置。无单位，其值表示三维空间中的坐标。 |
 | quaternion | [DepthVector4](ts-universal-attributes-spatial-effect-sys.md#depthvector4) | 否 | 否 | 相机旋转四元数，按(x, y, z, w)表示。无单位。 |
 | yFov | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 相机垂直方向视场角，单位为弧度。 |
 | zNear | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 近裁剪面距离。无单位。必须为正数。 |
@@ -303,7 +303,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 | bufferWidth | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否 | 基准图宽度，单位为像素。需确保传入图片的宽度与实际图片宽度一致，否则可能导致显示异常，如位置偏移。 |
 | bufferHeight | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否 | 基准图高度，单位为像素。需确保传入图片的高度与实际图片高度一致，否则可能导致显示异常，如位置偏移。 |
 | cropOffset | [CropOffset](#cropoffset) | 否 | 否 | 裁剪区域偏移量。 |
-| cropScale | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 裁剪区域缩放比例，裁剪区基础大小为DepthComponent组件大小。 |
+| cropScale | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 裁剪区域缩放比例，裁剪区基础大小为DepthComponent组件大小。取值范围：(0, +∞)，小于1表示裁剪区域更小、对应放大局部，大于1表示裁剪区域更大、对应缩小内容。默认值：1.0。 |
 
 ## CropOffset
 
@@ -344,9 +344,9 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 光照方向向量。无单位，其值表示3D空间中的坐标。 |
+| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 光照方向向量。无单位，其值表示三维空间中的坐标。 |
 | color | [DepthColorRGB](ts-universal-attributes-spatial-effect-sys.md#depthcolorrgb) | 否 | 否 | 光照颜色。 |
-| intensity | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 光照强度。无单位，取值范围[0, +∞)。<br>建议取值范围[0, 1]，当设置为0时，无光照。 |
+| intensity | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 光照强度。无单位，取值范围[0, +∞)。<br/>建议取值范围[0, 1]，当设置为0时，无光照。 |
 
 ## DepthComponentCompleteCallback
 
