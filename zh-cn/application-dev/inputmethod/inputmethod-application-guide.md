@@ -159,7 +159,7 @@
          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
        }
        let keyHeight = dHeight * keyHeightRate;
-       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
+       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};navibar height = navigationBar_height`);
        this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
        let panelInfo: inputMethodEngine.PanelInfo = {
          type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
@@ -172,9 +172,11 @@
          panel.resize(dWidth, keyHeight).then(() => {
            panel.setUiContent('InputMethodExtensionAbility/pages/Index').then(() => {
              this.inputHandle.addLog('loadContent finished');
-           })
+           }).catch((err: BusinessError) => {
+             Log.showError(TAG, `Failed to setUiContent: ${err.code} ${err.message}`);
+           });
          }).catch((err: BusinessError) => {
-           Log.showError(TAG, `Failed to setUiContent: ${err.code} ${err.message}`);
+           Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
          });
        }).catch((err: BusinessError) => {
          Log.showError(TAG, `Failed to createPanel: ${err.code} ${err.message}`);
@@ -349,7 +351,7 @@
        if (idx === -1) {
          this.keyCodes.push(keyCode);
        } else {
-         this.inputHandle.addLog(`keyCode down is intercepted: ${keyCode}}`);
+         this.inputHandle.addLog(`keyCode down is intercepted: ${keyCode}`);
        }
        if (this.isShiftKeyHold() && this.keyCodes.length === 2 && !this.isKeyCodeAZ(keyCode)) {
          this.isSpecialKeyPress = true;
