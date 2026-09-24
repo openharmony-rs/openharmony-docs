@@ -199,6 +199,7 @@
       - [ProcessData](js-apis-inner-application-processData.md)
       - [PhotoEditorExtensionContext](js-apis-app-ability-photoEditorExtensionContext.md)
       - [SendableContext](js-apis-inner-application-sendableContext.md)
+      - [ToolEventCallback (CLI工具事件回调)](js-apis-inner-application-toolEventCallback.md)
       - [ViewData (视图数据)](js-apis-inner-application-viewData.md)
       <!--Del-->
       - [AbilityFirstFrameStateData (首帧绘制状态数据)](js-apis-inner-application-abilityFirstFrameStateData-sys.md)
@@ -226,7 +227,6 @@
       - [RunningMultiAppInfo (多开应用运行信息)](js-apis-inner-application-runningMultiAppInfo-sys.md)
       - [RunningMultiInstanceInfo (多实例应用运行信息)](js-apis-inner-application-runningMultiInstanceInfo-sys.md)
       - [ServiceExtensionContext (系统接口)](js-apis-inner-application-serviceExtensionContext-sys.md)
-      - [ToolEventCallback (CLI工具事件回调)](js-apis-inner-application-toolEventCallback-sys.md)
       - [ToolInfo (CLI工具信息)](js-apis-inner-application-ToolInfo-sys.md)
       - [UIServiceExtensionContext (系统接口)](js-apis-inner-application-uiserviceExtensionContext-sys.md)
       - [UIServiceHostProxy (系统接口)](js-apis-inner-application-uiservicehostproxy-sys.md)
