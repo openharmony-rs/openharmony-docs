@@ -305,7 +305,7 @@ setSessionId(sessionId: string, callback: AsyncCallback&lt;void&gt;): void
 
   | 错误码ID | 错误信息                                                                                                                                                           |
   | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-  | 201      | Permission verification failed.                                                                                                                                    |
+  | 201      | Permission verification failed. The application does not have the permission required to call the API. |
   | 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. The sessionId allows only letters, digits, and underscores(_), and cannot exceed 128 in length. |
   | 15400001 | Failed to create the in-memory database.                                                                                                                                               |
 
@@ -350,7 +350,7 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 201      | Permission verification failed. <br> 适用版本：9-19|
+  | 201      | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：9-19 |
   | 401      | Parameter error. Incorrect parameter types. |
   | 15400001 | Failed to create the in-memory database. |
 
@@ -399,7 +399,7 @@ setSessionId(sessionId?: string): Promise&lt;void&gt;
 
   | 错误码ID | 错误信息                                                                                                                                                           |
   | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-  | 201      | Permission verification failed.                                                                                                                                    |
+  | 201      | Permission verification failed. The application does not have the permission required to call the API. |
   | 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. The sessionId allows only letters, digits, and underscores(_), and cannot exceed 128 in length. |
   | 15400001 | Failed to create the in-memory database.                                                                                                                                               |
 
@@ -890,7 +890,7 @@ save(deviceId: string, callback: AsyncCallback&lt;SaveSuccessResponse&gt;): void
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -965,7 +965,7 @@ save(deviceId: string): Promise&lt;SaveSuccessResponse&gt;
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1026,7 +1026,7 @@ revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401      | Parameter error. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1110,7 +1110,7 @@ revokeSave(): Promise&lt;RevokeSaveSuccessResponse&gt;
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1188,7 +1188,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1336,7 +1336,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise&lt;void&gt;
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801      | Capability not supported. |
+  | 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
