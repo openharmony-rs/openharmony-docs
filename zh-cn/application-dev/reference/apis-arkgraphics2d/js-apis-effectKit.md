@@ -772,12 +772,15 @@ blur(radius: number): Filter
 import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 传入读取的图片数据
 function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise(async (resolve) => {
+  return new Promise((resolve, reject) => {
     // 创建图像源
     let imageSource = image.createImageSource(imageBuffer);
-    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+      // 图像源使用完毕后及时释放
+      imageSource.release();
       // 设置模糊半径
       let radius = 5;
       // 创建Filter实例
@@ -788,8 +791,15 @@ function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
         // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
         headFilter.getEffectPixelMap().then(imageData => {
           resolve(imageData);
+        }).catch((err: BusinessError) => {
+          reject(err);
         });
+      } else {
+        // 创建Filter实例失败，通过reject将错误传递给调用方
+        reject(new Error('Failed to create filter.'));
       }
+    }).catch((err: BusinessError) => {
+      reject(err);
     });
   });
 }
@@ -864,12 +874,15 @@ blur(radius: number, tileMode: TileMode): Filter
 import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 传入读取的图片数据
 function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise(async (resolve) => {
+  return new Promise((resolve, reject) => {
     // 创建图像源
     let imageSource = image.createImageSource(imageBuffer);
-    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+      // 图像源使用完毕后及时释放
+      imageSource.release();
       // 设置模糊半径
       let radius = 30;
       // 创建Filter实例
@@ -880,8 +893,15 @@ function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
         // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
         headFilter.getEffectPixelMap().then(imageData => {
           resolve(imageData);
+        }).catch((err: BusinessError) => {
+          reject(err);
         });
+      } else {
+        // 创建Filter实例失败，通过reject将错误传递给调用方
+        reject(new Error('Failed to create filter.'));
       }
+    }).catch((err: BusinessError) => {
+      reject(err);
     });
   });
 }
@@ -945,12 +965,15 @@ invert(): Filter
 import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 传入读取的图片数据
 function imageInvert(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise(async (resolve) => {
+  return new Promise((resolve, reject) => {
     // 创建图像源
     let imageSource = image.createImageSource(imageBuffer);
-    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+      // 图像源使用完毕后及时释放
+      imageSource.release();
       // 创建Filter实例
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -959,8 +982,15 @@ function imageInvert(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
         // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
         headFilter.getEffectPixelMap().then(imageData => {
           resolve(imageData);
+        }).catch((err: BusinessError) => {
+          reject(err);
         });
+      } else {
+        // 创建Filter实例失败，通过reject将错误传递给调用方
+        reject(new Error('Failed to create filter.'));
       }
+    }).catch((err: BusinessError) => {
+      reject(err);
     });
   });
 }
@@ -1022,7 +1052,7 @@ setColorMatrix(colorMatrix: Array\<number>): Filter
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
+| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像；数组长度不为20时返回null。 |
 
 **错误码：**
 
@@ -1038,12 +1068,15 @@ setColorMatrix(colorMatrix: Array\<number>): Filter
 import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 传入读取的图片数据
 function imageColorFilter(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise(async (resolve) => {
+  return new Promise((resolve, reject) => {
     // 创建图像源
     let imageSource = image.createImageSource(imageBuffer);
-    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+      // 图像源使用完毕后及时释放
+      imageSource.release();
       // 定义颜色矩阵
       let colorMatrix: Array<number> = [
         0.2126, 0.7152, 0.0722, 0, 0,
@@ -1059,8 +1092,15 @@ function imageColorFilter(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
         // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
         headFilter.getEffectPixelMap().then(imageData => {
           resolve(imageData);
+        }).catch((err: BusinessError) => {
+          reject(err);
         });
+      } else {
+        // 创建Filter实例失败，通过reject将错误传递给调用方
+        reject(new Error('Failed to create filter.'));
       }
+    }).catch((err: BusinessError) => {
+      reject(err);
     });
   });
 }
@@ -1134,12 +1174,15 @@ brightness(bright: number): Filter
 import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 传入读取的图片数据
 function imageBrightness(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise(async (resolve) => {
+  return new Promise((resolve, reject) => {
     // 创建图像源
     let imageSource = image.createImageSource(imageBuffer);
-    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+      // 图像源使用完毕后及时释放
+      imageSource.release();
       // 设置亮度值
       let bright = 0.5;
       // 创建Filter实例
@@ -1150,8 +1193,15 @@ function imageBrightness(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
         // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
         headFilter.getEffectPixelMap().then(imageData => {
           resolve(imageData);
+        }).catch((err: BusinessError) => {
+          reject(err);
         });
+      } else {
+        // 创建Filter实例失败，通过reject将错误传递给调用方
+        reject(new Error('Failed to create filter.'));
       }
+    }).catch((err: BusinessError) => {
+      reject(err);
     });
   });
 }
@@ -1219,12 +1269,15 @@ grayscale(): Filter
 import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 传入读取的图片数据
 function imageGrayscale(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise(async (resolve) => {
+  return new Promise((resolve, reject) => {
     // 创建图像源
     let imageSource = image.createImageSource(imageBuffer);
-    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+      // 图像源使用完毕后及时释放
+      imageSource.release();
       // 创建Filter实例
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -1233,8 +1286,15 @@ function imageGrayscale(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
         // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
         headFilter.getEffectPixelMap().then(imageData => {
           resolve(imageData);
+        }).catch((err: BusinessError) => {
+          reject(err);
         });
+      } else {
+        // 创建Filter实例失败，通过reject将错误传递给调用方
+        reject(new Error('Failed to create filter.'));
       }
+    }).catch((err: BusinessError) => {
+      reject(err);
     });
   });
 }
@@ -1375,10 +1435,14 @@ let opts: image.InitializationOptions = {
 };
 // 创建PixelMap实例
 image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  // 创建Filter实例、添加灰度效果并获取处理后的PixelMap
-  effectKit.createEffect(pixelMap).grayscale().getEffectPixelMap(false).then(data => {
-    console.info('getPixelBytesNumber = ', data.getPixelBytesNumber());
-  });
+  // 创建Filter实例
+  let headFilter = effectKit.createEffect(pixelMap);
+  if (headFilter != null) {
+    // 添加灰度效果并获取处理后的PixelMap
+    headFilter.grayscale().getEffectPixelMap(false).then(data => {
+      console.info('getPixelBytesNumber = ', data.getPixelBytesNumber());
+    });
+  }
 });
 ```
 
@@ -1416,7 +1480,12 @@ let opts: image.InitializationOptions = {
   }
 };
 image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  let pixel = effectKit.createEffect(pixelMap).grayscale().getPixelMap();
-  console.info('getPixelBytesNumber = ', pixel.getPixelBytesNumber());
+  // 创建Filter实例
+  let headFilter = effectKit.createEffect(pixelMap);
+  if (headFilter != null) {
+    // 添加灰度效果并获取处理后的PixelMap
+    let pixel = headFilter.grayscale().getPixelMap();
+    console.info('getPixelBytesNumber = ', pixel.getPixelBytesNumber());
+  }
 });
 ```
