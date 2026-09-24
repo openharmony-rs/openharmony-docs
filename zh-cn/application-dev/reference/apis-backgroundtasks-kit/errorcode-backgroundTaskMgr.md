@@ -194,11 +194,11 @@ The requested continuous task is not supported on this device type.
 
 **可能原因**
 
-请求的长时任务类型在当前设备不支持
+请求的长时任务类型在当前设备不支持。
 
 **处理步骤**
 
-修改申请的长时任务类型
+修改申请的长时任务类型。
 
 ## 9900001 短时任务调用方信息校验失败
 
